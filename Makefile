@@ -53,3 +53,6 @@ test:
 
 clean:
 	cargo clean
+
+deb: build
+	packaging/deb/build_deb.sh

@@ -20,6 +20,7 @@ pub struct TiMondeTray {
     pub current_title: Arc<Mutex<Option<String>>>,
     pub play_generation: Arc<AtomicU64>,
     pub tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+    pub sleep_timer: Arc<Mutex<Option<std::time::Instant>>>,
 }
 
 impl TiMondeTray {
@@ -34,6 +35,7 @@ impl TiMondeTray {
             current_title: Arc::new(Mutex::new(None)),
             play_generation: Arc::new(AtomicU64::new(0)),
             tray_handle: Arc::new(Mutex::new(None)),
+            sleep_timer: Arc::new(Mutex::new(None)),
         }
     }
 
@@ -242,6 +244,49 @@ impl TiMondeTray {
 
     pub fn stop_and_trim(&self) {
         Self::stop_and_trim_flow(&self.audio, &self.current_station, &self.current_title);
+    }
+
+    /// Programme une mise en veille automatique après un délai en minutes
+    pub fn set_sleep_timer(&mut self, minutes: u64) {
+        let dur = Duration::from_secs(minutes * 60);
+        let target = std::time::Instant::now() + dur;
+        *self.sleep_timer.lock().unwrap() = Some(target);
+
+        let audio = Arc::clone(&self.audio);
+        let current_station = Arc::clone(&self.current_station);
+        let current_title = Arc::clone(&self.current_title);
+        let sleep_timer = Arc::clone(&self.sleep_timer);
+        let tray_handle = Arc::clone(&self.tray_handle);
+        let gen = self.play_generation.load(Ordering::SeqCst);
+        let play_gen = Arc::clone(&self.play_generation);
+
+        notify("TiMonde", &format!("💤 Minuteur activé : arrêt dans {} minutes", minutes));
+
+        std::thread::spawn(move || {
+            std::thread::sleep(dur);
+
+            let mut guard = sleep_timer.lock().unwrap();
+            if let Some(t) = *guard {
+                if t <= std::time::Instant::now() {
+                    *guard = None;
+                    drop(guard);
+
+                    if play_gen.load(Ordering::SeqCst) == gen {
+                        Self::stop_and_trim_flow(&audio, &current_station, &current_title);
+                        notify("TiMonde", "💤 Minuteur écoulé : mise en veille et arrêt de la lecture.");
+                        if let Some(ref h) = *tray_handle.lock().unwrap() {
+                            h.update(|_| {});
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    /// Annule la mise en veille programmée
+    pub fn cancel_sleep_timer(&mut self) {
+        *self.sleep_timer.lock().unwrap() = None;
+        notify("TiMonde", "Minuteur de mise en veille annulé.");
     }
 
     /// Construit récursivement les éléments de menu pour un groupe donné
@@ -980,6 +1025,45 @@ impl ksni::Tray for TiMondeTray {
         }
     }
 
+    /// Clic du milieu (molette) sur l'icône : Play / Pause / Relance instantané (Réflexe BB)
+    fn secondary_activate(&mut self, _x: i32, _y: i32) {
+        match self.state() {
+            PlaybackState::Playing => {
+                let guard = self.audio.lock().unwrap();
+                if let Some(ref engine) = *guard {
+                    let _ = engine.pause();
+                }
+            }
+            PlaybackState::Paused => {
+                let guard = self.audio.lock().unwrap();
+                if let Some(ref engine) = *guard {
+                    let _ = engine.resume();
+                }
+            }
+            PlaybackState::Stopped | PlaybackState::Error => {
+                let last = self.last_station.lock().unwrap();
+                if let Some(ref last_st) = *last {
+                    let st = last_st.clone();
+                    drop(last);
+                    self.play_station(st);
+                }
+            }
+            _ => {}
+        }
+    }
+
+    /// Défilement de la molette sur l'icône de la barre des tâches : Ajustement direct du volume
+    fn scroll(&mut self, delta: i32, _orientation: ksni::Orientation) {
+        let step = if delta > 0 { -0.05 } else { 0.05 };
+        let mut cur = self.current_volume.lock().unwrap();
+        let new_vol = (*cur + step).clamp(0.0, 1.0);
+        *cur = new_vol;
+        let guard = self.audio.lock().unwrap();
+        if let Some(ref engine) = *guard {
+            engine.set_volume(new_vol);
+        }
+    }
+
     fn menu(&self) -> Vec<MenuItem<Self>> {
         let mut menu = Vec::new();
         let current_state = self.state();
@@ -1007,66 +1091,7 @@ impl ksni::Tray for TiMondeTray {
             ..Default::default()
         }));
 
-        // Option rapide : Copier le titre dans le presse-papier
-        if let Some(ref t) = *cur_title {
-            let title_copy = t.clone();
-            menu.push(MenuItem::Standard(StandardItem {
-                label: format!("📋 Copier : {}", title_copy),
-                activate: Box::new(move |_tray| {
-                    let _ = std::process::Command::new("sh")
-                        .arg("-c")
-                        .arg(format!("printf '%s' \"{}\" | (wl-copy 2>/dev/null || xclip -selection clipboard 2>/dev/null || true)", title_copy))
-                        .spawn();
-                    notify("TiMonde", "Titre copié dans le presse-papier !");
-                }),
-                enabled: true,
-                visible: true,
-                ..Default::default()
-            }));
-        }
-
-        // Actions directes sur la station en cours d'écoute
-        if let Some(ref st) = *cur_st {
-            let st_edit = st.clone();
-            let st_del = st.clone();
-
-            menu.push(MenuItem::Standard(StandardItem {
-                label: format!("✏️ Modifier « {} »...", st.name),
-                activate: Box::new(move |tray: &mut Self| {
-                    Self::trigger_edit_station_dialog(
-                        st_edit.clone(),
-                        Arc::clone(&tray.root_group),
-                        tray.bookmarks_path.clone(),
-                        Arc::clone(&tray.tray_handle),
-                        Arc::clone(&tray.current_station),
-                        Arc::clone(&tray.last_station),
-                    );
-                }),
-                enabled: true,
-                visible: true,
-                ..Default::default()
-            }));
-
-            menu.push(MenuItem::Standard(StandardItem {
-                label: format!("🗑️ Supprimer « {} »...", st.name),
-                activate: Box::new(move |tray: &mut Self| {
-                    Self::trigger_delete_station_dialog(
-                        st_del.clone(),
-                        Arc::clone(&tray.root_group),
-                        tray.bookmarks_path.clone(),
-                        Arc::clone(&tray.tray_handle),
-                    );
-                }),
-                enabled: true,
-                visible: true,
-                ..Default::default()
-            }));
-        }
-
-        drop(cur_st);
-        drop(cur_title);
-
-        // 2. Contrôles de lecture (Pause, Reprendre, Relancer, Arrêter)
+        // 2. Contrôles de lecture immédiats (Priorité réflexe BB : Pause / Reprendre / Relancer / Arrêter tout en haut)
         match current_state {
             PlaybackState::Playing => {
                 menu.push(MenuItem::Standard(StandardItem {
@@ -1114,6 +1139,17 @@ impl ksni::Tray for TiMondeTray {
                     ..Default::default()
                 }));
             }
+            PlaybackState::Buffering => {
+                menu.push(MenuItem::Standard(StandardItem {
+                    label: "⏹ Arrêter la connexion".to_string(),
+                    activate: Box::new(|tray: &mut Self| {
+                        tray.stop_and_trim();
+                    }),
+                    enabled: true,
+                    visible: true,
+                    ..Default::default()
+                }));
+            }
             PlaybackState::Stopped | PlaybackState::Error => {
                 let last = self.last_station.lock().unwrap();
                 if let Some(ref last_st) = *last {
@@ -1129,18 +1165,67 @@ impl ksni::Tray for TiMondeTray {
                     }));
                 }
             }
-            PlaybackState::Buffering => {
+        }
+
+        // 3. Actions contextuelles sur la station en cours d'écoute
+        if let Some(ref st) = *cur_st {
+            menu.push(MenuItem::Separator);
+
+            if let Some(ref t) = *cur_title {
+                let title_copy = t.clone();
                 menu.push(MenuItem::Standard(StandardItem {
-                    label: "⏹ Arrêter la connexion".to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        tray.stop_and_trim();
+                    label: format!("📋 Copier : {}", title_copy),
+                    activate: Box::new(move |_tray| {
+                        let _ = std::process::Command::new("sh")
+                            .arg("-c")
+                            .arg(format!("printf '%s' \"{}\" | (wl-copy 2>/dev/null || xclip -selection clipboard 2>/dev/null || true)", title_copy))
+                        .spawn();
+                        notify("TiMonde", "Titre copié dans le presse-papier !");
                     }),
                     enabled: true,
                     visible: true,
                     ..Default::default()
                 }));
             }
+
+            let st_edit = st.clone();
+            let st_del = st.clone();
+
+            menu.push(MenuItem::Standard(StandardItem {
+                label: format!("✏️ Modifier « {} »...", st.name),
+                activate: Box::new(move |tray: &mut Self| {
+                    Self::trigger_edit_station_dialog(
+                        st_edit.clone(),
+                        Arc::clone(&tray.root_group),
+                        tray.bookmarks_path.clone(),
+                        Arc::clone(&tray.tray_handle),
+                        Arc::clone(&tray.current_station),
+                        Arc::clone(&tray.last_station),
+                    );
+                }),
+                enabled: true,
+                visible: true,
+                ..Default::default()
+            }));
+
+            menu.push(MenuItem::Standard(StandardItem {
+                label: format!("🗑️ Supprimer « {} »...", st.name),
+                activate: Box::new(move |tray: &mut Self| {
+                    Self::trigger_delete_station_dialog(
+                        st_del.clone(),
+                        Arc::clone(&tray.root_group),
+                        tray.bookmarks_path.clone(),
+                        Arc::clone(&tray.tray_handle),
+                    );
+                }),
+                enabled: true,
+                visible: true,
+                ..Default::default()
+            }));
         }
+
+        drop(cur_st);
+        drop(cur_title);
 
         menu.push(MenuItem::Separator);
 
@@ -1239,9 +1324,69 @@ impl ksni::Tray for TiMondeTray {
             ..Default::default()
         }));
 
+        // 5. Minuteur de mise en veille (Sleep timer)
+        let sleep_guard = self.sleep_timer.lock().unwrap();
+        let sleep_label = match *sleep_guard {
+            Some(target) => {
+                let now = std::time::Instant::now();
+                if target > now {
+                    let mins = (target - now).as_secs() / 60 + 1;
+                    format!("💤 Veille active (arrêt dans ~{} min)", mins)
+                } else {
+                    "💤 Minuteur de mise en veille".to_string()
+                }
+            }
+            None => "💤 Minuteur de mise en veille".to_string(),
+        };
+
+        menu.push(MenuItem::SubMenu(SubMenu {
+            label: sleep_label,
+            submenu: vec![
+                MenuItem::Standard(StandardItem {
+                    label: "⏱️ Dans 15 minutes".to_string(),
+                    activate: Box::new(|tray| {
+                        tray.set_sleep_timer(15);
+                    }),
+                    ..Default::default()
+                }),
+                MenuItem::Standard(StandardItem {
+                    label: "⏱️ Dans 30 minutes".to_string(),
+                    activate: Box::new(|tray| {
+                        tray.set_sleep_timer(30);
+                    }),
+                    ..Default::default()
+                }),
+                MenuItem::Standard(StandardItem {
+                    label: "⏱️ Dans 45 minutes".to_string(),
+                    activate: Box::new(|tray| {
+                        tray.set_sleep_timer(45);
+                    }),
+                    ..Default::default()
+                }),
+                MenuItem::Standard(StandardItem {
+                    label: "⏱️ Dans 60 minutes (1h)".to_string(),
+                    activate: Box::new(|tray| {
+                        tray.set_sleep_timer(60);
+                    }),
+                    ..Default::default()
+                }),
+                MenuItem::Separator,
+                MenuItem::Standard(StandardItem {
+                    label: "❌ Annuler la mise en veille".to_string(),
+                    activate: Box::new(|tray| {
+                        tray.cancel_sleep_timer();
+                    }),
+                    ..Default::default()
+                }),
+            ],
+            enabled: true,
+            visible: true,
+            ..Default::default()
+        }));
+
         menu.push(MenuItem::Separator);
 
-        // 5. Options et gestion des signets
+        // 6. Options et gestion des signets
         menu.push(MenuItem::SubMenu(SubMenu {
             label: "⚙️ Options".to_string(),
             submenu: vec![

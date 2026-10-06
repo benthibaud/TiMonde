@@ -1,0 +1,22 @@
+# Maintainer: Ben Thibaud <b_thibaud@laposte.net>
+pkgname=timonde
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux"
+arch=('x86_64')
+url="https://github.com/benthibaud/TiMonde"
+license=('GPL-3.0-or-later')
+depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'zenity' 'python' 'python-gobject' 'gtk3')
+makedepends=('cargo' 'rust')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+    cd "$pkgname-$pkgver"
+    cargo build --release --locked
+}
+
+package() {
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir" PREFIX="/usr" install
+}
