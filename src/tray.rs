@@ -255,10 +255,222 @@ impl TiMondeTray {
         items
     }
 
+    /// Dialogue interactif de sélection de groupe (racine, existant ou nouveau)
+    pub fn select_target_group_dialog(root_group: &Arc<Mutex<Group>>) -> Option<Option<String>> {
+        let existing_groups: Vec<String> = {
+            let guard = root_group.lock().unwrap();
+            fn collect_names(g: &Group, list: &mut Vec<String>) {
+                for sub in &g.subgroups {
+                    list.push(sub.name.clone());
+                    collect_names(sub, list);
+                }
+            }
+            let mut list = Vec::new();
+            collect_names(&guard, &mut list);
+            list
+        };
+
+        // Si aucun groupe n est encore créé, on envoie directement à la racine par défaut
+        if existing_groups.is_empty() {
+            return Some(None);
+        }
+
+        let mut zenity_list = std::process::Command::new("zenity");
+        zenity_list
+            .arg("--list")
+            .arg("--title=Groupe de destination")
+            .arg("--text=Choisissez le groupe de destination :")
+            .arg("--column=Groupe")
+            .arg("(Racine - aucun groupe)")
+            .arg("[+ Nouveau groupe...]");
+
+        for g in &existing_groups {
+            zenity_list.arg(g);
+        }
+
+        let choice_out = match zenity_list.output() {
+            Ok(out) if out.status.success() => out,
+            _ => return None, // Annulé
+        };
+
+        let choice = String::from_utf8_lossy(&choice_out.stdout).trim().to_string();
+        if choice.is_empty() || choice.starts_with("(Racine") {
+            Some(None)
+        } else if choice.starts_with("[+ Nouveau") {
+            let entry_out = match std::process::Command::new("zenity")
+                .arg("--entry")
+                .arg("--title=Nouveau groupe")
+                .arg("--text=Nom du nouveau groupe de radios :")
+                .output()
+            {
+                Ok(out) if out.status.success() => out,
+                _ => return None,
+            };
+            let name = String::from_utf8_lossy(&entry_out.stdout).trim().to_string();
+            if !name.is_empty() {
+                Some(Some(name))
+            } else {
+                Some(None)
+            }
+        } else {
+            Some(Some(choice))
+        }
+    }
+
+    /// Ouvre la boîte de dialogue native pour ajouter une station manuellement
+    pub fn trigger_add_station_dialog(root_group: Arc<Mutex<Group>>, bookmarks_path: PathBuf) {
+        std::thread::spawn(move || {
+            let form_output = match std::process::Command::new("zenity")
+                .arg("--forms")
+                .arg("--title=➕ Ajouter une station (TiMonde)")
+                .arg("--text=Entrez les informations de la nouvelle station :")
+                .arg("--add-entry=Nom de la station")
+                .arg("--add-entry=URL du flux (http/https)")
+                .output()
+            {
+                Ok(out) if out.status.success() => out,
+                _ => return, // Annulé
+            };
+
+            let fields = String::from_utf8_lossy(&form_output.stdout).trim().to_string();
+            let parts: Vec<&str> = fields.split('|').collect();
+            if parts.len() < 2 {
+                return;
+            }
+
+            let station_name = parts[0].trim();
+            let station_url = parts[1].trim();
+
+            if station_name.is_empty() || station_url.is_empty() {
+                crate::radio_browser::notify("TiMonde", "Nom ou URL manquant");
+                return;
+            }
+
+            let target_group = match Self::select_target_group_dialog(&root_group) {
+                Some(tg) => tg,
+                None => return,
+            };
+
+            let mut root = root_group.lock().unwrap().clone();
+            match crate::import::add_single_station(
+                &mut root,
+                station_name,
+                station_url,
+                target_group.as_deref(),
+            ) {
+                Ok(msg) => {
+                    if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                        log::error!("Erreur lors de la sauvegarde : {}", e);
+                        crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
+                        return;
+                    }
+                    *root_group.lock().unwrap() = root;
+                    log::info!("✅ {}", msg);
+                    crate::radio_browser::notify("TiMonde", &msg);
+                }
+                Err(e) => {
+                    log::warn!("Échec de l ajout : {}", e);
+                    crate::radio_browser::notify("TiMonde", &format!("Ajout impossible : {}", e));
+                }
+            }
+        });
+    }
+
+    /// Recherche interactive dans l annuaire mondial Radio-Browser
+    pub fn trigger_search_online_dialog(root_group: Arc<Mutex<Group>>, bookmarks_path: PathBuf) {
+        std::thread::spawn(move || {
+            let entry_output = match std::process::Command::new("zenity")
+                .arg("--entry")
+                .arg("--title=🔍 Rechercher sur Radio-Browser")
+                .arg("--text=Nom ou mot-clé de la radio (ex: FIP, Jazz, BBC, Rock, Nostalgie...) :")
+                .output()
+            {
+                Ok(out) if out.status.success() => out,
+                _ => return,
+            };
+
+            let query = String::from_utf8_lossy(&entry_output.stdout).trim().to_string();
+            if query.is_empty() {
+                return;
+            }
+
+            crate::radio_browser::notify("TiMonde", &format!("Recherche pour '{}'...", query));
+            let results = crate::radio_browser::search_online(&query, 30);
+
+            if results.is_empty() {
+                crate::radio_browser::notify("TiMonde", &format!("Aucune station trouvée pour '{}'", query));
+                return;
+            }
+
+            let mut list_cmd = std::process::Command::new("zenity");
+            list_cmd
+                .arg("--list")
+                .arg(format!("--title=Résultats pour '{}' ({} trouvées)", query, results.len()))
+                .arg("--text=Sélectionnez la station à ajouter à vos favoris :")
+                .arg("--column=ID")
+                .arg("--column=Nom")
+                .arg("--column=Pays")
+                .arg("--column=Format")
+                .arg("--column=Débit")
+                .arg("--column=Votes")
+                .arg("--width=720")
+                .arg("--height=420");
+
+            for (i, r) in results.iter().enumerate() {
+                list_cmd.arg(format!("{}", i));
+                list_cmd.arg(&r.name);
+                list_cmd.arg(if r.country.is_empty() { "-" } else { &r.country });
+                list_cmd.arg(if r.codec.is_empty() { "-" } else { &r.codec });
+                list_cmd.arg(if r.bitrate > 0 { format!("{} kbps", r.bitrate) } else { "-".to_string() });
+                list_cmd.arg(format!("{}", r.votes));
+            }
+
+            let sel_output = match list_cmd.output() {
+                Ok(out) if out.status.success() => out,
+                _ => return,
+            };
+
+            let sel_str = String::from_utf8_lossy(&sel_output.stdout).trim().to_string();
+            let selected_idx: usize = match sel_str.parse() {
+                Ok(idx) if idx < results.len() => idx,
+                _ => return,
+            };
+
+            let chosen = &results[selected_idx];
+
+            let target_group = match Self::select_target_group_dialog(&root_group) {
+                Some(tg) => tg,
+                None => return,
+            };
+
+            let mut root = root_group.lock().unwrap().clone();
+            match crate::import::add_single_station(
+                &mut root,
+                &chosen.name,
+                &chosen.url_resolved,
+                target_group.as_deref(),
+            ) {
+                Ok(msg) => {
+                    if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                        log::error!("Erreur sauvegarde : {}", e);
+                        crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
+                        return;
+                    }
+                    *root_group.lock().unwrap() = root;
+                    log::info!("✅ {}", msg);
+                    crate::radio_browser::notify("TiMonde", &msg);
+                }
+                Err(e) => {
+                    log::warn!("Échec de l ajout : {}", e);
+                    crate::radio_browser::notify("TiMonde", &format!("Ajout impossible : {}", e));
+                }
+            }
+        });
+    }
+
     /// Ouvre les boîtes de dialogue natives (Zenity) pour importer une liste de stations
     pub fn trigger_import_dialog(root_group: Arc<Mutex<Group>>, bookmarks_path: PathBuf) {
         std::thread::spawn(move || {
-            // 1. Sélection du fichier
             let file_output = match std::process::Command::new("zenity")
                 .arg("--file-selection")
                 .arg("--title=Importer une liste de radios (TiMonde)")
@@ -266,17 +478,9 @@ impl TiMondeTray {
                 .arg("--file-filter=Tous les fichiers | *")
                 .output()
             {
-                Ok(out) => out,
-                Err(e) => {
-                    log::error!("Impossible de lancer zenity : {}", e);
-                    crate::radio_browser::notify("TiMonde", "Outil de sélection zenity introuvable");
-                    return;
-                }
+                Ok(out) if out.status.success() => out,
+                _ => return,
             };
-
-            if !file_output.status.success() {
-                return; // Annulé par l utilisateur
-            }
 
             let file_str = String::from_utf8_lossy(&file_output.stdout).trim().to_string();
             if file_str.is_empty() {
@@ -288,68 +492,11 @@ impl TiMondeTray {
                 return;
             }
 
-            // 2. Détermination du groupe cible
-            let existing_groups: Vec<String> = {
-                let guard = root_group.lock().unwrap();
-                fn collect_names(g: &Group, list: &mut Vec<String>) {
-                    for sub in &g.subgroups {
-                        list.push(sub.name.clone());
-                        collect_names(sub, list);
-                    }
-                }
-                let mut list = Vec::new();
-                collect_names(&guard, &mut list);
-                list
+            let target_group = match Self::select_target_group_dialog(&root_group) {
+                Some(tg) => tg,
+                None => return,
             };
 
-            let mut target_group: Option<String> = None;
-
-            // S il existe des groupes, on propose le choix à l utilisateur.
-            // Si aucun groupe n est encore créé, on envoie directement à la racine par défaut.
-            if !existing_groups.is_empty() {
-                let mut zenity_list = std::process::Command::new("zenity");
-                zenity_list
-                    .arg("--list")
-                    .arg("--title=Groupe de destination")
-                    .arg("--text=Choisissez le groupe où importer les radios :")
-                    .arg("--column=Groupe")
-                    .arg("(Racine - aucun groupe)")
-                    .arg("[+ Nouveau groupe...]");
-
-                for g in &existing_groups {
-                    zenity_list.arg(g);
-                }
-
-                if let Ok(choice_out) = zenity_list.output() {
-                    if !choice_out.status.success() {
-                        return; // Annulé
-                    }
-                    let choice = String::from_utf8_lossy(&choice_out.stdout).trim().to_string();
-                    if choice.is_empty() || choice.starts_with("(Racine") {
-                        target_group = None;
-                    } else if choice.starts_with("[+ Nouveau") {
-                        let entry_out = std::process::Command::new("zenity")
-                            .arg("--entry")
-                            .arg("--title=Nouveau groupe")
-                            .arg("--text=Nom du nouveau groupe de radios :")
-                            .output();
-                        if let Ok(entry_out) = entry_out {
-                            if entry_out.status.success() {
-                                let name = String::from_utf8_lossy(&entry_out.stdout).trim().to_string();
-                                if !name.is_empty() {
-                                    target_group = Some(name);
-                                }
-                            } else {
-                                return; // Annulé
-                            }
-                        }
-                    } else {
-                        target_group = Some(choice);
-                    }
-                }
-            }
-
-            // 3. Traitement de l importation
             let mut root = root_group.lock().unwrap().clone();
             match crate::import::import_file(&mut root, &file_path, target_group.as_deref()) {
                 Ok(report) => {
@@ -650,6 +797,26 @@ impl ksni::Tray for TiMondeTray {
         menu.push(MenuItem::SubMenu(SubMenu {
             label: "⚙️ Options".to_string(),
             submenu: vec![
+                MenuItem::Standard(StandardItem {
+                    label: "➕ Ajouter une station...".to_string(),
+                    activate: Box::new(|tray: &mut Self| {
+                        Self::trigger_add_station_dialog(
+                            Arc::clone(&tray.root_group),
+                            tray.bookmarks_path.clone(),
+                        );
+                    }),
+                    ..Default::default()
+                }),
+                MenuItem::Standard(StandardItem {
+                    label: "🔍 Rechercher sur Radio-Browser...".to_string(),
+                    activate: Box::new(|tray: &mut Self| {
+                        Self::trigger_search_online_dialog(
+                            Arc::clone(&tray.root_group),
+                            tray.bookmarks_path.clone(),
+                        );
+                    }),
+                    ..Default::default()
+                }),
                 MenuItem::Standard(StandardItem {
                     label: "📥 Importer une liste de radios...".to_string(),
                     activate: Box::new(|tray: &mut Self| {

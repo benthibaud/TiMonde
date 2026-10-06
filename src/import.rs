@@ -109,6 +109,58 @@ fn insert_station_dedup(
     report.stations_added += 1;
 }
 
+/// Ajoute une station unique à l'arbre avec contrôle strict des doublons
+pub fn add_single_station(
+    root: &mut Group,
+    name: &str,
+    url: &str,
+    target_group: Option<&str>,
+) -> Result<String, String> {
+    let clean_name = name.trim();
+    let clean_url = url.trim();
+
+    if clean_name.is_empty() {
+        return Err("Le nom de la station ne peut pas être vide".to_string());
+    }
+    if !clean_url.starts_with("http://") && !clean_url.starts_with("https://") {
+        return Err("L'URL doit commencer par http:// ou https://".to_string());
+    }
+
+    let mut existing_urls = HashSet::new();
+    collect_all_urls(root, &mut existing_urls);
+
+    let norm_url = normalize_url(clean_url);
+    if existing_urls.contains(&norm_url) {
+        return Err(format!("Le flux ({}) est déjà présent dans vos favoris", clean_url));
+    }
+
+    let mut report = ImportReport::default();
+    let dest_group = match target_group {
+        Some(tg) if !tg.trim().is_empty() && !tg.eq_ignore_ascii_case("root") => {
+            let idx = get_or_create_subgroup_idx(root, tg.trim(), &mut report);
+            &mut root.subgroups[idx]
+        }
+        _ => root,
+    };
+
+    if dest_group.stations.iter().any(|s| s.name.eq_ignore_ascii_case(clean_name)) {
+        return Err(format!("Une station nommée '{}' existe déjà dans ce groupe", clean_name));
+    }
+
+    dest_group.stations.push(Station {
+        name: clean_name.to_string(),
+        url: clean_url.to_string(),
+    });
+
+    let dest_name = if dest_group.name == "root" {
+        "la racine".to_string()
+    } else {
+        format!("le groupe '{}'", dest_group.name)
+    };
+
+    Ok(format!("Station '{}' ajoutée avec succès dans {}", clean_name, dest_name))
+}
+
 /// Analyse et extrait les stations d'une playlist M3U avec métadonnées #EXTINF
 pub fn parse_m3u_entries(content: &str) -> Vec<Station> {
     let mut stations = Vec::new();
@@ -315,5 +367,25 @@ mod tests {
         assert_eq!(report.duplicates_skipped, 0);
         assert_eq!(root.subgroups.len(), 2);
         assert_eq!(root.stations.len(), 1);
+    }
+    #[test]
+    fn test_add_single_station_with_dedup() {
+        let mut root = Group::new("root");
+        let res = add_single_station(&mut root, "FIP", "https://icecast.radiofrance.fr/fip-midfi.mp3", Some("Jazz"));
+        assert!(res.is_ok());
+        assert_eq!(root.subgroups.len(), 1);
+        assert_eq!(root.subgroups[0].stations.len(), 1);
+
+        // Doublon d URL
+        let dup_url = add_single_station(&mut root, "FIP Bis", "https://icecast.radiofrance.fr/fip-midfi.mp3/", None);
+        assert!(dup_url.is_err(), "L URL en doublon doit être rejetée");
+
+        // Doublon de nom dans le groupe
+        let dup_name = add_single_station(&mut root, "FIP", "https://autre.flux/stream", Some("Jazz"));
+        assert!(dup_name.is_err(), "Le nom en doublon dans le même groupe doit être rejeté");
+
+        // Même nom mais dans un autre groupe -> autorisé
+        let ok_diff_group = add_single_station(&mut root, "FIP", "https://autre.flux/stream", None);
+        assert!(ok_diff_group.is_ok());
     }
 }

@@ -77,7 +77,10 @@ fn main() {
                 println!("  -s, --stop         Arrêter la lecture");
                 println!("      --status       Afficher l'état et le morceau en cours");
                 println!("  -q, --quit         Quitter TiMonde");
-                println!("\nOptions d'importation :");
+                println!("\nOptions de gestion des stations :");
+                println!("      --search <TERME>   Rechercher des radios sur l'annuaire Radio-Browser");
+                println!("      --add <NOM> <URL> [--group <GROUPE>]");
+                println!("                         Ajouter une station manuellement");
                 println!("  -i, --import <FICHIER> [--group <GROUPE>]");
                 println!("                     Importer des radios (.json radiotray-ng, .m3u, .csv, .xml)");
                 println!("                     Si --group n'est pas spécifié, les radios vont à la racine.");
@@ -89,6 +92,65 @@ fn main() {
             }
             "--version" | "-v" => {
                 println!("TiMonde 0.1.0");
+                return;
+            }
+            "--search" => {
+                if args.len() < 3 {
+                    eprintln!("Usage : timonde --search <mot-clé>");
+                    std::process::exit(1);
+                }
+                let query = &args[2];
+                println!("🔍 Recherche sur Radio-Browser pour '{}'...", query);
+                let results = radio_browser::search_online(query, 20);
+                if results.is_empty() {
+                    println!("❌ Aucune station trouvée pour '{}'", query);
+                } else {
+                    println!("📻 {} station(s) trouvée(s) :", results.len());
+                    println!("--------------------------------------------------------------------------------");
+                    for (i, r) in results.iter().enumerate() {
+                        let codec = if r.codec.is_empty() { "-" } else { &r.codec };
+                        let rate = if r.bitrate > 0 { format!("{}k", r.bitrate) } else { "-".to_string() };
+                        let country = if r.country.is_empty() { "-" } else { &r.country };
+                        println!("{:2}. {:<32} | {:<12} | {:>4} {:>4} | {} votes", i + 1, r.name, country, codec, rate, r.votes);
+                        println!("    URL: {}", r.url_resolved);
+                    }
+                    println!("--------------------------------------------------------------------------------");
+                    println!("💡 Pour ajouter une station : timonde --add \"<NOM>\" \"<URL>\" [--group \"<GROUPE>\"]");
+                }
+                return;
+            }
+            "--add" => {
+                if args.len() < 4 {
+                    eprintln!("Usage : timonde --add <NOM> <URL> [--group <GROUPE>]");
+                    std::process::exit(1);
+                }
+                let name = &args[2];
+                let url = &args[3];
+                let mut target_group = None;
+                if args.len() >= 6 && (args[4] == "--group" || args[4] == "-g") {
+                    target_group = Some(args[5].as_str());
+                }
+
+                let bookmarks_path = find_bookmarks_path();
+                let mut root = if bookmarks_path.exists() {
+                    bookmarks::load_bookmarks(&bookmarks_path).unwrap_or_else(|_| Group::new("root"))
+                } else {
+                    create_default_bookmarks(&bookmarks_path)
+                };
+
+                match import::add_single_station(&mut root, name, url, target_group) {
+                    Ok(msg) => {
+                        if let Err(e) = bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                            eprintln!("Erreur lors de la sauvegarde : {}", e);
+                            std::process::exit(1);
+                        }
+                        println!("✅ {}", msg);
+                    }
+                    Err(e) => {
+                        eprintln!("Erreur : {}", e);
+                        std::process::exit(1);
+                    }
+                }
                 return;
             }
             "-i" | "--import" => {
