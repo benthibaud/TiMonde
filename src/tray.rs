@@ -116,26 +116,7 @@ impl TiMondeTray {
         let raw_url = station.url.clone();
         info!("Sélection de la station : {} ({})", station_name, raw_url);
 
-        // Résolution préalable (webradio ou DAB+ avec secours automatique si SDR absent)
-        let resolved_url = if crate::dab::is_dab_url(&raw_url) {
-            if let Some(dab_info) = crate::dab::parse_dab_url(&raw_url) {
-                if crate::dab::is_sdr_hardware_connected() && crate::dab::find_dab_decoder().is_some() {
-                    info!("📡 Réception DAB+ hertzienne active sur canal {} ({} MHz) pour {}", dab_info.channel, dab_info.frequency_mhz, dab_info.service_name);
-                    "http://127.0.0.1:9998/mp3".to_string()
-                } else {
-                    info!("📡 DAB+ ({}) : Aucune clé antenne USB SDR détectée -> Bascule sur le flux web", dab_info.service_name);
-                    notify("TiMonde", &format!("📻 Réception DAB+ : Pas d antenne USB SDR branchée.\nLecture automatique via le flux web pour « {} ».", dab_info.service_name));
-                    match crate::radio_browser::find_backup_stream(&dab_info.service_name) {
-                        Some((_found_name, backup_url)) => resolve_stream_url(&backup_url),
-                        None => resolve_stream_url(&raw_url),
-                    }
-                }
-            } else {
-                resolve_stream_url(&raw_url)
-            }
-        } else {
-            resolve_stream_url(&raw_url)
-        };
+        let resolved_url = resolve_stream_url(&raw_url);
 
         if let Err(e) = Self::get_or_create_engine(audio, current_volume, current_title) {
             error!("{}", e);
@@ -626,36 +607,162 @@ Liste des radios rechargée ({} stations).", msg, total));
         });
     }
 
-    /// Importe automatiquement les bouquets DAB+ officiels (M1, M2, Local)
-    pub fn trigger_import_dab_bouquets(
+    fn find_bouquets_script() -> Option<PathBuf> {
+        let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
+        let candidate1 = PathBuf::from(&home).join(".local/share/timonde/scripts/browse_bouquets.py");
+        if candidate1.exists() {
+            return Some(candidate1);
+        }
+        let candidate2 = PathBuf::from("data/scripts/browse_bouquets.py");
+        if candidate2.exists() {
+            return Some(candidate2);
+        }
+        let candidate3 = PathBuf::from("/usr/share/timonde/scripts/browse_bouquets.py");
+        if candidate3.exists() {
+            return Some(candidate3);
+        }
+        None
+    }
+
+    /// Découverte et importation de bouquets (Nationaux & Régionaux) sans doublons
+    pub fn trigger_browse_bouquets_dialog(
         root_group: Arc<Mutex<Group>>,
         bookmarks_path: PathBuf,
         tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
     ) {
         std::thread::spawn(move || {
-            let mut root = root_group.lock().unwrap().clone();
-            let dab_groups = crate::dab::get_default_dab_groups();
-            let count = dab_groups.len();
+            let existing_stations: Vec<serde_json::Value> = {
+                let guard = root_group.lock().unwrap();
+                let mut list = Vec::new();
+                fn collect(g: &Group, acc: &mut Vec<serde_json::Value>) {
+                    for s in &g.stations {
+                        if !s.is_separator() {
+                            acc.push(serde_json::json!({
+                                "name": s.name,
+                                "url": s.url,
+                            }));
+                        }
+                    }
+                    for sub in &g.subgroups {
+                        collect(sub, acc);
+                    }
+                }
+                collect(&guard, &mut list);
+                list
+            };
 
-            for grp in dab_groups {
-                if !root.subgroups.iter().any(|g| g.name == grp.name) {
-                    root.subgroups.push(grp);
+            let script_path = match Self::find_bouquets_script() {
+                Some(p) => p,
+                None => {
+                    log::error!("Script browse_bouquets.py introuvable");
+                    crate::radio_browser::notify("TiMonde", "Outil de bouquets introuvable");
+                    return;
+                }
+            };
+
+            let json_input = match serde_json::to_string(&existing_stations) {
+                Ok(s) => s,
+                Err(e) => {
+                    log::error!("Erreur sérialisation json : {}", e);
+                    return;
+                }
+            };
+
+            let mut child = match std::process::Command::new("python3")
+                .arg(script_path)
+                .stdin(std::process::Stdio::piped())
+                .stdout(std::process::Stdio::piped())
+                .spawn()
+            {
+                Ok(c) => c,
+                Err(e) => {
+                    log::error!("Impossible d'exécuter python3 : {}", e);
+                    crate::radio_browser::notify("TiMonde", "Impossible d'ouvrir l'outil de bouquets");
+                    return;
+                }
+            };
+
+            if let Some(mut stdin) = child.stdin.take() {
+                use std::io::Write;
+                let _ = stdin.write_all(json_input.as_bytes());
+            }
+
+            let output = match child.wait_with_output() {
+                Ok(out) => out,
+                Err(_) => return,
+            };
+
+            if output.status.success() {
+                let stdout_str = String::from_utf8_lossy(&output.stdout).trim().to_string();
+
+                #[derive(serde::Deserialize)]
+                struct InStation {
+                    name: String,
+                    url: String,
+                }
+                #[derive(serde::Deserialize)]
+                struct InResult {
+                    group_name: String,
+                    stations: Vec<InStation>,
+                }
+
+                if let Ok(res) = serde_json::from_str::<InResult>(&stdout_str) {
+                    if res.stations.is_empty() {
+                        return;
+                    }
+                    let mut guard = root_group.lock().unwrap();
+                    let group_idx = guard.subgroups.iter().position(|g| g.name == res.group_name);
+                    let target_grp = match group_idx {
+                        Some(idx) => &mut guard.subgroups[idx],
+                        None => {
+                            guard.subgroups.push(Group::new(&res.group_name));
+                            guard.subgroups.last_mut().unwrap()
+                        }
+                    };
+
+                    let mut added = 0;
+                    for st in res.stations {
+                        if !target_grp.stations.iter().any(|s| s.url == st.url || s.name == st.name) {
+                            target_grp.stations.push(Station {
+                                name: st.name,
+                                url: st.url,
+                            });
+                            added += 1;
+                        }
+                    }
+
+                    if let Err(e) = crate::bookmarks::save_bookmarks(&guard, &bookmarks_path) {
+                        log::error!("Erreur sauvegarde signets : {}", e);
+                        crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
+                        return;
+                    }
+                    drop(guard);
+
+                    let total = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle).unwrap_or(0);
+                    crate::radio_browser::notify(
+                        "TiMonde",
+                        &format!(
+                            "✅ {} radio(s) importée(s) dans « {} » !\nListe actualisée ({} stations).",
+                            added, res.group_name, total
+                        ),
+                    );
                 }
             }
-
-            if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
-                log::error!("Erreur sauvegarde DAB+ : {}", e);
-                crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
-                return;
-            }
-
-            let total = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle).unwrap_or(0);
-            log::info!("✅ {} bouquets DAB+ ajoutés aux signets (Total : {} stations)", count, total);
-            crate::radio_browser::notify(
-                "TiMonde",
-                &format!("✅ {} bouquets DAB+ ajoutés avec succès !\n• Métropolitain M1 (7A)\n• Métropolitain M2 (7B)\n• Local & Régional (8B)\nListe des radios rechargée ({} stations).", count, total),
-            );
         });
+    }
+
+    fn find_first_station(group: &Group) -> Option<Station> {
+        for s in &group.stations {
+            if !s.is_separator() {
+                return Some(s.clone());
+            }
+        }
+        for sub in &group.subgroups {
+            if let Some(s) = Self::find_first_station(sub) {
+                return Some(s);
+            }
+        }
+        None
     }
 
     fn find_reorder_script() -> Option<PathBuf> {
@@ -1075,30 +1182,23 @@ impl ksni::Tray for TiMondeTray {
         }
     }
 
-    /// Clic du milieu (molette) sur l'icône : Play / Pause / Relance instantané (Réflexe BB)
+    /// Clic du milieu (molette) sur l'icône : Bouton Marche/Arrêt instantané façon Hi-Fi
     fn secondary_activate(&mut self, _x: i32, _y: i32) {
-        match self.state() {
-            PlaybackState::Playing => {
-                let guard = self.audio.lock().unwrap();
-                if let Some(ref engine) = *guard {
-                    let _ = engine.pause();
-                }
-            }
-            PlaybackState::Paused => {
-                let guard = self.audio.lock().unwrap();
-                if let Some(ref engine) = *guard {
-                    let _ = engine.resume();
-                }
-            }
-            PlaybackState::Stopped | PlaybackState::Error => {
+        if self.state() == PlaybackState::Playing || self.state() == PlaybackState::Buffering {
+            self.stop_and_trim();
+        } else {
+            let station_to_turn_on = {
                 let last = self.last_station.lock().unwrap();
                 if let Some(ref last_st) = *last {
-                    let st = last_st.clone();
-                    drop(last);
-                    self.play_station(st);
+                    Some(last_st.clone())
+                } else {
+                    let root = self.root_group.lock().unwrap();
+                    Self::find_first_station(&root)
                 }
+            };
+            if let Some(st) = station_to_turn_on {
+                self.play_station(st);
             }
-            _ => {}
         }
     }
 
@@ -1130,8 +1230,7 @@ impl ksni::Tray for TiMondeTray {
                 }
             }
             (Some(st), PlaybackState::Buffering) => format!("⏳ Connexion à {}...", st.name),
-            (Some(st), PlaybackState::Paused) => format!("⏸ En pause : {}", st.name),
-            _ => "⏹️ TiMonde (En veille)".to_string(),
+            _ => "⏹️ TiMonde (Éteinte)".to_string(),
         };
 
         menu.push(MenuItem::Standard(StandardItem {
@@ -1141,79 +1240,46 @@ impl ksni::Tray for TiMondeTray {
             ..Default::default()
         }));
 
-        // 2. Contrôles de lecture immédiats (Priorité réflexe BB : Pause / Reprendre / Relancer / Arrêter tout en haut)
-        match current_state {
-            PlaybackState::Playing => {
-                menu.push(MenuItem::Standard(StandardItem {
-                    label: "⏸ Mettre en pause".to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        let guard = tray.audio.lock().unwrap();
-                        if let Some(ref engine) = *guard {
-                            let _ = engine.pause();
-                        }
-                    }),
-                    enabled: true,
-                    visible: true,
-                    ..Default::default()
-                }));
-                menu.push(MenuItem::Standard(StandardItem {
-                    label: "⏹ Arrêter la lecture".to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        tray.stop_and_trim();
-                    }),
-                    enabled: true,
-                    visible: true,
-                    ..Default::default()
-                }));
-            }
-            PlaybackState::Paused => {
-                menu.push(MenuItem::Standard(StandardItem {
-                    label: "▶ Reprendre la lecture".to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        let guard = tray.audio.lock().unwrap();
-                        if let Some(ref engine) = *guard {
-                            let _ = engine.resume();
-                        }
-                    }),
-                    enabled: true,
-                    visible: true,
-                    ..Default::default()
-                }));
-                menu.push(MenuItem::Standard(StandardItem {
-                    label: "⏹ Arrêter la lecture".to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        tray.stop_and_trim();
-                    }),
-                    enabled: true,
-                    visible: true,
-                    ..Default::default()
-                }));
-            }
-            PlaybackState::Buffering => {
-                menu.push(MenuItem::Standard(StandardItem {
-                    label: "⏹ Arrêter la connexion".to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        tray.stop_and_trim();
-                    }),
-                    enabled: true,
-                    visible: true,
-                    ..Default::default()
-                }));
-            }
-            PlaybackState::Stopped | PlaybackState::Error => {
+        // 2. Contrôle Marche/Arrêt unique façon Hi-Fi (Power On / Off)
+        if current_state == PlaybackState::Playing || current_state == PlaybackState::Buffering {
+            menu.push(MenuItem::Standard(StandardItem {
+                label: "⏹ Éteindre la radio".to_string(),
+                activate: Box::new(|tray: &mut Self| {
+                    tray.stop_and_trim();
+                }),
+                enabled: true,
+                visible: true,
+                ..Default::default()
+            }));
+        } else {
+            let station_to_turn_on = {
                 let last = self.last_station.lock().unwrap();
                 if let Some(ref last_st) = *last {
-                    let st_to_replay = last_st.clone();
-                    menu.push(MenuItem::Standard(StandardItem {
-                        label: format!("▶ Relancer : {}", st_to_replay.name),
-                        activate: Box::new(move |tray: &mut Self| {
-                            tray.play_station(st_to_replay.clone());
-                        }),
-                        enabled: true,
-                        visible: true,
-                        ..Default::default()
-                    }));
+                    Some(last_st.clone())
+                } else {
+                    let root = self.root_group.lock().unwrap();
+                    Self::find_first_station(&root)
                 }
+            };
+
+            if let Some(st) = station_to_turn_on {
+                let st_clone = st.clone();
+                menu.push(MenuItem::Standard(StandardItem {
+                    label: format!("▶ Allumer : {}", st.name),
+                    activate: Box::new(move |tray: &mut Self| {
+                        tray.play_station(st_clone.clone());
+                    }),
+                    enabled: true,
+                    visible: true,
+                    ..Default::default()
+                }));
+            } else {
+                menu.push(MenuItem::Standard(StandardItem {
+                    label: "▶ Allumer la radio".to_string(),
+                    enabled: false,
+                    visible: true,
+                    ..Default::default()
+                }));
             }
         }
 
@@ -1485,9 +1551,9 @@ impl ksni::Tray for TiMondeTray {
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
-                    label: "📡 Ajouter les bouquets DAB+ (M1, M2, Local)...".to_string(),
+                    label: "📻 Découvrir les bouquets (Nationaux & Régionaux)...".to_string(),
                     activate: Box::new(|tray: &mut Self| {
-                        Self::trigger_import_dab_bouquets(
+                        Self::trigger_browse_bouquets_dialog(
                             Arc::clone(&tray.root_group),
                             tray.bookmarks_path.clone(),
                             Arc::clone(&tray.tray_handle),

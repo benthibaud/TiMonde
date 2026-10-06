@@ -50,6 +50,7 @@ install -m 644 "${ROOT_DIR}/data/icons/timonde_on.svg" "${STAGING_DIR}/usr/share
 install -m 644 "${ROOT_DIR}/data/icons/timonde_error.svg" "${STAGING_DIR}/usr/share/icons/hicolor/scalable/panel/timonde_error.svg"
 install -m 755 "${ROOT_DIR}/data/scripts/reorder_groups.py" "${STAGING_DIR}/usr/share/timonde/scripts/reorder_groups.py"
 install -m 755 "${ROOT_DIR}/data/scripts/edit_station.py" "${STAGING_DIR}/usr/share/timonde/scripts/edit_station.py"
+install -m 755 "${ROOT_DIR}/data/scripts/browse_bouquets.py" "${STAGING_DIR}/usr/share/timonde/scripts/browse_bouquets.py"
 
 # 5. Construction du paquet .deb
 dpkg-deb --build --root-owner-group "${STAGING_DIR}" "${ROOT_DIR}/${PACKAGE_NAME}"

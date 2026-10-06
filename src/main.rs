@@ -1,4 +1,3 @@
-pub mod dab;
 pub mod import;
 pub mod playlist;
 pub mod mpris;
