@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="VE" name="Venezuela" flag="🇻🇪" multilingual="false">
+  <national>
+    <station name="Éxitos 99.9 FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/EXITOS_CCS.mp3" genre="Unión Radio - Sonidos de primera fila"/>
+    <station name="Onda La Superestación" url="https://playerservices.streamtheworld.com/api/livestream-redirect/ONDA_CCS.mp3" genre="Unión Radio - Inspirando a Venezuela"/>
+    <station name="La Mega 107.3 FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/LAMEGA_CCS.mp3" genre="Unión Radio - Donde sea (Rock &amp; Pop)"/>
+    <station name="Unión Radio Noticias" url="https://playerservices.streamtheworld.com/api/livestream-redirect/UNIONRADIO_CCS.mp3" genre="Líder en información en vivo"/>
+    <station name="Radio Nacional de Venezuela" url="https://stream.zeno.fm/4n8e1q50dshvv" genre="RNV - Informativa y cultural"/>
+    <station name="Circuito Líder FM" url="https://stream.zeno.fm/c3g48d28x8zuv" genre="Música urbana, pop y tendencias"/>
+  </national>
+</bouquet>

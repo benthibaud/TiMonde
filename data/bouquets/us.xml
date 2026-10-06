@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="US" name="États-Unis" flag="🇺🇸" multilingual="false">
+  <national>
+    <station name="NPR 24 Hour Program Stream" url="https://npr-ice.streamguys1.com/live.mp3" genre="NPR - News, Analysis &amp; Talk"/>
+    <station name="WNYC 93.9 FM" url="https://fm939.wnyc.org/wnycfm-web" genre="New York Public Radio &amp; Culture"/>
+    <station name="KEXP 90.3 FM Seattle" url="https://kexp.streamguys1.com/kexp64.aac" genre="Where the Music Matters (Indie / Eclectic)"/>
+    <station name="KCRW 89.9 FM Los Angeles" url="https://kcrw.streamguys1.com/kcrw_192k_mp3_on_air" genre="Public Radio &amp; Eclectic Music"/>
+    <station name="WWOZ 90.7 FM New Orleans" url="https://wwoz-sc.streamguys1.com/wwoz-hi.mp3" genre="New Orleans Jazz, Blues, Funk &amp; Cajun"/>
+    <station name="WQXR 105.9 FM New York" url="https://wqxr.streamguys1.com/wqxr" genre="Classical Music of New York"/>
+    <station name="WBGO 88.3 FM Jazz" url="https://wbgo.streamguys1.com/wbgo128" genre="The Jazz Source (Newark / NYC)"/>
+    <station name="KQED 88.5 FM San Francisco" url="https://streams.kqed.org/kqedradio" genre="Bay Area Public Radio"/>
+    <station name="WBUR 90.9 FM Boston" url="https://wbur-sc.streamguys1.com/wbur.mp3" genre="Boston NPR News Station"/>
+    <station name="WFMT 98.7 FM Chicago" url="https://wfmt.streamguys1.com/main" genre="Chicago Classical &amp; Fine Arts"/>
+    <station name="SomaFM Groove Salad" url="https://ice2.somafm.com/groovesalad-128-mp3" genre="Downtempo Ambient Beats"/>
+    <station name="SomaFM Indie Pop Rocks" url="https://ice2.somafm.com/indiepop-128-mp3" genre="Classic &amp; Modern Indie Rock"/>
+  </national>
+  <regions>
+    <region name="New York">
+      <station name="1010 WINS News" url="https://live.amperwave.net/audacy/wins-am" genre="New York 24/7 News"/>
+      <station name="WFAN Sports Radio" url="https://live.amperwave.net/audacy/wfan-am" genre="New York Sports Talk"/>
+      <station name="Hot 97 WQHT" url="https://stream.revma.ihrhls.com/zc7702" genre="Where Hip Hop Lives"/>
+      <station name="Z100 New York" url="https://stream.revma.ihrhls.com/zc1469" genre="New York's Number 1 Hit Music Station"/>
+    </region>
+    <region name="Californie (Los Angeles / SF)">
+      <station name="KROQ 106.7 FM" url="https://live.amperwave.net/audacy/kroq-fm" genre="World Famous KROQ Alternative Rock"/>
+      <station name="KIIS FM Los Angeles" url="https://stream.revma.ihrhls.com/zc185" genre="LA's #1 Hit Music Station"/>
+      <station name="KPCC LAist 89.3 FM" url="https://stream.laist.com/kpcc" genre="Southern California Public Radio"/>
+      <station name="KALW 91.7 FM San Francisco" url="https://live.kalw.org/kalw_mp3" genre="San Francisco Public Radio"/>
+    </region>
+    <region name="Louisiane &amp; Sud (Jazz / Blues)">
+      <station name="WWOZ Brass &amp; Roots" url="https://wwoz-sc.streamguys1.com/wwoz-hi.mp3" genre="New Orleans Heritage &amp; Trad Jazz"/>
+      <station name="WWNO 89.9 New Orleans" url="https://tektite.streamguys1.com:5145/wwno" genre="New Orleans Public Radio"/>
+      <station name="KUTX 98.9 FM Austin" url="https://kut.streamguys1.com/kutx-free" genre="The Austin Music Experience"/>
+    </region>
+  </regions>
+</bouquet>

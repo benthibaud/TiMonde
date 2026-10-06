@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="PE" name="Pérou" flag="🇵🇪" multilingual="false">
+  <national>
+    <station name="Radio Nacional del Perú" url="https://stream.zeno.fm/4w5zef4s1heuv" genre="IRTP - La primera radio del Perú"/>
+    <station name="RPP Noticias" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_RPPAAC.aac" genre="Confianza por todos los medios"/>
+    <station name="Radio Oxígeno" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_OXIGENOAAC.aac" genre="Clásicos del Rock &amp; Pop"/>
+    <station name="Radio Panamericana" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_PANAMERICANAAAC.aac" genre="Lo que el Perú quiere escuchar (Salsa)"/>
+    <station name="Studio 92" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_STUDIO92AAC.aac" genre="Primeros en tu música"/>
+    <station name="Radio Felicidad" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_FELICIDADAAC.aac" genre="La música de tu vida"/>
+    <station name="Radio Mágica" url="https://stream.crp.pe/magica.aac" genre="Discos de oro en inglés"/>
+    <station name="Radio Ritmo Romántica" url="https://stream.crp.pe/ritmoromantica.aac" genre="Tu radio de baladas"/>
+    <station name="Radio Moda" url="https://stream.crp.pe/moda.aac" genre="Te mueve! Reggaeton &amp; Urbano"/>
+    <station name="Radio Filarmonía 102.7" url="https://stream.zeno.fm/c3a0k314b18uv" genre="La voz de la cultura (Clásica)"/>
+  </national>
+</bouquet>

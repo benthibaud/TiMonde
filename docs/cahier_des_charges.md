@@ -94,7 +94,18 @@ Afin d'intégrer progressivement **tous les bouquets DAB+ et sélections du mond
     - 🇨🇭 Suisse (`ch.xml` : Multilingue Romande FR / Alémanique DE / Tessin IT)
     - 🇬🇧 Royaume-Uni (`uk.xml` : BBC 1 à 6, Commercial + Écosse, Galles, Ulster)
     - 🇳🇴 Norvège (`no.xml` : NRK P1, P2, P3, Klassisk, P4 Hele Norge)
+  - **Les Amériques (Nord, Centrale, Caraïbes & Sud) :**
+    - 🇺🇸 États-Unis (`us.xml` : National NPR, WNYC, KEXP Seattle, KCRW LA, WWOZ New Orleans + Métropoles NY, Californie, Texas)
     - 🇨🇦 Canada (`ca.xml` : Multilingue Québec FR / Anglophone EN)
+    - 🇲🇽 Mexique (`mx.xml` : IMER Opus 94, Reactor 105.7, W Radio, Radio Fórmula, Alfa)
+    - 🇧🇷 Brésil (`br.xml` : EBC Rádio Nacional, MEC, Jovem Pan, BandNews, CBN, NovaBrasil)
+    - 🇦🇷 Argentine (`ar.xml` : Radio Nacional Argentina, Mitre, La 100, Rivadavia, Aspen, Rock & Pop)
+    - 🇨🇴 Colombie (`co.xml` : Radio Nacional, Radiónica, Caracol, W Radio, Blu, Olímpica)
+    - 🇨🇱 Chili (`cl.xml` : Cooperativa, Bío-Bío, ADN, Concierto, Futuro, Beethoven)
+    - 🇵🇪 Pérou (`pe.xml` : Radio Nacional, RPP Noticias, Oxígeno, Panamericana, Studio 92)
+    - 🇺🇾 Uruguay (`uy.xml` : Radio Uruguay, Babel, Sarandí, Carve, Del Sol, Océano)
+    - 🇨🇺 Cuba (`cu.xml` : Radio Rebelde, Progreso, Taíno, Habana Cuba, Enciclopedia)
+    - 🇻🇪 Venezuela (`ve.xml` : Éxitos, Onda, La Mega, Unión Radio Noticias, RNV)
 - **Découverte automatique & Frugalité :** L'explorateur scanne dynamiquement les fichiers XML présents. L'ajout d'un nouveau pays ne requiert aucune recompilation. Le parseur ne charge en mémoire que le pays en cours de consultation.
 - **Contribution communautaire ouverte :** N'importe quel auditeur peut créer et soumettre le fichier XML de sa nation ou de sa région.
 

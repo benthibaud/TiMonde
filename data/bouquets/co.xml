@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="CO" name="Colombie" flag="🇨🇴" multilingual="false">
+  <national>
+    <station name="Radio Nacional de Colombia" url="https://stream.rtvc.gov.co/radionacional_aac" genre="RTVC - Paz, Tradición &amp; Cultura"/>
+    <station name="Radiónica" url="https://stream.rtvc.gov.co/radionica_aac" genre="RTVC - Rock &amp; Música alternativa"/>
+    <station name="Caracol Radio" url="https://playerservices.streamtheworld.com/api/livestream-redirect/CARACOL_RADIOAAC.aac" genre="Más compañía en Colombia"/>
+    <station name="W Radio Colombia" url="https://playerservices.streamtheworld.com/api/livestream-redirect/WRADIO_COLOMBIA.mp3" genre="Noticias &amp; Opinión con Julio Sánchez"/>
+    <station name="Blu Radio" url="https://stream.zeno.fm/8x93cfq5498uv" genre="La nueva alternativa de la radio"/>
+    <station name="La FM Colombia" url="https://stream.rcn.com.co/lafm.mp3" genre="Noticias, música y conversación"/>
+    <station name="Olímpica Stereo" url="https://stream.zeno.fm/q1gcr9s6awzuv" genre="Se metió! Salsa &amp; Tropical"/>
+    <station name="Radio Uno Colombia" url="https://stream.rcn.com.co/radiouno.mp3" genre="La de uno"/>
+    <station name="Tropicana Colombia" url="https://playerservices.streamtheworld.com/api/livestream-redirect/TROPICANA_BOGOTA.mp3" genre="La más bacana"/>
+    <station name="Vibra Bogotá" url="https://stream.vibra.fm/vibra.mp3" genre="Pop latino &amp; Recuerdos"/>
+  </national>
+</bouquet>

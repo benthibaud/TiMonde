@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="CL" name="Chili" flag="🇨🇱" multilingual="false">
+  <national>
+    <station name="Radio Cooperativa" url="https://unlimited3-cl.dps.live/cooperativafm/mp3/icecast.audio" genre="La verdad con certeza"/>
+    <station name="Radio Bío-Bío" url="https://unlimited3-cl.dps.live/biobiotv/mp3/icecast.audio" genre="El espacio que nos une"/>
+    <station name="ADN Radio Chile" url="https://playerservices.streamtheworld.com/api/livestream-redirect/ADNAAC.aac" genre="Actualidad, Deportes y Noticias"/>
+    <station name="Radio Concierto 88.5" url="https://playerservices.streamtheworld.com/api/livestream-redirect/CONCIERTOAAC.aac" genre="Solo grandes canciones"/>
+    <station name="Radio Futuro 88.9" url="https://playerservices.streamtheworld.com/api/livestream-redirect/FUTUROAAC.aac" genre="La radio del rock en Chile"/>
+    <station name="Rock &amp; Pop Chile" url="https://playerservices.streamtheworld.com/api/livestream-redirect/ROCK_AND_POPAAC.aac" genre="24 horas de música"/>
+    <station name="Radio Pudahuel" url="https://playerservices.streamtheworld.com/api/livestream-redirect/PUDAHUELAAC.aac" genre="La radio de Chile"/>
+    <station name="Radio Beethoven" url="https://unlimited6-cl.dps.live/beethoven/mp3/icecast.audio" genre="Universidad Católica - Música Clásica"/>
+    <station name="Los 40 Chile" url="https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40_CHILEAAC.aac" genre="Todos los éxitos"/>
+    <station name="Radio Duna 89.7" url="https://unlimited3-cl.dps.live/duna/mp3/icecast.audio" genre="Sonidos de tu mundo"/>
+  </national>
+</bouquet>

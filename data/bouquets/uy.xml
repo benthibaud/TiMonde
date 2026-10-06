@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="UY" name="Uruguay" flag="🇺🇾" multilingual="false">
+  <national>
+    <station name="Radio Uruguay 1050 AM" url="https://stream.mediagroup.uy:8000/radiouruguay" genre="RNU - Servicio de Comunicación Audiovisual"/>
+    <station name="Babel FM 97.1" url="https://stream.mediagroup.uy:8000/babel" genre="RNU - Jazz, Música del Mundo &amp; Instrumental"/>
+    <station name="Radio Sarandí 690 AM" url="https://stream.sarandi690.uy/sarandi" genre="Información y opinión desde Montevideo"/>
+    <station name="Radio Carve 850 AM" url="https://stream.carve850.uy/carve" genre="El campo y la ciudad"/>
+    <station name="Del Sol 99.5 FM" url="https://stream.delsol.uy/delsol" genre="Entretenimiento &amp; Cultura urbana"/>
+    <station name="Océano FM 93.9" url="https://stream.oceano.uy/oceano" genre="Música seleccionada &amp; Recuerdos"/>
+    <station name="Radio Monte Carlo 930 AM" url="https://stream.radiomontecarlo.com.uy/montecarlo" genre="Una radio con historia"/>
+    <station name="Metrópolis FM 104.9" url="https://stream.metropolisfm.uy/metropolis" genre="Clásicos de los 70, 80 y 90"/>
+    <station name="Azul FM 101.9" url="https://stream.azulfm.com.uy/azulfm" genre="Pop &amp; Rock contemporáneo"/>
+    <station name="Radio Clásica 650 AM" url="https://stream.mediagroup.uy:8000/radioclasica" genre="RNU - La música culta del Uruguay"/>
+  </national>
+</bouquet>
