@@ -27,7 +27,7 @@ Inspiré par la sobriété historique de **Radio Tray**, TiMonde le modernise po
 - [x] **Zone de notification discrète sans fenêtre intermédiaire :** Intégration pure StatusNotifierItem (SNI FreeDesktop / X-Apps) via D-Bus natif.
 - [x] **Ergonomie directe & évidente :** Clic gauche ouvrant immédiatement la liste des stations, aplatissement du palier intermédiaire `root >`.
 - [x] **Moteur audio frugal et optimisé :** Initialisation paresseuse (Lazy Loading), bridage des tampons à 640 Ko, décodeurs légers prioritaires (`faad`, `mpg123`) et purge automatique de la RAM (`malloc_trim`). Empreinte mesurée : 13 Mo en veille, ~45 Mo en lecture.
-- [x] **Contrôles essentiels :** Boutons `⏸ Pause` / `▶ Reprendre`, `▶ Relancer [Station]` après arrêt, et réglage du volume par molette de souris sur l'icône.
+- [x] **Contrôles essentiels façon chaîne Hi-Fi :** Bouton unique franc `▶ Allumer` / `⏹ Éteindre la radio` (Power On / Off), clic molette instantané et réglage du volume par défilement molette.
 - [x] **Auto-réparation des flux muets :** Watchdog 5 secondes avec interrogation de l'annuaire public Radio-Browser et mise à jour persistante dans `bookmarks.xml`.
 - [x] **3 icônes SVG légères et transparentes :** `timonde_off.svg`, `timonde_on.svg`, `timonde_error.svg`.
 - [x] **Installation universelle :** Fichier `timonde.desktop` FreeDesktop et `Makefile` multi-distributions (`make install`, `make install-user`).
@@ -35,7 +35,8 @@ Inspiré par la sobriété historique de **Radio Tray**, TiMonde le modernise po
 - [x] **Gestion & Importation de radios :** Ajout manuel, recherche multicritères Radio-Browser (genre, pays, langue), import multi-formats (JSON radiotray-ng, M3U, CSV, XML) avec détection des doublons.
 - [x] **Fenêtre de gestion & réorganisation hiérarchique :** Classement des groupes et des stations par double-clic et glissement de rang, modification et suppression (menu tray direct et clic droit contextuel).
 - [x] **Minuteur de mise en veille (Sleep Timer) :** Extinction programmée douce après 15, 30, 45 ou 60 minutes avec libération de la RAM.
-- [x] **Support DAB+ (Digital Audio Broadcasting) :** Intégration des multiplexes DAB+ (`dab://canal/service`) avec bascule transparente de secours.
+- [x] **Explorateur de bouquets & radios populaires (DAB+ Webradio) :** Découverte intuitive des bouquets nationaux et régionaux par pays (France, Belgique, Suisse, Canada, UK...) et langues, sans clé USB matérielle, avec flux officiels haute fidélité et prévention automatique des doublons.
+- [x] **Cahier des charges & spécifications complètes :** Document de référence disponible dans [`docs/cahier_des_charges.md`](docs/cahier_des_charges.md).
 - [x] **Packaging natif multi-distributions :** Paquet `.deb` (`make deb`), spécification RPM Fedora et `PKGBUILD` Arch Linux / AUR.
 
 ---
