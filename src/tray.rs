@@ -10,7 +10,8 @@ use std::sync::{Arc, Mutex};
 use std::time::Duration;
 
 pub struct TiMondeTray {
-    pub audio: Arc<AudioEngine>,
+    pub audio: Arc<Mutex<Option<AudioEngine>>>,
+    pub current_volume: Arc<Mutex<f64>>,
     pub root_group: Arc<Mutex<Group>>,
     pub bookmarks_path: PathBuf,
     pub last_station: Option<Station>,
@@ -19,9 +20,10 @@ pub struct TiMondeTray {
 }
 
 impl TiMondeTray {
-    pub fn new(audio: Arc<AudioEngine>, root_group: Group, bookmarks_path: PathBuf) -> Self {
+    pub fn new(root_group: Group, bookmarks_path: PathBuf) -> Self {
         Self {
-            audio,
+            audio: Arc::new(Mutex::new(None)),
+            current_volume: Arc::new(Mutex::new(0.80)),
             root_group: Arc::new(Mutex::new(root_group)),
             bookmarks_path,
             last_station: None,
@@ -30,16 +32,56 @@ impl TiMondeTray {
         }
     }
 
+    /// Obtient l'état audio actuel de façon non-bloquante sans forcer l'allocation
+    pub fn state(&self) -> PlaybackState {
+        let guard = self.audio.lock().unwrap();
+        match guard.as_ref() {
+            Some(engine) => engine.state(),
+            None => PlaybackState::Stopped,
+        }
+    }
+
+    /// Assure l'existence du moteur audio à la demande (Lazy Loading)
+    fn get_or_create_engine(
+        audio_mutex: &Arc<Mutex<Option<AudioEngine>>>,
+        current_volume: &Arc<Mutex<f64>>,
+    ) -> Result<(), String> {
+        let mut guard = audio_mutex.lock().unwrap();
+        if guard.is_none() {
+            info!("⚡ Chargement à la demande du moteur GStreamer...");
+            match AudioEngine::new() {
+                Ok(engine) => {
+                    let vol = *current_volume.lock().unwrap();
+                    engine.set_volume(vol);
+                    *guard = Some(engine);
+                }
+                Err(e) => return Err(format!("Échec GStreamer : {}", e)),
+            }
+        }
+        Ok(())
+    }
+
     /// Démarre une station avec watchdog et auto-réparation persistante
     pub fn play_station_with_watchdog(&mut self, station: Station) {
         let station_name = station.name.clone();
         let url = station.url.clone();
         info!("Sélection de la station : {} ({})", station_name, url);
 
-        if let Err(e) = self.audio.play(&url) {
-            error!("Échec initial de lecture : {}", e);
-            notify("TiMonde", &format!("Impossible de lancer {}", station_name));
+        if let Err(e) = Self::get_or_create_engine(&self.audio, &self.current_volume) {
+            error!("{}", e);
+            notify("TiMonde", "Impossible d'initialiser l'audio");
             return;
+        }
+
+        {
+            let guard = self.audio.lock().unwrap();
+            if let Some(ref engine) = *guard {
+                if let Err(e) = engine.play(&url) {
+                    error!("Échec initial de lecture : {}", e);
+                    notify("TiMonde", &format!("Impossible de lancer {}", station_name));
+                    return;
+                }
+            }
         }
 
         self.last_station = Some(station.clone());
@@ -59,7 +101,11 @@ impl TiMondeTray {
                 return;
             }
 
-            let st = audio_clone.state();
+            let st = {
+                let guard = audio_clone.lock().unwrap();
+                guard.as_ref().map(|e| e.state()).unwrap_or(PlaybackState::Stopped)
+            };
+
             if st == PlaybackState::Buffering || st == PlaybackState::Error {
                 info!("Watchdog : flux muet pour {}", name_for_watchdog);
                 notify(
@@ -72,20 +118,22 @@ impl TiMondeTray {
                         return;
                     }
                     info!("Watchdog : bascule sur le flux de secours {}", backup_url);
-                    if let Ok(()) = audio_clone.play(&backup_url) {
-                        // 1. Mise à jour pérenne dans bookmarks.xml
+                    let played = {
+                        let guard = audio_clone.lock().unwrap();
+                        if let Some(ref engine) = *guard {
+                            engine.play(&backup_url).is_ok()
+                        } else {
+                            false
+                        }
+                    };
+
+                    if played {
                         {
                             let mut group = root_group_clone.lock().unwrap();
                             if update_station_url(&mut group, &name_for_watchdog, &backup_url) {
-                                if let Err(e) = save_bookmarks(&group, &bookmarks_path_clone) {
-                                    error!("Erreur lors de la sauvegarde du flux réparé : {}", e);
-                                } else {
-                                    info!("✅ Nouveau flux enregistré de façon permanente dans {:?}", bookmarks_path_clone);
-                                }
+                                let _ = save_bookmarks(&group, &bookmarks_path_clone);
                             }
                         }
-
-                        // 2. Notification de confirmation
                         notify(
                             "TiMonde",
                             &format!("Flux réparé et enregistré pour {} !", name_for_watchdog),
@@ -96,10 +144,29 @@ impl TiMondeTray {
                         "TiMonde",
                         &format!("La radio {} est indisponible actuellement.", name_for_watchdog),
                     );
-                    let _ = audio_clone.stop();
+                    let guard = audio_clone.lock().unwrap();
+                    if let Some(ref engine) = *guard {
+                        let _ = engine.stop();
+                    }
                 }
             }
         });
+    }
+
+    /// Arrête la lecture et libère la mémoire vers le système
+    pub fn stop_and_trim(&mut self) {
+        let mut guard = self.audio.lock().unwrap();
+        if let Some(ref engine) = *guard {
+            let _ = engine.stop();
+        }
+        self.current_station = None;
+
+        // Décharge le pipeline GStreamer et restitue la mémoire vive au système Linux
+        *guard = None;
+        unsafe {
+            libc::malloc_trim(0);
+        }
+        info!("🧹 Mémoire audio libérée (malloc_trim)");
     }
 
     /// Construit récursivement les éléments de menu pour un groupe donné
@@ -154,7 +221,7 @@ impl ksni::Tray for TiMondeTray {
     }
 
     fn title(&self) -> String {
-        match (&self.current_station, self.audio.state()) {
+        match (&self.current_station, self.state()) {
             (Some(st), PlaybackState::Playing) => format!("TiMonde : {}", st.name),
             (Some(st), PlaybackState::Buffering) => format!("TiMonde (Connexion...) : {}", st.name),
             (Some(st), PlaybackState::Paused) => format!("TiMonde (Pause) : {}", st.name),
@@ -163,7 +230,7 @@ impl ksni::Tray for TiMondeTray {
     }
 
     fn icon_name(&self) -> String {
-        match self.audio.state() {
+        match self.state() {
             PlaybackState::Playing => "timonde_on".to_string(),
             PlaybackState::Buffering => "timonde_error".to_string(),
             PlaybackState::Paused | PlaybackState::Stopped | PlaybackState::Error => "timonde_off".to_string(),
@@ -182,16 +249,23 @@ impl ksni::Tray for TiMondeTray {
     }
 
     fn scroll(&mut self, delta: i32, _orientation: ksni::Orientation) {
-        let current_vol = self.audio.volume();
+        let mut vol_guard = self.current_volume.lock().unwrap();
         let step = (delta as f64) * 0.05;
-        self.audio.set_volume(current_vol + step);
+        *vol_guard = (*vol_guard + step).clamp(0.0, 1.5);
+        let new_vol = *vol_guard;
+
+        let audio_guard = self.audio.lock().unwrap();
+        if let Some(ref engine) = *audio_guard {
+            engine.set_volume(new_vol);
+        }
     }
 
     fn menu(&self) -> Vec<MenuItem<Self>> {
         let mut menu = Vec::new();
 
         // 1. En-tête informatif sur la lecture en cours
-        let status_label = match (&self.current_station, self.audio.state()) {
+        let current_state = self.state();
+        let status_label = match (&self.current_station, current_state) {
             (Some(st), PlaybackState::Playing) => format!("▶ En lecture : {}", st.name),
             (Some(st), PlaybackState::Buffering) => format!("⏳ Connexion : {}", st.name),
             (Some(st), PlaybackState::Paused) => format!("⏸ En pause : {}", st.name),
@@ -206,12 +280,15 @@ impl ksni::Tray for TiMondeTray {
         }));
 
         // 2. Contrôles de lecture (Pause, Reprendre, Relancer, Arrêter)
-        match self.audio.state() {
+        match current_state {
             PlaybackState::Playing => {
                 menu.push(MenuItem::Standard(StandardItem {
                     label: "⏸ Mettre en pause".to_string(),
                     activate: Box::new(|tray: &mut Self| {
-                        let _ = tray.audio.pause();
+                        let guard = tray.audio.lock().unwrap();
+                        if let Some(ref engine) = *guard {
+                            let _ = engine.pause();
+                        }
                     }),
                     enabled: true,
                     visible: true,
@@ -220,8 +297,7 @@ impl ksni::Tray for TiMondeTray {
                 menu.push(MenuItem::Standard(StandardItem {
                     label: "⏹ Arrêter la lecture".to_string(),
                     activate: Box::new(|tray: &mut Self| {
-                        let _ = tray.audio.stop();
-                        tray.current_station = None;
+                        tray.stop_and_trim();
                     }),
                     enabled: true,
                     visible: true,
@@ -232,7 +308,10 @@ impl ksni::Tray for TiMondeTray {
                 menu.push(MenuItem::Standard(StandardItem {
                     label: "▶ Reprendre la lecture".to_string(),
                     activate: Box::new(|tray: &mut Self| {
-                        let _ = tray.audio.resume();
+                        let guard = tray.audio.lock().unwrap();
+                        if let Some(ref engine) = *guard {
+                            let _ = engine.resume();
+                        }
                     }),
                     enabled: true,
                     visible: true,
@@ -241,8 +320,7 @@ impl ksni::Tray for TiMondeTray {
                 menu.push(MenuItem::Standard(StandardItem {
                     label: "⏹ Arrêter la lecture".to_string(),
                     activate: Box::new(|tray: &mut Self| {
-                        let _ = tray.audio.stop();
-                        tray.current_station = None;
+                        tray.stop_and_trim();
                     }),
                     enabled: true,
                     visible: true,
@@ -267,8 +345,7 @@ impl ksni::Tray for TiMondeTray {
                 menu.push(MenuItem::Standard(StandardItem {
                     label: "⏹ Arrêter la connexion".to_string(),
                     activate: Box::new(|tray: &mut Self| {
-                        let _ = tray.audio.stop();
-                        tray.current_station = None;
+                        tray.stop_and_trim();
                     }),
                     enabled: true,
                     visible: true,
@@ -319,34 +396,60 @@ impl ksni::Tray for TiMondeTray {
 
         menu.push(MenuItem::Separator);
 
-        // 4. Contrôle rapide du volume
-        let vol_percent = (self.audio.volume() * 100.0).round() as i32;
+        // 4. Contrôle du volume
+        let current_vol = *self.current_volume.lock().unwrap();
+        let vol_percent = (current_vol * 100.0).round() as i32;
         menu.push(MenuItem::SubMenu(SubMenu {
             label: format!("🔊 Volume ({vol_percent}%)"),
             submenu: vec![
                 MenuItem::Standard(StandardItem {
                     label: "100%".to_string(),
-                    activate: Box::new(|tray| tray.audio.set_volume(1.0)),
+                    activate: Box::new(|tray| {
+                        *tray.current_volume.lock().unwrap() = 1.0;
+                        if let Some(ref e) = *tray.audio.lock().unwrap() {
+                            e.set_volume(1.0);
+                        }
+                    }),
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
                     label: "75%".to_string(),
-                    activate: Box::new(|tray| tray.audio.set_volume(0.75)),
+                    activate: Box::new(|tray| {
+                        *tray.current_volume.lock().unwrap() = 0.75;
+                        if let Some(ref e) = *tray.audio.lock().unwrap() {
+                            e.set_volume(0.75);
+                        }
+                    }),
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
                     label: "50%".to_string(),
-                    activate: Box::new(|tray| tray.audio.set_volume(0.50)),
+                    activate: Box::new(|tray| {
+                        *tray.current_volume.lock().unwrap() = 0.50;
+                        if let Some(ref e) = *tray.audio.lock().unwrap() {
+                            e.set_volume(0.50);
+                        }
+                    }),
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
                     label: "25%".to_string(),
-                    activate: Box::new(|tray| tray.audio.set_volume(0.25)),
+                    activate: Box::new(|tray| {
+                        *tray.current_volume.lock().unwrap() = 0.25;
+                        if let Some(ref e) = *tray.audio.lock().unwrap() {
+                            e.set_volume(0.25);
+                        }
+                    }),
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
                     label: "Muet (0%)".to_string(),
-                    activate: Box::new(|tray| tray.audio.set_volume(0.0)),
+                    activate: Box::new(|tray| {
+                        *tray.current_volume.lock().unwrap() = 0.0;
+                        if let Some(ref e) = *tray.audio.lock().unwrap() {
+                            e.set_volume(0.0);
+                        }
+                    }),
                     ..Default::default()
                 }),
             ],
@@ -362,7 +465,7 @@ impl ksni::Tray for TiMondeTray {
             label: "Quitter TiMonde".to_string(),
             activate: Box::new(|tray: &mut Self| {
                 info!("Fermeture demandée par l'utilisateur.");
-                let _ = tray.audio.stop();
+                tray.stop_and_trim();
                 std::process::exit(0);
             }),
             enabled: true,

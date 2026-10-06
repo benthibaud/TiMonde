@@ -1295,6 +1295,7 @@ dependencies = [
  "env_logger",
  "gstreamer",
  "ksni",
+ "libc",
  "log",
  "quick-xml",
  "serde",

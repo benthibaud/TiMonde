@@ -125,7 +125,7 @@ impl AudioEngine {
         Ok(())
     }
 
-    /// Met en pause la lecture (ex: appel téléphonique)
+    /// Met en pause la lecture
     pub fn pause(&self) -> Result<(), AudioError> {
         info!("Mise en pause de la lecture");
         self.pipeline
@@ -147,7 +147,7 @@ impl AudioEngine {
         Ok(())
     }
 
-    /// Arrête la lecture
+    /// Arrête la lecture et libère les buffers internes
     pub fn stop(&self) -> Result<(), AudioError> {
         self.pipeline
             .set_state(gstreamer::State::Null)
@@ -157,7 +157,7 @@ impl AudioEngine {
         Ok(())
     }
 
-    /// Ajuste le volume (0.0 = muet, 1.0 = normal, jusqu'à 1.5)
+    /// Ajuste le volume
     pub fn set_volume(&self, volume: f64) {
         let clamped = volume.clamp(0.0, 1.5);
         self.pipeline.set_property("volume", clamped);

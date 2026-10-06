@@ -4,13 +4,11 @@ pub mod models;
 pub mod radio_browser;
 pub mod tray;
 
-use audio::AudioEngine;
 use bookmarks::load_bookmarks;
 use ksni::blocking::TrayMethods;
 use log::{error, info};
 use models::Group;
 use std::path::{Path, PathBuf};
-use std::sync::Arc;
 
 /// Localise le fichier bookmarks.xml de l'utilisateur
 fn find_bookmarks_path() -> PathBuf {
@@ -40,7 +38,6 @@ fn find_bookmarks_path() -> PathBuf {
         return docs_path;
     }
 
-    // Fallback : on retourne le chemin standard de TiMonde
     timonde_path
 }
 
@@ -59,11 +56,6 @@ fn create_default_bookmarks(path: &Path) -> Group {
 			<bookmark name="FIP" url="https://icecast.radiofrance.fr/fip-hifi.aac"/>
 			<bookmark name="RTL" url="https://streaming.Radio.rtl.fr/rtl-1-44-128"/>
 		</group>
-		<group name="Musique & Jazz">
-			<bookmark name="FIP Jazz" url="https://icecast.radiofrance.fr/fipjazz-hifi.aac"/>
-			<bookmark name="TSF Jazz" url="https://tsfjazz.ice.infomaniak.ch/tsfjazz-high.mp3"/>
-			<bookmark name="Radio Nova" url="https://radionova.ice.infomaniak.ch/radionova-256.aac"/>
-		</group>
 	</group>
 </bookmarks>"#;
 
@@ -72,7 +64,6 @@ fn create_default_bookmarks(path: &Path) -> Group {
 }
 
 fn main() {
-    // Initialisation des logs
     env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("info")).init();
 
     info!("========================================================");
@@ -98,19 +89,9 @@ fn main() {
         create_default_bookmarks(&bookmarks_path)
     };
 
-    // 2. Initialisation du moteur audio (GStreamer)
-    let audio = match AudioEngine::new() {
-        Ok(engine) => Arc::new(engine),
-        Err(e) => {
-            error!("Impossible d'initialiser GStreamer : {}", e);
-            std::process::exit(1);
-        }
-    };
+    // 2. Initialisation du plateau système (D-Bus pur, audio paresseux)
+    let tray = tray::TiMondeTray::new(root_group, bookmarks_path);
 
-    // 3. Initialisation du plateau système (StatusNotifierItem)
-    let tray = tray::TiMondeTray::new(Arc::clone(&audio), root_group, bookmarks_path);
-
-    // Lancement du tray D-Bus en tâche de fond (zéro fenêtre graphique ouverte)
     let _handle = match tray.spawn() {
         Ok(h) => {
             info!("✅ Icône StatusNotifierItem enregistrée sur le bureau hôte !");
@@ -124,7 +105,7 @@ fn main() {
 
     info!("✨ TiMonde est actif et discret dans la barre des tâches.");
 
-    // 4. Boucle d'événements GLib pour le bus GStreamer
+    // 3. Boucle d'événements GLib (maintient le processus actif et léger)
     let main_loop = gstreamer::glib::MainLoop::new(None, false);
     main_loop.run();
 }
