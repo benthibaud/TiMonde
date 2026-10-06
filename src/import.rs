@@ -151,7 +151,6 @@ pub fn add_single_station(
         name: clean_name.to_string(),
         url: clean_url.to_string(),
     });
-    dest_group.sort_stations_alphabetically();
 
     let dest_name = if dest_group.name == "root" {
         "la racine".to_string()
@@ -300,7 +299,6 @@ pub fn import_file(
         }
     }
 
-    root.sort_stations_alphabetically();
     Ok(report)
 }
 

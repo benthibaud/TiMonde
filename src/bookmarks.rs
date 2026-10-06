@@ -130,7 +130,6 @@ pub fn strip_root_levels(mut group: Group) -> Group {
         group.subgroups.extend(child.subgroups);
     }
 
-    group.sort_stations_alphabetically();
     group.name = "root".to_string();
     group
 }

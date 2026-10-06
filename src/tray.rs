@@ -393,22 +393,34 @@ impl TiMondeTray {
         None
     }
 
-    /// Réorganisation ergonomique de l'ordre des groupes via fenêtre GTK3 dédiée (Option 1 BB)
+    /// Réorganisation ergonomique des groupes et des radios via fenêtre GTK3 dédiée (Option 1 BB)
     pub fn trigger_reorder_groups_dialog(root_group: Arc<Mutex<Group>>, bookmarks_path: PathBuf) {
         std::thread::spawn(move || {
             let groups_payload: Vec<serde_json::Value> = {
                 let guard = root_group.lock().unwrap();
-                if guard.subgroups.len() < 2 {
-                    crate::radio_browser::notify("TiMonde", "Il n'y a pas assez de groupes à réorganiser");
+                if guard.subgroups.is_empty() {
+                    crate::radio_browser::notify("TiMonde", "Aucun groupe de radios à classer");
                     return;
                 }
                 guard
                     .subgroups
                     .iter()
                     .map(|g| {
+                        let stations_json: Vec<serde_json::Value> = g
+                            .stations
+                            .iter()
+                            .filter(|s| !s.is_separator())
+                            .map(|s| {
+                                serde_json::json!({
+                                    "name": s.name,
+                                    "url": s.url,
+                                })
+                            })
+                            .collect();
+
                         serde_json::json!({
                             "name": g.name,
-                            "count": g.total_stations(),
+                            "stations": stations_json,
                         })
                     })
                     .collect()
@@ -458,8 +470,21 @@ impl TiMondeTray {
             // Si code 0 : l'utilisateur a cliqué sur "💾 Enregistrer et recharger"
             if output.status.success() {
                 let stdout_str = String::from_utf8_lossy(&output.stdout).trim().to_string();
-                let new_names: Vec<String> = match serde_json::from_str(&stdout_str) {
-                    Ok(names) => names,
+                
+                #[derive(serde::Deserialize)]
+                struct OutStation {
+                    name: String,
+                    url: String,
+                }
+                #[derive(serde::Deserialize)]
+                struct OutGroup {
+                    name: String,
+                    #[serde(default)]
+                    stations: Vec<OutStation>,
+                }
+
+                let new_data: Vec<OutGroup> = match serde_json::from_str(&stdout_str) {
+                    Ok(d) => d,
                     Err(e) => {
                         log::error!("Erreur désérialisation du nouvel ordre : {}", e);
                         return;
@@ -469,9 +494,27 @@ impl TiMondeTray {
                 let mut root = root_group.lock().unwrap().clone();
                 let mut reordered_subgroups = Vec::new();
 
-                for name in &new_names {
-                    if let Some(pos) = root.subgroups.iter().position(|g| g.name.eq_ignore_ascii_case(name)) {
-                        reordered_subgroups.push(root.subgroups.remove(pos));
+                for g_data in new_data {
+                    if let Some(pos) = root.subgroups.iter().position(|g| g.name.eq_ignore_ascii_case(&g_data.name)) {
+                        let mut grp = root.subgroups.remove(pos);
+                        
+                        // Réordonner les stations selon la sélection de l utilisateur
+                        let mut new_stations = Vec::new();
+                        for s_data in g_data.stations {
+                            if let Some(s_pos) = grp.stations.iter().position(|s| s.name.eq_ignore_ascii_case(&s_data.name)) {
+                                new_stations.push(grp.stations.remove(s_pos));
+                            } else {
+                                new_stations.push(Station {
+                                    name: s_data.name,
+                                    url: s_data.url,
+                                });
+                            }
+                        }
+                        // Conserver les séparateurs ou résiduels
+                        new_stations.append(&mut grp.stations);
+                        grp.stations = new_stations;
+
+                        reordered_subgroups.push(grp);
                     }
                 }
                 reordered_subgroups.append(&mut root.subgroups);
@@ -484,10 +527,10 @@ impl TiMondeTray {
                 }
 
                 *root_group.lock().unwrap() = root;
-                log::info!("✅ Ordre des groupes enregistré et signets rechargés !");
+                log::info!("✅ Ordre des groupes et radios enregistré et signets rechargés !");
                 crate::radio_browser::notify(
                     "TiMonde",
-                    "✅ Nouvel ordre des groupes enregistré et rechargé !",
+                    "✅ Ordre des groupes et radios enregistré et rechargé !",
                 );
             }
         });
@@ -996,7 +1039,7 @@ impl ksni::Tray for TiMondeTray {
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
-                    label: "↕️ Réorganiser l'ordre des groupes...".to_string(),
+                    label: "↕️ Classer groupes et radios...".to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         Self::trigger_reorder_groups_dialog(
                             Arc::clone(&tray.root_group),
