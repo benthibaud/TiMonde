@@ -64,6 +64,15 @@ fn create_default_bookmarks(path: &Path) -> Group {
 }
 
 fn main() {
+    // Optimisation stricte de la mémoire glibc :
+    // 1. Limiter le nombre d arènes malloc à 1 pour éviter la multiplication des tas par thread
+    // 2. Réduire le seuil de restitution mémoire au noyau (trim threshold)
+    unsafe {
+        libc::mallopt(-8, 1); // M_ARENA_MAX = 1
+        libc::mallopt(-1, 64 * 1024); // M_TRIM_THRESHOLD = 64 Ko
+        libc::mallopt(-3, 64 * 1024); // M_MMAP_THRESHOLD = 64 Ko
+    }
+
     env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("info")).init();
 
     info!("========================================================");

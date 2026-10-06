@@ -49,6 +49,25 @@ impl AudioEngine {
             .build()
             .map_err(|e| AudioError::Build(e.to_string()))?;
 
+        // Optimisations mémoire drastiques issues de radiotray-ng :
+        // 1. Désactiver la vidéo, le texte/sous-titres, visualisation, etc.
+        // Flags audio exclusifs : GST_PLAY_FLAG_AUDIO (0x02) | GST_PLAY_FLAG_SOFT_VOLUME (0x10) | GST_PLAY_FLAG_BUFFERING (0x100) = 274 (0x112)
+        pipeline.set_property_from_str("flags", "audio+soft-volume+buffering");
+
+        // 2. Éléments factices pour la vidéo et les sous-titres (évite de charger les plugins vidéo)
+        if let Ok(video_sink) = gstreamer::ElementFactory::make("fakesink").name("dummy-video").build() {
+            pipeline.set_property("video-sink", &video_sink);
+        }
+        if let Ok(text_sink) = gstreamer::ElementFactory::make("fakesink").name("dummy-text").build() {
+            pipeline.set_property("text-sink", &text_sink);
+        }
+
+        // 3. Tailles de buffer calquées sur radiotray-ng (320 Ko * 2 = 640 Ko, 2 secondes)
+        let buffer_size: i32 = 640_000;
+        let buffer_duration: i64 = 2 * (gstreamer::ClockTime::SECOND.nseconds() as i64);
+        pipeline.set_property("buffer-size", buffer_size);
+        pipeline.set_property("buffer-duration", buffer_duration);
+
         let current_url = Arc::new(Mutex::new(None));
         let state = Arc::new(Mutex::new(PlaybackState::Stopped));
 
