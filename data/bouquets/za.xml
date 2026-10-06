@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="ZA" name="Afrique du Sud" flag="🇿🇦" multilingual="false">
+  <national>
+    <station name="SAfm" url="https://edge.iono.fm/xice/safm_live.mp3" genre="SABC - Leading the conversation (News &amp; Talk)"/>
+    <station name="5FM" url="https://edge.iono.fm/xice/5fm_live.mp3" genre="SABC - Youth, Pop &amp; Dance Culture"/>
+    <station name="Metro FM" url="https://edge.iono.fm/xice/metro_live.mp3" genre="SABC - Urban Contemporary Music"/>
+    <station name="RSG (Radio Sonder Grense)" url="https://edge.iono.fm/xice/rsg_live.mp3" genre="SABC - Afrikaans News &amp; Culture"/>
+    <station name="Ukhozi FM" url="https://edge.iono.fm/xice/ukhozi_live.mp3" genre="SABC - Luhamba Phambili (Zulu Radio)"/>
+    <station name="Radio 2000" url="https://edge.iono.fm/xice/radio2000_live.mp3" genre="SABC - Facility of Great Hits &amp; Sport"/>
+    <station name="702 Talk Radio" url="https://playerservices.streamtheworld.com/api/livestream-redirect/TALK_702AAC.aac" genre="Walk the Talk / News &amp; Debate Johannesburg"/>
+    <station name="Jacaranda FM" url="https://stream.audioxi.com/JACARANDA" genre="More Music You Love (Pretoria / Gauteng)"/>
+    <station name="KFM 94.5 Cape Town" url="https://playerservices.streamtheworld.com/api/livestream-redirect/KFM_945AAC.aac" genre="Western Cape's Biggest Hits"/>
+    <station name="East Coast Radio" url="https://stream.audioxi.com/ECR" genre="Durban / KwaZulu-Natal Hit Music"/>
+  </national>
+</bouquet>

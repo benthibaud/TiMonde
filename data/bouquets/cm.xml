@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="CM" name="Cameroun" flag="🇨🇲" multilingual="false">
+  <national>
+    <station name="CRTV Poste National" url="https://stream.zeno.fm/m4t4w4k0heuv" genre="CRTV - Radio d'État bilingue FR/EN"/>
+    <station name="Radio Balafon Douala" url="https://stream.zeno.fm/k4t4w4k0heuv" genre="Le rythme du Cameroun"/>
+    <station name="Equinoxe Radio" url="https://stream.zeno.fm/l4t4w4k0heuv" genre="La chaîne du peuple (Douala)"/>
+    <station name="Sweet FM Cameroun" url="https://stream.zeno.fm/j4t4w4k0heuv" genre="Musique urbaine &amp; Makossa"/>
+    <station name="Kalak FM Yaoundé" url="https://stream.zeno.fm/p4t4w4k0heuv" genre="La voix de la capitale"/>
+  </national>
+</bouquet>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="SA" name="Arabie Saoudite" flag="🇸🇦" multilingual="false">
+  <national>
+    <station name="Holy Quran Radio Riyadh" url="https://stream.zeno.fm/9agt4w4k0heuv" genre="SBA - إذاعة القرآن الكريم من الرياض"/>
+    <station name="Riyadh Radio" url="https://stream.zeno.fm/1bgt4w4k0heuv" genre="SBA - إذاعة الرياض (Informations &amp; Société)"/>
+    <station name="Jeddah Radio" url="https://stream.zeno.fm/2bgt4w4k0heuv" genre="SBA - إذاعة جدة (Culture &amp; Divertissement)"/>
+    <station name="MBC FM Saudi" url="https://stream.zeno.fm/3bgt4w4k0heuv" genre="MBC Group - La première radio privée du Golfe"/>
+    <station name="Panorama FM" url="https://stream.zeno.fm/4bgt4w4k0heuv" genre="MBC Group - Pop arabe &amp; Jeunesse"/>
+    <station name="Rotana FM Saudi" url="https://stream.zeno.fm/5bgt4w4k0heuv" genre="Rotana - Khaleeji &amp; Chansons arabes"/>
+    <station name="UFM Radio" url="https://stream.zeno.fm/6bgt4w4k0heuv" genre="إذاعة يو اف ام - 1ère radio sportive d'Arabie"/>
+  </national>
+</bouquet>

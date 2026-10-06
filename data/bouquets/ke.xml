@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="KE" name="Kenya" flag="🇰🇪" multilingual="false">
+  <national>
+    <station name="KBC English Service" url="https://stream.zeno.fm/1agt4w4k0heuv" genre="KBC - The Voice of Kenya"/>
+    <station name="Radio Taifa" url="https://stream.zeno.fm/2agt4w4k0heuv" genre="KBC - Sauti ya Mkenya (Swahili)"/>
+    <station name="Capital FM 98.4 Nairobi" url="https://icecast2.capitalfm.co.ke/capitalfm" genre="All The Hits &amp; Top Nairobi News"/>
+    <station name="Classic 105 Nairobi" url="https://stream.zeno.fm/3agt4w4k0heuv" genre="Good Times and Great Hits"/>
+    <station name="Radio Citizen" url="https://stream.zeno.fm/4agt4w4k0heuv" genre="Nambari Moja nchini Kenya"/>
+    <station name="Kiss 100 Kenya" url="https://stream.zeno.fm/5agt4w4k0heuv" genre="The Beat of the City"/>
+    <station name="Homeboyz Radio 103.5" url="https://stream.zeno.fm/6agt4w4k0heuv" genre="Hip Hop, Reggae &amp; Urban Nairobi"/>
+  </national>
+</bouquet>

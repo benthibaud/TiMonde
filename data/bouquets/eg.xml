@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="EG" name="Égypte" flag="🇪🇬" multilingual="false">
+  <national>
+    <station name="Holy Quran Radio Cairo" url="https://stream.radiojar.com/8s5u8tpdtwzuv" genre="ERTU - إذاعة القرآن الكريم من القاهرة"/>
+    <station name="Sawt Al Arab" url="https://stream.radiojar.com/0t500crdtwzuv" genre="ERTU - صوت العرب (La voix des Arabes)"/>
+    <station name="Al Shabab Wal Riyadah" url="https://stream.radiojar.com/06ug82qdtwzuv" genre="ERTU - Jeunesse &amp; Sport Égypte"/>
+    <station name="Nogoum FM 100.6" url="https://stream.zeno.fm/4w5zef4s1heuv" genre="نجوم إف إم - 1ère radio musicale du Caire"/>
+    <station name="Mega FM 92.7" url="https://stream.radiojar.com/4q3ugp0etwzuv" genre="Pop Hits &amp; Variété égyptienne"/>
+    <station name="Nagham FM 105.3" url="https://stream.radiojar.com/7g6w070etwzuv" genre="Chanson classique arabe &amp; Tarab"/>
+    <station name="Radio Hits 88.2" url="https://stream.radiojar.com/15yug50etwzuv" genre="Modern Arabic &amp; International Hits"/>
+    <station name="Radio Masr 88.7" url="https://stream.radiojar.com/v8t4p91etwzuv" genre="Informations du Caire en continu"/>
+    <station name="9090 FM" url="https://stream.zeno.fm/0t500crdtwzuv" genre="الراديو 9090 - مصر بتتكلم"/>
+  </national>
+</bouquet>

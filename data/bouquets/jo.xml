@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="JO" name="Jordanie" flag="🇯🇴" multilingual="false">
+  <national>
+    <station name="Radio Jordan 90 FM (English)" url="https://stream.zeno.fm/9cgt4w4k0heuv" genre="JRTV - The English Service from Amman"/>
+    <station name="Radio Al-Urduniyah" url="https://stream.zeno.fm/1dgt4w4k0heuv" genre="JRTV - الإذاعة الأردنية الرسمية"/>
+    <station name="Mood 92 FM Amman" url="https://stream.zeno.fm/2dgt4w4k0heuv" genre="Amman's Number 1 English Hit Station"/>
+    <station name="Beat 102.5 FM" url="https://stream.zeno.fm/3dgt4w4k0heuv" genre="Jordan's Number 1 for Hip Hop &amp; Pop"/>
+    <station name="Play 99.6" url="https://stream.zeno.fm/4dgt4w4k0heuv" genre="Jordan's Number 1 Hit Music Station"/>
+    <station name="Rotana Tarab Jordan" url="https://stream.zeno.fm/5dgt4w4k0heuv" genre="طرب أردني وعربي أصيل"/>
+  </national>
+</bouquet>

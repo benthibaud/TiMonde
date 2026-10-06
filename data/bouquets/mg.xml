@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="MG" name="Madagascar" flag="🇲🇬" multilingual="false">
+  <national>
+    <station name="Radio Nationale Malagasy (RNM)" url="https://stream.zeno.fm/9k97s9w9ewzuv" genre="Antenne nationale officielle d'Anosy"/>
+    <station name="Radio Don Bosco Madagascar" url="https://stream.zeno.fm/7b74r20s0v8uv" genre="La voix de l'espérance / Éducative"/>
+    <station name="Alliance 92 FM" url="https://stream.zeno.fm/8b74r20s0v8uv" genre="Jazz, World Music &amp; Info Antananarivo"/>
+    <station name="Radio des Jeunes (RDJ 96.6)" url="https://stream.zeno.fm/9b74r20s0v8uv" genre="La radio numéro 1 des jeunes à Madagascar"/>
+    <station name="Kolo FM 88.8" url="https://stream.zeno.fm/1c74r20s0v8uv" genre="Information libre &amp; Débats"/>
+  </national>
+</bouquet>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="CI" name="Côte d'Ivoire" flag="🇨🇮" multilingual="false">
+  <national>
+    <station name="Radio Côte d'Ivoire" url="https://stream.zeno.fm/54t4w4k0heuv" genre="RTI - Antenne nationale publique"/>
+    <station name="Fréquence 2 Côte d'Ivoire" url="https://stream.zeno.fm/64t4w4k0heuv" genre="RTI - Divertissement &amp; Musique"/>
+    <station name="Radio Nostalgie Côte d'Ivoire" url="https://stream.zeno.fm/g7t4w4k0heuv" genre="La première radio privée d'Abidjan"/>
+    <station name="Radio Jam Abidjan" url="https://stream.zeno.fm/84t4w4k0heuv" genre="Coupé-Décalé &amp; Afrobeat"/>
+    <station name="Vibe Radio Côte d'Ivoire" url="https://stream.zeno.fm/94t4w4k0heuv" genre="Le nouveau son d'Abidjan"/>
+    <station name="Radio Al Bayane" url="https://stream.zeno.fm/q4t4w4k0heuv" genre="La voix de la communauté islamique"/>
+    <station name="Radio Espoir" url="https://stream.zeno.fm/w4t4w4k0heuv" genre="Diocèse de Grand-Bassam / Chrétienne"/>
+  </national>
+</bouquet>

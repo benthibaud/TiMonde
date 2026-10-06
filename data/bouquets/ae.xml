@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="AE" name="Émirats Arabes Unis" flag="🇦🇪" multilingual="false">
+  <national>
+    <station name="Dubai Eye 103.8" url="https://stream.zeno.fm/2agt4w4k0heuv" genre="ARN - News, Talk &amp; Business Dubai"/>
+    <station name="Virgin Radio Dubai 104.4" url="https://stream.zeno.fm/3agt4w4k0heuv" genre="ARN - The UAE's Number 1 Hit Music Station"/>
+    <station name="Al Arabiya 99 FM" url="https://stream.zeno.fm/4agt4w4k0heuv" genre="ARN - Arabic Hits &amp; Entertainment"/>
+    <station name="Dubai 92" url="https://stream.zeno.fm/5agt4w4k0heuv" genre="ARN - Classic Hits &amp; Today's Best"/>
+    <station name="City 101.6 Dubai" url="https://stream.zeno.fm/6agt4w4k0heuv" genre="ARN - Number 1 Bollywood Station"/>
+    <station name="Pulse 95 Radio Sharjah" url="https://stream.zeno.fm/7agt4w4k0heuv" genre="SBA - The Heart of Sharjah (English)"/>
+    <station name="Tag 91.1" url="https://stream.zeno.fm/8agt4w4k0heuv" genre="ARN - Filipino Radio in the UAE"/>
+  </national>
+</bouquet>

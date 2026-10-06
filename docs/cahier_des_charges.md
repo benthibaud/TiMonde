@@ -106,6 +106,26 @@ Afin d'intégrer progressivement **tous les bouquets DAB+ et sélections du mond
     - 🇺🇾 Uruguay (`uy.xml` : Radio Uruguay, Babel, Sarandí, Carve, Del Sol, Océano)
     - 🇨🇺 Cuba (`cu.xml` : Radio Rebelde, Progreso, Taíno, Habana Cuba, Enciclopedia)
     - 🇻🇪 Venezuela (`ve.xml` : Éxitos, Onda, La Mega, Unión Radio Noticias, RNV)
+  - **L'Afrique (Nord, Ouest, Centrale, Est & Australe) :**
+    - 🇲🇦 Maroc (`ma.xml` : SNRT Al Idaa Al Watania, Chaîne Inter FR, Amazighe, Medi 1, Hit Radio, 2M, Mars)
+    - 🇩🇿 Algérie (`dz.xml` : Radio Algérie Chaîne 3 FR, Chaîne 1, Chaîne 2, Jil FM, RAI, El Bahdja)
+    - 🇹🇳 Tunisie (`tn.xml` : RTCI Tunis FR, Nationale, Jeunes, Culturelle, Mosaïque FM, IFM, Jawhara)
+    - 🇪🇬 Égypte (`eg.xml` : Holy Quran Radio Cairo, Sawt Al Arab, Nogoum FM, Mega, Nagham, Hits 88.2)
+    - 🇸🇳 Sénégal (`sn.xml` : RTS RSI, RFM Sénégal, Zik FM, Sud FM, Walf FM, Lamp Fall, Al-Fayda)
+    - 🇨🇮 Côte d'Ivoire (`ci.xml` : Radio Côte d'Ivoire, Fréquence 2, Nostalgie CI, Jam, Vibe, Al Bayane)
+    - 🇨🇲 Cameroun (`cm.xml` : CRTV Poste National, Balafon Douala, Equinoxe, Sweet FM, Kalak FM)
+    - 🇨🇩 RD Congo (`cd.xml` : Radio Okapi, Top Congo FM Kinshasa, RTNC, B-One, Maendeleo)
+    - 🇳🇬 Nigéria (`ng.xml` : Wazobia FM Pidgin, Cool FM Lagos, Nigeria Info, Beat 99.9, Classic 97.3)
+    - 🇿🇦 Afrique du Sud (`za.xml` : SABC SAfm, 5FM, Metro FM, RSG Afrikaans, Ukhozi Zulu, 702 Talk, Jacaranda)
+    - 🇰🇪 Kenya (`ke.xml` : KBC English & Taifa Swahili, Capital FM Nairobi, Classic 105, Citizen)
+    - 🇲🇬 Madagascar (`mg.xml` : RNM Anosy, Radio Don Bosco, Alliance 92, RDJ 96.6, Kolo FM)
+  - **Le Moyen-Orient :**
+    - 🇱🇧 Liban (`lb.xml` : Radio Liban 98.1 FR, VDL, Mix FM, Radio One Beirut, Sawt El Ghad, Nostalgie)
+    - 🇦🇪 Émirats Arabes Unis (`ae.xml` : Dubai Eye 103.8, Virgin Radio Dubai, Al Arabiya 99, Pulse 95 Sharjah)
+    - 🇸🇦 Arabie Saoudite (`sa.xml` : Quran Riyadh, Riyadh Radio, Jeddah Radio, MBC FM, Panorama, Rotana)
+    - 🇹🇷 Turquie (`tr.xml` : TRT Radyo 1, TRT FM, TRT 3 Klasik & Caz, Power FM, Kral FM, Süper FM)
+    - 🇮🇱 Israël (`il.xml` : Kan Tarbut, Kan Bet, Kan Gimel, Kan 88, Galgalatz, Galei Tzahal)
+    - 🇯🇴 Jordanie (`jo.xml` : Radio Jordan 90 FM English, Al-Urduniyah, Mood 92, Beat 102.5, Play 99.6)
 - **Découverte automatique & Frugalité :** L'explorateur scanne dynamiquement les fichiers XML présents. L'ajout d'un nouveau pays ne requiert aucune recompilation. Le parseur ne charge en mémoire que le pays en cours de consultation.
 - **Contribution communautaire ouverte :** N'importe quel auditeur peut créer et soumettre le fichier XML de sa nation ou de sa région.
 
