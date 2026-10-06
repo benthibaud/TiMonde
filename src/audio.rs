@@ -44,6 +44,13 @@ impl AudioEngine {
     pub fn new() -> Result<Self, AudioError> {
         gstreamer::init().map_err(AudioError::Init)?;
 
+        // Favoriser les décodeurs audio natifs ultra-légers (évite de charger FFmpeg/libavcodec et ses 15 Mo de dépendances)
+        if let Some(feature) = gstreamer::Registry::get().lookup_feature("faad") {
+            use gstreamer::prelude::PluginFeatureExtManual;
+            feature.set_rank(gstreamer::Rank::PRIMARY + 10);
+            info!("⚡ Décodeur léger faad promu prioritaire pour l AAC");
+        }
+
         let pipeline = gstreamer::ElementFactory::make("playbin")
             .name("timonde-player")
             .build()
@@ -173,6 +180,9 @@ impl AudioEngine {
             .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
 
         *self.state.lock().unwrap() = PlaybackState::Stopped;
+        unsafe {
+            libc::malloc_trim(0);
+        }
         Ok(())
     }
 
