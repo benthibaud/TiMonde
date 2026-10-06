@@ -116,8 +116,26 @@ impl TiMondeTray {
         let raw_url = station.url.clone();
         info!("Sélection de la station : {} ({})", station_name, raw_url);
 
-        // Résolution préalable si l'URL pointe vers un fichier de playlist (.m3u, .pls, .asx)
-        let resolved_url = resolve_stream_url(&raw_url);
+        // Résolution préalable (webradio ou DAB+ avec secours automatique si SDR absent)
+        let resolved_url = if crate::dab::is_dab_url(&raw_url) {
+            if let Some(dab_info) = crate::dab::parse_dab_url(&raw_url) {
+                if crate::dab::is_sdr_hardware_connected() && crate::dab::find_dab_decoder().is_some() {
+                    info!("📡 Réception DAB+ hertzienne active sur canal {} ({} MHz) pour {}", dab_info.channel, dab_info.frequency_mhz, dab_info.service_name);
+                    "http://127.0.0.1:9998/mp3".to_string()
+                } else {
+                    info!("📡 DAB+ ({}) : Clé SDR non détectée -> Bascule flux de secours IP", dab_info.service_name);
+                    notify("TiMonde", &format!("📡 DAB+ (Canal {}) : Clé SDR non détectée.\nBascule sur le flux de secours pour « {} ».", dab_info.channel, dab_info.service_name));
+                    match crate::radio_browser::find_backup_stream(&dab_info.service_name) {
+                        Some((backup_url, _)) => resolve_stream_url(&backup_url),
+                        None => resolve_stream_url(&raw_url),
+                    }
+                }
+            } else {
+                resolve_stream_url(&raw_url)
+            }
+        } else {
+            resolve_stream_url(&raw_url)
+        };
 
         if let Err(e) = Self::get_or_create_engine(audio, current_volume, current_title) {
             error!("{}", e);
@@ -605,6 +623,38 @@ Liste des radios rechargée ({} stations).", msg, total));
             } else {
                 crate::radio_browser::notify("TiMonde", "Station introuvable dans la liste");
             }
+        });
+    }
+
+    /// Importe automatiquement les bouquets DAB+ officiels (M1, M2, Local)
+    pub fn trigger_import_dab_bouquets(
+        root_group: Arc<Mutex<Group>>,
+        bookmarks_path: PathBuf,
+        tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+    ) {
+        std::thread::spawn(move || {
+            let mut root = root_group.lock().unwrap().clone();
+            let dab_groups = crate::dab::get_default_dab_groups();
+            let count = dab_groups.len();
+
+            for grp in dab_groups {
+                if !root.subgroups.iter().any(|g| g.name == grp.name) {
+                    root.subgroups.push(grp);
+                }
+            }
+
+            if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                log::error!("Erreur sauvegarde DAB+ : {}", e);
+                crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
+                return;
+            }
+
+            let total = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle).unwrap_or(0);
+            log::info!("✅ {} bouquets DAB+ ajoutés aux signets (Total : {} stations)", count, total);
+            crate::radio_browser::notify(
+                "TiMonde",
+                &format!("✅ {} bouquets DAB+ ajoutés avec succès !\n• Métropolitain M1 (7A)\n• Métropolitain M2 (7B)\n• Local & Régional (8B)\nListe des radios rechargée ({} stations).", count, total),
+            );
         });
     }
 
@@ -1427,6 +1477,17 @@ impl ksni::Tray for TiMondeTray {
                     label: "↕️ Classer groupes et radios...".to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         Self::trigger_reorder_groups_dialog(
+                            Arc::clone(&tray.root_group),
+                            tray.bookmarks_path.clone(),
+                            Arc::clone(&tray.tray_handle),
+                        );
+                    }),
+                    ..Default::default()
+                }),
+                MenuItem::Standard(StandardItem {
+                    label: "📡 Ajouter les bouquets DAB+ (M1, M2, Local)...".to_string(),
+                    activate: Box::new(|tray: &mut Self| {
+                        Self::trigger_import_dab_bouquets(
                             Arc::clone(&tray.root_group),
                             tray.bookmarks_path.clone(),
                             Arc::clone(&tray.tray_handle),

@@ -31,7 +31,12 @@ Inspiré par la sobriété historique de **Radio Tray**, TiMonde le modernise po
 - [x] **Auto-réparation des flux muets :** Watchdog 5 secondes avec interrogation de l'annuaire public Radio-Browser et mise à jour persistante dans `bookmarks.xml`.
 - [x] **3 icônes SVG légères et transparentes :** `timonde_off.svg`, `timonde_on.svg`, `timonde_error.svg`.
 - [x] **Installation universelle :** Fichier `timonde.desktop` FreeDesktop et `Makefile` multi-distributions (`make install`, `make install-user`).
-- [ ] **Phase 2 :** Serveur D-Bus MPRIS2 (contrôle par touches multimédias du clavier et applet son) et packaging natif (.deb, .rpm, PKGBUILD Arch).
+- [x] **Serveur D-Bus MPRIS2 :** Contrôle natif par touches multimédias du clavier et applet son du tableau de bord.
+- [x] **Gestion & Importation de radios :** Ajout manuel, recherche multicritères Radio-Browser (genre, pays, langue), import multi-formats (JSON radiotray-ng, M3U, CSV, XML) avec détection des doublons.
+- [x] **Fenêtre de gestion & réorganisation hiérarchique :** Classement des groupes et des stations par double-clic et glissement de rang, modification et suppression (menu tray direct et clic droit contextuel).
+- [x] **Minuteur de mise en veille (Sleep Timer) :** Extinction programmée douce après 15, 30, 45 ou 60 minutes avec libération de la RAM.
+- [x] **Support DAB+ (Digital Audio Broadcasting) :** Intégration des multiplexes DAB+ (`dab://canal/service`) avec bascule transparente de secours.
+- [x] **Packaging natif multi-distributions :** Paquet `.deb` (`make deb`), spécification RPM Fedora et `PKGBUILD` Arch Linux / AUR.
 
 ---
 
