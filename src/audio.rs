@@ -8,6 +8,7 @@ pub enum PlaybackState {
     Stopped,
     Buffering,
     Playing,
+    Paused,
     Error,
 }
 
@@ -48,8 +49,6 @@ impl AudioEngine {
             .build()
             .map_err(|e| AudioError::Build(e.to_string()))?;
 
-        // Désactivation du rendu vidéo (0x02 = GST_PLAY_FLAG_AUDIO seul)
-
         let current_url = Arc::new(Mutex::new(None));
         let state = Arc::new(Mutex::new(PlaybackState::Stopped));
 
@@ -63,7 +62,11 @@ impl AudioEngine {
                             let mut st = state_clone.lock().unwrap();
                             match s.current() {
                                 gstreamer::State::Playing => *st = PlaybackState::Playing,
-                                gstreamer::State::Paused => *st = PlaybackState::Buffering,
+                                gstreamer::State::Paused => {
+                                    if *st != PlaybackState::Paused {
+                                        *st = PlaybackState::Buffering;
+                                    }
+                                }
                                 gstreamer::State::Ready | gstreamer::State::Null => *st = PlaybackState::Stopped,
                                 _ => {}
                             }
@@ -72,10 +75,12 @@ impl AudioEngine {
                     MessageView::Buffering(b) => {
                         let percent = b.percent();
                         let mut st = state_clone.lock().unwrap();
-                        if percent < 100 {
-                            *st = PlaybackState::Buffering;
-                        } else {
-                            *st = PlaybackState::Playing;
+                        if *st != PlaybackState::Paused {
+                            if percent < 100 {
+                                *st = PlaybackState::Buffering;
+                            } else {
+                                *st = PlaybackState::Playing;
+                            }
                         }
                     }
                     MessageView::Error(err) => {
@@ -117,6 +122,28 @@ impl AudioEngine {
 
         *self.current_url.lock().unwrap() = Some(url.to_string());
         *self.state.lock().unwrap() = PlaybackState::Buffering;
+        Ok(())
+    }
+
+    /// Met en pause la lecture (ex: appel téléphonique)
+    pub fn pause(&self) -> Result<(), AudioError> {
+        info!("Mise en pause de la lecture");
+        self.pipeline
+            .set_state(gstreamer::State::Paused)
+            .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
+
+        *self.state.lock().unwrap() = PlaybackState::Paused;
+        Ok(())
+    }
+
+    /// Reprend la lecture après une pause
+    pub fn resume(&self) -> Result<(), AudioError> {
+        info!("Reprise de la lecture");
+        self.pipeline
+            .set_state(gstreamer::State::Playing)
+            .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
+
+        *self.state.lock().unwrap() = PlaybackState::Playing;
         Ok(())
     }
 

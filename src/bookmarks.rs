@@ -143,3 +143,72 @@ mod tests {
             assert!(count > 1000, "Le fichier réel doit contenir plus de 1000 stations");
         }
     }
+
+/// Met à jour l'URL d'une station dans l'arbre des groupes
+pub fn update_station_url(group: &mut Group, station_name: &str, new_url: &str) -> bool {
+    for st in &mut group.stations {
+        if st.name == station_name {
+            st.url = new_url.to_string();
+            return true;
+        }
+    }
+    for sub in &mut group.subgroups {
+        if update_station_url(sub, station_name, new_url) {
+            return true;
+        }
+    }
+    false
+}
+
+/// Sauvegarde l'arborescence des groupes au format bookmarks.xml avec indentation stricte
+pub fn save_bookmarks(group: &Group, path: impl AsRef<Path>) -> Result<(), BookmarksError> {
+    use std::io::Write;
+    let path = path.as_ref();
+
+    // Sauvegarde de secours .bak si le fichier existe
+    if path.exists() {
+        let bak_path = path.with_extension("xml.bak");
+        let _ = std::fs::copy(path, bak_path);
+    }
+
+    let file = File::create(path)?;
+    let mut writer = std::io::BufWriter::new(file);
+
+    writeln!(writer, "<bookmarks>")?;
+    write_group_xml(&mut writer, group, 1)?;
+    writeln!(writer, "</bookmarks>")?;
+    writer.flush()?;
+
+    Ok(())
+}
+
+fn write_group_xml<W: std::io::Write>(writer: &mut W, group: &Group, indent: usize) -> Result<(), BookmarksError> {
+    let tabs = "\t".repeat(indent);
+    writeln!(writer, "{}<group name=\"{}\">", tabs, escape_xml(&group.name))?;
+
+    for sub in &group.subgroups {
+        write_group_xml(writer, sub, indent + 1)?;
+    }
+
+    let inner_tabs = "\t".repeat(indent + 1);
+    for st in &group.stations {
+        writeln!(
+            writer,
+            "{}<bookmark name=\"{}\" url=\"{}\"/>",
+            inner_tabs,
+            escape_xml(&st.name),
+            escape_xml(&st.url)
+        )?;
+    }
+
+    writeln!(writer, "{}</group>", tabs)?;
+    Ok(())
+}
+
+fn escape_xml(s: &str) -> String {
+    s.replace('&', "&amp;")
+        .replace('<', "&lt;")
+        .replace('>', "&gt;")
+        .replace('"', "&quot;")
+        .replace('\'', "&apos;")
+}

@@ -108,7 +108,7 @@ fn main() {
     };
 
     // 3. Initialisation du plateau système (StatusNotifierItem)
-    let tray = tray::TiMondeTray::new(Arc::clone(&audio), root_group);
+    let tray = tray::TiMondeTray::new(Arc::clone(&audio), root_group, bookmarks_path);
 
     // Lancement du tray D-Bus en tâche de fond (zéro fenêtre graphique ouverte)
     let _handle = match tray.spawn() {
