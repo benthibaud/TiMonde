@@ -222,6 +222,28 @@ mod tests {
         assert_eq!(reloaded.subgroups[0].name, "Classique");
         assert_eq!(reloaded.total_stations(), 1);
     }
+
+    #[test]
+    fn test_update_and_remove_station() {
+        let mut root = Group::new("root");
+        let mut rock = Group::new("Rock");
+        rock.stations.push(Station {
+            name: "Ancien Nom".to_string(),
+            url: "http://ancien.url".to_string(),
+        });
+        root.subgroups.push(rock);
+
+        // Modification
+        let updated = update_station_info(&mut root, "http://ancien.url", "Nouveau Nom", "http://nouveau.url");
+        assert!(updated);
+        assert_eq!(root.subgroups[0].stations[0].name, "Nouveau Nom");
+        assert_eq!(root.subgroups[0].stations[0].url, "http://nouveau.url");
+
+        // Suppression
+        let removed = remove_station_by_url(&mut root, "http://nouveau.url");
+        assert!(removed);
+        assert_eq!(root.subgroups[0].stations.len(), 0);
+    }
 }
 
 /// Met à jour l'URL d'une station dans l'arbre des groupes
@@ -234,6 +256,42 @@ pub fn update_station_url(group: &mut Group, station_name: &str, new_url: &str) 
     }
     for sub in &mut group.subgroups {
         if update_station_url(sub, station_name, new_url) {
+            return true;
+        }
+    }
+    false
+}
+
+/// Met à jour le nom et l'URL d'une station (identifiée par son URL originale) dans l'arborescence
+pub fn update_station_info(
+    group: &mut Group,
+    target_url: &str,
+    new_name: &str,
+    new_url: &str,
+) -> bool {
+    for st in &mut group.stations {
+        if st.url == target_url {
+            st.name = new_name.to_string();
+            st.url = new_url.to_string();
+            return true;
+        }
+    }
+    for sub in &mut group.subgroups {
+        if update_station_info(sub, target_url, new_name, new_url) {
+            return true;
+        }
+    }
+    false
+}
+
+/// Supprime récursivement une station identifiée par son URL dans l'arborescence
+pub fn remove_station_by_url(group: &mut Group, target_url: &str) -> bool {
+    if let Some(pos) = group.stations.iter().position(|s| s.url == target_url) {
+        group.stations.remove(pos);
+        return true;
+    }
+    for sub in &mut group.subgroups {
+        if remove_station_by_url(sub, target_url) {
             return true;
         }
     }

@@ -419,6 +419,150 @@ Liste des radios rechargée ({} stations).", msg, total));
         });
     }
 
+    fn find_edit_script() -> Option<PathBuf> {
+        let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
+        let candidate1 = PathBuf::from(&home).join(".local/share/timonde/scripts/edit_station.py");
+        if candidate1.exists() {
+            return Some(candidate1);
+        }
+        let candidate2 = PathBuf::from("data/scripts/edit_station.py");
+        if candidate2.exists() {
+            return Some(candidate2);
+        }
+        let candidate3 = PathBuf::from(&home).join(".gemini/antigravity/scratch/TiMonde/data/scripts/edit_station.py");
+        if candidate3.exists() {
+            return Some(candidate3);
+        }
+        None
+    }
+
+    /// Ouvre la boîte de dialogue pour modifier le nom et l'URL de la station
+    pub fn trigger_edit_station_dialog(
+        station: Station,
+        root_group: Arc<Mutex<Group>>,
+        bookmarks_path: PathBuf,
+        tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+        current_station: Arc<Mutex<Option<Station>>>,
+        last_station: Arc<Mutex<Option<Station>>>,
+    ) {
+        std::thread::spawn(move || {
+            let (new_name, new_url) = if let Some(script_path) = Self::find_edit_script() {
+                let out = match std::process::Command::new(script_path)
+                    .arg("--name")
+                    .arg(&station.name)
+                    .arg("--url")
+                    .arg(&station.url)
+                    .output()
+                {
+                    Ok(o) if o.status.success() => o,
+                    _ => return, // Annulé
+                };
+
+                let out_str = String::from_utf8_lossy(&out.stdout).trim().to_string();
+                if let Ok(json_val) = serde_json::from_str::<serde_json::Value>(&out_str) {
+                    let n = json_val["name"].as_str().unwrap_or("").trim().to_string();
+                    let u = json_val["url"].as_str().unwrap_or("").trim().to_string();
+                    (n, u)
+                } else {
+                    return;
+                }
+            } else {
+                let entry_out = match std::process::Command::new("zenity")
+                    .arg("--entry")
+                    .arg(format!("--title=✏️ Renommer « {} »", station.name))
+                    .arg("--text=Nouveau nom de la station :")
+                    .arg(format!("--entry-text={}", station.name))
+                    .output()
+                {
+                    Ok(o) if o.status.success() => o,
+                    _ => return,
+                };
+                let n = String::from_utf8_lossy(&entry_out.stdout).trim().to_string();
+                (n, station.url.clone())
+            };
+
+            if new_name.is_empty() || new_url.is_empty() {
+                return;
+            }
+
+            let mut root = root_group.lock().unwrap().clone();
+            if crate::bookmarks::update_station_info(&mut root, &station.url, &new_name, &new_url) {
+                if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                    log::error!("Erreur sauvegarde : {}", e);
+                    crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
+                    return;
+                }
+
+                // Mettre à jour current_station si elle était en cours
+                {
+                    let mut cur = current_station.lock().unwrap();
+                    if let Some(ref mut c) = *cur {
+                        if c.url == station.url {
+                            c.name = new_name.clone();
+                            c.url = new_url.clone();
+                        }
+                    }
+                }
+                {
+                    let mut last = last_station.lock().unwrap();
+                    if let Some(ref mut l) = *last {
+                        if l.url == station.url {
+                            l.name = new_name.clone();
+                            l.url = new_url.clone();
+                        }
+                    }
+                }
+
+                let _ = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle);
+                log::info!("✅ Station modifiée : {} -> {}", station.name, new_name);
+                crate::radio_browser::notify("TiMonde", &format!("Station renommée en « {} »", new_name));
+            } else {
+                crate::radio_browser::notify("TiMonde", "Station introuvable dans la liste");
+            }
+        });
+    }
+
+    /// Ouvre la boîte de dialogue de confirmation pour supprimer la station
+    pub fn trigger_delete_station_dialog(
+        station: Station,
+        root_group: Arc<Mutex<Group>>,
+        bookmarks_path: PathBuf,
+        tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+    ) {
+        std::thread::spawn(move || {
+            let question_out = match std::process::Command::new("zenity")
+                .arg("--question")
+                .arg("--title=🗑️ Supprimer de vos favoris (TiMonde)")
+                .arg(format!(
+                    "--text=Voulez-vous vraiment supprimer la station « {} » de vos favoris ?",
+                    station.name
+                ))
+                .arg("--ok-label=🗑️ Supprimer")
+                .arg("--cancel-label=Annuler")
+                .output()
+            {
+                Ok(o) if o.status.success() => o,
+                _ => return, // Annulé
+            };
+
+            let _ = question_out;
+            let mut root = root_group.lock().unwrap().clone();
+            if crate::bookmarks::remove_station_by_url(&mut root, &station.url) {
+                if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                    log::error!("Erreur sauvegarde : {}", e);
+                    crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
+                    return;
+                }
+
+                let _ = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle);
+                log::info!("✅ Station supprimée : {}", station.name);
+                crate::radio_browser::notify("TiMonde", &format!("Station « {} » supprimée de vos favoris", station.name));
+            } else {
+                crate::radio_browser::notify("TiMonde", "Station introuvable dans la liste");
+            }
+        });
+    }
+
     fn find_reorder_script() -> Option<PathBuf> {
         let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
         let candidate1 = PathBuf::from(&home).join(".local/share/timonde/scripts/reorder_groups.py");
@@ -874,6 +1018,44 @@ impl ksni::Tray for TiMondeTray {
                         .arg(format!("printf '%s' \"{}\" | (wl-copy 2>/dev/null || xclip -selection clipboard 2>/dev/null || true)", title_copy))
                         .spawn();
                     notify("TiMonde", "Titre copié dans le presse-papier !");
+                }),
+                enabled: true,
+                visible: true,
+                ..Default::default()
+            }));
+        }
+
+        // Actions directes sur la station en cours d'écoute
+        if let Some(ref st) = *cur_st {
+            let st_edit = st.clone();
+            let st_del = st.clone();
+
+            menu.push(MenuItem::Standard(StandardItem {
+                label: format!("✏️ Modifier « {} »...", st.name),
+                activate: Box::new(move |tray: &mut Self| {
+                    Self::trigger_edit_station_dialog(
+                        st_edit.clone(),
+                        Arc::clone(&tray.root_group),
+                        tray.bookmarks_path.clone(),
+                        Arc::clone(&tray.tray_handle),
+                        Arc::clone(&tray.current_station),
+                        Arc::clone(&tray.last_station),
+                    );
+                }),
+                enabled: true,
+                visible: true,
+                ..Default::default()
+            }));
+
+            menu.push(MenuItem::Standard(StandardItem {
+                label: format!("🗑️ Supprimer « {} »...", st.name),
+                activate: Box::new(move |tray: &mut Self| {
+                    Self::trigger_delete_station_dialog(
+                        st_del.clone(),
+                        Arc::clone(&tray.root_group),
+                        tray.bookmarks_path.clone(),
+                        Arc::clone(&tray.tray_handle),
+                    );
                 }),
                 enabled: true,
                 visible: true,
