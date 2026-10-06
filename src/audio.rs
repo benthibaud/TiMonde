@@ -136,7 +136,17 @@ impl AudioEngine {
                         if let Some(title) = tags.get::<gstreamer::tags::Title>() {
                             let title_str = title.get().to_string();
                             info!("Titre en cours : {}", title_str);
-                            *title_clone.lock().unwrap() = Some(title_str);
+                            let is_new = {
+                                let mut guard = title_clone.lock().unwrap();
+                                let changed = guard.as_deref() != Some(&title_str);
+                                if changed {
+                                    *guard = Some(title_str.clone());
+                                }
+                                changed
+                            };
+                            if is_new {
+                                crate::radio_browser::notify("TiMonde", &title_str);
+                            }
                         }
                     }
                     _ => {}

@@ -64,9 +64,88 @@ fn create_default_bookmarks(path: &Path) -> Group {
 }
 
 fn main() {
+    // 1. Gestion des arguments en ligne de commande (mode contrôle CLI)
+    let args: Vec<String> = std::env::args().collect();
+    if args.len() > 1 {
+        match args[1].as_str() {
+            "--help" | "-h" => {
+                println!("TiMonde - Lecteur de flux radio ultra-léger pour la barre des tâches");
+                println!("\nUsage : timonde [OPTION]");
+                println!("\nOptions de contrôle (agissent sur l'instance en cours d'exécution) :");
+                println!("  -p, --play-pause   Bascule Lecture / Pause");
+                println!("  -n, --next         Station suivante");
+                println!("      --prev         Station précédente");
+                println!("  -s, --stop         Arrêter la lecture");
+                println!("      --status       Afficher l'état et le morceau en cours");
+                println!("  -q, --quit         Quitter TiMonde");
+                println!("  -h, --help         Afficher cette aide");
+                println!("  -v, --version      Afficher la version");
+                return;
+            }
+            "--version" | "-v" => {
+                println!("TiMonde 0.1.0");
+                return;
+            }
+            "-p" | "--play-pause" => {
+                if let Err(e) = mpris::send_command("PlayPause") {
+                    eprintln!("Erreur : {}", e);
+                    std::process::exit(1);
+                }
+                return;
+            }
+            "-n" | "--next" => {
+                if let Err(e) = mpris::send_command("Next") {
+                    eprintln!("Erreur : {}", e);
+                    std::process::exit(1);
+                }
+                return;
+            }
+            "--prev" => {
+                if let Err(e) = mpris::send_command("Previous") {
+                    eprintln!("Erreur : {}", e);
+                    std::process::exit(1);
+                }
+                return;
+            }
+            "-s" | "--stop" => {
+                if let Err(e) = mpris::send_command("Stop") {
+                    eprintln!("Erreur : {}", e);
+                    std::process::exit(1);
+                }
+                return;
+            }
+            "-q" | "--quit" => {
+                let _ = mpris::send_command("Quit");
+                println!("Fermeture de TiMonde.");
+                return;
+            }
+            "--status" => {
+                match mpris::get_status_info() {
+                    Ok(info) => print!("{}", info),
+                    Err(e) => {
+                        eprintln!("{}", e);
+                        std::process::exit(1);
+                    }
+                }
+                return;
+            }
+            other => {
+                eprintln!("Option inconnue : {}", other);
+                eprintln!("Consultez 'timonde --help' pour afficher les options disponibles.");
+                std::process::exit(1);
+            }
+        }
+    }
+
+    // 2. Protection instance unique (évite les doublons d'icônes dans la barre des tâches)
+    if mpris::is_instance_running() {
+        println!("ℹ️ TiMonde est déjà actif dans la barre des tâches.");
+        return;
+    }
+
     // Optimisation stricte de la mémoire glibc :
-    // 1. Limiter le nombre d arènes malloc à 1 pour éviter la multiplication des tas par thread
-    // 2. Réduire le seuil de restitution mémoire au noyau (trim threshold)
+    // - Limiter le nombre d arènes malloc à 1 pour éviter la multiplication des tas par thread
+    // - Réduire le seuil de restitution mémoire au noyau (trim threshold)
     unsafe {
         libc::mallopt(-8, 1); // M_ARENA_MAX = 1
         libc::mallopt(-1, 64 * 1024); // M_TRIM_THRESHOLD = 64 Ko
@@ -79,7 +158,7 @@ fn main() {
     info!("📻 Démarrage de TiMonde (Mode barre des tâches direct)");
     info!("========================================================");
 
-    // 1. Chargement des favoris
+    // 3. Chargement des favoris
     let bookmarks_path = find_bookmarks_path();
     let root_group = if bookmarks_path.exists() {
         info!("Chargement des signets depuis : {:?}", bookmarks_path);
@@ -98,7 +177,7 @@ fn main() {
         create_default_bookmarks(&bookmarks_path)
     };
 
-    // 2. Initialisation du plateau système
+    // 4. Initialisation du plateau système
     let tray = tray::TiMondeTray::new(root_group, bookmarks_path);
 
     // Clones des Arcs partagés avec le serveur MPRIS2
@@ -172,7 +251,7 @@ fn main() {
         trigger_for_mpris();
     });
 
-    // 3. Enregistrement du service D-Bus MPRIS2 (org.mpris.MediaPlayer2.timonde)
+    // 5. Enregistrement du service D-Bus MPRIS2 (org.mpris.MediaPlayer2.timonde)
     mpris::spawn_mpris_server(
         audio,
         current_volume,
@@ -185,7 +264,7 @@ fn main() {
         on_update,
     );
 
-    // 4. Enregistrement de l'icône dans la zone de notification (SNI)
+    // 6. Enregistrement de l'icône dans la zone de notification (SNI)
     let handle = match tray.spawn() {
         Ok(h) => {
             info!("✅ Icône StatusNotifierItem enregistrée sur le bureau hôte !");
@@ -200,7 +279,7 @@ fn main() {
 
     info!("✨ TiMonde est actif et discret dans la barre des tâches.");
 
-    // 5. Boucle d'événements GLib (maintient le processus actif et léger)
+    // 7. Boucle d'événements GLib (maintient le processus actif et léger)
     let main_loop = gstreamer::glib::MainLoop::new(None, false);
     main_loop.run();
 }

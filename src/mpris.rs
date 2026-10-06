@@ -1,7 +1,7 @@
 use std::sync::{Arc, Mutex};
 use std::collections::HashMap;
 use zbus::interface;
-use zbus::zvariant::{ObjectPath, Value};
+use zbus::zvariant::{ObjectPath, Value, OwnedValue};
 use crate::audio::{AudioEngine, PlaybackState};
 use crate::models::{Group, Station};
 
@@ -286,4 +286,104 @@ pub fn spawn_mpris_server(
             }
         }
     });
+}
+
+/// Vérifie si une instance de TiMonde est déjà enregistrée sur D-Bus
+pub fn is_instance_running() -> bool {
+    if let Ok(conn) = zbus::blocking::Connection::session() {
+        if let Ok(reply) = conn.call_method(
+            Some("org.freedesktop.DBus"),
+            "/org/freedesktop/DBus",
+            Some("org.freedesktop.DBus"),
+            "NameHasOwner",
+            &("org.mpris.MediaPlayer2.timonde",),
+        ) {
+            if let Ok(has_owner) = reply.body().deserialize::<bool>() {
+                return has_owner;
+            }
+        }
+    }
+    false
+}
+
+/// Envoie une commande de contrôle D-Bus à l'instance TiMonde active
+pub fn send_command(method: &str) -> Result<(), String> {
+    let conn = zbus::blocking::Connection::session().map_err(|e| e.to_string())?;
+    let iface = if method == "Quit" || method == "Raise" {
+        "org.mpris.MediaPlayer2"
+    } else {
+        "org.mpris.MediaPlayer2.Player"
+    };
+    conn.call_method(
+        Some("org.mpris.MediaPlayer2.timonde"),
+        "/org/mpris/MediaPlayer2",
+        Some(iface),
+        method,
+        &(),
+    ).map_err(|e| format!("Impossible de joindre TiMonde : {}", e))?;
+    Ok(())
+}
+
+/// Récupère l'état et les métadonnées de l'instance TiMonde active
+pub fn get_status_info() -> Result<String, String> {
+    let conn = zbus::blocking::Connection::session().map_err(|e| e.to_string())?;
+
+    let status_reply = conn.call_method(
+        Some("org.mpris.MediaPlayer2.timonde"),
+        "/org/mpris/MediaPlayer2",
+        Some("org.freedesktop.DBus.Properties"),
+        "Get",
+        &("org.mpris.MediaPlayer2.Player", "PlaybackStatus"),
+    ).map_err(|e| format!("TiMonde n'est pas actif ({})", e))?;
+
+    let status_val: OwnedValue = status_reply.body().deserialize().map_err(|e| e.to_string())?;
+    let status_str = match &*status_val {
+        Value::Str(s) => s.as_str(),
+        _ => "Inconnu",
+    };
+
+    let meta_reply = conn.call_method(
+        Some("org.mpris.MediaPlayer2.timonde"),
+        "/org/mpris/MediaPlayer2",
+        Some("org.freedesktop.DBus.Properties"),
+        "Get",
+        &("org.mpris.MediaPlayer2.Player", "Metadata"),
+    ).map_err(|e| format!("Métadonnées inaccessibles ({})", e))?;
+
+    let meta_val: OwnedValue = meta_reply.body().deserialize().map_err(|e| e.to_string())?;
+
+    let mut title = None;
+    let mut artist = None;
+
+    if let Value::Dict(dict) = &*meta_val {
+        for (k, v) in dict.iter() {
+            if let Value::Str(ks) = k {
+                if ks.as_str() == "xesam:title" {
+                    if let Value::Str(ts) = v {
+                        title = Some(ts.to_string());
+                    }
+                } else if ks.as_str() == "xesam:artist" {
+                    if let Value::Str(as_val) = v {
+                        artist = Some(as_val.to_string());
+                    }
+                }
+            }
+        }
+    }
+
+    let mut out = format!("État    : {}\n", match status_str {
+        "Playing" => "▶ En lecture",
+        "Paused" => "⏸ En pause",
+        "Stopped" => "⏹ Arrêté (en veille)",
+        _ => status_str,
+    });
+
+    if let Some(st) = artist {
+        out.push_str(&format!("Station : {}\n", st));
+    }
+    if let Some(t) = title {
+        out.push_str(&format!("Titre   : {}\n", t));
+    }
+
+    Ok(out)
 }
