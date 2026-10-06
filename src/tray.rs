@@ -376,98 +376,119 @@ impl TiMondeTray {
         });
     }
 
-    /// Réorganisation de l ordre des groupes de radios
+    fn find_reorder_script() -> Option<PathBuf> {
+        let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
+        let candidate1 = PathBuf::from(&home).join(".local/share/timonde/scripts/reorder_groups.py");
+        if candidate1.exists() {
+            return Some(candidate1);
+        }
+        let candidate2 = PathBuf::from("data/scripts/reorder_groups.py");
+        if candidate2.exists() {
+            return Some(candidate2);
+        }
+        let candidate3 = PathBuf::from(&home).join(".gemini/antigravity/scratch/TiMonde/data/scripts/reorder_groups.py");
+        if candidate3.exists() {
+            return Some(candidate3);
+        }
+        None
+    }
+
+    /// Réorganisation ergonomique de l'ordre des groupes via fenêtre GTK3 dédiée (Option 1 BB)
     pub fn trigger_reorder_groups_dialog(root_group: Arc<Mutex<Group>>, bookmarks_path: PathBuf) {
         std::thread::spawn(move || {
-            let groups_count = {
+            let groups_payload: Vec<serde_json::Value> = {
                 let guard = root_group.lock().unwrap();
-                guard.subgroups.len()
+                if guard.subgroups.len() < 2 {
+                    crate::radio_browser::notify("TiMonde", "Il n'y a pas assez de groupes à réorganiser");
+                    return;
+                }
+                guard
+                    .subgroups
+                    .iter()
+                    .map(|g| {
+                        serde_json::json!({
+                            "name": g.name,
+                            "count": g.total_stations(),
+                        })
+                    })
+                    .collect()
             };
 
-            if groups_count < 2 {
-                crate::radio_browser::notify("TiMonde", "Il n'y a pas assez de groupes à réorganiser");
-                return;
-            }
+            let script_path = match Self::find_reorder_script() {
+                Some(p) => p,
+                None => {
+                    log::error!("Script reorder_groups.py introuvable");
+                    crate::radio_browser::notify("TiMonde", "Outil de réorganisation introuvable");
+                    return;
+                }
+            };
 
-            let menu_output = match std::process::Command::new("zenity")
-                .arg("--list")
-                .arg("--title=↕️ Réorganiser l'ordre des groupes")
-                .arg("--text=Choisissez une action pour réorganiser vos groupes de radios :")
-                .arg("--column=Action")
-                .arg("🔤 Trier tous les groupes de A à Z")
-                .arg("⬆️ Déplacer un groupe vers le haut")
-                .arg("⬇️ Déplacer un groupe vers le bas")
-                .arg("🔝 Placer un groupe en tout premier")
-                .arg("--width=450")
-                .arg("--height=280")
-                .output()
+            let json_input = match serde_json::to_string(&groups_payload) {
+                Ok(s) => s,
+                Err(e) => {
+                    log::error!("Erreur sérialisation json : {}", e);
+                    return;
+                }
+            };
+
+            let mut child = match std::process::Command::new("python3")
+                .arg(script_path)
+                .stdin(std::process::Stdio::piped())
+                .stdout(std::process::Stdio::piped())
+                .spawn()
             {
-                Ok(out) if out.status.success() => out,
-                _ => return,
+                Ok(c) => c,
+                Err(e) => {
+                    log::error!("Impossible d'exécuter python3 : {}", e);
+                    crate::radio_browser::notify("TiMonde", "Impossible d'ouvrir l'outil de réorganisation");
+                    return;
+                }
             };
 
-            let action = String::from_utf8_lossy(&menu_output.stdout).trim().to_string();
-            if action.is_empty() {
-                return;
+            if let Some(mut stdin) = child.stdin.take() {
+                use std::io::Write;
+                let _ = stdin.write_all(json_input.as_bytes());
             }
 
-            let mut root = root_group.lock().unwrap().clone();
+            let output = match child.wait_with_output() {
+                Ok(out) => out,
+                Err(_) => return,
+            };
 
-            if action.starts_with("🔤") {
-                root.sort_subgroups_alphabetically();
+            // Si code 0 : l'utilisateur a cliqué sur "💾 Enregistrer et recharger"
+            if output.status.success() {
+                let stdout_str = String::from_utf8_lossy(&output.stdout).trim().to_string();
+                let new_names: Vec<String> = match serde_json::from_str(&stdout_str) {
+                    Ok(names) => names,
+                    Err(e) => {
+                        log::error!("Erreur désérialisation du nouvel ordre : {}", e);
+                        return;
+                    }
+                };
+
+                let mut root = root_group.lock().unwrap().clone();
+                let mut reordered_subgroups = Vec::new();
+
+                for name in &new_names {
+                    if let Some(pos) = root.subgroups.iter().position(|g| g.name.eq_ignore_ascii_case(name)) {
+                        reordered_subgroups.push(root.subgroups.remove(pos));
+                    }
+                }
+                reordered_subgroups.append(&mut root.subgroups);
+                root.subgroups = reordered_subgroups;
+
                 if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
                     log::error!("Erreur sauvegarde : {}", e);
                     crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
                     return;
                 }
+
                 *root_group.lock().unwrap() = root;
-                crate::radio_browser::notify("TiMonde", "Groupes triés par ordre alphabétique (A-Z)");
-                return;
-            }
-
-            let mut list_cmd = std::process::Command::new("zenity");
-            list_cmd
-                .arg("--list")
-                .arg("--title=Sélectionnez le groupe")
-                .arg("--text=Choisissez le groupe à déplacer :")
-                .arg("--column=Groupe");
-
-            for g in &root.subgroups {
-                list_cmd.arg(&g.name);
-            }
-
-            let choice_output = match list_cmd.output() {
-                Ok(out) if out.status.success() => out,
-                _ => return,
-            };
-
-            let selected_group = String::from_utf8_lossy(&choice_output.stdout).trim().to_string();
-            if selected_group.is_empty() {
-                return;
-            }
-
-            let mut changed = false;
-            if action.starts_with("⬆️") {
-                changed = root.move_subgroup_up(&selected_group);
-            } else if action.starts_with("⬇️") {
-                changed = root.move_subgroup_down(&selected_group);
-            } else if action.starts_with("🔝") {
-                changed = root.move_subgroup_to_top(&selected_group);
-            }
-
-            if changed {
-                if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
-                    log::error!("Erreur sauvegarde : {}", e);
-                    crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
-                    return;
-                }
-                *root_group.lock().unwrap() = root;
+                log::info!("✅ Ordre des groupes enregistré et signets rechargés !");
                 crate::radio_browser::notify(
                     "TiMonde",
-                    &format!("Ordre du groupe '{}' mis à jour !", selected_group),
+                    "✅ Nouvel ordre des groupes enregistré et rechargé !",
                 );
-            } else {
-                crate::radio_browser::notify("TiMonde", "Le groupe est déjà dans cette position");
             }
         });
     }
