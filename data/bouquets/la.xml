@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="LA" name="Laos" flag="🇱🇦" multilingual="false">
+  <national>
+    <station name="Lao National Radio" url="https://stream.zeno.fm/6kgt4w4k0heuv" genre="ວິທະຍຸກະຈາຍສຽງແຫ່ງຊາດລາວ (Vientiane)" />
+  </national>
+</bouquet>

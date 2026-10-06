@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="TG" name="Togo" flag="🇹🇬" multilingual="false">
+  <national>
+    <station name="Radio Lomé" url="https://stream.zeno.fm/8cgt4w4k0heuv" genre="La voix de la nation togolaise" />
+    <station name="Radio Kara" url="https://stream.zeno.fm/9cgt4w4k0heuv" genre="La radio du nord du Togo" />
+    <station name="Nana FM Lomé" url="https://stream.zeno.fm/1dgt4w4k0heuv" genre="Information et musique togolaise" />
+  </national>
+</bouquet>

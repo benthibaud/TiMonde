@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="EC" name="Équateur" flag="🇪🇨" multilingual="false">
+  <national>
+    <station name="Radio Pública del Ecuador" url="https://stream.zeno.fm/4mgt4w4k0heuv" genre="Medios Públicos - Información y Cultura" />
+    <station name="Radio Canela" url="https://stream.canelaradio.com/canela" genre="La reina de las radios ecuatorianas" />
+    <station name="Radio Disney Ecuador" url="https://stream.zeno.fm/5mgt4w4k0heuv" genre="Tu música, tus historias" />
+    <station name="Exa FM Ecuador" url="https://stream.zeno.fm/6mgt4w4k0heuv" genre="Ponte Exa!" />
+  </national>
+</bouquet>

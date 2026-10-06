@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="PG" name="Papouasie-Nouvelle-Guinée" flag="🇵🇬" multilingual="false">
+  <national>
+    <station name="NBC National Radio PNG" url="https://stream.zeno.fm/6mgt4w4k0heuv" genre="National Broadcasting Corporation of PNG" />
+  </national>
+</bouquet>

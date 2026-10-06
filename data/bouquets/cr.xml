@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="CR" name="Costa Rica" flag="🇨🇷" multilingual="false">
+  <national>
+    <station name="Radio Nacional de Costa Rica" url="https://stream.sinart.go.cr/radionacional" genre="SINART - La radio pública costarricense" />
+    <station name="Teletica Radio 91.5" url="https://stream.teleticaradio.com/live" genre="Noticias, deportes y opinión" />
+    <station name="Bésame Costa Rica" url="https://stream.zeno.fm/1agt4w4k0heuv" genre="La radio apasionada" />
+  </national>
+</bouquet>

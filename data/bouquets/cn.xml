@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="CN" name="Chine" flag="🇨🇳" multilingual="false">
+  <national>
+    <station name="CNR Voice of China (中国之声)" url="https://stream.zeno.fm/4igt4w4k0heuv" genre="China National Radio - 全国主流新闻" />
+    <station name="CNR Voice of Music (音乐之声)" url="https://stream.zeno.fm/5igt4w4k0heuv" genre="China National Radio - 流行音乐盛宴" />
+    <station name="CRI News Radio (环球资讯)" url="https://stream.zeno.fm/6igt4w4k0heuv" genre="China Radio International - 国际权威视角" />
+    <station name="Beijing Music Radio (北京音乐广播)" url="https://stream.zeno.fm/7igt4w4k0heuv" genre="首都最潮音乐" />
+  </national>
+</bouquet>

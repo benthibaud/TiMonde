@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="NE" name="Niger" flag="🇳🇪" multilingual="false">
+  <national>
+    <station name="La Voix du Sahel (ORTN)" url="https://stream.zeno.fm/2cgt4w4k0heuv" genre="L'antenne nationale du Niger" />
+    <station name="Radio Anfani Niamey" url="https://stream.zeno.fm/3cgt4w4k0heuv" genre="Radio indépendante de proximité" />
+    <station name="Radio Saraounia" url="https://stream.zeno.fm/4cgt4w4k0heuv" genre="La voix de l'écoute citoyenne" />
+  </national>
+</bouquet>

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="ML" name="Mali" flag="🇲🇱" multilingual="false">
+  <national>
+    <station name="ORTM Radio Nationale du Mali" url="https://stream.zeno.fm/2bgt4w4k0heuv" genre="ORTM - La chaîne de l'unité nationale" />
+    <station name="Radio Klédu Bamako" url="https://stream.zeno.fm/3bgt4w4k0heuv" genre="L'information crédible et vérifiée" />
+    <station name="Radio Guintan" url="https://stream.zeno.fm/4bgt4w4k0heuv" genre="La voix des femmes du Mali" />
+  </national>
+</bouquet>

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="PF" name="Polynésie française" flag="🇵🇫" multilingual="false">
+  <national>
+    <station name="Polynésie La 1ère" url="https://stream.zeno.fm/7mgt4w4k0heuv" genre="France Télévisions - Info, Musique &amp; Reo Tahiti" />
+    <station name="Radio 1 Tahiti" url="https://stream.zeno.fm/8mgt4w4k0heuv" genre="La première radio privée de Polynésie" />
+    <station name="Tiare FM" url="https://stream.zeno.fm/9mgt4w4k0heuv" genre="La radio 100% musique locale et tahitienne" />
+  </national>
+</bouquet>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="SM" name="Saint-Marin" flag="🇸🇲" multilingual="false">
+  <national>
+    <station name="Radio San Marino" url="https://stream.sanmarinortv.sm:8000/radiorsm" genre="San Marino RTV - L'emittente di Stato" />
+    <station name="Radio San Marino Classic" url="https://stream.sanmarinortv.sm:8000/radiorsmclassic" genre="San Marino RTV - I grandi classici" />
+  </national>
+</bouquet>

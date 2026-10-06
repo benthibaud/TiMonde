@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="PR" name="Porto Rico" flag="🇵🇷" multilingual="false">
+  <national>
+    <station name="WIPR 940 AM" url="https://stream.wipr.pr/wipr-am" genre="Radio Universidad de Puerto Rico" />
+    <station name="WKAQ 580 AM" url="https://stream.zeno.fm/9agt4w4k0heuv" genre="Univision Radio Puerto Rico" />
+    <station name="Zeta 93 FM" url="https://stream.zeno.fm/1bgt4w4k0heuv" genre="La salsa de Puerto Rico" />
+  </national>
+</bouquet>

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="RW" name="Rwanda" flag="🇷🇼" multilingual="false">
+  <national>
+    <station name="Radio Rwanda" url="https://stream.zeno.fm/6fgt4w4k0heuv" genre="RBA - Radiyo y'Igihugu (Kinyarwanda &amp; Français)" />
+    <station name="KT Radio Kigali" url="https://stream.zeno.fm/7fgt4w4k0heuv" genre="Real Talk, Great Music" />
+    <station name="Flash FM Rwanda" url="https://stream.zeno.fm/8fgt4w4k0heuv" genre="The Beat of Kigali" />
+  </national>
+</bouquet>

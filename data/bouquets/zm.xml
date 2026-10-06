@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="ZM" name="Zambie" flag="🇿🇲" multilingual="false">
+  <national>
+    <station name="ZNBC Radio 2" url="https://stream.zeno.fm/9ggt4w4k0heuv" genre="Zambia National Broadcasting Corporation" />
+    <station name="Q-FM Lusaka" url="https://stream.zeno.fm/1hgt4w4k0heuv" genre="Zambia's Leading Urban Radio" />
+  </national>
+</bouquet>

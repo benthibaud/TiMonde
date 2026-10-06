@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="PY" name="Paraguay" flag="🇵🇾" multilingual="false">
+  <national>
+    <station name="Radio Nacional del Paraguay" url="https://stream.zeno.fm/8mgt4w4k0heuv" genre="La voz de la patria (Guaraní &amp; Español)" />
+    <station name="Radio Monumental 1080 AM" url="https://stream.monumental1080.com/live" genre="Mucho más que noticias" />
+    <station name="Radio Ñandutí" url="https://stream.nanduti.com.py/live" genre="El diario hablado del Paraguay" />
+    <station name="Radio Disney Paraguay" url="https://stream.zeno.fm/9mgt4w4k0heuv" genre="Tu música" />
+  </national>
+</bouquet>

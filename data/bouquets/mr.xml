@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="MR" name="Mauritanie" flag="🇲🇷" multilingual="false">
+  <national>
+    <station name="Radio Mauritanie" url="https://stream.zeno.fm/9dgt4w4k0heuv" genre="إذاعة موريتانيا (Arabe, Pulaar, Soninké, Wolof)" />
+    <station name="Radio Jeunesse Mauritanie" url="https://stream.zeno.fm/1egt4w4k0heuv" genre="La voix de la jeunesse" />
+  </national>
+</bouquet>

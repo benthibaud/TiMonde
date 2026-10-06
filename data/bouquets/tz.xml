@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="TZ" name="Tanzanie" flag="🇹🇿" multilingual="false">
+  <national>
+    <station name="TBC Taifa" url="https://stream.zeno.fm/9egt4w4k0heuv" genre="Tanzania Broadcasting Corporation (Swahili)" />
+    <station name="Clouds FM Dar es Salaam" url="https://stream.zeno.fm/1fgt4w4k0heuv" genre="Redio ya Watu (Bongo Flava)" />
+    <station name="Radio One Stereo Tanzania" url="https://stream.zeno.fm/2fgt4w4k0heuv" genre="Kituo cha Watu Makini" />
+  </national>
+</bouquet>

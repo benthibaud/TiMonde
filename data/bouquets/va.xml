@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="VA" name="Vatican" flag="🇻🇦" multilingual="false">
+  <national>
+    <station name="Radio Vaticana (Français)" url="https://media.vaticannews.va/live/audio/fr/live.mp3" genre="Le Saint-Siège - Actualités &amp; Spiritualité" />
+    <station name="Radio Vaticana (Italien)" url="https://media.vaticannews.va/live/audio/it/live.mp3" genre="La voce del Papa e della Chiesa" />
+    <station name="Radio Vaticana (Anglais)" url="https://media.vaticannews.va/live/audio/en/live.mp3" genre="Vatican News English Service" />
+  </national>
+</bouquet>

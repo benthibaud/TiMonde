@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="IS" name="Islande" flag="🇮🇸" multilingual="false">
+  <national>
+    <station name="RÚV Rás 1" url="https://ruv-ice.streamguys1.com/ras1" genre="RÚV - Menning &amp; Fréttir" />
+    <station name="RÚV Rás 2" url="https://ruv-ice.streamguys1.com/ras2" genre="RÚV - Dægurmál &amp; Tónlist" />
+    <station name="RÚV Rondó" url="https://ruv-ice.streamguys1.com/rondo" genre="RÚV - Sígild tónlist &amp; Djass" />
+    <station name="Bylgjan" url="https://live.visir.is/hls-radio/bylgjan/playlist.m3u8" genre="Bylgjan 98.9 - Íslensk tónlist" />
+    <station name="FM957" url="https://live.visir.is/hls-radio/fm957/playlist.m3u8" genre="Vinsælustu lögin" />
+  </national>
+</bouquet>

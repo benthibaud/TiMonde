@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="BO" name="Bolivie" flag="🇧🇴" multilingual="false">
+  <national>
+    <station name="Radio Fides La Paz" url="https://stream.radiofides.com/live" genre="Voz de los sin voz en Bolivia" />
+    <station name="Radio Panamericana Bolivia" url="https://stream.panamericana.bo/live" genre="La radio líder del país" />
+    <station name="Radio Chacaltaya" url="https://stream.zeno.fm/7mgt4w4k0heuv" genre="La más tropical de La Paz" />
+  </national>
+</bouquet>

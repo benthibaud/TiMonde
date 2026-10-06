@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="FJ" name="Fidji" flag="🇫🇯" multilingual="false">
+  <national>
+    <station name="Radio Fiji One" url="https://stream.zeno.fm/4mgt4w4k0heuv" genre="FBC - Na Domo i Viti (iTaukei)" />
+    <station name="Gold FM Fiji" url="https://stream.zeno.fm/5mgt4w4k0heuv" genre="FBC - Only the Classic Hits" />
+  </national>
+</bouquet>

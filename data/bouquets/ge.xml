@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="GE" name="Géorgie" flag="🇬🇪" multilingual="false">
+  <national>
+    <station name="Georgian Public Radio (GPB 1)" url="https://stream.zeno.fm/4lgt4w4k0heuv" genre="საქართველოს პირველი არხი (Tbilisi)" />
+    <station name="Radio Fortuna" url="https://stream.zeno.fm/5lgt4w4k0heuv" genre="ყველაზე პოპულარული მუსიკა" />
+  </national>
+</bouquet>

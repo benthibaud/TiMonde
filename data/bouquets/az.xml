@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="AZ" name="Azerbaïdjan" flag="🇦🇿" multilingual="false">
+  <national>
+    <station name="Azərbaycan Radiosu" url="https://stream.zeno.fm/6lgt4w4k0heuv" genre="AzTV - İlk milli dövlət radiosu" />
+    <station name="ASAN Radio" url="https://stream.zeno.fm/7lgt4w4k0heuv" genre="Dövlət xidmətləri və xit musiqi" />
+  </national>
+</bouquet>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="GH" name="Ghana" flag="🇬🇭" multilingual="false">
+  <national>
+    <station name="GBC Radio 1 (Uniiq FM)" url="https://stream.zeno.fm/2egt4w4k0heuv" genre="Ghana Broadcasting Corporation" />
+    <station name="Joy 99.7 FM Accra" url="https://stream.zeno.fm/3egt4w4k0heuv" genre="Discerning Listener's Choice" />
+    <station name="Citi FM 97.3" url="https://stream.zeno.fm/4egt4w4k0heuv" genre="Relevant Radio / News &amp; Highlife" />
+    <station name="Peace 104.3 FM" url="https://stream.zeno.fm/5egt4w4k0heuv" genre="Kwasia Bi Nti / Twi Radio" />
+  </national>
+</bouquet>

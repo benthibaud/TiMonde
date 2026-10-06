@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="HT" name="Haïti" flag="🇭🇹" multilingual="false">
+  <national>
+    <station name="Radio Nationale d'Haïti (RNH)" url="https://stream.zeno.fm/7agt4w4k0heuv" genre="La voix officielle de la République d'Haïti" />
+    <station name="Radio Caraïbes FM" url="https://stream.radiotelecaraibes.com/caraibesfm" genre="La station la plus populaire de Port-au-Prince" />
+    <station name="Radio Métropole Haïti" url="https://stream.metropolehaiti.com/live" genre="Information, analyses et culture" />
+    <station name="Radio Vision 2000" url="https://stream.zeno.fm/8agt4w4k0heuv" genre="L'information en direct" />
+  </national>
+</bouquet>

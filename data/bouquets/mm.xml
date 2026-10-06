@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="MM" name="Birmanie" flag="🇲🇲" multilingual="false">
+  <national>
+    <station name="MRTV Radio" url="https://stream.zeno.fm/7kgt4w4k0heuv" genre="Myanmar Radio National Service" />
+    <station name="Padamyar FM" url="https://stream.zeno.fm/8kgt4w4k0heuv" genre="Myanmar Modern Pop &amp; Culture" />
+  </national>
+</bouquet>

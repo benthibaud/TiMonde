@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="BJ" name="Bénin" flag="🇧🇯" multilingual="false">
+  <national>
+    <station name="ORTB Radio Bénin" url="https://stream.zeno.fm/5cgt4w4k0heuv" genre="L'antenne nationale de l'ORTB" />
+    <station name="Cotonou FM" url="https://stream.zeno.fm/6cgt4w4k0heuv" genre="La radio urbaine de Cotonou" />
+    <station name="Radio Tokpa" url="https://stream.zeno.fm/7cgt4w4k0heuv" genre="La première radio privée du Bénin" />
+  </national>
+</bouquet>

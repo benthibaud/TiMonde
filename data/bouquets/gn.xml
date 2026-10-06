@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="GN" name="Guinée" flag="🇬🇳" multilingual="false">
+  <national>
+    <station name="RTG Radio Télévision Guinéenne" url="https://stream.zeno.fm/8bgt4w4k0heuv" genre="La voix de la nation guinéenne" />
+    <station name="Espace FM Guinée" url="https://stream.zeno.fm/9bgt4w4k0heuv" genre="Les Grandes Gueules / Libre expression" />
+    <station name="Radio Nostalgie Guinée" url="https://stream.zeno.fm/1cgt4w4k0heuv" genre="Le meilleur de la musique africaine" />
+  </national>
+</bouquet>

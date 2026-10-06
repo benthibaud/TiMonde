@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="BI" name="Burundi" flag="🇧🇮" multilingual="false">
+  <national>
+    <station name="RTNB Radio Nationale" url="https://stream.zeno.fm/9fgt4w4k0heuv" genre="Radio Télévision Nationale du Burundi" />
+    <station name="Radio Bonesha FM" url="https://stream.zeno.fm/1ggt4w4k0heuv" genre="La voix de l'espoir et de la réconciliation" />
+  </national>
+</bouquet>

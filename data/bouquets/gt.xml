@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="GT" name="Guatemala" flag="🇬🇹" multilingual="false">
+  <national>
+    <station name="TGW La Voz de Guatemala" url="https://stream.radiotgw.gob.gt/live" genre="La radio nacional oficial" />
+    <station name="Emisoras Unidas 89.7" url="https://stream.emisorasunidas.com/live" genre="Primera en noticias y deportes" />
+    <station name="Radio Sonora 96.9" url="https://stream.zeno.fm/4agt4w4k0heuv" genre="La que llega a todas partes" />
+  </national>
+</bouquet>

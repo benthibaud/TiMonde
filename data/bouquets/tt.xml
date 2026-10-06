@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="TT" name="Trinité-et-Tobago" flag="🇹🇹" multilingual="false">
+  <national>
+    <station name="Talk City 91.1 TTT" url="https://stream.ttt.co.tt/talkcity" genre="The National Voice of Trinidad &amp; Tobago" />
+    <station name="Slam 100.5 FM" url="https://stream.slam1005.com/live" genre="Progressive Urban &amp; Soca" />
+  </national>
+</bouquet>

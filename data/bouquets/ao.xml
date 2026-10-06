@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="AO" name="Angola" flag="🇦🇴" multilingual="false">
+  <national>
+    <station name="Rádio Nacional de Angola (Canal A)" url="https://stream.zeno.fm/2ggt4w4k0heuv" genre="RNA - A voz de Angola em Luanda" />
+    <station name="Rádio Luanda 99.9" url="https://stream.zeno.fm/3ggt4w4k0heuv" genre="Kizomba, Semba &amp; Informação urbana" />
+    <station name="Rádio Mais Angola" url="https://stream.zeno.fm/4ggt4w4k0heuv" genre="A rádio mais ouvida" />
+  </national>
+</bouquet>

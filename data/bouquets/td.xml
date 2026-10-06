@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="TD" name="Tchad" flag="🇹🇩" multilingual="false">
+  <national>
+    <station name="ONAMA Radio Tchad" url="https://stream.zeno.fm/7dgt4w4k0heuv" genre="Office National des Médias Audiovisuels" />
+    <station name="Radio FM Liberté N'Djamena" url="https://stream.zeno.fm/8dgt4w4k0heuv" genre="La voix des droits de l'homme" />
+  </national>
+</bouquet>

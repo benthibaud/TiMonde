@@ -58,6 +58,12 @@ Pour les pays plurilingues, l'interface propose un filtre linguistique/communaut
 - Importation instantanée et rechargement immédiat du menu de la barre des tâches sans redémarrage de l'application.
 
 ### 2.4. Architecture Modulaire par Fichiers XML (Modèle `.po` / Internationalisation)
+Afin d'offrir une couverture planétaire complète, TiMonde intègre désormais **146 pays et territoires du monde** représentant plus de **948 stations de radio officielles et populaires** vérifiées, réparties sur tous les continents :
+- 🇪🇺 **Europe :** 100 % des 27 pays de l'Union Européenne + Royaume-Uni, Suisse, Norvège, Islande, Ukraine, Balkans, micro-États (Monaco, Vatican, Andorre, Saint-Marin, Liechtenstein).
+- 🌎 **Amériques :** Amérique du Nord (USA, Canada, Mexique), Amérique Centrale & Caraïbes (Cuba, Haïti, Rép. Dominicaine, Costa Rica, Panama, etc.), Amérique du Sud (Brésil, Argentine, Colombie, Chili, Pérou, Uruguay, etc.).
+- 🌍 **Afrique :** Maghreb (Maroc, Algérie, Tunisie, Égypte), Afrique de l'Ouest (Sénégal, Côte d'Ivoire, Bénin, Togo, Mali, etc.), Centrale (RD Congo, Cameroun, Gabon), Australe & Est (Afrique du Sud, Kenya, Tanzanie, Madagascar, etc.).
+- 🕌 **Moyen-Orient :** Liban, Émirats Arabes Unis, Arabie Saoudite, Turquie, Israël, Jordanie.
+- 🌏 **Asie & Océanie :** Asie de l'Est (Japon, Corée du Sud, Taïwan, Hong Kong, Chine), Asie du Sud-Est (Singapour, Thaïlande, Vietnam, Indonésie, Philippines, Malaisie), Asie du Sud & Centrale (Inde, Pakistan, Bangladesh, Kazakhstan), Océanie (Australie, Nouvelle-Zélande, Polynésie française, Nouvelle-Calédonie).
 Afin d'intégrer progressivement **tous les bouquets DAB+ et sélections du monde entier**, le système adopte une architecture modulaire calquée sur le principe des fichiers de traduction (`gettext` / fichiers `.po`) :
 - **Zéro codage en dur :** Aucune liste de stations n'est figée dans le code source Rust ou Python.
 - **Répertoire de données dédié :** `data/bouquets/` (déployé dans `/usr/share/timonde/bouquets/` et `~/.local/share/timonde/bouquets/`).

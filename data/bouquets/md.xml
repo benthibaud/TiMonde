@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="MD" name="Moldavie" flag="🇲🇩" multilingual="false">
+  <national>
+    <station name="Radio Moldova Actualități" url="https://stream.trm.md:8000/rm_actualitati" genre="TRM - Postul public național" />
+    <station name="Radio Moldova Muzical" url="https://stream.trm.md:8000/rm_muzical" genre="TRM - Muzică clasică &amp; Cultură" />
+    <station name="Jurnal FM Chișinău" url="https://stream.jurnalfm.md/live" genre="Prima radio de opinie" />
+    <station name="Radio Noroc" url="https://stream.radionoroc.md/live" genre="Numai cântec moldovenesc" />
+  </national>
+</bouquet>

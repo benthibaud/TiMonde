@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="MZ" name="Mozambique" flag="🇲🇿" multilingual="false">
+  <national>
+    <station name="Rádio Moçambique (Antena Nacional)" url="https://stream.zeno.fm/5ggt4w4k0heuv" genre="RM - Unindo a nação de Maputo ao Rovuma" />
+    <station name="LM Radio Maputo" url="https://stream.zeno.fm/6ggt4w4k0heuv" genre="Lifetime Music / Hits of Yesterday" />
+  </national>
+</bouquet>

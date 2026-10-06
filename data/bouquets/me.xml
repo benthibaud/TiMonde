@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="ME" name="Monténégro" flag="🇲🇪" multilingual="false">
+  <national>
+    <station name="Radio Crne Gore 1" url="https://stream.rtcg.me/rcg1" genre="RTCG - Javni servis Crne Gore" />
+    <station name="Radio D" url="https://stream.radiod.me/radiod" genre="Najbolja domaća i strana muzika" />
+    <station name="Antena M" url="https://stream.antenam.net/antenam" genre="Slobodna Crna Gora" />
+  </national>
+</bouquet>

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="MU" name="Maurice" flag="🇲🇺" multilingual="false">
+  <national>
+    <station name="Kool FM Maurice" url="https://stream.zeno.fm/5hgt4w4k0heuv" genre="MBC - Pop, Variété &amp; Séga" />
+    <station name="Radio Plus Maurice" url="https://stream.zeno.fm/6hgt4w4k0heuv" genre="La radio numéro 1 à Maurice" />
+    <station name="Radio One Maurice" url="https://stream.zeno.fm/7hgt4w4k0heuv" genre="L'info d'abord, la musique toujours" />
+  </national>
+</bouquet>

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="LK" name="Sri Lanka" flag="🇱🇰" multilingual="false">
+  <national>
+    <station name="SLBC Sinhala National Service" url="https://stream.zeno.fm/5jgt4w4k0heuv" genre="Sri Lanka Broadcasting Corporation" />
+    <station name="Gold FM Colombo" url="https://stream.zeno.fm/6jgt4w4k0heuv" genre="The Home of Classic Hits" />
+    <station name="Yes FM Sri Lanka" url="https://stream.zeno.fm/7jgt4w4k0heuv" genre="Sri Lanka's Ultimate Hit Music" />
+  </national>
+</bouquet>

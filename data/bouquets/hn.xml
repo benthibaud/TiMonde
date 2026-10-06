@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="HN" name="Honduras" flag="🇭🇳" multilingual="false">
+  <national>
+    <station name="Radio Nacional de Honduras" url="https://stream.radionacional.hn/live" genre="RNH - Identidad nacional" />
+    <station name="HRN La Voz de Honduras" url="https://stream.radiohrn.hn/live" genre="La emisora más escuchada del país" />
+    <station name="Radio América Honduras" url="https://stream.radioamerica.hn/live" genre="La voz informativa del pueblo" />
+  </national>
+</bouquet>

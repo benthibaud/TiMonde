@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet country="UA" name="Ukraine" flag="🇺🇦" multilingual="false">
+  <national>
+    <station name="Ukrainske Radio" url="https://radio.ukr.radio/ur1-mp3" genre="Суспільне - Головний радіоканал країни" />
+    <station name="Radio Promin" url="https://radio.ukr.radio/ur2-mp3" genre="Суспільне - Молодіжна музична хвиля" />
+    <station name="Radio Kultura" url="https://radio.ukr.radio/ur3-mp3" genre="Суспільне - Театр, класика та література" />
+    <station name="Radio ROKS" url="https://online.radioroks.ua/RadioROKS" genre="Рок. Тільки рок!" />
+    <station name="Hit FM Ukraine" url="https://online.hitfm.ua/HitFM" genre="Тільки хіти" />
+  </national>
+</bouquet>
