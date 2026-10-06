@@ -1,0 +1,159 @@
+use gstreamer::prelude::*;
+use log::{error, info};
+use std::sync::{Arc, Mutex};
+
+/// État de lecture actuel
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum PlaybackState {
+    Stopped,
+    Buffering,
+    Playing,
+    Error,
+}
+
+/// Erreurs potentielles du moteur audio
+#[derive(Debug)]
+pub enum AudioError {
+    Init(gstreamer::glib::Error),
+    Build(String),
+    StateChange(String),
+}
+
+impl std::fmt::Display for AudioError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Init(e) => write!(f, "Erreur initialisation GStreamer : {}", e),
+            Self::Build(msg) => write!(f, "Erreur création pipeline : {}", msg),
+            Self::StateChange(msg) => write!(f, "Erreur changement d'état : {}", msg),
+        }
+    }
+}
+
+impl std::error::Error for AudioError {}
+
+/// Moteur audio s'appuyant sur GStreamer (playbin)
+pub struct AudioEngine {
+    pipeline: gstreamer::Element,
+    _bus_watch: Option<gstreamer::bus::BusWatchGuard>,
+    current_url: Arc<Mutex<Option<String>>>,
+    state: Arc<Mutex<PlaybackState>>,
+}
+
+impl AudioEngine {
+    pub fn new() -> Result<Self, AudioError> {
+        gstreamer::init().map_err(AudioError::Init)?;
+
+        let pipeline = gstreamer::ElementFactory::make("playbin")
+            .name("timonde-player")
+            .build()
+            .map_err(|e| AudioError::Build(e.to_string()))?;
+
+        // Désactivation du rendu vidéo (0x02 = GST_PLAY_FLAG_AUDIO seul)
+
+        let current_url = Arc::new(Mutex::new(None));
+        let state = Arc::new(Mutex::new(PlaybackState::Stopped));
+
+        let bus_watch = if let Some(bus) = pipeline.bus() {
+            let state_clone = Arc::clone(&state);
+            let guard = bus.add_watch(move |_, msg| {
+                use gstreamer::MessageView;
+                match msg.view() {
+                    MessageView::StateChanged(s) => {
+                        if s.src().map(|src| src.name()).as_deref() == Some("timonde-player") {
+                            let mut st = state_clone.lock().unwrap();
+                            match s.current() {
+                                gstreamer::State::Playing => *st = PlaybackState::Playing,
+                                gstreamer::State::Paused => *st = PlaybackState::Buffering,
+                                gstreamer::State::Ready | gstreamer::State::Null => *st = PlaybackState::Stopped,
+                                _ => {}
+                            }
+                        }
+                    }
+                    MessageView::Buffering(b) => {
+                        let percent = b.percent();
+                        let mut st = state_clone.lock().unwrap();
+                        if percent < 100 {
+                            *st = PlaybackState::Buffering;
+                        } else {
+                            *st = PlaybackState::Playing;
+                        }
+                    }
+                    MessageView::Error(err) => {
+                        error!("Erreur GStreamer : {} ({})", err.error(), err.debug().unwrap_or_default());
+                        *state_clone.lock().unwrap() = PlaybackState::Error;
+                    }
+                    MessageView::Tag(tag) => {
+                        let tags = tag.tags();
+                        if let Some(title) = tags.get::<gstreamer::tags::Title>() {
+                            info!("Titre en cours : {}", title.get());
+                        }
+                    }
+                    _ => {}
+                }
+                gstreamer::glib::ControlFlow::Continue
+            }).map_err(|e| AudioError::Build(e.to_string()))?;
+            Some(guard)
+        } else {
+            None
+        };
+
+        Ok(Self {
+            pipeline,
+            _bus_watch: bus_watch,
+            current_url,
+            state,
+        })
+    }
+
+    /// Démarre la lecture d'une URL de flux audio
+    pub fn play(&self, url: &str) -> Result<(), AudioError> {
+        info!("Démarrage du flux : {}", url);
+        self.stop()?;
+
+        self.pipeline.set_property("uri", url);
+        self.pipeline
+            .set_state(gstreamer::State::Playing)
+            .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
+
+        *self.current_url.lock().unwrap() = Some(url.to_string());
+        *self.state.lock().unwrap() = PlaybackState::Buffering;
+        Ok(())
+    }
+
+    /// Arrête la lecture
+    pub fn stop(&self) -> Result<(), AudioError> {
+        self.pipeline
+            .set_state(gstreamer::State::Null)
+            .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
+
+        *self.state.lock().unwrap() = PlaybackState::Stopped;
+        Ok(())
+    }
+
+    /// Ajuste le volume (0.0 = muet, 1.0 = normal, jusqu'à 1.5)
+    pub fn set_volume(&self, volume: f64) {
+        let clamped = volume.clamp(0.0, 1.5);
+        self.pipeline.set_property("volume", clamped);
+    }
+
+    /// Obtient le volume actuel
+    pub fn volume(&self) -> f64 {
+        self.pipeline.property::<f64>("volume")
+    }
+
+    /// Obtient l'état actuel de lecture
+    pub fn state(&self) -> PlaybackState {
+        *self.state.lock().unwrap()
+    }
+
+    /// Obtient l'URL en cours de lecture
+    pub fn current_url(&self) -> Option<String> {
+        self.current_url.lock().unwrap().clone()
+    }
+}
+
+impl Drop for AudioEngine {
+    fn drop(&mut self) {
+        let _ = self.pipeline.set_state(gstreamer::State::Null);
+    }
+}
