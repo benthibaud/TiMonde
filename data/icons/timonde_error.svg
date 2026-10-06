@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- État Non Trouvé / Erreur / Flux muet (Orange-Rouge d'alerte avec point d'exclamation) -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Antenne -->
+    <path d="M5.5 5.5 L15 2" stroke="#ff7043" stroke-width="1.7"/>
+    <!-- Boîtier radio -->
+    <rect x="2.5" y="5.5" width="17" height="14.5" rx="2.8" stroke="#ff7043" stroke-width="1.7" fill="#2d1a18" fill-opacity="0.3"/>
+    <!-- Haut-parleur silencieux -->
+    <circle cx="7.8" cy="12.8" r="3" stroke="#ff7043" stroke-width="1.5" stroke-dasharray="2 2"/>
+    <!-- Triangle / Point d'exclamation d'alerte -->
+    <circle cx="15" cy="12.5" r="3.2" fill="#ff5252" stroke="#ff5252" stroke-width="1"/>
+    <line x1="15" y1="10.8" x2="15" y2="12.8" stroke="#ffffff" stroke-width="1.4"/>
+    <circle cx="15" cy="14.3" r="0.6" fill="#ffffff"/>
+  </g>
+</svg>

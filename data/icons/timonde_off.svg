@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- Fond transparent, contour épuré et sobre (État Veille / Désactivé) -->
+  <g fill="none" stroke="#d5d5d5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.55">
+    <!-- Antenne -->
+    <path d="M6 5 L17 2"/>
+    <!-- Boîtier radio -->
+    <rect x="3" y="5" width="18" height="15" rx="3"/>
+    <!-- Haut-parleur -->
+    <circle cx="8.5" cy="12.5" r="3.2"/>
+    <circle cx="8.5" cy="12.5" r="1.1" fill="#d5d5d5"/>
+    <!-- Molettes / curseurs -->
+    <line x1="14.5" y1="9.5" x2="18.5" y2="9.5"/>
+    <line x1="14.5" y1="12.5" x2="18.5" y2="12.5"/>
+    <circle cx="16.5" cy="15.5" r="1.2" fill="#d5d5d5"/>
+  </g>
+</svg>

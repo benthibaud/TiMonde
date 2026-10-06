@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- État Actif / Musique en cours (Vert éclatant et ondes sonores) -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Ondes radio actives -->
+    <path d="M19 2.5 C20.5 4 20.5 6 19 7.5" stroke="#00e676" stroke-width="1.8"/>
+    <path d="M21 1 C23.5 3.5 23.5 8 21 10.5" stroke="#00e676" stroke-width="1.8" opacity="0.8"/>
+    <!-- Antenne -->
+    <path d="M5.5 5.5 L15 2" stroke="#ffffff" stroke-width="1.7"/>
+    <!-- Boîtier radio -->
+    <rect x="2.5" y="5.5" width="17" height="14.5" rx="2.8" stroke="#ffffff" stroke-width="1.7" fill="#1b2a22" fill-opacity="0.3"/>
+    <!-- Haut-parleur vibrant -->
+    <circle cx="7.8" cy="12.8" r="3.2" stroke="#00e676" stroke-width="1.8"/>
+    <circle cx="7.8" cy="12.8" r="1.3" fill="#00e676"/>
+    <!-- Indicateurs -->
+    <line x1="13.5" y1="10" x2="17" y2="10" stroke="#00e676" stroke-width="1.6"/>
+    <line x1="13.5" y1="12.8" x2="17" y2="12.8" stroke="#ffffff" stroke-width="1.6"/>
+    <circle cx="15.2" cy="15.8" r="1.2" fill="#00e676"/>
+  </g>
+</svg>

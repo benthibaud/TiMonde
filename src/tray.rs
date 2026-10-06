@@ -164,15 +164,21 @@ impl ksni::Tray for TiMondeTray {
 
     fn icon_name(&self) -> String {
         match self.audio.state() {
-            PlaybackState::Playing => "radiotray_on".to_string(),
-            PlaybackState::Buffering => "radiotray_connecting".to_string(),
-            PlaybackState::Paused | PlaybackState::Stopped | PlaybackState::Error => "radiotray_off".to_string(),
+            PlaybackState::Playing => "timonde_on".to_string(),
+            PlaybackState::Buffering => "timonde_error".to_string(),
+            PlaybackState::Paused | PlaybackState::Stopped | PlaybackState::Error => "timonde_off".to_string(),
         }
     }
 
     fn icon_theme_path(&self) -> String {
         let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
-        format!("{}/.local/share/icons/hicolor/48x48/panel", home)
+        let local_icons = format!("{}/.local/share/icons/hicolor/scalable/panel", home);
+        if std::path::Path::new(&local_icons).exists() {
+            local_icons
+        } else {
+            let project_icons = concat!(env!("CARGO_MANIFEST_DIR"), "/data/icons");
+            project_icons.to_string()
+        }
     }
 
     fn scroll(&mut self, delta: i32, _orientation: ksni::Orientation) {
