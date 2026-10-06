@@ -77,10 +77,14 @@ fn main() {
                 println!("  -s, --stop         Arrêter la lecture");
                 println!("      --status       Afficher l'état et le morceau en cours");
                 println!("  -q, --quit         Quitter TiMonde");
-                println!("\nOptions de gestion des stations :");
-                println!("      --search <TERME>   Rechercher des radios sur l'annuaire Radio-Browser");
+                println!("\nOptions de gestion des stations et groupes :");
+                println!("      --search <TERME> [--tag <GENRE>] [--country <PAYS>] [--lang <LANG>] [--limit <N>]");
+                println!("                         Rechercher des radios sur l'annuaire mondial Radio-Browser");
                 println!("      --add <NOM> <URL> [--group <GROUPE>]");
                 println!("                         Ajouter une station manuellement");
+                println!("      --sort-groups      Trier tous les groupes de radios de A à Z");
+                println!("      --move-group <NOM> <--up|--down|--top>");
+                println!("                         Déplacer un groupe vers le haut, le bas ou en premier");
                 println!("  -i, --import <FICHIER> [--group <GROUPE>]");
                 println!("                     Importer des radios (.json radiotray-ng, .m3u, .csv, .xml)");
                 println!("                     Si --group n'est pas spécifié, les radios vont à la racine.");
@@ -95,27 +99,107 @@ fn main() {
                 return;
             }
             "--search" => {
-                if args.len() < 3 {
-                    eprintln!("Usage : timonde --search <mot-clé>");
+                let mut filter = radio_browser::SearchFilter::default();
+                let mut i = 2;
+                while i < args.len() {
+                    match args[i].as_str() {
+                        "--tag" | "-t" => {
+                            if i + 1 < args.len() { filter.tag = Some(args[i + 1].clone()); i += 1; }
+                        }
+                        "--country" | "-c" => {
+                            if i + 1 < args.len() { filter.country = Some(args[i + 1].clone()); i += 1; }
+                        }
+                        "--lang" | "-l" => {
+                            if i + 1 < args.len() { filter.language = Some(args[i + 1].clone()); i += 1; }
+                        }
+                        "--limit" => {
+                            if i + 1 < args.len() {
+                                filter.limit = args[i + 1].parse().unwrap_or(20);
+                                i += 1;
+                            }
+                        }
+                        other if !other.starts_with('-') && filter.name.is_none() => {
+                            filter.name = Some(other.to_string());
+                        }
+                        _ => {}
+                    }
+                    i += 1;
+                }
+
+                if filter.name.is_none() && filter.tag.is_none() && filter.country.is_none() && filter.language.is_none() {
+                    eprintln!("Usage : timonde --search [NOM] [--tag GENRE] [--country PAYS] [--lang LANGUE] [--limit N]");
                     std::process::exit(1);
                 }
-                let query = &args[2];
-                println!("🔍 Recherche sur Radio-Browser pour '{}'...", query);
-                let results = radio_browser::search_online(query, 20);
+
+                println!("🔍 Recherche multicritères sur Radio-Browser...");
+                let results = radio_browser::search_advanced(&filter);
                 if results.is_empty() {
-                    println!("❌ Aucune station trouvée pour '{}'", query);
+                    println!("❌ Aucune station trouvée pour ces critères");
                 } else {
                     println!("📻 {} station(s) trouvée(s) :", results.len());
                     println!("--------------------------------------------------------------------------------");
-                    for (i, r) in results.iter().enumerate() {
+                    for (idx, r) in results.iter().enumerate() {
                         let codec = if r.codec.is_empty() { "-" } else { &r.codec };
                         let rate = if r.bitrate > 0 { format!("{}k", r.bitrate) } else { "-".to_string() };
                         let country = if r.country.is_empty() { "-" } else { &r.country };
-                        println!("{:2}. {:<32} | {:<12} | {:>4} {:>4} | {} votes", i + 1, r.name, country, codec, rate, r.votes);
+                        let tags = if r.tags.is_empty() { "-" } else { &r.tags };
+                        println!("{:2}. {:<30} | {:<12} | {:<16} | {:>4} {:>4} | {} votes",
+                            idx + 1, r.name, country, tags, codec, rate, r.votes);
                         println!("    URL: {}", r.url_resolved);
                     }
                     println!("--------------------------------------------------------------------------------");
                     println!("💡 Pour ajouter une station : timonde --add \"<NOM>\" \"<URL>\" [--group \"<GROUPE>\"]");
+                }
+                return;
+            }
+            "--sort-groups" => {
+                let bookmarks_path = find_bookmarks_path();
+                let mut root = if bookmarks_path.exists() {
+                    bookmarks::load_bookmarks(&bookmarks_path).unwrap_or_else(|_| Group::new("root"))
+                } else {
+                    create_default_bookmarks(&bookmarks_path)
+                };
+                root.sort_subgroups_alphabetically();
+                if let Err(e) = bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                    eprintln!("Erreur lors de la sauvegarde : {}", e);
+                    std::process::exit(1);
+                }
+                println!("✅ Tous les groupes ont été triés par ordre alphabétique (A-Z) dans {:?}", bookmarks_path);
+                return;
+            }
+            "--move-group" => {
+                if args.len() < 4 {
+                    eprintln!("Usage : timonde --move-group <NOM_DU_GROUPE> <--up|--down|--top>");
+                    std::process::exit(1);
+                }
+                let group_name = &args[2];
+                let direction = &args[3];
+
+                let bookmarks_path = find_bookmarks_path();
+                let mut root = if bookmarks_path.exists() {
+                    bookmarks::load_bookmarks(&bookmarks_path).unwrap_or_else(|_| Group::new("root"))
+                } else {
+                    create_default_bookmarks(&bookmarks_path)
+                };
+
+                let changed = match direction.as_str() {
+                    "--up" => root.move_subgroup_up(group_name),
+                    "--down" => root.move_subgroup_down(group_name),
+                    "--top" => root.move_subgroup_to_top(group_name),
+                    _ => {
+                        eprintln!("Option de déplacement inconnue : {}", direction);
+                        std::process::exit(1);
+                    }
+                };
+
+                if changed {
+                    if let Err(e) = bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                        eprintln!("Erreur lors de la sauvegarde : {}", e);
+                        std::process::exit(1);
+                    }
+                    println!("✅ Groupe '{}' déplacé avec succès !", group_name);
+                } else {
+                    println!("ℹ️ Le groupe '{}' n'a pas pu être déplacé (déjà en bordure ou introuvable).", group_name);
                 }
                 return;
             }

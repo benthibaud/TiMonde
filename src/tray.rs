@@ -376,52 +376,179 @@ impl TiMondeTray {
         });
     }
 
-    /// Recherche interactive dans l annuaire mondial Radio-Browser
-    pub fn trigger_search_online_dialog(root_group: Arc<Mutex<Group>>, bookmarks_path: PathBuf) {
+    /// Réorganisation de l ordre des groupes de radios
+    pub fn trigger_reorder_groups_dialog(root_group: Arc<Mutex<Group>>, bookmarks_path: PathBuf) {
         std::thread::spawn(move || {
-            let entry_output = match std::process::Command::new("zenity")
-                .arg("--entry")
-                .arg("--title=🔍 Rechercher sur Radio-Browser")
-                .arg("--text=Nom ou mot-clé de la radio (ex: FIP, Jazz, BBC, Rock, Nostalgie...) :")
+            let groups_count = {
+                let guard = root_group.lock().unwrap();
+                guard.subgroups.len()
+            };
+
+            if groups_count < 2 {
+                crate::radio_browser::notify("TiMonde", "Il n'y a pas assez de groupes à réorganiser");
+                return;
+            }
+
+            let menu_output = match std::process::Command::new("zenity")
+                .arg("--list")
+                .arg("--title=↕️ Réorganiser l'ordre des groupes")
+                .arg("--text=Choisissez une action pour réorganiser vos groupes de radios :")
+                .arg("--column=Action")
+                .arg("🔤 Trier tous les groupes de A à Z")
+                .arg("⬆️ Déplacer un groupe vers le haut")
+                .arg("⬇️ Déplacer un groupe vers le bas")
+                .arg("🔝 Placer un groupe en tout premier")
+                .arg("--width=450")
+                .arg("--height=280")
                 .output()
             {
                 Ok(out) if out.status.success() => out,
                 _ => return,
             };
 
-            let query = String::from_utf8_lossy(&entry_output.stdout).trim().to_string();
-            if query.is_empty() {
+            let action = String::from_utf8_lossy(&menu_output.stdout).trim().to_string();
+            if action.is_empty() {
                 return;
             }
 
-            crate::radio_browser::notify("TiMonde", &format!("Recherche pour '{}'...", query));
-            let results = crate::radio_browser::search_online(&query, 30);
+            let mut root = root_group.lock().unwrap().clone();
 
-            if results.is_empty() {
-                crate::radio_browser::notify("TiMonde", &format!("Aucune station trouvée pour '{}'", query));
+            if action.starts_with("🔤") {
+                root.sort_subgroups_alphabetically();
+                if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                    log::error!("Erreur sauvegarde : {}", e);
+                    crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
+                    return;
+                }
+                *root_group.lock().unwrap() = root;
+                crate::radio_browser::notify("TiMonde", "Groupes triés par ordre alphabétique (A-Z)");
                 return;
             }
 
             let mut list_cmd = std::process::Command::new("zenity");
             list_cmd
                 .arg("--list")
-                .arg(format!("--title=Résultats pour '{}' ({} trouvées)", query, results.len()))
-                .arg("--text=Sélectionnez la station à ajouter à vos favoris :")
+                .arg("--title=Sélectionnez le groupe")
+                .arg("--text=Choisissez le groupe à déplacer :")
+                .arg("--column=Groupe");
+
+            for g in &root.subgroups {
+                list_cmd.arg(&g.name);
+            }
+
+            let choice_output = match list_cmd.output() {
+                Ok(out) if out.status.success() => out,
+                _ => return,
+            };
+
+            let selected_group = String::from_utf8_lossy(&choice_output.stdout).trim().to_string();
+            if selected_group.is_empty() {
+                return;
+            }
+
+            let mut changed = false;
+            if action.starts_with("⬆️") {
+                changed = root.move_subgroup_up(&selected_group);
+            } else if action.starts_with("⬇️") {
+                changed = root.move_subgroup_down(&selected_group);
+            } else if action.starts_with("🔝") {
+                changed = root.move_subgroup_to_top(&selected_group);
+            }
+
+            if changed {
+                if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                    log::error!("Erreur sauvegarde : {}", e);
+                    crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
+                    return;
+                }
+                *root_group.lock().unwrap() = root;
+                crate::radio_browser::notify(
+                    "TiMonde",
+                    &format!("Ordre du groupe '{}' mis à jour !", selected_group),
+                );
+            } else {
+                crate::radio_browser::notify("TiMonde", "Le groupe est déjà dans cette position");
+            }
+        });
+    }
+
+    /// Recherche multicritères (Genre, Pays, Langue, Mot-clé) et importation par lot
+    pub fn trigger_search_online_dialog(root_group: Arc<Mutex<Group>>, bookmarks_path: PathBuf) {
+        std::thread::spawn(move || {
+            let form_output = match std::process::Command::new("zenity")
+                .arg("--forms")
+                .arg("--title=🔍 Recherche & Import Radio-Browser")
+                .arg("--text=Renseignez vos filtres (laissez vide pour ignorer) :")
+                .arg("--add-entry=Nom ou mot-clé :")
+                .arg("--add-entry=Genre / Style (ex: jazz, rock, news, ambient, reggae) :")
+                .arg("--add-entry=Pays / Origine (ex: France, Belgium, Canada, Senegal) :")
+                .arg("--add-entry=Langue (ex: French, English, Spanish, Arabic) :")
+                .output()
+            {
+                Ok(out) if out.status.success() => out,
+                _ => return,
+            };
+
+            let form_str = String::from_utf8_lossy(&form_output.stdout).trim().to_string();
+            let parts: Vec<&str> = form_str.split('|').collect();
+            if parts.is_empty() {
+                return;
+            }
+
+            let name_val = parts.first().map(|s| s.trim()).filter(|s| !s.is_empty()).map(|s| s.to_string());
+            let tag_val = parts.get(1).map(|s| s.trim()).filter(|s| !s.is_empty()).map(|s| s.to_string());
+            let country_val = parts.get(2).map(|s| s.trim()).filter(|s| !s.is_empty()).map(|s| s.to_string());
+            let lang_val = parts.get(3).map(|s| s.trim()).filter(|s| !s.is_empty()).map(|s| s.to_string());
+
+            if name_val.is_none() && tag_val.is_none() && country_val.is_none() && lang_val.is_none() {
+                return;
+            }
+
+            let filter = crate::radio_browser::SearchFilter {
+                name: name_val,
+                tag: tag_val,
+                country: country_val,
+                language: lang_val,
+                limit: 50,
+            };
+
+            crate::radio_browser::notify("TiMonde", "Recherche Radio-Browser en cours...");
+            let results = crate::radio_browser::search_advanced(&filter);
+
+            if results.is_empty() {
+                crate::radio_browser::notify("TiMonde", "Aucune station trouvée pour ces critères");
+                return;
+            }
+
+            let mut list_cmd = std::process::Command::new("zenity");
+            list_cmd
+                .arg("--list")
+                .arg("--checklist")
+                .arg("--multiple")
+                .arg("--separator=;")
+                .arg(format!("--title=Résultats Radio-Browser ({} trouvées)", results.len()))
+                .arg("--text=Cochez les stations à importer dans vos favoris :")
+                .arg("--column=Ajouter")
                 .arg("--column=ID")
                 .arg("--column=Nom")
                 .arg("--column=Pays")
+                .arg("--column=Genre / Tags")
                 .arg("--column=Format")
                 .arg("--column=Débit")
                 .arg("--column=Votes")
-                .arg("--width=720")
-                .arg("--height=420");
+                .arg("--print-column=2")
+                .arg("--hide-column=2")
+                .arg("--width=850")
+                .arg("--height=460");
 
             for (i, r) in results.iter().enumerate() {
+                list_cmd.arg("FALSE");
                 list_cmd.arg(format!("{}", i));
                 list_cmd.arg(&r.name);
                 list_cmd.arg(if r.country.is_empty() { "-" } else { &r.country });
+                list_cmd.arg(if r.tags.is_empty() { "-" } else { &r.tags });
                 list_cmd.arg(if r.codec.is_empty() { "-" } else { &r.codec });
-                list_cmd.arg(if r.bitrate > 0 { format!("{} kbps", r.bitrate) } else { "-".to_string() });
+                list_cmd.arg(if r.bitrate > 0 { format!("{}k", r.bitrate) } else { "-".to_string() });
                 list_cmd.arg(format!("{}", r.votes));
             }
 
@@ -431,12 +558,19 @@ impl TiMondeTray {
             };
 
             let sel_str = String::from_utf8_lossy(&sel_output.stdout).trim().to_string();
-            let selected_idx: usize = match sel_str.parse() {
-                Ok(idx) if idx < results.len() => idx,
-                _ => return,
-            };
+            if sel_str.is_empty() {
+                return;
+            }
 
-            let chosen = &results[selected_idx];
+            let selected_indices: Vec<usize> = sel_str
+                .split(';')
+                .filter_map(|s| s.trim().parse::<usize>().ok())
+                .filter(|&idx| idx < results.len())
+                .collect();
+
+            if selected_indices.is_empty() {
+                return;
+            }
 
             let target_group = match Self::select_target_group_dialog(&root_group) {
                 Some(tg) => tg,
@@ -444,26 +578,39 @@ impl TiMondeTray {
             };
 
             let mut root = root_group.lock().unwrap().clone();
-            match crate::import::add_single_station(
-                &mut root,
-                &chosen.name,
-                &chosen.url_resolved,
-                target_group.as_deref(),
-            ) {
-                Ok(msg) => {
-                    if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
-                        log::error!("Erreur sauvegarde : {}", e);
-                        crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
-                        return;
-                    }
-                    *root_group.lock().unwrap() = root;
-                    log::info!("✅ {}", msg);
-                    crate::radio_browser::notify("TiMonde", &msg);
+            let mut added_count = 0;
+            let mut skipped_count = 0;
+
+            for idx in selected_indices {
+                let chosen = &results[idx];
+                match crate::import::add_single_station(
+                    &mut root,
+                    &chosen.name,
+                    &chosen.url_resolved,
+                    target_group.as_deref(),
+                ) {
+                    Ok(_) => added_count += 1,
+                    Err(_) => skipped_count += 1,
                 }
-                Err(e) => {
-                    log::warn!("Échec de l ajout : {}", e);
-                    crate::radio_browser::notify("TiMonde", &format!("Ajout impossible : {}", e));
+            }
+
+            if added_count > 0 {
+                if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                    log::error!("Erreur sauvegarde : {}", e);
+                    crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
+                    return;
                 }
+                *root_group.lock().unwrap() = root;
+                let grp_name = target_group.as_deref().unwrap_or("la racine");
+                crate::radio_browser::notify(
+                    "TiMonde",
+                    &format!(
+                        "Importation terminée dans {} !\n• {} station(s) ajoutée(s)\n• {} doublon(s) ignoré(s)",
+                        grp_name, added_count, skipped_count
+                    ),
+                );
+            } else {
+                crate::radio_browser::notify("TiMonde", "Toutes les stations sélectionnées étaient déjà dans vos favoris");
             }
         });
     }
@@ -821,6 +968,16 @@ impl ksni::Tray for TiMondeTray {
                     label: "📥 Importer une liste de radios...".to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         Self::trigger_import_dialog(
+                            Arc::clone(&tray.root_group),
+                            tray.bookmarks_path.clone(),
+                        );
+                    }),
+                    ..Default::default()
+                }),
+                MenuItem::Standard(StandardItem {
+                    label: "↕️ Réorganiser l'ordre des groupes...".to_string(),
+                    activate: Box::new(|tray: &mut Self| {
+                        Self::trigger_reorder_groups_dialog(
                             Arc::clone(&tray.root_group),
                             tray.bookmarks_path.clone(),
                         );

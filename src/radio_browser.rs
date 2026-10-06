@@ -27,6 +27,17 @@ pub struct SearchResult {
     pub votes: u32,
     #[serde(default)]
     pub lastcheckok: u32,
+    #[serde(default)]
+    pub tags: String,
+}
+
+#[derive(Debug, Default, Clone)]
+pub struct SearchFilter {
+    pub name: Option<String>,
+    pub tag: Option<String>,
+    pub country: Option<String>,
+    pub language: Option<String>,
+    pub limit: usize,
 }
 
 /// Envoie une notification discrète sur le bureau via notify-send
@@ -115,22 +126,55 @@ pub fn find_backup_stream(station_name: &str) -> Option<(String, String)> {
 
 /// Recherche en ligne des stations sur Radio-Browser par mot-clé avec tri par popularité
 pub fn search_online(query: &str, limit: usize) -> Vec<SearchResult> {
-    let clean_query = query.trim();
-    if clean_query.is_empty() {
-        return Vec::new();
+    search_advanced(&SearchFilter {
+        name: Some(query.to_string()),
+        limit: if limit == 0 { 20 } else { limit },
+        ..Default::default()
+    })
+}
+
+/// Recherche multicritères (Nom, Genre musical / Tag, Pays / Origine, Langue)
+pub fn search_advanced(filter: &SearchFilter) -> Vec<SearchResult> {
+    let limit = if filter.limit == 0 { 25 } else { filter.limit };
+
+    let mut query_params = Vec::new();
+    query_params.push(format!("limit={}", limit));
+    query_params.push("order=votes".to_string());
+    query_params.push("reverse=true".to_string());
+
+    if let Some(ref name) = filter.name {
+        let clean = name.trim();
+        if !clean.is_empty() {
+            query_params.push(format!("name={}", urlencoding(clean)));
+        }
+    }
+    if let Some(ref tag) = filter.tag {
+        let clean = tag.trim();
+        if !clean.is_empty() {
+            query_params.push(format!("tag={}", urlencoding(clean)));
+        }
+    }
+    if let Some(ref country) = filter.country {
+        let clean = country.trim();
+        if !clean.is_empty() {
+            query_params.push(format!("country={}", urlencoding(clean)));
+        }
+    }
+    if let Some(ref lang) = filter.language {
+        let clean = lang.trim();
+        if !clean.is_empty() {
+            query_params.push(format!("language={}", urlencoding(clean)));
+        }
     }
 
+    let query_string = query_params.join("&");
+
     for endpoint in ENDPOINTS {
-        let url = format!(
-            "{}/json/stations/byname/{}?limit={}&order=votes&reverse=true",
-            endpoint,
-            urlencoding(clean_query),
-            limit
-        );
+        let url = format!("{}/json/stations/search?{}", endpoint, query_string);
 
         match ureq::get(&url)
             .set("User-Agent", "TiMonde/0.1.0")
-            .timeout(Duration::from_secs(4))
+            .timeout(Duration::from_secs(5))
             .call()
         {
             Ok(response) => {
@@ -146,7 +190,7 @@ pub fn search_online(query: &str, limit: usize) -> Vec<SearchResult> {
                 }
             }
             Err(e) => {
-                warn!("Échec recherche Radio-Browser sur {} : {}", endpoint, e);
+                warn!("Échec recherche multicritères Radio-Browser sur {} : {}", endpoint, e);
             }
         }
     }
@@ -187,5 +231,18 @@ mod tests {
         let results = search_online("FIP", 5);
         assert!(!results.is_empty(), "La recherche en ligne pour 'FIP' doit renvoyer des résultats");
         assert!(results.iter().any(|r| r.name.to_lowercase().contains("fip")));
+    }
+
+    #[test]
+    fn test_search_advanced_genre_country() {
+        let filter = SearchFilter {
+            tag: Some("jazz".to_string()),
+            country: Some("France".to_string()),
+            limit: 5,
+            ..Default::default()
+        };
+        let results = search_advanced(&filter);
+        assert!(!results.is_empty(), "La recherche Jazz + France doit renvoyer des stations");
+        println!("Trouvé {} stations Jazz en France : première = {}", results.len(), results[0].name);
     }
 }
