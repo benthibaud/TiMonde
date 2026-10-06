@@ -35,7 +35,7 @@ Conçu et propulsé avec l'atelier Antigravity :
 - **Bob** — Frugalité système & performance low-tech
 - **Jim** — Poésie des ondes & histoire
 - **Jack** — Intégration système & furtivité
-- **BB (Brigitte Bardot)** — Crash-test d'ergonomie, bon sens et simplicité d'usage
+- **BB** — Crash-test d'ergonomie, bon sens et simplicité d'usage
 
 ---
 
