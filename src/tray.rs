@@ -254,6 +254,130 @@ impl TiMondeTray {
 
         items
     }
+
+    /// Ouvre les boîtes de dialogue natives (Zenity) pour importer une liste de stations
+    pub fn trigger_import_dialog(root_group: Arc<Mutex<Group>>, bookmarks_path: PathBuf) {
+        std::thread::spawn(move || {
+            // 1. Sélection du fichier
+            let file_output = match std::process::Command::new("zenity")
+                .arg("--file-selection")
+                .arg("--title=Importer une liste de radios (TiMonde)")
+                .arg("--file-filter=Listes de radios (*.json, *.m3u, *.csv, *.xml) | *.json *.m3u *.m3u8 *.csv *.xml")
+                .arg("--file-filter=Tous les fichiers | *")
+                .output()
+            {
+                Ok(out) => out,
+                Err(e) => {
+                    log::error!("Impossible de lancer zenity : {}", e);
+                    crate::radio_browser::notify("TiMonde", "Outil de sélection zenity introuvable");
+                    return;
+                }
+            };
+
+            if !file_output.status.success() {
+                return; // Annulé par l utilisateur
+            }
+
+            let file_str = String::from_utf8_lossy(&file_output.stdout).trim().to_string();
+            if file_str.is_empty() {
+                return;
+            }
+            let file_path = PathBuf::from(&file_str);
+            if !file_path.exists() {
+                crate::radio_browser::notify("TiMonde", "Fichier introuvable");
+                return;
+            }
+
+            // 2. Détermination du groupe cible
+            let existing_groups: Vec<String> = {
+                let guard = root_group.lock().unwrap();
+                fn collect_names(g: &Group, list: &mut Vec<String>) {
+                    for sub in &g.subgroups {
+                        list.push(sub.name.clone());
+                        collect_names(sub, list);
+                    }
+                }
+                let mut list = Vec::new();
+                collect_names(&guard, &mut list);
+                list
+            };
+
+            let mut target_group: Option<String> = None;
+
+            // S il existe des groupes, on propose le choix à l utilisateur.
+            // Si aucun groupe n est encore créé, on envoie directement à la racine par défaut.
+            if !existing_groups.is_empty() {
+                let mut zenity_list = std::process::Command::new("zenity");
+                zenity_list
+                    .arg("--list")
+                    .arg("--title=Groupe de destination")
+                    .arg("--text=Choisissez le groupe où importer les radios :")
+                    .arg("--column=Groupe")
+                    .arg("(Racine - aucun groupe)")
+                    .arg("[+ Nouveau groupe...]");
+
+                for g in &existing_groups {
+                    zenity_list.arg(g);
+                }
+
+                if let Ok(choice_out) = zenity_list.output() {
+                    if !choice_out.status.success() {
+                        return; // Annulé
+                    }
+                    let choice = String::from_utf8_lossy(&choice_out.stdout).trim().to_string();
+                    if choice.is_empty() || choice.starts_with("(Racine") {
+                        target_group = None;
+                    } else if choice.starts_with("[+ Nouveau") {
+                        let entry_out = std::process::Command::new("zenity")
+                            .arg("--entry")
+                            .arg("--title=Nouveau groupe")
+                            .arg("--text=Nom du nouveau groupe de radios :")
+                            .output();
+                        if let Ok(entry_out) = entry_out {
+                            if entry_out.status.success() {
+                                let name = String::from_utf8_lossy(&entry_out.stdout).trim().to_string();
+                                if !name.is_empty() {
+                                    target_group = Some(name);
+                                }
+                            } else {
+                                return; // Annulé
+                            }
+                        }
+                    } else {
+                        target_group = Some(choice);
+                    }
+                }
+            }
+
+            // 3. Traitement de l importation
+            let mut root = root_group.lock().unwrap().clone();
+            match crate::import::import_file(&mut root, &file_path, target_group.as_deref()) {
+                Ok(report) => {
+                    if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                        log::error!("Erreur lors de la sauvegarde : {}", e);
+                        crate::radio_browser::notify("TiMonde", &format!("Erreur lors de la sauvegarde : {}", e));
+                        return;
+                    }
+                    *root_group.lock().unwrap() = root;
+                    log::info!(
+                        "✅ Importation réussie : {} ajoutée(s), {} doublon(s) ignoré(s), {} groupe(s) créé(s)",
+                        report.stations_added, report.duplicates_skipped, report.groups_created
+                    );
+                    crate::radio_browser::notify(
+                        "TiMonde",
+                        &format!(
+                            "Importation réussie !\n• {} station(s) ajoutée(s)\n• {} doublon(s) ignoré(s)",
+                            report.stations_added, report.duplicates_skipped
+                        ),
+                    );
+                }
+                Err(e) => {
+                    log::error!("Erreur lors de l importation : {}", e);
+                    crate::radio_browser::notify("TiMonde", &format!("Erreur d importation : {}", e));
+                }
+            }
+        });
+    }
 }
 
 impl ksni::Tray for TiMondeTray {
@@ -526,6 +650,16 @@ impl ksni::Tray for TiMondeTray {
         menu.push(MenuItem::SubMenu(SubMenu {
             label: "⚙️ Options".to_string(),
             submenu: vec![
+                MenuItem::Standard(StandardItem {
+                    label: "📥 Importer une liste de radios...".to_string(),
+                    activate: Box::new(|tray: &mut Self| {
+                        Self::trigger_import_dialog(
+                            Arc::clone(&tray.root_group),
+                            tray.bookmarks_path.clone(),
+                        );
+                    }),
+                    ..Default::default()
+                }),
                 MenuItem::Standard(StandardItem {
                     label: "🔄 Recharger les signets".to_string(),
                     activate: Box::new(|tray: &mut Self| {
