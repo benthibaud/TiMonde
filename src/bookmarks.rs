@@ -131,7 +131,6 @@ mod tests {
         let root = parse_bookmarks_reader(sample.as_bytes()).expect("Le parsing doit réussir");
         assert_eq!(root.total_stations(), 2);
     }
-}
 
     #[test]
     fn test_parse_real_bookmarks_if_available() {
@@ -143,6 +142,7 @@ mod tests {
             assert!(count > 1000, "Le fichier réel doit contenir plus de 1000 stations");
         }
     }
+}
 
 /// Met à jour l'URL d'une station dans l'arbre des groupes
 pub fn update_station_url(group: &mut Group, station_name: &str, new_url: &str) -> bool {

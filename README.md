@@ -21,15 +21,17 @@ Inspiré par la sobriété historique de **Radio Tray**, TiMonde le modernise po
 
 ---
 
-## 🚀 Feuille de Route Technique
+## 🚀 Feuille de Route Technique & État d'avancement
 
-- [x] Définition de l'identité et du cahier des charges d'universalité
-- [ ] Moteur audio léger et robuste (GStreamer / pipelines audio basse consommation)
-- [ ] Couche d'affichage unifiée via standard X-Apps / StatusNotifierItem (SNI)
-- [ ] Support natif Wayland et X11
-- [ ] Gestionnaire de favoris et listes de flux épuré (formats OPML / JSON / M3U)
-- [ ] Notifications de bureau légères (changement de piste, métadonnées du flux)
-- [ ] Formats de distribution multi-distros (sources CMake/Meson, paquets natifs .deb, .rpm, PKGBUILD Arch, Flatpak)
+- [x] **Définition de l'identité et du cahier des charges d'universalité** (multi-distros & multi-bureaux)
+- [x] **Zone de notification discrète sans fenêtre intermédiaire :** Intégration pure StatusNotifierItem (SNI FreeDesktop / X-Apps) via D-Bus natif.
+- [x] **Ergonomie directe & évidente :** Clic gauche ouvrant immédiatement la liste des stations, aplatissement du palier intermédiaire `root >`.
+- [x] **Moteur audio frugal et optimisé :** Initialisation paresseuse (Lazy Loading), bridage des tampons à 640 Ko, décodeurs légers prioritaires (`faad`, `mpg123`) et purge automatique de la RAM (`malloc_trim`). Empreinte mesurée : 13 Mo en veille, ~45 Mo en lecture.
+- [x] **Contrôles essentiels :** Boutons `⏸ Pause` / `▶ Reprendre`, `▶ Relancer [Station]` après arrêt, et réglage du volume par molette de souris sur l'icône.
+- [x] **Auto-réparation des flux muets :** Watchdog 5 secondes avec interrogation de l'annuaire public Radio-Browser et mise à jour persistante dans `bookmarks.xml`.
+- [x] **3 icônes SVG légères et transparentes :** `timonde_off.svg`, `timonde_on.svg`, `timonde_error.svg`.
+- [x] **Installation universelle :** Fichier `timonde.desktop` FreeDesktop et `Makefile` multi-distributions (`make install`, `make install-user`).
+- [ ] **Phase 2 :** Serveur D-Bus MPRIS2 (contrôle par touches multimédias du clavier et applet son) et packaging natif (.deb, .rpm, PKGBUILD Arch).
 
 ---
 

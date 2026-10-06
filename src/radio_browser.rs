@@ -19,7 +19,7 @@ pub fn notify(title: &str, body: &str) {
         .arg("-a")
         .arg("TiMonde")
         .arg("-i")
-        .arg("radiotray")
+        .arg("audio-speakers")
         .arg(title)
         .arg(body)
         .spawn();

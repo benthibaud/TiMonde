@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=TiMonde
+GenericName=Lecteur de webradios
+GenericName[en]=Online Radio Player
+Comment=Lecteur de radios en ligne léger et discret pour la zone de notification
+Comment[en]=Lightweight tray-based internet radio player
+Exec=timonde
+Icon=timonde_on
+Terminal=false
+Categories=AudioVideo;Audio;Player;
+Keywords=radio;webradio;stream;tray;player;
+StartupNotify=false
+X-GNOME-UsesNotifications=true
