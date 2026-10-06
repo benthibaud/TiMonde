@@ -1,6 +1,7 @@
 pub mod audio;
 pub mod bookmarks;
 pub mod models;
+pub mod radio_browser;
 pub mod tray;
 
 use audio::AudioEngine;
@@ -123,7 +124,7 @@ fn main() {
 
     info!("✨ TiMonde est actif et discret dans la barre des tâches.");
 
-    // 4. Boucle d'événements GLib pour le bus GStreamer (maintient le processus en vie)
+    // 4. Boucle d'événements GLib pour le bus GStreamer
     let main_loop = gstreamer::glib::MainLoop::new(None, false);
     main_loop.run();
 }
