@@ -45,11 +45,25 @@ impl AudioEngine {
     pub fn new(current_title: Arc<Mutex<Option<String>>>) -> Result<Self, AudioError> {
         gstreamer::init().map_err(AudioError::Init)?;
 
-        // Favoriser les décodeurs audio natifs ultra-légers (évite de charger FFmpeg/libavcodec et ses 15 Mo de dépendances)
-        if let Some(feature) = gstreamer::Registry::get().lookup_feature("faad") {
+        let registry = gstreamer::Registry::get();
+
+        // 1. Éliminer le chargement du mastodonte FFmpeg (libgstlibav.so et ses ~35 Mo de dépendances)
+        // Les flux webradio sont décodés par des bibliothèques C légères (mpg123, faad, vorbis, opus, flac).
+        if let Some(plugin) = registry.find_plugin("libav") {
+            registry.remove_plugin(&plugin);
+            info!("🛡️ Plugin lourd libav (FFmpeg) exclu du registre GStreamer pour préserver la RAM");
+        }
+
+        // 2. Favoriser les décodeurs audio natifs ultra-légers
+        if let Some(feature) = registry.lookup_feature("faad") {
             use gstreamer::prelude::PluginFeatureExtManual;
             feature.set_rank(gstreamer::Rank::PRIMARY + 10);
             info!("⚡ Décodeur léger faad promu prioritaire pour l AAC");
+        }
+        if let Some(feature) = registry.lookup_feature("mpg123audiodec") {
+            use gstreamer::prelude::PluginFeatureExtManual;
+            feature.set_rank(gstreamer::Rank::PRIMARY + 10);
+            info!("⚡ Décodeur léger mpg123 promu prioritaire pour le MP3");
         }
 
         let pipeline = gstreamer::ElementFactory::make("playbin")
@@ -57,9 +71,8 @@ impl AudioEngine {
             .build()
             .map_err(|e| AudioError::Build(e.to_string()))?;
 
-        // Optimisations mémoire drastiques issues de radiotray-ng :
+        // Optimisations mémoire drastiques :
         // 1. Désactiver la vidéo, le texte/sous-titres, visualisation, etc.
-        // Flags audio exclusifs : GST_PLAY_FLAG_AUDIO (0x02) | GST_PLAY_FLAG_SOFT_VOLUME (0x10) | GST_PLAY_FLAG_BUFFERING (0x100) = 274 (0x112)
         pipeline.set_property_from_str("flags", "audio+soft-volume+buffering");
 
         // 2. Éléments factices pour la vidéo et les sous-titres (évite de charger les plugins vidéo)
@@ -70,14 +83,12 @@ impl AudioEngine {
             pipeline.set_property("text-sink", &text_sink);
         }
 
-        // 3. Tailles de buffer calquées sur radiotray-ng (320 Ko * 2 = 640 Ko, 2 secondes)
-        let buffer_size: i32 = 640_000;
-        let buffer_duration: i64 = 2 * (gstreamer::ClockTime::SECOND.nseconds() as i64);
-        pipeline.set_property("buffer-size", buffer_size);
-        pipeline.set_property("buffer-duration", buffer_duration);
+        // 3. Réduire la taille du tampon (Buffer Duration & Size)
+        pipeline.set_property("buffer-size", 640 * 1024i32);
+        pipeline.set_property("buffer-duration", (2i64) * 1_000_000_000i64);
 
-        let current_url = Arc::new(Mutex::new(None));
         let state = Arc::new(Mutex::new(PlaybackState::Stopped));
+        let current_url = Arc::new(Mutex::new(None));
 
         let bus_watch = if let Some(bus) = pipeline.bus() {
             let state_clone = Arc::clone(&state);
@@ -85,35 +96,40 @@ impl AudioEngine {
             let guard = bus.add_watch(move |_, msg| {
                 use gstreamer::MessageView;
                 match msg.view() {
-                    MessageView::StateChanged(s) => {
-                        if s.src().map(|src| src.name()).as_deref() == Some("timonde-player") {
+                    MessageView::StateChanged(sc) => {
+                        if sc.src().map(|s| s.name() == "timonde-player").unwrap_or(false) {
                             let mut st = state_clone.lock().unwrap();
-                            match s.current() {
-                                gstreamer::State::Playing => *st = PlaybackState::Playing,
+                            match sc.current() {
+                                gstreamer::State::Playing => {
+                                    *st = PlaybackState::Playing;
+                                }
                                 gstreamer::State::Paused => {
-                                    if *st != PlaybackState::Paused {
-                                        *st = PlaybackState::Buffering;
+                                    if *st != PlaybackState::Buffering {
+                                        *st = PlaybackState::Paused;
                                     }
                                 }
-                                gstreamer::State::Ready | gstreamer::State::Null => *st = PlaybackState::Stopped,
+                                gstreamer::State::Ready | gstreamer::State::Null => {
+                                    *st = PlaybackState::Stopped;
+                                }
                                 _ => {}
                             }
                         }
                     }
                     MessageView::Buffering(b) => {
                         let percent = b.percent();
-                        let mut st = state_clone.lock().unwrap();
-                        if *st != PlaybackState::Paused {
-                            if percent < 100 {
-                                *st = PlaybackState::Buffering;
-                            } else {
-                                *st = PlaybackState::Playing;
-                            }
+                        if percent < 100 {
+                            *state_clone.lock().unwrap() = PlaybackState::Buffering;
+                        } else {
+                            *state_clone.lock().unwrap() = PlaybackState::Playing;
                         }
                     }
                     MessageView::Error(err) => {
-                        error!("Erreur GStreamer : {} ({})", err.error(), err.debug().unwrap_or_default());
+                        error!("Erreur GStreamer : {} ({:?})", err.error(), err.debug());
                         *state_clone.lock().unwrap() = PlaybackState::Error;
+                    }
+                    MessageView::Eos(_) => {
+                        info!("Fin de flux atteinte (EOS)");
+                        *state_clone.lock().unwrap() = PlaybackState::Stopped;
                     }
                     MessageView::Tag(tag) => {
                         let tags = tag.tags();
@@ -126,8 +142,8 @@ impl AudioEngine {
                     _ => {}
                 }
                 gstreamer::glib::ControlFlow::Continue
-            }).map_err(|e| AudioError::Build(e.to_string()))?;
-            Some(guard)
+            });
+            guard.ok()
         } else {
             None
         };
@@ -141,45 +157,42 @@ impl AudioEngine {
         })
     }
 
-    /// Démarre la lecture d'une URL de flux audio
     pub fn play(&self, url: &str) -> Result<(), AudioError> {
         info!("Démarrage du flux : {}", url);
-        self.stop()?;
+        *self.state.lock().unwrap() = PlaybackState::Buffering;
+        *self.current_title.lock().unwrap() = None;
+        *self.current_url.lock().unwrap() = Some(url.to_string());
 
+        let _ = self.pipeline.set_state(gstreamer::State::Ready);
         self.pipeline.set_property("uri", url);
         self.pipeline
             .set_state(gstreamer::State::Playing)
             .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
 
-        *self.current_url.lock().unwrap() = Some(url.to_string());
-        *self.state.lock().unwrap() = PlaybackState::Buffering;
         Ok(())
     }
 
-    /// Met en pause la lecture
     pub fn pause(&self) -> Result<(), AudioError> {
         info!("Mise en pause de la lecture");
         self.pipeline
             .set_state(gstreamer::State::Paused)
             .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
-
         *self.state.lock().unwrap() = PlaybackState::Paused;
         Ok(())
     }
 
-    /// Reprend la lecture après une pause
     pub fn resume(&self) -> Result<(), AudioError> {
         info!("Reprise de la lecture");
         self.pipeline
             .set_state(gstreamer::State::Playing)
             .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
-
         *self.state.lock().unwrap() = PlaybackState::Playing;
         Ok(())
     }
 
-    /// Arrête la lecture et libère les buffers internes
     pub fn stop(&self) -> Result<(), AudioError> {
+        info!("Arrêt du flux et réinitialisation du pipeline");
+        let _ = self.pipeline.set_state(gstreamer::State::Null);
         self.pipeline
             .set_state(gstreamer::State::Null)
             .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
@@ -192,25 +205,12 @@ impl AudioEngine {
         Ok(())
     }
 
-    /// Ajuste le volume
     pub fn set_volume(&self, volume: f64) {
-        let clamped = volume.clamp(0.0, 1.5);
-        self.pipeline.set_property("volume", clamped);
+        self.pipeline.set_property("volume", volume);
     }
 
-    /// Obtient le volume actuel
-    pub fn volume(&self) -> f64 {
-        self.pipeline.property::<f64>("volume")
-    }
-
-    /// Obtient l'état actuel de lecture
     pub fn state(&self) -> PlaybackState {
         *self.state.lock().unwrap()
-    }
-
-    /// Obtient l'URL en cours de lecture
-    pub fn current_url(&self) -> Option<String> {
-        self.current_url.lock().unwrap().clone()
     }
 }
 
