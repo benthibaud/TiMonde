@@ -48,14 +48,12 @@ fn create_default_bookmarks(path: &Path) -> Group {
     }
 
     let default_xml = r#"<bookmarks>
-	<group name="root">
-		<group name="Sélection nationale">
-			<bookmark name="France Inter" url="https://icecast.radiofrance.fr/franceinter-hifi.aac"/>
-			<bookmark name="France Info" url="https://icecast.radiofrance.fr/franceinfo-hifi.aac"/>
-			<bookmark name="France Culture" url="https://icecast.radiofrance.fr/franceculture-hifi.aac"/>
-			<bookmark name="FIP" url="https://icecast.radiofrance.fr/fip-hifi.aac"/>
-			<bookmark name="RTL" url="https://streaming.Radio.rtl.fr/rtl-1-44-128"/>
-		</group>
+	<group name="Sélection nationale">
+		<bookmark name="France Inter" url="https://icecast.radiofrance.fr/franceinter-hifi.aac"/>
+		<bookmark name="France Info" url="https://icecast.radiofrance.fr/franceinfo-hifi.aac"/>
+		<bookmark name="France Culture" url="https://icecast.radiofrance.fr/franceculture-hifi.aac"/>
+		<bookmark name="FIP" url="https://icecast.radiofrance.fr/fip-hifi.aac"/>
+		<bookmark name="RTL" url="https://streaming.Radio.rtl.fr/rtl-1-44-128"/>
 	</group>
 </bookmarks>"#;
 

@@ -356,17 +356,10 @@ impl ksni::Tray for TiMondeTray {
 
         menu.push(MenuItem::Separator);
 
-        // 3. Arborescence des radios sans palier "root" intermédiaire
+        // 3. Arborescence des radios (le niveau "root" est déjà épuré au chargement)
         let root_group = self.root_group.lock().unwrap();
-        let effective_root = if root_group.subgroups.len() == 1
-            && root_group.subgroups[0].name.to_lowercase() == "root"
-        {
-            &root_group.subgroups[0]
-        } else {
-            &*root_group
-        };
 
-        for sub in &effective_root.subgroups {
+        for sub in &root_group.subgroups {
             let submenu_items = Self::build_group_menu(sub);
             if !submenu_items.is_empty() {
                 menu.push(MenuItem::SubMenu(SubMenu {
@@ -379,7 +372,7 @@ impl ksni::Tray for TiMondeTray {
             }
         }
 
-        for st in &effective_root.stations {
+        for st in &root_group.stations {
             if !st.is_separator() {
                 let st_clone = st.clone();
                 menu.push(MenuItem::Standard(StandardItem {

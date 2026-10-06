@@ -108,7 +108,30 @@ pub fn parse_bookmarks_reader<R: std::io::BufRead>(reader: R) -> Result<Group, B
     }
 
     let root = group_stack.pop().unwrap_or_else(|| Group::new("root"));
-    Ok(root)
+    Ok(strip_root_levels(root))
+}
+
+/// Supprime les paliers "root" superflus hérités de Radio Tray
+pub fn strip_root_levels(mut group: Group) -> Group {
+    // Tant que le groupe racine contient un unique sous-groupe nommé "root" et aucune station directe,
+    // on descend pour supprimer la couche d encadrement inutile
+    while group.subgroups.len() == 1
+        && group.stations.is_empty()
+        && group.subgroups[0].name.eq_ignore_ascii_case("root")
+    {
+        group = group.subgroups.remove(0);
+    }
+
+    // Si après déroulement, le sous-groupe unique restant s appelle encore "root",
+    // on fusionne ses éléments au premier niveau
+    if group.subgroups.len() == 1 && group.subgroups[0].name.eq_ignore_ascii_case("root") {
+        let child = group.subgroups.remove(0);
+        group.stations.extend(child.stations);
+        group.subgroups.extend(child.subgroups);
+    }
+
+    group.name = "root".to_string();
+    group
 }
 
 #[cfg(test)]
@@ -140,7 +163,64 @@ mod tests {
             let count = root.total_stations();
             println!("Nombre de stations chargées avec succès : {}", count);
             assert!(count > 1000, "Le fichier réel doit contenir plus de 1000 stations");
+            // Vérifier que le niveau "root" n est plus présent dans les sous-groupes de premier niveau
+            for sub in &root.subgroups {
+                assert_ne!(sub.name.to_lowercase(), "root", "Aucun sous-groupe ne doit s appeler root");
+            }
         }
+    }
+
+    #[test]
+    fn test_strip_multiple_nested_roots() {
+        let nested_sample = r#"<bookmarks>
+            <group name="root">
+                <group name="root">
+                    <group name="root">
+                        <group name="Jazz">
+                            <bookmark name="Jazz Radio" url="https://jazz.example/stream"/>
+                        </group>
+                        <bookmark name="Radio Directe" url="https://direct.example/stream"/>
+                    </group>
+                </group>
+            </group>
+        </bookmarks>"#;
+
+        let root = parse_bookmarks_reader(nested_sample.as_bytes()).expect("Parsing réussi");
+        assert_eq!(root.subgroups.len(), 1);
+        assert_eq!(root.subgroups[0].name, "Jazz");
+        assert_eq!(root.stations.len(), 1);
+        assert_eq!(root.stations[0].name, "Radio Directe");
+        assert_eq!(root.total_stations(), 2);
+    }
+
+    #[test]
+    fn test_save_removes_root_level() {
+        let sample = r#"<bookmarks>
+            <group name="root">
+                <group name="Classique">
+                    <bookmark name="Radio Classique" url="https://classique.example/stream"/>
+                </group>
+            </group>
+        </bookmarks>"#;
+
+        let root = parse_bookmarks_reader(sample.as_bytes()).expect("Parsing réussi");
+        
+        let temp_dir = std::env::temp_dir();
+        let temp_file = temp_dir.join("timonde_test_save_no_root.xml");
+        save_bookmarks(&root, &temp_file).expect("Sauvegarde réussie");
+
+        let saved_content = std::fs::read_to_string(&temp_file).expect("Lecture fichier sauvegardé");
+        let _ = std::fs::remove_file(&temp_file);
+
+        // Le fichier XML sauvegardé ne doit contenir AUCUN tag root !
+        assert!(!saved_content.contains("name=\"root\""), "Le XML sauvegardé ne doit pas avoir name=root");
+        assert!(saved_content.contains("<group name=\"Classique\">"), "Le XML doit contenir le vrai groupe");
+
+        // Re-parsing du fichier sauvegardé pour vérifier l intégrité
+        let reloaded = parse_bookmarks_reader(saved_content.as_bytes()).expect("Re-parsing réussi");
+        assert_eq!(reloaded.subgroups.len(), 1);
+        assert_eq!(reloaded.subgroups[0].name, "Classique");
+        assert_eq!(reloaded.total_stations(), 1);
     }
 }
 
@@ -175,7 +255,19 @@ pub fn save_bookmarks(group: &Group, path: impl AsRef<Path>) -> Result<(), Bookm
     let mut writer = std::io::BufWriter::new(file);
 
     writeln!(writer, "<bookmarks>")?;
-    write_group_xml(&mut writer, group, 1)?;
+    // Écrire directement les sous-groupes et stations au premier niveau sous <bookmarks>,
+    // SANS balise englobante <group name=\"root\"> !
+    for sub in &group.subgroups {
+        write_group_xml(&mut writer, sub, 1)?;
+    }
+    for st in &group.stations {
+        writeln!(
+            writer,
+            "\t<bookmark name=\"{}\" url=\"{}\"/>",
+            escape_xml(&st.name),
+            escape_xml(&st.url)
+        )?;
+    }
     writeln!(writer, "</bookmarks>")?;
     writer.flush()?;
 
