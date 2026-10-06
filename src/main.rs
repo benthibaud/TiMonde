@@ -1,3 +1,4 @@
+pub mod mpris;
 pub mod audio;
 pub mod bookmarks;
 pub mod models;
@@ -9,6 +10,7 @@ use ksni::blocking::TrayMethods;
 use log::{error, info};
 use models::Group;
 use std::path::{Path, PathBuf};
+use std::sync::{Arc, Mutex};
 
 /// Localise le fichier bookmarks.xml de l'utilisateur
 fn find_bookmarks_path() -> PathBuf {
@@ -96,10 +98,95 @@ fn main() {
         create_default_bookmarks(&bookmarks_path)
     };
 
-    // 2. Initialisation du plateau système (D-Bus pur, audio paresseux)
+    // 2. Initialisation du plateau système
     let tray = tray::TiMondeTray::new(root_group, bookmarks_path);
 
-    let _handle = match tray.spawn() {
+    // Clones des Arcs partagés avec le serveur MPRIS2
+    let audio = Arc::clone(&tray.audio);
+    let current_volume = Arc::clone(&tray.current_volume);
+    let current_station = Arc::clone(&tray.current_station);
+    let last_station = Arc::clone(&tray.last_station);
+    let current_title = Arc::clone(&tray.current_title);
+    let root_group_clone = Arc::clone(&tray.root_group);
+    let bookmarks_path_clone = tray.bookmarks_path.clone();
+    let play_generation = Arc::clone(&tray.play_generation);
+
+    let tray_handle_cell: Arc<Mutex<Option<ksni::blocking::Handle<tray::TiMondeTray>>>> =
+        Arc::new(Mutex::new(None));
+
+    // Fonction de rafraîchissement asynchrone non-bloquante du tray
+    let trigger_tray_update = {
+        let handle_cell = Arc::clone(&tray_handle_cell);
+        Arc::new(move || {
+            let handle_cell = Arc::clone(&handle_cell);
+            std::thread::spawn(move || {
+                if let Some(ref h) = *handle_cell.lock().unwrap() {
+                    h.update(|_| {});
+                }
+            });
+        })
+    };
+
+    let trigger_for_play = Arc::clone(&trigger_tray_update);
+    let trigger_for_stop = Arc::clone(&trigger_tray_update);
+    let trigger_for_mpris = Arc::clone(&trigger_tray_update);
+
+    let on_play = {
+        let audio = Arc::clone(&audio);
+        let current_volume = Arc::clone(&current_volume);
+        let current_station = Arc::clone(&current_station);
+        let last_station = Arc::clone(&last_station);
+        let current_title = Arc::clone(&current_title);
+        let root_group = Arc::clone(&root_group_clone);
+        let play_generation = Arc::clone(&play_generation);
+        let bpath = bookmarks_path_clone.clone();
+
+        Arc::new(move |station: models::Station| {
+            tray::TiMondeTray::play_station_flow(
+                station,
+                &audio,
+                &current_volume,
+                &current_station,
+                &last_station,
+                &current_title,
+                &play_generation,
+                &root_group,
+                &bpath,
+            );
+            trigger_for_play();
+        })
+    };
+
+    let on_stop = {
+        let audio = Arc::clone(&audio);
+        let current_station = Arc::clone(&current_station);
+        let current_title = Arc::clone(&current_title);
+
+        Arc::new(move || {
+            tray::TiMondeTray::stop_and_trim_flow(&audio, &current_station, &current_title);
+            trigger_for_stop();
+        })
+    };
+
+    let on_update = Arc::new(move || {
+        trigger_for_mpris();
+    });
+
+    // 3. Enregistrement du service D-Bus MPRIS2 (org.mpris.MediaPlayer2.timonde)
+    mpris::spawn_mpris_server(
+        audio,
+        current_volume,
+        current_station,
+        current_title,
+        last_station,
+        root_group_clone,
+        on_play,
+        on_stop,
+        on_update,
+    );
+
+    // 4. Enregistrement de l'icône dans la zone de notification (SNI)
+    let handle = match tray.spawn() {
         Ok(h) => {
             info!("✅ Icône StatusNotifierItem enregistrée sur le bureau hôte !");
             h
@@ -109,10 +196,11 @@ fn main() {
             std::process::exit(1);
         }
     };
+    *tray_handle_cell.lock().unwrap() = Some(handle);
 
     info!("✨ TiMonde est actif et discret dans la barre des tâches.");
 
-    // 3. Boucle d'événements GLib (maintient le processus actif et léger)
+    // 5. Boucle d'événements GLib (maintient le processus actif et léger)
     let main_loop = gstreamer::glib::MainLoop::new(None, false);
     main_loop.run();
 }

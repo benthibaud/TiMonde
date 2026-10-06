@@ -38,10 +38,11 @@ pub struct AudioEngine {
     _bus_watch: Option<gstreamer::bus::BusWatchGuard>,
     current_url: Arc<Mutex<Option<String>>>,
     state: Arc<Mutex<PlaybackState>>,
+    current_title: Arc<Mutex<Option<String>>>,
 }
 
 impl AudioEngine {
-    pub fn new() -> Result<Self, AudioError> {
+    pub fn new(current_title: Arc<Mutex<Option<String>>>) -> Result<Self, AudioError> {
         gstreamer::init().map_err(AudioError::Init)?;
 
         // Favoriser les décodeurs audio natifs ultra-légers (évite de charger FFmpeg/libavcodec et ses 15 Mo de dépendances)
@@ -80,6 +81,7 @@ impl AudioEngine {
 
         let bus_watch = if let Some(bus) = pipeline.bus() {
             let state_clone = Arc::clone(&state);
+            let title_clone = Arc::clone(&current_title);
             let guard = bus.add_watch(move |_, msg| {
                 use gstreamer::MessageView;
                 match msg.view() {
@@ -116,7 +118,9 @@ impl AudioEngine {
                     MessageView::Tag(tag) => {
                         let tags = tag.tags();
                         if let Some(title) = tags.get::<gstreamer::tags::Title>() {
-                            info!("Titre en cours : {}", title.get());
+                            let title_str = title.get().to_string();
+                            info!("Titre en cours : {}", title_str);
+                            *title_clone.lock().unwrap() = Some(title_str);
                         }
                     }
                     _ => {}
@@ -133,6 +137,7 @@ impl AudioEngine {
             _bus_watch: bus_watch,
             current_url,
             state,
+            current_title,
         })
     }
 
@@ -180,6 +185,7 @@ impl AudioEngine {
             .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
 
         *self.state.lock().unwrap() = PlaybackState::Stopped;
+        *self.current_title.lock().unwrap() = None;
         unsafe {
             libc::malloc_trim(0);
         }

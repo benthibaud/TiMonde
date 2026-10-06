@@ -4,7 +4,7 @@ use crate::models::{Group, Station};
 use crate::radio_browser::{find_backup_stream, notify};
 use ksni::menu::{MenuItem, StandardItem, SubMenu};
 use log::{error, info};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::{Arc, Mutex};
 use std::time::Duration;
@@ -14,8 +14,9 @@ pub struct TiMondeTray {
     pub current_volume: Arc<Mutex<f64>>,
     pub root_group: Arc<Mutex<Group>>,
     pub bookmarks_path: PathBuf,
-    pub last_station: Option<Station>,
-    pub current_station: Option<Station>,
+    pub last_station: Arc<Mutex<Option<Station>>>,
+    pub current_station: Arc<Mutex<Option<Station>>>,
+    pub current_title: Arc<Mutex<Option<String>>>,
     pub play_generation: Arc<AtomicU64>,
 }
 
@@ -26,8 +27,9 @@ impl TiMondeTray {
             current_volume: Arc::new(Mutex::new(0.80)),
             root_group: Arc::new(Mutex::new(root_group)),
             bookmarks_path,
-            last_station: None,
-            current_station: None,
+            last_station: Arc::new(Mutex::new(None)),
+            current_station: Arc::new(Mutex::new(None)),
+            current_title: Arc::new(Mutex::new(None)),
             play_generation: Arc::new(AtomicU64::new(0)),
         }
     }
@@ -42,14 +44,15 @@ impl TiMondeTray {
     }
 
     /// Assure l'existence du moteur audio à la demande (Lazy Loading)
-    fn get_or_create_engine(
+    pub fn get_or_create_engine(
         audio_mutex: &Arc<Mutex<Option<AudioEngine>>>,
         current_volume: &Arc<Mutex<f64>>,
+        current_title: &Arc<Mutex<Option<String>>>,
     ) -> Result<(), String> {
         let mut guard = audio_mutex.lock().unwrap();
         if guard.is_none() {
             info!("⚡ Chargement à la demande du moteur GStreamer...");
-            match AudioEngine::new() {
+            match AudioEngine::new(Arc::clone(current_title)) {
                 Ok(engine) => {
                     let vol = *current_volume.lock().unwrap();
                     engine.set_volume(vol);
@@ -61,20 +64,31 @@ impl TiMondeTray {
         Ok(())
     }
 
-    /// Démarre une station avec watchdog et auto-réparation persistante
-    pub fn play_station_with_watchdog(&mut self, station: Station) {
+    /// Exécute le flux complet de lecture avec watchdog et secours automatique
+    #[allow(clippy::too_many_arguments)]
+    pub fn play_station_flow(
+        station: Station,
+        audio: &Arc<Mutex<Option<AudioEngine>>>,
+        current_volume: &Arc<Mutex<f64>>,
+        current_station: &Arc<Mutex<Option<Station>>>,
+        last_station: &Arc<Mutex<Option<Station>>>,
+        current_title: &Arc<Mutex<Option<String>>>,
+        play_generation: &Arc<AtomicU64>,
+        root_group: &Arc<Mutex<Group>>,
+        bookmarks_path: &Path,
+    ) {
         let station_name = station.name.clone();
         let url = station.url.clone();
         info!("Sélection de la station : {} ({})", station_name, url);
 
-        if let Err(e) = Self::get_or_create_engine(&self.audio, &self.current_volume) {
+        if let Err(e) = Self::get_or_create_engine(audio, current_volume, current_title) {
             error!("{}", e);
             notify("TiMonde", "Impossible d'initialiser l'audio");
             return;
         }
 
         {
-            let guard = self.audio.lock().unwrap();
+            let guard = audio.lock().unwrap();
             if let Some(ref engine) = *guard {
                 if let Err(e) = engine.play(&url) {
                     error!("Échec initial de lecture : {}", e);
@@ -84,14 +98,15 @@ impl TiMondeTray {
             }
         }
 
-        self.last_station = Some(station.clone());
-        self.current_station = Some(station);
+        *last_station.lock().unwrap() = Some(station.clone());
+        *current_station.lock().unwrap() = Some(station);
+        *current_title.lock().unwrap() = None;
 
-        let gen = self.play_generation.fetch_add(1, Ordering::SeqCst) + 1;
-        let gen_clone = Arc::clone(&self.play_generation);
-        let audio_clone = Arc::clone(&self.audio);
-        let root_group_clone = Arc::clone(&self.root_group);
-        let bookmarks_path_clone = self.bookmarks_path.clone();
+        let gen = play_generation.fetch_add(1, Ordering::SeqCst) + 1;
+        let gen_clone = Arc::clone(play_generation);
+        let audio_clone = Arc::clone(audio);
+        let root_group_clone = Arc::clone(root_group);
+        let bookmarks_path_clone = bookmarks_path.to_path_buf();
         let name_for_watchdog = station_name.clone();
 
         std::thread::spawn(move || {
@@ -153,13 +168,18 @@ impl TiMondeTray {
         });
     }
 
-    /// Arrête la lecture et libère la mémoire vers le système
-    pub fn stop_and_trim(&mut self) {
-        let mut guard = self.audio.lock().unwrap();
+    /// Arrête la lecture et restitue la mémoire vers le système d'exploitation
+    pub fn stop_and_trim_flow(
+        audio: &Arc<Mutex<Option<AudioEngine>>>,
+        current_station: &Arc<Mutex<Option<Station>>>,
+        current_title: &Arc<Mutex<Option<String>>>,
+    ) {
+        let mut guard = audio.lock().unwrap();
         if let Some(ref engine) = *guard {
             let _ = engine.stop();
         }
-        self.current_station = None;
+        *current_station.lock().unwrap() = None;
+        *current_title.lock().unwrap() = None;
 
         // Décharge le pipeline GStreamer et restitue la mémoire vive au système Linux
         *guard = None;
@@ -167,6 +187,24 @@ impl TiMondeTray {
             libc::malloc_trim(0);
         }
         info!("🧹 Mémoire audio libérée (malloc_trim)");
+    }
+
+    pub fn play_station(&self, station: Station) {
+        Self::play_station_flow(
+            station,
+            &self.audio,
+            &self.current_volume,
+            &self.current_station,
+            &self.last_station,
+            &self.current_title,
+            &self.play_generation,
+            &self.root_group,
+            &self.bookmarks_path,
+        );
+    }
+
+    pub fn stop_and_trim(&self) {
+        Self::stop_and_trim_flow(&self.audio, &self.current_station, &self.current_title);
     }
 
     /// Construit récursivement les éléments de menu pour un groupe donné
@@ -199,7 +237,7 @@ impl TiMondeTray {
                 let item = StandardItem {
                     label: station.name.clone(),
                     activate: Box::new(move |tray: &mut Self| {
-                        tray.play_station_with_watchdog(st_clone.clone());
+                        tray.play_station(st_clone.clone());
                     }),
                     enabled: true,
                     visible: true,
@@ -221,8 +259,16 @@ impl ksni::Tray for TiMondeTray {
     }
 
     fn title(&self) -> String {
-        match (&self.current_station, self.state()) {
-            (Some(st), PlaybackState::Playing) => format!("TiMonde : {}", st.name),
+        let cur_st = self.current_station.lock().unwrap();
+        match (cur_st.as_ref(), self.state()) {
+            (Some(st), PlaybackState::Playing) => {
+                let cur_title = self.current_title.lock().unwrap();
+                if let Some(ref t) = *cur_title {
+                    format!("TiMonde : {} - {}", st.name, t)
+                } else {
+                    format!("TiMonde : {}", st.name)
+                }
+            }
             (Some(st), PlaybackState::Buffering) => format!("TiMonde (Connexion...) : {}", st.name),
             (Some(st), PlaybackState::Paused) => format!("TiMonde (Pause) : {}", st.name),
             _ => "TiMonde".to_string(),
@@ -248,29 +294,27 @@ impl ksni::Tray for TiMondeTray {
         }
     }
 
-    fn scroll(&mut self, delta: i32, _orientation: ksni::Orientation) {
-        let mut vol_guard = self.current_volume.lock().unwrap();
-        let step = (delta as f64) * 0.05;
-        *vol_guard = (*vol_guard + step).clamp(0.0, 1.5);
-        let new_vol = *vol_guard;
-
-        let audio_guard = self.audio.lock().unwrap();
-        if let Some(ref engine) = *audio_guard {
-            engine.set_volume(new_vol);
-        }
-    }
-
     fn menu(&self) -> Vec<MenuItem<Self>> {
         let mut menu = Vec::new();
-
-        // 1. En-tête informatif sur la lecture en cours
         let current_state = self.state();
-        let status_label = match (&self.current_station, current_state) {
-            (Some(st), PlaybackState::Playing) => format!("▶ En lecture : {}", st.name),
-            (Some(st), PlaybackState::Buffering) => format!("⏳ Connexion : {}", st.name),
+
+        // 1. En-tête : Station et état
+        let cur_st = self.current_station.lock().unwrap();
+        let cur_title = self.current_title.lock().unwrap();
+        let status_label = match (cur_st.as_ref(), current_state) {
+            (Some(st), PlaybackState::Playing) => {
+                if let Some(ref t) = *cur_title {
+                    format!("▶ {} ({})", st.name, t)
+                } else {
+                    format!("▶ En lecture : {}", st.name)
+                }
+            }
+            (Some(st), PlaybackState::Buffering) => format!("⏳ Connexion à {}...", st.name),
             (Some(st), PlaybackState::Paused) => format!("⏸ En pause : {}", st.name),
             _ => "⏹️ TiMonde (En veille)".to_string(),
         };
+        drop(cur_st);
+        drop(cur_title);
 
         menu.push(MenuItem::Standard(StandardItem {
             label: status_label,
@@ -328,12 +372,13 @@ impl ksni::Tray for TiMondeTray {
                 }));
             }
             PlaybackState::Stopped | PlaybackState::Error => {
-                if let Some(ref last_st) = self.last_station {
+                let last = self.last_station.lock().unwrap();
+                if let Some(ref last_st) = *last {
                     let st_to_replay = last_st.clone();
                     menu.push(MenuItem::Standard(StandardItem {
                         label: format!("▶ Relancer : {}", st_to_replay.name),
                         activate: Box::new(move |tray: &mut Self| {
-                            tray.play_station_with_watchdog(st_to_replay.clone());
+                            tray.play_station(st_to_replay.clone());
                         }),
                         enabled: true,
                         visible: true,
@@ -378,7 +423,7 @@ impl ksni::Tray for TiMondeTray {
                 menu.push(MenuItem::Standard(StandardItem {
                     label: st.name.clone(),
                     activate: Box::new(move |tray: &mut Self| {
-                        tray.play_station_with_watchdog(st_clone.clone());
+                        tray.play_station(st_clone.clone());
                     }),
                     enabled: true,
                     visible: true,
