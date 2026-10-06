@@ -1,3 +1,4 @@
+pub mod import;
 pub mod playlist;
 pub mod mpris;
 pub mod audio;
@@ -65,7 +66,9 @@ fn create_default_bookmarks(path: &Path) -> Group {
 }
 
 fn main() {
-    // 1. Gestion des arguments en ligne de commande (mode contrôle CLI)
+    let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
+
+    // 1. Gestion des arguments en ligne de commande (mode contrôle CLI et importation)
     let args: Vec<String> = std::env::args().collect();
     if args.len() > 1 {
         match args[1].as_str() {
@@ -79,12 +82,61 @@ fn main() {
                 println!("  -s, --stop         Arrêter la lecture");
                 println!("      --status       Afficher l'état et le morceau en cours");
                 println!("  -q, --quit         Quitter TiMonde");
+                println!("\nOptions d'importation :");
+                println!("  -i, --import <FICHIER> [--group <GROUPE>]");
+                println!("                     Importer des radios (.json radiotray-ng, .m3u, .csv, .xml)");
+                println!("                     Si --group n'est pas spécifié, les radios vont à la racine.");
+                println!("                     Gestion automatique des doublons (URL et nom).");
+                println!("\nOptions générales :");
                 println!("  -h, --help         Afficher cette aide");
                 println!("  -v, --version      Afficher la version");
                 return;
             }
             "--version" | "-v" => {
                 println!("TiMonde 0.1.0");
+                return;
+            }
+            "-i" | "--import" => {
+                if args.len() < 3 {
+                    eprintln!("Usage : timonde --import <chemin_fichier> [--group <nom_du_groupe>]");
+                    std::process::exit(1);
+                }
+                let file_path = PathBuf::from(&args[2]);
+                let mut target_group = None;
+                if args.len() >= 5 && (args[3] == "--group" || args[3] == "-g") {
+                    target_group = Some(args[4].as_str());
+                }
+
+                let bookmarks_path = find_bookmarks_path();
+                let mut root = if bookmarks_path.exists() {
+                    bookmarks::load_bookmarks(&bookmarks_path).unwrap_or_else(|_| Group::new("root"))
+                } else {
+                    create_default_bookmarks(&bookmarks_path)
+                };
+
+                println!("📦 Importation depuis : {:?}", file_path);
+                if let Some(tg) = target_group {
+                    println!("📁 Groupe cible       : {}", tg);
+                } else {
+                    println!("📁 Groupe cible       : (Racine par défaut)");
+                }
+
+                match import::import_file(&mut root, &file_path, target_group) {
+                    Ok(report) => {
+                        if let Err(e) = bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                            eprintln!("Erreur lors de la sauvegarde : {}", e);
+                            std::process::exit(1);
+                        }
+                        println!("✅ Importation terminée avec succès dans {:?} :", bookmarks_path);
+                        println!("   - {} nouvelle(s) station(s) ajoutée(s)", report.stations_added);
+                        println!("   - {} doublon(s) ignoré(s)", report.duplicates_skipped);
+                        println!("   - {} groupe(s) créé(s)", report.groups_created);
+                    }
+                    Err(e) => {
+                        eprintln!("Erreur lors de l'importation : {}", e);
+                        std::process::exit(1);
+                    }
+                }
                 return;
             }
             "-p" | "--play-pause" => {
@@ -159,7 +211,7 @@ fn main() {
     info!("📻 Démarrage de TiMonde (Mode barre des tâches direct)");
     info!("========================================================");
 
-    // 3. Chargement des favoris
+    // 3. Chargement des favoris (avec migration transparente si seul radiotray-ng est présent)
     let bookmarks_path = find_bookmarks_path();
     let root_group = if bookmarks_path.exists() {
         info!("Chargement des signets depuis : {:?}", bookmarks_path);
@@ -174,8 +226,22 @@ fn main() {
             }
         }
     } else {
-        info!("Aucun fichier existant trouvé -> création de {:?}", bookmarks_path);
-        create_default_bookmarks(&bookmarks_path)
+        // Vérifier si un bookmarks.json de radiotray-ng existe pour conversion automatique
+        let rtng_json = PathBuf::from(&home).join(".config/radiotray-ng/bookmarks.json");
+        if rtng_json.exists() {
+            info!("Migration automatique depuis radiotray-ng : {:?}", rtng_json);
+            let mut new_root = Group::new("root");
+            if let Ok(report) = import::import_file(&mut new_root, &rtng_json, None) {
+                info!("✅ {} stations migrées depuis radiotray-ng !", report.stations_added);
+                let _ = bookmarks::save_bookmarks(&new_root, &bookmarks_path);
+                new_root
+            } else {
+                create_default_bookmarks(&bookmarks_path)
+            }
+        } else {
+            info!("Aucun fichier existant trouvé -> création de {:?}", bookmarks_path);
+            create_default_bookmarks(&bookmarks_path)
+        }
     };
 
     // 4. Initialisation du plateau système
