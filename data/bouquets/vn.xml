@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="VN" name="Viêt Nam" flag="🇻🇳" multilingual="false">
+  <national>
+    <station name="VOV1 - Thời sự" url="https://stream.zeno.fm/8bgt4w4k0heuv" genre="Đài Tiếng nói Việt Nam - Tin tức &amp; Chính trị"/>
+    <station name="VOV2 - Văn hóa &amp; Đời sống" url="https://stream.zeno.fm/9bgt4w4k0heuv" genre="Đài Tiếng nói Việt Nam - Văn học &amp; Nghệ thuật"/>
+    <station name="VOV3 - Âm nhạc" url="https://stream.zeno.fm/1cgt4w4k0heuv" genre="Đài Tiếng nói Việt Nam - Ca nhạc &amp; Giải trí"/>
+    <station name="VOV5 - Phát thanh Đối ngoại (Français)" url="https://stream.zeno.fm/2cgt4w4k0heuv" genre="Đài Tiếng nói Việt Nam - Émissions en français"/>
+    <station name="VOV Giao Thông Hà Nội" url="https://stream.zeno.fm/3cgt4w4k0heuv" genre="Kênh thông tin đô thị &amp; Giao thông"/>
+    <station name="VOH 99.9 FM TP.HCM" url="https://stream.zeno.fm/4cgt4w4k0heuv" genre="Đài Tiếng nói Nhân dân Thành phố Hồ Chí Minh"/>
+  </national>
+</bouquet>

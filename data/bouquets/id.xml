@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="ID" name="Indonésie" flag="🇮🇩" multilingual="false">
+  <national>
+    <station name="RRI Programa 3" url="https://stream.zeno.fm/5cgt4w4k0heuv" genre="Radio Republik Indonesia - Jaringan Berita Nasional"/>
+    <station name="RRI Programa 1 Jakarta" url="https://stream.zeno.fm/6cgt4w4k0heuv" genre="Radio Republik Indonesia - Pemberdayaan Masyarakat"/>
+    <station name="RRI Programa 2 Jakarta" url="https://stream.zeno.fm/7cgt4w4k0heuv" genre="Radio Republik Indonesia - Musik &amp; Kreativitas Muda"/>
+    <station name="Prambors FM 102.2 Jakarta" url="https://stream.zeno.fm/8cgt4w4k0heuv" genre="Indonesia's No. 1 Youth Station"/>
+    <station name="Gen 98.7 FM Jakarta" url="https://stream.zeno.fm/9cgt4w4k0heuv" genre="Suara Musik Indonesia"/>
+    <station name="Hard Rock FM 87.6 Jakarta" url="https://stream.zeno.fm/1dgt4w4k0heuv" genre="Lifestyle &amp; Entertainment Station"/>
+    <station name="I-Radio 89.6 FM" url="https://stream.zeno.fm/2dgt4w4k0heuv" genre="100% Musik Indonesia"/>
+    <station name="Delta FM Jakarta" url="https://stream.zeno.fm/3dgt4w4k0heuv" genre="Lagu Terenak &amp; Informasi Terkini"/>
+  </national>
+</bouquet>

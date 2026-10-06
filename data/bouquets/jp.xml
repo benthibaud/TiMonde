@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="JP" name="Japon" flag="🇯🇵" multilingual="false">
+  <national>
+    <station name="NHK Radio 1 Tokyo" url="https://nhkradioakr1-i.akamaihd.net/hls/live/511633/1-r1/1-r1-01.m3u8" genre="NHK - ニュース・生活情報・教養"/>
+    <station name="NHK Radio 2 Tokyo" url="https://nhkradioakr2-i.akamaihd.net/hls/live/511929/1-r2/1-r2-01.m3u8" genre="NHK - 語学・文化・教育"/>
+    <station name="NHK FM Tokyo" url="https://nhkradioakfm-i.akamaihd.net/hls/live/512290/1-fm/1-fm-01.m3u8" genre="NHK - クラシック・ジャズ・邦楽"/>
+    <station name="J-Wave 81.3 FM" url="https://stream.zeno.fm/4mgt4w4k0heuv" genre="Tokyo's Eclectic Sounds &amp; Urban Culture"/>
+    <station name="Tokyo FM 80.0" url="https://stream.zeno.fm/5mgt4w4k0heuv" genre="80.0 Tokyo Pop &amp; Entertainment"/>
+    <station name="Shonan Beach FM 78.9" url="https://shonanbeachfm.out.airtime.pro/shonanbeachfm_b" genre="Jazz, Classic &amp; Seaside Vibes"/>
+    <station name="FM Yokohama 84.7" url="https://stream.zeno.fm/6mgt4w4k0heuv" genre="Kanagawa / Yokohama Hit Music"/>
+    <station name="Asia DREAM Radio Japan" url="https://igor.torontocast.com:1025/;" genre="J-Pop, Idol &amp; Anime Soundtracks"/>
+  </national>
+</bouquet>

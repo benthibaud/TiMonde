@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="HK" name="Hong Kong" flag="🇭🇰" multilingual="false">
+  <national>
+    <station name="RTHK Radio 1" url="https://rthklive1-lh.akamaihd.net/i/rthk_1_utf8@167764/master.m3u8" genre="RTHK - 第一台 (新聞、時事、論壇)"/>
+    <station name="RTHK Radio 2" url="https://rthklive2-lh.akamaihd.net/i/rthk_2_utf8@167765/master.m3u8" genre="RTHK - 第二台 (青年節目、廣東流行曲)"/>
+    <station name="RTHK Radio 3 (English)" url="https://rthklive3-lh.akamaihd.net/i/rthk_3_utf8@167766/master.m3u8" genre="RTHK - English News &amp; Lifestyle"/>
+    <station name="RTHK Radio 4 (Classical &amp; Jazz)" url="https://rthklive4-lh.akamaihd.net/i/rthk_4_utf8@167767/master.m3u8" genre="RTHK - 第四台 (古典音樂及爵士樂)"/>
+    <station name="Commercial Radio Hong Kong (CR1)" url="https://stream.zeno.fm/8agt4w4k0heuv" genre="881 903 雷霆881商業一台"/>
+    <station name="Metro Broadcast (Metro Info)" url="https://stream.zeno.fm/9agt4w4k0heuv" genre="新城財經台 - 財經專業資訊"/>
+  </national>
+</bouquet>

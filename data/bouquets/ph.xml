@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="PH" name="Philippines" flag="🇵🇭" multilingual="false">
+  <national>
+    <station name="Wish 107.5 Manila" url="https://stream.zeno.fm/4dgt4w4k0heuv" genre="Your Coolest Musical Experience (Wish Bus Live)"/>
+    <station name="Monster RX 93.1" url="https://stream.zeno.fm/5dgt4w4k0heuv" genre="Manila's Hottest Hits &amp; Morning Rush"/>
+    <station name="Barangay LS 97.1" url="https://stream.zeno.fm/6dgt4w4k0heuv" genre="GMA - Tugstugan Na! (OPM Hits)"/>
+    <station name="90.7 Love Radio Manila" url="https://stream.zeno.fm/7dgt4w4k0heuv" genre="Kailangan pa bang i-memorize 'yan?"/>
+    <station name="DZBB Super Radyo 594" url="https://stream.zeno.fm/8dgt4w4k0heuv" genre="GMA - Walang Kinikilingan, Serbisyong Totoo"/>
+    <station name="Wave 89.1 Manila" url="https://stream.zeno.fm/9dgt4w4k0heuv" genre="Your Lifestyle Station / Hip Hop &amp; R&amp;B"/>
+  </national>
+</bouquet>

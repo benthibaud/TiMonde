@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="KZ" name="Kazakhstan" flag="🇰🇿" multilingual="false">
+  <national>
+    <station name="Qazaq Radiosy" url="https://stream.zeno.fm/4fgt4w4k0heuv" genre="Qazaqstan - Ұлттық радио арнасы (Service public)"/>
+    <station name="Radio Shalkar" url="https://stream.zeno.fm/5fgt4w4k0heuv" genre="Qazaqstan - Төл мәдениетіміздің айнасы (Culture &amp; Histoire)"/>
+    <station name="Radio Classic Almaty" url="https://stream.zeno.fm/6fgt4w4k0heuv" genre="Qazaqstan - Тұңғыш классикалық музыка радиосы"/>
+    <station name="Radio NS Kazakhstan" url="https://stream.zeno.fm/7fgt4w4k0heuv" genre="Музыка на все времена"/>
+    <station name="Gakku FM" url="https://stream.zeno.fm/8fgt4w4k0heuv" genre="Тек қана қазақша әндер (Pop kazakhe)"/>
+    <station name="Dala FM" url="https://stream.zeno.fm/9fgt4w4k0heuv" genre="Ұлы дала дауысы"/>
+  </national>
+</bouquet>

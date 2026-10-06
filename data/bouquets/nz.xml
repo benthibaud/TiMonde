@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="NZ" name="Nouvelle-Zélande" flag="🇳🇿" multilingual="false">
+  <national>
+    <station name="RNZ National" url="https://radionz-ice.streamguys.com/national.mp3" genre="Radio New Zealand - Public News &amp; Current Affairs"/>
+    <station name="RNZ Concert" url="https://radionz-ice.streamguys.com/concert.mp3" genre="Radio New Zealand - Fine Music &amp; Classical"/>
+    <station name="The Rock New Zealand" url="https://ais-nzme.streamguys1.com/nz_005/playlist.m3u8" genre="New Zealand's Rock Station"/>
+    <station name="Newstalk ZB" url="https://ais-nzme.streamguys1.com/nz_001/playlist.m3u8" genre="New Zealand's #1 Talk Station"/>
+    <station name="Mai FM" url="https://ais-nzme.streamguys1.com/nz_009/playlist.m3u8" genre="Aotearoa's Hip Hop &amp; RnB"/>
+    <station name="George FM" url="https://ais-nzme.streamguys1.com/nz_010/playlist.m3u8" genre="Electronic &amp; Dance Music NZ"/>
+    <station name="The Edge NZ" url="https://ais-nzme.streamguys1.com/nz_006/playlist.m3u8" genre="All The Hits"/>
+    <station name="ZM Online" url="https://ais-nzme.streamguys1.com/nz_003/playlist.m3u8" genre="Today's Hit Music"/>
+  </national>
+</bouquet>

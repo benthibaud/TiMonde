@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="SG" name="Singapour" flag="🇸🇬" multilingual="false">
+  <national>
+    <station name="CNA938" url="https://mediacorp-cna938.ice.infomaniak.ch/mediacorp-cna938-128.mp3" genre="Mediacorp - News, Business &amp; Current Affairs"/>
+    <station name="Gold 905" url="https://mediacorp-gold905.ice.infomaniak.ch/mediacorp-gold905-128.mp3" genre="Mediacorp - Sounds Good, Feels Good (Classics)"/>
+    <station name="Symphony 924" url="https://mediacorp-symphony924.ice.infomaniak.ch/mediacorp-symphony924-128.mp3" genre="Mediacorp - Singapore's Only Classical Music Station"/>
+    <station name="987FM" url="https://mediacorp-987.ice.infomaniak.ch/mediacorp-987-128.mp3" genre="Mediacorp - Singapore's Number 1 Hit Music Station"/>
+    <station name="YES 933" url="https://mediacorp-yes933.ice.infomaniak.ch/mediacorp-yes933-128.mp3" genre="Mediacorp - 頂尖流行音樂台 (Mandarin Hits)"/>
+    <station name="Class 95" url="https://mediacorp-class95.ice.infomaniak.ch/mediacorp-class95-128.mp3" genre="Mediacorp - The Best Mix of Music"/>
+    <station name="Warna 942" url="https://mediacorp-warna942.ice.infomaniak.ch/mediacorp-warna942-128.mp3" genre="Mediacorp - Warna Berita &amp; Muzik (Melayu)"/>
+    <station name="Oli 968" url="https://mediacorp-oli968.ice.infomaniak.ch/mediacorp-oli968-128.mp3" genre="Mediacorp - Oli Kalanjiam (Tamil)"/>
+  </national>
+</bouquet>

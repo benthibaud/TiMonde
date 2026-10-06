@@ -126,6 +126,21 @@ Afin d'intégrer progressivement **tous les bouquets DAB+ et sélections du mond
     - 🇹🇷 Turquie (`tr.xml` : TRT Radyo 1, TRT FM, TRT 3 Klasik & Caz, Power FM, Kral FM, Süper FM)
     - 🇮🇱 Israël (`il.xml` : Kan Tarbut, Kan Bet, Kan Gimel, Kan 88, Galgalatz, Galei Tzahal)
     - 🇯🇴 Jordanie (`jo.xml` : Radio Jordan 90 FM English, Al-Urduniyah, Mood 92, Beat 102.5, Play 99.6)
+  - **L'Asie & l'Océanie :**
+    - 🇦🇺 Australie (`au.xml` : ABC NewsRadio, triple j, ABC RN, ABC Classic, Double J, Triple M, Nova 96.9)
+    - 🇳🇿 Nouvelle-Zélande (`nz.xml` : RNZ National, RNZ Concert, The Rock NZ, Newstalk ZB, Mai FM, George FM)
+    - 🇯🇵 Japon (`jp.xml` : NHK Radio 1, NHK Radio 2, NHK FM Tokyo, J-Wave 81.3, Tokyo FM 80.0, Shonan Beach FM)
+    - 🇰🇷 Corée du Sud (`kr.xml` : KBS 1Radio, KBS 1FM Classic, KBS 2FM Cool FM, MBC Standard, SBS Power FM)
+    - 🇹🇼 Taïwan (`tw.xml` : RTI Français & Mandarin, ICRT English Taipei, BCC i radio, Hit FM Taiwan)
+    - 🇭🇰 Hong Kong (`hk.xml` : RTHK Radio 1, Radio 2 Cantopop, Radio 3 English, Radio 4 Fine Music Classical)
+    - 🇸🇬 Singapour (`sg.xml` : Mediacorp CNA938, Gold 905, Symphony 924 Classical, 987FM, YES 933, Warna 942)
+    - 🇹🇭 Thaïlande (`th.xml` : MCOT Active 99 FM, Thinking Radio 96.5, MET 107 English, Cool Fahrenheit 93)
+    - 🇻🇳 Viêt Nam (`vn.xml` : VOV1 Actualités, VOV2 Culture, VOV3 Musique, VOV5 Français, VOV Giao Thông)
+    - 🇮🇩 Indonésie (`id.xml` : RRI Programa 3 Berita Nasional, Pro 1, Pro 2 Muda, Prambors FM Jakarta, Gen FM)
+    - 🇵🇭 Philippines (`ph.xml` : Wish 107.5 Manila Bus Live, Monster RX 93.1, Barangay LS 97.1, 90.7 Love Radio)
+    - 🇲🇾 Malaisie (`my.xml` : RTM Radio Klasik, Nasional FM, TraXX FM English, Ai FM Chinois, Minnal Tamil, Fly FM)
+    - 🇮🇳 Inde (`in.xml` : All India Radio Vividh Bharati, AIR National, AIR FM Gold, Radio Mirchi, Red FM)
+    - 🇰🇿 Kazakhstan (`kz.xml` : Qazaq Radiosy, Radio Shalkar, Radio Classic Almaty, Radio NS, Gakku FM)
 - **Découverte automatique & Frugalité :** L'explorateur scanne dynamiquement les fichiers XML présents. L'ajout d'un nouveau pays ne requiert aucune recompilation. Le parseur ne charge en mémoire que le pays en cours de consultation.
 - **Contribution communautaire ouverte :** N'importe quel auditeur peut créer et soumettre le fichier XML de sa nation ou de sa région.
 

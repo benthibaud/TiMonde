@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="KR" name="Corée du Sud" flag="🇰🇷" multilingual="false">
+  <national>
+    <station name="KBS 1Radio" url="https://kbs-radio.akamaized.net/1radio/live.m3u8" genre="KBS - 뉴스 &amp; 시사 (News &amp; Society)"/>
+    <station name="KBS 1FM (Classic FM)" url="https://kbs-radio.akamaized.net/1fm/live.m3u8" genre="KBS - 클래식 음악 &amp; 예술"/>
+    <station name="KBS 2FM (Cool FM)" url="https://kbs-radio.akamaized.net/2fm/live.m3u8" genre="KBS - 가요 &amp; K-Pop Hits"/>
+    <station name="MBC Standard FM" url="https://stream.zeno.fm/7mgt4w4k0heuv" genre="MBC - 뉴스 &amp; 토크 (Talk &amp; Info)"/>
+    <station name="MBC FM4U" url="https://stream.zeno.fm/8mgt4w4k0heuv" genre="MBC - 음악 &amp; 대중가요"/>
+    <station name="SBS Power FM" url="https://stream.zeno.fm/9mgt4w4k0heuv" genre="SBS - 영스트리트 &amp; 최신 K-Pop"/>
+    <station name="TBS eFM 101.3 (English)" url="https://stream.zeno.fm/1agt4w4k0heuv" genre="TBS - Seoul's All-English Radio"/>
+    <station name="Big B Radio KPOP" url="https://stream.zeno.fm/2agt4w4k0heuv" genre="24/7 Asian Pop &amp; K-Pop Hits"/>
+  </national>
+</bouquet>
