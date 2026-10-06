@@ -1,3 +1,4 @@
+pub mod playlist;
 pub mod mpris;
 pub mod audio;
 pub mod bookmarks;

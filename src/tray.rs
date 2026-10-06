@@ -1,6 +1,7 @@
 use crate::audio::{AudioEngine, PlaybackState};
 use crate::bookmarks::{save_bookmarks, update_station_url};
 use crate::models::{Group, Station};
+use crate::playlist::resolve_stream_url;
 use crate::radio_browser::{find_backup_stream, notify};
 use ksni::menu::{MenuItem, StandardItem, SubMenu};
 use log::{error, info};
@@ -64,7 +65,7 @@ impl TiMondeTray {
         Ok(())
     }
 
-    /// Exécute le flux complet de lecture avec watchdog et secours automatique
+    /// Exécute le flux complet de lecture avec résolution de playlists, watchdog et secours automatique
     #[allow(clippy::too_many_arguments)]
     pub fn play_station_flow(
         station: Station,
@@ -78,8 +79,11 @@ impl TiMondeTray {
         bookmarks_path: &Path,
     ) {
         let station_name = station.name.clone();
-        let url = station.url.clone();
-        info!("Sélection de la station : {} ({})", station_name, url);
+        let raw_url = station.url.clone();
+        info!("Sélection de la station : {} ({})", station_name, raw_url);
+
+        // Résolution préalable si l'URL pointe vers un fichier de playlist (.m3u, .pls, .asx)
+        let resolved_url = resolve_stream_url(&raw_url);
 
         if let Err(e) = Self::get_or_create_engine(audio, current_volume, current_title) {
             error!("{}", e);
@@ -90,7 +94,7 @@ impl TiMondeTray {
         {
             let guard = audio.lock().unwrap();
             if let Some(ref engine) = *guard {
-                if let Err(e) = engine.play(&url) {
+                if let Err(e) = engine.play(&resolved_url) {
                     error!("Échec initial de lecture : {}", e);
                     notify("TiMonde", &format!("Impossible de lancer {}", station_name));
                     return;
@@ -132,11 +136,12 @@ impl TiMondeTray {
                     if gen_clone.load(Ordering::SeqCst) != gen {
                         return;
                     }
-                    info!("Watchdog : bascule sur le flux de secours {}", backup_url);
+                    let direct_backup = resolve_stream_url(&backup_url);
+                    info!("Watchdog : bascule sur le flux de secours {}", direct_backup);
                     let played = {
                         let guard = audio_clone.lock().unwrap();
                         if let Some(ref engine) = *guard {
-                            engine.play(&backup_url).is_ok()
+                            engine.play(&direct_backup).is_ok()
                         } else {
                             false
                         }
@@ -145,7 +150,7 @@ impl TiMondeTray {
                     if played {
                         {
                             let mut group = root_group_clone.lock().unwrap();
-                            if update_station_url(&mut group, &name_for_watchdog, &backup_url) {
+                            if update_station_url(&mut group, &name_for_watchdog, &direct_backup) {
                                 let _ = save_bookmarks(&group, &bookmarks_path_clone);
                             }
                         }
@@ -313,8 +318,6 @@ impl ksni::Tray for TiMondeTray {
             (Some(st), PlaybackState::Paused) => format!("⏸ En pause : {}", st.name),
             _ => "⏹️ TiMonde (En veille)".to_string(),
         };
-        drop(cur_st);
-        drop(cur_title);
 
         menu.push(MenuItem::Standard(StandardItem {
             label: status_label,
@@ -322,6 +325,27 @@ impl ksni::Tray for TiMondeTray {
             visible: true,
             ..Default::default()
         }));
+
+        // Option rapide : Copier le titre dans le presse-papier
+        if let Some(ref t) = *cur_title {
+            let title_copy = t.clone();
+            menu.push(MenuItem::Standard(StandardItem {
+                label: format!("📋 Copier : {}", title_copy),
+                activate: Box::new(move |_tray| {
+                    let _ = std::process::Command::new("sh")
+                        .arg("-c")
+                        .arg(format!("printf '%s' \"{}\" | (wl-copy 2>/dev/null || xclip -selection clipboard 2>/dev/null || true)", title_copy))
+                        .spawn();
+                    notify("TiMonde", "Titre copié dans le presse-papier !");
+                }),
+                enabled: true,
+                visible: true,
+                ..Default::default()
+            }));
+        }
+
+        drop(cur_st);
+        drop(cur_title);
 
         // 2. Contrôles de lecture (Pause, Reprendre, Relancer, Arrêter)
         match current_state {
@@ -498,7 +522,39 @@ impl ksni::Tray for TiMondeTray {
 
         menu.push(MenuItem::Separator);
 
-        // 5. Quitter proprement l'application
+        // 5. Options et gestion des signets
+        menu.push(MenuItem::SubMenu(SubMenu {
+            label: "⚙️ Options".to_string(),
+            submenu: vec![
+                MenuItem::Standard(StandardItem {
+                    label: "🔄 Recharger les signets".to_string(),
+                    activate: Box::new(|tray: &mut Self| {
+                        info!("Rechargement des signets depuis : {:?}", tray.bookmarks_path);
+                        if let Ok(new_group) = crate::bookmarks::load_bookmarks(&tray.bookmarks_path) {
+                            let count = new_group.total_stations();
+                            *tray.root_group.lock().unwrap() = new_group;
+                            notify("TiMonde", &format!("{} signets rechargés avec succès !", count));
+                        } else {
+                            notify("TiMonde", "Erreur lors du rechargement des signets");
+                        }
+                    }),
+                    ..Default::default()
+                }),
+                MenuItem::Standard(StandardItem {
+                    label: "📝 Ouvrir bookmarks.xml".to_string(),
+                    activate: Box::new(|tray: &mut Self| {
+                        let path_str = tray.bookmarks_path.to_string_lossy().to_string();
+                        let _ = std::process::Command::new("xdg-open").arg(path_str).spawn();
+                    }),
+                    ..Default::default()
+                }),
+            ],
+            enabled: true,
+            visible: true,
+            ..Default::default()
+        }));
+
+        // 6. Quitter proprement l'application
         menu.push(MenuItem::Standard(StandardItem {
             label: "Quitter TiMonde".to_string(),
             activate: Box::new(|tray: &mut Self| {
