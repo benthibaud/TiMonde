@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="HR" name="Croatie" flag="🇭🇷" multilingual="false">
+  <national>
+    <station name="HRT - HR 1" url="https://stream.hrt.hr/HR1" genre="Hrvatski radio - Vijesti &amp; Kultura"/>
+    <station name="HRT - HR 2" url="https://stream.hrt.hr/HR2" genre="Hrvatski radio - Glazba &amp; Sport"/>
+    <station name="HRT - HR 3" url="https://stream.hrt.hr/HR3" genre="Hrvatski radio - Klasična glazba &amp; Umjetnost"/>
+    <station name="Otvoreni Radio" url="https://stream.otvoreni.hr/otvoreni" genre="Feel Good Radio"/>
+    <station name="bravo! Hrvatska" url="https://listen.bravo.hr/stream" genre="I osjećaj i glazba"/>
+    <station name="Radio Dalmacija" url="https://shoutcast.pondi.hr/stream/9" genre="Duša Dalmacije"/>
+    <station name="Antena Zagreb" url="https://stream.antenazagreb.hr/antena" genre="Stvari koje voliš"/>
+    <station name="Yammat FM" url="https://stream.yammat.fm/yammat" genre="Zagreb Urbana Kultura"/>
+    <station name="Radio Banovina" url="https://stream.radio-banovina.hr:8000/banovina" genre="Zavičajna glazba"/>
+    <station name="Enter Zagreb" url="https://stream.enterzagreb.hr/enter" genre="Samo hitovi"/>
+  </national>
+</bouquet>

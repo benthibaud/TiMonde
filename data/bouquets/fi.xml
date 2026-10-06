@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="FI" name="Finlande" flag="🇫🇮" multilingual="true">
+  <community id="FI" name="Finnois (Suomi)">
+    <national>
+      <station name="Yle Radio 1" url="https://yleuni-f.akamaihd.net/i/yleliveradio1_1@81594/master.m3u8" genre="Yle - Kulttuuri &amp; Puhe"/>
+      <station name="YleX" url="https://yleuni-f.akamaihd.net/i/yleliveylex_1@81595/master.m3u8" genre="Yle - Uuden musiikin kanava"/>
+      <station name="Yle Radio Suomi" url="https://yleuni-f.akamaihd.net/i/yleliveradiosuomi_1@81596/master.m3u8" genre="Yle - Uutiset &amp; Alueet"/>
+      <station name="Radio Nova Suomi" url="https://stream.bauermedia.fi/radionova_hq" genre="Suomen suosituin radiokanava"/>
+      <station name="Radio Suomipop" url="https://stream.radiosuomipop.fi/live" genre="Parasta kotimaista musiikkia"/>
+      <station name="Radio Rock Suomi" url="https://stream.radiorock.fi/live" genre="Asennetta &amp; Rockia"/>
+      <station name="Iskelmä" url="https://stream.bauermedia.fi/iskelma_hq" genre="Suomalainen iskelmämusiikki"/>
+      <station name="Basso Radio" url="https://stream.bauermedia.fi/basso_hq" genre="Rytmimusiikki &amp; Hip Hop"/>
+    </national>
+  </community>
+  <community id="SV" name="Suédois de Finlande (Svenska)">
+    <national>
+      <station name="Yle Vega" url="https://yleuni-f.akamaihd.net/i/yleliveylevega_1@81597/master.m3u8" genre="Yle - Aktuellt på svenska &amp; Kultur"/>
+      <station name="Yle X3M" url="https://yleuni-f.akamaihd.net/i/ylelivex3m_1@81598/master.m3u8" genre="Yle - Ung kultur på svenska"/>
+    </national>
+  </community>
+</bouquet>

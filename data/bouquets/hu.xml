@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="HU" name="Hongrie" flag="🇭🇺" multilingual="false">
+  <national>
+    <station name="Kossuth Rádió" url="https://mr-stream.mediaklikk.hu/mr1.mp3" genre="MTVA - Hírek &amp; Közélet"/>
+    <station name="Petőfi Rádió" url="https://mr-stream.mediaklikk.hu/mr2.mp3" genre="MTVA - Magyar könnyűzene"/>
+    <station name="Bartók Rádió" url="https://mr-stream.mediaklikk.hu/mr3.mp3" genre="MTVA - Komolyzene &amp; Jazz"/>
+    <station name="Dankó Rádió" url="https://mr-stream.mediaklikk.hu/mr7.mp3" genre="MTVA - Népzene &amp; Operett"/>
+    <station name="Retro Rádió" url="https://stream.retroradio.hu/live.mp3" genre="Minden idők legnagyobb slágerei"/>
+    <station name="Rádió 1 Magyarország" url="https://stream.radio1.hu/live.mp3" genre="Csak igazi mai sláger megy"/>
+    <station name="Sláger FM" url="https://slagerfm.stream/slagerfm_128k.mp3" genre="A legnagyobb slágerek"/>
+    <station name="Klubrádió" url="https://szerver.klubradio.hu:8443/klub" genre="Független vélemények &amp; Beszélgetés"/>
+    <station name="Karc FM" url="https://stream.karcfm.hu/karcfm_live" genre="Konzervatív hírrádió"/>
+    <station name="Klasszik Rádió 92.1" url="https://klasszik.stream.kreativmedia.hu:8000/live.mp3" genre="Klasszikus zene mindenkinek"/>
+  </national>
+</bouquet>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="LT" name="Lituanie" flag="🇱🇹" multilingual="false">
+  <national>
+    <station name="LRT Radijas" url="https://radijas.lrt.lt/radijas/lrt_radijas/mp3" genre="LRT - Žinios &amp; Publicistika"/>
+    <station name="LRT Klasika" url="https://radijas.lrt.lt/radijas/lrt_klasika/mp3" genre="LRT - Klasikinė muzika &amp; Kultūra"/>
+    <station name="LRT Opus" url="https://radijas.lrt.lt/radijas/lrt_opus/mp3" genre="LRT - Alternatyva &amp; Nauja muzika"/>
+    <station name="M-1 Lietuva" url="https://stream.m-1.fm/m1/mp3" genre="Geriausia muzika"/>
+    <station name="Radiocentras" url="https://stream.radiocentras.lt/rc128.mp3" genre="Muzika, kuri veža"/>
+    <station name="Power Hit Radio Lithuania" url="https://stream.powerhitradio.lt/PHR_AAC" genre="Šokių muzikos hitai"/>
+    <station name="Lietus" url="https://stream.m-1.fm/lietus/mp3" genre="Tik lietuviška muzika"/>
+    <station name="Zip FM" url="https://stream.zipfm.lt/zipfm128.mp3" genre="Jaunimo radijas"/>
+    <station name="Žinių radijas" url="https://netradio.ziniur.lt/ziniur.mp3" genre="Operatyvios žinios"/>
+    <station name="Rock FM Lithuania" url="https://stream.rock.lt/rock128.mp3" genre="Tikras Rokas"/>
+  </national>
+</bouquet>

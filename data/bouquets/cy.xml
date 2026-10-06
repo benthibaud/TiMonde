@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="CY" name="Chypre" flag="🇨🇾" multilingual="false">
+  <national>
+    <station name="CyBC Proto" url="https://stream.cybc.com.cy/radio/proto" genre="ΡΙΚ - Πρώτο Πρόγραμμα / Ενημέρωση"/>
+    <station name="CyBC Deftero" url="https://stream.cybc.com.cy/radio/deftero" genre="ΡΙΚ - Δεύτερο Πρόγραμμα / Μειονότητες"/>
+    <station name="CyBC Trito" url="https://stream.cybc.com.cy/radio/trito" genre="ΡΙΚ - Τρίτο Πρόγραμμα / Μουσική &amp; Ψυχαγωγία"/>
+    <station name="CyBC Tetarto" url="https://stream.cybc.com.cy/radio/tetarto" genre="ΡΙΚ - Τέταρτο Πρόγραμμα / Νεολαία"/>
+    <station name="Super FM Cyprus" url="https://stream.superfmradio.com/superfm" genre="Ο πρώτος μουσικός σταθμός της Κύπρου"/>
+    <station name="Sfera FM Cyprus" url="https://sfera.live24.gr/sferacy" genre="Όλα τα μεγάλα ελληνικά hits"/>
+    <station name="Kanali 6" url="https://stream.kanali6.com.cy/kanali6" genre="Το ραδιόφωνο που ακούγεται δυνατά"/>
+    <station name="Klik FM Cyprus" url="https://stream.klikfm.com.cy/klikfm" genre="Κάνει κλικ στη διάθεσή σου"/>
+  </national>
+</bouquet>

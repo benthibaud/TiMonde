@@ -61,17 +61,40 @@ Pour les pays plurilingues, l'interface propose un filtre linguistique/communaut
 Afin d'intégrer progressivement **tous les bouquets DAB+ et sélections du monde entier**, le système adopte une architecture modulaire calquée sur le principe des fichiers de traduction (`gettext` / fichiers `.po`) :
 - **Zéro codage en dur :** Aucune liste de stations n'est figée dans le code source Rust ou Python.
 - **Répertoire de données dédié :** `data/bouquets/` (déployé dans `/usr/share/timonde/bouquets/` et `~/.local/share/timonde/bouquets/`).
-- **Un fichier XML par pays :**
-  - `fr.xml` : France 🇫🇷 (National + Régions : Bretagne, IDF, Rhône-Alpes, etc.)
-  - `be.xml` : Belgique 🇧🇪 (Multilingue FR / NL + Régionales)
-  - `ch.xml` : Suisse 🇨🇭 (Multilingue FR / DE / IT)
-  - `ca.xml` : Canada 🇨🇦 (Multilingue FR / EN)
-  - `uk.xml` : Royaume-Uni 🇬🇧 (National BBC / Commercial + Écosse, Pays de Galles, Ulster)
-  - `de.xml` : Allemagne 🇩🇪 (National Dlf + Länder Bayern, NRW, etc.)
-  - `es.xml` : Espagne 🇪🇸 (National + Catalogne, Andalousie)
-  - `it.xml` : Italie 🇮🇹 (National Rai + Régions)
-  - `no.xml` : Norvège 🇳🇴 (Pionnier 100% DAB)
-  - `nl.xml` : Pays-Bas 🇳🇱 (NPO & Commerciales)
+- **Un fichier XML par pays (100 % de l'Union Européenne couverte + partenaires) :**
+  - **Union Européenne (27/27 pays membres) :**
+    - 🇫🇷 France (`fr.xml` : National + 8 régions françaises)
+    - 🇧🇪 Belgique (`be.xml` : Multilingue Wallonie FR / Flandre NL + Régionales)
+    - 🇩🇪 Allemagne (`de.xml` : National Dlf + Länder Bayern, NRW, SWR, NDR)
+    - 🇪🇸 Espagne (`es.xml` : National + Catalogne, Andalousie)
+    - 🇮🇹 Italie (`it.xml` : National Rai & grandes privées)
+    - 🇳🇱 Pays-Bas (`nl.xml` : NPO & commerciales)
+    - 🇦🇹 Autriche (`at.xml` : ORF Ö1, Ö3, FM4, Wien & privées)
+    - 🇵🇹 Portugal (`pt.xml` : RTP Antena 1, 2, 3, Comercial, RFM, Renascença)
+    - 🇮🇪 Irlande (`ie.xml` : RTÉ Radio 1, 2FM, Lyric, Gaeltachta, Today FM)
+    - 🇸🇪 Suède (`se.xml` : Sveriges Radio P1, P2, P3, P4, Mix Megapol, Rix FM)
+    - 🇩🇰 Danemark (`dk.xml` : Danmarks Radio P1, P2, P3, P4, Nova, Pop FM)
+    - 🇫🇮 Finlande (`fi.xml` : Bilingue finnois Yle / suédois Vega & privées)
+    - 🇵🇱 Pologne (`pl.xml` : Polskie Radio 1, 2, 3, 4, 24, RMF FM, ZET)
+    - 🇨🇿 Tchéquie (`cz.xml` : Český rozhlas Radiožurnál, Dvojka, Vltava, Wave)
+    - 🇬🇷 Grèce (`gr.xml` : ERT Proto, Deftero, Trito, Kosmos, Melodia, Red)
+    - 🇷🇴 Roumanie (`ro.xml` : Radio România Actualități, Cultural, Kiss, ZU)
+    - 🇭🇺 Hongrie (`hu.xml` : MTVA Kossuth, Petőfi, Bartók, Retro Rádió)
+    - 🇸🇰 Slovaquie (`sk.xml` : RTVS Slovensko, Regina, Devín, _FM, Expres)
+    - 🇭🇷 Croatie (`hr.xml` : HRT HR1, HR2, HR3, Otvoreni, Radio Dalmacija)
+    - 🇸🇮 Slovénie (`si.xml` : RTV Slovenija Prvi, Val 202, ARS, Radio 1)
+    - 🇧🇬 Bulgarie (`bg.xml` : BNR Horizont, Hristo Botev, BG Radio, Darik)
+    - 🇱🇺 Luxembourg (`lu.xml` : Multilingue RTL Lëtzebuerg / L'essentiel FR)
+    - 🇱🇹 Lituanie (`lt.xml` : LRT Radijas, Klasika, Opus, M-1, Radiocentras)
+    - 🇱🇻 Lettonie (`lv.xml` : Latvijas Radio 1, 2, 3, Pieci.lv, Radio SWH)
+    - 🇪🇪 Estonie (`ee.xml` : ERR Vikerraadio, Raadio 2, Klassika, Sky Plus)
+    - 🇨🇾 Chypre (`cy.xml` : CyBC Proto, Deftero, Trito, Tetarto, Super FM)
+    - 🇲🇹 Malte (`mt.xml` : PBS Radju Malta 1 & 2, Magic Malta, 89.7 Bay)
+  - **Partenaires & Internationaux :**
+    - 🇨🇭 Suisse (`ch.xml` : Multilingue Romande FR / Alémanique DE / Tessin IT)
+    - 🇬🇧 Royaume-Uni (`uk.xml` : BBC 1 à 6, Commercial + Écosse, Galles, Ulster)
+    - 🇳🇴 Norvège (`no.xml` : NRK P1, P2, P3, Klassisk, P4 Hele Norge)
+    - 🇨🇦 Canada (`ca.xml` : Multilingue Québec FR / Anglophone EN)
 - **Découverte automatique & Frugalité :** L'explorateur scanne dynamiquement les fichiers XML présents. L'ajout d'un nouveau pays ne requiert aucune recompilation. Le parseur ne charge en mémoire que le pays en cours de consultation.
 - **Contribution communautaire ouverte :** N'importe quel auditeur peut créer et soumettre le fichier XML de sa nation ou de sa région.
 

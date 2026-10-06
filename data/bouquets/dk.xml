@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="DK" name="Danemark" flag="🇩🇰" multilingual="false">
+  <national>
+    <station name="DR P1" url="https://live-icy.gss.dr.dk/A/A03H.mp3" genre="Danmarks Radio - Samfund &amp; Debat"/>
+    <station name="DR P2 Klassisk" url="https://live-icy.gss.dr.dk/A/A04H.mp3" genre="Danmarks Radio - Klassisk musik"/>
+    <station name="DR P3" url="https://live-icy.gss.dr.dk/A/A05H.mp3" genre="Danmarks Radio - Ungdom &amp; Pop"/>
+    <station name="DR P4 København" url="https://live-icy.gss.dr.dk/A/A08H.mp3" genre="Danmarks Radio - Hovedstadsradio"/>
+    <station name="Nova FM Danmark" url="https://stream.bauermedia.dk/nova_hq" genre="Danmarks største pophits"/>
+    <station name="Pop FM Danmark" url="https://stream.bauermedia.dk/popfm_hq" genre="De største klassikere fra 60erne til nu"/>
+    <station name="The Voice Danmark" url="https://stream.bauermedia.dk/voice_hq" genre="Alt det nye"/>
+    <station name="myROCK" url="https://stream.bauermedia.dk/myrock_hq" genre="Ren Rock"/>
+    <station name="Radio 100 Danmark" url="https://stream.bauermedia.dk/r100_hq" genre="Masser af god musik"/>
+    <station name="Radio4 Danmark" url="https://netradio.radio4.dk/radio4" genre="Taleradio &amp; Aktualitet"/>
+  </national>
+</bouquet>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="GR" name="Grèce" flag="🇬🇷" multilingual="false">
+  <national>
+    <station name="ERT Proto Programma" url="https://radiostreaming.ert.gr/ert-proto" genre="ERT - Ενημέρωση &amp; Κοινωνία"/>
+    <station name="ERT Deftero Programma" url="https://radiostreaming.ert.gr/ert-deftero" genre="ERT - Ελληνική Μουσική"/>
+    <station name="ERT Trito Programma" url="https://radiostreaming.ert.gr/ert-trito" genre="ERT - Κλασική Μουσική &amp; Τέχνη"/>
+    <station name="ERT Kosmos 93.6" url="https://radiostreaming.ert.gr/ert-kosmos" genre="ERT - World Music &amp; Jazz"/>
+    <station name="Melodia 99.2" url="https://netradio.live24.gr/melodia" genre="Ελληνικό τραγούδι"/>
+    <station name="Rythmos 94.9" url="https://stream.soundis.gr/rythmos" genre="Ελληνικά Pop Hits"/>
+    <station name="Dromos FM 89.8" url="https://dromosfm.live24.gr/dromos898" genre="Πάντα τα καλύτερα"/>
+    <station name="Red 96.3" url="https://stream.soundis.gr/red963" genre="The Rock Radio"/>
+    <station name="Real FM 97.8" url="https://realfm.live24.gr/realfm" genre="Το αληθινό ραδιόφωνο"/>
+    <station name="Diesi 101.3" url="https://diesi.live24.gr/diesi1013" genre="Έντεχνο &amp; Ξένο τραγούδι"/>
+  </national>
+</bouquet>

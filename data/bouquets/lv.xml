@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="LV" name="Lettonie" flag="🇱🇻" multilingual="false">
+  <national>
+    <station name="Latvijas Radio 1" url="https://live.pieci.lv/live1-aac" genre="LR - Ziņas &amp; Sabiedrība"/>
+    <station name="Latvijas Radio 2" url="https://live.pieci.lv/live2-aac" genre="LR - Latviešu populārā mūzika"/>
+    <station name="Latvijas Radio 3 Klasika" url="https://live.pieci.lv/live3-aac" genre="LR - Klasiskā mūzika &amp; Māksla"/>
+    <station name="Pieci.lv (Latvijas Radio 5)" url="https://live.pieci.lv/live5-aac" genre="LR - Jauniešu sabiedriskais medijs"/>
+    <station name="Radio SWH" url="https://stream.radioswh.lv:8001/swhmp3" genre="Pirmais komercradio Latvijā"/>
+    <station name="Star FM Latvija" url="https://stream.starfm.lv/starfm_aac" genre="Tikai labākie hiti"/>
+    <station name="European Hit Radio Latvija" url="https://stream.ehr.fm:8000/ehr.mp3" genre="Pārdotākie hiti Eiropā"/>
+    <station name="Radio TEV" url="https://stream.radiotev.lv:8002/radiotev" genre="Tava radio stacija"/>
+    <station name="Radio Skonto" url="https://stream.radioskonto.lv:8000/skonto128" genre="Mūzika visai dienai"/>
+    <station name="Radio NABA" url="https://live.pieci.lv/naba-aac" genre="Neatkarīgā un alternatīvā mūzika"/>
+  </national>
+</bouquet>

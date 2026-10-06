@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="BG" name="Bulgarie" flag="🇧🇬" multilingual="false">
+  <national>
+    <station name="BNR Horizont" url="https://stream.bnr.bg:8002/horizont.mp3" genre="БНР - Новини &amp; Общество"/>
+    <station name="BNR Hristo Botev" url="https://stream.bnr.bg:8002/botev.mp3" genre="БНР - Култура &amp; Класика"/>
+    <station name="BG Radio" url="https://play.radiocast.bg/bgradio128" genre="Само българска музика"/>
+    <station name="Radio City Bulgaria" url="https://play.radiocast.bg/city128" genre="Хитове до дупка"/>
+    <station name="Darik Radio" url="https://stream.darikradio.bg/live" genre="Новините, каквито са"/>
+    <station name="Radio Energy Bulgaria" url="https://play.radiocast.bg/nrj128" genre="Хитовете на 90-те"/>
+    <station name="Radio Fresh!" url="https://stream.fresh.bg/fresh.mp3" genre="Хит след хит"/>
+    <station name="Z-Rock" url="https://stream.z-rock.bg/zrock.mp3" genre="Рок радиото на България"/>
+    <station name="Radio Veselina" url="https://play.radiocast.bg/veselina128" genre="Най-добрият поп-фолк"/>
+    <station name="Radio N-JOY" url="https://stream.njoy.bg/njoy.mp3" genre="Повече музика"/>
+  </national>
+</bouquet>

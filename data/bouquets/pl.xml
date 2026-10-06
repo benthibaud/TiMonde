@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="PL" name="Pologne" flag="🇵🇱" multilingual="false">
+  <national>
+    <station name="Polskie Radio Jedynka" url="https://streamer.polskieradio.pl/stream/jedynka" genre="PR - Informacja &amp; Publicystyka"/>
+    <station name="Polskie Radio Dwójka" url="https://streamer.polskieradio.pl/stream/dwojka" genre="PR - Muzyka klasyczna &amp; Literatura"/>
+    <station name="Polskie Radio Trójka" url="https://streamer.polskieradio.pl/stream/trojka" genre="PR - Rock &amp; Muzyka autorska"/>
+    <station name="Polskie Radio Czwórka" url="https://streamer.polskieradio.pl/stream/czworka" genre="PR - Młodzież &amp; Nowe brzmienia"/>
+    <station name="Polskie Radio 24" url="https://streamer.polskieradio.pl/stream/pr24" genre="PR - Wiadomości 24h"/>
+    <station name="RMF FM" url="https://rs101-krk.rmfstream.pl/RMF_FM" genre="Najlepsza Muzyka w Polsce"/>
+    <station name="Radio ZET" url="https://zt01.cdn.eurozet.pl/zet-net.mp3" genre="Siła Muzyki"/>
+    <station name="Radio TOK FM" url="https://stream.open.fm/54" genre="Pierwsze Radio Informacyjne"/>
+    <station name="Antyradio" url="https://an01.cdn.eurozet.pl/ant-net.mp3" genre="Najlepszy Rock na Świecie"/>
+    <station name="Radio VOX FM" url="https://waw01.ic.smcdn.pl/2000-1.mp3" genre="W Rytmie Hitów"/>
+  </national>
+</bouquet>

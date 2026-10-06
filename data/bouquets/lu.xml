@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="LU" name="Luxembourg" flag="🇱🇺" multilingual="true">
+  <community id="LU" name="Luxembourgeois (Lëtzebuergesch)">
+    <national>
+      <station name="RTL Radio Lëtzebuerg" url="https://shoutcast.rtl.lu/live" genre="RTL - Noriichten &amp; Informatioun"/>
+      <station name="Radio 100,7" url="https://100komma7.net/stream" genre="Ëffentlech-rechtleche Radio / Kultur"/>
+      <station name="Eldoradio" url="https://shoutcast.eldo.lu/live" genre="Hitradio Lëtzebuerg"/>
+      <station name="Radio Aktiv" url="https://stream.radioaktiv.lu/live" genre="Lokalradio &amp; Musek"/>
+    </national>
+  </community>
+  <community id="FR" name="Français">
+    <national>
+      <station name="L'essentiel Radio" url="https://stream.lessentielradio.lu/lessentielradio.mp3" genre="Hits &amp; Info Grand-Duché"/>
+      <station name="Radio Latina Luxembourg" url="https://stream.radiolatina.lu/latina" genre="Musique du monde &amp; Communautés"/>
+    </national>
+  </community>
+</bouquet>

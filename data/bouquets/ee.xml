@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="EE" name="Estonie" flag="🇪🇪" multilingual="false">
+  <national>
+    <station name="Vikerraadio" url="https://stream.err.ee/live/vikerraadio.mp3" genre="ERR - Uudised &amp; Arutelud"/>
+    <station name="Raadio 2" url="https://stream.err.ee/live/raadio2.mp3" genre="ERR - Uus Eesti muusika &amp; Noored"/>
+    <station name="Klassikaraadio" url="https://stream.err.ee/live/klassikaraadio.mp3" genre="ERR - Klassika, džäss &amp; Folk"/>
+    <station name="Raadio 4" url="https://stream.err.ee/live/raadio4.mp3" genre="ERR - Venekeelne programm"/>
+    <station name="Sky Plus" url="https://stream.sky.ee:8000/SkyPlus" genre="Eesti parim muusika"/>
+    <station name="Retro FM Eesti" url="https://stream.sky.ee:8000/RetroFM" genre="Eelmise sajandi parimad lood"/>
+    <station name="Raadio Kuku" url="https://stream.kuku.ee/kuku.mp3" genre="Raadio mõtlevale inimesele"/>
+    <station name="Raadio Elmar" url="https://stream.elmar.ee/elmar.mp3" genre="Eesti parimad laulud"/>
+    <station name="Star FM Eesti" url="https://stream.starfm.ee/starfm" genre="Head lood hommikust õhtuni"/>
+    <station name="Rock FM Eesti" url="https://stream.sky.ee:8000/RockFM" genre="Ainult rokk!"/>
+  </national>
+</bouquet>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="RO" name="Roumanie" flag="🇷🇴" multilingual="false">
+  <national>
+    <station name="Radio România Actualități" url="https://stream.srr.ro:8000/rra.aac" genre="SRR - Știri &amp; Evenimente"/>
+    <station name="Radio România Cultural" url="https://stream.srr.ro:8000/rrc.aac" genre="SRR - Cultură &amp; Teatru"/>
+    <station name="Radio România Muzical" url="https://stream.srr.ro:8000/rrm.aac" genre="SRR - Muzică clasică &amp; Jazz"/>
+    <station name="Kiss FM România" url="https://live.kissfm.ro/kissfm.aacp" genre="1 Hit Radio Romania"/>
+    <station name="Europa FM România" url="https://astreaming.europafm.ro:8000/europafm_aacp48k" genre="Muzică, Știri &amp; Deșteptarea"/>
+    <station name="Radio ZU" url="https://live.radiozu.ro:8443/live.aac" genre="Hiturile se ascultă la ZU"/>
+    <station name="Digi FM" url="https://edge126.rdsnet.ro:8443/digifm/digifm.mp3" genre="Ca să știi"/>
+    <station name="Magic FM România" url="https://live.magicfm.ro/magicfm.aacp" genre="Muzica inimii tale"/>
+    <station name="Rock FM România" url="https://live.rockfm.ro/rockfm.aacp" genre="It Rocks!"/>
+    <station name="Radio Guerrilla" url="https://stream.radioguerrilla.ro:8000/guerrilla.mp3" genre="Eliberare de sub banal"/>
+  </national>
+</bouquet>

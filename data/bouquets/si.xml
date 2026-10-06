@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="SI" name="Slovénie" flag="🇸🇮" multilingual="false">
+  <national>
+    <station name="Prvi program" url="https://mp3.rtvslo.si/ra1" genre="RTV Slovenija - Novice &amp; Pogovor"/>
+    <station name="Val 202" url="https://mp3.rtvslo.si/val202" genre="RTV Slovenija - Pop, Rock &amp; Družba"/>
+    <station name="Program ARS" url="https://mp3.rtvslo.si/ars" genre="RTV Slovenija - Resna glasba &amp; Kultura"/>
+    <station name="Radio Si" url="https://mp3.rtvslo.si/rsi" genre="RTV Slovenija - Slovenia International"/>
+    <station name="Radio 1 Slovenija" url="https://stream.radio1.si/Radio1" genre="Več dobre glasbe"/>
+    <station name="Radio Aktual" url="https://stream.aktual.si/Aktual" genre="Glasba sonca in morja"/>
+    <station name="Radio Antena Slovenija" url="https://stream.radioantena.si/Antena" genre="Hit radio"/>
+    <station name="Radio Center" url="https://stream.radiocenter.si/Center" genre="Hit za hitom"/>
+    <station name="Radio Ognjišče" url="https://poslusaj.ognjisce.si/ognjisce" genre="Družinski &amp; Verski program"/>
+    <station name="Rock Radio Slovenija" url="https://stream.rockradio.si/Rock" genre="Pravi rock"/>
+  </national>
+</bouquet>

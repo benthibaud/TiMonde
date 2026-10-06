@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="SE" name="Suède" flag="🇸🇪" multilingual="false">
+  <national>
+    <station name="SR P1" url="https://sverigesradio.se/topsy/direkt/srapi/132.mp3" genre="Sveriges Radio - Nyheter &amp; Samhälle"/>
+    <station name="SR P2" url="https://sverigesradio.se/topsy/direkt/srapi/163.mp3" genre="Sveriges Radio - Klassisk &amp; Jazz"/>
+    <station name="SR P3" url="https://sverigesradio.se/topsy/direkt/srapi/164.mp3" genre="Sveriges Radio - Ung kultur &amp; Pop"/>
+    <station name="SR P4 Stockholm" url="https://sverigesradio.se/topsy/direkt/srapi/701.mp3" genre="Sveriges Radio - Lokal &amp; Familj"/>
+    <station name="Mix Megapol" url="https://stream.bauermedia.se/mixmegapol_hq" genre="Den bästa musiken från förr och nu"/>
+    <station name="Rix FM" url="https://wr01-ice.stream.khz.se/wr01_mp3" genre="Bäst musik just nu"/>
+    <station name="Bandit Rock" url="https://wr02-ice.stream.khz.se/wr02_mp3" genre="We Rock!"/>
+    <station name="Lugna Favoriter" url="https://wr04-ice.stream.khz.se/wr04_mp3" genre="Avkoppling &amp; Ballader"/>
+    <station name="NRJ Sweden" url="https://stream.bauermedia.se/nrj_hq" genre="Hit Music Only"/>
+    <station name="Star FM Sweden" url="https://wr03-ice.stream.khz.se/wr03_mp3" genre="70- och 80-talets bästa låtar"/>
+  </national>
+</bouquet>

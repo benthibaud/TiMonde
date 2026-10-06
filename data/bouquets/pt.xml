@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="PT" name="Portugal" flag="🇵🇹" multilingual="false">
+  <national>
+    <station name="Antena 1" url="https://radiocast.rtp.pt/antena180a.mp3" genre="RTP - Informação &amp; Cultura"/>
+    <station name="Antena 2" url="https://radiocast.rtp.pt/antena280a.mp3" genre="RTP - Música Erudita &amp; Jazz"/>
+    <station name="Antena 3" url="https://radiocast.rtp.pt/antena380a.mp3" genre="RTP - Música Alternativa &amp; Nova"/>
+    <station name="Rádio Comercial" url="https://stream-icy.bauermedia.pt/comercial.mp3" genre="Pop &amp; Hits Portugal"/>
+    <station name="RFM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RFM.mp3" genre="Grandes Músicas"/>
+    <station name="Rádio Renascença" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_RENASCENCA.mp3" genre="Geralista / Informação"/>
+    <station name="M80 Portugal" url="https://stream-icy.bauermedia.pt/m80.mp3" genre="Se a música da tua vida é dos anos 80"/>
+    <station name="TSF Rádio Notícias" url="https://tsfstream.tsf.pt/tsfdireto.mp3" genre="Informação em permanência"/>
+    <station name="Mega Hits" url="https://playerservices.streamtheworld.com/api/livestream-redirect/MEGA_HITS.mp3" genre="Juventude &amp; Pop"/>
+    <station name="Smooth FM Portugal" url="https://stream-icy.bauermedia.pt/smooth.mp3" genre="Jazz &amp; Soul"/>
+  </national>
+</bouquet>

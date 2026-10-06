@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="AT" name="Autriche" flag="🇦🇹" multilingual="false">
+  <national>
+    <station name="Ö1" url="https://orf-live.ors-shoutcast.at/oe1-q2a" genre="ORF - Kultur &amp; Information"/>
+    <station name="Hitradio Ö3" url="https://orf-live.ors-shoutcast.at/oe3-q2a" genre="ORF - Pop &amp; Charts"/>
+    <station name="FM4" url="https://orf-live.ors-shoutcast.at/fm4-q2a" genre="ORF - Alternative &amp; Jugend"/>
+    <station name="Radio Wien" url="https://orf-live.ors-shoutcast.at/wien-q2a" genre="ORF - Wien Musik &amp; Regional"/>
+    <station name="Kronehit" url="https://kronehit.hoerradar.de/kronehit-live-mp3-192" genre="Wir sind die meisten Musik"/>
+    <station name="Radio Arabella" url="https://arabella.stream.sil.at/arabellavienna.mp3" genre="Kulthits &amp; Das Beste von heute"/>
+    <station name="88.6 Der Musiksender" url="https://edge05.streamonkey.net/radio886-live" genre="Echter Rock &amp; Mehr"/>
+    <station name="Radio Stephansdom" url="https://stream.radioklassik.at:8000/live" genre="Klassik &amp; Kultur Wien"/>
+    <station name="Superfly.fm" url="https://stream01.superfly.fm/live" genre="Soul, Black Music &amp; Funk"/>
+    <station name="Life Radio" url="https://stream.liferadio.at/live" genre="Oberösterreich Hits"/>
+  </national>
+</bouquet>
