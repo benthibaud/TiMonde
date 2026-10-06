@@ -35,6 +35,14 @@ impl Group {
         direct + recursive
     }
 
+    /// Trie les stations de ce groupe et de tous ses sous-groupes par ordre alphabétique
+    pub fn sort_stations_alphabetically(&mut self) {
+        self.stations.sort_by_key(|s| s.name.to_lowercase());
+        for sub in &mut self.subgroups {
+            sub.sort_stations_alphabetically();
+        }
+    }
+
     /// Trie les sous-groupes par ordre alphabétique (insensible à la casse)
     pub fn sort_subgroups_alphabetically(&mut self) {
         self.subgroups.sort_by_key(|a| a.name.to_lowercase());
@@ -107,5 +115,17 @@ mod tests {
         // Déplacer C en tout premier
         assert!(root.move_subgroup_to_top("C"));
         assert_eq!(root.subgroups[0].name, "C");
+    }
+    #[test]
+    fn test_stations_sorting_alphabetically() {
+        let mut group = Group::new("Rock");
+        group.stations.push(Station { name: "ZZ Top Radio".to_string(), url: "http://zz.com".to_string() });
+        group.stations.push(Station { name: "AC/DC Station".to_string(), url: "http://acdc.com".to_string() });
+        group.stations.push(Station { name: "Beatles Radio".to_string(), url: "http://beatles.com".to_string() });
+
+        group.sort_stations_alphabetically();
+        assert_eq!(group.stations[0].name, "AC/DC Station");
+        assert_eq!(group.stations[1].name, "Beatles Radio");
+        assert_eq!(group.stations[2].name, "ZZ Top Radio");
     }
 }
