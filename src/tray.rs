@@ -123,10 +123,10 @@ impl TiMondeTray {
                     info!("📡 Réception DAB+ hertzienne active sur canal {} ({} MHz) pour {}", dab_info.channel, dab_info.frequency_mhz, dab_info.service_name);
                     "http://127.0.0.1:9998/mp3".to_string()
                 } else {
-                    info!("📡 DAB+ ({}) : Clé SDR non détectée -> Bascule flux de secours IP", dab_info.service_name);
-                    notify("TiMonde", &format!("📡 DAB+ (Canal {}) : Clé SDR non détectée.\nBascule sur le flux de secours pour « {} ».", dab_info.channel, dab_info.service_name));
+                    info!("📡 DAB+ ({}) : Aucune clé antenne USB SDR détectée -> Bascule sur le flux web", dab_info.service_name);
+                    notify("TiMonde", &format!("📻 Réception DAB+ : Pas d antenne USB SDR branchée.\nLecture automatique via le flux web pour « {} ».", dab_info.service_name));
                     match crate::radio_browser::find_backup_stream(&dab_info.service_name) {
-                        Some((backup_url, _)) => resolve_stream_url(&backup_url),
+                        Some((_found_name, backup_url)) => resolve_stream_url(&backup_url),
                         None => resolve_stream_url(&raw_url),
                     }
                 }
