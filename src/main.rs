@@ -12,7 +12,7 @@ use ksni::blocking::TrayMethods;
 use log::{error, info};
 use models::Group;
 use std::path::{Path, PathBuf};
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 
 /// Localise le fichier bookmarks.xml de l'utilisateur
 fn find_bookmarks_path() -> PathBuf {
@@ -398,8 +398,7 @@ fn main() {
     let bookmarks_path_clone = tray.bookmarks_path.clone();
     let play_generation = Arc::clone(&tray.play_generation);
 
-    let tray_handle_cell: Arc<Mutex<Option<ksni::blocking::Handle<tray::TiMondeTray>>>> =
-        Arc::new(Mutex::new(None));
+    let tray_handle_cell = Arc::clone(&tray.tray_handle);
 
     // Fonction de rafraîchissement asynchrone non-bloquante du tray
     let trigger_tray_update = {
@@ -466,7 +465,7 @@ fn main() {
         current_station,
         current_title,
         last_station,
-        root_group_clone,
+        Arc::clone(&root_group_clone),
         on_play,
         on_stop,
         on_update,
@@ -487,7 +486,38 @@ fn main() {
 
     info!("✨ TiMonde est actif et discret dans la barre des tâches.");
 
-    // 7. Boucle d'événements GLib (maintient le processus actif et léger)
+    // 7. Surveillance automatique de bookmarks.xml (rechargement si modification externe)
+    {
+        let root_watcher = Arc::clone(&root_group_clone);
+        let bpath_watcher = bookmarks_path_clone.clone();
+        let handle_watcher = Arc::clone(&tray_handle_cell);
+
+        std::thread::spawn(move || {
+            let mut last_modified = std::fs::metadata(&bpath_watcher)
+                .and_then(|m| m.modified())
+                .ok();
+
+            loop {
+                std::thread::sleep(std::time::Duration::from_secs(2));
+
+                if let Ok(meta) = std::fs::metadata(&bpath_watcher) {
+                    if let Ok(modified) = meta.modified() {
+                        if Some(modified) != last_modified {
+                            last_modified = Some(modified);
+                            info!("Fichier bookmarks.xml modifié, rechargement automatique...");
+                            let _ = tray::TiMondeTray::reload_bookmarks_and_update_tray(
+                                &root_watcher,
+                                &bpath_watcher,
+                                &handle_watcher,
+                            );
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // 8. Boucle d'événements GLib (maintient le processus actif et léger)
     let main_loop = gstreamer::glib::MainLoop::new(None, false);
     main_loop.run();
 }

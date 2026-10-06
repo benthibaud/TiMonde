@@ -19,6 +19,7 @@ pub struct TiMondeTray {
     pub current_station: Arc<Mutex<Option<Station>>>,
     pub current_title: Arc<Mutex<Option<String>>>,
     pub play_generation: Arc<AtomicU64>,
+    pub tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
 }
 
 impl TiMondeTray {
@@ -32,6 +33,37 @@ impl TiMondeTray {
             current_station: Arc::new(Mutex::new(None)),
             current_title: Arc::new(Mutex::new(None)),
             play_generation: Arc::new(AtomicU64::new(0)),
+            tray_handle: Arc::new(Mutex::new(None)),
+        }
+    }
+
+    /// Recharge systématiquement les signets depuis le fichier bookmarks.xml
+    /// et notifie la barre des tâches (ksni / dbusmenu) pour reconstruire immédiatement le menu.
+    pub fn reload_bookmarks_and_update_tray(
+        root_group: &Arc<Mutex<Group>>,
+        bookmarks_path: &Path,
+        tray_handle: &Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+    ) -> Result<usize, String> {
+        match crate::bookmarks::load_bookmarks(bookmarks_path) {
+            Ok(new_group) => {
+                let total = new_group.total_stations();
+                *root_group.lock().unwrap() = new_group;
+                info!("🔄 {} signets rechargés avec succès depuis {:?}", total, bookmarks_path);
+
+                let handle_cell = Arc::clone(tray_handle);
+                std::thread::spawn(move || {
+                    if let Some(ref h) = *handle_cell.lock().unwrap() {
+                        h.update(|_| {});
+                    }
+                });
+
+                Ok(total)
+            }
+            Err(e) => {
+                let err_msg = format!("{}", e);
+                error!("Erreur lors du rechargement des signets : {}", err_msg);
+                Err(err_msg)
+            }
         }
     }
 
@@ -318,7 +350,11 @@ impl TiMondeTray {
     }
 
     /// Ouvre la boîte de dialogue native pour ajouter une station manuellement
-    pub fn trigger_add_station_dialog(root_group: Arc<Mutex<Group>>, bookmarks_path: PathBuf) {
+    pub fn trigger_add_station_dialog(
+        root_group: Arc<Mutex<Group>>,
+        bookmarks_path: PathBuf,
+        tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+    ) {
         std::thread::spawn(move || {
             let form_output = match std::process::Command::new("zenity")
                 .arg("--forms")
@@ -364,9 +400,16 @@ impl TiMondeTray {
                         crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
                         return;
                     }
-                    *root_group.lock().unwrap() = root;
-                    log::info!("✅ {}", msg);
-                    crate::radio_browser::notify("TiMonde", &msg);
+                    match Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle) {
+                        Ok(total) => {
+                            log::info!("✅ {} (Total : {} stations)", msg, total);
+                            crate::radio_browser::notify("TiMonde", &format!("{}
+Liste des radios rechargée ({} stations).", msg, total));
+                        }
+                        Err(e) => {
+                            crate::radio_browser::notify("TiMonde", &format!("Station ajoutée mais erreur rechargement : {}", e));
+                        }
+                    }
                 }
                 Err(e) => {
                     log::warn!("Échec de l ajout : {}", e);
@@ -394,7 +437,11 @@ impl TiMondeTray {
     }
 
     /// Réorganisation ergonomique des groupes et des radios via fenêtre GTK3 dédiée (Option 1 BB)
-    pub fn trigger_reorder_groups_dialog(root_group: Arc<Mutex<Group>>, bookmarks_path: PathBuf) {
+    pub fn trigger_reorder_groups_dialog(
+        root_group: Arc<Mutex<Group>>,
+        bookmarks_path: PathBuf,
+        tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+    ) {
         std::thread::spawn(move || {
             let groups_payload: Vec<serde_json::Value> = {
                 let guard = root_group.lock().unwrap();
@@ -526,7 +573,7 @@ impl TiMondeTray {
                     return;
                 }
 
-                *root_group.lock().unwrap() = root;
+                let _ = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle);
                 log::info!("✅ Ordre des groupes et radios enregistré et signets rechargés !");
                 crate::radio_browser::notify(
                     "TiMonde",
@@ -537,7 +584,11 @@ impl TiMondeTray {
     }
 
     /// Recherche multicritères (Genre, Pays, Langue, Mot-clé) et importation par lot
-    pub fn trigger_search_online_dialog(root_group: Arc<Mutex<Group>>, bookmarks_path: PathBuf) {
+    pub fn trigger_search_online_dialog(
+        root_group: Arc<Mutex<Group>>,
+        bookmarks_path: PathBuf,
+        tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+    ) {
         std::thread::spawn(move || {
             let form_output = match std::process::Command::new("zenity")
                 .arg("--forms")
@@ -664,13 +715,13 @@ impl TiMondeTray {
                     crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
                     return;
                 }
-                *root_group.lock().unwrap() = root;
+                let total_count = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle).unwrap_or(0);
                 let grp_name = target_group.as_deref().unwrap_or("la racine");
                 crate::radio_browser::notify(
                     "TiMonde",
                     &format!(
-                        "Importation terminée dans {} !\n• {} station(s) ajoutée(s)\n• {} doublon(s) ignoré(s)",
-                        grp_name, added_count, skipped_count
+                        "Importation terminée dans {} !\n• {} station(s) ajoutée(s)\n• {} doublon(s) ignoré(s)\nListe des radios rechargée ({} stations).",
+                        grp_name, added_count, skipped_count, total_count
                     ),
                 );
             } else {
@@ -680,7 +731,11 @@ impl TiMondeTray {
     }
 
     /// Ouvre les boîtes de dialogue natives (Zenity) pour importer une liste de stations
-    pub fn trigger_import_dialog(root_group: Arc<Mutex<Group>>, bookmarks_path: PathBuf) {
+    pub fn trigger_import_dialog(
+        root_group: Arc<Mutex<Group>>,
+        bookmarks_path: PathBuf,
+        tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+    ) {
         std::thread::spawn(move || {
             let file_output = match std::process::Command::new("zenity")
                 .arg("--file-selection")
@@ -716,7 +771,7 @@ impl TiMondeTray {
                         crate::radio_browser::notify("TiMonde", &format!("Erreur lors de la sauvegarde : {}", e));
                         return;
                     }
-                    *root_group.lock().unwrap() = root;
+                    let total_count = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle).unwrap_or(0);
                     log::info!(
                         "✅ Importation réussie : {} ajoutée(s), {} doublon(s) ignoré(s), {} groupe(s) créé(s)",
                         report.stations_added, report.duplicates_skipped, report.groups_created
@@ -724,8 +779,8 @@ impl TiMondeTray {
                     crate::radio_browser::notify(
                         "TiMonde",
                         &format!(
-                            "Importation réussie !\n• {} station(s) ajoutée(s)\n• {} doublon(s) ignoré(s)",
-                            report.stations_added, report.duplicates_skipped
+                            "Importation réussie !\n• {} station(s) ajoutée(s)\n• {} doublon(s) ignoré(s)\nListe des radios rechargée ({} stations).",
+                            report.stations_added, report.duplicates_skipped, total_count
                         ),
                     );
                 }
@@ -1014,6 +1069,7 @@ impl ksni::Tray for TiMondeTray {
                         Self::trigger_add_station_dialog(
                             Arc::clone(&tray.root_group),
                             tray.bookmarks_path.clone(),
+                            Arc::clone(&tray.tray_handle),
                         );
                     }),
                     ..Default::default()
@@ -1024,6 +1080,7 @@ impl ksni::Tray for TiMondeTray {
                         Self::trigger_search_online_dialog(
                             Arc::clone(&tray.root_group),
                             tray.bookmarks_path.clone(),
+                            Arc::clone(&tray.tray_handle),
                         );
                     }),
                     ..Default::default()
@@ -1034,6 +1091,7 @@ impl ksni::Tray for TiMondeTray {
                         Self::trigger_import_dialog(
                             Arc::clone(&tray.root_group),
                             tray.bookmarks_path.clone(),
+                            Arc::clone(&tray.tray_handle),
                         );
                     }),
                     ..Default::default()
@@ -1044,6 +1102,7 @@ impl ksni::Tray for TiMondeTray {
                         Self::trigger_reorder_groups_dialog(
                             Arc::clone(&tray.root_group),
                             tray.bookmarks_path.clone(),
+                            Arc::clone(&tray.tray_handle),
                         );
                     }),
                     ..Default::default()
@@ -1051,13 +1110,18 @@ impl ksni::Tray for TiMondeTray {
                 MenuItem::Standard(StandardItem {
                     label: "🔄 Recharger les signets".to_string(),
                     activate: Box::new(|tray: &mut Self| {
-                        info!("Rechargement des signets depuis : {:?}", tray.bookmarks_path);
-                        if let Ok(new_group) = crate::bookmarks::load_bookmarks(&tray.bookmarks_path) {
-                            let count = new_group.total_stations();
-                            *tray.root_group.lock().unwrap() = new_group;
-                            notify("TiMonde", &format!("{} signets rechargés avec succès !", count));
-                        } else {
-                            notify("TiMonde", "Erreur lors du rechargement des signets");
+                        info!("Rechargement manuel des signets depuis : {:?}", tray.bookmarks_path);
+                        match Self::reload_bookmarks_and_update_tray(
+                            &tray.root_group,
+                            &tray.bookmarks_path,
+                            &tray.tray_handle,
+                        ) {
+                            Ok(count) => {
+                                notify("TiMonde", &format!("{} signets rechargés avec succès !", count));
+                            }
+                            Err(_) => {
+                                notify("TiMonde", "Erreur lors du rechargement des signets");
+                            }
                         }
                     }),
                     ..Default::default()
