@@ -36,11 +36,6 @@ fn find_bookmarks_path() -> PathBuf {
         return rt_path;
     }
 
-    // 4. Dossier de sauvegarde des documents de l'utilisateur
-    let docs_path = PathBuf::from("/mnt/Donnees/Docs_systeme/bookmarks.xml");
-    if docs_path.exists() {
-        return docs_path;
-    }
 
     timonde_path
 }

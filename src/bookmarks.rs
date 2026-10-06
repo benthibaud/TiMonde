@@ -244,6 +244,9 @@ pub fn update_station_url(group: &mut Group, station_name: &str, new_url: &str) 
 pub fn save_bookmarks(group: &Group, path: impl AsRef<Path>) -> Result<(), BookmarksError> {
     use std::io::Write;
     let path = path.as_ref();
+    if let Some(parent) = path.parent() {
+        let _ = std::fs::create_dir_all(parent);
+    }
 
     // Sauvegarde de secours .bak si le fichier existe
     if path.exists() {
