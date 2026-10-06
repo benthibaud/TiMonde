@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="ES" name="Espagne" flag="🇪🇸" multilingual="false">
+  <national>
+    <station name="Cadena SER" url="https://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER.mp3" genre="Información &amp; Sociedad"/>
+    <station name="COPE" url="https://net1.cope.stream.flumotion.com/cope/net1-low.mp3" genre="Generalista / Deportes"/>
+    <station name="Onda Cero" url="https://icecast-streaming.antenastream.com/ondacero/mp3/low" genre="Radio de palabra"/>
+    <station name="RNE Radio Nacional" url="https://rtvelivestream.akamaized.net/rne_r1_main.mp3" genre="RTVE - Información"/>
+    <station name="Radio 3" url="https://rtvelivestream.akamaized.net/rne_r3_main.mp3" genre="RTVE - Música &amp; Cultura"/>
+    <station name="Radio Clásica" url="https://rtvelivestream.akamaized.net/rne_rc_main.mp3" genre="RTVE - Música Clásica"/>
+    <station name="Los 40" url="https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40.mp3" genre="Éxitos Pop"/>
+    <station name="Cadena Dial" url="https://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" genre="Música en español"/>
+    <station name="Rock FM" url="https://rockfm.cope.stream.flumotion.com/cope/rockfm-low.mp3" genre="Rock Clásico"/>
+    <station name="Kiss FM" url="https://kissfm.kissfmradio.cires21.com/kissfm.mp3" genre="Lo mejor de los 80 y 90"/>
+    <station name="Europa FM" url="https://icecast-streaming.antenastream.com/europafm/mp3/low" genre="Pop Rock actual"/>
+  </national>
+  <regions>
+    <region name="Catalogne (Catalunya)">
+      <station name="Catalunya Ràdio" url="https://directes-radios-catradio.ccma.cat/live-con/cr-hls/master.m3u8" genre="CCMA - Informació en català"/>
+      <station name="RAC1" url="https://streaming.rac1.cat" genre="Generalista privada catalana"/>
+      <station name="iCat" url="https://directes-radios-catradio.ccma.cat/live-con/icat-hls/master.m3u8" genre="Música independent &amp; Cultura"/>
+    </region>
+    <region name="Andalousie (Andalucía)">
+      <station name="Canal Sur Radio" url="https://rtva-live-radio.flumotion.com/rtva/csr-webradio.mp3" genre="RTVA - Andalucía actual"/>
+      <station name="Flamenco Radio" url="https://rtva-live-radio.flumotion.com/rtva/flamenco-webradio.mp3" genre="Arte Flamenco"/>
+    </region>
+  </regions>
+</bouquet>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="UK" name="Royaume-Uni" flag="🇬🇧" multilingual="false">
+  <national>
+    <station name="BBC Radio 1" url="https://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_one/bbc_radio_one.isml/bbc_radio_one-audio%3d96000.norewind.m3u8" genre="New Music &amp; Youth"/>
+    <station name="BBC Radio 2" url="https://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_two/bbc_radio_two.isml/bbc_radio_two-audio%3d96000.norewind.m3u8" genre="Adult Contemporary"/>
+    <station name="BBC Radio 3" url="https://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_three/bbc_radio_three.isml/bbc_radio_three-audio%3d96000.norewind.m3u8" genre="Classical &amp; Jazz"/>
+    <station name="BBC Radio 4" url="https://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_fourfm/bbc_radio_fourfm.isml/bbc_radio_fourfm-audio%3d96000.norewind.m3u8" genre="News &amp; Spoken"/>
+    <station name="BBC Radio 5 Live" url="https://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_five_live/bbc_radio_five_live.isml/bbc_radio_five_live-audio%3d96000.norewind.m3u8" genre="Live News &amp; Sport"/>
+    <station name="BBC 6 Music" url="https://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_6music/bbc_6music.isml/bbc_6music-audio%3d96000.norewind.m3u8" genre="Alternative &amp; Indie"/>
+    <station name="Capital FM" url="https://icecast.thisisdax.com/CapitalUKMP3" genre="Top 40 / UK Pop"/>
+    <station name="Heart UK" url="https://icecast.thisisdax.com/HeartUKMP3" genre="Feel Good"/>
+    <station name="Classic FM" url="https://icecast.thisisdax.com/ClassicFMMP3" genre="Classical"/>
+    <station name="LBC" url="https://icecast.thisisdax.com/LBCUKMP3" genre="Leading Britain's Conversation"/>
+    <station name="Absolute Radio" url="https://icecast.timlradio.co.uk/absoluteradio.mp3" genre="Classic &amp; Modern Rock"/>
+    <station name="Virgin Radio UK" url="https://radio.virginradio.co.uk/stream" genre="Rock &amp; Pop"/>
+    <station name="Smooth Radio" url="https://icecast.thisisdax.com/SmoothUKMP3" genre="Relaxing Music"/>
+    <station name="Planet Rock" url="https://stream-mz.planetradio.co.uk/planetrock.mp3" genre="Classic Rock"/>
+    <station name="Kerrang! Radio" url="https://stream-mz.planetradio.co.uk/kerrang.mp3" genre="Rock / Metal"/>
+  </national>
+  <regions>
+    <region name="Écosse (Scotland)">
+      <station name="BBC Radio Scotland" url="https://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_scotland_fm/bbc_radio_scotland_fm.isml/bbc_radio_scotland_fm-audio%3d96000.norewind.m3u8" genre="Scottish News &amp; Culture"/>
+    </region>
+    <region name="Pays de Galles (Wales)">
+      <station name="BBC Radio Wales" url="https://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_wales_fm/bbc_radio_wales_fm.isml/bbc_radio_wales_fm-audio%3d96000.norewind.m3u8" genre="Welsh News &amp; Sport"/>
+    </region>
+    <region name="Irlande du Nord (Ulster)">
+      <station name="BBC Radio Ulster" url="https://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_ulster/bbc_radio_ulster.isml/bbc_radio_ulster-audio%3d96000.norewind.m3u8" genre="Northern Ireland Talk"/>
+    </region>
+  </regions>
+</bouquet>

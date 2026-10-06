@@ -57,6 +57,24 @@ Pour les pays plurilingues, l'interface propose un filtre linguistique/communaut
 - Boutons rapides : `[ Tout cocher ]`, `[ Tout décocher ]`.
 - Importation instantanée et rechargement immédiat du menu de la barre des tâches sans redémarrage de l'application.
 
+### 2.4. Architecture Modulaire par Fichiers XML (Modèle `.po` / Internationalisation)
+Afin d'intégrer progressivement **tous les bouquets DAB+ et sélections du monde entier**, le système adopte une architecture modulaire calquée sur le principe des fichiers de traduction (`gettext` / fichiers `.po`) :
+- **Zéro codage en dur :** Aucune liste de stations n'est figée dans le code source Rust ou Python.
+- **Répertoire de données dédié :** `data/bouquets/` (déployé dans `/usr/share/timonde/bouquets/` et `~/.local/share/timonde/bouquets/`).
+- **Un fichier XML par pays :**
+  - `fr.xml` : France 🇫🇷 (National + Régions : Bretagne, IDF, Rhône-Alpes, etc.)
+  - `be.xml` : Belgique 🇧🇪 (Multilingue FR / NL + Régionales)
+  - `ch.xml` : Suisse 🇨🇭 (Multilingue FR / DE / IT)
+  - `ca.xml` : Canada 🇨🇦 (Multilingue FR / EN)
+  - `uk.xml` : Royaume-Uni 🇬🇧 (National BBC / Commercial + Écosse, Pays de Galles, Ulster)
+  - `de.xml` : Allemagne 🇩🇪 (National Dlf + Länder Bayern, NRW, etc.)
+  - `es.xml` : Espagne 🇪🇸 (National + Catalogne, Andalousie)
+  - `it.xml` : Italie 🇮🇹 (National Rai + Régions)
+  - `no.xml` : Norvège 🇳🇴 (Pionnier 100% DAB)
+  - `nl.xml` : Pays-Bas 🇳🇱 (NPO & Commerciales)
+- **Découverte automatique & Frugalité :** L'explorateur scanne dynamiquement les fichiers XML présents. L'ajout d'un nouveau pays ne requiert aucune recompilation. Le parseur ne charge en mémoire que le pays en cours de consultation.
+- **Contribution communautaire ouverte :** N'importe quel auditeur peut créer et soumettre le fichier XML de sa nation ou de sa région.
+
 ---
 
 ## 3. Ergonomie des Contrôles : La vision « Chaîne Hi-Fi »

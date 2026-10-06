@@ -42,6 +42,7 @@ make DESTDIR=%{buildroot} PREFIX=/usr install
 /usr/share/timonde/scripts/reorder_groups.py
 /usr/share/timonde/scripts/edit_station.py
 /usr/share/timonde/scripts/browse_bouquets.py
+/usr/share/timonde/bouquets/*.xml
 
 %changelog
 * Mon Oct 06 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.1.0-1

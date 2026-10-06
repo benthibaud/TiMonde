@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="FR" name="France" flag="🇫🇷" multilingual="false">
+  <national>
+    <station name="France Inter" url="https://stream.radiofrance.fr/franceinter/franceinter_hifi.aac" genre="Généraliste / Culture"/>
+    <station name="France Info" url="https://stream.radiofrance.fr/franceinfo/franceinfo_hifi.aac" genre="Actualités en continu"/>
+    <station name="France Culture" url="https://stream.radiofrance.fr/franceculture/franceculture_hifi.aac" genre="Culture &amp; Débats"/>
+    <station name="France Musique" url="https://stream.radiofrance.fr/francemusique/francemusique_hifi.aac" genre="Classique &amp; Jazz"/>
+    <station name="FIP" url="https://stream.radiofrance.fr/fip/fip_hifi.aac" genre="Musicale éclectique"/>
+    <station name="RTL" url="https://icecast.rtl.fr/rtl-1-44-128?listen=web" genre="Généraliste"/>
+    <station name="RTL2" url="https://icecast.rtl2.fr/rtl2-1-44-128?listen=web" genre="Pop Rock"/>
+    <station name="Fun Radio" url="https://icecast.funradio.fr/fun-1-44-128?listen=web" genre="Dance / Électro"/>
+    <station name="Europe 1" url="https://stream.europe1.fr/europe1.mp3" genre="Généraliste"/>
+    <station name="Europe 2" url="https://europe2.stream.lanmedia.fr/europe2.mp3" genre="Pop / Hits"/>
+    <station name="NRJ" url="https://scdn.nrjaudio.fm/audio1/fr/30001/mp3_128.mp3" genre="Hits du moment"/>
+    <station name="Nostalgie" url="https://scdn.nrjaudio.fm/audio1/fr/30601/mp3_128.mp3" genre="Légendes &amp; 80s"/>
+    <station name="Chérie FM" url="https://scdn.nrjaudio.fm/audio1/fr/30201/mp3_128.mp3" genre="Pop &amp; Variété"/>
+    <station name="Rire et Chansons" url="https://scdn.nrjaudio.fm/audio1/fr/30401/mp3_128.mp3" genre="Humour &amp; Rock"/>
+    <station name="Skyrock" url="https://icecast.skyrock.net/s/natio_mp3_128k" genre="Rap &amp; R'n'B"/>
+    <station name="RMC" url="https://audio.bfmtv.com/rmcradio_128.mp3" genre="Info &amp; Sport"/>
+    <station name="BFM Radio" url="https://audio.bfmtv.com/bfmradio_128.mp3" genre="Économie &amp; Info"/>
+    <station name="BFM Business" url="https://audio.bfmtv.com/bfmbusiness_128.mp3" genre="Économie"/>
+    <station name="Radio Classique" url="https://radioclassique.ice.infomaniak.ch/radioclassique-high.mp3" genre="Classique &amp; Économie"/>
+    <station name="M Radio" url="https://mradio.ice.infomaniak.ch/mradio-mp3-128.mp3" genre="Chanson française"/>
+    <station name="Latina" url="https://start-latina.ice.infomaniak.ch/start-latina-high.mp3" genre="Musique latine"/>
+    <station name="Radio Nova" url="https://radionova.ice.infomaniak.ch/radionova-256.mp3" genre="Musiques actuelles"/>
+    <station name="TSF Jazz" url="https://tsfjazz.ice.infomaniak.ch/tsfjazz-high.mp3" genre="Jazz"/>
+    <station name="Radio FG" url="https://radiofg.impek.com/fg" genre="Électro &amp; House"/>
+    <station name="OUI FM" url="https://ouifm.ice.infomaniak.ch/ouifm-high.mp3" genre="Rock"/>
+    <station name="Jazz Radio" url="https://jazzradio.ice.infomaniak.ch/jazz-radio-high.mp3" genre="Jazz &amp; Soul"/>
+    <station name="AirZen Radio" url="https://stream.airzen.fr/airzen-128.mp3" genre="Bien-être &amp; Positif"/>
+  </national>
+  <regions>
+    <region name="Bretagne">
+      <station name="Radio Bonheur" url="https://radiobonheur.ice.infomaniak.ch/radiobonheur-128.mp3" genre="Chansons d'hier et d'aujourd'hui"/>
+      <station name="Hit West" url="https://hitwest.ice.infomaniak.ch/hitwest-high.mp3" genre="Hits de l'Ouest"/>
+      <station name="Bretagne 5" url="https://stream.bretagne5.fr/stream" genre="Info &amp; Région"/>
+      <station name="Radio Laser" url="https://stream.radiolaser.fr/direct" genre="Éclectique &amp; Découvertes"/>
+      <station name="Radio Balises" url="https://streaming.radiobalises.com/direct" genre="Associative lorientaise"/>
+    </region>
+    <region name="Île-de-France (Paris)">
+      <station name="Générations" url="https://generations.ice.infomaniak.ch/generations-high.mp3" genre="Hip-Hop &amp; Soul"/>
+      <station name="Voltage" url="https://voltage.ice.infomaniak.ch/voltage-high.mp3" genre="Hits franciliens"/>
+      <station name="Aligre FM" url="https://aligrefm.org/aligrefm-128.mp3" genre="Associative parisienne"/>
+      <station name="Tropiques FM" url="https://stream.tropiquesfm.net/tropiquesfm-128.mp3" genre="Musiques tropicales"/>
+      <station name="Crooner Radio" url="https://croonerradio.ice.infomaniak.ch/croonerradio-high.mp3" genre="Grands crooners"/>
+    </region>
+    <region name="Auvergne-Rhône-Alpes (Lyon)">
+      <station name="Radio Scoop" url="https://radioscoop.ice.infomaniak.ch/radioscoop-high.mp3" genre="Hits &amp; Info Lyon"/>
+      <station name="Radio ISA" url="https://radioisa.ice.infomaniak.ch/radioisa-high.mp3" genre="Isère / Savoie"/>
+      <station name="Lyon 1ère" url="https://lyon1ere.ice.infomaniak.ch/lyon1ere-high.mp3" genre="Généraliste locale"/>
+      <station name="Impact FM" url="https://impactfm.ice.infomaniak.ch/impactfm-high.mp3" genre="Nostalgie &amp; Région"/>
+    </region>
+    <region name="Nouvelle-Aquitaine (Bordeaux)">
+      <station name="Wit FM" url="https://witfm.ice.infomaniak.ch/witfm-high.mp3" genre="Hits Bordeaux"/>
+      <station name="Blackbox" url="https://blackbox.ice.infomaniak.ch/blackbox-high.mp3" genre="R'n'B &amp; Hip-hop"/>
+      <station name="ARL" url="https://stream.arlfm.com/arl" genre="Aquitaine Radio Live"/>
+      <station name="Gold FM" url="https://goldfm.ice.infomaniak.ch/goldfm-high.mp3" genre="Régionale &amp; Sport"/>
+    </region>
+    <region name="Occitanie (Toulouse / Montpellier)">
+      <station name="100% Radio" url="https://centpourcent.ice.infomaniak.ch/centpourcent-high.mp3" genre="Grand Sud"/>
+      <station name="Flash FM" url="https://flashfm.ice.infomaniak.ch/flashfm-high.mp3" genre="Pop &amp; Hits"/>
+      <station name="RTS FM" url="https://rtsfm.ice.infomaniak.ch/rtsfm-high.mp3" genre="Soleil Méditerranée"/>
+      <station name="Radio Présence" url="https://radiopresence.ice.infomaniak.ch/radiopresence-high.mp3" genre="Midi-Pyrénées"/>
+    </region>
+    <region name="Provence-Alpes-Côte d'Azur (Marseille / Nice)">
+      <station name="Radio Star" url="https://radiostar.ice.infomaniak.ch/radiostar-high.mp3" genre="Marseille &amp; Provence"/>
+      <station name="Kiss FM" url="https://kissfm.ice.infomaniak.ch/kissfm-high.mp3" genre="Côte d'Azur"/>
+      <station name="Maritima" url="https://maritima.ice.infomaniak.ch/maritima-high.mp3" genre="Étang de Berre"/>
+      <station name="Radio Emotion" url="https://radioemotion.ice.infomaniak.ch/radioemotion-high.mp3" genre="Nice &amp; Riviera"/>
+    </region>
+    <region name="Hauts-de-France (Lille)">
+      <station name="Metropolys" url="https://metropolys.ice.infomaniak.ch/metropolys-high.mp3" genre="Pop / Électro"/>
+      <station name="Contact FM" url="https://contactfm.ice.infomaniak.ch/contactfm-high.mp3" genre="Le Grand Nord"/>
+      <station name="Mona FM" url="https://monafm.ice.infomaniak.ch/monafm-high.mp3" genre="Proximité &amp; Souvenirs"/>
+    </region>
+    <region name="Grand Est (Strasbourg / Nancy)">
+      <station name="Top Music" url="https://topmusic.ice.infomaniak.ch/topmusic-high.mp3" genre="Alsace"/>
+      <station name="DKL Dreyeckland" url="https://dkldrey.ice.infomaniak.ch/dkldrey-high.mp3" genre="Régionale Alsace"/>
+      <station name="Magnum la radio" url="https://magnum.ice.infomaniak.ch/magnum-high.mp3" genre="Lorraine"/>
+    </region>
+  </regions>
+</bouquet>

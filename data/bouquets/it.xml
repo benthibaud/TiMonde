@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bouquet country="IT" name="Italie" flag="🇮🇹" multilingual="false">
+  <national>
+    <station name="Rai Radio 1" url="https://icestreaming.rai.it/1.mp3" genre="Rai - Notizie &amp; Informazione"/>
+    <station name="Rai Radio 2" url="https://icestreaming.rai.it/2.mp3" genre="Rai - Intrattenimento &amp; Pop"/>
+    <station name="Rai Radio 3" url="https://icestreaming.rai.it/3.mp3" genre="Rai - Cultura &amp; Classica"/>
+    <station name="RTL 102.5" url="https://streamingv2.shoutcast.com/rtl-1025" genre="Very Normal People"/>
+    <station name="RDS 100% Grandi Successi" url="https://icstream.rds.radio/rds" genre="Grandi Successi"/>
+    <station name="Radio Deejay" url="https://radiodeejay-lh.akamaihd.net/i/RadioDeejay_Live_1@189857/master.m3u8" genre="Pop &amp; Talk"/>
+    <station name="Radio 105" url="https://ice02.fluidstream.net/105_mp3_128" genre="Musica &amp; Risate"/>
+    <station name="Radio Italia" url="https://stream.radioitalia.it/" genre="Solo Musica Italiana"/>
+    <station name="Virgin Radio Italia" url="https://ice02.fluidstream.net/virgin_mp3_128" genre="Style Rock"/>
+    <station name="Radio 24" url="https://stream.radio24.ilsole24ore.com/radio24" genre="Il Sole 24 Ore - Economia"/>
+  </national>
+</bouquet>

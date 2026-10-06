@@ -25,6 +25,8 @@ install: build
 	install -m 755 data/scripts/reorder_groups.py $(DESTDIR)$(DATADIR)/timonde/scripts/reorder_groups.py
 	install -m 755 data/scripts/edit_station.py $(DESTDIR)$(DATADIR)/timonde/scripts/edit_station.py
 	install -m 755 data/scripts/browse_bouquets.py $(DESTDIR)$(DATADIR)/timonde/scripts/browse_bouquets.py
+	install -d $(DESTDIR)$(DATADIR)/timonde/bouquets
+	install -m 644 data/bouquets/*.xml $(DESTDIR)$(DATADIR)/timonde/bouquets/
 
 install-user: build
 	install -d $(HOME)/.local/bin
@@ -41,6 +43,8 @@ install-user: build
 	install -m 755 data/scripts/reorder_groups.py $(HOME)/.local/share/timonde/scripts/reorder_groups.py
 	install -m 755 data/scripts/edit_station.py $(HOME)/.local/share/timonde/scripts/edit_station.py
 	install -m 755 data/scripts/browse_bouquets.py $(HOME)/.local/share/timonde/scripts/browse_bouquets.py
+	install -d $(HOME)/.local/share/timonde/bouquets
+	install -m 644 data/bouquets/*.xml $(HOME)/.local/share/timonde/bouquets/
 
 uninstall:
 	rm -f $(DESTDIR)$(BINDIR)/timonde
