@@ -335,6 +335,11 @@ class ReorderWindow(Gtk.Window):
         btn_cancel.connect("clicked", self.on_cancel_clicked)
         btn_box.pack_start(btn_cancel, False, False, 0)
 
+        self.btn_export_csv = Gtk.Button(label="📤 Exporter en CSV")
+        self.btn_export_csv.set_tooltip_text("Exporter l'ensemble de vos radios au format tableur CSV")
+        self.btn_export_csv.connect("clicked", lambda w: self.on_export_csv_clicked())
+        btn_box.pack_start(self.btn_export_csv, False, False, 0)
+
         spacer = Gtk.Box()
         btn_box.pack_start(spacer, True, True, 0)
 
@@ -1587,6 +1592,79 @@ class ReorderWindow(Gtk.Window):
 
         dialog.destroy()
 
+    def write_csv_export(self, filepath):
+        import csv
+        count = 0
+        with open(filepath, "w", encoding="utf-8", newline="") as f:
+            writer = csv.writer(f)
+            f.write("# Export des radios TiMonde\n")
+            writer.writerow(["Groupe", "Nom", "URL", "Pays"])
+            for grp in self.data:
+                if self.is_item_separator(grp):
+                    continue
+                grp_name = grp.get("name", "")
+                for st in grp.get("stations", []):
+                    if self.is_item_separator(st):
+                        continue
+                    st_name = st.get("name", "")
+                    st_url = st.get("url", "")
+                    st_country = st.get("country", "") or ""
+                    if st_name and st_url:
+                        writer.writerow([grp_name, st_name, st_url, st_country])
+                        count += 1
+        return count
+
+    def on_export_csv_clicked(self, widget=None):
+        dialog = Gtk.FileChooserDialog(
+            title="📤 Exporter mes radios en CSV",
+            parent=self,
+            action=Gtk.FileChooserAction.SAVE,
+            buttons=("Annuler", Gtk.ResponseType.CANCEL, "Exporter", Gtk.ResponseType.OK),
+        )
+        dialog.set_default_response(Gtk.ResponseType.OK)
+        dialog.set_current_name("radios_timonde.csv")
+        dialog.set_do_overwrite_confirmation(True)
+
+        filter_csv = Gtk.FileFilter()
+        filter_csv.set_name("Fichiers CSV (*.csv)")
+        filter_csv.add_pattern("*.csv")
+        dialog.add_filter(filter_csv)
+
+        filter_all = Gtk.FileFilter()
+        filter_all.set_name("Tous les fichiers (*.*)")
+        filter_all.add_pattern("*")
+        dialog.add_filter(filter_all)
+
+        res = dialog.run()
+        chosen_path = dialog.get_filename()
+        dialog.destroy()
+
+        if res == Gtk.ResponseType.OK and chosen_path:
+            if not chosen_path.lower().endswith(".csv"):
+                chosen_path += ".csv"
+            try:
+                count = self.write_csv_export(chosen_path)
+                self.show_feedback(f"✅ {count} radio(s) exportée(s) dans {os.path.basename(chosen_path)}")
+                msg_diag = Gtk.MessageDialog(
+                    parent=self,
+                    flags=Gtk.DialogFlags.MODAL,
+                    type=Gtk.MessageType.INFO,
+                    buttons=Gtk.ButtonsType.OK,
+                    message_format=f"Exportation réussie !\n\n{count} radio(s) enregistrée(s) dans :\n{chosen_path}",
+                )
+                msg_diag.run()
+                msg_diag.destroy()
+            except Exception as e:
+                err_diag = Gtk.MessageDialog(
+                    parent=self,
+                    flags=Gtk.DialogFlags.MODAL,
+                    type=Gtk.MessageType.ERROR,
+                    buttons=Gtk.ButtonsType.OK,
+                    message_format=f"Erreur lors de l'exportation CSV :\n{e}",
+                )
+                err_diag.run()
+                err_diag.destroy()
+
 def main():
     try:
         raw_input = sys.stdin.read()
@@ -1598,6 +1676,7 @@ def main():
         sys.exit(1)
 
     auto_check = "--check" in sys.argv or "--audit" in sys.argv
+    auto_export = "--export" in sys.argv or "--export-csv" in sys.argv
     win = ReorderWindow(data, auto_check=auto_check)
     win.show_all()
     win.btn_back.hide()
@@ -1605,6 +1684,8 @@ def main():
     win.btn_add_station.hide()
     if auto_check:
         GLib.idle_add(win.on_check_streams_clicked, None)
+    if auto_export:
+        GLib.idle_add(win.on_export_csv_clicked, None)
     Gtk.main()
 
     if win.saved:

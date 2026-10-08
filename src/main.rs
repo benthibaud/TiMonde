@@ -90,6 +90,8 @@ fn main() {
                 println!("      --sort-groups      Trier tous les groupes de radios de A à Z");
                 println!("      --move-group <NOM> <--up|--down|--top>");
                 println!("                         Déplacer un groupe vers le haut, le bas ou en premier");
+                println!("  -e, --export-csv [FICHIER]");
+                println!("                     Exporter toutes vos radios au format CSV (tableur)");
                 println!("  -i, --import <FICHIER> [--group <GROUPE>]");
                 println!("                     Importer des radios (.json radiotray-ng, .m3u, .csv, .xml)");
                 println!("                     Si --group n'est pas spécifié, les radios vont à la racine.");
@@ -269,6 +271,38 @@ fn main() {
                     }
                     Err(e) => {
                         eprintln!("Erreur : {}", e);
+                        std::process::exit(1);
+                    }
+                }
+                return;
+            }
+            "-e" | "--export-csv" => {
+                let out_path = if args.len() >= 3 {
+                    PathBuf::from(&args[2])
+                } else {
+                    PathBuf::from("radios_timonde.csv")
+                };
+
+                let bookmarks_path = find_bookmarks_path();
+                let root = if bookmarks_path.exists() {
+                    match bookmarks::load_bookmarks(&bookmarks_path) {
+                        Ok(r) => r,
+                        Err(e) => {
+                            eprintln!("❌ Erreur lecture bookmarks ({:?}) : {}", bookmarks_path, e);
+                            std::process::exit(1);
+                        }
+                    }
+                } else {
+                    eprintln!("❌ Aucun fichier de favoris trouvé à l'emplacement {:?}", bookmarks_path);
+                    std::process::exit(1);
+                };
+
+                match import::export_to_csv(&root, &out_path) {
+                    Ok(count) => {
+                        println!("✅ {} station(s) exportée(s) avec succès dans {:?}", count, out_path);
+                    }
+                    Err(e) => {
+                        eprintln!("❌ Erreur lors de l'exportation CSV : {}", e);
                         std::process::exit(1);
                     }
                 }

@@ -200,6 +200,36 @@ pub fn parse_m3u_entries(content: &str) -> Vec<Station> {
     stations
 }
 
+/// Découpe une ligne CSV en respectant les guillemets (RFC 4180)
+fn split_csv_line(line: &str) -> Vec<String> {
+    let mut fields = Vec::new();
+    let mut current = String::new();
+    let mut in_quotes = false;
+    let mut chars = line.chars().peekable();
+
+    while let Some(c) = chars.next() {
+        match c {
+            '"' => {
+                if in_quotes && chars.peek() == Some(&'"') {
+                    current.push('"');
+                    chars.next();
+                } else {
+                    in_quotes = !in_quotes;
+                }
+            }
+            ',' if !in_quotes => {
+                fields.push(current.trim().to_string());
+                current.clear();
+            }
+            _ => {
+                current.push(c);
+            }
+        }
+    }
+    fields.push(current.trim().to_string());
+    fields
+}
+
 /// Analyse et extrait les stations depuis un fichier CSV (Nom,URL / Nom,URL,Pays / Groupe,Nom,URL / Groupe,Nom,URL,Pays)
 pub fn parse_csv_entries(content: &str) -> Vec<(Option<String>, Station)> {
     let mut list = Vec::new();
@@ -217,30 +247,30 @@ pub fn parse_csv_entries(content: &str) -> Vec<(Option<String>, Station)> {
             continue;
         }
 
-        let cols: Vec<&str> = trimmed.split(',').map(|s| s.trim()).collect();
+        let cols = split_csv_line(trimmed);
         if cols.len() == 2 && (cols[1].starts_with("http://") || cols[1].starts_with("https://")) {
-            list.push((None, Station::new(cols[0], cols[1])));
+            list.push((None, Station::new(&cols[0], &cols[1])));
         } else if cols.len() == 3 {
             if cols[1].starts_with("http://") || cols[1].starts_with("https://") {
                 // Nom, URL, Pays
                 let st = if !cols[2].is_empty() {
-                    Station::with_country(cols[0], cols[1], cols[2])
+                    Station::with_country(&cols[0], &cols[1], &cols[2])
                 } else {
-                    Station::new(cols[0], cols[1])
+                    Station::new(&cols[0], &cols[1])
                 };
                 list.push((None, st));
             } else if cols[2].starts_with("http://") || cols[2].starts_with("https://") {
                 // Groupe, Nom, URL
-                let group_name = if cols[0].is_empty() { None } else { Some(cols[0].to_string()) };
-                list.push((group_name, Station::new(cols[1], cols[2])));
+                let group_name = if cols[0].is_empty() { None } else { Some(cols[0].clone()) };
+                list.push((group_name, Station::new(&cols[1], &cols[2])));
             }
         } else if cols.len() >= 4 && (cols[2].starts_with("http://") || cols[2].starts_with("https://")) {
             // Groupe, Nom, URL, Pays
-            let group_name = if cols[0].is_empty() { None } else { Some(cols[0].to_string()) };
+            let group_name = if cols[0].is_empty() { None } else { Some(cols[0].clone()) };
             let st = if !cols[3].is_empty() {
-                Station::with_country(cols[1], cols[2], cols[3])
+                Station::with_country(&cols[1], &cols[2], &cols[3])
             } else {
-                Station::new(cols[1], cols[2])
+                Station::new(&cols[1], &cols[2])
             };
             list.push((group_name, st));
         }
@@ -359,6 +389,77 @@ pub fn import_file(
     }
 
     Ok(report)
+}
+
+/// Échappe une valeur pour le format CSV selon la norme RFC 4180
+fn escape_csv(field: &str) -> String {
+    if field.contains(',') || field.contains('"') || field.contains('\n') || field.contains('\r') {
+        format!("\"{}\"", field.replace('"', "\"\""))
+    } else {
+        field.to_string()
+    }
+}
+
+pub fn export_to_csv(root: &Group, file_path: &Path) -> Result<usize, String> {
+    let mut lines = Vec::new();
+    lines.push("# Export des favoris TiMonde".to_string());
+    lines.push("Groupe,Nom,URL,Pays".to_string());
+
+    let mut count = 0;
+
+    fn collect_stations(group: &Group, group_name: &str, lines: &mut Vec<String>, count: &mut usize) {
+        for s in &group.stations {
+            if !s.is_separator() && !s.url.trim().is_empty() {
+                let escaped_group = escape_csv(group_name);
+                let escaped_name = escape_csv(&s.name);
+                let escaped_url = escape_csv(&s.url);
+                let escaped_country = escape_csv(s.country.as_deref().unwrap_or(""));
+                lines.push(format!("{},{},{},{}", escaped_group, escaped_name, escaped_url, escaped_country));
+                *count += 1;
+            }
+        }
+        for sub in &group.subgroups {
+            if !sub.is_separator() {
+                let sub_name = if group_name.is_empty() {
+                    sub.name.clone()
+                } else {
+                    format!("{}/{}", group_name, sub.name)
+                };
+                collect_stations(sub, &sub_name, lines, count);
+            }
+        }
+    }
+
+    // Stations directes à la racine
+    for s in &root.stations {
+        if !s.is_separator() && !s.url.trim().is_empty() {
+            let escaped_name = escape_csv(&s.name);
+            let escaped_url = escape_csv(&s.url);
+            let escaped_country = escape_csv(s.country.as_deref().unwrap_or(""));
+            lines.push(format!(",{},{},{}", escaped_name, escaped_url, escaped_country));
+            count += 1;
+        }
+    }
+
+    // Sous-groupes
+    for sub in &root.subgroups {
+        if !sub.is_separator() {
+            collect_stations(sub, &sub.name, &mut lines, &mut count);
+        }
+    }
+
+    let content = lines.join("
+") + "
+";
+    if let Some(parent) = file_path.parent() {
+        if !parent.as_os_str().is_empty() {
+            let _ = std::fs::create_dir_all(parent);
+        }
+    }
+    std::fs::write(file_path, content)
+        .map_err(|e| format!("Impossible d'écrire le fichier CSV {:?} : {}", file_path, e))?;
+
+    Ok(count)
 }
 
 #[cfg(test)]
@@ -493,5 +594,26 @@ FIP,https://icecast.radiofrance.fr/fip-hifi.aac,FR";
         assert_eq!(root.subgroups[0].stations.len(), 1);
         assert_eq!(root.subgroups[0].stations[0].name, "J-Wave");
         assert_eq!(root.subgroups[0].stations[0].country, Some("JP".to_string()));
+    }
+    #[test]
+    fn test_export_and_reimport_csv() {
+        let mut root = Group::new("root");
+        let mut g = Group::new("Rock");
+        g.stations.push(Station::with_country("Led Zep Radio", "https://led.example/stream", "UK"));
+        root.subgroups.push(g);
+
+        let temp_file = std::env::temp_dir().join("test_export.csv");
+        let exported_count = export_to_csv(&root, &temp_file).unwrap();
+        assert_eq!(exported_count, 1);
+
+        let mut imported_root = Group::new("root");
+        let report = import_file(&mut imported_root, &temp_file, None).unwrap();
+        assert_eq!(report.stations_added, 1);
+        assert_eq!(imported_root.subgroups.len(), 1);
+        assert_eq!(imported_root.subgroups[0].name, "Rock");
+        assert_eq!(imported_root.subgroups[0].stations[0].name, "Led Zep Radio");
+        assert_eq!(imported_root.subgroups[0].stations[0].country.as_deref(), Some("UK"));
+
+        let _ = std::fs::remove_file(temp_file);
     }
 }

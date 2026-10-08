@@ -1235,12 +1235,41 @@ fn find_group_name_for_station(root: &Group, station_url: &str) -> Option<String
         None
     }
 
+    /// Exportation des radios en CSV via boîte de dialogue GTK3
+    pub fn trigger_export_csv_dialog(
+        root_group: Arc<Mutex<Group>>,
+        bookmarks_path: PathBuf,
+        tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+    ) {
+        Self::trigger_reorder_groups_dialog_with_arg(
+            root_group,
+            bookmarks_path,
+            tray_handle,
+            Some("--export"),
+        );
+    }
+
     /// Réorganisation ergonomique des groupes et des radios via fenêtre GTK3 dédiée (Option 1 BB)
     pub fn trigger_reorder_groups_dialog(
         root_group: Arc<Mutex<Group>>,
         bookmarks_path: PathBuf,
         tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
         auto_check: bool,
+    ) {
+        Self::trigger_reorder_groups_dialog_with_arg(
+            root_group,
+            bookmarks_path,
+            tray_handle,
+            if auto_check { Some("--check") } else { None },
+        );
+    }
+
+    /// Lance l'outil de gestion avec un argument supplémentaire optionnel (--check ou --export)
+    pub fn trigger_reorder_groups_dialog_with_arg(
+        root_group: Arc<Mutex<Group>>,
+        bookmarks_path: PathBuf,
+        tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+        extra_arg: Option<&'static str>,
     ) {
         std::thread::spawn(move || {
             let groups_payload: Vec<serde_json::Value> = {
@@ -1310,8 +1339,8 @@ fn find_group_name_for_station(root: &Group, station_url: &str) -> Option<String
 
             let mut cmd = std::process::Command::new("python3");
             cmd.arg(&script_path);
-            if auto_check {
-                cmd.arg("--check");
+            if let Some(arg) = extra_arg {
+                cmd.arg(arg);
             }
             let mut child = match cmd
                 .stdin(std::process::Stdio::piped())
@@ -1907,6 +1936,17 @@ impl ksni::Tray for TiMondeTray {
                             tray.bookmarks_path.clone(),
                             Arc::clone(&tray.tray_handle),
                             Some(3),
+                        );
+                    }),
+                    ..Default::default()
+                }),
+                MenuItem::Standard(StandardItem {
+                    label: "📤 Exporter mes radios en CSV...".to_string(),
+                    activate: Box::new(|tray: &mut Self| {
+                        Self::trigger_export_csv_dialog(
+                            Arc::clone(&tray.root_group),
+                            tray.bookmarks_path.clone(),
+                            Arc::clone(&tray.tray_handle),
                         );
                     }),
                     ..Default::default()
