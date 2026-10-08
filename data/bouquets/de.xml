@@ -1,34 +1,34 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="DE" name="Allemagne" flag="🇩🇪" multilingual="false">
   <national>
-    <station name="Deutschlandfunk" url="https://st01.sslstream.dlf.de/dlf/01/128/mp3/stream.mp3" genre="Dlf - Information &amp; Politik" />
-    <station name="Deutschlandfunk Kultur" url="https://st02.sslstream.dlf.de/dlf/02/128/mp3/stream.mp3" genre="Dlf - Kultur &amp; Feuilleton" />
-    <station name="Deutschlandfunk Nova" url="https://st03.sslstream.dlf.de/dlf/03/128/mp3/stream.mp3" genre="Dlf - Wissen &amp; Indie" />
-    <station name="Absolut Relax" url="https://absolut-relax.live-sm.absolutradio.de/absolut-relax?__cb=130270101023249" genre="Entspannung &amp; Pop" />
-    <station name="Radio BOB!" url="https://streams.radiobob.de/bob-live/mp3-128/streams.radiobob.de/" genre="Rock &amp; Metal" />
-    <station name="Sunshine Live" url="http://stream.sunshine-live.de/90er/mp3-192/stream.sunshine-live.de" genre="Electronic Dance Music" />
-    <station name="RTL Radio" url="https://stream.rtlradio.de/rtl-de/mp3-128" genre="Deutschlands Hit-Radio" />
+    <station name="Deutschlandfunk" url="https://d111.rndfnk.com/ard/dlf/01/mp3/128/stream.mp3?cid=01FBPWZ12X2XN8SDSMBZ7X0ZTT&sid=3KPp8kH2rfQeOUsT5g1Myr7VQcw&token=3Gcf2pXnyW6KZBKQMXo64k2q4sKcyaIMb39QbP4uvsU&tvf=d5pFDB6n3BhkMTExLnJuZGZuay5jb20" genre="Dlf - Information &amp; Politik" />
+    <station name="Deutschlandfunk Kultur" url="https://d121.rndfnk.com/ard/dlf/02/mp3/128/stream.mp3?cid=01FBPXKD7AYM1NKT2H60NVGHEQ&sid=3KPp8ftZWxbsy3fzOPvtAKn39PB&token=W-CI8d9lfqfdrrSf0TRteh7XhQPc4Klh6_KAO6kmm80&tvf=PV0LDB6n3BhkMTIxLnJuZGZuay5jb20" genre="Dlf - Kultur &amp; Feuilleton" />
+    <station name="Deutschlandfunk Nova" url="https://f141.rndfnk.com/ard/dlf/03/mp3/128/stream.mp3?cid=01FBPXNCN1ZWEVWJYXG6ZP2TVH&sid=3KPp8fiPG7tF984VnBn9aoYJspi&token=ziHWLOcG2mcZrv75nZf7l7dLNRxZfLc8GOAkA1RKIDw&tvf=b2jNDR6n3BhmMTQxLnJuZGZuay5jb20" genre="Dlf - Wissen &amp; Indie" />
+    <station name="Absolut Relax" url="https://edge19.live-sm.absolutradio.de/absolut-relax?__cb=130270101023249" genre="Entspannung &amp; Pop" />
+    <station name="Radio BOB!" url="https://regiocast.streamabc.net/regc-boblivehessen-mp3-128-3525079?sABC=6np7n563%230%2385qq536q651r88556qo2r75134p68734%23fgernzf.enqvbobo.qr&aw_0_1st.playerid=streams.radiobob.de&amsparams=playerid:streams.radiobob.de;skey:1791468899" genre="Rock &amp; Metal" />
+    <station name="Sunshine Live" url="http://sunsl.streamabc.net/sunsl-90er-mp3-192-9697679?sABC=6np7n563%230%2385qq536q651r88556qo2r75134p68734%23fgernz.fhafuvar-yvir.qr&aw_0_1st.playerid=stream.sunshine-live.de&amsparams=playerid:stream.sunshine-live.de;skey:1791468899" genre="Electronic Dance Music" />
+    <station name="RTL Radio" url="https://rtlberlin.streamabc.net/rtlb-rtldeukw-mp3-128-2318218?sABC=6np7n563%230%2385qq536q651r88556qo2r75134p68734%23&aw_0_1st.playerid=&amsparams=playerid:;skey:1791468899" genre="Deutschlands Hit-Radio" />
     <station name="Schwarzwaldradio" url="https://edge13.streamonkey.net/fho-schwarzwaldradiolive/stream/mp3?aggregator=smk-m3u-mp3" genre="Oldies &amp; Classic Hits" />
-    <station name="ENERGY Deutschland" url="http://stream.ffn.de/energybremen/mp3-192/livestream.mp3" genre="Hit Music Only" />
-    <station name="Klassik Radio" url="https://stream.klassikradio.de/live/mp3-128" genre="Klassik &amp; Film" />
+    <station name="ENERGY Deutschland" url="http://ffn.stream40.radiohost.de/energybremen_mp3-192?upd-meta=1&upd-scheme=http&_art=dD0xNzkxNDY5MTk5JmQ9YjlhNWVjMDJhMzU0NGQ0MWI1N2E" genre="Hit Music Only" />
+    <station name="Klassik Radio" url="https://klassikr.streamabc.net/klr-krdnational-mp3-192-4099384?sABC=6np7n563%230%2385qq536q651r88556qo2r75134p68734%23&aw_0_1st.playerid=&amsparams=playerid:;skey:1791468899" genre="Klassik &amp; Film" />
     </national>
   <regions>
     <region name="Bayern (Bavière)">
-      <station name="Bayern 1" url="https://dispatcher.rndfnk.com/br/br1/obb/mp3/mid" genre="BR - Pop &amp; Oldies" />
-      <station name="Bayern 3" url="https://dispatcher.rndfnk.com/br/br3/live/mp3/mid" genre="BR - Hits" />
-      <station name="Antenne Bayern" url="https://stream.antenne.de/antenne" genre="Bavarian Hits" />
+      <station name="Bayern 1" url="https://f141.rndfnk.com/ard/br/br1/obb/mp3/128/stream.mp3?cid=01FB9ME7567MEQ5G72EVEEVVCS&sid=3KPp8ho3v5iaTU4AdZ8sNdknEG9&token=YmS47bwpewfYPNcrEotnkrbZ62oBVOX17I3xg2i1nZ8&tvf=B-l4ER6n3BhmMTQxLnJuZGZuay5jb20" genre="BR - Pop &amp; Oldies" />
+      <station name="Bayern 3" url="https://d141.rndfnk.com/ard/br/br3/live/mp3/128/stream.mp3?cid=01FBPVFWX7C216W6WY4M4M7MF7&sid=3KPp8iIs1rb7iaMLPfWCCcbFEnR&token=UZaUgKcpXCbuxyA4MJnM1_nhCHasyJHX3O0g-8Bzf_E&tvf=U60VFB6n3BhkMTQxLnJuZGZuay5jb20" genre="BR - Hits" />
+      <station name="Antenne Bayern" url="https://s3-webradio.antenne.de/antenne" genre="Bavarian Hits" />
       </region>
     <region name="Nordrhein-Westfalen (NRW)">
-      <station name="1LIVE" url="http://wdr-1live-live.icecast.wdr.de/wdr/1live/live/mp3/128/stream.mp3" genre="WDR - Jugendwelle" />
-      <station name="WDR 2" url="http://wdr-wdr2-rheinland.icecast.wdr.de/wdr/wdr2/rheinland/mp3/128/stream.mp3" genre="WDR - Info &amp; Pop" />
+      <station name="1LIVE" url="http://f121.rndfnk.com/ard/wdr/1live/live/mp3/128/stream.mp3?cid=01FBRZTS1K1TCD4KA2YZ1ND8X3&sid=3KPp8enJWzIXyAlgM9XhZNgM9LS&token=jof6eTs57u3obxs4ne8_E_66Yk2xAinKy0-tZLFcnfA&tvf=-eWjFR6n3BhmMTIxLnJuZGZuay5jb20" genre="WDR - Jugendwelle" />
+      <station name="WDR 2" url="http://d131.rndfnk.com/ard/wdr/wdr2/rheinland/mp3/128/stream.mp3?cid=01FBS03TJ7KW307WSY5W0W4NYB&sid=3KPp8emxPiPadKFHtBYVpLNr46L&token=FDI_dUMef1pqg9Cp_4d-ABBmeOn_oyETU2KJHR3FzD0&tvf=RNiTFR6n3BhkMTMxLnJuZGZuay5jb20" genre="WDR - Info &amp; Pop" />
       </region>
     <region name="Baden-Württemberg">
-      <station name="SWR1 BW" url="https://liveradio.swr.de/sw282p3/swr1bw/play.mp3" genre="SWR - Die größten Hits" />
-      <station name="SWR3" url="https://liveradio.swr.de/sw282p3/swr3/play.mp3" genre="SWR - Pop &amp; Comedy" />
+      <station name="SWR1 BW" url="https://f121.rndfnk.com/ard/swr/swr1/bw/mp3/128/stream.mp3?aggregator=web&cid=01FC1X3K2Z71SMDKMEC68DM7MW&sid=3KPp8l25S5lxxz3lU64wnxhjAgU&token=2Yxg0Hikr8G0d09fSfNUYh1N4NcximykNz4sXLEQJts&tvf=x662Gh6n3BhmMTIxLnJuZGZuay5jb20" genre="SWR - Die größten Hits" />
+      <station name="SWR3" url="https://d111.rndfnk.com/ard/swr/swr3/live/mp3/128/stream.mp3?aggregator=web&cid=01FC1X5J7PN2N3YQPZYT8YDM9M&sid=3KPp8jmZjCdXIZvWhxvRRrbZuCT&token=6YoQ8hZqgYGSvL464nRLxgdXWR260SOpGK56XcnaVuI&tvf=1fm0Gh6n3BhkMTExLnJuZGZuay5jb20" genre="SWR - Pop &amp; Comedy" />
       </region>
     <region name="Norddeutschland (NDR)">
-      <station name="NDR 2" url="https://icecast.ndr.de/ndr/ndr2/niedersachsen/mp3/128/stream.mp3" genre="NDR - Pop &amp; Information" />
-      <station name="N-JOY" url="http://icecast.ndr.de/ndr/njoy/live/mp3/128/stream.mp3" genre="NDR - Jugend" />
+      <station name="NDR 2" url="https://d121.rndfnk.com/ard/ndr/ndr2/niedersachsen/mp3/128/stream.mp3?cid=01FBQ2CWDYWJHGF4QAJ0SVV730&sid=3KPp8fHRbasJAkw431ZZv1dcL8F&token=h_P7rXxij8bb0teLxYiSP6NPsRqMfCmwIp7OTwe9NkA&tvf=JhMiGx6n3BhkMTIxLnJuZGZuay5jb20" genre="NDR - Pop &amp; Information" />
+      <station name="N-JOY" url="http://d121.rndfnk.com/ard/ndr/njoy/live/mp3/128/stream.mp3?cid=01FBRKKTM6TVGA3B3W6Y8NMXK8&sid=3KPp8fYsUXwg6ZKYc0eQCFLfip9&token=cpWrv5-C57OdWvCRgg951rhAFTJSRIK2PQJb5y9ca7I&tvf=FWXeGR6n3BhkMTIxLnJuZGZuay5jb20" genre="NDR - Jugend" />
       </region>
     </regions>
   </bouquet>

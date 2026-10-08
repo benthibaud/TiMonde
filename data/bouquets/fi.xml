@@ -2,9 +2,9 @@
 <bouquet country="FI" name="Finlande" flag="🇫🇮" multilingual="true">
   <community id="FI" name="Finnois (Suomi)">
     <national>
-      <station name="Yle Radio 1" url="http://icecast.live.yle.fi/radio/YleRadio1Hifi/icecast.audio" genre="Yle - Kulttuuri &amp; Puhe" />
+      <station name="Yle Radio 1" url="https://icecast.live.yle.fi/radio/YleRadio1Hifi/icecast.audio" genre="Yle - Kulttuuri &amp; Puhe" />
       <station name="YleX" url="https://icecast.live.yle.fi/radio/YleX/icecast.audio" genre="Yle - Uuden musiikin kanava" />
-      <station name="Yle Radio Suomi" url="http://icecast.live.yle.fi/radio/YleRS/icecast.audio" genre="Yle - Uutiset &amp; Alueet" />
+      <station name="Yle Radio Suomi" url="https://icecast.live.yle.fi/radio/YleRS/icecast.audio" genre="Yle - Uutiset &amp; Alueet" />
       <station name="Radio Nova Suomi" url="https://stream-redirect.bauermedia.fi/radionova/radionova_64.aac?aw_0_1st.bauer_loggedin=false&amp;aw_0_1st.playerid=BMUK_tunein" genre="Suomen suosituin radiokanava" />
       <station name="Radio Suomipop" url="https://aud-stream-suomipop.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8" genre="Parasta kotimaista musiikkia" />
       <station name="Radio Rock Suomi" url="https://aud-stream-radiorock.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8" genre="Asennetta &amp; Rockia" />
@@ -15,7 +15,7 @@
   <community id="SV" name="Suédois de Finlande (Svenska)">
     <national>
       <station name="Yle Vega" url="https://icecast.live.yle.fi/radio/YleVegaOsterbotten/icecast.audio" genre="Yle - Aktuellt på svenska &amp; Kultur" />
-      <station name="Yle X3M" url="http://icecast.live.yle.fi/radio/YleX3M/icecast.audio" genre="Yle - Ung kultur på svenska" />
+      <station name="Yle X3M" url="https://icecast.live.yle.fi/radio/YleX3M/icecast.audio" genre="Yle - Ung kultur på svenska" />
       </national>
     </community>
   </bouquet>

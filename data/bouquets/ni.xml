@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="NI" name="Nicaragua" flag="🇳🇮" multilingual="false">
   <national>
-    <station name="Radio Nicaragua" url="https://stream.zenolive.com/axr92qawesmtv" genre="La voz oficial del pueblo" />
+    <station name="Radio Nicaragua" url="https://stream-281.surfernetwork.com/axr92qawesmtv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJheHI5MnFhd2VzbXR2IiwiaG9zdCI6InN0cmVhbS0yODEuc3VyZmVybmV0d29yay5jb20iLCJydHRsIjo1LCJqdGkiOiJ5WEZEVUpMMFFBVzNRZlR1XzFJV3RBIiwiaWF0IjoxNzkxNDY4OTA2LCJleHAiOjE3OTE0Njg5NjZ9._diwijAm2VvE6yPeCKjyRjAEAYA4tipGOSGl1vraLW8" genre="La voz oficial del pueblo" />
     <station name="Tu Nueva Radio Ya" url="https://streaming.exclusive.radio/er/jethrotull/icecast.audio" genre="La número uno de Nicaragua" />
-    <station name="Radio Corporación" url="https://stream.zenolive.com/axr92qawesmtv" genre="La voz que se escucha" />
+    <station name="Radio Corporación" url="https://stream-281.surfernetwork.com/axr92qawesmtv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJheHI5MnFhd2VzbXR2IiwiaG9zdCI6InN0cmVhbS0yODEuc3VyZmVybmV0d29yay5jb20iLCJydHRsIjo1LCJqdGkiOiJ5WEZEVUpMMFFBVzNRZlR1XzFJV3RBIiwiaWF0IjoxNzkxNDY4OTA2LCJleHAiOjE3OTE0Njg5NjZ9._diwijAm2VvE6yPeCKjyRjAEAYA4tipGOSGl1vraLW8" genre="La voz que se escucha" />
     </national>
   </bouquet>

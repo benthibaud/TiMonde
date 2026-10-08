@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="ES" name="Espagne" flag="🇪🇸" multilingual="false">
   <national>
-    <station name="Cadena SER" url="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENASER.mp3" genre="Información &amp; Sociedad" />
+    <station name="Cadena SER" url="http://25703.live.streamtheworld.com:80/CADENASER.mp3" genre="Información &amp; Sociedad" />
     <station name="COPE" url="http://wecast12-h-cloud.flumotion.com/copesedes/sevilla.mp3" genre="Generalista / Deportes" />
-    <station name="Onda Cero" url="https://atres-live.ondacero.es/live/ondacero/bitrate_1.m3u8" genre="Radio de palabra" />
-    <station name="RNE Radio Nacional" url="https://dispatcher.rndfnk.com/crtve/rne1/alm/mp3/high" genre="RTVE - Información" />
+    <station name="Onda Cero" url="https://23623.live.streamtheworld.com:443/OCAAC/HLS/playlist.m3u8?dist=Otros-Agregadores&ttag=program%3Apor-fin" genre="Radio de palabra" />
+    <station name="RNE Radio Nacional" url="https://f131.rndfnk.com/star/crtve/rne1/alm/mp3/128/stream.mp3?cid=01GEP28AVCXYS8XFQCV0M7B0EZ&sid=3KPp8sUN19Xeg2rP7Eb5ZauYWcK&token=6gqHpTdU6VOf-fVzPNnxEMgy62F2UXipuNaFrS-hzKY&tvf=E02MRx6n3BhmMTMxLnJuZGZuay5jb20" genre="RTVE - Información" />
     <station name="Radio 3" url="https://rtvelivestream.rtve.es/rtvesec/rne/rne_r3_main.m3u8" genre="RTVE - Música &amp; Cultura" />
     <station name="Radio Clásica" url="https://rtvelivestream.rtve.es/rtvesec/rne/rne_r2_main.m3u8" genre="RTVE - Música Clásica" />
-    <station name="Los 40" url="https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40.mp3" genre="Éxitos Pop" />
-    <station name="Cadena Dial" url="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" genre="Música en español" />
+    <station name="Los 40" url="https://27833.live.streamtheworld.com:443/LOS40.mp3" genre="Éxitos Pop" />
+    <station name="Cadena Dial" url="http://28503.live.streamtheworld.com:80/CADENADIAL.mp3" genre="Música en español" />
     <station name="Rock FM" url="http://flucast02-h-cloud.flumotion.com/cope/rockfm-low.mp3" genre="Rock Clásico" />
-    <station name="Kiss FM" url="https://kissfm.kissfmradio.cires21.com/kissfm.mp3" genre="Lo mejor de los 80 y 90" />
+    <station name="Kiss FM" url="https://bbkissfm.kissfmradio.cires21.com:8443/bbkissfm/mp3/icecast.audio?wmsAuthSign=c2VydmVyX3RpbWU9MTAvMDgvMjAyNiAwMjoxNTowMCBQTSZoYXNoX3ZhbHVlPWU4L1FNTXlsSVdTbXBscUdHOG4vbVE9PSZ2YWxpZG1pbnV0ZXM9MTQ0MCZpZD01NzAyMjY5Nw==" genre="Lo mejor de los 80 y 90" />
     <station name="Europa FM" url="https://server9.emitironline.com:19144/" genre="Pop Rock actual" />
     </national>
   <regions>
     <region name="Catalogne (Catalunya)">
       <station name="Catalunya Ràdio" url="https://shoutcast.ccma.cat/ccma/catalunyaradioHD.mp3" genre="CCMA - Informació en català" />
-      <station name="RAC1" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RAC_1.mp3" genre="Generalista privada catalana" />
+      <station name="RAC1" url="https://25703.live.streamtheworld.com:443/RAC_1.mp3" genre="Generalista privada catalana" />
       <station name="iCat" url="https://shoutcast.ccma.cat/ccma/icatHD.mp3" genre="Música independent &amp; Cultura" />
       </region>
     <region name="Andalousie (Andalucía)">

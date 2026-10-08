@@ -19,11 +19,11 @@
       <station name="1010 WINS News" url="https://ice23.securenetsystems.net/WJXL" genre="New York 24/7 News" />
       <station name="WFAN Sports Radio" url="https://live.amperwave.net/manifest/audacy-wfanamaac-hlsc.m3u8" genre="New York Sports Talk" />
       <station name="Hot 97 WQHT" url="https://playerservices.streamtheworld.com/api/livestream-redirect/WHTAFM.mp3" genre="Where Hip Hop Lives" />
-      <station name="Z100 New York" url="https://stream.revma.ihrhls.com/zc1469" genre="New York's Number 1 Hit Music Station" />
+      <station name="Z100 New York" url="https://cloud.revma.ihrhls.com/zc1469?rj-org=n2cb-e2&rj-ttl=5&rj-tok=AAABoRvnZW0AWhAFZapBBwgZHQ" genre="New York's Number 1 Hit Music Station" />
       </region>
     <region name="Californie (Los Angeles / SF)">
-      <station name="KROQ 106.7 FM" url="http://live.amperwave.net/direct/audacy-kroqfmaac-imc" genre="World Famous KROQ Alternative Rock" />
-      <station name="KIIS FM Los Angeles" url="https://stream.revma.ihrhls.com/zc185" genre="LA's #1 Hit Music Station" />
+      <station name="KROQ 106.7 FM" url="http://35.173.219.21/audacy-kroqfmaac-imc?session-id=9d83fe5d8eec495137a5b9ac7e8bdc2b" genre="World Famous KROQ Alternative Rock" />
+      <station name="KIIS FM Los Angeles" url="https://cloud.revma.ihrhls.com/zc185?rj-org=n02b-e2&rj-ttl=5&rj-tok=AAABoRvnZX4A0XiGWg4nShVBZw" genre="LA's #1 Hit Music Station" />
       <station name="KPCC LAist 89.3 FM" url="https://laist.streamguys1.com/kpcc-mp3?aw_0_1st.playerId=laist" genre="Southern California Public Radio" />
       <station name="KALW 91.7 FM San Francisco" url="https://kalw-live.streamguys1.com/kalw" genre="San Francisco Public Radio" />
       </region>

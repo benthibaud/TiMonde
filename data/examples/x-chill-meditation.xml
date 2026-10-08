@@ -3,7 +3,7 @@
   <national>
     <station name="1.FM - Destination SPA" url="https://strm112.1.fm/spa_mobile_mp3" genre="Chill / Méditation" />
     <station name="Anotherplanet.fm ambient radio" url="https://stream.anotherplanet.fm:8000/stream.mp3" genre="Chill / Méditation" />
-    <station name="ANTENNE BAYERN - Chillout" url="https://mp3channels.webRadio.antenne.de/chillout" genre="Chill / Méditation" />
+    <station name="ANTENNE BAYERN - Chillout" url="https://s1-webradio.antenne.de/chillout" genre="Chill / Méditation" />
     <station name="Beat Blender" url="https://ice4.somafm.com/beatblender-128-mp3" genre="Chill / Méditation" />
     <station name="CALM RADIO - Native" url="https://streams.calmradio.com:3428/stream/1/" genre="Chill / Méditation" />
     <station name="Costa Del Mar - Chillout - Ibiza" url="https://radio4.cdm-radio.com:18020/stream-mp3-Chill" genre="Chill / Méditation" />

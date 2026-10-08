@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="SG" name="Singapour" flag="🇸🇬" multilingual="false">
   <national>
-    <station name="CNA938" url="https://playerservices.streamtheworld.com/api/livestream-redirect/938NOW_PREM.aac" genre="Mediacorp - News, Business &amp; Current Affairs" />
-    <station name="Gold 905" url="http://playerservices.streamtheworld.com/api/livestream-redirect/GOLD905AAC.aac" genre="Mediacorp - Sounds Good, Feels Good (Classics)" />
-    <station name="Symphony 924" url="http://playerservices.streamtheworld.com/api/livestream-redirect/SYMPHONY924AAC.aac" genre="Mediacorp - Singapore's Only Classical Music Station" />
+    <station name="CNA938" url="https://22903.live.streamtheworld.com:443/938NOW_PREM.aac" genre="Mediacorp - News, Business &amp; Current Affairs" />
+    <station name="Gold 905" url="http://28453.live.streamtheworld.com:80/GOLD905AAC.aac" genre="Mediacorp - Sounds Good, Feels Good (Classics)" />
+    <station name="Symphony 924" url="http://28393.live.streamtheworld.com:80/SYMPHONY924AAC.aac" genre="Mediacorp - Singapore's Only Classical Music Station" />
     <station name="987FM" url="https://22393.live.streamtheworld.com/987FM_PREM.aac" genre="Mediacorp - Singapore's Number 1 Hit Music Station" />
-    <station name="YES 933" url="http://playerservices.streamtheworld.com/api/livestream-redirect/YES933AAC.aac" genre="Mediacorp - 頂尖流行音樂台 (Mandarin Hits)" />
-    <station name="Class 95" url="http://playerservices.streamtheworld.com/api/livestream-redirect/CLASS95AAC.aac" genre="Mediacorp - The Best Mix of Music" />
-    <station name="Warna 942" url="http://playerservices.streamtheworld.com/api/livestream-redirect/WARNA942FMAAC.aac" genre="Mediacorp - Warna Berita &amp; Muzik (Melayu)" />
-    <station name="Oli 968" url="http://playerservices.streamtheworld.com/api/livestream-redirect/OLI968FMAAC.aac" genre="Mediacorp - Oli Kalanjiam (Tamil)" />
+    <station name="YES 933" url="http://28313.live.streamtheworld.com:80/YES933AAC.aac" genre="Mediacorp - 頂尖流行音樂台 (Mandarin Hits)" />
+    <station name="Class 95" url="http://28393.live.streamtheworld.com:80/CLASS95AAC.aac" genre="Mediacorp - The Best Mix of Music" />
+    <station name="Warna 942" url="http://22893.live.streamtheworld.com:80/WARNA942FMAAC.aac" genre="Mediacorp - Warna Berita &amp; Muzik (Melayu)" />
+    <station name="Oli 968" url="http://22393.live.streamtheworld.com:80/OLI968FMAAC.aac" genre="Mediacorp - Oli Kalanjiam (Tamil)" />
     </national>
   </bouquet>

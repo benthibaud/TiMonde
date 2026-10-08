@@ -2,7 +2,7 @@
 <bouquet country="BG" name="Bulgarie" flag="🇧🇬" multilingual="false">
   <national>
     <station name="BNR Horizont" url="https://play.global.audio/testb.aac?dist=RADIOPLAY" genre="БНР - Новини &amp; Общество" />
-    <station name="BNR Hristo Botev" url="https://lb-hls.cdn.bg/2032/fls/HrBotev.stream/playlist.m3u8" genre="БНР - Култура &amp; Класика" />
+    <station name="BNR Hristo Botev" url="https://e106-ts.cdn.bg/regstations/fls/HrBotev.stream/playlist.m3u8" genre="БНР - Култура &amp; Класика" />
     <station name="BG Radio" url="http://stream.radioreklama.bg/bgradio128" genre="Само българска музика" />
     <station name="Radio City Bulgaria" url="http://31.13.223.148:8000/city.mp3" genre="Хитове до дупка" />
     <station name="Darik Radio" url="https://a12.asurahosting.com/listen/darik_radio/radio.mp3" genre="Новините, каквито са" />

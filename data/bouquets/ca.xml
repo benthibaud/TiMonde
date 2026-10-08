@@ -4,9 +4,9 @@
     <national>
       <station name="ICI Radio-Canada Première" url="https://rcavliveaudio.akamaized.net/hls/live/2006635/P-2QMTL0_MTL/master.m3u8" genre="Actualité &amp; Société" />
       <station name="ICI Musique" url="https://rcavliveaudio.akamaized.net/hls/live/2006979/M-7QMTL0_MTL/master.m3u8" genre="Musique &amp; Éclectisme" />
-      <station name="98.5 FM Montréal" url="https://playerservices.streamtheworld.com/api/livestream-redirect/CHMPFMAAC.aac" genre="Opinion &amp; Parlé" />
-      <station name="CKOI 96.9" url="https://playerservices.streamtheworld.com/api/livestream-redirect/CKOIFMAAC_SC.aac" genre="Hits &amp; Humour" />
-      <station name="Rythme FM 105.7" url="https://s33.myradiostream.com/15364/listen.mp3" genre="Pop &amp; Variété" />
+      <station name="98.5 FM Montréal" url="http://cdn.cogecolive.com/geoblock/stream_geoblocked_fr.m3u8" genre="Opinion &amp; Parlé" />
+      <station name="CKOI 96.9" url="http://cdn.cogecolive.com/geoblock/stream_geoblocked_fr.m3u8" genre="Hits &amp; Humour" />
+      <station name="Rythme FM 105.7" url="https://s33.myradiostream.com:15364/listen.mp3?nocache=1791468896" genre="Pop &amp; Variété" />
       <station name="Énergie 94.3" url="http://22983.live.streamtheworld.com:3690/CJABFMAAC_SC" genre="Rock &amp; Pop" />
       <station name="Rouge FM 107.3" url="http://stream.statsradio.com:8088/stream" genre="Adulte contemporain" />
       <station name="CHOI Radio X" url="http://icecast-choi.rncm.ca/choi.mp3" genre="Québec Talk &amp; Rock" />

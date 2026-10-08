@@ -3,6 +3,6 @@
   <national>
     <station name="Radio Nacional de Costa Rica" url="https://g2qd375ol7an-hls-live.5centscdn.com/Radio/eae835e83c0494a376229f254f7d3392.sdp/chunks.m3u8" genre="SINART - La radio pública costarricense" />
     <station name="Teletica Radio 91.5" url="https://g2qd375ol7an-hls-live.5centscdn.com/Radio/eae835e83c0494a376229f254f7d3392.sdp/chunks.m3u8" genre="Noticias, deportes y opinión" />
-    <station name="Bésame Costa Rica" url="https://playerservices.streamtheworld.com/api/livestream-redirect/BESAME_BOGOTAAAC_SC" genre="La radio apasionada" />
+    <station name="Bésame Costa Rica" url="https://26593.live.streamtheworld.com:443/BESAME_BOGOTAAAC_SC" genre="La radio apasionada" />
     </national>
   </bouquet>

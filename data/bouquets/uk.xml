@@ -11,10 +11,10 @@
     <station name="Heart UK" url="https://icecast.thisisdax.com/HeartUKMP3" genre="Feel Good" />
     <station name="Classic FM" url="https://media-ice.musicRadio.com/ClassicFMMP3.m3u" genre="Classical" />
     <station name="LBC" url="https://icecast.thisisdax.com/LBCUKMP3" genre="Leading Britain's Conversation" />
-    <station name="Absolute Radio" url="https://streaming.live365.com/b05055_128mp3" genre="Classic &amp; Modern Rock" />
-    <station name="Virgin Radio UK" url="https://radio.virginradio.co.uk/stream" genre="Rock &amp; Pop" />
+    <station name="Absolute Radio" url="https://ais-edge89-dal02.cdnstream.com/b05055_128mp3" genre="Classic &amp; Modern Rock" />
+    <station name="Virgin Radio UK" url="https://assets.wireless.radio/audio/georestriction-barkers/virgin-stations.mp3" genre="Rock &amp; Pop" />
     <station name="Smooth Radio" url="https://icecast.thisisdax.com/SmoothUKMP3" genre="Relaxing Music" />
-    <station name="Planet Rock" url="https://live.amperwave.net/manifest/audacy-krxqfmaac-hlsc.m3u8" genre="Classic Rock" />
+    <station name="Planet Rock" url="https://18323.live.streamtheworld.com:443/ROCKANDPOP.mp3" genre="Classic Rock" />
     <station name="Kerrang! Radio" url="https://stream-al.hellorayo.co.uk/kerrang.aac?direct=true&amp;aw_0_1st.skey=1602676850&amp;=&amp;&amp;___cb=48549118807250" genre="Rock / Metal" />
     </national>
   <regions>

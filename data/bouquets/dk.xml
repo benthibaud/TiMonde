@@ -10,6 +10,6 @@
     <station name="The Voice Danmark" url="https://live-bauerdk.sharp-stream.com/thevoice_dk_mp3" genre="Alt det nye" />
     <station name="myROCK" url="https://live-bauerdk.sharp-stream.com/myrock_dk_mp3" genre="Ren Rock" />
     <station name="Radio 100 Danmark" url="https://netradio.classicfm.dk/classicrock" genre="Masser af god musik" />
-    <station name="Radio4 Danmark" url="https://netradio.radio4.dk/radio4" genre="Taleradio &amp; Aktualitet" />
+    <station name="Radio4 Danmark" url="https://29053.live.streamtheworld.com:443/RADIO4_ABR.mp3" genre="Taleradio &amp; Aktualitet" />
     </national>
   </bouquet>

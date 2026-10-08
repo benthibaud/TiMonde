@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="IT" name="Italie" flag="🇮🇹" multilingual="false">
   <national>
-    <station name="Rai Radio 1" url="https://icestreaming.rai.it/1.mp3" genre="Rai - Notizie &amp; Informazione" />
-    <station name="Rai Radio 2" url="https://icestreaming.rai.it/2.mp3" genre="Rai - Intrattenimento &amp; Pop" />
-    <station name="Rai Radio 3" url="https://icestreaming.rai.it/3.mp3" genre="Rai - Cultura &amp; Classica" />
-    <station name="RTL 102.5" url="https://streamingv2.shoutcast.com/rtl-1025" genre="Very Normal People" />
+    <station name="Rai Radio 1" url="https://icecdn-19d24861e90342cc8decb03c24c8a419.msvdn.net/icecastRelay/S16355530/Q4zh3NTu28Rx/icecast" genre="Rai - Notizie &amp; Informazione" />
+    <station name="Rai Radio 2" url="https://icecdn-19d24861e90342cc8decb03c24c8a419.msvdn.net/icecastRelay/S35942484/yp5F67151K92/icecast" genre="Rai - Intrattenimento &amp; Pop" />
+    <station name="Rai Radio 3" url="https://icecdn-19d24861e90342cc8decb03c24c8a419.msvdn.net/icecastRelay/S56630579/yEbkcBtIoSwd/icecast" genre="Rai - Cultura &amp; Classica" />
+    <station name="RTL 102.5" url="https://StreamCdnP6-dd782ed59e2a4e86aabf6fc508674b59.msvdn.net/live/S97044836/tbbP8T1ZRPBL/playlist_audio.m3u8" genre="Very Normal People" />
     <station name="RDS 100% Grandi Successi" url="https://icstream.rds.radio/rds" genre="Grandi Successi" />
     <station name="Radio Deejay" url="http://streamcdnb1-4c4b867c89244861ac216426883d1ad0.msvdn.net/radiodeejay/radiodeejay/play1.m3u8" genre="Pop &amp; Talk" />
     <station name="Radio 105" url="http://icecast.unitedradio.it/Radio105.mp3" genre="Musica &amp; Risate" />

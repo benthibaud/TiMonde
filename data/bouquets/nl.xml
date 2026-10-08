@@ -5,10 +5,10 @@
     <station name="NPO Radio 2" url="https://icecast.omroep.nl/radio2-bb-mp3" genre="NPO - Pop &amp; Evergreens" />
     <station name="NPO 3FM" url="https://icecast.omroep.nl/3fm-bb-mp3" genre="NPO - Nieuwe Muziek" />
     <station name="NPO Klassiek" url="https://icecast.omroep.nl/radio4-bb-mp3" genre="NPO - Klassiek" />
-    <station name="Radio 538" url="http://playerservices.streamtheworld.com/api/livestream-redirect/RADIO538.mp3" genre="De nummer 1 Hitradio" />
-    <station name="Qmusic Nederland" url="https://stream.qmusic.nl/qmusic/mp3" genre="Q is good for you" />
-    <station name="Sky Radio" url="http://playerservices.streamtheworld.com/api/livestream-redirect/SRGSTR04.mp3" genre="The Christmas Station / Non-stop" />
-    <station name="Radio 10" url="http://playerservices.streamtheworld.com/api/livestream-redirect/RADIO10.mp3" genre="De Grootste Hits Aller Tijden" />
-    <station name="SLAM!" url="https://stream.slam.nl/slam/mp3" genre="Play Music, Play Life" />
+    <station name="Radio 538" url="http://25633.live.streamtheworld.com:80/RADIO538.mp3" genre="De nummer 1 Hitradio" />
+    <station name="Qmusic Nederland" url="https://audio-streaming.qmusic.nl/Qmusic_nl_live.mp3" genre="Q is good for you" />
+    <station name="Sky Radio" url="http://22603.live.streamtheworld.com:80/SRGSTR04.mp3" genre="The Christmas Station / Non-stop" />
+    <station name="Radio 10" url="http://28553.live.streamtheworld.com:80/RADIO10.mp3" genre="De Grootste Hits Aller Tijden" />
+    <station name="SLAM!" url="https://27743.live.streamtheworld.com/SLAM_MP3_SC" genre="Play Music, Play Life" />
     </national>
   </bouquet>

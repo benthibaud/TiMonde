@@ -6,7 +6,7 @@
     <station name="Program ARS" url="https://mp3.rtvslo.si/ars" genre="RTV Slovenija - Resna glasba &amp; Kultura" />
     <station name="Radio Si" url="https://mp3.rtvslo.si/rsi" genre="RTV Slovenija - Slovenia International" />
     <station name="Radio 1 Slovenija" url="http://live.radio.si/Radio1" genre="Več dobre glasbe" />
-    <station name="Radio Aktual" url="http://195.95.158.131:9080/" genre="Glasba sonca in morja" />
+    <station name="Radio Aktual" url="http://live.radio.si/Aktual" genre="Glasba sonca in morja" />
     <station name="Radio Antena Slovenija" url="http://live.radioantena.si/Antena" genre="Hit radio" />
     <station name="Radio Center" url="http://stream3.radiocenter.si:8064/;stream/1" genre="Hit za hitom" />
     <station name="Radio Ognjišče" url="http://live.ognjisce.si/ognjisce.mp3" genre="Družinski &amp; Verski program" />

@@ -8,7 +8,7 @@
     <station name="Mega FM 92.7" url="https://smartstreamec.com/8042/stream" genre="Pop Hits &amp; Variété égyptienne" />
     <station name="Nagham FM 105.3" url="https://stream.radiojar.com/7g6w070etwzuv" genre="Chanson classique arabe &amp; Tarab" />
     <station name="Radio Hits 88.2" url="https://radiohits882.radioca.st/;" genre="Modern Arabic &amp; International Hits" />
-    <station name="Radio Masr 88.7" url="http://9090streaming.mobtada.com/9090FMEGYPT" genre="Informations du Caire en continu" />
-    <station name="9090 FM" url="http://9090streaming.mobtada.com/9090FMEGYPT" genre="الراديو 9090 - مصر بتتكلم" />
+    <station name="Radio Masr 88.7" url="https://9090streaming.mobtada.com/9090FMEGYPT" genre="Informations du Caire en continu" />
+    <station name="9090 FM" url="https://9090streaming.mobtada.com/9090FMEGYPT" genre="الراديو 9090 - مصر بتتكلم" />
     </national>
   </bouquet>

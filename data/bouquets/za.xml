@@ -2,14 +2,14 @@
 <bouquet country="ZA" name="Afrique du Sud" flag="🇿🇦" multilingual="false">
   <national>
     <station name="SAfm" url="https://sa47.scastream.com.au/live/5ssa_128.stream/playlist.m3u8" genre="SABC - Leading the conversation (News &amp; Talk)" />
-    <station name="5FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/5FMAAC.aac" genre="SABC - Youth, Pop &amp; Dance Culture" />
-    <station name="Metro FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/METROFMAAC.aac" genre="SABC - Urban Contemporary Music" />
+    <station name="5FM" url="https://27943.live.streamtheworld.com:443/5FMAAC.aac" genre="SABC - Youth, Pop &amp; Dance Culture" />
+    <station name="Metro FM" url="https://22193.live.streamtheworld.com:443/METROFMAAC.aac" genre="SABC - Urban Contemporary Music" />
     <station name="RSG (Radio Sonder Grense)" url="https://stream.rsgmedia.ba/listen/radio_stari_grad/radio.mp3" genre="SABC - Afrikaans News &amp; Culture" />
     <station name="Ukhozi FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/UKHOZIFMAAC_SC?dist=triton-widget&amp;pname=tdwidgets" genre="SABC - Luhamba Phambili (Zulu Radio)" />
-    <station name="Radio 2000" url="http://bokradio.highquality.radiostream.co.za/" genre="SABC - Facility of Great Hits &amp; Sport" />
-    <station name="702 Talk Radio" url="https://playerservices.streamtheworld.com/api/livestream-redirect/FM702_192AAC.aac" genre="Walk the Talk / News &amp; Debate Johannesburg" />
-    <station name="Jacaranda FM" url="https://edge.iono.fm/xice/jacarandafm_live_medium.aac" genre="More Music You Love (Pretoria / Gauteng)" />
+    <station name="Radio 2000" url="https://bokradio.highquality.radiostream.co.za/" genre="SABC - Facility of Great Hits &amp; Sport" />
+    <station name="702 Talk Radio" url="https://25633.live.streamtheworld.com:443/FM702_192AAC.aac" genre="Walk the Talk / News &amp; Debate Johannesburg" />
+    <station name="Jacaranda FM" url="https://live.jacarandafm.com/jacarandalow.aac" genre="More Music You Love (Pretoria / Gauteng)" />
     <station name="KFM 94.5 Cape Town" url="https://wgbh-live.streamguys1.com/wcai" genre="Western Cape's Biggest Hits" />
-    <station name="East Coast Radio" url="https://edge.iono.fm/xice/ecr_live_medium.aac" genre="Durban / KwaZulu-Natal Hit Music" />
+    <station name="East Coast Radio" url="https://live.ecr.co.za/ecrlow.aac" genre="Durban / KwaZulu-Natal Hit Music" />
     </national>
   </bouquet>

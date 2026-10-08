@@ -4,12 +4,12 @@
     <station name="Opus 94.5 FM" url="https://s2.mexside.net/8014/stream" genre="IMER - Música Clásica &amp; Arte" />
     <station name="Reactor 105.7 FM" url="https://s2.mexside.net/8016/stream" genre="IMER - Rock alternativo &amp; Juventud" />
     <station name="Radio Horizonte 107.9 FM" url="https://s2.mexside.net/8018/stream" genre="IMER - Jazz &amp; Música del Mundo" />
-    <station name="W Radio México" url="http://65.21.202.84:8062/" genre="Información &amp; Entretenimiento" />
-    <station name="Los 40 México" url="https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40_MEXICO.mp3" genre="Toda la música que te mueve" />
-    <station name="Radio Fórmula 103.3 FM" url="https://mdstrm.com/audio/6102ce7ef33d0b0830ec3adc/live.m3u8" genre="Noticias &amp; Opinión líder en México" />
+    <station name="W Radio México" url="http://65.21.202.84:8062/index.html" genre="Información &amp; Entretenimiento" />
+    <station name="Los 40 México" url="https://27063.live.streamtheworld.com:443/LOS40_MEXICO.mp3" genre="Toda la música que te mueve" />
+    <station name="Radio Fórmula 103.3 FM" url="https://us-b4-p-e-pb13-audio.cdn.mdstrm.com/live-audio-aw/6102ce7ef33d0b0830ec3adc/playlist.m3u8?aid=602140ecd1277a077ef81b34&pid=XavUy6oLu4Xpu1BUtOjUOH970875gJZs&sid=zCicpebTkaft237rJwUA4RXlCBcUHZDr&uid=Nuh2wKxLYpuydPMLAMIPSYs0thOaaSJp&es=us-b4-p-e-pb13-audio.cdn.mdstrm.com&ote=1791555305731&ot=E8-8abK9b6b3ZZOP04g1ow&proto=https&pz=us&cP=128000&awCollectionId=602140ecd1277a077ef81b34&aw_0_1st.playerId=website&liveId=6102ce7ef33d0b0830ec3adc&propertyName=website&listenerId=Nuh2wKxLYpuydPMLAMIPSYs0thOaaSJp" genre="Noticias &amp; Opinión líder en México" />
     <station name="Alfa 91.3 FM" url="https://radioserver.dk/alwayselvisradio" genre="Más variedad, mucho más música" />
     <station name="Joya 93.7 FM" url="https://playradio.mx/proxy/joya?mp=/stream" genre="La música que te llena" />
-    <station name="El Fonógrafo 690 AM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/XEN_AMAAC.aac" genre="Música ligada a su recuerdo" />
-    <station name="Beat 100.9 FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/XHSONFMAAC.aac" genre="Total Electronic Music" />
+    <station name="El Fonógrafo 690 AM" url="https://29319.live.streamtheworld.com:443/XEN_AMAAC.aac" genre="Música ligada a su recuerdo" />
+    <station name="Beat 100.9 FM" url="https://26303.live.streamtheworld.com:443/XHSONFMAAC.aac" genre="Total Electronic Music" />
     </national>
   </bouquet>

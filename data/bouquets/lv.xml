@@ -3,13 +3,13 @@
   <national>
     <station name="Latvijas Radio 1" url="https://muste.latvijasradio.lv/shoutcast/mp4:lr1a.stream/playlist.m3u8" genre="LR - Ziņas &amp; Sabiedrība" />
     <station name="Latvijas Radio 2" url="https://muste.latvijasradio.lv/shoutcast/mp4:lr2a.stream/playlist.m3u8" genre="LR - Latviešu populārā mūzika" />
-    <station name="Latvijas Radio 3 Klasika" url="https://dispatcher.rndfnk.com/br/br3/live/mp3/mid" genre="LR - Klasiskā mūzika &amp; Māksla" />
+    <station name="Latvijas Radio 3 Klasika" url="https://d141.rndfnk.com/ard/br/br3/live/mp3/128/stream.mp3?cid=01FBPVFWX7C216W6WY4M4M7MF7&sid=3KPp8iIs1rb7iaMLPfWCCcbFEnR&token=UZaUgKcpXCbuxyA4MJnM1_nhCHasyJHX3O0g-8Bzf_E&tvf=U60VFB6n3BhkMTQxLnJuZGZuay5jb20" genre="LR - Klasiskā mūzika &amp; Māksla" />
     <station name="Pieci.lv (Latvijas Radio 5)" url="https://live.pieci.lv/live5-aac" genre="LR - Jauniešu sabiedriskais medijs" />
     <station name="Radio SWH" url="http://80.232.162.149:8000/swh96mp3" genre="Pirmais komercradio Latvijā" />
     <station name="Star FM Latvija" url="http://starfm.live.advailo.com/audio/mp3/icecast.audio" genre="Tikai labākie hiti" />
-    <station name="European Hit Radio Latvija" url="http://stream.europeanhitradio.com:8000/Stream_24.aac" genre="Pārdotākie hiti Eiropā" />
+    <station name="European Hit Radio Latvija" url="https://28563.live.streamtheworld.com:443/EHR_DANCEAAC.aac" genre="Pārdotākie hiti Eiropā" />
     <station name="Radio TEV" url="http://stream.radiotev.lv:8002/radiov" genre="Tava radio stacija" />
     <station name="Radio Skonto" url="https://stream.radioskontoplus.lv:8443/st128" genre="Mūzika visai dienai" />
-    <station name="Radio NABA" url="http://stream.europeanhitradio.com:8000/Stream_24.aac" genre="Neatkarīgā un alternatīvā mūzika" />
+    <station name="Radio NABA" url="https://28563.live.streamtheworld.com:443/EHR_DANCEAAC.aac" genre="Neatkarīgā un alternatīvā mūzika" />
     </national>
   </bouquet>

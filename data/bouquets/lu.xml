@@ -2,16 +2,16 @@
 <bouquet country="LU" name="Luxembourg" flag="🇱🇺" multilingual="true">
   <community id="LU" name="Luxembourgeois (Lëtzebuergesch)">
     <national>
-      <station name="RTL Radio Lëtzebuerg" url="https://shoutcast.rtl.lu/live" genre="RTL - Noriichten &amp; Informatioun" />
-      <station name="Radio 100,7" url="http://100komma7.cast.addradio.de/100komma7/live/mp3/128/stream.mp3" genre="Ëffentlech-rechtleche Radio / Kultur" />
-      <station name="Eldoradio" url="https://shoutcast.eldo.lu/live" genre="Hitradio Lëtzebuerg" />
-      <station name="Radio Aktiv" url="http://generationdance.lu/radio/8030/hd" genre="Lokalradio &amp; Musek" />
+      <station name="RTL Radio Lëtzebuerg" url="https://sc.rtl.lu/rtl" genre="RTL - Noriichten &amp; Informatioun" />
+      <station name="Radio 100,7" url="http://100komma7.stream11.radiohost.de/100komma7-100komma7_mp3-128?addradio&agend=true&upd-meta=1&upd-scheme=http&_art=dD0xNzkxNDY5MjA0JmQ9MTM1MDMwNDVlNjBiOTc1YzAwNTk" genre="Ëffentlech-rechtleche Radio / Kultur" />
+      <station name="Eldoradio" url="http://sc.bce.lu/eldo" genre="Hitradio Lëtzebuerg" />
+      <station name="Radio Aktiv" url="https://radio.gen.dance/radio/8030/hd" genre="Lokalradio &amp; Musek" />
       </national>
     </community>
   <community id="FR" name="Français">
     <national>
       <station name="L'essentiel Radio" url="http://lessentielradio.ice.infomaniak.ch/lessentielradio-128.mp3" genre="Hits &amp; Info Grand-Duché" />
-      <station name="Radio Latina Luxembourg" url="http://generationdance.lu/radio/8030/hd" genre="Musique du monde &amp; Communautés" />
+      <station name="Radio Latina Luxembourg" url="https://radio.gen.dance/radio/8030/hd" genre="Musique du monde &amp; Communautés" />
       </national>
     </community>
   </bouquet>

@@ -11,12 +11,12 @@
     <station name="A.M. America’s Old Time Radio Comedy Channel" url="https://hemnos.cdnstream.com/1666_32" genre="Oldies / Rétro" />
     <station name="Arctic Outpost" url="https://radio.streemlion.com:3715/stream" genre="Oldies / Rétro" />
     <station name="Audio Noir Radio (Chicago)" url="http://streams.audionoir.com:8000/noir/;" genre="Oldies / Rétro" />
-    <station name="Cladrite Radio (New-York)" url="https://streaming.live365.com/a43564" genre="Oldies / Rétro" />
+    <station name="Cladrite Radio (New-York)" url="https://das-edge93-live365-dal05.cdnstream.com/a43564" genre="Oldies / Rétro" />
     <station name="Classic Old Time Radio" url="https://streaming04.liveboxstream.uk/proxy/roksta18/stream" genre="Oldies / Rétro" />
     <station name="Conyers Georgia Old Time Radio - Conyers, GA" url="https://s8.yesstreaming.net:17011/stream" genre="Oldies / Rétro" />
     <station name="Hank's Old Time Radio" url="http://s1.myradiostream.com:4962/;stream/1" genre="Oldies / Rétro" />
-    <station name="KBRD 680 AM" url="https://onlineradiobox.com/json/us/kbrd/play?platform=web" genre="Oldies / Rétro" />
-    <station name="Megaton Cafe Radio" url="https://onlineradiobox.com/json/us/megatoncafe/play?platform=web" genre="Oldies / Rétro" />
+    <station name="KBRD 680 AM" url="http://205.134.192.90:680/index.html?sid=1" genre="Oldies / Rétro" />
+    <station name="Megaton Cafe Radio" url="https://us2.internet-radio.com/proxy/megatoncafe?mp=/stream;" genre="Oldies / Rétro" />
     <station name="Radio Dismuke (Fort Worth TX)" url="http://74.208.71.58:8087/;;" genre="Oldies / Rétro" />
     <station name="Sci-Fi OTR Internet Radio - ​Livonia, MI" url="https://s1.voscast.com:8653/stream" genre="Oldies / Rétro" />
     <station name="The UK 1940s Radio Station - ​London" url="http://solid2.streamupsolutions.com:24929/stream/;" genre="Oldies / Rétro" />

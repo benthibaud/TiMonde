@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="NZ" name="Nouvelle-Zélande" flag="🇳🇿" multilingual="false">
   <national>
-    <station name="RNZ National" url="https://radionz-ice.streamguys.com/national.mp3" genre="Radio New Zealand - Public News &amp; Current Affairs" />
-    <station name="RNZ Concert" url="https://radionz-ice.streamguys.com/concert.mp3" genre="Radio New Zealand - Fine Music &amp; Classical" />
-    <station name="The Rock New Zealand" url="https://digitalstreams.mediaworks.nz/rock_net/playlist.m3u8" genre="New Zealand's Rock Station" />
-    <station name="Newstalk ZB" url="http://playerservices.streamtheworld.com/api/livestream-redirect/NZME_41AAC.m3u8" genre="New Zealand's #1 Talk Station" />
+    <station name="RNZ National" url="http://radionz-ice.streamguys.com/national.mp3" genre="Radio New Zealand - Public News &amp; Current Affairs" />
+    <station name="RNZ Concert" url="http://radionz-ice.streamguys.com/Concert_aac128" genre="Radio New Zealand - Fine Music &amp; Classical" />
+    <station name="The Rock New Zealand" url="https://mediaworks.streamguys1.com/rock_net/playlist.m3u8" genre="New Zealand's Rock Station" />
+    <station name="Newstalk ZB" url="http://27273.live.streamtheworld.com:80/NZME_41AAC/HLS/playlist.m3u8" genre="New Zealand's #1 Talk Station" />
     <station name="Mai FM" url="https://ais-sa1.streamon.fm/7102_128k.aac" genre="Aotearoa's Hip Hop &amp; RnB" />
-    <station name="George FM" url="https://digitalstreams.mediaworks.nz/george_net/playlist.m3u8" genre="Electronic &amp; Dance Music NZ" />
-    <station name="The Edge NZ" url="https://digitalstreams.mediaworks.nz/edge_net/playlist.m3u8" genre="All The Hits" />
+    <station name="George FM" url="https://mediaworks.streamguys1.com/george_net/playlist.m3u8" genre="Electronic &amp; Dance Music NZ" />
+    <station name="The Edge NZ" url="https://mediaworks.streamguys1.com/edge_net/playlist.m3u8" genre="All The Hits" />
     <station name="ZM Online" url="https://radios.mipanel.stream:7058/stream" genre="Today's Hit Music" />
     </national>
   </bouquet>

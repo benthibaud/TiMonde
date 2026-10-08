@@ -6,8 +6,8 @@
     <station name="FM4" url="https://orf-live.ors-shoutcast.at/fm4-q2a" genre="ORF - Alternative &amp; Jugend" />
     <station name="Radio Wien" url="http://orf-live.ors-shoutcast.at/wie-q1a" genre="ORF - Wien Musik &amp; Regional" />
     <station name="Kronehit" url="http://onair-ha1.krone.at/kronehit1058.mp3" genre="Wir sind die meisten Musik" />
-    <station name="Radio Arabella" url="https://frontend.streams.arabella.at/arabella-oberoesterreich?aggregator=tunein" genre="Kulthits &amp; Das Beste von heute" />
-    <station name="88.6 Der Musiksender" url="https://live.stream.maxfive.com/max5-city23?aggregator=radiode" genre="Echter Rock &amp; Mehr" />
+    <station name="Radio Arabella" url="https://edge83.streams.arabella.at/arabella-oberoesterreich?aggregator=tunein" genre="Kulthits &amp; Das Beste von heute" />
+    <station name="88.6 Der Musiksender" url="https://edge83.stream.maxfive.com/max5-city23?aggregator=radiode" genre="Echter Rock &amp; Mehr" />
     <station name="Radio Stephansdom" url="http://radioklassikstephansdom.ice.infomaniak.ch/radioklassikstephansdom.mp3" genre="Klassik &amp; Kultur Wien" />
     <station name="Superfly.fm" url="https://edge66.stream.superfly.fm/superfly-live" genre="Soul, Black Music &amp; Funk" />
     <station name="Life Radio" url="https://cast4.asurahosting.com/proxy/life/stream" genre="Oberösterreich Hits" />

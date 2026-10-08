@@ -4,6 +4,6 @@
     <station name="CNR Voice of China (中国之声)" url="https://ice10.securenetsystems.net/KFIR" genre="China National Radio - 全国主流新闻" />
     <station name="CNR Voice of Music (音乐之声)" url="https://ice10.securenetsystems.net/KFIR" genre="China National Radio - 流行音乐盛宴" />
     <station name="CRI News Radio (环球资讯)" url="http://sk.cri.cn/am846.m3u8" genre="China Radio International - 国际权威视角" />
-    <station name="Beijing Music Radio (北京音乐广播)" url="https://streaming.live365.com/a73754" genre="首都最潮音乐" />
+    <station name="Beijing Music Radio (北京音乐广播)" url="https://das-edge93-live365-dal05.cdnstream.com/a73754" genre="首都最潮音乐" />
     </national>
   </bouquet>

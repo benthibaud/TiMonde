@@ -4,6 +4,6 @@
     <station name="Radio Nacional del Paraguay" url="http://audio.radionacional.gov.py:8085/920" genre="La voz de la patria (Guaraní &amp; Español)" />
     <station name="Radio Monumental 1080 AM" url="http://us-b4-p-e-cg11-audio.cdn.mdstrm.com/live-audio-aw/62d81ca6a459e4082203c95b" genre="Mucho más que noticias" />
     <station name="Radio Ñandutí" url="http://sc.abc.com.py:8000/stream" genre="El diario hablado del Paraguay" />
-    <station name="Radio Disney Paraguay" url="https://playerservices.streamtheworld.com/api/livestream-redirect/DISNEY_PAR_ASAAC.m3u8?dist=web-radiodisney" genre="Tu música" />
+    <station name="Radio Disney Paraguay" url="https://26563.live.streamtheworld.com:443/DISNEY_PAR_ASAAC/HLS/playlist.m3u8?dist=web-radiodisney" genre="Tu música" />
     </national>
   </bouquet>

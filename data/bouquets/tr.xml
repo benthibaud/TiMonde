@@ -8,7 +8,7 @@
     <station name="Power FM Turkey" url="https://listen.powerapp.com.tr/powerpop/128/chunks.m3u8" genre="En İyiler, Daima / Yabancı Müzik" />
     <station name="Kral FM" url="https://live.radyositesihazir.com/8032/stream" genre="İlacınız Burada / Arabesk &amp; Damar" />
     <station name="Süper FM" url="http://27943.live.streamtheworld.com/SUPER_FMAAC_SC" genre="En Süper Türkçe Pop" />
-    <station name="Joy FM Turkey" url="https://playerservices.streamtheworld.com/api/livestream-redirect/JOY_TURK_SC?/" genre="Easy Listening, Soft Pop &amp; Romantik" />
+    <station name="Joy FM Turkey" url="https://27943.live.streamtheworld.com:443/JOY_TURK_SC?/" genre="Easy Listening, Soft Pop &amp; Romantik" />
     <station name="Best FM" url="https://ssldyg.radyotvonline.com/best/bestfm.stream/playlist.m3u8" genre="Konuşan Radyo (Haber &amp; Pop)" />
     </national>
   </bouquet>

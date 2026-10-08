@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet name="Webradios NRJ" flag="🔥" category="Exemples" country="FR">
   <national>
-    <station name="NRJ (Paris)" url="https://cdn.nrjaudio.fm/audio1/fr/30001/mp3_128.mp3" genre="Hits / Pop / Urban" />
+    <station name="NRJ (Paris)" url="https://streaming.nrjaudio.fm/oumvmk8fnozc?origine=rd_https_allnrj" genre="Hits / Pop / Urban" />
     <station name="NRJ Manu le 6-9" url="https://streaming.nrjaudio.fm/our7shvukkaq?origine=fluxradios_NRJ-Manu-le-6-9" genre="Hits / Pop / Urban" />
     <station name="NRJ At Work" url="https://streaming.nrjaudio.fm/ou7xcof3s5gi?origine=fluxradios_NRJ-At-Work" genre="Hits / Pop / Urban" />
     <station name="NRJ Love" url="https://streaming.nrjaudio.fm/oudjhm2h9r57?origine=fluxradios_NRJ-Love" genre="Hits / Pop / Urban" />
@@ -119,11 +119,11 @@
     <station name="NRJ Oriental" url="https://streaming.nrjaudio.fm/ouhs9iapu6pb?origine=fluxradios_NRJ-Oriental" genre="Hits / Pop / Urban" />
     <station name="NRJ Rai" url="https://streaming.nrjaudio.fm/ou8vwfgk7oiu?origine=fluxradios_NRJ-Rai" genre="Hits / Pop / Urban" />
     <station name="NRJ België (Flandres)" url="https://25643.live.streamtheworld.com/NRJBELGIE.mp3" genre="Hits / Pop / Urban" />
-    <station name="NRJ Berlin" url="https://nrj.de/digital" genre="Hits / Pop / Urban" />
+    <station name="NRJ Berlin" url="http://edge63.streamonkey.net/energy-digital/stream/mp3?aggregator=Shorty" genre="Hits / Pop / Urban" />
     <station name="NRJ Egypt" url="https://nrjstreaming.ahmed-melege.com/nrjegypt" genre="Hits / Pop / Urban" />
     <station name="NRJ Estonia" url="https://edge01.cdn.bitflip.ee:8888/NRJ" genre="Hits / Pop / Urban" />
     <station name="NRJ Norway" url="https://nrj.p4groupaudio.com/NRJ_AM" genre="Hits / Pop / Urban" />
     <station name="NRJ Österreich" url="http://stream1.energy.at:8000/aut" genre="Hits / Pop / Urban" />
-    <station name="NRJ Sweden" url="https://tx-bauerse.sharp-stream.com/http_live.php?i=nrj_instreamtest_se_mp3" genre="Hits / Pop / Urban" />
+    <station name="NRJ Sweden" url="https://edge-bauerse-01-gos2.sharp-stream.com/nrj_instreamtest_se_mp3" genre="Hits / Pop / Urban" />
     </national>
   </bouquet>

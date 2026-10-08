@@ -4,7 +4,7 @@
     <station name="RTS Radio Sénégal Internationale (RSI)" url="https://stxt-audiostreaming.akamaized.net/hls/live/2117380/couleur3/master.m3u8" genre="RTS - Service public sénégalais" />
     <station name="RFM Sénégal (Radio Futurs Médias)" url="https://wr.lmn.fm/rfm-wr12.aac?aw_0_1st.playerid=lgrdnwsRadiofr" genre="Actualités, Débats &amp; Mbalax" />
     <station name="Zik FM Dakar" url="https://stream.dakarmusique.com" genre="La radio urbaine de Dakar" />
-    <station name="Sud FM Sen Radio" url="http://stream.zenolive.com/rq40edfn3reuv" genre="Pionnière des radios privées" />
+    <station name="Sud FM Sen Radio" url="http://stream-290.surfernetwork.com/rq40edfn3reuv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJycTQwZWRmbjNyZXV2IiwiaG9zdCI6InN0cmVhbS0yOTAuc3VyZmVybmV0d29yay5jb20iLCJydHRsIjo1LCJqdGkiOiJGTzlFY1o5MFJOR1ZzWVkySmUxRkhnIiwiaWF0IjoxNzkxNDY4OTEwLCJleHAiOjE3OTE0Njg5NzB9.8GvfL6K4LZ0_ln8OH73RyxmRXGHNTW2cujknuDSt5SQ" genre="Pionnière des radios privées" />
     <station name="Walf FM 99.0" url="https://stream.zeno.fm/8q2g6x6k0heuv" genre="Walfadjri - Voix des sans voix" />
     <station name="Lamp Fall FM" url="https://fire.doscast.com/8222/stream" genre="Touba / Mouridisme &amp; Khassaides" />
     <station name="Al-Fayda FM" url="https://live.amperwave.net/manifest/audacy-kcbsamaac-llhlsc.m3u8" genre="Médina Baye / Kaolack" />

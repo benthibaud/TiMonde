@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="ID" name="Indonésie" flag="🇮🇩" multilingual="false">
   <national>
-    <station name="RRI Programa 3" url="https://dispatcher.rndfnk.com/br/br3/live/mp3/mid" genre="Radio Republik Indonesia - Jaringan Berita Nasional" />
+    <station name="RRI Programa 3" url="https://d141.rndfnk.com/ard/br/br3/live/mp3/128/stream.mp3?cid=01FBPVFWX7C216W6WY4M4M7MF7&sid=3KPp8iIs1rb7iaMLPfWCCcbFEnR&token=UZaUgKcpXCbuxyA4MJnM1_nhCHasyJHX3O0g-8Bzf_E&tvf=U60VFB6n3BhkMTQxLnJuZGZuay5jb20" genre="Radio Republik Indonesia - Jaringan Berita Nasional" />
     <station name="RRI Programa 1 Jakarta" url="https://live.amperwave.net/manifest/audacy-wfanamaac-hlsc.m3u8" genre="Radio Republik Indonesia - Pemberdayaan Masyarakat" />
     <station name="RRI Programa 2 Jakarta" url="https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_radio_two.m3u8" genre="Radio Republik Indonesia - Musik &amp; Kreativitas Muda" />
-    <station name="Prambors FM 102.2 Jakarta" url="https://stream.rcs.revma.com/h77wwp48kxcwv" genre="Indonesia's No. 1 Youth Station" />
+    <station name="Prambors FM 102.2 Jakarta" url="https://n09-eu.rcs.revma.com/h77wwp48kxcwv?rj-ttl=5&rj-tok=AAABoRvnQJ0Ap8HnaF6MmuEzWg" genre="Indonesia's No. 1 Youth Station" />
     <station name="Gen 98.7 FM Jakarta" url="http://103.246.184.62:1935/noice_genfm/genfm/chunklist_w279187457.m3u8" genre="Suara Musik Indonesia" />
-    <station name="Hard Rock FM 87.6 Jakarta" url="https://n06.radiojar.com/7csmg90fuqruv" genre="Lifestyle &amp; Entertainment Station" />
-    <station name="I-Radio 89.6 FM" url="http://stream.radiojar.com/4ywdgup3bnzuv" genre="100% Musik Indonesia" />
-    <station name="Delta FM Jakarta" url="https://stream.rcs.revma.com/k02rmq48kxcwv" genre="Lagu Terenak &amp; Informasi Terkini" />
+    <station name="Hard Rock FM 87.6 Jakarta" url="https://n0b.radiojar.com/7csmg90fuqruv?rj-ttl=5&rj-tok=AAABoRvnQLYAFae5f2VE-X2fFw" genre="Lifestyle &amp; Entertainment Station" />
+    <station name="I-Radio 89.6 FM" url="http://n10.radiojar.com/4ywdgup3bnzuv?rj-ttl=5&rj-tok=AAABoRvnQaoAxTK1YswfWzYteQ" genre="100% Musik Indonesia" />
+    <station name="Delta FM Jakarta" url="https://n22-eu.rcs.revma.com/k02rmq48kxcwv?rj-ttl=5&rj-tok=AAABoRvnQOgAOJ8KzmDsc5U4xw" genre="Lagu Terenak &amp; Informasi Terkini" />
     </national>
   </bouquet>

@@ -10,17 +10,17 @@
     <station name="France Musique - Piano Zen" url="https://icecast.radiofrance.fr/francemusiquepianozen-hifi.aac" genre="Classique" />
     <station name="Ancient FM (Moyen Âge et Renaissance)" url="https://mediaserv73.live-streams.nl:18058/stream" genre="Classique" />
     <station name="Classical 102" url="https://icepool.silvacast.com/CLASSICAL102.mp3" genre="Classique" />
-    <station name="Classical Public Radio (wdav.org)" url="https://live.amperwave.net/direct/agmedia28-khfmfmaac-ibc3" genre="Classique" />
+    <station name="Classical Public Radio (wdav.org)" url="https://prod-3-92-193-219.amperwave.net/agmedia28-khfmfmaac-ibc3?session-id=4b59e98ea54ca96a3fe053d63232db89" genre="Classique" />
     <station name="Classic FM" url="https://media-ice.musicRadio.com/ClassicFMMP3.m3u" genre="Classique" />
-    <station name="Klassik Radio - Barock - Hamburg" url="https://stream.klassikradio.de/barock/mp3-192/" genre="Classique" />
-    <station name="Musiq'3 (RTBF)" url="http://radios.rtbf.be/musiq3-128.mp3" genre="Classique" />
+    <station name="Klassik Radio - Barock - Hamburg" url="https://klassikr.streamabc.net/klassikr-barock-mp3-192-7751777?sABC=6np7n571%230%2385qq536q651r88556qo2r75134p68734%23&aw_0_1st.playerid=&amsparams=playerid:;skey:1791468913" genre="Classique" />
+    <station name="Musiq'3 (RTBF)" url="https://redbeemedia.streamabc.net/redbm-musiq3-mp3-320-9308179?sABC=6np7n571%230%2385qq536q651r88556qo2r75134p68734%23ei&aw_0_1st.playerid=rv&amsparams=playerid:rv;skey:1791468913" genre="Classique" />
     <station name="Otto's Baroque Music" url="https://strmreg.1.fm/baroque_mobile_mp3" genre="Classique" />
-    <station name="Positively Baroque (organ)" url="http://www.positivelybaroque.com/320eu" genre="Classique" />
+    <station name="Positively Baroque (organ)" url="https://play2.organlive.com:7020/320" genre="Classique" />
     <station name="Radio Classica" url="http://16613.live.streamtheworld.com/CLASSICALSTREAM_SC" genre="Classique" />
-    <station name="Radio Mozart (Marseille)" url="https://stream.0nlineradio.com/mozart?ref=radiobrowser" genre="Classique" />
-    <station name="Radio Suisse Classique" url="https://stream.srg-ssr.ch/m/rsc_fr/aacp_96" genre="Classique" />
-    <station name="Radio Swiss Classic (de)" url="https://stream.srg-ssr.ch/m/rsc_de/aacp_96" genre="Classique" />
-    <station name="RAI FD5 Auditorium" url="https://icestreaming.rai.it/5.mp3" genre="Classique" />
+    <station name="Radio Mozart (Marseille)" url="https://0nlineradio.stream39.radiohost.de/0r-mozart?ref=radiobrowser&upd-meta=1&upd-scheme=https&_art=dD0xNzkxNDY5MjE0JmQ9MzY2OWZiYjY5YWY3ZDRjOTdiMjY" genre="Classique" />
+    <station name="Radio Suisse Classique" url="http://livestreaming-node-1.srg-ssr.ch/srgssr/rsc_fr/aac/96" genre="Classique" />
+    <station name="Radio Swiss Classic (de)" url="http://livestreaming-node-3.srg-ssr.ch/srgssr/rsc_de/aac/96" genre="Classique" />
+    <station name="RAI FD5 Auditorium" url="https://icecdn-19d24861e90342cc8decb03c24c8a419.msvdn.net/icecastRelay/S53422322/bTdUFhYMnnra/icecast" genre="Classique" />
     <station name="Venice Classic Radio Italia" url="https://uk2.streamingpulse.com/ssl/vcr1" genre="Classique" />
     <station name="WCPE" url="http://audio-mp3.ibiblio.org:8000/wcpe.mp3" genre="Classique" />
     <station name="France Musique - Classique Love" url="https://icecast.radiofrance.fr/francemusiqueclassiquelove-hifi.aac" genre="Classique" />

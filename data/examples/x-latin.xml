@@ -2,7 +2,7 @@
 <bouquet name="Musique Latine &amp; Tropicale" flag="💃" category="Exemples">
   <national>
     <station name="Fréquence Tropicale" url="https://ecmanager2.pro-fhi.net:1640/stream" genre="Latino / Salsa" />
-    <station name="Alfa Fado" url="https://stream.rcs.revma.com/dd7xenqtkm0uv" genre="Latino / Salsa" />
+    <station name="Alfa Fado" url="https://n23-eu.rcs.revma.com/dd7xenqtkm0uv?rj-ttl=5&rj-tok=AAABoRvndSMApVuuEOjP0bSh5A" genre="Latino / Salsa" />
     <station name="Antena Huelva - Flamenco" url="http://stm1.emiteonline.com:8024/antenahuelva" genre="Latino / Salsa" />
     <station name="Argentine Tango Radio" url="https://ais-edge94-nyc04.cdnstream.com/2202_128.mp3" genre="Latino / Salsa" />
     <station name="Bossa Nova Hits" url="https://strm112.1.fm/bossanova_mobile_mp3" genre="Latino / Salsa" />
@@ -10,17 +10,17 @@
     <station name="Colombia Vallenata - Manizales" url="https://play10.tikast.com/proxy/colvallenata?mp=/stream" genre="Latino / Salsa" />
     <station name="Italia FM - Sydney, NSW" url="http://strm112.1.fm/italiaonair_mobile_mp3" genre="Latino / Salsa" />
     <station name="La Kalle 96.1 FM - Peru" url="https://lakalle.egostreaming.pe/radio/a7b9c3e4567f8d0123456789/" genre="Latino / Salsa" />
-    <station name="Latcho Flamenco" url="https://www.radioking.com/play/latchoflamenco" genre="Latino / Salsa" />
+    <station name="Latcho Flamenco" url="https://listen.radioking.com/radio/109486/stream/148513" genre="Latino / Salsa" />
     <station name="MKM Radio - Caraibes Style" url="https://securestreams.autopo.st:2492/stream" genre="Latino / Salsa" />
-    <station name="Ondalatina" url="https://stream.laut.fm/ondalatina" genre="Latino / Salsa" />
+    <station name="Ondalatina" url="https://ondalatina.stream.laut.fm/ondalatina?uuid=9fccc86e-db8f-6349-b698-9195193f1c99&t302=2026-10-08_16-15-16" genre="Latino / Salsa" />
     <station name="Palmera Digital - Jarabacoa" url="https://radios.naranhosting.red:8038/stream" genre="Latino / Salsa" />
-    <station name="Radio Baste (Zouk)" url="https://streaming.live365.com/a03195" genre="Latino / Salsa" />
+    <station name="Radio Baste (Zouk)" url="https://das-edge63-live365-dal03.cdnstream.com/a03195" genre="Latino / Salsa" />
     <station name="Radio Italia Anni 60" url="https://str01.fluidstream.net/anni60.mp3?FLID=1&amp;listenerid=29d0a6a85b59cea2ca801b70d2a3ebaf&amp;awparams=companionAds%3Atrue&amp;aw_0_req.gdpr=true" genre="Latino / Salsa" />
     <station name="Radio Macarena Sonido HD" url="https://radiomacarena.com/st-alta" genre="Latino / Salsa" />
-    <station name="tango-nuevo" url="https://stream.laut.fm/tango-nuevo" genre="Latino / Salsa" />
+    <station name="tango-nuevo" url="https://tango-nuevo.stream.laut.fm/tango-nuevo?uuid=54183c99-774d-d580-d4f6-39b4cf853b85&t302=2026-10-08_16-15-16" genre="Latino / Salsa" />
     <station name="Tango Pasión Radio" url="https://nr1.newradio.it:19180/stream" genre="Latino / Salsa" />
-    <station name="Tango Radio Berlin" url="https://stream.laut.fm/tango" genre="Latino / Salsa" />
-    <station name="tangoparabailar" url="https://stream.laut.fm/tangoparabailar" genre="Latino / Salsa" />
+    <station name="Tango Radio Berlin" url="https://tango.stream.laut.fm/tango?uuid=102268c5-49da-20ae-af87-556cd0fa85d3&t302=2026-10-08_16-15-16" genre="Latino / Salsa" />
+    <station name="tangoparabailar" url="https://tango.stream.laut.fm/tango?uuid=102268c5-49da-20ae-af87-556cd0fa85d3&t302=2026-10-08_16-15-16parabailar" genre="Latino / Salsa" />
     <station name="Top Latino Radio" url="http://online.radiodifusion.net:8020/stream" genre="Latino / Salsa" />
     <station name="Latina" url="https://cast3.my-control-panel.com/proxy/maslatina/stream" genre="Latino / Salsa" />
     <station name="Latina Bachata" url="https://start-latina.ice.infomaniak.ch/start-latina-high.mp3" genre="Latino / Salsa" />

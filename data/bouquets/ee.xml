@@ -5,7 +5,7 @@
     <station name="Raadio 2" url="http://icecast.err.ee/raadio2korge.mp3" genre="ERR - Uus Eesti muusika &amp; Noored" />
     <station name="Klassikaraadio" url="http://icecast.err.ee/klassikaraadio.mp3" genre="ERR - Klassika, džäss &amp; Folk" />
     <station name="Raadio 4" url="http://icecast.err.ee/raadio4.mp3?type=.mp3/;stream.mp3" genre="ERR - Venekeelne programm" />
-    <station name="Sky Plus" url="https://stream.skymedia.ee/live/SKYPLUS" genre="Eesti parim muusika" />
+    <station name="Sky Plus" url="https://edge01.cdn.bitflip.ee:8888/SKYPLUS?_i=4e721d59" genre="Eesti parim muusika" />
     <station name="Retro FM Eesti" url="https://edge02.cdn.bitflip.ee:8888/RETRO?_i=258f436b" genre="Eelmise sajandi parimad lood" />
     <station name="Raadio Kuku" url="https://le301.euddn.net/e12cd16b33566b78e256c8252f3ad52bf0ccbdeab0781dc2a9b33061181eda9e6545a66b1431d9e25130ccf718bc16dd91dc95ffec1df75dac5cc0c6251ae4a0dbd343981a3a2cab4d73606696e9fa63f661493bebf0600d5b3155143bfe9cbfcf2d1cefe538161bc7e13706f8e986101f4805a670d41136bd15cc64df18e533c4508d98b47c4980af629be4d2ac34a42671f4a5dea3e6f63b28aa60a0dcbe43dbea02e0dd59500014d14644947c6bbf/kuku_high.mp3" genre="Raadio mõtlevale inimesele" />
     <station name="Raadio Elmar" url="https://le303.euddn.net/09ff895a4f54fb284dc3b156ed4f6292cc9c69a06df8c943b3d8f40bd4c0f4e0bfe0b60dcf9aff6f948258aeba388ac0d45b0e164d880c445188a09b2b5c0cdda8a868cc6ffeccb125d71f7e501369920da914bb98751270affae5ba0fe4762530c965243684be2d0f2429d6dc7c6e18e49b049dc2105d7e5fae88498aff34a6c2ddfe599061ac86c1fc9f301d6ca22a6e05c92014b998c96e6abaedb3c6dbb14435cb3ed4296c1a824732d4d1a4c728/elmar.aac" genre="Eesti parimad laulud" />

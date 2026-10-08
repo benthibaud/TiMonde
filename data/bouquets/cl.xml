@@ -3,13 +3,13 @@
   <national>
     <station name="Radio Cooperativa" url="https://unlimited3-cl.dps.live/cooperativafm/mp3/icecast.audio" genre="La verdad con certeza" />
     <station name="Radio Bío-Bío" url="https://unlimited3-cl.dps.live/biobiopuertomontt/mp3/icecast.audio" genre="El espacio que nos une" />
-    <station name="ADN Radio Chile" url="https://playerservices.streamtheworld.com/api/livestream-redirect/ADNAAC.aac" genre="Actualidad, Deportes y Noticias" />
-    <station name="Radio Concierto 88.5" url="https://playerservices.streamtheworld.com/api/livestream-redirect/CONCIERTOAAC.aac" genre="Solo grandes canciones" />
-    <station name="Radio Futuro 88.9" url="https://playerservices.streamtheworld.com/api/livestream-redirect/FUTUROAAC.aac" genre="La radio del rock en Chile" />
-    <station name="Rock &amp; Pop Chile" url="https://playerservices.streamtheworld.com/api/livestream-redirect/ROCK_AND_POPAAC.aac" genre="24 horas de música" />
-    <station name="Radio Pudahuel" url="https://playerservices.streamtheworld.com/api/livestream-redirect/PUDAHUELAAC.aac" genre="La radio de Chile" />
+    <station name="ADN Radio Chile" url="https://27433.live.streamtheworld.com:443/ADNAAC.aac" genre="Actualidad, Deportes y Noticias" />
+    <station name="Radio Concierto 88.5" url="https://27593.live.streamtheworld.com:443/CONCIERTOAAC.aac" genre="Solo grandes canciones" />
+    <station name="Radio Futuro 88.9" url="https://27323.live.streamtheworld.com:443/FUTUROAAC.aac" genre="La radio del rock en Chile" />
+    <station name="Rock &amp; Pop Chile" url="https://27323.live.streamtheworld.com:443/ROCK_AND_POPAAC.aac" genre="24 horas de música" />
+    <station name="Radio Pudahuel" url="https://27413.live.streamtheworld.com:443/PUDAHUELAAC.aac" genre="La radio de Chile" />
     <station name="Radio Beethoven" url="http://unlimited4-us.dps.live/beethovenfm/aac/icecast.audio" genre="Universidad Católica - Música Clásica" />
-    <station name="Los 40 Chile" url="https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40_CHILEAAC.aac" genre="Todos los éxitos" />
-    <station name="Radio Duna 89.7" url="https://mdstrm.com/audio/67f42f96e464d19a6eda3c7d/icecast.audio" genre="Sonidos de tu mundo" />
+    <station name="Los 40 Chile" url="https://24253.live.streamtheworld.com:443/LOS40_CHILEAAC.aac" genre="Todos los éxitos" />
+    <station name="Radio Duna 89.7" url="https://us-b4-p-e-ml19-audio.cdn.mdstrm.com/live-audio-aw/67f42f96e464d19a6eda3c7d?aid=65ea0c645728c0087b186ba5&pid=6VFBqi9UXeZh26dO9ikjdoeLL09R9rBP&sid=sge5SU7VE4ol3P8wkVRDvC107RAB7XTX&uid=uNqqGrq8GnHKuGWuFh6KYXiOPlKBHgCu&es=us-b4-p-e-ml19-audio.cdn.mdstrm.com&ote=1791555297942&ot=PpSOxFNnV9RsMJ1co-Cfxw&proto=https&pz=us&cP=128000&awCollectionId=65ea0c645728c0087b186ba5&aw_0_1st.playerId=duna-app-web&liveId=67f42f96e464d19a6eda3c7d&propertyName=duna-app-web&listenerId=uNqqGrq8GnHKuGWuFh6KYXiOPlKBHgCu" genre="Sonidos de tu mundo" />
     </national>
   </bouquet>

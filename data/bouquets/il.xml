@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="IL" name="Israël" flag="🇮🇱" multilingual="false">
   <national>
-    <station name="Kan Tarbut" url="https://playerservices.streamtheworld.com/api/livestream-redirect/KAN_TARBUT.mp3?dist" genre="Kan - תרבות, ספרות וידע" />
+    <station name="Kan Tarbut" url="https://27913.live.streamtheworld.com:443/KAN_TARBUT.mp3?dist" genre="Kan - תרבות, ספרות וידע" />
     <station name="Kan Bet" url="https://28563.live.streamtheworld.com/KAN_BET.mp3" genre="Kan - חדשות ואקטואליה" />
     <station name="Kan Gimel" url="https://27873.live.streamtheworld.com/KAN_GIMMEL.mp3" genre="Kan - רק מוזיקה ישראלית" />
     <station name="Kan 88" url="https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/kan_88/live.livx/playlist.m3u8?renditions&amp;dvr=7200000" genre="Kan - ג'אז, רוק ומוזיקה איכותית" />
-    <station name="Kan Kol HaMusica" url="https://playerservices.streamtheworld.com/api/livestream-redirect/KAN_KOL_HAMUSICA.mp3" genre="Kan - מוזיקה קלאסית" />
+    <station name="Kan Kol HaMusica" url="https://28993.live.streamtheworld.com:443/KAN_KOL_HAMUSICA.mp3" genre="Kan - מוזיקה קלאסית" />
     <station name="Galgalatz" url="https://glzwizzlv.bynetcdn.com/glglz_mp3" genre="גלגלצ - התחנה המובילה בישראל" />
     <station name="Galei Tzahal" url="https://glzwizzlv.bynetcdn.com/glz_mp3" genre="גלצ - חדשות וצבא" />
-    <station name="Radio Tel Aviv 102FM" url="http://102.livecdn.biz/102fm_aac" genre="רדיו תל אביב" />
-    <station name="Eco 99 FM" url="http://99.mediacast.co.il/99fm_aac?hash=1559501510715.m4a" genre="מוזיקה ירוקה ומעולה" />
+    <station name="Radio Tel Aviv 102FM" url="https://cdn88.mediacast.co.il/102-tlv-live/102fm_aac/icecast.audio" genre="רדיו תל אביב" />
+    <station name="Eco 99 FM" url="https://eco01.livecdn.biz/ecolive/99fm_aac/icecast.audio?hash=1559501510715.m4a" genre="מוזיקה ירוקה ומעולה" />
     </national>
   </bouquet>

@@ -4,12 +4,12 @@
     <station name="ABC NewsRadio" url="http://abc.streamguys1.com/live/newsradio/icecast.audio" genre="ABC - 24/7 National News &amp; Parliament" />
     <station name="triple j" url="http://abc.streamguys1.com/live/triplejnsw/icecast.audio" genre="ABC - We Love Australian Music / Alternative" />
     <station name="ABC Radio National (RN)" url="http://abc.streamguys1.com/live/rnnsw/icecast.audio" genre="ABC - Ideas, Culture &amp; Analysis" />
-    <station name="ABC Classic" url="https://mediaserviceslive.akamaized.net/hls/live/2038317/classic2/index.m3u8" genre="ABC - Australia's Classical Music Station" />
-    <station name="Double J" url="https://mediaserviceslive.akamaized.net/hls/live/2038342/doublejqld/index.m3u8" genre="ABC - Closer to the Music / 90s &amp; Indie" />
-    <station name="ABC Jazz" url="https://mediaserviceslive.akamaized.net/hls/live/2038319/abcjazz/index.m3u8" genre="ABC - All That Jazz" />
-    <station name="Triple M Sydney 104.9" url="http://legacy.scahw.com.au/2mmm_128" genre="Rock, Sport &amp; Comedy" />
-    <station name="Nova 96.9 Sydney" url="https://playerservices.streamtheworld.com/api/livestream-redirect/NOVA_919_AAC48.aac" genre="Fresh Hits for Sydney" />
-    <station name="Fox FM Melbourne" url="https://legacy.scahw.com.au/3fox_128" genre="Melbourne's Biggest Hits" />
-    <station name="2GB 873 AM Sydney" url="http://playerservices.streamtheworld.com/api/livestream-redirect/2GB.mp3" genre="Sydney's Number 1 Talk Radio" />
+    <station name="ABC Classic" url="https://streaming.abc-cdn.net.au/audio/hls/classic2.m3u8" genre="ABC - Australia's Classical Music Station" />
+    <station name="Double J" url="https://streaming.abc-cdn.net.au/audio/hls/doublejqld.m3u8" genre="ABC - Closer to the Music / 90s &amp; Indie" />
+    <station name="ABC Jazz" url="https://streaming.abc-cdn.net.au/audio/hls/abcjazz.m3u8" genre="ABC - All That Jazz" />
+    <station name="Triple M Sydney 104.9" url="https://sa47.scastream.com.au/2mmm_128?sca3xx=1" genre="Rock, Sport &amp; Comedy" />
+    <station name="Nova 96.9 Sydney" url="https://23093.live.streamtheworld.com:443/NOVA_919_AAC48.aac" genre="Fresh Hits for Sydney" />
+    <station name="Fox FM Melbourne" url="https://sa46.scastream.com.au/3fox_128?sca3xx=1" genre="Melbourne's Biggest Hits" />
+    <station name="2GB 873 AM Sydney" url="http://23093.live.streamtheworld.com:80/2GB.mp3" genre="Sydney's Number 1 Talk Radio" />
     </national>
   </bouquet>

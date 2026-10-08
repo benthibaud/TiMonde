@@ -4,6 +4,6 @@
     <station name="Radio Pública del Ecuador" url="https://laotrafm.makrodigital.com/stream/laotrafmquito" genre="Medios Públicos - Información y Cultura" />
     <station name="Radio Canela" url="https://canelaradio.makrodigital.com:9280/stream" genre="La reina de las radios ecuatorianas" />
     <station name="Radio Disney Ecuador" url="https://laotrafm.makrodigital.com/stream/laotrafmquito" genre="Tu música, tus historias" />
-    <station name="Exa FM Ecuador" url="https://playerservices.streamtheworld.com/api/livestream-redirect/XHGLX.mp3" genre="Ponte Exa!" />
+    <station name="Exa FM Ecuador" url="https://18303.live.streamtheworld.com:443/XHGLX.mp3" genre="Ponte Exa!" />
     </national>
   </bouquet>

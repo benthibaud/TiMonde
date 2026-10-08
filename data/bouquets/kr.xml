@@ -4,7 +4,7 @@
     <station name="KBS 1Radio" url="https://radio.bsod.kr/stream/?stn=kbs&amp;ch=1radio" genre="KBS - 뉴스 &amp; 시사 (News &amp; Society)" />
     <station name="KBS 1FM (Classic FM)" url="https://radio.bsod.kr/stream/?stn=kbs&amp;ch=1fm" genre="KBS - 클래식 음악 &amp; 예술" />
     <station name="KBS 2FM (Cool FM)" url="https://radio.bsod.kr/stream/?stn=kbs&amp;ch=2fm" genre="KBS - 가요 &amp; K-Pop Hits" />
-    <station name="MBC Standard FM" url="https://radio.streamthejazzgroove.com/gems-128k-free?referer=radiodotnet" genre="MBC - 뉴스 &amp; 토크 (Talk &amp; Info)" />
+    <station name="MBC Standard FM" url="https://audio-edge-5r6yd.cdg.o.radiomast.io/b7a6570b-524f-4d9a-ba9f-9502a00cafa0?referer=radiodotnet" genre="MBC - 뉴스 &amp; 토크 (Talk &amp; Info)" />
     <station name="MBC FM4U" url="http://211.33.246.4:32954/radio_stfm/myStream.sdp/chunklist_w392819215.m3u8" genre="MBC - 음악 &amp; 대중가요" />
     <station name="SBS Power FM" url="https://shoutcast.christianrock.net/stream/7/" genre="SBS - 영스트리트 &amp; 최신 K-Pop" />
     <station name="TBS eFM 101.3 (English)" url="https://cdnefm.tbs.seoul.kr/tbs/_definst_/tbs_efm_web_360.smil/chunklist.m3u8" genre="TBS - Seoul's All-English Radio" />

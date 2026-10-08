@@ -3,9 +3,9 @@
   <national>
     <station name="RTHK Radio 1" url="http://stm1.rthk.hk/radio1" genre="RTHK - 第一台 (新聞、時事、論壇)" />
     <station name="RTHK Radio 2" url="http://stm2.rthk.hk/radio2" genre="RTHK - 第二台 (青年節目、廣東流行曲)" />
-    <station name="RTHK Radio 3 (English)" url="https://rthkaudio3-lh.akamaihd.net/i/radio3_1@355866/index_56_a-p.m3u8" genre="RTHK - English News &amp; Lifestyle" />
+    <station name="RTHK Radio 3 (English)" url="https://rthkradio3-live.akamaized.net/hls/live/2040079/radio3/master.m3u8" genre="RTHK - English News &amp; Lifestyle" />
     <station name="RTHK Radio 4 (Classical &amp; Jazz)" url="https://rthkradio4-live.akamaized.net/hls/live/2040080/radio4/master.m3u8" genre="RTHK - 第四台 (古典音樂及爵士樂)" />
-    <station name="Commercial Radio Hong Kong (CR1)" url="https://playerservices.streamtheworld.com/api/livestream-redirect/AXR_HONGKONGAAC.aac" genre="881 903 雷霆881商業一台" />
+    <station name="Commercial Radio Hong Kong (CR1)" url="https://27223.live.streamtheworld.com:443/AXR_HONGKONGAAC.aac" genre="881 903 雷霆881商業一台" />
     <station name="Metro Broadcast (Metro Info)" url="http://162.220.162.10:8011/stream" genre="新城財經台 - 財經專業資訊" />
     </national>
   </bouquet>

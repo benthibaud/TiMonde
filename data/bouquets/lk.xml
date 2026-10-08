@@ -3,6 +3,6 @@
   <national>
     <station name="SLBC Sinhala National Service" url="http://220.247.227.20:8000/RSLstream" genre="Sri Lanka Broadcasting Corporation" />
     <station name="Gold FM Colombo" url="https://radio.lotustechnologieslk.net:2020/stream/goldfmgarden" genre="The Home of Classic Hits" />
-    <station name="Yes FM Sri Lanka" url="http://live.trusl.com:1150/" genre="Sri Lanka's Ultimate Hit Music" />
+    <station name="Yes FM Sri Lanka" url="http://live.trusl.com:1150/index.html?sid=1" genre="Sri Lanka's Ultimate Hit Music" />
     </national>
   </bouquet>

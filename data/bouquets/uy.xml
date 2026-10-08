@@ -7,7 +7,7 @@
     <station name="Radio Carve 850 AM" url="https://icecast13.innovanexo.com:9000/radiocarve850.mp3" genre="El campo y la ciudad" />
     <station name="Del Sol 99.5 FM" url="http://radio.dl.uy:9950/radio" genre="Entretenimiento &amp; Cultura urbana" />
     <station name="Océano FM 93.9" url="https://oceano-2.nty.uy/" genre="Música seleccionada &amp; Recuerdos" />
-    <station name="Radio Monte Carlo 930 AM" url="https://streamingcasazorrilla.innovanexo.com:8000/montecarlo.mp3" genre="Una radio con historia" />
+    <station name="Radio Monte Carlo 930 AM" url="https://icecast13.innovanexo.com:9000/montecarlo.mp3" genre="Una radio con historia" />
     <station name="Metrópolis FM 104.9" url="https://stream.metropolisfm.uy/metropolis" genre="Clásicos de los 70, 80 y 90" />
     <station name="Azul FM 101.9" url="https://azul-2.nty.uy/" genre="Pop &amp; Rock contemporáneo" />
     <station name="Radio Clásica 650 AM" url="https://radios.iwstreaming.uy/8032/stream" genre="RNU - La música culta del Uruguay" />

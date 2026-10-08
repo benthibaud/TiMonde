@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="BR" name="Brésil" flag="🇧🇷" multilingual="false">
   <national>
-    <station name="Rádio Nacional do Rio de Janeiro" url="https://stream-178.surfernetwork.com/m3ytuubv0uhvv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJtM3l0dXVidjB1aHZ2IiwiaG9zdCI6InN0cmVhbS0xNzguc3VyZmVybmV0d29yay5jb20iLCJ0bSI6ZmFsc2UsInJ0dGwiOjUsImp0aSI6ImJWaU1NLU9YVFFPWmxXTWVGUFB6bnciLCJpYXQiOjE3OTA4NjE5MjMsImV4cCI6MTc5MDg2MTk4M30._zPFE4kpiEDlAw735zoNOVu8ru6aYNxROM450weVpkE" genre="EBC - Informação, MPB &amp; Esporte" />
+    <station name="Rádio Nacional do Rio de Janeiro" url="https://stream-178.surfernetwork.com/m3ytuubv0uhvv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJtM3l0dXVidjB1aHZ2IiwiaG9zdCI6InN0cmVhbS0xNzguc3VyZmVybmV0d29yay5jb20iLCJydHRsIjo1LCJqdGkiOiJCTGI0QnNiZFNDT2RLUGsxYWY0bFVBIiwiaWF0IjoxNzkxNDY4ODk3LCJleHAiOjE3OTE0Njg5NTd9.IwJFKjj9RaP150Fw0kr-Dm5hwHBtsfxtj5rUo7RR4UE" genre="EBC - Informação, MPB &amp; Esporte" />
     <station name="Rádio MEC FM" url="https://radiomec-stream.ebc.com.br/ebc/radiomec/playlist.m3u8" genre="EBC - Música Clássica, Instrumental &amp; Jazz" />
     <station name="Jovem Pan FM São Paulo" url="http://wz5.dnip.com.br/jfloripa/jfloripa.stream/chunklist_w2047482307.m3u8" genre="A rádio número 1 do Brasil" />
-    <station name="BandNews FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/BANDNEWSFM_SPAAC.m3u8" genre="Em 20 minutos tudo pode mudar" />
-    <station name="CBN São Paulo" url="https://playerservices.streamtheworld.com/api/livestream-redirect/CBN_SPAAC.aac" genre="A rádio que toca notícia" />
-    <station name="NovaBrasil FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/NOVABRASIL_FORAAC.aac" genre="Moderna Música Brasileira" />
-    <station name="Alpha FM 101.7" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_ALPHAFM_ADP.aac" genre="Qualidade em primeiro lugar" />
+    <station name="BandNews FM" url="https://24283.live.streamtheworld.com:443/BANDNEWSFM_SPAAC/HLS/playlist.m3u8" genre="Em 20 minutos tudo pode mudar" />
+    <station name="CBN São Paulo" url="https://23243.live.streamtheworld.com:443/CBN_SPAAC.aac" genre="A rádio que toca notícia" />
+    <station name="NovaBrasil FM" url="https://24423.live.streamtheworld.com:443/NOVABRASIL_FORAAC.aac" genre="Moderna Música Brasileira" />
+    <station name="Alpha FM 101.7" url="https://24443.live.streamtheworld.com:443/RADIO_ALPHAFM_ADP.aac" genre="Qualidade em primeiro lugar" />
     <station name="Rádio Gaúcha" url="https://1132747t.ha.azioncdn.net/primary/gaucha_rbs.sdp/playlist.m3u8" genre="Porto Alegre / Notícia &amp; Futebol" />
-    <station name="Rádio Cidade Rock" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIOCIDADE.mp3" genre="Inesquecível &amp; Puro Rock" />
+    <station name="Rádio Cidade Rock" url="https://24363.live.streamtheworld.com:443/RADIOCIDADE.mp3" genre="Inesquecível &amp; Puro Rock" />
     <station name="Antena 1 Brasil" url="http://antena1.newradio.it/stream?ext=.mp3" genre="Música clássica contemporânea &amp; Soft" />
     </national>
   </bouquet>

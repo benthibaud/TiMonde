@@ -37,9 +37,9 @@
     <station name="France Musique - La Jazz" url="https://icecast.radiofrance.fr/francemusiquelajazz-hifi.aac" genre="Jazz &amp; Blues" />
     <station name=".011FM - The Jazz Collection" url="https://listen.011fm.com/stream11" genre="Jazz &amp; Blues" />
     <station name=".977 Smooth Jazz" url="http://17563.live.streamtheworld.com/977_SMOOJAZZ_SC" genre="Jazz &amp; Blues" />
-    <station name="Aardvark Blues FM (Houston)" url="https://streaming.live365.com/b77280_128mp3" genre="Jazz &amp; Blues" />
+    <station name="Aardvark Blues FM (Houston)" url="https://ais-edge89-dal02.cdnstream.com/b77280_128mp3" genre="Jazz &amp; Blues" />
     <station name="BSPR Jazz (Boise State Public Radio)" url="https://boisestate.streamguys1.com/News1-aac-96k-icy.aac" genre="Jazz &amp; Blues" />
-    <station name="Cool Jazz Florida" url="http://162.244.80.20:6948/" genre="Jazz &amp; Blues" />
+    <station name="Cool Jazz Florida" url="http://162.244.80.20:6948/index.html?sid=1" genre="Jazz &amp; Blues" />
     <station name="Couleurs Jazz Radio" url="https://listen.radioking.com/radio/127546/stream/167344" genre="Jazz &amp; Blues" />
     <station name="Gospel Jazz Radio" url="https://kathy.torontocast.com:3375/stream" genre="Jazz &amp; Blues" />
     <station name="Jazz Lovers Radio" url="https://ec1.yesstreaming.net:2945/stream" genre="Jazz &amp; Blues" />
@@ -52,6 +52,6 @@
     <station name="UbuntuFM Jazz Radio" url="https://streaming.coollective.nl:8443/UbuntuFMjazz" genre="Jazz &amp; Blues" />
     <station name="WBRH" url="https://wbrh.streamguys1.com/wbrh-aac" genre="Jazz &amp; Blues" />
     <station name="Yimago Jazz - Toronto" url="https://strw3.openstream.co/872" genre="Jazz &amp; Blues" />
-    <station name="Yimago World Music and Jazz Radio" url="https://yimago.torontocast.stream/world" genre="Jazz &amp; Blues" />
+    <station name="Yimago World Music and Jazz Radio" url="https://strw3.openstream.co/873?aw_0_1st.collectionid%3D3667%26stationId%3D3667%26publisherId%3D897%26k%3D1791468918" genre="Jazz &amp; Blues" />
     </national>
   </bouquet>

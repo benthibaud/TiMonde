@@ -9,12 +9,12 @@
       },
       {
         "name": "Radio Swiss Classic",
-        "url": "https://stream.srg-ssr.ch/m/rsc_fr/mp3_128",
+        "url": "http://livestreaming-node-2.srg-ssr.ch/srgssr/rsc_fr/mp3/128",
         "country": "CH"
       },
       {
         "name": "Radio Swiss Jazz",
-        "url": "https://stream.srg-ssr.ch/m/rsj/mp3_128",
+        "url": "http://livestreaming-node-2.srg-ssr.ch/srgssr/rsj/mp3/128",
         "country": "CH"
       }
     ]
@@ -24,7 +24,7 @@
     "stations": [
       {
         "name": "Radio Transat (Guadeloupe)",
-        "url": "https://stream.rcs.revma.com/dy09pqzctwzuv",
+        "url": "https://n02-eu.rcs.revma.com/dy09pqzctwzuv?rj-ttl=5&rj-tok=AAABoRvnhsQAh7SmtdU5s9D9rQ",
         "country": "GP"
       },
       {
@@ -34,7 +34,7 @@
       },
       {
         "name": "RTÉ Radio 1 Irlande",
-        "url": "https://icecast2.rte.ie/radio1",
+        "url": "https://25603.live.streamtheworld.com:443/RTE_1_INT.mp3?tdsdk=rte",
         "country": "IE"
       }
     ]

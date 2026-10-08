@@ -4,8 +4,8 @@
     <station name="Rádio Slovensko" url="http://live.slovakradio.sk:8000/Slovensko_128.mp3" genre="RTVS - Správy &amp; Publicistika" />
     <station name="Rádio Regina" url="http://icecast.stv.livebox.sk/regina-ke_128.mp3" genre="RTVS - Regióny &amp; Tradícia" />
     <station name="Rádio Devín" url="http://icecast.stv.livebox.sk/devin_128.mp3" genre="RTVS - Klasická hudba &amp; Kultúra" />
-    <station name="Rádio_FM" url="http://stream.radiovlna.sk/vlna-hi.mp3" genre="RTVS - Alternatívna hudba" />
-    <station name="Rádio Expres" url="http://stream.expres.sk/128.mp3" genre="Baví nás baviť vás" />
+    <station name="Rádio_FM" url="https://stream.radiovlna.sk/vlna-hi.mp3" genre="RTVS - Alternatívna hudba" />
+    <station name="Rádio Expres" url="https://stream.bauermedia.sk/expres-hi.mp3" genre="Baví nás baviť vás" />
     <station name="Rádio Vlna" url="https://stream.radiovlna.sk/vlna-hi.mp3" genre="Hity overené časom" />
     <station name="Fun Rádio Slovensko" url="https://stream.funradio.sk/fun128.mp3" genre="Hráme len hity" />
     <station name="Europa 2 Slovensko" url="https://stream.bauermedia.sk/europa2.mp3" genre="Nenormálna hudba" />

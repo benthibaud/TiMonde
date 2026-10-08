@@ -2,8 +2,8 @@
 <bouquet country="RO" name="Roumanie" flag="🇷🇴" multilingual="false">
   <national>
     <station name="Radio România Actualități" url="http://89.238.227.6:8006/;" genre="SRR - Știri &amp; Evenimente" />
-    <station name="Radio România Cultural" url="http://stream2.srr.ro:8012/" genre="SRR - Cultură &amp; Teatru" />
-    <station name="Radio România Muzical" url="http://stream2.srr.ro:8026/" genre="SRR - Muzică clasică &amp; Jazz" />
+    <station name="Radio România Cultural" url="http://stream2.srr.ro:8012/index.html?sid=1" genre="SRR - Cultură &amp; Teatru" />
+    <station name="Radio România Muzical" url="http://stream2.srr.ro:8026/index.html?sid=1" genre="SRR - Muzică clasică &amp; Jazz" />
     <station name="Kiss FM România" url="https://live.kissfm.ro/kissfm.aacp" genre="1 Hit Radio Romania" />
     <station name="Europa FM România" url="http://astreaming.europafm.ro:8000/europafm_aacp48k" genre="Muzică, Știri &amp; Deșteptarea" />
     <station name="Radio ZU" url="http://zuicast.digitalag.ro:9420/zu" genre="Hiturile se ascultă la ZU" />

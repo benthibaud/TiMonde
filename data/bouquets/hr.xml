@@ -3,13 +3,13 @@
   <national>
     <station name="HRT - HR 1" url="https://live.amperwave.net/manifest/audacy-wfanamaac-hlsc.m3u8" genre="Hrvatski radio - Vijesti &amp; Kultura" />
     <station name="HRT - HR 2" url="https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_radio_two.m3u8" genre="Hrvatski radio - Glazba &amp; Sport" />
-    <station name="HRT - HR 3" url="https://dispatcher.rndfnk.com/br/br3/live/mp3/mid" genre="Hrvatski radio - Klasična glazba &amp; Umjetnost" />
+    <station name="HRT - HR 3" url="https://d141.rndfnk.com/ard/br/br3/live/mp3/128/stream.mp3?cid=01FBPVFWX7C216W6WY4M4M7MF7&sid=3KPp8iIs1rb7iaMLPfWCCcbFEnR&token=UZaUgKcpXCbuxyA4MJnM1_nhCHasyJHX3O0g-8Bzf_E&tvf=U60VFB6n3BhkMTQxLnJuZGZuay5jb20" genre="Hrvatski radio - Klasična glazba &amp; Umjetnost" />
     <station name="Otvoreni Radio" url="https://stream.otvoreni.hr/otvoreni" genre="Feel Good Radio" />
     <station name="bravo! Hrvatska" url="https://audio.social3.hr/listen/bravo_kids/stream?3367" genre="I osjećaj i glazba" />
     <station name="Radio Dalmacija" url="http://shoutcast.pondi.hr:8000/;" genre="Duša Dalmacije" />
     <station name="Antena Zagreb" url="http://live.antenazagreb.hr:8002/;" genre="Stvari koje voliš" />
     <station name="Yammat FM" url="https://stream.yammat.fm/radio/8000/yammat.mp3" genre="Zagreb Urbana Kultura" />
     <station name="Radio Banovina" url="http://stream1.radio-banovina.hr:8008/;" genre="Zavičajna glazba" />
-    <station name="Enter Zagreb" url="http://live.enterzagreb.hr:8023/" genre="Samo hitovi" />
+    <station name="Enter Zagreb" url="http://live.enterzagreb.hr:8023/index.html?sid=1" genre="Samo hitovi" />
     </national>
   </bouquet>

@@ -3,13 +3,13 @@
   <national>
     <station name="Radio Nacional de Colombia" url="http://shoutcast.rtvc.gov.co:8000/;" genre="RTVC - Paz, Tradición &amp; Cultura" />
     <station name="Radiónica" url="http://shoutcast.rtvc.gov.co:8010/;" genre="RTVC - Rock &amp; Música alternativa" />
-    <station name="Caracol Radio" url="https://playerservices.streamtheworld.com/api/livestream-redirect/CARACOL_RADIOAAC.aac" genre="Más compañía en Colombia" />
+    <station name="Caracol Radio" url="https://27593.live.streamtheworld.com:443/CARACOL_RADIOAAC.aac" genre="Más compañía en Colombia" />
     <station name="W Radio Colombia" url="http://26653.live.streamtheworld.com/WRADIO_SC" genre="Noticias &amp; Opinión con Julio Sánchez" />
     <station name="Blu Radio" url="http://24503.live.streamtheworld.com/BLURADIO_SC" genre="La nueva alternativa de la radio" />
-    <station name="La FM Colombia" url="https://mdstrm.com/audio/632c9b23d1dcd7027f32f7fe/live.m3u8" genre="Noticias, música y conversación" />
-    <station name="Olímpica Stereo" url="https://playerservices.streamtheworld.com/api/livestream-redirect/OLP_SINCELEJOAAC.aac?1715700010" genre="Se metió! Salsa &amp; Tropical" />
+    <station name="La FM Colombia" url="https://us-b4-p-e-cg11-audio.cdn.mdstrm.com/live-audio-aw/632c9b23d1dcd7027f32f7fe/playlist.m3u8?aid=6271a4d5d206c3172f3c9a9c&pid=vA7LuuAA4CzboLWpzAWEikg0TBpuyW47&sid=1yH8HB7v6TUY3P84hwFY160YLJY6jNDW&uid=WOFQQp3xjxlhhu2cSuEKLoL6dI3yhczk&es=us-b4-p-e-cg11-audio.cdn.mdstrm.com&ote=1791555298205&ot=m9fAbzAMwN3f6C-KRc1jzA&proto=https&pz=us&cP=128000&awCollectionId=6271a4d5d206c3172f3c9a9c&liveId=632c9b23d1dcd7027f32f7fe&listenerId=WOFQQp3xjxlhhu2cSuEKLoL6dI3yhczk" genre="Noticias, música y conversación" />
+    <station name="Olímpica Stereo" url="https://26153.live.streamtheworld.com:443/OLP_SINCELEJOAAC.aac?1715700010" genre="Se metió! Salsa &amp; Tropical" />
     <station name="Radio Uno Colombia" url="https://us-b4-p-e-qg12-audio.cdn.mdstrm.com/live-audio-aw/632ce1416197360894629aa6" genre="La de uno" />
     <station name="Tropicana Colombia" url="http://24233.live.streamtheworld.com/TROPICANA_SC" genre="La más bacana" />
-    <station name="Vibra Bogotá" url="https://playerservices.streamtheworld.com/api/livestream-redirect/BESAME_BOGOTAAAC_SC" genre="Pop latino &amp; Recuerdos" />
+    <station name="Vibra Bogotá" url="https://26593.live.streamtheworld.com:443/BESAME_BOGOTAAAC_SC" genre="Pop latino &amp; Recuerdos" />
     </national>
   </bouquet>

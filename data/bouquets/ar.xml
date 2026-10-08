@@ -4,12 +4,12 @@
     <station name="Radio Nacional Argentina (LRA1)" url="https://sa.mp3.icecast.magma.edge-access.net/sc_rad1" genre="Pública - Noticias &amp; Cultura federal" />
     <station name="Nacional Clásica 96.7" url="https://sa.mp3.icecast.magma.edge-access.net/sc_rad37" genre="Pública - Música clásica" />
     <station name="Nacional Rock 93.7" url="http://sa.mp3.icecast.magma.edge-access.net:7200/sc_rad39" genre="Pública - Rock nacional" />
-    <station name="Radio Mitre AM 790" url="https://playerservices.streamtheworld.com/api/livestream-redirect/AM790_56AAC.aac" genre="El aire de las noticias" />
-    <station name="La 100 FM 99.9" url="https://playerservices.streamtheworld.com/api/livestream-redirect/FM999_56.mp3" genre="La radio más escuchada de Argentina" />
+    <station name="Radio Mitre AM 790" url="https://24253.live.streamtheworld.com:443/AM790_56AAC.aac" genre="El aire de las noticias" />
+    <station name="La 100 FM 99.9" url="https://24493.live.streamtheworld.com:443/FM999_56.mp3" genre="La radio más escuchada de Argentina" />
     <station name="Radio Rivadavia AM 630" url="https://radio02.ferozo.com/proxy/ra02001331?mp=/stream" genre="Información &amp; Tradición" />
-    <station name="Radio Continental AM 590" url="https://frontend.radiohdvivo.com/continental/live" genre="Gente de palabra" />
-    <station name="Aspen 102.3 FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/ASPEN.mp3" genre="Pura música, clásicos de los 80 &amp; 90" />
-    <station name="Rock &amp; Pop 95.9" url="https://live.amperwave.net/manifest/audacy-krxqfmaac-hlsc.m3u8" genre="La radio de rock de la Argentina" />
-    <station name="Metro 95.1" url="https://playerservices.streamtheworld.com/api/livestream-redirect/METRO.mp3" genre="Sonido urbano &amp; Música" />
+    <station name="Radio Continental AM 590" url="https://edge02.radiohdvivo.com/continental" genre="Gente de palabra" />
+    <station name="Aspen 102.3 FM" url="https://26483.live.streamtheworld.com:443/ASPEN.mp3" genre="Pura música, clásicos de los 80 &amp; 90" />
+    <station name="Rock &amp; Pop 95.9" url="https://18323.live.streamtheworld.com:443/ROCKANDPOP.mp3" genre="La radio de rock de la Argentina" />
+    <station name="Metro 95.1" url="https://27373.live.streamtheworld.com:443/METRO.mp3" genre="Sonido urbano &amp; Música" />
     </national>
   </bouquet>
