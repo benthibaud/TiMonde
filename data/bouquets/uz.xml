@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="UZ" name="Ouzbékistan" flag="🇺🇿" multilingual="false">
   <national>
-    <station name="O'zbekiston Radiosi" url="https://radiosigma.stream.laut.fm/radiosigma?ref=radiode&t302=2026-10-08_16-15-12&uuid=664370a3-0315-eb3f-3354-9c6493172932" genre="Milliy teleradiokompaniya" />
+    <station name="O'zbekiston Radiosi" url="https://radiosigma.stream.laut.fm/radiosigma?ref=radiode&amp;t302=2026-10-08_16-15-12&amp;uuid=664370a3-0315-eb3f-3354-9c6493172932" genre="Milliy teleradiokompaniya" />
     <station name="Yoshlar Radiosi" url="http://ns10.jethost.uz:8000/yoshlarovoziaac" genre="O'zbek estrada va yoshlar" />
     </national>
   </bouquet>

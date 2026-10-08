@@ -2,22 +2,22 @@
 <bouquet country="BE" name="Belgique" flag="🇧🇪" multilingual="true">
   <community id="FR" name="Wallonie &amp; Bruxelles (Français)">
     <national>
-      <station name="La Première" url="https://redbeemedia.streamabc.net/redbm-lapremiere-mp3-160-7134387?sABC=6np7n55s%230%2385qq536q651r88556qo2r75134p68734%23ei&aw_0_1st.playerid=rv&amsparams=playerid:rv;skey:1791468895" genre="RTBF - Info &amp; Société" />
-      <station name="VivaCité" url="https://redbeemedia.streamabc.net/redbm-vivabxl-mp3-160-6153830?sABC=6np7n55s%230%2385qq536q651r88556qo2r75134p68734%23ei&aw_0_1st.playerid=rv&amsparams=playerid:rv;skey:1791468895" genre="RTBF - Proximité &amp; Sport" />
-      <station name="Classic 21" url="https://redbeemedia.streamabc.net/redbm-classic21-mp3-160-3491794?sABC=6np7n55s%230%2385qq536q651r88556qo2r75134p68734%23ei&aw_0_1st.playerid=rv&amsparams=playerid:rv;skey:1791468895" genre="RTBF - Rock Classique" />
-      <station name="Tipik" url="https://redbeemedia.streamabc.net/redbm-tipik-mp3-160-1909468?sABC=6np7n55s%230%2385qq536q651r88556qo2r75134p68734%23ei&aw_0_1st.playerid=rv&amsparams=playerid:rv;skey:1791468895" genre="RTBF - Jeunes &amp; Pop" />
-      <station name="Musiq3" url="https://redbeemedia.streamabc.net/redbm-musiq3-mp3-320-9308179?sABC=6np7n55s%230%2385qq536q651r88556qo2r75134p68734%23ei&aw_0_1st.playerid=rv&amsparams=playerid:rv;skey:1791468895" genre="RTBF - Classique &amp; Jazz" />
+      <station name="La Première" url="https://redbeemedia.streamabc.net/redbm-lapremiere-mp3-160-7134387?sABC=6np7n55s%230%2385qq536q651r88556qo2r75134p68734%23ei&amp;aw_0_1st.playerid=rv&amp;amsparams=playerid:rv;skey:1791468895" genre="RTBF - Info &amp; Société" />
+      <station name="VivaCité" url="https://redbeemedia.streamabc.net/redbm-vivabxl-mp3-160-6153830?sABC=6np7n55s%230%2385qq536q651r88556qo2r75134p68734%23ei&amp;aw_0_1st.playerid=rv&amp;amsparams=playerid:rv;skey:1791468895" genre="RTBF - Proximité &amp; Sport" />
+      <station name="Classic 21" url="https://redbeemedia.streamabc.net/redbm-classic21-mp3-160-3491794?sABC=6np7n55s%230%2385qq536q651r88556qo2r75134p68734%23ei&amp;aw_0_1st.playerid=rv&amp;amsparams=playerid:rv;skey:1791468895" genre="RTBF - Rock Classique" />
+      <station name="Tipik" url="https://redbeemedia.streamabc.net/redbm-tipik-mp3-160-1909468?sABC=6np7n55s%230%2385qq536q651r88556qo2r75134p68734%23ei&amp;aw_0_1st.playerid=rv&amp;amsparams=playerid:rv;skey:1791468895" genre="RTBF - Jeunes &amp; Pop" />
+      <station name="Musiq3" url="https://redbeemedia.streamabc.net/redbm-musiq3-mp3-320-9308179?sABC=6np7n55s%230%2385qq536q651r88556qo2r75134p68734%23ei&amp;aw_0_1st.playerid=rv&amp;amsparams=playerid:rv;skey:1791468895" genre="RTBF - Classique &amp; Jazz" />
       <station name="Bel RTL" url="https://belrtl.ice.infomaniak.ch/belrtl-mp3-128.mp3" genre="Généraliste privée" />
       <station name="Radio Contact" url="http://radiocontact.ice.infomaniak.ch/radiocontact-mp3-192.mp3" genre="Hits &amp; Divertissement" />
-      <station name="Nostalgie Belgique" url="https://n11-eu.rcs.revma.com/5gd04cwptg0uv?rj-ttl=5&rj-tok=AAABoRvnJs0A4JAauvmJK61U7A" genre="Grands classiques" />
+      <station name="Nostalgie Belgique" url="https://n11-eu.rcs.revma.com/5gd04cwptg0uv?rj-ttl=5&amp;rj-tok=AAABoRvnJs0A4JAauvmJK61U7A" genre="Grands classiques" />
       <station name="NRJ Belgique" url="https://n15a-eu.rcs.revma.com/xh00fwuptg0uv?rj-ttl=5&amp;rj-tok=AAABnYs3M-QAn5TkD3sejQ4IJg" genre="Hits du moment" />
-      <station name="DH Radio" url="https://n22-eu.rcs.revma.com/th89pet3pzzuv?rj-ttl=5&rj-tok=AAABoRvnJwcALEY-UZyhJa9j4w" genre="Pop Rock" />
+      <station name="DH Radio" url="https://n22-eu.rcs.revma.com/th89pet3pzzuv?rj-ttl=5&amp;rj-tok=AAABoRvnJwcALEY-UZyhJa9j4w" genre="Pop Rock" />
       <station name="Fun Radio Belgique" url="https://funradiobe.ice.infomaniak.ch/funradiobe-high.mp3" genre="Dance &amp; Electro" />
       </national>
     <regions>
       <region name="Régionales &amp; Locales">
         <station name="Antipode" url="https://antipode.be/" genre="Brabant Wallon" />
-        <station name="Maximum FM" url="http://n02-eu.rcs.revma.com/vnmbzemrmm0uv?rj-ttl=5&rj-tok=AAABoRvnJvsA1mqRpWdyAEGprA" genre="Liège &amp; Région" />
+        <station name="Maximum FM" url="http://n02-eu.rcs.revma.com/vnmbzemrmm0uv?rj-ttl=5&amp;rj-tok=AAABoRvnJvsA1mqRpWdyAEGprA" genre="Liège &amp; Région" />
         <station name="Must FM" url="https://stream.radiomustathens.com/" genre="Namur &amp; Luxembourg" />
         <station name="Sud Radio Belgique" url="http://rcf.streamakaci.com/rcfsudbe.mp3" genre="Hainaut" />
         </region>
@@ -25,11 +25,11 @@
     </community>
   <community id="NL" name="Flandre (Néerlandais)">
     <national>
-      <station name="Radio 1" url="https://vrt.streamabc.net/vrt-radio1-mp3-128-9751183?sABC=6np7n560%230%2385qq536q651r88556qo2r75134p68734%23&aw_0_1st.playerid=&amsparams=playerid:;skey:1791468896" genre="VRT - Nieuws &amp; Cultuur" />
-      <station name="Radio 2" url="https://vrt.streamabc.net/vrt-radio2vlb-mp3-128-9933062?sABC=6np7n560%230%2385qq536q651r88556qo2r75134p68734%23&aw_0_1st.playerid=&amsparams=playerid:;skey:1791468896" genre="VRT - Familieradio" />
-      <station name="Studio Brussel" url="https://vrt.streamabc.net/vrt-studiobrussel-mp3-128-4409118?sABC=6np7n560%230%2385qq536q651r88556qo2r75134p68734%23&aw_0_1st.playerid=&amsparams=playerid:;skey:1791468896" genre="VRT - Alternatieve Rock &amp; Pop" />
-      <station name="MNM" url="https://vrt.streamabc.net/vrt-mnm-mp3-128-9205274?sABC=6np7n560%230%2385qq536q651r88556qo2r75134p68734%23&aw_0_1st.playerid=&amsparams=playerid:;skey:1791468896" genre="VRT - Hits &amp; Jongeren" />
-      <station name="Klara" url="https://vrt.streamabc.net/vrt-klara-mp3-128-1558567?sABC=6np7n560%230%2385qq536q651r88556qo2r75134p68734%23&aw_0_1st.playerid=&amsparams=playerid:;skey:1791468896" genre="VRT - Klassiek" />
+      <station name="Radio 1" url="https://vrt.streamabc.net/vrt-radio1-mp3-128-9751183?sABC=6np7n560%230%2385qq536q651r88556qo2r75134p68734%23&amp;aw_0_1st.playerid=&amp;amsparams=playerid:;skey:1791468896" genre="VRT - Nieuws &amp; Cultuur" />
+      <station name="Radio 2" url="https://vrt.streamabc.net/vrt-radio2vlb-mp3-128-9933062?sABC=6np7n560%230%2385qq536q651r88556qo2r75134p68734%23&amp;aw_0_1st.playerid=&amp;amsparams=playerid:;skey:1791468896" genre="VRT - Familieradio" />
+      <station name="Studio Brussel" url="https://vrt.streamabc.net/vrt-studiobrussel-mp3-128-4409118?sABC=6np7n560%230%2385qq536q651r88556qo2r75134p68734%23&amp;aw_0_1st.playerid=&amp;amsparams=playerid:;skey:1791468896" genre="VRT - Alternatieve Rock &amp; Pop" />
+      <station name="MNM" url="https://vrt.streamabc.net/vrt-mnm-mp3-128-9205274?sABC=6np7n560%230%2385qq536q651r88556qo2r75134p68734%23&amp;aw_0_1st.playerid=&amp;amsparams=playerid:;skey:1791468896" genre="VRT - Hits &amp; Jongeren" />
+      <station name="Klara" url="https://vrt.streamabc.net/vrt-klara-mp3-128-1558567?sABC=6np7n560%230%2385qq536q651r88556qo2r75134p68734%23&amp;aw_0_1st.playerid=&amp;amsparams=playerid:;skey:1791468896" genre="VRT - Klassiek" />
       <station name="Qmusic Vlaanderen" url="https://audio-streaming.qmusic.be/qmusic.aac" genre="Pop &amp; Hits" />
       <station name="Joe" url="https://audio-streaming.joe.be/joe_80s_90s.mp3" genre="70s, 80s &amp; 90s" />
       <station name="Nostalgie Vlaanderen" url="https://28513.live.streamtheworld.com:443/NOSTALGIEWAF80.mp3" genre="Klassiekers" />

@@ -3,8 +3,8 @@
   <national>
     <station name="Cadena SER" url="http://25703.live.streamtheworld.com:80/CADENASER.mp3" genre="Información &amp; Sociedad" />
     <station name="COPE" url="http://wecast12-h-cloud.flumotion.com/copesedes/sevilla.mp3" genre="Generalista / Deportes" />
-    <station name="Onda Cero" url="https://23623.live.streamtheworld.com:443/OCAAC/HLS/playlist.m3u8?dist=Otros-Agregadores&ttag=program%3Apor-fin" genre="Radio de palabra" />
-    <station name="RNE Radio Nacional" url="https://f131.rndfnk.com/star/crtve/rne1/alm/mp3/128/stream.mp3?cid=01GEP28AVCXYS8XFQCV0M7B0EZ&sid=3KPp8sUN19Xeg2rP7Eb5ZauYWcK&token=6gqHpTdU6VOf-fVzPNnxEMgy62F2UXipuNaFrS-hzKY&tvf=E02MRx6n3BhmMTMxLnJuZGZuay5jb20" genre="RTVE - Información" />
+    <station name="Onda Cero" url="https://23623.live.streamtheworld.com:443/OCAAC/HLS/playlist.m3u8?dist=Otros-Agregadores&amp;ttag=program%3Apor-fin" genre="Radio de palabra" />
+    <station name="RNE Radio Nacional" url="https://f131.rndfnk.com/star/crtve/rne1/alm/mp3/128/stream.mp3?cid=01GEP28AVCXYS8XFQCV0M7B0EZ&amp;sid=3KPp8sUN19Xeg2rP7Eb5ZauYWcK&amp;token=6gqHpTdU6VOf-fVzPNnxEMgy62F2UXipuNaFrS-hzKY&amp;tvf=E02MRx6n3BhmMTMxLnJuZGZuay5jb20" genre="RTVE - Información" />
     <station name="Radio 3" url="https://rtvelivestream.rtve.es/rtvesec/rne/rne_r3_main.m3u8" genre="RTVE - Música &amp; Cultura" />
     <station name="Radio Clásica" url="https://rtvelivestream.rtve.es/rtvesec/rne/rne_r2_main.m3u8" genre="RTVE - Música Clásica" />
     <station name="Los 40" url="https://27833.live.streamtheworld.com:443/LOS40.mp3" genre="Éxitos Pop" />

@@ -21,9 +21,9 @@
       <station name="SRF 2 Kultur" url="http://livestreaming-node-1.srg-ssr.ch/srgssr/srf2/aac/96" genre="SRG - Klassik &amp; Wissen" />
       <station name="SRF 3" url="http://livestreaming-node-1.srg-ssr.ch/srgssr/srf3/mp3/128" genre="SRG - Pop &amp; Rock" />
       <station name="SRF 4 News" url="http://livestreaming-node-4.srg-ssr.ch/srgssr/srf4news/mp3/128" genre="SRG - Nachrichten" />
-      <station name="Radio 24" url="https://chmedia.streamabc.net/79-r24-mp3-192-6659699?sABC=6np7n561%230%2385qq536q651r88556qo2r75134p68734%23qverpg&aw_0_1st.playerid=direct&amsparams=playerid:direct;skey:1791468897" genre="Zürich Hits" />
+      <station name="Radio 24" url="https://chmedia.streamabc.net/79-r24-mp3-192-6659699?sABC=6np7n561%230%2385qq536q651r88556qo2r75134p68734%23qverpg&amp;aw_0_1st.playerid=direct&amp;amsparams=playerid:direct;skey:1791468897" genre="Zürich Hits" />
       <station name="Energy Zürich" url="https://energyzuerich.ice.infomaniak.ch/energyzuerich-high.mp3" genre="Energy Pop" />
-      <station name="Radio Pilatus" url="https://chmedia.streamabc.net/79-pilatus-mp3-192-4664468?sABC=6np7n561%230%2385qq536q651r88556qo2r75134p68734%23puzrqvn&aw_0_1st.playerid=chmedia&amsparams=playerid:chmedia;skey:1791468897" genre="Luzern &amp; Zentralschweiz" />
+      <station name="Radio Pilatus" url="https://chmedia.streamabc.net/79-pilatus-mp3-192-4664468?sABC=6np7n561%230%2385qq536q651r88556qo2r75134p68734%23puzrqvn&amp;aw_0_1st.playerid=chmedia&amp;amsparams=playerid:chmedia;skey:1791468897" genre="Luzern &amp; Zentralschweiz" />
       </national>
     </community>
   <community id="IT" name="Tessin (Italien)">

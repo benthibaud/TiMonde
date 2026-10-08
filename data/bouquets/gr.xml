@@ -5,11 +5,11 @@
     <station name="ERT Deftero Programma" url="https://radiostreaming.ert.gr/ert-deftero" genre="ERT - Ελληνική Μουσική" />
     <station name="ERT Trito Programma" url="https://radiostreaming.ert.gr/ert-trito" genre="ERT - Κλασική Μουσική &amp; Τέχνη" />
     <station name="ERT Kosmos 93.6" url="https://radiostreaming.ert.gr/ert-kosmos" genre="ERT - World Music &amp; Jazz" />
-    <station name="Melodia 99.2" url="https://n24-eu.rcs.revma.com/8tdwa6ez1duvv?rj-ttl=5&rj-tok=AAABoRvnPkcAb1NDXu4pA01Egg" genre="Ελληνικό τραγούδι" />
-    <station name="Rythmos 94.9" url="http://n13.radiojar.com/aw1w2xfx1vduv?rj-ttl=5&rj-tok=AAABoRvnPbEATeRNrx3K74_uFg" genre="Ελληνικά Pop Hits" />
+    <station name="Melodia 99.2" url="https://n24-eu.rcs.revma.com/8tdwa6ez1duvv?rj-ttl=5&amp;rj-tok=AAABoRvnPkcAb1NDXu4pA01Egg" genre="Ελληνικό τραγούδι" />
+    <station name="Rythmos 94.9" url="http://n13.radiojar.com/aw1w2xfx1vduv?rj-ttl=5&amp;rj-tok=AAABoRvnPbEATeRNrx3K74_uFg" genre="Ελληνικά Pop Hits" />
     <station name="Dromos FM 89.8" url="http://netradio.live24.gr/dromos2" genre="Πάντα τα καλύτερα" />
     <station name="Red 96.3" url="https://netradio.live24.gr/red9630" genre="The Rock Radio" />
     <station name="Real FM 97.8" url="https://realfm.live24.gr/realfm" genre="Το αληθινό ραδιόφωνο" />
-    <station name="Diesi 101.3" url="https://n11-eu.rcs.revma.com/gkfwrhqxbfhvv?rj-ttl=5&rj-tok=AAABoRvnPj4AOIXNcJ0hGiqFDw" genre="Έντεχνο &amp; Ξένο τραγούδι" />
+    <station name="Diesi 101.3" url="https://n11-eu.rcs.revma.com/gkfwrhqxbfhvv?rj-ttl=5&amp;rj-tok=AAABoRvnPj4AOIXNcJ0hGiqFDw" genre="Έντεχνο &amp; Ξένο τραγούδι" />
     </national>
   </bouquet>

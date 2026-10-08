@@ -2,12 +2,12 @@
 <bouquet country="IN" name="Inde" flag="🇮🇳" multilingual="false">
   <national>
     <station name="AIR Vividh Bharati" url="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8" genre="All India Radio - The Golden Hits of Indian Cinema" />
-    <station name="AIR National Channel" url="https://emf-seg001267.cdnstream1.com/seg001267-i64.aac?platform=tunein&city=cholet&country=france&geo_api=abstract_ip&latitude=47.0577&longitude=-0.8842&opawg_browser_name=chrome&opawg_device_category=computer&opawg_device_name=other-computer&region=pays-de-la-loire&segment=001267&t=1&k=_XYvHrib-l0AXLvry1F70I4CTYEB0XLKmeU_HT_YXxs6jji3ybx0xxP3Bpol_zeMIeRzYqrpv8MXU9sXgHCThfl8OTMEItjaDQ49_rkN-AG8T9MmKLxvwdcXblW_1npsFg" genre="All India Radio - Classical &amp; Heritage" />
+    <station name="AIR National Channel" url="https://emf-seg001267.cdnstream1.com/seg001267-i64.aac?platform=tunein&amp;city=cholet&amp;country=france&amp;geo_api=abstract_ip&amp;latitude=47.0577&amp;longitude=-0.8842&amp;opawg_browser_name=chrome&amp;opawg_device_category=computer&amp;opawg_device_name=other-computer&amp;region=pays-de-la-loire&amp;segment=001267&amp;t=1&amp;k=_XYvHrib-l0AXLvry1F70I4CTYEB0XLKmeU_HT_YXxs6jji3ybx0xxP3Bpol_zeMIeRzYqrpv8MXU9sXgHCThfl8OTMEItjaDQ49_rkN-AG8T9MmKLxvwdcXblW_1npsFg" genre="All India Radio - Classical &amp; Heritage" />
     <station name="AIR FM Gold Delhi" url="https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio005/hlspbaudio00564kbps.m3u8" genre="All India Radio - Classic Hindi Hits &amp; News" />
     <station name="AIR FM Rainbow Delhi" url="https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio005/hlspbaudio00564kbps.m3u8" genre="All India Radio - Contemporary Music" />
     <station name="Radio Mirchi 98.3" url="https://radiosindia.com/radiomirchitamil.html" genre="Mirchi Sunnewaale Always Khush!" />
     <station name="Red FM 93.5 India" url="https://funasia.streamguys1.com/live9" genre="Bajaate Raho! Superhits Superfast" />
     <station name="Radio City Hindi" url="http://radios.crabdance.com:8002/5" genre="Rag Rag Mein Daude City" />
-    <station name="Big FM 92.7" url="http://audiotainment-sw.streamabc.net/atsw-ushiphop-aac-128-5704056?sABC=6np7n567%230%2385qq536q651r88556qo2r75134p68734%23gjy&aw_0_1st.playerid=twl&amsparams=playerid:twl;skey:1791468903" genre="Dhun Badal Ke Toh Dekho" />
+    <station name="Big FM 92.7" url="http://audiotainment-sw.streamabc.net/atsw-ushiphop-aac-128-5704056?sABC=6np7n567%230%2385qq536q651r88556qo2r75134p68734%23gjy&amp;aw_0_1st.playerid=twl&amp;amsparams=playerid:twl;skey:1791468903" genre="Dhun Badal Ke Toh Dekho" />
     </national>
   </bouquet>

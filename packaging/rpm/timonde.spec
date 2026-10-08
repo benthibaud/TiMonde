@@ -13,7 +13,8 @@ BuildRequires:  gcc
 Requires:       gstreamer1
 Requires:       gstreamer1-plugins-base
 Requires:       gstreamer1-plugins-good
-Requires:       zenity
+Requires:       gstreamer1-plugins-bad-free
+Requires:       gstreamer1-plugin-libav
 Requires:       python3
 Requires:       python3-gobject
 Requires:       gtk3
@@ -43,6 +44,9 @@ make DESTDIR=%{buildroot} PREFIX=/usr install
 /usr/share/timonde/scripts/edit_station.py
 /usr/share/timonde/scripts/browse_bouquets.py
 /usr/share/timonde/bouquets/*.xml
+/usr/share/timonde/examples/*
+/usr/share/timonde/scripts/timonde_i18n.py
+/usr/share/metainfo/io.github.benthibaud.timonde.metainfo.xml
 
 %changelog
 * Mon Oct 06 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.1.0-1

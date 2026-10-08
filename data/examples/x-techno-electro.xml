@@ -8,7 +8,7 @@
     <station name="G One Radio" url="https://listen.radioking.com/radio/140/stream/977" genre="Techno / Électro" />
     <station name="Nectarine Demoscene Radio" url="http://nectarine.shakeme.info:8000/nectarine" genre="Techno / Électro" />
     <station name="New Dance Radio NL" url="https://modspeedy.radioca.st/stream" genre="Techno / Électro" />
-    <station name="Klassik Radio - Jean Michel Jarre" url="https://klassikr.streamabc.net/klr-newclassics-mp3-128-4365773?sABC=6np7n578%230%2385qq536q651r88556qo2r75134p68734%23enqvbqr&aw_0_1st.playerid=radiode&amsparams=playerid:radiode;skey:1791468920" genre="Techno / Électro" />
+    <station name="Klassik Radio - Jean Michel Jarre" url="https://klassikr.streamabc.net/klr-newclassics-mp3-128-4365773?sABC=6np7n578%230%2385qq536q651r88556qo2r75134p68734%23enqvbqr&amp;aw_0_1st.playerid=radiode&amp;amsparams=playerid:radiode;skey:1791468920" genre="Techno / Électro" />
     <station name="Space Station Soma" url="https://ice4.somafm.com/spacestation-128-mp3" genre="Techno / Électro" />
     </national>
   </bouquet>

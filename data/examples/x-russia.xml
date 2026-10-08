@@ -9,7 +9,7 @@
     <station name="Радио Шансон / Radio Shanson" url="https://chanson.hostingradio.ru:8041/chanson128.mp3" genre="Généraliste / Variété" />
     <station name="Радио Маяк / Radio Mayak" url="https://icecast-vgtrk.cdnvideo.ru/mayakfm_mp3_128kbps" genre="Généraliste / Variété" />
     <station name="Radio Pik (Riga-Latvia)" url="http://stream.radiopik.pl:9004/" genre="Généraliste / Variété" />
-    <station name="Радио Свобода / Radio Svoboda USA" url="https://n0a.radiojar.com/hcrb063nn3quv?rj-ttl=5&rj-tok=AAABoRvnhg8AP9yL7TDep3SK_g" genre="Généraliste / Variété" />
+    <station name="Радио Свобода / Radio Svoboda USA" url="https://n0a.radiojar.com/hcrb063nn3quv?rj-ttl=5&amp;rj-tok=AAABoRvnhg8AP9yL7TDep3SK_g" genre="Généraliste / Variété" />
     <station name="Русское Радио / Russkoe Radio (Moscow)" url="https://rusradio.hostingradio.ru/rusradio96.aacp" genre="Généraliste / Variété" />
     <station name="Русское Радио / Russkoe Radio (Tallinn-Estonia)" url="https://rr-detskijkanal.hostingradio.ru/detskijkanal96.aacp" genre="Généraliste / Variété" />
     <station name="Русские Песни / Russian Songs" url="http://listen.rusongs.ru/ru-mp3-128" genre="Généraliste / Variété" />

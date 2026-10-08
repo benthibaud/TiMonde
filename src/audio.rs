@@ -48,12 +48,8 @@ impl AudioEngine {
 
         let registry = gstreamer::Registry::get();
 
-        // 1. Éliminer le chargement du mastodonte FFmpeg (libgstlibav.so et ses ~35 Mo de dépendances)
-        // Les flux webradio sont décodés par des bibliothèques C légères (mpg123, faad, vorbis, opus, flac).
-        if let Some(plugin) = registry.find_plugin("libav") {
-            registry.remove_plugin(&plugin);
-            info!("🛡️ Plugin lourd libav (FFmpeg) exclu du registre GStreamer pour préserver la RAM");
-        }
+        // Favoriser les décodeurs audio natifs ultra-légers (faad, mpg123)
+        // tout en conservant libav/ffmpeg en filet de sécurité transparent pour AAC, HLS et formats exotiques.
 
         // 2. Favoriser les décodeurs audio natifs ultra-légers
         if let Some(feature) = registry.lookup_feature("faad") {

@@ -52,11 +52,11 @@ fn create_default_bookmarks(path: &Path) -> Group {
 
     let default_xml = r#"<bookmarks>
 	<group name="Sélection nationale">
-		<bookmark name="France Inter" url="https://icecast.radiofrance.fr/franceinter-hifi.aac"/>
-		<bookmark name="France Info" url="https://icecast.radiofrance.fr/franceinfo-hifi.aac"/>
-		<bookmark name="France Culture" url="https://icecast.radiofrance.fr/franceculture-hifi.aac"/>
-		<bookmark name="FIP" url="https://icecast.radiofrance.fr/fip-hifi.aac"/>
-		<bookmark name="RTL" url="https://streaming.Radio.rtl.fr/rtl-1-44-128"/>
+		<bookmark name="France Inter" url="https://icecast.radiofrance.fr/franceinter-midfi.mp3"/>
+		<bookmark name="France Info" url="https://icecast.radiofrance.fr/franceinfo-midfi.mp3"/>
+		<bookmark name="France Culture" url="https://icecast.radiofrance.fr/franceculture-midfi.mp3"/>
+		<bookmark name="FIP" url="https://icecast.radiofrance.fr/fip-midfi.mp3"/>
+		<bookmark name="RTL" url="https://streamer-03.rtl.fr/rtl-1-44-128"/>
 	</group>
 </bookmarks>"#;
 
@@ -549,17 +549,21 @@ fn main() {
     );
 
     // 6. Enregistrement de l'icône dans la zone de notification (SNI)
-    let handle = match tray.spawn() {
+    // assume_sni_available(true) évite tout blocage/crash si le démon StatusNotifierWatcher
+    // n'est pas encore initialisé ou absent (ex: antiX / IceWM / Kubuntu root sans proxy SNI).
+    let handle = match tray.assume_sni_available(true).spawn() {
         Ok(h) => {
             info!("✅ Icône StatusNotifierItem enregistrée sur le bureau hôte !");
-            h
+            Some(h)
         }
         Err(e) => {
-            error!("Erreur enregistrement Tray : {:?}", e);
-            std::process::exit(1);
+            log::warn!("Avertissement enregistrement Tray : {:?}. TiMonde reste actif en arrière-plan via MPRIS2/CLI.", e);
+            None
         }
     };
-    *tray_handle_cell.lock().unwrap() = Some(handle);
+    if let Some(h) = handle {
+        *tray_handle_cell.lock().unwrap() = Some(h);
+    }
 
     info!("✨ TiMonde est actif et discret dans la barre des tâches.");
 

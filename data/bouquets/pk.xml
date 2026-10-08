@@ -2,7 +2,7 @@
 <bouquet country="PK" name="Pakistan" flag="🇵🇰" multilingual="false">
   <national>
     <station name="Radio Pakistan FM 101" url="https://whmsonic.radio.gov.pk:8034/stream" genre="Pakistan Broadcasting Corporation / Youth &amp; Music" />
-    <station name="Saut-ul-Quran PBC" url="https://ultradarkradio.stream.laut.fm/ultradarkradio?ref=radiode&t302=2026-10-08_16-15-08&uuid=6d04be80-11d6-1560-001e-0340554683ed" genre="Tilawat &amp; Islamic Teachings" />
+    <station name="Saut-ul-Quran PBC" url="https://ultradarkradio.stream.laut.fm/ultradarkradio?ref=radiode&amp;t302=2026-10-08_16-15-08&amp;uuid=6d04be80-11d6-1560-001e-0340554683ed" genre="Tilawat &amp; Islamic Teachings" />
     <station name="FM 89 City Radio" url="https://radio.cityfm89.com/stream" genre="Karachi &amp; Lahore Indie &amp; Pop" />
     </national>
   </bouquet>

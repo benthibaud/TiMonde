@@ -35,7 +35,7 @@ Version: ${VERSION}
 Section: sound
 Priority: optional
 Architecture: ${ARCH}
-Depends: libc6, libgstreamer1.0-0, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, python3, python3-gi, gir1.2-gtk-3.0
+Depends: libc6, libgstreamer1.0-0, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, gstreamer1.0-plugins-bad, gstreamer1.0-libav, python3, python3-gi, gir1.2-gtk-3.0
 Maintainer: Ben Thibaud <b_thibaud@laposte.net>
 Description: Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux
  TiMonde est un lecteur de radios universel et économe en ressources (< 15 Mo de RAM),
@@ -46,6 +46,10 @@ CONTROL_EOF
 # 4. Installation des fichiers dans le paquet
 install -m 755 "${ROOT_DIR}/target/release/timonde" "${STAGING_DIR}/usr/bin/timonde"
 install -m 644 "${ROOT_DIR}/data/timonde.desktop" "${STAGING_DIR}/usr/share/applications/timonde.desktop"
+mkdir -p "${STAGING_DIR}/usr/share/metainfo"
+install -m 644 "${ROOT_DIR}/data/io.github.benthibaud.timonde.metainfo.xml" "${STAGING_DIR}/usr/share/metainfo/io.github.benthibaud.timonde.metainfo.xml"
+mkdir -p "${STAGING_DIR}/usr/share/doc/timonde"
+install -m 644 "${ROOT_DIR}/packaging/deb/copyright" "${STAGING_DIR}/usr/share/doc/timonde/copyright"
 install -m 644 "${ROOT_DIR}/data/icons/timonde_on.svg" "${STAGING_DIR}/usr/share/icons/hicolor/scalable/apps/timonde_on.svg"
 install -m 644 "${ROOT_DIR}/data/icons/timonde_off.svg" "${STAGING_DIR}/usr/share/icons/hicolor/scalable/panel/timonde_off.svg"
 install -m 644 "${ROOT_DIR}/data/icons/timonde_on.svg" "${STAGING_DIR}/usr/share/icons/hicolor/scalable/panel/timonde_on.svg"

@@ -57,7 +57,24 @@ BOUQUETS_CANDIDATES = [
     os.path.join(os.path.dirname(__file__), "..", "bouquets"),
     os.path.expanduser("~/.local/share/timonde/bouquets"),
     "/usr/share/timonde/bouquets",
+    "/usr/local/share/timonde/bouquets",
+    "data/bouquets",
 ]
+
+def safe_parse_xml(path):
+    """Parse un fichier XML avec tolérance absolue aux entités ampersand non échappées."""
+    try:
+        return ET.parse(path).getroot()
+    except Exception:
+        pass
+    try:
+        with open(path, "r", encoding="utf-8", errors="replace") as f:
+            raw = f.read()
+        cleaned = re.sub(r"&(?!(?:amp|lt|gt|apos|quot|#\d+|#x[0-9a-fA-F]+);)", "&amp;", raw)
+        return ET.fromstring(cleaned)
+    except Exception as e:
+        sys.stderr.write(f"Échec de lecture XML ({path}) : {e}\n")
+        return None
 
 EXAMPLES_CANDIDATES = [
     os.path.expanduser("~/.local/share/timonde/examples"),
@@ -1424,8 +1441,10 @@ class DiscoverRadiosWindow(Gtk.Window):
 
     def load_external_xml(self, path):
         try:
-            tree = ET.parse(path)
-            root = tree.getroot()
+            root = safe_parse_xml(path)
+            if root is None:
+                sys.stderr.write(f"Fichier XML illisible : {path}\n")
+                return
             stations = []
             for st in root.iter("station"):
                 name = st.attrib.get("name", "")
@@ -1886,8 +1905,9 @@ def parse_bouquets_xml():
 
     for xml_file in sorted(glob.glob(os.path.join(b_dir, "*.xml"))):
         try:
-            tree = ET.parse(xml_file)
-            root = tree.getroot()
+            root = safe_parse_xml(xml_file)
+            if root is None:
+                continue
             code = root.attrib.get("country", os.path.splitext(os.path.basename(xml_file))[0].upper()).upper()
             name = root.attrib.get("name", code)
             flag = root.attrib.get("flag", "")

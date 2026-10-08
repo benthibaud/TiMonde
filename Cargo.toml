@@ -259,4 +259,6 @@ assets = [
     { source = "po/locale/vi/LC_MESSAGES/timonde.mo", dest = "/usr/share/locale/vi/LC_MESSAGES/timonde.mo", mode = "644" },
     { source = "po/locale/zh_CN/LC_MESSAGES/timonde.mo", dest = "/usr/share/locale/zh_CN/LC_MESSAGES/timonde.mo", mode = "644" },
     { source = "po/locale/zh_TW/LC_MESSAGES/timonde.mo", dest = "/usr/share/locale/zh_TW/LC_MESSAGES/timonde.mo", mode = "644" },
+    { source = "data/io.github.benthibaud.timonde.metainfo.xml", dest = "/usr/share/metainfo/io.github.benthibaud.timonde.metainfo.xml", mode = "644" },
+    { source = "packaging/deb/copyright", dest = "/usr/share/doc/timonde/copyright", mode = "644" },
 ]

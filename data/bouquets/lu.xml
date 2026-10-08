@@ -3,7 +3,7 @@
   <community id="LU" name="Luxembourgeois (Lëtzebuergesch)">
     <national>
       <station name="RTL Radio Lëtzebuerg" url="https://sc.rtl.lu/rtl" genre="RTL - Noriichten &amp; Informatioun" />
-      <station name="Radio 100,7" url="http://100komma7.stream11.radiohost.de/100komma7-100komma7_mp3-128?addradio&agend=true&upd-meta=1&upd-scheme=http&_art=dD0xNzkxNDY5MjA0JmQ9MTM1MDMwNDVlNjBiOTc1YzAwNTk" genre="Ëffentlech-rechtleche Radio / Kultur" />
+      <station name="Radio 100,7" url="http://100komma7.stream11.radiohost.de/100komma7-100komma7_mp3-128?addradio&amp;agend=true&amp;upd-meta=1&amp;upd-scheme=http&amp;_art=dD0xNzkxNDY5MjA0JmQ9MTM1MDMwNDVlNjBiOTc1YzAwNTk" genre="Ëffentlech-rechtleche Radio / Kultur" />
       <station name="Eldoradio" url="http://sc.bce.lu/eldo" genre="Hitradio Lëtzebuerg" />
       <station name="Radio Aktiv" url="https://radio.gen.dance/radio/8030/hd" genre="Lokalradio &amp; Musek" />
       </national>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.benthibaud.timonde</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>TiMonde</name>
+  <summary>Lecteur de flux webradio ultra-léger et discret pour la barre des tâches</summary>
+  <summary xml:lang="en">Ultra-lightweight internet radio player for the system tray</summary>
+  <description>
+    <p>
+      TiMonde est un lecteur de radios en ligne ultra-léger (empreinte RAM &lt; 15 Mo),
+      conçu pour s'intégrer sobrement et discrètement dans la barre des tâches ou zone
+      de notification de tous les environnements Linux (KDE Plasma, Cinnamon, XFCE, GNOME, etc.).
+    </p>
+    <p xml:lang="en">
+      TiMonde is a lightweight internet radio player (memory footprint &lt; 15 MB),
+      designed to sit unobtrusively in the system tray of any Linux desktop
+      environment (KDE Plasma, Cinnamon, XFCE, GNOME, etc.).
+    </p>
+  </description>
+  <launchable type="desktop-id">timonde.desktop</launchable>
+  <url type="homepage">https://github.com/benthibaud/TiMonde</url>
+  <url type="bugtracker">https://github.com/benthibaud/TiMonde/issues</url>
+  <provides>
+    <binary>timonde</binary>
+  </provides>
+  <categories>
+    <category>AudioVideo</category>
+    <category>Audio</category>
+    <category>Player</category>
+  </categories>
+  <releases>
+    <release version="0.1.0" date="2026-10-08">
+      <description>
+        <p>Version initiale avec support MPRIS2, bouquets DAB+ mondiaux et mode basse consommation.</p>
+      </description>
+    </release>
+  </releases>
+</component>

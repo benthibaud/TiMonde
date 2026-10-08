@@ -6,6 +6,6 @@
     <station name="Radio Classic Almaty" url="https://listen9.myradio24.com/5967" genre="Qazaqstan - Тұңғыш классикалық музыка радиосы" />
     <station name="Radio NS Kazakhstan" url="https://listen9.myradio24.com/5967" genre="Музыка на все времена" />
     <station name="Gakku FM" url="https://stream.zeno.fm/8fgt4w4k0heuv" genre="Тек қана қазақша әндер (Pop kazakhe)" />
-    <station name="Dala FM" url="https://dalaria.stream.laut.fm/dalaria?ref=radiode&t302=2026-10-08_16-15-04&uuid=c67b835d-32d9-9df8-8552-9aa5730e3189" genre="Ұлы дала дауысы" />
+    <station name="Dala FM" url="https://dalaria.stream.laut.fm/dalaria?ref=radiode&amp;t302=2026-10-08_16-15-04&amp;uuid=c67b835d-32d9-9df8-8552-9aa5730e3189" genre="Ұлы дала дауысы" />
     </national>
   </bouquet>

@@ -775,21 +775,63 @@ fn find_group_name_for_station(root: &Group, station_url: &str) -> Option<String
         });
     }
 
-    fn find_edit_script() -> Option<PathBuf> {
+    /// Recherche unifiée d un script Python compagnon (archive portable, deb/rpm, local ou dev)
+    pub fn find_script(script_name: &str) -> Option<PathBuf> {
         let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
-        let candidate1 = PathBuf::from(&home).join(".local/share/timonde/scripts/edit_station.py");
-        if candidate1.exists() {
-            return Some(candidate1);
+
+        // 1. Relatif au binaire en cours d exécution (archive portable .tar.gz)
+        if let Ok(exe) = std::env::current_exe() {
+            if let Some(exe_dir) = exe.parent() {
+                let candidate_share = exe_dir.join("../share/timonde/scripts").join(script_name);
+                if candidate_share.exists() {
+                    return Some(candidate_share);
+                }
+                let candidate_scripts = exe_dir.join("scripts").join(script_name);
+                if candidate_scripts.exists() {
+                    return Some(candidate_scripts);
+                }
+                let candidate_parent_scripts = exe_dir.join("../scripts").join(script_name);
+                if candidate_parent_scripts.exists() {
+                    return Some(candidate_parent_scripts);
+                }
+                let candidate_rel_data = exe_dir.join("data/scripts").join(script_name);
+                if candidate_rel_data.exists() {
+                    return Some(candidate_rel_data);
+                }
+                let candidate_parent_data = exe_dir.join("../data/scripts").join(script_name);
+                if candidate_parent_data.exists() {
+                    return Some(candidate_parent_data);
+                }
+            }
         }
-        let candidate2 = PathBuf::from("data/scripts/edit_station.py");
-        if candidate2.exists() {
-            return Some(candidate2);
+
+        // 2. Emplacement système officiel du paquet (.deb, .rpm)
+        let sys_share = PathBuf::from("/usr/share/timonde/scripts").join(script_name);
+        if sys_share.exists() {
+            return Some(sys_share);
         }
-        let candidate3 = PathBuf::from(&home).join(".gemini/antigravity/scratch/TiMonde/data/scripts/edit_station.py");
-        if candidate3.exists() {
-            return Some(candidate3);
+        let local_sys_share = PathBuf::from("/usr/local/share/timonde/scripts").join(script_name);
+        if local_sys_share.exists() {
+            return Some(local_sys_share);
         }
+
+        // 3. Emplacement utilisateur XDG ~/.local/share/timonde/scripts/
+        let user_share = PathBuf::from(&home).join(".local/share/timonde/scripts").join(script_name);
+        if user_share.exists() {
+            return Some(user_share);
+        }
+
+        // 4. Dossier relatif au répertoire courant de travail
+        let dev_path = PathBuf::from("data/scripts").join(script_name);
+        if dev_path.exists() {
+            return Some(dev_path);
+        }
+
         None
+    }
+
+    fn find_edit_script() -> Option<PathBuf> {
+        Self::find_script("edit_station.py")
     }
 
     /// Ouvre la boîte de dialogue pour modifier le nom, l'URL, le groupe et le code pays de la station
@@ -1003,20 +1045,7 @@ fn find_group_name_for_station(root: &Group, station_url: &str) -> Option<String
     }
 
     fn find_bouquets_script() -> Option<PathBuf> {
-        let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
-        let candidate1 = PathBuf::from(&home).join(".local/share/timonde/scripts/browse_bouquets.py");
-        if candidate1.exists() {
-            return Some(candidate1);
-        }
-        let candidate2 = PathBuf::from("data/scripts/browse_bouquets.py");
-        if candidate2.exists() {
-            return Some(candidate2);
-        }
-        let candidate3 = PathBuf::from("/usr/share/timonde/scripts/browse_bouquets.py");
-        if candidate3.exists() {
-            return Some(candidate3);
-        }
-        None
+        Self::find_script("browse_bouquets.py")
     }
 
     /// Découverte et importation de bouquets (Nationaux & Régionaux) sans doublons
@@ -1219,20 +1248,7 @@ fn find_group_name_for_station(root: &Group, station_url: &str) -> Option<String
     }
 
     fn find_reorder_script() -> Option<PathBuf> {
-        let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
-        let candidate1 = PathBuf::from(&home).join(".local/share/timonde/scripts/reorder_groups.py");
-        if candidate1.exists() {
-            return Some(candidate1);
-        }
-        let candidate2 = PathBuf::from("data/scripts/reorder_groups.py");
-        if candidate2.exists() {
-            return Some(candidate2);
-        }
-        let candidate3 = PathBuf::from(&home).join(".gemini/antigravity/scratch/TiMonde/data/scripts/reorder_groups.py");
-        if candidate3.exists() {
-            return Some(candidate3);
-        }
-        None
+        Self::find_script("reorder_groups.py")
     }
 
     /// Exportation des radios en CSV via boîte de dialogue GTK3
@@ -1459,7 +1475,56 @@ fn find_group_name_for_station(root: &Group, station_url: &str) -> Option<String
 }
 
 impl ksni::Tray for TiMondeTray {
-    const MENU_ON_ACTIVATE: bool = true;
+    const MENU_ON_ACTIVATE: bool = false;
+
+    fn activate(&mut self, _x: i32, _y: i32) {
+        log::info!("🖱️ Clic gauche sur l'icône de la barre des tâches");
+        if self.state() == PlaybackState::Playing {
+            log::info!("⏹️ Clic gauche : bascule vers Arrêt");
+            Self::stop_and_trim_flow(&self.audio, &self.current_station, &self.current_title);
+            if let Some(ref h) = *self.tray_handle.lock().unwrap() {
+                h.update(|_| {});
+            }
+        } else {
+            let target_station = {
+                let cur = self.current_station.lock().unwrap();
+                let last = self.last_station.lock().unwrap();
+                cur.clone().or_else(|| last.clone())
+            };
+
+            let station_to_play = if let Some(st) = target_station {
+                Some(st)
+            } else {
+                let root = self.root_group.lock().unwrap();
+                Self::find_first_station(&root)
+            };
+
+            if let Some(st) = station_to_play {
+                log::info!("▶️ Clic gauche : lecture de « {} »", st.name);
+                Self::play_station_flow(
+                    st,
+                    &self.audio,
+                    &self.current_volume,
+                    &self.current_station,
+                    &self.last_station,
+                    &self.current_title,
+                    &self.play_generation,
+                    &self.root_group,
+                    &self.bookmarks_path,
+                );
+                if let Some(ref h) = *self.tray_handle.lock().unwrap() {
+                    h.update(|_| {});
+                }
+            } else {
+                Self::trigger_browse_bouquets_dialog(
+                    Arc::clone(&self.root_group),
+                    self.bookmarks_path.clone(),
+                    Arc::clone(&self.tray_handle),
+                    None,
+                );
+            }
+        }
+    }
 
     fn id(&self) -> String {
         "timonde".to_string()
@@ -2049,6 +2114,7 @@ mod tests {
         let root = crate::bookmarks::parse_bookmarks_reader(xml.as_bytes()).unwrap();
         let bpath = std::path::PathBuf::from("/tmp/bookmarks_test.xml");
         let tray = TiMondeTray::new(root, bpath);
+        *tray.last_station.lock().unwrap() = Some(Station::new("Bluegrass Planet Radio", "http://65.108.105.26:7966/stream"));
 
         // 1. En veille / arrêté : première entrée "▶ Écouter    « Bluegrass Planet Radio »"
         let menu_stopped = tray.menu();
@@ -2089,6 +2155,7 @@ mod tests {
         let root = crate::bookmarks::parse_bookmarks_reader(xml.as_bytes()).unwrap();
         let bpath = std::path::PathBuf::from("/tmp/bookmarks_test_en.xml");
         let tray = TiMondeTray::new(root, bpath);
+        *tray.last_station.lock().unwrap() = Some(Station::new("Bluegrass Planet Radio", "http://65.108.105.26:7966/stream"));
 
         // 1. En veille
         let menu_stopped = tray.menu();

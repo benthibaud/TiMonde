@@ -1,63 +1,63 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet name="Webradios Radio FG" flag="🎧" category="Exemples" country="FR">
   <national>
-    <station name="FG" url="https://n24-eu.rcs.revma.com/7081n2b6p98uv?rj-ttl=5&rj-tok=AAABoRvnO6QAeaqZxCk5i7pDyw" genre="Electro / Dance / Club" />
-    <station name="MAXXIMUM" url="https://n22-eu.rcs.revma.com/nwhyn2c6p98uv?rj-ttl=5&rj-tok=AAABoRvnb6cATkIgyLtTq6fvRg" genre="Electro / Dance / Club" />
-    <station name="MAXXIMUM 90's" url="https://n15-eu.rcs.revma.com/maygqbdap98uv?rj-ttl=5&rj-tok=AAABoRvnb7cAtd4YjRvopMJ4Cw" genre="Electro / Dance / Club" />
-    <station name="FG Classics" url="https://n21-eu.rcs.revma.com/37n8gxv9n98uv?rj-ttl=5&rj-tok=AAABoRvnb8UAFyXn6pyzK2qHJQ" genre="Electro / Dance / Club" />
-    <station name="FG Starter FG By Hakimakli" url="https://n19-eu.rcs.revma.com/vww68g69n98uv?rj-ttl=5&rj-tok=AAABoRvnb_EAwELGFVFxGWQCow" genre="Electro / Dance / Club" />
-    <station name="FG Buddha Bar" url="https://n02-eu.rcs.revma.com/zn73zqg1t7uvv?rj-ttl=5&rj-tok=AAABoRvncBwA3b223nNsLV2Wiw" genre="Electro / Dance / Club" />
-    <station name="FG CHIC" url="https://n15-eu.rcs.revma.com/cgvrymb6p98uv?rj-ttl=5&rj-tok=AAABoRvncBQApWEa6WaXmv8SWw" genre="Electro / Dance / Club" />
-    <station name="FG CHIC and CHILL" url="https://n18-eu.rcs.revma.com/d9ucg01d0chvv?rj-ttl=5&rj-tok=AAABoRvncCoAod4-zbSrYBQQ7w" genre="Electro / Dance / Club" />
-    <station name="FG CHIC Berlin" url="https://n06-eu.rcs.revma.com/7pww0pn0742vv?rj-ttl=5&rj-tok=AAABoRvncE4AyOK7dcksuPVqsg" genre="Electro / Dance / Club" />
-    <station name="FG CHIC by Renault" url="https://n11-eu.rcs.revma.com/kg2bvya6wzuvv?rj-ttl=5&rj-tok=AAABoRvncEYAf9FObS0sLD9mXg" genre="Electro / Dance / Club" />
-    <station name="FG CHIC French" url="https://n15-eu.rcs.revma.com/3x5uxtcxgkhvv?rj-ttl=5&rj-tok=AAABoRvncFMAs-8xcsvLeXlnMg" genre="Electro / Dance / Club" />
-    <station name="FG CHIC London" url="https://n09-eu.rcs.revma.com/8ha6164v5znwv?rj-ttl=5&rj-tok=AAABoRvncHgAi2JWQ8venJIyJw" genre="Electro / Dance / Club" />
-    <station name="FG CHIC Lounge" url="https://n14-eu.rcs.revma.com/1grpmk88n98uv?rj-ttl=5&rj-tok=AAABoRvncIwAxKrf12eB4Tbj5w" genre="Electro / Dance / Club" />
-    <station name="FG CHIC Spa" url="https://n22-eu.rcs.revma.com/ffynknv9n98uv?rj-ttl=5&rj-tok=AAABoRvncKkA5UmVEsKdYta6Yw" genre="Electro / Dance / Club" />
-    <station name="FG CHIC Vintage" url="https://n01-eu.rcs.revma.com/csfyhrgr60bwv?rj-ttl=5&rj-tok=AAABoRvncKoAwwqbDteXK3-ioQ" genre="Electro / Dance / Club" />
-    <station name="FG Driving" url="https://n12-eu.rcs.revma.com/yg315gmd633vv?rj-ttl=5&rj-tok=AAABoRvncKIAnSiNMLJ8TSxE-A" genre="Electro / Dance / Club" />
-    <station name="FG Fucking Good Music" url="https://n16-eu.rcs.revma.com/dvpevwak5rcwv?rj-ttl=5&rj-tok=AAABoRvncL0AI8RPCyTUq0C0bg" genre="Electro / Dance / Club" />
-    <station name="FG New Wave" url="https://n11-eu.rcs.revma.com/4vpbw1ad633vv?rj-ttl=5&rj-tok=AAABoRvncLYAGRbkg3UL4YkEDQ" genre="Electro / Dance / Club" />
-    <station name="FG Pop Legends" url="https://n23-eu.rcs.revma.com/hdzyzvtbxd3vv?rj-ttl=5&rj-tok=AAABoRvncOcAUfyWTvaOS5etyA" genre="Electro / Dance / Club" />
-    <station name="FG Relax" url="https://n10-eu.rcs.revma.com/ptaswwyza43vv?rj-ttl=5&rj-tok=AAABoRvncNYAGZMLsLPFSWNAfg" genre="Electro / Dance / Club" />
-    <station name="FG Remix" url="https://n04-eu.rcs.revma.com/w1psqtmd342vv?rj-ttl=5&rj-tok=AAABoRvncOQAj6hvd7hWmvKF8Q" genre="Electro / Dance / Club" />
-    <station name="FG RnB Legends" url="https://n09-eu.rcs.revma.com/kau7e6tbxd3vv?rj-ttl=5&rj-tok=AAABoRvncOoAd9UMkqP3iYHmFw" genre="Electro / Dance / Club" />
-    <station name="FG YOGA" url="https://n10-eu.rcs.revma.com/xryf0bck5rcwv?rj-ttl=5&rj-tok=AAABoRvncO4AQtCkoxnxr8lWuA" genre="Electro / Dance / Club" />
-    <station name="FG At Work" url="https://n02-eu.rcs.revma.com/2v1zz979n98uv?rj-ttl=5&rj-tok=AAABoRvncOwASDwXCsGF5B9l1Q" genre="Electro / Dance / Club" />
-    <station name="FG Bob Sinclar" url="https://n02-eu.rcs.revma.com/wphm12m4403vv?rj-ttl=5&rj-tok=AAABoRvncOoAd9UMkqP3iYHmFw" genre="Electro / Dance / Club" />
-    <station name="FG CHIC Ibiza" url="https://n14-eu.rcs.revma.com/z8v9hmhp0f3vv?rj-ttl=5&rj-tok=AAABoRvncPAALt-iHIgW5dnYYg" genre="Electro / Dance / Club" />
-    <station name="FG CHIC Mix" url="https://n16-eu.rcs.revma.com/9sw5gp3w7guvv.mp3?rj-ttl=5&rj-tok=AAABoRvncPcA1k8l7RDJKSKRIQ" genre="Electro / Dance / Club" />
-    <station name="FG David Guetta" url="https://n14-eu.rcs.revma.com/88h6r9dusd3vv?rj-ttl=5&rj-tok=AAABoRvncQUADXDIF-vrgftLKw" genre="Electro / Dance / Club" />
-    <station name="FG Defected" url="https://n16-eu.rcs.revma.com/423ppf862quvv.mp3?rj-ttl=5&rj-tok=AAABoRvncSMA9qiboZsaj43Znw" genre="Electro / Dance / Club" />
-    <station name="FG Feel Good" url="https://n06-eu.rcs.revma.com/yamg15ak5rcwv?rj-ttl=5&rj-tok=AAABoRvncUQA9hhvjx7rWWfBkg" genre="Electro / Dance / Club" />
-    <station name="FG Hï Ibiza" url="https://n15-eu.rcs.revma.com/2ykcf6e1e2uvv?rj-ttl=5&rj-tok=AAABoRvncYQA20RNQooZ446DNQ" genre="Electro / Dance / Club" />
-    <station name="FG Hits" url="https://n08-eu.rcs.revma.com/mxfbr0dusd3vv?rj-ttl=5&rj-tok=AAABoRvncUkAD5KP_aZ5dw41sQ" genre="Electro / Dance / Club" />
-    <station name="FG MIX Afro House" url="https://n06-eu.rcs.revma.com/uv0x66bap98uv?rj-ttl=5&rj-tok=AAABoRvncUUArLuSDQSQdm7xrQ" genre="Electro / Dance / Club" />
-    <station name="FG MIX Electro" url="https://n12-eu.rcs.revma.com/ky42f360e2uvv?rj-ttl=5&rj-tok=AAABoRvncU8ACCsyCBgw2WFGPw" genre="Electro / Dance / Club" />
-    <station name="FG MIX Melodic" url="https://n13-eu.rcs.revma.com/h0n0zbh1t7uvv?rj-ttl=5&rj-tok=AAABoRvncXMAp_iyhI_prE4kUA" genre="Electro / Dance / Club" />
-    <station name="FG Nomade" url="https://n21-eu.rcs.revma.com/yukrx3dusd3vv?rj-ttl=5&rj-tok=AAABoRvncXkAXKrwl_iD19SiXw" genre="Electro / Dance / Club" />
-    <station name="FG Phonk and Gaming" url="https://n14-eu.rcs.revma.com/vzx3q9762quvv?rj-ttl=5&rj-tok=AAABoRvncXMAp_iyhI_prE4kUA" genre="Electro / Dance / Club" />
-    <station name="FG Belgium" url="https://n01-eu.rcs.revma.com/5wesqhfap98uv?rj-ttl=5&rj-tok=AAABoRvncYkAbUYrvxncITVOdg" genre="Electro / Dance / Club" />
-    <station name="FG Clubbing" url="https://n05-eu.rcs.revma.com/007e1v9f772vv?rj-ttl=5&rj-tok=AAABoRvsGr4A5UuCOWu6kEAvMQ" genre="Electro / Dance / Club" />
-    <station name="FG Dance" url="https://n14-eu.rcs.revma.com/zfad8vm4srhvv?rj-ttl=5&rj-tok=AAABoRvncYAAnL-Jw84alS-tHA" genre="Electro / Dance / Club" />
-    <station name="FG Dance Top 40" url="https://n22-eu.rcs.revma.com/x1csugb6wzuvv.mp3?rj-ttl=5&rj-tok=AAABoRvncXoAQdFTJzc4sEARow" genre="Electro / Dance / Club" />
-    <station name="FG Dancefloor" url="https://n17-eu.rcs.revma.com/kv9m762w7guvv.mp3?rj-ttl=5&rj-tok=AAABoRvncXYAjAdwWSG9u-OhkQ" genre="Electro / Dance / Club" />
-    <station name="FG Deep Dance" url="https://n10-eu.rcs.revma.com/tmbhq479n98uv?rj-ttl=5&rj-tok=AAABoRvncYMA9UPKdKTVKApOXQ" genre="Electro / Dance / Club" />
-    <station name="FG Disco Funk" url="https://n22-eu.rcs.revma.com/cpkhx08pq18uv?rj-ttl=5&rj-tok=AAABoRvncYcAr74Gp6SdKHKQWg" genre="Electro / Dance / Club" />
-    <station name="FG Disco House" url="https://n07-eu.rcs.revma.com/ffn7zkskca3vv?rj-ttl=5&rj-tok=AAABoRvncdUAtCTl8jzoezHzyA" genre="Electro / Dance / Club" />
-    <station name="FG MIX Dance" url="https://n08-eu.rcs.revma.com/e88ff5a1e2uvv?rj-ttl=5&rj-tok=AAABoRvncd8AxqginhjD_ioxIA" genre="Electro / Dance / Club" />
-    <station name="FG Purple Disco Machine" url="https://n04-eu.rcs.revma.com/xfnmkhw5b1bwv?rj-ttl=5&rj-tok=AAABoRvncggA2IRpAZ7m5iFvUg" genre="Electro / Dance / Club" />
-    <station name="FG Training" url="https://n15-eu.rcs.revma.com/8daakscap98uv?rj-ttl=5&rj-tok=AAABoRvncesAyG2w1V3RDbtdMw" genre="Electro / Dance / Club" />
-    <station name="FG Xtra" url="https://n05-eu.rcs.revma.com/w33p2cfap98uv?rj-ttl=5&rj-tok=AAABoRvncfQADrJApvpTgV3gdQ" genre="Electro / Dance / Club" />
-    <station name="FG Apéro" url="https://n02-eu.rcs.revma.com/3xvpxq50e2uvv?rj-ttl=5&rj-tok=AAABoRvncfgAOchftEXADhmlLg" genre="Electro / Dance / Club" />
-    <station name="FG Beatport" url="https://n20-eu.rcs.revma.com/vb3b5749n98uv?rj-ttl=5&rj-tok=AAABoRvncf0AY-LnG3vV297nvg" genre="Electro / Dance / Club" />
-    <station name="FG CHIC Soul" url="https://n24-eu.rcs.revma.com/y4r1v13w7guvv.mp3?rj-ttl=5&rj-tok=AAABoRvncoYApDXnIbVyUb0qKw" genre="Electro / Dance / Club" />
-    <station name="FG Deep House" url="https://n20-eu.rcs.revma.com/02s8zcv9898uv?rj-ttl=5&rj-tok=AAABoRvncg0Aufq8vod8QadDlA" genre="Electro / Dance / Club" />
-    <station name="FG MIX House" url="https://n03-eu.rcs.revma.com/5kucq079n98uv?rj-ttl=5&rj-tok=AAABoRvncf4A8cOF0stgQkw7yg" genre="Electro / Dance / Club" />
-    <station name="FG MIX Techno" url="https://n17-eu.rcs.revma.com/vat1rx60e2uvv?rj-ttl=5&rj-tok=AAABoRvnciAArf_sV1Z99Un85Q" genre="Electro / Dance / Club" />
-    <station name="FG MIX Trance" url="https://n21-eu.rcs.revma.com/v025nezpey3vv?rj-ttl=5&rj-tok=AAABoRvnch8ALSRD7sL9yAZfBw" genre="Electro / Dance / Club" />
-    <station name="FG Pulse" url="https://n02-eu.rcs.revma.com/rzqck8ad633vv?rj-ttl=5&rj-tok=AAABoRvnch8ALSRD7sL9yAZfBw" genre="Electro / Dance / Club" />
-    <station name="FG Techno" url="https://n08-eu.rcs.revma.com/1z19ak79n98uv?rj-ttl=5&rj-tok=AAABoRvncgIAbl3CE6skLb9B4A" genre="Electro / Dance / Club" />
+    <station name="FG" url="https://n24-eu.rcs.revma.com/7081n2b6p98uv?rj-ttl=5&amp;rj-tok=AAABoRvnO6QAeaqZxCk5i7pDyw" genre="Electro / Dance / Club" />
+    <station name="MAXXIMUM" url="https://n22-eu.rcs.revma.com/nwhyn2c6p98uv?rj-ttl=5&amp;rj-tok=AAABoRvnb6cATkIgyLtTq6fvRg" genre="Electro / Dance / Club" />
+    <station name="MAXXIMUM 90's" url="https://n15-eu.rcs.revma.com/maygqbdap98uv?rj-ttl=5&amp;rj-tok=AAABoRvnb7cAtd4YjRvopMJ4Cw" genre="Electro / Dance / Club" />
+    <station name="FG Classics" url="https://n21-eu.rcs.revma.com/37n8gxv9n98uv?rj-ttl=5&amp;rj-tok=AAABoRvnb8UAFyXn6pyzK2qHJQ" genre="Electro / Dance / Club" />
+    <station name="FG Starter FG By Hakimakli" url="https://n19-eu.rcs.revma.com/vww68g69n98uv?rj-ttl=5&amp;rj-tok=AAABoRvnb_EAwELGFVFxGWQCow" genre="Electro / Dance / Club" />
+    <station name="FG Buddha Bar" url="https://n02-eu.rcs.revma.com/zn73zqg1t7uvv?rj-ttl=5&amp;rj-tok=AAABoRvncBwA3b223nNsLV2Wiw" genre="Electro / Dance / Club" />
+    <station name="FG CHIC" url="https://n15-eu.rcs.revma.com/cgvrymb6p98uv?rj-ttl=5&amp;rj-tok=AAABoRvncBQApWEa6WaXmv8SWw" genre="Electro / Dance / Club" />
+    <station name="FG CHIC and CHILL" url="https://n18-eu.rcs.revma.com/d9ucg01d0chvv?rj-ttl=5&amp;rj-tok=AAABoRvncCoAod4-zbSrYBQQ7w" genre="Electro / Dance / Club" />
+    <station name="FG CHIC Berlin" url="https://n06-eu.rcs.revma.com/7pww0pn0742vv?rj-ttl=5&amp;rj-tok=AAABoRvncE4AyOK7dcksuPVqsg" genre="Electro / Dance / Club" />
+    <station name="FG CHIC by Renault" url="https://n11-eu.rcs.revma.com/kg2bvya6wzuvv?rj-ttl=5&amp;rj-tok=AAABoRvncEYAf9FObS0sLD9mXg" genre="Electro / Dance / Club" />
+    <station name="FG CHIC French" url="https://n15-eu.rcs.revma.com/3x5uxtcxgkhvv?rj-ttl=5&amp;rj-tok=AAABoRvncFMAs-8xcsvLeXlnMg" genre="Electro / Dance / Club" />
+    <station name="FG CHIC London" url="https://n09-eu.rcs.revma.com/8ha6164v5znwv?rj-ttl=5&amp;rj-tok=AAABoRvncHgAi2JWQ8venJIyJw" genre="Electro / Dance / Club" />
+    <station name="FG CHIC Lounge" url="https://n14-eu.rcs.revma.com/1grpmk88n98uv?rj-ttl=5&amp;rj-tok=AAABoRvncIwAxKrf12eB4Tbj5w" genre="Electro / Dance / Club" />
+    <station name="FG CHIC Spa" url="https://n22-eu.rcs.revma.com/ffynknv9n98uv?rj-ttl=5&amp;rj-tok=AAABoRvncKkA5UmVEsKdYta6Yw" genre="Electro / Dance / Club" />
+    <station name="FG CHIC Vintage" url="https://n01-eu.rcs.revma.com/csfyhrgr60bwv?rj-ttl=5&amp;rj-tok=AAABoRvncKoAwwqbDteXK3-ioQ" genre="Electro / Dance / Club" />
+    <station name="FG Driving" url="https://n12-eu.rcs.revma.com/yg315gmd633vv?rj-ttl=5&amp;rj-tok=AAABoRvncKIAnSiNMLJ8TSxE-A" genre="Electro / Dance / Club" />
+    <station name="FG Fucking Good Music" url="https://n16-eu.rcs.revma.com/dvpevwak5rcwv?rj-ttl=5&amp;rj-tok=AAABoRvncL0AI8RPCyTUq0C0bg" genre="Electro / Dance / Club" />
+    <station name="FG New Wave" url="https://n11-eu.rcs.revma.com/4vpbw1ad633vv?rj-ttl=5&amp;rj-tok=AAABoRvncLYAGRbkg3UL4YkEDQ" genre="Electro / Dance / Club" />
+    <station name="FG Pop Legends" url="https://n23-eu.rcs.revma.com/hdzyzvtbxd3vv?rj-ttl=5&amp;rj-tok=AAABoRvncOcAUfyWTvaOS5etyA" genre="Electro / Dance / Club" />
+    <station name="FG Relax" url="https://n10-eu.rcs.revma.com/ptaswwyza43vv?rj-ttl=5&amp;rj-tok=AAABoRvncNYAGZMLsLPFSWNAfg" genre="Electro / Dance / Club" />
+    <station name="FG Remix" url="https://n04-eu.rcs.revma.com/w1psqtmd342vv?rj-ttl=5&amp;rj-tok=AAABoRvncOQAj6hvd7hWmvKF8Q" genre="Electro / Dance / Club" />
+    <station name="FG RnB Legends" url="https://n09-eu.rcs.revma.com/kau7e6tbxd3vv?rj-ttl=5&amp;rj-tok=AAABoRvncOoAd9UMkqP3iYHmFw" genre="Electro / Dance / Club" />
+    <station name="FG YOGA" url="https://n10-eu.rcs.revma.com/xryf0bck5rcwv?rj-ttl=5&amp;rj-tok=AAABoRvncO4AQtCkoxnxr8lWuA" genre="Electro / Dance / Club" />
+    <station name="FG At Work" url="https://n02-eu.rcs.revma.com/2v1zz979n98uv?rj-ttl=5&amp;rj-tok=AAABoRvncOwASDwXCsGF5B9l1Q" genre="Electro / Dance / Club" />
+    <station name="FG Bob Sinclar" url="https://n02-eu.rcs.revma.com/wphm12m4403vv?rj-ttl=5&amp;rj-tok=AAABoRvncOoAd9UMkqP3iYHmFw" genre="Electro / Dance / Club" />
+    <station name="FG CHIC Ibiza" url="https://n14-eu.rcs.revma.com/z8v9hmhp0f3vv?rj-ttl=5&amp;rj-tok=AAABoRvncPAALt-iHIgW5dnYYg" genre="Electro / Dance / Club" />
+    <station name="FG CHIC Mix" url="https://n16-eu.rcs.revma.com/9sw5gp3w7guvv.mp3?rj-ttl=5&amp;rj-tok=AAABoRvncPcA1k8l7RDJKSKRIQ" genre="Electro / Dance / Club" />
+    <station name="FG David Guetta" url="https://n14-eu.rcs.revma.com/88h6r9dusd3vv?rj-ttl=5&amp;rj-tok=AAABoRvncQUADXDIF-vrgftLKw" genre="Electro / Dance / Club" />
+    <station name="FG Defected" url="https://n16-eu.rcs.revma.com/423ppf862quvv.mp3?rj-ttl=5&amp;rj-tok=AAABoRvncSMA9qiboZsaj43Znw" genre="Electro / Dance / Club" />
+    <station name="FG Feel Good" url="https://n06-eu.rcs.revma.com/yamg15ak5rcwv?rj-ttl=5&amp;rj-tok=AAABoRvncUQA9hhvjx7rWWfBkg" genre="Electro / Dance / Club" />
+    <station name="FG Hï Ibiza" url="https://n15-eu.rcs.revma.com/2ykcf6e1e2uvv?rj-ttl=5&amp;rj-tok=AAABoRvncYQA20RNQooZ446DNQ" genre="Electro / Dance / Club" />
+    <station name="FG Hits" url="https://n08-eu.rcs.revma.com/mxfbr0dusd3vv?rj-ttl=5&amp;rj-tok=AAABoRvncUkAD5KP_aZ5dw41sQ" genre="Electro / Dance / Club" />
+    <station name="FG MIX Afro House" url="https://n06-eu.rcs.revma.com/uv0x66bap98uv?rj-ttl=5&amp;rj-tok=AAABoRvncUUArLuSDQSQdm7xrQ" genre="Electro / Dance / Club" />
+    <station name="FG MIX Electro" url="https://n12-eu.rcs.revma.com/ky42f360e2uvv?rj-ttl=5&amp;rj-tok=AAABoRvncU8ACCsyCBgw2WFGPw" genre="Electro / Dance / Club" />
+    <station name="FG MIX Melodic" url="https://n13-eu.rcs.revma.com/h0n0zbh1t7uvv?rj-ttl=5&amp;rj-tok=AAABoRvncXMAp_iyhI_prE4kUA" genre="Electro / Dance / Club" />
+    <station name="FG Nomade" url="https://n21-eu.rcs.revma.com/yukrx3dusd3vv?rj-ttl=5&amp;rj-tok=AAABoRvncXkAXKrwl_iD19SiXw" genre="Electro / Dance / Club" />
+    <station name="FG Phonk and Gaming" url="https://n14-eu.rcs.revma.com/vzx3q9762quvv?rj-ttl=5&amp;rj-tok=AAABoRvncXMAp_iyhI_prE4kUA" genre="Electro / Dance / Club" />
+    <station name="FG Belgium" url="https://n01-eu.rcs.revma.com/5wesqhfap98uv?rj-ttl=5&amp;rj-tok=AAABoRvncYkAbUYrvxncITVOdg" genre="Electro / Dance / Club" />
+    <station name="FG Clubbing" url="https://n05-eu.rcs.revma.com/007e1v9f772vv?rj-ttl=5&amp;rj-tok=AAABoRvsGr4A5UuCOWu6kEAvMQ" genre="Electro / Dance / Club" />
+    <station name="FG Dance" url="https://n14-eu.rcs.revma.com/zfad8vm4srhvv?rj-ttl=5&amp;rj-tok=AAABoRvncYAAnL-Jw84alS-tHA" genre="Electro / Dance / Club" />
+    <station name="FG Dance Top 40" url="https://n22-eu.rcs.revma.com/x1csugb6wzuvv.mp3?rj-ttl=5&amp;rj-tok=AAABoRvncXoAQdFTJzc4sEARow" genre="Electro / Dance / Club" />
+    <station name="FG Dancefloor" url="https://n17-eu.rcs.revma.com/kv9m762w7guvv.mp3?rj-ttl=5&amp;rj-tok=AAABoRvncXYAjAdwWSG9u-OhkQ" genre="Electro / Dance / Club" />
+    <station name="FG Deep Dance" url="https://n10-eu.rcs.revma.com/tmbhq479n98uv?rj-ttl=5&amp;rj-tok=AAABoRvncYMA9UPKdKTVKApOXQ" genre="Electro / Dance / Club" />
+    <station name="FG Disco Funk" url="https://n22-eu.rcs.revma.com/cpkhx08pq18uv?rj-ttl=5&amp;rj-tok=AAABoRvncYcAr74Gp6SdKHKQWg" genre="Electro / Dance / Club" />
+    <station name="FG Disco House" url="https://n07-eu.rcs.revma.com/ffn7zkskca3vv?rj-ttl=5&amp;rj-tok=AAABoRvncdUAtCTl8jzoezHzyA" genre="Electro / Dance / Club" />
+    <station name="FG MIX Dance" url="https://n08-eu.rcs.revma.com/e88ff5a1e2uvv?rj-ttl=5&amp;rj-tok=AAABoRvncd8AxqginhjD_ioxIA" genre="Electro / Dance / Club" />
+    <station name="FG Purple Disco Machine" url="https://n04-eu.rcs.revma.com/xfnmkhw5b1bwv?rj-ttl=5&amp;rj-tok=AAABoRvncggA2IRpAZ7m5iFvUg" genre="Electro / Dance / Club" />
+    <station name="FG Training" url="https://n15-eu.rcs.revma.com/8daakscap98uv?rj-ttl=5&amp;rj-tok=AAABoRvncesAyG2w1V3RDbtdMw" genre="Electro / Dance / Club" />
+    <station name="FG Xtra" url="https://n05-eu.rcs.revma.com/w33p2cfap98uv?rj-ttl=5&amp;rj-tok=AAABoRvncfQADrJApvpTgV3gdQ" genre="Electro / Dance / Club" />
+    <station name="FG Apéro" url="https://n02-eu.rcs.revma.com/3xvpxq50e2uvv?rj-ttl=5&amp;rj-tok=AAABoRvncfgAOchftEXADhmlLg" genre="Electro / Dance / Club" />
+    <station name="FG Beatport" url="https://n20-eu.rcs.revma.com/vb3b5749n98uv?rj-ttl=5&amp;rj-tok=AAABoRvncf0AY-LnG3vV297nvg" genre="Electro / Dance / Club" />
+    <station name="FG CHIC Soul" url="https://n24-eu.rcs.revma.com/y4r1v13w7guvv.mp3?rj-ttl=5&amp;rj-tok=AAABoRvncoYApDXnIbVyUb0qKw" genre="Electro / Dance / Club" />
+    <station name="FG Deep House" url="https://n20-eu.rcs.revma.com/02s8zcv9898uv?rj-ttl=5&amp;rj-tok=AAABoRvncg0Aufq8vod8QadDlA" genre="Electro / Dance / Club" />
+    <station name="FG MIX House" url="https://n03-eu.rcs.revma.com/5kucq079n98uv?rj-ttl=5&amp;rj-tok=AAABoRvncf4A8cOF0stgQkw7yg" genre="Electro / Dance / Club" />
+    <station name="FG MIX Techno" url="https://n17-eu.rcs.revma.com/vat1rx60e2uvv?rj-ttl=5&amp;rj-tok=AAABoRvnciAArf_sV1Z99Un85Q" genre="Electro / Dance / Club" />
+    <station name="FG MIX Trance" url="https://n21-eu.rcs.revma.com/v025nezpey3vv?rj-ttl=5&amp;rj-tok=AAABoRvnch8ALSRD7sL9yAZfBw" genre="Electro / Dance / Club" />
+    <station name="FG Pulse" url="https://n02-eu.rcs.revma.com/rzqck8ad633vv?rj-ttl=5&amp;rj-tok=AAABoRvnch8ALSRD7sL9yAZfBw" genre="Electro / Dance / Club" />
+    <station name="FG Techno" url="https://n08-eu.rcs.revma.com/1z19ak79n98uv?rj-ttl=5&amp;rj-tok=AAABoRvncgIAbl3CE6skLb9B4A" genre="Electro / Dance / Club" />
     </national>
   </bouquet>

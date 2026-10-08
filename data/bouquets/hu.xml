@@ -9,7 +9,7 @@
     <station name="Rádió 1 Magyarország" url="http://icast.connectmedia.hu/5201/live.mp3" genre="Csak igazi mai sláger megy" />
     <station name="Sláger FM" url="http://92.61.114.159:7812/slagerfm256.mp3" genre="A legnagyobb slágerek" />
     <station name="Klubrádió" url="https://a7.asurahosting.com:8160/radio.mp3" genre="Független vélemények &amp; Beszélgetés" />
-    <station name="Karc FM" url="https://n22-eu.rcs.revma.com/wevb267khf9uv?rj-ttl=5&rj-tok=AAABoRvnQJsACyyd7q-cWvLMZA" genre="Konzervatív hírrádió" />
+    <station name="Karc FM" url="https://n22-eu.rcs.revma.com/wevb267khf9uv?rj-ttl=5&amp;rj-tok=AAABoRvnQJsACyyd7q-cWvLMZA" genre="Konzervatív hírrádió" />
     <station name="Klasszik Rádió 92.1" url="https://radio.musorok.org/listen/klasszik/radio.mp3" genre="Klasszikus zene mindenkinek" />
     </national>
   </bouquet>

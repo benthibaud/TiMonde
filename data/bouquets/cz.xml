@@ -8,7 +8,7 @@
     <station name="ČRo Radio Wave" url="http://amp.cesnet.cz:8000/cro-radio-wave-256.ogg" genre="Český rozhlas - Pro mladé &amp; Alternativa" />
     <station name="Evropa 2" url="https://ice.actve.net/fm-evropa2-128" genre="MaXXimum muziky" />
     <station name="Frekvence 1" url="http://ice.actve.net/fm-frekvence1-aac" genre="Česká hudba &amp; Pohoda" />
-    <station name="Rádio Impuls" url="http://n0c.radiojar.com/cp13r2cpn3quv?rj-ttl=5&rj-tok=AAABoRvnM8UAt5pNU2GCBEd8ww" genre="Rááááádio Impuls" />
+    <station name="Rádio Impuls" url="http://n0c.radiojar.com/cp13r2cpn3quv?rj-ttl=5&amp;rj-tok=AAABoRvnM8UAt5pNU2GCBEd8ww" genre="Rááááádio Impuls" />
     <station name="Rock Rádio" url="http://ice.abradio.cz/sumava128.mp3" genre="Rock je slušná muzika" />
     <station name="Rádio Beat" url="http://icecast2.play.cz/radiobeat128.mp3" genre="Classic Rock" />
     </national>

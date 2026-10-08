@@ -24,10 +24,14 @@ mkdir -p "${STAGING_DIR}/share/icons/hicolor/scalable/panel"
 mkdir -p "${STAGING_DIR}/share/timonde/scripts"
 mkdir -p "${STAGING_DIR}/share/timonde/bouquets"
 mkdir -p "${STAGING_DIR}/share/timonde/examples"
+mkdir -p "${STAGING_DIR}/share/metainfo"
+mkdir -p "${STAGING_DIR}/share/doc/timonde"
 
 # 3. Copie des fichiers
 install -m 755 "${ROOT_DIR}/target/release/timonde" "${STAGING_DIR}/bin/timonde"
 install -m 644 "${ROOT_DIR}/data/timonde.desktop" "${STAGING_DIR}/share/applications/timonde.desktop"
+install -m 644 "${ROOT_DIR}/data/io.github.benthibaud.timonde.metainfo.xml" "${STAGING_DIR}/share/metainfo/io.github.benthibaud.timonde.metainfo.xml"
+install -m 644 "${ROOT_DIR}/packaging/deb/copyright" "${STAGING_DIR}/share/doc/timonde/copyright"
 install -m 644 "${ROOT_DIR}/data/icons/timonde_on.svg" "${STAGING_DIR}/share/icons/hicolor/scalable/apps/timonde_on.svg"
 install -m 644 "${ROOT_DIR}/data/icons/timonde_off.svg" "${STAGING_DIR}/share/icons/hicolor/scalable/panel/timonde_off.svg"
 install -m 644 "${ROOT_DIR}/data/icons/timonde_on.svg" "${STAGING_DIR}/share/icons/hicolor/scalable/panel/timonde_on.svg"
@@ -80,6 +84,14 @@ chmod 755 "${BINDIR}/timonde"
 cp -f "${DIR}/share/applications/timonde.desktop" "${DATADIR}/applications/"
 cp -rf "${DIR}/share/icons/"* "${DATADIR}/icons/"
 cp -rf "${DIR}/share/timonde/"* "${DATADIR}/timonde/"
+if [ -d "${DIR}/share/metainfo" ]; then
+    mkdir -p "${DATADIR}/metainfo"
+    cp -rf "${DIR}/share/metainfo/"* "${DATADIR}/metainfo/"
+fi
+if [ -d "${DIR}/share/doc" ]; then
+    mkdir -p "${DATADIR}/doc"
+    cp -rf "${DIR}/share/doc/"* "${DATADIR}/doc/"
+fi
 
 if [ -d "${DIR}/share/locale" ]; then
     mkdir -p "${DATADIR}/locale"
@@ -122,6 +134,8 @@ rm -f "${PREFIX}/share/icons/hicolor/scalable/panel/timonde_off.svg"
 rm -f "${PREFIX}/share/icons/hicolor/scalable/panel/timonde_on.svg"
 rm -f "${PREFIX}/share/icons/hicolor/scalable/panel/timonde_error.svg"
 rm -rf "${PREFIX}/share/timonde"
+rm -f "${PREFIX}/share/metainfo/io.github.benthibaud.timonde.metainfo.xml"
+rm -rf "${PREFIX}/share/doc/timonde"
 
 for mo_dir in "${PREFIX}/share/locale/"*/LC_MESSAGES; do
     rm -f "${mo_dir}/timonde.mo"

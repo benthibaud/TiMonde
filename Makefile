@@ -15,6 +15,8 @@ install: build
 	install -m 755 target/release/timonde $(DESTDIR)$(BINDIR)/timonde
 	install -d $(DESTDIR)$(APPSDIR)
 	install -m 644 data/timonde.desktop $(DESTDIR)$(APPSDIR)/timonde.desktop
+	install -d $(DESTDIR)$(DATADIR)/metainfo
+	install -m 644 data/io.github.benthibaud.timonde.metainfo.xml $(DESTDIR)$(DATADIR)/metainfo/io.github.benthibaud.timonde.metainfo.xml
 	install -d $(DESTDIR)$(ICONSDIR)/apps
 	install -d $(DESTDIR)$(ICONSDIR)/panel
 	install -m 644 data/icons/timonde_on.svg $(DESTDIR)$(ICONSDIR)/apps/timonde_on.svg
@@ -41,6 +43,8 @@ install-user: build
 	install -m 755 target/release/timonde $(HOME)/.local/bin/timonde
 	install -d $(HOME)/.local/share/applications
 	install -m 644 data/timonde.desktop $(HOME)/.local/share/applications/timonde.desktop
+	install -d $(HOME)/.local/share/metainfo
+	install -m 644 data/io.github.benthibaud.timonde.metainfo.xml $(HOME)/.local/share/metainfo/io.github.benthibaud.timonde.metainfo.xml
 	install -d $(HOME)/.local/share/icons/hicolor/scalable/apps
 	install -d $(HOME)/.local/share/icons/hicolor/scalable/panel
 	install -m 644 data/icons/timonde_on.svg $(HOME)/.local/share/icons/hicolor/scalable/apps/timonde_on.svg
