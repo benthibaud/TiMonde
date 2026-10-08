@@ -60,8 +60,8 @@ BOUQUETS_CANDIDATES = [
 ]
 
 EXAMPLES_CANDIDATES = [
-    os.path.join(os.path.dirname(__file__), "..", "examples"),
     os.path.expanduser("~/.local/share/timonde/examples"),
+    os.path.join(os.path.dirname(__file__), "..", "examples"),
     "/usr/share/timonde/examples",
     "data/examples",
 ]
@@ -74,18 +74,19 @@ def find_examples_dir():
     return None
 
 def list_available_examples():
-    """Liste tous les fichiers exemples disponibles (XML, CSV, JSON)"""
-    edir = find_examples_dir()
-    if not edir:
-        return []
-    patterns = ["x-*.xml", "x-*.csv", "x-*.json", "*.xml", "*.csv", "*.json"]
-    files = []
-    for pat in patterns:
-        files.extend(glob.glob(os.path.join(edir, pat)))
-    files = sorted(list(set(files)))
+    """Liste tous les fichiers exemples disponibles (XML, CSV, JSON, M3U) depuis tous les répertoires candidats"""
+    patterns = ["*.xml", "*.csv", "*.json", "*.m3u", "*.m3u8", "*.pls"]
+    found_files = {}
+    for d in EXAMPLES_CANDIDATES:
+        if os.path.isdir(d):
+            for pat in patterns:
+                for f in glob.glob(os.path.join(d, pat)):
+                    base = os.path.basename(f)
+                    if base not in found_files:
+                        found_files[base] = f
     results = []
-    for f in files:
-        base = os.path.basename(f)
+    for base in sorted(found_files.keys()):
+        f = found_files[base]
         if f.endswith(".xml"):
             try:
                 tree = ET.parse(f)
@@ -96,9 +97,13 @@ def list_available_examples():
             except Exception:
                 results.append((f, f"📂 {base}", base))
         elif f.endswith(".csv"):
-            results.append((f, f"📊 Exemple CSV : {base}", "Exemple CSV"))
+            results.append((f, f"📊 {base}", "Import CSV"))
         elif f.endswith(".json"):
-            results.append((f, f"📋 Exemple JSON : {base}", "Exemple JSON"))
+            results.append((f, f"📋 {base}", "Import JSON"))
+        elif f.endswith((".m3u", ".m3u8")):
+            results.append((f, f"🎵 {base}", "Playlist M3U"))
+        elif f.endswith(".pls"):
+            results.append((f, f"📻 {base}", "Playlist PLS"))
     return results
 
 # -----------------------------------------------------------------------------
@@ -1642,6 +1647,10 @@ class DiscoverRadiosWindow(Gtk.Window):
                             stations.append((item.get("name", "Station"), item.get("url", ""), "JSON", item.get("country", ""), "online"))
             except Exception as e:
                 sys.stderr.write(f"Erreur parsing JSON {path}: {e}\n")
+        elif path.endswith((".m3u", ".m3u8", ".pls")):
+            parsed = parse_user_file_into_stations(path)
+            for s in parsed:
+                stations.append((s["name"], s["url"], s.get("genre") or s.get("group") or "Playlist", s.get("country", ""), "online"))
 
         self.entry_group.set_text(group_name)
         self.example_store.clear()
