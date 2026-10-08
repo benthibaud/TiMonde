@@ -271,6 +271,8 @@ class ReorderWindow(Gtk.Window):
     def is_item_separator(self, item):
         if item.get("is_separator"):
             return True
+        if "stations" in item and not item.get("is_separator"):
+            return False
         url = item.get("url", "")
         name = item.get("name", "")
         if url == "" or url == "---":
@@ -285,7 +287,7 @@ class ReorderWindow(Gtk.Window):
             # Mode Groupes
             self.btn_back.hide()
             self.btn_open.show()
-            self.btn_add_sep.hide()
+            self.btn_add_sep.show()
             self.btn_add_station.hide()
             self.btn_move_to.set_label("➡️ Transférer...")
             self.btn_move_to.set_tooltip_text("Transférer le contenu de ce groupe vers un autre groupe (Ctrl+M)")
@@ -301,13 +303,19 @@ class ReorderWindow(Gtk.Window):
             self.col_info.set_title(_("Contents"))
 
             for i, g in enumerate(self.data):
-                stations = g.get("stations", [])
-                nb_radios = sum(1 for s in stations if not self.is_item_separator(s))
-                nb_seps = sum(1 for s in stations if self.is_item_separator(s))
-                info_parts = [f"{nb_radios} radio{'s' if nb_radios > 1 else ''}"]
-                if nb_seps > 0:
-                    info_parts.append(f"{nb_seps} sép.")
-                self.store.append([i, str(i + 1), g["name"], " · ".join(info_parts)])
+                if self.is_item_separator(g):
+                    title = g.get("name", "").strip()
+                    clean = title.strip("-").strip() if title.startswith("---") else title
+                    display_title = f"─── {clean} ───" if clean else "───────────────"
+                    self.store.append([i, str(i + 1), display_title, "— Séparateur —"])
+                else:
+                    stations = g.get("stations", [])
+                    nb_radios = sum(1 for s in stations if not self.is_item_separator(s))
+                    nb_seps = sum(1 for s in stations if self.is_item_separator(s))
+                    info_parts = [f"{nb_radios} radio{'s' if nb_radios > 1 else ''}"]
+                    if nb_seps > 0:
+                        info_parts.append(f"{nb_seps} sép.")
+                    self.store.append([i, str(i + 1), g["name"], " · ".join(info_parts)])
         else:
             # Mode Radios du groupe
             grp = self.data[self.current_group_idx]
@@ -379,7 +387,11 @@ class ReorderWindow(Gtk.Window):
 
     def on_row_activated(self, treeview, path, column):
         if self.current_group_idx is None and column != self.col_order:
-            self.on_open_clicked(None)
+            idx = int(path.to_string())
+            if idx < len(self.data) and self.is_item_separator(self.data[idx]):
+                self.on_edit_clicked(None)
+            else:
+                self.on_open_clicked(None)
         elif self.current_group_idx is not None and column != self.col_order:
             self.on_edit_clicked(None)
 
@@ -885,6 +897,8 @@ class ReorderWindow(Gtk.Window):
     def on_open_clicked(self, widget):
         idx = self.get_selected_index()
         if idx is not None:
+            if idx < len(self.data) and self.is_item_separator(self.data[idx]):
+                return
             self.current_group_idx = idx
             self.update_view()
 
@@ -982,9 +996,6 @@ class ReorderWindow(Gtk.Window):
             sys.stderr.write(f"Erreur ajout station: {e}\n")
 
     def on_add_separator_clicked(self, widget):
-        if self.current_group_idx is None:
-            return
-
         dialog = Gtk.Dialog(
             title="➕ Insérer un séparateur",
             parent=self,
@@ -1020,6 +1031,8 @@ class ReorderWindow(Gtk.Window):
                 "url": "",
                 "is_separator": True,
             }
+            if self.current_group_idx is None:
+                new_sep["stations"] = []
             items.insert(insert_pos, new_sep)
             self.update_view(select_idx=insert_pos)
         dialog.destroy()
@@ -1032,7 +1045,41 @@ class ReorderWindow(Gtk.Window):
         items = self.get_current_list()
         target = items[idx]
 
-        if self.current_group_idx is None:
+        if self.is_item_separator(target):
+            # Éditer le titre du séparateur (intertitre)
+            dialog = Gtk.Dialog(
+                title="✏️ Modifier le titre du séparateur",
+                parent=self,
+                flags=Gtk.DialogFlags.MODAL,
+                buttons=("Annuler", Gtk.ResponseType.CANCEL, "Enregistrer", Gtk.ResponseType.OK),
+            )
+            dialog.set_default_size(380, 140)
+            box = dialog.get_content_area()
+            box.set_spacing(10)
+            box.set_border_width(12)
+
+            lbl = Gtk.Label(
+                label="Titre d'intertitre :\n<small>(Effacez tout pour un trait simple)</small>"
+            )
+            lbl.set_use_markup(True)
+            lbl.set_halign(Gtk.Align.START)
+            box.add(lbl)
+
+            entry = Gtk.Entry()
+            raw_title = target.get("name", "")
+            clean_title = raw_title.strip("-").strip() if raw_title.startswith("---") else raw_title
+            entry.set_text(clean_title)
+            box.add(entry)
+            dialog.show_all()
+
+            if dialog.run() == Gtk.ResponseType.OK:
+                new_title = entry.get_text().strip()
+                target["name"] = new_title
+                target["url"] = ""
+                target["is_separator"] = True
+                self.update_view(select_idx=idx)
+            dialog.destroy()
+        elif self.current_group_idx is None:
             # Éditer le nom du groupe
             dialog = Gtk.Dialog(
                 title="✏️ Renommer le groupe",
@@ -1148,11 +1195,12 @@ class ReorderWindow(Gtk.Window):
         if len(indices) == 1:
             target = items[indices[0]]
             name = target["name"]
-            if self.current_group_idx is None:
-                msg = f"Voulez-vous vraiment supprimer le groupe « {name} » et tout son contenu ?"
-            elif self.is_item_separator(target):
-                sep_desc = f"l'intertitre « {name} »" if name else "ce séparateur"
+            if self.is_item_separator(target):
+                clean_title = name.strip("-").strip() if name.startswith("---") else name
+                sep_desc = f"l'intertitre « {clean_title} »" if clean_title else "ce séparateur"
                 msg = f"Voulez-vous supprimer {sep_desc} ?"
+            elif self.current_group_idx is None:
+                msg = f"Voulez-vous vraiment supprimer le groupe « {name} » et tout son contenu ?"
             else:
                 msg = f"Voulez-vous vraiment supprimer la radio « {name} » ?"
         else:
@@ -1202,7 +1250,7 @@ def main():
     win = ReorderWindow(data)
     win.show_all()
     win.btn_back.hide()
-    win.btn_add_sep.hide()
+    win.btn_add_sep.show()
     win.btn_add_station.hide()
     Gtk.main()
 

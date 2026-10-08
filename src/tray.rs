@@ -616,16 +616,31 @@ fn find_group_name_for_station(root: &Group, station_url: &str) -> Option<String
         let mut items = Vec::new();
 
         for sub in &group.subgroups {
-            let submenu_items = Self::build_group_menu(sub);
-            if !submenu_items.is_empty() {
-                let sub_item = SubMenu {
-                    label: sub.name.clone(),
-                    submenu: submenu_items,
-                    enabled: true,
-                    visible: true,
-                    ..Default::default()
-                };
-                items.push(MenuItem::SubMenu(sub_item));
+            if sub.is_separator() {
+                if let Some(title) = sub.separator_title() {
+                    let label = format!("─── {} ───", title);
+                    let item = StandardItem {
+                        label,
+                        enabled: false,
+                        visible: true,
+                        ..Default::default()
+                    };
+                    items.push(MenuItem::Standard(item));
+                } else {
+                    items.push(MenuItem::Separator);
+                }
+            } else {
+                let submenu_items = Self::build_group_menu(sub);
+                if !submenu_items.is_empty() {
+                    let sub_item = SubMenu {
+                        label: sub.name.clone(),
+                        submenu: submenu_items,
+                        enabled: true,
+                        visible: true,
+                        ..Default::default()
+                    };
+                    items.push(MenuItem::SubMenu(sub_item));
+                }
             }
         }
 
@@ -1237,31 +1252,40 @@ fn find_group_name_for_station(root: &Group, station_url: &str) -> Option<String
                     .subgroups
                     .iter()
                     .map(|g| {
-                        let stations_json: Vec<serde_json::Value> = g
-                            .stations
-                            .iter()
-                            .map(|s| {
-                                if s.is_separator() {
-                                    serde_json::json!({
-                                        "name": s.separator_title().unwrap_or_default(),
-                                        "url": "",
-                                        "is_separator": true,
-                                    })
-                                } else {
-                                    serde_json::json!({
-                                        "name": s.name,
-                                        "url": s.url,
-                                        "country": s.country,
-                                        "is_separator": false,
-                                    })
-                                }
+                        if g.is_separator() {
+                            serde_json::json!({
+                                "name": g.separator_title().unwrap_or_default(),
+                                "stations": [],
+                                "is_separator": true,
                             })
-                            .collect();
+                        } else {
+                            let stations_json: Vec<serde_json::Value> = g
+                                .stations
+                                .iter()
+                                .map(|s| {
+                                    if s.is_separator() {
+                                        serde_json::json!({
+                                            "name": s.separator_title().unwrap_or_default(),
+                                            "url": "",
+                                            "is_separator": true,
+                                        })
+                                    } else {
+                                        serde_json::json!({
+                                            "name": s.name,
+                                            "url": s.url,
+                                            "country": s.country,
+                                            "is_separator": false,
+                                        })
+                                    }
+                                })
+                                .collect();
 
-                        serde_json::json!({
-                            "name": g.name,
-                            "stations": stations_json,
-                        })
+                            serde_json::json!({
+                                "name": g.name,
+                                "stations": stations_json,
+                                "is_separator": false,
+                            })
+                        }
                     })
                     .collect()
             };
@@ -1327,6 +1351,8 @@ fn find_group_name_for_station(root: &Group, station_url: &str) -> Option<String
                     name: String,
                     #[serde(default)]
                     stations: Vec<OutStation>,
+                    #[serde(default)]
+                    is_separator: bool,
                 }
 
                 let new_data: Vec<OutGroup> = match serde_json::from_str(&stdout_str) {
@@ -1341,7 +1367,12 @@ fn find_group_name_for_station(root: &Group, station_url: &str) -> Option<String
                 let mut reordered_subgroups = Vec::new();
 
                 for g_data in new_data {
-                    let mut grp = if let Some(pos) = root.subgroups.iter().position(|g| g.name.eq_ignore_ascii_case(&g_data.name)) {
+                    if g_data.is_separator || g_data.name.starts_with("---") {
+                        reordered_subgroups.push(Group::separator(g_data.name));
+                        continue;
+                    }
+
+                    let mut grp = if let Some(pos) = root.subgroups.iter().position(|g| !g.is_separator() && g.name.eq_ignore_ascii_case(&g_data.name)) {
                         root.subgroups.remove(pos)
                     } else {
                         Group::new(&g_data.name)
@@ -1657,15 +1688,29 @@ impl ksni::Tray for TiMondeTray {
         let root_group = self.root_group.lock().unwrap();
 
         for sub in &root_group.subgroups {
-            let submenu_items = Self::build_group_menu(sub);
-            if !submenu_items.is_empty() {
-                menu.push(MenuItem::SubMenu(SubMenu {
-                    label: sub.name.clone(),
-                    submenu: submenu_items,
-                    enabled: true,
-                    visible: true,
-                    ..Default::default()
-                }));
+            if sub.is_separator() {
+                if let Some(title) = sub.separator_title() {
+                    let label = format!("─── {} ───", title);
+                    menu.push(MenuItem::Standard(StandardItem {
+                        label,
+                        enabled: false,
+                        visible: true,
+                        ..Default::default()
+                    }));
+                } else {
+                    menu.push(MenuItem::Separator);
+                }
+            } else {
+                let submenu_items = Self::build_group_menu(sub);
+                if !submenu_items.is_empty() {
+                    menu.push(MenuItem::SubMenu(SubMenu {
+                        label: sub.name.clone(),
+                        submenu: submenu_items,
+                        enabled: true,
+                        visible: true,
+                        ..Default::default()
+                    }));
+                }
             }
         }
 

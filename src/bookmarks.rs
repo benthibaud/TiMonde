@@ -73,7 +73,9 @@ pub fn parse_bookmarks_reader<R: std::io::BufRead>(reader: R) -> Result<Group, B
                             title = attr.unescape_value().unwrap_or_default().into_owned();
                         }
                     }
-                    if let Some(current_group) = group_stack.last_mut() {
+                    if group_stack.len() == 1 {
+                        group_stack[0].subgroups.push(Group::separator(title));
+                    } else if let Some(current_group) = group_stack.last_mut() {
                         current_group.stations.push(Station::separator(title));
                     }
                 }
@@ -87,7 +89,9 @@ pub fn parse_bookmarks_reader<R: std::io::BufRead>(reader: R) -> Result<Group, B
                             title = attr.unescape_value().unwrap_or_default().into_owned();
                         }
                     }
-                    if let Some(current_group) = group_stack.last_mut() {
+                    if group_stack.len() == 1 {
+                        group_stack[0].subgroups.push(Group::separator(title));
+                    } else if let Some(current_group) = group_stack.last_mut() {
                         current_group.stations.push(Station::separator(title));
                     }
                 } else if name.as_ref() == b"bookmark" {
@@ -205,7 +209,12 @@ pub fn save_bookmarks(group: &Group, path: impl AsRef<Path>) -> Result<(), Bookm
 
     writeln!(writer, "<bookmarks>")?;
     for sub in &group.subgroups {
-        write_group_xml(&mut writer, sub, 1)?;
+        if sub.is_separator() {
+            let title = sub.separator_title().unwrap_or_default();
+            writeln!(writer, "\t<separator title=\"{}\"/>", escape_xml(&title))?;
+        } else {
+            write_group_xml(&mut writer, sub, 1)?;
+        }
     }
     for st in &group.stations {
         if st.is_separator() {
@@ -242,11 +251,16 @@ fn write_group_xml<W: std::io::Write>(
     let tabs = "\t".repeat(indent);
     writeln!(writer, "{}<group name=\"{}\">", tabs, escape_xml(&group.name))?;
 
+    let inner_tabs = "\t".repeat(indent + 1);
     for sub in &group.subgroups {
-        write_group_xml(writer, sub, indent + 1)?;
+        if sub.is_separator() {
+            let title = sub.separator_title().unwrap_or_default();
+            writeln!(writer, "{}<separator title=\"{}\"/>", inner_tabs, escape_xml(&title))?;
+        } else {
+            write_group_xml(writer, sub, indent + 1)?;
+        }
     }
 
-    let inner_tabs = "\t".repeat(indent + 1);
     for st in &group.stations {
         if st.is_separator() {
             let title = st.separator_title().unwrap_or_default();
@@ -487,5 +501,50 @@ mod tests {
         assert_eq!(reloaded_st.name, "Radio Transat");
         assert_eq!(reloaded_st.country, Some("FR".to_string()));
         assert_eq!(reloaded_st.timezone, Some("America/Guadeloupe".to_string()));
+    }
+
+    #[test]
+    fn test_group_separators_xml_roundtrip() {
+        let sample = r#"
+        <bookmarks>
+            <group name="Généralistes">
+                <bookmark name="France Inter" url="https://icecast.radiofrance.fr/franceinter.mp3"/>
+            </group>
+            <separator title="Thématiques"/>
+            <group name="Musique">
+                <bookmark name="FIP" url="https://icecast.radiofrance.fr/fip.mp3"/>
+            </group>
+            <separator/>
+            <group name="International">
+                <bookmark name="BBC 1" url="https://stream.bbc.co.uk/radio1"/>
+            </group>
+        </bookmarks>
+        "#;
+        let root = parse_bookmarks_reader(sample.as_bytes()).expect("Parse avec séparateurs de groupe");
+        assert_eq!(root.subgroups.len(), 5);
+        assert_eq!(root.subgroups[0].name, "Généralistes");
+        assert!(root.subgroups[1].is_separator());
+        assert_eq!(root.subgroups[1].separator_title(), Some("Thématiques".to_string()));
+        assert_eq!(root.subgroups[2].name, "Musique");
+        assert!(root.subgroups[3].is_separator());
+        assert_eq!(root.subgroups[3].separator_title(), None);
+        assert_eq!(root.subgroups[4].name, "International");
+
+        // Sauvegarde temporaire et relecture
+        let temp_dir = std::env::temp_dir();
+        let temp_file = temp_dir.join("timonde_group_sep_roundtrip.xml");
+        save_bookmarks(&root, &temp_file).expect("Sauvegarde");
+
+        let reloaded = load_bookmarks(&temp_file).expect("Relecture");
+        let _ = std::fs::remove_file(&temp_file);
+
+        assert_eq!(reloaded.subgroups.len(), 5);
+        assert_eq!(reloaded.subgroups[0].name, "Généralistes");
+        assert!(reloaded.subgroups[1].is_separator());
+        assert_eq!(reloaded.subgroups[1].separator_title(), Some("Thématiques".to_string()));
+        assert_eq!(reloaded.subgroups[2].name, "Musique");
+        assert!(reloaded.subgroups[3].is_separator());
+        assert_eq!(reloaded.subgroups[3].separator_title(), None);
+        assert_eq!(reloaded.subgroups[4].name, "International");
     }
 }

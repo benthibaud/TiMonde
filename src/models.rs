@@ -168,9 +168,51 @@ impl Group {
         }
     }
 
+    /// Crée un séparateur ou un intertitre entre groupes
+    /// Creates a separator or section title between groups
+    pub fn separator(title: impl Into<String>) -> Self {
+        let t = title.into();
+        let name = if t.trim().is_empty() {
+            "---".to_string()
+        } else {
+            format!("--- {} ---", t.trim())
+        };
+        Self {
+            name,
+            stations: Vec::new(),
+            subgroups: Vec::new(),
+        }
+    }
+
+    /// Détermine si cet élément de groupe est un séparateur/intertitre
+    /// Determines whether this group item is a separator/section title
+    pub fn is_separator(&self) -> bool {
+        self.name.starts_with("---")
+            || self.name.starts_with("[separator")
+            || self.name == "separator - - -"
+    }
+
+    /// Titre propre du séparateur de groupe si présent
+    /// Extracts clean title of group separator if present
+    pub fn separator_title(&self) -> Option<String> {
+        if !self.is_separator() {
+            return None;
+        }
+        let trimmed = self.name.trim();
+        let clean = trimmed.trim_matches('-').trim();
+        if clean.is_empty() || clean.starts_with("[separator") {
+            None
+        } else {
+            Some(clean.to_string())
+        }
+    }
+
     /// Nombre total de stations réelles (hors séparateurs)
     /// Total count of real stations (excluding separators)
     pub fn total_stations(&self) -> usize {
+        if self.is_separator() {
+            return 0;
+        }
         let direct = self.stations.iter().filter(|s| !s.is_separator()).count();
         let recursive: usize = self.subgroups.iter().map(|g| g.total_stations()).sum();
         direct + recursive
@@ -296,6 +338,23 @@ mod tests {
         let enriched_url = root.enrich_station_country("Nom Inconnu", "https://witfm.ice/witfm", "FR");
         assert!(enriched_url);
         assert_eq!(root.subgroups[0].stations[1].country, Some("FR".to_string()));
+    }
+
+    #[test]
+    fn test_group_separator_detection() {
+        let sep_anon = Group::separator("");
+        assert!(sep_anon.is_separator());
+        assert_eq!(sep_anon.separator_title(), None);
+        assert_eq!(sep_anon.total_stations(), 0);
+
+        let sep_titled = Group::separator("Radios Thématiques");
+        assert!(sep_titled.is_separator());
+        assert_eq!(sep_titled.separator_title(), Some("Radios Thématiques".to_string()));
+        assert_eq!(sep_titled.total_stations(), 0);
+
+        let real_group = Group::new("Généralistes");
+        assert!(!real_group.is_separator());
+        assert_eq!(real_group.separator_title(), None);
     }
 
     #[test]
