@@ -2,8 +2,8 @@
 """
 Module d'internationalisation universel pour TiMonde (Python/GTK).
 Clés de référence en Anglais (pivot international).
-Charge dynamiquement le catalogue binaire GNU Gettext (.mo) de n'importe quelle
-langue européenne installée (it, nl, pl, sv, da, nb, fi, cs, sk, hu, ro, el, hr, sl, bg, uk, et, lv, lt, ca, fr, es, de, pt).
+Charge dynamiquement le catalogue binaire GNU Gettext (.mo) des 55 langues supportées,
+incluant la distinction entre Chinois Mandarin (zh_CN) et Cantonais/Traditionnel (zh_TW).
 """
 
 import os
@@ -19,13 +19,22 @@ LOCALE_DIRS = [
 
 _CURRENT_TRANSLATOR = None
 
+def normalize_lang_code(raw_code):
+    base = raw_code.split(".")[0].strip()
+    lower = base.lower()
+    if lower.startswith("zh_tw") or lower.startswith("zh_hk") or lower.startswith("zh_mo") or lower == "yue":
+        return "zh_TW"
+    if lower.startswith("zh_cn") or lower.startswith("zh_sg") or lower == "zh":
+        return "zh_CN"
+    return lower.split("_")[0]
+
 def get_translator():
     global _CURRENT_TRANSLATOR
     if _CURRENT_TRANSLATOR is not None:
         return _CURRENT_TRANSLATOR
 
     env_lang = os.environ.get("LC_ALL") or os.environ.get("LC_MESSAGES") or os.environ.get("LANG") or "en"
-    lang_code = env_lang.split(".")[0].split("_")[0].lower()
+    lang_code = normalize_lang_code(env_lang)
 
     if lang_code == "en":
         _CURRENT_TRANSLATOR = lambda s: s
@@ -45,7 +54,6 @@ def get_translator():
     return _CURRENT_TRANSLATOR
 
 def _(msg):
-    # En cas de changement dynamique de LANG dans un même processus (tests unitaires)
     trans = get_translator()
     res = trans(msg)
     return res if res else msg

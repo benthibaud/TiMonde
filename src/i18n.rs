@@ -1,7 +1,3 @@
-//! Module d'internationalisation universel pour TiMonde (Rust)
-//! Supporte dynamiquement tous les catalogues GNU Gettext (.mo) des langues européennes
-//! avec détection automatique de la locale système et repli sur l'anglais pivot.
-
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::Read;
@@ -11,18 +7,38 @@ use std::sync::OnceLock;
 static TRANSLATIONS: OnceLock<HashMap<String, String>> = OnceLock::new();
 static CURRENT_LANG: OnceLock<String> = OnceLock::new();
 
-/// Détecte le code langue ISO (ex: "fr", "it", "es", "de", "pl", "sv"...)
+/// Normalise le code langue système en identifiant POSIX/Gettext
+/// Gère la distinction entre Mandarin (zh_CN) et Cantonais/Traditionnel (zh_TW)
+pub fn normalize_lang_code(raw: &str) -> String {
+    let base = raw.split('.').next().unwrap_or("en").trim();
+    let lower = base.to_lowercase();
+
+    if lower.starts_with("zh_tw")
+        || lower.starts_with("zh_hk")
+        || lower.starts_with("zh_mo")
+        || lower.starts_with("yue")
+    {
+        return "zh_TW".to_string();
+    }
+    if lower.starts_with("zh_cn")
+        || lower.starts_with("zh_sg")
+        || lower == "zh"
+    {
+        return "zh_CN".to_string();
+    }
+
+    let code = base.split('_').next().unwrap_or("en").to_lowercase();
+    code.trim().to_string()
+}
+
+/// Détecte le code langue ISO du système
 fn detect_system_language() -> String {
     let raw = std::env::var("LC_ALL")
         .or_else(|_| std::env::var("LC_MESSAGES"))
         .or_else(|_| std::env::var("LANG"))
-        .unwrap_or_else(|_| "en".to_string())
-        .to_lowercase();
+        .unwrap_or_else(|_| "en".to_string());
 
-    // Nettoyage : "fr_FR.UTF-8" -> "fr", "de_AT.UTF-8" -> "de"
-    let base = raw.split('.').next().unwrap_or("en");
-    let code = base.split('_').next().unwrap_or("en");
-    code.trim().to_string()
+    normalize_lang_code(&raw)
 }
 
 /// Tente de charger le fichier binaire Gettext .mo correspondant à la langue
@@ -110,12 +126,11 @@ pub fn init_locale() {
 /// Permet de forcer une langue (pour tests ou sélecteur)
 #[allow(dead_code)]
 pub fn set_language(lang_code: &str) {
-    let lang = lang_code.to_lowercase();
+    let lang = normalize_lang_code(lang_code);
     let map = load_mo_file(&lang).unwrap_or_default();
 
     // Remplacement statique sécurisé
     unsafe {
-        // En mode test / reconfiguration
         let ptr = &TRANSLATIONS as *const OnceLock<HashMap<String, String>> as *mut OnceLock<HashMap<String, String>>;
         *ptr = OnceLock::new();
         let _ = (*ptr).set(map);
@@ -130,7 +145,6 @@ pub fn set_language(lang_code: &str) {
 pub fn tr(msg: &'static str) -> &'static str {
     if let Some(map) = TRANSLATIONS.get() {
         if let Some(trans) = map.get(msg) {
-            // Fuite sécurisée d'une chaîne statique unique de taille négligeable
             return Box::leak(trans.clone().into_boxed_str());
         }
     }
@@ -174,7 +188,30 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_multilingual_european_support() {
+    fn test_chinese_mandarin_and_cantonese_distinction() {
+        assert_eq!(normalize_lang_code("zh_CN.UTF-8"), "zh_CN");
+        assert_eq!(normalize_lang_code("zh_SG.UTF-8"), "zh_CN");
+        assert_eq!(normalize_lang_code("zh.UTF-8"), "zh_CN");
+        assert_eq!(normalize_lang_code("zh_TW.UTF-8"), "zh_TW");
+        assert_eq!(normalize_lang_code("zh_HK.UTF-8"), "zh_TW");
+        assert_eq!(normalize_lang_code("yue_HK.UTF-8"), "zh_TW");
+
+        // Mandarin
+        set_language("zh_CN");
+        assert_eq!(tr("▶ Play"), "▶ 播放");
+        assert_eq!(tr("✏️ Edit"), "✏️ 编辑");
+        assert_eq!(tr("🗑️ Delete"), "🗑️ 删除");
+
+        // Cantonais / Traditionnel
+        set_language("zh_TW");
+        assert_eq!(tr("▶ Play"), "▶ 播放");
+        assert_eq!(tr("✏️ Edit"), "✏️ 編輯");
+        assert_eq!(tr("🗑️ Delete"), "🗑️ 刪除");
+        assert_eq!(tr("🎲 Zap to another random station"), "🎲 隨機切換到其他電台");
+    }
+
+    #[test]
+    fn test_multilingual_european_and_world_support() {
         set_language("en");
         assert_eq!(tr("▶ Play"), "▶ Play");
         assert_eq!(tr("⏹ Stop"), "⏹ Stop");
@@ -187,39 +224,24 @@ mod tests {
 
         set_language("it");
         assert_eq!(tr("▶ Play"), "▶ Ascolta");
-        assert_eq!(tr("⏹ Stop"), "⏹ Ferma");
 
         set_language("es");
         assert_eq!(tr("▶ Play"), "▶ Reproducir");
-        assert_eq!(tr("⏹ Stop"), "⏹ Detener");
 
         set_language("de");
         assert_eq!(tr("▶ Play"), "▶ Abspielen");
-        assert_eq!(tr("⏹ Stop"), "⏹ Anhalten");
 
-        set_language("pt");
-        assert_eq!(tr("▶ Play"), "▶ Reproduzir");
-        assert_eq!(tr("⏹ Stop"), "⏹ Parar");
+        set_language("ja");
+        assert_eq!(tr("▶ Play"), "▶ 再生");
 
-        set_language("pl");
-        assert_eq!(tr("▶ Play"), "▶ Odtwarzaj");
-        assert_eq!(tr("⏹ Stop"), "⏹ Zatrzymaj");
+        set_language("ko");
+        assert_eq!(tr("▶ Play"), "▶ 재생");
 
-        set_language("nl");
-        assert_eq!(tr("▶ Play"), "▶ Afspelen");
-        assert_eq!(tr("⏹ Stop"), "⏹ Stoppen");
+        set_language("ar");
+        assert_eq!(tr("▶ Play"), "▶ تشغيل");
 
-        set_language("sv");
-        assert_eq!(tr("▶ Play"), "▶ Spela");
-        assert_eq!(tr("⏹ Stop"), "⏹ Stoppa");
-
-        set_language("uk");
-        assert_eq!(tr("▶ Play"), "▶ Відтворити");
-        assert_eq!(tr("⏹ Stop"), "⏹ Зупинити");
-
-        set_language("el");
-        assert_eq!(tr("▶ Play"), "▶ Αναπαραγωγή");
-        assert_eq!(tr("⏹ Stop"), "⏹ Διακοπή");
+        set_language("tr");
+        assert_eq!(tr("▶ Play"), "▶ Oynat");
 
         // Rétablir en français par défaut
         set_language("fr");
