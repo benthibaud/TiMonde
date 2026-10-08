@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="ET" name="Éthiopie" flag="🇪🇹" multilingual="false">
   <national>
-    <station name="EBC National Radio" url="https://stream.zeno.fm/6egt4w4k0heuv" genre="Ethiopian Broadcasting Corporation (Amharic)" />
-    <station name="Fana FM 98.1 Addis Ababa" url="https://stream.zeno.fm/7egt4w4k0heuv" genre="Fana Broadcasting Corporate" />
-    <station name="Sheger FM 102.1" url="https://stream.zeno.fm/8egt4w4k0heuv" genre="The Sound of the City Addis" />
-  </national>
-</bouquet>
+    <station name="EBC National Radio" url="https://regiocast.streamabc.net/regc-boblivenational-mp3-192-4076554" genre="Ethiopian Broadcasting Corporation (Amharic)" />
+    <station name="Fana FM 98.1 Addis Ababa" url="https://playerservices.streamtheworld.com/api/livestream-redirect/WPENFMAACIHR.aac" genre="Fana Broadcasting Corporate" />
+    <station name="Sheger FM 102.1" url="https://stream.zenolive.com/y91n1vtbaw5tv" genre="The Sound of the City Addis" />
+    </national>
+  </bouquet>

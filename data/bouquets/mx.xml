@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="MX" name="Mexique" flag="🇲🇽" multilingual="false">
   <national>
-    <station name="Opus 94.5 FM" url="https://s2.mexside.net/8014/stream" genre="IMER - Música Clásica &amp; Arte"/>
-    <station name="Reactor 105.7 FM" url="https://s2.mexside.net/8016/stream" genre="IMER - Rock alternativo &amp; Juventud"/>
-    <station name="Radio Horizonte 107.9 FM" url="https://s2.mexside.net/8018/stream" genre="IMER - Jazz &amp; Música del Mundo"/>
-    <station name="W Radio México" url="https://playerservices.streamtheworld.com/api/livestream-redirect/WRADIOMEXICO.mp3" genre="Información &amp; Entretenimiento"/>
-    <station name="Los 40 México" url="https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40_MEXICO.mp3" genre="Toda la música que te mueve"/>
-    <station name="Radio Fórmula 103.3 FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_FORMULAAAC.aac" genre="Noticias &amp; Opinión líder en México"/>
-    <station name="Alfa 91.3 FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/XHFA_FMAAC.aac" genre="Más variedad, mucho más música"/>
-    <station name="Joya 93.7 FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/XEJP_FMAAC.aac" genre="La música que te llena"/>
-    <station name="El Fonógrafo 690 AM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/XEN_AMAAC.aac" genre="Música ligada a su recuerdo"/>
-    <station name="Beat 100.9 FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/XHSON_FMAAC.aac" genre="Total Electronic Music"/>
-  </national>
-</bouquet>
+    <station name="Opus 94.5 FM" url="https://s2.mexside.net/8014/stream" genre="IMER - Música Clásica &amp; Arte" />
+    <station name="Reactor 105.7 FM" url="https://s2.mexside.net/8016/stream" genre="IMER - Rock alternativo &amp; Juventud" />
+    <station name="Radio Horizonte 107.9 FM" url="https://s2.mexside.net/8018/stream" genre="IMER - Jazz &amp; Música del Mundo" />
+    <station name="W Radio México" url="http://65.21.202.84:8062/" genre="Información &amp; Entretenimiento" />
+    <station name="Los 40 México" url="https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40_MEXICO.mp3" genre="Toda la música que te mueve" />
+    <station name="Radio Fórmula 103.3 FM" url="https://mdstrm.com/audio/6102ce7ef33d0b0830ec3adc/live.m3u8" genre="Noticias &amp; Opinión líder en México" />
+    <station name="Alfa 91.3 FM" url="https://radioserver.dk/alwayselvisradio" genre="Más variedad, mucho más música" />
+    <station name="Joya 93.7 FM" url="https://playradio.mx/proxy/joya?mp=/stream" genre="La música que te llena" />
+    <station name="El Fonógrafo 690 AM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/XEN_AMAAC.aac" genre="Música ligada a su recuerdo" />
+    <station name="Beat 100.9 FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/XHSONFMAAC.aac" genre="Total Electronic Music" />
+    </national>
+  </bouquet>

@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="JM" name="Jamaïque" flag="🇯🇲" multilingual="false">
   <national>
-    <station name="IRIE FM 107.7" url="https://stream.iriefm.net/live" genre="The Roots Rocking Reggae Station" />
+    <station name="IRIE FM 107.7" url="https://usa19.fastcast4u.com:7430/;" genre="The Roots Rocking Reggae Station" />
     <station name="RJR 94 FM" url="https://stream.rjr94fm.com/live" genre="Real Jamaican Radio - News &amp; Talk" />
-    <station name="Zip 103 FM" url="https://stream.zipfm.net/live" genre="Jamaica's Youth Dancehall &amp; Reggae" />
-  </national>
-</bouquet>
+    <station name="Zip 103 FM" url="https://stream4.radijas.lt/zipfm" genre="Jamaica's Youth Dancehall &amp; Reggae" />
+    </national>
+  </bouquet>

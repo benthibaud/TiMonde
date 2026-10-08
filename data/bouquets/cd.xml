@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="CD" name="RD Congo" flag="🇨🇩" multilingual="false">
   <national>
-    <station name="Radio Okapi" url="https://radiookapi.ice.infomaniak.ch/radiookapi-128.mp3" genre="Fondation Hirondelle &amp; ONU / Paix &amp; Information"/>
-    <station name="Top Congo FM" url="https://stream.zeno.fm/x4t4w4k0heuv" genre="La fréquence utile (Kinshasa)"/>
-    <station name="RTNC Kinshasa" url="https://stream.zeno.fm/y4t4w4k0heuv" genre="Radio-Télévision Nationale Congolaise"/>
-    <station name="B-One Radio" url="https://stream.zeno.fm/z4t4w4k0heuv" genre="Rumba congolaise &amp; Société"/>
-    <station name="Radio Maendeleo" url="https://stream.zeno.fm/15t4w4k0heuv" genre="Bukavu / Sud-Kivu Proximité"/>
-  </national>
-</bouquet>
+    <station name="Radio Okapi" url="http://rs1.radiostreamer.com:8000/;" genre="Fondation Hirondelle &amp; ONU / Paix &amp; Information" />
+    <station name="Top Congo FM" url="https://topcongofm2.ice.infomaniak.ch/topcongofm2-64.mp3" genre="La fréquence utile (Kinshasa)" />
+    <station name="RTNC Kinshasa" url="https://stream.zeno.fm/y4t4w4k0heuv" genre="Radio-Télévision Nationale Congolaise" />
+    <station name="B-One Radio" url="http://bar.streamguys1.com/BubbaOne-mp3" genre="Rumba congolaise &amp; Société" />
+    <station name="Radio Maendeleo" url="http://rs1.radiostreamer.com:8000/;" genre="Bukavu / Sud-Kivu Proximité" />
+    </national>
+  </bouquet>

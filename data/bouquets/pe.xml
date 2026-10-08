@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="PE" name="Pérou" flag="🇵🇪" multilingual="false">
   <national>
-    <station name="Radio Nacional del Perú" url="https://stream.zeno.fm/4w5zef4s1heuv" genre="IRTP - La primera radio del Perú"/>
-    <station name="RPP Noticias" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_RPPAAC.aac" genre="Confianza por todos los medios"/>
-    <station name="Radio Oxígeno" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_OXIGENOAAC.aac" genre="Clásicos del Rock &amp; Pop"/>
-    <station name="Radio Panamericana" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_PANAMERICANAAAC.aac" genre="Lo que el Perú quiere escuchar (Salsa)"/>
-    <station name="Studio 92" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_STUDIO92AAC.aac" genre="Primeros en tu música"/>
-    <station name="Radio Felicidad" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_FELICIDADAAC.aac" genre="La música de tu vida"/>
-    <station name="Radio Mágica" url="https://stream.crp.pe/magica.aac" genre="Discos de oro en inglés"/>
-    <station name="Radio Ritmo Romántica" url="https://stream.crp.pe/ritmoromantica.aac" genre="Tu radio de baladas"/>
-    <station name="Radio Moda" url="https://stream.crp.pe/moda.aac" genre="Te mueve! Reggaeton &amp; Urbano"/>
-    <station name="Radio Filarmonía 102.7" url="https://stream.zeno.fm/c3a0k314b18uv" genre="La voz de la cultura (Clásica)"/>
-  </national>
-</bouquet>
+    <station name="Radio Nacional del Perú" url="https://cdnhd.iblups.com/hls/0773874174fd4eba8bb9eff741d190dc.m3u8" genre="IRTP - La primera radio del Perú" />
+    <station name="RPP Noticias" url="https://mdstrm.com/audio/5fab3416b5f9ef165cfab6e9/icecast.audio" genre="Confianza por todos los medios" />
+    <station name="Radio Oxígeno" url="https://mdstrm.com/audio/5fab0687bcd6c2389ee9480c/live.m3u8" genre="Clásicos del Rock &amp; Pop" />
+    <station name="Radio Panamericana" url="https://mdstrm.com/audio/6598b62dded1380470f4e539/icecast.audio" genre="Lo que el Perú quiere escuchar (Salsa)" />
+    <station name="Studio 92" url="https://mdstrm.com/audio/5fada553978fe1080e3ac5ea/icecast.audio" genre="Primeros en tu música" />
+    <station name="Radio Felicidad" url="https://mdstrm.com/audio/5fad731fcf097a068af3c8f7/icecast.audio" genre="La música de tu vida" />
+    <station name="Radio Mágica" url="https://pe-p1-p-e-xm2-audio.cdn.mdstrm.com/live-audio-aw/6839e28eb3fdc597ac2e2e43?aid=68386a6e44ba64f6064b25c9&amp;amp;pid=feTbRIuYIYCrMwO4fNUTwX6cqyUl3MUo&amp;amp;sid=JkMZvIkbbH8f017OQm8BN32kAZ8TPYUI&amp;amp;uid=HGunCsyBd0aMB34Mc7RhEkRXBlaSib3u&amp;amp;es=pe-p1-p-e-xm2-audio.cdn.mdstrm.com&amp;amp;ote=1767062598351&amp;amp;ot=f8MpWy_qc1rzl0h33cbq6g&amp;amp;proto=https&amp;amp;pz=us&amp;amp;cP=128000&amp;amp;awCollectionId=68386a6e44ba64f6064b25c9&amp;amp;liveId=6839e28eb3fdc597ac2e2e43&amp;amp;listenerId=HGunCsyBd0aMB34Mc7RhEkRXBlaSib3u" genre="Discos de oro en inglés" />
+    <station name="Radio Ritmo Romántica" url="https://us-b4-p-e-qg12-audio.cdn.mdstrm.com/live-audio-aw/6839e2376607bdf6b2fcde27?aid=68386a6e44ba64f6064b25c9&amp;pid=YQeaeSlag6v2H3vMjcaXlG6JY5aPlYRL&amp;sid=vpseitxdPyRFvFeuL2tdzKVAaDfHpwnl&amp;uid=G1y8SsWzwRbxxrlV6zfVsIuXp0yaVbCM&amp;es=us-b4-p-e-qg12-audio.cdn.mdstrm.com&amp;ote=1786742603697&amp;ot=1qSp-a_aaCMF2DG_fcOxUQ&amp;proto=https&amp;pz=us&amp;cP=128000&amp;awCollectionId=68386a6e44ba64f6064b25c9&amp;liveId=6839e2376607bdf6b2fcde27&amp;referer=https%3A%2F%2Fwww.radiosdelperu.com.pe%2F&amp;listenerId=G1y8SsWzwRbxxrlV6zfVsIuXp0yaVbCM" genre="Tu radio de baladas" />
+    <station name="Radio Moda" url="https://us-b4-p-e-zs14-audio.cdn.mdstrm.com/live-audio-aw/6839e1c82cc4c480fcd318dd" genre="Te mueve! Reggaeton &amp; Urbano" />
+    <station name="Radio Filarmonía 102.7" url="http://c22.radioboss.fm:8100/stream" genre="La voz de la cultura (Clásica)" />
+    </national>
+  </bouquet>

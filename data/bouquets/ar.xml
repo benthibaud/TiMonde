@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="AR" name="Argentine" flag="🇦🇷" multilingual="false">
   <national>
-    <station name="Radio Nacional Argentina (LRA1)" url="https://streaming.radionacional.gov.ar/nacional" genre="Pública - Noticias &amp; Cultura federal"/>
-    <station name="Nacional Clásica 96.7" url="https://streaming.radionacional.gov.ar/clasica" genre="Pública - Música clásica"/>
-    <station name="Nacional Rock 93.7" url="https://streaming.radionacional.gov.ar/rock" genre="Pública - Rock nacional"/>
-    <station name="Radio Mitre AM 790" url="https://playerservices.streamtheworld.com/api/livestream-redirect/MITRE_AM790AAC.aac" genre="El aire de las noticias"/>
-    <station name="La 100 FM 99.9" url="https://playerservices.streamtheworld.com/api/livestream-redirect/LA_100AAC.aac" genre="La radio más escuchada de Argentina"/>
-    <station name="Radio Rivadavia AM 630" url="https://stream.zeno.fm/4155a0t9ewzuv" genre="Información &amp; Tradición"/>
-    <station name="Radio Continental AM 590" url="https://playerservices.streamtheworld.com/api/livestream-redirect/CONTINENTAL_AM590AAC.aac" genre="Gente de palabra"/>
-    <station name="Aspen 102.3 FM" url="https://stream.zeno.fm/f974r20s0v8uv" genre="Pura música, clásicos de los 80 &amp; 90"/>
-    <station name="Rock &amp; Pop 95.9" url="https://stream.zeno.fm/v7x0c1y31wzuv" genre="La radio de rock de la Argentina"/>
-    <station name="Metro 95.1" url="https://stream.zeno.fm/9k97s9w9ewzuv" genre="Sonido urbano &amp; Música"/>
-  </national>
-</bouquet>
+    <station name="Radio Nacional Argentina (LRA1)" url="https://sa.mp3.icecast.magma.edge-access.net/sc_rad1" genre="Pública - Noticias &amp; Cultura federal" />
+    <station name="Nacional Clásica 96.7" url="https://sa.mp3.icecast.magma.edge-access.net/sc_rad37" genre="Pública - Música clásica" />
+    <station name="Nacional Rock 93.7" url="http://sa.mp3.icecast.magma.edge-access.net:7200/sc_rad39" genre="Pública - Rock nacional" />
+    <station name="Radio Mitre AM 790" url="https://playerservices.streamtheworld.com/api/livestream-redirect/AM790_56AAC.aac" genre="El aire de las noticias" />
+    <station name="La 100 FM 99.9" url="https://playerservices.streamtheworld.com/api/livestream-redirect/FM999_56.mp3" genre="La radio más escuchada de Argentina" />
+    <station name="Radio Rivadavia AM 630" url="https://radio02.ferozo.com/proxy/ra02001331?mp=/stream" genre="Información &amp; Tradición" />
+    <station name="Radio Continental AM 590" url="https://frontend.radiohdvivo.com/continental/live" genre="Gente de palabra" />
+    <station name="Aspen 102.3 FM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/ASPEN.mp3" genre="Pura música, clásicos de los 80 &amp; 90" />
+    <station name="Rock &amp; Pop 95.9" url="https://live.amperwave.net/manifest/audacy-krxqfmaac-hlsc.m3u8" genre="La radio de rock de la Argentina" />
+    <station name="Metro 95.1" url="https://playerservices.streamtheworld.com/api/livestream-redirect/METRO.mp3" genre="Sonido urbano &amp; Música" />
+    </national>
+  </bouquet>

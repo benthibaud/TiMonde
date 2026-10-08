@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="TR" name="Turquie" flag="🇹🇷" multilingual="false">
   <national>
-    <station name="TRT Radyo 1" url="https://stream.zeno.fm/7bgt4w4k0heuv" genre="TRT - Bilgi, Kültür &amp; Haber"/>
-    <station name="TRT FM" url="https://stream.zeno.fm/8bgt4w4k0heuv" genre="TRT - Türkçe Pop &amp; Canlı yayınlar"/>
-    <station name="TRT Radyo 3" url="https://stream.zeno.fm/9bgt4w4k0heuv" genre="TRT - Klasik Müzik &amp; Caz"/>
-    <station name="TRT Türkü" url="https://stream.zeno.fm/1cgt4w4k0heuv" genre="TRT - Türk Halk Müziği"/>
-    <station name="Power FM Turkey" url="https://stream.zeno.fm/2cgt4w4k0heuv" genre="En İyiler, Daima / Yabancı Müzik"/>
-    <station name="Kral FM" url="https://stream.zeno.fm/3cgt4w4k0heuv" genre="İlacınız Burada / Arabesk &amp; Damar"/>
-    <station name="Süper FM" url="https://stream.zeno.fm/4cgt4w4k0heuv" genre="En Süper Türkçe Pop"/>
-    <station name="Joy FM Turkey" url="https://stream.zeno.fm/5cgt4w4k0heuv" genre="Easy Listening, Soft Pop &amp; Romantik"/>
-    <station name="Best FM" url="https://stream.zeno.fm/6cgt4w4k0heuv" genre="Konuşan Radyo (Haber &amp; Pop)"/>
-  </national>
-</bouquet>
+    <station name="TRT Radyo 1" url="https://trt.radyotvonline.net/trt1" genre="TRT - Bilgi, Kültür &amp; Haber" />
+    <station name="TRT FM" url="https://rd-trtturku.medya.trt.com.tr/master_128.m3u8" genre="TRT - Türkçe Pop &amp; Canlı yayınlar" />
+    <station name="TRT Radyo 3" url="https://radio-trtradyohaber.live.trt.com.tr/master.m3u8" genre="TRT - Klasik Müzik &amp; Caz" />
+    <station name="TRT Türkü" url="https://rd-trtturku.medya.trt.com.tr/master_128.m3u8" genre="TRT - Türk Halk Müziği" />
+    <station name="Power FM Turkey" url="https://listen.powerapp.com.tr/powerpop/128/chunks.m3u8" genre="En İyiler, Daima / Yabancı Müzik" />
+    <station name="Kral FM" url="https://live.radyositesihazir.com/8032/stream" genre="İlacınız Burada / Arabesk &amp; Damar" />
+    <station name="Süper FM" url="http://27943.live.streamtheworld.com/SUPER_FMAAC_SC" genre="En Süper Türkçe Pop" />
+    <station name="Joy FM Turkey" url="https://playerservices.streamtheworld.com/api/livestream-redirect/JOY_TURK_SC?/" genre="Easy Listening, Soft Pop &amp; Romantik" />
+    <station name="Best FM" url="https://ssldyg.radyotvonline.com/best/bestfm.stream/playlist.m3u8" genre="Konuşan Radyo (Haber &amp; Pop)" />
+    </national>
+  </bouquet>

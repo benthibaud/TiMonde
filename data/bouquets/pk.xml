@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="PK" name="Pakistan" flag="🇵🇰" multilingual="false">
   <national>
-    <station name="Radio Pakistan FM 101" url="https://stream.zeno.fm/8igt4w4k0heuv" genre="Pakistan Broadcasting Corporation / Youth &amp; Music" />
-    <station name="Saut-ul-Quran PBC" url="https://stream.zeno.fm/9igt4w4k0heuv" genre="Tilawat &amp; Islamic Teachings" />
-    <station name="FM 89 City Radio" url="https://stream.zeno.fm/1jgt4w4k0heuv" genre="Karachi &amp; Lahore Indie &amp; Pop" />
-  </national>
-</bouquet>
+    <station name="Radio Pakistan FM 101" url="https://whmsonic.radio.gov.pk:8034/stream" genre="Pakistan Broadcasting Corporation / Youth &amp; Music" />
+    <station name="Saut-ul-Quran PBC" url="https://stream.laut.fm/ultradarkradio?ref=radiode" genre="Tilawat &amp; Islamic Teachings" />
+    <station name="FM 89 City Radio" url="https://radio.cityfm89.com/stream" genre="Karachi &amp; Lahore Indie &amp; Pop" />
+    </national>
+  </bouquet>

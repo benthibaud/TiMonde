@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="IN" name="Inde" flag="🇮🇳" multilingual="false">
   <national>
-    <station name="AIR Vividh Bharati" url="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8" genre="All India Radio - The Golden Hits of Indian Cinema"/>
-    <station name="AIR National Channel" url="https://air.pc.cdn.bitgravity.com/air/live/pbaudio002/playlist.m3u8" genre="All India Radio - Classical &amp; Heritage"/>
-    <station name="AIR FM Gold Delhi" url="https://air.pc.cdn.bitgravity.com/air/live/pbaudio003/playlist.m3u8" genre="All India Radio - Classic Hindi Hits &amp; News"/>
-    <station name="AIR FM Rainbow Delhi" url="https://air.pc.cdn.bitgravity.com/air/live/pbaudio004/playlist.m3u8" genre="All India Radio - Contemporary Music"/>
-    <station name="Radio Mirchi 98.3" url="https://stream.zeno.fm/9egt4w4k0heuv" genre="Mirchi Sunnewaale Always Khush!"/>
-    <station name="Red FM 93.5 India" url="https://stream.zeno.fm/1fgt4w4k0heuv" genre="Bajaate Raho! Superhits Superfast"/>
-    <station name="Radio City Hindi" url="https://stream.zeno.fm/2fgt4w4k0heuv" genre="Rag Rag Mein Daude City"/>
-    <station name="Big FM 92.7" url="https://stream.zeno.fm/3fgt4w4k0heuv" genre="Dhun Badal Ke Toh Dekho"/>
-  </national>
-</bouquet>
+    <station name="AIR Vividh Bharati" url="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8" genre="All India Radio - The Golden Hits of Indian Cinema" />
+    <station name="AIR National Channel" url="https://maestro.emfcdn.com/stream_for/air1/tunein/aac?kaer" genre="All India Radio - Classical &amp; Heritage" />
+    <station name="AIR FM Gold Delhi" url="https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio005/hlspbaudio00564kbps.m3u8" genre="All India Radio - Classic Hindi Hits &amp; News" />
+    <station name="AIR FM Rainbow Delhi" url="https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio005/hlspbaudio00564kbps.m3u8" genre="All India Radio - Contemporary Music" />
+    <station name="Radio Mirchi 98.3" url="https://radiosindia.com/radiomirchitamil.html" genre="Mirchi Sunnewaale Always Khush!" />
+    <station name="Red FM 93.5 India" url="https://funasia.streamguys1.com/live9" genre="Bajaate Raho! Superhits Superfast" />
+    <station name="Radio City Hindi" url="http://radios.crabdance.com:8002/5" genre="Rag Rag Mein Daude City" />
+    <station name="Big FM 92.7" url="http://streams.bigfm.de/bigfm-usrap-128-aac" genre="Dhun Badal Ke Toh Dekho" />
+    </national>
+  </bouquet>

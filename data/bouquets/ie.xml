@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="IE" name="Irlande" flag="🇮🇪" multilingual="false">
   <national>
-    <station name="RTÉ Radio 1" url="https://icecast2.rte.ie/radio1" genre="RTÉ - News, Talk &amp; Music"/>
-    <station name="RTÉ 2FM" url="https://icecast2.rte.ie/2fm" genre="RTÉ - Popular Music &amp; Hits"/>
-    <station name="RTÉ lyric fm" url="https://icecast2.rte.ie/lyric" genre="RTÉ - Classical, Arts &amp; Jazz"/>
-    <station name="RTÉ Raidió na Gaeltachta" url="https://icecast2.rte.ie/rnag" genre="RTÉ - Irish Language Station"/>
-    <station name="Today FM" url="https://stream.audioxi.com/TDM" genre="Independent Pop &amp; Talk"/>
-    <station name="Newstalk" url="https://stream.audioxi.com/NT" genre="Opinion, Sport &amp; News"/>
-    <station name="Classic Hits Ireland" url="https://edge2.classichits.ie/classic-hits" genre="80s &amp; 90s Hits"/>
-    <station name="Spin 1038" url="https://stream.audioxi.com/SPIN" genre="Dublin Top 40"/>
-    <station name="Dublin's 98FM" url="https://stream.audioxi.com/98" genre="Dublin Best Music"/>
-    <station name="Radio Nova Ireland" url="https://edge2.classichits.ie/nova" genre="Classic Rock &amp; Guitar"/>
-  </national>
-</bouquet>
+    <station name="RTÉ Radio 1" url="https://icecast2.rte.ie/radio1" genre="RTÉ - News, Talk &amp; Music" />
+    <station name="RTÉ 2FM" url="https://icecast2.rte.ie/2fm" genre="RTÉ - Popular Music &amp; Hits" />
+    <station name="RTÉ lyric fm" url="https://icecast2.rte.ie/lyric" genre="RTÉ - Classical, Arts &amp; Jazz" />
+    <station name="RTÉ Raidió na Gaeltachta" url="https://icecast2.rte.ie/rnag" genre="RTÉ - Irish Language Station" />
+    <station name="Today FM" url="https://stream.audioxi.com/TDM" genre="Independent Pop &amp; Talk" />
+    <station name="Newstalk" url="https://stream.audioxi.com/NT" genre="Opinion, Sport &amp; News" />
+    <station name="Classic Hits Ireland" url="http://stream.audioxi.com/CLASSIC" genre="80s &amp; 90s Hits" />
+    <station name="Spin 1038" url="https://live-bauerie.sharp-stream.com/SP" genre="Dublin Top 40" />
+    <station name="Dublin's 98FM" url="https://stream.audioxi.com/98" genre="Dublin Best Music" />
+    <station name="Radio Nova Ireland" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIONOVA.mp3" genre="Classic Rock &amp; Guitar" />
+    </national>
+  </bouquet>

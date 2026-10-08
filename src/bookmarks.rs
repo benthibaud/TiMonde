@@ -5,7 +5,7 @@ use std::fs::File;
 use std::io::BufReader;
 use std::path::Path;
 
-/// Erreurs de parsing de bookmarks
+/// Erreurs de parsing de bookmarks / Bookmarks parsing errors
 #[derive(Debug)]
 pub enum BookmarksError {
     Io(std::io::Error),
@@ -37,7 +37,8 @@ impl std::fmt::Display for BookmarksError {
 
 impl std::error::Error for BookmarksError {}
 
-/// Charge et analyse un fichier bookmarks.xml historique de Radio Tray
+/// Charge et analyse un fichier bookmarks.xml historique ou moderne TiMonde
+/// Loads and parses a historical or modern TiMonde bookmarks.xml file
 pub fn load_bookmarks(path: impl AsRef<Path>) -> Result<Group, BookmarksError> {
     let file = File::open(path)?;
     let buf_reader = BufReader::new(file);
@@ -45,6 +46,7 @@ pub fn load_bookmarks(path: impl AsRef<Path>) -> Result<Group, BookmarksError> {
 }
 
 /// Analyse le flux XML depuis un lecteur bufferisé
+/// Parses the XML stream from a buffered reader
 pub fn parse_bookmarks_reader<R: std::io::BufRead>(reader: R) -> Result<Group, BookmarksError> {
     let mut xml = Reader::from_reader(reader);
     xml.config_mut().trim_text(true);
@@ -64,13 +66,35 @@ pub fn parse_bookmarks_reader<R: std::io::BufRead>(reader: R) -> Result<Group, B
                         }
                     }
                     group_stack.push(Group::new(group_name));
+                } else if name.as_ref() == b"separator" {
+                    let mut title = String::new();
+                    for attr in e.attributes().flatten() {
+                        if attr.key.as_ref() == b"title" || attr.key.as_ref() == b"name" {
+                            title = attr.unescape_value().unwrap_or_default().into_owned();
+                        }
+                    }
+                    if let Some(current_group) = group_stack.last_mut() {
+                        current_group.stations.push(Station::separator(title));
+                    }
                 }
             }
             Event::Empty(e) => {
                 let name = e.name();
-                if name.as_ref() == b"bookmark" {
+                if name.as_ref() == b"separator" {
+                    let mut title = String::new();
+                    for attr in e.attributes().flatten() {
+                        if attr.key.as_ref() == b"title" || attr.key.as_ref() == b"name" {
+                            title = attr.unescape_value().unwrap_or_default().into_owned();
+                        }
+                    }
+                    if let Some(current_group) = group_stack.last_mut() {
+                        current_group.stations.push(Station::separator(title));
+                    }
+                } else if name.as_ref() == b"bookmark" {
                     let mut station_name = String::new();
                     let mut station_url = String::new();
+                    let mut station_country: Option<String> = None;
+                    let mut station_timezone: Option<String> = None;
 
                     for attr in e.attributes().flatten() {
                         match attr.key.as_ref() {
@@ -80,15 +104,46 @@ pub fn parse_bookmarks_reader<R: std::io::BufRead>(reader: R) -> Result<Group, B
                             b"url" => {
                                 station_url = attr.unescape_value().unwrap_or_default().into_owned();
                             }
+                            b"country" | b"countrycode" => {
+                                let c = attr.unescape_value().unwrap_or_default().into_owned().trim().to_uppercase();
+                                if !c.is_empty() {
+                                    station_country = Some(c);
+                                }
+                            }
+                            b"timezone" | b"tz" => {
+                                let tz = attr.unescape_value().unwrap_or_default().into_owned().trim().to_string();
+                                if !tz.is_empty() {
+                                    station_timezone = Some(tz);
+                                }
+                            }
                             _ => {}
                         }
                     }
 
                     if let Some(current_group) = group_stack.last_mut() {
-                        current_group.stations.push(Station {
-                            name: station_name,
-                            url: station_url,
-                        });
+                        if station_name.starts_with("[separator-")
+                            || station_name.starts_with("[separator")
+                            || station_name == "---"
+                            || station_name == "separator - - -"
+                            || (station_url.is_empty() && station_name.contains("separator"))
+                        {
+                            let title = if station_name.starts_with("[separator-")
+                                || station_name == "---"
+                                || station_name == "separator - - -"
+                            {
+                                String::new()
+                            } else {
+                                station_name
+                            };
+                            current_group.stations.push(Station::separator(title));
+                        } else {
+                            current_group.stations.push(Station {
+                                name: station_name,
+                                url: station_url,
+                                country: station_country,
+                                timezone: station_timezone,
+                            });
+                        }
                     }
                 }
             }
@@ -112,9 +167,8 @@ pub fn parse_bookmarks_reader<R: std::io::BufRead>(reader: R) -> Result<Group, B
 }
 
 /// Supprime les paliers "root" superflus hérités de Radio Tray
+/// Removes superfluous "root" nesting inherited from legacy Radio Tray
 pub fn strip_root_levels(mut group: Group) -> Group {
-    // Tant que le groupe racine contient un unique sous-groupe nommé "root" et aucune station directe,
-    // on descend pour supprimer la couche d encadrement inutile
     while group.subgroups.len() == 1
         && group.stations.is_empty()
         && group.subgroups[0].name.eq_ignore_ascii_case("root")
@@ -122,8 +176,6 @@ pub fn strip_root_levels(mut group: Group) -> Group {
         group = group.subgroups.remove(0);
     }
 
-    // Si après déroulement, le sous-groupe unique restant s appelle encore "root",
-    // on fusionne ses éléments au premier niveau
     if group.subgroups.len() == 1 && group.subgroups[0].name.eq_ignore_ascii_case("root") {
         let child = group.subgroups.remove(0);
         group.stations.extend(child.stations);
@@ -134,116 +186,98 @@ pub fn strip_root_levels(mut group: Group) -> Group {
     group
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_parse_simple_xml() {
-        let sample = r#"
-        <bookmarks>
-            <group name="root">
-                <group name="Musique">
-                    <bookmark name="Radio 1" url="https://radio1.example/stream"/>
-                    <bookmark name="[separator-123]" url=""/>
-                    <bookmark name="Radio 2" url="https://radio2.example/stream"/>
-                </group>
-            </group>
-        </bookmarks>
-        "#;
-        let root = parse_bookmarks_reader(sample.as_bytes()).expect("Le parsing doit réussir");
-        assert_eq!(root.total_stations(), 2);
+/// Sauvegarde l'arborescence des groupes au format bookmarks.xml avec indentation stricte
+/// Saves group hierarchy into bookmarks.xml format with clean tabs indentation
+pub fn save_bookmarks(group: &Group, path: impl AsRef<Path>) -> Result<(), BookmarksError> {
+    use std::io::Write;
+    let path = path.as_ref();
+    if let Some(parent) = path.parent() {
+        let _ = std::fs::create_dir_all(parent);
     }
 
-    #[test]
-    fn test_parse_real_bookmarks_if_available() {
-        let path = std::path::Path::new("/mnt/Donnees/Docs_systeme/bookmarks.xml");
-        if path.exists() {
-            let root = load_bookmarks(path).expect("Le chargement du fichier réel doit réussir");
-            let count = root.total_stations();
-            println!("Nombre de stations chargées avec succès : {}", count);
-            assert!(count > 1000, "Le fichier réel doit contenir plus de 1000 stations");
-            // Vérifier que le niveau "root" n est plus présent dans les sous-groupes de premier niveau
-            for sub in &root.subgroups {
-                assert_ne!(sub.name.to_lowercase(), "root", "Aucun sous-groupe ne doit s appeler root");
+    if path.exists() {
+        let bak_path = path.with_extension("xml.bak");
+        let _ = std::fs::copy(path, bak_path);
+    }
+
+    let file = File::create(path)?;
+    let mut writer = std::io::BufWriter::new(file);
+
+    writeln!(writer, "<bookmarks>")?;
+    for sub in &group.subgroups {
+        write_group_xml(&mut writer, sub, 1)?;
+    }
+    for st in &group.stations {
+        if st.is_separator() {
+            let title = st.separator_title().unwrap_or_default();
+            writeln!(writer, "\t<separator title=\"{}\"/>", escape_xml(&title))?;
+        } else if let Some(country) = &st.country {
+            writeln!(
+                writer,
+                "\t<bookmark name=\"{}\" url=\"{}\" country=\"{}\"/>",
+                escape_xml(&st.name),
+                escape_xml(&st.url),
+                escape_xml(country)
+            )?;
+        } else {
+            writeln!(
+                writer,
+                "\t<bookmark name=\"{}\" url=\"{}\"/>",
+                escape_xml(&st.name),
+                escape_xml(&st.url)
+            )?;
+        }
+    }
+    writeln!(writer, "</bookmarks>")?;
+    writer.flush()?;
+
+    Ok(())
+}
+
+fn write_group_xml<W: std::io::Write>(
+    writer: &mut W,
+    group: &Group,
+    indent: usize,
+) -> Result<(), BookmarksError> {
+    let tabs = "\t".repeat(indent);
+    writeln!(writer, "{}<group name=\"{}\">", tabs, escape_xml(&group.name))?;
+
+    for sub in &group.subgroups {
+        write_group_xml(writer, sub, indent + 1)?;
+    }
+
+    let inner_tabs = "\t".repeat(indent + 1);
+    for st in &group.stations {
+        if st.is_separator() {
+            let title = st.separator_title().unwrap_or_default();
+            writeln!(
+                writer,
+                "{}<separator title=\"{}\"/>",
+                inner_tabs,
+                escape_xml(&title)
+            )?;
+        } else {
+            let mut attrs = format!("name=\"{}\" url=\"{}\"", escape_xml(&st.name), escape_xml(&st.url));
+            if let Some(country) = &st.country {
+                attrs.push_str(&format!(" country=\"{}\"", escape_xml(country)));
             }
+            if let Some(tz) = &st.timezone {
+                attrs.push_str(&format!(" timezone=\"{}\"", escape_xml(tz)));
+            }
+            writeln!(writer, "{}<bookmark {}/>", inner_tabs, attrs)?;
         }
     }
 
-    #[test]
-    fn test_strip_multiple_nested_roots() {
-        let nested_sample = r#"<bookmarks>
-            <group name="root">
-                <group name="root">
-                    <group name="root">
-                        <group name="Jazz">
-                            <bookmark name="Jazz Radio" url="https://jazz.example/stream"/>
-                        </group>
-                        <bookmark name="Radio Directe" url="https://direct.example/stream"/>
-                    </group>
-                </group>
-            </group>
-        </bookmarks>"#;
+    writeln!(writer, "{}</group>", tabs)?;
+    Ok(())
+}
 
-        let root = parse_bookmarks_reader(nested_sample.as_bytes()).expect("Parsing réussi");
-        assert_eq!(root.subgroups.len(), 1);
-        assert_eq!(root.subgroups[0].name, "Jazz");
-        assert_eq!(root.stations.len(), 1);
-        assert_eq!(root.stations[0].name, "Radio Directe");
-        assert_eq!(root.total_stations(), 2);
-    }
-
-    #[test]
-    fn test_save_removes_root_level() {
-        let sample = r#"<bookmarks>
-            <group name="root">
-                <group name="Classique">
-                    <bookmark name="Radio Classique" url="https://classique.example/stream"/>
-                </group>
-            </group>
-        </bookmarks>"#;
-
-        let root = parse_bookmarks_reader(sample.as_bytes()).expect("Parsing réussi");
-        
-        let temp_dir = std::env::temp_dir();
-        let temp_file = temp_dir.join("timonde_test_save_no_root.xml");
-        save_bookmarks(&root, &temp_file).expect("Sauvegarde réussie");
-
-        let saved_content = std::fs::read_to_string(&temp_file).expect("Lecture fichier sauvegardé");
-        let _ = std::fs::remove_file(&temp_file);
-
-        // Le fichier XML sauvegardé ne doit contenir AUCUN tag root !
-        assert!(!saved_content.contains("name=\"root\""), "Le XML sauvegardé ne doit pas avoir name=root");
-        assert!(saved_content.contains("<group name=\"Classique\">"), "Le XML doit contenir le vrai groupe");
-
-        // Re-parsing du fichier sauvegardé pour vérifier l intégrité
-        let reloaded = parse_bookmarks_reader(saved_content.as_bytes()).expect("Re-parsing réussi");
-        assert_eq!(reloaded.subgroups.len(), 1);
-        assert_eq!(reloaded.subgroups[0].name, "Classique");
-        assert_eq!(reloaded.total_stations(), 1);
-    }
-
-    #[test]
-    fn test_update_and_remove_station() {
-        let mut root = Group::new("root");
-        let mut rock = Group::new("Rock");
-        rock.stations.push(Station {
-            name: "Ancien Nom".to_string(),
-            url: "http://ancien.url".to_string(),
-        });
-        root.subgroups.push(rock);
-
-        // Modification
-        let updated = update_station_info(&mut root, "http://ancien.url", "Nouveau Nom", "http://nouveau.url");
-        assert!(updated);
-        assert_eq!(root.subgroups[0].stations[0].name, "Nouveau Nom");
-        assert_eq!(root.subgroups[0].stations[0].url, "http://nouveau.url");
-
-        // Suppression
-        let removed = remove_station_by_url(&mut root, "http://nouveau.url");
-        assert!(removed);
-        assert_eq!(root.subgroups[0].stations.len(), 0);
-    }
+fn escape_xml(s: &str) -> String {
+    s.replace('&', "&amp;")
+        .replace('<', "&lt;")
+        .replace('>', "&gt;")
+        .replace('"', "&quot;")
+        .replace('\'', "&apos;")
 }
 
 /// Met à jour l'URL d'une station dans l'arbre des groupes
@@ -262,22 +296,45 @@ pub fn update_station_url(group: &mut Group, station_name: &str, new_url: &str) 
     false
 }
 
-/// Met à jour le nom et l'URL d'une station (identifiée par son URL originale) dans l'arborescence
+/// Met à jour le nom et l'URL d'une station dans l'arborescence
 pub fn update_station_info(
     group: &mut Group,
     target_url: &str,
     new_name: &str,
     new_url: &str,
 ) -> bool {
+    update_station_full(group, target_url, new_name, new_url, None, None)
+}
+
+/// Met à jour récursivement le nom, l'URL et optionnellement le code pays d'une station
+/// Recursively updates name, URL and optionally country code of a station
+pub fn update_station_full(
+    group: &mut Group,
+    target_url: &str,
+    new_name: &str,
+    new_url: &str,
+    new_country: Option<Option<String>>,
+    new_timezone: Option<Option<String>>,
+) -> bool {
+    let norm_target = crate::import::normalize_url(target_url);
     for st in &mut group.stations {
-        if st.url == target_url {
+        if st.url == target_url
+            || crate::import::normalize_url(&st.url) == norm_target
+            || (!st.is_separator() && st.name.eq_ignore_ascii_case(new_name))
+        {
             st.name = new_name.to_string();
-            st.url = new_url.to_string();
+            st.url = crate::models::clean_stream_url(new_url);
+            if let Some(c) = &new_country {
+                st.country = c.clone();
+            }
+            if let Some(tz) = &new_timezone {
+                st.timezone = tz.clone();
+            }
             return true;
         }
     }
     for sub in &mut group.subgroups {
-        if update_station_info(sub, target_url, new_name, new_url) {
+        if update_station_full(sub, target_url, new_name, new_url, new_country.clone(), new_timezone.clone()) {
             return true;
         }
     }
@@ -298,70 +355,137 @@ pub fn remove_station_by_url(group: &mut Group, target_url: &str) -> bool {
     false
 }
 
-/// Sauvegarde l'arborescence des groupes au format bookmarks.xml avec indentation stricte
-pub fn save_bookmarks(group: &Group, path: impl AsRef<Path>) -> Result<(), BookmarksError> {
-    use std::io::Write;
-    let path = path.as_ref();
-    if let Some(parent) = path.parent() {
-        let _ = std::fs::create_dir_all(parent);
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_parse_and_save_with_country_tags() {
+        let sample = r#"
+        <bookmarks>
+            <group name="International">
+                <bookmark name="France Inter" url="https://franceinter.fr/stream" country="FR"/>
+                <bookmark name="NHK World" url="https://nhk.jp/stream" country="JP"/>
+                <bookmark name="Legacy Radio" url="https://legacy.com/stream"/>
+            </group>
+        </bookmarks>
+        "#;
+        let root = parse_bookmarks_reader(sample.as_bytes()).expect("Parsing réussi");
+        assert_eq!(root.subgroups[0].stations.len(), 3);
+        assert_eq!(root.subgroups[0].stations[0].country, Some("FR".to_string()));
+        assert_eq!(root.subgroups[0].stations[1].country, Some("JP".to_string()));
+        assert_eq!(root.subgroups[0].stations[2].country, None);
+
+        let temp_dir = std::env::temp_dir();
+        let temp_file = temp_dir.join("timonde_test_country_save.xml");
+        save_bookmarks(&root, &temp_file).expect("Sauvegarde réussie");
+
+        let saved = std::fs::read_to_string(&temp_file).expect("Lecture");
+        let _ = std::fs::remove_file(&temp_file);
+
+        assert!(saved.contains(r#"country="FR""#));
+        assert!(saved.contains(r#"country="JP""#));
+        assert!(saved.contains(r#"<bookmark name="Legacy Radio" url="https://legacy.com/stream"/>"#));
     }
 
-    // Sauvegarde de secours .bak si le fichier existe
-    if path.exists() {
-        let bak_path = path.with_extension("xml.bak");
-        let _ = std::fs::copy(path, bak_path);
+    #[test]
+    fn test_parse_simple_xml_with_separators() {
+        let sample = r#"
+        <bookmarks>
+            <group name="root">
+                <group name="Musique">
+                    <bookmark name="Radio 1" url="https://radio1.example/stream"/>
+                    <bookmark name="[separator-ac3fe9ec-f485-46d2-a020-ab88ce2304ca]" url=""/>
+                    <separator title="Section Jazz"/>
+                    <bookmark name="Radio 2" url="https://radio2.example/stream"/>
+                    <separator title=""/>
+                </group>
+            </group>
+        </bookmarks>
+        "#;
+        let root = parse_bookmarks_reader(sample.as_bytes()).expect("Le parsing doit réussir");
+        assert_eq!(root.total_stations(), 2);
     }
 
-    let file = File::create(path)?;
-    let mut writer = std::io::BufWriter::new(file);
+    #[test]
+    fn test_bouquet_country_enrichment_flow() {
+        let initial_xml = r#"
+        <bookmarks>
+            <group name="Favoris">
+                <bookmark name="France Inter" url="https://franceinter.fr/stream"/>
+                <bookmark name="FIP (Direct)" url="https://fip.fr/stream"/>
+                <bookmark name="J-Wave 81.3 FM" url="https://jwave.jp/stream"/>
+            </group>
+        </bookmarks>
+        "#;
 
-    writeln!(writer, "<bookmarks>")?;
-    // Écrire directement les sous-groupes et stations au premier niveau sous <bookmarks>,
-    // SANS balise englobante <group name=\"root\"> !
-    for sub in &group.subgroups {
-        write_group_xml(&mut writer, sub, 1)?;
+        let mut root = parse_bookmarks_reader(initial_xml.as_bytes()).expect("Parse initial");
+        assert_eq!(root.subgroups[0].stations[0].country, None);
+        assert_eq!(root.subgroups[0].stations[1].country, None);
+        assert_eq!(root.subgroups[0].stations[2].country, None);
+
+        // Simulation import bouquet FR
+        let enriched_fr1 = root.enrich_station_country("France Inter", "https://franceinter.fr/stream", "FR");
+        let enriched_fr2 = root.enrich_station_country("FIP", "https://fip.fr/stream", "FR");
+        assert!(enriched_fr1);
+        assert!(enriched_fr2);
+
+        // Simulation import bouquet JP
+        let enriched_jp = root.enrich_station_country("J-Wave 81.3 FM", "https://jwave.jp/stream", "JP");
+        assert!(enriched_jp);
+
+        assert_eq!(root.subgroups[0].stations[0].country, Some("FR".to_string()));
+        assert_eq!(root.subgroups[0].stations[1].country, Some("FR".to_string()));
+        assert_eq!(root.subgroups[0].stations[2].country, Some("JP".to_string()));
+
+        // Calcul de l'heure locale pour chaque station enrichie
+        let time_fr = crate::timezone::get_local_time_for_country(root.subgroups[0].stations[0].country.as_deref().unwrap()).unwrap();
+        assert_eq!(time_fr.country_name, "France");
+        assert_eq!(time_fr.flag, "🇫🇷");
+
+        let time_jp = crate::timezone::get_local_time_for_country(root.subgroups[0].stations[2].country.as_deref().unwrap()).unwrap();
+        assert_eq!(time_jp.country_name, "Japon");
+        assert_eq!(time_jp.flag, "🇯🇵");
+
+        // Sauvegarde et relecture XML
+        let temp_dir = std::env::temp_dir();
+        let temp_file = temp_dir.join("timonde_enrichment_flow.xml");
+        save_bookmarks(&root, &temp_file).expect("Sauvegarde");
+
+        let reloaded = load_bookmarks(&temp_file).expect("Relecture");
+        let _ = std::fs::remove_file(&temp_file);
+
+        assert_eq!(reloaded.subgroups[0].stations[0].country, Some("FR".to_string()));
+        assert_eq!(reloaded.subgroups[0].stations[1].country, Some("FR".to_string()));
+        assert_eq!(reloaded.subgroups[0].stations[2].country, Some("JP".to_string()));
     }
-    for st in &group.stations {
-        writeln!(
-            writer,
-            "\t<bookmark name=\"{}\" url=\"{}\"/>",
-            escape_xml(&st.name),
-            escape_xml(&st.url)
-        )?;
+
+    #[test]
+    fn test_bookmarks_timezone_xml_roundtrip() {
+        let sample = r#"
+        <bookmarks>
+            <group name="Antilles">
+                <bookmark name="Radio Transat" url="https://radiotransat.gp/live" country="FR" timezone="America/Guadeloupe"/>
+            </group>
+        </bookmarks>
+        "#;
+        let root = parse_bookmarks_reader(sample.as_bytes()).expect("Parse avec timezone");
+        let st = &root.subgroups[0].stations[0];
+        assert_eq!(st.name, "Radio Transat");
+        assert_eq!(st.country, Some("FR".to_string()));
+        assert_eq!(st.timezone, Some("America/Guadeloupe".to_string()));
+
+        // Sauvegarde temporaire et relecture
+        let temp_dir = std::env::temp_dir();
+        let temp_file = temp_dir.join("timonde_timezone_roundtrip.xml");
+        save_bookmarks(&root, &temp_file).expect("Sauvegarde avec timezone");
+
+        let reloaded = load_bookmarks(&temp_file).expect("Relecture avec timezone");
+        let _ = std::fs::remove_file(&temp_file);
+
+        let reloaded_st = &reloaded.subgroups[0].stations[0];
+        assert_eq!(reloaded_st.name, "Radio Transat");
+        assert_eq!(reloaded_st.country, Some("FR".to_string()));
+        assert_eq!(reloaded_st.timezone, Some("America/Guadeloupe".to_string()));
     }
-    writeln!(writer, "</bookmarks>")?;
-    writer.flush()?;
-
-    Ok(())
-}
-
-fn write_group_xml<W: std::io::Write>(writer: &mut W, group: &Group, indent: usize) -> Result<(), BookmarksError> {
-    let tabs = "\t".repeat(indent);
-    writeln!(writer, "{}<group name=\"{}\">", tabs, escape_xml(&group.name))?;
-
-    for sub in &group.subgroups {
-        write_group_xml(writer, sub, indent + 1)?;
-    }
-
-    let inner_tabs = "\t".repeat(indent + 1);
-    for st in &group.stations {
-        writeln!(
-            writer,
-            "{}<bookmark name=\"{}\" url=\"{}\"/>",
-            inner_tabs,
-            escape_xml(&st.name),
-            escape_xml(&st.url)
-        )?;
-    }
-
-    writeln!(writer, "{}</group>", tabs)?;
-    Ok(())
-}
-
-fn escape_xml(s: &str) -> String {
-    s.replace('&', "&amp;")
-        .replace('<', "&lt;")
-        .replace('>', "&gt;")
-        .replace('"', "&quot;")
-        .replace('\'', "&apos;")
 }

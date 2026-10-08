@@ -2,7 +2,7 @@
 <bouquet country="MK" name="Macédoine du Nord" flag="🇲🇰" multilingual="false">
   <national>
     <station name="MRT Radio Skopje" url="https://stream.mrt.com.mk/radioskopje" genre="МРТ - Информативна &amp; Општествена програма" />
-    <station name="Antenna 5" url="https://stream.antenna5.fm/antenna5" genre="Првото комерцијално радио во Македонија" />
-    <station name="Kanal 77" url="https://stream.kanal77.com.mk/kanal77" genre="Национално радио Канал 77" />
-  </national>
-</bouquet>
+    <station name="Antenna 5" url="http://antenna5stream.neotel.mk:8000/live128" genre="Првото комерцијално радио во Македонија" />
+    <station name="Kanal 77" url="https://radiocnd.mms.mk/proxy/offnet/stream" genre="Национално радио Канал 77" />
+    </national>
+  </bouquet>

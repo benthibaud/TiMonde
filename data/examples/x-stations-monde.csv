@@ -1,0 +1,9 @@
+# Exemple de fichier CSV pour TiMonde
+# Format : Groupe, Nom de la station, URL du flux, Code pays ISO (Optionnel pour heure locale & drapeau)
+Groupe,Nom,URL,Pays
+Antilles,Radio Transat,https://stream.rcs.revma.com/dy09pqzctwzuv,GP
+France,FIP,https://icecast.radiofrance.fr/fip-hifi.aac,FR
+France,France Musique,https://icecast.radiofrance.fr/francemusique-hifi.aac,FR
+Irlande,RTÉ Radio 1,https://icecast2.rte.ie/radio1,IE
+Suisse,Radio Swiss Jazz,https://stream.srg-ssr.ch/m/rsj/mp3_128,CH
+Portugal,Antena 1,https://radiocast.rtp.pt/antena180a.mp3,PT

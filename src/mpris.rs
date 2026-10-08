@@ -140,7 +140,7 @@ impl MprisPlayer {
     fn seek(&self, _offset: i64) {}
     fn set_position(&self, _track_id: ObjectPath<'_>, _position: i64) {}
     fn open_uri(&self, uri: String) {
-        (self.on_play)(Station { name: uri.clone(), url: uri });
+        (self.on_play)(Station::new(uri.clone(), uri));
     }
 
     #[zbus(property)]

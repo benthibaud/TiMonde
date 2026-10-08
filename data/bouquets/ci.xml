@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="CI" name="Côte d'Ivoire" flag="🇨🇮" multilingual="false">
   <national>
-    <station name="Radio Côte d'Ivoire" url="https://stream.zeno.fm/54t4w4k0heuv" genre="RTI - Antenne nationale publique"/>
-    <station name="Fréquence 2 Côte d'Ivoire" url="https://stream.zeno.fm/64t4w4k0heuv" genre="RTI - Divertissement &amp; Musique"/>
-    <station name="Radio Nostalgie Côte d'Ivoire" url="https://stream.zeno.fm/g7t4w4k0heuv" genre="La première radio privée d'Abidjan"/>
-    <station name="Radio Jam Abidjan" url="https://stream.zeno.fm/84t4w4k0heuv" genre="Coupé-Décalé &amp; Afrobeat"/>
-    <station name="Vibe Radio Côte d'Ivoire" url="https://stream.zeno.fm/94t4w4k0heuv" genre="Le nouveau son d'Abidjan"/>
-    <station name="Radio Al Bayane" url="https://stream.zeno.fm/q4t4w4k0heuv" genre="La voix de la communauté islamique"/>
-    <station name="Radio Espoir" url="https://stream.zeno.fm/w4t4w4k0heuv" genre="Diocèse de Grand-Bassam / Chrétienne"/>
-  </national>
-</bouquet>
+    <station name="Radio Côte d'Ivoire" url="https://cast4.asurahosting.com/proxy/life/stream" genre="RTI - Antenne nationale publique" />
+    <station name="Fréquence 2 Côte d'Ivoire" url="https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_radio_two.m3u8" genre="RTI - Divertissement &amp; Musique" />
+    <station name="Radio Nostalgie Côte d'Ivoire" url="https://dreamsiteradiocp6.com/proxy/rmcosta?mp=/stream" genre="La première radio privée d'Abidjan" />
+    <station name="Radio Jam Abidjan" url="https://listen.radioking.com/radio/61201/stream/98566" genre="Coupé-Décalé &amp; Afrobeat" />
+    <station name="Vibe Radio Côte d'Ivoire" url="http://icyrelay.181.fm/181-vibe_128k.mp3?_=1" genre="Le nouveau son d'Abidjan" />
+    <station name="Radio Al Bayane" url="https://dreamsiteradiocp6.com/proxy/rmcosta?mp=/stream" genre="La voix de la communauté islamique" />
+    <station name="Radio Espoir" url="https://dreamsiteradiocp6.com/proxy/rmcosta?mp=/stream" genre="Diocèse de Grand-Bassam / Chrétienne" />
+    </national>
+  </bouquet>

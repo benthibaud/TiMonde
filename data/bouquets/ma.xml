@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="MA" name="Maroc" flag="🇲🇦" multilingual="false">
   <national>
-    <station name="SNRT Al Idaa Al Watania" url="https://snrtlive.ma/snrt-alidaa-alwatania" genre="SNRT - الإذاعة الوطنية (Information &amp; Société)"/>
-    <station name="SNRT Chaîne Inter" url="https://snrtlive.ma/snrt-chaine-inter" genre="SNRT - Francophone, Culture &amp; Musique"/>
-    <station name="SNRT Chaîne Amazighe" url="https://snrtlive.ma/snrt-alidaa-al-amazighia" genre="SNRT - Culture &amp; Langues Amazighes"/>
-    <station name="Medi 1 Radio" url="https://stream.medi1.com/live" genre="La radio de la Méditerranée (Tanger)"/>
-    <station name="Hit Radio Maroc" url="https://hitradio-maroc.ice.infomaniak.ch/hitradio-maroc-128.mp3" genre="100% Hits &amp; Jeunesse"/>
-    <station name="Radio 2M" url="https://stream.radio2m.ma/radio2m.mp3" genre="Information, Débats &amp; Chansons"/>
-    <station name="Radio Mars" url="https://radiomars.ice.infomaniak.ch/radiomars-128.mp3" genre="La radio du sport et de la musique"/>
-    <station name="Aswat" url="https://aswat.ice.infomaniak.ch/aswat-high.mp3" genre="La radio qui nous réunit"/>
-    <station name="Chada FM" url="https://chadafm.ice.infomaniak.ch/chadafm-high.mp3" genre="Musique arabe &amp; Société"/>
-    <station name="Medina FM" url="https://medinafm.ice.infomaniak.ch/medinafm-high.mp3" genre="Proximité &amp; Terroir"/>
-  </national>
-</bouquet>
+    <station name="SNRT Al Idaa Al Watania" url="https://live.amperwave.net/manifest/audacy-kcbsamaac-llhlsc.m3u8" genre="SNRT - الإذاعة الوطنية (Information &amp; Société)" />
+    <station name="SNRT Chaîne Inter" url="http://wrmi.listen.creek.fm/stream" genre="SNRT - Francophone, Culture &amp; Musique" />
+    <station name="SNRT Chaîne Amazighe" url="https://webradio1.tda.dz:8001/Chaine3_64K.mp3" genre="SNRT - Culture &amp; Langues Amazighes" />
+    <station name="Medi 1 Radio" url="https://cdn.live.easybroadcast.io/live/83_medi1radio-maghreb_8s9i4bn/playlist.m3u8" genre="La radio de la Méditerranée (Tanger)" />
+    <station name="Hit Radio Maroc" url="https://hitradio-maroc.ice.infomaniak.ch/hitradio-maroc-128.mp3" genre="100% Hits &amp; Jeunesse" />
+    <station name="Radio 2M" url="http://broadcast.ice.infomaniak.ch/aswat-high.mp3?.mp3" genre="Information, Débats &amp; Chansons" />
+    <station name="Radio Mars" url="https://radiomars.ice.infomaniak.ch/radiomars-128.mp3" genre="La radio du sport et de la musique" />
+    <station name="Aswat" url="https://aswat.ice.infomaniak.ch/aswat-high.mp3" genre="La radio qui nous réunit" />
+    <station name="Chada FM" url="https://stream.bodkas.com/playlist?id=chadafmradio" genre="Musique arabe &amp; Société" />
+    <station name="Medina FM" url="https://medinafm.ice.infomaniak.ch/medinafm-64.mp3" genre="Proximité &amp; Terroir" />
+    </national>
+  </bouquet>

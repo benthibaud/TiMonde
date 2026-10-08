@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="CV" name="Cap-Vert" flag="🇨🇻" multilingual="false">
   <national>
-    <station name="RCV Rádio de Cabo Verde" url="https://stream.zeno.fm/1igt4w4k0heuv" genre="RTC - Morna, Coladeira &amp; Notícias da Praia" />
-    <station name="Rádio Cidade Cabo Verde" url="https://stream.zeno.fm/2igt4w4k0heuv" genre="A voz jovem do arquipélago" />
-  </national>
-</bouquet>
+    <station name="RCV Rádio de Cabo Verde" url="https://a3.asurahosting.com:6980/radio.mp3" genre="RTC - Morna, Coladeira &amp; Notícias da Praia" />
+    <station name="Rádio Cidade Cabo Verde" url="https://listen.radioking.com/radio/281506/stream/327253" genre="A voz jovem do arquipélago" />
+    </national>
+  </bouquet>

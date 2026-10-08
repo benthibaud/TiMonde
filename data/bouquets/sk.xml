@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="SK" name="Slovaquie" flag="🇸🇰" multilingual="false">
   <national>
-    <station name="Rádio Slovensko" url="https://icecast.stv.livebox.cz/slovensko_128.mp3" genre="RTVS - Správy &amp; Publicistika"/>
-    <station name="Rádio Regina" url="https://icecast.stv.livebox.cz/regina_ba_128.mp3" genre="RTVS - Regióny &amp; Tradícia"/>
-    <station name="Rádio Devín" url="https://icecast.stv.livebox.cz/devin_128.mp3" genre="RTVS - Klasická hudba &amp; Kultúra"/>
-    <station name="Rádio_FM" url="https://icecast.stv.livebox.cz/fm_128.mp3" genre="RTVS - Alternatívna hudba"/>
-    <station name="Rádio Expres" url="https://stream.bauermedia.sk/expres.mp3" genre="Baví nás baviť vás"/>
-    <station name="Rádio Vlna" url="https://stream.radiovlna.sk/vlna-hi.mp3" genre="Hity overené časom"/>
-    <station name="Fun Rádio Slovensko" url="https://stream.funradio.sk/fun128.mp3" genre="Hráme len hity"/>
-    <station name="Europa 2 Slovensko" url="https://stream.bauermedia.sk/europa2.mp3" genre="Nenormálna hudba"/>
-    <station name="Rádio Melody" url="https://stream.bauermedia.sk/melody.mp3" genre="Najkrajšie slovenské a svetové hity"/>
-    <station name="Rádio Rock Slovensko" url="https://stream.bauermedia.sk/radiorock.mp3" genre="Poctivý rock"/>
-  </national>
-</bouquet>
+    <station name="Rádio Slovensko" url="http://live.slovakradio.sk:8000/Slovensko_128.mp3" genre="RTVS - Správy &amp; Publicistika" />
+    <station name="Rádio Regina" url="http://icecast.stv.livebox.sk/regina-ke_128.mp3" genre="RTVS - Regióny &amp; Tradícia" />
+    <station name="Rádio Devín" url="http://icecast.stv.livebox.sk/devin_128.mp3" genre="RTVS - Klasická hudba &amp; Kultúra" />
+    <station name="Rádio_FM" url="http://stream.radiovlna.sk/vlna-hi.mp3" genre="RTVS - Alternatívna hudba" />
+    <station name="Rádio Expres" url="http://stream.expres.sk/128.mp3" genre="Baví nás baviť vás" />
+    <station name="Rádio Vlna" url="https://stream.radiovlna.sk/vlna-hi.mp3" genre="Hity overené časom" />
+    <station name="Fun Rádio Slovensko" url="https://stream.funradio.sk/fun128.mp3" genre="Hráme len hity" />
+    <station name="Europa 2 Slovensko" url="https://stream.bauermedia.sk/europa2.mp3" genre="Nenormálna hudba" />
+    <station name="Rádio Melody" url="https://stream.bauermedia.sk/melody-hi.mp3" genre="Najkrajšie slovenské a svetové hity" />
+    <station name="Rádio Rock Slovensko" url="https://stream.bauermedia.sk/rock-hi.mp3" genre="Poctivý rock" />
+    </national>
+  </bouquet>

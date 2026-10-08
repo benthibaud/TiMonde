@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="PA" name="Panama" flag="🇵🇦" multilingual="false">
   <national>
-    <station name="SERTV Radio Nacional" url="https://stream.sertv.gob.pa/radionacional" genre="La radio estatal panameña" />
-    <station name="Radio Panamá 94.5" url="https://stream.zeno.fm/2agt4w4k0heuv" genre="La voz de Panamá" />
-    <station name="Wao 92.3 FM" url="https://stream.zeno.fm/3agt4w4k0heuv" genre="Puro sabor urbano" />
-  </national>
-</bouquet>
+    <station name="SERTV Radio Nacional" url="https://a11.asurahosting.com:8760/radio.mp3" genre="La radio estatal panameña" />
+    <station name="Radio Panamá 94.5" url="http://dreamsiteradiocp.com:8082/stream" genre="La voz de Panamá" />
+    <station name="Wao 92.3 FM" url="https://streaming.radio.co/s56323fdac/listen" genre="Puro sabor urbano" />
+    </national>
+  </bouquet>

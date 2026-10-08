@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="DJ" name="Djibouti" flag="🇩🇯" multilingual="false">
   <national>
-    <station name="RTD Radio Djibouti" url="https://stream.zeno.fm/3igt4w4k0heuv" genre="Radiodiffusion Télévision de Djibouti" />
-  </national>
-</bouquet>
+    <station name="RTD Radio Djibouti" url="https://stream.laut.fm/radio-rtd?ref=radiode" genre="Radiodiffusion Télévision de Djibouti" />
+    </national>
+  </bouquet>

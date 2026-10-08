@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="CU" name="Cuba" flag="🇨🇺" multilingual="false">
   <national>
-    <station name="Radio Rebelde" url="https://icecast.teveo.cu/9e49c953-b6c8-47bc-bd42-45a79ee8255d" genre="ICRT - Al ritmo de la vida (Noticias &amp; Deporte)"/>
-    <station name="Radio Progreso" url="https://icecast.teveo.cu/49495b28-fc33-4fec-be1a-7bc9750d0325" genre="ICRT - La onda de la alegría (Música tradicional)"/>
-    <station name="Radio Taíno" url="https://icecast.teveo.cu/52d80d28-7010-449e-b9b5-68046b8562d9" genre="ICRT - La FM de Cuba (Jazz, Salsa &amp; Turismo)"/>
-    <station name="Radio Habana Cuba" url="https://icecast.teveo.cu/cf016df1-e374-42b7-8ceb-5e60897fecad" genre="ICRT - Emisora internacional"/>
-    <station name="Radio Enciclopedia" url="https://icecast.teveo.cu/7cbe7570-8dfd-4a1d-a3d8-e7c65365518b" genre="ICRT - Música instrumental &amp; Conocimiento"/>
-    <station name="Radio Ciudad de La Habana" url="https://icecast.teveo.cu/9ccfa10e-09f1-430c-b26a-9f5b3a4d95c1" genre="ICRT - La radio joven de la capital"/>
-  </national>
-</bouquet>
+    <station name="Radio Rebelde" url="https://securestreams7.autopo.st/?uri=https://icecast.teveo.cu/kHKL7tWd" genre="ICRT - Al ritmo de la vida (Noticias &amp; Deporte)" />
+    <station name="Radio Progreso" url="https://securestreams7.autopo.st/?uri=https://icecast.teveo.cu/XjfW7qWN" genre="ICRT - La onda de la alegría (Música tradicional)" />
+    <station name="Radio Taíno" url="http://nap.casthost.net:9194/stream.mp3" genre="ICRT - La FM de Cuba (Jazz, Salsa &amp; Turismo)" />
+    <station name="Radio Habana Cuba" url="http://nap.casthost.net:9194/stream.mp3" genre="ICRT - Emisora internacional" />
+    <station name="Radio Enciclopedia" url="https://icecast.teveo.cu/9Rnrbjzq" genre="ICRT - Música instrumental &amp; Conocimiento" />
+    <station name="Radio Ciudad de La Habana" url="http://nap.casthost.net:9194/stream.mp3" genre="ICRT - La radio joven de la capital" />
+    </national>
+  </bouquet>

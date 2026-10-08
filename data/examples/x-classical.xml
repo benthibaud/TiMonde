@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet name="Musique Classique &amp; Opéra" flag="🎻" category="Exemples">
+  <national>
+    <station name="France Musique - Classique Easy" url="https://icecast.radiofrance.fr/francemusiqueeasyclassique-hifi.aac" genre="Classique" />
+    <station name="France Musique - Classique Plus" url="https://icecast.radiofrance.fr/francemusiqueclassiqueplus-hifi.aac" genre="Classique" />
+    <station name="France Musique - Concerts Radio France" url="https://icecast.radiofrance.fr/francemusiqueconcertsradiofrance-hifi.aac" genre="Classique" />
+    <station name="France Musique - La Baroque" url="https://icecast.radiofrance.fr/francemusiquebaroque-hifi.aac" genre="Classique" />
+    <station name="France Musique - La Contemporaine" url="https://icecast.radiofrance.fr/francemusiquelacontemporaine-hifi.aac" genre="Classique" />
+    <station name="France Musique - Opera" url="https://icecast.radiofrance.fr/francemusiqueopera-hifi.aac" genre="Classique" />
+    <station name="France Musique - Piano Zen" url="https://icecast.radiofrance.fr/francemusiquepianozen-hifi.aac" genre="Classique" />
+    <station name="Ancient FM (Moyen Âge et Renaissance)" url="https://mediaserv73.live-streams.nl:18058/stream" genre="Classique" />
+    <station name="Classical 102" url="https://icepool.silvacast.com/CLASSICAL102.mp3" genre="Classique" />
+    <station name="Classical Public Radio (wdav.org)" url="https://live.amperwave.net/direct/agmedia28-khfmfmaac-ibc3" genre="Classique" />
+    <station name="Classic FM" url="https://media-ice.musicRadio.com/ClassicFMMP3.m3u" genre="Classique" />
+    <station name="Klassik Radio - Barock - Hamburg" url="https://stream.klassikradio.de/barock/mp3-192/" genre="Classique" />
+    <station name="Musiq'3 (RTBF)" url="http://radios.rtbf.be/musiq3-128.mp3" genre="Classique" />
+    <station name="Otto's Baroque Music" url="https://strmreg.1.fm/baroque_mobile_mp3" genre="Classique" />
+    <station name="Positively Baroque (organ)" url="http://www.positivelybaroque.com/320eu" genre="Classique" />
+    <station name="Radio Classica" url="http://16613.live.streamtheworld.com/CLASSICALSTREAM_SC" genre="Classique" />
+    <station name="Radio Mozart (Marseille)" url="https://stream.0nlineradio.com/mozart?ref=radiobrowser" genre="Classique" />
+    <station name="Radio Suisse Classique" url="https://stream.srg-ssr.ch/m/rsc_fr/aacp_96" genre="Classique" />
+    <station name="Radio Swiss Classic (de)" url="https://stream.srg-ssr.ch/m/rsc_de/aacp_96" genre="Classique" />
+    <station name="RAI FD5 Auditorium" url="https://icestreaming.rai.it/5.mp3" genre="Classique" />
+    <station name="Venice Classic Radio Italia" url="https://uk2.streamingpulse.com/ssl/vcr1" genre="Classique" />
+    <station name="WCPE" url="http://audio-mp3.ibiblio.org:8000/wcpe.mp3" genre="Classique" />
+    <station name="France Musique - Classique Love" url="https://icecast.radiofrance.fr/francemusiqueclassiquelove-hifi.aac" genre="Classique" />
+    <station name="CINEMIX" url="https://kathy.torontocast.com:1825/stream" genre="Classique" />
+    <station name="Cinemusic Radio" url="https://listen.radioking.com/radio/422/stream/62785" genre="Classique" />
+    <station name="Classical Jazz Radio (Toronto)" url="https://ec1.yesstreaming.net:2905/stream" genre="Classique" />
+    </national>
+  </bouquet>

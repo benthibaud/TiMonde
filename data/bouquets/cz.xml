@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="CZ" name="Tchéquie" flag="🇨🇿" multilingual="false">
   <national>
-    <station name="ČRo Radiožurnál" url="https://icecast4.play.cz/cro1-128.mp3" genre="Český rozhlas - Zprávy &amp; Publicistika"/>
-    <station name="ČRo Dvojka" url="https://icecast4.play.cz/cro2-128.mp3" genre="Český rozhlas - Rodinné rádio"/>
-    <station name="ČRo Vltava" url="https://icecast4.play.cz/cro3-128.mp3" genre="Český rozhlas - Klasická hudba &amp; Divadlo"/>
-    <station name="ČRo Plus" url="https://icecast4.play.cz/croplus-128.mp3" genre="Český rozhlas - Analýzy &amp; Názory"/>
-    <station name="ČRo Radio Wave" url="https://icecast4.play.cz/crowave-128.mp3" genre="Český rozhlas - Pro mladé &amp; Alternativa"/>
-    <station name="Evropa 2" url="https://icecast8.play.cz/evropa2-128.mp3" genre="MaXXimum muziky"/>
-    <station name="Frekvence 1" url="https://icecast8.play.cz/frekvence1-128.mp3" genre="Česká hudba &amp; Pohoda"/>
-    <station name="Rádio Impuls" url="https://icecast1.play.cz/impuls128.mp3" genre="Rááááádio Impuls"/>
-    <station name="Rock Rádio" url="https://icecast6.play.cz/rockradio128.mp3" genre="Rock je slušná muzika"/>
-    <station name="Rádio Beat" url="https://icecast4.play.cz/beat128.mp3" genre="Classic Rock"/>
-  </national>
-</bouquet>
+    <station name="ČRo Radiožurnál" url="http://icecast8.play.cz/cro1-128.mp3" genre="Český rozhlas - Zprávy &amp; Publicistika" />
+    <station name="ČRo Dvojka" url="https://icecast4.play.cz/cro2-128.mp3" genre="Český rozhlas - Rodinné rádio" />
+    <station name="ČRo Vltava" url="https://icecast4.play.cz/cro3-128.mp3" genre="Český rozhlas - Klasická hudba &amp; Divadlo" />
+    <station name="ČRo Plus" url="http://amp.cesnet.cz:8000/cro-plus-256.ogg" genre="Český rozhlas - Analýzy &amp; Názory" />
+    <station name="ČRo Radio Wave" url="http://amp.cesnet.cz:8000/cro-radio-wave-256.ogg" genre="Český rozhlas - Pro mladé &amp; Alternativa" />
+    <station name="Evropa 2" url="https://ice.actve.net/fm-evropa2-128" genre="MaXXimum muziky" />
+    <station name="Frekvence 1" url="http://ice.actve.net/fm-frekvence1-aac" genre="Česká hudba &amp; Pohoda" />
+    <station name="Rádio Impuls" url="http://rfe21.akacast.akamaistream.net/7/751/437779/v1/ibb.akacast.akamaistream.net/rfe21" genre="Rááááádio Impuls" />
+    <station name="Rock Rádio" url="http://ice.abradio.cz/sumava128.mp3" genre="Rock je slušná muzika" />
+    <station name="Rádio Beat" url="http://icecast2.play.cz/radiobeat128.mp3" genre="Classic Rock" />
+    </national>
+  </bouquet>

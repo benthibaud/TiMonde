@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet name="Oldies, Rétro &amp; Vintage" flag="📻" category="Exemples">
+  <national>
+    <station name="0 N - 50s" url="https://0n-50s.radionetz.de/0n-50s.mp3" genre="Oldies / Rétro" />
+    <station name="Allzic Radio Années 50" url="https://allzic29.ice.infomaniak.ch/allzic29.mp3" genre="Oldies / Rétro" />
+    <station name="Chansons oubliées ou presque" url="https://manager7.streamradio.fr:2580/stream?1776363954920" genre="Oldies / Rétro" />
+    <station name="Chante France 60's" url="https://chantefrance60s.ice.infomaniak.ch/chantefrance60s-96.aac" genre="Oldies / Rétro" />
+    <station name="Radio Montmartre" url="https://montmartre.ice.infomaniak.ch/montmartre.mp3" genre="Oldies / Rétro" />
+    <station name="1940's Radio Station - Gloucester" url="https://uk3.internet-radio.com/proxy/1940sradio/stream" genre="Oldies / Rétro" />
+    <station name="ABN - Old Time Radio" url="https://radio.macinmind.com/listen.m3u" genre="Oldies / Rétro" />
+    <station name="A.M. America’s Old Time Radio Comedy Channel" url="https://hemnos.cdnstream.com/1666_32" genre="Oldies / Rétro" />
+    <station name="Arctic Outpost" url="https://radio.streemlion.com:3715/stream" genre="Oldies / Rétro" />
+    <station name="Audio Noir Radio (Chicago)" url="http://streams.audionoir.com:8000/noir/;" genre="Oldies / Rétro" />
+    <station name="Cladrite Radio (New-York)" url="https://streaming.live365.com/a43564" genre="Oldies / Rétro" />
+    <station name="Classic Old Time Radio" url="https://streaming04.liveboxstream.uk/proxy/roksta18/stream" genre="Oldies / Rétro" />
+    <station name="Conyers Georgia Old Time Radio - Conyers, GA" url="https://s8.yesstreaming.net:17011/stream" genre="Oldies / Rétro" />
+    <station name="Hank's Old Time Radio" url="http://s1.myradiostream.com:4962/;stream/1" genre="Oldies / Rétro" />
+    <station name="KBRD 680 AM" url="https://onlineradiobox.com/json/us/kbrd/play?platform=web" genre="Oldies / Rétro" />
+    <station name="Megaton Cafe Radio" url="https://onlineradiobox.com/json/us/megatoncafe/play?platform=web" genre="Oldies / Rétro" />
+    <station name="Radio Dismuke (Fort Worth TX)" url="http://74.208.71.58:8087/;;" genre="Oldies / Rétro" />
+    <station name="Sci-Fi OTR Internet Radio - ​Livonia, MI" url="https://s1.voscast.com:8653/stream" genre="Oldies / Rétro" />
+    <station name="The UK 1940s Radio Station - ​London" url="http://solid2.streamupsolutions.com:24929/stream/;" genre="Oldies / Rétro" />
+    <station name="OTR Amazing Tales" url="https://riradtke.radioca.st/;" genre="Oldies / Rétro" />
+    <station name="OTR American Legend" url="https://server10.reliastream.com/proxy/starcrea?mp=/stream" genre="Oldies / Rétro" />
+    <station name="OTR Crimetime" url="https://starcrea.radioca.st/;" genre="Oldies / Rétro" />
+    <station name="OTR Now" url="https://riradt00.radioca.st/;" genre="Oldies / Rétro" />
+    <station name="WOTR Radio - Crime Time Radio USA" url="https://wotr-live-a.edge.audiocdn.com/1945_128.mp3" genre="Oldies / Rétro" />
+    <station name="WOTR Radio - Nightmare Radio USA" url="https://wotr-live-a.edge.audiocdn.com/2703_128.mp3" genre="Oldies / Rétro" />
+    <station name="WOTR Radio - Old Time Radio USA" url="https://wotr-live-a.edge.audiocdn.com/1943_128.mp3" genre="Oldies / Rétro" />
+    <station name="WOTR Radio - Suspense Radio USA" url="https://wotr-live-a.edge.audiocdn.com/1944_128.mp3" genre="Oldies / Rétro" />
+    <station name="Vintage ROKiT Radio - ​1940s Radio" url="https://streaming06.liveboxstream.uk/proxy/roksta13/stream" genre="Oldies / Rétro" />
+    <station name="Vintage ROKiT Radio - ​American Classics" url="https://streaming05.liveboxstream.uk/proxy/jondre01/stream" genre="Oldies / Rétro" />
+    <station name="Vintage ROKiT Radio - ​American Comedy" url="https://streaming04.liveboxstream.uk/proxy/roksta16/stream" genre="Oldies / Rétro" />
+    <station name="Vintage ROKiT Radio - ​British Comedy 1" url="https://streaming04.liveboxstream.uk/proxy/roksta14/stream" genre="Oldies / Rétro" />
+    <station name="Vintage ROKiT Radio - ​British Comedy 2" url="https://streaming05.liveboxstream.uk/proxy/jondreas/stream" genre="Oldies / Rétro" />
+    <station name="Vintage ROKiT Radio - Comedy Gold Radio" url="https://streaming06.liveboxstream.uk/proxy/rokstar8/stream" genre="Oldies / Rétro" />
+    <station name="Vintage ROKiT Radio - Crime Radio Extra" url="https://streaming05.liveboxstream.uk/proxy/jondre00/stream" genre="Oldies / Rétro" />
+    <station name="Vintage ROKiT Radio - Crime and Suspense" url="https://streaming04.liveboxstream.uk/proxy/roksta17/stream" genre="Oldies / Rétro" />
+    <station name="Vintage ROKiT Radio - Drama Radio" url="https://streaming06.liveboxstream.uk/proxy/roksta10/stream" genre="Oldies / Rétro" />
+    <station name="Vintage ROKiT Radio - Mystery Radio" url="https://streaming06.liveboxstream.uk/proxy/rokstar9/stream" genre="Oldies / Rétro" />
+    <station name="Vintage ROKiT Radio - Nostalgia Lane Radio" url="https://streaming06.liveboxstream.uk/proxy/roksta11/stream" genre="Oldies / Rétro" />
+    <station name="Vintage ROKiT Radio - Old Time Gold" url="https://streaming04.liveboxstream.uk/proxy/roksta18/stream" genre="Oldies / Rétro" />
+    <station name="Vintage ROKiT Radio - Saturn X Radio" url="https://streaming05.liveboxstream.uk/proxy/jondre03/stream" genre="Oldies / Rétro" />
+    <station name="Vintage ROKiT Radio - Science Fiction" url="https://streaming05.liveboxstream.uk/proxy/roksta12/stream" genre="Oldies / Rétro" />
+    <station name="Wild West OTR Channel" url="https://kea.cdnstream.com/1838_32" genre="Oldies / Rétro" />
+    </national>
+  </bouquet>

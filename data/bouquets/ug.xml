@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="UG" name="Ouganda" flag="🇺🇬" multilingual="false">
   <national>
-    <station name="UBC Radio Uganda" url="https://stream.zeno.fm/3fgt4w4k0heuv" genre="Uganda Broadcasting Corporation" />
-    <station name="Capital FM Kampala 91.3" url="https://stream.zeno.fm/4fgt4w4k0heuv" genre="The Home of Great Music" />
-    <station name="KFM Uganda 93.3" url="https://stream.zeno.fm/5fgt4w4k0heuv" genre="Better Information, Best Music" />
-  </national>
-</bouquet>
+    <station name="UBC Radio Uganda" url="https://www.radioking.com/play/ubcradio3" genre="Uganda Broadcasting Corporation" />
+    <station name="Capital FM Kampala 91.3" url="http://5229.cloudrad.io:8316/;" genre="The Home of Great Music" />
+    <station name="KFM Uganda 93.3" url="https://stream.zenolive.com/wmycbfbq0y5tv" genre="Better Information, Best Music" />
+    </national>
+  </bouquet>

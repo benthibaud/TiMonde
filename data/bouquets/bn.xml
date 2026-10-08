@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="BN" name="Brunei" flag="🇧🇳" multilingual="false">
   <national>
-    <station name="RTB Nasional FM" url="https://stream.zeno.fm/9kgt4w4k0heuv" genre="Radio Televisyen Brunei (Melayu)" />
-    <station name="RTB Pilihan FM (English)" url="https://stream.zeno.fm/1lgt4w4k0heuv" genre="Simply the Best for Everyone" />
-  </national>
-</bouquet>
+    <station name="RTB Nasional FM" url="https://sp001.servidoresph.com/8086/stream" genre="Radio Televisyen Brunei (Melayu)" />
+    <station name="RTB Pilihan FM (English)" url="https://sp001.servidoresph.com/8086/stream" genre="Simply the Best for Everyone" />
+    </national>
+  </bouquet>

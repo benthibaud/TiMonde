@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="PL" name="Pologne" flag="🇵🇱" multilingual="false">
   <national>
-    <station name="Polskie Radio Jedynka" url="https://streamer.polskieradio.pl/stream/jedynka" genre="PR - Informacja &amp; Publicystyka"/>
-    <station name="Polskie Radio Dwójka" url="https://streamer.polskieradio.pl/stream/dwojka" genre="PR - Muzyka klasyczna &amp; Literatura"/>
-    <station name="Polskie Radio Trójka" url="https://streamer.polskieradio.pl/stream/trojka" genre="PR - Rock &amp; Muzyka autorska"/>
-    <station name="Polskie Radio Czwórka" url="https://streamer.polskieradio.pl/stream/czworka" genre="PR - Młodzież &amp; Nowe brzmienia"/>
-    <station name="Polskie Radio 24" url="https://streamer.polskieradio.pl/stream/pr24" genre="PR - Wiadomości 24h"/>
-    <station name="RMF FM" url="https://rs101-krk.rmfstream.pl/RMF_FM" genre="Najlepsza Muzyka w Polsce"/>
-    <station name="Radio ZET" url="https://zt01.cdn.eurozet.pl/zet-net.mp3" genre="Siła Muzyki"/>
-    <station name="Radio TOK FM" url="https://stream.open.fm/54" genre="Pierwsze Radio Informacyjne"/>
-    <station name="Antyradio" url="https://an01.cdn.eurozet.pl/ant-net.mp3" genre="Najlepszy Rock na Świecie"/>
-    <station name="Radio VOX FM" url="https://waw01.ic.smcdn.pl/2000-1.mp3" genre="W Rytmie Hitów"/>
-  </national>
-</bouquet>
+    <station name="Polskie Radio Jedynka" url="http://195.150.20.8/PPRZEBOJE" genre="PR - Informacja &amp; Publicystyka" />
+    <station name="Polskie Radio Dwójka" url="http://195.150.20.8/PPRZEBOJE" genre="PR - Muzyka klasyczna &amp; Literatura" />
+    <station name="Polskie Radio Trójka" url="https://stream13.polskieradio.pl/pr3/pr3.sdp/chunklist_w476233979.m3u8" genre="PR - Rock &amp; Muzyka autorska" />
+    <station name="Polskie Radio Czwórka" url="https://stream14.polskieradio.pl/pr4/pr4.sdp/playlist.m3u8" genre="PR - Młodzież &amp; Nowe brzmienia" />
+    <station name="Polskie Radio 24" url="https://stream15.polskieradio.pl/pr24/pr24.sdp/playlist.m3u8" genre="PR - Wiadomości 24h" />
+    <station name="RMF FM" url="http://195.150.20.242:8000/rmf_fm" genre="Najlepsza Muzyka w Polsce" />
+    <station name="Radio ZET" url="https://zt01.cdn.eurozet.pl/zet-net.mp3" genre="Siła Muzyki" />
+    <station name="Radio TOK FM" url="https://radiostream.pl/tuba10-1.mp3#TOK_FM" genre="Pierwsze Radio Informacyjne" />
+    <station name="Antyradio" url="https://n-4-2.dcs.redcdn.pl/sc/o2/Eurozet/live/antyradio.livx?audio=5" genre="Najlepszy Rock na Świecie" />
+    <station name="Radio VOX FM" url="http://ic2.smcdn.pl/3990-1.mp3" genre="W Rytmie Hitów" />
+    </national>
+  </bouquet>

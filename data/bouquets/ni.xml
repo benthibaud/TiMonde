@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="NI" name="Nicaragua" flag="🇳🇮" multilingual="false">
   <national>
-    <station name="Radio Nicaragua" url="https://stream.radionicaraqua.com/live" genre="La voz oficial del pueblo" />
-    <station name="Tu Nueva Radio Ya" url="https://stream.nuevaradioya.com.ni/live" genre="La número uno de Nicaragua" />
-    <station name="Radio Corporación" url="https://stream.radiocorporacion.com/live" genre="La voz que se escucha" />
-  </national>
-</bouquet>
+    <station name="Radio Nicaragua" url="https://stream.zenolive.com/axr92qawesmtv" genre="La voz oficial del pueblo" />
+    <station name="Tu Nueva Radio Ya" url="https://streaming.exclusive.radio/er/jethrotull/icecast.audio" genre="La número uno de Nicaragua" />
+    <station name="Radio Corporación" url="https://stream.zenolive.com/axr92qawesmtv" genre="La voz que se escucha" />
+    </national>
+  </bouquet>

@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="NC" name="Nouvelle-Calédonie" flag="🇳🇨" multilingual="false">
   <national>
-    <station name="Nouvelle-Calédonie La 1ère" url="https://stream.zeno.fm/1ngt4w4k0heuv" genre="France Télévisions - Le son du Pacifique" />
-    <station name="Radio Rythme Bleu (RRB)" url="https://stream.zeno.fm/2ngt4w4k0heuv" genre="L'actualité calédonienne &amp; musique" />
-    <station name="Radio Djiido" url="https://stream.zeno.fm/3ngt4w4k0heuv" genre="La voix de la culture kanak" />
-  </national>
-</bouquet>
+    <station name="Nouvelle-Calédonie La 1ère" url="https://nouvelle-caledonie.ice.infomaniak.ch/nouvelle-caledonie-128.mp3" genre="France Télévisions - Le son du Pacifique" />
+    <station name="Radio Rythme Bleu (RRB)" url="https://webradio.lagoon.nc/rrb" genre="L'actualité calédonienne &amp; musique" />
+    <station name="Radio Djiido" url="http://radiodjiido.nc:8002/" genre="La voix de la culture kanak" />
+    </national>
+  </bouquet>

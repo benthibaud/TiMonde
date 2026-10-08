@@ -2,5 +2,5 @@
 <bouquet country="TJ" name="Tadjikistan" flag="🇹🇯" multilingual="false">
   <national>
     <station name="Radio Tojikiston" url="https://stream.zeno.fm/3mgt4w4k0heuv" genre="Радиои Тоҷикистон (Dushanbe)" />
-  </national>
-</bouquet>
+    </national>
+  </bouquet>

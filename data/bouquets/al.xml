@@ -3,8 +3,8 @@
   <national>
     <station name="Radio Tirana 1" url="https://stream.rtsh.al/radiotirana1" genre="RTSH - Informacion &amp; Shoqëri" />
     <station name="Radio Tirana 2" url="https://stream.rtsh.al/radiotirana2" genre="RTSH - Muzikë &amp; Rini" />
-    <station name="Radio Tirana Klasik" url="https://stream.rtsh.al/radiotiranaklasik" genre="RTSH - Muzikë Klasike" />
-    <station name="Top Albania Radio" url="https://stream.topalbaniaradio.com:8443/TAR" genre="Radio më e dëgjuar në Shqipëri" />
-    <station name="Club FM" url="https://stream.clubfm.al:8000/clubfm" genre="Hitet më të mira" />
-  </national>
-</bouquet>
+    <station name="Radio Tirana Klasik" url="https://cp1.sednastream.com/proxy/radioshqip?mp=/stream" genre="RTSH - Muzikë Klasike" />
+    <station name="Top Albania Radio" url="https://live.top-media.al/tar" genre="Radio më e dëgjuar në Shqipëri" />
+    <station name="Club FM" url="https://cp1.sednastream.com/proxy/clubfm?mp=/stream" genre="Hitet më të mira" />
+    </national>
+  </bouquet>

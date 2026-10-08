@@ -1,37 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="CH" name="Suisse" flag="🇨🇭" multilingual="true">
   <community id="FR" name="Suisse romande (Français)">
     <national>
-      <station name="RTS La 1ère" url="https://stream.srg-ssr.ch/m/la-1ere/mp3_128" genre="SSR - Info &amp; Société"/>
-      <station name="RTS Espace 2" url="https://stream.srg-ssr.ch/m/espace-2/mp3_128" genre="SSR - Culture &amp; Classique"/>
-      <station name="RTS Couleur 3" url="https://stream.srg-ssr.ch/m/couleur3/mp3_128" genre="SSR - Pop, Rock &amp; Humour"/>
-      <station name="RTS Option Musique" url="https://stream.srg-ssr.ch/m/option-musique/mp3_128" genre="SSR - Chanson francophone"/>
-      <station name="Rouge FM" url="https://rouge.ice.infomaniak.ch/rouge-high.mp3" genre="Pop &amp; Hits romands"/>
-      <station name="One FM" url="https://onefm.ice.infomaniak.ch/onefm-high.mp3" genre="Genève &amp; Vaud"/>
-      <station name="LFM" url="https://lfm.ice.infomaniak.ch/lfm-high.mp3" genre="Adulte contemporain"/>
-      <station name="Radio Lac" url="https://radiolac.ice.infomaniak.ch/radiolac-high.mp3" genre="Actualité &amp; Débats"/>
-      <station name="Radio Chablais" url="https://radiochablais.ice.infomaniak.ch/radiochablais-high.mp3" genre="Régionale Chablais"/>
-      <station name="RFJ" url="https://rfj.ice.infomaniak.ch/rfj-high.mp3" genre="Jura"/>
-      <station name="GRRIF" url="https://grrif.ice.infomaniak.ch/grrif-high.mp3" genre="Alternative &amp; Décalée"/>
-    </national>
-  </community>
+      <station name="RTS La 1ère" url="https://stream.srg-ssr.ch/m/la-1ere/mp3_128" genre="SSR - Info &amp; Société" />
+      <station name="RTS Espace 2" url="https://stream.srg-ssr.ch/m/espace-2/mp3_128" genre="SSR - Culture &amp; Classique" />
+      <station name="RTS Couleur 3" url="https://stream.srg-ssr.ch/m/couleur3/mp3_128" genre="SSR - Pop, Rock &amp; Humour" />
+      <station name="RTS Option Musique" url="https://stream.srg-ssr.ch/m/option-musique/mp3_128" genre="SSR - Chanson francophone" />
+      <station name="Rouge FM" url="https://broadcast.infomaniak.ch/rougefm-high.mp3" genre="Pop &amp; Hits romands" />
+      <station name="One FM" url="https://onefm.ice.infomaniak.ch/onefm-high.mp3" genre="Genève &amp; Vaud" />
+      <station name="LFM" url="http://lausannefm.ice.infomaniak.ch/lausannefm-high.mp3" genre="Adulte contemporain" />
+      <station name="Radio Lac" url="https://radiolac.ice.infomaniak.ch/radiolac-high.mp3" genre="Actualité &amp; Débats" />
+      <station name="Radio Chablais" url="https://radiochablais.ice.infomaniak.ch/radiochablais-high.mp3" genre="Régionale Chablais" />
+      <station name="RFJ" url="https://rfj.ice.infomaniak.ch/rfj-high.mp3" genre="Jura" />
+      <station name="GRRIF" url="https://grrif.ice.infomaniak.ch/grrif-high.mp3" genre="Alternative &amp; Décalée" />
+      </national>
+    </community>
   <community id="DE" name="Suisse alémanique (Allemand)">
     <national>
-      <station name="SRF 1" url="https://stream.srg-ssr.ch/m/srf-1/mp3_128" genre="SRG - Information &amp; Kultur"/>
-      <station name="SRF 2 Kultur" url="https://stream.srg-ssr.ch/m/srf-2/mp3_128" genre="SRG - Klassik &amp; Wissen"/>
-      <station name="SRF 3" url="https://stream.srg-ssr.ch/m/srf-3/mp3_128" genre="SRG - Pop &amp; Rock"/>
-      <station name="SRF 4 News" url="https://stream.srg-ssr.ch/m/srf-4/mp3_128" genre="SRG - Nachrichten"/>
-      <station name="Radio 24" url="https://radio24.ice.infomaniak.ch/radio24-high.mp3" genre="Zürich Hits"/>
-      <station name="Energy Zürich" url="https://energyzuerich.ice.infomaniak.ch/energyzuerich-high.mp3" genre="Energy Pop"/>
-      <station name="Radio Pilatus" url="https://radiopilatus.ice.infomaniak.ch/radiopilatus-high.mp3" genre="Luzern &amp; Zentralschweiz"/>
-    </national>
-  </community>
+      <station name="SRF 1" url="http://stream.srg-ssr.ch/m/drs1/mp3_128" genre="SRG - Information &amp; Kultur" />
+      <station name="SRF 2 Kultur" url="http://stream.srg-ssr.ch/srgssr/srf2/aac/96" genre="SRG - Klassik &amp; Wissen" />
+      <station name="SRF 3" url="http://stream.srg-ssr.ch/m/drs3/mp3_128" genre="SRG - Pop &amp; Rock" />
+      <station name="SRF 4 News" url="http://stream.srg-ssr.ch/m/drs4news/mp3_128" genre="SRG - Nachrichten" />
+      <station name="Radio 24" url="https://stream.streambase.ch/radio24/mp3-192/direct/" genre="Zürich Hits" />
+      <station name="Energy Zürich" url="https://energyzuerich.ice.infomaniak.ch/energyzuerich-high.mp3" genre="Energy Pop" />
+      <station name="Radio Pilatus" url="https://stream.streambase.ch/radiopilatus/mp3-192/chmedia/" genre="Luzern &amp; Zentralschweiz" />
+      </national>
+    </community>
   <community id="IT" name="Tessin (Italien)">
     <national>
-      <station name="RSI Rete Uno" url="https://stream.srg-ssr.ch/m/rete-uno/mp3_128" genre="SSR - Attualità &amp; Musica"/>
-      <station name="RSI Rete Due" url="https://stream.srg-ssr.ch/m/rete-due/mp3_128" genre="SSR - Cultura"/>
-      <station name="RSI Rete Tre" url="https://stream.srg-ssr.ch/m/rete-tre/mp3_128" genre="SSR - Giovani &amp; Rock"/>
-      <station name="Radio 3i" url="https://radio3i.ice.infomaniak.ch/radio3i-high.mp3" genre="Ticino Informazione"/>
-    </national>
-  </community>
-</bouquet>
+      <station name="RSI Rete Uno" url="http://stream.srg-ssr.ch/m/reteuno/mp3_128" genre="SSR - Attualità &amp; Musica" />
+      <station name="RSI Rete Due" url="http://stream.srg-ssr.ch/m/retedue/mp3_128" genre="SSR - Cultura" />
+      <station name="RSI Rete Tre" url="http://stream.srg-ssr.ch/m/retetre/mp3_128" genre="SSR - Giovani &amp; Rock" />
+      <station name="Radio 3i" url="http://stream.srg-ssr.ch/m/rsj/mp3_128" genre="Ticino Informazione" />
+      </national>
+    </community>
+  </bouquet>

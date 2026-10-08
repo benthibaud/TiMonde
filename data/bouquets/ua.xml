@@ -6,5 +6,5 @@
     <station name="Radio Kultura" url="https://radio.ukr.radio/ur3-mp3" genre="Суспільне - Театр, класика та література" />
     <station name="Radio ROKS" url="https://online.radioroks.ua/RadioROKS" genre="Рок. Тільки рок!" />
     <station name="Hit FM Ukraine" url="https://online.hitfm.ua/HitFM" genre="Тільки хіти" />
-  </national>
-</bouquet>
+    </national>
+  </bouquet>

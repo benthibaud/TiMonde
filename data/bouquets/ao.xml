@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="AO" name="Angola" flag="🇦🇴" multilingual="false">
   <national>
-    <station name="Rádio Nacional de Angola (Canal A)" url="https://stream.zeno.fm/2ggt4w4k0heuv" genre="RNA - A voz de Angola em Luanda" />
-    <station name="Rádio Luanda 99.9" url="https://stream.zeno.fm/3ggt4w4k0heuv" genre="Kizomba, Semba &amp; Informação urbana" />
-    <station name="Rádio Mais Angola" url="https://stream.zeno.fm/4ggt4w4k0heuv" genre="A rádio mais ouvida" />
-  </national>
-</bouquet>
+    <station name="Rádio Nacional de Angola (Canal A)" url="http://stream-284.surfernetwork.com/gsndh1xvczetv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJnc25kaDF4dmN6ZXR2IiwiaG9zdCI6InN0cmVhbS0yODQuc3VyZmVybmV0d29yay5jb20iLCJ0bSI6ZmFsc2UsInJ0dGwiOjUsImp0aSI6IkluU2JuT2psUnJLNVJMNHFVOUVvZXciLCJpYXQiOjE3OTA4NjQ5NTYsImV4cCI6MTc5MDg2NTAxNn0.JNpmtOS59rnf2QI1tEpXYZTBRKZJFCdU_xOUHJGP9EY" genre="RNA - A voz de Angola em Luanda" />
+    <station name="Rádio Luanda 99.9" url="https://paineldj5.com.br:20089/stream" genre="Kizomba, Semba &amp; Informação urbana" />
+    <station name="Rádio Mais Angola" url="http://stream-284.surfernetwork.com/gsndh1xvczetv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJnc25kaDF4dmN6ZXR2IiwiaG9zdCI6InN0cmVhbS0yODQuc3VyZmVybmV0d29yay5jb20iLCJ0bSI6ZmFsc2UsInJ0dGwiOjUsImp0aSI6IkluU2JuT2psUnJLNVJMNHFVOUVvZXciLCJpYXQiOjE3OTA4NjQ5NTYsImV4cCI6MTc5MDg2NTAxNn0.JNpmtOS59rnf2QI1tEpXYZTBRKZJFCdU_xOUHJGP9EY" genre="A rádio mais ouvida" />
+    </national>
+  </bouquet>

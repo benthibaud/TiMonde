@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet name="Radios de Russie (Русский)" flag="🪆" category="Exemples" country="RU">
+  <national>
+    <station name="101.ru: Russian Folk" url="https://srv01.gpmradio.ru/stream/pro/aac/64/40" genre="Généraliste / Variété" />
+    <station name="101.ru: USSR 50-70" url="https://srv01.gpmradio.ru/stream/pro/aac/64/47" genre="Généraliste / Variété" />
+    <station name="Авторадио / Avtoradio (Autoradio)" url="https://cast.mediaonline.net.ua/avtoradio" genre="Généraliste / Variété" />
+    <station name="Наше Радио - Москва / Nashe Radio" url="https://nashe1.hostingradio.ru/nashe-128.mp3" genre="Généraliste / Variété" />
+    <station name="Радио Борнео/ Radio Borneo (Voronezh-Russia)" url="https://live.borneo.ru:8888/128" genre="Généraliste / Variété" />
+    <station name="Радио Шансон / Radio Shanson" url="https://chanson.hostingradio.ru:8041/chanson128.mp3" genre="Généraliste / Variété" />
+    <station name="Радио Маяк / Radio Mayak" url="https://icecast-vgtrk.cdnvideo.ru/mayakfm_mp3_128kbps" genre="Généraliste / Variété" />
+    <station name="Radio Pik (Riga-Latvia)" url="http://stream.radiopik.pl:9004/" genre="Généraliste / Variété" />
+    <station name="Радио Свобода / Radio Svoboda USA" url="https://stream.radiojar.com/hcrb063nn3quv" genre="Généraliste / Variété" />
+    <station name="Русское Радио / Russkoe Radio (Moscow)" url="https://rusradio.hostingradio.ru/rusradio96.aacp" genre="Généraliste / Variété" />
+    <station name="Русское Радио / Russkoe Radio (Tallinn-Estonia)" url="https://rr-detskijkanal.hostingradio.ru/detskijkanal96.aacp" genre="Généraliste / Variété" />
+    <station name="Русские Песни / Russian Songs" url="http://listen.rusongs.ru/ru-mp3-128" genre="Généraliste / Variété" />
+    <station name="Вести ФМ / Vesti FM" url="https://icecast-vgtrk.cdnvideo.ru/vestifm_mp3_128kbps" genre="Généraliste / Variété" />
+    </national>
+  </bouquet>

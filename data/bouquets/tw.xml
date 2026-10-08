@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="TW" name="Taïwan" flag="🇹🇼" multilingual="false">
   <national>
-    <station name="Radio Taiwan International (Français)" url="https://stream.rti.org.tw/live/fr.mp3" genre="RTI - 中央廣播電臺 (Émissions en français)"/>
-    <station name="Radio Taiwan International (Mandarin)" url="https://stream.rti.org.tw/live/chi.mp3" genre="RTI - 華語新聞與臺灣文化"/>
-    <station name="ICRT (International Community Radio Taipei)" url="https://stream.zeno.fm/3agt4w4k0heuv" genre="Taiwan's Only English Station / Pop Hits"/>
-    <station name="BCC i radio (FM 96.3)" url="https://stream.zeno.fm/4agt4w4k0heuv" genre="中廣音樂網 - 華語熱門流行"/>
-    <station name="BCC News (FM 103.3)" url="https://stream.zeno.fm/5agt4w4k0heuv" genre="中廣新聞網 - 即時政治與經濟"/>
-    <station name="Hit FM Taiwan" url="https://stream.zeno.fm/6agt4w4k0heuv" genre="只想聽音樂 Hit Fm 聯播網"/>
-    <station name="Bravo FM 91.3 Taipei" url="https://stream.zeno.fm/7agt4w4k0heuv" genre="古典音樂與都會爵士"/>
-  </national>
-</bouquet>
+    <station name="Radio Taiwan International (Français)" url="https://n10.rcs.revma.com/h4ta80hbqwuvv" genre="RTI - 中央廣播電臺 (Émissions en français)" />
+    <station name="Radio Taiwan International (Mandarin)" url="https://n10.rcs.revma.com/h4ta80hbqwuvv" genre="RTI - 華語新聞與臺灣文化" />
+    <station name="ICRT (International Community Radio Taipei)" url="https://n27a-eu.rcs.revma.com/nkdfurztxp3vv" genre="Taiwan's Only English Station / Pop Hits" />
+    <station name="BCC i radio (FM 96.3)" url="http://s3.voscast.com:10038/stream/1/" genre="中廣音樂網 - 華語熱門流行" />
+    <station name="BCC News (FM 103.3)" url="https://live.amperwave.net/manifest/foxnewsradio-foxnewsradioaac-imc" genre="中廣新聞網 - 即時政治與經濟" />
+    <station name="Hit FM Taiwan" url="http://202.39.43.67:1935/live/RA000036/chunklist.m3u8" genre="只想聽音樂 Hit Fm 聯播網" />
+    <station name="Bravo FM 91.3 Taipei" url="http://c5.hostingcentar.com:8059/stream" genre="古典音樂與都會爵士" />
+    </national>
+  </bouquet>

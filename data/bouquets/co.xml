@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="CO" name="Colombie" flag="🇨🇴" multilingual="false">
   <national>
-    <station name="Radio Nacional de Colombia" url="https://stream.rtvc.gov.co/radionacional_aac" genre="RTVC - Paz, Tradición &amp; Cultura"/>
-    <station name="Radiónica" url="https://stream.rtvc.gov.co/radionica_aac" genre="RTVC - Rock &amp; Música alternativa"/>
-    <station name="Caracol Radio" url="https://playerservices.streamtheworld.com/api/livestream-redirect/CARACOL_RADIOAAC.aac" genre="Más compañía en Colombia"/>
-    <station name="W Radio Colombia" url="https://playerservices.streamtheworld.com/api/livestream-redirect/WRADIO_COLOMBIA.mp3" genre="Noticias &amp; Opinión con Julio Sánchez"/>
-    <station name="Blu Radio" url="https://stream.zeno.fm/8x93cfq5498uv" genre="La nueva alternativa de la radio"/>
-    <station name="La FM Colombia" url="https://stream.rcn.com.co/lafm.mp3" genre="Noticias, música y conversación"/>
-    <station name="Olímpica Stereo" url="https://stream.zeno.fm/q1gcr9s6awzuv" genre="Se metió! Salsa &amp; Tropical"/>
-    <station name="Radio Uno Colombia" url="https://stream.rcn.com.co/radiouno.mp3" genre="La de uno"/>
-    <station name="Tropicana Colombia" url="https://playerservices.streamtheworld.com/api/livestream-redirect/TROPICANA_BOGOTA.mp3" genre="La más bacana"/>
-    <station name="Vibra Bogotá" url="https://stream.vibra.fm/vibra.mp3" genre="Pop latino &amp; Recuerdos"/>
-  </national>
-</bouquet>
+    <station name="Radio Nacional de Colombia" url="http://shoutcast.rtvc.gov.co:8000/;" genre="RTVC - Paz, Tradición &amp; Cultura" />
+    <station name="Radiónica" url="http://shoutcast.rtvc.gov.co:8010/;" genre="RTVC - Rock &amp; Música alternativa" />
+    <station name="Caracol Radio" url="https://playerservices.streamtheworld.com/api/livestream-redirect/CARACOL_RADIOAAC.aac" genre="Más compañía en Colombia" />
+    <station name="W Radio Colombia" url="http://26653.live.streamtheworld.com/WRADIO_SC" genre="Noticias &amp; Opinión con Julio Sánchez" />
+    <station name="Blu Radio" url="http://24503.live.streamtheworld.com/BLURADIO_SC" genre="La nueva alternativa de la radio" />
+    <station name="La FM Colombia" url="https://mdstrm.com/audio/632c9b23d1dcd7027f32f7fe/live.m3u8" genre="Noticias, música y conversación" />
+    <station name="Olímpica Stereo" url="https://playerservices.streamtheworld.com/api/livestream-redirect/OLP_SINCELEJOAAC.aac?1715700010" genre="Se metió! Salsa &amp; Tropical" />
+    <station name="Radio Uno Colombia" url="https://us-b4-p-e-qg12-audio.cdn.mdstrm.com/live-audio-aw/632ce1416197360894629aa6" genre="La de uno" />
+    <station name="Tropicana Colombia" url="http://24233.live.streamtheworld.com/TROPICANA_SC" genre="La más bacana" />
+    <station name="Vibra Bogotá" url="https://playerservices.streamtheworld.com/api/livestream-redirect/BESAME_BOGOTAAAC_SC" genre="Pop latino &amp; Recuerdos" />
+    </national>
+  </bouquet>

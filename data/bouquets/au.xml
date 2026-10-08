@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="AU" name="Australie" flag="🇦🇺" multilingual="false">
   <national>
-    <station name="ABC NewsRadio" url="https://live-radio01.mediahubaustralia.com/PBW/mp3" genre="ABC - 24/7 National News &amp; Parliament"/>
-    <station name="triple j" url="https://live-radio01.mediahubaustralia.com/2TJJ/mp3" genre="ABC - We Love Australian Music / Alternative"/>
-    <station name="ABC Radio National (RN)" url="https://live-radio01.mediahubaustralia.com/2RN/mp3" genre="ABC - Ideas, Culture &amp; Analysis"/>
-    <station name="ABC Classic" url="https://live-radio01.mediahubaustralia.com/2ABCFM/mp3" genre="ABC - Australia's Classical Music Station"/>
-    <station name="Double J" url="https://live-radio01.mediahubaustralia.com/DJW/mp3" genre="ABC - Closer to the Music / 90s &amp; Indie"/>
-    <station name="ABC Jazz" url="https://live-radio01.mediahubaustralia.com/JAZW/mp3" genre="ABC - All That Jazz"/>
-    <station name="Triple M Sydney 104.9" url="https://stream.audioxi.com/TRIPLEM" genre="Rock, Sport &amp; Comedy"/>
-    <station name="Nova 96.9 Sydney" url="https://stream.novaentertainment.com.au/nova969" genre="Fresh Hits for Sydney"/>
-    <station name="Fox FM Melbourne" url="https://stream.audioxi.com/FOXFM" genre="Melbourne's Biggest Hits"/>
-    <station name="2GB 873 AM Sydney" url="https://streaming.mytuner-radio.com/2gb" genre="Sydney's Number 1 Talk Radio"/>
-  </national>
-</bouquet>
+    <station name="ABC NewsRadio" url="http://abc.streamguys1.com/live/newsradio/icecast.audio" genre="ABC - 24/7 National News &amp; Parliament" />
+    <station name="triple j" url="http://abc.streamguys1.com/live/triplejnsw/icecast.audio" genre="ABC - We Love Australian Music / Alternative" />
+    <station name="ABC Radio National (RN)" url="http://abc.streamguys1.com/live/rnnsw/icecast.audio" genre="ABC - Ideas, Culture &amp; Analysis" />
+    <station name="ABC Classic" url="https://mediaserviceslive.akamaized.net/hls/live/2038317/classic2/index.m3u8" genre="ABC - Australia's Classical Music Station" />
+    <station name="Double J" url="https://mediaserviceslive.akamaized.net/hls/live/2038342/doublejqld/index.m3u8" genre="ABC - Closer to the Music / 90s &amp; Indie" />
+    <station name="ABC Jazz" url="https://mediaserviceslive.akamaized.net/hls/live/2038319/abcjazz/index.m3u8" genre="ABC - All That Jazz" />
+    <station name="Triple M Sydney 104.9" url="http://legacy.scahw.com.au/2mmm_128" genre="Rock, Sport &amp; Comedy" />
+    <station name="Nova 96.9 Sydney" url="https://playerservices.streamtheworld.com/api/livestream-redirect/NOVA_919_AAC48.aac" genre="Fresh Hits for Sydney" />
+    <station name="Fox FM Melbourne" url="https://legacy.scahw.com.au/3fox_128" genre="Melbourne's Biggest Hits" />
+    <station name="2GB 873 AM Sydney" url="http://playerservices.streamtheworld.com/api/livestream-redirect/2GB.mp3" genre="Sydney's Number 1 Talk Radio" />
+    </national>
+  </bouquet>

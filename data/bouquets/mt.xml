@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="MT" name="Malte" flag="🇲🇹" multilingual="false">
   <national>
-    <station name="Radju Malta" url="https://icecast.pbs.com.mt/radjumalta" genre="PBS - Aħbarijiet &amp; Kulturali"/>
-    <station name="Radju Malta 2" url="https://icecast.pbs.com.mt/radjumalta2" genre="PBS - Mużika Maltija &amp; Edukazzjoni"/>
-    <station name="Magic Malta" url="https://icecast.pbs.com.mt/magicmalta" genre="PBS - Contemporary Pop &amp; Hits"/>
-    <station name="89.7 Bay" url="https://stream.bay.com.mt/bay" genre="Malta's Number 1 Hit Music Station"/>
-    <station name="Calypso Radio 101.8" url="https://stream.calypsoradio.com/live" genre="Mużika ta' Dejjem &amp; Nostalġija"/>
-    <station name="One Radio Malta" url="https://stream.one.com.mt/oneradio" genre="Politika, Opinjoni &amp; Mużika"/>
-    <station name="RTK 103" url="https://stream.rtk103.com.mt/live" genre="Ħsejjes u Stejjer"/>
-    <station name="Vibe FM Malta" url="https://stream.vibefm.com.mt/vibe" genre="Dance &amp; Modern Urban Beats"/>
-  </national>
-</bouquet>
+    <station name="Radju Malta" url="http://dreamsiteradiocp.com:8102/" genre="PBS - Aħbarijiet &amp; Kulturali" />
+    <station name="Radju Malta 2" url="http://dreamsiteradiocp.com:8102/" genre="PBS - Mużika Maltija &amp; Edukazzjoni" />
+    <station name="Magic Malta" url="https://s46.myradiostream.com:6076/stream" genre="PBS - Contemporary Pop &amp; Hits" />
+    <station name="89.7 Bay" url="https://stream.v3.network/proxy/897bay/stream.mp3" genre="Malta's Number 1 Hit Music Station" />
+    <station name="Calypso Radio 101.8" url="https://s4.radio.co/sf3aa4c25a/listen" genre="Mużika ta' Dejjem &amp; Nostalġija" />
+    <station name="One Radio Malta" url="http://s10.voscast.com:8202/stream" genre="Politika, Opinjoni &amp; Mużika" />
+    <station name="RTK 103" url="https://s2.radio.co/s955b1ced9/listen" genre="Ħsejjes u Stejjer" />
+    <station name="Vibe FM Malta" url="https://vibe.mt/player/" genre="Dance &amp; Modern Urban Beats" />
+    </national>
+  </bouquet>

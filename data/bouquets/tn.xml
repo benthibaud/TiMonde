@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="TN" name="Tunisie" flag="🇹🇳" multilingual="false">
   <national>
-    <station name="RTCI Tunis Chaîne Internationale" url="https://stream.radiotunisienne.tn/rtci" genre="Radio Tunisienne - Français &amp; International"/>
-    <station name="Radio Nationale Tunisienne" url="https://stream.radiotunisienne.tn/nationale" genre="Radio Tunisienne - الإذاعة الوطنية"/>
-    <station name="Radio Jeunes Tunisie" url="https://stream.radiotunisienne.tn/jeunes" genre="Radio Tunisienne - إذاعة الشباب"/>
-    <station name="Radio Culturelle Tunisie" url="https://stream.radiotunisienne.tn/culturelle" genre="Radio Tunisienne - إذاعة تونس الثقافية"/>
-    <station name="Mosaïque FM" url="https://radio.mosaiquefm.net/mosalive" genre="1ère radio privée de Tunisie"/>
-    <station name="IFM Tunisie" url="https://stream.ifm.tn/ifm" genre="Rires &amp; Musique"/>
-    <station name="Jawhara FM" url="https://streaming2.toutech.net/jawharafm" genre="La voix du Sahel et de la Tunisie"/>
-    <station name="Shems FM" url="https://stream.shemsfm.net/shems" genre="Info, Société &amp; Pop"/>
-    <station name="Express FM Tunisie" url="https://expressfm.ice.infomaniak.ch/expressfm-64.mp3" genre="1ère radio économique tunisienne"/>
-    <station name="Radio Zitouna FM" url="https://stream.radiotunisienne.tn/zitouna" genre="إذاعة الزيتونة للقرآن الكريم"/>
-  </national>
-</bouquet>
+    <station name="RTCI Tunis Chaîne Internationale" url="http://rtstream.tanitweb.com/rtci" genre="Radio Tunisienne - Français &amp; International" />
+    <station name="Radio Nationale Tunisienne" url="http://rtstream.tanitweb.com/sfax" genre="Radio Tunisienne - الإذاعة الوطنية" />
+    <station name="Radio Jeunes Tunisie" url="http://rtstream.tanitweb.com/sfax" genre="Radio Tunisienne - إذاعة الشباب" />
+    <station name="Radio Culturelle Tunisie" url="http://rtstream.tanitweb.com/sfax" genre="Radio Tunisienne - إذاعة تونس الثقافية" />
+    <station name="Mosaïque FM" url="https://radio.mosaiquefm.net/mosalive" genre="1ère radio privée de Tunisie" />
+    <station name="IFM Tunisie" url="http://s7.voscast.com:9538/;stream" genre="Rires &amp; Musique" />
+    <station name="Jawhara FM" url="https://streaming2.toutech.net/jawharafm" genre="La voix du Sahel et de la Tunisie" />
+    <station name="Shems FM" url="https://stream.shemsfm.net/shems" genre="Info, Société &amp; Pop" />
+    <station name="Express FM Tunisie" url="https://expressfm.ice.infomaniak.ch/expressfm-64.mp3" genre="1ère radio économique tunisienne" />
+    <station name="Radio Zitouna FM" url="https://radio.radiotunisienne.tn/radiozaitouna" genre="إذاعة الزيتونة للقرآن الكريم" />
+    </national>
+  </bouquet>

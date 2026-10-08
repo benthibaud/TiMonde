@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="XK" name="Kosovo" flag="🇽🇰" multilingual="false">
   <national>
-    <station name="Radio Kosova 1" url="https://stream.rtklive.com/radiokosova1" genre="RTK - Radio Televizioni i Kosovës" />
-    <station name="Radio Dukagjini" url="https://stream.dukagjini.com/radiodukagjini" genre="Lider në informim dhe muzikë" />
-    <station name="Glam Radio" url="https://stream.glamradio.com/glam" genre="Prishtina Hits" />
-  </national>
-</bouquet>
+    <station name="Radio Kosova 1" url="http://82.114.72.2:8088/;.mp3" genre="RTK - Radio Televizioni i Kosovës" />
+    <station name="Radio Dukagjini" url="http://s6.voscast.com:8824/;stream.mp3" genre="Lider në informim dhe muzikë" />
+    <station name="Glam Radio" url="https://stream.glamradio.fm:8443/glamradio" genre="Prishtina Hits" />
+    </national>
+  </bouquet>

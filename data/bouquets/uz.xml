@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="UZ" name="Ouzbékistan" flag="🇺🇿" multilingual="false">
   <national>
-    <station name="O'zbekiston Radiosi" url="https://stream.zeno.fm/8lgt4w4k0heuv" genre="Milliy teleradiokompaniya" />
-    <station name="Yoshlar Radiosi" url="https://stream.zeno.fm/9lgt4w4k0heuv" genre="O'zbek estrada va yoshlar" />
-  </national>
-</bouquet>
+    <station name="O'zbekiston Radiosi" url="https://stream.laut.fm/radiosigma?ref=radiode" genre="Milliy teleradiokompaniya" />
+    <station name="Yoshlar Radiosi" url="http://ns10.jethost.uz:8000/yoshlarovoziaac" genre="O'zbek estrada va yoshlar" />
+    </national>
+  </bouquet>

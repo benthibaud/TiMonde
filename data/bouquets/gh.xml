@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="GH" name="Ghana" flag="🇬🇭" multilingual="false">
   <national>
-    <station name="GBC Radio 1 (Uniiq FM)" url="https://stream.zeno.fm/2egt4w4k0heuv" genre="Ghana Broadcasting Corporation" />
-    <station name="Joy 99.7 FM Accra" url="https://stream.zeno.fm/3egt4w4k0heuv" genre="Discerning Listener's Choice" />
-    <station name="Citi FM 97.3" url="https://stream.zeno.fm/4egt4w4k0heuv" genre="Relevant Radio / News &amp; Highlife" />
-    <station name="Peace 104.3 FM" url="https://stream.zeno.fm/5egt4w4k0heuv" genre="Kwasia Bi Nti / Twi Radio" />
-  </national>
-</bouquet>
+    <station name="GBC Radio 1 (Uniiq FM)" url="https://live.amperwave.net/manifest/audacy-wfanamaac-hlsc.m3u8" genre="Ghana Broadcasting Corporation" />
+    <station name="Joy 99.7 FM Accra" url="https://angelfmaccra-atunwadigital.streamguys1.com/angelfmaccra" genre="Discerning Listener's Choice" />
+    <station name="Citi FM 97.3" url="https://citi973fm.radioca.st/index.html:80/;stream.mp3" genre="Relevant Radio / News &amp; Highlife" />
+    <station name="Peace 104.3 FM" url="https://peacefm-atunwadigital.streamguys1.com/peacefm?amsparams=playerid%3ASGplayer%3Bskey%3A1611468493100%3B&amp;awparams=playerid%3ASGplayer%3Bplayerid%3ASGplayer%3Bplayerid%3ASGplayer%3B&amp;us_privacy=1YNN&amp;us_privacy=1YNN&amp;us_privacy=1YNN" genre="Kwasia Bi Nti / Twi Radio" />
+    </national>
+  </bouquet>

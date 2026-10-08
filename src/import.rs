@@ -14,6 +14,8 @@ pub struct ImportReport {
 struct RtngStation {
     name: String,
     url: String,
+    #[serde(default)]
+    country: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -24,7 +26,7 @@ struct RtngGroup {
 }
 
 /// Collecte toutes les URLs de stations déjà existantes pour la détection globale de doublons
-fn collect_all_urls(group: &Group, set: &mut HashSet<String>) {
+pub fn collect_all_urls(group: &Group, set: &mut HashSet<String>) {
     for s in &group.stations {
         if !s.is_separator() {
             set.insert(normalize_url(&s.url));
@@ -36,12 +38,12 @@ fn collect_all_urls(group: &Group, set: &mut HashSet<String>) {
 }
 
 /// Normalise une URL pour comparaison stricte (sans slash final ni espaces)
-fn normalize_url(url: &str) -> String {
-    let u = url.trim();
-    if let Some(stripped) = u.strip_suffix('/') {
+pub fn normalize_url(url: &str) -> String {
+    let cleaned = crate::models::clean_stream_url(url);
+    if let Some(stripped) = cleaned.strip_suffix('/') {
         stripped.to_string()
     } else {
-        u.to_string()
+        cleaned
     }
 }
 
@@ -109,15 +111,15 @@ fn insert_station_dedup(
     report.stations_added += 1;
 }
 
-/// Ajoute une station unique à l'arbre avec contrôle strict des doublons
-pub fn add_single_station(
+/// Ajoute une station (avec pays éventuel) à l'arbre avec contrôle strict des doublons
+pub fn add_station_to_group(
     root: &mut Group,
-    name: &str,
-    url: &str,
+    station: Station,
     target_group: Option<&str>,
 ) -> Result<String, String> {
-    let clean_name = name.trim();
-    let clean_url = url.trim();
+    let clean_name = station.name.trim();
+    let clean_url_str = crate::models::clean_stream_url(station.url.trim());
+    let clean_url = clean_url_str.as_str();
 
     if clean_name.is_empty() {
         return Err("Le nom de la station ne peut pas être vide".to_string());
@@ -147,10 +149,12 @@ pub fn add_single_station(
         return Err(format!("Une station nommée '{}' existe déjà dans ce groupe", clean_name));
     }
 
-    dest_group.stations.push(Station {
-        name: clean_name.to_string(),
-        url: clean_url.to_string(),
-    });
+    let mut to_insert = match station.country {
+        Some(ref c) if !c.is_empty() => Station::with_country(clean_name, clean_url, c),
+        _ => Station::new(clean_name, clean_url),
+    };
+    to_insert.timezone = station.timezone;
+    dest_group.stations.push(to_insert);
 
     let dest_name = if dest_group.name == "root" {
         "la racine".to_string()
@@ -159,6 +163,16 @@ pub fn add_single_station(
     };
 
     Ok(format!("Station '{}' ajoutée avec succès dans {}", clean_name, dest_name))
+}
+
+/// Ajoute une station unique à l'arbre avec contrôle strict des doublons
+pub fn add_single_station(
+    root: &mut Group,
+    name: &str,
+    url: &str,
+    target_group: Option<&str>,
+) -> Result<String, String> {
+    add_station_to_group(root, Station::new(name, url), target_group)
 }
 
 /// Analyse et extrait les stations d'une playlist M3U avec métadonnées #EXTINF
@@ -180,16 +194,13 @@ pub fn parse_m3u_entries(content: &str) -> Vec<Station> {
             let name = current_name.take().unwrap_or_else(|| {
                 trimmed.split('/').next_back().unwrap_or("Station").to_string()
             });
-            stations.push(Station {
-                name,
-                url: trimmed.to_string(),
-            });
+            stations.push(Station::new(name, trimmed));
         }
     }
     stations
 }
 
-/// Analyse et extrait les stations depuis un fichier CSV (Nom,URL ou Groupe,Nom,URL)
+/// Analyse et extrait les stations depuis un fichier CSV (Nom,URL / Nom,URL,Pays / Groupe,Nom,URL / Groupe,Nom,URL,Pays)
 pub fn parse_csv_entries(content: &str) -> Vec<(Option<String>, Station)> {
     let mut list = Vec::new();
     for line in content.lines() {
@@ -197,12 +208,41 @@ pub fn parse_csv_entries(content: &str) -> Vec<(Option<String>, Station)> {
         if trimmed.is_empty() || trimmed.starts_with('#') {
             continue;
         }
+        let lower = trimmed.to_lowercase();
+        if lower.starts_with("nom,")
+            || lower.starts_with("name,")
+            || lower.starts_with("groupe,")
+            || lower.starts_with("group,")
+        {
+            continue;
+        }
+
         let cols: Vec<&str> = trimmed.split(',').map(|s| s.trim()).collect();
         if cols.len() == 2 && (cols[1].starts_with("http://") || cols[1].starts_with("https://")) {
-            list.push((None, Station { name: cols[0].to_string(), url: cols[1].to_string() }));
-        } else if cols.len() >= 3 && (cols[2].starts_with("http://") || cols[2].starts_with("https://")) {
+            list.push((None, Station::new(cols[0], cols[1])));
+        } else if cols.len() == 3 {
+            if cols[1].starts_with("http://") || cols[1].starts_with("https://") {
+                // Nom, URL, Pays
+                let st = if !cols[2].is_empty() {
+                    Station::with_country(cols[0], cols[1], cols[2])
+                } else {
+                    Station::new(cols[0], cols[1])
+                };
+                list.push((None, st));
+            } else if cols[2].starts_with("http://") || cols[2].starts_with("https://") {
+                // Groupe, Nom, URL
+                let group_name = if cols[0].is_empty() { None } else { Some(cols[0].to_string()) };
+                list.push((group_name, Station::new(cols[1], cols[2])));
+            }
+        } else if cols.len() >= 4 && (cols[2].starts_with("http://") || cols[2].starts_with("https://")) {
+            // Groupe, Nom, URL, Pays
             let group_name = if cols[0].is_empty() { None } else { Some(cols[0].to_string()) };
-            list.push((group_name, Station { name: cols[1].to_string(), url: cols[2].to_string() }));
+            let st = if !cols[3].is_empty() {
+                Station::with_country(cols[1], cols[2], cols[3])
+            } else {
+                Station::new(cols[1], cols[2])
+            };
+            list.push((group_name, st));
         }
     }
     list
@@ -229,28 +269,47 @@ pub fn import_file(
 
     match ext.as_str() {
         "json" => {
-            let rtng_groups: Vec<RtngGroup> = serde_json::from_str(&content)
-                .map_err(|e| format!("Format JSON radiotray-ng invalide : {}", e))?;
-
             let target_idx = target_group.map(|tg| get_or_create_subgroup_idx(root, tg, &mut report));
 
-            for rg in rtng_groups {
-                let clean_name = rg.group.trim();
-                let sub_arg = if clean_name.is_empty() || clean_name == "root" {
-                    None
-                } else {
-                    Some(clean_name)
-                };
+            if let Ok(rtng_groups) = serde_json::from_str::<Vec<RtngGroup>>(&content) {
+                for rg in rtng_groups {
+                    let clean_name = rg.group.trim();
+                    let sub_arg = if clean_name.is_empty() || clean_name == "root" {
+                        None
+                    } else {
+                        Some(clean_name)
+                    };
 
-                for s in rg.stations {
-                    let dest = resolve_dest_group(root, target_idx, sub_arg, &mut report);
+                    for s in rg.stations {
+                        let dest = resolve_dest_group(root, target_idx, sub_arg, &mut report);
+                        let st = match s.country {
+                            Some(ref c) if !c.is_empty() => Station::with_country(s.name, s.url, c),
+                            _ => Station::new(s.name, s.url),
+                        };
+                        insert_station_dedup(
+                            dest,
+                            st,
+                            &mut existing_urls,
+                            &mut report,
+                        );
+                    }
+                }
+            } else if let Ok(flat_stations) = serde_json::from_str::<Vec<RtngStation>>(&content) {
+                for s in flat_stations {
+                    let dest = resolve_dest_group(root, target_idx, None, &mut report);
+                    let st = match s.country {
+                        Some(ref c) if !c.is_empty() => Station::with_country(s.name, s.url, c),
+                        _ => Station::new(s.name, s.url),
+                    };
                     insert_station_dedup(
                         dest,
-                        Station { name: s.name, url: s.url },
+                        st,
                         &mut existing_urls,
                         &mut report,
                     );
                 }
+            } else {
+                return Err("Format JSON non reconnu (attendu : groupes ou liste de stations)".to_string());
             }
         }
         "m3u" | "m3u8" => {
@@ -320,10 +379,7 @@ mod tests {
 
         let mut root = Group::new("root");
         let mut existing_group = Group::new("Rock");
-        existing_group.stations.push(Station {
-            name: "Classic Rock".to_string(),
-            url: "https://stream.rock.com/live/".to_string(),
-        });
+        existing_group.stations.push(Station::new("Classic Rock", "https://stream.rock.com/live/"));
         root.subgroups.push(existing_group);
 
         let temp_file = std::env::temp_dir().join("test_rtng.json");
@@ -354,6 +410,19 @@ mod tests {
     }
 
     #[test]
+    fn test_import_csv_with_country() {
+        let csv = "Nom,URL,Pays
+Radio Transat,https://stream.rcs.revma.com/dy09pqzctwzuv,GP
+FIP,https://icecast.radiofrance.fr/fip-hifi.aac,FR";
+        let entries = parse_csv_entries(csv);
+        assert_eq!(entries.len(), 2);
+        assert_eq!(entries[0].1.name, "Radio Transat");
+        assert_eq!(entries[0].1.country, Some("GP".to_string()));
+        assert_eq!(entries[1].1.name, "FIP");
+        assert_eq!(entries[1].1.country, Some("FR".to_string()));
+    }
+
+    #[test]
     fn test_import_csv() {
         let csv_data = "Rock,Led Zep Radio,https://led.example/stream\nPop,Hit Radio,https://hit.example/stream\nDirect Radio,https://direct.example/stream\n";
         let temp_file = std::env::temp_dir().join("test_import.csv");
@@ -368,6 +437,15 @@ mod tests {
         assert_eq!(root.subgroups.len(), 2);
         assert_eq!(root.stations.len(), 1);
     }
+    #[test]
+    fn test_add_station_with_malformed_url_cleanup() {
+        let mut root = Group::new("root");
+        let st = Station::new("Radio Malformée", "httpshttps://malformed.example/stream");
+        let res = add_station_to_group(&mut root, st, Some("Tests"));
+        assert!(res.is_ok());
+        assert_eq!(root.subgroups[0].stations[0].url, "https://malformed.example/stream");
+    }
+
     #[test]
     fn test_add_single_station_with_dedup() {
         let mut root = Group::new("root");
@@ -387,5 +465,33 @@ mod tests {
         // Même nom mais dans un autre groupe -> autorisé
         let ok_diff_group = add_single_station(&mut root, "FIP", "https://autre.flux/stream", None);
         assert!(ok_diff_group.is_ok());
+    }
+
+    #[test]
+    fn test_add_station_with_country_and_timezone() {
+        let mut root = Group::new("root");
+        let mut st = Station::new("Radio Karukera", "http://stream.karukera.gp/live");
+        st.country = Some("FR".to_string());
+        st.timezone = Some("America/Guadeloupe".to_string());
+
+        let res = add_station_to_group(&mut root, st, Some("Antilles"));
+        assert!(res.is_ok());
+
+        let antilles = root.subgroups.iter().find(|g| g.name == "Antilles").unwrap();
+        let found = antilles.stations.iter().find(|s| s.name == "Radio Karukera").unwrap();
+        assert_eq!(found.country.as_deref(), Some("FR"));
+        assert_eq!(found.timezone.as_deref(), Some("America/Guadeloupe"));
+    }
+
+    #[test]
+    fn test_add_station_to_group_preserves_country() {
+        let mut root = Group::new("root");
+        let st = Station::with_country("J-Wave", "https://jwave.stream/live", "JP");
+        let res = add_station_to_group(&mut root, st, Some("Asie"));
+        assert!(res.is_ok());
+        assert_eq!(root.subgroups.len(), 1);
+        assert_eq!(root.subgroups[0].stations.len(), 1);
+        assert_eq!(root.subgroups[0].stations[0].name, "J-Wave");
+        assert_eq!(root.subgroups[0].stations[0].country, Some("JP".to_string()));
     }
 }

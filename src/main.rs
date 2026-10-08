@@ -1,3 +1,4 @@
+pub mod state;
 pub mod import;
 pub mod playlist;
 pub mod mpris;
@@ -6,6 +7,8 @@ pub mod bookmarks;
 pub mod models;
 pub mod radio_browser;
 pub mod tray;
+pub mod timezone;
+pub mod discovery;
 
 use bookmarks::load_bookmarks;
 use ksni::blocking::TrayMethods;
@@ -80,8 +83,8 @@ fn main() {
                 println!("\nOptions de gestion des stations et groupes :");
                 println!("      --search <TERME> [--tag <GENRE>] [--country <PAYS>] [--lang <LANG>] [--limit <N>]");
                 println!("                         Rechercher des radios sur l'annuaire mondial Radio-Browser");
-                println!("      --add <NOM> <URL> [--group <GROUPE>]");
-                println!("                         Ajouter une station manuellement");
+                println!("      --add <NOM> <URL> [--group <GROUPE>] [--country <PAYS>] [--timezone <FUSEAU>]");
+                println!("                         Ajouter une radio manuellement (avec pays et fuseau horaire optionnels)");
                 println!("      --sort-groups      Trier tous les groupes de radios de A à Z");
                 println!("      --move-group <NOM> <--up|--down|--top>");
                 println!("                         Déplacer un groupe vers le haut, le bas ou en premier");
@@ -205,14 +208,38 @@ fn main() {
             }
             "--add" => {
                 if args.len() < 4 {
-                    eprintln!("Usage : timonde --add <NOM> <URL> [--group <GROUPE>]");
+                    eprintln!("Usage : timonde --add <NOM> <URL> [--group <GROUPE>] [--country <PAYS>] [--timezone <FUSEAU>]");
                     std::process::exit(1);
                 }
                 let name = &args[2];
                 let url = &args[3];
                 let mut target_group = None;
-                if args.len() >= 6 && (args[4] == "--group" || args[4] == "-g") {
-                    target_group = Some(args[5].as_str());
+                let mut country_code = None;
+                let mut timezone_iana = None;
+
+                let mut i = 4;
+                while i < args.len() {
+                    match args[i].as_str() {
+                        "--group" | "-g" => {
+                            if i + 1 < args.len() {
+                                target_group = Some(args[i + 1].as_str());
+                                i += 2;
+                            } else { i += 1; }
+                        }
+                        "--country" | "-c" => {
+                            if i + 1 < args.len() {
+                                country_code = Some(args[i + 1].as_str());
+                                i += 2;
+                            } else { i += 1; }
+                        }
+                        "--timezone" | "--tz" | "-t" => {
+                            if i + 1 < args.len() {
+                                timezone_iana = Some(args[i + 1].as_str());
+                                i += 2;
+                            } else { i += 1; }
+                        }
+                        _ => { i += 1; }
+                    }
                 }
 
                 let bookmarks_path = find_bookmarks_path();
@@ -222,7 +249,15 @@ fn main() {
                     create_default_bookmarks(&bookmarks_path)
                 };
 
-                match import::add_single_station(&mut root, name, url, target_group) {
+                let mut st = models::Station::new(name, url);
+                if let Some(c) = country_code {
+                    st.country = Some(c.trim().to_ascii_uppercase());
+                }
+                if let Some(tz) = timezone_iana {
+                    st.timezone = Some(tz.trim().to_string());
+                }
+
+                match import::add_station_to_group(&mut root, st, target_group) {
                     Ok(msg) => {
                         if let Err(e) = bookmarks::save_bookmarks(&root, &bookmarks_path) {
                             eprintln!("Erreur lors de la sauvegarde : {}", e);
@@ -397,6 +432,7 @@ fn main() {
     let root_group_clone = Arc::clone(&tray.root_group);
     let bookmarks_path_clone = tray.bookmarks_path.clone();
     let play_generation = Arc::clone(&tray.play_generation);
+    let is_ephemeral = Arc::clone(&tray.is_ephemeral);
 
     let tray_handle_cell = Arc::clone(&tray.tray_handle);
 
@@ -417,6 +453,9 @@ fn main() {
     let trigger_for_stop = Arc::clone(&trigger_tray_update);
     let trigger_for_mpris = Arc::clone(&trigger_tray_update);
 
+    let is_ephemeral_play = Arc::clone(&is_ephemeral);
+    let is_ephemeral_stop = Arc::clone(&is_ephemeral);
+
     let on_play = {
         let audio = Arc::clone(&audio);
         let current_volume = Arc::clone(&current_volume);
@@ -428,6 +467,7 @@ fn main() {
         let bpath = bookmarks_path_clone.clone();
 
         Arc::new(move |station: models::Station| {
+            is_ephemeral_play.store(false, std::sync::atomic::Ordering::SeqCst);
             tray::TiMondeTray::play_station_flow(
                 station,
                 &audio,
@@ -449,6 +489,7 @@ fn main() {
         let current_title = Arc::clone(&current_title);
 
         Arc::new(move || {
+            is_ephemeral_stop.store(false, std::sync::atomic::Ordering::SeqCst);
             tray::TiMondeTray::stop_and_trim_flow(&audio, &current_station, &current_title);
             trigger_for_stop();
         })
@@ -460,9 +501,9 @@ fn main() {
 
     // 5. Enregistrement du service D-Bus MPRIS2 (org.mpris.MediaPlayer2.timonde)
     mpris::spawn_mpris_server(
-        audio,
+        Arc::clone(&audio),
         current_volume,
-        current_station,
+        Arc::clone(&current_station),
         current_title,
         last_station,
         Arc::clone(&root_group_clone),
@@ -517,7 +558,44 @@ fn main() {
         });
     }
 
-    // 8. Boucle d'événements GLib (maintient le processus actif et léger)
+    // 8. Ticker low-tech d'actualisation de l'heure locale (1 fois par minute, calé sur la seconde 00)
+    {
+        let handle_clock = Arc::clone(&tray_handle_cell);
+        let cur_st_clock = Arc::clone(&current_station);
+        let audio_clock = Arc::clone(&audio);
+
+        std::thread::Builder::new()
+            .name("timonde-clock-tick".to_string())
+            .spawn(move || {
+                loop {
+                    let now_epoch = std::time::SystemTime::now()
+                        .duration_since(std::time::UNIX_EPOCH)
+                        .map(|d| d.as_secs())
+                        .unwrap_or(0);
+                    let rem = 60 - (now_epoch % 60);
+                    // Dormir jusqu'à la seconde 00 de la prochaine minute (0% CPU, 0 allocation)
+                    std::thread::sleep(std::time::Duration::from_secs(rem.max(1)));
+
+                    // Rafraîchir l'heure uniquement si une radio est en cours d'écoute
+                    let is_active = {
+                        let has_station = cur_st_clock.lock().unwrap().is_some();
+                        let is_playing = audio_clock.lock().unwrap().as_ref()
+                            .map(|e| e.state() == audio::PlaybackState::Playing)
+                            .unwrap_or(false);
+                        has_station && is_playing
+                    };
+
+                    if is_active {
+                        if let Some(ref h) = *handle_clock.lock().unwrap() {
+                            h.update(|_| {});
+                        }
+                    }
+                }
+            })
+            .expect("Impossible de lancer le ticker d'horloge");
+    }
+
+    // 9. Boucle d'événements GLib (maintient le processus actif et léger)
     let main_loop = gstreamer::glib::MainLoop::new(None, false);
     main_loop.run();
 }

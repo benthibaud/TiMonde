@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="NO" name="Norvège" flag="🇳🇴" multilingual="false">
   <national>
-    <station name="NRK P1" url="https://nrk-ice.akamaized.net/nrk_p1_ostlandssendingen_mp3_m" genre="NRK - Nyheter &amp; Distrikt"/>
-    <station name="NRK P2" url="https://nrk-ice.akamaized.net/nrk_p2_mp3_m" genre="NRK - Kultur &amp; Samfunn"/>
-    <station name="NRK P3" url="https://nrk-ice.akamaized.net/nrk_p3_mp3_m" genre="NRK - Ung musikk"/>
-    <station name="NRK Klassisk" url="https://nrk-ice.akamaized.net/nrk_klassisk_mp3_m" genre="NRK - Klassisk"/>
-    <station name="NRK Jazz" url="https://nrk-ice.akamaized.net/nrk_jazz_mp3_m" genre="NRK - Jazz"/>
-    <station name="P4 Radio Hele Norge" url="https://p4.p4groupaudio.com/P4_MM" genre="Norges største kommersielle"/>
-    <station name="Radio Norge" url="https://stream.bauermedia.no/radionorge_hq" genre="Variert pop og rock"/>
-    <station name="Radio Rock" url="https://stream.bauermedia.no/radiorock_hq" genre="Ekte Rock"/>
-  </national>
-</bouquet>
+    <station name="NRK P1" url="https://cdn0-47115-liveicecast0.dna.contentdelivery.net/p1_mp3_h" genre="NRK - Nyheter &amp; Distrikt" />
+    <station name="NRK P2" url="https://cdn0-47115-liveicecast0.dna.contentdelivery.net/p2_aac_h" genre="NRK - Kultur &amp; Samfunn" />
+    <station name="NRK P3" url="https://cdn0-47115-liveicecast0.dna.contentdelivery.net/p3_mp3_h" genre="NRK - Ung musikk" />
+    <station name="NRK Klassisk" url="https://cdn0-47115-liveicecast0.dna.contentdelivery.net/klassisk_mp3_h" genre="NRK - Klassisk" />
+    <station name="NRK Jazz" url="http://cdn0-47115-liveicecast0.dna.contentdelivery.net/jazz_mp3_h" genre="NRK - Jazz" />
+    <station name="P4 Radio Hele Norge" url="https://p4.p4groupaudio.com/P04_MM" genre="Norges største kommersielle" />
+    <station name="Radio Norge" url="https://live-bauerno.sharp-stream.com/radionorge_no_mp3" genre="Variert pop og rock" />
+    <station name="Radio Rock" url="https://live-bauerno.sharp-stream.com/radiorock_no_mp3" genre="Ekte Rock" />
+    </national>
+  </bouquet>

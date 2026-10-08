@@ -1,0 +1,42 @@
+[
+  {
+    "group": "Chill & Jazz",
+    "stations": [
+      {
+        "name": "FIP Sacré Français",
+        "url": "https://icecast.radiofrance.fr/fipsacrefrancais-hifi.aac",
+        "country": "FR"
+      },
+      {
+        "name": "Radio Swiss Classic",
+        "url": "https://stream.srg-ssr.ch/m/rsc_fr/mp3_128",
+        "country": "CH"
+      },
+      {
+        "name": "Radio Swiss Jazz",
+        "url": "https://stream.srg-ssr.ch/m/rsj/mp3_128",
+        "country": "CH"
+      }
+    ]
+  },
+  {
+    "group": "Monde & Découvertes",
+    "stations": [
+      {
+        "name": "Radio Transat (Guadeloupe)",
+        "url": "https://stream.rcs.revma.com/dy09pqzctwzuv",
+        "country": "GP"
+      },
+      {
+        "name": "Antena 1 Portugal",
+        "url": "https://radiocast.rtp.pt/antena180a.mp3",
+        "country": "PT"
+      },
+      {
+        "name": "RTÉ Radio 1 Irlande",
+        "url": "https://icecast2.rte.ie/radio1",
+        "country": "IE"
+      }
+    ]
+  }
+]

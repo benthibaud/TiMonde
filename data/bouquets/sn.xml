@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="SN" name="Sénégal" flag="🇸🇳" multilingual="false">
   <national>
-    <station name="RTS Radio Sénégal Internationale (RSI)" url="https://stream.zeno.fm/4mgt4w4k0heuv" genre="RTS - Service public sénégalais"/>
-    <station name="RFM Sénégal (Radio Futurs Médias)" url="https://stream.zeno.fm/7k96r5x65hruv" genre="Actualités, Débats &amp; Mbalax"/>
-    <station name="Zik FM Dakar" url="https://stream.zeno.fm/a9p4f8e65hruv" genre="La radio urbaine de Dakar"/>
-    <station name="Sud FM Sen Radio" url="https://stream.zeno.fm/s8s62k5n6heuv" genre="Pionnière des radios privées"/>
-    <station name="Walf FM 99.0" url="https://stream.zeno.fm/8q2g6x6k0heuv" genre="Walfadjri - Voix des sans voix"/>
-    <station name="Lamp Fall FM" url="https://stream.zeno.fm/v9u4g8e65hruv" genre="Touba / Mouridisme &amp; Khassaides"/>
-    <station name="Al-Fayda FM" url="https://stream.zeno.fm/3t96r5x65hruv" genre="Médina Baye / Kaolack"/>
-    <station name="Top FM Sénégal" url="https://stream.zeno.fm/g6t4w4k0heuv" genre="Musique sénégalaise &amp; Société"/>
-  </national>
-</bouquet>
+    <station name="RTS Radio Sénégal Internationale (RSI)" url="https://stxt-audiostreaming.akamaized.net/hls/live/2117380/couleur3/master.m3u8" genre="RTS - Service public sénégalais" />
+    <station name="RFM Sénégal (Radio Futurs Médias)" url="https://wr.lmn.fm/rfm-wr12.aac?aw_0_1st.playerid=lgrdnwsRadiofr" genre="Actualités, Débats &amp; Mbalax" />
+    <station name="Zik FM Dakar" url="https://stream.dakarmusique.com" genre="La radio urbaine de Dakar" />
+    <station name="Sud FM Sen Radio" url="http://stream.zenolive.com/rq40edfn3reuv" genre="Pionnière des radios privées" />
+    <station name="Walf FM 99.0" url="https://stream.zeno.fm/8q2g6x6k0heuv" genre="Walfadjri - Voix des sans voix" />
+    <station name="Lamp Fall FM" url="https://fire.doscast.com/8222/stream" genre="Touba / Mouridisme &amp; Khassaides" />
+    <station name="Al-Fayda FM" url="https://live.amperwave.net/manifest/audacy-kcbsamaac-llhlsc.m3u8" genre="Médina Baye / Kaolack" />
+    <station name="Top FM Sénégal" url="http://live.topfm.hu:8000/oldies.mp3" genre="Musique sénégalaise &amp; Société" />
+    </national>
+  </bouquet>

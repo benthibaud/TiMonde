@@ -1,25 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="CA" name="Canada" flag="🇨🇦" multilingual="true">
   <community id="FR" name="Québec &amp; Francophonie (Français)">
     <national>
-      <station name="ICI Radio-Canada Première" url="https://rcavliveaudio.akamaized.net/hls/live/2006635/P-2QMTL0_MTL/master.m3u8" genre="Actualité &amp; Société"/>
-      <station name="ICI Musique" url="https://rcavliveaudio.akamaized.net/hls/live/2006634/M-2MMTL0_MTL/master.m3u8" genre="Musique &amp; Éclectisme"/>
-      <station name="98.5 FM Montréal" url="https://cogf.streamon.fm/CHMP-48k.aac" genre="Opinion &amp; Parlé"/>
-      <station name="CKOI 96.9" url="https://cogf.streamon.fm/CKOI-48k.aac" genre="Hits &amp; Humour"/>
-      <station name="Rythme FM 105.7" url="https://cogf.streamon.fm/CFGL-48k.aac" genre="Pop &amp; Variété"/>
-      <station name="Énergie 94.3" url="https://stream.revma.ihrhls.com/zc7458" genre="Rock &amp; Pop"/>
-      <station name="Rouge FM 107.3" url="https://stream.revma.ihrhls.com/zc7462" genre="Adulte contemporain"/>
-      <station name="CHOI Radio X" url="https://radiox.ice.infomaniak.ch/radiox-high.mp3" genre="Québec Talk &amp; Rock"/>
-      <station name="WKND 91.9" url="https://wknd.ice.infomaniak.ch/wknd-high.mp3" genre="Québec Pop Indie"/>
-    </national>
-  </community>
+      <station name="ICI Radio-Canada Première" url="https://rcavliveaudio.akamaized.net/hls/live/2006635/P-2QMTL0_MTL/master.m3u8" genre="Actualité &amp; Société" />
+      <station name="ICI Musique" url="https://rcavliveaudio.akamaized.net/hls/live/2006979/M-7QMTL0_MTL/master.m3u8" genre="Musique &amp; Éclectisme" />
+      <station name="98.5 FM Montréal" url="https://playerservices.streamtheworld.com/api/livestream-redirect/CHMPFMAAC.aac" genre="Opinion &amp; Parlé" />
+      <station name="CKOI 96.9" url="https://playerservices.streamtheworld.com/api/livestream-redirect/CKOIFMAAC_SC.aac" genre="Hits &amp; Humour" />
+      <station name="Rythme FM 105.7" url="https://s33.myradiostream.com/15364/listen.mp3" genre="Pop &amp; Variété" />
+      <station name="Énergie 94.3" url="http://22983.live.streamtheworld.com:3690/CJABFMAAC_SC" genre="Rock &amp; Pop" />
+      <station name="Rouge FM 107.3" url="http://stream.statsradio.com:8088/stream" genre="Adulte contemporain" />
+      <station name="CHOI Radio X" url="http://icecast-choi.rncm.ca/choi.mp3" genre="Québec Talk &amp; Rock" />
+      <station name="WKND 91.9" url="https://stream-cjec-rr01.leclerccom.com/cjec.aac" genre="Québec Pop Indie" />
+      </national>
+    </community>
   <community id="EN" name="Canada anglophone (Anglais)">
     <national>
-      <station name="CBC Radio One" url="https://cbcradiolive.akamaized.net/hls/live/2041285/ES_R1ET/master.m3u8" genre="News &amp; Current Affairs"/>
-      <station name="CBC Music" url="https://cbcradiolive.akamaized.net/hls/live/2041286/ES_R2ET/master.m3u8" genre="Adult Alternative"/>
-      <station name="Virgin Radio Toronto" url="https://stream.revma.ihrhls.com/zc7470" genre="Top 40"/>
-      <station name="CHUM FM" url="https://stream.revma.ihrhls.com/zc7472" genre="Hot AC Toronto"/>
-      <station name="Q107 Toronto" url="https://corus.leanstream.co/CILQFM" genre="Classic Rock"/>
-    </national>
-  </community>
-</bouquet>
+      <station name="CBC Radio One" url="https://cbcradiolive.akamaized.net/hls/live/2041030/ES_R1EMT/master.m3u8" genre="News &amp; Current Affairs" />
+      <station name="CBC Music" url="https://cbcradiolive.akamaized.net/hls/live/2041057/ES_R2ETR/master.m3u8" genre="Adult Alternative" />
+      <station name="Virgin Radio Toronto" url="https://edge.mixlr.com/channel/uhbay" genre="Top 40" />
+      <station name="CHUM FM" url="http://26103.live.streamtheworld.com:3690/CHUMAMAAC_SC" genre="Hot AC Toronto" />
+      <station name="Q107 Toronto" url="https://corus.leanstream.co/CILQFM" genre="Classic Rock" />
+      </national>
+    </community>
+  </bouquet>

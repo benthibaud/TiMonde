@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="NG" name="Nigéria" flag="🇳🇬" multilingual="false">
   <national>
-    <station name="Wazobia FM 95.1 Lagos" url="https://stream.zeno.fm/4mgt4w4k0heuv" genre="Station in Nigerian Pidgin / Afrobeat"/>
-    <station name="Cool FM 96.9 Lagos" url="https://stream.zeno.fm/5mgt4w4k0heuv" genre="Your Number 1 Hit Music Station"/>
-    <station name="Nigeria Info 99.3 Lagos" url="https://stream.zeno.fm/6mgt4w4k0heuv" genre="Let's Talk News &amp; Current Affairs"/>
-    <station name="The Beat 99.9 FM" url="https://stream.zeno.fm/7mgt4w4k0heuv" genre="Contemporary Music &amp; Entertainment"/>
-    <station name="Classic FM 97.3 Lagos" url="https://stream.zeno.fm/8mgt4w4k0heuv" genre="Plays every song you know"/>
-    <station name="Soundcity Radio 98.5" url="https://stream.zeno.fm/9mgt4w4k0heuv" genre="Powered by Music / Afropop"/>
-  </national>
-</bouquet>
+    <station name="Wazobia FM 95.1 Lagos" url="https://wazobiafmlagos951-atunwadigital.streamguys1.com/wazobiafmlagos951" genre="Station in Nigerian Pidgin / Afrobeat" />
+    <station name="Cool FM 96.9 Lagos" url="https://coolfmlagos969-atunwadigital.streamguys1.com/coolfmlagos969" genre="Your Number 1 Hit Music Station" />
+    <station name="Nigeria Info 99.3 Lagos" url="https://nigeriainfofmlagos993-atunwadigital.streamguys1.com/nigeriainfofmlagos993" genre="Let's Talk News &amp; Current Affairs" />
+    <station name="The Beat 99.9 FM" url="https://live.amperwave.net/manifest/audacy-kdkafmaac-hlsc.m3u8" genre="Contemporary Music &amp; Entertainment" />
+    <station name="Classic FM 97.3 Lagos" url="https://go.webgateready.com/metrofm/radio.mp3" genre="Plays every song you know" />
+    <station name="Soundcity Radio 98.5" url="https://stream.zeno.fm/9mgt4w4k0heuv" genre="Powered by Music / Afropop" />
+    </national>
+  </bouquet>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="NA" name="Namibie" flag="🇳🇦" multilingual="false">
   <national>
-    <station name="NBC National Radio" url="https://stream.zeno.fm/7ggt4w4k0heuv" genre="Namibian Broadcasting Corporation" />
-    <station name="Radiowave 96.7" url="https://stream.zeno.fm/8ggt4w4k0heuv" genre="Windhoek Hit Radio" />
-  </national>
-</bouquet>
+    <station name="NBC National Radio" url="https://tunein.cdnstream1.com/3602_96.mp3" genre="Namibian Broadcasting Corporation" />
+    <station name="Radiowave 96.7" url="https://edge.iono.fm/xice/194_medium.aac" genre="Windhoek Hit Radio" />
+    </national>
+  </bouquet>

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet name="Jazz, Blues &amp; Soul" flag="🎷" category="Exemples">
+  <national>
+    <station name="Jazz Radio" url="http://jazzradio.ice.infomaniak.ch/jazzradio-high.aac" genre="Jazz &amp; Blues" />
+    <station name="Black Music" url="https://jazzblackmusic.ice.infomaniak.ch/jazzblackmusic-high.aac" genre="Jazz &amp; Blues" />
+    <station name="Blues" url="https://jazzblues.ice.infomaniak.ch/jazzblues-high.aac" genre="Jazz &amp; Blues" />
+    <station name="Classic Jazz" url="https://jazz-wr01.ice.infomaniak.ch/jazz-wr01-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Contemporary Jazz" url="https://jazz-wr05.ice.infomaniak.ch/jazz-wr05-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Electro Swing" url="https://jazz-wr04.ice.infomaniak.ch/jazz-wr04-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Festival International de Jazz de Montréal" url="https://jazzradiofestivalmontreal.ice.infomaniak.ch/jazzradiofestivalmontreal-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Funk" url="https://jazz-wr06.ice.infomaniak.ch/jazz-wr06-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Gospel" url="https://jazz-wr07.ice.infomaniak.ch/jazz-wr07-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Groov'Up (DJ Master Phil)" url="https://jazz-wr13.ice.infomaniak.ch/jazz-wr13-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Groove" url="https://jazz-wr08.ice.infomaniak.ch/jazz-wr08-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Happy Hour (Bart and Baker)" url="https://jazz-wr14.ice.infomaniak.ch/jazz-wr14-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Jazz et Classique" url="https://jazz-wr17.ice.infomaniak.ch/jazz-wr17-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Jazz Afro" url="https://jazz-radio-afro.ice.infomaniak.ch/jazz-radio-afro.aac" genre="Jazz &amp; Blues" />
+    <station name="Jazz Fusion" url="https://jazz-radio-fusion.ice.infomaniak.ch/jazz-radio-fusion.aac" genre="Jazz &amp; Blues" />
+    <station name="Jazzy French" url="https://jazz-wr18.ice.infomaniak.ch/jazz-wr18-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Latin Jazz" url="https://jazz-wr09.ice.infomaniak.ch/jazz-wr09-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Lounge" url="https://jazzlounge.ice.infomaniak.ch/jazzlounge-high.aac" genre="Jazz &amp; Blues" />
+    <station name="New Orléans" url="https://jazz-wr03.ice.infomaniak.ch/jazz-wr03-64.aac" genre="Jazz &amp; Blues" />
+    <station name="New York" url="https://jazzladiescrooners.ice.infomaniak.ch/jazzladiescrooners-high.aac" genre="Jazz &amp; Blues" />
+    <station name="Nouveautés Jazz" url="https://jzr-wr99.ice.infomaniak.ch/jzr-wr99.aac" genre="Jazz &amp; Blues" />
+    <station name="Nouveautés Soul" url="https://jzr-wr19.ice.infomaniak.ch/jzr-wr19-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Only Women" url="https://jazz-wr16.ice.infomaniak.ch/jazz-wr16-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Pascal Obispo" url="https://jazzradiopascalobispo.ice.infomaniak.ch/jazzradiopascalobispo-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Piano Jazz" url="https://jzr-piano.ice.infomaniak.ch/jzr-piano.aac" genre="Jazz &amp; Blues" />
+    <station name="Reprises" url="https://reprises.ice.infomaniak.ch/reprises-high.aac" genre="Jazz &amp; Blues" />
+    <station name="Saxo Jazz" url="https://jazz-thema.ice.infomaniak.ch/jazz-thema.aac" genre="Jazz &amp; Blues" />
+    <station name="Soul" url="https://jazz-wr10.ice.infomaniak.ch/jazz-wr10-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Soul Food (DJ Philgood)" url="https://jazz-wr12.ice.infomaniak.ch/jazz-wr12-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Stax And Motown" url="https://jazz-wr15.ice.infomaniak.ch/jazz-wr15-64.aac" genre="Jazz &amp; Blues" />
+    <station name="Sunset" url="https://jzr-sunset.ice.infomaniak.ch/jzr-sunset.aac" genre="Jazz &amp; Blues" />
+    <station name="Valentine's Day" url="https://jzr-events-01.ice.infomaniak.ch/jzr-events-01.aac" genre="Jazz &amp; Blues" />
+    <station name="Zen Attitude" url="https://zen-attitude.ice.infomaniak.ch/zen-attitude.aac" genre="Jazz &amp; Blues" />
+    <station name="France Musique - La Jazz" url="https://icecast.radiofrance.fr/francemusiquelajazz-hifi.aac" genre="Jazz &amp; Blues" />
+    <station name=".011FM - The Jazz Collection" url="https://listen.011fm.com/stream11" genre="Jazz &amp; Blues" />
+    <station name=".977 Smooth Jazz" url="http://17563.live.streamtheworld.com/977_SMOOJAZZ_SC" genre="Jazz &amp; Blues" />
+    <station name="Aardvark Blues FM (Houston)" url="https://streaming.live365.com/b77280_128mp3" genre="Jazz &amp; Blues" />
+    <station name="BSPR Jazz (Boise State Public Radio)" url="https://boisestate.streamguys1.com/News1-aac-96k-icy.aac" genre="Jazz &amp; Blues" />
+    <station name="Cool Jazz Florida" url="http://162.244.80.20:6948/" genre="Jazz &amp; Blues" />
+    <station name="Couleurs Jazz Radio" url="https://listen.radioking.com/radio/127546/stream/167344" genre="Jazz &amp; Blues" />
+    <station name="Gospel Jazz Radio" url="https://kathy.torontocast.com:3375/stream" genre="Jazz &amp; Blues" />
+    <station name="Jazz Lovers Radio" url="https://ec1.yesstreaming.net:2945/stream" genre="Jazz &amp; Blues" />
+    <station name="Jazz Vespers Radio" url="https://ec1.yesstreaming.net:1365/stream" genre="Jazz &amp; Blues" />
+    <station name="KBRH" url="https://wbrh.streamguys1.com/kbrh-aac" genre="Jazz &amp; Blues" />
+    <station name="Sax4Love" url="http://strm112.1.fm/sax4ever_mobile_mp3" genre="Jazz &amp; Blues" />
+    <station name="Shonan Beach FM 78.9" url="https://shonanbeachfm.out.airtime.pro:8000/shonanbeachfm_a" genre="Jazz &amp; Blues" />
+    <station name="Smooth Jazz DC" url="https://vip2.fastcast4u.com/proxy/sjdchd?mp=/1" genre="Jazz &amp; Blues" />
+    <station name="Sonic Universe" url="https://ice2.somafm.com/sonicuniverse-128-mp3" genre="Jazz &amp; Blues" />
+    <station name="UbuntuFM Jazz Radio" url="https://streaming.coollective.nl:8443/UbuntuFMjazz" genre="Jazz &amp; Blues" />
+    <station name="WBRH" url="https://wbrh.streamguys1.com/wbrh-aac" genre="Jazz &amp; Blues" />
+    <station name="Yimago Jazz - Toronto" url="https://strw3.openstream.co/872" genre="Jazz &amp; Blues" />
+    <station name="Yimago World Music and Jazz Radio" url="https://yimago.torontocast.stream/world" genre="Jazz &amp; Blues" />
+    </national>
+  </bouquet>

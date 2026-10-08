@@ -1,40 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="BE" name="Belgique" flag="🇧🇪" multilingual="true">
   <community id="FR" name="Wallonie &amp; Bruxelles (Français)">
     <national>
-      <station name="La Première" url="https://radios.rtbf.be/laprem-128.mp3" genre="RTBF - Info &amp; Société"/>
-      <station name="VivaCité" url="https://radios.rtbf.be/vivacite-128.mp3" genre="RTBF - Proximité &amp; Sport"/>
-      <station name="Classic 21" url="https://radios.rtbf.be/classic21-128.mp3" genre="RTBF - Rock Classique"/>
-      <station name="Tipik" url="https://radios.rtbf.be/tipik-128.mp3" genre="RTBF - Jeunes &amp; Pop"/>
-      <station name="Musiq3" url="https://radios.rtbf.be/musiq3-128.mp3" genre="RTBF - Classique &amp; Jazz"/>
-      <station name="Bel RTL" url="https://belrtl.ice.infomaniak.ch/belrtl-mp3-128.mp3" genre="Généraliste privée"/>
-      <station name="Radio Contact" url="https://radiocontact.ice.infomaniak.ch/radiocontact-mp3-128.mp3" genre="Hits &amp; Divertissement"/>
-      <station name="Nostalgie Belgique" url="https://nostalgiewallonie.ice.infomaniak.ch/nostalgiewallonie-128.mp3" genre="Grands classiques"/>
-      <station name="NRJ Belgique" url="https://nrjbelgique.ice.infomaniak.ch/nrjbelgique-128.mp3" genre="Hits du moment"/>
-      <station name="DH Radio" url="https://dhradio.ice.infomaniak.ch/dhradio-128.mp3" genre="Pop Rock"/>
-      <station name="Fun Radio Belgique" url="https://funradiobe.ice.infomaniak.ch/funradiobe-128.mp3" genre="Dance &amp; Electro"/>
-    </national>
+      <station name="La Première" url="https://radios.rtbf.be/laprem1erebxl-128.mp3" genre="RTBF - Info &amp; Société" />
+      <station name="VivaCité" url="https://radios.rtbf.be/vivabxl-64.aac" genre="RTBF - Proximité &amp; Sport" />
+      <station name="Classic 21" url="https://radios.rtbf.be/classic21-128.mp3" genre="RTBF - Rock Classique" />
+      <station name="Tipik" url="https://radios.rtbf.be/pure-128.mp3" genre="RTBF - Jeunes &amp; Pop" />
+      <station name="Musiq3" url="https://radios.rtbf.be/musiq3-128.mp3" genre="RTBF - Classique &amp; Jazz" />
+      <station name="Bel RTL" url="https://belrtl.ice.infomaniak.ch/belrtl-mp3-128.mp3" genre="Généraliste privée" />
+      <station name="Radio Contact" url="http://radiocontact.ice.infomaniak.ch/radiocontact-mp3-192.mp3" genre="Hits &amp; Divertissement" />
+      <station name="Nostalgie Belgique" url="https://stream.rcs.revma.com/5gd04cwptg0uv" genre="Grands classiques" />
+      <station name="NRJ Belgique" url="https://n15a-eu.rcs.revma.com/xh00fwuptg0uv?rj-ttl=5&amp;rj-tok=AAABnYs3M-QAn5TkD3sejQ4IJg" genre="Hits du moment" />
+      <station name="DH Radio" url="https://stream.rcs.revma.com/th89pet3pzzuv" genre="Pop Rock" />
+      <station name="Fun Radio Belgique" url="https://funradiobe.ice.infomaniak.ch/funradiobe-high.mp3" genre="Dance &amp; Electro" />
+      </national>
     <regions>
       <region name="Régionales &amp; Locales">
-        <station name="Antipode" url="https://stream.antipode.be/antipode-128.mp3" genre="Brabant Wallon"/>
-        <station name="Maximum FM" url="https://stream.maximumfm.be/maximum-128.mp3" genre="Liège &amp; Région"/>
-        <station name="Must FM" url="https://stream.mustfm.be/mustfm-128.mp3" genre="Namur &amp; Luxembourg"/>
-        <station name="Sud Radio Belgique" url="https://stream.sudradio.be/sudradio-128.mp3" genre="Hainaut"/>
-      </region>
-    </regions>
-  </community>
+        <station name="Antipode" url="https://antipode.be/" genre="Brabant Wallon" />
+        <station name="Maximum FM" url="http://stream.rcs.revma.com/vnmbzemrmm0uv" genre="Liège &amp; Région" />
+        <station name="Must FM" url="https://stream.radiomustathens.com/" genre="Namur &amp; Luxembourg" />
+        <station name="Sud Radio Belgique" url="http://rcf.streamakaci.com/rcfsudbe.mp3" genre="Hainaut" />
+        </region>
+      </regions>
+    </community>
   <community id="NL" name="Flandre (Néerlandais)">
     <national>
-      <station name="Radio 1" url="https://icecast.vrtcdn.be/radio1-high.mp3" genre="VRT - Nieuws &amp; Cultuur"/>
-      <station name="Radio 2" url="https://icecast.vrtcdn.be/ra2vlb-high.mp3" genre="VRT - Familieradio"/>
-      <station name="Studio Brussel" url="https://icecast.vrtcdn.be/stubru-high.mp3" genre="VRT - Alternatieve Rock &amp; Pop"/>
-      <station name="MNM" url="https://icecast.vrtcdn.be/mnm-high.mp3" genre="VRT - Hits &amp; Jongeren"/>
-      <station name="Klara" url="https://icecast.vrtcdn.be/klara-high.mp3" genre="VRT - Klassiek"/>
-      <station name="Qmusic Vlaanderen" url="https://stream.qmusic.be/qmusic/mp3" genre="Pop &amp; Hits"/>
-      <station name="Joe" url="https://stream.joe.be/joe/mp3" genre="70s, 80s &amp; 90s"/>
-      <station name="Nostalgie Vlaanderen" url="https://stream.nostalgie.be/nostalgie/mp3" genre="Klassiekers"/>
-      <station name="Willy" url="https://stream.willy.radio/willy/mp3" genre="Rock"/>
-      <station name="TOPradio" url="https://topradio.stream.b2stream.be/topradio.mp3" genre="Dance &amp; House"/>
-    </national>
-  </community>
-</bouquet>
+      <station name="Radio 1" url="https://icecast.vrtcdn.be/radio1-high.mp3" genre="VRT - Nieuws &amp; Cultuur" />
+      <station name="Radio 2" url="https://icecast.vrtcdn.be/ra2vlb-high.mp3" genre="VRT - Familieradio" />
+      <station name="Studio Brussel" url="https://icecast.vrtcdn.be/stubru-high.mp3" genre="VRT - Alternatieve Rock &amp; Pop" />
+      <station name="MNM" url="https://icecast.vrtcdn.be/mnm-high.mp3" genre="VRT - Hits &amp; Jongeren" />
+      <station name="Klara" url="https://icecast.vrtcdn.be/klara-high.mp3" genre="VRT - Klassiek" />
+      <station name="Qmusic Vlaanderen" url="https://icecast-qmusicbe-cdp.triple-it.nl/qmusic.aac" genre="Pop &amp; Hits" />
+      <station name="Joe" url="https://icecast-qmusicbe-cdp.triple-it.nl/joe_80s_90s.mp3" genre="70s, 80s &amp; 90s" />
+      <station name="Nostalgie Vlaanderen" url="https://playerservices.streamtheworld.com/api/livestream-redirect/NOSTALGIEWAF80.mp3" genre="Klassiekers" />
+      <station name="Willy" url="https://icecast-qmusicbe-cdp.triple-it.nl/willy-class-x.aac" genre="Rock" />
+      <station name="TOPradio" url="http://str.topradio.be/topradio.mp3" genre="Dance &amp; House" />
+      </national>
+    </community>
+  </bouquet>

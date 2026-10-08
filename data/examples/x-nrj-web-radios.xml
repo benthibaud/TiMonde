@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet name="Webradios NRJ" flag="🔥" category="Exemples" country="FR">
+  <national>
+    <station name="NRJ (Paris)" url="https://cdn.nrjaudio.fm/audio1/fr/30001/mp3_128.mp3" genre="Hits / Pop / Urban" />
+    <station name="NRJ Manu le 6-9" url="https://streaming.nrjaudio.fm/our7shvukkaq?origine=fluxradios_NRJ-Manu-le-6-9" genre="Hits / Pop / Urban" />
+    <station name="NRJ At Work" url="https://streaming.nrjaudio.fm/ou7xcof3s5gi?origine=fluxradios_NRJ-At-Work" genre="Hits / Pop / Urban" />
+    <station name="NRJ Love" url="https://streaming.nrjaudio.fm/oudjhm2h9r57?origine=fluxradios_NRJ-Love" genre="Hits / Pop / Urban" />
+    <station name="NRJ No Repeat" url="https://streaming.nrjaudio.fm/ouyioi36zcw2?origine=fluxradios_NRJ-No-Repeat" genre="Hits / Pop / Urban" />
+    <station name="NRJ Nouveautés" url="https://streaming.nrjaudio.fm/ou7x5rf3s5gi?origine=fluxradios_NRJ-Nouveautes" genre="Hits / Pop / Urban" />
+    <station name="NRJ Pour le Sport" url="https://streaming.nrjaudio.fm/ouy59236zcw2?origine=fluxradios_NRJ-Pour-le-Sport" genre="Hits / Pop / Urban" />
+    <station name="NRJ Sport Motivation" url="https://streaming.nrjaudio.fm/ousgxym4z85f?origine=fluxradios_NRJ-Sport-Motivation" genre="Hits / Pop / Urban" />
+    <station name="NRJ Best-Of Rap Français 2025" url="https://streaming.nrjaudio.fm/oujuibnxeb5p?origine=fluxradios_NRJ-Best-Of-Rap-Francais-2025" genre="Hits / Pop / Urban" />
+    <station name="NRJ Best-Of Français 2025" url="https://streaming.nrjaudio.fm/ouwroisk6j4d?origine=fluxradios_NRJ-Best-Of-Francais-2025" genre="Hits / Pop / Urban" />
+    <station name="NRJ C'est Marseille Bébé" url="https://streaming.nrjaudio.fm/oupqwvbgddr9?origine=fluxradios_NRJ-C-Est-Marseille-Bebe" genre="Hits / Pop / Urban" />
+    <station name="NRJ Classic Rap FR" url="https://streaming.nrjaudio.fm/ouw86hsk6j4d?origine=fluxradios_NRJ-Classic-Rap-FR" genre="Hits / Pop / Urban" />
+    <station name="NRJ French Hits" url="https://streaming.nrjaudio.fm/ou2n9fpw5hs7?origine=fluxradios_NRJ-French-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ Hits Français 2025" url="https://streaming.nrjaudio.fm/out2i86ubafg?origine=fluxradios_NRJ-Hits_Francais-2025" genre="Hits / Pop / Urban" />
+    <station name="NRJ La Playlist 100% Hits Français" url="https://streaming.nrjaudio.fm/oupnxqbgddr9" genre="Hits / Pop / Urban" />
+    <station name="NRJ Made in France" url="https://streaming.nrjaudio.fm/ouhsrapu6pbr?origine=fluxradios_NRJ-Made-in-France" genre="Hits / Pop / Urban" />
+    <station name="NRJ Nouveautés Françaises" url="https://streaming.nrjaudio.fm/ou76qmf3s5gi?origine=fluxradios_NRJ-Nouveautes-Francaises" genre="Hits / Pop / Urban" />
+    <station name="NRJ Nouveautés Rap Français" url="https://streaming.nrjaudio.fm/ouvfg4oarp52?origine=fluxradios_NRJ-Nouveautes-Rap-Fr" genre="Hits / Pop / Urban" />
+    <station name="NRJ Rap FR" url="https://streaming.nrjaudio.fm/ounu8iqn5eyc?origine=fluxradios_NRJ-Rap-FR" genre="Hits / Pop / Urban" />
+    <station name="NRJ RNB FR" url="https://streaming.nrjaudio.fm/ouquj3yoeo8p?origine=fluxradios_NRJ-RnB-FR" genre="Hits / Pop / Urban" />
+    <station name="NRJ Hits" url="https://streaming.nrjaudio.fm/ouuk8j5n3nje?origine=fluxradios_NRJ-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ 10 Ans de Hits" url="https://streaming.nrjaudio.fm/ou7xztf3s5gi?origine=fluxradios_NRJ-10-Ans-De-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ 500 Hits de l'Ete" url="https://streaming.nrjaudio.fm/ouvtiboarp52?origine=fluxradios_NRJ-500-Hits-de-l'Ete" genre="Hits / Pop / Urban" />
+    <station name="NRJ 10.000 Hits" url="https://streaming.nrjaudio.fm/oumvnn8fnozc?origine=fluxradios_NRJ-10.000-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ Acoustic Hits" url="https://streaming.nrjaudio.fm/ou3iqcuizv6i?origine=fluxradios_NRJ-Acoustic-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ Afrobeats" url="https://streaming.nrjaudio.fm/ouju93nxeb5p?origine=fluxradios_NRJ-Afrobeats" genre="Hits / Pop / Urban" />
+    <station name="NRJ Afro Hits" url="https://streaming.nrjaudio.fm/oug737rb92oc?origine=fluxradios_NRJ-Afro-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ Best Hits 2020-2025" url="https://streaming.nrjaudio.fm/ouue4t5n3nje?origine=fluxradios_NRJ-Best-Hits-2020-2025" genre="Hits / Pop / Urban" />
+    <station name="NRJ Classic Hits" url="https://streaming.nrjaudio.fm/oufdcptx4thg?origine=fluxradios_NRJ-Classic-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ Disney Hits" url="https://streaming.nrjaudio.fm/oudbxj2h9r57?origine=fluxradios_NRJ-Disney-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ Flashback" url="https://streaming.nrjaudio.fm/ouuko35n3nje?origine=fluxradios_NRJ-Flashback" genre="Hits / Pop / Urban" />
+    <station name="NRJ Futurs Hits 2026" url="https://streaming.nrjaudio.fm/ougfxerb92oc?origine=fluxradios_NRJ-Futurs-Hits-2026" genre="Hits / Pop / Urban" />
+    <station name="NRJ Futurs Hits Du Printemps" url="https://streaming.nrjaudio.fm/oujuainxeb5p?origine=fluxradios_NRJ-Futurs-Hits-Du-Printemps" genre="Hits / Pop / Urban" />
+    <station name="NRJ Happy Hits" url="https://streaming.nrjaudio.fm/ousgsfm4z85f?origine=fluxradios_NRJ-Happy-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ Hit-List" url="https://streaming.nrjaudio.fm/ouw8f9sk6j4d?origine=fluxradios_NRJ-Hit-List" genre="Hits / Pop / Urban" />
+    <station name="NRJ Hits 80" url="https://streaming.nrjaudio.fm/oujybtnxeb5p?origine=fluxradios_NRJ-Hits-80" genre="Hits / Pop / Urban" />
+    <station name="NRJ Hits 90" url="https://streaming.nrjaudio.fm/ou627gxp336f?origine=fluxradios_NRJ-Hits-90" genre="Hits / Pop / Urban" />
+    <station name="NRJ Hits 2025" url="https://streaming.nrjaudio.fm/ouuc385n3nje?origine=fluxradios_NRJ-Hits-2025" genre="Hits / Pop / Urban" />
+    <station name="NRJ Hits 2026" url="https://streaming.nrjaudio.fm/ou5za9irv93h?origine=fluxradios_NRJ-Hits-2026" genre="Hits / Pop / Urban" />
+    <station name="NRJ Hits Du Moment" url="https://streaming.nrjaudio.fm/ouqiikyoeo8p?origine=fluxradios_NRJ-Hits-Du-Moment" genre="Hits / Pop / Urban" />
+    <station name="NRJ Hits for Running" url="https://streaming.nrjaudio.fm/ou6pz5xp336f?origine=fluxradios_NRJ-Hits-for-Running" genre="Hits / Pop / Urban" />
+    <station name="NRJ Hits Remix" url="https://streaming.nrjaudio.fm/ou4we9htd2ko?origine=fluxradios_NRJ-Hits-Remix" genre="Hits / Pop / Urban" />
+    <station name="NRJ Hits XXL" url="https://streaming.nrjaudio.fm/ouy5hb36zcw2?origine=fluxradios_NRJ-Hits-XXL" genre="Hits / Pop / Urban" />
+    <station name="NRJ La Playlist 2000'" url="https://streaming.nrjaudio.fm/ouotn47nfibk?origine=fluxradios_NRJ-La-Playlist-2000" genre="Hits / Pop / Urban" />
+    <station name="NRJ La Playlist 2010'" url="https://streaming.nrjaudio.fm/ouamh3w2dqao?origine=fluxradios_NRJ-La-Playlist-2010" genre="Hits / Pop / Urban" />
+    <station name="NRJ Les Hits N°1" url="https://streaming.nrjaudio.fm/ougosurb92oc?origine=fluxradios_NRJ-LES-HITS-N1" genre="Hits / Pop / Urban" />
+    <station name="NRJ Music Awards 2025" url="https://streaming.nrjaudio.fm/ouycc736zcw2?origine=fluxradios_NRJ-Music-Awards-2025" genre="Hits / Pop / Urban" />
+    <station name="NRJ New Hits Friday" url="https://streaming.nrjaudio.fm/ousgaom4z85f?origine=fluxradios_NRJ-New-Hits-Friday" genre="Hits / Pop / Urban" />
+    <station name="NRJ Nouveaux Hits 2026" url="https://streaming.nrjaudio.fm/ouucqs5n3nje?origine=fluxradios_NRJ-Nouveaux-Hits-2026" genre="Hits / Pop / Urban" />
+    <station name="NRJ Summer Hits 2025" url="https://streaming.nrjaudio.fm/ougfztrb92oc?origine=radio.net&amp;aw_0_1st.station=NRJ-Summer-Hits-2026" genre="Hits / Pop / Urban" />
+    <station name="NRJ Top 100 De La Décennie" url="https://streaming.nrjaudio.fm/ou87fbgk7oiu?origine=fluxradios_NRJ-Top-100-De-La-Decennie" genre="Hits / Pop / Urban" />
+    <station name="NRJ Chill" url="https://streaming.nrjaudio.fm/oumrsk8fnozc?origine=fluxradios_NRJ-Chill" genre="Hits / Pop / Urban" />
+    <station name="NRJ Summer Chill" url="https://streaming.nrjaudio.fm/ouotrj7nfibk?origine=fluxradios_NRJ-Summer-Chill" genre="Hits / Pop / Urban" />
+    <station name="NRJ Envie De Detente" url="https://streaming.nrjaudio.fm/ou87qegk7oiu?origine=fluxradios_NRJ-Envie-De-Detente" genre="Hits / Pop / Urban" />
+    <station name="NRJ Kizomba" url="https://streaming.nrjaudio.fm/ou8v8dgk7oiu?origine=fluxradios_NRJ-Kizomba" genre="Hits / Pop / Urban" />
+    <station name="NRJ Lounge" url="https://streaming.nrjaudio.fm/oua828w2dqao?origine=fluxradios_NRJ-Lounge" genre="Hits / Pop / Urban" />
+    <station name="NRJ Relax" url="https://streaming.nrjaudio.fm/ougo8irb92oc?origine=fluxradios_NRJ-Relax" genre="Hits / Pop / Urban" />
+    <station name="NRJ Electro" url="https://streaming.nrjaudio.fm/our78wvukkaq?origine=fluxradios_NRJ-Electro" genre="Hits / Pop / Urban" />
+    <station name="NRJ Electro Chill" url="https://streaming.nrjaudio.fm/ousrncm4z85f?origine=fluxradios_NRJ-Electro-Chill" genre="Hits / Pop / Urban" />
+    <station name="NRJ Electro Fitness" url="https://streaming.nrjaudio.fm/oujy27nxeb5p?origine=fluxradios_NRJ-Electro-Fitness" genre="Hits / Pop / Urban" />
+    <station name="NRJ EDM" url="https://streaming.nrjaudio.fm/oumr2p8fnozc?origine=fluxradios_NRJ-EDM" genre="Hits / Pop / Urban" />
+    <station name="NRJ Extravadance" url="https://streaming.nrjaudio.fm/ousrnpm4z85f?origine=fluxradios_NRJ-Extravadance" genre="Hits / Pop / Urban" />
+    <station name="NRJ Hardstyle" url="https://streaming.nrjaudio.fm/oug75vrb92oc?origine=fluxradios_NRJ-Hardstyle" genre="Hits / Pop / Urban" />
+    <station name="NRJ House Beats" url="https://streaming.nrjaudio.fm/oudn9a2h9r57?origine=fluxradios_NRJ-House-Beats" genre="Hits / Pop / Urban" />
+    <station name="NRJ La Playlist Extravadance" url="https://streaming.nrjaudio.fm/ou8v2igk7oiu?origine=fluxradios_NRJ-La-Playlist-Extravadance" genre="Hits / Pop / Urban" />
+    <station name="NRJ Metal" url="https://streaming.nrjaudio.fm/ouhmbnapu6pb?origine=fluxradios_NRJ-Metal" genre="Hits / Pop / Urban" />
+    <station name="NRJ Techno Story" url="https://streaming.nrjaudio.fm/ouvfmzoarp52?origine=fluxradios_NRJ-Techno-Story" genre="Hits / Pop / Urban" />
+    <station name="NRJ Clubbin" url="https://streaming.nrjaudio.fm/ou8onegk7oiu?origine=fluxradios_NRJ-Clubbin" genre="Hits / Pop / Urban" />
+    <station name="NRJ Club Hits" url="https://streaming.nrjaudio.fm/ou8vm6gk7oiu?origine=fluxradios_NRJ-Club-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ Deep" url="https://streaming.nrjaudio.fm/ouhseuapu6pb?origine=fluxradios_NRJ-Deep" genre="Hits / Pop / Urban" />
+    <station name="NRJ EuroHot 30" url="https://streaming.nrjaudio.fm/ou62tvxp336f?origine=fluxradios_NRJ-Eurohot-30" genre="Hits / Pop / Urban" />
+    <station name="NRJ 500 Hits Dance" url="https://streaming.nrjaudio.fm/ou5kmsirv93h?origine=fluxradios_NRJ-500-Hits-Dance" genre="Hits / Pop / Urban" />
+    <station name="NRJ Dance" url="https://streaming.nrjaudio.fm/ouou7nfibkyn?origine=fluxradios_NRJ-Dance" genre="Hits / Pop / Urban" />
+    <station name="NRJ Dance 90" url="https://streaming.nrjaudio.fm/ouwgqgsk6j4d?origine=fluxradios_NRJ-Dance-90" genre="Hits / Pop / Urban" />
+    <station name="NRJ Dance 2000" url="https://streaming.nrjaudio.fm/ou5kwairv93h?origine=fluxradios_NRJ-Dance-2000" genre="Hits / Pop / Urban" />
+    <station name="NRJ Dance 2026" url="https://streaming.nrjaudio.fm/oumo2g8fnozc?origine=fluxradios_NRJ-Dance-2026" genre="Hits / Pop / Urban" />
+    <station name="NRJ Dance Hits" url="https://streaming.nrjaudio.fm/ouw8hnsk6j4d?origine=fluxradios_NRJ-Dance-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ Dance XXL" url="https://streaming.nrjaudio.fm/ou2nwdpw5hs7?origine=fluxradios_NRJ-Dance-XXL" genre="Hits / Pop / Urban" />
+    <station name="NRJ Fiesta" url="https://streaming.nrjaudio.fm/ousgwhm4z85f?origine=fluxradios_NRJ-Fiesta" genre="Hits / Pop / Urban" />
+    <station name="NRJ New Dance Friday" url="https://streaming.nrjaudio.fm/ou4w4ahtd2ko?origine=fluxradios_NRJ-New-Dance-Friday" genre="Hits / Pop / Urban" />
+    <station name="NRJ Nouveaux Hits Dance" url="https://streaming.nrjaudio.fm/oun39nqn5eyc?origine=fluxradios_NRJ-Nouveaux-Hits-Dance" genre="Hits / Pop / Urban" />
+    <station name="NRJ Party Hits" url="https://streaming.nrjaudio.fm/oumvqt8fnozc?origine=fluxradios_NRJ-Party-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ David Guetta" url="https://streaming.nrjaudio.fm/outdax6ubafg?origine=fluxradios_NRJ-David-Guetta" genre="Hits / Pop / Urban" />
+    <station name="NRJ DJ Bens" url="https://streaming.nrjaudio.fm/ouhs78apu6pb?origine=fluxradios_NRJ-DJ-Bens" genre="Hits / Pop / Urban" />
+    <station name="NRJ Ibiza" url="https://streaming.nrjaudio.fm/outdfu6ubafg?origine=fluxradios_NRJ-Ibiza" genre="Hits / Pop / Urban" />
+    <station name="NRJ Bad Bunny" url="https://streaming.nrjaudio.fm/oujuh5nxeb5p?origine=fluxradios_NRJ-Bad-Bunny" genre="Hits / Pop / Urban" />
+    <station name="NRJ Fiesta Latina" url="https://streaming.nrjaudio.fm/ourf5qvukkaq?origine=fluxradios_NRJ-Fiesta-Latina" genre="Hits / Pop / Urban" />
+    <station name="NRJ Fuego Latino" url="https://streaming.nrjaudio.fm/oug75trb92oc?origine=fluxradios_NRJ-Fuego-Latino" genre="Hits / Pop / Urban" />
+    <station name="NRJ Funky" url="https://streaming.nrjaudio.fm/oubqddj25zuw?origine=fluxradios_NRJ-Funky" genre="Hits / Pop / Urban" />
+    <station name="NRJ Latino" url="https://streaming.nrjaudio.fm/oumvyy8fnozc?origine=fluxradios_NRJ-Latino" genre="Hits / Pop / Urban" />
+    <station name="NRJ Latino 2026" url="https://streaming.nrjaudio.fm/oubqppj25zuw?origine=fluxradios_NRJ-Latino-2026" genre="Hits / Pop / Urban" />
+    <station name="NRJ Latino Classics" url="https://streaming.nrjaudio.fm/oudb5z2h9r57?origine=fluxradios_NRJ-Latino-Classics" genre="Hits / Pop / Urban" />
+    <station name="NRJ Latino Hits" url="https://streaming.nrjaudio.fm/ou3i3euizv6i?origine=fluxradios_NRJ-Latino-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ Reggae" url="https://streaming.nrjaudio.fm/ou5e7virv93h?origine=fluxradios_NRJ-Reggae" genre="Hits / Pop / Urban" />
+    <station name="NRJ Reggaeton" url="https://streaming.nrjaudio.fm/ou8vs6gk7oiu?origine=fluxradios_NRJ-Reggaeton" genre="Hits / Pop / Urban" />
+    <station name="NRJ Zouk" url="https://streaming.nrjaudio.fm/ousryem4z85f?origine=fluxradios_NRJ-Zouk" genre="Hits / Pop / Urban" />
+    <station name="NRJ Classic Rnb" url="https://streaming.nrjaudio.fm/ouam9ow2dqao?origine=fluxradios_NRJ-Classic-Rnb" genre="Hits / Pop / Urban" />
+    <station name="NRJ Classic Rock" url="https://streaming.nrjaudio.fm/ouhm2bapu6pb?origine=fluxradios_NRJ-Classic-Rock" genre="Hits / Pop / Urban" />
+    <station name="NRJ Hip Hop" url="https://streaming.nrjaudio.fm/oujueqnxeb5p?origine=fluxradios_NRJ-Hip-Hop" genre="Hits / Pop / Urban" />
+    <station name="NRJ Hip Hop Rnb Hits" url="https://streaming.nrjaudio.fm/ouw8ansk6j4d?origine=fluxradios_NRJ-Hip-Hop-Rnb-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ K-Pop" url="https://streaming.nrjaudio.fm/ouhs4wapu6pb?origine=fluxradios_NRJ-K-Pop" genre="Hits / Pop / Urban" />
+    <station name="NRJ Pop" url="https://streaming.nrjaudio.fm/ouwg2ask6j4d?origine=fluxradios_NRJ-Pop" genre="Hits / Pop / Urban" />
+    <station name="NRJ Pop 2026" url="https://streaming.nrjaudio.fm/ouagthw2dqao?origine=fluxradios_NRJ-Pop-2026" genre="Hits / Pop / Urban" />
+    <station name="NRJ Pop Rock" url="https://streaming.nrjaudio.fm/ou76jwf3s5gi?origine=fluxradios_NRJ-Pop-Rock" genre="Hits / Pop / Urban" />
+    <station name="NRJ Popstars 2000" url="https://streaming.nrjaudio.fm/ourtndvukkaq?origine=fluxradios_NRJ-Popstars-2000" genre="Hits / Pop / Urban" />
+    <station name="NRJ RNB" url="https://streaming.nrjaudio.fm/ouamhfw2dqao?origine=fluxradios_NRJ-RnB" genre="Hits / Pop / Urban" />
+    <station name="NRJ Rock" url="https://streaming.nrjaudio.fm/oug7qvrb92oc?origine=fluxradios_NRJ-Rock" genre="Hits / Pop / Urban" />
+    <station name="NRJ Classic Rap US" url="https://streaming.nrjaudio.fm/oupn23bgddr9?origine=fluxradios_NRJ-Classic-Rap-US" genre="Hits / Pop / Urban" />
+    <station name="NRJ Gangsta Rap" url="https://streaming.nrjaudio.fm/oufxohtx4thg?origine=fluxradios_NRJ-Gangsta-Rap" genre="Hits / Pop / Urban" />
+    <station name="NRJ Linkin Park" url="https://streaming.nrjaudio.fm/ouvfbfoarp52?origine=fluxradios_NRJ-Linkin-Park" genre="Hits / Pop / Urban" />
+    <station name="NRJ Rap" url="https://streaming.nrjaudio.fm/oumrha8fnozc?origine=fluxradios_NRJ-Rap" genre="Hits / Pop / Urban" />
+    <station name="NRJ Rap US" url="https://streaming.nrjaudio.fm/ouw84bsk6j4d?origine=fluxradios_NRJ-Rap-US" genre="Hits / Pop / Urban" />
+    <station name="NRJ Rap 2000" url="https://streaming.nrjaudio.fm/ou8oy9gk7oiu?origine=fluxradios_NRJ-Rap-2000" genre="Hits / Pop / Urban" />
+    <station name="NRJ Rap 2026" url="https://streaming.nrjaudio.fm/ouycap36zcw2?origine=fluxradios_NRJ-Rap-2026" genre="Hits / Pop / Urban" />
+    <station name="NRJ Urban Hits" url="https://streaming.nrjaudio.fm/ouhse4apu6pb?origine=fluxradios_NRJ-Urban-Hits" genre="Hits / Pop / Urban" />
+    <station name="NRJ Oriental" url="https://streaming.nrjaudio.fm/ouhs9iapu6pb?origine=fluxradios_NRJ-Oriental" genre="Hits / Pop / Urban" />
+    <station name="NRJ Rai" url="https://streaming.nrjaudio.fm/ou8vwfgk7oiu?origine=fluxradios_NRJ-Rai" genre="Hits / Pop / Urban" />
+    <station name="NRJ België (Flandres)" url="https://25643.live.streamtheworld.com/NRJBELGIE.mp3" genre="Hits / Pop / Urban" />
+    <station name="NRJ Berlin" url="https://nrj.de/digital" genre="Hits / Pop / Urban" />
+    <station name="NRJ Egypt" url="https://nrjstreaming.ahmed-melege.com/nrjegypt" genre="Hits / Pop / Urban" />
+    <station name="NRJ Estonia" url="https://edge01.cdn.bitflip.ee:8888/NRJ" genre="Hits / Pop / Urban" />
+    <station name="NRJ Norway" url="https://nrj.p4groupaudio.com/NRJ_AM" genre="Hits / Pop / Urban" />
+    <station name="NRJ Österreich" url="http://stream1.energy.at:8000/aut" genre="Hits / Pop / Urban" />
+    <station name="NRJ Sweden" url="https://tx-bauerse.sharp-stream.com/http_live.php?i=nrj_instreamtest_se_mp3" genre="Hits / Pop / Urban" />
+    </national>
+  </bouquet>

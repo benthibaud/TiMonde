@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="AM" name="Arménie" flag="🇦🇲" multilingual="false">
   <national>
-    <station name="Public Radio of Armenia" url="https://stream.zeno.fm/2lgt4w4k0heuv" genre="Հայաստանի հանրային ռադիո (Yerevan)" />
-    <station name="Radio Aurora Armenia" url="https://stream.zeno.fm/3lgt4w4k0heuv" genre="Top Hits &amp; Pop" />
-  </national>
-</bouquet>
+    <station name="Public Radio of Armenia" url="https://playerservices.streamtheworld.com/api/livestream-redirect/WIXVFM.mp3" genre="Հայաստանի հանրային ռադիո (Yerevan)" />
+    <station name="Radio Aurora Armenia" url="https://streams.radio.co/sa0bf8ec29/listen?sid=1" genre="Top Hits &amp; Pop" />
+    </national>
+  </bouquet>

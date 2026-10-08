@@ -26,6 +26,7 @@ mkdir -p "${STAGING_DIR}/usr/share/icons/hicolor/scalable/apps"
 mkdir -p "${STAGING_DIR}/usr/share/icons/hicolor/scalable/panel"
 mkdir -p "${STAGING_DIR}/usr/share/timonde/scripts"
 mkdir -p "${STAGING_DIR}/usr/share/timonde/bouquets"
+mkdir -p "${STAGING_DIR}/usr/share/timonde/examples"
 
 # 3. Fichier de contrôle Debian
 cat << CONTROL_EOF > "${STAGING_DIR}/DEBIAN/control"
@@ -53,6 +54,7 @@ install -m 755 "${ROOT_DIR}/data/scripts/reorder_groups.py" "${STAGING_DIR}/usr/
 install -m 755 "${ROOT_DIR}/data/scripts/edit_station.py" "${STAGING_DIR}/usr/share/timonde/scripts/edit_station.py"
 install -m 755 "${ROOT_DIR}/data/scripts/browse_bouquets.py" "${STAGING_DIR}/usr/share/timonde/scripts/browse_bouquets.py"
 install -m 644 "${ROOT_DIR}"/data/bouquets/*.xml "${STAGING_DIR}/usr/share/timonde/bouquets/"
+install -m 644 "${ROOT_DIR}"/data/examples/* "${STAGING_DIR}/usr/share/timonde/examples/"
 
 # 5. Construction du paquet .deb
 dpkg-deb --build --root-owner-group "${STAGING_DIR}" "${ROOT_DIR}/${PACKAGE_NAME}"

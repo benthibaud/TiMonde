@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="DO" name="République Dominicaine" flag="🇩🇴" multilingual="false">
   <national>
-    <station name="Quisqueya FM 96.1" url="https://stream.rtvd.gob.do/quisqueyafm" genre="RTVD - La estación cultural dominicana" />
-    <station name="Z 101 Digital" url="https://stream.z101digital.com/live" genre="El gobierno de la mañana" />
-    <station name="Disco 106" url="https://stream.zeno.fm/6agt4w4k0heuv" genre="Merengue, bachata y salsa" />
-    <station name="CDN Radio 92.5" url="https://stream.cdnradio.com.do/live" genre="Noticias al instante" />
-  </national>
-</bouquet>
+    <station name="Quisqueya FM 96.1" url="https://radio.hostlagarto.com/quisqueya101fm/stream" genre="RTVD - La estación cultural dominicana" />
+    <station name="Z 101 Digital" url="https://zvezda-radio-rzv.mediacdn.ru/radio/zvezda/zvezda_128" genre="El gobierno de la mañana" />
+    <station name="Disco 106" url="https://radiordomi.com/8118/stream" genre="Merengue, bachata y salsa" />
+    <station name="CDN Radio 92.5" url="https://play.cdnradio.com.do/cdnlive" genre="Noticias al instante" />
+    </national>
+  </bouquet>

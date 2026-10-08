@@ -2,7 +2,7 @@
 <bouquet country="PR" name="Porto Rico" flag="🇵🇷" multilingual="false">
   <national>
     <station name="WIPR 940 AM" url="https://stream.wipr.pr/wipr-am" genre="Radio Universidad de Puerto Rico" />
-    <station name="WKAQ 580 AM" url="https://stream.zeno.fm/9agt4w4k0heuv" genre="Univision Radio Puerto Rico" />
-    <station name="Zeta 93 FM" url="https://stream.zeno.fm/1bgt4w4k0heuv" genre="La salsa de Puerto Rico" />
-  </national>
-</bouquet>
+    <station name="WKAQ 580 AM" url="https://televicentro.streamguys1.com/wkaqam-icy?key=a548fad34362b181adc2d8c3cc86b7cf1d424ef2d81c4050b3e6e1ba21f8de3d&amp;source=tunein&amp;source=TuneIn&amp;us_privacy=1YNY&amp;bundle=tunein.com&amp;lat=18.4038&amp;long=-66.1493&amp;aw_0_1st.playerid=RadioTime&amp;aw_0_1st.skey=1772682016&amp;aw_0_1st.bundleId=tunein.com&amp;lon=-66.1493&amp;listenerid=555c2c74177be24010a700c94e4e5933&amp;aw_0_1st.abtest=&amp;partnerId=RadioTime&amp;aw_0_1st.stationId=s30075&amp;aw_0_1st.premium=false&amp;aw_0_1st.platform=tunein&amp;aw_0_1st.genre_id=g255&amp;aw_0_1st.class=talk&amp;aw_0_1st.ads_partner_alias=dsk.Web&amp;aw_0_azn.planguage=[iv,%20es]&amp;aw_0_1st.is_ondemand=false&amp;aw_0_1st.topicId=na&amp;aw_0_1st.affiliateIds=a116918,a40075,a39100&amp;aw_0_1st.bandId=1&amp;delivery=1&amp;aw_0_1st.lotamesegments=;;" genre="Univision Radio Puerto Rico" />
+    <station name="Zeta 93 FM" url="https://liveaudio.lamusica.com/PR_WZNT_icy" genre="La salsa de Puerto Rico" />
+    </national>
+  </bouquet>

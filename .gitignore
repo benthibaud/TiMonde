@@ -1,3 +1,7 @@
 /target
 __pycache__/
 *.deb
+
+temp/
+*.pyc
+

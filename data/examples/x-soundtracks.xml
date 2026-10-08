@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet name="Musiques de Films &amp; Bandes Originales" flag="🎬" category="Exemples">
+  <national>
+    <station name="Jazz et Cinéma" url="https://jzr-wr20.ice.infomaniak.ch/jzr-wr20.aac" genre="Bandes Originales" />
+    <station name="RFM Cinéma" url="https://rfm.lmn.fm/rfm-wr19.mp3" genre="Bandes Originales" />
+    <station name="France Musique - La B.O. Musiques de Films" url="https://icecast.radiofrance.fr/francemusiquelabo-hifi.aac" genre="Bandes Originales" />
+    <station name="1.FM - Movie Soundtracks" url="https://strm112.1.fm/moviesoundtracks_mobile_mp3" genre="Bandes Originales" />
+    </national>
+  </bouquet>

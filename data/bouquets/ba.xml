@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="BA" name="Bosnie-Herzégovine" flag="🇧🇦" multilingual="false">
   <national>
-    <station name="BHRT BH Radio 1" url="https://bhrtstream.bhm.ba/bhr1" genre="BHRT - Javni radio servis BiH" />
-    <station name="Radio Sarajevo" url="https://stream.radiosarajevo.ba:8000/radiosarajevo" genre="Urbani radio / Glas Sarajeva" />
-    <station name="RSG Radio" url="https://stream.rsg.ba:8000/rsg" genre="Radio Stari Grad - Najbolja muzika" />
-    <station name="Radio Mix" url="https://stream.radiomix.ba:8000/mix" genre="Domaći hitovi" />
-  </national>
-</bouquet>
+    <station name="BHRT BH Radio 1" url="https://live.amperwave.net/manifest/audacy-wfanamaac-hlsc.m3u8" genre="BHRT - Javni radio servis BiH" />
+    <station name="Radio Sarajevo" url="https://443-1.autopo.st/45?type=http" genre="Urbani radio / Glas Sarajeva" />
+    <station name="RSG Radio" url="https://stream.rsgmedia.ba/listen/radio_stari_grad/radio.mp3" genre="Radio Stari Grad - Najbolja muzika" />
+    <station name="Radio Mix" url="https://stream.rsgmedia.ba/listen/radio_mix/radio.mp3" genre="Domaći hitovi" />
+    </national>
+  </bouquet>

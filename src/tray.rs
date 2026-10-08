@@ -6,7 +6,7 @@ use crate::radio_browser::{find_backup_stream, notify};
 use ksni::menu::{MenuItem, StandardItem, SubMenu};
 use log::{error, info};
 use std::path::{Path, PathBuf};
-use std::sync::atomic::{AtomicU64, Ordering};
+use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
 use std::sync::{Arc, Mutex};
 use std::time::Duration;
 
@@ -18,21 +18,47 @@ pub struct TiMondeTray {
     pub last_station: Arc<Mutex<Option<Station>>>,
     pub current_station: Arc<Mutex<Option<Station>>>,
     pub current_title: Arc<Mutex<Option<String>>>,
+    pub is_ephemeral: Arc<AtomicBool>,
     pub play_generation: Arc<AtomicU64>,
     pub tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
     pub sleep_timer: Arc<Mutex<Option<std::time::Instant>>>,
 }
 
 impl TiMondeTray {
+    pub fn find_station_by_url(root: &Group, station_url: &str) -> Option<Station> {
+        let norm = crate::import::normalize_url(station_url);
+        for s in &root.stations {
+            if !s.is_separator() && (s.url == station_url || crate::import::normalize_url(&s.url) == norm) {
+                return Some(s.clone());
+            }
+        }
+        for sub in &root.subgroups {
+            if let Some(found) = Self::find_station_by_url(sub, station_url) {
+                return Some(found);
+            }
+        }
+        None
+    }
     pub fn new(root_group: Group, bookmarks_path: PathBuf) -> Self {
+        let initial_last_station = {
+            let state = crate::state::AppState::load(&crate::state::AppState::default_path());
+            // Si la dernière station sauvegardée existe toujours dans les bookmarks, l'utiliser
+            if let Some(ref st) = state.last_station {
+                Self::find_station_by_url(&root_group, &st.url).or(Some(st.clone()))
+            } else {
+                None
+            }
+        };
+
         Self {
             audio: Arc::new(Mutex::new(None)),
             current_volume: Arc::new(Mutex::new(0.80)),
             root_group: Arc::new(Mutex::new(root_group)),
             bookmarks_path,
-            last_station: Arc::new(Mutex::new(None)),
+            last_station: Arc::new(Mutex::new(initial_last_station)),
             current_station: Arc::new(Mutex::new(None)),
             current_title: Arc::new(Mutex::new(None)),
+            is_ephemeral: Arc::new(AtomicBool::new(false)),
             play_generation: Arc::new(AtomicU64::new(0)),
             tray_handle: Arc::new(Mutex::new(None)),
             sleep_timer: Arc::new(Mutex::new(None)),
@@ -101,6 +127,19 @@ impl TiMondeTray {
 
     /// Exécute le flux complet de lecture avec résolution de playlists, watchdog et secours automatique
     #[allow(clippy::too_many_arguments)]
+/// Recherche récursive du nom du groupe parent contenant une station donnée
+fn find_group_name_for_station(root: &Group, station_url: &str) -> Option<String> {
+    for sub in &root.subgroups {
+        if sub.stations.iter().any(|s| crate::import::normalize_url(&s.url) == crate::import::normalize_url(station_url)) {
+            return Some(sub.name.clone());
+        }
+        if let Some(found) = Self::find_group_name_for_station(sub, station_url) {
+            return Some(found);
+        }
+    }
+    None
+}
+
     pub fn play_station_flow(
         station: Station,
         audio: &Arc<Mutex<Option<AudioEngine>>>,
@@ -136,8 +175,40 @@ impl TiMondeTray {
         }
 
         *last_station.lock().unwrap() = Some(station.clone());
-        *current_station.lock().unwrap() = Some(station);
+        *current_station.lock().unwrap() = Some(station.clone());
         *current_title.lock().unwrap() = None;
+
+        // Persistance atomique immédiate de la station en écoute dans state.json
+        {
+            let st_persist = station.clone();
+            std::thread::spawn(move || {
+                let mut state = crate::state::AppState::load(&crate::state::AppState::default_path());
+                state.last_station = Some(st_persist);
+                let _ = state.save(&crate::state::AppState::default_path());
+            });
+        }
+
+        let group_name = {
+            let guard = root_group.lock().unwrap();
+            Self::find_group_name_for_station(&guard, &station.url)
+        };
+        if let Some(time_info) = crate::timezone::get_local_time_for_station(station.country.as_deref(), &station_name, group_name.as_deref(), station.timezone.as_deref()) {
+            let offset_sign = if time_info.offset_hours >= 0.0 { "+" } else { "" };
+            crate::radio_browser::notify(
+                "TiMonde",
+                &format!(
+                    "▶ {}
+{} {} • {} {} (UTC{}{:.0}h)",
+                    station_name,
+                    time_info.flag,
+                    time_info.country_name,
+                    time_info.formatted_time,
+                    time_info.icon,
+                    offset_sign,
+                    time_info.offset_hours
+                ),
+            );
+        }
 
         let gen = play_generation.fetch_add(1, Ordering::SeqCst) + 1;
         let gen_clone = Arc::clone(play_generation);
@@ -228,6 +299,7 @@ impl TiMondeTray {
     }
 
     pub fn play_station(&self, station: Station) {
+        self.is_ephemeral.store(false, Ordering::SeqCst);
         Self::play_station_flow(
             station,
             &self.audio,
@@ -239,10 +311,252 @@ impl TiMondeTray {
             &self.root_group,
             &self.bookmarks_path,
         );
+        let handle_cell = Arc::clone(&self.tray_handle);
+        std::thread::spawn(move || {
+            if let Some(ref h) = *handle_cell.lock().unwrap() {
+                h.update(|_| {});
+            }
+        });
     }
 
     pub fn stop_and_trim(&self) {
+        self.is_ephemeral.store(false, Ordering::SeqCst);
         Self::stop_and_trim_flow(&self.audio, &self.current_station, &self.current_title);
+        let handle_cell = Arc::clone(&self.tray_handle);
+        std::thread::spawn(move || {
+            if let Some(ref h) = *handle_cell.lock().unwrap() {
+                h.update(|_| {});
+            }
+        });
+    }
+
+    /// Lance la lecture d'une station de radio de façon éphémère (sans l'ajouter aux signets)
+    pub fn play_ephemeral_station(&self, station: Station) {
+        let station_name = station.name.clone();
+        let raw_url = station.url.clone();
+        info!("🎲 Écoute éphémère : {} ({})", station_name, raw_url);
+
+        self.is_ephemeral.store(true, Ordering::SeqCst);
+
+        let resolved_url = resolve_stream_url(&raw_url);
+
+        if let Err(e) = Self::get_or_create_engine(&self.audio, &self.current_volume, &self.current_title) {
+            error!("{}", e);
+            notify("TiMonde", "Impossible d'initialiser l'audio");
+            return;
+        }
+
+        {
+            let guard = self.audio.lock().unwrap();
+            if let Some(ref engine) = *guard {
+                if let Err(e) = engine.play(&resolved_url) {
+                    error!("Échec lecture flux éphémère : {}", e);
+                    notify("TiMonde", &format!("Impossible de lancer {}", station_name));
+                    return;
+                }
+            }
+        }
+
+        *self.current_station.lock().unwrap() = Some(station.clone());
+        *self.current_title.lock().unwrap() = None;
+
+        // Persistance de la station éphémère dans state.json (sans écraser la station habituelle)
+        {
+            let st_eph = station.clone();
+            std::thread::spawn(move || {
+                let mut state = crate::state::AppState::load(&crate::state::AppState::default_path());
+                state.last_ephemeral = Some(st_eph);
+                let _ = state.save(&crate::state::AppState::default_path());
+            });
+        }
+
+        if let Some(time_info) = crate::timezone::get_local_time_for_station(station.country.as_deref(), &station_name, None, station.timezone.as_deref()) {
+            let offset_sign = if time_info.offset_hours >= 0.0 { "+" } else { "" };
+            crate::radio_browser::notify(
+                "TiMonde • Découverte éphémère",
+                &format!(
+                    "🎲 {}
+{} {} • {} {} (UTC{}{:.0}h)
+💡 Radio éphémère : non enregistrée dans vos listes.",
+                    station_name,
+                    time_info.flag,
+                    time_info.country_name,
+                    time_info.formatted_time,
+                    time_info.icon,
+                    offset_sign,
+                    time_info.offset_hours
+                ),
+            );
+        } else {
+            crate::radio_browser::notify(
+                "TiMonde • Découverte éphémère",
+                &format!(
+                    "🎲 {}
+💡 Radio éphémère : non enregistrée dans vos listes.",
+                    station_name
+                ),
+            );
+        }
+
+        let handle_cell = Arc::clone(&self.tray_handle);
+        std::thread::spawn(move || {
+            if let Some(ref h) = *handle_cell.lock().unwrap() {
+                h.update(|_| {});
+            }
+        });
+    }
+
+    /// Choisit une station au hasard dans le catalogue mondial et lance sa lecture éphémère
+    pub fn play_random_ephemeral_station(&self) {
+        let existing_urls: Vec<String> = {
+            let root = self.root_group.lock().unwrap();
+            let mut set = std::collections::HashSet::new();
+            crate::import::collect_all_urls(&root, &mut set);
+            set.into_iter().collect()
+        };
+
+        let picked = match crate::discovery::pick_random_station(&existing_urls) {
+            Some(st) => st,
+            None => {
+                crate::radio_browser::notify(
+                    "TiMonde",
+                    "Impossible de trouver une station dans le catalogue des bouquets.",
+                );
+                return;
+            }
+        };
+
+        self.play_ephemeral_station(picked);
+    }
+
+    /// Ouvre la boîte de dialogue pour enregistrer la radio éphémère courante dans les favoris
+    pub fn trigger_save_current_ephemeral_station(&self) {
+        let station_opt = self.current_station.lock().unwrap().clone();
+        let station = match station_opt {
+            Some(s) => s,
+            None => {
+                crate::radio_browser::notify("TiMonde", "Aucune radio n'est en cours d'écoute.");
+                return;
+            }
+        };
+
+        let root_group = Arc::clone(&self.root_group);
+        let bookmarks_path = self.bookmarks_path.clone();
+        let tray_handle = Arc::clone(&self.tray_handle);
+        let is_ephemeral = Arc::clone(&self.is_ephemeral);
+        let last_station = Arc::clone(&self.last_station);
+
+        std::thread::spawn(move || {
+            let all_groups: Vec<String> = {
+                let guard = root_group.lock().unwrap();
+                fn collect(g: &Group, list: &mut Vec<String>) {
+                    for sub in &g.subgroups {
+                        list.push(sub.name.clone());
+                        collect(sub, list);
+                    }
+                }
+                let mut list = Vec::new();
+                collect(&guard, &mut list);
+                list
+            };
+            let groups_json = serde_json::to_string(&all_groups).unwrap_or_else(|_| "[]".to_string());
+            let default_grp = all_groups.first().cloned().unwrap_or_else(|| "Sélection".to_string());
+
+            let (new_name, new_url, new_country, new_timezone, new_target_group) = if let Some(script_path) = Self::find_edit_script() {
+                let out = match std::process::Command::new(script_path)
+                    .arg("--mode")
+                    .arg("save-ephemeral")
+                    .arg("--station-name")
+                    .arg(&station.name)
+                    .arg("--url")
+                    .arg(&station.url)
+                    .arg("--country")
+                    .arg(station.country.as_deref().unwrap_or(""))
+                    .arg("--timezone")
+                    .arg(station.timezone.as_deref().unwrap_or(""))
+                    .arg("--group")
+                    .arg(&default_grp)
+                    .arg("--groups-json")
+                    .arg(&groups_json)
+                    .output()
+                {
+                    Ok(o) if o.status.success() => o,
+                    _ => return, // Annulé
+                };
+
+                let out_str = String::from_utf8_lossy(&out.stdout).trim().to_string();
+                if let Ok(json_val) = serde_json::from_str::<serde_json::Value>(&out_str) {
+                    let n = json_val["name"].as_str().unwrap_or("").trim().to_string();
+                    let u = json_val["url"].as_str().unwrap_or("").trim().to_string();
+                    let c = json_val["country"]
+                        .as_str()
+                        .map(|s| s.trim().to_ascii_uppercase())
+                        .filter(|s| !s.is_empty());
+                    let tz = json_val["timezone"]
+                        .as_str()
+                        .map(|s| s.trim().to_string())
+                        .filter(|s| !s.is_empty());
+                    let g = json_val["group"].as_str().unwrap_or("").trim().to_string();
+                    (n, u, c, tz, g)
+                } else {
+                    return;
+                }
+            } else {
+                return;
+            };
+
+            if new_name.is_empty() || new_url.is_empty() {
+                return;
+            }
+
+            let mut final_st = Station::new(&new_name, &new_url);
+            final_st.country = new_country;
+            final_st.timezone = new_timezone;
+
+            let mut root = root_group.lock().unwrap().clone();
+            match crate::import::add_station_to_group(
+                &mut root,
+                final_st.clone(),
+                Some(&new_target_group),
+            ) {
+                Ok(msg) => {
+                    if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                        log::error!("Erreur lors de la sauvegarde : {}", e);
+                        crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
+                        return;
+                    }
+
+                    // Bascule de l'état : la radio est désormais pérenne dans les signets
+                    is_ephemeral.store(false, Ordering::SeqCst);
+                    *last_station.lock().unwrap() = Some(final_st.clone());
+
+                    // Sauvegarder dans state.json
+                    let st_saved = final_st.clone();
+                    std::thread::spawn(move || {
+                        let mut state = crate::state::AppState::load(&crate::state::AppState::default_path());
+                        state.last_station = Some(st_saved);
+                        let _ = state.save(&crate::state::AppState::default_path());
+                    });
+
+                    match Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle) {
+                        Ok(total) => {
+                            log::info!("✅ {} (Total : {} stations)", msg, total);
+                            crate::radio_browser::notify(
+                                "TiMonde • Sauvegardée !",
+                                &format!("⭐ « {} » conservée dans vos favoris ! (Total : {}).", final_st.name, total),
+                            );
+                        }
+                        Err(e) => {
+                            crate::radio_browser::notify("TiMonde", &format!("Station ajoutée mais erreur rechargement : {}", e));
+                        }
+                    }
+                }
+                Err(err) => {
+                    log::warn!("Impossible de sauvegarder la station éphémère : {}", err);
+                    crate::radio_browser::notify("TiMonde", &format!("Notice : {}", err));
+                }
+            }
+        });
     }
 
     /// Programme une mise en veille automatique après un délai en minutes
@@ -289,6 +603,15 @@ impl TiMondeTray {
     }
 
     /// Construit récursivement les éléments de menu pour un groupe donné
+    /// Formate le libellé d une station dans le menu avec le drapeau national si étiqueté
+    fn format_station_menu_label(station: &Station) -> String {
+        if let Some((_, flag, _, _)) = crate::timezone::resolve_station_meta(station.country.as_deref(), &station.name, None, station.timezone.as_deref()) {
+            format!("{} {}", flag, station.name)
+        } else {
+            station.name.clone()
+        }
+    }
+
     fn build_group_menu(group: &Group) -> Vec<MenuItem<Self>> {
         let mut items = Vec::new();
 
@@ -312,11 +635,22 @@ impl TiMondeTray {
 
         for station in &group.stations {
             if station.is_separator() {
-                items.push(MenuItem::Separator);
+                if let Some(title) = station.separator_title() {
+                    let label = format!("─── {} ───", title);
+                    let item = StandardItem {
+                        label,
+                        enabled: false,
+                        visible: true,
+                        ..Default::default()
+                    };
+                    items.push(MenuItem::Standard(item));
+                } else {
+                    items.push(MenuItem::Separator);
+                }
             } else {
                 let st_clone = station.clone();
                 let item = StandardItem {
-                    label: station.name.clone(),
+                    label: Self::format_station_menu_label(station),
                     activate: Box::new(move |tray: &mut Self| {
                         tray.play_station(st_clone.clone());
                     }),
@@ -331,68 +665,6 @@ impl TiMondeTray {
         items
     }
 
-    /// Dialogue interactif de sélection de groupe (racine, existant ou nouveau)
-    pub fn select_target_group_dialog(root_group: &Arc<Mutex<Group>>) -> Option<Option<String>> {
-        let existing_groups: Vec<String> = {
-            let guard = root_group.lock().unwrap();
-            fn collect_names(g: &Group, list: &mut Vec<String>) {
-                for sub in &g.subgroups {
-                    list.push(sub.name.clone());
-                    collect_names(sub, list);
-                }
-            }
-            let mut list = Vec::new();
-            collect_names(&guard, &mut list);
-            list
-        };
-
-        // Si aucun groupe n est encore créé, on envoie directement à la racine par défaut
-        if existing_groups.is_empty() {
-            return Some(None);
-        }
-
-        let mut zenity_list = std::process::Command::new("zenity");
-        zenity_list
-            .arg("--list")
-            .arg("--title=Groupe de destination")
-            .arg("--text=Choisissez le groupe de destination :")
-            .arg("--column=Groupe")
-            .arg("(Racine - aucun groupe)")
-            .arg("[+ Nouveau groupe...]");
-
-        for g in &existing_groups {
-            zenity_list.arg(g);
-        }
-
-        let choice_out = match zenity_list.output() {
-            Ok(out) if out.status.success() => out,
-            _ => return None, // Annulé
-        };
-
-        let choice = String::from_utf8_lossy(&choice_out.stdout).trim().to_string();
-        if choice.is_empty() || choice.starts_with("(Racine") {
-            Some(None)
-        } else if choice.starts_with("[+ Nouveau") {
-            let entry_out = match std::process::Command::new("zenity")
-                .arg("--entry")
-                .arg("--title=Nouveau groupe")
-                .arg("--text=Nom du nouveau groupe de radios :")
-                .output()
-            {
-                Ok(out) if out.status.success() => out,
-                _ => return None,
-            };
-            let name = String::from_utf8_lossy(&entry_out.stdout).trim().to_string();
-            if !name.is_empty() {
-                Some(Some(name))
-            } else {
-                Some(None)
-            }
-        } else {
-            Some(Some(choice))
-        }
-    }
-
     /// Ouvre la boîte de dialogue native pour ajouter une station manuellement
     pub fn trigger_add_station_dialog(
         root_group: Arc<Mutex<Group>>,
@@ -400,43 +672,69 @@ impl TiMondeTray {
         tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
     ) {
         std::thread::spawn(move || {
-            let form_output = match std::process::Command::new("zenity")
-                .arg("--forms")
-                .arg("--title=➕ Ajouter une station (TiMonde)")
-                .arg("--text=Entrez les informations de la nouvelle station :")
-                .arg("--add-entry=Nom de la station")
-                .arg("--add-entry=URL du flux (http/https)")
-                .output()
-            {
-                Ok(out) if out.status.success() => out,
-                _ => return, // Annulé
+            let all_groups: Vec<String> = {
+                let guard = root_group.lock().unwrap();
+                fn collect(g: &Group, list: &mut Vec<String>) {
+                    for sub in &g.subgroups {
+                        list.push(sub.name.clone());
+                        collect(sub, list);
+                    }
+                }
+                let mut list = Vec::new();
+                collect(&guard, &mut list);
+                list
+            };
+            let groups_json = serde_json::to_string(&all_groups).unwrap_or_else(|_| "[]".to_string());
+            let default_grp = all_groups.first().cloned().unwrap_or_else(|| "Sélection".to_string());
+
+            let (new_name, new_url, new_country, new_timezone, new_target_group) = if let Some(script_path) = Self::find_edit_script() {
+                let out = match std::process::Command::new(script_path)
+                    .arg("--mode")
+                    .arg("add")
+                    .arg("--group")
+                    .arg(&default_grp)
+                    .arg("--groups-json")
+                    .arg(&groups_json)
+                    .output()
+                {
+                    Ok(o) if o.status.success() => o,
+                    _ => return, // Annulé
+                };
+
+                let out_str = String::from_utf8_lossy(&out.stdout).trim().to_string();
+                if let Ok(json_val) = serde_json::from_str::<serde_json::Value>(&out_str) {
+                    let n = json_val["name"].as_str().unwrap_or("").trim().to_string();
+                    let u = json_val["url"].as_str().unwrap_or("").trim().to_string();
+                    let c = json_val["country"]
+                        .as_str()
+                        .map(|s| s.trim().to_ascii_uppercase())
+                        .filter(|s| !s.is_empty());
+                    let tz = json_val["timezone"]
+                        .as_str()
+                        .map(|s| s.trim().to_string())
+                        .filter(|s| !s.is_empty());
+                    let g = json_val["group"].as_str().unwrap_or("").trim().to_string();
+                    (n, u, c, tz, g)
+                } else {
+                    return;
+                }
+            } else {
+                return;
             };
 
-            let fields = String::from_utf8_lossy(&form_output.stdout).trim().to_string();
-            let parts: Vec<&str> = fields.split('|').collect();
-            if parts.len() < 2 {
+            if new_name.is_empty() || new_url.is_empty() {
                 return;
             }
 
-            let station_name = parts[0].trim();
-            let station_url = parts[1].trim();
-
-            if station_name.is_empty() || station_url.is_empty() {
-                crate::radio_browser::notify("TiMonde", "Nom ou URL manquant");
-                return;
-            }
-
-            let target_group = match Self::select_target_group_dialog(&root_group) {
-                Some(tg) => tg,
-                None => return,
-            };
+            let mut final_st = Station::new(&new_name, &new_url);
+            final_st.country = new_country;
+            final_st.timezone = new_timezone;
 
             let mut root = root_group.lock().unwrap().clone();
-            match crate::import::add_single_station(
+            match crate::import::add_station_to_group(
                 &mut root,
-                station_name,
-                station_url,
-                target_group.as_deref(),
+                final_st.clone(),
+                Some(&new_target_group),
             ) {
                 Ok(msg) => {
                     if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
@@ -447,8 +745,7 @@ impl TiMondeTray {
                     match Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle) {
                         Ok(total) => {
                             log::info!("✅ {} (Total : {} stations)", msg, total);
-                            crate::radio_browser::notify("TiMonde", &format!("{}
-Liste des radios rechargée ({} stations).", msg, total));
+                            crate::radio_browser::notify("TiMonde", &format!("{} (Total : {} stations)", msg, total));
                         }
                         Err(e) => {
                             crate::radio_browser::notify("TiMonde", &format!("Station ajoutée mais erreur rechargement : {}", e));
@@ -480,7 +777,7 @@ Liste des radios rechargée ({} stations).", msg, total));
         None
     }
 
-    /// Ouvre la boîte de dialogue pour modifier le nom et l'URL de la station
+    /// Ouvre la boîte de dialogue pour modifier le nom, l'URL, le groupe et le code pays de la station
     pub fn trigger_edit_station_dialog(
         station: Station,
         root_group: Arc<Mutex<Group>>,
@@ -488,14 +785,75 @@ Liste des radios rechargée ({} stations).", msg, total));
         tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
         current_station: Arc<Mutex<Option<Station>>>,
         last_station: Arc<Mutex<Option<Station>>>,
+        audio: Arc<Mutex<Option<AudioEngine>>>,
+        current_title: Arc<Mutex<Option<String>>>,
     ) {
         std::thread::spawn(move || {
-            let (new_name, new_url) = if let Some(script_path) = Self::find_edit_script() {
+            // Rapatriement infaillible de la station réelle dans les signets par son URL
+            let (real_name, real_country, real_tz) = {
+                let guard = root_group.lock().unwrap();
+                if let Some(found) = Self::find_station_by_url(&guard, &station.url) {
+                    (
+                        if station.name.trim().is_empty() { found.name } else { station.name.clone() },
+                        station.country.clone().or(found.country),
+                        station.timezone.clone().or(found.timezone),
+                    )
+                } else {
+                    (station.name.clone(), station.country.clone(), station.timezone.clone())
+                }
+            };
+
+            let current_group_name = {
+                let guard = root_group.lock().unwrap();
+                Self::find_group_name_for_station(&guard, &station.url)
+            }.unwrap_or_else(|| "Sélection".to_string());
+
+            let all_groups: Vec<String> = {
+                let guard = root_group.lock().unwrap();
+                fn collect(g: &Group, list: &mut Vec<String>) {
+                    for sub in &g.subgroups {
+                        list.push(sub.name.clone());
+                        collect(sub, list);
+                    }
+                }
+                let mut list = Vec::new();
+                collect(&guard, &mut list);
+                list
+            };
+            let groups_json = serde_json::to_string(&all_groups).unwrap_or_else(|_| "[]".to_string());
+
+            let deduced_country = if let Some(ref c) = real_country {
+                c.clone()
+            } else {
+                crate::timezone::get_local_time_for_station(None, &real_name, Some(&current_group_name), real_tz.as_deref())
+                    .map(|t| t.country_code)
+                    .unwrap_or_default()
+            };
+
+            let deduced_tz = if let Some(ref tz) = real_tz {
+                tz.clone()
+            } else {
+                crate::timezone::get_local_time_for_station(Some(&deduced_country), &real_name, Some(&current_group_name), None)
+                    .map(|t| t.timezone)
+                    .unwrap_or_default()
+            };
+
+            let (new_name, new_url, new_country, new_timezone, new_target_group) = if let Some(script_path) = Self::find_edit_script() {
                 let out = match std::process::Command::new(script_path)
-                    .arg("--name")
-                    .arg(&station.name)
+                    .arg("--mode")
+                    .arg("edit")
+                    .arg("--station-name")
+                    .arg(&real_name)
                     .arg("--url")
                     .arg(&station.url)
+                    .arg("--country")
+                    .arg(&deduced_country)
+                    .arg("--timezone")
+                    .arg(&deduced_tz)
+                    .arg("--group")
+                    .arg(&current_group_name)
+                    .arg("--groups-json")
+                    .arg(&groups_json)
                     .output()
                 {
                     Ok(o) if o.status.success() => o,
@@ -504,25 +862,54 @@ Liste des radios rechargée ({} stations).", msg, total));
 
                 let out_str = String::from_utf8_lossy(&out.stdout).trim().to_string();
                 if let Ok(json_val) = serde_json::from_str::<serde_json::Value>(&out_str) {
+                    if json_val["action"].as_str() == Some("delete") {
+                        let mut root = root_group.lock().unwrap().clone();
+                        let target_url = json_val["url"].as_str().unwrap_or(&station.url);
+                        if crate::bookmarks::remove_station_by_url(&mut root, target_url) {
+                            let _ = crate::bookmarks::save_bookmarks(&root, &bookmarks_path);
+                            *root_group.lock().unwrap() = root;
+                        }
+                        let is_current = {
+                            let cur = current_station.lock().unwrap();
+                            cur.as_ref().map(|c| crate::import::normalize_url(&c.url) == crate::import::normalize_url(&station.url)).unwrap_or(false)
+                        };
+                        if is_current {
+                            Self::stop_and_trim_flow(&audio, &current_station, &current_title);
+                        }
+                        {
+                            let mut last = last_station.lock().unwrap();
+                            if last.as_ref().map(|l| crate::import::normalize_url(&l.url) == crate::import::normalize_url(&station.url)).unwrap_or(false) {
+                                *last = None;
+                                let mut state = crate::state::AppState::load(&crate::state::AppState::default_path());
+                                state.last_station = None;
+                                let _ = state.save(&crate::state::AppState::default_path());
+                            }
+                        }
+                        crate::radio_browser::notify("TiMonde", &format!("Station « {} » supprimée de vos favoris.", station.name));
+                        if let Some(ref h) = *tray_handle.lock().unwrap() {
+                            h.update(|_| {});
+                        }
+                        return;
+                    }
+
                     let n = json_val["name"].as_str().unwrap_or("").trim().to_string();
                     let u = json_val["url"].as_str().unwrap_or("").trim().to_string();
-                    (n, u)
+                    let c = json_val["country"]
+                        .as_str()
+                        .map(|s| s.trim().to_ascii_uppercase())
+                        .filter(|s| !s.is_empty());
+                    let tz = json_val["timezone"]
+                        .as_str()
+                        .map(|s| s.trim().to_string())
+                        .filter(|s| !s.is_empty());
+                    let g = json_val["group"].as_str().unwrap_or("").trim().to_string();
+                    (n, u, Some(c), Some(tz), g)
                 } else {
                     return;
                 }
             } else {
-                let entry_out = match std::process::Command::new("zenity")
-                    .arg("--entry")
-                    .arg(format!("--title=✏️ Renommer « {} »", station.name))
-                    .arg("--text=Nouveau nom de la station :")
-                    .arg(format!("--entry-text={}", station.name))
-                    .output()
-                {
-                    Ok(o) if o.status.success() => o,
-                    _ => return,
-                };
-                let n = String::from_utf8_lossy(&entry_out.stdout).trim().to_string();
-                (n, station.url.clone())
+                log::warn!("Script edit_station.py introuvable pour modifier la radio");
+                return;
             };
 
             if new_name.is_empty() || new_url.is_empty() {
@@ -530,80 +917,73 @@ Liste des radios rechargée ({} stations).", msg, total));
             }
 
             let mut root = root_group.lock().unwrap().clone();
-            if crate::bookmarks::update_station_info(&mut root, &station.url, &new_name, &new_url) {
-                if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
-                    log::error!("Erreur sauvegarde : {}", e);
-                    crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
-                    return;
-                }
 
-                // Mettre à jour current_station si elle était en cours
-                {
-                    let mut cur = current_station.lock().unwrap();
-                    if let Some(ref mut c) = *cur {
-                        if c.url == station.url {
-                            c.name = new_name.clone();
-                            c.url = new_url.clone();
-                        }
-                    }
+            // Si le groupe a changé, transférer vers le nouveau groupe
+            if !new_target_group.is_empty() && !new_target_group.eq_ignore_ascii_case(&current_group_name) {
+                let _ = crate::bookmarks::remove_station_by_url(&mut root, &station.url);
+                let mut new_st = Station::new(&new_name, &new_url);
+                if let Some(ref nc) = new_country {
+                    new_st.country = nc.clone();
                 }
-                {
-                    let mut last = last_station.lock().unwrap();
-                    if let Some(ref mut l) = *last {
-                        if l.url == station.url {
-                            l.name = new_name.clone();
-                            l.url = new_url.clone();
-                        }
-                    }
+                if let Some(ref ntz) = new_timezone {
+                    new_st.timezone = ntz.clone();
                 }
-
-                let _ = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle);
-                log::info!("✅ Station modifiée : {} -> {}", station.name, new_name);
-                crate::radio_browser::notify("TiMonde", &format!("Station renommée en « {} »", new_name));
+                let _ = crate::import::add_station_to_group(&mut root, new_st, Some(&new_target_group));
             } else {
-                crate::radio_browser::notify("TiMonde", "Station introuvable dans la liste");
+                let _ = crate::bookmarks::update_station_full(
+                    &mut root,
+                    &station.url,
+                    &new_name,
+                    &new_url,
+                    new_country.clone(),
+                    new_timezone.clone(),
+                );
             }
-        });
-    }
 
-    /// Ouvre la boîte de dialogue de confirmation pour supprimer la station
-    pub fn trigger_delete_station_dialog(
-        station: Station,
-        root_group: Arc<Mutex<Group>>,
-        bookmarks_path: PathBuf,
-        tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
-    ) {
-        std::thread::spawn(move || {
-            let question_out = match std::process::Command::new("zenity")
-                .arg("--question")
-                .arg("--title=🗑️ Supprimer de vos favoris (TiMonde)")
-                .arg(format!(
-                    "--text=Voulez-vous vraiment supprimer la station « {} » de vos favoris ?",
-                    station.name
-                ))
-                .arg("--ok-label=🗑️ Supprimer")
-                .arg("--cancel-label=Annuler")
-                .output()
+            if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
+                log::error!("Erreur sauvegarde : {}", e);
+                crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
+                return;
+            }
+
+            // Mettre à jour current_station si elle était en cours
             {
-                Ok(o) if o.status.success() => o,
-                _ => return, // Annulé
-            };
-
-            let _ = question_out;
-            let mut root = root_group.lock().unwrap().clone();
-            if crate::bookmarks::remove_station_by_url(&mut root, &station.url) {
-                if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
-                    log::error!("Erreur sauvegarde : {}", e);
-                    crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
-                    return;
+                let mut cur = current_station.lock().unwrap();
+                if let Some(ref mut c) = *cur {
+                    if crate::import::normalize_url(&c.url) == crate::import::normalize_url(&station.url) || c.name == station.name {
+                        c.name = new_name.clone();
+                        c.url = new_url.clone();
+                        if let Some(nc) = &new_country {
+                            c.country = nc.clone();
+                        }
+                        if let Some(ntz) = &new_timezone {
+                            c.timezone = ntz.clone();
+                        }
+                    }
                 }
-
-                let _ = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle);
-                log::info!("✅ Station supprimée : {}", station.name);
-                crate::radio_browser::notify("TiMonde", &format!("Station « {} » supprimée de vos favoris", station.name));
-            } else {
-                crate::radio_browser::notify("TiMonde", "Station introuvable dans la liste");
             }
+            {
+                let mut last = last_station.lock().unwrap();
+                if let Some(ref mut l) = *last {
+                    if crate::import::normalize_url(&l.url) == crate::import::normalize_url(&station.url) || l.name == station.name {
+                        l.name = new_name.clone();
+                        l.url = new_url.clone();
+                        if let Some(nc) = &new_country {
+                            l.country = nc.clone();
+                        }
+                        if let Some(ntz) = &new_timezone {
+                            l.timezone = ntz.clone();
+                        }
+                        if let Some(nc) = &new_country {
+                            l.country = nc.clone();
+                        }
+                    }
+                }
+            }
+
+            let _ = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle);
+            log::info!("✅ Station modifiée : {} -> {}", station.name, new_name);
+            crate::radio_browser::notify("TiMonde", &format!("Station « {} » mise à jour avec succès !", new_name));
         });
     }
 
@@ -629,6 +1009,7 @@ Liste des radios rechargée ({} stations).", msg, total));
         root_group: Arc<Mutex<Group>>,
         bookmarks_path: PathBuf,
         tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+        initial_tab: Option<usize>,
     ) {
         std::thread::spawn(move || {
             let existing_stations: Vec<serde_json::Value> = {
@@ -668,8 +1049,12 @@ Liste des radios rechargée ({} stations).", msg, total));
                 }
             };
 
-            let mut child = match std::process::Command::new("python3")
-                .arg(script_path)
+            let mut cmd = std::process::Command::new("python3");
+            cmd.arg(&script_path);
+            if let Some(tab) = initial_tab {
+                cmd.arg(format!("--tab={}", tab));
+            }
+            let mut child = match cmd
                 .stdin(std::process::Stdio::piped())
                 .stdout(std::process::Stdio::piped())
                 .spawn()
@@ -694,61 +1079,114 @@ Liste des radios rechargée ({} stations).", msg, total));
 
             if output.status.success() {
                 let stdout_str = String::from_utf8_lossy(&output.stdout).trim().to_string();
+                log::info!("Script browse_bouquets terminé avec succès. Longueur stdout: {}", stdout_str.len());
 
                 #[derive(serde::Deserialize)]
                 struct InStation {
                     name: String,
                     url: String,
+                    #[serde(default)]
+                    country: Option<String>,
+                    #[serde(default)]
+                    group: Option<String>,
                 }
                 #[derive(serde::Deserialize)]
                 struct InResult {
                     group_name: String,
+                    #[serde(default)]
+                    country_code: Option<String>,
                     stations: Vec<InStation>,
+                    #[serde(default)]
+                    all_bouquet_stations: Vec<InStation>,
                 }
 
-                if let Ok(res) = serde_json::from_str::<InResult>(&stdout_str) {
-                    if res.stations.is_empty() {
-                        return;
-                    }
+                match serde_json::from_str::<InResult>(&stdout_str) {
+                    Ok(res) => {
                     let mut guard = root_group.lock().unwrap();
-                    let group_idx = guard.subgroups.iter().position(|g| g.name == res.group_name);
-                    let target_grp = match group_idx {
-                        Some(idx) => &mut guard.subgroups[idx],
-                        None => {
-                            guard.subgroups.push(Group::new(&res.group_name));
-                            guard.subgroups.last_mut().unwrap()
-                        }
-                    };
+                    let mut enriched_count = 0;
 
-                    let mut added = 0;
-                    for st in res.stations {
-                        if !target_grp.stations.iter().any(|s| s.url == st.url || s.name == st.name) {
-                            target_grp.stations.push(Station {
-                                name: st.name,
-                                url: st.url,
-                            });
-                            added += 1;
+                    // 1. Enrichir automatiquement les stations existantes avec le code pays
+                    if let Some(c_code) = &res.country_code {
+                        if !c_code.is_empty() {
+                            for b_st in &res.all_bouquet_stations {
+                                if guard.enrich_station_country(&b_st.name, &b_st.url, c_code) {
+                                    enriched_count += 1;
+                                }
+                            }
+                            // Enrichir aussi à partir des stations sélectionnées
+                            for s in &res.stations {
+                                if guard.enrich_station_country(&s.name, &s.url, c_code) {
+                                    enriched_count += 1;
+                                }
+                            }
                         }
                     }
 
-                    if let Err(e) = crate::bookmarks::save_bookmarks(&guard, &bookmarks_path) {
-                        log::error!("Erreur sauvegarde signets : {}", e);
-                        crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
-                        return;
+                    // 2. Ajouter les nouvelles stations dans les groupes cibles (avec support hiérarchique)
+                    let mut added = 0;
+                    if !res.stations.is_empty() {
+                        for st in res.stations {
+                            let target_path = match &st.group {
+                                Some(g) if !g.trim().is_empty() && g.trim() != "root" => g.trim().to_string(),
+                                _ => res.group_name.clone(),
+                            };
+
+                            let target_grp = Self::get_or_create_subgroup_hierarchy(&mut guard, &target_path);
+
+                            if !target_grp.stations.iter().any(|s| s.url == st.url || s.name == st.name) {
+                                let station_item = if let Some(c) = st.country.as_deref().or(res.country_code.as_deref()) {
+                                    Station::with_country(st.name, st.url, c)
+                                } else {
+                                    Station::new(st.name, st.url)
+                                };
+                                target_grp.stations.push(station_item);
+                                added += 1;
+                            }
+                        }
+                    }
+
+                    if added > 0 || enriched_count > 0 {
+                        if let Err(e) = crate::bookmarks::save_bookmarks(&guard, &bookmarks_path) {
+                            log::error!("Erreur sauvegarde signets : {}", e);
+                            crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
+                            return;
+                        }
                     }
                     drop(guard);
 
                     let total = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle).unwrap_or(0);
+                    let country_msg = res.country_code.map(|c| format!(" [{}]", c)).unwrap_or_default();
                     crate::radio_browser::notify(
                         "TiMonde",
                         &format!(
-                            "✅ {} radio(s) importée(s) dans « {} » !\nListe actualisée ({} stations).",
-                            added, res.group_name, total
+                            "✅ {} radio(s) ajoutée(s), {} existante(s) étiquetée(s){} !\nTotal : {} stations.",
+                            added, enriched_count, country_msg, total
                         ),
                     );
+                    }
+                    Err(e) => {
+                        log::error!("Erreur désérialisation JSON bouquet: {}, brut: {}", e, stdout_str);
+                    }
                 }
             }
         });
+    }
+
+    fn get_or_create_subgroup_hierarchy<'a>(mut current: &'a mut Group, path: &str) -> &'a mut Group {
+        for part in path.split('/') {
+            let clean = part.trim();
+            if clean.is_empty() || clean.eq_ignore_ascii_case("root") {
+                continue;
+            }
+            let pos = if let Some(idx) = current.subgroups.iter().position(|g| g.name.eq_ignore_ascii_case(clean)) {
+                idx
+            } else {
+                current.subgroups.push(Group::new(clean));
+                current.subgroups.len() - 1
+            };
+            current = &mut current.subgroups[pos];
+        }
+        current
     }
 
     fn find_first_station(group: &Group) -> Option<Station> {
@@ -802,12 +1240,21 @@ Liste des radios rechargée ({} stations).", msg, total));
                         let stations_json: Vec<serde_json::Value> = g
                             .stations
                             .iter()
-                            .filter(|s| !s.is_separator())
                             .map(|s| {
-                                serde_json::json!({
-                                    "name": s.name,
-                                    "url": s.url,
-                                })
+                                if s.is_separator() {
+                                    serde_json::json!({
+                                        "name": s.separator_title().unwrap_or_default(),
+                                        "url": "",
+                                        "is_separator": true,
+                                    })
+                                } else {
+                                    serde_json::json!({
+                                        "name": s.name,
+                                        "url": s.url,
+                                        "country": s.country,
+                                        "is_separator": false,
+                                    })
+                                }
                             })
                             .collect();
 
@@ -863,11 +1310,17 @@ Liste des radios rechargée ({} stations).", msg, total));
             // Si code 0 : l'utilisateur a cliqué sur "💾 Enregistrer et recharger"
             if output.status.success() {
                 let stdout_str = String::from_utf8_lossy(&output.stdout).trim().to_string();
+                log::info!("Script browse_bouquets terminé avec succès. Longueur stdout: {}", stdout_str.len());
                 
                 #[derive(serde::Deserialize)]
                 struct OutStation {
                     name: String,
+                    #[serde(default)]
                     url: String,
+                    #[serde(default)]
+                    country: Option<String>,
+                    #[serde(default)]
+                    is_separator: bool,
                 }
                 #[derive(serde::Deserialize)]
                 struct OutGroup {
@@ -888,27 +1341,37 @@ Liste des radios rechargée ({} stations).", msg, total));
                 let mut reordered_subgroups = Vec::new();
 
                 for g_data in new_data {
-                    if let Some(pos) = root.subgroups.iter().position(|g| g.name.eq_ignore_ascii_case(&g_data.name)) {
-                        let mut grp = root.subgroups.remove(pos);
-                        
-                        // Réordonner les stations selon la sélection de l utilisateur
-                        let mut new_stations = Vec::new();
-                        for s_data in g_data.stations {
-                            if let Some(s_pos) = grp.stations.iter().position(|s| s.name.eq_ignore_ascii_case(&s_data.name)) {
-                                new_stations.push(grp.stations.remove(s_pos));
-                            } else {
-                                new_stations.push(Station {
-                                    name: s_data.name,
-                                    url: s_data.url,
-                                });
-                            }
-                        }
-                        // Conserver les séparateurs ou résiduels
-                        new_stations.append(&mut grp.stations);
-                        grp.stations = new_stations;
+                    let mut grp = if let Some(pos) = root.subgroups.iter().position(|g| g.name.eq_ignore_ascii_case(&g_data.name)) {
+                        root.subgroups.remove(pos)
+                    } else {
+                        Group::new(&g_data.name)
+                    };
 
-                        reordered_subgroups.push(grp);
+                    // Réordonner ou transférer les stations et séparateurs selon les actions de l'utilisateur
+                    let mut new_stations = Vec::new();
+                    for s_data in g_data.stations {
+                        if s_data.is_separator || s_data.url.is_empty() {
+                            new_stations.push(Station::separator(s_data.name));
+                        } else if let Some(s_pos) = grp.stations.iter().position(|s| !s.is_separator() && (s.url == s_data.url || s.name.eq_ignore_ascii_case(&s_data.name))) {
+                            new_stations.push(grp.stations.remove(s_pos));
+                        } else {
+                            // Chercher si la station provient d'un autre groupe (déplacement) pour conserver son pays
+                            let mut found_st = None;
+                            for other_grp in &mut root.subgroups {
+                                if let Some(s_pos) = other_grp.stations.iter().position(|s| !s.is_separator() && (s.url == s_data.url || s.name.eq_ignore_ascii_case(&s_data.name))) {
+                                    found_st = Some(other_grp.stations.remove(s_pos));
+                                    break;
+                                }
+                            }
+                            let mut st = found_st.unwrap_or_else(|| Station::new(&s_data.name, &s_data.url));
+                            if st.country.is_none() && s_data.country.is_some() {
+                                st.country = s_data.country;
+                            }
+                            new_stations.push(st);
+                        }
                     }
+                    grp.stations = new_stations;
+                    reordered_subgroups.push(grp);
                 }
                 reordered_subgroups.append(&mut root.subgroups);
                 root.subgroups = reordered_subgroups;
@@ -928,215 +1391,6 @@ Liste des radios rechargée ({} stations).", msg, total));
             }
         });
     }
-
-    /// Recherche multicritères (Genre, Pays, Langue, Mot-clé) et importation par lot
-    pub fn trigger_search_online_dialog(
-        root_group: Arc<Mutex<Group>>,
-        bookmarks_path: PathBuf,
-        tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
-    ) {
-        std::thread::spawn(move || {
-            let form_output = match std::process::Command::new("zenity")
-                .arg("--forms")
-                .arg("--title=🔍 Recherche & Import Radio-Browser")
-                .arg("--text=Renseignez vos filtres (laissez vide pour ignorer) :")
-                .arg("--add-entry=Nom ou mot-clé :")
-                .arg("--add-entry=Genre / Style (ex: jazz, rock, news, ambient, reggae) :")
-                .arg("--add-entry=Pays / Origine (ex: France, Belgium, Canada, Senegal) :")
-                .arg("--add-entry=Langue (ex: French, English, Spanish, Arabic) :")
-                .output()
-            {
-                Ok(out) if out.status.success() => out,
-                _ => return,
-            };
-
-            let form_str = String::from_utf8_lossy(&form_output.stdout).trim().to_string();
-            let parts: Vec<&str> = form_str.split('|').collect();
-            if parts.is_empty() {
-                return;
-            }
-
-            let name_val = parts.first().map(|s| s.trim()).filter(|s| !s.is_empty()).map(|s| s.to_string());
-            let tag_val = parts.get(1).map(|s| s.trim()).filter(|s| !s.is_empty()).map(|s| s.to_string());
-            let country_val = parts.get(2).map(|s| s.trim()).filter(|s| !s.is_empty()).map(|s| s.to_string());
-            let lang_val = parts.get(3).map(|s| s.trim()).filter(|s| !s.is_empty()).map(|s| s.to_string());
-
-            if name_val.is_none() && tag_val.is_none() && country_val.is_none() && lang_val.is_none() {
-                return;
-            }
-
-            let filter = crate::radio_browser::SearchFilter {
-                name: name_val,
-                tag: tag_val,
-                country: country_val,
-                language: lang_val,
-                limit: 50,
-            };
-
-            crate::radio_browser::notify("TiMonde", "Recherche Radio-Browser en cours...");
-            let results = crate::radio_browser::search_advanced(&filter);
-
-            if results.is_empty() {
-                crate::radio_browser::notify("TiMonde", "Aucune station trouvée pour ces critères");
-                return;
-            }
-
-            let mut list_cmd = std::process::Command::new("zenity");
-            list_cmd
-                .arg("--list")
-                .arg("--checklist")
-                .arg("--multiple")
-                .arg("--separator=;")
-                .arg(format!("--title=Résultats Radio-Browser ({} trouvées)", results.len()))
-                .arg("--text=Cochez les stations à importer dans vos favoris :")
-                .arg("--column=Ajouter")
-                .arg("--column=ID")
-                .arg("--column=Nom")
-                .arg("--column=Pays")
-                .arg("--column=Genre / Tags")
-                .arg("--column=Format")
-                .arg("--column=Débit")
-                .arg("--column=Votes")
-                .arg("--print-column=2")
-                .arg("--hide-column=2")
-                .arg("--width=850")
-                .arg("--height=460");
-
-            for (i, r) in results.iter().enumerate() {
-                list_cmd.arg("FALSE");
-                list_cmd.arg(format!("{}", i));
-                list_cmd.arg(&r.name);
-                list_cmd.arg(if r.country.is_empty() { "-" } else { &r.country });
-                list_cmd.arg(if r.tags.is_empty() { "-" } else { &r.tags });
-                list_cmd.arg(if r.codec.is_empty() { "-" } else { &r.codec });
-                list_cmd.arg(if r.bitrate > 0 { format!("{}k", r.bitrate) } else { "-".to_string() });
-                list_cmd.arg(format!("{}", r.votes));
-            }
-
-            let sel_output = match list_cmd.output() {
-                Ok(out) if out.status.success() => out,
-                _ => return,
-            };
-
-            let sel_str = String::from_utf8_lossy(&sel_output.stdout).trim().to_string();
-            if sel_str.is_empty() {
-                return;
-            }
-
-            let selected_indices: Vec<usize> = sel_str
-                .split(';')
-                .filter_map(|s| s.trim().parse::<usize>().ok())
-                .filter(|&idx| idx < results.len())
-                .collect();
-
-            if selected_indices.is_empty() {
-                return;
-            }
-
-            let target_group = match Self::select_target_group_dialog(&root_group) {
-                Some(tg) => tg,
-                None => return,
-            };
-
-            let mut root = root_group.lock().unwrap().clone();
-            let mut added_count = 0;
-            let mut skipped_count = 0;
-
-            for idx in selected_indices {
-                let chosen = &results[idx];
-                match crate::import::add_single_station(
-                    &mut root,
-                    &chosen.name,
-                    &chosen.url_resolved,
-                    target_group.as_deref(),
-                ) {
-                    Ok(_) => added_count += 1,
-                    Err(_) => skipped_count += 1,
-                }
-            }
-
-            if added_count > 0 {
-                if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
-                    log::error!("Erreur sauvegarde : {}", e);
-                    crate::radio_browser::notify("TiMonde", &format!("Erreur sauvegarde : {}", e));
-                    return;
-                }
-                let total_count = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle).unwrap_or(0);
-                let grp_name = target_group.as_deref().unwrap_or("la racine");
-                crate::radio_browser::notify(
-                    "TiMonde",
-                    &format!(
-                        "Importation terminée dans {} !\n• {} station(s) ajoutée(s)\n• {} doublon(s) ignoré(s)\nListe des radios rechargée ({} stations).",
-                        grp_name, added_count, skipped_count, total_count
-                    ),
-                );
-            } else {
-                crate::radio_browser::notify("TiMonde", "Toutes les stations sélectionnées étaient déjà dans vos favoris");
-            }
-        });
-    }
-
-    /// Ouvre les boîtes de dialogue natives (Zenity) pour importer une liste de stations
-    pub fn trigger_import_dialog(
-        root_group: Arc<Mutex<Group>>,
-        bookmarks_path: PathBuf,
-        tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
-    ) {
-        std::thread::spawn(move || {
-            let file_output = match std::process::Command::new("zenity")
-                .arg("--file-selection")
-                .arg("--title=Importer une liste de radios (TiMonde)")
-                .arg("--file-filter=Listes de radios (*.json, *.m3u, *.csv, *.xml) | *.json *.m3u *.m3u8 *.csv *.xml")
-                .arg("--file-filter=Tous les fichiers | *")
-                .output()
-            {
-                Ok(out) if out.status.success() => out,
-                _ => return,
-            };
-
-            let file_str = String::from_utf8_lossy(&file_output.stdout).trim().to_string();
-            if file_str.is_empty() {
-                return;
-            }
-            let file_path = PathBuf::from(&file_str);
-            if !file_path.exists() {
-                crate::radio_browser::notify("TiMonde", "Fichier introuvable");
-                return;
-            }
-
-            let target_group = match Self::select_target_group_dialog(&root_group) {
-                Some(tg) => tg,
-                None => return,
-            };
-
-            let mut root = root_group.lock().unwrap().clone();
-            match crate::import::import_file(&mut root, &file_path, target_group.as_deref()) {
-                Ok(report) => {
-                    if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
-                        log::error!("Erreur lors de la sauvegarde : {}", e);
-                        crate::radio_browser::notify("TiMonde", &format!("Erreur lors de la sauvegarde : {}", e));
-                        return;
-                    }
-                    let total_count = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle).unwrap_or(0);
-                    log::info!(
-                        "✅ Importation réussie : {} ajoutée(s), {} doublon(s) ignoré(s), {} groupe(s) créé(s)",
-                        report.stations_added, report.duplicates_skipped, report.groups_created
-                    );
-                    crate::radio_browser::notify(
-                        "TiMonde",
-                        &format!(
-                            "Importation réussie !\n• {} station(s) ajoutée(s)\n• {} doublon(s) ignoré(s)\nListe des radios rechargée ({} stations).",
-                            report.stations_added, report.duplicates_skipped, total_count
-                        ),
-                    );
-                }
-                Err(e) => {
-                    log::error!("Erreur lors de l importation : {}", e);
-                    crate::radio_browser::notify("TiMonde", &format!("Erreur d importation : {}", e));
-                }
-            }
-        });
-    }
 }
 
 impl ksni::Tray for TiMondeTray {
@@ -1151,10 +1405,13 @@ impl ksni::Tray for TiMondeTray {
         match (cur_st.as_ref(), self.state()) {
             (Some(st), PlaybackState::Playing) => {
                 let cur_title = self.current_title.lock().unwrap();
+                let time_str = crate::timezone::get_local_time_for_station(st.country.as_deref(), &st.name, None, st.timezone.as_deref())
+                    .map(|t| format!(" • {} {} ({})", t.icon, t.formatted_time, t.relative_badge()))
+                    .unwrap_or_default();
                 if let Some(ref t) = *cur_title {
-                    format!("TiMonde : {} - {}", st.name, t)
+                    format!("{} - {}{}", st.name, t, time_str)
                 } else {
-                    format!("TiMonde : {}", st.name)
+                    format!("{}{}", st.name, time_str)
                 }
             }
             (Some(st), PlaybackState::Buffering) => format!("TiMonde (Connexion...) : {}", st.name),
@@ -1218,132 +1475,185 @@ impl ksni::Tray for TiMondeTray {
         let mut menu = Vec::new();
         let current_state = self.state();
 
-        // 1. En-tête : Station et état
+        // 1. Bouton principal Marche / Arrêt / Connexion en tête du menu
+        let is_eph = self.is_ephemeral.load(Ordering::SeqCst);
         let cur_st = self.current_station.lock().unwrap();
         let cur_title = self.current_title.lock().unwrap();
-        let status_label = match (cur_st.as_ref(), current_state) {
-            (Some(st), PlaybackState::Playing) => {
-                if let Some(ref t) = *cur_title {
-                    format!("▶ {} ({})", st.name, t)
-                } else {
-                    format!("▶ En lecture : {}", st.name)
-                }
-            }
-            (Some(st), PlaybackState::Buffering) => format!("⏳ Connexion à {}...", st.name),
-            _ => "⏹️ TiMonde (Éteinte)".to_string(),
-        };
 
-        menu.push(MenuItem::Standard(StandardItem {
-            label: status_label,
-            enabled: false,
-            visible: true,
-            ..Default::default()
-        }));
-
-        // 2. Contrôle Marche/Arrêt unique façon Hi-Fi (Power On / Off)
-        if current_state == PlaybackState::Playing || current_state == PlaybackState::Buffering {
-            menu.push(MenuItem::Standard(StandardItem {
-                label: "⏹ Éteindre la radio".to_string(),
-                activate: Box::new(|tray: &mut Self| {
-                    tray.stop_and_trim();
-                }),
-                enabled: true,
-                visible: true,
-                ..Default::default()
-            }));
-        } else {
-            let station_to_turn_on = {
-                let last = self.last_station.lock().unwrap();
-                if let Some(ref last_st) = *last {
-                    Some(last_st.clone())
-                } else {
-                    let root = self.root_group.lock().unwrap();
-                    Self::find_first_station(&root)
-                }
-            };
-
-            if let Some(st) = station_to_turn_on {
-                let st_clone = st.clone();
+        match cur_st.as_ref() {
+            Some(st) if current_state == PlaybackState::Buffering => {
+                let eph_tag = if is_eph { " [🎲 Éphémère]" } else { "" };
+                let label = format!("⏳ Connexion...    « {} »{}", st.name, eph_tag);
                 menu.push(MenuItem::Standard(StandardItem {
-                    label: format!("▶ Allumer : {}", st.name),
-                    activate: Box::new(move |tray: &mut Self| {
-                        tray.play_station(st_clone.clone());
+                    label,
+                    activate: Box::new(|tray: &mut Self| {
+                        tray.stop_and_trim();
                     }),
                     enabled: true,
                     visible: true,
                     ..Default::default()
                 }));
-            } else {
+            }
+            Some(st) => {
+                let eph_tag = if is_eph { " [🎲 Éphémère]" } else { "" };
+                let label = format!("⏹ Éteindre    « {} »{}", st.name, eph_tag);
                 menu.push(MenuItem::Standard(StandardItem {
-                    label: "▶ Allumer la radio".to_string(),
-                    enabled: false,
+                    label,
+                    activate: Box::new(|tray: &mut Self| {
+                        tray.stop_and_trim();
+                    }),
+                    enabled: true,
                     visible: true,
                     ..Default::default()
                 }));
+            }
+            None => {
+                let station_to_turn_on = {
+                    let last = self.last_station.lock().unwrap();
+                    if let Some(ref last_st) = *last {
+                        Some(last_st.clone())
+                    } else {
+                        let root = self.root_group.lock().unwrap();
+                        Self::find_first_station(&root)
+                    }
+                };
+
+                if let Some(st) = station_to_turn_on {
+                    let st_clone = st.clone();
+                    let label = format!("▶ Écouter    « {} »", st.name);
+                    menu.push(MenuItem::Standard(StandardItem {
+                        label,
+                        activate: Box::new(move |tray: &mut Self| {
+                            tray.play_station(st_clone.clone());
+                        }),
+                        enabled: true,
+                        visible: true,
+                        ..Default::default()
+                    }));
+                } else {
+                    menu.push(MenuItem::Standard(StandardItem {
+                        label: "▶ Écouter".to_string(),
+                        enabled: false,
+                        visible: true,
+                        ..Default::default()
+                    }));
+                }
             }
         }
 
-        // 3. Actions contextuelles sur la station en cours d'écoute
+        // 2. Actions et informations contextuelles sur la station active
         if let Some(ref st) = *cur_st {
-            menu.push(MenuItem::Separator);
+                let group_name = {
+                    let guard = self.root_group.lock().unwrap();
+                    Self::find_group_name_for_station(&guard, &st.url)
+                };
 
-            if let Some(ref t) = *cur_title {
-                let title_copy = t.clone();
-                menu.push(MenuItem::Standard(StandardItem {
-                    label: format!("📋 Copier : {}", title_copy),
-                    activate: Box::new(move |_tray| {
-                        let _ = std::process::Command::new("sh")
-                            .arg("-c")
-                            .arg(format!("printf '%s' \"{}\" | (wl-copy 2>/dev/null || xclip -selection clipboard 2>/dev/null || true)", title_copy))
-                        .spawn();
-                        notify("TiMonde", "Titre copié dans le presse-papier !");
-                    }),
-                    enabled: true,
-                    visible: true,
-                    ..Default::default()
-                }));
-            }
-
-            let st_edit = st.clone();
-            let st_del = st.clone();
-
-            menu.push(MenuItem::Standard(StandardItem {
-                label: format!("✏️ Modifier « {} »...", st.name),
-                activate: Box::new(move |tray: &mut Self| {
-                    Self::trigger_edit_station_dialog(
-                        st_edit.clone(),
-                        Arc::clone(&tray.root_group),
-                        tray.bookmarks_path.clone(),
-                        Arc::clone(&tray.tray_handle),
-                        Arc::clone(&tray.current_station),
-                        Arc::clone(&tray.last_station),
+                // Ligne d'heure locale & décalage (non-cliquable)
+                if let Some(time_info) = crate::timezone::get_local_time_for_station(st.country.as_deref(), &st.name, group_name.as_deref(), st.timezone.as_deref()) {
+                    let offset_str = if time_info.offset_hours >= 0.0 {
+                        format!("+{}", time_info.offset_hours)
+                    } else {
+                        format!("{}", time_info.offset_hours)
+                    };
+                    let date_tag = if !time_info.day_diff_label.is_empty() {
+                        format!(" ({})", time_info.day_diff_label)
+                    } else {
+                        String::new()
+                    };
+                    let info_label = format!(
+                        "{} {} • {} {}{} • Décalage : {} (UTC{})",
+                        time_info.flag,
+                        time_info.country_name,
+                        time_info.formatted_time,
+                        time_info.icon,
+                        date_tag,
+                        time_info.user_diff_label,
+                        offset_str
                     );
-                }),
-                enabled: true,
-                visible: true,
-                ..Default::default()
-            }));
+                    menu.push(MenuItem::Standard(StandardItem {
+                        label: info_label,
+                        enabled: false,
+                        visible: true,
+                        ..Default::default()
+                    }));
+                }
 
-            menu.push(MenuItem::Standard(StandardItem {
-                label: format!("🗑️ Supprimer « {} »...", st.name),
-                activate: Box::new(move |tray: &mut Self| {
-                    Self::trigger_delete_station_dialog(
-                        st_del.clone(),
-                        Arc::clone(&tray.root_group),
-                        tray.bookmarks_path.clone(),
-                        Arc::clone(&tray.tray_handle),
-                    );
-                }),
-                enabled: true,
-                visible: true,
-                ..Default::default()
-            }));
+                // Ligne du titre du morceau en cours (non-cliquable)
+                if let Some(ref title) = *cur_title {
+                    if !title.trim().is_empty() {
+                        menu.push(MenuItem::Standard(StandardItem {
+                            label: title.trim().to_string(),
+                            enabled: false,
+                            visible: true,
+                            ..Default::default()
+                        }));
+                    }
+                }
+
+                // Boutons d'action : Édition (qui inclut la suppression) ou découverte éphémère
+                if is_eph {
+                    let st_name = st.name.clone();
+                    menu.push(MenuItem::Standard(StandardItem {
+                        label: format!("⭐ Sauvegarder « {} » dans mes favoris...", st_name),
+                        activate: Box::new(|tray: &mut Self| {
+                            tray.trigger_save_current_ephemeral_station();
+                        }),
+                        enabled: true,
+                        visible: true,
+                        ..Default::default()
+                    }));
+
+                    menu.push(MenuItem::Standard(StandardItem {
+                        label: "🎲 Zapper vers une autre radio au hasard".to_string(),
+                        activate: Box::new(|tray: &mut Self| {
+                            tray.play_random_ephemeral_station();
+                        }),
+                        enabled: true,
+                        visible: true,
+                        ..Default::default()
+                    }));
+                } else {
+                    let st_edit = st.clone();
+                    menu.push(MenuItem::Standard(StandardItem {
+                        label: "✏️ Éditer".to_string(),
+                        activate: Box::new(move |tray: &mut Self| {
+                            Self::trigger_edit_station_dialog(
+                                st_edit.clone(),
+                                Arc::clone(&tray.root_group),
+                                tray.bookmarks_path.clone(),
+                                Arc::clone(&tray.tray_handle),
+                                Arc::clone(&tray.current_station),
+                                Arc::clone(&tray.last_station),
+                                Arc::clone(&tray.audio),
+                                Arc::clone(&tray.current_title),
+                            );
+                        }),
+                        enabled: true,
+                        visible: true,
+                        ..Default::default()
+                    }));
+                }
         }
 
         drop(cur_st);
         drop(cur_title);
 
         menu.push(MenuItem::Separator);
+
+        // Découverte éphémère d'une radio au hasard (affiché uniquement si aucune radio éphémère n'est déjà en cours d'écoute)
+        if !is_eph {
+            menu.push(MenuItem::Standard(StandardItem {
+                label: "🎲 Écouter une radio au hasard (Découverte éphémère)".to_string(),
+                activate: Box::new(|tray: &mut Self| {
+                    tray.play_random_ephemeral_station();
+                }),
+                enabled: true,
+                visible: true,
+                ..Default::default()
+            }));
+
+            menu.push(MenuItem::Separator);
+        }
 
         // 3. Arborescence des radios (le niveau "root" est déjà épuré au chargement)
         let root_group = self.root_group.lock().unwrap();
@@ -1362,10 +1672,22 @@ impl ksni::Tray for TiMondeTray {
         }
 
         for st in &root_group.stations {
-            if !st.is_separator() {
+            if st.is_separator() {
+                if let Some(title) = st.separator_title() {
+                    let label = format!("─── {} ───", title);
+                    menu.push(MenuItem::Standard(StandardItem {
+                        label,
+                        enabled: false,
+                        visible: true,
+                        ..Default::default()
+                    }));
+                } else {
+                    menu.push(MenuItem::Separator);
+                }
+            } else {
                 let st_clone = st.clone();
                 menu.push(MenuItem::Standard(StandardItem {
-                    label: st.name.clone(),
+                    label: Self::format_station_menu_label(st),
                     activate: Box::new(move |tray: &mut Self| {
                         tray.play_station(st_clone.clone());
                     }),
@@ -1507,7 +1829,7 @@ impl ksni::Tray for TiMondeTray {
             label: "⚙️ Options".to_string(),
             submenu: vec![
                 MenuItem::Standard(StandardItem {
-                    label: "➕ Ajouter une station...".to_string(),
+                    label: "➕ Ajouter une radio...".to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         Self::trigger_add_station_dialog(
                             Arc::clone(&tray.root_group),
@@ -1518,23 +1840,25 @@ impl ksni::Tray for TiMondeTray {
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
-                    label: "🔍 Rechercher sur Radio-Browser...".to_string(),
+                    label: "📻 Découvrir & Importer des radios...".to_string(),
                     activate: Box::new(|tray: &mut Self| {
-                        Self::trigger_search_online_dialog(
+                        Self::trigger_browse_bouquets_dialog(
                             Arc::clone(&tray.root_group),
                             tray.bookmarks_path.clone(),
                             Arc::clone(&tray.tray_handle),
+                            Some(0),
                         );
                     }),
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
-                    label: "📥 Importer une liste de radios...".to_string(),
+                    label: "📥 Importer mes fichiers (XML, CSV, JSON, M3U)...".to_string(),
                     activate: Box::new(|tray: &mut Self| {
-                        Self::trigger_import_dialog(
+                        Self::trigger_browse_bouquets_dialog(
                             Arc::clone(&tray.root_group),
                             tray.bookmarks_path.clone(),
                             Arc::clone(&tray.tray_handle),
+                            Some(3),
                         );
                     }),
                     ..Default::default()
@@ -1547,36 +1871,6 @@ impl ksni::Tray for TiMondeTray {
                             tray.bookmarks_path.clone(),
                             Arc::clone(&tray.tray_handle),
                         );
-                    }),
-                    ..Default::default()
-                }),
-                MenuItem::Standard(StandardItem {
-                    label: "📻 Découvrir les bouquets (Nationaux & Régionaux)...".to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        Self::trigger_browse_bouquets_dialog(
-                            Arc::clone(&tray.root_group),
-                            tray.bookmarks_path.clone(),
-                            Arc::clone(&tray.tray_handle),
-                        );
-                    }),
-                    ..Default::default()
-                }),
-                MenuItem::Standard(StandardItem {
-                    label: "🔄 Recharger les signets".to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        info!("Rechargement manuel des signets depuis : {:?}", tray.bookmarks_path);
-                        match Self::reload_bookmarks_and_update_tray(
-                            &tray.root_group,
-                            &tray.bookmarks_path,
-                            &tray.tray_handle,
-                        ) {
-                            Ok(count) => {
-                                notify("TiMonde", &format!("{} signets rechargés avec succès !", count));
-                            }
-                            Err(_) => {
-                                notify("TiMonde", "Erreur lors du rechargement des signets");
-                            }
-                        }
                     }),
                     ..Default::default()
                 }),
@@ -1608,5 +1902,66 @@ impl ksni::Tray for TiMondeTray {
         }));
 
         menu
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use ksni::Tray;
+
+    #[test]
+    fn test_find_station_and_edit_params() {
+        let xml = r#"
+        <bookmarks>
+            <group name="English">
+                <bookmark name="Bluegrass Planet Radio" url="http://65.108.105.26:7966/stream"/>
+            </group>
+        </bookmarks>
+        "#;
+        let root = crate::bookmarks::parse_bookmarks_reader(xml.as_bytes()).unwrap();
+        let found = TiMondeTray::find_station_by_url(&root, "http://65.108.105.26:7966/stream");
+        assert!(found.is_some());
+        let st = found.unwrap();
+        assert_eq!(st.name, "Bluegrass Planet Radio");
+    }
+
+    #[test]
+    fn test_menu_layout_stopped_and_playing() {
+        let xml = r#"
+        <bookmarks>
+            <group name="English">
+                <bookmark name="Bluegrass Planet Radio" url="http://65.108.105.26:7966/stream"/>
+            </group>
+        </bookmarks>
+        "#;
+        let root = crate::bookmarks::parse_bookmarks_reader(xml.as_bytes()).unwrap();
+        let bpath = std::path::PathBuf::from("/tmp/bookmarks_test.xml");
+        let tray = TiMondeTray::new(root, bpath);
+
+        // 1. En veille / arrêté : première entrée "▶ Écouter    « Bluegrass Planet Radio »"
+        let menu_stopped = tray.menu();
+        match &menu_stopped[0] {
+            MenuItem::Standard(item) => {
+                assert!(item.label.starts_with("▶ Écouter    « Bluegrass Planet Radio »"));
+            }
+            _ => panic!("Le premier élément doit être le bouton Écouter"),
+        }
+
+        // 2. En cours de lecture : première entrée "⏹ Éteindre    « Bluegrass Planet Radio »" et présence de "✏️ Éditer"
+        *tray.current_station.lock().unwrap() = Some(Station::new("Bluegrass Planet Radio", "http://65.108.105.26:7966/stream"));
+        *tray.current_title.lock().unwrap() = Some("Matt Combs - Fifty Years of Clown School".to_string());
+
+        let menu_playing = tray.menu();
+        let labels: Vec<String> = menu_playing.iter().filter_map(|m| {
+            if let MenuItem::Standard(item) = m {
+                Some(item.label.clone())
+            } else {
+                None
+            }
+        }).collect();
+
+        assert!(labels.iter().any(|l| l.contains("Matt Combs - Fifty Years of Clown School")));
+        assert!(labels.iter().any(|l| l == "✏️ Éditer"));
     }
 }

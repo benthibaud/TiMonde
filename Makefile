@@ -27,6 +27,8 @@ install: build
 	install -m 755 data/scripts/browse_bouquets.py $(DESTDIR)$(DATADIR)/timonde/scripts/browse_bouquets.py
 	install -d $(DESTDIR)$(DATADIR)/timonde/bouquets
 	install -m 644 data/bouquets/*.xml $(DESTDIR)$(DATADIR)/timonde/bouquets/
+	install -d $(DESTDIR)$(DATADIR)/timonde/examples
+	install -m 644 data/examples/* $(DESTDIR)$(DATADIR)/timonde/examples/
 
 install-user: build
 	install -d $(HOME)/.local/bin
@@ -45,6 +47,8 @@ install-user: build
 	install -m 755 data/scripts/browse_bouquets.py $(HOME)/.local/share/timonde/scripts/browse_bouquets.py
 	install -d $(HOME)/.local/share/timonde/bouquets
 	install -m 644 data/bouquets/*.xml $(HOME)/.local/share/timonde/bouquets/
+	install -d $(HOME)/.local/share/timonde/examples
+	install -m 644 data/examples/* $(HOME)/.local/share/timonde/examples/
 
 uninstall:
 	rm -f $(DESTDIR)$(BINDIR)/timonde

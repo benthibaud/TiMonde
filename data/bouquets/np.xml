@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="NP" name="Népal" flag="🇳🇵" multilingual="false">
   <national>
-    <station name="Radio Nepal" url="https://stream.zeno.fm/8jgt4w4k0heuv" genre="The Voice of the Nation from Kathmandu" />
-    <station name="Radio Kantipur" url="https://stream.zeno.fm/9jgt4w4k0heuv" genre="The Pioneer Private Station" />
-    <station name="Ujyaalo 90 Network" url="https://stream.zeno.fm/1kgt4w4k0heuv" genre="Community Radio Across the Himalayas" />
-  </national>
-</bouquet>
+    <station name="Radio Nepal" url="https://stream.live.vc.bbcmedia.co.uk/bbc_nepali_radio" genre="The Voice of the Nation from Kathmandu" />
+    <station name="Radio Kantipur" url="https://radio-broadcast.ekantipur.com/stream" genre="The Pioneer Private Station" />
+    <station name="Ujyaalo 90 Network" url="http://stream.zenolive.com/wtuvp08xq1duv" genre="Community Radio Across the Himalayas" />
+    </national>
+  </bouquet>

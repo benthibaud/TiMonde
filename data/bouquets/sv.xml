@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="SV" name="Salvador" flag="🇸🇻" multilingual="false">
   <national>
-    <station name="Radio Nacional de El Salvador" url="https://stream.radionacional.gob.sv/live" genre="Cultura, educación y noticias" />
-    <station name="Radio YSKL La Poderosa" url="https://stream.radioyskl.com/live" genre="Líder en deportes y actualidad" />
-    <station name="Exa FM El Salvador" url="https://stream.zeno.fm/5agt4w4k0heuv" genre="Ponte Exa San Salvador" />
-  </national>
-</bouquet>
+    <station name="Radio Nacional de El Salvador" url="https://streamingcwsradio30.com/8156/stream" genre="Cultura, educación y noticias" />
+    <station name="Radio YSKL La Poderosa" url="http://media.dominiocreativo.com:8000/radioyskl" genre="Líder en deportes y actualidad" />
+    <station name="Exa FM El Salvador" url="http://158.69.219.162:8028/stream" genre="Ponte Exa San Salvador" />
+    </national>
+  </bouquet>

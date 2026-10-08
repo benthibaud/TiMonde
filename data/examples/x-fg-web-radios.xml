@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet name="Webradios Radio FG" flag="🎧" category="Exemples" country="FR">
+  <national>
+    <station name="FG" url="https://radiofg.impek.com/fg" genre="Electro / Dance / Club" />
+    <station name="MAXXIMUM" url="https://stream.rcs.revma.com/nwhyn2c6p98uv" genre="Electro / Dance / Club" />
+    <station name="MAXXIMUM 90's" url="https://stream.rcs.revma.com/maygqbdap98uv" genre="Electro / Dance / Club" />
+    <station name="FG Classics" url="https://stream.rcs.revma.com/37n8gxv9n98uv?" genre="Electro / Dance / Club" />
+    <station name="FG Starter FG By Hakimakli" url="https://stream.rcs.revma.com/vww68g69n98uv" genre="Electro / Dance / Club" />
+    <station name="FG Buddha Bar" url="https://stream.rcs.revma.com/zn73zqg1t7uvv" genre="Electro / Dance / Club" />
+    <station name="FG CHIC" url="https://stream.rcs.revma.com/cgvrymb6p98uv" genre="Electro / Dance / Club" />
+    <station name="FG CHIC and CHILL" url="https://stream.rcs.revma.com/d9ucg01d0chvv" genre="Electro / Dance / Club" />
+    <station name="FG CHIC Berlin" url="https://n41a-eu.rcs.revma.com/7pww0pn0742vv" genre="Electro / Dance / Club" />
+    <station name="FG CHIC by Renault" url="https://stream.rcs.revma.com/kg2bvya6wzuvv" genre="Electro / Dance / Club" />
+    <station name="FG CHIC French" url="https://stream.rcs.revma.com/3x5uxtcxgkhvv" genre="Electro / Dance / Club" />
+    <station name="FG CHIC London" url="https://n01a-eu.rcs.revma.com/8ha6164v5znwv" genre="Electro / Dance / Club" />
+    <station name="FG CHIC Lounge" url="https://stream.rcs.revma.com/1grpmk88n98uv" genre="Electro / Dance / Club" />
+    <station name="FG CHIC Spa" url="https://stream.rcs.revma.com/ffynknv9n98uv" genre="Electro / Dance / Club" />
+    <station name="FG CHIC Vintage" url="https://stream.rcs.revma.com/csfyhrgr60bwv" genre="Electro / Dance / Club" />
+    <station name="FG Driving" url="https://stream.rcs.revma.com/yg315gmd633vv" genre="Electro / Dance / Club" />
+    <station name="FG Fucking Good Music" url="https://n38a-eu.rcs.revma.com/dvpevwak5rcwv" genre="Electro / Dance / Club" />
+    <station name="FG New Wave" url="https://stream.rcs.revma.com/4vpbw1ad633vv" genre="Electro / Dance / Club" />
+    <station name="FG Pop Legends" url="https://n05a-eu.rcs.revma.com/hdzyzvtbxd3vv" genre="Electro / Dance / Club" />
+    <station name="FG Relax" url="https://stream.rcs.revma.com/ptaswwyza43vv" genre="Electro / Dance / Club" />
+    <station name="FG Remix" url="https://stream.rcs.revma.com/w1psqtmd342vv" genre="Electro / Dance / Club" />
+    <station name="FG RnB Legends" url="https://stream.rcs.revma.com/kau7e6tbxd3vv" genre="Electro / Dance / Club" />
+    <station name="FG YOGA" url="https://n03a-eu.rcs.revma.com/xryf0bck5rcwv" genre="Electro / Dance / Club" />
+    <station name="FG At Work" url="https://stream.rcs.revma.com/2v1zz979n98uv" genre="Electro / Dance / Club" />
+    <station name="FG Bob Sinclar" url="https://stream.rcs.revma.com/wphm12m4403vv" genre="Electro / Dance / Club" />
+    <station name="FG CHIC Ibiza" url="https://stream.rcs.revma.com/z8v9hmhp0f3vv" genre="Electro / Dance / Club" />
+    <station name="FG CHIC Mix" url="https://stream.rcs.revma.com/9sw5gp3w7guvv.mp3" genre="Electro / Dance / Club" />
+    <station name="FG David Guetta" url="https://stream.rcs.revma.com/88h6r9dusd3vv" genre="Electro / Dance / Club" />
+    <station name="FG Defected" url="https://stream.rcs.revma.com/423ppf862quvv.mp3" genre="Electro / Dance / Club" />
+    <station name="FG Feel Good" url="https://n16a-eu.rcs.revma.com/yamg15ak5rcwv" genre="Electro / Dance / Club" />
+    <station name="FG Hï Ibiza" url="https://n15a-eu.rcs.revma.com/2ykcf6e1e2uvv" genre="Electro / Dance / Club" />
+    <station name="FG Hits" url="https://stream.rcs.revma.com/mxfbr0dusd3vv" genre="Electro / Dance / Club" />
+    <station name="FG MIX Afro House" url="https://stream.rcs.revma.com/uv0x66bap98uv" genre="Electro / Dance / Club" />
+    <station name="FG MIX Electro" url="https://stream.rcs.revma.com/ky42f360e2uvv" genre="Electro / Dance / Club" />
+    <station name="FG MIX Melodic" url="https://n27a-eu.rcs.revma.com/h0n0zbh1t7uvv" genre="Electro / Dance / Club" />
+    <station name="FG Nomade" url="https://n29a-eu.rcs.revma.com/yukrx3dusd3vv" genre="Electro / Dance / Club" />
+    <station name="FG Phonk and Gaming" url="https://stream.rcs.revma.com/vzx3q9762quvv" genre="Electro / Dance / Club" />
+    <station name="FG Belgium" url="https://stream.rcs.revma.com/5wesqhfap98uv" genre="Electro / Dance / Club" />
+    <station name="FG Clubbing" url="https://n30a-eu.rcs.revma.com/007e1v9f772vv" genre="Electro / Dance / Club" />
+    <station name="FG Dance" url="https://stream.rcs.revma.com/zfad8vm4srhvv" genre="Electro / Dance / Club" />
+    <station name="FG Dance Top 40" url="https://stream.rcs.revma.com/x1csugb6wzuvv.mp3" genre="Electro / Dance / Club" />
+    <station name="FG Dancefloor" url="https://stream.rcs.revma.com/kv9m762w7guvv.mp3" genre="Electro / Dance / Club" />
+    <station name="FG Deep Dance" url="https://stream.rcs.revma.com/tmbhq479n98uv?" genre="Electro / Dance / Club" />
+    <station name="FG Disco Funk" url="https://stream.rcs.revma.com/cpkhx08pq18uv" genre="Electro / Dance / Club" />
+    <station name="FG Disco House" url="https://n17a-eu.rcs.revma.com/ffn7zkskca3vv" genre="Electro / Dance / Club" />
+    <station name="FG MIX Dance" url="https://stream.rcs.revma.com/e88ff5a1e2uvv" genre="Electro / Dance / Club" />
+    <station name="FG Purple Disco Machine" url="https://stream.rcs.revma.com/xfnmkhw5b1bwv" genre="Electro / Dance / Club" />
+    <station name="FG Training" url="https://stream.rcs.revma.com/8daakscap98uv" genre="Electro / Dance / Club" />
+    <station name="FG Xtra" url="https://stream.rcs.revma.com/w33p2cfap98uv" genre="Electro / Dance / Club" />
+    <station name="FG Apéro" url="https://stream.rcs.revma.com/3xvpxq50e2uvv" genre="Electro / Dance / Club" />
+    <station name="FG Beatport" url="https://stream.rcs.revma.com/vb3b5749n98uv" genre="Electro / Dance / Club" />
+    <station name="FG CHIC Soul" url="https://stream.rcs.revma.com/y4r1v13w7guvv.mp3" genre="Electro / Dance / Club" />
+    <station name="FG Deep House" url="https://n14a-eu.rcs.revma.com/02s8zcv9898uv" genre="Electro / Dance / Club" />
+    <station name="FG MIX House" url="https://stream.rcs.revma.com/5kucq079n98uv" genre="Electro / Dance / Club" />
+    <station name="FG MIX Techno" url="https://n01b-eu.rcs.revma.com/vat1rx60e2uvv" genre="Electro / Dance / Club" />
+    <station name="FG MIX Trance" url="https://n11a-eu.rcs.revma.com/v025nezpey3vv" genre="Electro / Dance / Club" />
+    <station name="FG Pulse" url="https://n19a-eu.rcs.revma.com/rzqck8ad633vv" genre="Electro / Dance / Club" />
+    <station name="FG Techno" url="https://stream.rcs.revma.com/1z19ak79n98uv" genre="Electro / Dance / Club" />
+    </national>
+  </bouquet>

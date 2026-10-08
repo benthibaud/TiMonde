@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="BF" name="Burkina Faso" flag="🇧🇫" multilingual="false">
   <national>
-    <station name="RTB Radio Nationale" url="https://stream.zeno.fm/5bgt4w4k0heuv" genre="Radiodiffusion Télévision du Burkina" />
+    <station name="RTB Radio Nationale" url="https://radio.radiotunisienne.tn/nationale" genre="Radiodiffusion Télévision du Burkina" />
     <station name="Ouaga FM" url="https://stream.zeno.fm/6bgt4w4k0heuv" genre="La radio de toutes les générations" />
-    <station name="Radio Savane FM" url="https://stream.zeno.fm/7bgt4w4k0heuv" genre="La radio des grands événements" />
-  </national>
-</bouquet>
+    <station name="Radio Savane FM" url="https://sonic.mediacp.eu/8040/;" genre="La radio des grands événements" />
+    </national>
+  </bouquet>

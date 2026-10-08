@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet name="Techno, Trance &amp; Électronique" flag="🎛️" category="Exemples">
+  <national>
+    <station name="Black Rock FM" url="https://ice4.somafm.com/brfm-128-mp3" genre="Techno / Électro" />
+    <station name="cliqhop idm" url="https://ice6.somafm.com/cliqhop-128-mp3" genre="Techno / Électro" />
+    <station name="Drone Zone" url="https://ice4.somafm.com/dronezone-128-mp3" genre="Techno / Électro" />
+    <station name="EILO Techno" url="https://eilo.org/streamer.php?ch=techno" genre="Techno / Électro" />
+    <station name="G One Radio" url="https://listen.radioking.com/radio/140/stream/977" genre="Techno / Électro" />
+    <station name="Nectarine Demoscene Radio" url="http://nectarine.shakeme.info:8000/nectarine" genre="Techno / Électro" />
+    <station name="New Dance Radio NL" url="https://modspeedy.radioca.st/stream" genre="Techno / Électro" />
+    <station name="Klassik Radio - Jean Michel Jarre" url="https://stream.klassikradio.de/jmjarre/mp3-128/radiode/" genre="Techno / Électro" />
+    <station name="Space Station Soma" url="https://ice4.somafm.com/spacestation-128-mp3" genre="Techno / Électro" />
+    </national>
+  </bouquet>

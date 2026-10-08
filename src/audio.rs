@@ -1,5 +1,6 @@
 use gstreamer::prelude::*;
 use log::{error, info};
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 
 /// État de lecture actuel
@@ -35,7 +36,7 @@ impl std::error::Error for AudioError {}
 /// Moteur audio s'appuyant sur GStreamer (playbin)
 pub struct AudioEngine {
     pipeline: gstreamer::Element,
-    _bus_watch: Option<gstreamer::bus::BusWatchGuard>,
+    bus_running: Arc<AtomicBool>,
     current_url: Arc<Mutex<Option<String>>>,
     state: Arc<Mutex<PlaybackState>>,
     current_title: Arc<Mutex<Option<String>>>,
@@ -90,77 +91,85 @@ impl AudioEngine {
         let state = Arc::new(Mutex::new(PlaybackState::Stopped));
         let current_url = Arc::new(Mutex::new(None));
 
-        let bus_watch = if let Some(bus) = pipeline.bus() {
+        let bus_running = Arc::new(AtomicBool::new(true));
+        if let Some(bus) = pipeline.bus() {
             let state_clone = Arc::clone(&state);
             let title_clone = Arc::clone(&current_title);
-            let guard = bus.add_watch(move |_, msg| {
-                use gstreamer::MessageView;
-                match msg.view() {
-                    MessageView::StateChanged(sc) => {
-                        if sc.src().map(|s| s.name() == "timonde-player").unwrap_or(false) {
-                            let mut st = state_clone.lock().unwrap();
-                            match sc.current() {
-                                gstreamer::State::Playing => {
-                                    *st = PlaybackState::Playing;
-                                }
-                                gstreamer::State::Paused => {
-                                    if *st != PlaybackState::Buffering {
-                                        *st = PlaybackState::Paused;
+            let running_clone = Arc::clone(&bus_running);
+
+            std::thread::Builder::new()
+                .name("timonde-gst-bus".to_string())
+                .spawn(move || {
+                    while running_clone.load(Ordering::SeqCst) {
+                        if let Some(msg) = bus.timed_pop(gstreamer::ClockTime::from_mseconds(250)) {
+                            use gstreamer::MessageView;
+                            match msg.view() {
+                                MessageView::StateChanged(sc) => {
+                                    let is_player = sc.src().map(|s| s.name() == "timonde-player").unwrap_or(false);
+                                    if is_player {
+                                        let mut st = state_clone.lock().unwrap();
+                                        match sc.current() {
+                                            gstreamer::State::Playing => {
+                                                info!("🔊 Flux GStreamer actif et en lecture");
+                                                *st = PlaybackState::Playing;
+                                            }
+                                            gstreamer::State::Paused => {
+                                                if *st != PlaybackState::Buffering {
+                                                    *st = PlaybackState::Paused;
+                                                }
+                                            }
+                                            gstreamer::State::Null => {
+                                                *st = PlaybackState::Stopped;
+                                            }
+                                            _ => {}
+                                        }
                                     }
                                 }
-                                gstreamer::State::Ready | gstreamer::State::Null => {
-                                    *st = PlaybackState::Stopped;
+                                MessageView::Buffering(b) => {
+                                    let percent = b.percent();
+                                    if percent < 100 {
+                                        *state_clone.lock().unwrap() = PlaybackState::Buffering;
+                                    } else {
+                                        *state_clone.lock().unwrap() = PlaybackState::Playing;
+                                    }
+                                }
+                                MessageView::Error(err) => {
+                                    error!("Erreur GStreamer : {} ({:?})", err.error(), err.debug());
+                                    *state_clone.lock().unwrap() = PlaybackState::Error;
+                                }
+                                MessageView::Eos(_) => {
+                                    info!("Fin de flux atteinte (EOS)");
+                                    *state_clone.lock().unwrap() = PlaybackState::Stopped;
+                                }
+                                MessageView::Tag(tag) => {
+                                    let tags = tag.tags();
+                                    if let Some(title) = tags.get::<gstreamer::tags::Title>() {
+                                        let title_str = title.get().to_string();
+                                        info!("Titre en cours : {}", title_str);
+                                        let is_new = {
+                                            let mut guard = title_clone.lock().unwrap();
+                                            let changed = guard.as_deref() != Some(&title_str);
+                                            if changed {
+                                                *guard = Some(title_str.clone());
+                                            }
+                                            changed
+                                        };
+                                        if is_new {
+                                            crate::radio_browser::notify("TiMonde", &title_str);
+                                        }
+                                    }
                                 }
                                 _ => {}
                             }
                         }
                     }
-                    MessageView::Buffering(b) => {
-                        let percent = b.percent();
-                        if percent < 100 {
-                            *state_clone.lock().unwrap() = PlaybackState::Buffering;
-                        } else {
-                            *state_clone.lock().unwrap() = PlaybackState::Playing;
-                        }
-                    }
-                    MessageView::Error(err) => {
-                        error!("Erreur GStreamer : {} ({:?})", err.error(), err.debug());
-                        *state_clone.lock().unwrap() = PlaybackState::Error;
-                    }
-                    MessageView::Eos(_) => {
-                        info!("Fin de flux atteinte (EOS)");
-                        *state_clone.lock().unwrap() = PlaybackState::Stopped;
-                    }
-                    MessageView::Tag(tag) => {
-                        let tags = tag.tags();
-                        if let Some(title) = tags.get::<gstreamer::tags::Title>() {
-                            let title_str = title.get().to_string();
-                            info!("Titre en cours : {}", title_str);
-                            let is_new = {
-                                let mut guard = title_clone.lock().unwrap();
-                                let changed = guard.as_deref() != Some(&title_str);
-                                if changed {
-                                    *guard = Some(title_str.clone());
-                                }
-                                changed
-                            };
-                            if is_new {
-                                crate::radio_browser::notify("TiMonde", &title_str);
-                            }
-                        }
-                    }
-                    _ => {}
-                }
-                gstreamer::glib::ControlFlow::Continue
-            });
-            guard.ok()
-        } else {
-            None
-        };
+                })
+                .expect("Impossible de lancer le thread bus GStreamer");
+        }
 
         Ok(Self {
             pipeline,
-            _bus_watch: bus_watch,
+            bus_running,
             current_url,
             state,
             current_title,
@@ -168,13 +177,14 @@ impl AudioEngine {
     }
 
     pub fn play(&self, url: &str) -> Result<(), AudioError> {
-        info!("Démarrage du flux : {}", url);
+        let clean_url = crate::models::clean_stream_url(url);
+        info!("Démarrage du flux : {}", clean_url);
         *self.state.lock().unwrap() = PlaybackState::Buffering;
         *self.current_title.lock().unwrap() = None;
-        *self.current_url.lock().unwrap() = Some(url.to_string());
+        *self.current_url.lock().unwrap() = Some(clean_url.clone());
 
         let _ = self.pipeline.set_state(gstreamer::State::Ready);
-        self.pipeline.set_property("uri", url);
+        self.pipeline.set_property("uri", &clean_url);
         self.pipeline
             .set_state(gstreamer::State::Playing)
             .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
@@ -220,12 +230,23 @@ impl AudioEngine {
     }
 
     pub fn state(&self) -> PlaybackState {
-        *self.state.lock().unwrap()
+        // Demande directe et synchrone de l'état réel au pipeline GStreamer
+        let (_, cur, pen) = self.pipeline.state(Some(gstreamer::ClockTime::ZERO));
+        match (cur, pen) {
+            (gstreamer::State::Playing, _) => PlaybackState::Playing,
+            (gstreamer::State::Paused, gstreamer::State::Playing) => PlaybackState::Buffering,
+            (gstreamer::State::Ready, gstreamer::State::Playing) => PlaybackState::Buffering,
+            (gstreamer::State::Paused, _) => PlaybackState::Paused,
+            (gstreamer::State::Ready, _) => PlaybackState::Buffering,
+            (gstreamer::State::Null, _) => PlaybackState::Stopped,
+            _ => *self.state.lock().unwrap(),
+        }
     }
 }
 
 impl Drop for AudioEngine {
     fn drop(&mut self) {
+        self.bus_running.store(false, Ordering::SeqCst);
         let _ = self.pipeline.set_state(gstreamer::State::Null);
     }
 }

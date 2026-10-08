@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <bouquet country="BO" name="Bolivie" flag="🇧🇴" multilingual="false">
   <national>
-    <station name="Radio Fides La Paz" url="https://stream.radiofides.com/live" genre="Voz de los sin voz en Bolivia" />
-    <station name="Radio Panamericana Bolivia" url="https://stream.panamericana.bo/live" genre="La radio líder del país" />
-    <station name="Radio Chacaltaya" url="https://stream.zeno.fm/7mgt4w4k0heuv" genre="La más tropical de La Paz" />
-  </national>
-</bouquet>
+    <station name="Radio Fides La Paz" url="http://192.95.23.89:6358/stream" genre="Voz de los sin voz en Bolivia" />
+    <station name="Radio Panamericana Bolivia" url="https://emiteradio.com/proxy/cumbia90s?mp=/stream" genre="La radio líder del país" />
+    <station name="Radio Chacaltaya" url="https://cast6.asurahosting.com/proxy/irfradio/stream" genre="La más tropical de La Paz" />
+    </national>
+  </bouquet>

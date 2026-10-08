@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="LB" name="Liban" flag="🇱🇧" multilingual="false">
   <national>
-    <station name="Radio Liban 98.1 FM (Français)" url="https://stream.zeno.fm/4mgt4w4k0heuv" genre="Radio nationale libanaise francophone &amp; Culture"/>
-    <station name="Voice of Lebanon (VDL 100.5)" url="https://stream.zeno.fm/5mgt4w4k0heuv" genre="صوت لبنان - Actualités politiques &amp; Débats"/>
-    <station name="Mix FM Lebanon" url="https://stream.zeno.fm/6mgt4w4k0heuv" genre="The Number 1 Radio Station in Lebanon"/>
-    <station name="Radio One Lebanon" url="https://stream.zeno.fm/7mgt4w4k0heuv" genre="Beirut's Best Music Station"/>
-    <station name="Sawt El Ghad" url="https://stream.zeno.fm/8mgt4w4k0heuv" genre="صوت الغد - Variété libanaise &amp; Orientale"/>
-    <station name="Nostalgie Liban" url="https://stream.zeno.fm/9mgt4w4k0heuv" genre="Les plus grandes chansons francophones"/>
-    <station name="Light FM Lebanon" url="https://stream.zeno.fm/1agt4w4k0heuv" genre="Jazz, Blues, Soul &amp; Lounge Beirut"/>
-  </national>
-</bouquet>
+    <station name="Radio Liban 98.1 FM (Français)" url="https://edge.mixlr.com/channel/qtqeb" genre="Radio nationale libanaise francophone &amp; Culture" />
+    <station name="Voice of Lebanon (VDL 100.5)" url="https://l3.itworkscdn.net/itwaudio/9054/stream" genre="صوت لبنان - Actualités politiques &amp; Débats" />
+    <station name="Mix FM Lebanon" url="https://streaming.live365.com/b48071_128mp3" genre="The Number 1 Radio Station in Lebanon" />
+    <station name="Radio One Lebanon" url="https://l3.itworkscdn.net/itwaudio/9054/stream" genre="Beirut's Best Music Station" />
+    <station name="Sawt El Ghad" url="https://l3.itworkscdn.net/itwaudio/9030/stream/" genre="صوت الغد - Variété libanaise &amp; Orientale" />
+    <station name="Nostalgie Liban" url="https://streaming.nrjaudio.fm/ou8ordgk7oiu?origine=radio.net&amp;aw_0_1st.station=Nostalgie-Blues" genre="Les plus grandes chansons francophones" />
+    <station name="Light FM Lebanon" url="http://25703.live.streamtheworld.com/LIGHTFMAAC_SC" genre="Jazz, Blues, Soul &amp; Lounge Beirut" />
+    </national>
+  </bouquet>

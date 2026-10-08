@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="TH" name="Thaïlande" flag="🇹🇭" multilingual="false">
   <national>
-    <station name="MCOT Active Radio 99 FM" url="https://stream.zeno.fm/1bgt4w4k0heuv" genre="MCOT - เมืองไทยแข็งแรง (Sport &amp; Health)"/>
-    <station name="Thinking Radio FM 96.5" url="https://stream.zeno.fm/2bgt4w4k0heuv" genre="MCOT - คลื่นความคิด (News &amp; Society)"/>
-    <station name="MET 107 FM Bangkok" url="https://stream.zeno.fm/3bgt4w4k0heuv" genre="MCOT - For Life and Music (International Hits)"/>
-    <station name="Cool Fahrenheit 93" url="https://stream.zeno.fm/4bgt4w4k0heuv" genre="เพลงเพราะต่อเนื่องมากที่สุด"/>
-    <station name="Eazy FM 105.5" url="https://stream.zeno.fm/5bgt4w4k0heuv" genre="No.1 International Hits in Bangkok"/>
-    <station name="Green Wave 106.5 FM" url="https://stream.zeno.fm/6bgt4w4k0heuv" genre="เพลงดีดี กับความรู้สึกดีดี"/>
-    <station name="Cat Radio" url="https://stream.zeno.fm/7bgt4w4k0heuv" genre="เพลงของคนรักแมว (Thai Indie Music)"/>
-  </national>
-</bouquet>
+    <station name="MCOT Active Radio 99 FM" url="https://lcdn.mcot.net/RadioLive/smil:fm1005_live.smil/playlist.m3u8" genre="MCOT - เมืองไทยแข็งแรง (Sport &amp; Health)" />
+    <station name="Thinking Radio FM 96.5" url="https://live-org-01-cdn.mcot.net/radiocdn_edge/fm965.stream_aac/chunklist.m3u8" genre="MCOT - คลื่นความคิด (News &amp; Society)" />
+    <station name="MET 107 FM Bangkok" url="https://streaming.live365.com/a93362" genre="MCOT - For Life and Music (International Hits)" />
+    <station name="Cool Fahrenheit 93" url="https://coolism-web.cdn.byteark.com/;stream/1" genre="เพลงเพราะต่อเนื่องมากที่สุด" />
+    <station name="Eazy FM 105.5" url="http://live.radiostudio.be:8000/eazyfm" genre="No.1 International Hits in Bangkok" />
+    <station name="Green Wave 106.5 FM" url="https://streams.80s80s.de/wave/mp3-192/radio.de/" genre="เพลงดีดี กับความรู้สึกดีดี" />
+    <station name="Cat Radio" url="https://ewtn-ice.streamguys1.com/spanish-aac" genre="เพลงของคนรักแมว (Thai Indie Music)" />
+    </national>
+  </bouquet>

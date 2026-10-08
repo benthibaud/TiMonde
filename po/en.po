@@ -1,0 +1,162 @@
+# TiMonde — Traduction française
+# Copyright (C) 2026 Ben Thibaud & TiMonde Team
+# This file is distributed under the same license as the TiMonde package.
+# Ben Thibaud <b_thibaud@laposte.net>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TiMonde 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-07 10:35+0200\n"
+"PO-Revision-Date: 2026-10-07 10:35+0200\n"
+"Last-Translator: Ben Thibaud <b_thibaud@laposte.net>\n"
+"Language-Team: English <en@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# --- Menu Principal (Systray) ---
+msgid "▶ Allumer la radio"
+msgstr "▶ Play radio"
+
+msgid "⏹ Éteindre la radio"
+msgstr "⏹ Stop radio"
+
+msgid "Volume :"
+msgstr "Volume:"
+
+msgid "Options"
+msgstr "Options"
+
+msgid "➕ Ajouter une radio..."
+msgstr "➕ Add a station..."
+
+msgid "📻 Découvrir & Importer des radios..."
+msgstr "📻 Discover & Import stations..."
+
+msgid "📥 Importer un fichier (M3U, CSV, JSON)..."
+msgstr "📥 Import file (M3U, CSV, JSON)..."
+
+msgid "↕️ Classer groupes et radios..."
+msgstr "↕️ Manage groups and stations..."
+
+msgid "📝 Ouvrir bookmarks.xml"
+msgstr "📝 Open bookmarks.xml"
+
+msgid "Quitter TiMonde"
+msgstr "Quit TiMonde"
+
+# --- Découverte & Bouquets (browse_bouquets.py) ---
+msgid "📻 Découvrir & Importer des radios (TiMonde)"
+msgstr "📻 Discover & Import stations (TiMonde)"
+
+msgid "🌍 Pays :"
+msgstr "🌍 Country:"
+
+msgid "Langue :"
+msgstr "Language:"
+
+msgid "📂 Ouvrir un XML externe..."
+msgstr "📂 Open external XML..."
+
+msgid "⭐ Bouquet vérifié (DAB+)"
+msgstr "⭐ Verified DAB+ Bouquet"
+
+msgid "🔎 Tout l'annuaire (Radio-Browser)"
+msgstr "🔎 Full Directory (Radio-Browser)"
+
+msgid "⭐ Bouquet National (Grandes stations)"
+msgstr "⭐ National Bouquet (Major stations)"
+
+msgid "📍 Régions & Locales :"
+msgstr "📍 Regions & Local:"
+
+msgid "Disponibilité en direct"
+msgstr "Live availability"
+
+msgid "Statut Favoris"
+msgstr "Favorites status"
+
+msgid "En ligne"
+msgstr "Online"
+
+msgid "Lien inactif"
+msgstr "Inactive link"
+
+msgid "Vérification en cours..."
+msgstr "Checking in progress..."
+
+msgid "🔧 Réparer le flux sélectionné (Radio-Browser)..."
+msgstr "🔧 Repair selected stream (Radio-Browser)..."
+
+msgid "Nom du groupe dans vos favoris :"
+msgstr "Group name in your favorites:"
+
+msgid "➕ Importer dans mes favoris"
+msgstr "➕ Import into favorites"
+
+msgid "Tout cocher"
+msgstr "Select all"
+
+msgid "Tout décocher"
+msgstr "Deselect all"
+
+# --- Classement & Réorganisation (reorder_groups.py) ---
+msgid "↕️ Gestion des groupes, radios et séparateurs (TiMonde)"
+msgstr "↕️ Manage groups, stations and separators (TiMonde)"
+
+msgid "⬅️ Retour aux groupes"
+msgstr "⬅️ Back to groups"
+
+msgid "📂 Ouvrir"
+msgstr "📂 Open"
+
+msgid "🔝 Premier"
+msgstr "🔝 Move to top"
+
+msgid "⬆️ Monter"
+msgstr "⬆️ Move up"
+
+msgid "⬇️ Descendre"
+msgstr "⬇️ Move down"
+
+msgid "➕ Séparateur"
+msgstr "➕ Separator"
+
+msgid "🔤 Tri A-Z"
+msgstr "🔤 Sort A-Z"
+
+msgid "✏️ Modifier"
+msgstr "✏️ Edit"
+
+msgid "🗑️ Supprimer"
+msgstr "🗑️ Delete"
+
+msgid "💾 Enregistrer et recharger"
+msgstr "💾 Save and reload"
+
+msgid "Séparateur"
+msgstr "Separator"
+
+msgid "Intertitre"
+msgstr "Header separator"
+
+# --- Heure Locale & Fuseaux ---
+msgid "Heure locale :"
+msgstr "Local time:"
+
+msgid "Code Pays (ex: FR, JP) :"
+msgstr "Country code (e.g. FR, JP):"
+
+msgid "Matin"
+msgstr "Morning"
+
+msgid "Journée"
+msgstr "Daytime"
+
+msgid "Soirée"
+msgstr "Evening"
+
+msgid "Nuit"
+msgstr "Night"

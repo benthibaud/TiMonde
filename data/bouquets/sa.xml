@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="SA" name="Arabie Saoudite" flag="🇸🇦" multilingual="false">
   <national>
-    <station name="Holy Quran Radio Riyadh" url="https://stream.zeno.fm/9agt4w4k0heuv" genre="SBA - إذاعة القرآن الكريم من الرياض"/>
-    <station name="Riyadh Radio" url="https://stream.zeno.fm/1bgt4w4k0heuv" genre="SBA - إذاعة الرياض (Informations &amp; Société)"/>
-    <station name="Jeddah Radio" url="https://stream.zeno.fm/2bgt4w4k0heuv" genre="SBA - إذاعة جدة (Culture &amp; Divertissement)"/>
-    <station name="MBC FM Saudi" url="https://stream.zeno.fm/3bgt4w4k0heuv" genre="MBC Group - La première radio privée du Golfe"/>
-    <station name="Panorama FM" url="https://stream.zeno.fm/4bgt4w4k0heuv" genre="MBC Group - Pop arabe &amp; Jeunesse"/>
-    <station name="Rotana FM Saudi" url="https://stream.zeno.fm/5bgt4w4k0heuv" genre="Rotana - Khaleeji &amp; Chansons arabes"/>
-    <station name="UFM Radio" url="https://stream.zeno.fm/6bgt4w4k0heuv" genre="إذاعة يو اف ام - 1ère radio sportive d'Arabie"/>
-  </national>
-</bouquet>
+    <station name="Holy Quran Radio Riyadh" url="https://radio.mp3islam.com/listen/quran_radio/radio.mp3" genre="SBA - إذاعة القرآن الكريم من الرياض" />
+    <station name="Riyadh Radio" url="https://live.kwikmotion.com/sbrksariyadhradiolive/ksariyadhradio/chunks.m3u8" genre="SBA - إذاعة الرياض (Informations &amp; Société)" />
+    <station name="Jeddah Radio" url="https://live.kwikmotion.com/sbrksajeddahradiolive/ksajeddahradio/chunks.m3u8" genre="SBA - إذاعة جدة (Culture &amp; Divertissement)" />
+    <station name="MBC FM Saudi" url="https://d2lfa0y84k5bwn.cloudfront.net/out/v1/86dd4506a70c4d7fb35e2ab50296d9a3/index.m3u8?aws.manifestfilter=video_height:0-0" genre="MBC Group - La première radio privée du Golfe" />
+    <station name="Panorama FM" url="https://stm45.srvstm.com:9510/stream" genre="MBC Group - Pop arabe &amp; Jeunesse" />
+    <station name="Rotana FM Saudi" url="http://philae.shoutca.st:8250/stream" genre="Rotana - Khaleeji &amp; Chansons arabes" />
+    <station name="UFM Radio" url="http://stream.ufmradio.com:8000/stream/1/" genre="إذاعة يو اف ام - 1ère radio sportive d'Arabie" />
+    </national>
+  </bouquet>

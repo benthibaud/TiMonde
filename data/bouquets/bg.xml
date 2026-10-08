@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="BG" name="Bulgarie" flag="🇧🇬" multilingual="false">
   <national>
-    <station name="BNR Horizont" url="https://stream.bnr.bg:8002/horizont.mp3" genre="БНР - Новини &amp; Общество"/>
-    <station name="BNR Hristo Botev" url="https://stream.bnr.bg:8002/botev.mp3" genre="БНР - Култура &amp; Класика"/>
-    <station name="BG Radio" url="https://play.radiocast.bg/bgradio128" genre="Само българска музика"/>
-    <station name="Radio City Bulgaria" url="https://play.radiocast.bg/city128" genre="Хитове до дупка"/>
-    <station name="Darik Radio" url="https://stream.darikradio.bg/live" genre="Новините, каквито са"/>
-    <station name="Radio Energy Bulgaria" url="https://play.radiocast.bg/nrj128" genre="Хитовете на 90-те"/>
-    <station name="Radio Fresh!" url="https://stream.fresh.bg/fresh.mp3" genre="Хит след хит"/>
-    <station name="Z-Rock" url="https://stream.z-rock.bg/zrock.mp3" genre="Рок радиото на България"/>
-    <station name="Radio Veselina" url="https://play.radiocast.bg/veselina128" genre="Най-добрият поп-фолк"/>
-    <station name="Radio N-JOY" url="https://stream.njoy.bg/njoy.mp3" genre="Повече музика"/>
-  </national>
-</bouquet>
+    <station name="BNR Horizont" url="https://play.global.audio/testb.aac?dist=RADIOPLAY" genre="БНР - Новини &amp; Общество" />
+    <station name="BNR Hristo Botev" url="https://lb-hls.cdn.bg/2032/fls/HrBotev.stream/playlist.m3u8" genre="БНР - Култура &amp; Класика" />
+    <station name="BG Radio" url="http://stream.radioreklama.bg/bgradio128" genre="Само българска музика" />
+    <station name="Radio City Bulgaria" url="http://31.13.223.148:8000/city.mp3" genre="Хитове до дупка" />
+    <station name="Darik Radio" url="https://a12.asurahosting.com/listen/darik_radio/radio.mp3" genre="Новините, каквито са" />
+    <station name="Radio Energy Bulgaria" url="http://149.13.0.81/radio1.ogg" genre="Хитовете на 90-те" />
+    <station name="Radio Fresh!" url="http://193.108.24.21:8000/fresh" genre="Хит след хит" />
+    <station name="Z-Rock" url="http://193.108.24.6:8000/zrock" genre="Рок радиото на България" />
+    <station name="Radio Veselina" url="https://bss1.neterra.tv/veselina/veselina.m3u8" genre="Най-добрият поп-фолк" />
+    <station name="Radio N-JOY" url="https://cdn.bweb.bg/radio/njoy.mp3" genre="Повече музика" />
+    </national>
+  </bouquet>

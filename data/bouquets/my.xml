@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <bouquet country="MY" name="Malaisie" flag="🇲🇾" multilingual="false">
   <national>
-    <station name="Radio Klasik RTM" url="https://stream.zeno.fm/1egt4w4k0heuv" genre="RTM - Menggamit Kenangan (Tradisional &amp; Asli)"/>
-    <station name="Nasional FM RTM" url="https://stream.zeno.fm/2egt4w4k0heuv" genre="RTM - Sentiasa Di Hati (Berita &amp; Informasi)"/>
-    <station name="TraXX FM (English)" url="https://stream.zeno.fm/3egt4w4k0heuv" genre="RTM - Experience the Excitement"/>
-    <station name="Ai FM (Chinese)" url="https://stream.zeno.fm/4egt4w4k0heuv" genre="RTM - 有情有爱，爱FM"/>
-    <station name="Minnal FM (Tamil)" url="https://stream.zeno.fm/5egt4w4k0heuv" genre="RTM - Nenjil Niranja Isai"/>
-    <station name="Fly FM Malaysia" url="https://stream.zeno.fm/6egt4w4k0heuv" genre="Malaysia's Modern Hit Radio"/>
-    <station name="Hot FM Malaysia" url="https://stream.zeno.fm/7egt4w4k0heuv" genre="Muzik Paling Hangat"/>
-    <station name="Suria FM" url="https://stream.zeno.fm/8egt4w4k0heuv" genre="Segar &amp; Mesra"/>
-  </national>
-</bouquet>
+    <station name="Radio Klasik RTM" url="https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_KLASIKAAC_SC" genre="RTM - Menggamit Kenangan (Tradisional &amp; Asli)" />
+    <station name="Nasional FM RTM" url="http://playerservices.streamtheworld.com/api/livestream-redirect/NASIONAL_FM.mp3" genre="RTM - Sentiasa Di Hati (Berita &amp; Informasi)" />
+    <station name="TraXX FM (English)" url="https://playerservices.streamtheworld.com/api/livestream-redirect/TRAXX_FMAAC_SC" genre="RTM - Experience the Excitement" />
+    <station name="Ai FM (Chinese)" url="https://playerservices.streamtheworld.com/api/livestream-redirect/AI_FMAAC_SC" genre="RTM - 有情有爱，爱FM" />
+    <station name="Minnal FM (Tamil)" url="https://stream.zeno.fm/5egt4w4k0heuv" genre="RTM - Nenjil Niranja Isai" />
+    <station name="Fly FM Malaysia" url="https://stream.rcs.revma.com/q17aka9mtd3vv" genre="Malaysia's Modern Hit Radio" />
+    <station name="Hot FM Malaysia" url="https://stream.rcs.revma.com/drakdf8mtd3vv/hls.m3u8" genre="Muzik Paling Hangat" />
+    <station name="Suria FM" url="https://stream.zeno.fm/8egt4w4k0heuv" genre="Segar &amp; Mesra" />
+    </national>
+  </bouquet>

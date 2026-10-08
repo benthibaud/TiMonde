@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<bouquet name="Musique Country &amp; Bluegrass" flag="🤠" category="Exemples">
+  <national>
+    <station name="NZCMR - Gone Country - Feilding, New Zealand" url="https://usa10.fastcast4u.com:6010/;" genre="Country" />
+    <station name="CHOY Fm 99.9 L'Acadie Country" url="https://mbsRadio.leanstream.co/CHOYFM-MP3" genre="Country" />
+    <station name="Radio Country Acadienne" url="https://shout.radiocountryacadienne.com:8004/" genre="Country" />
+    <station name="Radio Plaisirs Country" url="https://onlineradiobox.com/json/ca/plaisirs/play?platform=web" genre="Country" />
+    <station name="1550 AM Bluegrass - WIGN" url="https://mountain.radioca.st/stream" genre="Country" />
+    <station name="90's Country - 181 fm" url="http://listen.181fm.com/181-90scountry_128k.mp3" genre="Country" />
+    <station name="Abiding Radio - Bluegrass Hymns - Mesa, AZ" url="https://streams.abidingradio.com/bluegrass" genre="Country" />
+    <station name="Big R Radio - Country Oldies - Mill Creek, WA" url="https://bigrradio-edge1.cdnstream.com/5195_128" genre="Country" />
+    <station name="Bluegrass Country - WAMU" url="https://ice24.securenetsystems.net/WAMU2" genre="Country" />
+    <station name="Boot Liquor" url="https://ice6.somafm.com/bootliquor-128-aac" genre="Country" />
+    <station name="Country 108" url="https://icepool.silvacast.com/COUNTRY108.mp3" genre="Country" />
+    <station name="Eagle Country Radio" url="https://eaglecountryradio.ice.infomaniak.ch:80/eaglecountryradio" genre="Country" />
+    <station name="Front Porch (Bluegrass) - 181 fm" url="http://listen.181fm.com/181-frontporch_128k.mp3" genre="Country" />
+    <station name="GotRadio - Bluegrass - Sacramento, CA" url="http://pureplay.cdnstream1.com/6057_128.mp3" genre="Country" />
+    <station name="Highway 65 Radio (Nashville)" url="https://hydra.cdnstream.com/1924_64" genre="Country" />
+    <station name="Kickin' Country - 181 fm" url="http://listen.181fm.com/181-kickincountry_128k.mp3" genre="Country" />
+    <station name="New Country 98.5 - KACO-FM - FM 98.5 - Apache, OK" url="https://ice42.securenetsystems.net/KACO" genre="Country" />
+    <station name="Outlaw Nation - Myrtle Beach, SC" url="https://ice5.securenetsystems.net/OUTLAW" genre="Country" />
+    <station name="Real Country - 181 fm" url="https://listen.181fm.com/181-realcountry_128k.mp3" genre="Country" />
+    <station name="Yimago Country - Toronto" url="https://strw3.openstream.co/867" genre="Country" />
+    </national>
+  </bouquet>
