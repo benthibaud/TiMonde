@@ -19,10 +19,97 @@ try:
 except ImportError:
     def _(s): return s
 
+import urllib.request
+import urllib.parse
+import urllib.error
+import re
+import threading
+from concurrent.futures import ThreadPoolExecutor
+
+USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+
+def check_stream_url(url, timeout=3.5):
+    if not url or not url.strip():
+        return False, "URL vide", None
+    clean = url.strip()
+    try:
+        req = urllib.request.Request(
+            clean,
+            headers={
+                "User-Agent": USER_AGENT,
+                "Icy-MetaData": "1",
+                "Range": "bytes=0-1024"
+            }
+        )
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            code = resp.getcode()
+            final_url = resp.geturl()
+            redir = final_url if final_url != clean else None
+            if 200 <= code < 400:
+                return True, f"HTTP {code}", redir
+            return False, f"HTTP {code}", None
+    except urllib.error.HTTPError as e:
+        if e.code in (403, 451):
+            return "GEO", f"Géo-restreint ({e.code})", None
+        return False, f"Erreur {e.code}", None
+    except urllib.error.URLError as e:
+        return False, "Inaccessible", None
+    except Exception as e:
+        return False, "Délai dépassé", None
+
+def search_radio_browser_replacement(station_name):
+    clean = re.sub(r'\s*-\s*[A-Za-z0-9\s,]+$', '', station_name).strip()
+    clean = re.sub(r'\(.*?\)', '', clean).strip()
+    clean = re.sub(r'\b(FM|AM|Radio|Webradio|Live)\b', '', clean, flags=re.IGNORECASE).strip()
+
+    candidates = []
+    queries = [clean]
+    if len(clean.split()) > 1 and len(clean.split()[0]) >= 4:
+        queries.append(clean.split()[0])
+
+    norm_target = re.sub(r'[^a-z0-9]', '', clean.lower())
+
+    for q in queries:
+        if len(q) < 3:
+            continue
+        for endpoint in ["https://de1.api.radio-browser.info", "https://all.api.radio-browser.info"]:
+            try:
+                api_url = f"{endpoint}/json/stations/byname/{urllib.parse.quote(q)}?limit=8"
+                req = urllib.request.Request(api_url, headers={"User-Agent": USER_AGENT})
+                with urllib.request.urlopen(req, timeout=3.0) as resp:
+                    if resp.getcode() == 200:
+                        data = json.loads(resp.read().decode("utf-8"))
+                        for s in data:
+                            s_name = s.get("name", "")
+                            norm_s = re.sub(r'[^a-z0-9]', '', s_name.lower())
+                            if norm_target in norm_s or norm_s in norm_target:
+                                u = (s.get("url_resolved") or s.get("url") or "").strip()
+                                bitrate = s.get("bitrate", 0)
+                                country = s.get("countrycode", "")
+                                if u and u.startswith("http"):
+                                    candidates.append((s_name, u, bitrate, country))
+                        break
+            except Exception:
+                continue
+
+    valid_candidates = []
+    for c_name, c_url, bitrate, country in candidates[:5]:
+        ok, msg, final_u = check_stream_url(c_url, timeout=3.0)
+        if ok is True:
+            valid_candidates.append({
+                "name": c_name,
+                "url": final_u or c_url,
+                "bitrate": bitrate,
+                "country": country,
+                "status": msg
+            })
+
+    return valid_candidates
+
 import gi
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gdk, Pango
+from gi.repository import Gtk, Gdk, Pango, GLib
 
 
 
@@ -67,16 +154,19 @@ def clean_stream_url(url: str) -> str:
     return u.strip()
 
 class ReorderWindow(Gtk.Window):
-    def __init__(self, data):
+    def __init__(self, data, auto_check=False):
         super().__init__(title=_("↕️ Manage groups, stations and separators (TiMonde)"))
-        self.set_default_size(720, 530)
+        self.set_default_size(760, 550)
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_border_width(12)
         self.set_icon_name("audio-x-generic")
 
         self.data = data
+        self.auto_check = auto_check
         self.current_group_idx = None  # None = vue Groupes, int = vue Radios du groupe data[idx]
         self.saved = False
+        self.audit_results = {}  # url -> {"status": "online"|"offline"|"geo"|"redirect", "msg": str, "redirect": str|None}
+        self.filter_broken_only = False
 
         self.connect("key-press-event", self.on_key_press_event)
 
@@ -95,6 +185,22 @@ class ReorderWindow(Gtk.Window):
         self.header_title = Gtk.Label()
         self.header_title.set_halign(Gtk.Align.START)
         self.nav_box.pack_start(self.header_title, True, True, 0)
+
+        # Outils d'audit et vérification de santé des flux
+        self.btn_check_streams = Gtk.Button(label="🩺 Vérifier les flux")
+        self.btn_check_streams.set_tooltip_text("Tester la disponibilité en direct de vos radios et repérer les liens morts")
+        self.btn_check_streams.connect("clicked", self.on_check_streams_clicked)
+        self.nav_box.pack_start(self.btn_check_streams, False, False, 0)
+
+        self.chk_broken_only = Gtk.CheckButton(label="⚠️ Liens morts uniquement")
+        self.chk_broken_only.set_tooltip_text("Afficher uniquement les radios dont le flux est hors-ligne")
+        self.chk_broken_only.connect("toggled", self.on_filter_broken_toggled)
+        self.nav_box.pack_start(self.chk_broken_only, False, False, 0)
+
+        self.btn_apply_redirects = Gtk.Button(label="⚡ Appliquer redirections")
+        self.btn_apply_redirects.set_tooltip_text("Mettre à jour automatiquement les flux redirigés vers leur URL directe")
+        self.btn_apply_redirects.connect("clicked", self.on_apply_redirects_clicked)
+        self.nav_box.pack_start(self.btn_apply_redirects, False, False, 0)
 
         self.help_label = Gtk.Label()
         self.help_label.set_halign(Gtk.Align.START)
@@ -128,12 +234,12 @@ class ReorderWindow(Gtk.Window):
         self.col_name.set_expand(True)
         self.treeview.append_column(self.col_name)
 
-        # Colonne 3 : Info (Radios / URL / Séparateur)
+        # Colonne 3 : Info (Radios / URL / Séparateur / État du flux)
         renderer_info = Gtk.CellRendererText()
         renderer_info.set_property("xalign", 1.0)
         renderer_info.set_property("ellipsize", Pango.EllipsizeMode.MIDDLE)
-        self.col_info = Gtk.TreeViewColumn("Détails", renderer_info, text=3)
-        self.col_info.set_fixed_width(140)
+        self.col_info = Gtk.TreeViewColumn("Détails", renderer_info, markup=3)
+        self.col_info.set_fixed_width(180)
         self.treeview.append_column(self.col_info)
 
         # Défilement
@@ -205,6 +311,11 @@ class ReorderWindow(Gtk.Window):
         btn_edit.set_tooltip_text("Modifier le nom, l'URL ou l'intertitre sélectionné (F2)")
         btn_edit.connect("clicked", self.on_edit_clicked)
         side_box.pack_start(btn_edit, False, False, 0)
+
+        self.btn_repair = Gtk.Button(label="🔍 Réparer flux...")
+        self.btn_repair.set_tooltip_text("Rechercher automatiquement un flux actif de remplacement sur Radio-Browser pour ce lien mort")
+        self.btn_repair.connect("clicked", self.on_repair_stream_clicked)
+        side_box.pack_start(self.btn_repair, False, False, 0)
 
         btn_del = Gtk.Button(label=_("🗑️ Delete"))
         btn_del.set_tooltip_text("Supprimer l'élément ou le groupe sélectionné (Suppr)")
@@ -312,9 +423,19 @@ class ReorderWindow(Gtk.Window):
                     stations = g.get("stations", [])
                     nb_radios = sum(1 for s in stations if not self.is_item_separator(s))
                     nb_seps = sum(1 for s in stations if self.is_item_separator(s))
+                    nb_dead = sum(1 for s in stations if self.audit_results.get(s.get("url", ""), {}).get("status") == "offline")
+                    nb_redir = sum(1 for s in stations if self.audit_results.get(s.get("url", ""), {}).get("status") == "redirect")
+
                     info_parts = [f"{nb_radios} radio{'s' if nb_radios > 1 else ''}"]
                     if nb_seps > 0:
                         info_parts.append(f"{nb_seps} sép.")
+                    if nb_dead > 0:
+                        info_parts.append(f"<span foreground='#e74c3c'><b>⚠️ {nb_dead} lien{'s' if nb_dead > 1 else ''} mort{'s' if nb_dead > 1 else ''}</b></span>")
+                    elif nb_redir > 0:
+                        info_parts.append(f"<span foreground='#e67e22'>🔄 {nb_redir} redir.</span>")
+                    elif self.audit_results and nb_radios > 0:
+                        info_parts.append("<span foreground='#2ecc71'>🟢 Tout est en ligne</span>")
+
                     self.store.append([i, str(i + 1), g["name"], " · ".join(info_parts)])
         else:
             # Mode Radios du groupe
@@ -329,15 +450,17 @@ class ReorderWindow(Gtk.Window):
             self.header_title.set_markup(f"<b>📻 Radios du groupe : {grp['name']}</b>")
             self.help_label.set_markup(
                 "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour classer les radios.\n"
-                "• Utilisez <b>➡️ Déplacer vers...</b> pour déplacer la ou les radios vers un autre groupe.\n"
-                "• Cliquez sur <b>➕ Séparateur</b> pour aérer la liste ou insérer un intertitre de section.\n"
-                "• Cliquez sur <b>🔤 Tri A-Z</b> pour classer ce groupe par ordre alphabétique.</small>"
+                "• Cliquez sur <b>🩺 Vérifier les flux</b> pour repérer les liens morts (rouge) et les réparer.\n"
+                "• Cliquez sur <b>🔍 Réparer flux...</b> pour chercher un flux actif de remplacement sur Radio-Browser.\n"
+                "• Cliquez sur <b>➕ Séparateur</b> pour insérer un intertitre de section.</small>"
             )
             self.col_name.set_title(_("Name / Header"))
             self.col_info.set_title(_("Details"))
 
             for i, s in enumerate(grp.get("stations", [])):
                 if self.is_item_separator(s):
+                    if self.filter_broken_only:
+                        continue
                     s["is_separator"] = True
                     s["url"] = ""
                     title = s.get("name", "").strip()
@@ -353,14 +476,34 @@ class ReorderWindow(Gtk.Window):
                     self.store.append([i, str(i + 1), disp_name, info_str])
                 else:
                     s["is_separator"] = False
-                    url_short = s.get("url", "")
-                    country_tag = s.get("country", "")
-                    if country_tag:
-                        info_str = f"[{country_tag}]"
-                    elif len(url_short) > 28:
-                        info_str = url_short[:25] + "..."
+                    url = s.get("url", "")
+                    audit = self.audit_results.get(url)
+
+                    if self.filter_broken_only and (not audit or audit.get("status") != "offline"):
+                        continue
+
+                    if audit:
+                        st_val = audit.get("status")
+                        st_msg = audit.get("msg", "")
+                        if st_val == "online":
+                            info_str = "<span foreground='#2ecc71'>🟢 En direct</span>"
+                        elif st_val == "offline":
+                            info_str = f"<span foreground='#e74c3c'><b>🔴 Lien mort</b> ({st_msg})</span>"
+                        elif st_val == "redirect":
+                            info_str = "<span foreground='#e67e22'>🔄 Redirigé</span>"
+                        elif st_val == "geo":
+                            info_str = "<span foreground='#f1c40f'>🟡 Géo-restreint</span>"
+                        else:
+                            info_str = st_msg
                     else:
-                        info_str = url_short
+                        country_tag = s.get("country", "")
+                        if country_tag:
+                            info_str = f"[{country_tag}]"
+                        elif len(url) > 28:
+                            info_str = url[:25] + "..."
+                        else:
+                            info_str = url
+
                     self.store.append([i, str(i + 1), s["name"], info_str])
 
         if select_idx is not None:
@@ -1237,6 +1380,213 @@ class ReorderWindow(Gtk.Window):
         self.destroy()
 
 
+
+    # -------------------------------------------------------------------------
+    # Vérification de santé des flux et réparation des liens morts
+    # -------------------------------------------------------------------------
+
+    def on_filter_broken_toggled(self, widget):
+        self.filter_broken_only = widget.get_active()
+        self.update_view()
+
+    def on_apply_redirects_clicked(self, widget):
+        count = 0
+        for g in self.data:
+            for s in g.get("stations", []):
+                u = s.get("url", "")
+                if u in self.audit_results and self.audit_results[u].get("redirect"):
+                    s["url"] = self.audit_results[u]["redirect"]
+                    count += 1
+        self.btn_apply_redirects.hide()
+        self.show_feedback(f"{count} flux redirigés mis à jour vers leur adresse directe !")
+        self.update_view()
+
+    def on_check_streams_clicked(self, widget):
+        # 1. Rassembler les stations à vérifier
+        stations_to_check = []
+        if self.current_group_idx is not None:
+            grp = self.data[self.current_group_idx]
+            for s in grp.get("stations", []):
+                if not self.is_item_separator(s) and s.get("url"):
+                    stations_to_check.append(s)
+        else:
+            for g in self.data:
+                for s in g.get("stations", []):
+                    if not self.is_item_separator(s) and s.get("url"):
+                        stations_to_check.append(s)
+
+        if not stations_to_check:
+            self.show_feedback("Aucune radio à vérifier.")
+            return
+
+        total = len(stations_to_check)
+
+        # Dialogue de progression modal
+        dialog = Gtk.Dialog(
+            title="🩺 Vérification de vos radios",
+            parent=self,
+            flags=Gtk.DialogFlags.MODAL,
+            buttons=("Arrêter", Gtk.ResponseType.CANCEL)
+        )
+        dialog.set_default_size(440, 140)
+        box = dialog.get_content_area()
+        box.set_spacing(10)
+        box.set_border_width(14)
+
+        lbl = Gtk.Label(label="<b>Vérification en direct de vos flux de radios...</b>")
+        lbl.set_use_markup(True)
+        lbl.set_halign(Gtk.Align.START)
+        box.add(lbl)
+
+        pbar = Gtk.ProgressBar()
+        box.add(pbar)
+
+        lbl_status = Gtk.Label(label=f"0 / {total} radios vérifiées...")
+        lbl_status.set_halign(Gtk.Align.START)
+        box.add(lbl_status)
+        dialog.show_all()
+
+        cancel_event = threading.Event()
+
+        def run_checks():
+            done = 0
+            for s in stations_to_check:
+                if cancel_event.is_set():
+                    break
+                url = s.get("url", "")
+                ok, msg, redir = check_stream_url(url, timeout=3.0)
+                if ok is True:
+                    status = "redirect" if redir else "online"
+                elif ok == "GEO":
+                    status = "geo"
+                else:
+                    status = "offline"
+
+                self.audit_results[url] = {
+                    "status": status,
+                    "msg": msg,
+                    "redirect": redir,
+                }
+                done += 1
+
+                fraction = done / float(total)
+                text = f"{done} / {total} radios vérifiées : {s.get('name', '')[:25]}"
+                GLib.idle_add(pbar.set_fraction, fraction)
+                GLib.idle_add(lbl_status.set_text, text)
+
+            GLib.idle_add(on_finished)
+
+        def on_finished():
+            dialog.destroy()
+            nb_online = sum(1 for r in self.audit_results.values() if r["status"] == "online")
+            nb_dead = sum(1 for r in self.audit_results.values() if r["status"] == "offline")
+            nb_redir = sum(1 for r in self.audit_results.values() if r["status"] == "redirect")
+
+            self.show_feedback(f"Audit terminé : {nb_online} en ligne · ⚠️ {nb_dead} liens morts · 🔄 {nb_redir} redirigés")
+
+            if nb_dead > 0:
+                self.chk_broken_only.show()
+                self.chk_broken_only.set_label(f"⚠️ Liens morts uniquement ({nb_dead})")
+                self.chk_broken_only.set_active(True)
+            else:
+                self.chk_broken_only.hide()
+                self.chk_broken_only.set_active(False)
+
+            if nb_redir > 0:
+                self.btn_apply_redirects.show()
+                self.btn_apply_redirects.set_label(f"⚡ Appliquer redirections ({nb_redir})")
+            else:
+                self.btn_apply_redirects.hide()
+
+            self.update_view()
+
+        thread = threading.Thread(target=run_checks, daemon=True)
+        thread.start()
+
+        res = dialog.run()
+        if res == Gtk.ResponseType.CANCEL:
+            cancel_event.set()
+        dialog.destroy()
+
+    def on_repair_stream_clicked(self, widget):
+        idx = self.get_selected_index()
+        if idx is None:
+            self.show_feedback("Veuillez sélectionner une radio à réparer.")
+            return
+
+        items = self.get_current_list()
+        st = items[idx]
+        if self.is_item_separator(st):
+            self.show_feedback("Cet élément est un séparateur.")
+            return
+
+        st_name = st.get("name", "")
+        old_url = st.get("url", "")
+
+        # Dialogue de recherche
+        dialog = Gtk.Dialog(
+            title=f"🔍 Réparation de « {st_name} »",
+            parent=self,
+            flags=Gtk.DialogFlags.MODAL,
+            buttons=("Annuler", Gtk.ResponseType.CANCEL, "Remplacer l'URL", Gtk.ResponseType.OK)
+        )
+        dialog.set_default_size(520, 260)
+        box = dialog.get_content_area()
+        box.set_spacing(10)
+        box.set_border_width(12)
+
+        lbl_info = Gtk.Label(label=f"<b>Ancienne URL :</b> <small>{old_url}</small>")
+        lbl_info.set_use_markup(True)
+        lbl_info.set_halign(Gtk.Align.START)
+        lbl_info.set_ellipsize(Pango.EllipsizeMode.END)
+        box.add(lbl_info)
+
+        lbl_searching = Gtk.Label(label="Recherche d'un flux en direct sur Radio-Browser...")
+        box.add(lbl_searching)
+
+        radio_group = None
+        cands_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        scrolled = Gtk.ScrolledWindow()
+        scrolled.set_min_content_height(140)
+        scrolled.add(cands_box)
+        box.add(scrolled)
+
+        cands = search_radio_browser_replacement(st_name)
+        lbl_searching.hide()
+
+        selected_candidate = [None]
+
+        if cands:
+            lbl_title = Gtk.Label(label=f"<b>{len(cands)} flux actif{'s' if len(cands) > 1 else ''} trouvé{'s' if len(cands) > 1 else ''} :</b>")
+            lbl_title.set_use_markup(True)
+            lbl_title.set_halign(Gtk.Align.START)
+            cands_box.add(lbl_title)
+
+            for i, c in enumerate(cands):
+                label_txt = f"🟢 {c['name']} [{c.get('country','')}] · {c.get('bitrate', 0)} kbps\n<small>{c['url']}</small>"
+                rb = Gtk.RadioButton.new_with_label_from_widget(radio_group, label_txt)
+                rb.get_child().set_use_markup(True)
+                if radio_group is None:
+                    radio_group = rb
+                    selected_candidate[0] = c['url']
+                rb.connect("toggled", lambda w, u=c['url']: selected_candidate.__setitem__(0, u))
+                cands_box.add(rb)
+        else:
+            lbl_none = Gtk.Label(label="⚠️ Aucun flux alternatif actif n'a pu être trouvé automatiquement.\nVous pouvez modifier l'URL manuellement avec le bouton ✏️ Modifier.")
+            lbl_none.set_use_markup(True)
+            cands_box.add(lbl_none)
+            dialog.set_response_sensitive(Gtk.ResponseType.OK, False)
+
+        dialog.show_all()
+        if dialog.run() == Gtk.ResponseType.OK and selected_candidate[0]:
+            new_u = selected_candidate[0]
+            st["url"] = new_u
+            self.audit_results[new_u] = {"status": "online", "msg": "En direct (réparé)", "redirect": None}
+            self.show_feedback(f"Lien réparé avec succès pour « {st_name} » !")
+            self.update_view(select_idx=idx)
+
+        dialog.destroy()
+
 def main():
     try:
         raw_input = sys.stdin.read()
@@ -1247,11 +1597,14 @@ def main():
         sys.stderr.write(f"Erreur lecture stdin : {e}\n")
         sys.exit(1)
 
-    win = ReorderWindow(data)
+    auto_check = "--check" in sys.argv or "--audit" in sys.argv
+    win = ReorderWindow(data, auto_check=auto_check)
     win.show_all()
     win.btn_back.hide()
     win.btn_add_sep.show()
     win.btn_add_station.hide()
+    if auto_check:
+        GLib.idle_add(win.on_check_streams_clicked, None)
     Gtk.main()
 
     if win.saved:

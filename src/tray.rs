@@ -1240,6 +1240,7 @@ fn find_group_name_for_station(root: &Group, station_url: &str) -> Option<String
         root_group: Arc<Mutex<Group>>,
         bookmarks_path: PathBuf,
         tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+        auto_check: bool,
     ) {
         std::thread::spawn(move || {
             let groups_payload: Vec<serde_json::Value> = {
@@ -1307,8 +1308,12 @@ fn find_group_name_for_station(root: &Group, station_url: &str) -> Option<String
                 }
             };
 
-            let mut child = match std::process::Command::new("python3")
-                .arg(script_path)
+            let mut cmd = std::process::Command::new("python3");
+            cmd.arg(&script_path);
+            if auto_check {
+                cmd.arg("--check");
+            }
+            let mut child = match cmd
                 .stdin(std::process::Stdio::piped())
                 .stdout(std::process::Stdio::piped())
                 .spawn()
@@ -1913,6 +1918,19 @@ impl ksni::Tray for TiMondeTray {
                             Arc::clone(&tray.root_group),
                             tray.bookmarks_path.clone(),
                             Arc::clone(&tray.tray_handle),
+                            false,
+                        );
+                    }),
+                    ..Default::default()
+                }),
+                MenuItem::Standard(StandardItem {
+                    label: "🩺 Vérifier les flux (liens morts)...".to_string(),
+                    activate: Box::new(|tray: &mut Self| {
+                        Self::trigger_reorder_groups_dialog(
+                            Arc::clone(&tray.root_group),
+                            tray.bookmarks_path.clone(),
+                            Arc::clone(&tray.tray_handle),
+                            true,
                         );
                     }),
                     ..Default::default()
