@@ -1928,59 +1928,68 @@ impl ksni::Tray for TiMondeTray {
                     }),
                     ..Default::default()
                 }),
-                MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("📥 Import my files (XML, CSV, JSON, M3U)...").to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        Self::trigger_browse_bouquets_dialog(
-                            Arc::clone(&tray.root_group),
-                            tray.bookmarks_path.clone(),
-                            Arc::clone(&tray.tray_handle),
-                            Some(3),
-                        );
-                    }),
-                    ..Default::default()
-                }),
-                MenuItem::Standard(StandardItem {
-                    label: "📤 Exporter mes radios en CSV...".to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        Self::trigger_export_csv_dialog(
-                            Arc::clone(&tray.root_group),
-                            tray.bookmarks_path.clone(),
-                            Arc::clone(&tray.tray_handle),
-                        );
-                    }),
-                    ..Default::default()
-                }),
-                MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("↕️ Manage groups and stations...").to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        Self::trigger_reorder_groups_dialog(
-                            Arc::clone(&tray.root_group),
-                            tray.bookmarks_path.clone(),
-                            Arc::clone(&tray.tray_handle),
-                            false,
-                        );
-                    }),
-                    ..Default::default()
-                }),
-                MenuItem::Standard(StandardItem {
-                    label: "🩺 Vérifier les flux (liens morts)...".to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        Self::trigger_reorder_groups_dialog(
-                            Arc::clone(&tray.root_group),
-                            tray.bookmarks_path.clone(),
-                            Arc::clone(&tray.tray_handle),
-                            true,
-                        );
-                    }),
-                    ..Default::default()
-                }),
-                MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("📝 Open bookmarks.xml").to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        let path_str = tray.bookmarks_path.to_string_lossy().to_string();
-                        let _ = std::process::Command::new("xdg-open").arg(path_str).spawn();
-                    }),
+                MenuItem::Separator,
+                MenuItem::SubMenu(SubMenu {
+                    label: "🛠️ Maintenance & Données".to_string(),
+                    submenu: vec![
+                        MenuItem::Standard(StandardItem {
+                            label: crate::i18n::tr("↕️ Manage groups and stations...").to_string(),
+                            activate: Box::new(|tray: &mut Self| {
+                                Self::trigger_reorder_groups_dialog(
+                                    Arc::clone(&tray.root_group),
+                                    tray.bookmarks_path.clone(),
+                                    Arc::clone(&tray.tray_handle),
+                                    false,
+                                );
+                            }),
+                            ..Default::default()
+                        }),
+                        MenuItem::Standard(StandardItem {
+                            label: "🩺 Vérifier les flux (liens morts)...".to_string(),
+                            activate: Box::new(|tray: &mut Self| {
+                                Self::trigger_reorder_groups_dialog(
+                                    Arc::clone(&tray.root_group),
+                                    tray.bookmarks_path.clone(),
+                                    Arc::clone(&tray.tray_handle),
+                                    true,
+                                );
+                            }),
+                            ..Default::default()
+                        }),
+                        MenuItem::Standard(StandardItem {
+                            label: crate::i18n::tr("📥 Import my files (XML, CSV, JSON, M3U)...").to_string(),
+                            activate: Box::new(|tray: &mut Self| {
+                                Self::trigger_browse_bouquets_dialog(
+                                    Arc::clone(&tray.root_group),
+                                    tray.bookmarks_path.clone(),
+                                    Arc::clone(&tray.tray_handle),
+                                    Some(3),
+                                );
+                            }),
+                            ..Default::default()
+                        }),
+                        MenuItem::Standard(StandardItem {
+                            label: "📤 Exporter mes radios en CSV...".to_string(),
+                            activate: Box::new(|tray: &mut Self| {
+                                Self::trigger_export_csv_dialog(
+                                    Arc::clone(&tray.root_group),
+                                    tray.bookmarks_path.clone(),
+                                    Arc::clone(&tray.tray_handle),
+                                );
+                            }),
+                            ..Default::default()
+                        }),
+                        MenuItem::Standard(StandardItem {
+                            label: crate::i18n::tr("📝 Open bookmarks.xml").to_string(),
+                            activate: Box::new(|tray: &mut Self| {
+                                let path_str = tray.bookmarks_path.to_string_lossy().to_string();
+                                let _ = std::process::Command::new("xdg-open").arg(path_str).spawn();
+                            }),
+                            ..Default::default()
+                        }),
+                    ],
+                    enabled: true,
+                    visible: true,
                     ..Default::default()
                 }),
             ],
