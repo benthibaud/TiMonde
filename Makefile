@@ -26,9 +26,10 @@ install: build
 	install -m 755 data/scripts/edit_station.py $(DESTDIR)$(DATADIR)/timonde/scripts/edit_station.py
 	install -m 755 data/scripts/browse_bouquets.py $(DESTDIR)$(DATADIR)/timonde/scripts/browse_bouquets.py
 	install -m 644 data/scripts/timonde_i18n.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_i18n.py
-	for lang in fr es de pt; do \
+	for mo in po/locale/*/LC_MESSAGES/timonde.mo; do \
+		lang=$$(echo $$mo | cut -d/ -f3); \
 		install -d $(DESTDIR)$(DATADIR)/locale/$$lang/LC_MESSAGES; \
-		install -m 644 po/locale/$$lang/LC_MESSAGES/timonde.mo $(DESTDIR)$(DATADIR)/locale/$$lang/LC_MESSAGES/timonde.mo; \
+		install -m 644 $$mo $(DESTDIR)$(DATADIR)/locale/$$lang/LC_MESSAGES/timonde.mo; \
 	done
 	install -d $(DESTDIR)$(DATADIR)/timonde/bouquets
 	install -m 644 data/bouquets/*.xml $(DESTDIR)$(DATADIR)/timonde/bouquets/
@@ -51,9 +52,10 @@ install-user: build
 	install -m 755 data/scripts/edit_station.py $(HOME)/.local/share/timonde/scripts/edit_station.py
 	install -m 755 data/scripts/browse_bouquets.py $(HOME)/.local/share/timonde/scripts/browse_bouquets.py
 	install -m 644 data/scripts/timonde_i18n.py $(HOME)/.local/share/timonde/scripts/timonde_i18n.py
-	for lang in fr es de pt; do \
+	for mo in po/locale/*/LC_MESSAGES/timonde.mo; do \
+		lang=$$(echo $$mo | cut -d/ -f3); \
 		install -d $(HOME)/.local/share/locale/$$lang/LC_MESSAGES; \
-		install -m 644 po/locale/$$lang/LC_MESSAGES/timonde.mo $(HOME)/.local/share/locale/$$lang/LC_MESSAGES/timonde.mo; \
+		install -m 644 $$mo $(HOME)/.local/share/locale/$$lang/LC_MESSAGES/timonde.mo; \
 	done
 	install -d $(HOME)/.local/share/timonde/bouquets
 	install -m 644 data/bouquets/*.xml $(HOME)/.local/share/timonde/bouquets/

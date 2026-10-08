@@ -1,0 +1,236 @@
+# TiMonde — IT Translation
+# Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TiMonde 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+
+msgid "▶ Play"
+msgstr "▶ Ascolta"
+
+msgid "⏹ Stop"
+msgstr "⏹ Ferma"
+
+msgid "⏳ Connecting..."
+msgstr "⏳ Connessione..."
+
+msgid "✏️ Edit"
+msgstr "✏️ Modifica"
+
+msgid "🗑️ Delete"
+msgstr "🗑️ Elimina"
+
+msgid "🎲 Zap to another random station"
+msgstr "🎲 Salta a un'altra stazione casuale"
+
+msgid "🎲 Play random radio (Ephemeral discovery)"
+msgstr "🎲 Ascolta una radio casuale (Scoperta effimera)"
+
+msgid " [🎲 Ephemeral]"
+msgstr " [🎲 Effimero]"
+
+msgid "Options"
+msgstr "Opzioni"
+
+msgid "➕ Add a station..."
+msgstr "➕ Aggiungi una stazione..."
+
+msgid "📻 Discover & Import stations..."
+msgstr "📻 Scopri e importa stazioni..."
+
+msgid "📥 Import my files (XML, CSV, JSON, M3U)..."
+msgstr "📥 Importa i miei file (XML, CSV, JSON, M3U)..."
+
+msgid "↕️ Manage groups and stations..."
+msgstr "↕️ Gestisci gruppi e stazioni..."
+
+msgid "📝 Open bookmarks.xml"
+msgstr "📝 Apri bookmarks.xml"
+
+msgid "Quit TiMonde"
+msgstr "Esci da TiMonde"
+
+msgid "Mute (0%)"
+msgstr "Muto (0%)"
+
+msgid "🌙 Sleep timer"
+msgstr "🌙 Timer di spegnimento"
+
+msgid "⏱️ In 15 minutes"
+msgstr "⏱️ Tra 15 minuti"
+
+msgid "⏱️ In 30 minutes"
+msgstr "⏱️ Tra 30 minuti"
+
+msgid "⏱️ In 45 minutes"
+msgstr "⏱️ Tra 45 minuti"
+
+msgid "⏱️ In 60 minutes (1h)"
+msgstr "⏱️ Tra 60 minuti (1h)"
+
+msgid "❌ Cancel sleep timer"
+msgstr "❌ Annulla timer di spegnimento"
+
+msgid "📻 Discover & Import stations (TiMonde)"
+msgstr "📻 Scopri e importa stazioni (TiMonde)"
+
+msgid "⭐ Verified DAB+ Bouquets"
+msgstr "⭐ Bouquet DAB+ verificati"
+
+msgid "🔎 Radio-Browser Search"
+msgstr "🔎 Ricerca Radio-Browser"
+
+msgid "📂 Sample Files"
+msgstr "📂 File di esempio"
+
+msgid "📥 Import my files"
+msgstr "📥 Importa i miei file"
+
+msgid "<b>🌍 Country:</b>"
+msgstr "<b>🌍 Paese:</b>"
+
+msgid "<b>Language:</b>"
+msgstr "<b>Lingua:</b>"
+
+msgid "Name / Keyword:"
+msgstr "Nome / Parola chiave:"
+
+msgid "Genre:"
+msgstr "Genere:"
+
+msgid "<b>Sample file:</b>"
+msgstr "<b>File di esempio:</b>"
+
+msgid "<b>Group name in your favorites:</b>"
+msgstr "<b>Nome del gruppo nei preferiti:</b>"
+
+msgid "Select all"
+msgstr "Seleziona tutto"
+
+msgid "Deselect all"
+msgstr "Deseleziona tutto"
+
+msgid "➕ Import into favorites"
+msgstr "➕ Importa nei preferiti"
+
+msgid "Close"
+msgstr "Chiudi"
+
+msgid "➕ Add a station (TiMonde)"
+msgstr "➕ Aggiungi una stazione (TiMonde)"
+
+msgid "<b>Enter new station details:</b>"
+msgstr "<b>Inserisci i dettagli della nuova stazione:</b>"
+
+msgid "➕ Add to my stations"
+msgstr "➕ Aggiungi alle mie stazioni"
+
+msgid "⭐ Save station to favorites (TiMonde)"
+msgstr "⭐ Salva stazione nei preferiti (TiMonde)"
+
+msgid "<b>Keep this randomly discovered station in your favorites:</b>"
+msgstr "<b>Mantieni questa stazione nei tuoi preferiti:</b>"
+
+msgid "⭐ Keep in favorites"
+msgstr "⭐ Mantieni nei preferiti"
+
+msgid "✏️ Edit station (TiMonde)"
+msgstr "✏️ Modifica stazione (TiMonde)"
+
+msgid "<b>Edit station settings:</b>"
+msgstr "<b>Modifica impostazioni della stazione:</b>"
+
+msgid "💾 Save"
+msgstr "💾 Salva"
+
+msgid "Station name:"
+msgstr "Nome della stazione:"
+
+msgid "Audio stream URL:"
+msgstr "URL del flusso audio:"
+
+msgid "Group / Folder:"
+msgstr "Gruppo / Cartella:"
+
+msgid "Country & Timezone:"
+msgstr "Paese e fuso orario:"
+
+msgid "Timezone:"
+msgstr "Fuso orario:"
+
+msgid "🗑️ Delete this station"
+msgstr "🗑️ Elimina questa stazione"
+
+msgid "Cancel"
+msgstr "Annulla"
+
+msgid "Delete « {} » from favorites?"
+msgstr "Eliminare « {} » dai preferiti?"
+
+msgid "This action will permanently remove this station from your collection."
+msgstr "Questa azione rimuoverà definitivamente questa stazione dalla tua raccolta."
+
+msgid "↕️ Manage groups, stations and separators (TiMonde)"
+msgstr "↕️ Gestione gruppi, stazioni e separatori (TiMonde)"
+
+msgid "⬅️ Back to groups"
+msgstr "⬅️ Torna ai gruppi"
+
+msgid "➕ Add station"
+msgstr "➕ Aggiungi stazione"
+
+msgid "📂 Open"
+msgstr "📂 Apri"
+
+msgid "📁 New group"
+msgstr "📁 Nuovo gruppo"
+
+msgid "➡️ Move to..."
+msgstr "➡️ Sposta in..."
+
+msgid "🔝 Top"
+msgstr "🔝 In cima"
+
+msgid "⬆️ Move up"
+msgstr "⬆️ Sposta su"
+
+msgid "⬇️ Move down"
+msgstr "⬇️ Sposta giù"
+
+msgid "➕ Separator"
+msgstr "➕ Separatore"
+
+msgid "🔤 Sort A-Z"
+msgstr "🔤 Ordina A-Z"
+
+msgid "💾 Save and reload"
+msgstr "💾 Salva e ricarica"
+
+msgid "Same time"
+msgstr "Stessa ora"
+
+msgid "Dawn"
+msgstr "Alba"
+
+msgid "Morning"
+msgstr "Mattina"
+
+msgid "Daytime"
+msgstr "Giorno"
+
+msgid "Evening"
+msgstr "Sera"
+
+msgid "Night"
+msgstr "Notte"
+
+msgid "Tomorrow"
+msgstr "Domani"
+
+msgid "Yesterday"
+msgstr "Ieri"

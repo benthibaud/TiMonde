@@ -1,0 +1,236 @@
+# TiMonde — UK Translation
+# Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TiMonde 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uk\n"
+
+msgid "▶ Play"
+msgstr "▶ Відтворити"
+
+msgid "⏹ Stop"
+msgstr "⏹ Зупинити"
+
+msgid "⏳ Connecting..."
+msgstr "⏳ З'єднання..."
+
+msgid "✏️ Edit"
+msgstr "✏️ Редагувати"
+
+msgid "🗑️ Delete"
+msgstr "🗑️ Видалити"
+
+msgid "🎲 Zap to another random station"
+msgstr "🎲 Перемкнути на іншу станцію"
+
+msgid "🎲 Play random radio (Ephemeral discovery)"
+msgstr ""
+
+msgid " [🎲 Ephemeral]"
+msgstr ""
+
+msgid "Options"
+msgstr "Параметри"
+
+msgid "➕ Add a station..."
+msgstr "➕ Додати станцію..."
+
+msgid "📻 Discover & Import stations..."
+msgstr ""
+
+msgid "📥 Import my files (XML, CSV, JSON, M3U)..."
+msgstr ""
+
+msgid "↕️ Manage groups and stations..."
+msgstr ""
+
+msgid "📝 Open bookmarks.xml"
+msgstr ""
+
+msgid "Quit TiMonde"
+msgstr "Вийти з TiMonde"
+
+msgid "Mute (0%)"
+msgstr ""
+
+msgid "🌙 Sleep timer"
+msgstr ""
+
+msgid "⏱️ In 15 minutes"
+msgstr ""
+
+msgid "⏱️ In 30 minutes"
+msgstr ""
+
+msgid "⏱️ In 45 minutes"
+msgstr ""
+
+msgid "⏱️ In 60 minutes (1h)"
+msgstr ""
+
+msgid "❌ Cancel sleep timer"
+msgstr ""
+
+msgid "📻 Discover & Import stations (TiMonde)"
+msgstr ""
+
+msgid "⭐ Verified DAB+ Bouquets"
+msgstr ""
+
+msgid "🔎 Radio-Browser Search"
+msgstr ""
+
+msgid "📂 Sample Files"
+msgstr ""
+
+msgid "📥 Import my files"
+msgstr ""
+
+msgid "<b>🌍 Country:</b>"
+msgstr ""
+
+msgid "<b>Language:</b>"
+msgstr ""
+
+msgid "Name / Keyword:"
+msgstr ""
+
+msgid "Genre:"
+msgstr ""
+
+msgid "<b>Sample file:</b>"
+msgstr ""
+
+msgid "<b>Group name in your favorites:</b>"
+msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Deselect all"
+msgstr ""
+
+msgid "➕ Import into favorites"
+msgstr ""
+
+msgid "Close"
+msgstr "Закрити"
+
+msgid "➕ Add a station (TiMonde)"
+msgstr ""
+
+msgid "<b>Enter new station details:</b>"
+msgstr ""
+
+msgid "➕ Add to my stations"
+msgstr ""
+
+msgid "⭐ Save station to favorites (TiMonde)"
+msgstr ""
+
+msgid "<b>Keep this randomly discovered station in your favorites:</b>"
+msgstr ""
+
+msgid "⭐ Keep in favorites"
+msgstr ""
+
+msgid "✏️ Edit station (TiMonde)"
+msgstr ""
+
+msgid "<b>Edit station settings:</b>"
+msgstr ""
+
+msgid "💾 Save"
+msgstr "💾 Зберегти"
+
+msgid "Station name:"
+msgstr "Назва станції:"
+
+msgid "Audio stream URL:"
+msgstr ""
+
+msgid "Group / Folder:"
+msgstr ""
+
+msgid "Country & Timezone:"
+msgstr ""
+
+msgid "Timezone:"
+msgstr ""
+
+msgid "🗑️ Delete this station"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgid "Delete « {} » from favorites?"
+msgstr ""
+
+msgid "This action will permanently remove this station from your collection."
+msgstr ""
+
+msgid "↕️ Manage groups, stations and separators (TiMonde)"
+msgstr ""
+
+msgid "⬅️ Back to groups"
+msgstr ""
+
+msgid "➕ Add station"
+msgstr ""
+
+msgid "📂 Open"
+msgstr ""
+
+msgid "📁 New group"
+msgstr ""
+
+msgid "➡️ Move to..."
+msgstr ""
+
+msgid "🔝 Top"
+msgstr ""
+
+msgid "⬆️ Move up"
+msgstr ""
+
+msgid "⬇️ Move down"
+msgstr ""
+
+msgid "➕ Separator"
+msgstr ""
+
+msgid "🔤 Sort A-Z"
+msgstr ""
+
+msgid "💾 Save and reload"
+msgstr ""
+
+msgid "Same time"
+msgstr "Той самий час"
+
+msgid "Dawn"
+msgstr ""
+
+msgid "Morning"
+msgstr ""
+
+msgid "Daytime"
+msgstr ""
+
+msgid "Evening"
+msgstr ""
+
+msgid "Night"
+msgstr ""
+
+msgid "Tomorrow"
+msgstr "Завтра"
+
+msgid "Yesterday"
+msgstr "Учора"

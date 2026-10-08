@@ -57,10 +57,11 @@ install -m 644 "${ROOT_DIR}/data/scripts/timonde_i18n.py" "${STAGING_DIR}/usr/sh
 install -m 644 "${ROOT_DIR}"/data/bouquets/*.xml "${STAGING_DIR}/usr/share/timonde/bouquets/"
 install -m 644 "${ROOT_DIR}"/data/examples/* "${STAGING_DIR}/usr/share/timonde/examples/"
 
-for lang in fr es de pt; do
-    if [ -f "${ROOT_DIR}/po/locale/${lang}/LC_MESSAGES/timonde.mo" ]; then
+for mo in "${ROOT_DIR}"/po/locale/*/LC_MESSAGES/timonde.mo; do
+    if [ -f "$mo" ]; then
+        lang=$(basename $(dirname $(dirname "$mo")))
         mkdir -p "${STAGING_DIR}/usr/share/locale/${lang}/LC_MESSAGES"
-        install -m 644 "${ROOT_DIR}/po/locale/${lang}/LC_MESSAGES/timonde.mo" "${STAGING_DIR}/usr/share/locale/${lang}/LC_MESSAGES/timonde.mo"
+        install -m 644 "$mo" "${STAGING_DIR}/usr/share/locale/${lang}/LC_MESSAGES/timonde.mo"
     fi
 done
 
