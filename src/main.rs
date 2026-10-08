@@ -1,3 +1,4 @@
+pub mod i18n;
 pub mod state;
 pub mod import;
 pub mod playlist;
@@ -64,6 +65,7 @@ fn create_default_bookmarks(path: &Path) -> Group {
 }
 
 fn main() {
+    i18n::init_locale();
     let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
 
     // 1. Gestion des arguments en ligne de commande (mode contrôle CLI et importation)

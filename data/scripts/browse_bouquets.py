@@ -19,6 +19,14 @@ Fonctionnalités / Features:
 
 import sys
 import os
+
+# Module d internationalisation TiMonde
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    from timonde_i18n import _
+except ImportError:
+    def _(s): return s
+
 import json
 import glob
 import urllib.request
@@ -569,7 +577,7 @@ def parse_user_radio_file(path):
 
 class DiscoverRadiosWindow(Gtk.Window):
     def __init__(self, existing_stations, bouquets_db, initial_tab=0, initial_file=None):
-        super().__init__(title="📻 Découvrir & Importer des radios (TiMonde)")
+        super().__init__(title=_("📻 Découvrir & Importer des radios (TiMonde)"))
         self.set_default_size(880, 600)
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_border_width(12)
@@ -600,7 +608,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         top_bar = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         main_vbox.pack_start(top_bar, False, False, 0)
 
-        lbl_country = Gtk.Label(label="<b>🌍 Pays :</b>")
+        lbl_country = Gtk.Label(label=_("<b>🌍 Pays :</b>"))
         lbl_country.set_use_markup(True)
         top_bar.pack_start(lbl_country, False, False, 0)
 
@@ -615,7 +623,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         top_bar.pack_start(self.combo_country, False, False, 0)
 
         # Communauté / Langue pour pays multilingues
-        self.lbl_lang = Gtk.Label(label="<b>Langue :</b>")
+        self.lbl_lang = Gtk.Label(label=_("<b>Langue :</b>"))
         self.lbl_lang.set_use_markup(True)
         top_bar.pack_start(self.lbl_lang, False, False, 0)
 
@@ -646,7 +654,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         rb_filter_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         tab_rb.pack_start(rb_filter_box, False, False, 0)
 
-        lbl_rb_name = Gtk.Label(label="Nom / Mot-clé :")
+        lbl_rb_name = Gtk.Label(label=_("Nom / Mot-clé :"))
         rb_filter_box.pack_start(lbl_rb_name, False, False, 0)
 
         self.entry_rb_name = Gtk.Entry()
@@ -654,7 +662,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.entry_rb_name.connect("activate", lambda w: self.on_search_rb_clicked())
         rb_filter_box.pack_start(self.entry_rb_name, True, True, 0)
 
-        lbl_rb_tag = Gtk.Label(label="Genre :")
+        lbl_rb_tag = Gtk.Label(label=_("Genre :"))
         rb_filter_box.pack_start(lbl_rb_tag, False, False, 0)
 
         self.entry_rb_tag = Gtk.Entry()
@@ -718,7 +726,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.lbl_rb_status.set_halign(Gtk.Align.END)
         rb_bot_box.pack_end(self.lbl_rb_status, False, False, 0)
 
-        self.notebook.append_page(tab_rb, Gtk.Label(label="🔎 Recherche Radio-Browser"))
+        self.notebook.append_page(tab_rb, Gtk.Label(label=_("🔎 Recherche Radio-Browser")))
 
         # =====================================================================
         # --- Onglet 2 : Bouquets vérifiés DAB+ ---
@@ -797,7 +805,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.lbl_bouquet_count.set_halign(Gtk.Align.END)
         b_action_box.pack_end(self.lbl_bouquet_count, False, False, 0)
 
-        self.notebook.append_page(tab_bouquets, Gtk.Label(label="⭐ Bouquets vérifiés (DAB+)"))
+        self.notebook.append_page(tab_bouquets, Gtk.Label(label=_("⭐ Bouquets vérifiés (DAB+)")))
 
         # =====================================================================
         # --- Onglet 3 : Fichiers exemples (XML) & Thématiques hors-DAB ---
@@ -808,7 +816,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         ex_top_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         tab_examples.pack_start(ex_top_box, False, False, 0)
 
-        lbl_ex = Gtk.Label(label="<b>Fichier exemple :</b>")
+        lbl_ex = Gtk.Label(label=_("<b>Fichier exemple :</b>"))
         lbl_ex.set_use_markup(True)
         ex_top_box.pack_start(lbl_ex, False, False, 0)
 
@@ -874,7 +882,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.lbl_example_count.set_halign(Gtk.Align.END)
         ex_action_box.pack_end(self.lbl_example_count, False, False, 0)
 
-        self.notebook.append_page(tab_examples, Gtk.Label(label="📂 Fichiers exemples"))
+        self.notebook.append_page(tab_examples, Gtk.Label(label=_("📂 Fichiers exemples")))
 
         # =====================================================================
         # --- Onglet 4 : Importer mes fichiers (XML, CSV, JSON, M3U, PLS) ---
@@ -974,13 +982,13 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.lbl_user_count.set_halign(Gtk.Align.END)
         user_action_box.pack_end(self.lbl_user_count, False, False, 0)
 
-        self.notebook.append_page(tab_user, Gtk.Label(label="📥 Importer mes fichiers"))
+        self.notebook.append_page(tab_user, Gtk.Label(label=_("📥 Importer mes fichiers")))
 
         # 3. Pied de page commun : Groupe cible & Boutons
         bottom_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         main_vbox.pack_start(bottom_box, False, False, 0)
 
-        lbl_target = Gtk.Label(label="<b>Nom du groupe dans vos favoris :</b>")
+        lbl_target = Gtk.Label(label=_("<b>Nom du groupe dans vos favoris :</b>"))
         lbl_target.set_use_markup(True)
         bottom_box.pack_start(lbl_target, False, False, 0)
 
@@ -1299,7 +1307,7 @@ class DiscoverRadiosWindow(Gtk.Window):
             self.save_stream_to_xml(station_name, current_url, clean_new_url)
 
     def save_stream_to_xml(self, station_name, old_url, new_url):
-        country_id, info, _, _ = self.get_current_data()
+        country_id, info, _nat, _regs = self.get_current_data()
         xml_path = info.get("xml_path")
         if not xml_path or not os.path.exists(xml_path):
             return

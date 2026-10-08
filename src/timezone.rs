@@ -603,7 +603,8 @@ pub fn get_local_time_for_station(
     let hour = seconds_in_day / 3600;
     let minute = (seconds_in_day % 3600) / 60;
     let formatted_time = format!("{:02}:{:02}", hour, minute);
-    let (icon, period_label) = get_astronomical_period(hour);
+    let (icon, raw_period) = get_astronomical_period(hour);
+    let period_label = crate::i18n::tr(raw_period);
     let offset_hours = (offset_seconds as f32) / 3600.0;
 
     let code = country_code.unwrap_or("").trim().to_ascii_uppercase();
@@ -612,7 +613,7 @@ pub fn get_local_time_for_station(
     let diff_seconds = offset_seconds - user_machine_offset;
     let user_diff_hours = (diff_seconds as f32 / 3600.0).round() as i32;
     let user_diff_label = if user_diff_hours == 0 {
-        "Même heure".to_string()
+        crate::i18n::tr("Même heure").to_string()
     } else if user_diff_hours > 0 {
         format!("+{}h", user_diff_hours)
     } else {
@@ -624,8 +625,8 @@ pub fn get_local_time_for_station(
     let user_day_number = (now_epoch + user_machine_offset as i64).div_euclid(86400);
     let day_diff = (station_day_number - user_day_number) as i32;
     let day_diff_label = match day_diff {
-        1 => "Demain",
-        -1 => "Hier",
+        1 => crate::i18n::tr("Demain"),
+        -1 => crate::i18n::tr("Hier"),
         d if d > 1 => "+jours",
         d if d < -1 => "-jours",
         _ => "",

@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the TiMonde package.
 # FIRST AUTHOR <b_thibaud@laposte.net>, 2026.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: TiMonde 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-07 10:35+0200\n"
+"POT-Creation-Date: 2026-10-08 14:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +17,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 # --- Menu Principal (Systray) ---
-msgid "▶ Allumer la radio"
+msgid "▶ Écouter"
 msgstr ""
 
-msgid "⏹ Éteindre la radio"
+msgid "⏹ Éteindre"
 msgstr ""
 
-msgid "Volume :"
+msgid "⏳ Connexion..."
+msgstr ""
+
+msgid "✏️ Éditer"
+msgstr ""
+
+msgid "🗑️ Supprimer"
+msgstr ""
+
+msgid "🎲 Zapper vers une autre radio au hasard"
+msgstr ""
+
+msgid "🎲 Écouter une radio au hasard (Découverte éphémère)"
 msgstr ""
 
 msgid "Options"
@@ -36,7 +47,7 @@ msgstr ""
 msgid "📻 Découvrir & Importer des radios..."
 msgstr ""
 
-msgid "📥 Importer un fichier (M3U, CSV, JSON)..."
+msgid "📥 Importer mes fichiers (XML, CSV, JSON, M3U)..."
 msgstr ""
 
 msgid "↕️ Classer groupes et radios..."
@@ -48,8 +59,41 @@ msgstr ""
 msgid "Quitter TiMonde"
 msgstr ""
 
+msgid "Muet (0%)"
+msgstr ""
+
+msgid "🌙 Minuteur de veille"
+msgstr ""
+
+msgid "⏱️ Dans 15 minutes"
+msgstr ""
+
+msgid "⏱️ Dans 30 minutes"
+msgstr ""
+
+msgid "⏱️ Dans 45 minutes"
+msgstr ""
+
+msgid "⏱️ Dans 60 minutes (1h)"
+msgstr ""
+
+msgid "❌ Annuler la mise en veille"
+msgstr ""
+
 # --- Découverte & Bouquets (browse_bouquets.py) ---
 msgid "📻 Découvrir & Importer des radios (TiMonde)"
+msgstr ""
+
+msgid "⭐ Bouquets vérifiés (DAB+)"
+msgstr ""
+
+msgid "🔎 Recherche Radio-Browser"
+msgstr ""
+
+msgid "📂 Fichiers exemples"
+msgstr ""
+
+msgid "📥 Importer mes fichiers"
 msgstr ""
 
 msgid "🌍 Pays :"
@@ -58,43 +102,16 @@ msgstr ""
 msgid "Langue :"
 msgstr ""
 
-msgid "📂 Ouvrir un XML externe..."
+msgid "Nom / Mot-clé :"
 msgstr ""
 
-msgid "⭐ Bouquet vérifié (DAB+)"
+msgid "Genre :"
 msgstr ""
 
-msgid "🔎 Tout l'annuaire (Radio-Browser)"
-msgstr ""
-
-msgid "⭐ Bouquet National (Grandes stations)"
-msgstr ""
-
-msgid "📍 Régions & Locales :"
-msgstr ""
-
-msgid "Disponibilité en direct"
-msgstr ""
-
-msgid "Statut Favoris"
-msgstr ""
-
-msgid "En ligne"
-msgstr ""
-
-msgid "Lien inactif"
-msgstr ""
-
-msgid "Vérification en cours..."
-msgstr ""
-
-msgid "🔧 Réparer le flux sélectionné (Radio-Browser)..."
+msgid "Fichier exemple :"
 msgstr ""
 
 msgid "Nom du groupe dans vos favoris :"
-msgstr ""
-
-msgid "➕ Importer dans mes favoris"
 msgstr ""
 
 msgid "Tout cocher"
@@ -103,14 +120,69 @@ msgstr ""
 msgid "Tout décocher"
 msgstr ""
 
-# --- Classement & Réorganisation (reorder_groups.py) ---
+msgid "➕ Importer dans mes favoris"
+msgstr ""
+
+msgid "Fermer"
+msgstr ""
+
+# --- Éditeur de radio (edit_station.py) ---
+msgid "➕ Ajouter une station (TiMonde)"
+msgstr ""
+
+msgid "⭐ Enregistrer la radio dans mes favoris (TiMonde)"
+msgstr ""
+
+msgid "✏️ Modifier la radio (TiMonde)"
+msgstr ""
+
+msgid "Nom de la radio :"
+msgstr ""
+
+msgid "URL du flux audio :"
+msgstr ""
+
+msgid "Groupe / Dossier :"
+msgstr ""
+
+msgid "Pays & Fuseau horaire :"
+msgstr ""
+
+msgid "Fuseau horaire :"
+msgstr ""
+
+msgid "🗑️ Supprimer cette radio"
+msgstr ""
+
+msgid "Supprimer « {} » des favoris ?"
+msgstr ""
+
+msgid "Cette action retirera définitivement cette station de votre collection."
+msgstr ""
+
+msgid "Annuler"
+msgstr ""
+
+msgid "💾 Enregistrer"
+msgstr ""
+
+# --- Réorganisation (reorder_groups.py) ---
 msgid "↕️ Gestion des groupes, radios et séparateurs (TiMonde)"
 msgstr ""
 
 msgid "⬅️ Retour aux groupes"
 msgstr ""
 
+msgid "➕ Ajouter radio"
+msgstr ""
+
 msgid "📂 Ouvrir"
+msgstr ""
+
+msgid "📁 Nouveau groupe"
+msgstr ""
+
+msgid "➡️ Déplacer vers..."
 msgstr ""
 
 msgid "🔝 Premier"
@@ -128,26 +200,14 @@ msgstr ""
 msgid "🔤 Tri A-Z"
 msgstr ""
 
-msgid "✏️ Modifier"
-msgstr ""
-
-msgid "🗑️ Supprimer"
-msgstr ""
-
 msgid "💾 Enregistrer et recharger"
 msgstr ""
 
-msgid "Séparateur"
-msgstr ""
-
-msgid "Intertitre"
-msgstr ""
-
 # --- Heure Locale & Fuseaux ---
-msgid "Heure locale :"
+msgid "Même heure"
 msgstr ""
 
-msgid "Code Pays (ex: FR, JP) :"
+msgid "Aube"
 msgstr ""
 
 msgid "Matin"
@@ -160,4 +220,10 @@ msgid "Soirée"
 msgstr ""
 
 msgid "Nuit"
+msgstr ""
+
+msgid "Demain"
+msgstr ""
+
+msgid "Hier"
 msgstr ""
