@@ -68,7 +68,7 @@ def clean_stream_url(url: str) -> str:
 
 class ReorderWindow(Gtk.Window):
     def __init__(self, data):
-        super().__init__(title=_("↕️ Gestion des groupes, radios et séparateurs (TiMonde)"))
+        super().__init__(title=_("↕️ Manage groups, stations and separators (TiMonde)"))
         self.set_default_size(720, 530)
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_border_width(12)
@@ -87,7 +87,7 @@ class ReorderWindow(Gtk.Window):
         self.nav_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         self.vbox.pack_start(self.nav_box, False, False, 0)
 
-        self.btn_back = Gtk.Button(label=_("⬅️ Retour aux groupes"))
+        self.btn_back = Gtk.Button(label=_("⬅️ Back to groups"))
         self.btn_back.set_tooltip_text("Revenir à la liste principale des groupes (Échap)")
         self.btn_back.connect("clicked", self.on_back_clicked)
         self.nav_box.pack_start(self.btn_back, False, False, 0)
@@ -147,17 +147,17 @@ class ReorderWindow(Gtk.Window):
         side_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         content_box.pack_start(side_box, False, False, 0)
 
-        self.btn_open = Gtk.Button(label=_("📂 Ouvrir"))
+        self.btn_open = Gtk.Button(label=_("📂 Open"))
         self.btn_open.set_tooltip_text("Classer les radios de ce groupe (Entrée ou double-clic)")
         self.btn_open.connect("clicked", self.on_open_clicked)
         side_box.pack_start(self.btn_open, False, False, 0)
 
-        self.btn_new_group = Gtk.Button(label=_("📁 Nouveau groupe"))
+        self.btn_new_group = Gtk.Button(label=_("📁 New group"))
         self.btn_new_group.set_tooltip_text("Créer un nouveau groupe de radios (Ctrl+N)")
         self.btn_new_group.connect("clicked", self.on_create_group_clicked)
         side_box.pack_start(self.btn_new_group, False, False, 0)
 
-        self.btn_move_to = Gtk.Button(label=_("➡️ Déplacer vers..."))
+        self.btn_move_to = Gtk.Button(label=_("➡️ Move to..."))
         self.btn_move_to.set_tooltip_text("Déplacer la ou les radios sélectionnées vers un autre groupe (Ctrl+M)")
         self.btn_move_to.connect("clicked", self.on_move_to_clicked)
         side_box.pack_start(self.btn_move_to, False, False, 0)
@@ -165,17 +165,17 @@ class ReorderWindow(Gtk.Window):
         sep0 = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
         side_box.pack_start(sep0, False, False, 2)
 
-        btn_top = Gtk.Button(label=_("🔝 Premier"))
+        btn_top = Gtk.Button(label=_("🔝 Top"))
         btn_top.set_tooltip_text("Placer l'élément sélectionné en tout premier")
         btn_top.connect("clicked", self.on_move_top_clicked)
         side_box.pack_start(btn_top, False, False, 0)
 
-        btn_up = Gtk.Button(label=_("⬆️ Monter"))
+        btn_up = Gtk.Button(label=_("⬆️ Move up"))
         btn_up.set_tooltip_text("Monter d'un rang")
         btn_up.connect("clicked", self.on_move_up_clicked)
         side_box.pack_start(btn_up, False, False, 0)
 
-        btn_down = Gtk.Button(label=_("⬇️ Descendre"))
+        btn_down = Gtk.Button(label=_("⬇️ Move down"))
         btn_down.set_tooltip_text("Descendre d'un rang")
         btn_down.connect("clicked", self.on_move_down_clicked)
         side_box.pack_start(btn_down, False, False, 0)
@@ -183,17 +183,17 @@ class ReorderWindow(Gtk.Window):
         sep1 = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
         side_box.pack_start(sep1, False, False, 2)
 
-        self.btn_add_station = Gtk.Button(label=_("➕ Ajouter radio"))
+        self.btn_add_station = Gtk.Button(label=_("➕ Add station"))
         self.btn_add_station.set_tooltip_text("Ajouter une nouvelle radio dans ce groupe")
         self.btn_add_station.connect("clicked", self.on_add_station_clicked)
         side_box.pack_start(self.btn_add_station, False, False, 0)
 
-        self.btn_add_sep = Gtk.Button(label=_("➕ Séparateur"))
+        self.btn_add_sep = Gtk.Button(label=_("➕ Separator"))
         self.btn_add_sep.set_tooltip_text("Insérer un séparateur ou un intertitre dans ce groupe")
         self.btn_add_sep.connect("clicked", self.on_add_separator_clicked)
         side_box.pack_start(self.btn_add_sep, False, False, 0)
 
-        btn_sort = Gtk.Button(label=_("🔤 Tri A-Z"))
+        btn_sort = Gtk.Button(label=_("🔤 Sort A-Z"))
         btn_sort.set_tooltip_text("Trier automatiquement cette liste par ordre alphabétique")
         btn_sort.connect("clicked", self.on_sort_az_clicked)
         side_box.pack_start(btn_sort, False, False, 0)
@@ -201,12 +201,12 @@ class ReorderWindow(Gtk.Window):
         sep2 = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
         side_box.pack_start(sep2, False, False, 2)
 
-        btn_edit = Gtk.Button(label=_("✏️ Modifier"))
+        btn_edit = Gtk.Button(label=_("✏️ Edit"))
         btn_edit.set_tooltip_text("Modifier le nom, l'URL ou l'intertitre sélectionné (F2)")
         btn_edit.connect("clicked", self.on_edit_clicked)
         side_box.pack_start(btn_edit, False, False, 0)
 
-        btn_del = Gtk.Button(label=_("🗑️ Supprimer"))
+        btn_del = Gtk.Button(label=_("🗑️ Delete"))
         btn_del.set_tooltip_text("Supprimer l'élément ou le groupe sélectionné (Suppr)")
         btn_del.connect("clicked", self.on_delete_clicked)
         side_box.pack_start(btn_del, False, False, 0)
@@ -220,14 +220,14 @@ class ReorderWindow(Gtk.Window):
         btn_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         self.vbox.pack_start(btn_box, False, False, 0)
 
-        btn_cancel = Gtk.Button(label=_("Annuler"))
+        btn_cancel = Gtk.Button(label=_("Cancel"))
         btn_cancel.connect("clicked", self.on_cancel_clicked)
         btn_box.pack_start(btn_cancel, False, False, 0)
 
         spacer = Gtk.Box()
         btn_box.pack_start(spacer, True, True, 0)
 
-        btn_save = Gtk.Button(label=_("💾 Enregistrer et recharger"))
+        btn_save = Gtk.Button(label=_("💾 Save and reload"))
         btn_save.get_style_context().add_class("suggested-action")
         btn_save.connect("clicked", self.on_save_clicked)
         btn_box.pack_start(btn_save, False, False, 0)
@@ -297,8 +297,8 @@ class ReorderWindow(Gtk.Window):
                 "• Utilisez <b>➡️ Transférer...</b> pour fusionner ou déplacer le contenu vers un autre groupe.\n"
                 "• Utilisez <b>📁 Nouveau groupe</b> pour ajouter un dossier de radios.</small>"
             )
-            self.col_name.set_title(_("Nom du groupe"))
-            self.col_info.set_title(_("Contenu"))
+            self.col_name.set_title(_("Group name"))
+            self.col_info.set_title(_("Contents"))
 
             for i, g in enumerate(self.data):
                 stations = g.get("stations", [])
@@ -325,8 +325,8 @@ class ReorderWindow(Gtk.Window):
                 "• Cliquez sur <b>➕ Séparateur</b> pour aérer la liste ou insérer un intertitre de section.\n"
                 "• Cliquez sur <b>🔤 Tri A-Z</b> pour classer ce groupe par ordre alphabétique.</small>"
             )
-            self.col_name.set_title(_("Nom / Intertitre"))
-            self.col_info.set_title(_("Détails"))
+            self.col_name.set_title(_("Name / Header"))
+            self.col_info.set_title(_("Details"))
 
             for i, s in enumerate(grp.get("stations", [])):
                 if self.is_item_separator(s):

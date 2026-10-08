@@ -477,10 +477,10 @@ pub fn lookup_country_meta(country_code: &str) -> Option<(&'static str, &'static
 /// Détermine l'icône astronomique et la période de la journée selon l'heure locale
 pub fn get_astronomical_period(hour: u32) -> (&'static str, &'static str) {
     match hour {
-        6..=8 => ("🌅", "Matin"),
-        9..=17 => ("☀️", "Journée"),
-        18..=21 => ("🌇", "Soirée"),
-        _ => ("🌙", "Nuit"),
+        6..=8 => ("🌅", "Morning"),
+        9..=17 => ("☀️", "Daytime"),
+        18..=21 => ("🌇", "Evening"),
+        _ => ("🌙", "Night"),
     }
 }
 
@@ -613,7 +613,7 @@ pub fn get_local_time_for_station(
     let diff_seconds = offset_seconds - user_machine_offset;
     let user_diff_hours = (diff_seconds as f32 / 3600.0).round() as i32;
     let user_diff_label = if user_diff_hours == 0 {
-        crate::i18n::tr("Même heure").to_string()
+        crate::i18n::tr("Same time").to_string()
     } else if user_diff_hours > 0 {
         format!("+{}h", user_diff_hours)
     } else {
@@ -625,8 +625,8 @@ pub fn get_local_time_for_station(
     let user_day_number = (now_epoch + user_machine_offset as i64).div_euclid(86400);
     let day_diff = (station_day_number - user_day_number) as i32;
     let day_diff_label = match day_diff {
-        1 => crate::i18n::tr("Demain"),
-        -1 => crate::i18n::tr("Hier"),
+        1 => crate::i18n::tr("Tomorrow"),
+        -1 => crate::i18n::tr("Yesterday"),
         d if d > 1 => "+jours",
         d if d < -1 => "-jours",
         _ => "",

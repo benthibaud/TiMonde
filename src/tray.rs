@@ -1530,7 +1530,7 @@ impl ksni::Tray for TiMondeTray {
                     }));
                 } else {
                     menu.push(MenuItem::Standard(StandardItem {
-                        label: crate::i18n::tr("▶ Écouter").to_string(),
+                        label: crate::i18n::tr("▶ Play").to_string(),
                         enabled: false,
                         visible: true,
                         ..Default::default()
@@ -1602,7 +1602,7 @@ impl ksni::Tray for TiMondeTray {
                     }));
 
                     menu.push(MenuItem::Standard(StandardItem {
-                        label: crate::i18n::tr("🎲 Zapper vers une autre radio au hasard").to_string(),
+                        label: crate::i18n::tr("🎲 Zap to another random station").to_string(),
                         activate: Box::new(|tray: &mut Self| {
                             tray.play_random_ephemeral_station();
                         }),
@@ -1613,7 +1613,7 @@ impl ksni::Tray for TiMondeTray {
                 } else {
                     let st_edit = st.clone();
                     menu.push(MenuItem::Standard(StandardItem {
-                        label: crate::i18n::tr("✏️ Éditer").to_string(),
+                        label: crate::i18n::tr("✏️ Edit").to_string(),
                         activate: Box::new(move |tray: &mut Self| {
                             Self::trigger_edit_station_dialog(
                                 st_edit.clone(),
@@ -1641,7 +1641,7 @@ impl ksni::Tray for TiMondeTray {
         // Découverte éphémère d'une radio au hasard (affiché uniquement si aucune radio éphémère n'est déjà en cours d'écoute)
         if !is_eph {
             menu.push(MenuItem::Standard(StandardItem {
-                label: crate::i18n::tr("🎲 Écouter une radio au hasard (Découverte éphémère)").to_string(),
+                label: crate::i18n::tr("🎲 Play random radio (Ephemeral discovery)").to_string(),
                 activate: Box::new(|tray: &mut Self| {
                     tray.play_random_ephemeral_station();
                 }),
@@ -1745,7 +1745,7 @@ impl ksni::Tray for TiMondeTray {
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("Muet (0%)").to_string(),
+                    label: crate::i18n::tr("Mute (0%)").to_string(),
                     activate: Box::new(|tray| {
                         *tray.current_volume.lock().unwrap() = 0.0;
                         if let Some(ref e) = *tray.audio.lock().unwrap() {
@@ -1769,38 +1769,38 @@ impl ksni::Tray for TiMondeTray {
                     let mins = (target - now).as_secs() / 60 + 1;
                     crate::i18n::sleep_timer_active_label(mins)
                 } else {
-                    crate::i18n::tr("💤 Minuteur de mise en veille").to_string()
+                    crate::i18n::tr("🌙 Sleep timer").to_string()
                 }
             }
-            None => crate::i18n::tr("💤 Minuteur de mise en veille").to_string(),
+            None => crate::i18n::tr("🌙 Sleep timer").to_string(),
         };
 
         menu.push(MenuItem::SubMenu(SubMenu {
             label: sleep_label,
             submenu: vec![
                 MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("⏱️ Dans 15 minutes").to_string(),
+                    label: crate::i18n::tr("⏱️ In 15 minutes").to_string(),
                     activate: Box::new(|tray| {
                         tray.set_sleep_timer(15);
                     }),
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("⏱️ Dans 30 minutes").to_string(),
+                    label: crate::i18n::tr("⏱️ In 30 minutes").to_string(),
                     activate: Box::new(|tray| {
                         tray.set_sleep_timer(30);
                     }),
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("⏱️ Dans 45 minutes").to_string(),
+                    label: crate::i18n::tr("⏱️ In 45 minutes").to_string(),
                     activate: Box::new(|tray| {
                         tray.set_sleep_timer(45);
                     }),
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("⏱️ Dans 60 minutes (1h)").to_string(),
+                    label: crate::i18n::tr("⏱️ In 60 minutes (1h)").to_string(),
                     activate: Box::new(|tray| {
                         tray.set_sleep_timer(60);
                     }),
@@ -1808,7 +1808,7 @@ impl ksni::Tray for TiMondeTray {
                 }),
                 MenuItem::Separator,
                 MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("❌ Annuler la mise en veille").to_string(),
+                    label: crate::i18n::tr("❌ Cancel sleep timer").to_string(),
                     activate: Box::new(|tray| {
                         tray.cancel_sleep_timer();
                     }),
@@ -1827,7 +1827,7 @@ impl ksni::Tray for TiMondeTray {
             label: crate::i18n::tr("⚙️ Options").to_string(),
             submenu: vec![
                 MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("➕ Ajouter une radio...").to_string(),
+                    label: crate::i18n::tr("➕ Add a station...").to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         Self::trigger_add_station_dialog(
                             Arc::clone(&tray.root_group),
@@ -1838,7 +1838,7 @@ impl ksni::Tray for TiMondeTray {
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("📻 Découvrir & Importer des radios...").to_string(),
+                    label: crate::i18n::tr("📻 Discover & Import stations...").to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         Self::trigger_browse_bouquets_dialog(
                             Arc::clone(&tray.root_group),
@@ -1850,7 +1850,7 @@ impl ksni::Tray for TiMondeTray {
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("📥 Importer mes fichiers (XML, CSV, JSON, M3U)...").to_string(),
+                    label: crate::i18n::tr("📥 Import my files (XML, CSV, JSON, M3U)...").to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         Self::trigger_browse_bouquets_dialog(
                             Arc::clone(&tray.root_group),
@@ -1862,7 +1862,7 @@ impl ksni::Tray for TiMondeTray {
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("↕️ Classer groupes et radios...").to_string(),
+                    label: crate::i18n::tr("↕️ Manage groups and stations...").to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         Self::trigger_reorder_groups_dialog(
                             Arc::clone(&tray.root_group),
@@ -1873,7 +1873,7 @@ impl ksni::Tray for TiMondeTray {
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("📝 Ouvrir bookmarks.xml").to_string(),
+                    label: crate::i18n::tr("📝 Open bookmarks.xml").to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         let path_str = tray.bookmarks_path.to_string_lossy().to_string();
                         let _ = std::process::Command::new("xdg-open").arg(path_str).spawn();
@@ -1888,7 +1888,7 @@ impl ksni::Tray for TiMondeTray {
 
         // 6. Quitter proprement l'application
         menu.push(MenuItem::Standard(StandardItem {
-            label: crate::i18n::tr("Quitter TiMonde").to_string(),
+            label: crate::i18n::tr("Quit TiMonde").to_string(),
             activate: Box::new(|tray: &mut Self| {
                 info!("Fermeture demandée par l'utilisateur.");
                 tray.stop_and_trim();
@@ -1926,6 +1926,7 @@ mod tests {
 
     #[test]
     fn test_menu_layout_stopped_and_playing() {
+        crate::i18n::set_language("fr");
         let xml = r#"
         <bookmarks>
             <group name="English">
@@ -1964,7 +1965,7 @@ mod tests {
     }
     #[test]
     fn test_menu_layout_english_mode() {
-        crate::i18n::set_french(false);
+        crate::i18n::set_language("en");
 
         let xml = r#"
         <bookmarks>
@@ -2008,7 +2009,7 @@ mod tests {
         assert!(!labels.iter().any(|l| l == "Quitter TiMonde"));
 
         // Rétablir le français
-        crate::i18n::set_french(true);
+        crate::i18n::set_language("fr");
     }
 
 }

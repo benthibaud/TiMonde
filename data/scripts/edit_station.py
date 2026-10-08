@@ -294,17 +294,17 @@ class EditStationWindow(Gtk.Window):
     def __init__(self, mode="edit", current_name="", current_url="", current_country="", current_timezone="", current_group="", available_groups=None):
         self.mode = mode
         if self.mode == "add":
-            title = _("➕ Ajouter une station (TiMonde)")
-            header_text = _("<b>Entrez les informations de la nouvelle radio :</b>")
-            save_label = _("➕ Ajouter à mes radios")
+            title = _("➕ Add a station (TiMonde)")
+            header_text = _("<b>Enter new station details:</b>")
+            save_label = _("➕ Add to my stations")
         elif self.mode == "save-ephemeral":
-            title = _("⭐ Enregistrer la radio dans mes favoris (TiMonde)")
-            header_text = _("<b>Conserver cette radio découverte au hasard dans vos favoris :</b>")
-            save_label = _("⭐ Conserver dans mes favoris")
+            title = _("⭐ Save station to favorites (TiMonde)")
+            header_text = _("<b>Keep this randomly discovered station in your favorites:</b>")
+            save_label = _("⭐ Keep in favorites")
         else:
-            title = _("✏️ Modifier la radio (TiMonde)")
-            header_text = _("<b>Modifier les paramètres de la station :</b>")
-            save_label = _("💾 Enregistrer")
+            title = _("✏️ Edit station (TiMonde)")
+            header_text = _("<b>Edit station settings:</b>")
+            save_label = _("💾 Save")
 
         super().__init__(title=title)
         self.set_default_size(580, 360)
@@ -334,7 +334,7 @@ class EditStationWindow(Gtk.Window):
         vbox.pack_start(grid, True, True, 0)
 
         # 1. Nom de la station
-        lbl_name = Gtk.Label(label=_("Nom de la radio :"))
+        lbl_name = Gtk.Label(label=_("Station name:"))
         lbl_name.set_halign(Gtk.Align.END)
         grid.attach(lbl_name, 0, 0, 1, 1)
 
@@ -421,7 +421,7 @@ class EditStationWindow(Gtk.Window):
         grid.attach(country_box, 1, 3, 1, 1)
 
         # 5. Fuseau horaire
-        lbl_tz = Gtk.Label(label=_("Fuseau horaire :"))
+        lbl_tz = Gtk.Label(label=_("Timezone:"))
         lbl_tz.set_halign(Gtk.Align.END)
         grid.attach(lbl_tz, 0, 4, 1, 1)
 
@@ -451,12 +451,12 @@ class EditStationWindow(Gtk.Window):
         vbox.pack_start(btn_box, False, False, 0)
 
         if self.mode == "edit":
-            btn_delete = Gtk.Button(label=_("🗑️ Supprimer cette radio"))
+            btn_delete = Gtk.Button(label=_("🗑️ Delete this station"))
             btn_delete.get_style_context().add_class("destructive-action")
             btn_delete.connect("clicked", self.on_delete_clicked)
             btn_box.pack_start(btn_delete, False, False, 0)
 
-        btn_cancel = Gtk.Button(label=_("Annuler"))
+        btn_cancel = Gtk.Button(label=_("Cancel"))
         btn_cancel.connect("clicked", self.on_cancel_clicked)
         btn_box.pack_start(btn_cancel, False, False, 0)
 
@@ -530,15 +530,15 @@ class EditStationWindow(Gtk.Window):
 
         if not tz_list:
             if code_upper:
-                self.combo_tz.append_text(_("(Fuseau non défini)"))
+                self.combo_tz.append_text(_("(Timezone not defined)"))
                 self.combo_tz.set_active(0)
                 self.combo_tz.set_sensitive(False)
-                self.lbl_tz_hint.set_markup("<small><i>" + _("(Inconnu)") + "</i></small>")
+                self.lbl_tz_hint.set_markup("<small><i>" + _("(Unknown)") + "</i></small>")
             else:
-                self.combo_tz.append_text(_("(Déduction automatique)"))
+                self.combo_tz.append_text(_("(Automatic deduction)"))
                 self.combo_tz.set_active(0)
                 self.combo_tz.set_sensitive(False)
-                self.lbl_tz_hint.set_markup("<small><i>" + _("(Automatique selon la station)") + "</i></small>")
+                self.lbl_tz_hint.set_markup("<small><i>" + _("(Automatic from station)") + "</i></small>")
             return
 
         for tz_id, label in tz_list:
@@ -558,11 +558,11 @@ class EditStationWindow(Gtk.Window):
         # Application de la règle mono-fuseau vs multi-fuseaux
         if len(tz_list) == 1:
             self.combo_tz.set_sensitive(False)
-            self.lbl_tz_hint.set_markup("<small><i>" + _("(Fuseau unique déduit)") + "</i></small>")
+            self.lbl_tz_hint.set_markup("<small><i>" + _("(Single inferred timezone)") + "</i></small>")
         else:
             self.combo_tz.set_sensitive(True)
             if code_upper == "FR":
-                self.lbl_tz_hint.set_markup("<small><i>" + _("(Métropole ou Outre-mer)") + "</i></small>")
+                self.lbl_tz_hint.set_markup("<small><i>" + _("(Metropolitan or Overseas)") + "</i></small>")
             else:
                 self.lbl_tz_hint.set_markup(f"<small><i>({len(tz_list)} fuseaux disponibles)</i></small>")
 
@@ -587,11 +587,11 @@ class EditStationWindow(Gtk.Window):
             flags=Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
             type=Gtk.MessageType.WARNING,
             buttons=Gtk.ButtonsType.NONE,
-            message_format=_("Supprimer « {} » des favoris ?").format(current_display_name)
+            message_format=_("Delete « {} » from favorites?").format(current_display_name)
         )
-        dialog.format_secondary_text(_("Cette action retirera définitivement cette station de votre collection."))
-        dialog.add_button(_("Annuler"), Gtk.ResponseType.CANCEL)
-        btn_del_confirm = dialog.add_button(_("🗑️ Supprimer"), Gtk.ResponseType.OK)
+        dialog.format_secondary_text(_("This action will permanently remove this station from your collection."))
+        dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
+        btn_del_confirm = dialog.add_button(_("🗑️ Delete"), Gtk.ResponseType.OK)
         btn_del_confirm.get_style_context().add_class("destructive-action")
 
         response = dialog.run()

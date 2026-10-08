@@ -1,4 +1,4 @@
-# TiMonde — Traduction française
+# TiMonde — Traducción al español
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 # This file is distributed under the same license as the TiMonde package.
 # Ben Thibaud <b_thibaud@laposte.net>, 2026.
@@ -10,238 +10,238 @@ msgstr ""
 "POT-Creation-Date: 2026-10-08 15:15+0200\n"
 "PO-Revision-Date: 2026-10-08 15:15+0200\n"
 "Last-Translator: Ben Thibaud <b_thibaud@laposte.net>\n"
-"Language-Team: Français <fr@li.org>\n"
-"Language: fr\n"
+"Language-Team: Español <es@li.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 # --- Main Tray Menu ---
 msgid "▶ Play"
-msgstr "▶ Écouter"
+msgstr "▶ Reproducir"
 
 msgid "⏹ Stop"
-msgstr "⏹ Éteindre"
+msgstr "⏹ Detener"
 
 msgid "⏳ Connecting..."
-msgstr "⏳ Connexion..."
+msgstr "⏳ Conectando..."
 
 msgid "✏️ Edit"
-msgstr "✏️ Éditer"
+msgstr "✏️ Editar"
 
 msgid "🗑️ Delete"
-msgstr "🗑️ Supprimer"
+msgstr "🗑️ Eliminar"
 
 msgid "🎲 Zap to another random station"
-msgstr "🎲 Zapper vers une autre radio au hasard"
+msgstr "🎲 Cambiar a otra radio al azar"
 
 msgid "🎲 Play random radio (Ephemeral discovery)"
-msgstr "🎲 Écouter une radio au hasard (Découverte éphémère)"
+msgstr "🎲 Escuchar una radio al azar (Descubrimiento efímero)"
 
 msgid " [🎲 Ephemeral]"
-msgstr " [🎲 Éphémère]"
+msgstr " [🎲 Efímero]"
 
 msgid "Options"
-msgstr "Options"
+msgstr "Opciones"
 
 msgid "➕ Add a station..."
-msgstr "➕ Ajouter une radio..."
+msgstr "➕ Añadir una radio..."
 
 msgid "📻 Discover & Import stations..."
-msgstr "📻 Découvrir & Importer des radios..."
+msgstr "📻 Descubrir e importar radios..."
 
 msgid "📥 Import my files (XML, CSV, JSON, M3U)..."
-msgstr "📥 Importer mes fichiers (XML, CSV, JSON, M3U)..."
+msgstr "📥 Importar mis archivos (XML, CSV, JSON, M3U)..."
 
 msgid "↕️ Manage groups and stations..."
-msgstr "↕️ Classer groupes et radios..."
+msgstr "↕️ Organizar grupos y radios..."
 
 msgid "📝 Open bookmarks.xml"
-msgstr "📝 Ouvrir bookmarks.xml"
+msgstr "📝 Abrir bookmarks.xml"
 
 msgid "Quit TiMonde"
-msgstr "Quitter TiMonde"
+msgstr "Salir de TiMonde"
 
 msgid "Mute (0%)"
-msgstr "Muet (0%)"
+msgstr "Silencio (0%)"
 
 msgid "🌙 Sleep timer"
-msgstr "🌙 Minuteur de veille"
+msgstr "🌙 Temporizador de apagado"
 
 msgid "⏱️ In 15 minutes"
-msgstr "⏱️ Dans 15 minutes"
+msgstr "⏱️ En 15 minutos"
 
 msgid "⏱️ In 30 minutes"
-msgstr "⏱️ Dans 30 minutes"
+msgstr "⏱️ En 30 minutos"
 
 msgid "⏱️ In 45 minutes"
-msgstr "⏱️ Dans 45 minutes"
+msgstr "⏱️ En 45 minutos"
 
 msgid "⏱️ In 60 minutes (1h)"
-msgstr "⏱️ Dans 60 minutes (1h)"
+msgstr "⏱️ En 60 minutos (1h)"
 
 msgid "❌ Cancel sleep timer"
-msgstr "❌ Annuler la mise en veille"
+msgstr "❌ Cancelar temporizador"
 
 # --- Discovery Window (browse_bouquets.py) ---
 msgid "📻 Discover & Import stations (TiMonde)"
-msgstr "📻 Découvrir & Importer des radios (TiMonde)"
+msgstr "📻 Descubrir e importar radios (TiMonde)"
 
 msgid "⭐ Verified DAB+ Bouquets"
-msgstr "⭐ Bouquets vérifiés (DAB+)"
+msgstr "⭐ Ramos verificados (DAB+)"
 
 msgid "🔎 Radio-Browser Search"
-msgstr "🔎 Recherche Radio-Browser"
+msgstr "🔎 Búsqueda Radio-Browser"
 
 msgid "📂 Sample Files"
-msgstr "📂 Fichiers exemples"
+msgstr "📂 Archivos de ejemplo"
 
 msgid "📥 Import my files"
-msgstr "📥 Importer mes fichiers"
+msgstr "📥 Importar mis archivos"
 
 msgid "<b>🌍 Country:</b>"
-msgstr "<b>🌍 Pays :</b>"
+msgstr "<b>🌍 País:</b>"
 
 msgid "<b>Language:</b>"
-msgstr "<b>Langue :</b>"
+msgstr "<b>Idioma:</b>"
 
 msgid "Name / Keyword:"
-msgstr "Nom / Mot-clé :"
+msgstr "Nombre / Palabra clave:"
 
 msgid "Genre:"
-msgstr "Genre :"
+msgstr "Género:"
 
 msgid "<b>Sample file:</b>"
-msgstr "<b>Fichier exemple :</b>"
+msgstr "<b>Archivo de ejemplo:</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr "<b>Nom du groupe dans vos favoris :</b>"
+msgstr "<b>Nombre del grupo en favoritos:</b>"
 
 msgid "Select all"
-msgstr "Tout cocher"
+msgstr "Seleccionar todo"
 
 msgid "Deselect all"
-msgstr "Tout décocher"
+msgstr "Deseleccionar todo"
 
 msgid "➕ Import into favorites"
-msgstr "➕ Importer dans mes favoris"
+msgstr "➕ Importar a favoritos"
 
 msgid "Close"
-msgstr "Fermer"
+msgstr "Cerrar"
 
 # --- Edit Window (edit_station.py) ---
 msgid "➕ Add a station (TiMonde)"
-msgstr "➕ Ajouter une station (TiMonde)"
+msgstr "➕ Añadir una estación (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
-msgstr "<b>Entrez les informations de la nouvelle radio :</b>"
+msgstr "<b>Introduzca los datos de la nueva radio:</b>"
 
 msgid "➕ Add to my stations"
-msgstr "➕ Ajouter à mes radios"
+msgstr "➕ Añadir a mis radios"
 
 msgid "⭐ Save station to favorites (TiMonde)"
-msgstr "⭐ Enregistrer la radio dans mes favoris (TiMonde)"
+msgstr "⭐ Guardar radio en favoritos (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr "<b>Conserver cette radio découverte au hasard dans vos favoris :</b>"
+msgstr "<b>Conservar esta radio descubierta al azar en favoritos:</b>"
 
 msgid "⭐ Keep in favorites"
-msgstr "⭐ Conserver dans mes favoris"
+msgstr "⭐ Conservar en favoritos"
 
 msgid "✏️ Edit station (TiMonde)"
-msgstr "✏️ Modifier la radio (TiMonde)"
+msgstr "✏️ Editar radio (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr "<b>Modifier les paramètres de la station :</b>"
+msgstr "<b>Modificar los ajustes de la radio:</b>"
 
 msgid "💾 Save"
-msgstr "💾 Enregistrer"
+msgstr "💾 Guardar"
 
 msgid "Station name:"
-msgstr "Nom de la radio :"
+msgstr "Nombre de la radio:"
 
 msgid "Audio stream URL:"
-msgstr "URL du flux audio :"
+msgstr "URL del flujo de audio:"
 
 msgid "Group / Folder:"
-msgstr "Groupe / Dossier :"
+msgstr "Grupo / Carpeta:"
 
 msgid "Country & Timezone:"
-msgstr "Pays & Fuseau horaire :"
+msgstr "País y zona horaria:"
 
 msgid "Timezone:"
-msgstr "Fuseau horaire :"
+msgstr "Zona horaria:"
 
 msgid "🗑️ Delete this station"
-msgstr "🗑️ Supprimer cette radio"
+msgstr "🗑️ Eliminar esta radio"
 
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Cancelar"
 
 msgid "Delete « {} » from favorites?"
-msgstr "Supprimer « {} » des favoris ?"
+msgstr "¿Eliminar « {} » de favoritos?"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr "Cette action retirera définitivement cette station de votre collection."
+msgstr "Esta acción eliminará definitivamente esta estación de su colección."
 
 # --- Group Reorder Window (reorder_groups.py) ---
 msgid "↕️ Manage groups, stations and separators (TiMonde)"
-msgstr "↕️ Gestion des groupes, radios et séparateurs (TiMonde)"
+msgstr "↕️ Gestión de grupos, radios y separadores (TiMonde)"
 
 msgid "⬅️ Back to groups"
-msgstr "⬅️ Retour aux groupes"
+msgstr "⬅️ Volver a los grupos"
 
 msgid "➕ Add station"
-msgstr "➕ Ajouter radio"
+msgstr "➕ Añadir estación"
 
 msgid "📂 Open"
-msgstr "📂 Ouvrir"
+msgstr "📂 Abrir"
 
 msgid "📁 New group"
-msgstr "📁 Nouveau groupe"
+msgstr "📁 Nuevo grupo"
 
 msgid "➡️ Move to..."
-msgstr "➡️ Déplacer vers..."
+msgstr "➡️ Mover a..."
 
 msgid "🔝 Top"
-msgstr "🔝 Premier"
+msgstr "🔝 Primero"
 
 msgid "⬆️ Move up"
-msgstr "⬆️ Monter"
+msgstr "⬆️ Subir"
 
 msgid "⬇️ Move down"
-msgstr "⬇️ Descendre"
+msgstr "⬇️ Bajar"
 
 msgid "➕ Separator"
-msgstr "➕ Séparateur"
+msgstr "➕ Separador"
 
 msgid "🔤 Sort A-Z"
-msgstr "🔤 Tri A-Z"
+msgstr "🔤 Ordenar A-Z"
 
 msgid "💾 Save and reload"
-msgstr "💾 Enregistrer et recharger"
+msgstr "💾 Guardar y recargar"
 
 # --- Time & Astronomical Periods ---
 msgid "Same time"
-msgstr "Même heure"
+msgstr "Misma hora"
 
 msgid "Dawn"
-msgstr "Aube"
+msgstr "Amanecer"
 
 msgid "Morning"
-msgstr "Matin"
+msgstr "Mañana"
 
 msgid "Daytime"
-msgstr "Journée"
+msgstr "Día"
 
 msgid "Evening"
-msgstr "Soirée"
+msgstr "Tarde"
 
 msgid "Night"
-msgstr "Nuit"
+msgstr "Noche"
 
 msgid "Tomorrow"
-msgstr "Demain"
+msgstr "Mañana"
 
 msgid "Yesterday"
-msgstr "Hier"
+msgstr "Ayer"

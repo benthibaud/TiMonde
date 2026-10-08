@@ -57,12 +57,12 @@ install -m 644 "${ROOT_DIR}/data/scripts/timonde_i18n.py" "${STAGING_DIR}/usr/sh
 install -m 644 "${ROOT_DIR}"/data/bouquets/*.xml "${STAGING_DIR}/usr/share/timonde/bouquets/"
 install -m 644 "${ROOT_DIR}"/data/examples/* "${STAGING_DIR}/usr/share/timonde/examples/"
 
-if [ -f "${ROOT_DIR}/po/locale/fr/LC_MESSAGES/timonde.mo" ]; then
-    install -m 644 "${ROOT_DIR}/po/locale/fr/LC_MESSAGES/timonde.mo" "${STAGING_DIR}/usr/share/locale/fr/LC_MESSAGES/timonde.mo"
-fi
-if [ -f "${ROOT_DIR}/po/locale/en/LC_MESSAGES/timonde.mo" ]; then
-    install -m 644 "${ROOT_DIR}/po/locale/en/LC_MESSAGES/timonde.mo" "${STAGING_DIR}/usr/share/locale/en/LC_MESSAGES/timonde.mo"
-fi
+for lang in fr es de pt; do
+    if [ -f "${ROOT_DIR}/po/locale/${lang}/LC_MESSAGES/timonde.mo" ]; then
+        mkdir -p "${STAGING_DIR}/usr/share/locale/${lang}/LC_MESSAGES"
+        install -m 644 "${ROOT_DIR}/po/locale/${lang}/LC_MESSAGES/timonde.mo" "${STAGING_DIR}/usr/share/locale/${lang}/LC_MESSAGES/timonde.mo"
+    fi
+done
 
 # 5. Construction du paquet .deb
 dpkg-deb --build --root-owner-group "${STAGING_DIR}" "${ROOT_DIR}/${PACKAGE_NAME}"
