@@ -5,3 +5,5 @@ __pycache__/
 temp/
 *.pyc
 
+*.rpm
+*.tar.gz
