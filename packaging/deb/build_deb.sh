@@ -11,11 +11,9 @@ STAGING_DIR="${ROOT_DIR}/temp/deb_staging"
 
 echo "📦 Préparation du paquet Debian/Ubuntu/Mint : ${PACKAGE_NAME}"
 
-# 1. Vérification / compilation du binaire release
-if [ ! -f "${ROOT_DIR}/target/release/timonde" ]; then
-    echo "⚡ Compilation de timonde en mode release..."
-    (cd "${ROOT_DIR}" && cargo build --release)
-fi
+# 1. Compilation du binaire release si nécessaire
+echo "⚡ Compilation de timonde en mode release..."
+(cd "${ROOT_DIR}" && cargo build --release)
 
 # 2. Nettoyage et création de l'arborescence
 rm -rf "${STAGING_DIR}"
@@ -27,15 +25,17 @@ mkdir -p "${STAGING_DIR}/usr/share/icons/hicolor/scalable/panel"
 mkdir -p "${STAGING_DIR}/usr/share/timonde/scripts"
 mkdir -p "${STAGING_DIR}/usr/share/timonde/bouquets"
 mkdir -p "${STAGING_DIR}/usr/share/timonde/examples"
+mkdir -p "${STAGING_DIR}/usr/share/locale/fr/LC_MESSAGES"
+mkdir -p "${STAGING_DIR}/usr/share/locale/en/LC_MESSAGES"
 
-# 3. Fichier de contrôle Debian
+# 3. Fichier de contrôle Debian (Zenity retiré, GTK3 natif)
 cat << CONTROL_EOF > "${STAGING_DIR}/DEBIAN/control"
 Package: timonde
 Version: ${VERSION}
 Section: sound
 Priority: optional
 Architecture: ${ARCH}
-Depends: libc6, libgstreamer1.0-0, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, zenity, python3, python3-gi, gir1.2-gtk-3.0
+Depends: libc6, libgstreamer1.0-0, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, python3, python3-gi, gir1.2-gtk-3.0
 Maintainer: Ben Thibaud <b_thibaud@laposte.net>
 Description: Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux
  TiMonde est un lecteur de radios universel et économe en ressources (< 15 Mo de RAM),
@@ -56,8 +56,18 @@ install -m 755 "${ROOT_DIR}/data/scripts/browse_bouquets.py" "${STAGING_DIR}/usr
 install -m 644 "${ROOT_DIR}"/data/bouquets/*.xml "${STAGING_DIR}/usr/share/timonde/bouquets/"
 install -m 644 "${ROOT_DIR}"/data/examples/* "${STAGING_DIR}/usr/share/timonde/examples/"
 
+if [ -f "${ROOT_DIR}/po/locale/fr/LC_MESSAGES/timonde.mo" ]; then
+    install -m 644 "${ROOT_DIR}/po/locale/fr/LC_MESSAGES/timonde.mo" "${STAGING_DIR}/usr/share/locale/fr/LC_MESSAGES/timonde.mo"
+fi
+if [ -f "${ROOT_DIR}/po/locale/en/LC_MESSAGES/timonde.mo" ]; then
+    install -m 644 "${ROOT_DIR}/po/locale/en/LC_MESSAGES/timonde.mo" "${STAGING_DIR}/usr/share/locale/en/LC_MESSAGES/timonde.mo"
+fi
+
 # 5. Construction du paquet .deb
 dpkg-deb --build --root-owner-group "${STAGING_DIR}" "${ROOT_DIR}/${PACKAGE_NAME}"
+cp "${ROOT_DIR}/${PACKAGE_NAME}" "${SCRIPT_DIR}/${PACKAGE_NAME}"
 rm -rf "${STAGING_DIR}"
 
-echo "✅ Paquet généré avec succès : ${ROOT_DIR}/${PACKAGE_NAME}"
+echo "✅ Paquet généré avec succès :"
+echo "   - ${ROOT_DIR}/${PACKAGE_NAME}"
+echo "   - ${SCRIPT_DIR}/${PACKAGE_NAME}"
