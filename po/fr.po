@@ -245,3 +245,63 @@ msgstr "Demain"
 
 msgid "Yesterday"
 msgstr "Hier"
+
+msgid "🛠️ Maintenance & Data"
+msgstr "🛠️ Maintenance & Données"
+
+msgid "🩺 Check streams (dead links)..."
+msgstr "🩺 Vérifier les flux (liens morts)..."
+
+msgid "📤 Export my stations to CSV..."
+msgstr "📤 Exporter mes radios en CSV..."
+
+msgid "🩺 Check streams"
+msgstr "🩺 Vérifier les flux"
+
+msgid "⚠️ Dead links only"
+msgstr "⚠️ Liens morts uniquement"
+
+msgid "⚡ Apply redirects"
+msgstr "⚡ Appliquer redirections"
+
+msgid "🔍 Repair stream..."
+msgstr "🔍 Réparer flux..."
+
+msgid "📤 Export to CSV"
+msgstr "📤 Exporter en CSV"
+
+msgid "Test stream availability and locate broken links"
+msgstr "Tester la disponibilité en direct de vos radios et repérer les liens morts"
+
+msgid "Display offline radio streams only"
+msgstr "Afficher uniquement les radios dont le flux est hors-ligne"
+
+msgid "Automatically update redirected streams to direct URL"
+msgstr "Mettre à jour automatiquement les flux redirigés vers leur URL directe"
+
+msgid "Search Radio-Browser for a working replacement stream"
+msgstr "Rechercher automatiquement un flux actif de remplacement sur Radio-Browser pour ce lien mort"
+
+msgid "Export all stations to CSV spreadsheet format"
+msgstr "Exporter l'ensemble de vos radios au format tableur CSV"
+
+msgid "📤 Export my stations to CSV"
+msgstr "📤 Exporter mes radios en CSV"
+
+msgid "CSV files (*.csv)"
+msgstr "Fichiers CSV (*.csv)"
+
+msgid "All files (*.*)"
+msgstr "Tous les fichiers (*.*)"
+
+msgid "Export"
+msgstr "Exporter"
+
+msgid "Export successful!"
+msgstr "Exportation réussie !"
+
+msgid "Error during CSV export:"
+msgstr "Erreur lors de l'exportation CSV :"
+
+msgid "station(s) saved to:"
+msgstr "radio(s) enregistrée(s) dans :"

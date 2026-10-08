@@ -187,18 +187,18 @@ class ReorderWindow(Gtk.Window):
         self.nav_box.pack_start(self.header_title, True, True, 0)
 
         # Outils d'audit et vérification de santé des flux
-        self.btn_check_streams = Gtk.Button(label="🩺 Vérifier les flux")
-        self.btn_check_streams.set_tooltip_text("Tester la disponibilité en direct de vos radios et repérer les liens morts")
+        self.btn_check_streams = Gtk.Button(label=_("🩺 Check streams"))
+        self.btn_check_streams.set_tooltip_text(_("Test stream availability and locate broken links"))
         self.btn_check_streams.connect("clicked", self.on_check_streams_clicked)
         self.nav_box.pack_start(self.btn_check_streams, False, False, 0)
 
-        self.chk_broken_only = Gtk.CheckButton(label="⚠️ Liens morts uniquement")
-        self.chk_broken_only.set_tooltip_text("Afficher uniquement les radios dont le flux est hors-ligne")
+        self.chk_broken_only = Gtk.CheckButton(label=_("⚠️ Dead links only"))
+        self.chk_broken_only.set_tooltip_text(_("Display offline radio streams only"))
         self.chk_broken_only.connect("toggled", self.on_filter_broken_toggled)
         self.nav_box.pack_start(self.chk_broken_only, False, False, 0)
 
-        self.btn_apply_redirects = Gtk.Button(label="⚡ Appliquer redirections")
-        self.btn_apply_redirects.set_tooltip_text("Mettre à jour automatiquement les flux redirigés vers leur URL directe")
+        self.btn_apply_redirects = Gtk.Button(label=_("⚡ Apply redirects"))
+        self.btn_apply_redirects.set_tooltip_text(_("Automatically update redirected streams to direct URL"))
         self.btn_apply_redirects.connect("clicked", self.on_apply_redirects_clicked)
         self.nav_box.pack_start(self.btn_apply_redirects, False, False, 0)
 
@@ -312,8 +312,8 @@ class ReorderWindow(Gtk.Window):
         btn_edit.connect("clicked", self.on_edit_clicked)
         side_box.pack_start(btn_edit, False, False, 0)
 
-        self.btn_repair = Gtk.Button(label="🔍 Réparer flux...")
-        self.btn_repair.set_tooltip_text("Rechercher automatiquement un flux actif de remplacement sur Radio-Browser pour ce lien mort")
+        self.btn_repair = Gtk.Button(label=_("🔍 Repair stream..."))
+        self.btn_repair.set_tooltip_text(_("Search Radio-Browser for a working replacement stream"))
         self.btn_repair.connect("clicked", self.on_repair_stream_clicked)
         side_box.pack_start(self.btn_repair, False, False, 0)
 
@@ -335,8 +335,8 @@ class ReorderWindow(Gtk.Window):
         btn_cancel.connect("clicked", self.on_cancel_clicked)
         btn_box.pack_start(btn_cancel, False, False, 0)
 
-        self.btn_export_csv = Gtk.Button(label="📤 Exporter en CSV")
-        self.btn_export_csv.set_tooltip_text("Exporter l'ensemble de vos radios au format tableur CSV")
+        self.btn_export_csv = Gtk.Button(label=_("📤 Export to CSV"))
+        self.btn_export_csv.set_tooltip_text(_("Export all stations to CSV spreadsheet format"))
         self.btn_export_csv.connect("clicked", lambda w: self.on_export_csv_clicked())
         btn_box.pack_start(self.btn_export_csv, False, False, 0)
 
@@ -1616,22 +1616,22 @@ class ReorderWindow(Gtk.Window):
 
     def on_export_csv_clicked(self, widget=None):
         dialog = Gtk.FileChooserDialog(
-            title="📤 Exporter mes radios en CSV",
+            title=_("📤 Export my stations to CSV"),
             parent=self,
             action=Gtk.FileChooserAction.SAVE,
-            buttons=("Annuler", Gtk.ResponseType.CANCEL, "Exporter", Gtk.ResponseType.OK),
+            buttons=(_("Cancel"), Gtk.ResponseType.CANCEL, _("Export"), Gtk.ResponseType.OK),
         )
         dialog.set_default_response(Gtk.ResponseType.OK)
         dialog.set_current_name("radios_timonde.csv")
         dialog.set_do_overwrite_confirmation(True)
 
         filter_csv = Gtk.FileFilter()
-        filter_csv.set_name("Fichiers CSV (*.csv)")
+        filter_csv.set_name(_("CSV files (*.csv)"))
         filter_csv.add_pattern("*.csv")
         dialog.add_filter(filter_csv)
 
         filter_all = Gtk.FileFilter()
-        filter_all.set_name("Tous les fichiers (*.*)")
+        filter_all.set_name(_("All files (*.*)"))
         filter_all.add_pattern("*")
         dialog.add_filter(filter_all)
 
@@ -1650,7 +1650,7 @@ class ReorderWindow(Gtk.Window):
                     flags=Gtk.DialogFlags.MODAL,
                     type=Gtk.MessageType.INFO,
                     buttons=Gtk.ButtonsType.OK,
-                    message_format=f"Exportation réussie !\n\n{count} radio(s) enregistrée(s) dans :\n{chosen_path}",
+                    message_format=f"{_('Export successful!')}\n\n{count} {_('station(s) saved to:')}\n{chosen_path}",
                 )
                 msg_diag.run()
                 msg_diag.destroy()
@@ -1660,7 +1660,7 @@ class ReorderWindow(Gtk.Window):
                     flags=Gtk.DialogFlags.MODAL,
                     type=Gtk.MessageType.ERROR,
                     buttons=Gtk.ButtonsType.OK,
-                    message_format=f"Erreur lors de l'exportation CSV :\n{e}",
+                    message_format=f"{_('Error during CSV export:')}\n{e}",
                 )
                 err_diag.run()
                 err_diag.destroy()

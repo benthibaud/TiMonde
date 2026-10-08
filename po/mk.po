@@ -234,3 +234,63 @@ msgstr "Утре"
 
 msgid "Yesterday"
 msgstr "Вчера"
+
+msgid "🛠️ Maintenance & Data"
+msgstr ""
+
+msgid "🩺 Check streams (dead links)..."
+msgstr ""
+
+msgid "📤 Export my stations to CSV..."
+msgstr ""
+
+msgid "🩺 Check streams"
+msgstr ""
+
+msgid "⚠️ Dead links only"
+msgstr ""
+
+msgid "⚡ Apply redirects"
+msgstr ""
+
+msgid "🔍 Repair stream..."
+msgstr ""
+
+msgid "📤 Export to CSV"
+msgstr ""
+
+msgid "Test stream availability and locate broken links"
+msgstr ""
+
+msgid "Display offline radio streams only"
+msgstr ""
+
+msgid "Automatically update redirected streams to direct URL"
+msgstr ""
+
+msgid "Search Radio-Browser for a working replacement stream"
+msgstr ""
+
+msgid "Export all stations to CSV spreadsheet format"
+msgstr ""
+
+msgid "📤 Export my stations to CSV"
+msgstr ""
+
+msgid "CSV files (*.csv)"
+msgstr ""
+
+msgid "All files (*.*)"
+msgstr ""
+
+msgid "Export"
+msgstr ""
+
+msgid "Export successful!"
+msgstr ""
+
+msgid "Error during CSV export:"
+msgstr ""
+
+msgid "station(s) saved to:"
+msgstr ""

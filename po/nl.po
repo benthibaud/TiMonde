@@ -234,3 +234,63 @@ msgstr "Morgen"
 
 msgid "Yesterday"
 msgstr "Gisteren"
+
+msgid "🛠️ Maintenance & Data"
+msgstr "🛠️ Onderhoud & Gegevens"
+
+msgid "🩺 Check streams (dead links)..."
+msgstr "🩺 Streams controleren (dode links)..."
+
+msgid "📤 Export my stations to CSV..."
+msgstr "📤 Mijn zenders exporteren naar CSV..."
+
+msgid "🩺 Check streams"
+msgstr "🩺 Streams controleren"
+
+msgid "⚠️ Dead links only"
+msgstr "⚠️ Alleen dode links"
+
+msgid "⚡ Apply redirects"
+msgstr "⚡ Omleidingen toepassen"
+
+msgid "🔍 Repair stream..."
+msgstr "🔍 Stream herstellen..."
+
+msgid "📤 Export to CSV"
+msgstr "📤 Exporteren naar CSV"
+
+msgid "Test stream availability and locate broken links"
+msgstr "Controleer stream-beschikbaarheid en vind verbroken links"
+
+msgid "Display offline radio streams only"
+msgstr "Alleen offline zenders weergeven"
+
+msgid "Automatically update redirected streams to direct URL"
+msgstr "Omgeleide streams automatisch bijwerken naar directe URL"
+
+msgid "Search Radio-Browser for a working replacement stream"
+msgstr "Zoek een werkende vervangende stream op Radio-Browser"
+
+msgid "Export all stations to CSV spreadsheet format"
+msgstr "Alle zenders exporteren naar CSV-werkbladformaat"
+
+msgid "📤 Export my stations to CSV"
+msgstr "📤 Mijn zenders exporteren naar CSV"
+
+msgid "CSV files (*.csv)"
+msgstr "CSV-bestanden (*.csv)"
+
+msgid "All files (*.*)"
+msgstr "Alle bestanden (*.*)"
+
+msgid "Export"
+msgstr "Exporteren"
+
+msgid "Export successful!"
+msgstr "Export succesvol!"
+
+msgid "Error during CSV export:"
+msgstr "Fout tijdens CSV-export:"
+
+msgid "station(s) saved to:"
+msgstr "zenders opgeslagen in:"

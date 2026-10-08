@@ -1930,7 +1930,7 @@ impl ksni::Tray for TiMondeTray {
                 }),
                 MenuItem::Separator,
                 MenuItem::SubMenu(SubMenu {
-                    label: "🛠️ Maintenance & Données".to_string(),
+                    label: crate::i18n::tr("🛠️ Maintenance & Data").to_string(),
                     submenu: vec![
                         MenuItem::Standard(StandardItem {
                             label: crate::i18n::tr("↕️ Manage groups and stations...").to_string(),
@@ -1945,7 +1945,7 @@ impl ksni::Tray for TiMondeTray {
                             ..Default::default()
                         }),
                         MenuItem::Standard(StandardItem {
-                            label: "🩺 Vérifier les flux (liens morts)...".to_string(),
+                            label: crate::i18n::tr("🩺 Check streams (dead links)...").to_string(),
                             activate: Box::new(|tray: &mut Self| {
                                 Self::trigger_reorder_groups_dialog(
                                     Arc::clone(&tray.root_group),
@@ -1969,7 +1969,7 @@ impl ksni::Tray for TiMondeTray {
                             ..Default::default()
                         }),
                         MenuItem::Standard(StandardItem {
-                            label: "📤 Exporter mes radios en CSV...".to_string(),
+                            label: crate::i18n::tr("📤 Export my stations to CSV...").to_string(),
                             activate: Box::new(|tray: &mut Self| {
                                 Self::trigger_export_csv_dialog(
                                     Arc::clone(&tray.root_group),

@@ -239,3 +239,63 @@ msgstr "明天"
 
 msgid "Yesterday"
 msgstr "昨天"
+
+msgid "🛠️ Maintenance & Data"
+msgstr "🛠️ 維護與資料"
+
+msgid "🩺 Check streams (dead links)..."
+msgstr "🩺 檢查串流 (失效連結)..."
+
+msgid "📤 Export my stations to CSV..."
+msgstr "📤 匯出電台為 CSV..."
+
+msgid "🩺 Check streams"
+msgstr "🩺 檢查串流"
+
+msgid "⚠️ Dead links only"
+msgstr "⚠️ 僅失效連結"
+
+msgid "⚡ Apply redirects"
+msgstr "⚡ 套用重新導向"
+
+msgid "🔍 Repair stream..."
+msgstr "🔍 修復串流..."
+
+msgid "📤 Export to CSV"
+msgstr "📤 匯出為 CSV"
+
+msgid "Test stream availability and locate broken links"
+msgstr "測試串流可用性並尋找失效連結"
+
+msgid "Display offline radio streams only"
+msgstr "僅顯示離線電台"
+
+msgid "Automatically update redirected streams to direct URL"
+msgstr "自動將重新導向串流更新為直接連結"
+
+msgid "Search Radio-Browser for a working replacement stream"
+msgstr "在 Radio-Browser 搜尋可用的替代串流"
+
+msgid "Export all stations to CSV spreadsheet format"
+msgstr "將所有電台匯出為 CSV 試算表格式"
+
+msgid "📤 Export my stations to CSV"
+msgstr "📤 匯出電台為 CSV"
+
+msgid "CSV files (*.csv)"
+msgstr "CSV 檔案 (*.csv)"
+
+msgid "All files (*.*)"
+msgstr "所有檔案 (*.*)"
+
+msgid "Export"
+msgstr "匯出"
+
+msgid "Export successful!"
+msgstr "匯出成功！"
+
+msgid "Error during CSV export:"
+msgstr "匯出 CSV 時發生錯誤："
+
+msgid "station(s) saved to:"
+msgstr "電台已儲存至："
