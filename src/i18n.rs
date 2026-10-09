@@ -153,33 +153,33 @@ pub fn tr(msg: &'static str) -> &'static str {
 
 /// Libellé dynamique pour le lancement d'une station
 pub fn play_station_label(station_name: &str) -> String {
-    let prefix = tr("▶ Play");
-    format!("{}    « {} »", prefix, station_name)
+    let prefix = tr("Play");
+    format!("{} : « {} »", prefix, station_name)
 }
 
 /// Libellé dynamique pour l'arrêt d'une station
 pub fn stop_station_label(station_name: &str, is_ephemeral: bool) -> String {
-    let prefix = tr("⏹ Stop");
-    let tag = if is_ephemeral { tr(" [🎲 Ephemeral]") } else { "" };
-    format!("{}    « {} »{}", prefix, station_name, tag)
+    let prefix = tr("Stop");
+    let tag = if is_ephemeral { tr(" [Ephemeral]") } else { "" };
+    format!("{} : « {} »{}", prefix, station_name, tag)
 }
 
 /// Libellé dynamique pour l'état de connexion d'une station
 pub fn connecting_station_label(station_name: &str, is_ephemeral: bool) -> String {
-    let prefix = tr("⏳ Connecting...");
-    let tag = if is_ephemeral { tr(" [🎲 Ephemeral]") } else { "" };
-    format!("{}    « {} »{}", prefix, station_name, tag)
+    let prefix = tr("Connecting...");
+    let tag = if is_ephemeral { tr(" [Ephemeral]") } else { "" };
+    format!("{} : « {} »{}", prefix, station_name, tag)
 }
 
 /// Libellé de sauvegarde de radio éphémère
 pub fn save_ephemeral_label(station_name: &str) -> String {
-    let prefix = tr("⭐ Save station to favorites (TiMonde)");
+    let prefix = tr("Save station to favorites (TiMonde)");
     format!("{} : « {} »", prefix, station_name)
 }
 
 /// Libellé pour le minuteur de veille actif
 pub fn sleep_timer_active_label(remaining_mins: u64) -> String {
-    let timer_prefix = tr("🌙 Sleep timer");
+    let timer_prefix = tr("Sleep timer");
     format!("{} (~{} min)", timer_prefix, remaining_mins)
 }
 
@@ -198,50 +198,50 @@ mod tests {
 
         // Mandarin
         set_language("zh_CN");
-        assert_eq!(tr("▶ Play"), "▶ 播放");
-        assert_eq!(tr("✏️ Edit"), "✏️ 编辑");
-        assert_eq!(tr("🗑️ Delete"), "🗑️ 删除");
+        assert_eq!(tr("Play"), "播放");
+        assert_eq!(tr("Edit"), "编辑");
+        assert_eq!(tr("Delete"), "删除");
 
         // Cantonais / Traditionnel
         set_language("zh_TW");
-        assert_eq!(tr("▶ Play"), "▶ 播放");
-        assert_eq!(tr("✏️ Edit"), "✏️ 編輯");
-        assert_eq!(tr("🗑️ Delete"), "🗑️ 刪除");
-        assert_eq!(tr("🎲 Zap to another random station"), "🎲 隨機切換到其他電台");
+        assert_eq!(tr("Play"), "播放");
+        assert_eq!(tr("Edit"), "編輯");
+        assert_eq!(tr("Delete"), "刪除");
+        assert_eq!(tr("Zap to another random station"), "隨機切換到其他電台");
     }
 
     #[test]
     fn test_multilingual_european_and_world_support() {
         set_language("en");
-        assert_eq!(tr("▶ Play"), "▶ Play");
-        assert_eq!(tr("⏹ Stop"), "⏹ Stop");
-        assert_eq!(play_station_label("FIP"), "▶ Play    « FIP »");
+        assert_eq!(tr("Play"), "Play");
+        assert_eq!(tr("Stop"), "Stop");
+        assert_eq!(play_station_label("FIP"), "Play : « FIP »");
 
         set_language("fr");
-        assert_eq!(tr("▶ Play"), "▶ Écouter");
-        assert_eq!(tr("⏹ Stop"), "⏹ Éteindre");
-        assert_eq!(play_station_label("FIP"), "▶ Écouter    « FIP »");
+        assert_eq!(tr("Play"), "Écouter");
+        assert_eq!(tr("Stop"), "Éteindre");
+        assert_eq!(play_station_label("FIP"), "Écouter : « FIP »");
 
         set_language("it");
-        assert_eq!(tr("▶ Play"), "▶ Ascolta");
+        assert_eq!(tr("Play"), "Ascolta");
 
         set_language("es");
-        assert_eq!(tr("▶ Play"), "▶ Reproducir");
+        assert_eq!(tr("Play"), "Reproducir");
 
         set_language("de");
-        assert_eq!(tr("▶ Play"), "▶ Abspielen");
+        assert_eq!(tr("Play"), "Abspielen");
 
         set_language("ja");
-        assert_eq!(tr("▶ Play"), "▶ 再生");
+        assert_eq!(tr("Play"), "再生");
 
         set_language("ko");
-        assert_eq!(tr("▶ Play"), "▶ 재생");
+        assert_eq!(tr("Play"), "재생");
 
         set_language("ar");
-        assert_eq!(tr("▶ Play"), "▶ تشغيل");
+        assert_eq!(tr("Play"), "تشغيل");
 
         set_language("tr");
-        assert_eq!(tr("▶ Play"), "▶ Oynat");
+        assert_eq!(tr("Play"), "Oynat");
 
         // Rétablir en français par défaut
         set_language("fr");

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="HK" name="Hong Kong" flag="🇭🇰" multilingual="false">
+<bouquet country="HK" name="Hong Kong" flag="" multilingual="false">
   <national>
     <station name="RTHK Radio 1" url="http://stm1.rthk.hk/radio1" genre="RTHK - 第一台 (新聞、時事、論壇)" />
     <station name="RTHK Radio 2" url="http://stm2.rthk.hk/radio2" genre="RTHK - 第二台 (青年節目、廣東流行曲)" />

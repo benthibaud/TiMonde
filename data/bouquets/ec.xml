@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="EC" name="Équateur" flag="🇪🇨" multilingual="false">
+<bouquet country="EC" name="Équateur" flag="" multilingual="false">
   <national>
     <station name="Radio Pública del Ecuador" url="https://laotrafm.makrodigital.com/stream/laotrafmquito" genre="Medios Públicos - Información y Cultura" />
     <station name="Radio Canela" url="https://canelaradio.makrodigital.com:9280/stream" genre="La reina de las radios ecuatorianas" />

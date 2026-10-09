@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="GT" name="Guatemala" flag="🇬🇹" multilingual="false">
+<bouquet country="GT" name="Guatemala" flag="" multilingual="false">
   <national>
     <station name="TGW La Voz de Guatemala" url="https://stream.radiotgw.gob.gt/8002/stream" genre="La radio nacional oficial" />
     <station name="Emisoras Unidas 89.7" url="https://stream-01.surfernetwork.com/z96sq8tndseuv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJ6OTZzcTh0bmRzZXV2IiwiaG9zdCI6InN0cmVhbS0wMS5zdXJmZXJuZXR3b3JrLmNvbSIsInJ0dGwiOjUsImp0aSI6InFpaHlTcXRjUld5SXk5OGNsaGFZSlEiLCJpYXQiOjE3OTE0Njg5MDIsImV4cCI6MTc5MTQ2ODk2Mn0.Wze-loKH3Bj8EFeMxgfRBaa_Lpw4MwxM7SFbKnB0lBc" genre="Primera en noticias y deportes" />

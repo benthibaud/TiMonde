@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="LI" name="Liechtenstein" flag="🇱🇮" multilingual="false">
+<bouquet country="LI" name="Liechtenstein" flag="" multilingual="false">
   <national>
     <station name="Radio Liechtenstein" url="https://radiostream.radiobutler.com/7e9d5eb6-9249-4c7a-9f1c-6d4b9c7a48a8" genre="Der öffentlich-rechtliche Rundfunk des Fürstentums" />
     </national>

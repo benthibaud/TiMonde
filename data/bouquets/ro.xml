@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="RO" name="Roumanie" flag="🇷🇴" multilingual="false">
+<bouquet country="RO" name="Roumanie" flag="" multilingual="false">
   <national>
     <station name="Radio România Actualități" url="http://89.238.227.6:8006/;" genre="SRR - Știri &amp; Evenimente" />
     <station name="Radio România Cultural" url="http://stream2.srr.ro:8012/index.html?sid=1" genre="SRR - Cultură &amp; Teatru" />

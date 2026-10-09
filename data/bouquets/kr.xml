@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="KR" name="Corée du Sud" flag="🇰🇷" multilingual="false">
+<bouquet country="KR" name="Corée du Sud" flag="" multilingual="false">
   <national>
     <station name="KBS 1Radio" url="https://radio.bsod.kr/stream/?stn=kbs&amp;ch=1radio" genre="KBS - 뉴스 &amp; 시사 (News &amp; Society)" />
     <station name="KBS 1FM (Classic FM)" url="https://radio.bsod.kr/stream/?stn=kbs&amp;ch=1fm" genre="KBS - 클래식 음악 &amp; 예술" />

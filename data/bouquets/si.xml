@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="SI" name="Slovénie" flag="🇸🇮" multilingual="false">
+<bouquet country="SI" name="Slovénie" flag="" multilingual="false">
   <national>
     <station name="Prvi program" url="https://mp3.rtvslo.si/ra1" genre="RTV Slovenija - Novice &amp; Pogovor" />
     <station name="Val 202" url="https://mp3.rtvslo.si/val202" genre="RTV Slovenija - Pop, Rock &amp; Družba" />

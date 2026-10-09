@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="BO" name="Bolivie" flag="🇧🇴" multilingual="false">
+<bouquet country="BO" name="Bolivie" flag="" multilingual="false">
   <national>
     <station name="Radio Fides La Paz" url="http://192.95.23.89:6358/stream" genre="Voz de los sin voz en Bolivia" />
     <station name="Radio Panamericana Bolivia" url="https://emiteradio.com/proxy/cumbia90s?mp=/stream" genre="La radio líder del país" />

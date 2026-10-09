@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="MU" name="Maurice" flag="🇲🇺" multilingual="false">
+<bouquet country="MU" name="Maurice" flag="" multilingual="false">
   <national>
     <station name="Kool FM Maurice" url="https://radio.mbconline.xyz/hls/koolfm.m3u8" genre="MBC - Pop, Variété &amp; Séga" />
     <station name="Radio Plus Maurice" url="https://stream.radioplus.mu:8000/radio.mp3" genre="La radio numéro 1 à Maurice" />

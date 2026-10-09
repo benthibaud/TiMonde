@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="JO" name="Jordanie" flag="🇯🇴" multilingual="false">
+<bouquet country="JO" name="Jordanie" flag="" multilingual="false">
   <national>
     <station name="Radio Jordan 90 FM (English)" url="https://jrtv-live.ercdn.net/jrradio/englishradiovideo.m3u8" genre="JRTV - The English Service from Amman" />
     <station name="Radio Al-Urduniyah" url="https://jrtv-live.ercdn.net/jrradio/englishradiovideo.m3u8" genre="JRTV - الإذاعة الأردنية الرسمية" />

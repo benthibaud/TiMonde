@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="KE" name="Kenya" flag="🇰🇪" multilingual="false">
+<bouquet country="KE" name="Kenya" flag="" multilingual="false">
   <national>
     <station name="KBC English Service" url="https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/cfs/bbc_world_service.m3u8" genre="KBC - The Voice of Kenya" />
     <station name="Radio Taifa" url="https://s3.radio.co/s97f38db97/listen" genre="KBC - Sauti ya Mkenya (Swahili)" />

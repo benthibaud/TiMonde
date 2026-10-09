@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="VE" name="Venezuela" flag="🇻🇪" multilingual="false">
+<bouquet country="VE" name="Venezuela" flag="" multilingual="false">
   <national>
     <station name="Éxitos 99.9 FM" url="https://acp4.lorini.net:2070/stream" genre="Unión Radio - Sonidos de primera fila" />
     <station name="Onda La Superestación" url="https://acp4.lorini.net:2060/stream" genre="Unión Radio - Inspirando a Venezuela" />

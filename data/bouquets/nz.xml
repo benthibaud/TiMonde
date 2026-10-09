@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="NZ" name="Nouvelle-Zélande" flag="🇳🇿" multilingual="false">
+<bouquet country="NZ" name="Nouvelle-Zélande" flag="" multilingual="false">
   <national>
     <station name="RNZ National" url="http://radionz-ice.streamguys.com/national.mp3" genre="Radio New Zealand - Public News &amp; Current Affairs" />
     <station name="RNZ Concert" url="http://radionz-ice.streamguys.com/Concert_aac128" genre="Radio New Zealand - Fine Music &amp; Classical" />

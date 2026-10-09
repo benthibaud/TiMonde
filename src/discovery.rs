@@ -298,7 +298,7 @@ mod tests {
     #[test]
     fn test_parse_bouquet_xml_snippet() {
         let xml = r#"<?xml version='1.0' encoding='utf-8'?>
-<bouquet country="IS" name="Islande" flag="🇮🇸" multilingual="false">
+<bouquet country="IS" name="Islande" flag="" multilingual="false">
   <national>
     <station name="Rás 1" url="https://ruv-ras1.akamaized.net/hls/live/2026857/ras1/master.m3u8" genre="Généraliste / Culture" />
     <station name="Rás 2" url="https://ruv-ras2.akamaized.net/hls/live/2026858/ras2/master.m3u8" genre="Musique &amp; Société" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="TR" name="Turquie" flag="🇹🇷" multilingual="false">
+<bouquet country="TR" name="Turquie" flag="" multilingual="false">
   <national>
     <station name="TRT Radyo 1" url="https://trt.radyotvonline.net/trt1" genre="TRT - Bilgi, Kültür &amp; Haber" />
     <station name="TRT FM" url="https://rd-trtturku.medya.trt.com.tr/master_128.m3u8" genre="TRT - Türkçe Pop &amp; Canlı yayınlar" />

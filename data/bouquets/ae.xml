@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="AE" name="Émirats Arabes Unis" flag="🇦🇪" multilingual="false">
+<bouquet country="AE" name="Émirats Arabes Unis" flag="" multilingual="false">
   <national>
     <station name="Dubai Eye 103.8" url="https://gbradio.cdn.tibus.net/U105?aw_0_1st.playerId=wireless-website&amp;_=477645" genre="ARN - News, Talk &amp; Business Dubai" />
     <station name="Virgin Radio Dubai 104.4" url="https://assets.wireless.radio/audio/georestriction-barkers/virgin-stations.mp3" genre="ARN - The UAE's Number 1 Hit Music Station" />

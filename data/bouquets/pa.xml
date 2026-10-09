@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="PA" name="Panama" flag="🇵🇦" multilingual="false">
+<bouquet country="PA" name="Panama" flag="" multilingual="false">
   <national>
     <station name="SERTV Radio Nacional" url="https://a11.asurahosting.com:8760/radio.mp3" genre="La radio estatal panameña" />
     <station name="Radio Panamá 94.5" url="http://dreamsiteradiocp.com:8082/stream" genre="La voz de Panamá" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="CU" name="Cuba" flag="🇨🇺" multilingual="false">
+<bouquet country="CU" name="Cuba" flag="" multilingual="false">
   <national>
     <station name="Radio Rebelde" url="https://securestreams7.autopo.st/?uri=https://icecast.teveo.cu/kHKL7tWd" genre="ICRT - Al ritmo de la vida (Noticias &amp; Deporte)" />
     <station name="Radio Progreso" url="https://securestreams7.autopo.st/?uri=https://icecast.teveo.cu/XjfW7qWN" genre="ICRT - La onda de la alegría (Música tradicional)" />

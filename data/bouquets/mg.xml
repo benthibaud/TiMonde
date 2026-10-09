@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="MG" name="Madagascar" flag="🇲🇬" multilingual="false">
+<bouquet country="MG" name="Madagascar" flag="" multilingual="false">
   <national>
     <station name="Radio Nationale Malagasy (RNM)" url="http://rdj966.net:8000/rdj966.mp3" genre="Antenne nationale officielle d'Anosy" />
     <station name="Radio Don Bosco Madagascar" url="http://onair15.xdevel.com:9248/;stream.mp3" genre="La voix de l'espérance / Éducative" />

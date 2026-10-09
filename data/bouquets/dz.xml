@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="DZ" name="Algérie" flag="🇩🇿" multilingual="false">
+<bouquet country="DZ" name="Algérie" flag="" multilingual="false">
   <national>
     <station name="Radio Algérie Chaîne 3" url="https://listen.radioking.com/radio/6640/stream/347" genre="EBR - Francophone, Info &amp; Musique" />
     <station name="Radio Algérie Chaîne 1" url="https://listen.radioking.com/radio/6640/stream/347" genre="EBR - القناة الأولى (Arabe / Généraliste)" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="NP" name="Népal" flag="🇳🇵" multilingual="false">
+<bouquet country="NP" name="Népal" flag="" multilingual="false">
   <national>
     <station name="Radio Nepal" url="https://stream.live.vc.bbcmedia.co.uk/bbc_nepali_radio" genre="The Voice of the Nation from Kathmandu" />
     <station name="Radio Kantipur" url="https://radio-broadcast.ekantipur.com/stream" genre="The Pioneer Private Station" />

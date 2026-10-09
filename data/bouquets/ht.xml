@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="HT" name="Haïti" flag="🇭🇹" multilingual="false">
+<bouquet country="HT" name="Haïti" flag="" multilingual="false">
   <national>
     <station name="Radio Nationale d'Haïti (RNH)" url="http://das-edge93-live365-dal05.cdnstream.com/a15951" genre="La voix officielle de la République d'Haïti" />
     <station name="Radio Caraïbes FM" url="http://das-edge93-live365-dal05.cdnstream.com/a15951" genre="La station la plus populaire de Port-au-Prince" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="MT" name="Malte" flag="🇲🇹" multilingual="false">
+<bouquet country="MT" name="Malte" flag="" multilingual="false">
   <national>
     <station name="Radju Malta" url="http://dreamsiteradiocp.com:8102/index.html?sid=1" genre="PBS - Aħbarijiet &amp; Kulturali" />
     <station name="Radju Malta 2" url="http://dreamsiteradiocp.com:8102/index.html?sid=1" genre="PBS - Mużika Maltija &amp; Edukazzjoni" />

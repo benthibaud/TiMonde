@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="US" name="États-Unis" flag="🇺🇸" multilingual="false">
+<bouquet country="US" name="États-Unis" flag="" multilingual="false">
   <national>
     <station name="NPR 24 Hour Program Stream" url="https://npr-ice.streamguys1.com/live.mp3" genre="NPR - News, Analysis &amp; Talk" />
     <station name="WNYC 93.9 FM" url="https://fm939.wnyc.org/wnycfm-web" genre="New York Public Radio &amp; Culture" />

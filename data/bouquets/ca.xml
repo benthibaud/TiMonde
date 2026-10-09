@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="CA" name="Canada" flag="🇨🇦" multilingual="true">
+<bouquet country="CA" name="Canada" flag="" multilingual="true">
   <community id="FR" name="Québec &amp; Francophonie (Français)">
     <national>
       <station name="ICI Radio-Canada Première" url="https://rcavliveaudio.akamaized.net/hls/live/2006635/P-2QMTL0_MTL/master.m3u8" genre="Actualité &amp; Société" />

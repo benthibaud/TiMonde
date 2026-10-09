@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="DE" name="Allemagne" flag="🇩🇪" multilingual="false">
+<bouquet country="DE" name="Allemagne" flag="" multilingual="false">
   <national>
     <station name="Deutschlandfunk" url="https://d111.rndfnk.com/ard/dlf/01/mp3/128/stream.mp3?cid=01FBPWZ12X2XN8SDSMBZ7X0ZTT&amp;sid=3KPp8kH2rfQeOUsT5g1Myr7VQcw&amp;token=3Gcf2pXnyW6KZBKQMXo64k2q4sKcyaIMb39QbP4uvsU&amp;tvf=d5pFDB6n3BhkMTExLnJuZGZuay5jb20" genre="Dlf - Information &amp; Politik" />
     <station name="Deutschlandfunk Kultur" url="https://d121.rndfnk.com/ard/dlf/02/mp3/128/stream.mp3?cid=01FBPXKD7AYM1NKT2H60NVGHEQ&amp;sid=3KPp8ftZWxbsy3fzOPvtAKn39PB&amp;token=W-CI8d9lfqfdrrSf0TRteh7XhQPc4Klh6_KAO6kmm80&amp;tvf=PV0LDB6n3BhkMTIxLnJuZGZuay5jb20" genre="Dlf - Kultur &amp; Feuilleton" />

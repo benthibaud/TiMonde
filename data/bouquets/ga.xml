@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="GA" name="Gabon" flag="🇬🇦" multilingual="false">
+<bouquet country="GA" name="Gabon" flag="" multilingual="false">
   <national>
     <station name="Radio Gabon" url="http://s8.voscast.com:7558/;stream.ogg" genre="La chaîne nationale gabonaise" />
     <station name="Urban FM Libreville 104.5" url="http://hydra.cdnstream.com/1534_backup" genre="Le réveil matinal de Libreville" />

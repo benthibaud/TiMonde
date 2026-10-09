@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="TG" name="Togo" flag="🇹🇬" multilingual="false">
+<bouquet country="TG" name="Togo" flag="" multilingual="false">
   <national>
     <station name="Radio Lomé" url="http://dreamsiteradiocp.com:8050/stream" genre="La voix de la nation togolaise" />
     <station name="Radio Kara" url="http://dreamsiteradiocp.com:8050/stream" genre="La radio du nord du Togo" />

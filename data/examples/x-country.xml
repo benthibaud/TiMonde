@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Musique Country &amp; Bluegrass" flag="🤠" category="Exemples">
+<bouquet name="Musique Country &amp; Bluegrass" flag="" category="Exemples">
   <national>
     <station name="NZCMR - Gone Country - Feilding, New Zealand" url="https://usa10.fastcast4u.com:6010/;" genre="Country" />
     <station name="CHOY Fm 99.9 L'Acadie Country" url="https://mbsRadio.leanstream.co/CHOYFM-MP3" genre="Country" />

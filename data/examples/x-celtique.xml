@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Musique Celtique &amp; Irlandaise" flag="☘️" category="Exemples">
+<bouquet name="Musique Celtique &amp; Irlandaise" flag="" category="Exemples">
   <national>
     <station name="CAROCelt - Bretagne" url="https://carocelt.ice.infomaniak.ch/carocelt-128.mp3" genre="Celtique" />
     <station name="Irish Pub Radio" url="http://solid24.streamupsolutions.com:8026/stream" genre="Celtique" />

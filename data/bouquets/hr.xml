@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="HR" name="Croatie" flag="🇭🇷" multilingual="false">
+<bouquet country="HR" name="Croatie" flag="" multilingual="false">
   <national>
     <station name="HRT - HR 1" url="https://live.amperwave.net/manifest/audacy-wfanamaac-hlsc.m3u8" genre="Hrvatski radio - Vijesti &amp; Kultura" />
     <station name="HRT - HR 2" url="https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_radio_two.m3u8" genre="Hrvatski radio - Glazba &amp; Sport" />

@@ -9,10 +9,10 @@ ARCH="x86_64"
 ARCHIVE_NAME="timonde-${VERSION}-linux-${ARCH}.tar.gz"
 STAGING_DIR="${ROOT_DIR}/temp/tarball_staging/timonde-${VERSION}"
 
-echo "📦 Préparation de l'archive binaire universelle : ${ARCHIVE_NAME}"
+echo "Préparation de l'archive binaire universelle : ${ARCHIVE_NAME}"
 
 # 1. Compilation release si nécessaire
-echo "⚡ Compilation release..."
+echo "Compilation release..."
 (cd "${ROOT_DIR}" && cargo build --release)
 
 # 2. Nettoyage et arborescence
@@ -63,10 +63,10 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 if [ "$EUID" -eq 0 ]; then
     PREFIX="/usr/local"
-    echo "🔧 Installation système (pour tous les utilisateurs) dans ${PREFIX}..."
+    echo "Installation système (pour tous les utilisateurs) dans ${PREFIX}..."
 else
     PREFIX="${HOME}/.local"
-    echo "👤 Installation utilisateur dans ${PREFIX} (aucun mot de passe sudo requis)..."
+    echo "Installation utilisateur dans ${PREFIX} (aucun mot de passe sudo requis)..."
 fi
 
 BINDIR="${PREFIX}/bin"
@@ -107,7 +107,7 @@ if command -v update-desktop-database >/dev/null 2>&1; then
 fi
 
 echo ""
-echo "✨ TiMonde 0.1.0 est installé avec succès !"
+echo "TiMonde 0.1.0 est installé avec succès !"
 echo "   - Binaire : ${BINDIR}/timonde"
 echo "   - Vous pouvez le lancer en tapant : timonde"
 echo "   - Ou le retrouver directement dans le menu de vos applications (section Multimédia / Son)."
@@ -121,10 +121,10 @@ set -e
 
 if [ "$EUID" -eq 0 ]; then
     PREFIX="/usr/local"
-    echo "🗑️ Désinstallation système depuis ${PREFIX}..."
+    echo "Désinstallation système depuis ${PREFIX}..."
 else
     PREFIX="${HOME}/.local"
-    echo "🗑️ Désinstallation utilisateur depuis ${PREFIX}..."
+    echo "Désinstallation utilisateur depuis ${PREFIX}..."
 fi
 
 rm -f "${PREFIX}/bin/timonde"
@@ -141,7 +141,7 @@ for mo_dir in "${PREFIX}/share/locale/"*/LC_MESSAGES; do
     rm -f "${mo_dir}/timonde.mo"
 done
 
-echo "✅ TiMonde a été désinstallé proprement sans laisser de trace."
+echo "TiMonde a été désinstallé proprement sans laisser de trace."
 UNINSTALL_EOF
 chmod +x "${STAGING_DIR}/uninstall.sh"
 
@@ -184,6 +184,6 @@ README_EOF
 cp "${ROOT_DIR}/${ARCHIVE_NAME}" "${SCRIPT_DIR}/${ARCHIVE_NAME}"
 rm -rf "${ROOT_DIR}/temp/tarball_staging"
 
-echo "✅ Archive binaire universelle générée avec succès :"
+echo "Archive binaire universelle générée avec succès :"
 echo "   - ${ROOT_DIR}/${ARCHIVE_NAME}"
 echo "   - ${SCRIPT_DIR}/${ARCHIVE_NAME}"

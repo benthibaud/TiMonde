@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="DK" name="Danemark" flag="🇩🇰" multilingual="false">
+<bouquet country="DK" name="Danemark" flag="" multilingual="false">
   <national>
     <station name="DR P1" url="https://live-icy.gss.dr.dk/A/A03H.mp3" genre="Danmarks Radio - Samfund &amp; Debat" />
     <station name="DR P2 Klassisk" url="https://live-icy.gss.dr.dk/A/A04H.mp3" genre="Danmarks Radio - Klassisk musik" />

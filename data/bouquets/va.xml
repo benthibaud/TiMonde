@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="VA" name="Vatican" flag="🇻🇦" multilingual="false">
+<bouquet country="VA" name="Vatican" flag="" multilingual="false">
   <national>
     <station name="Radio Vaticana (Français)" url="https://radio.vaticannews.va/stream-it" genre="Le Saint-Siège - Actualités &amp; Spiritualité" />
     <station name="Radio Vaticana (Italien)" url="https://radio.vaticannews.va/stream-it" genre="La voce del Papa e della Chiesa" />

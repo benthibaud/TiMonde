@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="NC" name="Nouvelle-Calédonie" flag="🇳🇨" multilingual="false">
+<bouquet country="NC" name="Nouvelle-Calédonie" flag="" multilingual="false">
   <national>
     <station name="Nouvelle-Calédonie La 1ère" url="https://nouvelle-caledonie.ice.infomaniak.ch/nouvelle-caledonie-128.mp3" genre="France Télévisions - Le son du Pacifique" />
     <station name="Radio Rythme Bleu (RRB)" url="https://webradio.lagoon.nc/rrb" genre="L'actualité calédonienne &amp; musique" />

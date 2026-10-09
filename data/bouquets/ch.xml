@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="CH" name="Suisse" flag="🇨🇭" multilingual="true">
+<bouquet country="CH" name="Suisse" flag="" multilingual="true">
   <community id="FR" name="Suisse romande (Français)">
     <national>
       <station name="RTS La 1ère" url="http://livestreaming-node-3.srg-ssr.ch/srgssr/la-1ere/mp3/128" genre="SSR - Info &amp; Société" />

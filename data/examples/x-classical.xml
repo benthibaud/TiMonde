@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Musique Classique &amp; Opéra" flag="🎻" category="Exemples">
+<bouquet name="Musique Classique &amp; Opéra" flag="" category="Exemples">
   <national>
     <station name="France Musique - Classique Easy" url="https://icecast.radiofrance.fr/francemusiqueeasyclassique-hifi.aac" genre="Classique" />
     <station name="France Musique - Classique Plus" url="https://icecast.radiofrance.fr/francemusiqueclassiqueplus-hifi.aac" genre="Classique" />

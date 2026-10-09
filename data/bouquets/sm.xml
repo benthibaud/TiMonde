@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="SM" name="Saint-Marin" flag="🇸🇲" multilingual="false">
+<bouquet country="SM" name="Saint-Marin" flag="" multilingual="false">
   <national>
     <station name="Radio San Marino" url="https://d18ufyp3q60j7u.cloudfront.net/radio-ch01/radio-ch02/playlist.m3u8" genre="San Marino RTV - L'emittente di Stato" />
     <station name="Radio San Marino Classic" url="https://d18ufyp3q60j7u.cloudfront.net/radio-ch01/radio-ch02/playlist.m3u8" genre="San Marino RTV - I grandi classici" />

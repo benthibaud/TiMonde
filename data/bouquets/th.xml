@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="TH" name="Thaïlande" flag="🇹🇭" multilingual="false">
+<bouquet country="TH" name="Thaïlande" flag="" multilingual="false">
   <national>
     <station name="MCOT Active Radio 99 FM" url="https://lcdn.mcot.net/RadioLive/smil:fm1005_live.smil/playlist.m3u8" genre="MCOT - เมืองไทยแข็งแรง (Sport &amp; Health)" />
     <station name="Thinking Radio FM 96.5" url="https://live-org-01-cdn.mcot.net/radiocdn_edge/fm965.stream_aac/chunklist.m3u8" genre="MCOT - คลื่นความคิด (News &amp; Society)" />

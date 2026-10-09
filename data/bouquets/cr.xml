@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="CR" name="Costa Rica" flag="🇨🇷" multilingual="false">
+<bouquet country="CR" name="Costa Rica" flag="" multilingual="false">
   <national>
     <station name="Radio Nacional de Costa Rica" url="https://g2qd375ol7an-hls-live.5centscdn.com/Radio/eae835e83c0494a376229f254f7d3392.sdp/chunks.m3u8" genre="SINART - La radio pública costarricense" />
     <station name="Teletica Radio 91.5" url="https://g2qd375ol7an-hls-live.5centscdn.com/Radio/eae835e83c0494a376229f254f7d3392.sdp/chunks.m3u8" genre="Noticias, deportes y opinión" />

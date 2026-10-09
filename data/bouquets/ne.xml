@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="NE" name="Niger" flag="🇳🇪" multilingual="false">
+<bouquet country="NE" name="Niger" flag="" multilingual="false">
   <national>
     <station name="La Voix du Sahel (ORTN)" url="https://s32.myradiostream.com:19618/listen.mp3?nocache=1791468906" genre="L'antenne nationale du Niger" />
     <station name="Radio Anfani Niamey" url="http://icecast.radioblau.de:8000/blau_320_dry" genre="Radio indépendante de proximité" />

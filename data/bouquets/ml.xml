@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="ML" name="Mali" flag="🇲🇱" multilingual="false">
+<bouquet country="ML" name="Mali" flag="" multilingual="false">
   <national>
     <station name="ORTM Radio Nationale du Mali" url="http://london-dedicated.myautodj.com:8862/stream" genre="ORTM - La chaîne de l'unité nationale" />
     <station name="Radio Klédu Bamako" url="http://ice.stream.frequence3.net/frequence3-64.aac" genre="L'information crédible et vérifiée" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="CY" name="Chypre" flag="🇨🇾" multilingual="false">
+<bouquet country="CY" name="Chypre" flag="" multilingual="false">
   <national>
     <station name="CyBC Proto" url="https://r1.cloudskep.com/cybcr/cybc1/playlist.m3u8" genre="ΡΙΚ - Πρώτο Πρόγραμμα / Ενημέρωση" />
     <station name="CyBC Deftero" url="https://r1.cloudskep.com/cybcr/cybc1/playlist.m3u8" genre="ΡΙΚ - Δεύτερο Πρόγραμμα / Μειονότητες" />

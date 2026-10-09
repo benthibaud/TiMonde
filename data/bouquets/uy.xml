@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="UY" name="Uruguay" flag="🇺🇾" multilingual="false">
+<bouquet country="UY" name="Uruguay" flag="" multilingual="false">
   <national>
     <station name="Radio Uruguay 1050 AM" url="https://radios.iwstreaming.uy/8036/stream" genre="RNU - Servicio de Comunicación Audiovisual" />
     <station name="Babel FM 97.1" url="https://radios.iwstreaming.uy/8030/stream" genre="RNU - Jazz, Música del Mundo &amp; Instrumental" />

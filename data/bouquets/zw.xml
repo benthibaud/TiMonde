@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="ZW" name="Zimbabwe" flag="🇿🇼" multilingual="false">
+<bouquet country="ZW" name="Zimbabwe" flag="" multilingual="false">
   <national>
     <station name="ZBC Classic 263" url="https://ice10.securenetsystems.net/OZARK" genre="Zimbabwe Broadcasting Corporation" />
     <station name="Star FM Harare" url="https://edge.iono.fm/xice/159_medium.aac" genre="You are Listening to the Star" />

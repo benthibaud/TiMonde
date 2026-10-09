@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="ET" name="Éthiopie" flag="🇪🇹" multilingual="false">
+<bouquet country="ET" name="Éthiopie" flag="" multilingual="false">
   <national>
     <station name="EBC National Radio" url="https://regiocast.streamabc.net/regc-boblivenational-mp3-192-4076554" genre="Ethiopian Broadcasting Corporation (Amharic)" />
     <station name="Fana FM 98.1 Addis Ababa" url="https://26353.live.streamtheworld.com:443/WPENFMAACIHR.aac" genre="Fana Broadcasting Corporate" />

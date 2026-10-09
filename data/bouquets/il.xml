@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="IL" name="Israël" flag="🇮🇱" multilingual="false">
+<bouquet country="IL" name="Israël" flag="" multilingual="false">
   <national>
     <station name="Kan Tarbut" url="https://27913.live.streamtheworld.com:443/KAN_TARBUT.mp3?dist" genre="Kan - תרבות, ספרות וידע" />
     <station name="Kan Bet" url="https://28563.live.streamtheworld.com/KAN_BET.mp3" genre="Kan - חדשות ואקטואליה" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="NL" name="Pays-Bas" flag="🇳🇱" multilingual="false">
+<bouquet country="NL" name="Pays-Bas" flag="" multilingual="false">
   <national>
     <station name="NPO Radio 1" url="https://icecast.omroep.nl/radio1-bb-mp3" genre="NPO - Nieuws &amp; Sport" />
     <station name="NPO Radio 2" url="https://icecast.omroep.nl/radio2-bb-mp3" genre="NPO - Pop &amp; Evergreens" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="SV" name="Salvador" flag="🇸🇻" multilingual="false">
+<bouquet country="SV" name="Salvador" flag="" multilingual="false">
   <national>
     <station name="Radio Nacional de El Salvador" url="https://streamingcwsradio30.com/8156/stream" genre="Cultura, educación y noticias" />
     <station name="Radio YSKL La Poderosa" url="http://media.dominiocreativo.com:8000/radioyskl" genre="Líder en deportes y actualidad" />

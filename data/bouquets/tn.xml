@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="TN" name="Tunisie" flag="🇹🇳" multilingual="false">
+<bouquet country="TN" name="Tunisie" flag="" multilingual="false">
   <national>
     <station name="RTCI Tunis Chaîne Internationale" url="http://rtstream.tanitweb.com/rtci" genre="Radio Tunisienne - Français &amp; International" />
     <station name="Radio Nationale Tunisienne" url="http://rtstream.tanitweb.com/sfax" genre="Radio Tunisienne - الإذاعة الوطنية" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="ZA" name="Afrique du Sud" flag="🇿🇦" multilingual="false">
+<bouquet country="ZA" name="Afrique du Sud" flag="" multilingual="false">
   <national>
     <station name="SAfm" url="https://sa47.scastream.com.au/live/5ssa_128.stream/playlist.m3u8" genre="SABC - Leading the conversation (News &amp; Talk)" />
     <station name="5FM" url="https://27943.live.streamtheworld.com:443/5FMAAC.aac" genre="SABC - Youth, Pop &amp; Dance Culture" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="SK" name="Slovaquie" flag="🇸🇰" multilingual="false">
+<bouquet country="SK" name="Slovaquie" flag="" multilingual="false">
   <national>
     <station name="Rádio Slovensko" url="http://live.slovakradio.sk:8000/Slovensko_128.mp3" genre="RTVS - Správy &amp; Publicistika" />
     <station name="Rádio Regina" url="http://icecast.stv.livebox.sk/regina-ke_128.mp3" genre="RTVS - Regióny &amp; Tradícia" />

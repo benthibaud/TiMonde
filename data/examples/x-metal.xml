@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Metal &amp; Hard Rock" flag="🎸" category="Exemples">
+<bouquet name="Metal &amp; Hard Rock" flag="" category="Exemples">
   <national>
     <station name="ChroniX Radio" url="https://usa17.fastcast4u.com/proxy/gebacher?mp=/1" genre="Metal / Hard Rock" />
     <station name="ChroniX Aggression" url="http://192.95.18.39:5784/stream/1/" genre="Metal / Hard Rock" />

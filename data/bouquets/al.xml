@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="AL" name="Albanie" flag="🇦🇱" multilingual="false">
+<bouquet country="AL" name="Albanie" flag="" multilingual="false">
   <national>
     <station name="Radio Tirana 1" url="https://stream.rtsh.al/radiotirana1" genre="RTSH - Informacion &amp; Shoqëri" />
     <station name="Radio Tirana 2" url="https://stream.rtsh.al/radiotirana2" genre="RTSH - Muzikë &amp; Rini" />

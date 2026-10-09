@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="PF" name="Polynésie française" flag="🇵🇫" multilingual="false">
+<bouquet country="PF" name="Polynésie française" flag="" multilingual="false">
   <national>
     <station name="Polynésie La 1ère" url="https://polynesie.ice.infomaniak.ch/polynesie-128.mp3" genre="France Télévisions - Info, Musique &amp; Reo Tahiti" />
     <station name="Radio 1 Tahiti" url="https://live.radio1.pf:8443/radio1" genre="La première radio privée de Polynésie" />

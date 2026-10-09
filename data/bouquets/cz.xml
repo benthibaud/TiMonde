@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="CZ" name="Tchéquie" flag="🇨🇿" multilingual="false">
+<bouquet country="CZ" name="Tchéquie" flag="" multilingual="false">
   <national>
     <station name="ČRo Radiožurnál" url="http://icecast8.play.cz/cro1-128.mp3" genre="Český rozhlas - Zprávy &amp; Publicistika" />
     <station name="ČRo Dvojka" url="https://icecast4.play.cz/cro2-128.mp3" genre="Český rozhlas - Rodinné rádio" />

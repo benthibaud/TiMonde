@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="HN" name="Honduras" flag="🇭🇳" multilingual="false">
+<bouquet country="HN" name="Honduras" flag="" multilingual="false">
   <national>
     <station name="Radio Nacional de Honduras" url="https://ice42.securenetsystems.net/HRN" genre="RNH - Identidad nacional" />
     <station name="HRN La Voz de Honduras" url="https://ice42.securenetsystems.net/HRN" genre="La emisora más escuchada del país" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="VN" name="Viêt Nam" flag="🇻🇳" multilingual="false">
+<bouquet country="VN" name="Viêt Nam" flag="" multilingual="false">
   <national>
     <station name="VOV1 - Thời sự" url="https://str.vov.gov.vn/vovlive/vov1vov5Vietnamese.sdp_aac/playlist.m3u8" genre="Đài Tiếng nói Việt Nam - Tin tức &amp; Chính trị" />
     <station name="VOV2 - Văn hóa &amp; Đời sống" url="https://audio-lss.vov.vn/live/vov2.m3u8" genre="Đài Tiếng nói Việt Nam - Văn học &amp; Nghệ thuật" />

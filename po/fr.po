@@ -17,47 +17,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 # --- Main Tray Menu ---
-msgid "▶ Play"
-msgstr "▶ Écouter"
+msgid "Play"
+msgstr "Écouter"
 
-msgid "⏹ Stop"
-msgstr "⏹ Éteindre"
+msgid "Stop"
+msgstr "Éteindre"
 
-msgid "⏳ Connecting..."
-msgstr "⏳ Connexion..."
+msgid "Connecting..."
+msgstr "Connexion..."
 
-msgid "✏️ Edit"
-msgstr "✏️ Éditer"
+msgid "Edit"
+msgstr "Éditer"
 
-msgid "🗑️ Delete"
-msgstr "🗑️ Supprimer"
+msgid "Delete"
+msgstr "Supprimer"
 
-msgid "🎲 Zap to another random station"
-msgstr "🎲 Zapper vers une autre radio au hasard"
+msgid "Zap to another random station"
+msgstr "Zapper vers une autre radio au hasard"
 
-msgid "🎲 Play random radio (Ephemeral discovery)"
-msgstr "🎲 Écouter une radio au hasard (Découverte éphémère)"
+msgid "Play random radio (Ephemeral discovery)"
+msgstr "Écouter une radio au hasard (Découverte éphémère)"
 
-msgid " [🎲 Ephemeral]"
-msgstr " [🎲 Éphémère]"
+msgid "[ Ephemeral]"
+msgstr "[ Éphémère]"
 
 msgid "Options"
 msgstr "Options"
 
-msgid "➕ Add a station..."
-msgstr "➕ Ajouter une radio..."
+msgid "Add a station..."
+msgstr "Ajouter une radio..."
 
-msgid "📻 Discover & Import stations..."
-msgstr "📻 Découvrir & Importer des radios..."
+msgid "Discover & Import stations..."
+msgstr "Découvrir & Importer des radios..."
 
-msgid "📥 Import my files (XML, CSV, JSON, M3U)..."
-msgstr "📥 Importer mes fichiers (XML, CSV, JSON, M3U)..."
+msgid "Import my files (XML, CSV, JSON, M3U)..."
+msgstr "Importer mes fichiers (XML, CSV, JSON, M3U)..."
 
-msgid "↕️ Manage groups and stations..."
-msgstr "↕️ Classer groupes et radios..."
+msgid "Manage groups and stations..."
+msgstr "Classer groupes et radios..."
 
-msgid "📝 Open bookmarks.xml"
-msgstr "📝 Ouvrir bookmarks.xml"
+msgid "Open bookmarks.xml"
+msgstr "Ouvrir bookmarks.xml"
 
 msgid "Quit TiMonde"
 msgstr "Quitter TiMonde"
@@ -65,42 +65,42 @@ msgstr "Quitter TiMonde"
 msgid "Mute (0%)"
 msgstr "Muet (0%)"
 
-msgid "🌙 Sleep timer"
-msgstr "🌙 Minuteur de veille"
+msgid "Sleep timer"
+msgstr "Minuteur de veille"
 
-msgid "⏱️ In 15 minutes"
-msgstr "⏱️ Dans 15 minutes"
+msgid "In 15 minutes"
+msgstr "Dans 15 minutes"
 
-msgid "⏱️ In 30 minutes"
-msgstr "⏱️ Dans 30 minutes"
+msgid "In 30 minutes"
+msgstr "Dans 30 minutes"
 
-msgid "⏱️ In 45 minutes"
-msgstr "⏱️ Dans 45 minutes"
+msgid "In 45 minutes"
+msgstr "Dans 45 minutes"
 
-msgid "⏱️ In 60 minutes (1h)"
-msgstr "⏱️ Dans 60 minutes (1h)"
+msgid "In 60 minutes (1h)"
+msgstr "Dans 60 minutes (1h)"
 
-msgid "❌ Cancel sleep timer"
-msgstr "❌ Annuler la mise en veille"
+msgid "Cancel sleep timer"
+msgstr "Annuler la mise en veille"
 
 # --- Discovery Window (browse_bouquets.py) ---
-msgid "📻 Discover & Import stations (TiMonde)"
-msgstr "📻 Découvrir & Importer des radios (TiMonde)"
+msgid "Discover & Import stations (TiMonde)"
+msgstr "Découvrir & Importer des radios (TiMonde)"
 
-msgid "⭐ Verified DAB+ Bouquets"
-msgstr "⭐ Bouquets vérifiés (DAB+)"
+msgid "Verified DAB+ Bouquets"
+msgstr "Bouquets vérifiés (DAB+)"
 
-msgid "🔎 Radio-Browser Search"
-msgstr "🔎 Recherche Radio-Browser"
+msgid "Radio-Browser Search"
+msgstr "Recherche Radio-Browser"
 
-msgid "📂 Sample Files"
-msgstr "📂 Fichiers exemples"
+msgid "Sample Files"
+msgstr "Fichiers exemples"
 
-msgid "📥 Import my files"
-msgstr "📥 Importer mes fichiers"
+msgid "Import my files"
+msgstr "Importer mes fichiers"
 
-msgid "<b>🌍 Country:</b>"
-msgstr "<b>🌍 Pays :</b>"
+msgid "<b> Country:</b>"
+msgstr "<b> Pays :</b>"
 
 msgid "<b>Language:</b>"
 msgstr "<b>Langue :</b>"
@@ -123,39 +123,39 @@ msgstr "Tout cocher"
 msgid "Deselect all"
 msgstr "Tout décocher"
 
-msgid "➕ Import into favorites"
-msgstr "➕ Importer dans mes favoris"
+msgid "Import into favorites"
+msgstr "Importer dans mes favoris"
 
 msgid "Close"
 msgstr "Fermer"
 
 # --- Edit Window (edit_station.py) ---
-msgid "➕ Add a station (TiMonde)"
-msgstr "➕ Ajouter une station (TiMonde)"
+msgid "Add a station (TiMonde)"
+msgstr "Ajouter une station (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
 msgstr "<b>Entrez les informations de la nouvelle radio :</b>"
 
-msgid "➕ Add to my stations"
-msgstr "➕ Ajouter à mes radios"
+msgid "Add to my stations"
+msgstr "Ajouter à mes radios"
 
-msgid "⭐ Save station to favorites (TiMonde)"
-msgstr "⭐ Enregistrer la radio dans mes favoris (TiMonde)"
+msgid "Save station to favorites (TiMonde)"
+msgstr "Enregistrer la radio dans mes favoris (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
 msgstr "<b>Conserver cette radio découverte au hasard dans vos favoris :</b>"
 
-msgid "⭐ Keep in favorites"
-msgstr "⭐ Conserver dans mes favoris"
+msgid "Keep in favorites"
+msgstr "Conserver dans mes favoris"
 
-msgid "✏️ Edit station (TiMonde)"
-msgstr "✏️ Modifier la radio (TiMonde)"
+msgid "Edit station (TiMonde)"
+msgstr "Modifier la radio (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
 msgstr "<b>Modifier les paramètres de la station :</b>"
 
-msgid "💾 Save"
-msgstr "💾 Enregistrer"
+msgid "Save"
+msgstr "Enregistrer"
 
 msgid "Station name:"
 msgstr "Nom de la radio :"
@@ -172,8 +172,8 @@ msgstr "Pays & Fuseau horaire :"
 msgid "Timezone:"
 msgstr "Fuseau horaire :"
 
-msgid "🗑️ Delete this station"
-msgstr "🗑️ Supprimer cette radio"
+msgid "Delete this station"
+msgstr "Supprimer cette radio"
 
 msgid "Cancel"
 msgstr "Annuler"
@@ -185,41 +185,41 @@ msgid "This action will permanently remove this station from your collection."
 msgstr "Cette action retirera définitivement cette station de votre collection."
 
 # --- Group Reorder Window (reorder_groups.py) ---
-msgid "↕️ Manage groups, stations and separators (TiMonde)"
-msgstr "↕️ Gestion des groupes, radios et séparateurs (TiMonde)"
+msgid "Manage groups, stations and separators (TiMonde)"
+msgstr "Gestion des groupes, radios et séparateurs (TiMonde)"
 
-msgid "⬅️ Back to groups"
-msgstr "⬅️ Retour aux groupes"
+msgid "Back to groups"
+msgstr "⬅ Retour aux groupes"
 
-msgid "➕ Add station"
-msgstr "➕ Ajouter radio"
+msgid "Add station"
+msgstr "Ajouter radio"
 
-msgid "📂 Open"
-msgstr "📂 Ouvrir"
+msgid "Open"
+msgstr "Ouvrir"
 
-msgid "📁 New group"
-msgstr "📁 Nouveau groupe"
+msgid "New group"
+msgstr "Nouveau groupe"
 
-msgid "➡️ Move to..."
-msgstr "➡️ Déplacer vers..."
+msgid "Move to..."
+msgstr "Déplacer vers..."
 
-msgid "🔝 Top"
-msgstr "🔝 Premier"
+msgid "Top"
+msgstr "Premier"
 
-msgid "⬆️ Move up"
-msgstr "⬆️ Monter"
+msgid "Move up"
+msgstr "⬆ Monter"
 
-msgid "⬇️ Move down"
-msgstr "⬇️ Descendre"
+msgid "Move down"
+msgstr "⬇ Descendre"
 
-msgid "➕ Separator"
-msgstr "➕ Séparateur"
+msgid "Separator"
+msgstr "Séparateur"
 
-msgid "🔤 Sort A-Z"
-msgstr "🔤 Tri A-Z"
+msgid "Sort A-Z"
+msgstr "Tri A-Z"
 
-msgid "💾 Save and reload"
-msgstr "💾 Enregistrer et recharger"
+msgid "Save and reload"
+msgstr "Enregistrer et recharger"
 
 # --- Time & Astronomical Periods ---
 msgid "Same time"
@@ -246,29 +246,29 @@ msgstr "Demain"
 msgid "Yesterday"
 msgstr "Hier"
 
-msgid "🛠️ Maintenance & Data"
-msgstr "🛠️ Maintenance & Données"
+msgid "Maintenance & Data"
+msgstr "Maintenance & Données"
 
-msgid "🩺 Check streams (dead links)..."
-msgstr "🩺 Vérifier les flux (liens morts)..."
+msgid "Check streams (dead links)..."
+msgstr "Vérifier les flux (liens morts)..."
 
-msgid "📤 Export my stations to CSV..."
-msgstr "📤 Exporter mes radios en CSV..."
+msgid "Export my stations to CSV..."
+msgstr "Exporter mes radios en CSV..."
 
-msgid "🩺 Check streams"
-msgstr "🩺 Vérifier les flux"
+msgid "Check streams"
+msgstr "Vérifier les flux"
 
-msgid "⚠️ Dead links only"
-msgstr "⚠️ Liens morts uniquement"
+msgid "Dead links only"
+msgstr "Liens morts uniquement"
 
-msgid "⚡ Apply redirects"
-msgstr "⚡ Appliquer redirections"
+msgid "Apply redirects"
+msgstr "Appliquer redirections"
 
-msgid "🔍 Repair stream..."
-msgstr "🔍 Réparer flux..."
+msgid "Repair stream..."
+msgstr "Réparer flux..."
 
-msgid "📤 Export to CSV"
-msgstr "📤 Exporter en CSV"
+msgid "Export to CSV"
+msgstr "Exporter en CSV"
 
 msgid "Test stream availability and locate broken links"
 msgstr "Tester la disponibilité en direct de vos radios et repérer les liens morts"
@@ -285,8 +285,8 @@ msgstr "Rechercher automatiquement un flux actif de remplacement sur Radio-Brows
 msgid "Export all stations to CSV spreadsheet format"
 msgstr "Exporter l'ensemble de vos radios au format tableur CSV"
 
-msgid "📤 Export my stations to CSV"
-msgstr "📤 Exporter mes radios en CSV"
+msgid "Export my stations to CSV"
+msgstr "Exporter mes radios en CSV"
 
 msgid "CSV files (*.csv)"
 msgstr "Fichiers CSV (*.csv)"

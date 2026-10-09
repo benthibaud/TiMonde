@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="DJ" name="Djibouti" flag="🇩🇯" multilingual="false">
+<bouquet country="DJ" name="Djibouti" flag="" multilingual="false">
   <national>
     <station name="RTD Radio Djibouti" url="https://radio-rtd.stream.laut.fm/radio-rtd?ref=radiode&amp;t302=2026-10-08_16-14-59&amp;uuid=53390af7-e626-df26-1eba-0670b2652c2f" genre="Radiodiffusion Télévision de Djibouti" />
     </national>

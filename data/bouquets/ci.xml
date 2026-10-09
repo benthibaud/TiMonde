@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="CI" name="Côte d'Ivoire" flag="🇨🇮" multilingual="false">
+<bouquet country="CI" name="Côte d'Ivoire" flag="" multilingual="false">
   <national>
     <station name="Radio Côte d'Ivoire" url="https://cast4.asurahosting.com/proxy/life/stream" genre="RTI - Antenne nationale publique" />
     <station name="Fréquence 2 Côte d'Ivoire" url="https://a.files.bbci.co.uk/ms6/live/3441A116-B12E-4D2F-ACA8-C1984642FA4B/audio/simulcast/hls/nonuk/audio_syndication_low_sbr_v1/aks/bbc_radio_two.m3u8" genre="RTI - Divertissement &amp; Musique" />

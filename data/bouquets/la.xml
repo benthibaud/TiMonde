@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="LA" name="Laos" flag="🇱🇦" multilingual="false">
+<bouquet country="LA" name="Laos" flag="" multilingual="false">
   <national>
     <station name="Lao National Radio" url="https://radio.lnr.org.la/fm103" genre="ວິທະຍຸກະຈາຍສຽງແຫ່ງຊາດລາວ (Vientiane)" />
     </national>

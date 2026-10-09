@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="CL" name="Chili" flag="🇨🇱" multilingual="false">
+<bouquet country="CL" name="Chili" flag="" multilingual="false">
   <national>
     <station name="Radio Cooperativa" url="https://unlimited3-cl.dps.live/cooperativafm/mp3/icecast.audio" genre="La verdad con certeza" />
     <station name="Radio Bío-Bío" url="https://unlimited3-cl.dps.live/biobiopuertomontt/mp3/icecast.audio" genre="El espacio que nos une" />

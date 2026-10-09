@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="TW" name="Taïwan" flag="🇹🇼" multilingual="false">
+<bouquet country="TW" name="Taïwan" flag="" multilingual="false">
   <national>
     <station name="Radio Taiwan International (Français)" url="https://n10-us.rcs.revma.com/h4ta80hbqwuvv?rj-ttl=5&amp;rj-tok=AAABoRvnZB8AlVp7ARz1IcxM3A" genre="RTI - 中央廣播電臺 (Émissions en français)" />
     <station name="Radio Taiwan International (Mandarin)" url="https://n10-us.rcs.revma.com/h4ta80hbqwuvv?rj-ttl=5&amp;rj-tok=AAABoRvnZB8AlVp7ARz1IcxM3A" genre="RTI - 華語新聞與臺灣文化" />

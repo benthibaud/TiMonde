@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="KG" name="Kirghizistan" flag="🇰🇬" multilingual="false">
+<bouquet country="KG" name="Kirghizistan" flag="" multilingual="false">
   <national>
     <station name="Kyrgyz Radiosu" url="https://cdn.radioplayer.kg:8443/obondoru64" genre="Кыргыз Республикасынын улуттук радиосу" />
     <station name="Birinchi Radio" url="https://stream.zeno.fm/2mgt4w4k0heuv" genre="Коомдук биринчи канал" />

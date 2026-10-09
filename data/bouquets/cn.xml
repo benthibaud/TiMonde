@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="CN" name="Chine" flag="🇨🇳" multilingual="false">
+<bouquet country="CN" name="Chine" flag="" multilingual="false">
   <national>
     <station name="CNR Voice of China (中国之声)" url="https://ice10.securenetsystems.net/KFIR" genre="China National Radio - 全国主流新闻" />
     <station name="CNR Voice of Music (音乐之声)" url="https://ice10.securenetsystems.net/KFIR" genre="China National Radio - 流行音乐盛宴" />

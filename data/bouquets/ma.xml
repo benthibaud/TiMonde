@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="MA" name="Maroc" flag="🇲🇦" multilingual="false">
+<bouquet country="MA" name="Maroc" flag="" multilingual="false">
   <national>
     <station name="SNRT Al Idaa Al Watania" url="https://live.amperwave.net/manifest/audacy-kcbsamaac-llhlsc.m3u8" genre="SNRT - الإذاعة الوطنية (Information &amp; Société)" />
     <station name="SNRT Chaîne Inter" url="http://wrmi.listen.creek.fm/stream" genre="SNRT - Francophone, Culture &amp; Musique" />

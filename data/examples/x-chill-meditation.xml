@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Cool, New Age &amp; Méditation" flag="🧘" category="Exemples">
+<bouquet name="Cool, New Age &amp; Méditation" flag="" category="Exemples">
   <national>
     <station name="1.FM - Destination SPA" url="https://strm112.1.fm/spa_mobile_mp3" genre="Chill / Méditation" />
     <station name="Anotherplanet.fm ambient radio" url="https://stream.anotherplanet.fm:8000/stream.mp3" genre="Chill / Méditation" />

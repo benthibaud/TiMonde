@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="BE" name="Belgique" flag="🇧🇪" multilingual="true">
+<bouquet country="BE" name="Belgique" flag="" multilingual="true">
   <community id="FR" name="Wallonie &amp; Bruxelles (Français)">
     <national>
       <station name="La Première" url="https://redbeemedia.streamabc.net/redbm-lapremiere-mp3-160-7134387?sABC=6np7n55s%230%2385qq536q651r88556qo2r75134p68734%23ei&amp;aw_0_1st.playerid=rv&amp;amsparams=playerid:rv;skey:1791468895" genre="RTBF - Info &amp; Société" />

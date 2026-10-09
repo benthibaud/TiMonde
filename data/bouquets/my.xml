@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="MY" name="Malaisie" flag="🇲🇾" multilingual="false">
+<bouquet country="MY" name="Malaisie" flag="" multilingual="false">
   <national>
     <station name="Radio Klasik RTM" url="https://22273.live.streamtheworld.com:443/RADIO_KLASIKAAC_SC" genre="RTM - Menggamit Kenangan (Tradisional &amp; Asli)" />
     <station name="Nasional FM RTM" url="http://27223.live.streamtheworld.com:80/NASIONAL_FM.mp3" genre="RTM - Sentiasa Di Hati (Berita &amp; Informasi)" />

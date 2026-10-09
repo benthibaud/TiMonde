@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="AT" name="Autriche" flag="🇦🇹" multilingual="false">
+<bouquet country="AT" name="Autriche" flag="" multilingual="false">
   <national>
     <station name="Ö1" url="https://orf-live.ors-shoutcast.at/oe1-q2a" genre="ORF - Kultur &amp; Information" />
     <station name="Hitradio Ö3" url="https://orf-live.ors-shoutcast.at/oe3-q2a" genre="ORF - Pop &amp; Charts" />

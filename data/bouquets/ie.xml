@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="IE" name="Irlande" flag="🇮🇪" multilingual="false">
+<bouquet country="IE" name="Irlande" flag="" multilingual="false">
   <national>
     <station name="RTÉ Radio 1" url="https://25603.live.streamtheworld.com:443/RTE_1_INT.mp3?tdsdk=rte" genre="RTÉ - News, Talk &amp; Music" />
     <station name="RTÉ 2FM" url="https://25703.live.streamtheworld.com:443/RTE_2FM_INT.mp3?tdsdk=rte" genre="RTÉ - Popular Music &amp; Hits" />

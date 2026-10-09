@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="SE" name="Suède" flag="🇸🇪" multilingual="false">
+<bouquet country="SE" name="Suède" flag="" multilingual="false">
   <national>
     <station name="SR P1" url="https://edge2.sr.se/p1-mp3-96" genre="Sveriges Radio - Nyheter &amp; Samhälle" />
     <station name="SR P2" url="https://edge2.sr.se/p2-mp3-96" genre="Sveriges Radio - Klassisk &amp; Jazz" />

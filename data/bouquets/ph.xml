@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="PH" name="Philippines" flag="🇵🇭" multilingual="false">
+<bouquet country="PH" name="Philippines" flag="" multilingual="false">
   <national>
     <station name="Wish 107.5 Manila" url="https://a9.asurahosting.com/listen/manila_sound_radio/radio.mp3" genre="Your Coolest Musical Experience (Wish Bus Live)" />
     <station name="Monster RX 93.1" url="http://ic3.radiomonster.fm/dance-320" genre="Manila's Hottest Hits &amp; Morning Rush" />

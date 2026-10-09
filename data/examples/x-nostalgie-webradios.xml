@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Webradios Nostalgie" flag="🕺" category="Exemples" country="FR">
+<bouquet name="Webradios Nostalgie" flag="" category="Exemples" country="FR">
   <national>
     <station name="Nostalgie 100% Français 80" url="https://streaming.nrjaudio.fm/ouo6kg7nfibk?origine=fluxradios_Nostalgie-100-Francais-80" genre="Légendes &amp; 80s" />
     <station name="Nostalgie 100% Français 90" url="https://streaming.nrjaudio.fm/oumvgz8fnozc?origine=fluxradios_Nostalgie-100-Francais-90" genre="Légendes &amp; 80s" />

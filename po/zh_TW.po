@@ -11,47 +11,47 @@ msgstr ""
 "Language: zh_TW\n"
 
 # --- Main Tray Menu ---
-msgid "▶ Play"
-msgstr "▶ 播放"
+msgid "Play"
+msgstr "播放"
 
-msgid "⏹ Stop"
-msgstr "⏹ 停止"
+msgid "Stop"
+msgstr "停止"
 
-msgid "⏳ Connecting..."
-msgstr "⏳ 連接中..."
+msgid "Connecting..."
+msgstr "連接中..."
 
-msgid "✏️ Edit"
-msgstr "✏️ 編輯"
+msgid "Edit"
+msgstr "編輯"
 
-msgid "🗑️ Delete"
-msgstr "🗑️ 刪除"
+msgid "Delete"
+msgstr "刪除"
 
-msgid "🎲 Zap to another random station"
-msgstr "🎲 隨機切換到其他電台"
+msgid "Zap to another random station"
+msgstr "隨機切換到其他電台"
 
-msgid "🎲 Play random radio (Ephemeral discovery)"
-msgstr "🎲 隨機收聽電台 (探索)"
+msgid "Play random radio (Ephemeral discovery)"
+msgstr "隨機收聽電台 (探索)"
 
-msgid " [🎲 Ephemeral]"
-msgstr " [🎲 即時]"
+msgid "[ Ephemeral]"
+msgstr "[ 即時]"
 
 msgid "Options"
 msgstr "選項"
 
-msgid "➕ Add a station..."
-msgstr "➕ 新增電台..."
+msgid "Add a station..."
+msgstr "新增電台..."
 
-msgid "📻 Discover & Import stations..."
-msgstr "📻 探索與匯入電台..."
+msgid "Discover & Import stations..."
+msgstr "探索與匯入電台..."
 
-msgid "📥 Import my files (XML, CSV, JSON, M3U)..."
-msgstr "📥 匯入本機檔案 (XML, CSV, JSON, M3U)..."
+msgid "Import my files (XML, CSV, JSON, M3U)..."
+msgstr "匯入本機檔案 (XML, CSV, JSON, M3U)..."
 
-msgid "↕️ Manage groups and stations..."
-msgstr "↕️ 管理分組與電台..."
+msgid "Manage groups and stations..."
+msgstr "管理分組與電台..."
 
-msgid "📝 Open bookmarks.xml"
-msgstr "📝 開啟 bookmarks.xml"
+msgid "Open bookmarks.xml"
+msgstr "開啟 bookmarks.xml"
 
 msgid "Quit TiMonde"
 msgstr "結束 TiMonde"
@@ -59,42 +59,42 @@ msgstr "結束 TiMonde"
 msgid "Mute (0%)"
 msgstr "靜音 (0%)"
 
-msgid "🌙 Sleep timer"
-msgstr "🌙 睡眠定時器"
+msgid "Sleep timer"
+msgstr "睡眠定時器"
 
-msgid "⏱️ In 15 minutes"
-msgstr "⏱️ 15 分鐘後"
+msgid "In 15 minutes"
+msgstr "15 分鐘後"
 
-msgid "⏱️ In 30 minutes"
-msgstr "⏱️ 30 分鐘後"
+msgid "In 30 minutes"
+msgstr "30 分鐘後"
 
-msgid "⏱️ In 45 minutes"
-msgstr "⏱️ 45 分鐘後"
+msgid "In 45 minutes"
+msgstr "45 分鐘後"
 
-msgid "⏱️ In 60 minutes (1h)"
-msgstr "⏱️ 60 分鐘後 (1小時)"
+msgid "In 60 minutes (1h)"
+msgstr "60 分鐘後 (1小時)"
 
-msgid "❌ Cancel sleep timer"
-msgstr "❌ 取消睡眠定時"
+msgid "Cancel sleep timer"
+msgstr "取消睡眠定時"
 
 # --- Discovery Window (browse_bouquets.py) ---
-msgid "📻 Discover & Import stations (TiMonde)"
-msgstr "📻 探索與匯入電台 (TiMonde)"
+msgid "Discover & Import stations (TiMonde)"
+msgstr "探索與匯入電台 (TiMonde)"
 
-msgid "⭐ Verified DAB+ Bouquets"
-msgstr "⭐ 官方精選 DAB+ 專輯"
+msgid "Verified DAB+ Bouquets"
+msgstr "官方精選 DAB+ 專輯"
 
-msgid "🔎 Radio-Browser Search"
-msgstr "🔎 Radio-Browser 線上搜尋"
+msgid "Radio-Browser Search"
+msgstr "Radio-Browser 線上搜尋"
 
-msgid "📂 Sample Files"
-msgstr "📂 範例檔案"
+msgid "Sample Files"
+msgstr "範例檔案"
 
-msgid "📥 Import my files"
-msgstr "📥 匯入本機檔案"
+msgid "Import my files"
+msgstr "匯入本機檔案"
 
-msgid "<b>🌍 Country:</b>"
-msgstr "<b>🌍 國家:</b>"
+msgid "<b> Country:</b>"
+msgstr "<b> 國家:</b>"
 
 msgid "<b>Language:</b>"
 msgstr "<b>語言:</b>"
@@ -117,39 +117,39 @@ msgstr "全選"
 msgid "Deselect all"
 msgstr "取消全選"
 
-msgid "➕ Import into favorites"
-msgstr "➕ 匯入至我的最愛"
+msgid "Import into favorites"
+msgstr "匯入至我的最愛"
 
 msgid "Close"
 msgstr "關閉"
 
 # --- Edit Window (edit_station.py) ---
-msgid "➕ Add a station (TiMonde)"
-msgstr "➕ 新增電台 (TiMonde)"
+msgid "Add a station (TiMonde)"
+msgstr "新增電台 (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
 msgstr "<b>輸入新電台詳細資訊:</b>"
 
-msgid "➕ Add to my stations"
-msgstr "➕ 新增至我的電台"
+msgid "Add to my stations"
+msgstr "新增至我的電台"
 
-msgid "⭐ Save station to favorites (TiMonde)"
-msgstr "⭐ 儲存電台至我的最愛 (TiMonde)"
+msgid "Save station to favorites (TiMonde)"
+msgstr "儲存電台至我的最愛 (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
 msgstr "<b>將此探索電台保留在我的最愛中:</b>"
 
-msgid "⭐ Keep in favorites"
-msgstr "⭐ 保留在我的最愛"
+msgid "Keep in favorites"
+msgstr "保留在我的最愛"
 
-msgid "✏️ Edit station (TiMonde)"
-msgstr "✏️ 編輯電台 (TiMonde)"
+msgid "Edit station (TiMonde)"
+msgstr "編輯電台 (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
 msgstr "<b>編輯電台設定:</b>"
 
-msgid "💾 Save"
-msgstr "💾 儲存"
+msgid "Save"
+msgstr "儲存"
 
 msgid "Station name:"
 msgstr "電台名稱:"
@@ -166,8 +166,8 @@ msgstr "國家與時區:"
 msgid "Timezone:"
 msgstr "時區:"
 
-msgid "🗑️ Delete this station"
-msgstr "🗑️ 刪除此電台"
+msgid "Delete this station"
+msgstr "刪除此電台"
 
 msgid "Cancel"
 msgstr "取消"
@@ -179,41 +179,41 @@ msgid "This action will permanently remove this station from your collection."
 msgstr "此操作將永久從您的收藏中移除該電台。"
 
 # --- Group Reorder Window (reorder_groups.py) ---
-msgid "↕️ Manage groups, stations and separators (TiMonde)"
-msgstr "↕️ 管理分組、電台與分隔線 (TiMonde)"
+msgid "Manage groups, stations and separators (TiMonde)"
+msgstr "管理分組、電台與分隔線 (TiMonde)"
 
-msgid "⬅️ Back to groups"
-msgstr "⬅️ 返回分組列表"
+msgid "Back to groups"
+msgstr "⬅ 返回分組列表"
 
-msgid "➕ Add station"
-msgstr "➕ 新增電台"
+msgid "Add station"
+msgstr "新增電台"
 
-msgid "📂 Open"
-msgstr "📂 開啟"
+msgid "Open"
+msgstr "開啟"
 
-msgid "📁 New group"
-msgstr "📁 新增分組"
+msgid "New group"
+msgstr "新增分組"
 
-msgid "➡️ Move to..."
-msgstr "➡️ 移動至..."
+msgid "Move to..."
+msgstr "移動至..."
 
-msgid "🔝 Top"
-msgstr "🔝 置頂"
+msgid "Top"
+msgstr "置頂"
 
-msgid "⬆️ Move up"
-msgstr "⬆️ 上移"
+msgid "Move up"
+msgstr "⬆ 上移"
 
-msgid "⬇️ Move down"
-msgstr "⬇️ 下移"
+msgid "Move down"
+msgstr "⬇ 下移"
 
-msgid "➕ Separator"
-msgstr "➕ 分隔線"
+msgid "Separator"
+msgstr "分隔線"
 
-msgid "🔤 Sort A-Z"
-msgstr "🔤 依名稱排序 A-Z"
+msgid "Sort A-Z"
+msgstr "依名稱排序 A-Z"
 
-msgid "💾 Save and reload"
-msgstr "💾 儲存並重新載入"
+msgid "Save and reload"
+msgstr "儲存並重新載入"
 
 # --- Time & Astronomical Periods ---
 msgid "Same time"
@@ -240,29 +240,29 @@ msgstr "明天"
 msgid "Yesterday"
 msgstr "昨天"
 
-msgid "🛠️ Maintenance & Data"
-msgstr "🛠️ 維護與資料"
+msgid "Maintenance & Data"
+msgstr "維護與資料"
 
-msgid "🩺 Check streams (dead links)..."
-msgstr "🩺 檢查串流 (失效連結)..."
+msgid "Check streams (dead links)..."
+msgstr "檢查串流 (失效連結)..."
 
-msgid "📤 Export my stations to CSV..."
-msgstr "📤 匯出電台為 CSV..."
+msgid "Export my stations to CSV..."
+msgstr "匯出電台為 CSV..."
 
-msgid "🩺 Check streams"
-msgstr "🩺 檢查串流"
+msgid "Check streams"
+msgstr "檢查串流"
 
-msgid "⚠️ Dead links only"
-msgstr "⚠️ 僅失效連結"
+msgid "Dead links only"
+msgstr "僅失效連結"
 
-msgid "⚡ Apply redirects"
-msgstr "⚡ 套用重新導向"
+msgid "Apply redirects"
+msgstr "套用重新導向"
 
-msgid "🔍 Repair stream..."
-msgstr "🔍 修復串流..."
+msgid "Repair stream..."
+msgstr "修復串流..."
 
-msgid "📤 Export to CSV"
-msgstr "📤 匯出為 CSV"
+msgid "Export to CSV"
+msgstr "匯出為 CSV"
 
 msgid "Test stream availability and locate broken links"
 msgstr "測試串流可用性並尋找失效連結"
@@ -279,8 +279,8 @@ msgstr "在 Radio-Browser 搜尋可用的替代串流"
 msgid "Export all stations to CSV spreadsheet format"
 msgstr "將所有電台匯出為 CSV 試算表格式"
 
-msgid "📤 Export my stations to CSV"
-msgstr "📤 匯出電台為 CSV"
+msgid "Export my stations to CSV"
+msgstr "匯出電台為 CSV"
 
 msgid "CSV files (*.csv)"
 msgstr "CSV 檔案 (*.csv)"

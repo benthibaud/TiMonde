@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="MC" name="Monaco" flag="🇲🇨" multilingual="false">
+<bouquet country="MC" name="Monaco" flag="" multilingual="false">
   <national>
     <station name="Radio Monaco" url="https://radiomonaco.ice.infomaniak.ch/radiomonaco-128.mp3" genre="La radio de la Principauté / Électro &amp; Pop" />
     <station name="Riviera Radio 106.5" url="https://yellowradio.ice.infomaniak.ch/yellow01.mp3" genre="Monaco &amp; French Riviera English Radio" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="SG" name="Singapour" flag="🇸🇬" multilingual="false">
+<bouquet country="SG" name="Singapour" flag="" multilingual="false">
   <national>
     <station name="CNA938" url="https://22903.live.streamtheworld.com:443/938NOW_PREM.aac" genre="Mediacorp - News, Business &amp; Current Affairs" />
     <station name="Gold 905" url="http://28453.live.streamtheworld.com:80/GOLD905AAC.aac" genre="Mediacorp - Sounds Good, Feels Good (Classics)" />

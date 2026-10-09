@@ -10,47 +10,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl\n"
 
-msgid "▶ Play"
-msgstr "▶ Afspelen"
+msgid "Play"
+msgstr "Afspelen"
 
-msgid "⏹ Stop"
-msgstr "⏹ Stoppen"
+msgid "Stop"
+msgstr "Stoppen"
 
-msgid "⏳ Connecting..."
-msgstr "⏳ Verbinden..."
+msgid "Connecting..."
+msgstr "Verbinden..."
 
-msgid "✏️ Edit"
-msgstr "✏️ Bewerken"
+msgid "Edit"
+msgstr "Bewerken"
 
-msgid "🗑️ Delete"
-msgstr "🗑️ Verwijderen"
+msgid "Delete"
+msgstr "Verwijderen"
 
-msgid "🎲 Zap to another random station"
-msgstr "🎲 Naar een andere willekeurige zender"
+msgid "Zap to another random station"
+msgstr "Naar een andere willekeurige zender"
 
-msgid "🎲 Play random radio (Ephemeral discovery)"
-msgstr "🎲 Luister naar willekeurige radio (Ontdekking)"
+msgid "Play random radio (Ephemeral discovery)"
+msgstr "Luister naar willekeurige radio (Ontdekking)"
 
-msgid " [🎲 Ephemeral]"
-msgstr " [🎲 Tijdelijk]"
+msgid "[ Ephemeral]"
+msgstr "[ Tijdelijk]"
 
 msgid "Options"
 msgstr "Opties"
 
-msgid "➕ Add a station..."
-msgstr "➕ Zender toevoegen..."
+msgid "Add a station..."
+msgstr "Zender toevoegen..."
 
-msgid "📻 Discover & Import stations..."
-msgstr "📻 Zenders ontdekken & importeren..."
+msgid "Discover & Import stations..."
+msgstr "Zenders ontdekken & importeren..."
 
-msgid "📥 Import my files (XML, CSV, JSON, M3U)..."
-msgstr "📥 Mijn bestanden importeren (XML, CSV, JSON, M3U)..."
+msgid "Import my files (XML, CSV, JSON, M3U)..."
+msgstr "Mijn bestanden importeren (XML, CSV, JSON, M3U)..."
 
-msgid "↕️ Manage groups and stations..."
-msgstr "↕️ Groepen en zenders beheren..."
+msgid "Manage groups and stations..."
+msgstr "Groepen en zenders beheren..."
 
-msgid "📝 Open bookmarks.xml"
-msgstr "📝 bookmarks.xml openen"
+msgid "Open bookmarks.xml"
+msgstr "bookmarks.xml openen"
 
 msgid "Quit TiMonde"
 msgstr "TiMonde afsluiten"
@@ -58,41 +58,41 @@ msgstr "TiMonde afsluiten"
 msgid "Mute (0%)"
 msgstr "Dempen (0%)"
 
-msgid "🌙 Sleep timer"
-msgstr "🌙 Slaaptimer"
+msgid "Sleep timer"
+msgstr "Slaaptimer"
 
-msgid "⏱️ In 15 minutes"
-msgstr "⏱️ Over 15 minuten"
+msgid "In 15 minutes"
+msgstr "Over 15 minuten"
 
-msgid "⏱️ In 30 minutes"
-msgstr "⏱️ Over 30 minuten"
+msgid "In 30 minutes"
+msgstr "Over 30 minuten"
 
-msgid "⏱️ In 45 minutes"
-msgstr "⏱️ Over 45 minuten"
+msgid "In 45 minutes"
+msgstr "Over 45 minuten"
 
-msgid "⏱️ In 60 minutes (1h)"
-msgstr "⏱️ Over 60 minuten (1u)"
+msgid "In 60 minutes (1h)"
+msgstr "Over 60 minuten (1u)"
 
-msgid "❌ Cancel sleep timer"
-msgstr "❌ Slaaptimer annuleren"
+msgid "Cancel sleep timer"
+msgstr "Slaaptimer annuleren"
 
-msgid "📻 Discover & Import stations (TiMonde)"
-msgstr "📻 Zenders ontdekken & importeren (TiMonde)"
+msgid "Discover & Import stations (TiMonde)"
+msgstr "Zenders ontdekken & importeren (TiMonde)"
 
-msgid "⭐ Verified DAB+ Bouquets"
-msgstr "⭐ Geverifieerde DAB+ boeketten"
+msgid "Verified DAB+ Bouquets"
+msgstr "Geverifieerde DAB+ boeketten"
 
-msgid "🔎 Radio-Browser Search"
-msgstr "🔎 Zoeken in Radio-Browser"
+msgid "Radio-Browser Search"
+msgstr "Zoeken in Radio-Browser"
 
-msgid "📂 Sample Files"
-msgstr "📂 Voorbeeldbestanden"
+msgid "Sample Files"
+msgstr "Voorbeeldbestanden"
 
-msgid "📥 Import my files"
-msgstr "📥 Mijn bestanden importeren"
+msgid "Import my files"
+msgstr "Mijn bestanden importeren"
 
-msgid "<b>🌍 Country:</b>"
-msgstr "<b>🌍 Land:</b>"
+msgid "<b> Country:</b>"
+msgstr "<b> Land:</b>"
 
 msgid "<b>Language:</b>"
 msgstr "<b>Taal:</b>"
@@ -115,38 +115,38 @@ msgstr "Alles selecteren"
 msgid "Deselect all"
 msgstr "Alles deselecteren"
 
-msgid "➕ Import into favorites"
-msgstr "➕ Importeren in favorieten"
+msgid "Import into favorites"
+msgstr "Importeren in favorieten"
 
 msgid "Close"
 msgstr "Sluiten"
 
-msgid "➕ Add a station (TiMonde)"
-msgstr "➕ Zender toevoegen (TiMonde)"
+msgid "Add a station (TiMonde)"
+msgstr "Zender toevoegen (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
 msgstr "<b>Voer gegevens van de nieuwe zender in:</b>"
 
-msgid "➕ Add to my stations"
-msgstr "➕ Aan mijn zenders toevoegen"
+msgid "Add to my stations"
+msgstr "Aan mijn zenders toevoegen"
 
-msgid "⭐ Save station to favorites (TiMonde)"
-msgstr "⭐ Zender opslaan in favorieten (TiMonde)"
+msgid "Save station to favorites (TiMonde)"
+msgstr "Zender opslaan in favorieten (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
 msgstr "<b>Bewaar deze zender in uw favorieten:</b>"
 
-msgid "⭐ Keep in favorites"
-msgstr "⭐ In favorieten bewaren"
+msgid "Keep in favorites"
+msgstr "In favorieten bewaren"
 
-msgid "✏️ Edit station (TiMonde)"
-msgstr "✏️ Zender bewerken (TiMonde)"
+msgid "Edit station (TiMonde)"
+msgstr "Zender bewerken (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
 msgstr "<b>Zenderinstellingen bewerken:</b>"
 
-msgid "💾 Save"
-msgstr "💾 Opslaan"
+msgid "Save"
+msgstr "Opslaan"
 
 msgid "Station name:"
 msgstr "Zendernaam:"
@@ -163,8 +163,8 @@ msgstr "Land & tijdzone:"
 msgid "Timezone:"
 msgstr "Tijdzone:"
 
-msgid "🗑️ Delete this station"
-msgstr "🗑️ Deze zender verwijderen"
+msgid "Delete this station"
+msgstr "Deze zender verwijderen"
 
 msgid "Cancel"
 msgstr "Annuleren"
@@ -175,41 +175,41 @@ msgstr "« {} » uit favorieten verwijderen?"
 msgid "This action will permanently remove this station from your collection."
 msgstr "Hiermee verwijdert u deze zender definitief uit uw verzameling."
 
-msgid "↕️ Manage groups, stations and separators (TiMonde)"
-msgstr "↕️ Beheer van groepen, zenders en scheiders (TiMonde)"
+msgid "Manage groups, stations and separators (TiMonde)"
+msgstr "Beheer van groepen, zenders en scheiders (TiMonde)"
 
-msgid "⬅️ Back to groups"
-msgstr "⬅️ Terug naar groepen"
+msgid "Back to groups"
+msgstr "⬅ Terug naar groepen"
 
-msgid "➕ Add station"
-msgstr "➕ Zender toevoegen"
+msgid "Add station"
+msgstr "Zender toevoegen"
 
-msgid "📂 Open"
-msgstr "📂 Openen"
+msgid "Open"
+msgstr "Openen"
 
-msgid "📁 New group"
-msgstr "📁 Nieuwe groep"
+msgid "New group"
+msgstr "Nieuwe groep"
 
-msgid "➡️ Move to..."
-msgstr "➡️ Verplaatsen naar..."
+msgid "Move to..."
+msgstr "Verplaatsen naar..."
 
-msgid "🔝 Top"
-msgstr "🔝 Bovenaan"
+msgid "Top"
+msgstr "Bovenaan"
 
-msgid "⬆️ Move up"
-msgstr "⬆️ Omhoog"
+msgid "Move up"
+msgstr "⬆ Omhoog"
 
-msgid "⬇️ Move down"
-msgstr "⬇️ Omlaag"
+msgid "Move down"
+msgstr "⬇ Omlaag"
 
-msgid "➕ Separator"
-msgstr "➕ Scheidingsteken"
+msgid "Separator"
+msgstr "Scheidingsteken"
 
-msgid "🔤 Sort A-Z"
-msgstr "🔤 Sorteren A-Z"
+msgid "Sort A-Z"
+msgstr "Sorteren A-Z"
 
-msgid "💾 Save and reload"
-msgstr "💾 Opslaan en herladen"
+msgid "Save and reload"
+msgstr "Opslaan en herladen"
 
 msgid "Same time"
 msgstr "Zelfde tijd"
@@ -235,29 +235,29 @@ msgstr "Morgen"
 msgid "Yesterday"
 msgstr "Gisteren"
 
-msgid "🛠️ Maintenance & Data"
-msgstr "🛠️ Onderhoud & Gegevens"
+msgid "Maintenance & Data"
+msgstr "Onderhoud & Gegevens"
 
-msgid "🩺 Check streams (dead links)..."
-msgstr "🩺 Streams controleren (dode links)..."
+msgid "Check streams (dead links)..."
+msgstr "Streams controleren (dode links)..."
 
-msgid "📤 Export my stations to CSV..."
-msgstr "📤 Mijn zenders exporteren naar CSV..."
+msgid "Export my stations to CSV..."
+msgstr "Mijn zenders exporteren naar CSV..."
 
-msgid "🩺 Check streams"
-msgstr "🩺 Streams controleren"
+msgid "Check streams"
+msgstr "Streams controleren"
 
-msgid "⚠️ Dead links only"
-msgstr "⚠️ Alleen dode links"
+msgid "Dead links only"
+msgstr "Alleen dode links"
 
-msgid "⚡ Apply redirects"
-msgstr "⚡ Omleidingen toepassen"
+msgid "Apply redirects"
+msgstr "Omleidingen toepassen"
 
-msgid "🔍 Repair stream..."
-msgstr "🔍 Stream herstellen..."
+msgid "Repair stream..."
+msgstr "Stream herstellen..."
 
-msgid "📤 Export to CSV"
-msgstr "📤 Exporteren naar CSV"
+msgid "Export to CSV"
+msgstr "Exporteren naar CSV"
 
 msgid "Test stream availability and locate broken links"
 msgstr "Controleer stream-beschikbaarheid en vind verbroken links"
@@ -274,8 +274,8 @@ msgstr "Zoek een werkende vervangende stream op Radio-Browser"
 msgid "Export all stations to CSV spreadsheet format"
 msgstr "Alle zenders exporteren naar CSV-werkbladformaat"
 
-msgid "📤 Export my stations to CSV"
-msgstr "📤 Mijn zenders exporteren naar CSV"
+msgid "Export my stations to CSV"
+msgstr "Mijn zenders exporteren naar CSV"
 
 msgid "CSV files (*.csv)"
 msgstr "CSV-bestanden (*.csv)"

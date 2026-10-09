@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="PT" name="Portugal" flag="🇵🇹" multilingual="false">
+<bouquet country="PT" name="Portugal" flag="" multilingual="false">
   <national>
     <station name="Antena 1" url="https://radiocast.rtp.pt/antena180a.mp3" genre="RTP - Informação &amp; Cultura" />
     <station name="Antena 2" url="https://radiocast.rtp.pt/antena280a.mp3" genre="RTP - Música Erudita &amp; Jazz" />

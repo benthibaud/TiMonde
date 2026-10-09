@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="MZ" name="Mozambique" flag="🇲🇿" multilingual="false">
+<bouquet country="MZ" name="Mozambique" flag="" multilingual="false">
   <national>
     <station name="Rádio Moçambique (Antena Nacional)" url="https://node.stream-africa.com:8443/AntenaNacional" genre="RM - Unindo a nação de Maputo ao Rovuma" />
     <station name="LM Radio Maputo" url="https://edge.iono.fm/xice/392_medium.mp3" genre="Lifetime Music / Hits of Yesterday" />

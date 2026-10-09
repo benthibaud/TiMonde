@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="BA" name="Bosnie-Herzégovine" flag="🇧🇦" multilingual="false">
+<bouquet country="BA" name="Bosnie-Herzégovine" flag="" multilingual="false">
   <national>
     <station name="BHRT BH Radio 1" url="https://live.amperwave.net/manifest/audacy-wfanamaac-hlsc.m3u8" genre="BHRT - Javni radio servis BiH" />
     <station name="Radio Sarajevo" url="https://443-1.autopo.st/45?type=http" genre="Urbani radio / Glas Sarajeva" />

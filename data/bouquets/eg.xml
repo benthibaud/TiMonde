@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="EG" name="Égypte" flag="🇪🇬" multilingual="false">
+<bouquet country="EG" name="Égypte" flag="" multilingual="false">
   <national>
     <station name="Holy Quran Radio Cairo" url="https://radio.xecod.com/station/quran-cairo" genre="ERTU - إذاعة القرآن الكريم من القاهرة" />
     <station name="Sawt Al Arab" url="https://live.amperwave.net/manifest/audacy-kcbsamaac-llhlsc.m3u8" genre="ERTU - صوت العرب (La voix des Arabes)" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="AU" name="Australie" flag="🇦🇺" multilingual="false">
+<bouquet country="AU" name="Australie" flag="" multilingual="false">
   <national>
     <station name="ABC NewsRadio" url="http://abc.streamguys1.com/live/newsradio/icecast.audio" genre="ABC - 24/7 National News &amp; Parliament" />
     <station name="triple j" url="http://abc.streamguys1.com/live/triplejnsw/icecast.audio" genre="ABC - We Love Australian Music / Alternative" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Jazz, Blues &amp; Soul" flag="🎷" category="Exemples">
+<bouquet name="Jazz, Blues &amp; Soul" flag="" category="Exemples">
   <national>
     <station name="Jazz Radio" url="http://jazzradio.ice.infomaniak.ch/jazzradio-high.aac" genre="Jazz &amp; Blues" />
     <station name="Black Music" url="https://jazzblackmusic.ice.infomaniak.ch/jazzblackmusic-high.aac" genre="Jazz &amp; Blues" />

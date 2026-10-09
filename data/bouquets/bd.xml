@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="BD" name="Bangladesh" flag="🇧🇩" multilingual="false">
+<bouquet country="BD" name="Bangladesh" flag="" multilingual="false">
   <national>
     <station name="Bangladesh Betar" url="https://stream.zeno.fm/2jgt4w4k0heuv" genre="National Public Radio / Bangla Culture" />
     <station name="Radio Foorti Dhaka" url="https://listen.radioking.com/radio/1743/stream/125" genre="Spreading Joy / 88.0 FM" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="LB" name="Liban" flag="🇱🇧" multilingual="false">
+<bouquet country="LB" name="Liban" flag="" multilingual="false">
   <national>
     <station name="Radio Liban 98.1 FM (Français)" url="https://edge.mixlr.com/channel/qtqeb" genre="Radio nationale libanaise francophone &amp; Culture" />
     <station name="Voice of Lebanon (VDL 100.5)" url="https://l3.itworkscdn.net/itwaudio/9054/stream" genre="صوت لبنان - Actualités politiques &amp; Débats" />

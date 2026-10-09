@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="CG" name="Congo-Brazzaville" flag="🇨🇬" multilingual="false">
+<bouquet country="CG" name="Congo-Brazzaville" flag="" multilingual="false">
   <national>
     <station name="Radio Congo" url="https://dreamsiteradiocp2.com/proxy/rmrepdemcongo?mp=/stream" genre="Télé Congo / Radio nationale de Brazzaville" />
     <station name="BBlack Radio Congo" url="https://stream.zeno.fm/6dgt4w4k0heuv" genre="Afrobeat et Rumba congolaise" />

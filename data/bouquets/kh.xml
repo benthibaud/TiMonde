@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="KH" name="Cambodge" flag="🇰🇭" multilingual="false">
+<bouquet country="KH" name="Cambodge" flag="" multilingual="false">
   <national>
     <station name="RNK National Radio of Cambodia" url="https://playerservices.streamtheworld.com/api/livestream-redirect/WIXVFM.mp3" genre="វិទ្យុជាតិកម្ពុជា - ព័ត៌មាន និងសង្គម" />
     <station name="Vayo FM Phnom Penh" url="https://stream.zeno.fm/5kgt4w4k0heuv" genre="Khmer Music &amp; Society" />

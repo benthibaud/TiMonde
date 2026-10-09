@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Musique Cajun &amp; Louisiane" flag="🪗" category="Exemples">
+<bouquet name="Musique Cajun &amp; Louisiane" flag="" category="Exemples">
   <national>
     <station name="KBON (Louisiana)" url="https://ice64.securenetsystems.net/KBON" genre="Cajun / Acadie" />
     <station name="Mustang 107.1 - Louisiana" url="https://ice6.securenetsystems.net/KOGM" genre="Cajun / Acadie" />

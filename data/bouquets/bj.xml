@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="BJ" name="Bénin" flag="🇧🇯" multilingual="false">
+<bouquet country="BJ" name="Bénin" flag="" multilingual="false">
   <national>
     <station name="ORTB Radio Bénin" url="https://listen.radioking.com/radio/47608/stream/84430" genre="L'antenne nationale de l'ORTB" />
     <station name="Cotonou FM" url="https://stream.zeno.fm/6cgt4w4k0heuv" genre="La radio urbaine de Cotonou" />

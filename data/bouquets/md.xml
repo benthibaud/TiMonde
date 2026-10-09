@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="MD" name="Moldavie" flag="🇲🇩" multilingual="false">
+<bouquet country="MD" name="Moldavie" flag="" multilingual="false">
   <national>
     <station name="Radio Moldova Actualități" url="http://37.233.41.76:8000/lovefm" genre="TRM - Postul public național" />
     <station name="Radio Moldova Muzical" url="http://radiolive.trm.md:8000/RM-muzical-256" genre="TRM - Muzică clasică &amp; Cultură" />

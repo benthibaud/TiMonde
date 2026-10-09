@@ -455,11 +455,11 @@ mod tests {
         // Calcul de l'heure locale pour chaque station enrichie
         let time_fr = crate::timezone::get_local_time_for_country(root.subgroups[0].stations[0].country.as_deref().unwrap()).unwrap();
         assert_eq!(time_fr.country_name, "France");
-        assert_eq!(time_fr.flag, "🇫🇷");
+        assert_eq!(time_fr.flag, "");
 
         let time_jp = crate::timezone::get_local_time_for_country(root.subgroups[0].stations[2].country.as_deref().unwrap()).unwrap();
         assert_eq!(time_jp.country_name, "Japon");
-        assert_eq!(time_jp.flag, "🇯🇵");
+        assert_eq!(time_jp.flag, "");
 
         // Sauvegarde et relecture XML
         let temp_dir = std::env::temp_dir();

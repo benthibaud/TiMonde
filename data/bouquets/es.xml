@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="ES" name="Espagne" flag="🇪🇸" multilingual="false">
+<bouquet country="ES" name="Espagne" flag="" multilingual="false">
   <national>
     <station name="Cadena SER" url="http://25703.live.streamtheworld.com:80/CADENASER.mp3" genre="Información &amp; Sociedad" />
     <station name="COPE" url="http://wecast12-h-cloud.flumotion.com/copesedes/sevilla.mp3" genre="Generalista / Deportes" />

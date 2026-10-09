@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="KZ" name="Kazakhstan" flag="🇰🇿" multilingual="false">
+<bouquet country="KZ" name="Kazakhstan" flag="" multilingual="false">
   <national>
     <station name="Qazaq Radiosy" url="https://radio-streams.kaztrk.kz/qazradio/qazradio/icecast.audio" genre="Qazaqstan - Ұлттық радио арнасы (Service public)" />
     <station name="Radio Shalkar" url="https://listen9.myradio24.com/5967" genre="Qazaqstan - Төл мәдениетіміздің айнасы (Culture &amp; Histoire)" />

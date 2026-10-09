@@ -136,11 +136,9 @@ pub fn add_station_to_group(
         return Err(format!("Le flux ({}) est déjà présent dans vos favoris", clean_url));
     }
 
-    let mut report = ImportReport::default();
     let dest_group = match target_group {
-        Some(tg) if !tg.trim().is_empty() && !tg.eq_ignore_ascii_case("root") => {
-            let idx = get_or_create_subgroup_idx(root, tg.trim(), &mut report);
-            &mut root.subgroups[idx]
+        Some(tg) if !tg.trim().is_empty() && !tg.eq_ignore_ascii_case("root") && tg.trim() != "/" => {
+            root.get_or_create_subgroup_hierarchy(tg.trim())
         }
         _ => root,
     };
@@ -615,5 +613,36 @@ FIP,https://icecast.radiofrance.fr/fip-hifi.aac,FR";
         assert_eq!(imported_root.subgroups[0].stations[0].country.as_deref(), Some("UK"));
 
         let _ = std::fs::remove_file(temp_file);
+    }
+
+    #[test]
+    fn test_add_station_with_slash_conventions() {
+        let mut root = Group::new("root");
+
+        // 1. Racine avec "/" ou None
+        let st_root1 = Station::new("Radio Racine 1", "https://root1.stream/live");
+        assert!(add_station_to_group(&mut root, st_root1, Some("/")).is_ok());
+        assert_eq!(root.stations.len(), 1);
+        assert_eq!(root.stations[0].name, "Radio Racine 1");
+
+        // 2. Groupe principal avec "/Gabon"
+        let st_gabon = Station::new("Radio Gabon", "https://gabon.stream/live");
+        assert!(add_station_to_group(&mut root, st_gabon, Some("/Gabon")).is_ok());
+        let gabon = root.subgroups.iter().find(|g| g.name == "Gabon").unwrap();
+        assert_eq!(gabon.stations[0].name, "Radio Gabon");
+
+        // 3. Sous-groupe hiérarchique avec "/France/Bretagne"
+        let st_bretagne = Station::new("Radio Bro Gwened", "https://bretagne.stream/live");
+        assert!(add_station_to_group(&mut root, st_bretagne, Some("/France/Bretagne")).is_ok());
+        let france = root.subgroups.iter().find(|g| g.name == "France").unwrap();
+        let bretagne = france.subgroups.iter().find(|g| g.name == "Bretagne").unwrap();
+        assert_eq!(bretagne.stations[0].name, "Radio Bro Gwened");
+
+        // 4. Sous-groupe sans slash initial "Belgique/NL"
+        let st_vrt = Station::new("VRT Radio 1", "https://vrt.stream/live");
+        assert!(add_station_to_group(&mut root, st_vrt, Some("Belgique/NL")).is_ok());
+        let belgique = root.subgroups.iter().find(|g| g.name == "Belgique").unwrap();
+        let nl = belgique.subgroups.iter().find(|g| g.name == "NL").unwrap();
+        assert_eq!(nl.stations[0].name, "VRT Radio 1");
     }
 }

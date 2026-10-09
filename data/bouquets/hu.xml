@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="HU" name="Hongrie" flag="🇭🇺" multilingual="false">
+<bouquet country="HU" name="Hongrie" flag="" multilingual="false">
   <national>
     <station name="Kossuth Rádió" url="http://mr-stream.mediaconnect.hu/4734/mr1.aac" genre="MTVA - Hírek &amp; Közélet" />
     <station name="Petőfi Rádió" url="http://mr-stream.mediaconnect.hu/4737/mr2.aac" genre="MTVA - Magyar könnyűzene" />

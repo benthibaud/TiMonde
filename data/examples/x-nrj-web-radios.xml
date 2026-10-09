@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Webradios NRJ" flag="🔥" category="Exemples" country="FR">
+<bouquet name="Webradios NRJ" flag="" category="Exemples" country="FR">
   <national>
     <station name="NRJ (Paris)" url="https://streaming.nrjaudio.fm/oumvmk8fnozc?origine=rd_https_allnrj" genre="Hits / Pop / Urban" />
     <station name="NRJ Manu le 6-9" url="https://streaming.nrjaudio.fm/our7shvukkaq?origine=fluxradios_NRJ-Manu-le-6-9" genre="Hits / Pop / Urban" />

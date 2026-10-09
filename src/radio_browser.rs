@@ -40,15 +40,19 @@ pub struct SearchFilter {
     pub limit: usize,
 }
 
-/// Envoie une notification discrète sur le bureau via notify-send
+/// Envoie une notification discrète et silencieuse sur le bureau via notify-send (sans interrompre la musique)
 pub fn notify(title: &str, body: &str) {
     let _ = Command::new("notify-send")
         .arg("-a")
         .arg("TiMonde")
         .arg("-i")
         .arg("audio-speakers")
+        .arg("-h")
+        .arg("boolean:suppress-sound:true")
         .arg(title)
         .arg(body)
+        .stdout(std::process::Stdio::null())
+        .stderr(std::process::Stdio::null())
         .spawn();
 }
 

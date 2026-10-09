@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="IN" name="Inde" flag="🇮🇳" multilingual="false">
+<bouquet country="IN" name="Inde" flag="" multilingual="false">
   <national>
     <station name="AIR Vividh Bharati" url="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8" genre="All India Radio - The Golden Hits of Indian Cinema" />
     <station name="AIR National Channel" url="https://emf-seg001267.cdnstream1.com/seg001267-i64.aac?platform=tunein&amp;city=cholet&amp;country=france&amp;geo_api=abstract_ip&amp;latitude=47.0577&amp;longitude=-0.8842&amp;opawg_browser_name=chrome&amp;opawg_device_category=computer&amp;opawg_device_name=other-computer&amp;region=pays-de-la-loire&amp;segment=001267&amp;t=1&amp;k=_XYvHrib-l0AXLvry1F70I4CTYEB0XLKmeU_HT_YXxs6jji3ybx0xxP3Bpol_zeMIeRzYqrpv8MXU9sXgHCThfl8OTMEItjaDQ49_rkN-AG8T9MmKLxvwdcXblW_1npsFg" genre="All India Radio - Classical &amp; Heritage" />

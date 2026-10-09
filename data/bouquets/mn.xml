@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="MN" name="Mongolie" flag="🇲🇳" multilingual="false">
+<bouquet country="MN" name="Mongolie" flag="" multilingual="false">
   <national>
     <station name="MNB Mongolian National Broadcaster" url="https://regiocast.streamabc.net/regc-boblivenational-mp3-192-4076554" genre="Монголын үндэсний олон нийтийн радио" />
     <station name="Lavain Egshig" url="https://stream.zeno.fm/3kgt4w4k0heuv" genre="Уламжлалт ардын хөгжим" />

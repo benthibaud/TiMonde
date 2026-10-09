@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="GH" name="Ghana" flag="🇬🇭" multilingual="false">
+<bouquet country="GH" name="Ghana" flag="" multilingual="false">
   <national>
     <station name="GBC Radio 1 (Uniiq FM)" url="https://live.amperwave.net/manifest/audacy-wfanamaac-hlsc.m3u8" genre="Ghana Broadcasting Corporation" />
     <station name="Joy 99.7 FM Accra" url="https://angelfmaccra-atunwadigital.streamguys1.com/angelfmaccra" genre="Discerning Listener's Choice" />

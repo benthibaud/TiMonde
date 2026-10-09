@@ -1,5 +1,5 @@
 Name:           timonde
-Version:        0.1.0
+Version:        0.1.1
 Release:        1%{?dist}
 Summary:        Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux
 
@@ -15,6 +15,7 @@ Requires:       gstreamer1-plugins-base
 Requires:       gstreamer1-plugins-good
 Requires:       gstreamer1-plugins-bad-free
 Requires:       gstreamer1-plugin-libav
+Requires:       glib-networking
 Requires:       python3
 Requires:       python3-gobject
 Requires:       gtk3

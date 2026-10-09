@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="CD" name="RD Congo" flag="🇨🇩" multilingual="false">
+<bouquet country="CD" name="RD Congo" flag="" multilingual="false">
   <national>
     <station name="Radio Okapi" url="http://rs1.radiostreamer.com:8000/;" genre="Fondation Hirondelle &amp; ONU / Paix &amp; Information" />
     <station name="Top Congo FM" url="https://topcongofm2.ice.infomaniak.ch/topcongofm2-64.mp3" genre="La fréquence utile (Kinshasa)" />

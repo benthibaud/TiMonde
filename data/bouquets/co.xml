@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="CO" name="Colombie" flag="🇨🇴" multilingual="false">
+<bouquet country="CO" name="Colombie" flag="" multilingual="false">
   <national>
     <station name="Radio Nacional de Colombia" url="http://shoutcast.rtvc.gov.co:8000/;" genre="RTVC - Paz, Tradición &amp; Cultura" />
     <station name="Radiónica" url="http://shoutcast.rtvc.gov.co:8010/;" genre="RTVC - Rock &amp; Música alternativa" />

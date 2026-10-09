@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Oldies, Rétro &amp; Vintage" flag="📻" category="Exemples">
+<bouquet name="Oldies, Rétro &amp; Vintage" flag="" category="Exemples">
   <national>
     <station name="0 N - 50s" url="https://0n-50s.radionetz.de/0n-50s.mp3" genre="Oldies / Rétro" />
     <station name="Allzic Radio Années 50" url="https://allzic29.ice.infomaniak.ch/allzic29.mp3" genre="Oldies / Rétro" />

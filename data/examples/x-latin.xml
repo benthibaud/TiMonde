@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Musique Latine &amp; Tropicale" flag="💃" category="Exemples">
+<bouquet name="Musique Latine &amp; Tropicale" flag="" category="Exemples">
   <national>
     <station name="Fréquence Tropicale" url="https://ecmanager2.pro-fhi.net:1640/stream" genre="Latino / Salsa" />
     <station name="Alfa Fado" url="https://n23-eu.rcs.revma.com/dd7xenqtkm0uv?rj-ttl=5&amp;rj-tok=AAABoRvndSMApVuuEOjP0bSh5A" genre="Latino / Salsa" />

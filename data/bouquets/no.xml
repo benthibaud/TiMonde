@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="NO" name="Norvège" flag="🇳🇴" multilingual="false">
+<bouquet country="NO" name="Norvège" flag="" multilingual="false">
   <national>
     <station name="NRK P1" url="https://cdn0-47115-liveicecast0.dna.contentdelivery.net/p1_mp3_h" genre="NRK - Nyheter &amp; Distrikt" />
     <station name="NRK P2" url="https://cdn0-47115-liveicecast0.dna.contentdelivery.net/p2_aac_h" genre="NRK - Kultur &amp; Samfunn" />

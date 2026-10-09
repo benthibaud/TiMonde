@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="BI" name="Burundi" flag="🇧🇮" multilingual="false">
+<bouquet country="BI" name="Burundi" flag="" multilingual="false">
   <national>
     <station name="RTNB Radio Nationale" url="https://radio.radiotunisienne.tn/nationale" genre="Radio Télévision Nationale du Burundi" />
     <station name="Radio Bonesha FM" url="http://dreamsiteradiocp.com:8058/stream" genre="La voix de l'espoir et de la réconciliation" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="AR" name="Argentine" flag="🇦🇷" multilingual="false">
+<bouquet country="AR" name="Argentine" flag="" multilingual="false">
   <national>
     <station name="Radio Nacional Argentina (LRA1)" url="https://sa.mp3.icecast.magma.edge-access.net/sc_rad1" genre="Pública - Noticias &amp; Cultura federal" />
     <station name="Nacional Clásica 96.7" url="https://sa.mp3.icecast.magma.edge-access.net/sc_rad37" genre="Pública - Música clásica" />

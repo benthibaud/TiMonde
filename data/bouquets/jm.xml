@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="JM" name="Jamaïque" flag="🇯🇲" multilingual="false">
+<bouquet country="JM" name="Jamaïque" flag="" multilingual="false">
   <national>
     <station name="IRIE FM 107.7" url="https://usa19.fastcast4u.com:7430/;" genre="The Roots Rocking Reggae Station" />
     <station name="RJR 94 FM" url="https://stream.rjr94fm.com/live" genre="Real Jamaican Radio - News &amp; Talk" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Techno, Trance &amp; Électronique" flag="🎛️" category="Exemples">
+<bouquet name="Techno, Trance &amp; Électronique" flag="" category="Exemples">
   <national>
     <station name="Black Rock FM" url="https://ice4.somafm.com/brfm-128-mp3" genre="Techno / Électro" />
     <station name="cliqhop idm" url="https://ice6.somafm.com/cliqhop-128-mp3" genre="Techno / Électro" />

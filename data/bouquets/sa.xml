@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="SA" name="Arabie Saoudite" flag="🇸🇦" multilingual="false">
+<bouquet country="SA" name="Arabie Saoudite" flag="" multilingual="false">
   <national>
     <station name="Holy Quran Radio Riyadh" url="https://radio.mp3islam.com/listen/quran_radio/radio.mp3" genre="SBA - إذاعة القرآن الكريم من الرياض" />
     <station name="Riyadh Radio" url="https://live.kwikmotion.com/sbrksariyadhradiolive/ksariyadhradio/chunks.m3u8" genre="SBA - إذاعة الرياض (Informations &amp; Société)" />

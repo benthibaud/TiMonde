@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="ID" name="Indonésie" flag="🇮🇩" multilingual="false">
+<bouquet country="ID" name="Indonésie" flag="" multilingual="false">
   <national>
     <station name="RRI Programa 3" url="https://d141.rndfnk.com/ard/br/br3/live/mp3/128/stream.mp3?cid=01FBPVFWX7C216W6WY4M4M7MF7&amp;sid=3KPp8iIs1rb7iaMLPfWCCcbFEnR&amp;token=UZaUgKcpXCbuxyA4MJnM1_nhCHasyJHX3O0g-8Bzf_E&amp;tvf=U60VFB6n3BhkMTQxLnJuZGZuay5jb20" genre="Radio Republik Indonesia - Jaringan Berita Nasional" />
     <station name="RRI Programa 1 Jakarta" url="https://live.amperwave.net/manifest/audacy-wfanamaac-hlsc.m3u8" genre="Radio Republik Indonesia - Pemberdayaan Masyarakat" />

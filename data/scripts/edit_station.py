@@ -14,6 +14,12 @@ multi-fuseaux ouvert, France par défaut sur Paris avec accès direct aux Outre-
 import sys
 import os
 
+# Neutralisation inconditionnelle d'IBus pour éviter tout gel des frappes clavier sous GTK3
+# (les sessions de bureau avec socket IBus orpheline ou rompue absorbent et perdent les touches)
+os.environ.pop("GTK_IM_MODULE", None)
+os.environ.pop("XMODIFIERS", None)
+os.environ.pop("QT_IM_MODULE", None)
+
 # Module d internationalisation TiMonde
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:
@@ -70,77 +76,77 @@ def clean_stream_url(url: str) -> str:
 
 # Registre exhaustif des pays avec drapeaux et noms en français
 COUNTRIES_DB = [
-    ("FR", "France", "🇫🇷"),
-    ("GP", "Guadeloupe", "🇬🇵"),
-    ("MQ", "Martinique", "🇲🇶"),
-    ("GF", "Guyane", "🇬🇫"),
-    ("RE", "La Réunion", "🇷🇪"),
-    ("YT", "Mayotte", "🇾🇹"),
-    ("NC", "Nouvelle-Calédonie", "🇳🇨"),
-    ("PF", "Polynésie française", "🇵🇫"),
-    ("PM", "Saint-Pierre-et-Miquelon", "🇵🇲"),
-    ("BL", "Saint-Barthélemy", "🇧🇱"),
-    ("MF", "Saint-Martin", "🇲🇫"),
-    ("WF", "Wallis-et-Futuna", "🇼🇫"),
-    ("BE", "Belgique", "🇧🇪"),
-    ("CH", "Suisse", "🇨🇭"),
-    ("CA", "Canada", "🇨🇦"),
-    ("US", "États-Unis", "🇺🇸"),
-    ("GB", "Royaume-Uni", "🇬🇧"),
-    ("DE", "Allemagne", "🇩🇪"),
-    ("IT", "Italie", "🇮🇹"),
-    ("ES", "Espagne", "🇪🇸"),
-    ("PT", "Portugal", "🇵🇹"),
-    ("NL", "Pays-Bas", "🇳🇱"),
-    ("SN", "Sénégal", "🇸🇳"),
-    ("CI", "Côte d'Ivoire", "🇨🇮"),
-    ("MA", "Maroc", "🇲🇦"),
-    ("DZ", "Algérie", "🇩🇿"),
-    ("TN", "Tunisie", "🇹🇳"),
-    ("ML", "Mali", "🇲🇱"),
-    ("GN", "Guinée", "🇬🇳"),
-    ("CM", "Cameroun", "🇨🇲"),
-    ("MG", "Madagascar", "🇲🇬"),
-    ("HT", "Haïti", "🇭🇹"),
-    ("LU", "Luxembourg", "🇱🇺"),
-    ("MC", "Monaco", "🇲🇨"),
-    ("AD", "Andorre", "🇦🇩"),
-    ("IE", "Irlande", "🇮🇪"),
-    ("AT", "Autriche", "🇦🇹"),
-    ("SE", "Suède", "🇸🇪"),
-    ("NO", "Norvège", "🇳🇴"),
-    ("DK", "Danemark", "🇩🇰"),
-    ("FI", "Finlande", "🇫🇮"),
-    ("IS", "Islande", "🇮🇸"),
-    ("GR", "Grèce", "🇬🇷"),
-    ("PL", "Pologne", "🇵🇱"),
-    ("CZ", "Tchéquie", "🇨🇿"),
-    ("SK", "Slovaquie", "🇸🇰"),
-    ("HU", "Hongrie", "🇭🇺"),
-    ("RO", "Roumanie", "🇷🇴"),
-    ("BG", "Bulgarie", "🇧🇬"),
-    ("HR", "Croatie", "🇭🇷"),
-    ("RS", "Serbie", "🇷🇸"),
-    ("BA", "Bosnie-Herzégovine", "🇧🇦"),
-    ("SI", "Slovénie", "🇸🇮"),
-    ("JP", "Japon", "🇯🇵"),
-    ("CN", "Chine", "🇨🇳"),
-    ("KR", "Corée du Sud", "🇰🇷"),
-    ("IN", "Inde", "🇮🇳"),
-    ("BR", "Brésil", "🇧🇷"),
-    ("AR", "Argentine", "🇦🇷"),
-    ("MX", "Mexique", "🇲🇽"),
-    ("CO", "Colombie", "🇨🇴"),
-    ("CL", "Chili", "🇨🇱"),
-    ("PE", "Pérou", "🇵🇪"),
-    ("AU", "Australie", "🇦🇺"),
-    ("NZ", "Nouvelle-Zélande", "🇳🇿"),
-    ("ZA", "Afrique du Sud", "🇿🇦"),
-    ("RU", "Russie", "🇷🇺"),
-    ("UA", "Ukraine", "🇺🇦"),
-    ("TR", "Turquie", "🇹🇷"),
-    ("IL", "Israël", "🇮🇱"),
-    ("LB", "Liban", "🇱🇧"),
+    ("FR", "France", ""),
+    ("GP", "Guadeloupe", ""),
+    ("MQ", "Martinique", ""),
+    ("GF", "Guyane", ""),
+    ("RE", "La Réunion", ""),
+    ("YT", "Mayotte", ""),
+    ("NC", "Nouvelle-Calédonie", ""),
+    ("PF", "Polynésie française", ""),
+    ("PM", "Saint-Pierre-et-Miquelon", ""),
+    ("BL", "Saint-Barthélemy", ""),
+    ("MF", "Saint-Martin", ""),
+    ("WF", "Wallis-et-Futuna", ""),
+    ("BE", "Belgique", ""),
+    ("CH", "Suisse", ""),
+    ("CA", "Canada", ""),
+    ("US", "États-Unis", ""),
+    ("GB", "Royaume-Uni", ""),
+    ("DE", "Allemagne", ""),
+    ("IT", "Italie", ""),
+    ("ES", "Espagne", ""),
+    ("PT", "Portugal", ""),
+    ("NL", "Pays-Bas", ""),
+    ("SN", "Sénégal", ""),
+    ("CI", "Côte d'Ivoire", ""),
+    ("MA", "Maroc", ""),
+    ("DZ", "Algérie", ""),
+    ("TN", "Tunisie", ""),
+    ("ML", "Mali", ""),
+    ("GN", "Guinée", ""),
+    ("CM", "Cameroun", ""),
+    ("MG", "Madagascar", ""),
+    ("HT", "Haïti", ""),
+    ("LU", "Luxembourg", ""),
+    ("MC", "Monaco", ""),
+    ("AD", "Andorre", ""),
+    ("IE", "Irlande", ""),
+    ("AT", "Autriche", ""),
+    ("SE", "Suède", ""),
+    ("NO", "Norvège", ""),
+    ("DK", "Danemark", ""),
+    ("FI", "Finlande", ""),
+    ("IS", "Islande", ""),
+    ("GR", "Grèce", ""),
+    ("PL", "Pologne", ""),
+    ("CZ", "Tchéquie", ""),
+    ("SK", "Slovaquie", ""),
+    ("HU", "Hongrie", ""),
+    ("RO", "Roumanie", ""),
+    ("BG", "Bulgarie", ""),
+    ("HR", "Croatie", ""),
+    ("RS", "Serbie", ""),
+    ("BA", "Bosnie-Herzégovine", ""),
+    ("SI", "Slovénie", ""),
+    ("JP", "Japon", ""),
+    ("CN", "Chine", ""),
+    ("KR", "Corée du Sud", ""),
+    ("IN", "Inde", ""),
+    ("BR", "Brésil", ""),
+    ("AR", "Argentine", ""),
+    ("MX", "Mexique", ""),
+    ("CO", "Colombie", ""),
+    ("CL", "Chili", ""),
+    ("PE", "Pérou", ""),
+    ("AU", "Australie", ""),
+    ("NZ", "Nouvelle-Zélande", ""),
+    ("ZA", "Afrique du Sud", ""),
+    ("RU", "Russie", ""),
+    ("UA", "Ukraine", ""),
+    ("TR", "Turquie", ""),
+    ("IL", "Israël", ""),
+    ("LB", "Liban", ""),
 ]
 
 # Enrichissement avec tous les pays du monde depuis zone.tab
@@ -157,7 +163,7 @@ def build_countries_registry():
                     parts = line.split("\t")
                     cc = parts[0].strip().upper()
                     if cc not in d:
-                        d[cc] = (cc, "🌐")
+                        d[cc] = (cc, "")
         except Exception:
             pass
     return d
@@ -196,11 +202,11 @@ CUSTOM_MULTI_TZ = {
         ("America/Whitehorse", "America/Whitehorse (Yukon)"),
     ],
     "US": [
-        ("America/New_York", "America/New_York (Est - New York, Floride, DC)"),
-        ("America/Chicago", "America/Chicago (Centre - Chicago, Texas, Louisiane)"),
-        ("America/Denver", "America/Denver (Montagnes - Denver, Colorado)"),
-        ("America/Phoenix", "America/Phoenix (Montagnes - Arizona sans heure d'été)"),
-        ("America/Los_Angeles", "America/Los_Angeles (Pacifique - Californie, Washington)"),
+        ("America/New_York", "America/New_York (Heure de l'Est : Caroline du Nord [NC], NY, FL, DC, GA, VA, PA...)"),
+        ("America/Chicago", "America/Chicago (Heure du Centre : Chicago, Texas, Louisiane, Tennessee, MO...)"),
+        ("America/Denver", "America/Denver (Heure des Montagnes : Denver, Colorado, Utah, NM...)"),
+        ("America/Phoenix", "America/Phoenix (Montagnes sans heure d'été : Arizona)"),
+        ("America/Los_Angeles", "America/Los_Angeles (Heure du Pacifique : Californie, Washington, Oregon...)"),
         ("America/Anchorage", "America/Anchorage (Alaska)"),
         ("Pacific/Honolulu", "Pacific/Honolulu (Hawaï)"),
     ],
@@ -289,28 +295,83 @@ def load_world_timezones() -> dict:
 
 WORLD_TIMEZONES = load_world_timezones()
 
+DEFAULT_WORLD_TIMEZONES = [
+    ("", "(Déduction automatique selon le nom / groupe)"),
+    ("America/New_York", "America/New_York (Heure de l'Est : Caroline du Nord [NC], NY, FL, DC, GA, VA, PA...)"),
+    ("America/Chicago", "America/Chicago (Heure du Centre : Chicago, Texas, Louisiane, Tennessee, MO...)"),
+    ("America/Denver", "America/Denver (Heure des Montagnes : Denver, Colorado, Utah, NM...)"),
+    ("America/Phoenix", "America/Phoenix (Montagnes sans heure d'été : Arizona)"),
+    ("America/Los_Angeles", "America/Los_Angeles (Heure du Pacifique : Californie, Washington, Oregon...)"),
+    ("America/Anchorage", "America/Anchorage (Alaska)"),
+    ("Pacific/Honolulu", "Pacific/Honolulu (Hawaï)"),
+    ("Europe/Paris", "Europe/Paris (France métropolitaine, Belgique, Suisse, Europe centrale)"),
+    ("Europe/London", "Europe/London (Royaume-Uni, Portugal, UTC)"),
+    ("America/Toronto", "America/Toronto (Canada Est - Québec, Ontario)"),
+    ("America/Vancouver", "America/Vancouver (Canada Pacifique)"),
+    ("America/Guadeloupe", "America/Guadeloupe (Antilles - Guadeloupe, Martinique)"),
+    ("Indian/Reunion", "Indian/Reunion (La Réunion)"),
+    ("Pacific/Noumea", "Pacific/Noumea (Nouvelle-Calédonie)"),
+    ("Pacific/Tahiti", "Pacific/Tahiti (Polynésie française)"),
+    ("Asia/Tokyo", "Asia/Tokyo (Japon)"),
+    ("Australia/Sydney", "Australia/Sydney (Australie Est)"),
+]
+
+def make_btn(label_text, icon_name=None, tooltip=None):
+    btn = Gtk.Button()
+    box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+    box.set_halign(Gtk.Align.CENTER)
+    if icon_name:
+        img = Gtk.Image.new_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
+        box.pack_start(img, False, False, 0)
+    lbl = Gtk.Label(label=label_text)
+    box.pack_start(lbl, False, False, 0)
+    btn.add(box)
+    btn._label_widget = lbl
+    if tooltip:
+        btn.set_tooltip_text(tooltip)
+    return btn
+
 
 class EditStationWindow(Gtk.Window):
     def __init__(self, mode="edit", current_name="", current_url="", current_country="", current_timezone="", current_group="", available_groups=None):
         self.mode = mode
         if self.mode == "add":
-            title = _("➕ Add a station (TiMonde)")
+            title = _("Ajouter une radio (TiMonde)")
             header_text = _("<b>Enter new station details:</b>")
-            save_label = _("➕ Add to my stations")
+            save_label = _("Ajouter à mes radios")
+            save_icon = "list-add"
         elif self.mode == "save-ephemeral":
-            title = _("⭐ Save station to favorites (TiMonde)")
+            title = _("Conserver la radio dans les favoris (TiMonde)")
             header_text = _("<b>Keep this randomly discovered station in your favorites:</b>")
-            save_label = _("⭐ Keep in favorites")
+            save_label = _("Conserver dans mes favoris")
+            save_icon = "document-save"
         else:
-            title = _("✏️ Edit station (TiMonde)")
+            title = _("Modifier la radio (TiMonde)")
             header_text = _("<b>Edit station settings:</b>")
-            save_label = _("💾 Save")
+            save_label = _("Enregistrer")
+            save_icon = "document-save"
+        self.save_icon = save_icon
 
         super().__init__(title=title)
         self.set_default_size(580, 360)
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_border_width(14)
-        self.set_icon_name("audio-x-generic")
+        
+        # Icône PNG native
+        for icon_path in [
+            "/usr/share/icons/hicolor/48x48/apps/timonde_on.png",
+            "/usr/share/icons/hicolor/32x32/apps/timonde_on.png",
+            "/usr/share/icons/hicolor/24x24/apps/timonde_on.png",
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "../icons/hicolor/48x48/apps/timonde_on.png"),
+        ]:
+            if os.path.exists(icon_path):
+                try:
+                    self.set_icon_from_file(icon_path)
+                    break
+                except Exception:
+                    pass
+        else:
+            self.set_icon_name("audio-x-generic")
 
         self.saved = False
         self.result_data = None
@@ -360,24 +421,47 @@ class EditStationWindow(Gtk.Window):
         lbl_group.set_halign(Gtk.Align.END)
         grid.attach(lbl_group, 0, 2, 1, 1)
 
-        self.combo_group = Gtk.ComboBoxText()
+        group_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        self.combo_group = Gtk.ComboBoxText.new_with_entry()
+        self.combo_group.append_text("[ / ] (Racine — Sans groupe)")
         if available_groups:
             for g in available_groups:
-                self.combo_group.append_text(g)
+                if g and g not in ("[ / ] (Racine — Sans groupe)", "/"):
+                    self.combo_group.append_text(g)
         if current_group and (not available_groups or current_group not in available_groups):
-            self.combo_group.append_text(current_group)
+            if current_group not in ("[ / ] (Racine — Sans groupe)", "/"):
+                self.combo_group.append_text(current_group)
+
+        entry_group_child = self.combo_group.get_child()
+        if entry_group_child:
+            entry_group_child.set_placeholder_text("Sélectionnez ou tapez (ex: /France/Bretagne ou / pour racine)")
+            entry_group_child.connect("activate", self.on_save_clicked)
 
         if current_group:
-            model = self.combo_group.get_model()
-            for idx, row in enumerate(model):
-                if row[0] == current_group:
-                    self.combo_group.set_active(idx)
-                    break
+            clean_cur = current_group.strip()
+            if clean_cur in ("", "/", "root"):
+                if entry_group_child:
+                    entry_group_child.set_text("/")
+                self.combo_group.set_active(0)
+            else:
+                if entry_group_child:
+                    entry_group_child.set_text(clean_cur)
+                model = self.combo_group.get_model()
+                for idx, row in enumerate(model):
+                    if row[0] == clean_cur:
+                        self.combo_group.set_active(idx)
+                        break
         elif available_groups:
-            self.combo_group.set_active(0)
+            self.combo_group.set_active(1 if len(available_groups) > 0 else 0)
 
         self.combo_group.set_hexpand(True)
-        grid.attach(self.combo_group, 1, 2, 1, 1)
+        group_box.pack_start(self.combo_group, True, True, 0)
+
+        btn_group_help = make_btn("?", "help-browser", "Comment nommer les groupes et sous-groupes (convention Linux /)")
+        btn_group_help.connect("clicked", self.on_show_group_naming_help)
+        group_box.pack_start(btn_group_help, False, False, 0)
+
+        grid.attach(group_box, 1, 2, 1, 1)
 
         # 4. Sélecteur de Pays avec recherche affinante en direct
         lbl_country = Gtk.Label(label="Pays :")
@@ -394,12 +478,12 @@ class EditStationWindow(Gtk.Window):
         # Modèle de complétion : [Recherche, Libellé affiché, Code ISO]
         self.country_store = Gtk.ListStore(str, str, str)
         # 1. Option automatique / non spécifié
-        self.country_store.append(["", "🌐 (Déduction automatique selon le groupe)", ""])
+        self.country_store.append(["", "(Déduction automatique selon le groupe)", ""])
         
         # 2. Liste des pays
         for code, (cname, cflag) in sorted(COUNTRIES_REGISTRY.items(), key=lambda x: (x[1][0] != "France", x[1][0])):
             search_key = f"{cname} {code}".lower()
-            display_label = f"{cflag} {cname} ({code})"
+            display_label = f"[{code}] {cname}"
             self.country_store.append([search_key, display_label, code])
 
         completion = Gtk.EntryCompletion()
@@ -413,7 +497,7 @@ class EditStationWindow(Gtk.Window):
         country_box.pack_start(self.entry_country_search, True, True, 0)
 
         # Bouton pour effacer le pays ou réinitialiser
-        btn_clear_country = Gtk.Button(label="✕")
+        btn_clear_country = Gtk.Button(label="Effacer")
         btn_clear_country.set_tooltip_text("Effacer / Mode automatique")
         btn_clear_country.connect("clicked", lambda b: self.entry_country_search.set_text(""))
         country_box.pack_start(btn_clear_country, False, False, 0)
@@ -438,8 +522,8 @@ class EditStationWindow(Gtk.Window):
 
         # Initialiser le champ de recherche pays avec le pays de départ
         if self.selected_country_code and self.selected_country_code in COUNTRIES_REGISTRY:
-            cname, cflag = COUNTRIES_REGISTRY[self.selected_country_code]
-            self.entry_country_search.set_text(f"{cflag} {cname} ({self.selected_country_code})")
+            cname, _dummy = COUNTRIES_REGISTRY[self.selected_country_code]
+            self.entry_country_search.set_text(f"[{self.selected_country_code}] {cname}")
         elif self.selected_country_code:
             self.entry_country_search.set_text(self.selected_country_code)
 
@@ -451,19 +535,19 @@ class EditStationWindow(Gtk.Window):
         vbox.pack_start(btn_box, False, False, 0)
 
         if self.mode == "edit":
-            btn_delete = Gtk.Button(label=_("🗑️ Delete this station"))
+            btn_delete = make_btn(_("Delete this station"), "edit-delete")
             btn_delete.get_style_context().add_class("destructive-action")
             btn_delete.connect("clicked", self.on_delete_clicked)
             btn_box.pack_start(btn_delete, False, False, 0)
 
-        btn_cancel = Gtk.Button(label=_("Cancel"))
+        btn_cancel = make_btn(_("Cancel"), "process-stop")
         btn_cancel.connect("clicked", self.on_cancel_clicked)
         btn_box.pack_start(btn_cancel, False, False, 0)
 
         spacer = Gtk.Box()
         btn_box.pack_start(spacer, True, True, 0)
 
-        self.btn_save = Gtk.Button(label=save_label)
+        self.btn_save = make_btn(save_label, self.save_icon)
         self.btn_save.get_style_context().add_class("suggested-action")
         self.btn_save.connect("clicked", self.on_save_clicked)
         btn_box.pack_start(self.btn_save, False, False, 0)
@@ -490,61 +574,125 @@ class EditStationWindow(Gtk.Window):
 
     def on_country_match_selected(self, completion, model, tree_iter):
         code = model[tree_iter][2]
+        display_label = model[tree_iter][1]
         self.selected_country_code = code
+        self._updating_country_text = True
+        self.entry_country_search.set_text(display_label)
+        self._updating_country_text = False
         self.populate_timezones_for_country(code)
-        return False
+        return True
 
     def on_country_search_changed(self, entry):
+        if getattr(self, "_updating_country_text", False):
+            return
         raw = entry.get_text().strip()
-        # Détection si l'utilisateur a tapé directement un code ISO ou sélectionné un pays
+        if not raw:
+            self.selected_country_code = ""
+            self.populate_timezones_for_country("")
+            return
+
         found_code = None
-        if "(" in raw and raw.endswith(")"):
-            possible = raw.split("(") [-1].rstrip(")").strip().upper()
-            if possible in COUNTRIES_REGISTRY:
-                found_code = possible
+        # 1. Format crochets [US] ou parenthèses (US)
+        if "[" in raw and "]" in raw:
+            cand = raw.split("[")[-1].split("]")[0].strip().upper()
+            if cand in COUNTRIES_REGISTRY:
+                found_code = cand
+        elif "(" in raw and ")" in raw:
+            cand = raw.split("(") [-1].split(")")[0].strip().upper()
+            if cand in COUNTRIES_REGISTRY:
+                found_code = cand
         elif raw.upper() in COUNTRIES_REGISTRY:
             found_code = raw.upper()
         else:
-            # Recherche par correspondance de préfixe
-            r_lower = raw.lower()
-            for code, (cname, _flag) in COUNTRIES_REGISTRY.items():
-                if cname.lower() == r_lower:
-                    found_code = code
-                    break
+            # 2. Alias et noms usuels insensibles à la casse / aux accents
+            norm = raw.lower().replace("é", "e").replace("è", "e").replace("-", " ")
+            aliases = {
+                "usa": "US",
+                "etats unis": "US",
+                "united states": "US",
+                "north carolina": "US",
+                "caroline du nord": "US",
+                "south carolina": "US",
+                "caroline du sud": "US",
+                "california": "US",
+                "californie": "US",
+                "florida": "US",
+                "floride": "US",
+                "texas": "US",
+                "new york": "US",
+                "georgia": "US",
+                "georgie": "US",
+                "virginia": "US",
+                "virginie": "US",
+                "tennessee": "US",
+                "uk": "GB",
+                "royaume uni": "GB",
+                "angleterre": "GB",
+            }
+            if norm in aliases:
+                found_code = aliases[norm]
+            else:
+                for code, (cname, _flag) in COUNTRIES_REGISTRY.items():
+                    c_norm = cname.lower().replace("é", "e").replace("è", "e").replace("-", " ")
+                    if c_norm == norm or c_norm.startswith(norm):
+                        found_code = code
+                        break
 
-        if found_code != self.selected_country_code:
+        # Si l'utilisateur a tapé une région ou un état spécifique, présélectionner le bon fuseau
+        pref_tz = None
+        lower_raw = raw.lower()
+        if any(w in lower_raw for w in ["north carolina", "caroline du nord", "nc", "florida", "floride", "georgia", "georgie", "new york", "dc", "virginia", "virginie"]):
+            pref_tz = "America/New_York"
+        elif any(w in lower_raw for w in ["california", "californie", "los angeles", "san francisco", "seattle"]):
+            pref_tz = "America/Los_Angeles"
+        elif any(w in lower_raw for w in ["texas", "chicago", "louisiana", "louisiane", "tennessee"]):
+            pref_tz = "America/Chicago"
+        elif any(w in lower_raw for w in ["denver", "colorado", "utah", "montana"]):
+            pref_tz = "America/Denver"
+
+        if found_code != self.selected_country_code or pref_tz:
             self.selected_country_code = found_code or ""
-            self.populate_timezones_for_country(self.selected_country_code)
+            self.populate_timezones_for_country(self.selected_country_code, preserve_tz=pref_tz or self.initial_timezone)
 
     def populate_timezones_for_country(self, country_code, preserve_tz=None):
         """
         Génère la liste déroulante des fuseaux horaires selon le pays choisi :
-        - Mono-fuseau : affiché et grisé (sensitive=False)
-        - Multi-fuseaux : ouvert (sensitive=True)
-        - France (FR) : Europe/Paris par défaut avec sélection directe des territoires d'Outre-mer
+        - Sans pays : sélection libre parmi les principaux fuseaux mondiaux
+        - Mono-fuseau : pré-sélectionné (modifiable)
+        - Multi-fuseaux : liste complète ouverte avec détails clairs (USA, Canada, etc.)
+        - France (FR) : Europe/Paris par défaut avec accès direct aux Outre-mer
         """
         code_upper = (country_code or "").strip().upper()
-        tz_list = WORLD_TIMEZONES.get(code_upper, [])
-
         self.combo_tz.remove_all()
 
+        if not code_upper:
+            for tz_id, label in DEFAULT_WORLD_TIMEZONES:
+                self.combo_tz.append_text(label)
+
+            target_tz = preserve_tz or self.initial_timezone or ""
+            active_index = 0
+            if target_tz:
+                for idx, (tz_id, _lbl) in enumerate(DEFAULT_WORLD_TIMEZONES):
+                    if tz_id.lower() == target_tz.lower():
+                        active_index = idx
+                        break
+
+            self.combo_tz.set_active(active_index)
+            self.combo_tz.set_sensitive(True)
+            self.lbl_tz_hint.set_markup("<small><i>(Déduction automatique ou choix libre)</i></small>")
+            return
+
+        tz_list = WORLD_TIMEZONES.get(code_upper, [])
         if not tz_list:
-            if code_upper:
-                self.combo_tz.append_text(_("(Timezone not defined)"))
-                self.combo_tz.set_active(0)
-                self.combo_tz.set_sensitive(False)
-                self.lbl_tz_hint.set_markup("<small><i>" + _("(Unknown)") + "</i></small>")
-            else:
-                self.combo_tz.append_text(_("(Automatic deduction)"))
-                self.combo_tz.set_active(0)
-                self.combo_tz.set_sensitive(False)
-                self.lbl_tz_hint.set_markup("<small><i>" + _("(Automatic from station)") + "</i></small>")
+            self.combo_tz.append_text(_("(Timezone not defined)"))
+            self.combo_tz.set_active(0)
+            self.combo_tz.set_sensitive(True)
+            self.lbl_tz_hint.set_markup("<small><i>" + _("(Unknown)") + "</i></small>")
             return
 
         for tz_id, label in tz_list:
             self.combo_tz.append_text(label)
 
-        # Pré-sélection
         active_index = 0
         target_tz = preserve_tz or self.initial_timezone or ""
         if target_tz:
@@ -554,20 +702,23 @@ class EditStationWindow(Gtk.Window):
                     break
 
         self.combo_tz.set_active(active_index)
+        self.combo_tz.set_sensitive(True)
 
-        # Application de la règle mono-fuseau vs multi-fuseaux
         if len(tz_list) == 1:
-            self.combo_tz.set_sensitive(False)
             self.lbl_tz_hint.set_markup("<small><i>" + _("(Single inferred timezone)") + "</i></small>")
+        elif code_upper == "FR":
+            self.lbl_tz_hint.set_markup("<small><i>" + _("(Metropolitan or Overseas)") + "</i></small>")
         else:
-            self.combo_tz.set_sensitive(True)
-            if code_upper == "FR":
-                self.lbl_tz_hint.set_markup("<small><i>" + _("(Metropolitan or Overseas)") + "</i></small>")
-            else:
-                self.lbl_tz_hint.set_markup(f"<small><i>({len(tz_list)} fuseaux disponibles)</i></small>")
+            self.lbl_tz_hint.set_markup(f"<small><i>({len(tz_list)} fuseaux disponibles)</i></small>")
 
     def get_selected_timezone_id(self):
         code_upper = (self.selected_country_code or "").strip().upper()
+        if not code_upper:
+            idx = self.combo_tz.get_active()
+            if 0 <= idx < len(DEFAULT_WORLD_TIMEZONES):
+                tz_id = DEFAULT_WORLD_TIMEZONES[idx][0]
+                return tz_id if tz_id else None
+            return None
         tz_list = WORLD_TIMEZONES.get(code_upper, [])
         idx = self.combo_tz.get_active()
         if 0 <= idx < len(tz_list):
@@ -591,7 +742,7 @@ class EditStationWindow(Gtk.Window):
         )
         dialog.format_secondary_text(_("This action will permanently remove this station from your collection."))
         dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
-        btn_del_confirm = dialog.add_button(_("🗑️ Delete"), Gtk.ResponseType.OK)
+        btn_del_confirm = dialog.add_button(_("Supprimer"), Gtk.ResponseType.OK)
         btn_del_confirm.get_style_context().add_class("destructive-action")
 
         response = dialog.run()
@@ -609,12 +760,68 @@ class EditStationWindow(Gtk.Window):
     def on_cancel_clicked(self, widget):
         self.destroy()
 
+    def on_show_group_naming_help(self, widget):
+        dialog = Gtk.MessageDialog(
+            transient_for=self,
+            flags=Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
+            type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.OK,
+            message_format="Organisation des groupes et sous-groupes (Convention Linux)"
+        )
+        dialog.format_secondary_markup(
+            "TiMonde utilise la convention des chemins avec le séparateur <b>/</b> :\n\n"
+            "• <b>/</b> ou <b>(Racine)</b> : Place la radio à la racine du menu (sans aucun groupe).\n"
+            "• <b>/Gabon</b> ou <b>Gabon</b> : Place la radio dans le groupe « Gabon ».\n"
+            "• <b>/France/Bretagne</b> : Place la radio dans le sous-groupe « Bretagne » sous « France ».\n"
+            "• <b>/Belgique/NL</b> : Place la radio dans le sous-groupe « NL » sous « Belgique ».\n"
+            "• <b>France/Radios locales ICI</b> : Sous-groupe à espaces sous « France ».\n\n"
+            "<i>Les groupes et sous-groupes sont créés automatiquement s'ils n'existent pas encore.</i>"
+        )
+        dialog.run()
+        dialog.destroy()
+
     def on_save_clicked(self, widget):
         name = self.entry_name.get_text().strip()
         url = clean_stream_url(self.entry_url.get_text().strip())
         country = self.selected_country_code or None
         timezone = self.get_selected_timezone_id()
-        selected_group = self.combo_group.get_active_text() or self.current_group_orig or ""
+
+        # Si le code pays n'a pas été fixé via sélection mais est présent dans l'entrée texte
+        if not country:
+            raw_c = self.entry_country_search.get_text().strip()
+            if "[" in raw_c and "]" in raw_c:
+                cand = raw_c.split("[")[-1].split("]")[0].strip().upper()
+                if cand in COUNTRIES_REGISTRY:
+                    country = cand
+            elif "(" in raw_c and ")" in raw_c:
+                cand = raw_c.split("(") [-1].split(")")[0].strip().upper()
+                if cand in COUNTRIES_REGISTRY:
+                    country = cand
+            elif raw_c.upper() in COUNTRIES_REGISTRY:
+                country = raw_c.upper()
+
+        # Inférence automatique du pays si un fuseau bien défini a été choisi
+        if not country and timezone:
+            if timezone.startswith("America/New_York") or timezone.startswith("America/Chicago") or timezone.startswith("America/Denver") or timezone.startswith("America/Los_Angeles") or timezone.startswith("America/Phoenix") or timezone.startswith("America/Anchorage") or timezone.startswith("Pacific/Honolulu"):
+                country = "US"
+            elif timezone.startswith("Europe/Paris"):
+                country = "FR"
+            elif timezone.startswith("Europe/London"):
+                country = "GB"
+            elif timezone.startswith("America/Toronto") or timezone.startswith("America/Vancouver") or timezone.startswith("America/Montreal"):
+                country = "CA"
+
+        child_entry = self.combo_group.get_child()
+        custom_grp_txt = child_entry.get_text().strip() if child_entry else ""
+        raw_group = custom_grp_txt or self.combo_group.get_active_text() or self.current_group_orig or ""
+
+        # Normalisation selon la convention Linux avec /
+        clean_grp = raw_group.strip()
+        if clean_grp in ("[ / ] (Racine — Sans groupe)", "/", "root", "(Racine)"):
+            selected_group = ""
+        else:
+            # Enlever les slashes surnuméraires au début et à la fin (ex: "/France/Bretagne/" -> "France/Bretagne")
+            selected_group = clean_grp.strip("/").strip()
 
         if not name or not url:
             return

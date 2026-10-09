@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="IS" name="Islande" flag="🇮🇸" multilingual="false">
+<bouquet country="IS" name="Islande" flag="" multilingual="false">
   <national>
     <station name="RÚV Rás 1" url="http://netradio.ruv.is/ras1.aac" genre="RÚV - Menning &amp; Fréttir" />
     <station name="RÚV Rás 2" url="http://netradio.ruv.is/ras2.mp3" genre="RÚV - Dægurmál &amp; Tónlist" />

@@ -18,7 +18,7 @@ use models::Group;
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
 
-/// Localise le fichier bookmarks.xml de l'utilisateur
+/// Localise le fichier bookmarks.xml de l'utilisateur ou importe un fichier existant (RadioTray-Lite, RadioTray, RadioTray-NG)
 fn find_bookmarks_path() -> PathBuf {
     let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
 
@@ -40,28 +40,85 @@ fn find_bookmarks_path() -> PathBuf {
         return rt_path;
     }
 
+    // 4. Emplacements radiotray-ng (JSON) : importation automatique si présent
+    for rtng_candidate in &[
+        PathBuf::from(&home).join(".local/share/radiotray-ng/bookmarks.json"),
+        PathBuf::from(&home).join(".config/radiotray-ng/bookmarks.json"),
+    ] {
+        if rtng_candidate.exists() {
+            let mut root = Group::new("root");
+            if let Ok(report) = crate::import::import_file(&mut root, rtng_candidate, None) {
+                info!("Importation automatique de radiotray-ng ({} stations) vers {}", report.stations_added, timonde_path.display());
+                if let Some(parent) = timonde_path.parent() {
+                    let _ = std::fs::create_dir_all(parent);
+                }
+                let _ = bookmarks::save_bookmarks(&root, &timonde_path);
+                return timonde_path;
+            }
+        }
+    }
 
     timonde_path
 }
 
-/// Génère un jeu de signets minimal par défaut si aucun fichier n'existe
+/// Génère un jeu de signets vide si aucun fichier n'existe (aucune radio imposée)
 fn create_default_bookmarks(path: &Path) -> Group {
     if let Some(parent) = path.parent() {
         let _ = std::fs::create_dir_all(parent);
     }
 
-    let default_xml = r#"<bookmarks>
-	<group name="Sélection nationale">
-		<bookmark name="France Inter" url="https://icecast.radiofrance.fr/franceinter-midfi.mp3"/>
-		<bookmark name="France Info" url="https://icecast.radiofrance.fr/franceinfo-midfi.mp3"/>
-		<bookmark name="France Culture" url="https://icecast.radiofrance.fr/franceculture-midfi.mp3"/>
-		<bookmark name="FIP" url="https://icecast.radiofrance.fr/fip-midfi.mp3"/>
-		<bookmark name="RTL" url="https://streamer-03.rtl.fr/rtl-1-44-128"/>
-	</group>
-</bookmarks>"#;
+    // Fichier bookmarks vierge pour respecter les choix de l'utilisateur
+    let default_xml = "<bookmarks>\n</bookmarks>\n";
 
     let _ = std::fs::write(path, default_xml);
     bookmarks::parse_bookmarks_reader(default_xml.as_bytes()).unwrap_or_else(|_| Group::new("root"))
+}
+
+/// Vérifie si un démon StatusNotifierWatcher est actif sur D-Bus.
+/// S'il est absent (ex: bureau IceWM ou Fluxbox sous antiX), démarre automatiquement
+/// le pont léger timonde_xembed_bridge.py pour créer une icône XEmbed compatible.
+fn ensure_sni_host() -> Option<std::process::Child> {
+    let has_watcher = if let Ok(connection) = zbus::blocking::Connection::session() {
+        let proxy = zbus::blocking::Proxy::new(
+            &connection,
+            "org.freedesktop.DBus",
+            "/org/freedesktop/DBus",
+            "org.freedesktop.DBus",
+        );
+        if let Ok(proxy) = proxy {
+            let res: Result<bool, _> = proxy.call(
+                "NameHasOwner",
+                &("org.kde.StatusNotifierWatcher",),
+            );
+            res.unwrap_or(false)
+        } else {
+            false
+        }
+    } else {
+        false
+    };
+
+    if !has_watcher {
+        info!("Aucun StatusNotifierWatcher détecté sur le bureau hôte (IceWM/Fluxbox).");
+        let candidates = [
+            "/usr/share/timonde/scripts/timonde_xembed_bridge.py",
+            concat!(env!("CARGO_MANIFEST_DIR"), "/data/scripts/timonde_xembed_bridge.py"),
+        ];
+        for script in &candidates {
+            if Path::new(script).exists() {
+                info!("Activation du pont XEmbed natif : {}", script);
+                if let Ok(child) = std::process::Command::new("python3")
+                    .arg(script)
+                    .spawn()
+                {
+                    // Laisse le temps au script d'enregistrer le nom de service sur D-Bus
+                    std::thread::sleep(std::time::Duration::from_millis(200));
+                    return Some(child);
+                }
+            }
+        }
+    }
+    None
 }
 
 fn main() {
@@ -102,7 +159,7 @@ fn main() {
                 return;
             }
             "--version" | "-v" => {
-                println!("TiMonde 0.1.0");
+                println!("TiMonde {}", env!("CARGO_PKG_VERSION"));
                 return;
             }
             "--search" => {
@@ -138,12 +195,12 @@ fn main() {
                     std::process::exit(1);
                 }
 
-                println!("🔍 Recherche multicritères sur Radio-Browser...");
+                println!("Recherche multicritères sur Radio-Browser...");
                 let results = radio_browser::search_advanced(&filter);
                 if results.is_empty() {
-                    println!("❌ Aucune station trouvée pour ces critères");
+                    println!("Aucune station trouvée pour ces critères");
                 } else {
-                    println!("📻 {} station(s) trouvée(s) :", results.len());
+                    println!("{} station(s) trouvée(s) :", results.len());
                     println!("--------------------------------------------------------------------------------");
                     for (idx, r) in results.iter().enumerate() {
                         let codec = if r.codec.is_empty() { "-" } else { &r.codec };
@@ -155,7 +212,7 @@ fn main() {
                         println!("    URL: {}", r.url_resolved);
                     }
                     println!("--------------------------------------------------------------------------------");
-                    println!("💡 Pour ajouter une station : timonde --add \"<NOM>\" \"<URL>\" [--group \"<GROUPE>\"]");
+                    println!("Pour ajouter une station : timonde --add \"<NOM>\" \"<URL>\" [--group \"<GROUPE>\"]");
                 }
                 return;
             }
@@ -171,7 +228,7 @@ fn main() {
                     eprintln!("Erreur lors de la sauvegarde : {}", e);
                     std::process::exit(1);
                 }
-                println!("✅ Tous les groupes ont été triés par ordre alphabétique (A-Z) dans {:?}", bookmarks_path);
+                println!("Tous les groupes ont été triés par ordre alphabétique (A-Z) dans {:?}", bookmarks_path);
                 return;
             }
             "--move-group" => {
@@ -204,9 +261,9 @@ fn main() {
                         eprintln!("Erreur lors de la sauvegarde : {}", e);
                         std::process::exit(1);
                     }
-                    println!("✅ Groupe '{}' déplacé avec succès !", group_name);
+                    println!("Groupe '{}' déplacé avec succès !", group_name);
                 } else {
-                    println!("ℹ️ Le groupe '{}' n'a pas pu être déplacé (déjà en bordure ou introuvable).", group_name);
+                    println!("Le groupe '{}' n'a pas pu être déplacé (déjà en bordure ou introuvable).", group_name);
                 }
                 return;
             }
@@ -267,7 +324,7 @@ fn main() {
                             eprintln!("Erreur lors de la sauvegarde : {}", e);
                             std::process::exit(1);
                         }
-                        println!("✅ {}", msg);
+                        println!("{}", msg);
                     }
                     Err(e) => {
                         eprintln!("Erreur : {}", e);
@@ -288,21 +345,21 @@ fn main() {
                     match bookmarks::load_bookmarks(&bookmarks_path) {
                         Ok(r) => r,
                         Err(e) => {
-                            eprintln!("❌ Erreur lecture bookmarks ({:?}) : {}", bookmarks_path, e);
+                            eprintln!("Erreur lecture bookmarks ({:?}) : {}", bookmarks_path, e);
                             std::process::exit(1);
                         }
                     }
                 } else {
-                    eprintln!("❌ Aucun fichier de favoris trouvé à l'emplacement {:?}", bookmarks_path);
+                    eprintln!("Aucun fichier de favoris trouvé à l'emplacement {:?}", bookmarks_path);
                     std::process::exit(1);
                 };
 
                 match import::export_to_csv(&root, &out_path) {
                     Ok(count) => {
-                        println!("✅ {} station(s) exportée(s) avec succès dans {:?}", count, out_path);
+                        println!("{} station(s) exportée(s) avec succès dans {:?}", count, out_path);
                     }
                     Err(e) => {
-                        eprintln!("❌ Erreur lors de l'exportation CSV : {}", e);
+                        eprintln!("Erreur lors de l'exportation CSV : {}", e);
                         std::process::exit(1);
                     }
                 }
@@ -326,11 +383,11 @@ fn main() {
                     create_default_bookmarks(&bookmarks_path)
                 };
 
-                println!("📦 Importation depuis : {:?}", file_path);
+                println!("Importation depuis : {:?}", file_path);
                 if let Some(tg) = target_group {
-                    println!("📁 Groupe cible       : {}", tg);
+                    println!("Groupe cible       : {}", tg);
                 } else {
-                    println!("📁 Groupe cible       : (Racine par défaut)");
+                    println!("Groupe cible       : (Racine par défaut)");
                 }
 
                 match import::import_file(&mut root, &file_path, target_group) {
@@ -339,7 +396,7 @@ fn main() {
                             eprintln!("Erreur lors de la sauvegarde : {}", e);
                             std::process::exit(1);
                         }
-                        println!("✅ Importation terminée avec succès dans {:?} :", bookmarks_path);
+                        println!("Importation terminée avec succès dans {:?} :", bookmarks_path);
                         println!("   - {} nouvelle(s) station(s) ajoutée(s)", report.stations_added);
                         println!("   - {} doublon(s) ignoré(s)", report.duplicates_skipped);
                         println!("   - {} groupe(s) créé(s)", report.groups_created);
@@ -404,7 +461,7 @@ fn main() {
 
     // 2. Protection instance unique (évite les doublons d'icônes dans la barre des tâches)
     if mpris::is_instance_running() {
-        println!("ℹ️ TiMonde est déjà actif dans la barre des tâches.");
+        println!("TiMonde est déjà actif dans la barre des tâches.");
         return;
     }
 
@@ -420,7 +477,7 @@ fn main() {
     env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("info")).init();
 
     info!("========================================================");
-    info!("📻 Démarrage de TiMonde (Mode barre des tâches direct)");
+    info!("Démarrage de TiMonde (Mode barre des tâches direct)");
     info!("========================================================");
 
     // 3. Chargement des favoris (avec migration transparente si seul radiotray-ng est présent)
@@ -429,7 +486,7 @@ fn main() {
         info!("Chargement des signets depuis : {:?}", bookmarks_path);
         match load_bookmarks(&bookmarks_path) {
             Ok(group) => {
-                info!("✅ {} stations chargées avec succès !", group.total_stations());
+                info!("{} stations chargées avec succès !", group.total_stations());
                 group
             }
             Err(e) => {
@@ -444,7 +501,7 @@ fn main() {
             info!("Migration automatique depuis radiotray-ng : {:?}", rtng_json);
             let mut new_root = Group::new("root");
             if let Ok(report) = import::import_file(&mut new_root, &rtng_json, None) {
-                info!("✅ {} stations migrées depuis radiotray-ng !", report.stations_added);
+                info!("{} stations migrées depuis radiotray-ng !", report.stations_added);
                 let _ = bookmarks::save_bookmarks(&new_root, &bookmarks_path);
                 new_root
             } else {
@@ -548,12 +605,13 @@ fn main() {
         on_update,
     );
 
-    // 6. Enregistrement de l'icône dans la zone de notification (SNI)
-    // assume_sni_available(true) évite tout blocage/crash si le démon StatusNotifierWatcher
-    // n'est pas encore initialisé ou absent (ex: antiX / IceWM / Kubuntu root sans proxy SNI).
+    // 6. Détection du plateau hôte et pont XEmbed de secours (pour IceWM, Fluxbox, antiX)
+    let _bridge_child = ensure_sni_host();
+
+    // Enregistrement de l'icône dans la zone de notification (SNI)
     let handle = match tray.assume_sni_available(true).spawn() {
         Ok(h) => {
-            info!("✅ Icône StatusNotifierItem enregistrée sur le bureau hôte !");
+            info!("Icône StatusNotifierItem enregistrée sur le bureau hôte !");
             Some(h)
         }
         Err(e) => {
@@ -565,7 +623,7 @@ fn main() {
         *tray_handle_cell.lock().unwrap() = Some(h);
     }
 
-    info!("✨ TiMonde est actif et discret dans la barre des tâches.");
+    info!("TiMonde est actif et discret dans la barre des tâches.");
 
     // 7. Surveillance automatique de bookmarks.xml (rechargement si modification externe)
     {

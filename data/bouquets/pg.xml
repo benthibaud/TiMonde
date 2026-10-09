@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="PG" name="Papouasie-Nouvelle-Guinée" flag="🇵🇬" multilingual="false">
+<bouquet country="PG" name="Papouasie-Nouvelle-Guinée" flag="" multilingual="false">
   <national>
     <station name="NBC National Radio PNG" url="https://tunein.cdnstream1.com/3602_96.mp3" genre="National Broadcasting Corporation of PNG" />
     </national>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="GR" name="Grèce" flag="🇬🇷" multilingual="false">
+<bouquet country="GR" name="Grèce" flag="" multilingual="false">
   <national>
     <station name="ERT Proto Programma" url="https://radiostreaming.ert.gr/ert-proto" genre="ERT - Ενημέρωση &amp; Κοινωνία" />
     <station name="ERT Deftero Programma" url="https://radiostreaming.ert.gr/ert-deftero" genre="ERT - Ελληνική Μουσική" />

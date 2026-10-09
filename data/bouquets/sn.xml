@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="SN" name="Sénégal" flag="🇸🇳" multilingual="false">
+<bouquet country="SN" name="Sénégal" flag="" multilingual="false">
   <national>
     <station name="RTS Radio Sénégal Internationale (RSI)" url="https://stxt-audiostreaming.akamaized.net/hls/live/2117380/couleur3/master.m3u8" genre="RTS - Service public sénégalais" />
     <station name="RFM Sénégal (Radio Futurs Médias)" url="https://wr.lmn.fm/rfm-wr12.aac?aw_0_1st.playerid=lgrdnwsRadiofr" genre="Actualités, Débats &amp; Mbalax" />

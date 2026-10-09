@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="LT" name="Lituanie" flag="🇱🇹" multilingual="false">
+<bouquet country="LT" name="Lituanie" flag="" multilingual="false">
   <national>
     <station name="LRT Radijas" url="https://stream-live.lrt.lt/radijas/master.m3u8" genre="LRT - Žinios &amp; Publicistika" />
     <station name="LRT Klasika" url="https://stream-live.lrt.lt/klasika/master.m3u8" genre="LRT - Klasikinė muzika &amp; Kultūra" />

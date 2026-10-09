@@ -296,6 +296,58 @@ impl Group {
 
         modified
     }
+
+    /// Recherche ou crée récursivement la hiérarchie de sous-groupes selon le chemin avec séparateurs '/'
+    /// Ex: "France/Bretagne" crée ou réutilise le groupe "France", puis crée ou réutilise "Bretagne" à l'intérieur.
+    pub fn get_or_create_subgroup_hierarchy<'a>(&'a mut self, path: &str) -> &'a mut Group {
+        let mut current = self;
+        for part in path.split('/') {
+            let clean = part.trim();
+            if clean.is_empty() || clean.eq_ignore_ascii_case("root") {
+                continue;
+            }
+            let pos = if let Some(idx) = current.subgroups.iter().position(|g| !g.is_separator() && g.name.eq_ignore_ascii_case(clean)) {
+                idx
+            } else {
+                current.subgroups.push(Group::new(clean));
+                current.subgroups.len() - 1
+            };
+            current = &mut current.subgroups[pos];
+        }
+        current
+    }
+
+    /// Collecte récursivement tous les chemins hiérarchiques des groupes (ex: ["France", "France/Bretagne", "Country", "Country/Bluegrass"])
+    pub fn collect_all_group_paths(&self, prefix: &str, out: &mut Vec<String>) {
+        for sub in &self.subgroups {
+            if sub.is_separator() {
+                continue;
+            }
+            let path = if prefix.is_empty() {
+                sub.name.clone()
+            } else {
+                format!("{}/{}", prefix, sub.name)
+            };
+            out.push(path.clone());
+            sub.collect_all_group_paths(&path, out);
+        }
+    }
+
+    /// Extrait (retire et retourne) une station de l'arborescence par son URL ou nom
+    pub fn remove_station_from_tree(&mut self, url: &str, name: &str) -> Option<Station> {
+        let norm_url = crate::models::clean_stream_url(url);
+        if let Some(pos) = self.stations.iter().position(|s| {
+            !s.is_separator() && (!norm_url.is_empty() && crate::models::clean_stream_url(&s.url) == norm_url || s.name.eq_ignore_ascii_case(name))
+        }) {
+            return Some(self.stations.remove(pos));
+        }
+        for sub in &mut self.subgroups {
+            if let Some(st) = sub.remove_station_from_tree(url, name) {
+                return Some(st);
+            }
+        }
+        None
+    }
 }
 
 #[cfg(test)]
@@ -437,5 +489,36 @@ mod hierarchy_tests {
         get_or_create(&mut root, ": Radio France/ICI (Locales)");
         assert_eq!(root.subgroups.len(), 1);
         assert_eq!(root.subgroups[0].subgroups.len(), 2);
+    }
+
+    #[test]
+    fn test_group_hierarchy_methods_roundtrip() {
+        let mut root = Group::new("root");
+        let bretagne = root.get_or_create_subgroup_hierarchy("France/Bretagne");
+        bretagne.stations.push(Station::with_country("Radio Bro Gwened", "http://rbg.bzh/stream", "FR"));
+
+        let bluegrass = root.get_or_create_subgroup_hierarchy("Country/Bluegrass");
+        bluegrass.stations.push(Station::with_timezone("Bluegrass Planet Radio", "http://bluegrass.com/live", "US", "America/New_York"));
+
+        assert_eq!(root.subgroups.len(), 2);
+        assert_eq!(root.subgroups[0].name, "France");
+        assert_eq!(root.subgroups[0].subgroups[0].name, "Bretagne");
+        assert_eq!(root.subgroups[1].name, "Country");
+        assert_eq!(root.subgroups[1].subgroups[0].name, "Bluegrass");
+
+        let mut paths = Vec::new();
+        root.collect_all_group_paths("", &mut paths);
+        assert_eq!(paths, vec!["France", "France/Bretagne", "Country", "Country/Bluegrass"]);
+
+        let removed = root.remove_station_from_tree("http://bluegrass.com/live", "Bluegrass Planet Radio");
+        assert!(removed.is_some());
+        let st = removed.unwrap();
+        assert_eq!(st.name, "Bluegrass Planet Radio");
+        assert_eq!(st.country, Some("US".to_string()));
+        assert_eq!(st.timezone, Some("America/New_York".to_string()));
+
+        // Station n'est plus dans Country/Bluegrass
+        let bg_ref = root.get_or_create_subgroup_hierarchy("Country/Bluegrass");
+        assert!(bg_ref.stations.is_empty());
     }
 }

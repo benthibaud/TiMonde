@@ -55,12 +55,12 @@ impl AudioEngine {
         if let Some(feature) = registry.lookup_feature("faad") {
             use gstreamer::prelude::PluginFeatureExtManual;
             feature.set_rank(gstreamer::Rank::PRIMARY + 10);
-            info!("⚡ Décodeur léger faad promu prioritaire pour l AAC");
+            info!("Décodeur léger faad promu prioritaire pour l AAC");
         }
         if let Some(feature) = registry.lookup_feature("mpg123audiodec") {
             use gstreamer::prelude::PluginFeatureExtManual;
             feature.set_rank(gstreamer::Rank::PRIMARY + 10);
-            info!("⚡ Décodeur léger mpg123 promu prioritaire pour le MP3");
+            info!("Décodeur léger mpg123 promu prioritaire pour le MP3");
         }
 
         let pipeline = gstreamer::ElementFactory::make("playbin")
@@ -106,7 +106,7 @@ impl AudioEngine {
                                         let mut st = state_clone.lock().unwrap();
                                         match sc.current() {
                                             gstreamer::State::Playing => {
-                                                info!("🔊 Flux GStreamer actif et en lecture");
+                                                info!("Flux GStreamer actif et en lecture");
                                                 *st = PlaybackState::Playing;
                                             }
                                             gstreamer::State::Paused => {

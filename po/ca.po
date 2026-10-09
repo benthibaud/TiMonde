@@ -10,46 +10,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ca\n"
 
-msgid "▶ Play"
-msgstr "▶ Reprodueix"
+msgid "Play"
+msgstr "Reprodueix"
 
-msgid "⏹ Stop"
-msgstr "⏹ Atura"
+msgid "Stop"
+msgstr "Atura"
 
-msgid "⏳ Connecting..."
-msgstr "⏳ Connectant..."
+msgid "Connecting..."
+msgstr "Connectant..."
 
-msgid "✏️ Edit"
-msgstr "✏️ Edita"
+msgid "Edit"
+msgstr "Edita"
 
-msgid "🗑️ Delete"
-msgstr "🗑️ Suprimeix"
+msgid "Delete"
+msgstr "Suprimeix"
 
-msgid "🎲 Zap to another random station"
-msgstr "🎲 Salta a una altra emissora a l'atzar"
+msgid "Zap to another random station"
+msgstr "Salta a una altra emissora a l'atzar"
 
-msgid "🎲 Play random radio (Ephemeral discovery)"
+msgid "Play random radio (Ephemeral discovery)"
 msgstr ""
 
-msgid " [🎲 Ephemeral]"
+msgid "[ Ephemeral]"
 msgstr ""
 
 msgid "Options"
 msgstr "Opcions"
 
-msgid "➕ Add a station..."
-msgstr "➕ Afegeix una emissora..."
+msgid "Add a station..."
+msgstr "Afegeix una emissora..."
 
-msgid "📻 Discover & Import stations..."
+msgid "Discover & Import stations..."
 msgstr ""
 
-msgid "📥 Import my files (XML, CSV, JSON, M3U)..."
+msgid "Import my files (XML, CSV, JSON, M3U)..."
 msgstr ""
 
-msgid "↕️ Manage groups and stations..."
+msgid "Manage groups and stations..."
 msgstr ""
 
-msgid "📝 Open bookmarks.xml"
+msgid "Open bookmarks.xml"
 msgstr ""
 
 msgid "Quit TiMonde"
@@ -58,40 +58,40 @@ msgstr "Surt de TiMonde"
 msgid "Mute (0%)"
 msgstr ""
 
-msgid "🌙 Sleep timer"
+msgid "Sleep timer"
 msgstr ""
 
-msgid "⏱️ In 15 minutes"
+msgid "In 15 minutes"
 msgstr ""
 
-msgid "⏱️ In 30 minutes"
+msgid "In 30 minutes"
 msgstr ""
 
-msgid "⏱️ In 45 minutes"
+msgid "In 45 minutes"
 msgstr ""
 
-msgid "⏱️ In 60 minutes (1h)"
+msgid "In 60 minutes (1h)"
 msgstr ""
 
-msgid "❌ Cancel sleep timer"
+msgid "Cancel sleep timer"
 msgstr ""
 
-msgid "📻 Discover & Import stations (TiMonde)"
+msgid "Discover & Import stations (TiMonde)"
 msgstr ""
 
-msgid "⭐ Verified DAB+ Bouquets"
+msgid "Verified DAB+ Bouquets"
 msgstr ""
 
-msgid "🔎 Radio-Browser Search"
+msgid "Radio-Browser Search"
 msgstr ""
 
-msgid "📂 Sample Files"
+msgid "Sample Files"
 msgstr ""
 
-msgid "📥 Import my files"
+msgid "Import my files"
 msgstr ""
 
-msgid "<b>🌍 Country:</b>"
+msgid "<b> Country:</b>"
 msgstr ""
 
 msgid "<b>Language:</b>"
@@ -115,38 +115,38 @@ msgstr ""
 msgid "Deselect all"
 msgstr ""
 
-msgid "➕ Import into favorites"
+msgid "Import into favorites"
 msgstr ""
 
 msgid "Close"
 msgstr "Tanca"
 
-msgid "➕ Add a station (TiMonde)"
+msgid "Add a station (TiMonde)"
 msgstr ""
 
 msgid "<b>Enter new station details:</b>"
 msgstr ""
 
-msgid "➕ Add to my stations"
+msgid "Add to my stations"
 msgstr ""
 
-msgid "⭐ Save station to favorites (TiMonde)"
+msgid "Save station to favorites (TiMonde)"
 msgstr ""
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
 msgstr ""
 
-msgid "⭐ Keep in favorites"
+msgid "Keep in favorites"
 msgstr ""
 
-msgid "✏️ Edit station (TiMonde)"
+msgid "Edit station (TiMonde)"
 msgstr ""
 
 msgid "<b>Edit station settings:</b>"
 msgstr ""
 
-msgid "💾 Save"
-msgstr "💾 Desa"
+msgid "Save"
+msgstr "Desa"
 
 msgid "Station name:"
 msgstr "Nom de l'emissora:"
@@ -163,7 +163,7 @@ msgstr ""
 msgid "Timezone:"
 msgstr ""
 
-msgid "🗑️ Delete this station"
+msgid "Delete this station"
 msgstr ""
 
 msgid "Cancel"
@@ -175,40 +175,40 @@ msgstr ""
 msgid "This action will permanently remove this station from your collection."
 msgstr ""
 
-msgid "↕️ Manage groups, stations and separators (TiMonde)"
+msgid "Manage groups, stations and separators (TiMonde)"
 msgstr ""
 
-msgid "⬅️ Back to groups"
+msgid "Back to groups"
 msgstr ""
 
-msgid "➕ Add station"
+msgid "Add station"
 msgstr ""
 
-msgid "📂 Open"
+msgid "Open"
 msgstr ""
 
-msgid "📁 New group"
+msgid "New group"
 msgstr ""
 
-msgid "➡️ Move to..."
+msgid "Move to..."
 msgstr ""
 
-msgid "🔝 Top"
+msgid "Top"
 msgstr ""
 
-msgid "⬆️ Move up"
+msgid "Move up"
 msgstr ""
 
-msgid "⬇️ Move down"
+msgid "Move down"
 msgstr ""
 
-msgid "➕ Separator"
+msgid "Separator"
 msgstr ""
 
-msgid "🔤 Sort A-Z"
+msgid "Sort A-Z"
 msgstr ""
 
-msgid "💾 Save and reload"
+msgid "Save and reload"
 msgstr ""
 
 msgid "Same time"
@@ -235,28 +235,28 @@ msgstr "Demà"
 msgid "Yesterday"
 msgstr "Ahir"
 
-msgid "🛠️ Maintenance & Data"
+msgid "Maintenance & Data"
 msgstr ""
 
-msgid "🩺 Check streams (dead links)..."
+msgid "Check streams (dead links)..."
 msgstr ""
 
-msgid "📤 Export my stations to CSV..."
+msgid "Export my stations to CSV..."
 msgstr ""
 
-msgid "🩺 Check streams"
+msgid "Check streams"
 msgstr ""
 
-msgid "⚠️ Dead links only"
+msgid "Dead links only"
 msgstr ""
 
-msgid "⚡ Apply redirects"
+msgid "Apply redirects"
 msgstr ""
 
-msgid "🔍 Repair stream..."
+msgid "Repair stream..."
 msgstr ""
 
-msgid "📤 Export to CSV"
+msgid "Export to CSV"
 msgstr ""
 
 msgid "Test stream availability and locate broken links"
@@ -274,7 +274,7 @@ msgstr ""
 msgid "Export all stations to CSV spreadsheet format"
 msgstr ""
 
-msgid "📤 Export my stations to CSV"
+msgid "Export my stations to CSV"
 msgstr ""
 
 msgid "CSV files (*.csv)"

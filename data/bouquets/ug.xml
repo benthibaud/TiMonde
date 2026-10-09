@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="UG" name="Ouganda" flag="🇺🇬" multilingual="false">
+<bouquet country="UG" name="Ouganda" flag="" multilingual="false">
   <national>
     <station name="UBC Radio Uganda" url="https://listen.radioking.com/radio/177082/stream/218647" genre="Uganda Broadcasting Corporation" />
     <station name="Capital FM Kampala 91.3" url="http://5229.cloudrad.io:8316/;" genre="The Home of Great Music" />

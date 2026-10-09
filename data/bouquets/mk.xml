@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="MK" name="Macédoine du Nord" flag="🇲🇰" multilingual="false">
+<bouquet country="MK" name="Macédoine du Nord" flag="" multilingual="false">
   <national>
     <station name="MRT Radio Skopje" url="https://stream.mrt.com.mk/radioskopje" genre="МРТ - Информативна &amp; Општествена програма" />
     <station name="Antenna 5" url="http://antenna5stream.neotel.mk:8000/live128" genre="Првото комерцијално радио во Македонија" />

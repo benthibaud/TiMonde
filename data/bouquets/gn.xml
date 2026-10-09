@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="GN" name="Guinée" flag="🇬🇳" multilingual="false">
+<bouquet country="GN" name="Guinée" flag="" multilingual="false">
   <national>
     <station name="RTG Radio Télévision Guinéenne" url="https://nrf1.newradio.it:10354/stream" genre="La voix de la nation guinéenne" />
     <station name="Espace FM Guinée" url="https://espace-classic.ice.infomaniak.ch/espace-classic.aac" genre="Les Grandes Gueules / Libre expression" />

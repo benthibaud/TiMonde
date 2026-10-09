@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="PL" name="Pologne" flag="🇵🇱" multilingual="false">
+<bouquet country="PL" name="Pologne" flag="" multilingual="false">
   <national>
     <station name="Polskie Radio Jedynka" url="http://195.150.20.8/PPRZEBOJE" genre="PR - Informacja &amp; Publicystyka" />
     <station name="Polskie Radio Dwójka" url="http://195.150.20.8/PPRZEBOJE" genre="PR - Muzyka klasyczna &amp; Literatura" />

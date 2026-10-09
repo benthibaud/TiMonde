@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="UA" name="Ukraine" flag="🇺🇦" multilingual="false">
+<bouquet country="UA" name="Ukraine" flag="" multilingual="false">
   <national>
     <station name="Ukrainske Radio" url="https://radio.ukr.radio/ur1-mp3" genre="Суспільне - Головний радіоканал країни" />
     <station name="Radio Promin" url="https://radio.ukr.radio/ur2-mp3" genre="Суспільне - Молодіжна музична хвиля" />

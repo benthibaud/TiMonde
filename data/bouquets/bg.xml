@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="BG" name="Bulgarie" flag="🇧🇬" multilingual="false">
+<bouquet country="BG" name="Bulgarie" flag="" multilingual="false">
   <national>
     <station name="BNR Horizont" url="https://play.global.audio/testb.aac?dist=RADIOPLAY" genre="БНР - Новини &amp; Общество" />
     <station name="BNR Hristo Botev" url="https://e106-ts.cdn.bg/regstations/fls/HrBotev.stream/playlist.m3u8" genre="БНР - Култура &amp; Класика" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="LU" name="Luxembourg" flag="🇱🇺" multilingual="true">
+<bouquet country="LU" name="Luxembourg" flag="" multilingual="true">
   <community id="LU" name="Luxembourgeois (Lëtzebuergesch)">
     <national>
       <station name="RTL Radio Lëtzebuerg" url="https://sc.rtl.lu/rtl" genre="RTL - Noriichten &amp; Informatioun" />

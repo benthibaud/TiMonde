@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="BR" name="Brésil" flag="🇧🇷" multilingual="false">
+<bouquet country="BR" name="Brésil" flag="" multilingual="false">
   <national>
     <station name="Rádio Nacional do Rio de Janeiro" url="https://stream-178.surfernetwork.com/m3ytuubv0uhvv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJtM3l0dXVidjB1aHZ2IiwiaG9zdCI6InN0cmVhbS0xNzguc3VyZmVybmV0d29yay5jb20iLCJydHRsIjo1LCJqdGkiOiJCTGI0QnNiZFNDT2RLUGsxYWY0bFVBIiwiaWF0IjoxNzkxNDY4ODk3LCJleHAiOjE3OTE0Njg5NTd9.IwJFKjj9RaP150Fw0kr-Dm5hwHBtsfxtj5rUo7RR4UE" genre="EBC - Informação, MPB &amp; Esporte" />
     <station name="Rádio MEC FM" url="https://radiomec-stream.ebc.com.br/ebc/radiomec/playlist.m3u8" genre="EBC - Música Clássica, Instrumental &amp; Jazz" />

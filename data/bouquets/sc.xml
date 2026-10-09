@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="SC" name="Seychelles" flag="🇸🇨" multilingual="false">
+<bouquet country="SC" name="Seychelles" flag="" multilingual="false">
   <national>
     <station name="Radyo Sesel (SBC)" url="https://streaming.fabrik.fm/radyo-sesel/echocast/audio/index.m3u8" genre="Seychelles Broadcasting Corporation (Créole)" />
     <station name="Paradise FM Seychelles" url="https://streaming.fabrik.fm/paradise-fm/echocast/audio/index.m3u8" genre="Island Sounds &amp; Tourism" />

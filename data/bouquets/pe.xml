@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="PE" name="Pérou" flag="🇵🇪" multilingual="false">
+<bouquet country="PE" name="Pérou" flag="" multilingual="false">
   <national>
     <station name="Radio Nacional del Perú" url="http://cdnhd.iblups.com/hls/0773874174fd4eba8bb9eff741d190dc.m3u8" genre="IRTP - La primera radio del Perú" />
     <station name="RPP Noticias" url="https://us-b4-p-e-ml19-audio.cdn.mdstrm.com/live-audio-aw/5fab3416b5f9ef165cfab6e9?aid=5faaeb72f92d7b07dfe10181&amp;pid=PsWBRUcMMf23mKfgi7wGvc1UoINiIMXb&amp;sid=tqEvHZmO7Xj8HrLKaihwbxduDpeCJKxO&amp;uid=scm4VejvoOZxYXgRKsIFyughIg0OV1b1&amp;es=us-b4-p-e-ml19-audio.cdn.mdstrm.com&amp;ote=1791555307697&amp;ot=uBfkSEo4zHPBjzBTc0BlwQ&amp;proto=https&amp;pz=us&amp;cP=128000&amp;awCollectionId=5faaeb72f92d7b07dfe10181&amp;liveId=5fab3416b5f9ef165cfab6e9&amp;listenerId=scm4VejvoOZxYXgRKsIFyughIg0OV1b1" genre="Confianza por todos los medios" />

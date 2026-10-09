@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="LK" name="Sri Lanka" flag="🇱🇰" multilingual="false">
+<bouquet country="LK" name="Sri Lanka" flag="" multilingual="false">
   <national>
     <station name="SLBC Sinhala National Service" url="http://220.247.227.20:8000/RSLstream" genre="Sri Lanka Broadcasting Corporation" />
     <station name="Gold FM Colombo" url="https://radio.lotustechnologieslk.net:2020/stream/goldfmgarden" genre="The Home of Classic Hits" />

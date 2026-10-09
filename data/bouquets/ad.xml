@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="AD" name="Andorre" flag="🇦🇩" multilingual="false">
+<bouquet country="AD" name="Andorre" flag="" multilingual="false">
   <national>
     <station name="Ràdio Nacional d'Andorra (RNA)" url="https://cast3.server89.com/radio/8040/radio.mp3" genre="RTVA - L'emissora generalista d'Andorra" />
     <station name="Andorra Música" url="https://streaming.giraweb.com/8020/stream" genre="RTVA - Clàssica, jazz i contemporània" />

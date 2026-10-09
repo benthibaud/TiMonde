@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="IT" name="Italie" flag="🇮🇹" multilingual="false">
+<bouquet country="IT" name="Italie" flag="" multilingual="false">
   <national>
     <station name="Rai Radio 1" url="https://icecdn-19d24861e90342cc8decb03c24c8a419.msvdn.net/icecastRelay/S16355530/Q4zh3NTu28Rx/icecast" genre="Rai - Notizie &amp; Informazione" />
     <station name="Rai Radio 2" url="https://icecdn-19d24861e90342cc8decb03c24c8a419.msvdn.net/icecastRelay/S35942484/yp5F67151K92/icecast" genre="Rai - Intrattenimento &amp; Pop" />

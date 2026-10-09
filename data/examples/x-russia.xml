@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Radios de Russie (Русский)" flag="🪆" category="Exemples" country="RU">
+<bouquet name="Radios de Russie (Русский)" flag="" category="Exemples" country="RU">
   <national>
     <station name="101.ru: Russian Folk" url="https://srv01.gpmradio.ru/stream/pro/aac/64/40" genre="Généraliste / Variété" />
     <station name="101.ru: USSR 50-70" url="https://srv01.gpmradio.ru/stream/pro/aac/64/47" genre="Généraliste / Variété" />

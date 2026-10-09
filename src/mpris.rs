@@ -276,7 +276,7 @@ pub fn spawn_mpris_server(
 
         match res {
             Ok(_conn) => {
-                log::info!("✅ Serveur D-Bus MPRIS2 enregistré : org.mpris.MediaPlayer2.timonde");
+                log::info!("Serveur D-Bus MPRIS2 enregistré : org.mpris.MediaPlayer2.timonde");
                 loop {
                     std::thread::park();
                 }
@@ -372,9 +372,9 @@ pub fn get_status_info() -> Result<String, String> {
     }
 
     let mut out = format!("État    : {}\n", match status_str {
-        "Playing" => "▶ En lecture",
-        "Paused" => "⏸ En pause",
-        "Stopped" => "⏹ Arrêté (en veille)",
+        "Playing" => "En lecture",
+        "Paused" => "En pause",
+        "Stopped" => "Arrêté (en veille)",
         _ => status_str,
     });
 

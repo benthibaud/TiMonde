@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet country="EE" name="Estonie" flag="🇪🇪" multilingual="false">
+<bouquet country="EE" name="Estonie" flag="" multilingual="false">
   <national>
     <station name="Vikerraadio" url="http://icecast.err.ee/vikerraadio.mp3" genre="ERR - Uudised &amp; Arutelud" />
     <station name="Raadio 2" url="http://icecast.err.ee/raadio2korge.mp3" genre="ERR - Uus Eesti muusika &amp; Noored" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Webradios Radio FG" flag="🎧" category="Exemples" country="FR">
+<bouquet name="Webradios Radio FG" flag="" category="Exemples" country="FR">
   <national>
     <station name="FG" url="https://n24-eu.rcs.revma.com/7081n2b6p98uv?rj-ttl=5&amp;rj-tok=AAABoRvnO6QAeaqZxCk5i7pDyw" genre="Electro / Dance / Club" />
     <station name="MAXXIMUM" url="https://n22-eu.rcs.revma.com/nwhyn2c6p98uv?rj-ttl=5&amp;rj-tok=AAABoRvnb6cATkIgyLtTq6fvRg" genre="Electro / Dance / Club" />
