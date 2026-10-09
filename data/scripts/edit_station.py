@@ -145,6 +145,12 @@ class EditStationWindow(Gtk.Window):
         entry_group_child = self.combo_group.get_child()
         if entry_group_child:
             entry_group_child.set_placeholder_text("Sélectionnez ou tapez (ex: /France/Bretagne ou / pour racine)")
+            entry_group_child.set_icon_from_icon_name(Gtk.EntryIconPosition.SECONDARY, "edit-clear")
+            entry_group_child.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, "Effacer le champ (clic pour vider)")
+            def on_eg_icon_press(entry, icon_pos, event):
+                if icon_pos == Gtk.EntryIconPosition.SECONDARY:
+                    entry.set_text("")
+            entry_group_child.connect("icon-press", on_eg_icon_press)
             entry_group_child.connect("activate", self.on_save_clicked)
 
         if current_group:
@@ -171,7 +177,14 @@ class EditStationWindow(Gtk.Window):
         btn_group_help.connect("clicked", self.on_show_group_naming_help)
         group_box.pack_start(btn_group_help, False, False, 0)
 
-        grid.attach(group_box, 1, 2, 1, 1)
+        group_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+        group_container.pack_start(group_box, False, False, 0)
+        lbl_grp_hint = Gtk.Label(label="<small><i>💡 Astuce : Tapez un nom libre ou utilisez / pour sous-dossiers (ex: /Musique/Jazz ou / pour racine)</i></small>")
+        lbl_grp_hint.set_use_markup(True)
+        lbl_grp_hint.set_halign(Gtk.Align.START)
+        group_container.pack_start(lbl_grp_hint, False, False, 0)
+
+        grid.attach(group_container, 1, 2, 1, 1)
 
         # 4. Sélecteur de Pays avec recherche affinante en direct
         lbl_country = Gtk.Label(label="Pays :")

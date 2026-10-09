@@ -77,24 +77,71 @@ BOUQUETS_CANDIDATES = [
 ]
 
 
+USER_CONFIG_EXAMPLES_DIR = os.path.expanduser("~/.config/timonde/examples")
+
 EXAMPLES_CANDIDATES = [
+    USER_CONFIG_EXAMPLES_DIR,
     os.path.expanduser("~/.local/share/timonde/examples"),
     os.path.join(os.path.dirname(__file__), "..", "examples"),
     "/usr/share/timonde/examples",
     "data/examples",
 ]
 
+def ensure_user_examples_dir():
+    """Initialise le dossier ~/.config/timonde/examples et le peuple avec les exemples par défaut si vide."""
+    try:
+        os.makedirs(USER_CONFIG_EXAMPLES_DIR, exist_ok=True)
+        # Vérifie si le dossier contient déjà des fichiers exemples
+        patterns = ["*.xml", "*.csv", "*.json", "*.m3u", "*.m3u8", "*.pls"]
+        existing = []
+        for pat in patterns:
+            existing.extend(glob.glob(os.path.join(USER_CONFIG_EXAMPLES_DIR, pat)))
+        if not existing:
+            # Chercher le répertoire source système ou local
+            source_dirs = [
+                "/usr/share/timonde/examples",
+                os.path.join(os.path.dirname(__file__), "..", "examples"),
+                os.path.join(os.path.dirname(__file__), "../../data/examples"),
+                os.path.expanduser("~/.local/share/timonde/examples"),
+                "data/examples"
+            ]
+            import shutil
+            for sdir in source_dirs:
+                if os.path.isdir(sdir):
+                    for fname in os.listdir(sdir):
+                        if fname.endswith(('.xml', '.csv', '.json', '.m3u', '.m3u8', '.pls', '.md')):
+                            src_file = os.path.join(sdir, fname)
+                            dst_file = os.path.join(USER_CONFIG_EXAMPLES_DIR, fname)
+                            if os.path.isfile(src_file) and not os.path.exists(dst_file):
+                                shutil.copy2(src_file, dst_file)
+                    break
+    except Exception as e:
+        sys.stderr.write(f"Avertissement initialisation {USER_CONFIG_EXAMPLES_DIR}: {e}\n")
+    return USER_CONFIG_EXAMPLES_DIR
+
 def find_examples_dir():
     """Localise le dossier des exemples XML / Locate examples directory"""
+    ensure_user_examples_dir()
     for path in EXAMPLES_CANDIDATES:
         if os.path.isdir(path) and glob.glob(os.path.join(path, "*.xml")):
             return os.path.abspath(path)
     return None
 
 def list_available_examples():
-    """Liste tous les fichiers exemples disponibles (XML, CSV, JSON, M3U) depuis tous les répertoires candidats"""
+    """Liste tous les fichiers exemples disponibles (XML, CSV, JSON, M3U) en priorité depuis ~/.config/timonde/examples"""
+    user_dir = ensure_user_examples_dir()
     patterns = ["*.xml", "*.csv", "*.json", "*.m3u", "*.m3u8", "*.pls"]
     found_files = {}
+
+    # 1. Explorer en priorité le dossier utilisateur ~/.config/timonde/examples
+    if os.path.isdir(user_dir):
+        for pat in patterns:
+            for f in glob.glob(os.path.join(user_dir, pat)):
+                base = os.path.basename(f)
+                if base not in found_files:
+                    found_files[base] = f
+
+    # 2. Explorer les autres dossiers candidats si nécessaire
     for d in EXAMPLES_CANDIDATES:
         if os.path.isdir(d):
             for pat in patterns:
@@ -102,6 +149,7 @@ def list_available_examples():
                     base = os.path.basename(f)
                     if base not in found_files:
                         found_files[base] = f
+
     results = []
     for base in sorted(found_files.keys()):
         f = found_files[base]
@@ -109,20 +157,23 @@ def list_available_examples():
             try:
                 tree = ET.parse(f)
                 root = tree.getroot()
-                name = root.attrib.get("name", base)
+                name = root.attrib.get("name", "")
                 country = root.attrib.get("country", "")
-                prefix = f"[{country}] " if country else ""
-                results.append((f, f"{prefix}{name} ({base})", name))
+                if name and name != base:
+                    display_label = f"{base}  —  {name}"
+                else:
+                    display_label = base
+                results.append((f, display_label, name or base))
             except Exception:
                 results.append((f, base, base))
         elif f.endswith(".csv"):
-            results.append((f, f"[CSV] {base}", "Import CSV"))
+            results.append((f, f"{base}  —  [Tableur CSV]", "Import CSV"))
         elif f.endswith(".json"):
-            results.append((f, f"[JSON] {base}", "Import JSON"))
+            results.append((f, f"{base}  —  [Radiotray-NG JSON]", "Import JSON"))
         elif f.endswith((".m3u", ".m3u8")):
-            results.append((f, f"[M3U] {base}", "Playlist M3U"))
+            results.append((f, f"{base}  —  [Playlist M3U]", "Playlist M3U"))
         elif f.endswith(".pls"):
-            results.append((f, f"[PLS] {base}", "Playlist PLS"))
+            results.append((f, f"{base}  —  [Playlist PLS]", "Playlist PLS"))
     return results
 
 
@@ -832,10 +883,10 @@ class DiscoverRadiosWindow(Gtk.Window):
         tab_examples = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
         tab_examples.set_border_width(8)
 
-        ex_top_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        ex_top_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         tab_examples.pack_start(ex_top_box, False, False, 0)
 
-        lbl_ex = Gtk.Label(label=_("<b>Sample file:</b>"))
+        lbl_ex = Gtk.Label(label=_("<b>Fichier exemple :</b>"))
         lbl_ex.set_use_markup(True)
         ex_top_box.pack_start(lbl_ex, False, False, 0)
 
@@ -848,9 +899,22 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.combo_examples.connect("changed", self.on_example_changed)
         ex_top_box.pack_start(self.combo_examples, True, True, 0)
 
-        btn_browse_xml = make_btn("Parcourir un fichier XML...", "document-open", "Charger et tester n'importe quel fichier XML externe")
+        btn_refresh_ex = make_btn("", "view-refresh", "Actualiser la liste des fichiers exemples")
+        btn_refresh_ex.connect("clicked", self.on_refresh_examples_clicked)
+        ex_top_box.pack_start(btn_refresh_ex, False, False, 0)
+
+        btn_open_ex_dir = make_btn("Ouvrir le dossier", "folder-open", "Ouvrir ~/.config/timonde/examples dans votre gestionnaire de fichiers")
+        btn_open_ex_dir.connect("clicked", self.on_open_examples_folder)
+        ex_top_box.pack_start(btn_open_ex_dir, False, False, 0)
+
+        btn_browse_xml = make_btn("Parcourir...", "document-open", "Charger et tester n'importe quel fichier XML/CSV/JSON externe")
         btn_browse_xml.connect("clicked", self.on_browse_external_xml)
         ex_top_box.pack_start(btn_browse_xml, False, False, 0)
+
+        lbl_ex_folder_info = Gtk.Label(label="<small><i>Dossier : <b>~/.config/timonde/examples/</b> (glissez-y vos fichiers pour les retrouver directement dans la liste)</i></small>")
+        lbl_ex_folder_info.set_use_markup(True)
+        lbl_ex_folder_info.set_halign(Gtk.Align.START)
+        tab_examples.pack_start(lbl_ex_folder_info, False, False, 0)
 
         # Tableau des stations de l'exemple
         # Store: [checked, name, genre, health_markup, dup_markup, url, is_dup, is_dead, row_id]
@@ -1065,6 +1129,13 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.btn_reset_group.connect("clicked", self.on_reset_group_clicked)
         bottom_box.pack_start(self.btn_reset_group, False, False, 0)
 
+        self.entry_group.set_icon_from_icon_name(Gtk.EntryIconPosition.SECONDARY, "edit-clear")
+        self.entry_group.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, "Effacer le champ (clic pour vider)")
+        def on_entry_group_icon_press(entry, icon_pos, event):
+            if icon_pos == Gtk.EntryIconPosition.SECONDARY:
+                entry.set_text("")
+        self.entry_group.connect("icon-press", on_entry_group_icon_press)
+
         btn_cancel = make_btn("Annuler", "process-stop")
         btn_cancel.connect("clicked", lambda w: self.destroy())
         bottom_box.pack_start(btn_cancel, False, False, 0)
@@ -1074,6 +1145,11 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.btn_import.set_sensitive(False)
         self.btn_import.connect("clicked", self.on_import_clicked)
         bottom_box.pack_start(self.btn_import, False, False, 0)
+
+        lbl_group_hint = Gtk.Label(label="<small><i>💡 Groupes et sous-dossiers : tapez un nom libre ou utilisez / (ex: /Musique/Jazz ou / pour racine)</i></small>")
+        lbl_group_hint.set_use_markup(True)
+        lbl_group_hint.set_halign(Gtk.Align.START)
+        main_vbox.pack_start(lbl_group_hint, False, False, 0)
 
         # Initialisation
         self.update_languages()
@@ -1662,6 +1738,30 @@ class DiscoverRadiosWindow(Gtk.Window):
         path = self.combo_examples.get_active_id()
         if path:
             self.load_example_file(path)
+
+    def on_open_examples_folder(self, widget):
+        """Ouvre le dossier ~/.config/timonde/examples dans le gestionnaire de fichiers."""
+        user_dir = ensure_user_examples_dir()
+        try:
+            from gi.repository import Gio
+            f = Gio.File.new_for_path(user_dir)
+            Gio.AppInfo.launch_default_for_uri(f.get_uri(), None)
+        except Exception:
+            import subprocess
+            subprocess.Popen(["xdg-open", user_dir])
+
+    def on_refresh_examples_clicked(self, widget=None):
+        """Actualise la liste des fichiers exemples disponibles."""
+        prev_active = self.combo_examples.get_active_id()
+        self.available_examples = list_available_examples()
+        self.combo_examples.remove_all()
+        target_idx = 0
+        for idx, (fpath, label, title) in enumerate(self.available_examples):
+            self.combo_examples.append(fpath, label)
+            if fpath == prev_active:
+                target_idx = idx
+        if self.available_examples:
+            self.combo_examples.set_active(target_idx)
 
     def on_browse_external_xml(self, widget):
         chooser = Gtk.FileChooserDialog(

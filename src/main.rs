@@ -74,6 +74,46 @@ fn create_default_bookmarks(path: &Path) -> Group {
     bookmarks::parse_bookmarks_reader(default_xml.as_bytes()).unwrap_or_else(|_| Group::new("root"))
 }
 
+/// Initialise le dossier ~/.config/timonde/examples/ avec les fichiers exemples de référence si vide ou inexistant
+fn ensure_config_examples(config_dir: &Path) {
+    let examples_dir = config_dir.join("examples");
+    let needs_population = if !examples_dir.exists() {
+        let _ = std::fs::create_dir_all(&examples_dir);
+        true
+    } else {
+        match std::fs::read_dir(&examples_dir) {
+            Ok(mut entries) => entries.next().is_none(),
+            Err(_) => false,
+        }
+    };
+
+    if needs_population {
+        let candidates = [
+            PathBuf::from("/usr/share/timonde/examples"),
+            PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/data/examples")),
+        ];
+        for source_dir in &candidates {
+            if source_dir.is_dir() {
+                if let Ok(entries) = std::fs::read_dir(source_dir) {
+                    for entry in entries.flatten() {
+                        let path = entry.path();
+                        if path.is_file() {
+                            if let Some(name) = path.file_name() {
+                                let dest = examples_dir.join(name);
+                                if !dest.exists() {
+                                    let _ = std::fs::copy(&path, &dest);
+                                }
+                            }
+                        }
+                    }
+                    info!("Fichiers exemples copiés dans {:?}", examples_dir);
+                    break;
+                }
+            }
+        }
+    }
+}
+
 /// Vérifie si un démon StatusNotifierWatcher est actif sur D-Bus.
 /// S'il est absent (ex: bureau IceWM ou Fluxbox sous antiX), démarre automatiquement
 /// le pont léger timonde_xembed_bridge.py pour créer une icône XEmbed compatible.
@@ -482,6 +522,7 @@ fn main() {
 
     // 3. Chargement des favoris (avec migration transparente si seul radiotray-ng est présent)
     let bookmarks_path = find_bookmarks_path();
+    ensure_config_examples(&PathBuf::from(&home).join(".config/timonde"));
     let root_group = if bookmarks_path.exists() {
         info!("Chargement des signets depuis : {:?}", bookmarks_path);
         match load_bookmarks(&bookmarks_path) {
