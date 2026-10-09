@@ -294,3 +294,6 @@ msgstr "Fout tijdens CSV-export:"
 
 msgid "station(s) saved to:"
 msgstr "zenders opgeslagen in:"
+
+msgid "Start automatically at login"
+msgstr "Automatisch starten bij inloggen"

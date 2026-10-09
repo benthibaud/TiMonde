@@ -3,7 +3,7 @@ use crate::bookmarks::{save_bookmarks, update_station_url};
 use crate::models::{Group, Station};
 use crate::playlist::resolve_stream_url;
 use crate::radio_browser::{find_backup_stream, notify};
-use ksni::menu::{MenuItem, StandardItem, SubMenu};
+use ksni::menu::{CheckmarkItem, MenuItem, StandardItem, SubMenu};
 use log::{error, info};
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
@@ -1512,6 +1512,45 @@ Radio éphémère non enregistrée.",
             }
         });
     }
+
+    /// Chemin du fichier XDG Autostart pour TiMonde
+    pub fn autostart_file_path() -> PathBuf {
+        let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
+        PathBuf::from(home).join(".config/autostart/timonde.desktop")
+    }
+
+    /// Vérifie si le lancement automatique au démarrage de session est activé
+    pub fn is_autostart_enabled() -> bool {
+        Self::autostart_file_path().exists()
+    }
+
+    /// Active ou désactive le lancement automatique au démarrage
+    pub fn toggle_autostart() -> bool {
+        let path = Self::autostart_file_path();
+        if path.exists() {
+            let _ = std::fs::remove_file(&path);
+            log::info!("Démarrage automatique désactivé (fichier supprimé: {:?})", path);
+            false
+        } else {
+            if let Some(parent) = path.parent() {
+                let _ = std::fs::create_dir_all(parent);
+            }
+            let desktop_content = "[Desktop Entry]\n\
+Type=Application\n\
+Name=TiMonde\n\
+GenericName=Radio Tray Player\n\
+Comment=Lecteur de radios ultra-léger pour la zone de notification\n\
+Exec=timonde\n\
+Icon=timonde_on\n\
+Terminal=false\n\
+Categories=AudioVideo;Audio;Player;\n\
+StartupNotify=false\n\
+X-GNOME-Autostart-enabled=true\n";
+            let _ = std::fs::write(&path, desktop_content);
+            log::info!("Démarrage automatique activé (fichier créé: {:?})", path);
+            true
+        }
+    }
 }
 
 impl ksni::Tray for TiMondeTray {
@@ -2044,6 +2083,18 @@ impl ksni::Tray for TiMondeTray {
                     ..Default::default()
                 }),
                 MenuItem::Separator,
+                MenuItem::Checkmark(CheckmarkItem {
+                    label: crate::i18n::tr("Start automatically at login").to_string(),
+                    checked: Self::is_autostart_enabled(),
+                    activate: Box::new(|tray: &mut Self| {
+                        Self::toggle_autostart();
+                        if let Some(ref h) = *tray.tray_handle.lock().unwrap() {
+                            h.update(|_| {});
+                        }
+                    }),
+                    ..Default::default()
+                }),
+                MenuItem::Separator,
                 MenuItem::SubMenu(SubMenu {
                     label: crate::i18n::tr("Maintenance & Data").to_string(),
                     submenu: vec![
@@ -2149,6 +2200,12 @@ mod tests {
         assert!(found.is_some());
         let st = found.unwrap();
         assert_eq!(st.name, "Bluegrass Planet Radio");
+    }
+
+    #[test]
+    fn test_autostart_toggle_and_path() {
+        let path = TiMondeTray::autostart_file_path();
+        assert!(path.to_string_lossy().contains(".config/autostart/timonde.desktop"));
     }
 
     static I18N_TEST_MUTEX: std::sync::Mutex<()> = std::sync::Mutex::new(());

@@ -305,3 +305,6 @@ msgstr "Erro durante a exportação CSV:"
 
 msgid "station(s) saved to:"
 msgstr "rádios guardadas em:"
+
+msgid "Start automatically at login"
+msgstr "Iniciar automaticamente na inicialização"

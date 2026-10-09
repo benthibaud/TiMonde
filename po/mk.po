@@ -294,3 +294,6 @@ msgstr ""
 
 msgid "station(s) saved to:"
 msgstr ""
+
+msgid "Start automatically at login"
+msgstr "Start automatically at login"

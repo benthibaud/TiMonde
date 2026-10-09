@@ -294,3 +294,6 @@ msgstr "Errore durante l'esportazione CSV:"
 
 msgid "station(s) saved to:"
 msgstr "stazioni salvate in:"
+
+msgid "Start automatically at login"
+msgstr "Avvia automaticamente all'accesso"

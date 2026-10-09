@@ -299,3 +299,6 @@ msgstr "匯出 CSV 時發生錯誤："
 
 msgid "station(s) saved to:"
 msgstr "電台已儲存至："
+
+msgid "Start automatically at login"
+msgstr "登入時自動啟動"
