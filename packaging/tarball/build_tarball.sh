@@ -41,6 +41,7 @@ install -m 755 "${ROOT_DIR}/data/scripts/reorder_groups.py" "${STAGING_DIR}/shar
 install -m 755 "${ROOT_DIR}/data/scripts/edit_station.py" "${STAGING_DIR}/share/timonde/scripts/edit_station.py"
 install -m 755 "${ROOT_DIR}/data/scripts/browse_bouquets.py" "${STAGING_DIR}/share/timonde/scripts/browse_bouquets.py"
 install -m 644 "${ROOT_DIR}/data/scripts/timonde_i18n.py" "${STAGING_DIR}/share/timonde/scripts/timonde_i18n.py"
+install -m 644 "${ROOT_DIR}/data/scripts/timonde_common.py" "${STAGING_DIR}/share/timonde/scripts/timonde_common.py"
 
 install -m 644 "${ROOT_DIR}"/data/bouquets/*.xml "${STAGING_DIR}/share/timonde/bouquets/"
 install -m 644 "${ROOT_DIR}"/data/examples/* "${STAGING_DIR}/share/timonde/examples/"

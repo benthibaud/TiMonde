@@ -29,6 +29,7 @@ install: build
 	install -m 755 data/scripts/browse_bouquets.py $(DESTDIR)$(DATADIR)/timonde/scripts/browse_bouquets.py
 	install -m 755 data/scripts/timonde_xembed_bridge.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_xembed_bridge.py
 	install -m 644 data/scripts/timonde_i18n.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_i18n.py
+	install -m 644 data/scripts/timonde_common.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_common.py
 	for mo in po/locale/*/LC_MESSAGES/timonde.mo; do \
 		lang=$$(echo $$mo | cut -d/ -f3); \
 		install -d $(DESTDIR)$(DATADIR)/locale/$$lang/LC_MESSAGES; \
@@ -58,6 +59,7 @@ install-user: build
 	install -m 755 data/scripts/browse_bouquets.py $(HOME)/.local/share/timonde/scripts/browse_bouquets.py
 	install -m 755 data/scripts/timonde_xembed_bridge.py $(HOME)/.local/share/timonde/scripts/timonde_xembed_bridge.py
 	install -m 644 data/scripts/timonde_i18n.py $(HOME)/.local/share/timonde/scripts/timonde_i18n.py
+	install -m 644 data/scripts/timonde_common.py $(HOME)/.local/share/timonde/scripts/timonde_common.py
 	for mo in po/locale/*/LC_MESSAGES/timonde.mo; do \
 		lang=$$(echo $$mo | cut -d/ -f3); \
 		install -d $(HOME)/.local/share/locale/$$lang/LC_MESSAGES; \
