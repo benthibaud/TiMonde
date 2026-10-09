@@ -50,7 +50,7 @@ Description: Lecteur de webradios ultra-léger et discret pour la barre des tâc
  bureaux Linux (IceWM, Fluxbox, Cinnamon, XFCE, MATE, GNOME, KDE, etc.).
 CONTROL_EOF
 
-# 5. Scripts postinst et postrm (rafraîchissement du cache d'icônes et menu desktop)
+# 5. Scripts postinst et postrm (rafraîchissement du cache d'icônes, menu desktop et harmonisation Cinnamon)
 cat << 'POSTINST_EOF' > "${STAGING_DIR}/DEBIAN/postinst"
 #!/bin/sh
 set -e
@@ -59,6 +59,10 @@ if command -v gtk-update-icon-cache >/dev/null 2>&1; then
 fi
 if command -v update-desktop-database >/dev/null 2>&1; then
     update-desktop-database -q || true
+fi
+# Détection et harmonisation automatique sous Cinnamon (clic gauche/droit unifié)
+if [ -f "/usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js" ] && [ -f "/usr/share/timonde/scripts/patch_cinnamon_status_applet.py" ]; then
+    python3 /usr/share/timonde/scripts/patch_cinnamon_status_applet.py || true
 fi
 exit 0
 POSTINST_EOF
@@ -73,6 +77,10 @@ if [ "$1" = "remove" ] || [ "$1" = "purge" ]; then
     fi
     if command -v update-desktop-database >/dev/null 2>&1; then
         update-desktop-database -q || true
+    fi
+    # Restauration de l'applet Cinnamon originale si backup présent
+    if [ -f "/usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js.orig_timonde" ]; then
+        mv -f /usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js.orig_timonde /usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js 2>/dev/null || true
     fi
 fi
 exit 0
@@ -101,6 +109,7 @@ install -m 755 "${ROOT_DIR}/data/scripts/reorder_groups.py" "${STAGING_DIR}/usr/
 install -m 755 "${ROOT_DIR}/data/scripts/edit_station.py" "${STAGING_DIR}/usr/share/timonde/scripts/edit_station.py"
 install -m 755 "${ROOT_DIR}/data/scripts/browse_bouquets.py" "${STAGING_DIR}/usr/share/timonde/scripts/browse_bouquets.py"
 install -m 755 "${ROOT_DIR}/data/scripts/timonde_xembed_bridge.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_xembed_bridge.py"
+install -m 755 "${ROOT_DIR}/data/scripts/patch_cinnamon_status_applet.py" "${STAGING_DIR}/usr/share/timonde/scripts/patch_cinnamon_status_applet.py"
 install -m 644 "${ROOT_DIR}/data/scripts/timonde_i18n.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_i18n.py"
 install -m 644 "${ROOT_DIR}/data/scripts/timonde_common.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_common.py"
 install -m 644 "${ROOT_DIR}"/data/bouquets/*.xml "${STAGING_DIR}/usr/share/timonde/bouquets/"

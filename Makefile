@@ -28,6 +28,7 @@ install: build
 	install -m 755 data/scripts/edit_station.py $(DESTDIR)$(DATADIR)/timonde/scripts/edit_station.py
 	install -m 755 data/scripts/browse_bouquets.py $(DESTDIR)$(DATADIR)/timonde/scripts/browse_bouquets.py
 	install -m 755 data/scripts/timonde_xembed_bridge.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_xembed_bridge.py
+	install -m 755 data/scripts/patch_cinnamon_status_applet.py $(DESTDIR)$(DATADIR)/timonde/scripts/patch_cinnamon_status_applet.py
 	install -m 644 data/scripts/timonde_i18n.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_i18n.py
 	install -m 644 data/scripts/timonde_common.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_common.py
 	for mo in po/locale/*/LC_MESSAGES/timonde.mo; do \
@@ -58,6 +59,7 @@ install-user: build
 	install -m 755 data/scripts/edit_station.py $(HOME)/.local/share/timonde/scripts/edit_station.py
 	install -m 755 data/scripts/browse_bouquets.py $(HOME)/.local/share/timonde/scripts/browse_bouquets.py
 	install -m 755 data/scripts/timonde_xembed_bridge.py $(HOME)/.local/share/timonde/scripts/timonde_xembed_bridge.py
+	install -m 755 data/scripts/patch_cinnamon_status_applet.py $(HOME)/.local/share/timonde/scripts/patch_cinnamon_status_applet.py
 	install -m 644 data/scripts/timonde_i18n.py $(HOME)/.local/share/timonde/scripts/timonde_i18n.py
 	install -m 644 data/scripts/timonde_common.py $(HOME)/.local/share/timonde/scripts/timonde_common.py
 	for mo in po/locale/*/LC_MESSAGES/timonde.mo; do \
