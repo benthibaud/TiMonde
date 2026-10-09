@@ -49,6 +49,7 @@ fn load_mo_file(lang: &str) -> Option<HashMap<String, String>> {
 
     let home = std::env::var("HOME").unwrap_or_default();
     let candidates = [
+        PathBuf::from(env!("CARGO_MANIFEST_DIR")).join(format!("po/locale/{}/LC_MESSAGES/timonde.mo", lang)),
         PathBuf::from(&home).join(format!(".local/share/locale/{}/LC_MESSAGES/timonde.mo", lang)),
         PathBuf::from(format!("po/locale/{}/LC_MESSAGES/timonde.mo", lang)),
         PathBuf::from(format!("/usr/share/locale/{}/LC_MESSAGES/timonde.mo", lang)),

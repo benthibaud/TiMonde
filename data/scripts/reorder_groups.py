@@ -19,12 +19,14 @@ os.environ.pop("QT_IM_MODULE", None)
 import json
 import subprocess
 
-# Module d internationalisation TiMonde
+# Module d'internationalisation & socle commun TiMonde
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:
     from timonde_i18n import _
 except ImportError:
     def _(s): return s
+
+from timonde_common import clean_stream_url, strip_unsupported_emojis, make_btn, normalize_group_path
 
 import urllib.request
 import urllib.parse
@@ -117,77 +119,6 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, Pango, GLib
-
-
-
-def clean_stream_url(url: str) -> str:
-    """Nettoie préventivement une URL de flux audio (protocoles dupliqués, espaces, slashes)."""
-    if not url:
-        return ""
-    u = url.strip()
-    if u.startswith("http ://"):
-        u = "http://" + u[8:]
-    elif u.startswith("https ://"):
-        u = "https://" + u[9:]
-    elif u.startswith("//"):
-        u = "https://" + u[2:]
-
-    while True:
-        if u.startswith("httpshttps://"):
-            u = "https://" + u[13:]
-            continue
-        if u.startswith("httphttp://"):
-            u = "http://" + u[11:]
-            continue
-        if u.startswith("http://https://"):
-            u = "https://" + u[15:]
-            continue
-        if u.startswith("https://http://"):
-            u = "http://" + u[15:]
-            continue
-        if u.startswith("https://https://"):
-            u = "https://" + u[16:]
-            continue
-        if u.startswith("http://http://"):
-            u = "http://" + u[14:]
-            continue
-        break
-
-    if u.startswith("https:///"):
-        u = "https://" + u[9:].lstrip("/")
-    elif u.startswith("http:///"):
-        u = "http://" + u[8:].lstrip("/")
-
-    return u.strip()
-
-def strip_unsupported_emojis(text):
-    if not text:
-        return ""
-    pattern = re.compile(
-        "[\U0001F1E6-\U0001F1FF"  # Indicateurs régionaux (drapeaux)
-        "\U0001F300-\U0001F9FF"  # Symboles et émojis
-        "\U0001FA00-\U0001FAFF"  # Symboles médicaux, objets, etc.
-        "\U00002600-\U000027BF"  # Divers symboles météo/alertes
-        "]+",
-        flags=re.UNICODE
-    )
-    cleaned = pattern.sub("", text)
-    return re.sub(r"\s+", " ", cleaned).strip()
-
-def make_btn(label_text, icon_name=None, tooltip=None):
-    btn = Gtk.Button()
-    box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-    box.set_halign(Gtk.Align.CENTER)
-    if icon_name:
-        img = Gtk.Image.new_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
-        box.pack_start(img, False, False, 0)
-    lbl = Gtk.Label(label=label_text)
-    box.pack_start(lbl, False, False, 0)
-    btn.add(box)
-    btn._label_widget = lbl
-    if tooltip:
-        btn.set_tooltip_text(tooltip)
-    return btn
 
 class ReorderWindow(Gtk.Window):
     def __init__(self, data, auto_check=False):

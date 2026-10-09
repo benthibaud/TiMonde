@@ -26,12 +26,21 @@ os.environ.pop("GTK_IM_MODULE", None)
 os.environ.pop("XMODIFIERS", None)
 os.environ.pop("QT_IM_MODULE", None)
 
-# Module d internationalisation TiMonde
+# Module d internationalisation & socle commun TiMonde
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:
     from timonde_i18n import _
 except ImportError:
     def _(s): return s
+
+from timonde_common import (
+    clean_stream_url,
+    safe_parse_xml,
+    strip_unsupported_emojis,
+    get_user_bookmarks_groups,
+    normalize_group_path,
+    make_btn,
+)
 
 import json
 import glob
@@ -67,20 +76,6 @@ BOUQUETS_CANDIDATES = [
     "data/bouquets",
 ]
 
-def safe_parse_xml(path):
-    """Parse un fichier XML avec tolérance absolue aux entités ampersand non échappées."""
-    try:
-        return ET.parse(path).getroot()
-    except Exception:
-        pass
-    try:
-        with open(path, "r", encoding="utf-8", errors="replace") as f:
-            raw = f.read()
-        cleaned = re.sub(r"&(?!(?:amp|lt|gt|apos|quot|#\d+|#x[0-9a-fA-F]+);)", "&amp;", raw)
-        return ET.fromstring(cleaned)
-    except Exception as e:
-        sys.stderr.write(f"Échec de lecture XML ({path}) : {e}\n")
-        return None
 
 EXAMPLES_CANDIDATES = [
     os.path.expanduser("~/.local/share/timonde/examples"),
@@ -130,28 +125,6 @@ def list_available_examples():
             results.append((f, f"[PLS] {base}", "Playlist PLS"))
     return results
 
-def get_user_bookmarks_groups():
-    """Lit les groupes et sous-groupes existants depuis bookmarks.xml de l'utilisateur."""
-    paths = [
-        os.path.expanduser("~/.config/timonde/bookmarks.xml"),
-        os.path.expanduser("~/.local/share/timonde/bookmarks.xml"),
-    ]
-    groups = []
-    for p in paths:
-        if os.path.exists(p):
-            root = safe_parse_xml(p)
-            if root is not None:
-                def walk_groups(el, prefix):
-                    for g in el.findall("group"):
-                        name = g.attrib.get("name", "").strip()
-                        if name:
-                            full = f"{prefix}/{name}" if prefix else name
-                            if full not in groups:
-                                groups.append(full)
-                            walk_groups(g, full)
-                walk_groups(root, "")
-                break
-    return groups
 
 # -----------------------------------------------------------------------------
 # Fonctions Utilitaires / Utility Functions
@@ -357,45 +330,6 @@ class RepairStreamDialog(Gtk.Dialog):
 
 
 
-def clean_stream_url(url: str) -> str:
-    """Nettoie préventivement une URL de flux audio (protocoles dupliqués, espaces, slashes)."""
-    if not url:
-        return ""
-    u = url.strip()
-    if u.startswith("http ://"):
-        u = "http://" + u[8:]
-    elif u.startswith("https ://"):
-        u = "https://" + u[9:]
-    elif u.startswith("//"):
-        u = "https://" + u[2:]
-
-    while True:
-        if u.startswith("httpshttps://"):
-            u = "https://" + u[13:]
-            continue
-        if u.startswith("httphttp://"):
-            u = "http://" + u[11:]
-            continue
-        if u.startswith("http://https://"):
-            u = "https://" + u[15:]
-            continue
-        if u.startswith("https://http://"):
-            u = "http://" + u[15:]
-            continue
-        if u.startswith("https://https://"):
-            u = "https://" + u[16:]
-            continue
-        if u.startswith("http://http://"):
-            u = "http://" + u[14:]
-            continue
-        break
-
-    if u.startswith("https:///"):
-        u = "https://" + u[9:].lstrip("/")
-    elif u.startswith("http:///"):
-        u = "http://" + u[8:].lstrip("/")
-
-    return u.strip()
 
 def parse_user_radio_file(path):
     """
@@ -627,35 +561,6 @@ def parse_user_radio_file(path):
     return stations
 
 
-def strip_unsupported_emojis(text):
-    if not text:
-        return ""
-    pattern = re.compile(
-        "[\U0001F1E6-\U0001F1FF"  # Indicateurs régionaux (drapeaux)
-        "\U0001F300-\U0001F9FF"  # Symboles et émojis
-        "\U0001FA00-\U0001FAFF"  # Symboles médicaux, objets, etc.
-        "\U00002600-\U000027BF"  # Divers symboles météo/alertes
-        "]+",
-        flags=re.UNICODE
-    )
-    cleaned = pattern.sub("", text)
-    return re.sub(r"\s+", " ", cleaned).strip()
-
-
-def make_btn(label_text, icon_name=None, tooltip=None):
-    btn = Gtk.Button()
-    box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-    box.set_halign(Gtk.Align.CENTER)
-    if icon_name:
-        img = Gtk.Image.new_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
-        box.pack_start(img, False, False, 0)
-    lbl = Gtk.Label(label=label_text)
-    box.pack_start(lbl, False, False, 0)
-    btn.add(box)
-    btn._label_widget = lbl
-    if tooltip:
-        btn.set_tooltip_text(tooltip)
-    return btn
 
 
 class DiscoverRadiosWindow(Gtk.Window):
@@ -683,7 +588,15 @@ class DiscoverRadiosWindow(Gtk.Window):
 
         self.connect("destroy", self.on_destroy)
         self.set_focus_on_map(True)
-        self.connect("button-press-event", lambda w, e: self.present())
+
+        def on_map_event(window, event):
+            window.present_with_time(Gdk.CURRENT_TIME)
+            if hasattr(window, "notebook") and window.notebook.get_current_page() == 0:
+                if hasattr(window, "entry_rb_name"):
+                    GLib.idle_add(window.entry_rb_name.grab_focus)
+            return False
+
+        self.connect("map-event", on_map_event)
 
         self.existing_stations = existing_stations
         self.existing_urls = {s.get("url", "").strip() for s in existing_stations}
@@ -1095,15 +1008,24 @@ class DiscoverRadiosWindow(Gtk.Window):
         lbl_target.set_use_markup(True)
         bottom_box.pack_start(lbl_target, False, False, 0)
 
-        self.combo_target_group = Gtk.ComboBoxText.new_with_entry()
-        self.combo_target_group.append_text("[ / ] (Racine — Sans groupe)")
-        self.entry_group = self.combo_target_group.get_child()
+        # Champ de saisie direct, libre et assisté par auto-complétion
+        self.entry_group = Gtk.Entry()
         self.entry_group.set_width_chars(28)
-        self.entry_group.set_placeholder_text("Sélectionnez ou tapez (ex: /France/Bretagne ou / pour racine)")
+        self.entry_group.set_placeholder_text("Tapez un groupe (ex: /France/Bretagne ou / pour racine)")
+        self.entry_group.set_can_focus(True)
+        self.entry_group.set_editable(True)
 
+        group_completion = Gtk.EntryCompletion()
+        group_comp_store = Gtk.ListStore(str)
+        group_comp_store.append(["[ / ] (Racine — Sans groupe)"])
         for grp in self.available_groups:
             if grp and grp not in ("[ / ] (Racine — Sans groupe)", "/"):
-                self.combo_target_group.append_text(grp)
+                group_comp_store.append([grp])
+        group_completion.set_model(group_comp_store)
+        group_completion.set_text_column(0)
+        group_completion.set_inline_completion(True)
+        group_completion.set_popup_completion(True)
+        self.entry_group.set_completion(group_completion)
 
         def on_group_user_changed(w):
             if not getattr(self, "_suppress_group_change_event", False):
@@ -1112,9 +1034,27 @@ class DiscoverRadiosWindow(Gtk.Window):
                     self.btn_reset_group.set_sensitive(True)
 
         self.entry_group.connect("changed", on_group_user_changed)
-        self.combo_target_group.connect("changed", on_group_user_changed)
+        bottom_box.pack_start(self.entry_group, True, True, 0)
 
-        bottom_box.pack_start(self.combo_target_group, True, True, 0)
+        # Menu déroulant popup pour choisir un groupe existant en un clic
+        btn_choose_group = make_btn("", "pan-down", "Choisir parmi les groupes existants")
+        def on_choose_group_clicked(btn):
+            menu = Gtk.Menu()
+            item_root = Gtk.MenuItem(label="[ / ] (Racine — Sans groupe)")
+            item_root.connect("activate", lambda mi: self.entry_group.set_text("/"))
+            menu.append(item_root)
+            if self.available_groups:
+                sep = Gtk.SeparatorMenuItem()
+                menu.append(sep)
+                for grp in sorted(self.available_groups):
+                    if grp and grp not in ("[ / ] (Racine — Sans groupe)", "/"):
+                        item = Gtk.MenuItem(label=grp)
+                        item.connect("activate", lambda mi, g=grp: self.entry_group.set_text(g))
+                        menu.append(item)
+            menu.show_all()
+            menu.popup_at_widget(btn, Gdk.Gravity.SOUTH_WEST, Gdk.Gravity.NORTH_WEST, None)
+        btn_choose_group.connect("clicked", on_choose_group_clicked)
+        bottom_box.pack_start(btn_choose_group, False, False, 0)
 
         btn_group_help = make_btn("?", "help-browser", "Comment nommer les groupes et sous-groupes (convention Linux /)")
         btn_group_help.connect("clicked", self.on_show_group_naming_help)
@@ -1218,6 +1158,8 @@ class DiscoverRadiosWindow(Gtk.Window):
         if not hasattr(self, "entry_group"):
             return
         if page_num == 0:
+            if hasattr(self, "entry_rb_name"):
+                GLib.idle_add(self.entry_rb_name.grab_focus)
             c_name = self.combo_country.get_active_text() or "Radio"
             self.set_suggested_group(f"Radio-Browser - {c_name}")
         elif page_num == 1:
@@ -1628,19 +1570,8 @@ class DiscoverRadiosWindow(Gtk.Window):
     # -------------------------------------------------------------------------
 
     def on_import_clicked(self, widget):
-        raw_grp = ""
-        if hasattr(self, "entry_group") and self.entry_group:
-            raw_grp = self.entry_group.get_text().strip()
-        if not raw_grp and hasattr(self, "combo_target_group"):
-            raw_grp = (self.combo_target_group.get_active_text() or "").strip()
-
-        clean_grp = raw_grp.strip()
-        if clean_grp in ("[ / ] (Racine — Sans groupe)", "/", "root", "(Racine)"):
-            group_name = "root"
-        else:
-            group_name = clean_grp.strip("/").strip()
-        if not group_name:
-            group_name = "root"
+        raw_grp = self.entry_group.get_text().strip() if hasattr(self, "entry_group") else ""
+        group_name = normalize_group_path(raw_grp, return_root_literal=True)
 
         selected = []
         all_bouquet_stations = []
@@ -2198,7 +2129,7 @@ def main():
         available_groups=available_groups,
     )
     win.show_all()
-    win.present()
+    win.present_with_time(Gdk.CURRENT_TIME)
     if initial_tab == 0:
         GLib.idle_add(win.entry_rb_name.grab_focus)
     Gtk.main()

@@ -7,329 +7,39 @@
 - Conserver une radio éphémère (--mode save-ephemeral)
 
 Dispose d'un sélecteur de pays avec recherche filtrante en direct (247 pays)
-et d'une synchronisation automatique des fuseaux horaires (mono-fuseau déduit/grisé,
-multi-fuseaux ouvert, France par défaut sur Paris avec accès direct aux Outre-mer).
+et d'une synchronisation automatique des fuseaux horaires.
 """
 
 import sys
 import os
+import json
+import argparse
+import gi
 
-# Neutralisation inconditionnelle d'IBus pour éviter tout gel des frappes clavier sous GTK3
-# (les sessions de bureau avec socket IBus orpheline ou rompue absorbent et perdent les touches)
-os.environ.pop("GTK_IM_MODULE", None)
-os.environ.pop("XMODIFIERS", None)
-os.environ.pop("QT_IM_MODULE", None)
-
-# Module d internationalisation TiMonde
+# Module d'internationalisation & socle commun TiMonde
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:
     from timonde_i18n import _
 except ImportError:
     def _(s): return s
 
+from timonde_common import (
+    clean_stream_url,
+    COUNTRIES_DB,
+    COUNTRIES_REGISTRY,
+    FRANCE_TIMEZONES,
+    CUSTOM_MULTI_TZ,
+    DEFAULT_WORLD_TIMEZONES,
+    WORLD_TIMEZONES,
+    make_btn,
+    normalize_group_path,
+)
+
 # Sauvegarde impérative des arguments CLI avant que GTK ne supprime --name (mot-clé réservé GTK/X11)
 SAVED_ARGV = list(sys.argv)
-import os
-import json
-import argparse
-import collections
-import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, GLib
-
-
-def clean_stream_url(url: str) -> str:
-    """Nettoie préventivement une URL de flux audio."""
-    if not url:
-        return ""
-    u = url.strip()
-    if u.startswith("http ://"):
-        u = "http://" + u[8:]
-    elif u.startswith("https ://"):
-        u = "https://" + u[9:]
-    elif u.startswith("//"):
-        u = "https://" + u[2:]
-
-    while True:
-        if u.startswith("httpshttps://"):
-            u = "https://" + u[13:]
-            continue
-        if u.startswith("httphttp://"):
-            u = "http://" + u[11:]
-            continue
-        if u.startswith("http://https://"):
-            u = "https://" + u[15:]
-            continue
-        if u.startswith("https://http://"):
-            u = "http://" + u[15:]
-            continue
-        if u.startswith("https://https://"):
-            u = "https://" + u[16:]
-            continue
-        if u.startswith("http://http://"):
-            u = "http://" + u[14:]
-            continue
-        break
-    return u
-
-
-# Registre exhaustif des pays avec drapeaux et noms en français
-COUNTRIES_DB = [
-    ("FR", "France", ""),
-    ("GP", "Guadeloupe", ""),
-    ("MQ", "Martinique", ""),
-    ("GF", "Guyane", ""),
-    ("RE", "La Réunion", ""),
-    ("YT", "Mayotte", ""),
-    ("NC", "Nouvelle-Calédonie", ""),
-    ("PF", "Polynésie française", ""),
-    ("PM", "Saint-Pierre-et-Miquelon", ""),
-    ("BL", "Saint-Barthélemy", ""),
-    ("MF", "Saint-Martin", ""),
-    ("WF", "Wallis-et-Futuna", ""),
-    ("BE", "Belgique", ""),
-    ("CH", "Suisse", ""),
-    ("CA", "Canada", ""),
-    ("US", "États-Unis", ""),
-    ("GB", "Royaume-Uni", ""),
-    ("DE", "Allemagne", ""),
-    ("IT", "Italie", ""),
-    ("ES", "Espagne", ""),
-    ("PT", "Portugal", ""),
-    ("NL", "Pays-Bas", ""),
-    ("SN", "Sénégal", ""),
-    ("CI", "Côte d'Ivoire", ""),
-    ("MA", "Maroc", ""),
-    ("DZ", "Algérie", ""),
-    ("TN", "Tunisie", ""),
-    ("ML", "Mali", ""),
-    ("GN", "Guinée", ""),
-    ("CM", "Cameroun", ""),
-    ("MG", "Madagascar", ""),
-    ("HT", "Haïti", ""),
-    ("LU", "Luxembourg", ""),
-    ("MC", "Monaco", ""),
-    ("AD", "Andorre", ""),
-    ("IE", "Irlande", ""),
-    ("AT", "Autriche", ""),
-    ("SE", "Suède", ""),
-    ("NO", "Norvège", ""),
-    ("DK", "Danemark", ""),
-    ("FI", "Finlande", ""),
-    ("IS", "Islande", ""),
-    ("GR", "Grèce", ""),
-    ("PL", "Pologne", ""),
-    ("CZ", "Tchéquie", ""),
-    ("SK", "Slovaquie", ""),
-    ("HU", "Hongrie", ""),
-    ("RO", "Roumanie", ""),
-    ("BG", "Bulgarie", ""),
-    ("HR", "Croatie", ""),
-    ("RS", "Serbie", ""),
-    ("BA", "Bosnie-Herzégovine", ""),
-    ("SI", "Slovénie", ""),
-    ("JP", "Japon", ""),
-    ("CN", "Chine", ""),
-    ("KR", "Corée du Sud", ""),
-    ("IN", "Inde", ""),
-    ("BR", "Brésil", ""),
-    ("AR", "Argentine", ""),
-    ("MX", "Mexique", ""),
-    ("CO", "Colombie", ""),
-    ("CL", "Chili", ""),
-    ("PE", "Pérou", ""),
-    ("AU", "Australie", ""),
-    ("NZ", "Nouvelle-Zélande", ""),
-    ("ZA", "Afrique du Sud", ""),
-    ("RU", "Russie", ""),
-    ("UA", "Ukraine", ""),
-    ("TR", "Turquie", ""),
-    ("IL", "Israël", ""),
-    ("LB", "Liban", ""),
-]
-
-# Enrichissement avec tous les pays du monde depuis zone.tab
-def build_countries_registry():
-    d = {code: (name, flag) for code, name, flag in COUNTRIES_DB}
-    zone_tab = "/usr/share/zoneinfo/zone.tab"
-    if os.path.exists(zone_tab):
-        try:
-            with open(zone_tab, "r", encoding="utf-8") as f:
-                for line in f:
-                    line = line.strip()
-                    if not line or line.startswith("#"):
-                        continue
-                    parts = line.split("\t")
-                    cc = parts[0].strip().upper()
-                    if cc not in d:
-                        d[cc] = (cc, "")
-        except Exception:
-            pass
-    return d
-
-COUNTRIES_REGISTRY = build_countries_registry()
-
-# Fuseaux horaires complets pour la France (Métropole + Outre-mer)
-FRANCE_TIMEZONES = [
-    ("Europe/Paris", "Europe/Paris (France métropolitaine)"),
-    ("America/Guadeloupe", "America/Guadeloupe (Guadeloupe - Antilles)"),
-    ("America/Martinique", "America/Martinique (Martinique - Antilles)"),
-    ("America/Cayenne", "America/Cayenne (Guyane française)"),
-    ("Indian/Reunion", "Indian/Reunion (La Réunion - Océan Indien)"),
-    ("Indian/Mayotte", "Indian/Mayotte (Mayotte - Océan Indien)"),
-    ("America/Miquelon", "America/Miquelon (Saint-Pierre-et-Miquelon)"),
-    ("America/St_Barthelemy", "America/St_Barthelemy (Saint-Barthélemy)"),
-    ("America/Marigot", "America/Marigot (Saint-Martin)"),
-    ("Pacific/Noumea", "Pacific/Noumea (Nouvelle-Calédonie)"),
-    ("Pacific/Tahiti", "Pacific/Tahiti (Polynésie française - Tahiti)"),
-    ("Pacific/Marquesas", "Pacific/Marquesas (Polynésie - Îles Marquises)"),
-    ("Pacific/Gambier", "Pacific/Gambier (Polynésie - Îles Gambier)"),
-    ("Pacific/Wallis", "Pacific/Wallis (Wallis-et-Futuna)"),
-]
-
-# Libellés clairs pour les pays multi-fuseaux majeurs
-CUSTOM_MULTI_TZ = {
-    "CA": [
-        ("America/Toronto", "America/Toronto (Est - Québec, Ontario)"),
-        ("America/Moncton", "America/Moncton (Atlantique - Nouveau-Brunswick, Acadie)"),
-        ("America/Halifax", "America/Halifax (Atlantique - Nouvelle-Écosse)"),
-        ("America/St_Johns", "America/St_Johns (Terre-Neuve)"),
-        ("America/Winnipeg", "America/Winnipeg (Centre - Manitoba)"),
-        ("America/Regina", "America/Regina (Centre - Saskatchewan)"),
-        ("America/Edmonton", "America/Edmonton (Rocheuses - Alberta)"),
-        ("America/Vancouver", "America/Vancouver (Pacifique - Colombie-Britannique)"),
-        ("America/Whitehorse", "America/Whitehorse (Yukon)"),
-    ],
-    "US": [
-        ("America/New_York", "America/New_York (Heure de l'Est : Caroline du Nord [NC], NY, FL, DC, GA, VA, PA...)"),
-        ("America/Chicago", "America/Chicago (Heure du Centre : Chicago, Texas, Louisiane, Tennessee, MO...)"),
-        ("America/Denver", "America/Denver (Heure des Montagnes : Denver, Colorado, Utah, NM...)"),
-        ("America/Phoenix", "America/Phoenix (Montagnes sans heure d'été : Arizona)"),
-        ("America/Los_Angeles", "America/Los_Angeles (Heure du Pacifique : Californie, Washington, Oregon...)"),
-        ("America/Anchorage", "America/Anchorage (Alaska)"),
-        ("Pacific/Honolulu", "Pacific/Honolulu (Hawaï)"),
-    ],
-    "BR": [
-        ("America/Sao_Paulo", "America/Sao_Paulo (Brasília, São Paulo, Rio)"),
-        ("America/Manaus", "America/Manaus (Amazonie)"),
-        ("America/Cuiaba", "America/Cuiaba (Centre-Ouest)"),
-        ("America/Rio_Branco", "America/Rio_Branco (Acre)"),
-        ("America/Noronha", "America/Noronha (Fernando de Noronha)"),
-    ],
-    "AU": [
-        ("Australia/Sydney", "Australia/Sydney (Est - Sydney, Melbourne)"),
-        ("Australia/Brisbane", "Australia/Brisbane (Est - Queensland sans heure d'été)"),
-        ("Australia/Adelaide", "Australia/Adelaide (Centre - Adélaïde)"),
-        ("Australia/Darwin", "Australia/Darwin (Centre - Territoire du Nord)"),
-        ("Australia/Perth", "Australia/Perth (Ouest - Perth)"),
-    ],
-    "RU": [
-        ("Europe/Moscow", "Europe/Moscow (Moscou, Saint-Pétersbourg - UTC+3)"),
-        ("Europe/Kaliningrad", "Europe/Kaliningrad (Kaliningrad - UTC+2)"),
-        ("Europe/Samara", "Europe/Samara (Samara - UTC+4)"),
-        ("Asia/Yekaterinburg", "Asia/Yekaterinburg (Oural - UTC+5)"),
-        ("Asia/Omsk", "Asia/Omsk (Omsk - UTC+6)"),
-        ("Asia/Novosibirsk", "Asia/Novosibirsk (Novossibirsk - UTC+7)"),
-        ("Asia/Krasnoyarsk", "Asia/Krasnoyarsk (Krasnoïarsk - UTC+7)"),
-        ("Asia/Irkutsk", "Asia/Irkutsk (Irkoutsk - UTC+8)"),
-        ("Asia/Yakutsk", "Asia/Yakutsk (Iakoutsk - UTC+9)"),
-        ("Asia/Vladivostok", "Asia/Vladivostok (Vladivostok - UTC+10)"),
-        ("Asia/Magadan", "Asia/Magadan (Magadan - UTC+11)"),
-        ("Asia/Kamchatka", "Asia/Kamchatka (Kamtchatka - UTC+12)"),
-    ],
-    "ES": [
-        ("Europe/Madrid", "Europe/Madrid (Péninsule ibérique et Baléares)"),
-        ("Atlantic/Canary", "Atlantic/Canary (Îles Canaries)"),
-        ("Africa/Ceuta", "Africa/Ceuta (Ceuta et Melilla)"),
-    ],
-    "PT": [
-        ("Europe/Lisbon", "Europe/Lisbon (Portugal continental et Madère)"),
-        ("Atlantic/Azores", "Atlantic/Azores (Açores)"),
-    ],
-}
-
-
-def load_world_timezones() -> dict:
-    catalogue = collections.defaultdict(list)
-    zone_tab_path = "/usr/share/zoneinfo/zone.tab"
-    if os.path.exists(zone_tab_path):
-        try:
-            with open(zone_tab_path, "r", encoding="utf-8") as f:
-                for line in f:
-                    line = line.strip()
-                    if not line or line.startswith("#"):
-                        continue
-                    parts = line.split("\t")
-                    if len(parts) >= 3:
-                        cc = parts[0].strip().upper()
-                        tz = parts[2].strip()
-                        comment = parts[3].strip() if len(parts) > 3 else ""
-                        desc = f"{tz} ({comment})" if comment else tz
-                        catalogue[cc].append((tz, desc))
-        except Exception:
-            pass
-
-    catalogue["FR"] = list(FRANCE_TIMEZONES)
-    for cc, tz_list in CUSTOM_MULTI_TZ.items():
-        catalogue[cc] = list(tz_list)
-
-    overseas_direct = {
-        "GP": [("America/Guadeloupe", "America/Guadeloupe (Guadeloupe)")],
-        "MQ": [("America/Martinique", "America/Martinique (Martinique)")],
-        "GF": [("America/Cayenne", "America/Cayenne (Guyane)")],
-        "RE": [("Indian/Reunion", "Indian/Reunion (La Réunion)")],
-        "YT": [("Indian/Mayotte", "Indian/Mayotte (Mayotte)")],
-        "NC": [("Pacific/Noumea", "Pacific/Noumea (Nouvelle-Calédonie)")],
-        "PF": [("Pacific/Tahiti", "Pacific/Tahiti (Polynésie française)")],
-        "PM": [("America/Miquelon", "America/Miquelon (Saint-Pierre-et-Miquelon)")],
-        "BL": [("America/St_Barthelemy", "America/St_Barthelemy (Saint-Barthélemy)")],
-        "MF": [("America/Marigot", "America/Marigot (Saint-Martin)")],
-        "WF": [("Pacific/Wallis", "Pacific/Wallis (Wallis-et-Futuna)")],
-    }
-    for cc, tzs in overseas_direct.items():
-        catalogue[cc] = tzs
-
-    return catalogue
-
-
-WORLD_TIMEZONES = load_world_timezones()
-
-DEFAULT_WORLD_TIMEZONES = [
-    ("", "(Déduction automatique selon le nom / groupe)"),
-    ("America/New_York", "America/New_York (Heure de l'Est : Caroline du Nord [NC], NY, FL, DC, GA, VA, PA...)"),
-    ("America/Chicago", "America/Chicago (Heure du Centre : Chicago, Texas, Louisiane, Tennessee, MO...)"),
-    ("America/Denver", "America/Denver (Heure des Montagnes : Denver, Colorado, Utah, NM...)"),
-    ("America/Phoenix", "America/Phoenix (Montagnes sans heure d'été : Arizona)"),
-    ("America/Los_Angeles", "America/Los_Angeles (Heure du Pacifique : Californie, Washington, Oregon...)"),
-    ("America/Anchorage", "America/Anchorage (Alaska)"),
-    ("Pacific/Honolulu", "Pacific/Honolulu (Hawaï)"),
-    ("Europe/Paris", "Europe/Paris (France métropolitaine, Belgique, Suisse, Europe centrale)"),
-    ("Europe/London", "Europe/London (Royaume-Uni, Portugal, UTC)"),
-    ("America/Toronto", "America/Toronto (Canada Est - Québec, Ontario)"),
-    ("America/Vancouver", "America/Vancouver (Canada Pacifique)"),
-    ("America/Guadeloupe", "America/Guadeloupe (Antilles - Guadeloupe, Martinique)"),
-    ("Indian/Reunion", "Indian/Reunion (La Réunion)"),
-    ("Pacific/Noumea", "Pacific/Noumea (Nouvelle-Calédonie)"),
-    ("Pacific/Tahiti", "Pacific/Tahiti (Polynésie française)"),
-    ("Asia/Tokyo", "Asia/Tokyo (Japon)"),
-    ("Australia/Sydney", "Australia/Sydney (Australie Est)"),
-]
-
-def make_btn(label_text, icon_name=None, tooltip=None):
-    btn = Gtk.Button()
-    box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-    box.set_halign(Gtk.Align.CENTER)
-    if icon_name:
-        img = Gtk.Image.new_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
-        box.pack_start(img, False, False, 0)
-    lbl = Gtk.Label(label=label_text)
-    box.pack_start(lbl, False, False, 0)
-    btn.add(box)
-    btn._label_widget = lbl
-    if tooltip:
-        btn.set_tooltip_text(tooltip)
-    return btn
 
 
 class EditStationWindow(Gtk.Window):
