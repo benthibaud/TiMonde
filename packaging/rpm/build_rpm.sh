@@ -23,7 +23,7 @@ if ! command -v cargo-generate-rpm >/dev/null 2>&1; then
 fi
 
 echo "Construction du RPM..."
-(cd "${ROOT_DIR}" && cargo generate-rpm)
+(cd "${ROOT_DIR}" && cargo generate-rpm --auto-req disabled)
 
 # 3. Déplacement du RPM généré
 if [ -f "${ROOT_DIR}/target/generate-rpm/${RPM_NAME}" ]; then

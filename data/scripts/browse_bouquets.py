@@ -640,15 +640,6 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.connect("destroy", self.on_destroy)
         self.set_focus_on_map(True)
 
-        def on_map_event(window, event):
-            window.present_with_time(Gdk.CURRENT_TIME)
-            if hasattr(window, "notebook") and window.notebook.get_current_page() == 0:
-                if hasattr(window, "entry_rb_name"):
-                    GLib.idle_add(window.entry_rb_name.grab_focus)
-            return False
-
-        self.connect("map-event", on_map_event)
-
         self.existing_stations = existing_stations
         self.existing_urls = {s.get("url", "").strip() for s in existing_stations}
         self.existing_names = {s.get("name", "").strip().lower() for s in existing_stations}
@@ -2229,7 +2220,7 @@ def main():
         available_groups=available_groups,
     )
     win.show_all()
-    win.present_with_time(Gdk.CURRENT_TIME)
+    win.present()
     if initial_tab == 0:
         GLib.idle_add(win.entry_rb_name.grab_focus)
     Gtk.main()

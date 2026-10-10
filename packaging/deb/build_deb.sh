@@ -42,7 +42,8 @@ Version: ${VERSION}
 Section: sound
 Priority: optional
 Architecture: ${ARCH}
-Depends: libc6, libgstreamer1.0-0, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, gstreamer1.0-plugins-bad, gstreamer1.0-libav, glib-networking, python3, python3-gi, gir1.2-gtk-3.0, gir1.2-dbusmenu-gtk3-0.4
+Depends: libc6, libgstreamer1.0-0, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, gstreamer1.0-plugins-bad, gstreamer1.0-libav, glib-networking, python3, python3-gi, python3-dbus, gir1.2-gtk-3.0, gir1.2-dbusmenu-gtk3-0.4
+Recommends: gnome-shell-extension-appindicator | gnome-shell-extension-ubuntu-appindicators
 Maintainer: Ben Thibaud <b_thibaud@laposte.net>
 Description: Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux
  TiMonde est un lecteur de radios universel et économe en ressources (< 15 Mo de RAM),
@@ -110,6 +111,7 @@ install -m 755 "${ROOT_DIR}/data/scripts/edit_station.py" "${STAGING_DIR}/usr/sh
 install -m 755 "${ROOT_DIR}/data/scripts/browse_bouquets.py" "${STAGING_DIR}/usr/share/timonde/scripts/browse_bouquets.py"
 install -m 755 "${ROOT_DIR}/data/scripts/timonde_xembed_bridge.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_xembed_bridge.py"
 install -m 755 "${ROOT_DIR}/data/scripts/patch_cinnamon_status_applet.py" "${STAGING_DIR}/usr/share/timonde/scripts/patch_cinnamon_status_applet.py"
+install -m 755 "${ROOT_DIR}/data/scripts/show_menu.py" "${STAGING_DIR}/usr/share/timonde/scripts/show_menu.py"
 install -m 644 "${ROOT_DIR}/data/scripts/timonde_i18n.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_i18n.py"
 install -m 644 "${ROOT_DIR}/data/scripts/timonde_common.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_common.py"
 install -m 644 "${ROOT_DIR}"/data/bouquets/*.xml "${STAGING_DIR}/usr/share/timonde/bouquets/"

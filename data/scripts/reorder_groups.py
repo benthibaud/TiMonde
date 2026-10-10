@@ -122,7 +122,7 @@ from gi.repository import Gtk, Gdk, Pango, GLib
 
 class ReorderWindow(Gtk.Window):
     def __init__(self, data, auto_check=False):
-        super().__init__(title=_("Organiser les groupes et radios (TiMonde)"))
+        super().__init__(title=_("Organize groups and stations (TiMonde)"))
         self.set_default_size(760, 550)
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_border_width(12)
@@ -159,7 +159,7 @@ class ReorderWindow(Gtk.Window):
         self.nav_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         self.vbox.pack_start(self.nav_box, False, False, 0)
 
-        self.btn_back = make_btn(_("Back to groups"), "go-previous", "Revenir à la liste principale des groupes (Échap)")
+        self.btn_back = make_btn(_("Back to groups"), "go-previous", _("Back to main group list (Esc)"))
         self.btn_back.connect("clicked", self.on_back_clicked)
         self.nav_box.pack_start(self.btn_back, False, False, 0)
 
@@ -232,52 +232,52 @@ class ReorderWindow(Gtk.Window):
         side_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         content_box.pack_start(side_box, False, False, 0)
 
-        self.btn_open = make_btn(_("Open"), "document-open", "Classer les radios de ce groupe (Entrée ou double-clic)")
+        self.btn_open = make_btn(_("Open"), "document-open", _("Sort stations in this group (Enter or double-click)"))
         self.btn_open.connect("clicked", self.on_open_clicked)
         side_box.pack_start(self.btn_open, False, False, 0)
 
-        self.btn_new_group = make_btn(_("New group"), "folder-new", "Créer un nouveau groupe de radios (Ctrl+N)")
+        self.btn_new_group = make_btn(_("New group"), "folder-new", _("Create a new group of radio stations (Ctrl+N)"))
         self.btn_new_group.connect("clicked", self.on_create_group_clicked)
         side_box.pack_start(self.btn_new_group, False, False, 0)
 
-        self.btn_move_to = make_btn(_("Move to..."), "go-jump", "Déplacer la sélection vers un autre groupe (Ctrl+M)")
+        self.btn_move_to = make_btn(_("Move to..."), "go-jump", _("Move selection to another group (Ctrl+M)"))
         self.btn_move_to.connect("clicked", self.on_move_to_clicked)
         side_box.pack_start(self.btn_move_to, False, False, 0)
 
         sep0 = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
         side_box.pack_start(sep0, False, False, 2)
 
-        btn_top = make_btn(_("Top"), "go-top", "Placer l'élément sélectionné en tout premier")
+        btn_top = make_btn(_("Top"), "go-top", _("Move selected item to the top"))
         btn_top.connect("clicked", self.on_move_top_clicked)
         side_box.pack_start(btn_top, False, False, 0)
 
-        btn_up = make_btn(_("Move up"), "go-up", "Monter d'un rang")
+        btn_up = make_btn(_("Move up"), "go-up", _("Move up one rank"))
         btn_up.connect("clicked", self.on_move_up_clicked)
         side_box.pack_start(btn_up, False, False, 0)
 
-        btn_down = make_btn(_("Move down"), "go-down", "Descendre d'un rang")
+        btn_down = make_btn(_("Move down"), "go-down", _("Move down one rank"))
         btn_down.connect("clicked", self.on_move_down_clicked)
         side_box.pack_start(btn_down, False, False, 0)
 
         sep1 = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
         side_box.pack_start(sep1, False, False, 2)
 
-        self.btn_add_station = make_btn(_("Add station"), "list-add", "Ajouter une nouvelle radio dans ce groupe")
+        self.btn_add_station = make_btn(_("Add station"), "list-add", _("Add a new station to this group"))
         self.btn_add_station.connect("clicked", self.on_add_station_clicked)
         side_box.pack_start(self.btn_add_station, False, False, 0)
 
-        self.btn_add_sep = make_btn(_("Separator"), "format-line-spacing", "Insérer un séparateur ou un intertitre dans ce groupe")
+        self.btn_add_sep = make_btn(_("Separator"), "format-line-spacing", _("Insert a separator or header in this group"))
         self.btn_add_sep.connect("clicked", self.on_add_separator_clicked)
         side_box.pack_start(self.btn_add_sep, False, False, 0)
 
-        btn_sort = make_btn(_("Sort A-Z"), "view-sort-ascending", "Trier automatiquement cette liste par ordre alphabétique")
+        btn_sort = make_btn(_("Sort A-Z"), "view-sort-ascending", _("Sort this list alphabetically"))
         btn_sort.connect("clicked", self.on_sort_az_clicked)
         side_box.pack_start(btn_sort, False, False, 0)
 
         sep2 = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
         side_box.pack_start(sep2, False, False, 2)
 
-        btn_edit = make_btn(_("Edit"), "document-edit", "Modifier le nom, l'URL ou l'intertitre sélectionné (F2)")
+        btn_edit = make_btn(_("Edit"), "document-edit", _("Edit selected name, URL or header (F2)"))
         btn_edit.connect("clicked", self.on_edit_clicked)
         side_box.pack_start(btn_edit, False, False, 0)
 
@@ -285,7 +285,7 @@ class ReorderWindow(Gtk.Window):
         self.btn_repair.connect("clicked", self.on_repair_stream_clicked)
         side_box.pack_start(self.btn_repair, False, False, 0)
 
-        btn_del = make_btn(_("Delete"), "edit-delete", "Supprimer l'élément ou le groupe sélectionné (Suppr)")
+        btn_del = make_btn(_("Delete"), "edit-delete", _("Delete selected item or group (Del)"))
         btn_del.connect("clicked", self.on_delete_clicked)
         side_box.pack_start(btn_del, False, False, 0)
 
@@ -372,17 +372,17 @@ class ReorderWindow(Gtk.Window):
             self.btn_add_sep.show()
             self.btn_add_station.hide()
             if hasattr(self.btn_move_to, "_label_widget"):
-                self.btn_move_to._label_widget.set_text("Transférer...")
+                self.btn_move_to._label_widget.set_text(_("Transfer..."))
             else:
-                self.btn_move_to.set_label("Transférer...")
-            self.btn_move_to.set_tooltip_text("Transférer le contenu de ce groupe vers un autre groupe (Ctrl+M)")
-            self.btn_new_group.set_tooltip_text("Créer un nouveau groupe de radios (Ctrl+N)")
-            self.header_title.set_markup("<b>Groupes de radios</b>")
+                self.btn_move_to.set_label(_("Transfer..."))
+            self.btn_move_to.set_tooltip_text(_("Transfer the content of this group to another group (Ctrl+M)"))
+            self.btn_new_group.set_tooltip_text(_("Create a new group of radio stations (Ctrl+N)"))
+            self.header_title.set_markup(_("<b>Radio groups</b>"))
             self.help_label.set_markup(
-                "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
-                "• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour classer ses radios et séparateurs.\n"
-                "• Utilisez <b>Transférer...</b> pour fusionner ou déplacer le contenu vers un autre groupe.\n"
-                "• Utilisez <b>Nouveau groupe</b> pour ajouter un dossier de radios.</small>"
+                _("<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+                  "• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+                  "• Use <b>Transfer...</b> to merge or move content to another group.\n"
+                  "• Use <b>New group</b> to add a station folder.</small>")
             )
             self.col_name.set_title(_("Group name"))
             self.col_info.set_title(_("Contents"))
@@ -392,7 +392,7 @@ class ReorderWindow(Gtk.Window):
                     title = g.get("name", "").strip()
                     clean = title.strip("-").strip() if title.startswith("---") else title
                     display_title = f"─── {clean} ───" if clean else "───────────────"
-                    self.store.append([i, str(i + 1), display_title, "— Séparateur —"])
+                    self.store.append([i, str(i + 1), display_title, _("— Separator —")])
                 else:
                     stations = g.get("stations", [])
                     nb_radios = sum(1 for s in stations if not self.is_item_separator(s))
@@ -400,15 +400,17 @@ class ReorderWindow(Gtk.Window):
                     nb_dead = sum(1 for s in stations if self.audit_results.get(s.get("url", ""), {}).get("status") == "offline")
                     nb_redir = sum(1 for s in stations if self.audit_results.get(s.get("url", ""), {}).get("status") == "redirect")
 
-                    info_parts = [f"{nb_radios} radio{'s' if nb_radios > 1 else ''}"]
+                    radio_unit = _("radios") if nb_radios > 1 else _("radio")
+                    info_parts = [f"{nb_radios} {radio_unit}"]
                     if nb_seps > 0:
-                        info_parts.append(f"{nb_seps} sép.")
+                        info_parts.append(f"{nb_seps} " + _("sep."))
                     if nb_dead > 0:
-                        info_parts.append(f"<span foreground='#e74c3c'><b>[!] {nb_dead} lien{'s' if nb_dead > 1 else ''} mort{'s' if nb_dead > 1 else ''}</b></span>")
+                        dead_unit = _("dead links") if nb_dead > 1 else _("dead link")
+                        info_parts.append(f"<span foreground='#e74c3c'><b>[!] {nb_dead} {dead_unit}</b></span>")
                     elif nb_redir > 0:
-                        info_parts.append(f"<span foreground='#e67e22'>[~] {nb_redir} redir.</span>")
+                        info_parts.append(f"<span foreground='#e67e22'>[~] {nb_redir} " + _("redir.") + "</span>")
                     elif self.audit_results and nb_radios > 0:
-                        info_parts.append("<span foreground='#2ecc71'>[OK] Tout est en ligne</span>")
+                        info_parts.append("<span foreground='#2ecc71'>" + _("[OK] All online") + "</span>")
 
                     clean_name = strip_unsupported_emojis(g["name"]) or g["name"]
                     disp_group_name = clean_name
@@ -426,20 +428,21 @@ class ReorderWindow(Gtk.Window):
             self.btn_add_sep.show()
             self.btn_add_station.show()
             if hasattr(self.btn_move_to, "_label_widget"):
-                self.btn_move_to._label_widget.set_text("Déplacer vers...")
+                self.btn_move_to._label_widget.set_text(_("Move to..."))
             else:
-                self.btn_move_to.set_label("Déplacer vers...")
-            self.btn_move_to.set_tooltip_text("Déplacer la ou les radios sélectionnées vers un autre groupe (Ctrl+M)")
-            self.btn_new_group.set_tooltip_text("Créer un nouveau groupe et y déplacer les radios sélectionnées (Ctrl+N)")
+                self.btn_move_to.set_label(_("Move to..."))
+            self.btn_move_to.set_tooltip_text(_("Move selected stations to another group (Ctrl+M)"))
+            self.btn_new_group.set_tooltip_text(_("Create a new group and move selected stations there (Ctrl+N)"))
             clean_grp_title = strip_unsupported_emojis(grp['name']) or grp['name']
             if "/" in clean_grp_title:
                 clean_grp_title = clean_grp_title.replace("/", " / ")
-            self.header_title.set_markup(f"<b>Radios du groupe : {clean_grp_title}</b>")
+            grp_label = _("Stations in group:")
+            self.header_title.set_markup(f"<b>{grp_label} {clean_grp_title}</b>")
             self.help_label.set_markup(
-                "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour classer les radios.\n"
-                "• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens morts (rouge) et les réparer.\n"
-                "• Cliquez sur <b>Réparer flux...</b> pour chercher un flux actif de remplacement sur Radio-Browser.\n"
-                "• Cliquez sur <b>Séparateur</b> pour insérer un intertitre de section.</small>"
+                _("<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+                  "• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+                  "• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+                  "• Click <b>Separator</b> to insert a section header.</small>")
             )
             self.col_name.set_title(_("Name / Header"))
             self.col_info.set_title(_("Details"))
@@ -456,10 +459,10 @@ class ReorderWindow(Gtk.Window):
                         s["name"] = ""
                     if title:
                         disp_name = f"─── {title} ───"
-                        info_str = "Intertitre"
+                        info_str = _("Header")
                     else:
                         disp_name = "────────────────────────"
-                        info_str = "Séparateur"
+                        info_str = _("Separator")
                     self.store.append([i, str(i + 1), disp_name, info_str])
                 else:
                     s["is_separator"] = False
@@ -473,13 +476,14 @@ class ReorderWindow(Gtk.Window):
                         st_val = audit.get("status")
                         st_msg = audit.get("msg", "")
                         if st_val == "online":
-                            info_str = "<span foreground='#2ecc71'>[OK] En direct</span>"
+                            info_str = "<span foreground='#2ecc71'>" + _("[OK] Live") + "</span>"
                         elif st_val == "offline":
-                            info_str = f"<span foreground='#e74c3c'><b>[!] Lien mort</b> ({st_msg})</span>"
+                            dead_label = _("[!] Dead link")
+                            info_str = f"<span foreground='#e74c3c'><b>{dead_label}</b> ({st_msg})</span>"
                         elif st_val == "redirect":
-                            info_str = "<span foreground='#e67e22'>[~] Redirigé</span>"
+                            info_str = "<span foreground='#e67e22'>" + _("[~] Redirected") + "</span>"
                         elif st_val == "geo":
-                            info_str = "<span foreground='#f1c40f'>[?] Géo-restreint</span>"
+                            info_str = "<span foreground='#f1c40f'>" + _("[?] Geo-restricted") + "</span>"
                         else:
                             info_str = st_msg
                     else:
@@ -1323,7 +1327,7 @@ class ReorderWindow(Gtk.Window):
                     val = json.loads(res.stdout.strip())
                     if val.get("action") == "delete":
                         items.pop(idx)
-                        self.show_feedback("Radio supprimée")
+                        self.show_feedback(_("Station deleted"))
                         self.update_view()
                         return
                     target["name"] = val["name"]
@@ -1442,24 +1446,24 @@ class ReorderWindow(Gtk.Window):
                         stations_to_check.append(s)
 
         if not stations_to_check:
-            self.show_feedback("Aucune radio à vérifier.")
+            self.show_feedback(_("No stations to check."))
             return
 
         total = len(stations_to_check)
 
         # Dialogue de progression modal
         dialog = Gtk.Dialog(
-            title="Vérification de vos radios",
+            title=_("Checking your radio stations"),
             parent=self,
             flags=Gtk.DialogFlags.MODAL,
-            buttons=("Arrêter", Gtk.ResponseType.CANCEL)
+            buttons=(_("Stop"), Gtk.ResponseType.CANCEL)
         )
         dialog.set_default_size(440, 140)
         box = dialog.get_content_area()
         box.set_spacing(10)
         box.set_border_width(14)
 
-        lbl = Gtk.Label(label="<b>Vérification en direct de vos flux de radios...</b>")
+        lbl = Gtk.Label(label="<b>" + _("Testing live radio streams...") + "</b>")
         lbl.set_use_markup(True)
         lbl.set_halign(Gtk.Align.START)
         box.add(lbl)
@@ -1467,7 +1471,7 @@ class ReorderWindow(Gtk.Window):
         pbar = Gtk.ProgressBar()
         box.add(pbar)
 
-        lbl_status = Gtk.Label(label=f"0 / {total} radios vérifiées...")
+        lbl_status = Gtk.Label(label=f"0 / {total} " + _("stations checked..."))
         lbl_status.set_halign(Gtk.Align.START)
         box.add(lbl_status)
         dialog.show_all()
@@ -1496,7 +1500,7 @@ class ReorderWindow(Gtk.Window):
                 done += 1
 
                 fraction = done / float(total)
-                text = f"{done} / {total} radios vérifiées : {s.get('name', '')[:25]}"
+                text = f"{done} / {total} " + _("checked:") + f" {s.get('name', '')[:25]}"
                 GLib.idle_add(pbar.set_fraction, fraction)
                 GLib.idle_add(lbl_status.set_text, text)
 
@@ -1508,11 +1512,15 @@ class ReorderWindow(Gtk.Window):
             nb_dead = sum(1 for r in self.audit_results.values() if r["status"] == "offline")
             nb_redir = sum(1 for r in self.audit_results.values() if r["status"] == "redirect")
 
-            self.show_feedback(f"Audit terminé : {nb_online} en ligne · {nb_dead} liens morts · {nb_redir} redirigés")
+            audit_done = _("Audit completed:")
+            lbl_online = _("online")
+            lbl_dead = _("broken")
+            lbl_redir = _("redirected")
+            self.show_feedback(f"{audit_done} {nb_online} {lbl_online} · {nb_dead} {lbl_dead} · {nb_redir} {lbl_redir}")
 
             if nb_dead > 0:
                 self.chk_broken_only.show()
-                self.chk_broken_only.set_label(f"Liens morts uniquement ({nb_dead})" )
+                self.chk_broken_only.set_label(f"{_('Dead links only')} ({nb_dead})")
                 self.chk_broken_only.set_active(True)
             else:
                 self.chk_broken_only.hide()
@@ -1520,10 +1528,11 @@ class ReorderWindow(Gtk.Window):
 
             if nb_redir > 0:
                 self.btn_apply_redirects.show()
+                apply_label = f"{_('Apply redirects')} ({nb_redir})"
                 if hasattr(self.btn_apply_redirects, "_label_widget"):
-                    self.btn_apply_redirects._label_widget.set_text(f"Appliquer redirections ({nb_redir})")
+                    self.btn_apply_redirects._label_widget.set_text(apply_label)
                 else:
-                    self.btn_apply_redirects.set_label(f"Appliquer redirections ({nb_redir})")
+                    self.btn_apply_redirects.set_label(apply_label)
             else:
                 self.btn_apply_redirects.hide()
 
@@ -1540,13 +1549,13 @@ class ReorderWindow(Gtk.Window):
     def on_repair_stream_clicked(self, widget):
         idx = self.get_selected_index()
         if idx is None:
-            self.show_feedback("Veuillez sélectionner une radio à réparer.")
+            self.show_feedback(_("Please select a station to repair."))
             return
 
         items = self.get_current_list()
         st = items[idx]
         if self.is_item_separator(st):
-            self.show_feedback("Cet élément est un séparateur.")
+            self.show_feedback(_("This item is a separator."))
             return
 
         st_name = st.get("name", "")

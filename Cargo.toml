@@ -1,6 +1,6 @@
 [package]
 name = "timonde"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Ben Thibaud <b_thibaud@laposte.net>"]
 description = "Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux"
@@ -36,9 +36,60 @@ assets = [
     { source = "data/icons/timonde_off.svg", dest = "/usr/share/icons/hicolor/scalable/panel/timonde_off.svg", mode = "644" },
     { source = "data/icons/timonde_on.svg", dest = "/usr/share/icons/hicolor/scalable/panel/timonde_on.svg", mode = "644" },
     { source = "data/icons/timonde_error.svg", dest = "/usr/share/icons/hicolor/scalable/panel/timonde_error.svg", mode = "644" },
+    { source = "data/icons/hicolor/16x16/apps/timonde_on.png", dest = "/usr/share/icons/hicolor/16x16/apps/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/16x16/apps/timonde_off.png", dest = "/usr/share/icons/hicolor/16x16/apps/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/16x16/apps/timonde_error.png", dest = "/usr/share/icons/hicolor/16x16/apps/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/16x16/panel/timonde_on.png", dest = "/usr/share/icons/hicolor/16x16/panel/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/16x16/panel/timonde_off.png", dest = "/usr/share/icons/hicolor/16x16/panel/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/16x16/panel/timonde_error.png", dest = "/usr/share/icons/hicolor/16x16/panel/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/22x22/apps/timonde_on.png", dest = "/usr/share/icons/hicolor/22x22/apps/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/22x22/apps/timonde_off.png", dest = "/usr/share/icons/hicolor/22x22/apps/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/22x22/apps/timonde_error.png", dest = "/usr/share/icons/hicolor/22x22/apps/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/22x22/panel/timonde_on.png", dest = "/usr/share/icons/hicolor/22x22/panel/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/22x22/panel/timonde_off.png", dest = "/usr/share/icons/hicolor/22x22/panel/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/22x22/panel/timonde_error.png", dest = "/usr/share/icons/hicolor/22x22/panel/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/24x24/apps/timonde_on.png", dest = "/usr/share/icons/hicolor/24x24/apps/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/24x24/apps/timonde_off.png", dest = "/usr/share/icons/hicolor/24x24/apps/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/24x24/apps/timonde_error.png", dest = "/usr/share/icons/hicolor/24x24/apps/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/24x24/panel/timonde_on.png", dest = "/usr/share/icons/hicolor/24x24/panel/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/24x24/panel/timonde_off.png", dest = "/usr/share/icons/hicolor/24x24/panel/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/24x24/panel/timonde_error.png", dest = "/usr/share/icons/hicolor/24x24/panel/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/32x32/apps/timonde_on.png", dest = "/usr/share/icons/hicolor/32x32/apps/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/32x32/apps/timonde_off.png", dest = "/usr/share/icons/hicolor/32x32/apps/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/32x32/apps/timonde_error.png", dest = "/usr/share/icons/hicolor/32x32/apps/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/32x32/panel/timonde_on.png", dest = "/usr/share/icons/hicolor/32x32/panel/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/32x32/panel/timonde_off.png", dest = "/usr/share/icons/hicolor/32x32/panel/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/32x32/panel/timonde_error.png", dest = "/usr/share/icons/hicolor/32x32/panel/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/48x48/apps/timonde_on.png", dest = "/usr/share/icons/hicolor/48x48/apps/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/48x48/apps/timonde_off.png", dest = "/usr/share/icons/hicolor/48x48/apps/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/48x48/apps/timonde_error.png", dest = "/usr/share/icons/hicolor/48x48/apps/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/48x48/panel/timonde_on.png", dest = "/usr/share/icons/hicolor/48x48/panel/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/48x48/panel/timonde_off.png", dest = "/usr/share/icons/hicolor/48x48/panel/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/48x48/panel/timonde_error.png", dest = "/usr/share/icons/hicolor/48x48/panel/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/64x64/apps/timonde_on.png", dest = "/usr/share/icons/hicolor/64x64/apps/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/64x64/apps/timonde_off.png", dest = "/usr/share/icons/hicolor/64x64/apps/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/64x64/apps/timonde_error.png", dest = "/usr/share/icons/hicolor/64x64/apps/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/64x64/panel/timonde_on.png", dest = "/usr/share/icons/hicolor/64x64/panel/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/64x64/panel/timonde_off.png", dest = "/usr/share/icons/hicolor/64x64/panel/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/64x64/panel/timonde_error.png", dest = "/usr/share/icons/hicolor/64x64/panel/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/128x128/apps/timonde_on.png", dest = "/usr/share/icons/hicolor/128x128/apps/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/128x128/apps/timonde_off.png", dest = "/usr/share/icons/hicolor/128x128/apps/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/128x128/apps/timonde_error.png", dest = "/usr/share/icons/hicolor/128x128/apps/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/128x128/panel/timonde_on.png", dest = "/usr/share/icons/hicolor/128x128/panel/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/128x128/panel/timonde_off.png", dest = "/usr/share/icons/hicolor/128x128/panel/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/128x128/panel/timonde_error.png", dest = "/usr/share/icons/hicolor/128x128/panel/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/256x256/apps/timonde_on.png", dest = "/usr/share/icons/hicolor/256x256/apps/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/256x256/apps/timonde_off.png", dest = "/usr/share/icons/hicolor/256x256/apps/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/256x256/apps/timonde_error.png", dest = "/usr/share/icons/hicolor/256x256/apps/timonde_error.png", mode = "644" },
+    { source = "data/icons/hicolor/256x256/panel/timonde_on.png", dest = "/usr/share/icons/hicolor/256x256/panel/timonde_on.png", mode = "644" },
+    { source = "data/icons/hicolor/256x256/panel/timonde_off.png", dest = "/usr/share/icons/hicolor/256x256/panel/timonde_off.png", mode = "644" },
+    { source = "data/icons/hicolor/256x256/panel/timonde_error.png", dest = "/usr/share/icons/hicolor/256x256/panel/timonde_error.png", mode = "644" },
     { source = "data/scripts/reorder_groups.py", dest = "/usr/share/timonde/scripts/reorder_groups.py", mode = "755" },
     { source = "data/scripts/edit_station.py", dest = "/usr/share/timonde/scripts/edit_station.py", mode = "755" },
     { source = "data/scripts/browse_bouquets.py", dest = "/usr/share/timonde/scripts/browse_bouquets.py", mode = "755" },
+    { source = "data/scripts/show_menu.py", dest = "/usr/share/timonde/scripts/show_menu.py", mode = "755" },
+    { source = "data/scripts/patch_cinnamon_status_applet.py", dest = "/usr/share/timonde/scripts/patch_cinnamon_status_applet.py", mode = "755" },
+    { source = "data/scripts/timonde_common.py", dest = "/usr/share/timonde/scripts/timonde_common.py", mode = "644" },
     { source = "data/scripts/timonde_i18n.py", dest = "/usr/share/timonde/scripts/timonde_i18n.py", mode = "644" },
     { source = "data/bouquets/ad.xml", dest = "/usr/share/timonde/bouquets/ad.xml", mode = "644" },
     { source = "data/bouquets/ae.xml", dest = "/usr/share/timonde/bouquets/ae.xml", mode = "644" },
@@ -262,3 +313,20 @@ assets = [
     { source = "data/io.github.benthibaud.timonde.metainfo.xml", dest = "/usr/share/metainfo/io.github.benthibaud.timonde.metainfo.xml", mode = "644" },
     { source = "packaging/deb/copyright", dest = "/usr/share/doc/timonde/copyright", mode = "644" },
 ]
+
+[package.metadata.generate-rpm.requires]
+gstreamer1 = "*"
+gstreamer1-plugins-base = "*"
+gstreamer1-plugins-good = "*"
+gstreamer1-plugins-bad-free = "*"
+gstreamer1-plugin-libav = "*"
+glib-networking = "*"
+python3 = "*"
+python3-gobject = "*"
+gtk3 = "*"
+libdbusmenu-gtk3 = "*"
+python3-dbus = "*"
+
+[package.metadata.generate-rpm.recommends]
+gnome-shell-extension-appindicator = "*"
+

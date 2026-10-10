@@ -1,19 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-  <!-- État Actif / Musique en cours (Vert éclatant et ondes sonores) -->
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Ondes radio actives -->
-    <path d="M19 2.5 C20.5 4 20.5 6 19 7.5" stroke="#00e676" stroke-width="1.8"/>
-    <path d="M21 1 C23.5 3.5 23.5 8 21 10.5" stroke="#00e676" stroke-width="1.8" opacity="0.8"/>
-    <!-- Antenne -->
-    <path d="M5.5 5.5 L15 2" stroke="#ffffff" stroke-width="1.7"/>
-    <!-- Boîtier radio -->
-    <rect x="2.5" y="5.5" width="17" height="14.5" rx="2.8" stroke="#ffffff" stroke-width="1.7" fill="#1b2a22" fill-opacity="0.3"/>
-    <!-- Haut-parleur vibrant -->
-    <circle cx="7.8" cy="12.8" r="3.2" stroke="#00e676" stroke-width="1.8"/>
-    <circle cx="7.8" cy="12.8" r="1.3" fill="#00e676"/>
-    <!-- Indicateurs -->
-    <line x1="13.5" y1="10" x2="17" y2="10" stroke="#00e676" stroke-width="1.6"/>
-    <line x1="13.5" y1="12.8" x2="17" y2="12.8" stroke="#ffffff" stroke-width="1.6"/>
-    <circle cx="15.2" cy="15.8" r="1.2" fill="#00e676"/>
-  </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 22 22"
+   version="1.1"
+   id="svg5412"
+   sodipodi:docname="timonde_on.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs5416" />
+  <sodipodi:namedview
+     id="namedview5414"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="22.627417"
+     inkscape:cx="9.3912619"
+     inkscape:cy="15.379572"
+     inkscape:window-width="1920"
+     inkscape:window-height="1138"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg5412" />
+  <style
+     type="text/css"
+     id="current-color-scheme">
+    .ColorScheme-Text { color: #232629; }
+    .ColorScheme-PositiveText { color: #27ae60; }
+  </style>
+  <path
+     id="rect1037"
+     style="opacity:1;fill:#00aa00;stroke-width:28.4879;stroke-opacity:0.21;paint-order:markers fill stroke;stop-color:#000000"
+     d="M 0 0 L 0 22 L 22 22 L 22 0 L 0 0 z M 10.490234 2.5019531 A 0.93945003 0.93945003 0 0 1 10.783203 2.5351562 C 15.296567 3.8054822 18.827331 7.334292 20.097656 11.847656 A 0.93945003 0.93945003 0 0 1 19.447266 13.007812 A 0.93945003 0.93945003 0 0 1 18.289062 12.357422 C 17.195319 8.4714398 14.161374 5.4374938 10.275391 4.34375 A 0.93945003 0.93945003 0 0 1 9.625 3.1855469 A 0.93945003 0.93945003 0 0 1 10.490234 2.5019531 z M 9.65625 7.1132812 A 0.76503003 0.76503003 0 0 1 9.8535156 7.1386719 C 12.603472 7.8784672 14.754345 10.029341 15.494141 12.779297 A 0.76503003 0.76503003 0 0 1 14.953125 13.716797 A 0.76503003 0.76503003 0 0 1 14.015625 13.175781 C 13.416923 10.95029 11.682521 9.2139374 9.4570312 8.6152344 A 0.76503003 0.76503003 0 0 1 8.9160156 7.6777344 A 0.76503003 0.76503003 0 0 1 9.65625 7.1132812 z M 4.4589844 13.042969 C 4.9149829 13.042969 5.2825009 13.102656 5.5625 13.222656 C 5.8504991 13.334656 6.087485 13.470862 6.2714844 13.630859 C 6.4474838 13.502862 6.6359381 13.398359 6.8359375 13.318359 C 7.0439369 13.230359 7.2547037 13.163234 7.4707031 13.115234 C 7.6867025 13.067234 7.8863131 13.042969 8.0703125 13.042969 C 8.7423104 13.042969 9.2591418 13.168016 9.6191406 13.416016 C 9.9871395 13.656013 10.239 13.991831 10.375 14.423828 C 10.519 14.855828 10.591797 15.359547 10.591797 15.935547 L 10.591797 19.5 L 8.8027344 19.5 L 8.8027344 16.150391 C 8.8027344 15.766391 8.7710312 15.458562 8.7070312 15.226562 C 8.6430315 14.994565 8.5385309 14.826656 8.3945312 14.722656 C 8.2505318 14.618656 8.0583585 14.566406 7.8183594 14.566406 C 7.7543594 14.566406 7.6704059 14.579516 7.5664062 14.603516 C 7.4704065 14.619516 7.3715778 14.6475 7.2675781 14.6875 C 7.1635784 14.7275 7.0702341 14.770359 6.9902344 14.818359 C 7.0462341 15.002359 7.0836094 15.19825 7.0996094 15.40625 C 7.1156094 15.60625 7.1230469 15.822688 7.1230469 16.054688 L 7.1230469 19.5 L 5.3359375 19.5 L 5.3359375 16.150391 C 5.3359375 15.766391 5.3022812 15.458562 5.2382812 15.226562 C 5.1742815 14.994565 5.0717338 14.826656 4.9277344 14.722656 C 4.7837347 14.618656 4.5915619 14.566406 4.3515625 14.566406 C 4.2795628 14.566406 4.2030466 14.572078 4.1230469 14.580078 C 4.0430472 14.580078 3.9628122 14.583797 3.8828125 14.591797 C 3.8108128 14.599797 3.7342966 14.610953 3.6542969 14.626953 L 3.6542969 19.5 L 1.8671875 19.5 L 1.8671875 13.402344 C 2.1791866 13.314344 2.57097 13.236062 3.0429688 13.164062 C 3.5229673 13.084065 3.9949856 13.042969 4.4589844 13.042969 z " />
+  <!-- Globe terrestre TiMonde -->
+  <!-- Ondes radio actives éclatantes (Vert vif radio) -->
+  <!-- Point émetteur actif -->
 </svg>

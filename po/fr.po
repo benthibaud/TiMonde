@@ -308,3 +308,142 @@ msgstr "radio(s) enregistrée(s) dans :"
 
 msgid "Start automatically at login"
 msgstr "Lancer automatiquement au démarrage"
+
+msgid "Organize groups and stations (TiMonde)"
+msgstr "Organiser les groupes et radios (TiMonde)"
+
+msgid "Back to main group list (Esc)"
+msgstr "Revenir à la liste principale des groupes (Échap)"
+
+msgid "Sort stations in this group (Enter or double-click)"
+msgstr "Classer les radios de ce groupe (Entrée ou double-clic)"
+
+msgid "Create a new group of radio stations (Ctrl+N)"
+msgstr "Créer un nouveau groupe de radios (Ctrl+N)"
+
+msgid "Move selection to another group (Ctrl+M)"
+msgstr "Déplacer la sélection vers un autre groupe (Ctrl+M)"
+
+msgid "Move selected item to the top"
+msgstr "Placer l'élément sélectionné en tout premier"
+
+msgid "Move up one rank"
+msgstr "Monter d'un rang"
+
+msgid "Move down one rank"
+msgstr "Descendre d'un rang"
+
+msgid "Add a new station to this group"
+msgstr "Ajouter une nouvelle radio dans ce groupe"
+
+msgid "Insert a separator or header in this group"
+msgstr "Insérer un séparateur ou un intertitre dans ce groupe"
+
+msgid "Sort this list alphabetically"
+msgstr "Trier automatiquement cette liste par ordre alphabétique"
+
+msgid "Edit selected name, URL or header (F2)"
+msgstr "Modifier le nom, l'URL ou l'intertitre sélectionné (F2)"
+
+msgid "Delete selected item or group (Del)"
+msgstr "Supprimer l'élément ou le groupe sélectionné (Suppr)"
+
+msgid "Transfer..."
+msgstr "Transférer..."
+
+msgid "Transfer the content of this group to another group (Ctrl+M)"
+msgstr "Transférer le contenu de ce groupe vers un autre groupe (Ctrl+M)"
+
+msgid "<b>Radio groups</b>"
+msgstr "<b>Groupes de radios</b>"
+
+msgid "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n• Use <b>Transfer...</b> to merge or move content to another group.\n• Use <b>New group</b> to add a station folder.</small>"
+msgstr "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour classer ses radios et séparateurs.\n• Utilisez <b>Transférer...</b> pour fusionner ou déplacer le contenu vers un autre groupe.\n• Utilisez <b>Nouveau groupe</b> pour ajouter un dossier de radios.</small>"
+
+msgid "— Separator —"
+msgstr "— Séparateur —"
+
+msgid "radio"
+msgstr "radio"
+
+msgid "radios"
+msgstr "radios"
+
+msgid "sep."
+msgstr "sép."
+
+msgid "dead link"
+msgstr "lien mort"
+
+msgid "dead links"
+msgstr "liens morts"
+
+msgid "redir."
+msgstr "redir."
+
+msgid "[OK] All online"
+msgstr "[OK] Tout est en ligne"
+
+msgid "Move selected stations to another group (Ctrl+M)"
+msgstr "Déplacer la ou les radios sélectionnées vers un autre groupe (Ctrl+M)"
+
+msgid "Create a new group and move selected stations there (Ctrl+N)"
+msgstr "Créer un nouveau groupe et y déplacer les radios sélectionnées (Ctrl+N)"
+
+msgid "Stations in group:"
+msgstr "Radios du groupe :"
+
+msgid "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n• Click <b>Check streams</b> to find broken links (red) and repair them.\n• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n• Click <b>Separator</b> to insert a section header.</small>"
+msgstr "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour classer les radios.\n• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens morts (rouge) et les réparer.\n• Cliquez sur <b>Réparer flux...</b> pour chercher un flux actif de remplacement sur Radio-Browser.\n• Cliquez sur <b>Séparateur</b> pour insérer un intertitre de section.</small>"
+
+msgid "Header"
+msgstr "Intertitre"
+
+msgid "[OK] Live"
+msgstr "[OK] En direct"
+
+msgid "[!] Dead link"
+msgstr "[!] Lien mort"
+
+msgid "[~] Redirected"
+msgstr "[~] Redirigé"
+
+msgid "[?] Geo-restricted"
+msgstr "[?] Géo-restreint"
+
+msgid "Audit completed:"
+msgstr "Audit terminé :"
+
+msgid "online"
+msgstr "en ligne"
+
+msgid "broken"
+msgstr "liens morts"
+
+msgid "redirected"
+msgstr "redirigés"
+
+msgid "No stations to check."
+msgstr "Aucune radio à vérifier."
+
+msgid "Checking your radio stations"
+msgstr "Vérification de vos radios"
+
+msgid "Testing live radio streams..."
+msgstr "Vérification en direct de vos flux de radios..."
+
+msgid "stations checked..."
+msgstr "radios vérifiées..."
+
+msgid "checked:"
+msgstr "vérifiées :"
+
+msgid "Please select a station to repair."
+msgstr "Veuillez sélectionner une radio à réparer."
+
+msgid "This item is a separator."
+msgstr "Cet élément est un séparateur."
+
+msgid "Station deleted"
+msgstr "Radio supprimée"
+

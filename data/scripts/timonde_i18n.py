@@ -11,10 +11,10 @@ import sys
 import gettext
 
 LOCALE_DIRS = [
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "../../po/locale")),
     os.path.expanduser("~/.local/share/locale"),
     "/usr/share/locale",
     "/usr/local/share/locale",
-    os.path.abspath(os.path.join(os.path.dirname(__file__), "../../po/locale")),
 ]
 
 _CURRENT_TRANSLATOR = None
