@@ -22,6 +22,7 @@ from timonde_common import (
     strip_unsupported_emojis,
     safe_parse_xml,
     normalize_group_path,
+    infer_timezone,
     COUNTRIES_DB,
     COUNTRIES_REGISTRY,
     FRANCE_TIMEZONES,
@@ -85,6 +86,30 @@ class TestTiMondeCommon(unittest.TestCase):
         self.assertIn("America/Guadeloupe", fr_tz_ids)
         self.assertIn("Indian/Reunion", fr_tz_ids)
         self.assertIn("Pacific/Tahiti", fr_tz_ids)
+
+    def test_infer_timezone(self):
+        # France Métropole vs Outre-mer
+        self.assertEqual(infer_timezone("FR", "France Inter", "Généraliste"), "Europe/Paris")
+        self.assertEqual(infer_timezone("FR", "RCI Guadeloupe", "Antilles"), "America/Guadeloupe")
+        self.assertEqual(infer_timezone("FR", "Radio Réunion 1ère", "Océan Indien"), "Indian/Reunion")
+        self.assertEqual(infer_timezone("GP", "Radio Guadeloupe", ""), "America/Guadeloupe")
+
+        # Royaume-Uni & Outre-mer
+        self.assertEqual(infer_timezone("GB", "BBC Radio 1", "Londres"), "Europe/London")
+        self.assertEqual(infer_timezone("GB", "BFBS Gibraltar", "Europe"), "Europe/Gibraltar")
+        self.assertEqual(infer_timezone("BM", "Bermuda FM", ""), "Atlantic/Bermuda")
+
+        # Canada
+        self.assertEqual(infer_timezone("CA", "Vancouver Rock", "Colombie-Britannique"), "America/Vancouver")
+        self.assertEqual(infer_timezone("CA", "Radio-Canada Montréal", "Québec"), "America/Toronto")
+
+        # États-Unis
+        self.assertEqual(infer_timezone("US", "KCRW Los Angeles", "Californie"), "America/Los_Angeles")
+        self.assertEqual(infer_timezone("US", "WNYC New York", "News"), "America/New_York")
+
+        # Fallbacks universels par pays (Algérie, Colombie)
+        self.assertEqual(infer_timezone("DZ", "Chaine 1", ""), "Africa/Algiers")
+        self.assertEqual(infer_timezone("CO", "Caracol Radio", ""), "America/Bogota")
 
 if __name__ == "__main__":
     unittest.main()

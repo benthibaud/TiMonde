@@ -167,7 +167,9 @@ pub fn parse_bookmarks_reader<R: std::io::BufRead>(reader: R) -> Result<Group, B
     }
 
     let root = group_stack.pop().unwrap_or_else(|| Group::new("root"));
-    Ok(strip_root_levels(root))
+    let mut cleaned_root = strip_root_levels(root);
+    cleaned_root.restructure_slash_groups();
+    Ok(cleaned_root)
 }
 
 /// Supprime les paliers "root" superflus hérités de Radio Tray
@@ -546,5 +548,63 @@ mod tests {
         assert!(reloaded.subgroups[3].is_separator());
         assert_eq!(reloaded.subgroups[3].separator_title(), None);
         assert_eq!(reloaded.subgroups[4].name, "International");
+    }
+
+    #[test]
+    fn test_radiotray_lite_slash_groups_restructuring() {
+        let sample = r#"
+        <bookmarks>
+            <group name="Sélection perso">
+                <bookmark name="France Inter" url="https://icecast.radiofrance.fr/franceinter.mp3"/>
+            </group>
+            <group name=": Radio France">
+                <bookmark name="France Musique" url="https://icecast.radiofrance.fr/francemusique.mp3"/>
+            </group>
+            <group name=": Radio France/ICI (Locales)">
+                <bookmark name="ICI Alsace" url="https://icecast.radiofrance.fr/fbalsace.mp3"/>
+            </group>
+            <group name=": Radio France/FIP (Webradios)">
+                <bookmark name="FIP Rock" url="https://icecast.radiofrance.fr/fiprock.mp3"/>
+            </group>
+            <group name="Afrique">
+                <bookmark name="Radio Afrique 1" url="https://stream.afrique.com/1"/>
+            </group>
+            <group name="Afrique/Maroc">
+                <bookmark name="Medi 1" url="https://stream.medi1.com/live"/>
+            </group>
+            <group name="Afrique/Maroc/Hit Radio">
+                <bookmark name="Hit Radio 100%" url="https://stream.hitradio.ma/live"/>
+            </group>
+        </bookmarks>
+        "#;
+
+        let root = parse_bookmarks_reader(sample.as_bytes()).expect("Parse bookmarks");
+        // Doit avoir 3 groupes principaux au 1er niveau : Sélection perso, : Radio France, Afrique
+        assert_eq!(root.subgroups.len(), 3);
+        assert_eq!(root.subgroups[0].name, "Sélection perso");
+        assert_eq!(root.subgroups[1].name, ": Radio France");
+        assert_eq!(root.subgroups[2].name, "Afrique");
+
+        // : Radio France doit contenir 1 station directe et 2 sous-groupes (ICI (Locales) et FIP (Webradios))
+        let rf = &root.subgroups[1];
+        assert_eq!(rf.stations.len(), 1);
+        assert_eq!(rf.stations[0].name, "France Musique");
+        assert_eq!(rf.subgroups.len(), 2);
+        assert_eq!(rf.subgroups[0].name, "ICI (Locales)");
+        assert_eq!(rf.subgroups[0].stations[0].name, "ICI Alsace");
+        assert_eq!(rf.subgroups[1].name, "FIP (Webradios)");
+        assert_eq!(rf.subgroups[1].stations[0].name, "FIP Rock");
+
+        // Afrique doit contenir 1 station directe et 1 sous-groupe Maroc, qui contient Medi 1 et 1 sous-groupe Hit Radio
+        let afrique = &root.subgroups[2];
+        assert_eq!(afrique.stations.len(), 1);
+        assert_eq!(afrique.stations[0].name, "Radio Afrique 1");
+        assert_eq!(afrique.subgroups.len(), 1);
+        assert_eq!(afrique.subgroups[0].name, "Maroc");
+        assert_eq!(afrique.subgroups[0].stations.len(), 1);
+        assert_eq!(afrique.subgroups[0].stations[0].name, "Medi 1");
+        assert_eq!(afrique.subgroups[0].subgroups.len(), 1);
+        assert_eq!(afrique.subgroups[0].subgroups[0].name, "Hit Radio");
+        assert_eq!(afrique.subgroups[0].subgroups[0].stations[0].name, "Hit Radio 100%");
     }
 }

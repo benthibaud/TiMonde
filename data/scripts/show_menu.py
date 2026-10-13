@@ -17,7 +17,7 @@ os.environ.pop("QT_IM_MODULE", None)
 import gi
 gi.require_version("Gtk", "3.0")
 gi.require_version("DbusmenuGtk3", "0.4")
-from gi.repository import Gtk, DbusmenuGtk3, Gdk, GLib
+from gi.repository import Gtk, DbusmenuGtk3, GLib
 import dbus
 
 def main():

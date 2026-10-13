@@ -1862,18 +1862,20 @@ impl ksni::Tray for TiMondeTray {
                     );
                     menu.push(MenuItem::Standard(StandardItem {
                         label: info_label,
-                        enabled: false,
+                        activate: Box::new(|_| {}),
+                        enabled: true,
                         visible: true,
                         ..Default::default()
                     }));
                 }
 
-                // Ligne du titre du morceau en cours (non-cliquable)
+                // Ligne du titre du morceau en cours (texte informatif bien lisible)
                 if let Some(ref title) = *cur_title {
                     if !title.trim().is_empty() {
                         menu.push(MenuItem::Standard(StandardItem {
-                            label: title.trim().to_string(),
-                            enabled: false,
+                            label: format!("♪ {}", title.trim()),
+                            activate: Box::new(|_| {}),
+                            enabled: true,
                             visible: true,
                             ..Default::default()
                         }));

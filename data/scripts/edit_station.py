@@ -25,14 +25,10 @@ except ImportError:
 
 from timonde_common import (
     clean_stream_url,
-    COUNTRIES_DB,
     COUNTRIES_REGISTRY,
-    FRANCE_TIMEZONES,
-    CUSTOM_MULTI_TZ,
     DEFAULT_WORLD_TIMEZONES,
     WORLD_TIMEZONES,
     make_btn,
-    normalize_group_path,
 )
 
 # Sauvegarde impérative des arguments CLI avant que GTK ne supprime --name (mot-clé réservé GTK/X11)

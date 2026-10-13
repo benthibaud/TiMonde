@@ -29,8 +29,11 @@ install: build
 	install -m 755 data/scripts/browse_bouquets.py $(DESTDIR)$(DATADIR)/timonde/scripts/browse_bouquets.py
 	install -m 755 data/scripts/timonde_xembed_bridge.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_xembed_bridge.py
 	install -m 755 data/scripts/patch_cinnamon_status_applet.py $(DESTDIR)$(DATADIR)/timonde/scripts/patch_cinnamon_status_applet.py
+	install -m 755 data/scripts/timonde_settings.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_settings.py
+	install -m 755 data/scripts/show_menu.py $(DESTDIR)$(DATADIR)/timonde/scripts/show_menu.py
 	install -m 644 data/scripts/timonde_i18n.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_i18n.py
 	install -m 644 data/scripts/timonde_common.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_common.py
+	install -m 644 data/scripts/timonde_world_data.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_world_data.py
 	for mo in po/locale/*/LC_MESSAGES/timonde.mo; do \
 		lang=$$(echo $$mo | cut -d/ -f3); \
 		install -d $(DESTDIR)$(DATADIR)/locale/$$lang/LC_MESSAGES; \
@@ -60,8 +63,11 @@ install-user: build
 	install -m 755 data/scripts/browse_bouquets.py $(HOME)/.local/share/timonde/scripts/browse_bouquets.py
 	install -m 755 data/scripts/timonde_xembed_bridge.py $(HOME)/.local/share/timonde/scripts/timonde_xembed_bridge.py
 	install -m 755 data/scripts/patch_cinnamon_status_applet.py $(HOME)/.local/share/timonde/scripts/patch_cinnamon_status_applet.py
+	install -m 755 data/scripts/timonde_settings.py $(HOME)/.local/share/timonde/scripts/timonde_settings.py
+	install -m 755 data/scripts/show_menu.py $(HOME)/.local/share/timonde/scripts/show_menu.py
 	install -m 644 data/scripts/timonde_i18n.py $(HOME)/.local/share/timonde/scripts/timonde_i18n.py
 	install -m 644 data/scripts/timonde_common.py $(HOME)/.local/share/timonde/scripts/timonde_common.py
+	install -m 644 data/scripts/timonde_world_data.py $(HOME)/.local/share/timonde/scripts/timonde_world_data.py
 	for mo in po/locale/*/LC_MESSAGES/timonde.mo; do \
 		lang=$$(echo $$mo | cut -d/ -f3); \
 		install -d $(HOME)/.local/share/locale/$$lang/LC_MESSAGES; \

@@ -40,12 +40,28 @@ from timonde_common import (
     get_user_bookmarks_groups,
     normalize_group_path,
     make_btn,
+    infer_timezone,
+)
+
+from timonde_world_data import (
+    WORLD_COUNTRIES,
+    RADIO_BROWSER_LANGUAGES,
+    COUNTRY_BY_CODE,
+    COUNTRY_LOOKUP_MAP,
+    NATIVE_COUNTRY_NAMES,
+    NATIVE_LANGUAGE_NAMES,
+    DISPLAY_NATIVE_MAP,
+    resolve_language_api_key,
+    resolve_country_code,
+    normalize_lookup,
 )
 
 import json
 import glob
+import shutil
 import urllib.request
 import urllib.parse
+import urllib.error
 import xml.etree.ElementTree as ET
 import re
 import csv
@@ -53,7 +69,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 import gi
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gdk, GLib, Pango
+from gi.repository import Gtk, Gdk, GLib
 
 # -----------------------------------------------------------------------------
 # Configuration & Constantes / Configuration & Constants
@@ -238,21 +254,67 @@ def query_radio_browser(endpoint, path, params):
         pass
     return None
 
-def search_radio_browser_api(name="", country_code="", tag="", limit=30):
+def search_radio_browser_api(name="", country_code="", tag="", language="", limit=30):
     """
-    Recherche multicritères sur les miroirs Radio-Browser.
-    Multi-criteria search on Radio-Browser mirrors.
+    Recherche multicritères sur les miroirs Radio-Browser (nom, pays, genre, langue).
+    Interroge la clé canonique et fusionne automatiquement avec les alias en graphies natives
+    (ex: arabe + العربية, russe + русский) pour ne rater aucune station exclusive.
     """
-    params = {"limit": str(limit), "hidebroken": "true", "order": "votes", "reverse": "true"}
-    if name: params["name"] = name
-    if country_code: params["countrycode"] = country_code.upper()
-    if tag: params["tag"] = tag
+    # Déterminer les variantes linguistiques à interroger
+    lang_queries = []
+    if language:
+        lang_clean = language.strip().lower()
+        lang_queries.append(lang_clean)
+        if lang_clean in NATIVE_LANGUAGE_NAMES:
+            for nat_alias in NATIVE_LANGUAGE_NAMES[lang_clean][:2]:
+                if nat_alias not in lang_queries:
+                    lang_queries.append(nat_alias)
+    else:
+        lang_queries.append("")
 
-    for ep in RADIO_BROWSER_ENDPOINTS:
-        res = query_radio_browser(ep, "stations/search", params)
-        if res is not None:
-            return res
-    return []
+    all_stations = []
+    seen_keys = set()
+
+    for l_val in lang_queries:
+        params = {"limit": str(limit), "hidebroken": "true", "order": "votes", "reverse": "true"}
+        if name: params["name"] = name
+        if country_code: params["countrycode"] = country_code.upper()
+        if tag: params["tag"] = tag
+        if l_val: params["language"] = l_val
+
+        for ep in RADIO_BROWSER_ENDPOINTS:
+            res = query_radio_browser(ep, "stations/search", params)
+            if res is not None:
+                for s in res:
+                    uid = s.get("stationuuid") or s.get("url_resolved") or s.get("url", "")
+                    clean_uid = uid.strip()
+                    if clean_uid and clean_uid not in seen_keys:
+                        seen_keys.add(clean_uid)
+                        all_stations.append(s)
+                break
+
+    return all_stations
+
+# Langues populaires pour raccourcis rapides
+QUICK_POPULAR_LANGUAGES = [
+    ("Toutes les langues", ""),
+    ("Français", "french"),
+    ("Anglais", "english"),
+    ("Espagnol", "spanish"),
+    ("Arabe", "arabic"),
+    ("Allemand", "german"),
+    ("Italien", "italian"),
+    ("Portugais", "portuguese"),
+    ("Russe", "russian"),
+    ("Hindi", "hindi"),
+    ("Thaï", "thai"),
+    ("Chinois", "chinese"),
+    ("Japonais", "japanese"),
+    ("Néerlandais", "dutch"),
+    ("Turc", "turkish"),
+    ("Polonais", "polish"),
+    ("Grec", "greek"),
+]
 
 # -----------------------------------------------------------------------------
 # Boîte de dialogue : Réparation de flux mort via Radio-Browser
@@ -515,7 +577,7 @@ def parse_user_radio_file(path):
                     if not clean_row:
                         continue
                     first = clean_row[0].lower()
-                    if first in ("nom", "name", "groupe", "group", "station"):
+                    if first.startswith("#") or first in ("nom", "name", "groupe", "group", "station"):
                         continue
                     if len(clean_row) == 2 and (clean_row[1].startswith("http://") or clean_row[1].startswith("https://")):
                         stations.append({
@@ -523,7 +585,8 @@ def parse_user_radio_file(path):
                             "url": clean_row[1],
                             "group": base_name,
                             "country": "",
-                            "genre": ""
+                            "genre": "",
+                            "timezone": ""
                         })
                     elif len(clean_row) == 3:
                         if clean_row[1].startswith("http://") or clean_row[1].startswith("https://"):
@@ -532,7 +595,8 @@ def parse_user_radio_file(path):
                                 "url": clean_row[1],
                                 "group": base_name,
                                 "country": clean_row[2].upper(),
-                                "genre": ""
+                                "genre": "",
+                                "timezone": ""
                             })
                         elif clean_row[2].startswith("http://") or clean_row[2].startswith("https://"):
                             stations.append({
@@ -540,15 +604,18 @@ def parse_user_radio_file(path):
                                 "url": clean_row[2],
                                 "group": clean_row[0],
                                 "country": "",
-                                "genre": ""
+                                "genre": "",
+                                "timezone": ""
                             })
                     elif len(clean_row) >= 4 and (clean_row[2].startswith("http://") or clean_row[2].startswith("https://")):
+                        tz_val = clean_row[4].strip() if len(clean_row) >= 5 else ""
                         stations.append({
                             "name": clean_row[1],
                             "url": clean_row[2],
                             "group": clean_row[0],
                             "country": clean_row[3].upper(),
-                            "genre": ""
+                            "genre": "",
+                            "timezone": tz_val
                         })
         except Exception as e:
             sys.stderr.write(f"Erreur lecture CSV utilisateur {path}: {e}\n")
@@ -674,24 +741,62 @@ class DiscoverRadiosWindow(Gtk.Window):
         lbl_country.set_use_markup(True)
         top_bar.pack_start(lbl_country, False, False, 0)
 
-        self.combo_country = Gtk.ComboBoxText()
-        for c_code, c_info in sorted(self.bouquets_db.items(), key=lambda x: x[1]["name"]):
+        self.combo_country = Gtk.ComboBoxText.new_with_entry()
+        self.entry_country = self.combo_country.get_child()
+        self.entry_country.set_placeholder_text("Tapez un pays (ex: Algérie, Colombie, FR...)")
+        self.entry_country.set_width_chars(26)
+
+        # Complétion dynamique pour recherche dès la 1ère lettre sur nom français, anglais, code ISO ou écriture native
+        country_completion = Gtk.EntryCompletion()
+        self.country_comp_store = Gtk.ListStore(str, str, str, str) # Display, Code, FR Name, Native Names
+        country_completion.set_model(self.country_comp_store)
+        country_completion.set_text_column(0)
+        country_completion.set_minimum_key_length(1)
+        country_completion.set_inline_completion(True)
+        country_completion.set_popup_completion(True)
+
+        def country_match_func(comp, key, tree_iter, data):
+            norm_key = normalize_lookup(key)
+            if not norm_key:
+                return False
+            code = self.country_comp_store.get_value(tree_iter, 1)
+            name = self.country_comp_store.get_value(tree_iter, 2)
+            natives = self.country_comp_store.get_value(tree_iter, 3) or ""
+            norm_name = normalize_lookup(name)
+            norm_code = normalize_lookup(code)
+            norm_nat = normalize_lookup(natives)
+            return (norm_key in norm_name) or (norm_key == norm_code) or (norm_code.startswith(norm_key)) or (norm_key in norm_nat)
+
+        country_completion.set_match_func(country_match_func, None)
+
+        def on_country_match_selected(comp, model, tree_iter):
+            c_code = model.get_value(tree_iter, 1)
+            self.combo_country.set_active_id(c_code)
+            return True
+
+        country_completion.connect("match-selected", on_country_match_selected)
+        self.entry_country.set_completion(country_completion)
+
+        def on_country_entry_activated(entry):
+            c_code = self.get_selected_country_code()
+            if c_code:
+                self.combo_country.set_active_id(c_code)
+
+        self.entry_country.connect("activate", on_country_entry_activated)
+
+        # Remplissage de la combo et du magasin de complétion, trié par nom français
+        for c_code, c_info in sorted(self.bouquets_db.items(), key=lambda x: normalize_lookup(x[1].get("country_name", ""))):
             self.combo_country.append(c_code, c_info["name"])
+            nat_str = " ".join(NATIVE_COUNTRY_NAMES.get(c_code, []))
+            self.country_comp_store.append([c_info["name"], c_code, c_info.get("country_name", c_code), nat_str])
+
         if "FR" in self.bouquets_db:
             self.combo_country.set_active_id("FR")
         elif self.bouquets_db:
             self.combo_country.set_active(0)
+
         self.combo_country.connect("changed", self.on_country_changed)
         top_bar.pack_start(self.combo_country, False, False, 0)
-
-        # Communauté / Langue pour pays multilingues
-        self.lbl_lang = Gtk.Label(label=_("<b>Language:</b>"))
-        self.lbl_lang.set_use_markup(True)
-        top_bar.pack_start(self.lbl_lang, False, False, 0)
-
-        self.combo_lang = Gtk.ComboBoxText()
-        self.combo_lang.connect("changed", self.on_lang_changed)
-        top_bar.pack_start(self.combo_lang, False, False, 0)
 
         # Bouton XML externe
         btn_open_xml = make_btn("Ouvrir un XML externe...", "document-open", "Charger et tester n'importe quel fichier XML de radios ou bouquets")
@@ -734,6 +839,85 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.entry_rb_tag.set_editable(True)
         self.entry_rb_tag.connect("activate", lambda w: self.on_search_rb_clicked())
         rb_filter_box.pack_start(self.entry_rb_tag, False, False, 0)
+
+        lbl_rb_lang = Gtk.Label(label=_("Langue :"))
+        rb_filter_box.pack_start(lbl_rb_lang, False, False, 0)
+
+        # Champ de saisie assisté avec autocomplétion pour ~250 langues mondiales
+        self.entry_rb_lang = Gtk.Entry()
+        self.entry_rb_lang.set_placeholder_text("Toutes (ex: Hindi, Thaï...)")
+        self.entry_rb_lang.set_width_chars(20)
+        self.entry_rb_lang.set_can_focus(True)
+        self.entry_rb_lang.set_editable(True)
+
+        # Bouton d'effacement rapide (croix) dans l'entry
+        self.entry_rb_lang.set_icon_from_icon_name(Gtk.EntryIconPosition.SECONDARY, "edit-clear")
+        self.entry_rb_lang.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, "Effacer le filtre langue (Toutes les langues)")
+        def on_rb_lang_clear_press(entry, icon_pos, event):
+            if icon_pos == Gtk.EntryIconPosition.SECONDARY:
+                entry.set_text("")
+        self.entry_rb_lang.connect("icon-press", on_rb_lang_clear_press)
+        self.entry_rb_lang.connect("activate", lambda w: self.on_search_rb_clicked())
+
+        # Complétion rapide dès 1 caractère sur nom FR, clé API ou graphie native (cyrillique, arabe, etc.)
+        lang_completion = Gtk.EntryCompletion()
+        self.lang_comp_store = Gtk.ListStore(str, str, str, str) # Display, API key, FR name, Native name
+        for api_key, fr_name, cnt in RADIO_BROWSER_LANGUAGES:
+            native_str = DISPLAY_NATIVE_MAP.get(api_key, "")
+            if native_str:
+                display_label = f"{fr_name} — {native_str} ({api_key})"
+            elif fr_name.lower() != api_key:
+                display_label = f"{fr_name} ({api_key})"
+            else:
+                display_label = fr_name
+            self.lang_comp_store.append([display_label, api_key, fr_name, native_str])
+
+        lang_completion.set_model(self.lang_comp_store)
+        lang_completion.set_text_column(0)
+        lang_completion.set_minimum_key_length(1)
+        lang_completion.set_inline_completion(True)
+        lang_completion.set_popup_completion(True)
+
+        def lang_match_func(comp, key, tree_iter, data):
+            norm_key = normalize_lookup(key)
+            if not norm_key:
+                return False
+            disp = self.lang_comp_store.get_value(tree_iter, 0)
+            api_k = self.lang_comp_store.get_value(tree_iter, 1)
+            fr_n = self.lang_comp_store.get_value(tree_iter, 2)
+            nat_n = self.lang_comp_store.get_value(tree_iter, 3) or ""
+            return (norm_key in normalize_lookup(disp)) or (norm_key in normalize_lookup(api_k)) or (norm_key in normalize_lookup(fr_n)) or (norm_key in normalize_lookup(nat_n))
+
+        lang_completion.set_match_func(lang_match_func, None)
+
+        def on_lang_match_selected(comp, model, tree_iter):
+            disp = model.get_value(tree_iter, 0)
+            self.entry_rb_lang.set_text(disp)
+            return True
+
+        lang_completion.connect("match-selected", on_lang_match_selected)
+        self.entry_rb_lang.set_completion(lang_completion)
+        rb_filter_box.pack_start(self.entry_rb_lang, False, False, 0)
+
+        # Menu déroulant popup pour sélection rapide des langues usuelles à la souris
+        btn_quick_lang = make_btn("", "pan-down", "Sélectionner rapidement une langue usuelle")
+        def on_quick_lang_clicked(btn):
+            menu = Gtk.Menu()
+            for lbl, k in QUICK_POPULAR_LANGUAGES:
+                if not k:
+                    item = Gtk.MenuItem(label=lbl)
+                    item.connect("activate", lambda mi: self.entry_rb_lang.set_text(""))
+                    menu.append(item)
+                    menu.append(Gtk.SeparatorMenuItem())
+                else:
+                    item = Gtk.MenuItem(label=lbl)
+                    item.connect("activate", lambda mi, l=lbl: self.entry_rb_lang.set_text(l))
+                    menu.append(item)
+            menu.show_all()
+            menu.popup_at_widget(btn, Gdk.Gravity.SOUTH_WEST, Gdk.Gravity.NORTH_WEST, None)
+
+        btn_quick_lang.connect("clicked", on_quick_lang_clicked)
+        rb_filter_box.pack_start(btn_quick_lang, False, False, 0)
 
         self.check_rb_only_country = Gtk.CheckButton(label="Filtrer sur ce pays")
         self.check_rb_only_country.set_active(True)
@@ -815,6 +999,15 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.combo_region.connect("changed", self.on_region_changed)
         scope_box.pack_start(self.combo_region, False, False, 0)
 
+        # Sélecteur de langue pour pays multilingues (Belgique, Suisse, Canada...)
+        self.lbl_lang = Gtk.Label(label=_("<b>Langue :</b>"))
+        self.lbl_lang.set_use_markup(True)
+        scope_box.pack_start(self.lbl_lang, False, False, 0)
+
+        self.combo_lang = Gtk.ComboBoxText()
+        self.combo_lang.connect("changed", self.on_lang_changed)
+        scope_box.pack_start(self.combo_lang, False, False, 0)
+
         # Tableau des stations du bouquet
         # Store: [checked, name, genre, health_markup, dup_markup, url, is_dup, is_dead, row_id]
         self.bouquet_store = Gtk.ListStore(bool, str, str, str, str, str, bool, bool, int)
@@ -853,13 +1046,13 @@ class DiscoverRadiosWindow(Gtk.Window):
         b_action_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         tab_bouquets.pack_start(b_action_box, False, False, 0)
 
-        btn_check_all = make_btn("Tout cocher", "edit-select-all")
-        btn_check_all.connect("clicked", lambda w: self.set_bouquet_checks(True))
-        b_action_box.pack_start(btn_check_all, False, False, 0)
+        self.btn_bouquet_check_all = make_btn("Tout cocher", "edit-select-all")
+        self.btn_bouquet_check_all.connect("clicked", lambda w: self.set_bouquet_checks(True))
+        b_action_box.pack_start(self.btn_bouquet_check_all, False, False, 0)
 
-        btn_uncheck_all = make_btn("Tout décocher", "edit-clear")
-        btn_uncheck_all.connect("clicked", lambda w: self.set_bouquet_checks(False))
-        b_action_box.pack_start(btn_uncheck_all, False, False, 0)
+        self.btn_bouquet_uncheck_all = make_btn("Tout décocher", "edit-clear")
+        self.btn_bouquet_uncheck_all.connect("clicked", lambda w: self.set_bouquet_checks(False))
+        b_action_box.pack_start(self.btn_bouquet_uncheck_all, False, False, 0)
 
         self.btn_repair = make_btn("Réparer le flux sélectionné...", "system-search", "Remplacer le lien mort sélectionné par un flux officiel actif")
         self.btn_repair.connect("clicked", self.on_repair_clicked)
@@ -1197,6 +1390,21 @@ class DiscoverRadiosWindow(Gtk.Window):
     # Gestion des Onglets & Sélection
     # -------------------------------------------------------------------------
 
+    def get_selected_country_code(self):
+        """Récupère le code ISO 3166 du pays sélectionné, ou résout la saisie manuelle dans l'Entry."""
+        if hasattr(self, "combo_country") and self.combo_country:
+            entry = self.combo_country.get_child()
+            if entry:
+                text = entry.get_text().strip()
+                if text:
+                    code = resolve_country_code(text)
+                    if code and code in self.bouquets_db:
+                        return code
+            active_id = self.combo_country.get_active_id()
+            if active_id:
+                return active_id
+        return "FR" if "FR" in self.bouquets_db else ""
+
     def on_country_changed(self, widget):
         self.update_languages()
         self.update_regions_combo()
@@ -1230,15 +1438,17 @@ class DiscoverRadiosWindow(Gtk.Window):
         if page_num == 0:
             if hasattr(self, "entry_rb_name"):
                 GLib.idle_add(self.entry_rb_name.grab_focus)
-            c_name = self.combo_country.get_active_text() or "Radio"
+            c_code = self.get_selected_country_code()
+            c_name = self.bouquets_db.get(c_code, {}).get("country_name", c_code or "Radio")
             self.set_suggested_group(f"Radio-Browser - {c_name}")
         elif page_num == 1:
             country_id, info, national, regions = self.get_current_data()
+            c_name = info.get("country_name", info.get("name", "Bouquet"))
             if self.radio_region.get_active():
                 reg = self.combo_region.get_active_text() or "Régions"
-                self.set_suggested_group(f"{info.get('name', 'Bouquet')} - {reg}")
+                self.set_suggested_group(f"{c_name} - {reg}")
             else:
-                self.set_suggested_group(f"{info.get('name', 'Bouquet')} (National)")
+                self.set_suggested_group(f"{c_name} (National)")
         elif page_num == 2:
             active_id = self.combo_examples.get_active_id()
             if active_id:
@@ -1290,7 +1500,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.combo_region.set_sensitive(is_region and bool(regions))
 
     def update_languages(self):
-        country_id = self.combo_country.get_active_id()
+        country_id = self.get_selected_country_code()
         info = self.bouquets_db.get(country_id, {})
         is_multi = info.get("multilingual", False)
 
@@ -1305,7 +1515,7 @@ class DiscoverRadiosWindow(Gtk.Window):
                 self.combo_lang.set_active(0)
 
     def get_current_data(self):
-        country_id = self.combo_country.get_active_id()
+        country_id = self.get_selected_country_code()
         info = self.bouquets_db.get(country_id, {})
 
         if info.get("multilingual", False):
@@ -1329,7 +1539,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.combo_region.set_sensitive(is_region and bool(regions))
 
         stations = []
-        country_name = info.get("name", "").split()[0]
+        country_name = info.get("country_name") or info.get("name", "Pays").split("  [")[0]
         if is_region and regions:
             reg_name = self.combo_region.get_active_text() or (list(regions.keys())[0] if regions else "")
             stations = regions.get(reg_name, [])
@@ -1427,7 +1637,26 @@ class DiscoverRadiosWindow(Gtk.Window):
             if self.bouquet_store.get_value(it, 0):
                 checked += 1
             it = self.bouquet_store.iter_next(it)
-        self.lbl_bouquet_count.set_text(f"{checked} / {total} station(s) sélectionnée(s)")
+
+        if total == 0:
+            c_code = self.get_selected_country_code()
+            c_name = self.bouquets_db.get(c_code, {}).get("country_name", c_code or "ce pays")
+            self.lbl_bouquet_count.set_markup(f"<span color='#888888'><i>Aucun bouquet DAB+ pré-packagé pour {c_name} — Utilisez l'onglet « Recherche Radio-Browser ».</i></span>")
+            if hasattr(self, "btn_bouquet_check_all"):
+                self.btn_bouquet_check_all.set_sensitive(False)
+            if hasattr(self, "btn_bouquet_uncheck_all"):
+                self.btn_bouquet_uncheck_all.set_sensitive(False)
+            if hasattr(self, "btn_repair"):
+                self.btn_repair.set_sensitive(False)
+        else:
+            self.lbl_bouquet_count.set_text(f"{checked} / {total} station(s) sélectionnée(s)")
+            if hasattr(self, "btn_bouquet_check_all"):
+                self.btn_bouquet_check_all.set_sensitive(True)
+            if hasattr(self, "btn_bouquet_uncheck_all"):
+                self.btn_bouquet_uncheck_all.set_sensitive(True)
+            if hasattr(self, "btn_repair"):
+                self.btn_repair.set_sensitive(True)
+
         self.update_import_button_sensitivity()
 
     def update_import_button_sensitivity(self):
@@ -1451,6 +1680,13 @@ class DiscoverRadiosWindow(Gtk.Window):
                 if self.example_store.get_value(it, 0):
                     selected_count += 1
                 it = self.example_store.iter_next(it)
+        elif current_page == 3:
+            if hasattr(self, "user_store"):
+                it = self.user_store.get_iter_first()
+                while it:
+                    if self.user_store.get_value(it, 0):
+                        selected_count += 1
+                    it = self.user_store.iter_next(it)
         self.btn_import.set_sensitive(selected_count > 0)
 
     # -------------------------------------------------------------------------
@@ -1464,7 +1700,7 @@ class DiscoverRadiosWindow(Gtk.Window):
 
         station_name = model.get_value(tree_iter, 1)
         current_url = model.get_value(tree_iter, 5)
-        country_id = self.combo_country.get_active_id() or ""
+        country_id = self.get_selected_country_code()
 
         dlg = RepairStreamDialog(self, station_name, current_url, country_id)
         res = dlg.run()
@@ -1521,17 +1757,23 @@ class DiscoverRadiosWindow(Gtk.Window):
     def on_search_rb_clicked(self):
         query = self.entry_rb_name.get_text().strip()
         tag = self.entry_rb_tag.get_text().strip()
-        country_code = self.combo_country.get_active_id() if self.check_rb_only_country.get_active() else ""
+        raw_lang = self.entry_rb_lang.get_text().strip() if hasattr(self, "entry_rb_lang") else ""
+        lang = resolve_language_api_key(raw_lang) if raw_lang else ""
+        country_code = self.get_selected_country_code() if self.check_rb_only_country.get_active() else ""
 
         self.lbl_rb_status.set_text("Recherche sur Radio-Browser en cours...")
         self.rb_store.clear()
 
         def worker():
-            results = search_radio_browser_api(name=query, country_code=country_code, tag=tag, limit=40)
+            results = search_radio_browser_api(name=query, country_code=country_code, tag=tag, language=lang, limit=40)
 
             def on_done():
                 if not results:
-                    self.lbl_rb_status.set_text("Aucune radio trouvée pour ces critères.")
+                    if country_code and lang:
+                        c_name = self.bouquets_db.get(country_code, {}).get("country_name", country_code)
+                        self.lbl_rb_status.set_text(f"Aucune radio trouvée pour cette langue en {c_name}. Décochez « Filtrer sur ce pays » pour chercher dans le monde entier.")
+                    else:
+                        self.lbl_rb_status.set_text("Aucune radio trouvée pour ces critères.")
                     return
                 for r in results:
                     name = r.get("name", "Sans nom").strip()
@@ -1646,7 +1888,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         selected = []
         all_bouquet_stations = []
         current_page = self.notebook.get_current_page()
-        country_id = self.combo_country.get_active_id() or ""
+        country_id = self.get_selected_country_code()
 
         if current_page == 0:
             # Onglet 1 : Radio-Browser
@@ -1656,7 +1898,11 @@ class DiscoverRadiosWindow(Gtk.Window):
                     name = self.rb_store.get_value(it, 1)
                     rb_country = (self.rb_store.get_value(it, 2) or "").strip() or country_id
                     url = self.rb_store.get_value(it, 6)
-                    selected.append({"name": name, "url": url, "country": rb_country})
+                    tz = infer_timezone(rb_country, name, group_name)
+                    st_data = {"name": name, "url": url, "country": rb_country}
+                    if tz:
+                        st_data["timezone"] = tz
+                    selected.append(st_data)
                 it = self.rb_store.iter_next(it)
         elif current_page == 1:
             # Onglet 2 : Bouquets DAB+
@@ -1664,9 +1910,13 @@ class DiscoverRadiosWindow(Gtk.Window):
             while it:
                 name = self.bouquet_store.get_value(it, 1)
                 url = self.bouquet_store.get_value(it, 5)
+                tz = infer_timezone(country_id, name, group_name)
                 all_bouquet_stations.append({"name": name, "url": url, "country": country_id})
                 if self.bouquet_store.get_value(it, 0):
-                    selected.append({"name": name, "url": url, "country": country_id})
+                    st_data = {"name": name, "url": url, "country": country_id}
+                    if tz:
+                        st_data["timezone"] = tz
+                    selected.append(st_data)
                 it = self.bouquet_store.iter_next(it)
         elif current_page == 2:
             # Onglet 3 : Exemples (XML, CSV, JSON, M3U)
@@ -1687,12 +1937,16 @@ class DiscoverRadiosWindow(Gtk.Window):
                             target_st_grp = clean_t.strip("/").strip()
                     else:
                         target_st_grp = "root"
-                    selected.append({
+                    tz = infer_timezone(st_country, name, target_st_grp)
+                    st_data = {
                         "name": name,
                         "url": url,
                         "country": st_country,
                         "group": target_st_grp
-                    })
+                    }
+                    if tz:
+                        st_data["timezone"] = tz
+                    selected.append(st_data)
                 it = self.example_store.iter_next(it)
         elif current_page == 3:
             # Onglet 4 : Importer mes fichiers
@@ -1713,12 +1967,20 @@ class DiscoverRadiosWindow(Gtk.Window):
                             target_st_grp = clean_t.strip("/").strip()
                     else:
                         target_st_grp = "root"
-                    selected.append({
+                    row_id = self.user_store.get_value(it, 9)
+                    orig_tz = ""
+                    if hasattr(self, "current_user_stations") and 0 <= row_id < len(self.current_user_stations):
+                        orig_tz = self.current_user_stations[row_id].get("timezone", "")
+                    tz = orig_tz or infer_timezone(st_country, name, target_st_grp)
+                    st_data = {
                         "name": name,
                         "url": url,
                         "country": st_country,
                         "group": target_st_grp
-                    })
+                    }
+                    if tz:
+                        st_data["timezone"] = tz
+                    selected.append(st_data)
                 it = self.user_store.iter_next(it)
 
         if not selected and not all_bouquet_stations:
@@ -1906,6 +2168,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.current_user_group_default = f"Import {base_name}"
 
         stations = parse_user_radio_file(path)
+        self.current_user_stations = stations
         groups = set(s.get("group", "") for s in stations if s.get("group"))
 
         info_text = f"<b>Fichier :</b> {os.path.basename(path)} — <b>{len(stations)}</b> station(s)"
@@ -2045,69 +2308,88 @@ class DiscoverRadiosWindow(Gtk.Window):
 def parse_bouquets_xml():
     b_dir = find_bouquets_dir()
     db = {}
-    if not b_dir:
-        return db
 
-    for xml_file in sorted(glob.glob(os.path.join(b_dir, "*.xml"))):
-        try:
-            root = safe_parse_xml(xml_file)
-            if root is None:
-                continue
-            code = root.attrib.get("country", os.path.splitext(os.path.basename(xml_file))[0].upper()).upper()
-            name = strip_unsupported_emojis(root.attrib.get("name", code))
-            display_name = f"[{code}] {name}" if code else name
-            multilingual = root.attrib.get("multilingual", "false").lower() == "true"
+    if b_dir:
+        for xml_file in sorted(glob.glob(os.path.join(b_dir, "*.xml"))):
+            try:
+                root = safe_parse_xml(xml_file)
+                if root is None:
+                    continue
+                code = root.attrib.get("country", os.path.splitext(os.path.basename(xml_file))[0].upper()).upper()
+                raw_name = strip_unsupported_emojis(root.attrib.get("name", code))
+                name = raw_name if (raw_name and raw_name != code) else COUNTRY_BY_CODE.get(code, code)
+                display_name = f"{name}  [{code}]" if code else name
+                multilingual = root.attrib.get("multilingual", "false").lower() == "true"
 
-            country_data = {
-                "name": display_name,
-                "multilingual": multilingual,
-                "languages": [],
-                "sub_bouquets": {},
-                "national": [],
-                "regions": {},
-                "xml_path": xml_file,
-            }
+                country_data = {
+                    "name": display_name,
+                    "country_name": name,
+                    "code": code,
+                    "has_bouquet": True,
+                    "multilingual": multilingual,
+                    "languages": [],
+                    "sub_bouquets": {},
+                    "national": [],
+                    "regions": {},
+                    "xml_path": xml_file,
+                }
 
-            if multilingual:
-                for comm in root.findall("community"):
-                    c_id = comm.attrib.get("id", "GEN")
-                    c_name = comm.attrib.get("name", c_id)
-                    country_data["languages"].append((c_id, c_name))
-                    sub_data = {"national": [], "regions": {}}
+                if multilingual:
+                    for comm in root.findall("community"):
+                        c_id = comm.attrib.get("id", "GEN")
+                        c_name = comm.attrib.get("name", c_id)
+                        country_data["languages"].append((c_id, c_name))
+                        sub_data = {"national": [], "regions": {}}
 
-                    nat = comm.find("national")
+                        nat = comm.find("national")
+                        if nat is not None:
+                            for st in nat.findall("station"):
+                                sub_data["national"].append((st.attrib.get("name", ""), st.attrib.get("url", ""), st.attrib.get("genre", "")))
+
+                        regs = comm.find("regions")
+                        if regs is not None:
+                            for reg in regs.findall("region"):
+                                r_name = reg.attrib.get("name", "Région")
+                                st_list = []
+                                for st in reg.findall("station"):
+                                    st_list.append((st.attrib.get("name", ""), st.attrib.get("url", ""), st.attrib.get("genre", "")))
+                                sub_data["regions"][r_name] = st_list
+
+                        country_data["sub_bouquets"][c_id] = sub_data
+                else:
+                    nat = root.find("national")
                     if nat is not None:
                         for st in nat.findall("station"):
-                            sub_data["national"].append((st.attrib.get("name", ""), st.attrib.get("url", ""), st.attrib.get("genre", "")))
+                            country_data["national"].append((st.attrib.get("name", ""), st.attrib.get("url", ""), st.attrib.get("genre", "")))
 
-                    regs = comm.find("regions")
+                    regs = root.find("regions")
                     if regs is not None:
                         for reg in regs.findall("region"):
                             r_name = reg.attrib.get("name", "Région")
                             st_list = []
                             for st in reg.findall("station"):
                                 st_list.append((st.attrib.get("name", ""), st.attrib.get("url", ""), st.attrib.get("genre", "")))
-                            sub_data["regions"][r_name] = st_list
+                            country_data["regions"][r_name] = st_list
 
-                    country_data["sub_bouquets"][c_id] = sub_data
-            else:
-                nat = root.find("national")
-                if nat is not None:
-                    for st in nat.findall("station"):
-                        country_data["national"].append((st.attrib.get("name", ""), st.attrib.get("url", ""), st.attrib.get("genre", "")))
+                db[code] = country_data
+            except Exception:
+                pass
 
-                regs = root.find("regions")
-                if regs is not None:
-                    for reg in regs.findall("region"):
-                        r_name = reg.attrib.get("name", "Région")
-                        st_list = []
-                        for st in reg.findall("station"):
-                            st_list.append((st.attrib.get("name", ""), st.attrib.get("url", ""), st.attrib.get("genre", "")))
-                        country_data["regions"][r_name] = st_list
-
-            db[code] = country_data
-        except Exception:
-            pass
+    # Compléter avec tous les pays du monde répertoriés pour la recherche mondiale
+    for iso_code, fr_name, _en_name in WORLD_COUNTRIES:
+        if iso_code not in db:
+            db[iso_code] = {
+                "name": f"{fr_name}  [{iso_code}]",
+                "country_name": fr_name,
+                "code": iso_code,
+                "has_bouquet": False,
+                "multilingual": False,
+                "languages": [],
+                "sub_bouquets": {},
+                "national": [],
+                "regions": {},
+                "xml_path": None,
+            }
 
     return db
 
@@ -2184,6 +2466,8 @@ def main():
     )
     win.show_all()
     win.present()
+    if 0 <= initial_tab < win.notebook.get_n_pages():
+        win.notebook.set_current_page(initial_tab)
     if initial_tab == 0:
         GLib.idle_add(win.entry_rb_name.grab_focus)
     Gtk.main()

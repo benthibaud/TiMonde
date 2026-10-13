@@ -115,6 +115,7 @@ install -m 755 "${ROOT_DIR}/data/scripts/timonde_settings.py" "${STAGING_DIR}/us
 install -m 755 "${ROOT_DIR}/data/scripts/show_menu.py" "${STAGING_DIR}/usr/share/timonde/scripts/show_menu.py"
 install -m 644 "${ROOT_DIR}/data/scripts/timonde_i18n.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_i18n.py"
 install -m 644 "${ROOT_DIR}/data/scripts/timonde_common.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_common.py"
+install -m 644 "${ROOT_DIR}/data/scripts/timonde_world_data.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_world_data.py"
 install -m 644 "${ROOT_DIR}"/data/bouquets/*.xml "${STAGING_DIR}/usr/share/timonde/bouquets/"
 install -m 644 "${ROOT_DIR}"/data/examples/* "${STAGING_DIR}/usr/share/timonde/examples/"
 

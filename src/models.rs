@@ -348,6 +348,97 @@ impl Group {
         }
         None
     }
+
+    /// Restructure récursivement les groupes contenant des slashes '/' (format radiotray-lite / legacy)
+    /// en une arborescence de vrais sous-groupes imbriqués.
+    pub fn restructure_slash_groups(&mut self) {
+        let old_subgroups = std::mem::take(&mut self.subgroups);
+        let mut new_subgroups: Vec<Group> = Vec::new();
+
+        for mut sub in old_subgroups {
+            if sub.is_separator() {
+                new_subgroups.push(sub);
+                continue;
+            }
+
+            // D'abord restructurer récursivement les enfants de sub
+            sub.restructure_slash_groups();
+
+            if sub.name.contains('/') {
+                let parts: Vec<&str> = sub.name.split('/').map(|p| p.trim()).filter(|p| !p.is_empty() && !p.eq_ignore_ascii_case("root")).collect();
+                if parts.is_empty() {
+                    continue;
+                }
+
+                // Naviguer ou créer dans new_subgroups
+                let mut current_list = &mut new_subgroups;
+                for (i, part) in parts.iter().enumerate() {
+                    let is_last = i == parts.len() - 1;
+                    let pos = if let Some(idx) = current_list.iter().position(|g| !g.is_separator() && g.name.eq_ignore_ascii_case(part)) {
+                        idx
+                    } else {
+                        current_list.push(Group::new(*part));
+                        current_list.len() - 1
+                    };
+
+                    if is_last {
+                        let target = &mut current_list[pos];
+                        // Fusionner les stations en évitant les doublons stricts
+                        for st in sub.stations {
+                            if st.is_separator() || !target.stations.iter().any(|existing| existing.url == st.url && existing.name == st.name) {
+                                target.stations.push(st);
+                            }
+                        }
+                        // Fusionner également les sous-groupes éventuels
+                        for child in sub.subgroups {
+                            if child.is_separator() {
+                                target.subgroups.push(child);
+                            } else if let Some(existing_sub) = target.subgroups.iter_mut().find(|g| !g.is_separator() && g.name.eq_ignore_ascii_case(&child.name)) {
+                                for st in child.stations {
+                                    if st.is_separator() || !existing_sub.stations.iter().any(|existing| existing.url == st.url && existing.name == st.name) {
+                                        existing_sub.stations.push(st);
+                                    }
+                                }
+                                existing_sub.subgroups.extend(child.subgroups);
+                            } else {
+                                target.subgroups.push(child);
+                            }
+                        }
+                        break;
+                    } else {
+                        current_list = &mut current_list[pos].subgroups;
+                    }
+                }
+            } else {
+                // Nom sans slash : vérifier s'il existe déjà dans new_subgroups pour fusionner
+                if let Some(existing) = new_subgroups.iter_mut().find(|g| !g.is_separator() && g.name.eq_ignore_ascii_case(&sub.name)) {
+                    for st in sub.stations {
+                        if st.is_separator() || !existing.stations.iter().any(|s| s.url == st.url && s.name == st.name) {
+                            existing.stations.push(st);
+                        }
+                    }
+                    for child in sub.subgroups {
+                        if child.is_separator() {
+                            existing.subgroups.push(child);
+                        } else if let Some(existing_child) = existing.subgroups.iter_mut().find(|g| !g.is_separator() && g.name.eq_ignore_ascii_case(&child.name)) {
+                            for st in child.stations {
+                                if st.is_separator() || !existing_child.stations.iter().any(|s| s.url == st.url && s.name == st.name) {
+                                    existing_child.stations.push(st);
+                                }
+                            }
+                            existing_child.subgroups.extend(child.subgroups);
+                        } else {
+                            existing.subgroups.push(child);
+                        }
+                    }
+                } else {
+                    new_subgroups.push(sub);
+                }
+            }
+        }
+
+        self.subgroups = new_subgroups;
+    }
 }
 
 #[cfg(test)]

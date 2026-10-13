@@ -450,3 +450,266 @@ msgstr "Radio supprimée"
 
 msgid "Settings..."
 msgstr "Paramètres..."
+
+# --- Mises à jour TiMonde ---
+
+msgid "(Metropolitan or Overseas)"
+msgstr "(Métropole ou Outre-mer)"
+
+msgid "(Single inferred timezone)"
+msgstr "(Fuseau horaire unique déduit)"
+
+msgid "(Timezone not defined)"
+msgstr "(Fuseau horaire non défini)"
+
+msgid "(Unknown)"
+msgstr "(Inconnu)"
+
+msgid "<b>Country:</b>"
+msgstr "<b>Pays :</b>"
+
+msgid "<b>Fichier exemple :</b>"
+msgstr "<b>Fichier exemple :</b>"
+
+msgid "Accédez à plus de 40 000 stations en ligne classées par pays, genre ou mots-clés."
+msgstr "Accédez à plus de 40 000 stations en ligne classées par pays, genre ou mots-clés."
+
+msgid "Ajouter une radio (TiMonde)"
+msgstr "Ajouter une radio (TiMonde)"
+
+msgid "Ajouter une radio manuellement"
+msgstr "Ajouter une radio manuellement"
+
+msgid "Ajouter à mes radios"
+msgstr "Ajouter à mes radios"
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+
+msgid "Bouquets DAB+ & Sélections officielles"
+msgstr "Bouquets DAB+ & Sélections officielles"
+
+msgid "Bouquets DAB+ vérifiés"
+msgstr "Bouquets DAB+ vérifiés"
+
+msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
+msgstr "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
+
+msgid "Conserver dans mes favoris"
+msgstr "Conserver dans mes favoris"
+
+msgid "Conserver la radio dans les favoris (TiMonde)"
+msgstr "Conserver la radio dans les favoris (TiMonde)"
+
+msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
+msgstr "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
+
+msgid "Contents"
+msgstr "Contenu"
+
+msgid "Details"
+msgstr "Détails"
+
+msgid "Dossier ouvert :"
+msgstr "Dossier ouvert :"
+
+msgid "Découvrir et importer des radios (TiMonde)"
+msgstr "Découvrir et importer des radios (TiMonde)"
+
+msgid "Démarrage automatique"
+msgstr "Démarrage automatique"
+
+msgid "Démarre discrètement TiMonde en arrière-plan dès l'ouverture de votre session graphique."
+msgstr "Démarre discrètement TiMonde en arrière-plan dès l'ouverture de votre session graphique."
+
+msgid "Détection automatique selon votre système. 55 langues mondiales supportées avec drapeaux."
+msgstr "Détection automatique selon votre système. 55 langues mondiales supportées avec drapeaux."
+
+msgid "Enregistrer"
+msgstr "Enregistrer"
+
+msgid "Erreur :"
+msgstr "Erreur :"
+
+msgid "Erreur exécution :"
+msgstr "Erreur exécution :"
+
+msgid "Erreur import JSON :"
+msgstr "Erreur import JSON :"
+
+msgid "Erreur lors de la modification de l'autostart."
+msgstr "Erreur lors de la modification de l'autostart."
+
+msgid "Explorer DAB+..."
+msgstr "Explorer DAB+..."
+
+msgid "Exportation CSV terminée."
+msgstr "Exportation CSV terminée."
+
+msgid "Exporter en CSV..."
+msgstr "Exporter en CSV..."
+
+msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout en conservant bookmarks.xml comme référence."
+msgstr "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout en conservant bookmarks.xml comme référence."
+
+msgid "Fermer"
+msgstr "Fermer"
+
+msgid "Fichiers exemples"
+msgstr "Fichiers exemples"
+
+msgid "Fichiers exemples thématiques"
+msgstr "Fichiers exemples thématiques"
+
+msgid "Group name"
+msgstr "Nom du groupe"
+
+msgid "Générez une feuille de calcul CSV de vos radios"
+msgstr "Générez une feuille de calcul CSV de vos radios"
+
+msgid "Gérer les radios..."
+msgstr "Gérer les radios..."
+
+msgid "Importer depuis CSV..."
+msgstr "Importer depuis CSV..."
+
+msgid "Importer des fichiers personnels"
+msgstr "Importer des fichiers personnels"
+
+msgid "Importer fichier..."
+msgstr "Importer fichier..."
+
+msgid "Importer mes fichiers"
+msgstr "Importer mes fichiers"
+
+msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV, JSON, M3U ou PLS."
+msgstr "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV, JSON, M3U ou PLS."
+
+msgid "Impossible d ouvrir le dossier :"
+msgstr "Impossible d ouvrir le dossier :"
+
+msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+
+msgid "Intégration du bureau & Plateau"
+msgstr "Intégration du bureau & Plateau"
+
+msgid "Lancement automatique au démarrage"
+msgstr "Lancement automatique au démarrage"
+
+msgid "Lancer l'audit..."
+msgstr "Lancer l'audit..."
+
+msgid "Langue :"
+msgstr "Langue :"
+
+msgid "Langue et Région"
+msgstr "Langue et Région"
+
+msgid "Modifications prises en compte."
+msgstr "Modifications prises en compte."
+
+msgid "Modifier la radio (TiMonde)"
+msgstr "Modifier la radio (TiMonde)"
+
+msgid "Name / Header"
+msgstr "Nom / Intertitre"
+
+msgid "Nouvelle radio..."
+msgstr "Nouvelle radio..."
+
+msgid "Organiser les groupes et les radios"
+msgstr "Organiser les groupes et les radios"
+
+msgid "Outil introuvable :"
+msgstr "Outil introuvable :"
+
+msgid "Ouvrir dossier"
+msgstr "Ouvrir dossier"
+
+msgid "Paramètres & Contrôle TiMonde"
+msgstr "Paramètres & Contrôle TiMonde"
+
+msgid "Paramètres TiMonde"
+msgstr "Paramètres TiMonde"
+
+msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter votre bureau."
+msgstr "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter votre bureau."
+
+msgid "Parcourir..."
+msgstr "Parcourir..."
+
+msgid "Passerelle Tableur (CSV)"
+msgstr "Passerelle Tableur (CSV)"
+
+msgid "Recherche Radio-Browser"
+msgstr "Recherche Radio-Browser"
+
+msgid "Recherche mondiale Radio-Browser"
+msgstr "Recherche mondiale Radio-Browser"
+
+msgid "Rechercher..."
+msgstr "Rechercher..."
+
+msgid "Restaurer"
+msgstr "Restaurer"
+
+msgid "Restaurer les fichiers exemples"
+msgstr "Restaurer les fichiers exemples"
+
+msgid "Réimportez ou synchronisez des radios modifiées depuis un tableur CSV"
+msgstr "Réimportez ou synchronisez des radios modifiées depuis un tableur CSV"
+
+msgid "Rétablit les 17 exemples thématiques par défaut dans votre dossier personnel s'ils ont été supprimés."
+msgstr "Rétablit les 17 exemples thématiques par défaut dans votre dossier personnel s'ils ont été supprimés."
+
+msgid "Saisir directement un nom, une URL de flux (AAC, MP3, HLS), un pays et un fuseau horaire."
+msgstr "Saisir directement un nom, une URL de flux (AAC, MP3, HLS), un pays et un fuseau horaire."
+
+msgid "Signets actuels (bookmarks.xml)"
+msgstr "Signets actuels (bookmarks.xml)"
+
+msgid "Signets réorganisés et enregistrés avec succès !"
+msgstr "Signets réorganisés et enregistrés avec succès !"
+
+msgid "Supprimer"
+msgstr "Supprimer"
+
+msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
+msgstr "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
+
+msgid "Triez, renommez, supprimez et déplacez vos stations. Créez des dossiers et des sous-groupes (ex: Musique/Jazz)."
+msgstr "Triez, renommez, supprimez et déplacez vos stations. Créez des dossiers et des sous-groupes (ex: Musique/Jazz)."
+
+msgid "Vérificateur de flux & Liens morts"
+msgstr "Vérificateur de flux & Liens morts"
+
+msgid "activé"
+msgstr "activé"
+
+msgid "ajoutée avec succès à vos signets !"
+msgstr "ajoutée avec succès à vos signets !"
+
+msgid "désactivé"
+msgstr "désactivé"
+
+msgid "fichiers exemples restaurés dans"
+msgstr "fichiers exemples restaurés dans"
+
+msgid "radio(s) ajoutée(s) à vos signets !"
+msgstr "radio(s) ajoutée(s) à vos signets !"
+
+msgid "↕️ Organisation"
+msgstr "↕️ Organisation"
+
+msgid "💡 Astuce d'agencement visuel"
+msgstr "💡 Astuce d'agencement visuel"
+
+msgid "💾 Données & Fichiers"
+msgstr "💾 Données & Fichiers"
+
+msgid "📻 Bibliothèque"
+msgstr "📻 Bibliothèque"
+
+msgid "🖥️ Général"
+msgstr "🖥️ Général"

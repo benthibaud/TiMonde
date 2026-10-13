@@ -26,14 +26,13 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import clean_stream_url, strip_unsupported_emojis, make_btn, normalize_group_path
+from timonde_common import strip_unsupported_emojis, make_btn
 
 import urllib.request
 import urllib.parse
 import urllib.error
 import re
 import threading
-from concurrent.futures import ThreadPoolExecutor
 
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
@@ -1631,7 +1630,7 @@ class ReorderWindow(Gtk.Window):
         with open(filepath, "w", encoding="utf-8", newline="") as f:
             writer = csv.writer(f)
             f.write("# Export des radios TiMonde\n")
-            writer.writerow(["Groupe", "Nom", "URL", "Pays"])
+            writer.writerow(["Groupe", "Nom", "URL", "Pays", "Fuseau"])
             for grp in self.data:
                 if self.is_item_separator(grp):
                     continue
@@ -1642,8 +1641,9 @@ class ReorderWindow(Gtk.Window):
                     st_name = st.get("name", "")
                     st_url = st.get("url", "")
                     st_country = st.get("country", "") or ""
+                    st_tz = st.get("timezone", "") or ""
                     if st_name and st_url:
-                        writer.writerow([grp_name, st_name, st_url, st_country])
+                        writer.writerow([grp_name, st_name, st_url, st_country, st_tz])
                         count += 1
         return count
 

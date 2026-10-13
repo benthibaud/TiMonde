@@ -364,11 +364,37 @@ pub fn import_file(
 
             let target_idx = target_group.map(|tg| get_or_create_subgroup_idx(root, tg, &mut report));
 
-            // Fusionner les sous-groupes
+            // Fusionner récursivement les sous-groupes
+            fn merge_imported_group(
+                dest: &mut Group,
+                src: Group,
+                existing_urls: &mut HashSet<String>,
+                report: &mut ImportReport,
+            ) {
+                for s in src.stations {
+                    insert_station_dedup(dest, s, existing_urls, report);
+                }
+                for sub in src.subgroups {
+                    if sub.is_separator() {
+                        dest.subgroups.push(sub);
+                    } else {
+                        let sub_idx = get_or_create_subgroup_idx(dest, &sub.name, report);
+                        merge_imported_group(&mut dest.subgroups[sub_idx], sub, existing_urls, report);
+                    }
+                }
+            }
+
+            let base_dest = match target_idx {
+                Some(idx) => &mut root.subgroups[idx],
+                None => root,
+            };
+
             for sub in imported_root.subgroups {
-                for s in sub.stations {
-                    let dest = resolve_dest_group(root, target_idx, Some(&sub.name), &mut report);
-                    insert_station_dedup(dest, s, &mut existing_urls, &mut report);
+                if sub.is_separator() {
+                    base_dest.subgroups.push(sub);
+                } else {
+                    let sub_idx = get_or_create_subgroup_idx(base_dest, &sub.name, &mut report);
+                    merge_imported_group(&mut base_dest.subgroups[sub_idx], sub, &mut existing_urls, &mut report);
                 }
             }
 

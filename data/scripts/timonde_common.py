@@ -325,7 +325,24 @@ CUSTOM_MULTI_TZ = {
         ("Europe/Lisbon", "Europe/Lisbon (Portugal continental et Madère)"),
         ("Atlantic/Azores", "Atlantic/Azores (Açores)"),
     ],
+    "GB": [
+        ("Europe/London", "Europe/London (Royaume-Uni métropolitain - Londres, Écosse, Pays de Galles, Irlande du Nord)"),
+        ("Europe/Gibraltar", "Europe/Gibraltar (Gibraltar - Méditerranée)"),
+        ("Atlantic/Bermuda", "Atlantic/Bermuda (Bermudes - Atlantique Nord)"),
+        ("America/Cayman", "America/Cayman (Îles Caïmans - Caraïbes)"),
+        ("America/Tortola", "America/Tortola (Îles Vierges britanniques)"),
+        ("America/Montserrat", "America/Montserrat (Montserrat - Caraïbes)"),
+        ("America/Grand_Turk", "America/Grand_Turk (Îles Turques-et-Caïques)"),
+        ("America/Anguilla", "America/Anguilla (Anguilla - Caraïbes)"),
+        ("Atlantic/Stanley", "Atlantic/Stanley (Îles Malouines / Falkland)"),
+        ("Atlantic/South_Georgia", "Atlantic/South_Georgia (Géorgie du Sud)"),
+        ("Atlantic/St_Helena", "Atlantic/St_Helena (Sainte-Hélène, Ascension, Tristan da Cunha)"),
+        ("Indian/Chagos", "Indian/Chagos (Territoire britannique de l'océan Indien)"),
+        ("Pacific/Pitcairn", "Pacific/Pitcairn (Îles Pitcairn)"),
+    ],
 }
+
+UK_TIMEZONES = CUSTOM_MULTI_TZ["GB"]
 
 
 def load_world_timezones() -> dict:
@@ -364,6 +381,19 @@ def load_world_timezones() -> dict:
         "BL": [("America/St_Barthelemy", "America/St_Barthelemy (Saint-Barthélemy)")],
         "MF": [("America/Marigot", "America/Marigot (Saint-Martin)")],
         "WF": [("Pacific/Wallis", "Pacific/Wallis (Wallis-et-Futuna)")],
+        # Territoires britanniques d'outre-mer directs
+        "BM": [("Atlantic/Bermuda", "Atlantic/Bermuda (Bermudes)")],
+        "KY": [("America/Cayman", "America/Cayman (Îles Caïmans)")],
+        "VG": [("America/Tortola", "America/Tortola (Îles Vierges britanniques)")],
+        "MS": [("America/Montserrat", "America/Montserrat (Montserrat)")],
+        "TC": [("America/Grand_Turk", "America/Grand_Turk (Îles Turques-et-Caïques)")],
+        "AI": [("America/Anguilla", "America/Anguilla (Anguilla)")],
+        "FK": [("Atlantic/Stanley", "Atlantic/Stanley (Îles Malouines / Falkland)")],
+        "GI": [("Europe/Gibraltar", "Europe/Gibraltar (Gibraltar)")],
+        "GS": [("Atlantic/South_Georgia", "Atlantic/South_Georgia (Géorgie du Sud)")],
+        "SH": [("Atlantic/St_Helena", "Atlantic/St_Helena (Sainte-Hélène)")],
+        "IO": [("Indian/Chagos", "Indian/Chagos (Territoire britannique de l'océan Indien)")],
+        "PN": [("Pacific/Pitcairn", "Pacific/Pitcairn (Îles Pitcairn)")],
     }
     for cc, tzs in overseas_direct.items():
         catalogue[cc] = tzs
@@ -372,6 +402,140 @@ def load_world_timezones() -> dict:
 
 
 WORLD_TIMEZONES = load_world_timezones()
+
+
+def infer_timezone(country_code: str = "", station_name: str = "", group_path: str = "") -> str:
+    """
+    Infère intelligemment le fuseau horaire exact d'une station à partir de son pays ISO,
+    son nom et son groupe/arborescence.
+    """
+    cc = (country_code or "").strip().upper()
+    corpus = f"{station_name} {group_path}".lower()
+
+    # 1. France & Outre-mer
+    if cc in ("FR", ""):
+        if any(w in corpus for w in ("guadeloupe", "antilles", "pointe-à-pitre", "basse-terre", "rci guadeloupe")):
+            return "America/Guadeloupe"
+        if any(w in corpus for w in ("martinique", "fort-de-france", "rci martinique")):
+            return "America/Martinique"
+        if any(w in corpus for w in ("guyane", "cayenne", "kourou")):
+            return "America/Cayenne"
+        if any(w in corpus for w in ("reunion", "réunion", "saint-denis de la réunion", "saint-pierre")):
+            return "Indian/Reunion"
+        if any(w in corpus for w in ("mayotte", "mamoudzou", "dzaoudzi")):
+            return "Indian/Mayotte"
+        if any(w in corpus for w in ("nouvelle-caledonie", "nouvelle-calédonie", "noumea", "nouméa", "djiido")):
+            return "Pacific/Noumea"
+        if any(w in corpus for w in ("polynesie", "polynésie", "tahiti", "papeete", "tiare")):
+            return "Pacific/Tahiti"
+        if any(w in corpus for w in ("saint-pierre-et-miquelon", "miquelon")):
+            return "America/Miquelon"
+        if any(w in corpus for w in ("saint-barthelemy", "saint-barthélemy", "st-barth")):
+            return "America/St_Barthelemy"
+        if any(w in corpus for w in ("saint-martin", "st-martin", "marigot")):
+            return "America/Marigot"
+        if any(w in corpus for w in ("wallis", "futuna", "mata-utu")):
+            return "Pacific/Wallis"
+        if cc == "FR":
+            return "Europe/Paris"
+
+    # 2. Royaume-Uni & Territoires d'Outre-mer
+    if cc in ("GB", "UK"):
+        if any(w in corpus for w in ("gibraltar", "bFBS gibraltar")):
+            return "Europe/Gibraltar"
+        if any(w in corpus for w in ("bermuda", "bermudes", "hamilton")):
+            return "Atlantic/Bermuda"
+        if any(w in corpus for w in ("cayman", "caïmans", "george town")):
+            return "America/Cayman"
+        if any(w in corpus for w in ("falkland", "malouines", "stanley")):
+            return "Atlantic/Stanley"
+        if any(w in corpus for w in ("virgin islands", "tortola", "road town")):
+            return "America/Tortola"
+        if any(w in corpus for w in ("montserrat", "plymouth", "brades")):
+            return "America/Montserrat"
+        if any(w in corpus for w in ("turks", "caicos", "grand turk")):
+            return "America/Grand_Turk"
+        if any(w in corpus for w in ("anguilla", "the valley")):
+            return "America/Anguilla"
+        if any(w in corpus for w in ("st helena", "sainte-hélène", "jamestown", "ascension")):
+            return "Atlantic/St_Helena"
+        return "Europe/London"
+
+    # 3. Territoires directs
+    direct_map = {
+        "GP": "America/Guadeloupe",
+        "MQ": "America/Martinique",
+        "GF": "America/Cayenne",
+        "RE": "Indian/Reunion",
+        "YT": "Indian/Mayotte",
+        "NC": "Pacific/Noumea",
+        "PF": "Pacific/Tahiti",
+        "PM": "America/Miquelon",
+        "BL": "America/St_Barthelemy",
+        "MF": "America/Marigot",
+        "WF": "Pacific/Wallis",
+        "BM": "Atlantic/Bermuda",
+        "KY": "America/Cayman",
+        "VG": "America/Tortola",
+        "MS": "America/Montserrat",
+        "TC": "America/Grand_Turk",
+        "AI": "America/Anguilla",
+        "FK": "Atlantic/Stanley",
+        "GI": "Europe/Gibraltar",
+        "SH": "Atlantic/St_Helena",
+    }
+    if cc in direct_map:
+        return direct_map[cc]
+
+    # 4. Canada
+    if cc == "CA":
+        if any(w in corpus for w in ("vancouver", "colombie-britannique", "british columbia", "victoria")):
+            return "America/Vancouver"
+        if any(w in corpus for w in ("alberta", "calgary", "edmonton")):
+            return "America/Edmonton"
+        if any(w in corpus for w in ("saskatchewan", "regina", "saskatoon")):
+            return "America/Regina"
+        if any(w in corpus for w in ("manitoba", "winnipeg")):
+            return "America/Winnipeg"
+        if any(w in corpus for w in ("halifax", "nouvelle-ecosse", "nova scotia")):
+            return "America/Halifax"
+        if any(w in corpus for w in ("terre-neuve", "newfoundland", "st. john")):
+            return "America/St_Johns"
+        return "America/Toronto"
+
+    # 5. États-Unis
+    if cc == "US":
+        if any(w in corpus for w in ("california", "los angeles", "san francisco", "seattle", "washington", "oregon")):
+            return "America/Los_Angeles"
+        if any(w in corpus for w in ("chicago", "texas", "houston", "dallas", "louisiana", "new orleans", "illinois")):
+            return "America/Chicago"
+        if any(w in corpus for w in ("denver", "colorado", "utah", "salt lake", "phoenix", "arizona")):
+            return "America/Denver"
+        if any(w in corpus for w in ("alaska", "anchorage")):
+            return "America/Anchorage"
+        if any(w in corpus for w in ("hawaii", "honolulu")):
+            return "Pacific/Honolulu"
+        return "America/New_York"
+
+    # 6. Australie
+    if cc == "AU":
+        if any(w in corpus for w in ("perth", "western australia")):
+            return "Australia/Perth"
+        if any(w in corpus for w in ("adelaide", "south australia")):
+            return "Australia/Adelaide"
+        if any(w in corpus for w in ("darwin", "northern territory")):
+            return "Australia/Darwin"
+        if any(w in corpus for w in ("brisbane", "queensland")):
+            return "Australia/Brisbane"
+        return "Australia/Sydney"
+
+    # 7. Fallback standard par pays
+    tz_list = WORLD_TIMEZONES.get(cc, [])
+    if tz_list:
+        return tz_list[0][0]
+
+    return ""
+
 
 DEFAULT_WORLD_TIMEZONES = [
     ("", "(Déduction automatique selon le nom / groupe)"),

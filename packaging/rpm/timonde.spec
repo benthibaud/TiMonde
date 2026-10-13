@@ -56,6 +56,7 @@ make DESTDIR=%{buildroot} PREFIX=/usr install
 /usr/share/timonde/examples/*
 /usr/share/timonde/scripts/timonde_i18n.py
 /usr/share/timonde/scripts/timonde_common.py
+/usr/share/timonde/scripts/timonde_world_data.py
 /usr/share/metainfo/io.github.benthibaud.timonde.metainfo.xml
 
 %changelog

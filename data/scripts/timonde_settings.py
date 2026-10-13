@@ -16,7 +16,6 @@ os.environ.pop("QT_IM_MODULE", None)
 
 import json
 import subprocess
-import glob
 import shutil
 import html
 import xml.etree.ElementTree as ET
@@ -27,11 +26,11 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import make_btn, safe_parse_xml
+from timonde_common import make_btn, safe_parse_xml, clean_stream_url, infer_timezone
 
 import gi
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gdk, Pango, GLib
+from gi.repository import Gtk, Gdk
 
 AUTOSTART_PATH = os.path.expanduser("~/.config/autostart/timonde.desktop")
 USER_CONFIG_DIR = os.path.expanduser("~/.config/timonde")
@@ -239,8 +238,9 @@ def add_stations_to_bookmarks_xml(path, stations_list, default_group="Mes Radios
         c = st.get("country") or country_code
         if c:
             attribs["country"] = str(c).strip().upper()
-        if st.get("timezone"):
-            attribs["timezone"] = str(st["timezone"]).strip()
+        tz = st.get("timezone") or infer_timezone(attribs.get("country", ""), name, grp_name)
+        if tz:
+            attribs["timezone"] = str(tz).strip()
         
         ET.SubElement(target_group, "bookmark", attribs)
         existing_urls.add(url)
@@ -606,13 +606,20 @@ class SettingsWindow(Gtk.Window):
         card_bm.pack_end(box_bm, False, False, 0)
         page.pack_start(card_bm, False, False, 0)
 
-        # Carte Exportation CSV
-        btn_csv = make_btn(_("Exporter en CSV..."), "document-save-as")
+        # Carte Passerelle Tableur (CSV) - Option A
+        box_csv_actions = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        btn_csv = make_btn(_("Exporter en CSV..."), "document-save-as", _("Générez une feuille de calcul CSV de vos radios"))
         btn_csv.connect("clicked", lambda w: self.action_reorder_groups(export_mode=True))
+        box_csv_actions.pack_start(btn_csv, False, False, 0)
+
+        btn_csv_sync = make_btn(_("Importer depuis CSV..."), "document-open", _("Réimportez ou synchronisez des radios modifiées depuis un tableur CSV"))
+        btn_csv_sync.connect("clicked", lambda w: self.action_browse_bouquets(3))
+        box_csv_actions.pack_start(btn_csv_sync, False, False, 0)
+
         card_csv = self.create_card(
-            _("Exporter vos radios en tableur (CSV)"),
-            _("Générez une feuille de calcul avec les noms, URLs, groupes et pays de vos stations pour sauvegarde."),
-            btn_csv
+            _("Passerelle Tableur (CSV)"),
+            _("Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout en conservant bookmarks.xml comme référence."),
+            box_csv_actions
         )
         page.pack_start(card_csv, False, False, 0)
 
