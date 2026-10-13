@@ -297,3 +297,6 @@ msgstr ""
 
 msgid "Start automatically at login"
 msgstr "ログイン時に自動起動"
+
+msgid "Settings..."
+msgstr "設定..."

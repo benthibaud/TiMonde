@@ -308,3 +308,6 @@ msgstr "radio(s) guardada(s) en:"
 
 msgid "Start automatically at login"
 msgstr "Iniciar automáticamente al iniciar sesión"
+
+msgid "Settings..."
+msgstr "Ajustes..."

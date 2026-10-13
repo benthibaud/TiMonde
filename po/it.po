@@ -297,3 +297,6 @@ msgstr "stazioni salvate in:"
 
 msgid "Start automatically at login"
 msgstr "Avvia automaticamente all'accesso"
+
+msgid "Settings..."
+msgstr "Impostazioni..."

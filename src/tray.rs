@@ -3,7 +3,7 @@ use crate::bookmarks::{save_bookmarks, update_station_url};
 use crate::models::{Group, Station};
 use crate::playlist::resolve_stream_url;
 use crate::radio_browser::{find_backup_stream, notify};
-use ksni::menu::{CheckmarkItem, MenuItem, StandardItem, SubMenu};
+use ksni::menu::{MenuItem, StandardItem, SubMenu};
 use log::{error, info};
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
@@ -1300,6 +1300,47 @@ Radio éphémère non enregistrée.",
         );
     }
 
+    /// Ouvre la Console de Paramètres TiMonde unifiée (timonde_settings.py)
+    pub fn trigger_settings_dialog(
+        root_group: Arc<Mutex<Group>>,
+        bookmarks_path: PathBuf,
+        tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+    ) {
+        std::thread::spawn(move || {
+            let script_path = match Self::find_script("timonde_settings.py") {
+                Some(p) => p,
+                None => {
+                    log::error!("Script timonde_settings.py introuvable");
+                    crate::radio_browser::notify("TiMonde", "Console de paramètres introuvable");
+                    return;
+                }
+            };
+
+            let bookmarks_str = bookmarks_path.to_string_lossy().to_string();
+            let mut cmd = Self::prepare_python_command("python3");
+            cmd.arg(&script_path);
+            cmd.arg(&bookmarks_str);
+
+            let output = match cmd.output() {
+                Ok(out) => out,
+                Err(e) => {
+                    log::error!("Impossible d'exécuter timonde_settings.py : {}", e);
+                    return;
+                }
+            };
+
+            if output.status.success() {
+                let stdout_str = String::from_utf8_lossy(&output.stdout).trim().to_string();
+                if let Ok(json_val) = serde_json::from_str::<serde_json::Value>(&stdout_str) {
+                    if json_val["reload"].as_bool().unwrap_or(false) {
+                        let total = Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle).unwrap_or(0);
+                        log::info!("Signets rechargés suite aux modifications des paramètres. Total : {} stations", total);
+                    }
+                }
+            }
+        });
+    }
+
     /// Lance l'outil de gestion avec un argument supplémentaire optionnel (--check ou --export)
     pub fn trigger_reorder_groups_dialog_with_arg(
         root_group: Arc<Mutex<Group>>,
@@ -2087,110 +2128,16 @@ impl ksni::Tray for TiMondeTray {
 
         menu.push(MenuItem::Separator);
 
-        // 6. Options et gestion des signets
-        menu.push(MenuItem::SubMenu(SubMenu {
-            label: crate::i18n::tr("Options").to_string(),
-            submenu: vec![
-                MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("Add a station...").to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        Self::trigger_add_station_dialog(
-                            Arc::clone(&tray.root_group),
-                            tray.bookmarks_path.clone(),
-                            Arc::clone(&tray.tray_handle),
-                        );
-                    }),
-                    ..Default::default()
-                }),
-                MenuItem::Standard(StandardItem {
-                    label: crate::i18n::tr("Discover & Import stations...").to_string(),
-                    activate: Box::new(|tray: &mut Self| {
-                        Self::trigger_browse_bouquets_dialog(
-                            Arc::clone(&tray.root_group),
-                            tray.bookmarks_path.clone(),
-                            Arc::clone(&tray.tray_handle),
-                            Some(0),
-                        );
-                    }),
-                    ..Default::default()
-                }),
-                MenuItem::Separator,
-                MenuItem::Checkmark(CheckmarkItem {
-                    label: crate::i18n::tr("Start automatically at login").to_string(),
-                    checked: Self::is_autostart_enabled(),
-                    activate: Box::new(|tray: &mut Self| {
-                        Self::toggle_autostart();
-                        if let Some(ref h) = *tray.tray_handle.lock().unwrap() {
-                            h.update(|_| {});
-                        }
-                    }),
-                    ..Default::default()
-                }),
-                MenuItem::Separator,
-                MenuItem::SubMenu(SubMenu {
-                    label: crate::i18n::tr("Maintenance & Data").to_string(),
-                    submenu: vec![
-                        MenuItem::Standard(StandardItem {
-                            label: crate::i18n::tr("Manage groups and stations...").to_string(),
-                            activate: Box::new(|tray: &mut Self| {
-                                Self::trigger_reorder_groups_dialog(
-                                    Arc::clone(&tray.root_group),
-                                    tray.bookmarks_path.clone(),
-                                    Arc::clone(&tray.tray_handle),
-                                    false,
-                                );
-                            }),
-                            ..Default::default()
-                        }),
-                        MenuItem::Standard(StandardItem {
-                            label: crate::i18n::tr("Check streams (dead links)...").to_string(),
-                            activate: Box::new(|tray: &mut Self| {
-                                Self::trigger_reorder_groups_dialog(
-                                    Arc::clone(&tray.root_group),
-                                    tray.bookmarks_path.clone(),
-                                    Arc::clone(&tray.tray_handle),
-                                    true,
-                                );
-                            }),
-                            ..Default::default()
-                        }),
-                        MenuItem::Standard(StandardItem {
-                            label: crate::i18n::tr("Import my files (XML, CSV, JSON, M3U)...").to_string(),
-                            activate: Box::new(|tray: &mut Self| {
-                                Self::trigger_browse_bouquets_dialog(
-                                    Arc::clone(&tray.root_group),
-                                    tray.bookmarks_path.clone(),
-                                    Arc::clone(&tray.tray_handle),
-                                    Some(3),
-                                );
-                            }),
-                            ..Default::default()
-                        }),
-                        MenuItem::Standard(StandardItem {
-                            label: crate::i18n::tr("Export my stations to CSV...").to_string(),
-                            activate: Box::new(|tray: &mut Self| {
-                                Self::trigger_export_csv_dialog(
-                                    Arc::clone(&tray.root_group),
-                                    tray.bookmarks_path.clone(),
-                                    Arc::clone(&tray.tray_handle),
-                                );
-                            }),
-                            ..Default::default()
-                        }),
-                        MenuItem::Standard(StandardItem {
-                            label: crate::i18n::tr("Open bookmarks.xml").to_string(),
-                            activate: Box::new(|tray: &mut Self| {
-                                let path_str = tray.bookmarks_path.to_string_lossy().to_string();
-                                let _ = std::process::Command::new("xdg-open").arg(path_str).spawn();
-                            }),
-                            ..Default::default()
-                        }),
-                    ],
-                    enabled: true,
-                    visible: true,
-                    ..Default::default()
-                }),
-            ],
+        // 6. Console de Paramètres unifiée (sans sous-menus)
+        menu.push(MenuItem::Standard(StandardItem {
+            label: crate::i18n::tr("Settings...").to_string(),
+            activate: Box::new(|tray: &mut Self| {
+                Self::trigger_settings_dialog(
+                    Arc::clone(&tray.root_group),
+                    tray.bookmarks_path.clone(),
+                    Arc::clone(&tray.tray_handle),
+                );
+            }),
             enabled: true,
             visible: true,
             ..Default::default()
@@ -2282,6 +2229,7 @@ mod tests {
 
         assert!(labels.iter().any(|l| l.contains("Matt Combs - Fifty Years of Clown School")));
         assert!(labels.iter().any(|l| l.contains("Éditer")));
+        assert!(labels.iter().any(|l| l.contains("Paramètres...")));
     }
     #[test]
     fn test_menu_layout_english_mode() {
@@ -2327,6 +2275,8 @@ mod tests {
         assert!(!labels[0].contains("Éteindre"));
         assert!(labels.iter().any(|l| l.contains("Edit")));
         assert!(!labels.iter().any(|l| l.contains("Éditer")));
+        assert!(labels.iter().any(|l| l.contains("Settings...")));
+        assert!(!labels.iter().any(|l| l.contains("Paramètres...")));
         assert!(labels.iter().any(|l| l == "Quit TiMonde"));
         assert!(!labels.iter().any(|l| l == "Quitter TiMonde"));
 

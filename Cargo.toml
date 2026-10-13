@@ -89,6 +89,7 @@ assets = [
     { source = "data/scripts/browse_bouquets.py", dest = "/usr/share/timonde/scripts/browse_bouquets.py", mode = "755" },
     { source = "data/scripts/show_menu.py", dest = "/usr/share/timonde/scripts/show_menu.py", mode = "755" },
     { source = "data/scripts/patch_cinnamon_status_applet.py", dest = "/usr/share/timonde/scripts/patch_cinnamon_status_applet.py", mode = "755" },
+    { source = "data/scripts/timonde_settings.py", dest = "/usr/share/timonde/scripts/timonde_settings.py", mode = "755" },
     { source = "data/scripts/timonde_common.py", dest = "/usr/share/timonde/scripts/timonde_common.py", mode = "644" },
     { source = "data/scripts/timonde_i18n.py", dest = "/usr/share/timonde/scripts/timonde_i18n.py", mode = "644" },
     { source = "data/bouquets/ad.xml", dest = "/usr/share/timonde/bouquets/ad.xml", mode = "644" },

@@ -297,3 +297,6 @@ msgstr ""
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
+
+msgid "Settings..."
+msgstr "ការកំណត់..."

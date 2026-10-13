@@ -51,6 +51,7 @@ make DESTDIR=%{buildroot} PREFIX=/usr install
 /usr/share/timonde/scripts/browse_bouquets.py
 /usr/share/timonde/scripts/show_menu.py
 /usr/share/timonde/scripts/patch_cinnamon_status_applet.py
+/usr/share/timonde/scripts/timonde_settings.py
 /usr/share/timonde/bouquets/*.xml
 /usr/share/timonde/examples/*
 /usr/share/timonde/scripts/timonde_i18n.py

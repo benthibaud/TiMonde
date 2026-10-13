@@ -111,6 +111,7 @@ install -m 755 "${ROOT_DIR}/data/scripts/edit_station.py" "${STAGING_DIR}/usr/sh
 install -m 755 "${ROOT_DIR}/data/scripts/browse_bouquets.py" "${STAGING_DIR}/usr/share/timonde/scripts/browse_bouquets.py"
 install -m 755 "${ROOT_DIR}/data/scripts/timonde_xembed_bridge.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_xembed_bridge.py"
 install -m 755 "${ROOT_DIR}/data/scripts/patch_cinnamon_status_applet.py" "${STAGING_DIR}/usr/share/timonde/scripts/patch_cinnamon_status_applet.py"
+install -m 755 "${ROOT_DIR}/data/scripts/timonde_settings.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_settings.py"
 install -m 755 "${ROOT_DIR}/data/scripts/show_menu.py" "${STAGING_DIR}/usr/share/timonde/scripts/show_menu.py"
 install -m 644 "${ROOT_DIR}/data/scripts/timonde_i18n.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_i18n.py"
 install -m 644 "${ROOT_DIR}/data/scripts/timonde_common.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_common.py"

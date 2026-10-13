@@ -447,3 +447,6 @@ msgstr "Cet élément est un séparateur."
 msgid "Station deleted"
 msgstr "Radio supprimée"
 
+
+msgid "Settings..."
+msgstr "Paramètres..."

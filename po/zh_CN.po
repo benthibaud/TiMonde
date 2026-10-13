@@ -297,3 +297,6 @@ msgstr "电台已保存至："
 
 msgid "Start automatically at login"
 msgstr "登录时自动启动"
+
+msgid "Settings..."
+msgstr "设置..."

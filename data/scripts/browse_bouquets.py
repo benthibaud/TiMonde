@@ -411,7 +411,7 @@ def parse_user_radio_file(path):
             def walk_group(elem, current_path=""):
                 local_stations = []
                 g_name = elem.attrib.get("name", "").strip()
-                if g_name and g_name != "root":
+                if elem != root and g_name and g_name.lower() != "root":
                     full_group = f"{current_path}/{g_name}".strip("/") if current_path else g_name
                 else:
                     full_group = current_path
@@ -424,8 +424,9 @@ def parse_user_radio_file(path):
                         url = clean_stream_url(child.attrib.get("url", "").strip())
                         country = (child.attrib.get("country") or child.attrib.get("countrycode") or "").strip().upper()
                         genre = child.attrib.get("genre", "").strip()
+                        explicit_grp = child.attrib.get("group", "").strip()
                         if name and url and not name.startswith("[separator"):
-                            grp = full_group if full_group else base_name
+                            grp = explicit_grp if explicit_grp else (full_group if full_group else base_name)
                             local_stations.append({
                                 "name": name,
                                 "url": url,
@@ -435,8 +436,10 @@ def parse_user_radio_file(path):
                             })
                 return local_stations
 
-            if root.tag == "bookmarks":
-                stations = walk_group(root)
+            has_groups = any(child.tag == "group" for child in root.iter()) or (root.tag in ("bookmarks", "radios", "bouquets"))
+            if has_groups:
+                root_group_name = root.attrib.get("name", "").strip() if root.tag not in ("bookmarks", "radios", "bouquets", "root") else ""
+                stations = walk_group(root, root_group_name)
             else:
                 def_country = (root.attrib.get("country") or root.attrib.get("countrycode") or "").strip().upper()
                 def_group = root.attrib.get("name") or base_name
@@ -908,8 +911,8 @@ class DiscoverRadiosWindow(Gtk.Window):
         tab_examples.pack_start(lbl_ex_folder_info, False, False, 0)
 
         # Tableau des stations de l'exemple
-        # Store: [checked, name, genre, health_markup, dup_markup, url, is_dup, is_dead, row_id]
-        self.example_store = Gtk.ListStore(bool, str, str, str, str, str, bool, bool, int, str)
+        # Store: [checked, name, display_genre/group, health_markup, dup_markup, url, is_dup, is_dead, row_id, country, raw_group]
+        self.example_store = Gtk.ListStore(bool, str, str, str, str, str, bool, bool, int, str, str)
         self.example_tree = Gtk.TreeView(model=self.example_store)
 
         renderer_ex_check = Gtk.CellRendererToggle()
@@ -921,8 +924,8 @@ class DiscoverRadiosWindow(Gtk.Window):
         col_ex_name.set_expand(True)
         self.example_tree.append_column(col_ex_name)
 
-        col_ex_genre = Gtk.TreeViewColumn("Genre / Thématique", Gtk.CellRendererText(), text=2)
-        col_ex_genre.set_fixed_width(180)
+        col_ex_genre = Gtk.TreeViewColumn("Groupe / Thématique", Gtk.CellRendererText(), text=2)
+        col_ex_genre.set_fixed_width(190)
         self.example_tree.append_column(col_ex_genre)
 
         col_ex_health = Gtk.TreeViewColumn("Disponibilité", Gtk.CellRendererText(), markup=3)
@@ -1666,14 +1669,30 @@ class DiscoverRadiosWindow(Gtk.Window):
                     selected.append({"name": name, "url": url, "country": country_id})
                 it = self.bouquet_store.iter_next(it)
         elif current_page == 2:
-            # Onglet 3 : Exemples (XML, CSV, JSON)
+            # Onglet 3 : Exemples (XML, CSV, JSON, M3U)
+            raw_target_custom = group_name if (group_name and group_name != "(Groupes préservés du fichier)") else ""
             it = self.example_store.get_iter_first()
             while it:
                 if self.example_store.get_value(it, 0):
                     name = self.example_store.get_value(it, 1)
                     url = self.example_store.get_value(it, 5)
                     st_country = self.example_store.get_value(it, 9) if self.example_store.get_n_columns() > 9 else ""
-                    selected.append({"name": name, "url": url, "country": st_country})
+                    st_group_raw = self.example_store.get_value(it, 10) if self.example_store.get_n_columns() > 10 else ""
+                    raw_target = raw_target_custom if raw_target_custom else (st_group_raw or group_name)
+                    if raw_target:
+                        clean_t = raw_target.strip()
+                        if clean_t in ("[ / ] (Racine — Sans groupe)", "/", "root", "(Racine)"):
+                            target_st_grp = "root"
+                        else:
+                            target_st_grp = clean_t.strip("/").strip()
+                    else:
+                        target_st_grp = "root"
+                    selected.append({
+                        "name": name,
+                        "url": url,
+                        "country": st_country,
+                        "group": target_st_grp
+                    })
                 it = self.example_store.iter_next(it)
         elif current_page == 3:
             # Onglet 4 : Importer mes fichiers
@@ -1682,6 +1701,7 @@ class DiscoverRadiosWindow(Gtk.Window):
             while it:
                 if self.user_store.get_value(it, 0):
                     name = self.user_store.get_value(it, 1)
+                    url = self.user_store.get_value(it, 6)
                     st_group_raw = self.user_store.get_value(it, 10)
                     st_country = self.user_store.get_value(it, 3) or ""
                     raw_target = st_group_raw if (preserve and st_group_raw) else group_name
@@ -1781,97 +1801,40 @@ class DiscoverRadiosWindow(Gtk.Window):
             self.load_example_file(filename)
 
     def load_example_file(self, path):
-        stations = []
-        group_name = os.path.splitext(os.path.basename(path))[0]
+        if not os.path.isfile(path):
+            return
 
-        if path.endswith(".xml"):
-            try:
-                tree = ET.parse(path)
-                root = tree.getroot()
-                group_name = root.attrib.get("name", group_name)
+        base_name = os.path.splitext(os.path.basename(path))[0]
+        parsed_stations = parse_user_radio_file(path)
+        groups = set(s.get("group", "") for s in parsed_stations if s.get("group"))
 
-                for st in root.iter("station"):
-                    name = st.attrib.get("name", "")
-                    url = st.attrib.get("url", "")
-                    genre = st.attrib.get("genre", "Divers")
-                    country = st.attrib.get("country", "")
-                    status = st.attrib.get("status", "unknown")
-                    if name and url:
-                        stations.append((name, url, genre, country, status))
+        # Si le fichier définit plusieurs groupes, on suggère de préserver les groupes
+        if len(groups) > 1:
+            self.set_suggested_group("(Groupes préservés du fichier)")
+        else:
+            first_grp = next(iter(groups)) if groups else base_name
+            self.set_suggested_group(first_grp or base_name)
 
-                for bk in root.iter("bookmark"):
-                    name = bk.attrib.get("name", "")
-                    url = bk.attrib.get("url", "")
-                    country = bk.attrib.get("country", "")
-                    if name and url and not name.startswith("[separator"):
-                        stations.append((name, url, "Favoris", country, "unknown"))
-            except Exception as e:
-                sys.stderr.write(f"Erreur parsing XML {path}: {e}\n")
-
-        elif path.endswith(".csv"):
-            group_name = "Import CSV"
-            try:
-                with open(path, "r", encoding="utf-8", errors="ignore") as f:
-                    for line in f:
-                        line = line.strip()
-                        if not line or line.startswith("#"):
-                            continue
-                        if line.lower().startswith("nom,") or line.lower().startswith("groupe,") or line.lower().startswith("name,"):
-                            continue
-                        cols = [c.strip() for c in line.split(",")]
-                        if len(cols) == 2 and (cols[1].startswith("http://") or cols[1].startswith("https://")):
-                            stations.append((cols[0], cols[1], "CSV", "", "online"))
-                        elif len(cols) == 3:
-                            if cols[1].startswith("http://") or cols[1].startswith("https://"):
-                                stations.append((cols[0], cols[1], "CSV", cols[2], "online"))
-                            elif cols[2].startswith("http://") or cols[2].startswith("https://"):
-                                group_name = cols[0] or group_name
-                                stations.append((cols[1], cols[2], "CSV", "", "online"))
-                        elif len(cols) >= 4 and (cols[2].startswith("http://") or cols[2].startswith("https://")):
-                            group_name = cols[0] or group_name
-                            stations.append((cols[1], cols[2], "CSV", cols[3], "online"))
-            except Exception as e:
-                sys.stderr.write(f"Erreur parsing CSV {path}: {e}\n")
-
-        elif path.endswith(".json"):
-            group_name = "Import JSON"
-            try:
-                with open(path, "r", encoding="utf-8", errors="ignore") as f:
-                    data = json.load(f)
-                if isinstance(data, list):
-                    for item in data:
-                        if isinstance(item, dict) and "stations" in item:
-                            g_title = item.get("group", group_name)
-                            for s in item.get("stations", []):
-                                stations.append((s.get("name", "Station"), s.get("url", ""), g_title, s.get("country", ""), "online"))
-                        elif isinstance(item, dict) and "url" in item:
-                            stations.append((item.get("name", "Station"), item.get("url", ""), "JSON", item.get("country", ""), "online"))
-            except Exception as e:
-                sys.stderr.write(f"Erreur parsing JSON {path}: {e}\n")
-        elif path.endswith((".m3u", ".m3u8", ".pls")):
-            parsed = parse_user_file_into_stations(path)
-            for s in parsed:
-                stations.append((s["name"], s["url"], s.get("genre") or s.get("group") or "Playlist", s.get("country", ""), "online"))
-
-        self.set_suggested_group(group_name)
         self.example_store.clear()
         row_id = 0
-        for name, url, genre, country, status in stations:
-            is_dup = url.strip() in self.existing_urls or name.strip().lower() in self.existing_names
-            dup_markup = '<span foreground="#e67e22">[Présent]</span>' if is_dup else '<span foreground="#27ae60">[Nouveau]</span>'
-            if status == "online":
-                health_markup = '<span foreground="#2ecc71">● En direct</span>'
-                is_dead = False
-            elif status == "offline":
-                health_markup = '<span foreground="#e74c3c">● Inactif</span>'
-                is_dead = True
-            else:
-                health_markup = '<span foreground="#95a5a6">○ Non testé</span>'
-                is_dead = False
+        for st in parsed_stations:
+            name = st.get("name", "Station")
+            url = st.get("url", "").strip()
+            genre = st.get("genre", "").strip()
+            country = st.get("country", "").strip().upper()
+            grp = st.get("group", "").strip() or base_name
 
-            display_genre = f"{genre} [{country}]" if country else genre
-            self.example_store.append([False, name, display_genre, health_markup, dup_markup, url, is_dup, is_dead, row_id, country])
+            is_dup = url in self.existing_urls or name.strip().lower() in self.existing_names
+            dup_markup = '<span foreground="#e67e22">[Présent]</span>' if is_dup else '<span foreground="#27ae60">[Nouveau]</span>'
+            health_markup = '<span foreground="#95a5a6">○ Non testé</span>'
+            is_dead = False
+
+            display_genre = grp if (len(groups) > 1 or not genre) else (f"{genre} [{country}]" if country else genre)
+            # Store: [checked, name, display_genre/group, health_markup, dup_markup, url, is_dup, is_dead, row_id, country, raw_group]
+            self.example_store.append([False, name, display_genre, health_markup, dup_markup, url, is_dup, is_dead, row_id, country, grp])
             row_id += 1
+
+        self.update_example_count()
 
         self.update_example_count()
 
