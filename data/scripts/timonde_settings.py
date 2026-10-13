@@ -18,6 +18,7 @@ import json
 import subprocess
 import glob
 import shutil
+import html
 import xml.etree.ElementTree as ET
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -366,7 +367,8 @@ class SettingsWindow(Gtk.Window):
         main_vbox.pack_start(header_box, False, False, 0)
 
         lbl_header = Gtk.Label()
-        lbl_header.set_markup("<big><b>⚙️ " + _("Paramètres & Contrôle TiMonde") + "</b></big>")
+        header_title = html.escape(_("Paramètres & Contrôle TiMonde"))
+        lbl_header.set_markup(f"<big><b>⚙️ {header_title}</b></big>")
         lbl_header.set_halign(Gtk.Align.START)
         header_box.pack_start(lbl_header, True, True, 0)
 
@@ -410,17 +412,19 @@ class SettingsWindow(Gtk.Window):
         card = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         card.get_style_context().add_class("settings-card")
 
-        vbox_text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=3)
+        vbox_text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
         lbl_title = Gtk.Label()
-        lbl_title.set_markup(f"<span class='card-title'>{title_text}</span>")
+        lbl_title.set_markup(f"<b>{html.escape(title_text)}</b>")
         lbl_title.set_halign(Gtk.Align.START)
+        lbl_title.get_style_context().add_class("card-title")
         vbox_text.pack_start(lbl_title, False, False, 0)
 
         if desc_text:
             lbl_desc = Gtk.Label()
-            lbl_desc.set_markup(f"<span class='card-desc'>{desc_text}</span>")
+            lbl_desc.set_text(desc_text)
             lbl_desc.set_halign(Gtk.Align.START)
             lbl_desc.set_line_wrap(True)
+            lbl_desc.get_style_context().add_class("card-desc")
             vbox_text.pack_start(lbl_desc, False, False, 0)
 
         card.pack_start(vbox_text, True, True, 0)
@@ -585,14 +589,15 @@ class SettingsWindow(Gtk.Window):
         box_bm.pack_start(btn_bm_dir, False, False, 0)
 
         self.lbl_bm_desc = Gtk.Label()
-        self.lbl_bm_desc.set_markup(f"{self.bookmarks_path}\n<b>{nb_st}</b> station(s) réparties dans <b>{nb_gr}</b> groupe(s).")
+        self.lbl_bm_desc.set_markup(f"{html.escape(self.bookmarks_path)}\n<b>{nb_st}</b> station(s) réparties dans <b>{nb_gr}</b> groupe(s).")
         self.lbl_bm_desc.set_halign(Gtk.Align.START)
 
         card_bm = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         card_bm.get_style_context().add_class("settings-card")
         vbox_bm_text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=3)
         lbl_bm_title = Gtk.Label()
-        lbl_bm_title.set_markup(f"<span class='card-title'>{_('Signets actuels (bookmarks.xml)')}</span>")
+        lbl_bm_title.set_markup(f"<b>{_('Signets actuels (bookmarks.xml)')}</b>")
+        lbl_bm_title.get_style_context().add_class("card-title")
         lbl_bm_title.set_halign(Gtk.Align.START)
         vbox_bm_text.pack_start(lbl_bm_title, False, False, 0)
         vbox_bm_text.pack_start(self.lbl_bm_desc, False, False, 0)
@@ -626,7 +631,7 @@ class SettingsWindow(Gtk.Window):
     def refresh_stats(self):
         nb_st, nb_gr = get_bookmarks_stats(self.bookmarks_path)
         if hasattr(self, "lbl_bm_desc"):
-            self.lbl_bm_desc.set_markup(f"{self.bookmarks_path}\n<b>{nb_st}</b> station(s) réparties dans <b>{nb_gr}</b> groupe(s).")
+            self.lbl_bm_desc.set_markup(f"{html.escape(self.bookmarks_path)}\n<b>{nb_st}</b> station(s) réparties dans <b>{nb_gr}</b> groupe(s).")
 
     # -------------------------------------------------------------------------
     # Actions Métier & Intégration des sous-outils
