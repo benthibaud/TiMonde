@@ -1,14 +1,16 @@
-# TiMonde — SK Translation
+# TiMonde — Traduction SK
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sk\n"
 
 msgid "Play"
 msgstr "Prehrať"
@@ -29,10 +31,10 @@ msgid "Zap to another random station"
 msgstr "Prepnúť na inú náhodnú stanicu"
 
 msgid "Play random radio (Ephemeral discovery)"
-msgstr ""
+msgstr "Počúvanie náhodnej rozhlasovej stanice (Ephemeral discovery)"
 
 msgid "[ Ephemeral]"
-msgstr ""
+msgstr "[Ephemeral]"
 
 msgid "Options"
 msgstr "Možnosti"
@@ -41,109 +43,109 @@ msgid "Add a station..."
 msgstr "Pridať stanicu..."
 
 msgid "Discover & Import stations..."
-msgstr ""
+msgstr "Objavte a importujte rádiá..."
 
 msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr ""
+msgstr "Importovať moje súbory (XML, CSV, JSON, M3U)..."
 
 msgid "Manage groups and stations..."
-msgstr ""
+msgstr "Klasifikujte skupiny a rádiá..."
 
 msgid "Open bookmarks.xml"
-msgstr ""
+msgstr "Otvorte súbor bookmarks.xml"
 
 msgid "Quit TiMonde"
 msgstr "Ukončiť TiMonde"
 
 msgid "Mute (0%)"
-msgstr ""
+msgstr "Stlmiť (0 %)"
 
 msgid "Sleep timer"
-msgstr ""
+msgstr "Časovač spánku"
 
 msgid "In 15 minutes"
-msgstr ""
+msgstr "Za 15 minút"
 
 msgid "In 30 minutes"
-msgstr ""
+msgstr "Za 30 minút"
 
 msgid "In 45 minutes"
-msgstr ""
+msgstr "Za 45 minút"
 
 msgid "In 60 minutes (1h)"
-msgstr ""
+msgstr "Za 60 minút (1 hodinu)"
 
 msgid "Cancel sleep timer"
-msgstr ""
+msgstr "Zrušte spánok"
 
 msgid "Discover & Import stations (TiMonde)"
-msgstr ""
+msgstr "Objavte a importujte rozhlasové stanice (TiMonde)"
 
 msgid "Verified DAB+ Bouquets"
-msgstr ""
+msgstr "Overené kytice (DAB+)"
 
 msgid "Radio-Browser Search"
-msgstr ""
+msgstr "Hľadajte v prehliadači rádia"
 
 msgid "Sample Files"
-msgstr ""
+msgstr "Príklady súborov"
 
 msgid "Import my files"
-msgstr ""
+msgstr "Importovať moje súbory"
 
 msgid "<b> Country:</b>"
-msgstr ""
+msgstr "<b>Krajina:</b>"
 
 msgid "<b>Language:</b>"
-msgstr ""
+msgstr "<b>Jazyk:</b>"
 
 msgid "Name / Keyword:"
-msgstr ""
+msgstr "Meno/Kľúčové slovo:"
 
 msgid "Genre:"
-msgstr ""
+msgstr "Pohlavie:"
 
 msgid "<b>Sample file:</b>"
-msgstr ""
+msgstr "<b>Príklad súboru:</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr ""
+msgstr "<b>Názov skupiny vo vašich obľúbených:</b>"
 
 msgid "Select all"
-msgstr ""
+msgstr "Skontrolujte všetky"
 
 msgid "Deselect all"
-msgstr ""
+msgstr "Zrušte začiarknutie všetkých"
 
 msgid "Import into favorites"
-msgstr ""
+msgstr "Importovať do obľúbených"
 
 msgid "Close"
 msgstr "Zavrieť"
 
 msgid "Add a station (TiMonde)"
-msgstr ""
+msgstr "Pridať stanicu (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
-msgstr ""
+msgstr "<b>Zadajte informácie o novom rádiu:</b>"
 
 msgid "Add to my stations"
-msgstr ""
+msgstr "Pridať do mojich rádií"
 
 msgid "Save station to favorites (TiMonde)"
-msgstr ""
+msgstr "Uložiť rádio do obľúbených (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr ""
+msgstr "<b>Ponechajte si túto náhodne objavenú rozhlasovú stanicu vo svojich obľúbených:</b>"
 
 msgid "Keep in favorites"
-msgstr ""
+msgstr "Uložiť do obľúbených"
 
 msgid "Edit station (TiMonde)"
-msgstr ""
+msgstr "Upraviť rádio (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr ""
+msgstr "<b>Zmena nastavení stanice:</b>"
 
 msgid "Save"
 msgstr "Uložiť"
@@ -152,82 +154,82 @@ msgid "Station name:"
 msgstr "Názov stanice:"
 
 msgid "Audio stream URL:"
-msgstr ""
+msgstr "Webová adresa zvukového streamu:"
 
 msgid "Group / Folder:"
-msgstr ""
+msgstr "Skupina/priečinok:"
 
 msgid "Country & Timezone:"
-msgstr ""
+msgstr "Krajina a časové pásmo:"
 
 msgid "Timezone:"
-msgstr ""
+msgstr "Časové pásmo:"
 
 msgid "Delete this station"
-msgstr ""
+msgstr "Odstrániť toto rádio"
 
 msgid "Cancel"
 msgstr "Zrušiť"
 
 msgid "Delete « {} » from favorites?"
-msgstr ""
+msgstr "Odstrániť „{}“ z obľúbených?"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr ""
+msgstr "Táto akcia natrvalo odstráni túto stanicu z vašej zbierky."
 
 msgid "Manage groups, stations and separators (TiMonde)"
-msgstr ""
+msgstr "Správa skupín, rádií a separátorov (TiMonde)"
 
 msgid "Back to groups"
-msgstr ""
+msgstr "⬅ Späť na skupiny"
 
 msgid "Add station"
-msgstr ""
+msgstr "Pridajte rádio"
 
 msgid "Open"
-msgstr ""
+msgstr "Otvorte"
 
 msgid "New group"
-msgstr ""
+msgstr "Nová skupina"
 
 msgid "Move to..."
-msgstr ""
+msgstr "Presunúť do..."
 
 msgid "Top"
-msgstr ""
+msgstr "Po prvé"
 
 msgid "Move up"
-msgstr ""
+msgstr "⬆ Choďte hore"
 
 msgid "Move down"
-msgstr ""
+msgstr "⬇ Choďte dole"
 
 msgid "Separator"
-msgstr ""
+msgstr "Oddeľovač"
 
 msgid "Sort A-Z"
-msgstr ""
+msgstr "Zoradiť A-Z"
 
 msgid "Save and reload"
-msgstr ""
+msgstr "Uložiť a znova načítať"
 
 msgid "Same time"
 msgstr "Rovnaký čas"
 
 msgid "Dawn"
-msgstr ""
+msgstr "Svitanie"
 
 msgid "Morning"
-msgstr ""
+msgstr "ráno"
 
 msgid "Daytime"
-msgstr ""
+msgstr "deň"
 
 msgid "Evening"
-msgstr ""
+msgstr "Večer"
 
 msgid "Night"
-msgstr ""
+msgstr "Noc"
 
 msgid "Tomorrow"
 msgstr "Zajtra"
@@ -236,64 +238,64 @@ msgid "Yesterday"
 msgstr "Včera"
 
 msgid "Maintenance & Data"
-msgstr ""
+msgstr "Údržba a údaje"
 
 msgid "Check streams (dead links)..."
-msgstr ""
+msgstr "Skontrolujte informačné kanály (mŕtve odkazy)..."
 
 msgid "Export my stations to CSV..."
-msgstr ""
+msgstr "Exportovať moje rádiá do CSV..."
 
 msgid "Check streams"
-msgstr ""
+msgstr "Skontrolujte informačné kanály"
 
 msgid "Dead links only"
-msgstr ""
+msgstr "Iba mŕtve odkazy"
 
 msgid "Apply redirects"
-msgstr ""
+msgstr "Použiť presmerovania"
 
 msgid "Repair stream..."
-msgstr ""
+msgstr "Priebeh opravy..."
 
 msgid "Export to CSV"
-msgstr ""
+msgstr "Exportovať do CSV"
 
 msgid "Test stream availability and locate broken links"
-msgstr ""
+msgstr "Otestujte dostupnosť svojich rozhlasových staníc naživo a nájdite nefunkčné odkazy"
 
 msgid "Display offline radio streams only"
-msgstr ""
+msgstr "Zobraziť iba rozhlasové stanice, ktorých stream je offline"
 
 msgid "Automatically update redirected streams to direct URL"
-msgstr ""
+msgstr "Automaticky aktualizovať informačné kanály presmerované na ich priamu adresu URL"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
+msgstr "Automaticky vyhľadať náhradný aktívny stream na Radio-Browser pre tento mŕtvy odkaz"
 
 msgid "Export all stations to CSV spreadsheet format"
-msgstr ""
+msgstr "Exportujte všetky svoje rádiá vo formáte tabuľky CSV"
 
 msgid "Export my stations to CSV"
-msgstr ""
+msgstr "Exportovať moje rádiá do CSV"
 
 msgid "CSV files (*.csv)"
-msgstr ""
+msgstr "súbory CSV (*.csv)"
 
 msgid "All files (*.*)"
-msgstr ""
+msgstr "Všetky súbory (*.*)"
 
 msgid "Export"
-msgstr ""
+msgstr "Exportovať"
 
 msgid "Export successful!"
-msgstr ""
+msgstr "Export bol úspešný!"
 
 msgid "Error during CSV export:"
-msgstr ""
+msgstr "Chyba pri exporte CSV:"
 
 msgid "station(s) saved to:"
-msgstr ""
+msgstr "rádiá zaznamenané v:"
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "Nastavenia..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "Pridať rádio (TiMonde)"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "Pridať do mojich rádií"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "Žiadne nové rádiá neboli pridané (už prítomné)."
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "DAB+ kytice a oficiálny výber"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "Uložiť do obľúbených"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "Udržujte rádio v obľúbených (TiMonde)"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "Otvoriť súbor:"
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "Objavte a importujte rozhlasové stanice (TiMonde)"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "Uložiť"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "Chyba vykonania:"
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "Chyba importu JSON:"
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "Chyba pri úprave automatického spustenia."
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "Preskúmať DAB+..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "Export CSV bol dokončený."
 
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "Zavrieť"
 
 msgid "Fichiers exemples"
 msgstr "Sample Files"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "Importujte osobné súbory"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "Importovať súbor..."
 
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "Nedá sa otvoriť priečinok:"
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "Vložte do svojich skupín oddeľovače (---) alebo nadpisy sekcií, aby ste si prehľadali ponuku."
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "Zmeny sa berú do úvahy."
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "Upraviť rádio (TiMonde)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "Otvorte priečinok"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "Prehliadať..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "Global Search Radio-Browser"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "Hľadať..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "Záložky boli reorganizované a úspešne uložené!"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "Odstrániť"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,7 +653,7 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "vzorové súbory obnovené v"
 
 msgid "online"
 msgstr "online"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ Organizácia"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 Tip na vizuálne rozloženie"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 Údaje a súbory"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻 Knižnica"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️ Generál"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>• Zmeňte <b>#</b> alebo použite <b>Posunúť nahor/nadol</b> na zoradenie skupín. \n"
+" • <b>Dvakrát kliknite na skupinu</b> (alebo Otvoriť), aby ste zoradili jej rádiá a rozdeľovače. \n"
+" • Použite <b>Preniesť...</b> na zlúčenie alebo presun obsahu do inej skupiny. \n"
+" • Pomocou <b>Novej skupiny</b> pridajte priečinok rádií.</small>"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<small>• Zmeňte <b>#</b> alebo použite <b>Posunúť nahor/nadol</b> na zoradenie rádií. \n"
+" • Kliknite na <b>Skontrolovať kanály</b>, aby ste našli nefunkčné odkazy (červené) a opravili ich. \n"
+" • Kliknite na <b>Opraviť stream...</b> a vyhľadajte náhradný aktívny stream v Radio-Browser. \n"
+" • Kliknutím na <b>Oddeľovač</b> vložte nadpis sekcie.</small>"
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>Vyššie vyberte súbor alebo príklad.</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>• Zmeňte <b>#</b> alebo použite <b>Posunúť nahor/nadol</b> na zoradenie skupín. \n"
+" • <b>Dvakrát kliknite na skupinu</b> (alebo Otvoriť), aby ste zoradili jej rádiá a oddeľovače. \n"
+" • Použite <b>Presunúť do...</b> na zlúčenie alebo presun obsahu. \n"
+" • Pomocou <b>Novej skupiny</b> vytvorte priečinok rádií.</small>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<small>• Zmeňte <b>#</b> alebo použite <b>Posunúť nahor/nadol</b> na zoradenie rádií. \n"
+" • Kliknite na <b>Skontrolovať kanály</b> a vyhľadajte offline odkazy (červenou farbou). \n"
+" • Kliknite na <b>Opraviť stream...</b> a vyhľadajte aktívny náhradný stream. \n"
+" • Kliknutím na <b>Oddeľovač</b> vložíte podnadpis alebo oddeľovací riadok.</small>"
+
+msgid "Actualiser la liste des exemples"
+msgstr "Obnoviť zoznam príkladov"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "Pomoc so skupinami a podskupinami"
+
+msgid "Ajouter"
+msgstr "Pridať"
+
+msgid "Annuler"
+msgstr "Zrušiť"
+
+msgid "Arrêter"
+msgstr "Stop"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "Nenašli sa žiadne súbory bookmarks.xml na uloženie."
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "Neboli pridané žiadne nové rozhlasové stanice (už sú vo vašich záložkách)."
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "Pre tieto kritériá sa v prehliadači Radio-Browser nenašli žiadne rozhlasové stanice."
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "Národná kytica (hlavné letoviská)"
+
+msgid "Bouquets par pays"
+msgstr "Kytice podľa krajiny"
+
+msgid "Bureau graphique & Plateau"
+msgstr "Grafický stôl a podnos"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "Táto stanica nemá žiadne adresy URL zvukového streamu."
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "Nahrajte súbor XML, CSV, JSON, M3U alebo PLS"
+
+msgid "Charger un fichier..."
+msgstr "Načítať súbor..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "Vyberte si z existujúcich skupín"
+
+msgid "Choisir un fichier de radios"
+msgstr "Vyberte súbor rádia"
+
+msgid "Collections & Fichiers"
+msgstr "Kolekcie a súbory"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "Udržujte organizáciu v evidencii"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "Vytvorte úplnú zálohu svojej zbierky (s priečinkami a časovými pásmami)"
+
+msgid "Disponibilité"
+msgstr "Dostupnosť"
+
+msgid "Disponibilité en direct"
+msgstr "Živá dostupnosť"
+
+msgid "Dossier / Groupe"
+msgstr "Priečinok/skupina"
+
+msgid "Dossier des exemples"
+msgstr "Priečinok Príklady"
+
+msgid "Dossier des signets"
+msgstr "priečinok so záložkami"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "Automatická detekcia podľa miestnych nastavení vášho Linuxového prostredia."
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "ZISTENIE PROSTREDIA (LEN NA ČÍTANIE)"
+
+msgid "Effacer le champ"
+msgstr "Vyčistite pole"
+
+msgid "Effacer le filtre langue"
+msgstr "Vymazať jazykový filter"
+
+msgid "Effacer le filtre pays"
+msgstr "Vymazať filter krajiny"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "Bolo zistené prostredie GNOME Shell"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "Chyba pri ukladaní:"
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "Príklad: /Francúzsko/Jazz alebo / pre root"
+
+msgid "Exemples thématiques :"
+msgstr "Tematické príklady:"
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "Exportovať do tabuľky (CSV)..."
+
+msgid "Fichier :"
+msgstr "Súbor:"
+
+msgid "Fichier externe :"
+msgstr "Externý súbor:"
+
+msgid "Fichiers XML (*.xml)"
+msgstr "súbory XML (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "Filtrovať podľa krajiny:"
+
+msgid "Format & Débit"
+msgstr "Formát a bitová rýchlosť"
+
+msgid "Genre / Tags"
+msgstr "Pohlavie / značky"
+
+msgid "Genre / Thématique"
+msgstr "Žáner / Téma"
+
+msgid "Genre :"
+msgstr "Pohlavie:"
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "Nerozpoznaný správca balíkov."
+
+msgid "Groupe :"
+msgstr "Skupina:"
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "Vytvorte plochý zoznam pre tabuľku Calc alebo Excel"
+
+msgid "Importer"
+msgstr "Importovať"
+
+msgid "Importer & Exporter"
+msgstr "Import & Export"
+
+msgid "Importer dans mes favoris"
+msgstr "Importovať do obľúbených"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "Prebieha inštalácia (potvrďte výzvu systému)..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "Nainštalujte integráciu GNOME"
+
+msgid "Intégration GNOME requise"
+msgstr "Vyžaduje sa integrácia GNOME"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "Integrácia do hornej lišty GNOME"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "Natívna integrácia do oblasti oznámení cez StatusNotifierItem / XEmbed."
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "Export CSV je dostupný z nastavení."
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "Na zobrazenie ikony v hornej lište v GNOME je potrebné rozšírenie AppIndicator."
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "Inštalácia bola zrušená alebo zlyhala."
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "Záloha XML je prístupná z nastavení."
+
+msgid "Langue du système"
+msgstr "Systémový jazyk"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "Oddeľovače a medzititulky sa nedajú počúvať."
+
+msgid "Mes Radios"
+msgstr "Moje rádiá"
+
+msgid "Mot-clé :"
+msgstr "kľúčové slovo:"
+
+msgid "Nouveaux uniquement"
+msgstr "Iba nové"
+
+msgid "OPTIONS DE SESSION"
+msgstr "MOŽNOSTI SEDENIA"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "Organizácia skupín a podskupín (Linux Convention)"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "Najprv otvorte skupinu a počúvajte jej rádiá."
+
+msgid "Ouvrir"
+msgstr "Otvorte"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "Otvorte ~/.config/timonde"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "Otvorte ~/.config/timonde/examples"
+
+msgid "Pays"
+msgstr "Krajina"
+
+msgid "Pays :"
+msgstr "Krajina:"
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "Ak chcete diskrétne zobraziť ikonu prehrávania v hornej lište pracovnej plochy GNOME, je potrebné systémové rozšírenie <b>AppIndicator</b>.<br/><br/>Chcete ho nainštalovať teraz?"
+
+msgid "Préférences"
+msgstr "Predvoľby"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "Zachovajte podskupiny definované v súbore namiesto toho, aby ste všetko importovali do jednej skupiny."
+
+msgid "Quitter"
+msgstr "Odísť"
+
+msgid "Recharger"
+msgstr "Znovu načítať"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "Znovu načítať aktuálne zobrazený súbor"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "Celosvetové vyhľadávanie v bezplatnom a spolupracujúcom adresári <b>Radio-Browser</b> (+45 000 staníc)."
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "Prebieha vyhľadávanie v Radio-Browser..."
+
+msgid "Rechercher"
+msgstr "Hľadať"
+
+msgid "Rechercher en ligne"
+msgstr "Hľadajte online"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "Nahraďte vybraný odkaz aktívnym oficiálnym informačným kanálom"
+
+msgid "Restaurer exemples"
+msgstr "Obnoviť príklady"
+
+msgid "Régions & Locales :"
+msgstr "Regióny a miestni obyvatelia:"
+
+msgid "Réparer le flux..."
+msgstr "Opravte tok..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "Obnovte pôvodných 19 príkladov"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "Zadajte kľúčové slovo alebo kliknite na Hľadať a preskúmajte adresár."
+
+msgid "Sauvegarde réussie !"
+msgstr "Zálohovanie bolo úspešné!"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "Uložiť moje rádiá (XML)..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "Uložiť moje záložky (XML)"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "Záložky a rádiá boli úspešne uložené!"
+
+msgid "Station"
+msgstr "Stredisko"
+
+msgid "Statut Favoris"
+msgstr "Stav obľúbených"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "Oficiálny a overený výber zo 146 krajín a regiónov (digitálne kytice DAB+ a hlavné národné stanice)."
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "Vyberte rádio, ktoré chcete počúvať."
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "Vyberte stanicu z tabuľky, ktorú chcete počúvať."
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "Zadajte krajinu (napr.: Francúzsko, Nemecko, Kanada...)"
+
+msgid "Tester"
+msgstr "Test"
+
+msgid "Tester les flux"
+msgstr "Testovacie toky"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "TiMonde — Integrácia pracovnej plochy GNOME"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "Všetky súbory (*.*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "Všetky krajiny (globálne)"
+
+msgid "Tout cocher"
+msgstr "Skontrolujte všetky"
+
+msgid "Tout décocher"
+msgstr "Zrušte začiarknutie všetkých"
+
+msgid "Toutes les langues"
+msgstr "Všetky jazyky"
+
+msgid "URL du flux"
+msgstr "Adresa URL informačného kanála"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "Ak chcete počúvať rádio, vyberte zo zoznamu rádio."
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "Vaše úplné záložky boli uložené v:"
+
+msgid "Votes"
+msgstr "Hlasy"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "Skontrolujte dostupnosť odkazu naživo"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "Skontrolujte dostupnosť živého rádia"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "Skontrolujte aktuálnu dostupnosť nájdených rádií"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "Skontrolujte platnosť odkazu a ukážte stream"
+
+msgid "ajoutée avec succès !"
+msgstr "úspešne pridané!"
+
+msgid "fichiers exemples restaurés."
+msgstr "obnovené vzorové súbory."
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "dovezené nové rádio(á)!"
+
+msgid "Écouter"
+msgstr "Počúvaj"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "Počúvajte vybrané rádio"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "Vypočujte si alebo otestujte vybrané rádio"
+

@@ -64,7 +64,7 @@ pub fn resolve_stream_url(url: &str) -> String {
     info!("Résolution de la playlist réseau : {}", url_clean);
 
     let resp = match ureq::get(url_clean)
-        .set("User-Agent", "TiMonde/0.1.0")
+        .set("User-Agent", concat!("TiMonde/", env!("CARGO_PKG_VERSION")))
         .timeout(Duration::from_secs(3))
         .call()
     {

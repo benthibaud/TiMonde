@@ -26,7 +26,10 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import make_btn, safe_parse_xml, clean_stream_url, infer_timezone
+from timonde_common import make_btn, safe_parse_xml, clean_stream_url, infer_timezone, normalize_group_path
+from reorder_groups import ReorderWindow
+from browse_bouquets import DiscoverRadiosWindow, parse_bouquets_xml
+from edit_station import EditStationWindow
 
 import gi
 gi.require_version("Gtk", "3.0")
@@ -114,84 +117,165 @@ def load_bookmarks_tree(path):
     root = safe_parse_xml(path)
     if root is None:
         return []
-    
+
     payload = []
+    root_stations = []
+
+    def parse_station_elem(st):
+        if st.tag == "separator":
+            st_title = st.attrib.get("title", "").strip()
+            return {
+                "name": st_title,
+                "url": "",
+                "is_separator": True,
+            }
+        elif st.tag in ("bookmark", "station"):
+            st_name = st.attrib.get("name", "").strip()
+            st_url = clean_stream_url(st.attrib.get("url", "").strip())
+            st_country = st.attrib.get("country", "").strip() or None
+            st_tz = st.attrib.get("timezone", "").strip() or None
+            if st_name:
+                return {
+                    "name": st_name,
+                    "url": st_url,
+                    "country": st_country,
+                    "timezone": st_tz,
+                    "is_separator": False,
+                }
+        return None
+
     def walk(el, prefix):
         for child in el:
-            if child.tag == "separator":
+            if child.tag in ("bookmark", "station") and not prefix:
+                st_obj = parse_station_elem(child)
+                if st_obj:
+                    root_stations.append(st_obj)
+            elif child.tag == "separator" and not prefix:
                 title = child.attrib.get("title", "").strip()
                 payload.append({
                     "name": title,
                     "stations": [],
-                    "is_separator": True
+                    "is_separator": True,
                 })
             elif child.tag == "group":
                 name = child.attrib.get("name", "").strip() or child.attrib.get("title", "").strip()
-                if not name or name.lower() == "root":
+                if not name:
+                    continue
+                if name.lower() == "root" and not prefix:
+                    walk(child, "")
                     continue
                 full_path = f"{prefix}/{name}" if prefix else name
                 stations = []
                 for st in child:
-                    if st.tag == "separator":
-                        st_title = st.attrib.get("title", "").strip()
-                        stations.append({
-                            "name": st_title,
-                            "url": "",
-                            "is_separator": True
-                        })
-                    elif st.tag in ("bookmark", "station"):
-                        st_name = st.attrib.get("name", "").strip()
-                        st_url = clean_stream_url(st.attrib.get("url", "").strip())
-                        st_country = st.attrib.get("country", "").strip() or None
-                        st_tz = st.attrib.get("timezone", "").strip() or None
-                        if st_name:
-                            stations.append({
-                                "name": st_name,
-                                "url": st_url,
-                                "country": st_country,
-                                "timezone": st_tz,
-                                "is_separator": False
-                            })
-                payload.append({
-                    "name": full_path,
-                    "stations": stations,
-                    "is_separator": False
-                })
+                    if st.tag in ("separator", "bookmark", "station"):
+                        st_obj = parse_station_elem(st)
+                        if st_obj:
+                            stations.append(st_obj)
+                if stations or not child.findall("group"):
+                    payload.append({
+                        "name": full_path,
+                        "stations": stations,
+                        "is_separator": False,
+                    })
                 walk(child, full_path)
+
     walk(root, "")
+    if root_stations:
+        payload.insert(0, {
+            "name": "[ / ] (Racine — Sans groupe)",
+            "stations": root_stations,
+            "is_separator": False,
+        })
     return payload
 
 
-def save_bookmarks_tree(path, groups_payload):
+def _write_bookmarks_element_tree_atomic(path, root_el):
     lines = ['<?xml version="1.0" encoding="utf-8"?>', '<!DOCTYPE bookmarks>', '<bookmarks>']
+
+    def esc(val):
+        return (val or "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
+
+    def dump_station(st_el, indent):
+        prefix = "\t" * indent
+        s_name = esc(st_el.attrib.get("name", ""))
+        s_url = esc(st_el.attrib.get("url", ""))
+        attrs = f'name="{s_name}" url="{s_url}"'
+        if st_el.attrib.get("country"):
+            attrs += f' country="{esc(st_el.attrib["country"])}"'
+        if st_el.attrib.get("timezone"):
+            attrs += f' timezone="{esc(st_el.attrib["timezone"])}"'
+        lines.append(f'{prefix}<bookmark {attrs}/>')
+
+    def dump_group(grp_el, indent):
+        prefix = "\t" * indent
+        name = esc(grp_el.attrib.get("name", ""))
+        lines.append(f'{prefix}<group name="{name}">')
+        for child in grp_el:
+            if child.tag == "group":
+                dump_group(child, indent + 1)
+            elif child.tag == "separator":
+                lines.append(f'{prefix}\t<separator title="{esc(child.attrib.get("title", ""))}"/>')
+            elif child.tag in ("bookmark", "station"):
+                dump_station(child, indent + 1)
+        lines.append(f'{prefix}</group>')
+
+    for child in root_el:
+        if child.tag == "group":
+            dump_group(child, 1)
+        elif child.tag == "separator":
+            lines.append(f'\t<separator title="{esc(child.attrib.get("title", ""))}"/>')
+        elif child.tag in ("bookmark", "station"):
+            dump_station(child, 1)
+    lines.append('</bookmarks>\n')
+
+    abs_path = os.path.abspath(path)
+    os.makedirs(os.path.dirname(abs_path), exist_ok=True)
+    tmp_path = f"{abs_path}.tmp"
+    with open(tmp_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+    os.replace(tmp_path, abs_path)
+
+
+def save_bookmarks_tree(path, groups_payload):
+    root = ET.Element("bookmarks")
+
+    def find_or_create_group(parent_elem, group_path):
+        norm = normalize_group_path(group_path, return_root_literal=False)
+        if not norm:
+            return parent_elem
+        parts = [p.strip() for p in norm.split("/") if p.strip() and p.strip().lower() != "root"]
+        curr = parent_elem
+        for part in parts:
+            found = None
+            for child in curr.findall("group"):
+                if child.attrib.get("name", "").strip().lower() == part.lower():
+                    found = child
+                    break
+            if found is None:
+                found = ET.SubElement(curr, "group", {"name": part})
+            curr = found
+        return curr
+
     for grp in groups_payload:
         if grp.get("is_separator", False):
-            title = grp.get("name", "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
-            lines.append(f'\t<separator title="{title}"/>')
+            ET.SubElement(root, "separator", {"title": grp.get("name", "")})
         else:
-            name = grp.get("name", "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
-            lines.append(f'\t<group name="{name}">')
+            target_el = find_or_create_group(root, grp.get("name", ""))
             for st in grp.get("stations", []):
                 if st.get("is_separator", False):
-                    st_title = st.get("name", "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
-                    lines.append(f'\t\t<separator title="{st_title}"/>')
+                    ET.SubElement(target_el, "separator", {"title": st.get("name", "")})
                 else:
-                    s_name = st.get("name", "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
-                    s_url = st.get("url", "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
-                    attrs = f'name="{s_name}" url="{s_url}"'
+                    attribs = {
+                        "name": st.get("name", ""),
+                        "url": st.get("url", ""),
+                    }
                     if st.get("country"):
-                        c = str(st["country"]).replace("&", "&amp;").replace('"', "&quot;")
-                        attrs += f' country="{c}"'
+                        attribs["country"] = str(st["country"])
                     if st.get("timezone"):
-                        tz = str(st["timezone"]).replace("&", "&amp;").replace('"', "&quot;")
-                        attrs += f' timezone="{tz}"'
-                    lines.append(f'\t\t<bookmark {attrs}/>')
-            lines.append('\t</group>')
-    lines.append('</bookmarks>\n')
-    
-    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines))
+                        attribs["timezone"] = str(st["timezone"])
+                    ET.SubElement(target_el, "bookmark", attribs)
+
+    _write_bookmarks_element_tree_atomic(path, root)
 
 
 def add_stations_to_bookmarks_xml(path, stations_list, default_group="Mes Radios", country_code=None):
@@ -210,7 +294,10 @@ def add_stations_to_bookmarks_xml(path, stations_list, default_group="Mes Radios
                 existing_urls.add(u)
 
     def find_or_create_group(parent_elem, group_path):
-        parts = [p.strip() for p in group_path.split("/") if p.strip() and p.strip().lower() != "root"]
+        norm = normalize_group_path(group_path, return_root_literal=False)
+        if not norm:
+            return parent_elem
+        parts = [p.strip() for p in norm.split("/") if p.strip() and p.strip().lower() != "root"]
         curr = parent_elem
         for part in parts:
             found = None
@@ -247,60 +334,17 @@ def add_stations_to_bookmarks_xml(path, stations_list, default_group="Mes Radios
         added_count += 1
 
     if added_count > 0:
-        lines = ['<?xml version="1.0" encoding="utf-8"?>', '<!DOCTYPE bookmarks>', '<bookmarks>']
-        def dump_group(grp_el, indent):
-            prefix = "\t" * indent
-            name = grp_el.attrib.get("name", "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
-            lines.append(f'{prefix}<group name="{name}">')
-            for child in grp_el:
-                if child.tag == "group":
-                    dump_group(child, indent + 1)
-                elif child.tag == "separator":
-                    t = child.attrib.get("title", "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
-                    lines.append(f'{prefix}\t<separator title="{t}"/>')
-                elif child.tag in ("bookmark", "station"):
-                    s_name = child.attrib.get("name", "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
-                    s_url = child.attrib.get("url", "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
-                    attrs = f'name="{s_name}" url="{s_url}"'
-                    if child.attrib.get("country"):
-                        sc = child.attrib["country"].replace("&", "&amp;").replace('"', "&quot;")
-                        attrs += f' country="{sc}"'
-                    if child.attrib.get("timezone"):
-                        stz = child.attrib["timezone"].replace("&", "&amp;").replace('"', "&quot;")
-                        attrs += f' timezone="{stz}"'
-                    lines.append(f'{prefix}\t<bookmark {attrs}/>')
-            lines.append(f'{prefix}</group>')
-
-        for child in root:
-            if child.tag == "group":
-                dump_group(child, 1)
-            elif child.tag == "separator":
-                t = child.attrib.get("title", "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
-                lines.append(f'\t<separator title="{t}"/>')
-            elif child.tag in ("bookmark", "station"):
-                s_name = child.attrib.get("name", "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
-                s_url = child.attrib.get("url", "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
-                attrs = f'name="{s_name}" url="{s_url}"'
-                if child.attrib.get("country"):
-                    sc = child.attrib["country"].replace("&", "&amp;").replace('"', "&quot;")
-                    attrs += f' country="{sc}"'
-                if child.attrib.get("timezone"):
-                    stz = child.attrib["timezone"].replace("&", "&amp;").replace('"', "&quot;")
-                    attrs += f' timezone="{stz}"'
-                lines.append(f'\t<bookmark {attrs}/>')
-        lines.append('</bookmarks>\n')
-        with open(path, "w", encoding="utf-8") as f:
-            f.write("\n".join(lines))
+        _write_bookmarks_element_tree_atomic(path, root)
 
     return added_count
 
 
 class SettingsWindow(Gtk.Window):
     def __init__(self, bookmarks_path=None):
-        super().__init__(title=_("Paramètres TiMonde"))
-        self.set_default_size(780, 520)
+        super().__init__(title=_("Paramètres & Contrôle TiMonde"))
+        self.set_default_size(960, 640)
         self.set_position(Gtk.WindowPosition.CENTER)
-        self.set_border_width(12)
+        self.set_border_width(10)
 
         self.bookmarks_path = bookmarks_path or DEFAULT_BOOKMARKS_PATH
         self.has_modifications = False
@@ -333,6 +377,13 @@ class SettingsWindow(Gtk.Window):
             padding: 12px;
             margin-bottom: 6px;
         }
+        .info-card {
+            background-color: alpha(@theme_base_color, 0.15);
+            border: 1px dashed alpha(@theme_fg_color, 0.18);
+            border-radius: 2px;
+            padding: 10px 12px;
+            margin-bottom: 6px;
+        }
         .card-title {
             font-weight: bold;
             font-size: 1.05em;
@@ -341,9 +392,40 @@ class SettingsWindow(Gtk.Window):
             opacity: 0.75;
             font-size: 0.9em;
         }
+        .info-title {
+            font-weight: bold;
+            font-size: 0.95em;
+            opacity: 0.85;
+        }
+        .info-desc {
+            opacity: 0.65;
+            font-size: 0.85em;
+        }
         .status-badge {
             font-weight: bold;
             padding: 2px 6px;
+            border-radius: 2px;
+        }
+        .info-badge {
+            font-family: monospace;
+            font-size: 0.9em;
+            padding: 2px 8px;
+            border-radius: 2px;
+            background-color: alpha(@theme_fg_color, 0.08);
+            color: @theme_fg_color;
+            opacity: 0.9;
+        }
+        .section-separator-title {
+            font-weight: bold;
+            font-size: 0.82em;
+            letter-spacing: 0.5px;
+            opacity: 0.55;
+            margin-top: 10px;
+            margin-bottom: 4px;
+        }
+        .highlight-combo {
+            font-weight: bold;
+            border: 1px solid alpha(@theme_selected_bg_color, 0.6);
             border-radius: 2px;
         }
         """
@@ -359,21 +441,11 @@ class SettingsWindow(Gtk.Window):
             pass
 
     def setup_ui(self):
-        main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+        main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
         self.add(main_vbox)
 
-        # En-tête sobre
-        header_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-        main_vbox.pack_start(header_box, False, False, 0)
-
-        lbl_header = Gtk.Label()
-        header_title = html.escape(_("Paramètres & Contrôle TiMonde"))
-        lbl_header.set_markup(f"<big><b>⚙️ {header_title}</b></big>")
-        lbl_header.set_halign(Gtk.Align.START)
-        header_box.pack_start(lbl_header, True, True, 0)
-
         # Zone centrale : Volet de navigation (StackSidebar) + Pages (Stack)
-        hcontent = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
+        hcontent = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         main_vbox.pack_start(hcontent, True, True, 0)
 
         self.stack = Gtk.Stack()
@@ -382,16 +454,17 @@ class SettingsWindow(Gtk.Window):
 
         sidebar = Gtk.StackSidebar()
         sidebar.set_stack(self.stack)
-        sidebar.set_size_request(200, -1)
+        sidebar.set_size_request(210, -1)
         hcontent.pack_start(sidebar, False, False, 0)
 
         hcontent.pack_start(self.stack, True, True, 0)
 
-        # Création des 4 sections
-        self.build_section_general()
-        self.build_section_library()
+        # Les 5 ateliers unifiés de 1er niveau (Zéro sous-fenêtres, zéro sous-onglets)
         self.build_section_organization()
-        self.build_section_data()
+        self.build_section_discovery()
+        self.build_section_general()
+
+        self.stack.connect("notify::visible-child-name", self.on_stack_page_changed)
 
         # Barre inférieure : message de statut & bouton Fermer
         bottom_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
@@ -435,13 +508,158 @@ class SettingsWindow(Gtk.Window):
 
         return card
 
+    def create_info_row(self, title_text, desc_text, badge_text):
+        card = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
+        card.get_style_context().add_class("info-card")
+
+        vbox_text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+        lbl_title = Gtk.Label()
+        lbl_title.set_markup(f"<b>{html.escape(title_text)}</b>")
+        lbl_title.set_halign(Gtk.Align.START)
+        lbl_title.get_style_context().add_class("info-title")
+        vbox_text.pack_start(lbl_title, False, False, 0)
+
+        if desc_text:
+            lbl_desc = Gtk.Label()
+            lbl_desc.set_text(desc_text)
+            lbl_desc.set_halign(Gtk.Align.START)
+            lbl_desc.set_line_wrap(True)
+            lbl_desc.get_style_context().add_class("info-desc")
+            vbox_text.pack_start(lbl_desc, False, False, 0)
+
+        card.pack_start(vbox_text, True, True, 0)
+
+        if badge_text:
+            lbl_badge = Gtk.Label(label=badge_text)
+            lbl_badge.get_style_context().add_class("info-badge")
+            lbl_badge.set_valign(Gtk.Align.CENTER)
+            card.pack_end(lbl_badge, False, False, 0)
+
+        return card
+
     # -------------------------------------------------------------------------
-    # 1. Section Général & Système
+    # 1. Atelier « Mes Radios » (ReorderWindow intégrée en direct)
+    # -------------------------------------------------------------------------
+    def build_section_organization(self):
+        payload = load_bookmarks_tree(self.bookmarks_path)
+        self.reorder_view = ReorderWindow(
+            data=payload,
+            auto_check=False,
+            embedded=True,
+            on_save_callback=self.on_embedded_reorder_saved
+        )
+        self.reorder_view.btn_add_station.disconnect_by_func(self.reorder_view.on_add_station_clicked)
+        self.reorder_view.btn_add_station.connect("clicked", self.on_embedded_add_station_clicked)
+
+        self.stack.add_titled(self.reorder_view.vbox, "organization", _("Mes Radios"))
+
+    def on_embedded_reorder_saved(self, new_payload):
+        save_bookmarks_tree(self.bookmarks_path, new_payload)
+        self.has_modifications = True
+        self.refresh_stats()
+        self.show_feedback(_("Signets et radios enregistrés avec succès !"))
+
+    def on_embedded_add_station_clicked(self, widget):
+        current_grp = None
+        if self.reorder_view.current_group_idx is not None:
+            current_grp = self.reorder_view.data[self.reorder_view.current_group_idx].get("name", "")
+        groups = load_bookmarks_groups_list(self.bookmarks_path)
+        dlg = EditStationWindow(
+            mode="add",
+            groups=groups,
+            default_group=current_grp,
+            standalone=False,
+            on_done_callback=self.on_embedded_station_added
+        )
+        dlg.set_transient_for(self)
+        dlg.set_modal(True)
+        dlg.show_all()
+
+    def on_embedded_station_added(self, data):
+        if not data:
+            return
+        added = add_stations_to_bookmarks_xml(self.bookmarks_path, [data], default_group=data.get("group"))
+        if added > 0:
+            self.has_modifications = True
+            payload = load_bookmarks_tree(self.bookmarks_path)
+            self.reorder_view.data = payload
+            self.reorder_view.update_view()
+            self.refresh_stats()
+            self.show_feedback(f"« {data.get('name', 'Radio')} » {_('ajoutée avec succès !')}")
+
+    # -------------------------------------------------------------------------
+    # 2, 3, 4. Ateliers Recherche, Bouquets, et Fichiers (DiscoverRadiosWindow)
+    # -------------------------------------------------------------------------
+    def build_section_discovery(self):
+        bouquets_db = parse_bouquets_xml()
+        existing_stations = []
+        if os.path.isfile(self.bookmarks_path):
+            root = safe_parse_xml(self.bookmarks_path)
+            if root is not None:
+                for el in root.iter():
+                    if el.tag in ("bookmark", "station"):
+                        existing_stations.append({
+                            "name": el.attrib.get("name", ""),
+                            "url": el.attrib.get("url", ""),
+                            "country": el.attrib.get("country", ""),
+                            "timezone": el.attrib.get("timezone", "")
+                        })
+
+        available_groups = load_bookmarks_groups_list(self.bookmarks_path)
+        self.discover_view = DiscoverRadiosWindow(
+            existing_stations=existing_stations,
+            bouquets_db=bouquets_db,
+            initial_tab=0,
+            available_groups=available_groups,
+            embedded=True,
+            on_import_callback=self.on_embedded_discovery_import,
+            on_export_csv_callback=lambda: self.reorder_view.on_export_csv_clicked(),
+            on_backup_xml_callback=lambda: self.reorder_view.on_backup_xml_clicked(),
+        )
+
+        # 3 Ateliers directs dans le volet principal
+        self.stack.add_titled(self.discover_view.view_search, "search", _("Rechercher en ligne"))
+        self.stack.add_titled(self.discover_view.view_bouquets, "bouquets", _("Bouquets par pays"))
+        self.stack.add_titled(self.discover_view.view_files, "files", _("Collections & Fichiers"))
+
+    def on_embedded_discovery_import(self, result):
+        stations = result.get("stations", [])
+        grp_name = result.get("group_name", "Mes Radios")
+        c_code = result.get("country_code")
+        added = add_stations_to_bookmarks_xml(self.bookmarks_path, stations, default_group=grp_name, country_code=c_code)
+        if added > 0:
+            self.has_modifications = True
+            payload = load_bookmarks_tree(self.bookmarks_path)
+            self.reorder_view.data = payload
+            self.reorder_view.update_view()
+            self.refresh_stats()
+            self.show_feedback(f"{added} {_('nouvelle(s) radio(s) importée(s) !')}")
+            self.stack.set_visible_child_name("organization")
+        else:
+            self.show_feedback(_("Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."))
+
+    def on_stack_page_changed(self, stack, gparam):
+        """Arrête instantanément toute lecture de pré-écoute lors du changement d'onglet."""
+        if hasattr(self, "reorder_view") and hasattr(self.reorder_view, "preview_player") and self.reorder_view.preview_player:
+            self.reorder_view.preview_player.stop(silent=True)
+        if hasattr(self, "discover_view") and hasattr(self.discover_view, "preview_player") and self.discover_view.preview_player:
+            self.discover_view.preview_player.stop(silent=True)
+
+    # -------------------------------------------------------------------------
+    # 5. Section Préférences (Options & Diagnostic système)
     # -------------------------------------------------------------------------
     def build_section_general(self):
         page = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+        page.set_border_width(8)
 
-        # Carte Autostart
+        # 1. Section Options Configurables
+        lbl_cfg = Gtk.Label()
+        lbl_cfg.set_markup("<b>" + _("OPTIONS DE SESSION") + "</b>")
+        lbl_cfg.set_halign(Gtk.Align.START)
+        lbl_cfg.get_style_context().add_class("section-separator-title")
+        page.pack_start(lbl_cfg, False, False, 0)
+
+        # Carte Autostart cliquable
         self.switch_autostart = Gtk.Switch()
         self.switch_autostart.set_active(is_autostart_active())
         self.switch_autostart.connect("notify::active", self.on_autostart_toggled)
@@ -452,188 +670,54 @@ class SettingsWindow(Gtk.Window):
         )
         page.pack_start(card_auto, False, False, 0)
 
-        # Carte Langue / Localisation
-        env_lang = os.environ.get("LC_ALL") or os.environ.get("LC_MESSAGES") or os.environ.get("LANG") or "fr"
-        lang_code = env_lang.split(".")[0]
-        lbl_lang_badge = Gtk.Label(label=f"🌐 {lang_code}")
-        lbl_lang_badge.get_style_context().add_class("status-badge")
-        card_lang = self.create_card(
-            _("Langue et Région"),
-            _("Détection automatique selon votre système. 55 langues mondiales supportées avec drapeaux."),
-            lbl_lang_badge
+        # 2. Section Informations Système (Lecture Seule)
+        lbl_info = Gtk.Label()
+        lbl_info.set_markup("<b>" + _("ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)") + "</b>")
+        lbl_info.set_halign(Gtk.Align.START)
+        lbl_info.get_style_context().add_class("section-separator-title")
+        page.pack_start(lbl_info, False, False, 4)
+
+        # Langue détectée
+        env_lang = os.environ.get("LC_ALL") or os.environ.get("LC_MESSAGES") or os.environ.get("LANG") or "fr_FR.UTF-8"
+        clean_lang = env_lang.split(".")[0]
+        card_lang = self.create_info_row(
+            _("Langue du système"),
+            _("Détection automatique selon les paramètres régionaux de votre environnement Linux."),
+            f"{clean_lang}"
         )
         page.pack_start(card_lang, False, False, 0)
 
-        # Carte Zone de notification & Multi-bureaux
-        lbl_desktop = Gtk.Label(label=f"🐧 {os.environ.get('XDG_CURRENT_DESKTOP', 'Linux')}")
-        lbl_desktop.get_style_context().add_class("status-badge")
-        card_tray = self.create_card(
-            _("Intégration du bureau & Plateau"),
-            _("Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."),
-            lbl_desktop
+        # Bureau graphique & Intégration
+        desktop_raw = os.environ.get("XDG_CURRENT_DESKTOP") or os.environ.get("DESKTOP_SESSION") or "Linux"
+        session_type = (os.environ.get("XDG_SESSION_TYPE") or "x11").upper()
+        env_badge = f"{desktop_raw} ({session_type})"
+        card_desktop = self.create_info_row(
+            _("Bureau graphique & Plateau"),
+            _("Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."),
+            env_badge
         )
-        page.pack_start(card_tray, False, False, 0)
+        page.pack_start(card_desktop, False, False, 0)
 
-        self.stack.add_titled(page, "general", _("🖥️ Général"))
+        # Détection proactive d'intégration GNOME (si AppIndicator est manquant)
+        helper_path = self.find_script("gnome_tray_helper.py")
+        if helper_path:
+            try:
+                chk = subprocess.run([sys.executable, helper_path, "--check"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                if chk.returncode == 1:
+                    btn_fix = make_btn(_("Installer l'intégration GNOME"), "system-software-install-symbolic", primary=True)
+                    def on_install_gnome_clicked(widget):
+                        subprocess.run([sys.executable, helper_path, "--prompt"])
+                    btn_fix.connect("clicked", on_install_gnome_clicked)
+                    card_gnome_warning = self.create_card(
+                        _("Intégration GNOME requise"),
+                        _("L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."),
+                        btn_fix
+                    )
+                    page.pack_start(card_gnome_warning, False, False, 0)
+            except Exception:
+                pass
 
-    # -------------------------------------------------------------------------
-    # 2. Section Bibliothèque & Radios
-    # -------------------------------------------------------------------------
-    def build_section_library(self):
-        page = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-
-        # Carte Ajouter une station manuelle
-        btn_add = make_btn(_("Nouvelle radio..."), "list-add")
-        btn_add.connect("clicked", lambda w: self.action_add_station())
-        card_add = self.create_card(
-            _("Ajouter une radio manuellement"),
-            _("Saisir directement un nom, une URL de flux (AAC, MP3, HLS), un pays et un fuseau horaire."),
-            btn_add
-        )
-        page.pack_start(card_add, False, False, 0)
-
-        # Carte Découverte & DAB+
-        btn_dab = make_btn(_("Explorer DAB+..."), "media-optical")
-        btn_dab.connect("clicked", lambda w: self.action_browse_bouquets(1))
-        card_dab = self.create_card(
-            _("Bouquets DAB+ & Sélections officielles"),
-            _("Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter votre bureau."),
-            btn_dab
-        )
-        page.pack_start(card_dab, False, False, 0)
-
-        # Carte Recherche mondiale Radio-Browser
-        btn_rb = make_btn(_("Rechercher..."), "system-search")
-        btn_rb.connect("clicked", lambda w: self.action_browse_bouquets(0))
-        card_rb = self.create_card(
-            _("Recherche mondiale Radio-Browser"),
-            _("Accédez à plus de 40 000 stations en ligne classées par pays, genre ou mots-clés."),
-            btn_rb
-        )
-        page.pack_start(card_rb, False, False, 0)
-
-        # Carte Importer un fichier personnel
-        btn_import_file = make_btn(_("Importer fichier..."), "document-open")
-        btn_import_file.connect("clicked", lambda w: self.action_browse_bouquets(3))
-        card_imp = self.create_card(
-            _("Importer des fichiers personnels"),
-            _("Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV, JSON, M3U ou PLS."),
-            btn_import_file
-        )
-        page.pack_start(card_imp, False, False, 0)
-
-        # Carte Exemples thématiques
-        box_ex = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        btn_ex_browse = make_btn(_("Parcourir..."), "folder-open")
-        btn_ex_browse.connect("clicked", lambda w: self.action_browse_bouquets(2))
-        btn_ex_open = make_btn(_("Ouvrir dossier"), "folder")
-        btn_ex_open.connect("clicked", lambda w: self.open_directory(USER_EXAMPLES_DIR))
-        box_ex.pack_start(btn_ex_browse, False, False, 0)
-        box_ex.pack_start(btn_ex_open, False, False, 0)
-        card_ex = self.create_card(
-            _("Fichiers exemples thématiques"),
-            _("Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."),
-            box_ex
-        )
-        page.pack_start(card_ex, False, False, 0)
-
-        self.stack.add_titled(page, "library", _("📻 Bibliothèque"))
-
-    # -------------------------------------------------------------------------
-    # 3. Section Organisation & Santé des flux
-    # -------------------------------------------------------------------------
-    def build_section_organization(self):
-        page = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-
-        # Carte Organiser les groupes et radios
-        btn_reorder = make_btn(_("Gérer les radios..."), "edit-select-all")
-        btn_reorder.connect("clicked", lambda w: self.action_reorder_groups())
-        card_reorder = self.create_card(
-            _("Organiser les groupes et les radios"),
-            _("Triez, renommez, supprimez et déplacez vos stations. Créez des dossiers et des sous-groupes (ex: Musique/Jazz)."),
-            btn_reorder
-        )
-        page.pack_start(card_reorder, False, False, 0)
-
-        # Carte Audit & Liens morts
-        btn_check = make_btn(_("Lancer l'audit..."), "view-refresh")
-        btn_check.connect("clicked", lambda w: self.action_reorder_groups(check_mode=True))
-        card_check = self.create_card(
-            _("Vérificateur de flux & Liens morts"),
-            _("Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."),
-            btn_check
-        )
-        page.pack_start(card_check, False, False, 0)
-
-        # Carte Astuce Séparateurs
-        card_tips = self.create_card(
-            _("💡 Astuce d'agencement visuel"),
-            _("Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."),
-            None
-        )
-        page.pack_start(card_tips, False, False, 0)
-
-        self.stack.add_titled(page, "organization", _("↕️ Organisation"))
-
-    # -------------------------------------------------------------------------
-    # 4. Section Données & Fichiers
-    # -------------------------------------------------------------------------
-    def build_section_data(self):
-        page = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-
-        # Carte Emplacement des signets
-        nb_st, nb_gr = get_bookmarks_stats(self.bookmarks_path)
-        box_bm = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        btn_bm_dir = make_btn(_("Ouvrir dossier"), "folder")
-        btn_bm_dir.connect("clicked", lambda w: self.open_directory(USER_CONFIG_DIR))
-        box_bm.pack_start(btn_bm_dir, False, False, 0)
-
-        self.lbl_bm_desc = Gtk.Label()
-        self.lbl_bm_desc.set_markup(f"{html.escape(self.bookmarks_path)}\n<b>{nb_st}</b> station(s) réparties dans <b>{nb_gr}</b> groupe(s).")
-        self.lbl_bm_desc.set_halign(Gtk.Align.START)
-
-        card_bm = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
-        card_bm.get_style_context().add_class("settings-card")
-        vbox_bm_text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=3)
-        lbl_bm_title = Gtk.Label()
-        lbl_bm_title.set_markup(f"<b>{_('Signets actuels (bookmarks.xml)')}</b>")
-        lbl_bm_title.get_style_context().add_class("card-title")
-        lbl_bm_title.set_halign(Gtk.Align.START)
-        vbox_bm_text.pack_start(lbl_bm_title, False, False, 0)
-        vbox_bm_text.pack_start(self.lbl_bm_desc, False, False, 0)
-        card_bm.pack_start(vbox_bm_text, True, True, 0)
-        box_bm.set_valign(Gtk.Align.CENTER)
-        card_bm.pack_end(box_bm, False, False, 0)
-        page.pack_start(card_bm, False, False, 0)
-
-        # Carte Passerelle Tableur (CSV) - Option A
-        box_csv_actions = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-        btn_csv = make_btn(_("Exporter en CSV..."), "document-save-as", _("Générez une feuille de calcul CSV de vos radios"))
-        btn_csv.connect("clicked", lambda w: self.action_reorder_groups(export_mode=True))
-        box_csv_actions.pack_start(btn_csv, False, False, 0)
-
-        btn_csv_sync = make_btn(_("Importer depuis CSV..."), "document-open", _("Réimportez ou synchronisez des radios modifiées depuis un tableur CSV"))
-        btn_csv_sync.connect("clicked", lambda w: self.action_browse_bouquets(3))
-        box_csv_actions.pack_start(btn_csv_sync, False, False, 0)
-
-        card_csv = self.create_card(
-            _("Passerelle Tableur (CSV)"),
-            _("Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout en conservant bookmarks.xml comme référence."),
-            box_csv_actions
-        )
-        page.pack_start(card_csv, False, False, 0)
-
-        # Carte Restauration des exemples
-        btn_reset_ex = make_btn(_("Restaurer"), "edit-undo")
-        btn_reset_ex.connect("clicked", lambda w: self.restore_default_examples())
-        card_reset_ex = self.create_card(
-            _("Restaurer les fichiers exemples"),
-            _("Rétablit les 17 exemples thématiques par défaut dans votre dossier personnel s'ils ont été supprimés."),
-            btn_reset_ex
-        )
-        page.pack_start(card_reset_ex, False, False, 0)
-
-        self.stack.add_titled(page, "data", _("💾 Données & Fichiers"))
+        self.stack.add_titled(page, "general", _("Préférences"))
 
     def refresh_stats(self):
         nb_st, nb_gr = get_bookmarks_stats(self.bookmarks_path)
@@ -799,48 +883,19 @@ class SettingsWindow(Gtk.Window):
                     break
         self.show_feedback(f"{restored} {_('fichiers exemples restaurés dans')} ~/.config/timonde/examples/")
 
-    def run_subtool(self, script_name, extra_args=None):
-        # Recherche du script
-        candidates = [
-            os.path.join(os.path.dirname(__file__), script_name),
-            os.path.join("/usr/share/timonde/scripts", script_name),
-            os.path.join("/usr/local/share/timonde/scripts", script_name),
-            os.path.expanduser(f"~/.local/share/timonde/scripts/{script_name}"),
-            f"data/scripts/{script_name}"
-        ]
-        script_path = None
-        for c in candidates:
-            if os.path.isfile(c):
-                script_path = c
-                break
-
-        if not script_path:
-            self.show_feedback(f"{_('Outil introuvable :')} {script_name}", is_error=True)
-            return
-
-        cmd = [sys.executable, script_path]
-        if extra_args:
-            cmd.extend(extra_args)
-
-        try:
-            self.set_sensitive(False)
-            res = subprocess.run(cmd)
-            self.set_sensitive(True)
-            if res.returncode == 0:
-                self.has_modifications = True
-                self.show_feedback(_("Modifications prises en compte."))
-        except Exception as e:
-            self.set_sensitive(True)
-            self.show_feedback(f"{_('Erreur exécution :')} {e}", is_error=True)
-
     def show_feedback(self, msg, is_error=False):
         color = "#e74c3c" if is_error else "#2ecc71"
-        self.lbl_feedback.set_markup(f"<span foreground='{color}'><b>{msg}</b></span>")
+        self.lbl_feedback.set_markup(f"<span foreground='{color}'><b>{html.escape(msg or '')}</b></span>")
 
     def on_close_clicked(self):
         self.destroy()
 
     def on_destroy_window(self, widget):
+        # Arrêt étanche des lecteurs de pré-écoute
+        if hasattr(self, "reorder_view") and hasattr(self.reorder_view, "preview_player") and self.reorder_view.preview_player:
+            self.reorder_view.preview_player.stop(silent=True)
+        if hasattr(self, "discover_view") and hasattr(self.discover_view, "preview_player") and self.discover_view.preview_player:
+            self.discover_view.preview_player.stop(silent=True)
         # Transmettre le résultat JSON sur stdout à destination de TiMonde en Rust
         output = {"reload": self.has_modifications}
         print(json.dumps(output), flush=True)

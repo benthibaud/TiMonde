@@ -29,6 +29,14 @@ from timonde_common import (
     DEFAULT_WORLD_TIMEZONES,
     WORLD_TIMEZONES,
     make_btn,
+    update_btn_content,
+    StreamPreviewPlayer,
+)
+
+from timonde_world_data import (
+    NATIVE_COUNTRY_NAMES,
+    normalize_lookup,
+    resolve_country_code,
 )
 
 # Sauvegarde impérative des arguments CLI avant que GTK ne supprime --name (mot-clé réservé GTK/X11)
@@ -39,8 +47,10 @@ from gi.repository import Gtk, Gdk, GLib
 
 
 class EditStationWindow(Gtk.Window):
-    def __init__(self, mode="edit", current_name="", current_url="", current_country="", current_timezone="", current_group="", available_groups=None):
+    def __init__(self, mode="edit", current_name="", current_url="", current_country="", current_timezone="", current_group="", available_groups=None, standalone=True, on_done_callback=None):
         self.mode = mode
+        self.standalone = standalone
+        self.on_done_callback = on_done_callback
         if self.mode == "add":
             title = _("Ajouter une radio (TiMonde)")
             header_text = _("<b>Enter new station details:</b>")
@@ -59,7 +69,7 @@ class EditStationWindow(Gtk.Window):
         self.save_icon = save_icon
 
         super().__init__(title=title)
-        self.set_default_size(580, 360)
+        self.set_default_size(620, 380)
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_border_width(14)
         
@@ -84,6 +94,7 @@ class EditStationWindow(Gtk.Window):
         self.current_group_orig = current_group
         self.initial_timezone = (current_timezone or "").strip()
         self.selected_country_code = (current_country or "").strip().upper()
+        self.preview_player = StreamPreviewPlayer(on_status_changed=self._on_preview_status)
 
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
         self.add(vbox)
@@ -111,16 +122,33 @@ class EditStationWindow(Gtk.Window):
         self.entry_name.connect("activate", self.on_save_clicked)
         grid.attach(self.entry_name, 1, 0, 1, 1)
 
-        # 2. URL du flux audio
+        # 2. URL du flux audio + Bouton Tester / Écouter en direct
         lbl_url = Gtk.Label(label="URL du flux :")
         lbl_url.set_halign(Gtk.Align.END)
+        lbl_url.set_valign(Gtk.Align.START)
         grid.attach(lbl_url, 0, 1, 1, 1)
+
+        url_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+        url_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
 
         self.entry_url = Gtk.Entry()
         self.entry_url.set_text(current_url)
         self.entry_url.set_hexpand(True)
         self.entry_url.connect("activate", self.on_save_clicked)
-        grid.attach(self.entry_url, 1, 1, 1, 1)
+        url_hbox.pack_start(self.entry_url, True, True, 0)
+
+        self.btn_test_url = make_btn(_("Tester"), "media-playback-start", _("Vérifier la validité du lien et écouter un aperçu du flux"))
+        self.btn_test_url.connect("clicked", self.on_test_url_clicked)
+        url_hbox.pack_start(self.btn_test_url, False, False, 0)
+
+        url_vbox.pack_start(url_hbox, False, False, 0)
+
+        self.lbl_url_status = Gtk.Label(label="")
+        self.lbl_url_status.set_halign(Gtk.Align.START)
+        self.lbl_url_status.set_no_show_all(True)
+        url_vbox.pack_start(self.lbl_url_status, False, False, 0)
+
+        grid.attach(url_vbox, 1, 1, 1, 1)
 
         # 3. Groupe d'appartenance
         lbl_group = Gtk.Label(label="Groupe :")
@@ -191,23 +219,27 @@ class EditStationWindow(Gtk.Window):
         
         # Champ de saisie / filtre de recherche avec auto-complétion
         self.entry_country_search = Gtk.Entry()
-        self.entry_country_search.set_placeholder_text("Tapez pour chercher (ex: France, Canada, Guadeloupe...)")
+        self.entry_country_search.set_placeholder_text("Tapez pour chercher dans n'importe quelle langue (ex: Deutschland, France, Canada...)")
         self.entry_country_search.set_hexpand(True)
 
-        # Modèle de complétion : [Recherche, Libellé affiché, Code ISO]
+        # Modèle de complétion : [Recherche 55 langues normalisée, Libellé affiché, Code ISO]
         self.country_store = Gtk.ListStore(str, str, str)
         # 1. Option automatique / non spécifié
         self.country_store.append(["", "(Déduction automatique selon le groupe)", ""])
         
-        # 2. Liste des pays
-        for code, (cname, cflag) in sorted(COUNTRIES_REGISTRY.items(), key=lambda x: (x[1][0] != "France", x[1][0])):
-            search_key = f"{cname} {code}".lower()
+        # 2. Liste des pays (indexée sur les 55 langues prises en charge)
+        for code, (cname, cflag) in sorted(COUNTRIES_REGISTRY.items(), key=lambda x: (x[1][0] != "France", normalize_lookup(x[1][0]))):
+            natives = " ".join(NATIVE_COUNTRY_NAMES.get(code, []))
+            search_key = normalize_lookup(f"{cname} {code} {natives}")
             display_label = f"[{code}] {cname}"
             self.country_store.append([search_key, display_label, code])
 
         completion = Gtk.EntryCompletion()
         completion.set_model(self.country_store)
         completion.set_text_column(1)
+        completion.set_minimum_key_length(1)
+        completion.set_inline_completion(False)
+        completion.set_popup_completion(True)
         completion.set_match_func(self.match_country_completion)
         completion.connect("match-selected", self.on_country_match_selected)
         self.entry_country_search.set_completion(completion)
@@ -271,25 +303,51 @@ class EditStationWindow(Gtk.Window):
         self.btn_save.connect("clicked", self.on_save_clicked)
         btn_box.pack_start(self.btn_save, False, False, 0)
 
-        self.connect("destroy", Gtk.main_quit)
+        self.connect("destroy", self._on_window_destroy)
         self.connect("key-press-event", self.on_key_press)
 
         # Placer le curseur à la fin du nom sans sélection destructrice
         GLib.idle_add(self.setup_focus)
+
+    def _on_window_destroy(self, _widget):
+        if hasattr(self, "preview_player") and self.preview_player:
+            self.preview_player.stop(silent=True)
+        if self.standalone:
+            Gtk.main_quit()
+
+    def on_test_url_clicked(self, _widget):
+        url = clean_stream_url(self.entry_url.get_text().strip())
+        name = self.entry_name.get_text().strip() or "Aperçu du flux"
+        if not url:
+            self._on_preview_status(False, "", "⚠️ Veuillez saisir une URL de flux valide.", True)
+            return
+        self.preview_player.toggle(name, url)
+
+    def _on_preview_status(self, is_playing, _url, message, is_error):
+        import html
+        if is_playing:
+            update_btn_content(self.btn_test_url, _("Arrêter"), "media-playback-stop")
+        else:
+            update_btn_content(self.btn_test_url, _("Tester"), "media-playback-start")
+        if message:
+            color = "#e74c3c" if is_error else "#2ecc71"
+            self.lbl_url_status.set_markup(f"<small><span foreground='{color}'><b>{html.escape(message)}</b></span></small>")
+            self.lbl_url_status.show()
+        else:
+            self.lbl_url_status.hide()
 
     def setup_focus(self):
         text = self.entry_name.get_text()
         self.entry_name.set_position(len(text))
         return False
 
-    def match_country_completion(self, completion, key, tree_iter):
+    def match_country_completion(self, completion, key, tree_iter, *_args):
         model = completion.get_model()
         search_key = model[tree_iter][0]
-        display_label = model[tree_iter][1].lower()
-        query = key.strip().lower()
+        query = normalize_lookup(key)
         if not query:
             return True
-        return query in search_key or query in display_label
+        return query in search_key
 
     def on_country_match_selected(self, completion, model, tree_iter):
         code = model[tree_iter][2]
@@ -311,56 +369,33 @@ class EditStationWindow(Gtk.Window):
             return
 
         found_code = None
-        # 1. Format crochets [US] ou parenthèses (US)
-        if "[" in raw and "]" in raw:
-            cand = raw.split("[")[-1].split("]")[0].strip().upper()
-            if cand in COUNTRIES_REGISTRY:
-                found_code = cand
-        elif "(" in raw and ")" in raw:
-            cand = raw.split("(") [-1].split(")")[0].strip().upper()
-            if cand in COUNTRIES_REGISTRY:
-                found_code = cand
-        elif raw.upper() in COUNTRIES_REGISTRY:
-            found_code = raw.upper()
+        norm = normalize_lookup(raw).replace("-", " ")
+        us_state_aliases = {
+            "north carolina": "US",
+            "caroline du nord": "US",
+            "south carolina": "US",
+            "caroline du sud": "US",
+            "california": "US",
+            "californie": "US",
+            "florida": "US",
+            "floride": "US",
+            "texas": "US",
+            "new york": "US",
+            "virginia": "US",
+            "virginie": "US",
+            "tennessee": "US",
+        }
+        if norm in us_state_aliases:
+            found_code = us_state_aliases[norm]
         else:
-            # 2. Alias et noms usuels insensibles à la casse / aux accents
-            norm = raw.lower().replace("é", "e").replace("è", "e").replace("-", " ")
-            aliases = {
-                "usa": "US",
-                "etats unis": "US",
-                "united states": "US",
-                "north carolina": "US",
-                "caroline du nord": "US",
-                "south carolina": "US",
-                "caroline du sud": "US",
-                "california": "US",
-                "californie": "US",
-                "florida": "US",
-                "floride": "US",
-                "texas": "US",
-                "new york": "US",
-                "georgia": "US",
-                "georgie": "US",
-                "virginia": "US",
-                "virginie": "US",
-                "tennessee": "US",
-                "uk": "GB",
-                "royaume uni": "GB",
-                "angleterre": "GB",
-            }
-            if norm in aliases:
-                found_code = aliases[norm]
-            else:
-                for code, (cname, _flag) in COUNTRIES_REGISTRY.items():
-                    c_norm = cname.lower().replace("é", "e").replace("è", "e").replace("-", " ")
-                    if c_norm == norm or c_norm.startswith(norm):
-                        found_code = code
-                        break
+            cand = resolve_country_code(raw)
+            if cand and cand in COUNTRIES_REGISTRY:
+                found_code = cand
 
         # Si l'utilisateur a tapé une région ou un état spécifique, présélectionner le bon fuseau
         pref_tz = None
         lower_raw = raw.lower()
-        if any(w in lower_raw for w in ["north carolina", "caroline du nord", "nc", "florida", "floride", "georgia", "georgie", "new york", "dc", "virginia", "virginie"]):
+        if any(w in lower_raw for w in ["north carolina", "caroline du nord", "nc", "florida", "floride", "new york", "dc", "virginia", "virginie"]):
             pref_tz = "America/New_York"
         elif any(w in lower_raw for w in ["california", "californie", "los angeles", "san francisco", "seattle"]):
             pref_tz = "America/Los_Angeles"
@@ -467,16 +502,21 @@ class EditStationWindow(Gtk.Window):
         response = dialog.run()
         dialog.destroy()
         if response == Gtk.ResponseType.OK:
+            self.preview_player.stop(silent=True)
             self.result_data = {
                 "action": "delete",
                 "name": current_display_name,
                 "url": self.entry_url.get_text().strip(),
             }
             self.saved = True
-            print(json.dumps(self.result_data, ensure_ascii=False))
+            if self.on_done_callback:
+                self.on_done_callback(self.result_data)
+            elif self.standalone:
+                print(json.dumps(self.result_data, ensure_ascii=False))
             self.destroy()
 
     def on_cancel_clicked(self, widget):
+        self.preview_player.stop(silent=True)
         self.destroy()
 
     def on_show_group_naming_help(self, widget):
@@ -500,6 +540,7 @@ class EditStationWindow(Gtk.Window):
         dialog.destroy()
 
     def on_save_clicked(self, widget):
+        self.preview_player.stop(silent=True)
         name = self.entry_name.get_text().strip()
         url = clean_stream_url(self.entry_url.get_text().strip())
         country = self.selected_country_code or None
@@ -553,7 +594,10 @@ class EditStationWindow(Gtk.Window):
             "group": selected_group if selected_group else None,
         }
         self.saved = True
-        print(json.dumps(self.result_data, ensure_ascii=False))
+        if self.on_done_callback:
+            self.on_done_callback(self.result_data)
+        elif self.standalone:
+            print(json.dumps(self.result_data, ensure_ascii=False))
         self.destroy()
 
 

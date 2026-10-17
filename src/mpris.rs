@@ -196,14 +196,21 @@ impl MprisPlayer {
 
     #[zbus(property)]
     fn set_volume(&self, vol: f64) {
-        let mut v_guard = self.current_volume.lock().unwrap();
-        *v_guard = vol.clamp(0.0, 1.5);
-        let a_guard = self.audio.lock().unwrap();
-        if let Some(ref e) = *a_guard {
-            e.set_volume(*v_guard);
+        let clamped = vol.clamp(0.0, 1.0);
+        {
+            let mut v_guard = self.current_volume.lock().unwrap();
+            *v_guard = clamped;
         }
-        drop(a_guard);
-        drop(v_guard);
+        {
+            let a_guard = self.audio.lock().unwrap();
+            if let Some(ref e) = *a_guard {
+                e.set_volume(clamped);
+            }
+        }
+        let state_path = crate::state::AppState::default_path();
+        let mut st_cfg = crate::state::AppState::load(&state_path);
+        st_cfg.volume = clamped;
+        let _ = st_cfg.save(&state_path);
         (self.on_update)();
     }
 

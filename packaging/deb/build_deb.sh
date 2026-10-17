@@ -4,7 +4,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
-VERSION="0.1.1"
+VERSION="0.2.0"
 ARCH=$(dpkg --print-architecture 2>/dev/null || echo "amd64")
 PACKAGE_NAME="timonde_${VERSION}_${ARCH}.deb"
 STAGING_DIR="${ROOT_DIR}/temp/deb_staging"
@@ -43,7 +43,7 @@ Section: sound
 Priority: optional
 Architecture: ${ARCH}
 Depends: libc6, libgstreamer1.0-0, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, gstreamer1.0-plugins-bad, gstreamer1.0-libav, glib-networking, python3, python3-gi, python3-dbus, gir1.2-gtk-3.0, gir1.2-dbusmenu-gtk3-0.4
-Recommends: gnome-shell-extension-appindicator | gnome-shell-extension-ubuntu-appindicators
+Suggests: gnome-shell-extension-appindicator
 Maintainer: Ben Thibaud <b_thibaud@laposte.net>
 Description: Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux
  TiMonde est un lecteur de radios universel et économe en ressources (< 15 Mo de RAM),
@@ -51,7 +51,7 @@ Description: Lecteur de webradios ultra-léger et discret pour la barre des tâc
  bureaux Linux (IceWM, Fluxbox, Cinnamon, XFCE, MATE, GNOME, KDE, etc.).
 CONTROL_EOF
 
-# 5. Scripts postinst et postrm (rafraîchissement du cache d'icônes, menu desktop et harmonisation Cinnamon)
+# 5. Scripts postinst et postrm (rafraîchissement du cache d'icônes, menu desktop et harmonisation par environnement)
 cat << 'POSTINST_EOF' > "${STAGING_DIR}/DEBIAN/postinst"
 #!/bin/sh
 set -e
@@ -61,10 +61,25 @@ fi
 if command -v update-desktop-database >/dev/null 2>&1; then
     update-desktop-database -q || true
 fi
-# Détection et harmonisation automatique sous Cinnamon (clic gauche/droit unifié)
+
+# Détection d'environnement de bureau et configurations contextuelles
+# 1. Cinnamon : harmonisation automatique du clic gauche/droit unifié
 if [ -f "/usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js" ] && [ -f "/usr/share/timonde/scripts/patch_cinnamon_status_applet.py" ]; then
     python3 /usr/share/timonde/scripts/patch_cinnamon_status_applet.py || true
 fi
+
+# 2. GNOME Shell : vérification de la présence de l'extension AppIndicator
+if command -v gnome-shell >/dev/null 2>&1; then
+    if ! dpkg -s gnome-shell-extension-appindicator >/dev/null 2>&1; then
+        echo "------------------------------------------------------------------"
+        echo " [TiMonde] Bureau GNOME détecté :"
+        echo " Pour afficher l'icône dans la barre supérieure sous GNOME,"
+        echo " pensez à installer l'extension AppIndicator si besoin :"
+        echo "   sudo apt install gnome-shell-extension-appindicator"
+        echo "------------------------------------------------------------------"
+    fi
+fi
+
 exit 0
 POSTINST_EOF
 chmod 755 "${STAGING_DIR}/DEBIAN/postinst"
@@ -112,6 +127,7 @@ install -m 755 "${ROOT_DIR}/data/scripts/browse_bouquets.py" "${STAGING_DIR}/usr
 install -m 755 "${ROOT_DIR}/data/scripts/timonde_xembed_bridge.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_xembed_bridge.py"
 install -m 755 "${ROOT_DIR}/data/scripts/patch_cinnamon_status_applet.py" "${STAGING_DIR}/usr/share/timonde/scripts/patch_cinnamon_status_applet.py"
 install -m 755 "${ROOT_DIR}/data/scripts/timonde_settings.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_settings.py"
+install -m 755 "${ROOT_DIR}/data/scripts/gnome_tray_helper.py" "${STAGING_DIR}/usr/share/timonde/scripts/gnome_tray_helper.py"
 install -m 755 "${ROOT_DIR}/data/scripts/show_menu.py" "${STAGING_DIR}/usr/share/timonde/scripts/show_menu.py"
 install -m 644 "${ROOT_DIR}/data/scripts/timonde_i18n.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_i18n.py"
 install -m 644 "${ROOT_DIR}/data/scripts/timonde_common.py" "${STAGING_DIR}/usr/share/timonde/scripts/timonde_common.py"
@@ -128,11 +144,13 @@ for mo in "${ROOT_DIR}"/po/locale/*/LC_MESSAGES/timonde.mo; do
     fi
 done
 
-# 7. Construction du paquet .deb
+# 7. Construction du paquet .deb unique universel
 dpkg-deb --build --root-owner-group "${STAGING_DIR}" "${ROOT_DIR}/${PACKAGE_NAME}"
 cp "${ROOT_DIR}/${PACKAGE_NAME}" "${SCRIPT_DIR}/${PACKAGE_NAME}"
 rm -rf "${STAGING_DIR}"
 
-echo "Paquet généré avec succès :"
+echo "Paquet Debian unique généré avec succès :"
 echo "   - ${ROOT_DIR}/${PACKAGE_NAME}"
 echo "   - ${SCRIPT_DIR}/${PACKAGE_NAME}"
+
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bookmarks>
+	<group name="Music Bollywood">
+		<bookmark name="Bollywood 2000's" url="https://2.mystreaming.net/uber/bollywood2000s/icecast.audio" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="Bollywood 2010's" url="https://drive.uber.radio/uber/bollywood2010s/icecast.audio" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="Fnf.Fm Hindi" url="http://192.99.8.192:5032/;stream" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="HawaMahal Radio" url="https://stream-154.zeno.fm/csw7fv7sz1zuv?zs=ABfIaXh5T-65UHo9uTNoAQ" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="Hits Of Lata Mangeshkar" url="http://stream.zeno.fm/g95zm67prfhvv" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="Hits Of Mohammed Rafi" url="http://stream.zeno.fm/0zkr7x8ztm0uv" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="Mirchi Top 20" url="https://drive.uber.radio/uber/bollywoodnow/icecast.audio" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="MY CLUB REMIX" url="http://stream.zeno.fm/u7eee0hyzp8uv" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="Radio Badal" url="https://stream.zeno.fm/nhrtcxg09u8uv" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="Radio Gaana" url="https://sp14.instainternet.com/8044/stream" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="Radio Gyansthali 89.6 FM" url="https://streamasiacdn.atc-labs.com/gyansthali.aac" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="Radio Hulchul" url="https://everestcast.live-streams.nl:18015/stream" country="NL" timezone="Europe/Amsterdam"/>
+		<bookmark name="Radio Madhoshi" url="https://stream.zeno.fm/7rsl8fsccf8uv" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="Radio Pechaan" url="http://mscp3.live-streams.nl:8050/stream" country="NL" timezone="Europe/Amsterdam"/>
+		<bookmark name="Radio Retro Bollywood 90s" url="https://stream-143.zeno.fm/fdgs82xkzhhvv" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="Radio Sangam" url="https://mediaserv68.live-streams.nl:8067/stream" country="NL" timezone="Europe/Amsterdam"/>
+		<bookmark name="Radio SBS" url="http://live.radiosbs.nl:8272/radiosbs" country="NL" timezone="Europe/Amsterdam"/>
+		<bookmark name="Radio SD 90.8 FM" url="http://uk2.internet-radio.com:8066/stream?listening-from-radio-garden=1657423901" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="Radio Srinagar" url="http://streaming01.x-6.nl:8000/" country="NL" timezone="Europe/Amsterdam"/>
+		<bookmark name="Radio Udaan" url="https://stream.radioudaan.com/listen/radio_udaan/radio.mp3" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="Tinder Radio" url="https://streaming.exclusive.radio/er/bollywood/icecast.audio" country="IN" timezone="Asia/Kolkata"/>
+		<bookmark name="Ujala Radio" url="http://stream2.ujala.nl/stream/2/listen.mp3" country="NL" timezone="Europe/Amsterdam"/>
+		<bookmark name="VahonFM - Vahon Hindustani Radio" url="https://onlineradio.websoftitnepal.com/8030/stream" country="NL" timezone="Europe/Amsterdam"/>
+	</group>
+</bookmarks>

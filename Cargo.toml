@@ -1,6 +1,6 @@
 [package]
 name = "timonde"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2021"
 authors = ["Ben Thibaud <b_thibaud@laposte.net>"]
 description = "Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux"
@@ -87,9 +87,11 @@ assets = [
     { source = "data/scripts/reorder_groups.py", dest = "/usr/share/timonde/scripts/reorder_groups.py", mode = "755" },
     { source = "data/scripts/edit_station.py", dest = "/usr/share/timonde/scripts/edit_station.py", mode = "755" },
     { source = "data/scripts/browse_bouquets.py", dest = "/usr/share/timonde/scripts/browse_bouquets.py", mode = "755" },
+    { source = "data/scripts/timonde_xembed_bridge.py", dest = "/usr/share/timonde/scripts/timonde_xembed_bridge.py", mode = "755" },
     { source = "data/scripts/show_menu.py", dest = "/usr/share/timonde/scripts/show_menu.py", mode = "755" },
     { source = "data/scripts/patch_cinnamon_status_applet.py", dest = "/usr/share/timonde/scripts/patch_cinnamon_status_applet.py", mode = "755" },
     { source = "data/scripts/timonde_settings.py", dest = "/usr/share/timonde/scripts/timonde_settings.py", mode = "755" },
+    { source = "data/scripts/gnome_tray_helper.py", dest = "/usr/share/timonde/scripts/gnome_tray_helper.py", mode = "755" },
     { source = "data/scripts/timonde_common.py", dest = "/usr/share/timonde/scripts/timonde_common.py", mode = "644" },
     { source = "data/scripts/timonde_i18n.py", dest = "/usr/share/timonde/scripts/timonde_i18n.py", mode = "644" },
     { source = "data/scripts/timonde_world_data.py", dest = "/usr/share/timonde/scripts/timonde_world_data.py", mode = "644" },
@@ -240,6 +242,7 @@ assets = [
     { source = "data/bouquets/zm.xml", dest = "/usr/share/timonde/bouquets/zm.xml", mode = "644" },
     { source = "data/bouquets/zw.xml", dest = "/usr/share/timonde/bouquets/zw.xml", mode = "644" },
     { source = "data/examples/README.md", dest = "/usr/share/timonde/examples/README.md", mode = "644" },
+    { source = "data/examples/x-bollywood.xml", dest = "/usr/share/timonde/examples/x-bollywood.xml", mode = "644" },
     { source = "data/examples/x-cajun.xml", dest = "/usr/share/timonde/examples/x-cajun.xml", mode = "644" },
     { source = "data/examples/x-celtique.xml", dest = "/usr/share/timonde/examples/x-celtique.xml", mode = "644" },
     { source = "data/examples/x-chill-meditation.xml", dest = "/usr/share/timonde/examples/x-chill-meditation.xml", mode = "644" },
@@ -268,6 +271,7 @@ assets = [
     { source = "po/locale/da/LC_MESSAGES/timonde.mo", dest = "/usr/share/locale/da/LC_MESSAGES/timonde.mo", mode = "644" },
     { source = "po/locale/de/LC_MESSAGES/timonde.mo", dest = "/usr/share/locale/de/LC_MESSAGES/timonde.mo", mode = "644" },
     { source = "po/locale/el/LC_MESSAGES/timonde.mo", dest = "/usr/share/locale/el/LC_MESSAGES/timonde.mo", mode = "644" },
+    { source = "po/locale/en/LC_MESSAGES/timonde.mo", dest = "/usr/share/locale/en/LC_MESSAGES/timonde.mo", mode = "644" },
     { source = "po/locale/es/LC_MESSAGES/timonde.mo", dest = "/usr/share/locale/es/LC_MESSAGES/timonde.mo", mode = "644" },
     { source = "po/locale/et/LC_MESSAGES/timonde.mo", dest = "/usr/share/locale/et/LC_MESSAGES/timonde.mo", mode = "644" },
     { source = "po/locale/fi/LC_MESSAGES/timonde.mo", dest = "/usr/share/locale/fi/LC_MESSAGES/timonde.mo", mode = "644" },
@@ -329,6 +333,6 @@ gtk3 = "*"
 libdbusmenu-gtk3 = "*"
 python3-dbus = "*"
 
-[package.metadata.generate-rpm.recommends]
+[package.metadata.generate-rpm.suggests]
 gnome-shell-extension-appindicator = "*"
 

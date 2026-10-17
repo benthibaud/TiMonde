@@ -23,6 +23,7 @@ install: build
 	install -m 644 data/icons/timonde_off.svg $(DESTDIR)$(ICONSDIR)/panel/timonde_off.svg
 	install -m 644 data/icons/timonde_on.svg $(DESTDIR)$(ICONSDIR)/panel/timonde_on.svg
 	install -m 644 data/icons/timonde_error.svg $(DESTDIR)$(ICONSDIR)/panel/timonde_error.svg
+	cp -r data/icons/hicolor/* $(DESTDIR)$(DATADIR)/icons/hicolor/
 	install -d $(DESTDIR)$(DATADIR)/timonde/scripts
 	install -m 755 data/scripts/reorder_groups.py $(DESTDIR)$(DATADIR)/timonde/scripts/reorder_groups.py
 	install -m 755 data/scripts/edit_station.py $(DESTDIR)$(DATADIR)/timonde/scripts/edit_station.py
@@ -30,6 +31,7 @@ install: build
 	install -m 755 data/scripts/timonde_xembed_bridge.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_xembed_bridge.py
 	install -m 755 data/scripts/patch_cinnamon_status_applet.py $(DESTDIR)$(DATADIR)/timonde/scripts/patch_cinnamon_status_applet.py
 	install -m 755 data/scripts/timonde_settings.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_settings.py
+	install -m 755 data/scripts/gnome_tray_helper.py $(DESTDIR)$(DATADIR)/timonde/scripts/gnome_tray_helper.py
 	install -m 755 data/scripts/show_menu.py $(DESTDIR)$(DATADIR)/timonde/scripts/show_menu.py
 	install -m 644 data/scripts/timonde_i18n.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_i18n.py
 	install -m 644 data/scripts/timonde_common.py $(DESTDIR)$(DATADIR)/timonde/scripts/timonde_common.py
@@ -57,6 +59,7 @@ install-user: build
 	install -m 644 data/icons/timonde_off.svg $(HOME)/.local/share/icons/hicolor/scalable/panel/timonde_off.svg
 	install -m 644 data/icons/timonde_on.svg $(HOME)/.local/share/icons/hicolor/scalable/panel/timonde_on.svg
 	install -m 644 data/icons/timonde_error.svg $(HOME)/.local/share/icons/hicolor/scalable/panel/timonde_error.svg
+	cp -r data/icons/hicolor/* $(HOME)/.local/share/icons/hicolor/
 	install -d $(HOME)/.local/share/timonde/scripts
 	install -m 755 data/scripts/reorder_groups.py $(HOME)/.local/share/timonde/scripts/reorder_groups.py
 	install -m 755 data/scripts/edit_station.py $(HOME)/.local/share/timonde/scripts/edit_station.py
@@ -64,6 +67,7 @@ install-user: build
 	install -m 755 data/scripts/timonde_xembed_bridge.py $(HOME)/.local/share/timonde/scripts/timonde_xembed_bridge.py
 	install -m 755 data/scripts/patch_cinnamon_status_applet.py $(HOME)/.local/share/timonde/scripts/patch_cinnamon_status_applet.py
 	install -m 755 data/scripts/timonde_settings.py $(HOME)/.local/share/timonde/scripts/timonde_settings.py
+	install -m 755 data/scripts/gnome_tray_helper.py $(HOME)/.local/share/timonde/scripts/gnome_tray_helper.py
 	install -m 755 data/scripts/show_menu.py $(HOME)/.local/share/timonde/scripts/show_menu.py
 	install -m 644 data/scripts/timonde_i18n.py $(HOME)/.local/share/timonde/scripts/timonde_i18n.py
 	install -m 644 data/scripts/timonde_common.py $(HOME)/.local/share/timonde/scripts/timonde_common.py
@@ -81,10 +85,15 @@ install-user: build
 uninstall:
 	rm -f $(DESTDIR)$(BINDIR)/timonde
 	rm -f $(DESTDIR)$(APPSDIR)/timonde.desktop
+	rm -f $(DESTDIR)$(DATADIR)/metainfo/io.github.benthibaud.timonde.metainfo.xml
 	rm -f $(DESTDIR)$(ICONSDIR)/apps/timonde_on.svg
 	rm -f $(DESTDIR)$(ICONSDIR)/panel/timonde_off.svg
 	rm -f $(DESTDIR)$(ICONSDIR)/panel/timonde_on.svg
 	rm -f $(DESTDIR)$(ICONSDIR)/panel/timonde_error.svg
+	rm -f $(DESTDIR)$(DATADIR)/icons/hicolor/*/apps/timonde_*.png
+	rm -f $(DESTDIR)$(DATADIR)/icons/hicolor/*/panel/timonde_*.png
+	rm -rf $(DESTDIR)$(DATADIR)/timonde
+	rm -f $(DESTDIR)$(DATADIR)/locale/*/LC_MESSAGES/timonde.mo
 
 test:
 	cargo test

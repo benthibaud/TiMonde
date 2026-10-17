@@ -30,7 +30,7 @@ Téléchargez le paquet `.deb` précompilé ou générez-le localement :
 ```bash
 # Génération et installation du paquet :
 make deb
-sudo dpkg -i packaging/deb/timonde_0.1.0_amd64.deb
+sudo dpkg -i packaging/deb/timonde_0.2.0_amd64.deb
 ```
 
 *Dépendances requises :* `libgstreamer1.0-0`, `gstreamer1.0-plugins-base`, `gstreamer1.0-plugins-good`, `python3-gi`, `gir1.2-gtk-3.0`.

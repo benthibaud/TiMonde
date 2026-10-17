@@ -1,14 +1,16 @@
-# TiMonde — ZH_CN Translation
+# TiMonde — Traduction ZH_CN
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 
 msgid "Play"
 msgstr "播放"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "设置..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "添加收音机 (TiMonde)"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "添加到我的收音机"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "没有添加新的无线电（已经存在）。"
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "DAB+ 花束和官方精选"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "官方精选 DAB+ 专辑"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "保存到我的收藏夹"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "将收音机保留在收藏夹中 (TiMonde)"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "打开文件："
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "发现并导入广播电台 (TiMonde)"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "保存"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "执行错误："
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "JSON 导入错误："
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "修改自动启动时出错。"
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "探索 DAB+..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "CSV 导出完成。"
 
 msgid "Exporter en CSV..."
 msgstr "导出为 CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "关闭"
 
 msgid "Fichiers exemples"
 msgstr "示例文件"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "从 CSV 导入..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "导入个人文件"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "导入文件..."
 
 msgid "Importer mes fichiers"
 msgstr "导入本地文件"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "无法打开文件夹："
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "在组中插入分隔符 (---) 或节标题以使菜单更加通风。"
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "考虑到变化。"
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "编辑广播 (TiMonde)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "打开文件夹"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "浏览..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "电子表格网关 (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser 在线搜索"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "全球搜索广播浏览器"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "搜索..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "书签重新组织并保存成功！"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "删除"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,13 +653,13 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "示例文件恢复于"
 
 msgid "online"
 msgstr "online"
 
 msgid "radio"
-msgstr "radio"
+msgstr "收音机"
 
 msgid "radio(s) ajoutée(s) à vos signets !"
 msgstr "station(s) added to your bookmarks!"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ 组织"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 视觉布局技巧"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 数据和文件"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻图书馆"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️一般"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>• 更改<b>#</b> 或使用<b>上移/下移</b> 对组进行排序。 \n"
+" • <b>双击某个组</b>（或“打开”）以对其无线电和分配器进行排序。 \n"
+" • 使用<b>传输...</b> 将内容合并或移动到另一个组。 \n"
+" • 使用<b>新建组</b>添加收音机文件夹。</small>"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<小>• 更改<b>#</b> 或使用<b>上移/下移</b> 对收音机进行排序。 \n"
+" • 单击<b>检查源</b>以发现死链接（红色）并修复它们。 \n"
+" • 单击<b>修复流...</b> 在无线电浏览器上搜索替换活动流。 \n"
+" • 单击<b>分隔符</b>插入章节标题。</small>"
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>选择上面的文件或示例。</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>• 更改<b>#</b> 或使用<b>上移/下移</b> 对组进行排序。 \n"
+" • <b>双击某个组</b>（或“打开”）对其单选按钮和分隔符进行排序。 \n"
+" • 使用<b>移动到...</b>来合并或移动内容。 \n"
+" • 使用<b>新建组</b>创建收音机文件夹。</small>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<小>• 更改<b>#</b> 或使用<b>上移/下移</b> 来排序无线电。 \n"
+" • 单击<b>检查源</b>以查找离线链接（红色）。 \n"
+" • 单击<b>修复流...</b> 搜索活动的替换流。 \n"
+" • 单击<b>分隔符</b>插入字幕或分隔线。</small>"
+
+msgid "Actualiser la liste des exemples"
+msgstr "刷新示例列表"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "帮助处理组和子组"
+
+msgid "Ajouter"
+msgstr "添加"
+
+msgid "Annuler"
+msgstr "取消"
+
+msgid "Arrêter"
+msgstr "停止"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "找不到要保存的 bookmarks.xml 文件。"
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "没有添加新的广播电台（已存在于您的书签中）。"
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "在广播浏览器上找不到符合这些条件的广播电台。"
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "国家花束（主要度假村）"
+
+msgid "Bouquets par pays"
+msgstr "各国花束"
+
+msgid "Bureau graphique & Plateau"
+msgstr "图形桌和托盘"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "该电台没有音频流 URL。"
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "上传 XML、CSV、JSON、M3U 或 PLS 文件"
+
+msgid "Charger un fichier..."
+msgstr "加载文件..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "从现有组中选择"
+
+msgid "Choisir un fichier de radios"
+msgstr "选择广播文件"
+
+msgid "Collections & Fichiers"
+msgstr "收藏和文件"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "将组织存档"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "创建您的收藏的完整备份（包含文件夹和时区）"
+
+msgid "Disponibilité"
+msgstr "可用性"
+
+msgid "Disponibilité en direct"
+msgstr "实时可用性"
+
+msgid "Dossier / Groupe"
+msgstr "文件夹/组"
+
+msgid "Dossier des exemples"
+msgstr "示例文件夹"
+
+msgid "Dossier des signets"
+msgstr "书签文件夹"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "根据您的Linux环境的区域设置自动检测。"
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "检测到环境（只读）"
+
+msgid "Effacer le champ"
+msgstr "清晰的视野"
+
+msgid "Effacer le filtre langue"
+msgstr "清除语言过滤器"
+
+msgid "Effacer le filtre pays"
+msgstr "清除国家过滤器"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "检测到 GNOME Shell 环境"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "保存时出错："
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "例如：/France/Jazz 或 / 表示根目录"
+
+msgid "Exemples thématiques :"
+msgstr "专题示例："
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "导出到表 (CSV)..."
+
+msgid "Fichier :"
+msgstr "文件："
+
+msgid "Fichier externe :"
+msgstr "外部文件："
+
+msgid "Fichiers XML (*.xml)"
+msgstr "XML 文件 (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "按国家过滤："
+
+msgid "Format & Débit"
+msgstr "格式和比特率"
+
+msgid "Genre / Tags"
+msgstr "性别/标签"
+
+msgid "Genre / Thématique"
+msgstr "类型/主题"
+
+msgid "Genre :"
+msgstr "性别："
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "无法识别的包管理器。"
+
+msgid "Groupe :"
+msgstr "组："
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "为 Calc 或 Excel 电子表格生成平面列表"
+
+msgid "Importer"
+msgstr "进口"
+
+msgid "Importer & Exporter"
+msgstr "进出口"
+
+msgid "Importer dans mes favoris"
+msgstr "导入到我的收藏夹"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "正在进行安装（请验证系统提示）..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "安装 GNOME 集成"
+
+msgid "Intégration GNOME requise"
+msgstr "需要 GNOME 集成"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "集成到 GNOME 顶栏"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "通过 StatusNotifierItem / XEmbed 本机集成到通知区域。"
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "可从设置访问 CSV 导出。"
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "需要 AppIndicator 扩展才能在 GNOME 的顶部栏中显示图标。"
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "安装被取消或失败。"
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "可从设置访问 XML 备份。"
+
+msgid "Langue du système"
+msgstr "系统语言"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "无法收听分隔符和字幕。"
+
+msgid "Mes Radios"
+msgstr "我的收音机"
+
+msgid "Mot-clé :"
+msgstr "关键字："
+
+msgid "Nouveaux uniquement"
+msgstr "仅限新品"
+
+msgid "OPTIONS DE SESSION"
+msgstr "会话选项"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "组和子组的组织（Linux 公约）"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "先开个群听它的广播。"
+
+msgid "Ouvrir"
+msgstr "打开"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "打开~/.config/timonde"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "打开~/.config/timonde/examples"
+
+msgid "Pays"
+msgstr "国家"
+
+msgid "Pays :"
+msgstr "国家："
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "要在 GNOME 桌面的顶部栏中谨慎地显示播放图标，需要 <b>AppIndicator</b> 系统扩展。<br/><br/>您想立即安装它吗？"
+
+msgid "Préférences"
+msgstr "偏好设置"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "保留文件中定义的子组，而不是将所有内容导入到单个组中。"
+
+msgid "Quitter"
+msgstr "退出"
+
+msgid "Recharger"
+msgstr "重新加载"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "重新加载当前显示的文件"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "在免费的协作 <b>Radio-Browser</b> 目录上进行全球搜索（+45,000 个电台）。"
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "无线电浏览器搜索正在进行中..."
+
+msgid "Rechercher"
+msgstr "搜索"
+
+msgid "Rechercher en ligne"
+msgstr "网上搜索"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "将选定的链接替换为有效的官方源"
+
+msgid "Restaurer exemples"
+msgstr "恢复示例"
+
+msgid "Régions & Locales :"
+msgstr "地区和当地人："
+
+msgid "Réparer le flux..."
+msgstr "修复流量..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "恢复原来的19个例子"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "输入关键字或单击“搜索”以浏览目录。"
+
+msgid "Sauvegarde réussie !"
+msgstr "备份成功！"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "保存我的收音机 (XML)..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "保存我的书签 (XML)"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "书签和收音机保存成功！"
+
+msgid "Station"
+msgstr "度假村"
+
+msgid "Statut Favoris"
+msgstr "收藏夹状态"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "来自146个国家和地区的官方和验证选择（DAB+数字花束和主要国家电台）。"
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "选择一个收音机来收听。"
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "从表中选择一个电台来收听。"
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "输入国家/地区（例如：法国、德国、加拿大...）"
+
+msgid "Tester"
+msgstr "测试"
+
+msgid "Tester les flux"
+msgstr "测试流程"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "TiMonde — GNOME 桌面集成"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "所有文件 (*.*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "所有国家（全球）"
+
+msgid "Tout cocher"
+msgstr "检查全部"
+
+msgid "Tout décocher"
+msgstr "全部取消勾选"
+
+msgid "Toutes les langues"
+msgstr "所有语言"
+
+msgid "URL du flux"
+msgstr "提要网址"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "请从列表中选择一个收音机来收听。"
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "您的完整书签已保存在："
+
+msgid "Votes"
+msgstr "投票数"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "实时检查链接可用性"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "检查现场广播的可用性"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "检查找到的收音机的实时可用性"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "检查链接有效性并预览流"
+
+msgid "ajoutée avec succès !"
+msgstr "添加成功！"
+
+msgid "fichiers exemples restaurés."
+msgstr "恢复样本文件。"
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "进口新收音机！"
+
+msgid "Écouter"
+msgstr "听"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "收听选定的广播"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "收听或测试所选的广播"
+

@@ -1,14 +1,16 @@
-# TiMonde — KA Translation
+# TiMonde — Traduction KA
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ka\n"
 
 msgid "Play"
 msgstr "დაკვრა"
@@ -26,124 +28,124 @@ msgid "Delete"
 msgstr "წაშლა"
 
 msgid "Zap to another random station"
-msgstr ""
+msgstr "გადადით სხვა შემთხვევით რადიოში"
 
 msgid "Play random radio (Ephemeral discovery)"
-msgstr ""
+msgstr "მოუსმინეთ შემთხვევით რადიოსადგურს (ეფემერული აღმოჩენა)"
 
 msgid "[ Ephemeral]"
-msgstr ""
+msgstr "[ეფემერული]"
 
 msgid "Options"
 msgstr "პარამეტრები"
 
 msgid "Add a station..."
-msgstr ""
+msgstr "დაამატეთ რადიოს..."
 
 msgid "Discover & Import stations..."
-msgstr ""
+msgstr "რადიოების აღმოჩენა და იმპორტი..."
 
 msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr ""
+msgstr "ჩემი ფაილების იმპორტი (XML, CSV, JSON, M3U)..."
 
 msgid "Manage groups and stations..."
-msgstr ""
+msgstr "ჯგუფებისა და რადიოების კლასიფიკაცია..."
 
 msgid "Open bookmarks.xml"
-msgstr ""
+msgstr "გახსენით bookmarks.xml"
 
 msgid "Quit TiMonde"
 msgstr "TiMonde-დან გამოსვლა"
 
 msgid "Mute (0%)"
-msgstr ""
+msgstr "დადუმება (0%)"
 
 msgid "Sleep timer"
-msgstr ""
+msgstr "ძილის ტაიმერი"
 
 msgid "In 15 minutes"
-msgstr ""
+msgstr "15 წუთში"
 
 msgid "In 30 minutes"
-msgstr ""
+msgstr "30 წუთში"
 
 msgid "In 45 minutes"
-msgstr ""
+msgstr "45 წუთში"
 
 msgid "In 60 minutes (1h)"
-msgstr ""
+msgstr "60 წუთში (1 საათი)"
 
 msgid "Cancel sleep timer"
-msgstr ""
+msgstr "გააუქმეთ ძილი"
 
 msgid "Discover & Import stations (TiMonde)"
-msgstr ""
+msgstr "აღმოაჩინეთ და შემოიტანეთ რადიოსადგურები (TiMonde)"
 
 msgid "Verified DAB+ Bouquets"
-msgstr ""
+msgstr "დამოწმებული თაიგულები (DAB+)"
 
 msgid "Radio-Browser Search"
-msgstr ""
+msgstr "რადიო-ბრაუზერის ძიება"
 
 msgid "Sample Files"
-msgstr ""
+msgstr "ფაილების მაგალითები"
 
 msgid "Import my files"
-msgstr ""
+msgstr "ჩემი ფაილების იმპორტი"
 
 msgid "<b> Country:</b>"
-msgstr ""
+msgstr "<b>ქვეყანა:</b>"
 
 msgid "<b>Language:</b>"
-msgstr ""
+msgstr "<b>ენა:</b>"
 
 msgid "Name / Keyword:"
-msgstr ""
+msgstr "სახელი / საკვანძო სიტყვა:"
 
 msgid "Genre:"
-msgstr ""
+msgstr "სქესი:"
 
 msgid "<b>Sample file:</b>"
-msgstr ""
+msgstr "<b>მაგალითი ფაილი:</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr ""
+msgstr "<b>ჯგუფის სახელი თქვენს რჩეულებში:</b>"
 
 msgid "Select all"
-msgstr ""
+msgstr "შეამოწმეთ ყველა"
 
 msgid "Deselect all"
-msgstr ""
+msgstr "მოხსენით ყველა"
 
 msgid "Import into favorites"
-msgstr ""
+msgstr "იმპორტი ჩემს ფავორიტებში"
 
 msgid "Close"
 msgstr "დახურვა"
 
 msgid "Add a station (TiMonde)"
-msgstr ""
+msgstr "სადგურის დამატება (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
-msgstr ""
+msgstr "<b>შეიყვანეთ ინფორმაცია ახალი რადიოსათვის:</b>"
 
 msgid "Add to my stations"
-msgstr ""
+msgstr "დაამატეთ ჩემს რადიოებში"
 
 msgid "Save station to favorites (TiMonde)"
-msgstr ""
+msgstr "შეინახე რადიო ჩემს ფავორიტებში (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr ""
+msgstr "<b>შეინახეთ ეს შემთხვევით აღმოჩენილი რადიოსადგური თქვენს რჩეულებში:</b>"
 
 msgid "Keep in favorites"
-msgstr ""
+msgstr "შენახვა ჩემს რჩეულებში"
 
 msgid "Edit station (TiMonde)"
-msgstr ""
+msgstr "რადიოს რედაქტირება (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr ""
+msgstr "<b>სადგურის პარამეტრების შეცვლა:</b>"
 
 msgid "Save"
 msgstr "შენახვა"
@@ -152,82 +154,82 @@ msgid "Station name:"
 msgstr "სადგურის სახელი:"
 
 msgid "Audio stream URL:"
-msgstr ""
+msgstr "აუდიო ნაკადის URL:"
 
 msgid "Group / Folder:"
-msgstr ""
+msgstr "ჯგუფი / საქაღალდე:"
 
 msgid "Country & Timezone:"
-msgstr ""
+msgstr "ქვეყანა და დროის ზონა:"
 
 msgid "Timezone:"
-msgstr ""
+msgstr "დროის სარტყელი:"
 
 msgid "Delete this station"
-msgstr ""
+msgstr "წაშალეთ ეს რადიო"
 
 msgid "Cancel"
 msgstr "გაუქმება"
 
 msgid "Delete « {} » from favorites?"
-msgstr ""
+msgstr "წაშალოთ „{}“ რჩეულებიდან?"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr ""
+msgstr "ეს ქმედება სამუდამოდ წაშლის ამ სადგურს თქვენი კოლექციიდან."
 
 msgid "Manage groups, stations and separators (TiMonde)"
-msgstr ""
+msgstr "ჯგუფების, რადიოსა და გამყოფების მართვა (TiMonde)"
 
 msgid "Back to groups"
-msgstr ""
+msgstr "⬅ დაბრუნება ჯგუფებში"
 
 msgid "Add station"
-msgstr ""
+msgstr "დაამატეთ რადიო"
 
 msgid "Open"
-msgstr ""
+msgstr "გახსენით"
 
 msgid "New group"
-msgstr ""
+msgstr "ახალი ჯგუფი"
 
 msgid "Move to..."
-msgstr ""
+msgstr "გადატანა..."
 
 msgid "Top"
-msgstr ""
+msgstr "პირველი"
 
 msgid "Move up"
-msgstr ""
+msgstr "⬆ ადი"
 
 msgid "Move down"
-msgstr ""
+msgstr "⬇ ჩადი ქვემოთ"
 
 msgid "Separator"
-msgstr ""
+msgstr "გამყოფი"
 
 msgid "Sort A-Z"
-msgstr ""
+msgstr "დახარისხება A-Z"
 
 msgid "Save and reload"
-msgstr ""
+msgstr "შეინახეთ და გადატვირთეთ"
 
 msgid "Same time"
-msgstr ""
+msgstr "ამავე დროს"
 
 msgid "Dawn"
-msgstr ""
+msgstr "გამთენიისას"
 
 msgid "Morning"
-msgstr ""
+msgstr "დილა"
 
 msgid "Daytime"
-msgstr ""
+msgstr "დღე"
 
 msgid "Evening"
-msgstr ""
+msgstr "საღამო"
 
 msgid "Night"
-msgstr ""
+msgstr "ღამე"
 
 msgid "Tomorrow"
 msgstr "ხვალ"
@@ -236,64 +238,64 @@ msgid "Yesterday"
 msgstr "გუშინ"
 
 msgid "Maintenance & Data"
-msgstr ""
+msgstr "ტექნიკური მომსახურება და მონაცემები"
 
 msgid "Check streams (dead links)..."
-msgstr ""
+msgstr "შეამოწმეთ არხები (მკვდარი ბმულები)..."
 
 msgid "Export my stations to CSV..."
-msgstr ""
+msgstr "ჩემი რადიოს ექსპორტი CSV-ში..."
 
 msgid "Check streams"
-msgstr ""
+msgstr "შეამოწმეთ არხები"
 
 msgid "Dead links only"
-msgstr ""
+msgstr "მხოლოდ მკვდარი ლინკები"
 
 msgid "Apply redirects"
-msgstr ""
+msgstr "მიმართეთ გადამისამართებებს"
 
 msgid "Repair stream..."
-msgstr ""
+msgstr "სარემონტო ნაკადი..."
 
 msgid "Export to CSV"
-msgstr ""
+msgstr "ექსპორტი CSV-ში"
 
 msgid "Test stream availability and locate broken links"
-msgstr ""
+msgstr "შეამოწმეთ თქვენი რადიოსადგურების პირდაპირი ხელმისაწვდომობა და დააფიქსირეთ მკვდარი ბმულები"
 
 msgid "Display offline radio streams only"
-msgstr ""
+msgstr "აჩვენეთ მხოლოდ რადიოსადგურები, რომელთა ნაკადი ხაზგარეშეა"
 
 msgid "Automatically update redirected streams to direct URL"
-msgstr ""
+msgstr "ავტომატურად განაახლეთ არხები, რომლებიც გადამისამართებულია მათ პირდაპირ URL-ზე"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
+msgstr "ავტომატურად მოძებნეთ ჩანაცვლებითი აქტიური ნაკადი რადიო-ბრაუზერზე ამ მკვდარი ბმულისთვის"
 
 msgid "Export all stations to CSV spreadsheet format"
-msgstr ""
+msgstr "ყველა თქვენი რადიოს ექსპორტი CSV ცხრილების ფორმატში"
 
 msgid "Export my stations to CSV"
-msgstr ""
+msgstr "ჩემი რადიოს ექსპორტი CSV-ში"
 
 msgid "CSV files (*.csv)"
-msgstr ""
+msgstr "CSV ფაილები (*.csv)"
 
 msgid "All files (*.*)"
-msgstr ""
+msgstr "ყველა ფაილი (*.*)"
 
 msgid "Export"
-msgstr ""
+msgstr "ექსპორტი"
 
 msgid "Export successful!"
-msgstr ""
+msgstr "ექსპორტი წარმატებულია!"
 
 msgid "Error during CSV export:"
-msgstr ""
+msgstr "შეცდომა CSV ექსპორტის დროს:"
 
 msgid "station(s) saved to:"
-msgstr ""
+msgstr "რადიო(ები) ჩაწერილი:"
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "პარამეტრები..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "დაამატეთ რადიოს (TiMonde)"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "დაამატეთ ჩემს რადიოებში"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "ახალი რადიოები არ არის დამატებული (უკვე იმყოფება)."
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "DAB+ თაიგულები და ოფიციალური არჩევანი"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "შენახვა ჩემს რჩეულებში"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "შეინახეთ რადიო რჩეულებში (TiMonde)"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "ფაილის გახსნა:"
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "აღმოაჩინეთ და შემოიტანეთ რადიოსადგურები (TiMonde)"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "შენახვა"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "შესრულების შეცდომა:"
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "JSON იმპორტის შეცდომა:"
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "შეცდომა ავტომატური დაწყების შეცვლისას."
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "შეისწავლეთ DAB+..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "CSV ექსპორტი დასრულდა."
 
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "დახურვა"
 
 msgid "Fichiers exemples"
 msgstr "Sample Files"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "პირადი ფაილების იმპორტი"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "ფაილის იმპორტი..."
 
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "საქაღალდის გახსნა ვერ ხერხდება:"
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "ჩადეთ გამყოფები (---) ან განყოფილების სათაურები თქვენს ჯგუფებში თქვენი მენიუს ვენტილაციისთვის."
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "მხედველობაში მიღებული ცვლილებები."
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "რადიოს რედაქტირება (TiMonde)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "გახსენით საქაღალდე"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "დათვალიერება..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "გლობალური ძებნა რადიო-ბრაუზერი"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "ძიება..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "სანიშნეების რეორგანიზაცია და წარმატებით შენახვა მოხდა!"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "წაშლა"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,7 +653,7 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "ფაილების ნიმუში აღდგენილია"
 
 msgid "online"
 msgstr "online"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ ორგანიზაცია"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 ვიზუალური განლაგების რჩევა"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 მონაცემები და ფაილები"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻 ბიბლიოთეკა"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️ გენერალი"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>• შეცვალეთ <b>#</b> ან გამოიყენეთ <b>გადაადგილება ზემოთ / ქვემოთ</b> ჯგუფების დასალაგებლად. \n"
+" • <b>დააწკაპუნეთ ორმაგად ჯგუფზე</b> (ან გახსნა) მისი რადიოსა და გამყოფების დასალაგებლად. \n"
+" • გამოიყენეთ <b>Transfer...</b> კონტენტის სხვა ჯგუფში გაერთიანებისთვის ან გადასატანად. \n"
+" • გამოიყენეთ <b>ახალი ჯგუფი</b> რადიოების საქაღალდის დასამატებლად.</small>"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<small>• შეცვალეთ <b>#</b> ან გამოიყენეთ <b>გადაადგილება ზევით/ქვევით</b> რადიოს დასალაგებლად. \n"
+" • დააწკაპუნეთ <b>შეამოწმეთ არხები</b>, რომ ნახოთ მკვდარი ბმულები (წითელი) და შეაკეთოთ ისინი. \n"
+" • დააწკაპუნეთ <b>ნაკადის შეკეთება...</b> რადიო-ბრაუზერზე ჩანაცვლებითი აქტიური ნაკადის მოსაძებნად. \n"
+" • დააწკაპუნეთ <b>გამყოფი</b> განყოფილების სათაურის ჩასასმელად.</small>"
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>აირჩიეთ ფაილი ან მაგალითი ზემოთ.</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>• შეცვალეთ <b>#</b> ან გამოიყენეთ <b>გადაადგილება ზემოთ / ქვემოთ</b> ჯგუფების დასალაგებლად. \n"
+" • <b>დააწკაპუნეთ ორმაგად ჯგუფზე</b> (ან გახსნა) მისი რადიოსა და გამყოფების დასალაგებლად. \n"
+" • გამოიყენეთ <b>გადატანა...</b> კონტენტის გაერთიანებისთვის ან გადასატანად. \n"
+" • გამოიყენეთ <b>ახალი ჯგუფი</b> რადიოების საქაღალდის შესაქმნელად.</small>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<small>• შეცვალეთ <b>#</b> ან გამოიყენეთ <b>გადაადგილება ზემოთ / ქვემოთ</b> რადიოების შესაკვეთად. \n"
+" • დააწკაპუნეთ <b>შეამოწმეთ არხები</b> ხაზგარეშე ბმულების მოსაძებნად (წითლად). \n"
+" • დააწკაპუნეთ <b>ნაკადის შეკეთება...</b> აქტიური შემცვლელი ნაკადის მოსაძებნად. \n"
+" • დააწკაპუნეთ <b>გამყოფზე</b> სუბტიტრების ან გამყოფი ხაზის ჩასართავად.</small>"
+
+msgid "Actualiser la liste des exemples"
+msgstr "განაახლეთ მაგალითების სია"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "დახმარება ჯგუფებთან და ქვეჯგუფებთან"
+
+msgid "Ajouter"
+msgstr "დამატება"
+
+msgid "Annuler"
+msgstr "გაუქმება"
+
+msgid "Arrêter"
+msgstr "გაჩერდი"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "bookmarks.xml ფაილი ვერ მოიძებნა შესანახად."
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "არ არის დამატებული ახალი რადიოსადგურები (უკვე წარმოდგენილია თქვენს სანიშნეებში)."
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "ამ კრიტერიუმებისთვის რადიო-ბრაუზერზე რადიოსადგურები არ მოიძებნა."
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "ეროვნული ბუკეტი (ძირითადი კურორტები)"
+
+msgid "Bouquets par pays"
+msgstr "თაიგულები ქვეყნების მიხედვით"
+
+msgid "Bureau graphique & Plateau"
+msgstr "გრაფიკული მაგიდა და უჯრა"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "ამ სადგურს არ აქვს აუდიო ნაკადის URL-ები."
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "ატვირთეთ XML, CSV, JSON, M3U ან PLS ფაილი"
+
+msgid "Charger un fichier..."
+msgstr "ფაილის ჩატვირთვა..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "აირჩიეთ არსებული ჯგუფებიდან"
+
+msgid "Choisir un fichier de radios"
+msgstr "აირჩიეთ რადიო ფაილი"
+
+msgid "Collections & Fichiers"
+msgstr "კოლექციები და ფაილები"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "შეინახეთ ორგანიზაცია ფაილში"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "შექმენით თქვენი კოლექციის სრული სარეზერვო ასლი (საქაღალდეებით და დროის ზონებით)"
+
+msgid "Disponibilité"
+msgstr "ხელმისაწვდომობა"
+
+msgid "Disponibilité en direct"
+msgstr "ცოცხალი ხელმისაწვდომობა"
+
+msgid "Dossier / Groupe"
+msgstr "საქაღალდე / ჯგუფი"
+
+msgid "Dossier des exemples"
+msgstr "მაგალითების საქაღალდე"
+
+msgid "Dossier des signets"
+msgstr "სანიშნეების საქაღალდე"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "ავტომატური გამოვლენა თქვენი Linux გარემოს რეგიონალური პარამეტრების მიხედვით."
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "აღმოჩენილია გარემო (მხოლოდ წაკითხვა)"
+
+msgid "Effacer le champ"
+msgstr "სუფთა ველი"
+
+msgid "Effacer le filtre langue"
+msgstr "ენის ფილტრის გასუფთავება"
+
+msgid "Effacer le filtre pays"
+msgstr "ქვეყნის ფილტრის გასუფთავება"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "აღმოჩენილია GNOME Shell გარემო"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "შეცდომა შენახვისას:"
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "მაგ: /საფრანგეთი/ჯაზი ან / root"
+
+msgid "Exemples thématiques :"
+msgstr "თემატური მაგალითები:"
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "ექსპორტი მაგიდაზე (CSV)..."
+
+msgid "Fichier :"
+msgstr "ფაილი:"
+
+msgid "Fichier externe :"
+msgstr "გარე ფაილი:"
+
+msgid "Fichiers XML (*.xml)"
+msgstr "XML ფაილები (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "გაფილტვრა ქვეყნების მიხედვით:"
+
+msgid "Format & Débit"
+msgstr "ფორმატი და ბიტრეიტი"
+
+msgid "Genre / Tags"
+msgstr "სქესი / ტეგები"
+
+msgid "Genre / Thématique"
+msgstr "ჟანრი / თემა"
+
+msgid "Genre :"
+msgstr "სქესი:"
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "პაკეტის არაღიარებული მენეჯერი."
+
+msgid "Groupe :"
+msgstr "ჯგუფი:"
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "შექმენით ბრტყელი სია Calc ან Excel ცხრილებისთვის"
+
+msgid "Importer"
+msgstr "იმპორტი"
+
+msgid "Importer & Exporter"
+msgstr "იმპორტი და ექსპორტი"
+
+msgid "Importer dans mes favoris"
+msgstr "იმპორტი ჩემს ფავორიტებში"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "ინსტალაცია მიმდინარეობს (გთხოვთ დაადასტუროთ სისტემის მოთხოვნა)..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "დააინსტალირეთ GNOME ინტეგრაცია"
+
+msgid "Intégration GNOME requise"
+msgstr "საჭიროა GNOME-ის ინტეგრაცია"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "ინტეგრაცია GNOME-ის ზედა ზოლში"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "მშობლიური ინტეგრაცია შეტყობინებების ზონაში StatusNotifierItem / XEmbed-ის საშუალებით."
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "CSV ექსპორტი ხელმისაწვდომია პარამეტრებიდან."
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "AppIndicator გაფართოება საჭიროა GNOME-ის ზედა ზოლში ხატის საჩვენებლად."
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "ინსტალაცია გაუქმდა ან ვერ მოხერხდა."
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "XML სარეზერვო ასლი ხელმისაწვდომია პარამეტრებიდან."
+
+msgid "Langue du système"
+msgstr "სისტემის ენა"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "გამყოფებისა და სათაურების მოსმენა შეუძლებელია."
+
+msgid "Mes Radios"
+msgstr "ჩემი რადიოები"
+
+msgid "Mot-clé :"
+msgstr "საკვანძო სიტყვა:"
+
+msgid "Nouveaux uniquement"
+msgstr "მხოლოდ ახალი"
+
+msgid "OPTIONS DE SESSION"
+msgstr "სესიის ვარიანტები"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "ჯგუფებისა და ქვეჯგუფების ორგანიზაცია (Linux Convention)"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "ჯერ გახსენით ჯგუფი მის რადიოს მოსასმენად."
+
+msgid "Ouvrir"
+msgstr "გახსენით"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "გახსენით ~/.config/timonde"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "გახსენით ~/.config/timonde/examples"
+
+msgid "Pays"
+msgstr "ქვეყანა"
+
+msgid "Pays :"
+msgstr "ქვეყანა:"
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "თქვენი GNOME დესკტოპის ზედა ზოლში დაკვრის ხატის გონივრულად საჩვენებლად, საჭიროა <b>AppIndicator</b> სისტემის გაფართოება.<br/><br/>გსურთ მისი ახლავე ინსტალაცია?"
+
+msgid "Préférences"
+msgstr "პრეფერენციები"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "შეინახეთ ფაილში განსაზღვრული ქვეჯგუფები, ყველაფრის ერთ ჯგუფში იმპორტის ნაცვლად."
+
+msgid "Quitter"
+msgstr "გასვლა"
+
+msgid "Recharger"
+msgstr "გადატვირთვა"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "გადატვირთეთ ამჟამად ნაჩვენები ფაილი"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "მსოფლიო მასშტაბით ძიება უფასო და ერთობლივი <b>რადიო-ბრაუზერის</b> დირექტორიაში (+45,000 სადგური)."
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "მიმდინარეობს ძიება რადიო-ბრაუზერზე..."
+
+msgid "Rechercher"
+msgstr "ძიება"
+
+msgid "Rechercher en ligne"
+msgstr "მოძებნეთ ონლაინ"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "შეცვალეთ არჩეული ბმული აქტიური ოფიციალური არხით"
+
+msgid "Restaurer exemples"
+msgstr "მაგალითების აღდგენა"
+
+msgid "Régions & Locales :"
+msgstr "რეგიონები და ადგილობრივები:"
+
+msgid "Réparer le flux..."
+msgstr "გაასწორე ნაკადი..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "აღადგინეთ ორიგინალური 19 მაგალითი"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "შეიყვანეთ საკვანძო სიტყვა ან დააწკაპუნეთ ძიებაში დირექტორიას შესასწავლად."
+
+msgid "Sauvegarde réussie !"
+msgstr "სარეზერვო ასლის შექმნა წარმატებით დასრულდა!"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "შეინახე ჩემი რადიოები (XML)..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "ჩემი სანიშნეების შენახვა (XML)"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "სანიშნეები და რადიოები წარმატებით შენახულია!"
+
+msgid "Station"
+msgstr "კურორტი"
+
+msgid "Statut Favoris"
+msgstr "ფავორიტების სტატუსი"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "ოფიციალური და დამოწმებული არჩევანი 146 ქვეყნიდან და რეგიონიდან (DAB+ ციფრული თაიგულები და ძირითადი ეროვნული სადგურები)."
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "აირჩიეთ რადიო მის მოსასმენად."
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "აირჩიეთ სადგური ცხრილიდან მის მოსასმენად."
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "შეიყვანეთ ქვეყანა (მაგ.: საფრანგეთი, გერმანია, კანადა...)"
+
+msgid "Tester"
+msgstr "ტესტი"
+
+msgid "Tester les flux"
+msgstr "ტესტის ნაკადები"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "TiMonde — GNOME დესკტოპის ინტეგრაცია"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "ყველა ფაილი (*.*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "ყველა ქვეყანა (გლობალური)"
+
+msgid "Tout cocher"
+msgstr "შეამოწმეთ ყველა"
+
+msgid "Tout décocher"
+msgstr "მოხსენით ყველა"
+
+msgid "Toutes les langues"
+msgstr "ყველა ენაზე"
+
+msgid "URL du flux"
+msgstr "არხის URL"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "გთხოვთ, აირჩიოთ რადიო სიიდან მის მოსასმენად."
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "თქვენი სრული სანიშნეები შენახულია შემდეგში:"
+
+msgid "Votes"
+msgstr "ხმები"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "შეამოწმეთ ბმულის ხელმისაწვდომობა პირდაპირ ეთერში"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "შეამოწმეთ პირდაპირი რადიოს ხელმისაწვდომობა"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "შეამოწმეთ ნაპოვნი რადიოების პირდაპირი ხელმისაწვდომობა"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "შეამოწმეთ ბმულის მოქმედება და გადახედეთ ნაკადს"
+
+msgid "ajoutée avec succès !"
+msgstr "წარმატებით დაემატა!"
+
+msgid "fichiers exemples restaurés."
+msgstr "აღდგენილი ნიმუშის ფაილები."
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "ახალი რადიო(ები) იმპორტირებულია!"
+
+msgid "Écouter"
+msgstr "მისმინე"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "მოუსმინეთ არჩეულ რადიოს"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "მოუსმინეთ ან შეამოწმეთ არჩეული რადიოს"
+

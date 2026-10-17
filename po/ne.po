@@ -1,14 +1,16 @@
-# TiMonde — NE Translation
+# TiMonde — Traduction NE
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: ne\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ne\n"
 
 msgid "Play"
 msgstr "बजाउनुहोस्"
@@ -26,124 +28,124 @@ msgid "Delete"
 msgstr "मेटाउनुहोस्"
 
 msgid "Zap to another random station"
-msgstr ""
+msgstr "अर्को अनियमित रेडियोमा जाप गर्नुहोस्"
 
 msgid "Play random radio (Ephemeral discovery)"
-msgstr ""
+msgstr "एक अनियमित रेडियो स्टेशन सुन्नुहोस् (अस्थायी खोज)"
 
 msgid "[ Ephemeral]"
-msgstr ""
+msgstr "[अस्थायी]"
 
 msgid "Options"
 msgstr "विकल्पहरू"
 
 msgid "Add a station..."
-msgstr ""
+msgstr "एउटा रेडियो थप्नुहोस्..."
 
 msgid "Discover & Import stations..."
-msgstr ""
+msgstr "रेडियोहरू पत्ता लगाउनुहोस् र आयात गर्नुहोस्..."
 
 msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr ""
+msgstr "मेरा फाइलहरू आयात गर्नुहोस् (XML, CSV, JSON, M3U)..."
 
 msgid "Manage groups and stations..."
-msgstr ""
+msgstr "समूह र रेडियो वर्गीकरण गर्नुहोस्..."
 
 msgid "Open bookmarks.xml"
-msgstr ""
+msgstr "bookmarks.xml खोल्नुहोस्"
 
 msgid "Quit TiMonde"
-msgstr ""
+msgstr "TiMonde छोड्नुहोस्"
 
 msgid "Mute (0%)"
-msgstr ""
+msgstr "म्युट (०%)"
 
 msgid "Sleep timer"
-msgstr ""
+msgstr "सुत्ने टाइमर"
 
 msgid "In 15 minutes"
-msgstr ""
+msgstr "१५ मिनेटमा"
 
 msgid "In 30 minutes"
-msgstr ""
+msgstr "30 मिनेटमा"
 
 msgid "In 45 minutes"
-msgstr ""
+msgstr "४५ मिनेटमा"
 
 msgid "In 60 minutes (1h)"
-msgstr ""
+msgstr "६० मिनेटमा (१ घण्टा)"
 
 msgid "Cancel sleep timer"
-msgstr ""
+msgstr "निद्रा रद्द गर्नुहोस्"
 
 msgid "Discover & Import stations (TiMonde)"
-msgstr ""
+msgstr "रेडियो स्टेशनहरू पत्ता लगाउनुहोस् र आयात गर्नुहोस् (TiMonde)"
 
 msgid "Verified DAB+ Bouquets"
-msgstr ""
+msgstr "प्रमाणित गुलदस्ता (DAB+)"
 
 msgid "Radio-Browser Search"
-msgstr ""
+msgstr "रेडियो ब्राउजर खोज्नुहोस्"
 
 msgid "Sample Files"
-msgstr ""
+msgstr "उदाहरण फाइलहरू"
 
 msgid "Import my files"
-msgstr ""
+msgstr "मेरो फाइलहरू आयात गर्नुहोस्"
 
 msgid "<b> Country:</b>"
-msgstr ""
+msgstr "<b>देश:</b>"
 
 msgid "<b>Language:</b>"
-msgstr ""
+msgstr "<b>भाषा:</b>"
 
 msgid "Name / Keyword:"
-msgstr ""
+msgstr "नाम / कुञ्जी शब्द:"
 
 msgid "Genre:"
-msgstr ""
+msgstr "लिङ्ग:"
 
 msgid "<b>Sample file:</b>"
-msgstr ""
+msgstr "<b>उदाहरण फाइल:</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr ""
+msgstr "<b>तपाईंको मनपर्ने समूहको नाम:</b>"
 
 msgid "Select all"
-msgstr ""
+msgstr "सबै जाँच गर्नुहोस्"
 
 msgid "Deselect all"
-msgstr ""
+msgstr "सबै अनचेक गर्नुहोस्"
 
 msgid "Import into favorites"
-msgstr ""
+msgstr "मेरो मनपर्नेमा आयात गर्नुहोस्"
 
 msgid "Close"
 msgstr "बन्द गर्नुहोस्"
 
 msgid "Add a station (TiMonde)"
-msgstr ""
+msgstr "एउटा स्टेशन थप्नुहोस् (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
-msgstr ""
+msgstr "<b>नयाँ रेडियोको लागि जानकारी प्रविष्ट गर्नुहोस्:</b>"
 
 msgid "Add to my stations"
-msgstr ""
+msgstr "मेरो रेडियोमा थप्नुहोस्"
 
 msgid "Save station to favorites (TiMonde)"
-msgstr ""
+msgstr "मेरो मनपर्नेमा रेडियो बचत गर्नुहोस् (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr ""
+msgstr "<b>यो अनियमित रूपमा खोजिएको रेडियो स्टेशनलाई आफ्नो मनपर्नेमा राख्नुहोस्:</b>"
 
 msgid "Keep in favorites"
-msgstr ""
+msgstr "मेरो मनपर्नेमा बचत गर्नुहोस्"
 
 msgid "Edit station (TiMonde)"
-msgstr ""
+msgstr "रेडियो सम्पादन गर्नुहोस् (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr ""
+msgstr "<b>स्टेसन सेटिङहरू परिवर्तन गर्नुहोस्:</b>"
 
 msgid "Save"
 msgstr "बचत गर्नुहोस्"
@@ -152,82 +154,82 @@ msgid "Station name:"
 msgstr "स्टेशनको नाम:"
 
 msgid "Audio stream URL:"
-msgstr ""
+msgstr "अडियो स्ट्रिम URL:"
 
 msgid "Group / Folder:"
-msgstr ""
+msgstr "समूह / फोल्डर:"
 
 msgid "Country & Timezone:"
-msgstr ""
+msgstr "देश र समय क्षेत्र:"
 
 msgid "Timezone:"
-msgstr ""
+msgstr "समय क्षेत्र:"
 
 msgid "Delete this station"
-msgstr ""
+msgstr "यो रेडियो मेटाउनुहोस्"
 
 msgid "Cancel"
 msgstr "रद्द गर्नुहोस्"
 
 msgid "Delete « {} » from favorites?"
-msgstr ""
+msgstr "मनपर्नेबाट \"{}\" हटाउने हो?"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr ""
+msgstr "यस कार्यले स्थायी रूपमा तपाईंको सङ्कलनबाट यो स्टेशन हटाउनेछ।"
 
 msgid "Manage groups, stations and separators (TiMonde)"
-msgstr ""
+msgstr "समूह, रेडियो र विभाजकहरूको व्यवस्थापन (TiMonde)"
 
 msgid "Back to groups"
-msgstr ""
+msgstr "⬅ समूहहरूमा फर्कनुहोस्"
 
 msgid "Add station"
-msgstr ""
+msgstr "रेडियो थप्नुहोस्"
 
 msgid "Open"
-msgstr ""
+msgstr "खोल्नुहोस्"
 
 msgid "New group"
-msgstr ""
+msgstr "नयाँ समूह"
 
 msgid "Move to..."
-msgstr ""
+msgstr "मा सार्नुहोस्..."
 
 msgid "Top"
-msgstr ""
+msgstr "पहिले"
 
 msgid "Move up"
-msgstr ""
+msgstr "⬆ माथि जानुहोस्"
 
 msgid "Move down"
-msgstr ""
+msgstr "⬇ तल जानुहोस्"
 
 msgid "Separator"
-msgstr ""
+msgstr "विभाजक"
 
 msgid "Sort A-Z"
-msgstr ""
+msgstr "A-Z क्रमबद्ध गर्नुहोस्"
 
 msgid "Save and reload"
-msgstr ""
+msgstr "बचत गर्नुहोस् र पुन: लोड गर्नुहोस्"
 
 msgid "Same time"
-msgstr ""
+msgstr "एकै समयमा"
 
 msgid "Dawn"
-msgstr ""
+msgstr "बिहान"
 
 msgid "Morning"
-msgstr ""
+msgstr "बिहान"
 
 msgid "Daytime"
-msgstr ""
+msgstr "दिन"
 
 msgid "Evening"
-msgstr ""
+msgstr "साँझ"
 
 msgid "Night"
-msgstr ""
+msgstr "रात"
 
 msgid "Tomorrow"
 msgstr "भोलि"
@@ -236,64 +238,64 @@ msgid "Yesterday"
 msgstr "हिजो"
 
 msgid "Maintenance & Data"
-msgstr ""
+msgstr "मर्मत र डाटा"
 
 msgid "Check streams (dead links)..."
-msgstr ""
+msgstr "फिडहरू जाँच गर्नुहोस् (मृत लिङ्कहरू)..."
 
 msgid "Export my stations to CSV..."
-msgstr ""
+msgstr "मेरो रेडियोहरू CSV मा निर्यात गर्नुहोस्..."
 
 msgid "Check streams"
-msgstr ""
+msgstr "फिडहरू जाँच गर्नुहोस्"
 
 msgid "Dead links only"
-msgstr ""
+msgstr "मृत लिङ्कहरू मात्र"
 
 msgid "Apply redirects"
-msgstr ""
+msgstr "पुनर्निर्देशनहरू लागू गर्नुहोस्"
 
 msgid "Repair stream..."
-msgstr ""
+msgstr "मर्मत प्रवाह..."
 
 msgid "Export to CSV"
-msgstr ""
+msgstr "CSV मा निर्यात गर्नुहोस्"
 
 msgid "Test stream availability and locate broken links"
-msgstr ""
+msgstr "तपाईंको रेडियो स्टेशनहरू र स्पट डेड लिङ्कहरूको प्रत्यक्ष उपलब्धता परीक्षण गर्नुहोस्"
 
 msgid "Display offline radio streams only"
-msgstr ""
+msgstr "स्ट्रिम अफलाइन भएका रेडियो स्टेशनहरू मात्र देखाउनुहोस्"
 
 msgid "Automatically update redirected streams to direct URL"
-msgstr ""
+msgstr "तिनीहरूको प्रत्यक्ष URL मा रिडिरेक्ट गरिएका फिडहरू स्वचालित रूपमा अद्यावधिक गर्नुहोस्"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
+msgstr "यस मृत लिङ्कको लागि रेडियो-ब्राउजरमा प्रतिस्थापन सक्रिय स्ट्रिमको लागि स्वचालित रूपमा खोज्नुहोस्"
 
 msgid "Export all stations to CSV spreadsheet format"
-msgstr ""
+msgstr "तपाईंका सबै रेडियोहरू CSV स्प्रेडसिट ढाँचामा निर्यात गर्नुहोस्"
 
 msgid "Export my stations to CSV"
-msgstr ""
+msgstr "मेरो रेडियोहरू CSV मा निर्यात गर्नुहोस्"
 
 msgid "CSV files (*.csv)"
-msgstr ""
+msgstr "CSV फाइलहरू (*.csv)"
 
 msgid "All files (*.*)"
-msgstr ""
+msgstr "सबै फाइलहरू (*)"
 
 msgid "Export"
-msgstr ""
+msgstr "निर्यात गर्नुहोस्"
 
 msgid "Export successful!"
-msgstr ""
+msgstr "निर्यात सफल भयो!"
 
 msgid "Error during CSV export:"
-msgstr ""
+msgstr "CSV निर्यात गर्दा त्रुटि:"
 
 msgid "station(s) saved to:"
-msgstr ""
+msgstr "रेडियो(हरू) मा रेकर्ड गरियो:"
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "सेटिङहरू..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "एउटा रेडियो थप्नुहोस् (TiMonde)"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "मेरो रेडियोमा थप्नुहोस्"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "कुनै नयाँ रेडियो थपिएको छैन (पहिले नै अवस्थित)।"
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "DAB+ गुलदस्ता र आधिकारिक चयनहरू"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "मेरो मनपर्नेमा बचत गर्नुहोस्"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "मनपर्नेमा रेडियो राख्नुहोस् (TiMonde)"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "फाइल खोल्नुहोस्:"
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "रेडियो स्टेशनहरू पत्ता लगाउनुहोस् र आयात गर्नुहोस् (TiMonde)"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "बचत गर्नुहोस्"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "कार्यान्वयन त्रुटि:"
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "JSON आयात त्रुटि:"
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "अटोस्टार्ट परिमार्जन गर्दा त्रुटि भयो।"
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "DAB+ अन्वेषण गर्नुहोस्..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "CSV निर्यात पूरा भयो।"
 
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "बन्द गर्नुहोस्"
 
 msgid "Fichiers exemples"
 msgstr "Sample Files"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "व्यक्तिगत फाइलहरू आयात गर्नुहोस्"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "फाइल आयात गर्नुहोस्..."
 
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "फोल्डर खोल्न असमर्थ:"
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "विभाजकहरू (---) वा तपाईंको समूहहरूमा खण्ड शीर्षकहरू घुसाउनुहोस् तपाईंको मेनुलाई हावा चलाउन।"
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "ध्यानमा राखिएका परिवर्तनहरू।"
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "रेडियो सम्पादन गर्नुहोस् (TiMonde)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "फोल्डर खोल्नुहोस्"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "ब्राउज गर्नुहोस्..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "ग्लोबल खोज रेडियो ब्राउजर"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "खोज..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "बुकमार्कहरू पुन: संगठित र सफलतापूर्वक सुरक्षित गरियो!"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "मेट्नुहोस्"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,7 +653,7 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "नमूना फाइलहरू पुनर्स्थापित गरियो"
 
 msgid "online"
 msgstr "online"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ संगठन"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 भिजुअल लेआउट टिप"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 डाटा र फाइलहरू"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻 पुस्तकालय"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️ सामान्य"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>• <b>#</b> परिवर्तन गर्नुहोस् वा समूहहरू अर्डर गर्न <b>माथि / तल सार्नुहोस्</b> प्रयोग गर्नुहोस्। \n"
+" • रेडियो र स्प्लिटरहरू क्रमबद्ध गर्न <b>समूहमा डबल क्लिक गर्नुहोस्</b> (वा खोल्नुहोस्)। \n"
+" • सामग्री मर्ज गर्न वा अर्को समूहमा सार्न <b>स्थानान्तरण...</b> प्रयोग गर्नुहोस्। \n"
+" • रेडियोको फोल्डर थप्न <b>नयाँ समूह</b> प्रयोग गर्नुहोस्।</small>"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<small>• <b>#</b> परिवर्तन गर्नुहोस् वा रेडियो क्रमबद्ध गर्न <b>माथि / तल सार्नुहोस्</b> प्रयोग गर्नुहोस्। \n"
+" • मृत लिङ्कहरू (रातो) भेट्टाउन र तिनीहरूलाई मर्मत गर्न <b>फिडहरू जाँच गर्नुहोस्</b> मा क्लिक गर्नुहोस्। \n"
+" • रेडियो ब्राउजरमा प्रतिस्थापन सक्रिय स्ट्रिम खोज्न <b>रिपेयर स्ट्रिम...</b> मा क्लिक गर्नुहोस्। \n"
+" • खण्ड शीर्षक सम्मिलित गर्न <b>सेपरेटर</b> मा क्लिक गर्नुहोस्।</small>"
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>माथिको एउटा फाइल वा उदाहरण चयन गर्नुहोस्।</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>• <b>#</b> परिवर्तन गर्नुहोस् वा समूहहरू अर्डर गर्न <b>माथि / तल सार्नुहोस्</b> प्रयोग गर्नुहोस्। \n"
+" • यसको रेडियो र विभाजकहरू क्रमबद्ध गर्न <b>समूहमा डबल-क्लिक गर्नुहोस्</b> (वा खोल्नुहोस्)। \n"
+" • सामग्री मर्ज गर्न वा सार्न <b>मा सार्नुहोस्...</b> प्रयोग गर्नुहोस्। \n"
+" • रेडियोको फोल्डर बनाउन <b>नयाँ समूह</b> प्रयोग गर्नुहोस्।</small>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<small>• <b>#</b> परिवर्तन गर्नुहोस् वा रेडियोहरू अर्डर गर्न <b>माथि/डाउन</b> प्रयोग गर्नुहोस्। \n"
+" • अफलाइन लिङ्कहरू (रातोमा) पत्ता लगाउन <b>फिडहरू जाँच गर्नुहोस्</b> मा क्लिक गर्नुहोस्। \n"
+" • सक्रिय प्रतिस्थापन स्ट्रिम खोज्न <b>रिपेयर स्ट्रिम...</b> क्लिक गर्नुहोस्। \n"
+" • उपशीर्षक वा विभाजक रेखा सम्मिलित गर्न <b>विभाजक</b> मा क्लिक गर्नुहोस्।</small>"
+
+msgid "Actualiser la liste des exemples"
+msgstr "उदाहरणहरूको सूची ताजा गर्नुहोस्"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "समूह र उपसमूहहरूलाई मद्दत गर्नुहोस्"
+
+msgid "Ajouter"
+msgstr "थप्नुहोस्"
+
+msgid "Annuler"
+msgstr "रद्द गर्नुहोस्"
+
+msgid "Arrêter"
+msgstr "रोक्नुहोस्"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "कुनै पनि bookmarks.xml फाइलहरू बचत गर्न फेला परेन।"
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "कुनै नयाँ रेडियो स्टेशनहरू थपिएका छैनन् (तपाईंको बुकमार्कहरूमा पहिले नै अवस्थित)।"
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "यी मापदण्डहरूको लागि रेडियो-ब्राउजरमा कुनै रेडियो स्टेशनहरू फेला परेनन्।"
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "राष्ट्रिय गुलदस्ता (प्रमुख रिसोर्टहरू)"
+
+msgid "Bouquets par pays"
+msgstr "देश अनुसार गुलदस्ता"
+
+msgid "Bureau graphique & Plateau"
+msgstr "ग्राफिक डेस्क र ट्रे"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "यो स्टेशनमा कुनै अडियो स्ट्रिम URL हरू छैनन्।"
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "XML, CSV, JSON, M3U वा PLS फाइल अपलोड गर्नुहोस्"
+
+msgid "Charger un fichier..."
+msgstr "फाइल लोड गर्नुहोस्..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "अवस्थित समूहहरूबाट छान्नुहोस्"
+
+msgid "Choisir un fichier de radios"
+msgstr "एउटा रेडियो फाइल छान्नुहोस्"
+
+msgid "Collections & Fichiers"
+msgstr "संग्रह र फाइलहरू"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "फाइलमा संगठन राख्नुहोस्"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "तपाईंको संग्रहको पूर्ण ब्याकअप बनाउनुहोस् (फोल्डरहरू र समय क्षेत्रहरू सहित)"
+
+msgid "Disponibilité"
+msgstr "उपलब्धता"
+
+msgid "Disponibilité en direct"
+msgstr "प्रत्यक्ष उपलब्धता"
+
+msgid "Dossier / Groupe"
+msgstr "फोल्डर / समूह"
+
+msgid "Dossier des exemples"
+msgstr "उदाहरण फोल्डर"
+
+msgid "Dossier des signets"
+msgstr "बुकमार्क फोल्डर"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "तपाईंको लिनक्स वातावरणको क्षेत्रीय सेटिङहरू अनुसार स्वचालित पत्ता लगाउने।"
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "वातावरण पत्ता लगाइयो (पढ्न मात्र)"
+
+msgid "Effacer le champ"
+msgstr "खाली क्षेत्र"
+
+msgid "Effacer le filtre langue"
+msgstr "भाषा फिल्टर खाली गर्नुहोस्"
+
+msgid "Effacer le filtre pays"
+msgstr "देश फिल्टर खाली गर्नुहोस्"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "GNOME शेल वातावरण पत्ता लाग्यो"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "बचत गर्दा त्रुटि:"
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "उदाहरण: /फ्रान्स/ज्याज वा / रूटको लागि"
+
+msgid "Exemples thématiques :"
+msgstr "विषयगत उदाहरणहरू:"
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "तालिकामा निर्यात गर्नुहोस् (CSV)..."
+
+msgid "Fichier :"
+msgstr "फाइल:"
+
+msgid "Fichier externe :"
+msgstr "बाह्य फाइल:"
+
+msgid "Fichiers XML (*.xml)"
+msgstr "XML फाइलहरू (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "देश अनुसार फिल्टर गर्नुहोस्:"
+
+msgid "Format & Débit"
+msgstr "ढाँचा र बिटरेट"
+
+msgid "Genre / Tags"
+msgstr "लिङ्ग / ट्यागहरू"
+
+msgid "Genre / Thématique"
+msgstr "विधा / विषयवस्तु"
+
+msgid "Genre :"
+msgstr "लिङ्ग:"
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "अपरिचित प्याकेज प्रबन्धक।"
+
+msgid "Groupe :"
+msgstr "समूह:"
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "Calc वा एक्सेल स्प्रेडसिटको लागि फ्ल्याट सूची उत्पन्न गर्नुहोस्"
+
+msgid "Importer"
+msgstr "आयात गर्नुहोस्"
+
+msgid "Importer & Exporter"
+msgstr "आयात र निर्यात"
+
+msgid "Importer dans mes favoris"
+msgstr "मेरो मनपर्नेमा आयात गर्नुहोस्"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "स्थापना प्रगतिमा (कृपया प्रणाली प्रम्प्ट प्रमाणित गर्नुहोस्)..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "GNOME एकीकरण स्थापना गर्नुहोस्"
+
+msgid "Intégration GNOME requise"
+msgstr "GNOME एकीकरण आवश्यक छ"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "GNOME शीर्षपट्टीमा एकीकरण"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "StatusNotifierItem / XEmbed मार्फत अधिसूचना क्षेत्रमा मूल एकीकरण।"
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "CSV निर्यात सेटिङहरूबाट पहुँचयोग्य छ।"
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "GNOME मा शीर्ष पट्टीमा आइकन प्रदर्शन गर्न AppIndicator विस्तार आवश्यक छ।"
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "स्थापना रद्द वा असफल भयो।"
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "XML ब्याकअप सेटिङहरूबाट पहुँचयोग्य छ।"
+
+msgid "Langue du système"
+msgstr "प्रणाली भाषा"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "विभाजक र अन्तरशीर्षकहरू सुन्न सकिँदैन।"
+
+msgid "Mes Radios"
+msgstr "मेरो रेडियोहरू"
+
+msgid "Mot-clé :"
+msgstr "कीवर्ड:"
+
+msgid "Nouveaux uniquement"
+msgstr "नयाँ मात्र"
+
+msgid "OPTIONS DE SESSION"
+msgstr "सत्र विकल्पहरू"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "समूह र उपसमूहहरूको संगठन (लिनक्स कन्भेन्सन)"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "पहिले यसको रेडियो सुन्न एउटा समूह खोल्नुहोस्।"
+
+msgid "Ouvrir"
+msgstr "खोल्नुहोस्"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "खोल्नुहोस् ~/.config/timonde"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "खोल्नुहोस् ~/.config/timonde/examples"
+
+msgid "Pays"
+msgstr "देश"
+
+msgid "Pays :"
+msgstr "देश:"
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "तपाईँको GNOME डेस्कटपको शीर्ष पट्टीमा सावधानीपूर्वक प्ले आइकन प्रदर्शन गर्न, <b>AppIndicator</b> प्रणाली विस्तार आवश्यक छ।<br/><br/>के तपाईँ यसलाई अहिले स्थापना गर्न चाहनुहुन्छ?"
+
+msgid "Préférences"
+msgstr "प्राथमिकताहरू"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "एउटै समूहमा सबै कुरा आयात गर्नुको सट्टा फाइलमा परिभाषित उपसमूहहरू सुरक्षित गर्नुहोस्।"
+
+msgid "Quitter"
+msgstr "बाहिर निस्कनुहोस्"
+
+msgid "Recharger"
+msgstr "पुन: लोड गर्नुहोस्"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "हाल प्रदर्शित फाइल पुन: लोड गर्नुहोस्"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "नि:शुल्क र सहयोगी <b>रेडियो-ब्राउजर</b> डाइरेक्टरी (+45,000 स्टेशनहरू) मा विश्वव्यापी खोज।"
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "रेडियो ब्राउजरमा खोजी भइरहेको छ..."
+
+msgid "Rechercher"
+msgstr "खोज्नुहोस्"
+
+msgid "Rechercher en ligne"
+msgstr "अनलाइन खोज्नुहोस्"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "चयन गरिएको लिङ्कलाई सक्रिय आधिकारिक फिडसँग बदल्नुहोस्"
+
+msgid "Restaurer exemples"
+msgstr "उदाहरणहरू पुनर्स्थापित गर्नुहोस्"
+
+msgid "Régions & Locales :"
+msgstr "क्षेत्र र स्थानीय:"
+
+msgid "Réparer le flux..."
+msgstr "प्रवाह ठीक गर्नुहोस् ..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "मूल 19 उदाहरणहरू पुनर्स्थापित गर्नुहोस्"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "खोजशब्द प्रविष्ट गर्नुहोस् वा डाइरेक्टरी अन्वेषण गर्न खोज क्लिक गर्नुहोस्।"
+
+msgid "Sauvegarde réussie !"
+msgstr "ब्याकअप सफल भयो!"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "मेरो रेडियोहरू (XML) बचत गर्नुहोस्..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "मेरो बुकमार्क (XML) बचत गर्नुहोस्"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "बुकमार्कहरू र रेडियोहरू सफलतापूर्वक सुरक्षित गरियो!"
+
+msgid "Station"
+msgstr "रिसोर्ट"
+
+msgid "Statut Favoris"
+msgstr "मनपर्ने स्थिति"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "146 देशहरू र क्षेत्रहरू (DAB+ डिजिटल गुलदस्ता र प्रमुख राष्ट्रिय स्टेशनहरू) बाट आधिकारिक र प्रमाणित चयन।"
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "यसलाई सुन्नको लागि रेडियो चयन गर्नुहोस्।"
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "यसलाई सुन्नको लागि तालिकाबाट एउटा स्टेशन चयन गर्नुहोस्।"
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "एउटा देश टाइप गर्नुहोस् (उदाहरण: फ्रान्स, डचल्याण्ड, क्यानाडा...)"
+
+msgid "Tester"
+msgstr "परीक्षण"
+
+msgid "Tester les flux"
+msgstr "परीक्षण प्रवाह"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "TiMonde - GNOME डेस्कटप एकीकरण"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "सबै फाइलहरू (*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "सबै देश (विश्व)"
+
+msgid "Tout cocher"
+msgstr "सबै जाँच गर्नुहोस्"
+
+msgid "Tout décocher"
+msgstr "सबै अनचेक गर्नुहोस्"
+
+msgid "Toutes les langues"
+msgstr "सबै भाषाहरू"
+
+msgid "URL du flux"
+msgstr "फिड URL"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "कृपया सुन्नको लागि सूचीबाट एउटा रेडियो चयन गर्नुहोस्।"
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "तपाईंका पूर्ण बुकमार्कहरू यसमा सुरक्षित गरिएका छन्:"
+
+msgid "Votes"
+msgstr "भोटहरू"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "लिङ्क उपलब्धता लाइभ जाँच गर्नुहोस्"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "प्रत्यक्ष रेडियो उपलब्धता जाँच गर्नुहोस्"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "फेला परेका रेडियोहरूको प्रत्यक्ष उपलब्धता जाँच गर्नुहोस्"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "लिङ्क वैधता जाँच गर्नुहोस् र स्ट्रिम पूर्वावलोकन गर्नुहोस्"
+
+msgid "ajoutée avec succès !"
+msgstr "सफलतापूर्वक थपियो!"
+
+msgid "fichiers exemples restaurés."
+msgstr "पुनर्स्थापित नमूना फाइलहरू।"
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "नयाँ रेडियो(हरू) आयात गरियो!"
+
+msgid "Écouter"
+msgstr "सुन्नुहोस्"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "चयन गरिएको रेडियो सुन्नुहोस्"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "चयन गरिएको रेडियो सुन्नुहोस् वा परीक्षण गर्नुहोस्"
+

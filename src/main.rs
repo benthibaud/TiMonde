@@ -90,6 +90,7 @@ fn ensure_config_examples(config_dir: &Path) {
     if needs_population {
         let candidates = [
             PathBuf::from("/usr/share/timonde/examples"),
+            #[cfg(debug_assertions)]
             PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/data/examples")),
         ];
         for source_dir in &candidates {
@@ -142,6 +143,7 @@ fn ensure_sni_host() -> Option<std::process::Child> {
         info!("Aucun StatusNotifierWatcher détecté sur le bureau hôte (IceWM/Fluxbox).");
         let candidates = [
             "/usr/share/timonde/scripts/timonde_xembed_bridge.py",
+            #[cfg(debug_assertions)]
             concat!(env!("CARGO_MANIFEST_DIR"), "/data/scripts/timonde_xembed_bridge.py"),
         ];
         for script in &candidates {
@@ -159,6 +161,45 @@ fn ensure_sni_host() -> Option<std::process::Child> {
         }
     }
     None
+}
+
+/// Vérifie l'intégration du bureau hôte.
+/// Si l'environnement actif est GNOME Shell et que le support AppIndicator est manquant,
+/// propose l'assistant graphique d'installation. Si l'utilisateur refuse ou annule,
+/// retourne false pour interrompre le démarrage sans laisser tourner d'application invisible.
+fn ensure_desktop_integration() -> bool {
+    let candidates = [
+        "/usr/share/timonde/scripts/gnome_tray_helper.py",
+        concat!(env!("CARGO_MANIFEST_DIR"), "/data/scripts/gnome_tray_helper.py"),
+    ];
+    for script in &candidates {
+        if Path::new(script).exists() {
+            // Test rapide non-intrusif
+            if let Ok(st) = std::process::Command::new("python3")
+                .arg(script)
+                .arg("--check")
+                .status()
+            {
+                if st.code() == Some(1) {
+                    info!("Environnement GNOME Shell détecté sans support AppIndicator. Lancement de l'assistant...");
+                    if let Ok(prompt_st) = std::process::Command::new("python3")
+                        .arg(script)
+                        .arg("--prompt")
+                        .status()
+                    {
+                        if !prompt_st.success() {
+                            info!("Installation de l'intégration GNOME ignorée ou annulée. Arrêt propre de TiMonde.");
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
+                }
+            }
+            break;
+        }
+    }
+    true
 }
 
 fn main() {
@@ -502,6 +543,11 @@ fn main() {
     // 2. Protection instance unique (évite les doublons d'icônes dans la barre des tâches)
     if mpris::is_instance_running() {
         println!("TiMonde est déjà actif dans la barre des tâches.");
+        return;
+    }
+
+    // 3. Vérification de l'intégration du bureau (assistant interactif sous GNOME si AppIndicator manque)
+    if !ensure_desktop_integration() {
         return;
     }
 

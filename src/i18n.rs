@@ -2,10 +2,10 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::Read;
 use std::path::{Path, PathBuf};
-use std::sync::OnceLock;
+use std::sync::{OnceLock, RwLock};
 
-static TRANSLATIONS: OnceLock<HashMap<String, String>> = OnceLock::new();
-static CURRENT_LANG: OnceLock<String> = OnceLock::new();
+static TRANSLATIONS: OnceLock<RwLock<HashMap<String, &'static str>>> = OnceLock::new();
+static CURRENT_LANG: OnceLock<RwLock<String>> = OnceLock::new();
 
 /// Normalise le code langue système en identifiant POSIX/Gettext
 /// Gère la distinction entre Mandarin (zh_CN) et Cantonais/Traditionnel (zh_TW)
@@ -42,19 +42,26 @@ fn detect_system_language() -> String {
 }
 
 /// Tente de charger le fichier binaire Gettext .mo correspondant à la langue
-fn load_mo_file(lang: &str) -> Option<HashMap<String, String>> {
+fn load_mo_file(lang: &str) -> Option<HashMap<String, &'static str>> {
     if lang == "en" || lang.is_empty() {
         return None;
     }
 
     let home = std::env::var("HOME").unwrap_or_default();
-    let candidates = [
-        PathBuf::from(env!("CARGO_MANIFEST_DIR")).join(format!("po/locale/{}/LC_MESSAGES/timonde.mo", lang)),
+    let mut candidates = Vec::new();
+    #[cfg(debug_assertions)]
+    {
+        candidates.push(
+            PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+                .join(format!("po/locale/{}/LC_MESSAGES/timonde.mo", lang)),
+        );
+    }
+    candidates.extend([
         PathBuf::from(&home).join(format!(".local/share/locale/{}/LC_MESSAGES/timonde.mo", lang)),
         PathBuf::from(format!("po/locale/{}/LC_MESSAGES/timonde.mo", lang)),
         PathBuf::from(format!("/usr/share/locale/{}/LC_MESSAGES/timonde.mo", lang)),
         PathBuf::from(format!("/usr/local/share/locale/{}/LC_MESSAGES/timonde.mo", lang)),
-    ];
+    ]);
 
     for path in &candidates {
         if path.exists() {
@@ -67,7 +74,7 @@ fn load_mo_file(lang: &str) -> Option<HashMap<String, String>> {
 }
 
 /// Analyseur du format binaire standard GNU Gettext (.mo)
-fn parse_mo_file(path: &Path) -> Result<HashMap<String, String>, String> {
+fn parse_mo_file(path: &Path) -> Result<HashMap<String, &'static str>, String> {
     let mut file = File::open(path).map_err(|e| e.to_string())?;
     let mut buffer = Vec::new();
     file.read_to_end(&mut buffer).map_err(|e| e.to_string())?;
@@ -106,7 +113,8 @@ fn parse_mo_file(path: &Path) -> Result<HashMap<String, String>, String> {
                 std::str::from_utf8(&buffer[trans_off..trans_off + trans_len]),
             ) {
                 if !orig_str.is_empty() && !trans_str.is_empty() {
-                    map.insert(orig_str.to_string(), trans_str.to_string());
+                    let leaked: &'static str = Box::leak(trans_str.to_string().into_boxed_str());
+                    map.insert(orig_str.to_string(), leaked);
                 }
             }
         }
@@ -118,10 +126,23 @@ fn parse_mo_file(path: &Path) -> Result<HashMap<String, String>, String> {
 /// Initialise le gestionnaire de langues au lancement de TiMonde
 pub fn init_locale() {
     let lang = detect_system_language();
-    let _ = CURRENT_LANG.set(lang.clone());
-
     let map = load_mo_file(&lang).unwrap_or_default();
-    let _ = TRANSLATIONS.set(map);
+
+    if let Some(lock) = CURRENT_LANG.get() {
+        if let Ok(mut guard) = lock.write() {
+            *guard = lang;
+        }
+    } else {
+        let _ = CURRENT_LANG.set(RwLock::new(lang));
+    }
+
+    if let Some(lock) = TRANSLATIONS.get() {
+        if let Ok(mut guard) = lock.write() {
+            *guard = map;
+        }
+    } else {
+        let _ = TRANSLATIONS.set(RwLock::new(map));
+    }
 }
 
 /// Permet de forcer une langue (pour tests ou sélecteur)
@@ -130,23 +151,24 @@ pub fn set_language(lang_code: &str) {
     let lang = normalize_lang_code(lang_code);
     let map = load_mo_file(&lang).unwrap_or_default();
 
-    // Remplacement statique sécurisé
-    unsafe {
-        let ptr = &TRANSLATIONS as *const OnceLock<HashMap<String, String>> as *mut OnceLock<HashMap<String, String>>;
-        *ptr = OnceLock::new();
-        let _ = (*ptr).set(map);
+    let lock = TRANSLATIONS.get_or_init(|| RwLock::new(HashMap::new()));
+    if let Ok(mut guard) = lock.write() {
+        *guard = map;
+    }
 
-        let lang_ptr = &CURRENT_LANG as *const OnceLock<String> as *mut OnceLock<String>;
-        *lang_ptr = OnceLock::new();
-        let _ = (*lang_ptr).set(lang);
+    let lang_lock = CURRENT_LANG.get_or_init(|| RwLock::new(String::new()));
+    if let Ok(mut guard) = lang_lock.write() {
+        *guard = lang;
     }
 }
 
-/// Traduit un texte pivot anglais vers la langue active
+/// Traduit un texte pivot anglais vers la langue active (zéro allocation à l'appel)
 pub fn tr(msg: &'static str) -> &'static str {
-    if let Some(map) = TRANSLATIONS.get() {
-        if let Some(trans) = map.get(msg) {
-            return Box::leak(trans.clone().into_boxed_str());
+    if let Some(lock) = TRANSLATIONS.get() {
+        if let Ok(map) = lock.read() {
+            if let Some(&trans) = map.get(msg) {
+                return trans;
+            }
         }
     }
     msg

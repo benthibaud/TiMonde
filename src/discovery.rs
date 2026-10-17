@@ -11,20 +11,29 @@ static CACHED_BOUQUET_STATIONS: OnceLock<Vec<Station>> = OnceLock::new();
 
 /// Recherche l'emplacement du répertoire des bouquets DAB+/mondiaux
 pub fn find_bouquets_dir() -> Option<PathBuf> {
+    if let Ok(exe) = std::env::current_exe() {
+        if let Some(exe_dir) = exe.parent() {
+            let candidate_dev = exe_dir.join("../../data/bouquets");
+            if candidate_dev.is_dir() {
+                return Some(candidate_dev);
+            }
+        }
+    }
+
+    let candidate_rel = PathBuf::from("data/bouquets");
+    if candidate_rel.is_dir() {
+        return Some(candidate_rel);
+    }
+
     let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
-    let candidate1 = PathBuf::from(&home).join(".local/share/timonde/bouquets");
-    if candidate1.is_dir() {
-        return Some(candidate1);
+    let candidate_user = PathBuf::from(&home).join(".local/share/timonde/bouquets");
+    if candidate_user.is_dir() {
+        return Some(candidate_user);
     }
 
-    let candidate2 = PathBuf::from("data/bouquets");
-    if candidate2.is_dir() {
-        return Some(candidate2);
-    }
-
-    let candidate3 = PathBuf::from("/usr/share/timonde/bouquets");
-    if candidate3.is_dir() {
-        return Some(candidate3);
+    let candidate_sys = PathBuf::from("/usr/share/timonde/bouquets");
+    if candidate_sys.is_dir() {
+        return Some(candidate_sys);
     }
 
     None
@@ -32,20 +41,29 @@ pub fn find_bouquets_dir() -> Option<PathBuf> {
 
 /// Recherche l'emplacement du répertoire des fichiers exemples thématiques & musicaux
 pub fn find_examples_dir() -> Option<PathBuf> {
+    if let Ok(exe) = std::env::current_exe() {
+        if let Some(exe_dir) = exe.parent() {
+            let candidate_dev = exe_dir.join("../../data/examples");
+            if candidate_dev.is_dir() {
+                return Some(candidate_dev);
+            }
+        }
+    }
+
+    let candidate_rel = PathBuf::from("data/examples");
+    if candidate_rel.is_dir() {
+        return Some(candidate_rel);
+    }
+
     let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
-    let candidate1 = PathBuf::from(&home).join(".local/share/timonde/examples");
-    if candidate1.is_dir() {
-        return Some(candidate1);
+    let candidate_user = PathBuf::from(&home).join(".local/share/timonde/examples");
+    if candidate_user.is_dir() {
+        return Some(candidate_user);
     }
 
-    let candidate2 = PathBuf::from("data/examples");
-    if candidate2.is_dir() {
-        return Some(candidate2);
-    }
-
-    let candidate3 = PathBuf::from("/usr/share/timonde/examples");
-    if candidate3.is_dir() {
-        return Some(candidate3);
+    let candidate_sys = PathBuf::from("/usr/share/timonde/examples");
+    if candidate_sys.is_dir() {
+        return Some(candidate_sys);
     }
 
     None
@@ -64,7 +82,7 @@ pub fn parse_bouquet_xml_str(content: &str) -> Vec<Station> {
         match reader.read_event_into(&mut buf) {
             Ok(Event::Start(ref e)) | Ok(Event::Empty(ref e)) => {
                 let tag_name = e.name();
-                if tag_name.as_ref() == b"bouquet" {
+                if tag_name.as_ref() == b"bouquet" || tag_name.as_ref() == b"group" {
                     for attr in e.attributes().flatten() {
                         if attr.key.as_ref() == b"country" {
                             if let Ok(val) = std::str::from_utf8(&attr.value) {
@@ -72,9 +90,11 @@ pub fn parse_bouquet_xml_str(content: &str) -> Vec<Station> {
                             }
                         }
                     }
-                } else if tag_name.as_ref() == b"station" {
+                } else if tag_name.as_ref() == b"station" || tag_name.as_ref() == b"bookmark" {
                     let mut name = String::new();
                     let mut url = String::new();
+                    let mut st_country: Option<String> = None;
+                    let mut st_timezone: Option<String> = None;
                     let mut is_offline = false;
 
                     for attr in e.attributes().flatten() {
@@ -89,6 +109,22 @@ pub fn parse_bouquet_xml_str(content: &str) -> Vec<Station> {
                                     url = val.trim().to_string();
                                 }
                             }
+                            b"country" | b"countrycode" => {
+                                if let Ok(val) = std::str::from_utf8(&attr.value) {
+                                    let c = val.trim().to_uppercase();
+                                    if !c.is_empty() {
+                                        st_country = Some(c);
+                                    }
+                                }
+                            }
+                            b"timezone" | b"tz" => {
+                                if let Ok(val) = std::str::from_utf8(&attr.value) {
+                                    let tz = val.trim().to_string();
+                                    if !tz.is_empty() {
+                                        st_timezone = Some(tz);
+                                    }
+                                }
+                            }
                             b"status" => {
                                 if let Ok(val) = std::str::from_utf8(&attr.value) {
                                     if val.trim().eq_ignore_ascii_case("offline") {
@@ -100,10 +136,17 @@ pub fn parse_bouquet_xml_str(content: &str) -> Vec<Station> {
                         }
                     }
 
-                    if !is_offline && !name.is_empty() && !url.is_empty() {
-                        let st = match &country_code {
-                            Some(c) if !c.is_empty() => Station::with_country(name, url, c),
-                            _ => Station::new(name, url),
+                    if !is_offline && !name.is_empty() && !url.is_empty() && !name.starts_with("[separator") {
+                        let final_country = st_country.or_else(|| country_code.clone());
+                        let st = match (final_country, st_timezone) {
+                            (Some(c), Some(tz)) => Station::with_timezone(name, url, c, tz),
+                            (Some(c), None) => Station::with_country(name, url, c),
+                            (None, Some(tz)) => {
+                                let mut s = Station::new(name, url);
+                                s.timezone = Some(tz);
+                                s
+                            }
+                            (None, None) => Station::new(name, url),
                         };
                         stations.push(st);
                     }
@@ -122,75 +165,21 @@ pub fn parse_bouquet_xml_str(content: &str) -> Vec<Station> {
     stations
 }
 
-/// Analyse un fichier bouquet individuel sur le disque
+/// Analyse un fichier bouquet individuel sur le disque (en excluant les stations status="offline")
 pub fn parse_bouquet_file(path: &Path) -> Vec<Station> {
-    let file = match File::open(path) {
+    let mut file = match File::open(path) {
         Ok(f) => f,
         Err(e) => {
             log::warn!("Impossible d'ouvrir le fichier bouquet {:?} : {}", path, e);
             return Vec::new();
         }
     };
-
-    let mut reader = Reader::from_reader(BufReader::new(file));
-    reader.config_mut().trim_text(true);
-
-    let mut stations = Vec::new();
-    let mut country_code = None;
-    let mut buf = Vec::new();
-
-    loop {
-        match reader.read_event_into(&mut buf) {
-            Ok(Event::Start(ref e)) | Ok(Event::Empty(ref e)) => {
-                let tag_name = e.name();
-                if tag_name.as_ref() == b"bouquet" {
-                    for attr in e.attributes().flatten() {
-                        if attr.key.as_ref() == b"country" {
-                            if let Ok(val) = std::str::from_utf8(&attr.value) {
-                                country_code = Some(val.trim().to_uppercase());
-                            }
-                        }
-                    }
-                } else if tag_name.as_ref() == b"station" {
-                    let mut name = String::new();
-                    let mut url = String::new();
-
-                    for attr in e.attributes().flatten() {
-                        match attr.key.as_ref() {
-                            b"name" => {
-                                if let Ok(val) = std::str::from_utf8(&attr.value) {
-                                    name = val.trim().to_string();
-                                }
-                            }
-                            b"url" => {
-                                if let Ok(val) = std::str::from_utf8(&attr.value) {
-                                    url = val.trim().to_string();
-                                }
-                            }
-                            _ => {}
-                        }
-                    }
-
-                    if !name.is_empty() && !url.is_empty() {
-                        let st = match &country_code {
-                            Some(c) if !c.is_empty() => Station::with_country(name, url, c),
-                            _ => Station::new(name, url),
-                        };
-                        stations.push(st);
-                    }
-                }
-            }
-            Ok(Event::Eof) => break,
-            Err(e) => {
-                log::warn!("Erreur parsing bouquet {:?} : {}", path, e);
-                break;
-            }
-            _ => {}
-        }
-        buf.clear();
+    let mut content = String::new();
+    if let Err(e) = BufReader::new(&mut file).read_to_string(&mut content) {
+        log::warn!("Erreur lecture bouquet {:?} : {}", path, e);
+        return Vec::new();
     }
-
-    stations
+    parse_bouquet_xml_str(&content)
 }
 
 /// Charge l'intégralité du catalogue des bouquets locaux en mémoire
@@ -350,5 +339,25 @@ mod tests {
             assert!(!st.name.is_empty());
             assert!(!st.url.is_empty());
         }
+    }
+
+    #[test]
+    fn test_parse_bookmarks_xml_with_country_and_timezone() {
+        let xml = r#"<?xml version="1.0" encoding="utf-8"?>
+<bookmarks>
+    <group name="Musique Celtique &amp; Irlandaise">
+        <bookmark name="CAROCelt - Bretagne" url="https://carocelt.ice.infomaniak.ch/carocelt-128.mp3" country="FR" timezone="Europe/Paris"/>
+        <bookmark name="Irish Pub Radio" url="http://solid24.streamupsolutions.com:8026/stream" country="IE" timezone="Europe/Dublin"/>
+    </group>
+</bookmarks>"#;
+
+        let stations = parse_bouquet_xml_str(xml);
+        assert_eq!(stations.len(), 2);
+        assert_eq!(stations[0].name, "CAROCelt - Bretagne");
+        assert_eq!(stations[0].country, Some("FR".to_string()));
+        assert_eq!(stations[0].timezone, Some("Europe/Paris".to_string()));
+        assert_eq!(stations[1].name, "Irish Pub Radio");
+        assert_eq!(stations[1].country, Some("IE".to_string()));
+        assert_eq!(stations[1].timezone, Some("Europe/Dublin".to_string()));
     }
 }

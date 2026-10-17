@@ -36,10 +36,6 @@ def get_translator():
     env_lang = os.environ.get("LC_ALL") or os.environ.get("LC_MESSAGES") or os.environ.get("LANG") or "en"
     lang_code = normalize_lang_code(env_lang)
 
-    if lang_code == "en":
-        _CURRENT_TRANSLATOR = lambda s: s
-        return _CURRENT_TRANSLATOR
-
     for ldir in LOCALE_DIRS:
         mo_file = os.path.join(ldir, lang_code, "LC_MESSAGES", "timonde.mo")
         if os.path.exists(mo_file):

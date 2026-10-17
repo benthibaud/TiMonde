@@ -20,6 +20,12 @@ gi.require_version("DbusmenuGtk3", "0.4")
 from gi.repository import Gtk, DbusmenuGtk3, GLib
 import dbus
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    from timonde_common import style_dbusmenu_gtk
+except ImportError:
+    def style_dbusmenu_gtk(_m, is_root=True): pass
+
 def main():
     bus_name = None
     menu_path = "/MenuBar"
@@ -49,6 +55,7 @@ def main():
 
     def on_ready():
         menu.show_all()
+        style_dbusmenu_gtk(menu)
         # Ouvrir le menu à la position du curseur
         menu.popup(None, None, None, None, 1, Gtk.get_current_event_time())
         return False

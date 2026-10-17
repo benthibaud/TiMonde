@@ -1,14 +1,16 @@
-# TiMonde — ET Translation
+# TiMonde — Traduction ET
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: et\n"
 
 msgid "Play"
 msgstr "Esita"
@@ -26,124 +28,124 @@ msgid "Delete"
 msgstr "Kustuta"
 
 msgid "Zap to another random station"
-msgstr ""
+msgstr "Lülitage teisele juhuslikule raadiole"
 
 msgid "Play random radio (Ephemeral discovery)"
-msgstr ""
+msgstr "Kuulake juhuslikku raadiojaama (lühiajaline avastus)"
 
 msgid "[ Ephemeral]"
-msgstr ""
+msgstr "[ Lühiajaline]"
 
 msgid "Options"
 msgstr "Valikud"
 
 msgid "Add a station..."
-msgstr ""
+msgstr "Lisa raadio..."
 
 msgid "Discover & Import stations..."
-msgstr ""
+msgstr "Avastage ja importige raadiod..."
 
 msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr ""
+msgstr "Importige minu failid (XML, CSV, JSON, M3U)..."
 
 msgid "Manage groups and stations..."
-msgstr ""
+msgstr "Klassifitseerige rühmi ja raadioid..."
 
 msgid "Open bookmarks.xml"
-msgstr ""
+msgstr "Avage järjehoidjad.xml"
 
 msgid "Quit TiMonde"
-msgstr ""
+msgstr "Jäta TiMonde"
 
 msgid "Mute (0%)"
-msgstr ""
+msgstr "Vaigista (0%)"
 
 msgid "Sleep timer"
-msgstr ""
+msgstr "Unetaimer"
 
 msgid "In 15 minutes"
-msgstr ""
+msgstr "15 minuti pärast"
 
 msgid "In 30 minutes"
-msgstr ""
+msgstr "30 minuti pärast"
 
 msgid "In 45 minutes"
-msgstr ""
+msgstr "45 minuti pärast"
 
 msgid "In 60 minutes (1h)"
-msgstr ""
+msgstr "60 minuti pärast (1 tund)"
 
 msgid "Cancel sleep timer"
-msgstr ""
+msgstr "Tühista uni"
 
 msgid "Discover & Import stations (TiMonde)"
-msgstr ""
+msgstr "Avastage ja importige raadiojaamu (TiMonde)"
 
 msgid "Verified DAB+ Bouquets"
-msgstr ""
+msgstr "Kinnitatud kimbud (DAB+)"
 
 msgid "Radio-Browser Search"
-msgstr ""
+msgstr "Otsi raadiobrauserist"
 
 msgid "Sample Files"
-msgstr ""
+msgstr "Näidisfailid"
 
 msgid "Import my files"
-msgstr ""
+msgstr "Importige minu failid"
 
 msgid "<b> Country:</b>"
-msgstr ""
+msgstr "<b>Riik:</b>"
 
 msgid "<b>Language:</b>"
-msgstr ""
+msgstr "<b>Keel:</b>"
 
 msgid "Name / Keyword:"
-msgstr ""
+msgstr "Nimi/märksõna:"
 
 msgid "Genre:"
-msgstr ""
+msgstr "Sugu:"
 
 msgid "<b>Sample file:</b>"
-msgstr ""
+msgstr "<b>Näidisfail:</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr ""
+msgstr "<b>Rühma nimi teie lemmikute hulgas:</b>"
 
 msgid "Select all"
-msgstr ""
+msgstr "Kontrollige kõiki"
 
 msgid "Deselect all"
-msgstr ""
+msgstr "Tühjendage kõik"
 
 msgid "Import into favorites"
-msgstr ""
+msgstr "Impordi minu lemmikute hulka"
 
 msgid "Close"
 msgstr "Sulge"
 
 msgid "Add a station (TiMonde)"
-msgstr ""
+msgstr "Lisa jaam (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
-msgstr ""
+msgstr "<b>Sisestage uue raadio teave:</b>"
 
 msgid "Add to my stations"
-msgstr ""
+msgstr "Lisa minu raadiotele"
 
 msgid "Save station to favorites (TiMonde)"
-msgstr ""
+msgstr "Salvesta raadio minu lemmikute hulka (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr ""
+msgstr "<b>Hoidke see juhuslikult avastatud raadiojaam oma lemmikute hulgas:</b>"
 
 msgid "Keep in favorites"
-msgstr ""
+msgstr "Salvesta minu lemmikute hulka"
 
 msgid "Edit station (TiMonde)"
-msgstr ""
+msgstr "Redigeeri raadiot (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr ""
+msgstr "<b>Muutke jaama seadeid:</b>"
 
 msgid "Save"
 msgstr "Salvesta"
@@ -152,82 +154,82 @@ msgid "Station name:"
 msgstr "Jaama nimi:"
 
 msgid "Audio stream URL:"
-msgstr ""
+msgstr "Helivoo URL:"
 
 msgid "Group / Folder:"
-msgstr ""
+msgstr "Rühm/kaust:"
 
 msgid "Country & Timezone:"
-msgstr ""
+msgstr "Riik ja ajavöönd:"
 
 msgid "Timezone:"
-msgstr ""
+msgstr "Ajavöönd:"
 
 msgid "Delete this station"
-msgstr ""
+msgstr "Kustuta see raadio"
 
 msgid "Cancel"
 msgstr "Loobu"
 
 msgid "Delete « {} » from favorites?"
-msgstr ""
+msgstr "Kas eemaldada \"{}\" lemmikutest?"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr ""
+msgstr "See toiming eemaldab selle jaama jäädavalt teie kogust."
 
 msgid "Manage groups, stations and separators (TiMonde)"
-msgstr ""
+msgstr "Rühmade, raadiote ja eraldajate haldamine (TiMonde)"
 
 msgid "Back to groups"
-msgstr ""
+msgstr "⬅ Tagasi gruppide juurde"
 
 msgid "Add station"
-msgstr ""
+msgstr "Lisa raadio"
 
 msgid "Open"
-msgstr ""
+msgstr "Avatud"
 
 msgid "New group"
-msgstr ""
+msgstr "Uus grupp"
 
 msgid "Move to..."
-msgstr ""
+msgstr "Teisalda..."
 
 msgid "Top"
-msgstr ""
+msgstr "Esiteks"
 
 msgid "Move up"
-msgstr ""
+msgstr "⬆ Mine üles"
 
 msgid "Move down"
-msgstr ""
+msgstr "⬇ Mine alla"
 
 msgid "Separator"
-msgstr ""
+msgstr "Eraldaja"
 
 msgid "Sort A-Z"
-msgstr ""
+msgstr "Sorteeri A–Z"
 
 msgid "Save and reload"
-msgstr ""
+msgstr "Salvestage ja laadige uuesti"
 
 msgid "Same time"
-msgstr ""
+msgstr "Samal ajal"
 
 msgid "Dawn"
-msgstr ""
+msgstr "Koit"
 
 msgid "Morning"
-msgstr ""
+msgstr "Hommik"
 
 msgid "Daytime"
-msgstr ""
+msgstr "Päeval"
 
 msgid "Evening"
-msgstr ""
+msgstr "Õhtu"
 
 msgid "Night"
-msgstr ""
+msgstr "Öö"
 
 msgid "Tomorrow"
 msgstr "Homme"
@@ -236,64 +238,64 @@ msgid "Yesterday"
 msgstr "Eile"
 
 msgid "Maintenance & Data"
-msgstr ""
+msgstr "Hooldus ja andmed"
 
 msgid "Check streams (dead links)..."
-msgstr ""
+msgstr "Kontrolli vooge (surnud linke)..."
 
 msgid "Export my stations to CSV..."
-msgstr ""
+msgstr "Ekspordi minu raadiod CSV-sse..."
 
 msgid "Check streams"
-msgstr ""
+msgstr "Kontrollige vooge"
 
 msgid "Dead links only"
-msgstr ""
+msgstr "Ainult surnud lingid"
 
 msgid "Apply redirects"
-msgstr ""
+msgstr "Rakenda ümbersuunamisi"
 
 msgid "Repair stream..."
-msgstr ""
+msgstr "Voolu parandamine..."
 
 msgid "Export to CSV"
-msgstr ""
+msgstr "Ekspordi CSV-sse"
 
 msgid "Test stream availability and locate broken links"
-msgstr ""
+msgstr "Testige oma raadiojaamade saadavust ja leidke surnud lingid"
 
 msgid "Display offline radio streams only"
-msgstr ""
+msgstr "Kuva ainult need raadiojaamad, mille voog on võrguühenduseta"
 
 msgid "Automatically update redirected streams to direct URL"
-msgstr ""
+msgstr "Värskendage automaatselt nende otsesele URL-ile suunatud vooge"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
+msgstr "Otsige selle surnud lingi jaoks automaatselt raadio-brauseris asendusaktiivset voogu"
 
 msgid "Export all stations to CSV spreadsheet format"
-msgstr ""
+msgstr "Eksportige kõik oma raadiod CSV-arvutustabeli vormingus"
 
 msgid "Export my stations to CSV"
-msgstr ""
+msgstr "Ekspordi minu raadiod CSV-vormingusse"
 
 msgid "CSV files (*.csv)"
-msgstr ""
+msgstr "CSV-failid (*.csv)"
 
 msgid "All files (*.*)"
-msgstr ""
+msgstr "Kõik failid (*.*)"
 
 msgid "Export"
-msgstr ""
+msgstr "Ekspordi"
 
 msgid "Export successful!"
-msgstr ""
+msgstr "Eksport õnnestus!"
 
 msgid "Error during CSV export:"
-msgstr ""
+msgstr "Viga CSV eksportimisel:"
 
 msgid "station(s) saved to:"
-msgstr ""
+msgstr "raadio(d) salvestatud:"
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "Seaded..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "Lisa raadio (TiMonde)"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "Lisa minu raadiotele"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "Uusi raadioid pole lisatud (juba olemas)."
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "DAB+ lillekimbud ja ametlikud valikud"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "Salvesta minu lemmikute hulka"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "Hoidke raadio lemmikute hulgas (TiMonde)"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "Ava fail:"
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "Avastage ja importige raadiojaamu (TiMonde)"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "Salvesta"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "Täitmise viga:"
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "JSON-i impordi viga:"
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "Viga automaatse käivitamise muutmisel."
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "Avasta DAB+..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "CSV eksportimine lõpetatud."
 
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "Sule"
 
 msgid "Fichiers exemples"
 msgstr "Sample Files"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "Importige isiklikud failid"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "Impordi fail..."
 
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "Kausta ei saa avada:"
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "Menüü õhutamiseks sisestage oma rühmadesse eraldajad (---) või jaotiste pealkirjad."
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "Muudatusi arvesse võetud."
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "Redigeeri raadiot (TiMonde)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "Ava kaust"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "Sirvi..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "Globaalne raadiootsingu brauser"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "Otsi..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "Järjehoidjad on edukalt ümber korraldatud ja salvestatud!"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "Kustuta"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,7 +653,7 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "aastal taastatud näidisfailid"
 
 msgid "online"
 msgstr "online"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ Organisatsioon"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 Visuaalne paigutusnõuanne"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 Andmed ja failid"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻 raamatukogu"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️ Üldine"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>• Muutke <b>#</b> või kasutage rühmade järjestamiseks käsku <b>Liiguta üles/alla</b>.\n"
+"• <b>Topeltklõpsake rühmal</b> (või Ava), et sortida selle raadiod ja jaoturid.\n"
+"• Sisu teise rühma liitmiseks või teisaldamiseks kasutage käsku <b>Teisalda...</b>.\n"
+"• Kasutage raadiote kausta lisamiseks <b>Uus grupp</b>.</small>"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<small>• Muutke <b>#</b> või kasutage raadiote sortimiseks käsku <b>Liiguta üles/alla</b>. \n"
+" • Surnud linkide (punane) tuvastamiseks ja nende parandamiseks klõpsake <b>Kontrolli vooge</b>. \n"
+" • Klõpsake valikul <b>Paranda voog...</b>, et otsida raadiobrauseris asendusaktiivset voogu. \n"
+" • Klõpsake jaotise päise sisestamiseks <b>Eraldaja</b>.</small>"
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>Valige ülalt fail või näide.</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>• Muutke <b>#</b> või kasutage rühmade järjestamiseks käsku <b>Liiguta üles/alla</b>.\n"
+"• <b>Topeltklõpsake rühmal</b> (või Avage), et sortida selle raadiod ja eraldajad.\n"
+"• Kasutage sisu liitmiseks või teisaldamiseks käsku <b>Teisalda asukohta...</b>.\n"
+"• Kasutage raadiote kausta loomiseks <b>Uus grupp</b>.</small>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<small>• Muutke <b>#</b> või kasutage raadiote tellimiseks käsku <b>Liiguta üles/alla</b>. \n"
+" • Võrguühenduseta linkide leidmiseks (punasega) klõpsake <b>Kontrolli vooge</b>. \n"
+" • Aktiivse asendusvoo otsimiseks klõpsake <b>Paranda voog...</b>. \n"
+" • Subtiitrite või eraldusrea lisamiseks klõpsake <b>Eraldaja</b>.</small>"
+
+msgid "Actualiser la liste des exemples"
+msgstr "Värskenda näidete loendit"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "Abi rühmade ja alarühmadega"
+
+msgid "Ajouter"
+msgstr "Lisa"
+
+msgid "Annuler"
+msgstr "Tühista"
+
+msgid "Arrêter"
+msgstr "Peatus"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "Salvestatavaid faile bookmarks.xml ei leitud."
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "Uusi raadiojaamu pole lisatud (on juba teie järjehoidjate hulgas)."
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "Nende kriteeriumide jaoks ei leitud Radio-Browserist ühtegi raadiojaama."
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "Rahvuslik kimp (suured kuurordid)"
+
+msgid "Bouquets par pays"
+msgstr "Kimbud riigiti"
+
+msgid "Bureau graphique & Plateau"
+msgstr "Graafiline laud ja kandik"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "Sellel jaamal pole helivoo URL-e."
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "Laadige üles XML-, CSV-, JSON-, M3U- või PLS-fail"
+
+msgid "Charger un fichier..."
+msgstr "Laadi fail..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "Valige olemasolevate rühmade hulgast"
+
+msgid "Choisir un fichier de radios"
+msgstr "Valige raadiofail"
+
+msgid "Collections & Fichiers"
+msgstr "Kogud ja failid"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "Hoidke organisatsioon failis"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "Looge oma kogust täielik varukoopia (koos kaustade ja ajavöönditega)"
+
+msgid "Disponibilité"
+msgstr "Kättesaadavus"
+
+msgid "Disponibilité en direct"
+msgstr "Saadavus reaalajas"
+
+msgid "Dossier / Groupe"
+msgstr "Kaust / rühm"
+
+msgid "Dossier des exemples"
+msgstr "Näidete kaust"
+
+msgid "Dossier des signets"
+msgstr "Järjehoidjate kaust"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "Automaatne tuvastamine vastavalt teie Linuxi keskkonna piirkondlikele sätetele."
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "TUVASTATUD KESKKOND (AINULT LUGEMISEKS)"
+
+msgid "Effacer le champ"
+msgstr "Puhas väli"
+
+msgid "Effacer le filtre langue"
+msgstr "Tühjendage keelefilter"
+
+msgid "Effacer le filtre pays"
+msgstr "Tühjenda riigi filter"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "Tuvastati GNOME Shelli keskkond"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "Viga salvestamisel:"
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "Näide: /Prantsusmaa/Jazz või / juurteks"
+
+msgid "Exemples thématiques :"
+msgstr "Temaatilised näited:"
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "Ekspordi tabelisse (CSV)..."
+
+msgid "Fichier :"
+msgstr "Fail:"
+
+msgid "Fichier externe :"
+msgstr "Väline fail:"
+
+msgid "Fichiers XML (*.xml)"
+msgstr "XML-failid (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "Filtreeri riigi järgi:"
+
+msgid "Format & Débit"
+msgstr "Vorming ja bitikiirus"
+
+msgid "Genre / Tags"
+msgstr "Sugu / Sildid"
+
+msgid "Genre / Thématique"
+msgstr "Žanr / teema"
+
+msgid "Genre :"
+msgstr "Sugu:"
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "Tundmatu paketihaldur."
+
+msgid "Groupe :"
+msgstr "Grupp:"
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "Looge Calci või Exceli arvutustabeli jaoks ühtne loend"
+
+msgid "Importer"
+msgstr "Import"
+
+msgid "Importer & Exporter"
+msgstr "Import ja eksport"
+
+msgid "Importer dans mes favoris"
+msgstr "Impordi minu lemmikute hulka"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "Installimine on pooleli (kinnitage süsteemiviipa)..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "Installige GNOME-i integratsioon"
+
+msgid "Intégration GNOME requise"
+msgstr "Vajalik on GNOME-i integreerimine"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "Integreerimine GNOME ülaribaga"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "Natiivne integreerimine teavitusalasse StatusNotifierItem / XEmbed kaudu."
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "CSV-ekspordile pääseb juurde seadetest."
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "Laiendus AppIndicator on vajalik ikooni kuvamiseks GNOME-i ülemisel ribal."
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "Installimine katkestati või ebaõnnestus."
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "XML-i varukoopiale pääseb juurde seadetest."
+
+msgid "Langue du système"
+msgstr "Süsteemi keel"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "Eraldajaid ja vahepealkirju ei saa kuulata."
+
+msgid "Mes Radios"
+msgstr "Minu raadiod"
+
+msgid "Mot-clé :"
+msgstr "Märksõna:"
+
+msgid "Nouveaux uniquement"
+msgstr "Ainult uus"
+
+msgid "OPTIONS DE SESSION"
+msgstr "SEANSI VALIKUD"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "Rühmade ja alarühmade organiseerimine (Linuxi konventsioon)"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "Kõigepealt avage rühm, et kuulata selle raadioid."
+
+msgid "Ouvrir"
+msgstr "Avatud"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "Avage ~/.config/timonde"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "Avage ~/.config/timonde/examples"
+
+msgid "Pays"
+msgstr "Riik"
+
+msgid "Pays :"
+msgstr "Riik:"
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "Esitusikooni diskreetseks kuvamiseks oma GNOME-i töölaua ülemisel ribal on vaja süsteemilaiendit <b>AppIndicator</b>.<br/><br/>Kas soovite selle kohe installida?"
+
+msgid "Préférences"
+msgstr "Eelistused"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "Säilitage failis määratletud alamrühmad, selle asemel et importida kõike ühte rühma."
+
+msgid "Quitter"
+msgstr "Välju"
+
+msgid "Recharger"
+msgstr "Laadi uuesti"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "Laadi uuesti praegu kuvatav fail"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "Ülemaailmne otsing tasuta ja koostööpõhises <b>Radio-Browser</b> kataloogis (+45 000 jaama)."
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "Otsing raadiobrauseris on pooleli..."
+
+msgid "Rechercher"
+msgstr "Otsi"
+
+msgid "Rechercher en ligne"
+msgstr "Otsige Internetist"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "Asendage valitud link aktiivse ametliku kanaliga"
+
+msgid "Restaurer exemples"
+msgstr "Taastage näited"
+
+msgid "Régions & Locales :"
+msgstr "Piirkonnad ja kohalikud:"
+
+msgid "Réparer le flux..."
+msgstr "Parandage voolu..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "Taasta algsed 19 näidet"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "Sisestage märksõna või klõpsake kataloogi uurimiseks nuppu Otsi."
+
+msgid "Sauvegarde réussie !"
+msgstr "Varundamine õnnestus!"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "Salvesta mu raadiod (XML)..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "Salvesta minu järjehoidjad (XML)"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "Järjehoidjad ja raadiod salvestati edukalt!"
+
+msgid "Station"
+msgstr "Kuurort"
+
+msgid "Statut Favoris"
+msgstr "Lemmikute olek"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "Ametlik ja kontrollitud valik 146 riigist ja piirkonnast (DAB+ digitaalsed kimbud ja suuremad riiklikud jaamad)."
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "Valige kuulamiseks raadio."
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "Valige tabelist jaam, et seda kuulata."
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "Sisestage riik (nt Prantsusmaa, Saksamaa, Kanada...)"
+
+msgid "Tester"
+msgstr "Test"
+
+msgid "Tester les flux"
+msgstr "Katsevoolud"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "TiMonde – GNOME töölaua integreerimine"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "Kõik failid (*.*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "Kõik riigid (ülemaailmne)"
+
+msgid "Tout cocher"
+msgstr "Kontrollige kõiki"
+
+msgid "Tout décocher"
+msgstr "Tühjendage kõik"
+
+msgid "Toutes les langues"
+msgstr "Kõik keeled"
+
+msgid "URL du flux"
+msgstr "Voo URL"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "Palun valige loendist raadio, et seda kuulata."
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "Teie täielikud järjehoidjad on salvestatud:"
+
+msgid "Votes"
+msgstr "Hääled"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "Kontrollige lingi saadavust otseülekandes"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "Kontrollige otseraadio saadavust"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "Kontrollige leitud raadiote saadavust"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "Kontrollige lingi kehtivust ja vaadake voogu"
+
+msgid "ajoutée avec succès !"
+msgstr "edukalt lisatud!"
+
+msgid "fichiers exemples restaurés."
+msgstr "taastatud näidisfailid."
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "uus(ad) raadio(d) imporditud!"
+
+msgid "Écouter"
+msgstr "Kuulake"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "Kuulake valitud raadiot"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "Kuulake või testige valitud raadiot"
+

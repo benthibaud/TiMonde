@@ -1,14 +1,16 @@
-# TiMonde — TH Translation
+# TiMonde — Traduction TH
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: th\n"
 
 msgid "Play"
 msgstr "เล่น"
@@ -26,124 +28,124 @@ msgid "Delete"
 msgstr "ลบ"
 
 msgid "Zap to another random station"
-msgstr ""
+msgstr "ซัดไปยังวิทยุสุ่มอื่น"
 
 msgid "Play random radio (Ephemeral discovery)"
-msgstr ""
+msgstr "ฟังสถานีวิทยุแบบสุ่ม (การค้นพบชั่วคราว)"
 
 msgid "[ Ephemeral]"
-msgstr ""
+msgstr "[ชั่วคราว]"
 
 msgid "Options"
 msgstr "ตัวเลือก"
 
 msgid "Add a station..."
-msgstr ""
+msgstr "เพิ่มวิทยุ..."
 
 msgid "Discover & Import stations..."
-msgstr ""
+msgstr "ค้นพบและนำเข้าวิทยุ..."
 
 msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr ""
+msgstr "นำเข้าไฟล์ของฉัน (XML, CSV, JSON, M3U)..."
 
 msgid "Manage groups and stations..."
-msgstr ""
+msgstr "จำแนกกลุ่มและวิทยุ..."
 
 msgid "Open bookmarks.xml"
-msgstr ""
+msgstr "เปิด bookmarks.xml"
 
 msgid "Quit TiMonde"
-msgstr ""
+msgstr "ออกจากทิมอนด์"
 
 msgid "Mute (0%)"
-msgstr ""
+msgstr "ปิดเสียง (0%)"
 
 msgid "Sleep timer"
-msgstr ""
+msgstr "ตั้งเวลาปิดเครื่อง"
 
 msgid "In 15 minutes"
-msgstr ""
+msgstr "ในอีก 15 นาที"
 
 msgid "In 30 minutes"
-msgstr ""
+msgstr "ใน 30 นาที"
 
 msgid "In 45 minutes"
-msgstr ""
+msgstr "ใน 45 นาที"
 
 msgid "In 60 minutes (1h)"
-msgstr ""
+msgstr "ใน 60 นาที (1 ชั่วโมง)"
 
 msgid "Cancel sleep timer"
-msgstr ""
+msgstr "ยกเลิกการนอน"
 
 msgid "Discover & Import stations (TiMonde)"
-msgstr ""
+msgstr "ค้นหาและนำเข้าสถานีวิทยุ (TiMonde)"
 
 msgid "Verified DAB+ Bouquets"
-msgstr ""
+msgstr "ช่อดอกไม้ที่ยืนยันแล้ว (DAB+)"
 
 msgid "Radio-Browser Search"
-msgstr ""
+msgstr "ค้นหาวิทยุ-เบราว์เซอร์"
 
 msgid "Sample Files"
-msgstr ""
+msgstr "ไฟล์ตัวอย่าง"
 
 msgid "Import my files"
-msgstr ""
+msgstr "นำเข้าไฟล์ของฉัน"
 
 msgid "<b> Country:</b>"
-msgstr ""
+msgstr "<b>ประเทศ:</b>"
 
 msgid "<b>Language:</b>"
-msgstr ""
+msgstr "<b>ภาษา:</b>"
 
 msgid "Name / Keyword:"
-msgstr ""
+msgstr "ชื่อ / คำสำคัญ:"
 
 msgid "Genre:"
-msgstr ""
+msgstr "เพศ:"
 
 msgid "<b>Sample file:</b>"
-msgstr ""
+msgstr "<b>ไฟล์ตัวอย่าง:</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr ""
+msgstr "<b>ชื่อกลุ่มในรายการโปรดของคุณ:</b>"
 
 msgid "Select all"
-msgstr ""
+msgstr "ตรวจสอบทั้งหมด"
 
 msgid "Deselect all"
-msgstr ""
+msgstr "ยกเลิกการเลือกทั้งหมด"
 
 msgid "Import into favorites"
-msgstr ""
+msgstr "นำเข้าไปยังรายการโปรดของฉัน"
 
 msgid "Close"
 msgstr "ปิด"
 
 msgid "Add a station (TiMonde)"
-msgstr ""
+msgstr "เพิ่มสถานี (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
-msgstr ""
+msgstr "<b>ป้อนข้อมูลสำหรับวิทยุใหม่:</b>"
 
 msgid "Add to my stations"
-msgstr ""
+msgstr "เพิ่มไปยังวิทยุของฉัน"
 
 msgid "Save station to favorites (TiMonde)"
-msgstr ""
+msgstr "บันทึกวิทยุเป็นรายการโปรดของฉัน (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr ""
+msgstr "<b>เก็บสถานีวิทยุที่ค้นพบแบบสุ่มนี้ไว้ในรายการโปรดของคุณ:</b>"
 
 msgid "Keep in favorites"
-msgstr ""
+msgstr "บันทึกลงในรายการโปรดของฉัน"
 
 msgid "Edit station (TiMonde)"
-msgstr ""
+msgstr "แก้ไขวิทยุ (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr ""
+msgstr "<b>เปลี่ยนการตั้งค่าสถานี:</b>"
 
 msgid "Save"
 msgstr "บันทึก"
@@ -152,82 +154,82 @@ msgid "Station name:"
 msgstr "ชื่อสถานี:"
 
 msgid "Audio stream URL:"
-msgstr ""
+msgstr "URL สตรีมเสียง:"
 
 msgid "Group / Folder:"
-msgstr ""
+msgstr "กลุ่ม / โฟลเดอร์:"
 
 msgid "Country & Timezone:"
-msgstr ""
+msgstr "ประเทศและโซนเวลา:"
 
 msgid "Timezone:"
-msgstr ""
+msgstr "เขตเวลา:"
 
 msgid "Delete this station"
-msgstr ""
+msgstr "ลบวิทยุนี้"
 
 msgid "Cancel"
 msgstr "ยกเลิก"
 
 msgid "Delete « {} » from favorites?"
-msgstr ""
+msgstr "ลบ “{}” ออกจากรายการโปรดหรือไม่"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr ""
+msgstr "การดำเนินการนี้จะนำสถานีนี้ออกจากคอลเลกชันของคุณอย่างถาวร"
 
 msgid "Manage groups, stations and separators (TiMonde)"
-msgstr ""
+msgstr "การจัดการกลุ่ม วิทยุ และตัวแยก (TiMonde)"
 
 msgid "Back to groups"
-msgstr ""
+msgstr "⬅ กลับไปที่กลุ่ม"
 
 msgid "Add station"
-msgstr ""
+msgstr "เพิ่มวิทยุ"
 
 msgid "Open"
-msgstr ""
+msgstr "เปิด"
 
 msgid "New group"
-msgstr ""
+msgstr "กลุ่มใหม่"
 
 msgid "Move to..."
-msgstr ""
+msgstr "ย้ายไปที่..."
 
 msgid "Top"
-msgstr ""
+msgstr "อันดับแรก"
 
 msgid "Move up"
-msgstr ""
+msgstr "⬆ ขึ้นไป"
 
 msgid "Move down"
-msgstr ""
+msgstr "⬇ลงไป"
 
 msgid "Separator"
-msgstr ""
+msgstr "ตัวคั่น"
 
 msgid "Sort A-Z"
-msgstr ""
+msgstr "เรียง A-Z"
 
 msgid "Save and reload"
-msgstr ""
+msgstr "บันทึกและโหลดซ้ำ"
 
 msgid "Same time"
 msgstr "เวลาเดียวกัน"
 
 msgid "Dawn"
-msgstr ""
+msgstr "รุ่งอรุณ"
 
 msgid "Morning"
-msgstr ""
+msgstr "เช้า"
 
 msgid "Daytime"
-msgstr ""
+msgstr "วัน"
 
 msgid "Evening"
-msgstr ""
+msgstr "ตอนเย็น"
 
 msgid "Night"
-msgstr ""
+msgstr "กลางคืน"
 
 msgid "Tomorrow"
 msgstr "พรุ่งนี้"
@@ -236,64 +238,64 @@ msgid "Yesterday"
 msgstr "เมื่อวาน"
 
 msgid "Maintenance & Data"
-msgstr ""
+msgstr "การบำรุงรักษาและข้อมูล"
 
 msgid "Check streams (dead links)..."
-msgstr ""
+msgstr "ตรวจสอบฟีด (ลิงก์เสีย)..."
 
 msgid "Export my stations to CSV..."
-msgstr ""
+msgstr "ส่งออกวิทยุของฉันเป็น CSV..."
 
 msgid "Check streams"
-msgstr ""
+msgstr "ตรวจสอบฟีด"
 
 msgid "Dead links only"
-msgstr ""
+msgstr "ลิงค์เสียเท่านั้น"
 
 msgid "Apply redirects"
-msgstr ""
+msgstr "ใช้การเปลี่ยนเส้นทาง"
 
 msgid "Repair stream..."
-msgstr ""
+msgstr "กระแสซ่อม..."
 
 msgid "Export to CSV"
-msgstr ""
+msgstr "ส่งออกเป็น CSV"
 
 msgid "Test stream availability and locate broken links"
-msgstr ""
+msgstr "ทดสอบความพร้อมใช้งานสดของสถานีวิทยุของคุณและค้นหาลิงก์ที่เสีย"
 
 msgid "Display offline radio streams only"
-msgstr ""
+msgstr "แสดงเฉพาะสถานีวิทยุที่มีการสตรีมออฟไลน์"
 
 msgid "Automatically update redirected streams to direct URL"
-msgstr ""
+msgstr "อัปเดตฟีดที่เปลี่ยนเส้นทางไปยัง URL โดยตรงโดยอัตโนมัติ"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
+msgstr "ค้นหาสตรีมที่ใช้งานอยู่ทดแทนบน Radio-Browser โดยอัตโนมัติสำหรับลิงก์ที่เสียนี้"
 
 msgid "Export all stations to CSV spreadsheet format"
-msgstr ""
+msgstr "ส่งออกวิทยุทั้งหมดของคุณในรูปแบบสเปรดชีต CSV"
 
 msgid "Export my stations to CSV"
-msgstr ""
+msgstr "ส่งออกวิทยุของฉันเป็น CSV"
 
 msgid "CSV files (*.csv)"
-msgstr ""
+msgstr "ไฟล์ CSV (*.csv)"
 
 msgid "All files (*.*)"
-msgstr ""
+msgstr "ไฟล์ทั้งหมด (*.*)"
 
 msgid "Export"
-msgstr ""
+msgstr "ส่งออก"
 
 msgid "Export successful!"
-msgstr ""
+msgstr "ส่งออกสำเร็จ!"
 
 msgid "Error during CSV export:"
-msgstr ""
+msgstr "เกิดข้อผิดพลาดระหว่างการส่งออก CSV:"
 
 msgid "station(s) saved to:"
-msgstr ""
+msgstr "วิทยุที่บันทึกไว้ใน:"
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "การตั้งค่า..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "เพิ่มวิทยุ (TiMonde)"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "เพิ่มไปยังวิทยุของฉัน"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "ไม่มีการเพิ่มวิทยุใหม่ (มีอยู่แล้ว)"
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "DAB+ ช่อดอกไม้ & การคัดเลือกอย่างเป็นทางการ"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "บันทึกลงในรายการโปรดของฉัน"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "เก็บวิทยุไว้ในรายการโปรด (TiMonde)"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "เปิดไฟล์:"
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "ค้นหาและนำเข้าสถานีวิทยุ (TiMonde)"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "บันทึก"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "ข้อผิดพลาดในการดำเนินการ:"
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "ข้อผิดพลาดในการนำเข้า JSON:"
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "เกิดข้อผิดพลาดในการแก้ไขการเริ่มอัตโนมัติ"
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "สำรวจ DAB+..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "ส่งออก CSV เสร็จแล้ว"
 
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "ปิด"
 
 msgid "Fichiers exemples"
 msgstr "Sample Files"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "นำเข้าไฟล์ส่วนบุคคล"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "นำเข้าไฟล์..."
 
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "ไม่สามารถเปิดโฟลเดอร์ได้:"
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "แทรกตัวคั่น (---) หรือส่วนหัวในกลุ่มของคุณเพื่อระบายอากาศในเมนูของคุณ"
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "การเปลี่ยนแปลงที่นำมาพิจารณา"
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "แก้ไขวิทยุ (TiMonde)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "เปิดโฟลเดอร์"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "เรียกดู..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "เบราว์เซอร์วิทยุค้นหาทั่วโลก"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "ค้นหา..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "จัดระเบียบบุ๊กมาร์กใหม่และบันทึกเรียบร้อยแล้ว!"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "ลบ"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,7 +653,7 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "ไฟล์ตัวอย่างที่กู้คืนมาใน"
 
 msgid "online"
 msgstr "online"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ องค์กร"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 เคล็ดลับการจัดวางภาพ"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 ข้อมูลและไฟล์"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻 ห้องสมุด"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️ทั่วไป"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>• เปลี่ยน <b>#</b> หรือใช้ <b>เลื่อนขึ้น / ลง</b> เพื่อเรียงลำดับกลุ่ม \n"
+" • <b>ดับเบิลคลิกที่กลุ่ม</b> (หรือเปิด) เพื่อจัดเรียงวิทยุและตัวแยก \n"
+" • ใช้ <b>โอน...</b> เพื่อรวมหรือย้ายเนื้อหาไปยังกลุ่มอื่น \n"
+" • ใช้ <b>กลุ่มใหม่</b> เพื่อเพิ่มโฟลเดอร์วิทยุ</small>"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<small>• เปลี่ยน <b>#</b> หรือใช้ <b>เลื่อนขึ้น / ลง</b> เพื่อจัดเรียงวิทยุ \n"
+" • คลิก <b>ตรวจสอบฟีด</b> เพื่อดูลิงก์เสีย (สีแดง) และซ่อมแซม \n"
+" • คลิกที่ <b>ซ่อมแซมสตรีม...</b> เพื่อค้นหาสตรีมที่ใช้งานทดแทนบน Radio-Browser \n"
+" • คลิก <b>ตัวคั่น</b> เพื่อแทรกส่วนหัวของส่วน</small>"
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>เลือกไฟล์หรือตัวอย่างด้านบน</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>• เปลี่ยน <b>#</b> หรือใช้ <b>เลื่อนขึ้น / ลง</b> เพื่อเรียงลำดับกลุ่ม \n"
+" • <b>ดับเบิลคลิกที่กลุ่ม</b> (หรือเปิด) เพื่อจัดเรียงวิทยุและตัวคั่น \n"
+" • ใช้ <b>ย้ายไปที่...</b> เพื่อรวมหรือย้ายเนื้อหา \n"
+" • ใช้ <b>กลุ่มใหม่</b> เพื่อสร้างโฟลเดอร์วิทยุ</small>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<small>• เปลี่ยน <b>#</b> หรือใช้ <b>เลื่อนขึ้น / ลง</b> เพื่อเรียงลำดับวิทยุ \n"
+" • คลิก <b>ตรวจสอบฟีด</b> เพื่อค้นหาลิงก์ออฟไลน์ (สีแดง) \n"
+" • คลิก <b>ซ่อมแซมสตรีม...</b> เพื่อค้นหาสตรีมทดแทนที่ใช้งานอยู่ \n"
+" • คลิกที่ <b>ตัวคั่น</b> เพื่อแทรกคำบรรยายหรือบรรทัดตัวคั่น</small>"
+
+msgid "Actualiser la liste des exemples"
+msgstr "รีเฟรชรายการตัวอย่าง"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "ช่วยเหลือทั้งกลุ่มและกลุ่มย่อย"
+
+msgid "Ajouter"
+msgstr "เพิ่ม"
+
+msgid "Annuler"
+msgstr "ยกเลิก"
+
+msgid "Arrêter"
+msgstr "หยุด"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "ไม่พบไฟล์ bookmarks.xml ที่จะบันทึก"
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "ไม่มีการเพิ่มสถานีวิทยุใหม่ (มีอยู่แล้วในบุ๊กมาร์กของคุณ)"
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "ไม่พบสถานีวิทยุบน Radio-Browser สำหรับเกณฑ์เหล่านี้"
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "ช่อดอกไม้แห่งชาติ (รีสอร์ทหลัก)"
+
+msgid "Bouquets par pays"
+msgstr "ช่อดอกไม้ตามประเทศ"
+
+msgid "Bureau graphique & Plateau"
+msgstr "โต๊ะกราฟิกและถาด"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "สถานีนี้ไม่มี URL สตรีมเสียง"
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "อัปโหลดไฟล์ XML, CSV, JSON, M3U หรือ PLS"
+
+msgid "Charger un fichier..."
+msgstr "โหลดไฟล์..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "เลือกจากกลุ่มที่มีอยู่"
+
+msgid "Choisir un fichier de radios"
+msgstr "เลือกไฟล์วิทยุ"
+
+msgid "Collections & Fichiers"
+msgstr "คอลเลกชันและไฟล์"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "เก็บองค์กรไว้ในไฟล์"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "สร้างการสำรองข้อมูลคอลเลกชันของคุณเต็มรูปแบบ (พร้อมโฟลเดอร์และโซนเวลา)"
+
+msgid "Disponibilité"
+msgstr "ความพร้อมใช้งาน"
+
+msgid "Disponibilité en direct"
+msgstr "ความพร้อมใช้งานสด"
+
+msgid "Dossier / Groupe"
+msgstr "โฟลเดอร์/กลุ่ม"
+
+msgid "Dossier des exemples"
+msgstr "โฟลเดอร์ตัวอย่าง"
+
+msgid "Dossier des signets"
+msgstr "โฟลเดอร์บุ๊กมาร์ก"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "การตรวจจับอัตโนมัติตามการตั้งค่าภูมิภาคของสภาพแวดล้อม Linux ของคุณ"
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "ตรวจพบสภาพแวดล้อม (อ่านอย่างเดียว)"
+
+msgid "Effacer le champ"
+msgstr "ล้างข้อมูลในช่อง"
+
+msgid "Effacer le filtre langue"
+msgstr "ล้างตัวกรองภาษา"
+
+msgid "Effacer le filtre pays"
+msgstr "ล้างตัวกรองประเทศ"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "ตรวจพบสภาพแวดล้อมเชลล์ GNOME"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "เกิดข้อผิดพลาดขณะบันทึก:"
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "เช่น /France/Jazz หรือ / สำหรับ root"
+
+msgid "Exemples thématiques :"
+msgstr "ตัวอย่างเฉพาะเรื่อง:"
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "ส่งออกไปยังตาราง (CSV)..."
+
+msgid "Fichier :"
+msgstr "ไฟล์:"
+
+msgid "Fichier externe :"
+msgstr "ไฟล์ภายนอก:"
+
+msgid "Fichiers XML (*.xml)"
+msgstr "ไฟล์ XML (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "กรองตามประเทศ:"
+
+msgid "Format & Débit"
+msgstr "รูปแบบและบิตเรต"
+
+msgid "Genre / Tags"
+msgstr "เพศ / แท็ก"
+
+msgid "Genre / Thématique"
+msgstr "ประเภท/ธีม"
+
+msgid "Genre :"
+msgstr "เพศ:"
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "ตัวจัดการแพ็คเกจที่ไม่รู้จัก"
+
+msgid "Groupe :"
+msgstr "กลุ่ม:"
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "สร้างรายการแบบเรียบสำหรับสเปรดชีต Calc หรือ Excel"
+
+msgid "Importer"
+msgstr "นำเข้า"
+
+msgid "Importer & Exporter"
+msgstr "นำเข้าและส่งออก"
+
+msgid "Importer dans mes favoris"
+msgstr "นำเข้าไปยังรายการโปรดของฉัน"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "อยู่ระหว่างการติดตั้ง (โปรดตรวจสอบระบบแจ้ง)..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "ติดตั้งการรวม GNOME"
+
+msgid "Intégration GNOME requise"
+msgstr "จำเป็นต้องมีการบูรณาการ GNOME"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "บูรณาการเข้ากับแถบด้านบนของ GNOME"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "บูรณาการเข้ากับพื้นที่แจ้งเตือนผ่าน StatusNotifierItem / XEmbed"
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "การส่งออก CSV สามารถเข้าถึงได้จากการตั้งค่า"
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "จำเป็นต้องมีส่วนขยาย AppIndicator เพื่อแสดงไอคอนในแถบด้านบนของ GNOME"
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "การติดตั้งถูกยกเลิกหรือล้มเหลว"
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "การสำรองข้อมูล XML สามารถเข้าถึงได้จากการตั้งค่า"
+
+msgid "Langue du système"
+msgstr "ภาษาของระบบ"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "ไม่สามารถฟังตัวคั่นและคำแทรกได้"
+
+msgid "Mes Radios"
+msgstr "วิทยุของฉัน"
+
+msgid "Mot-clé :"
+msgstr "คำสำคัญ:"
+
+msgid "Nouveaux uniquement"
+msgstr "ใหม่เท่านั้น"
+
+msgid "OPTIONS DE SESSION"
+msgstr "ตัวเลือกเซสชั่น"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "การจัดกลุ่มและกลุ่มย่อย (Linux Convention)"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "ขั้นแรกให้เปิดกลุ่มเพื่อฟังวิทยุของกลุ่ม"
+
+msgid "Ouvrir"
+msgstr "เปิด"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "เปิด ~/.config/timonde"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "เปิด ~/.config/timonde/examples"
+
+msgid "Pays"
+msgstr "ประเทศ"
+
+msgid "Pays :"
+msgstr "ประเทศ:"
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "หากต้องการแสดงไอคอนเล่นอย่างระมัดระวังในแถบด้านบนของเดสก์ท็อป GNOME จำเป็นต้องมีส่วนขยายระบบ <b>AppIndicator</b> <br/><br/>คุณต้องการติดตั้งเลยหรือไม่"
+
+msgid "Préférences"
+msgstr "การตั้งค่า"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "รักษากลุ่มย่อยที่กำหนดไว้ในไฟล์ แทนที่จะนำเข้าทุกอย่างลงในกลุ่มเดียว"
+
+msgid "Quitter"
+msgstr "ออก"
+
+msgid "Recharger"
+msgstr "โหลดซ้ำ"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "โหลดไฟล์ที่แสดงอยู่ในปัจจุบันอีกครั้ง"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "ค้นหาทั่วโลกในไดเรกทอรี <b>Radio-Browser</b> ฟรีและทำงานร่วมกัน (+45,000 สถานี)"
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "กำลังค้นหาทางวิทยุ-เบราว์เซอร์..."
+
+msgid "Rechercher"
+msgstr "ค้นหา"
+
+msgid "Rechercher en ligne"
+msgstr "ค้นหาออนไลน์"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "แทนที่ลิงก์ที่เลือกด้วยฟีดอย่างเป็นทางการที่ใช้งานอยู่"
+
+msgid "Restaurer exemples"
+msgstr "คืนค่าตัวอย่าง"
+
+msgid "Régions & Locales :"
+msgstr "ภูมิภาคและท้องถิ่น:"
+
+msgid "Réparer le flux..."
+msgstr "แก้ไขกระแส..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "คืนค่าตัวอย่างดั้งเดิม 19 ตัวอย่าง"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "ป้อนคำสำคัญหรือคลิกค้นหาเพื่อสำรวจไดเรกทอรี"
+
+msgid "Sauvegarde réussie !"
+msgstr "สำรองข้อมูลสำเร็จ!"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "บันทึกวิทยุของฉัน (XML)..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "บันทึกบุ๊กมาร์กของฉัน (XML)"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "บันทึกบุ๊กมาร์กและวิทยุเรียบร้อยแล้ว!"
+
+msgid "Station"
+msgstr "รีสอร์ท"
+
+msgid "Statut Favoris"
+msgstr "สถานะรายการโปรด"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "การคัดเลือกอย่างเป็นทางการและผ่านการตรวจสอบแล้วจาก 146 ประเทศและภูมิภาค (ช่อดอกไม้ดิจิทัล DAB+ และสถานีหลักระดับชาติ)"
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "เลือกวิทยุเพื่อฟัง"
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "เลือกสถานีจากตารางเพื่อฟัง"
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "พิมพ์ประเทศ (เช่น: France, Deutschland, Canada...)"
+
+msgid "Tester"
+msgstr "ทดสอบ"
+
+msgid "Tester les flux"
+msgstr "กระแสทดสอบ"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "TiMonde — การรวมเดสก์ท็อป GNOME"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "ไฟล์ทั้งหมด (*.*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "ทุกประเทศ (ทั่วโลก)"
+
+msgid "Tout cocher"
+msgstr "ตรวจสอบทั้งหมด"
+
+msgid "Tout décocher"
+msgstr "ยกเลิกการเลือกทั้งหมด"
+
+msgid "Toutes les langues"
+msgstr "ทุกภาษา"
+
+msgid "URL du flux"
+msgstr "URL ฟีด"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "โปรดเลือกวิทยุจากรายการเพื่อฟัง"
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "บุ๊กมาร์กที่สมบูรณ์ของคุณได้รับการบันทึกไว้ใน:"
+
+msgid "Votes"
+msgstr "โหวต"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "ตรวจสอบความพร้อมใช้งานของลิงก์สด"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "ตรวจสอบความพร้อมของวิทยุสด"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "ตรวจสอบความพร้อมใช้งานสดของวิทยุที่พบ"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "ตรวจสอบความถูกต้องของลิงก์และดูตัวอย่างสตรีม"
+
+msgid "ajoutée avec succès !"
+msgstr "เพิ่มเรียบร้อยแล้ว!"
+
+msgid "fichiers exemples restaurés."
+msgstr "กู้คืนไฟล์ตัวอย่าง"
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "วิทยุใหม่นำเข้า!"
+
+msgid "Écouter"
+msgstr "ฟังนะ"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "ฟังวิทยุที่เลือก"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "ฟังหรือทดสอบวิทยุที่เลือก"
+

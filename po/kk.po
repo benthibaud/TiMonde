@@ -1,14 +1,16 @@
-# TiMonde — KK Translation
+# TiMonde — Traduction KK
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: kk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: kk\n"
 
 msgid "Play"
 msgstr "Ойнату"
@@ -26,124 +28,124 @@ msgid "Delete"
 msgstr "Жою"
 
 msgid "Zap to another random station"
-msgstr ""
+msgstr "Басқа кездейсоқ радиоға өтіңіз"
 
 msgid "Play random radio (Ephemeral discovery)"
-msgstr ""
+msgstr "Кездейсоқ радиостанцияны тыңдау (Эфемерлік табу)"
 
 msgid "[ Ephemeral]"
-msgstr ""
+msgstr "[Эфемерлік]"
 
 msgid "Options"
 msgstr "Баптаулар"
 
 msgid "Add a station..."
-msgstr ""
+msgstr "Радио қосу..."
 
 msgid "Discover & Import stations..."
-msgstr ""
+msgstr "Радиоларды табу және импорттау..."
 
 msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr ""
+msgstr "Менің файлдарымды импорттау (XML, CSV, JSON, M3U)..."
 
 msgid "Manage groups and stations..."
-msgstr ""
+msgstr "Топтар мен радиоларды жіктеу..."
 
 msgid "Open bookmarks.xml"
-msgstr ""
+msgstr "Bookmarks.xml файлын ашыңыз"
 
 msgid "Quit TiMonde"
-msgstr ""
+msgstr "TiMonde-дан шығыңыз"
 
 msgid "Mute (0%)"
-msgstr ""
+msgstr "Дыбысты өшіру (0%)"
 
 msgid "Sleep timer"
-msgstr ""
+msgstr "Ұйқы таймері"
 
 msgid "In 15 minutes"
-msgstr ""
+msgstr "15 минутта"
 
 msgid "In 30 minutes"
-msgstr ""
+msgstr "30 минутта"
 
 msgid "In 45 minutes"
-msgstr ""
+msgstr "45 минутта"
 
 msgid "In 60 minutes (1h)"
-msgstr ""
+msgstr "60 минуттан кейін (1 сағат)"
 
 msgid "Cancel sleep timer"
-msgstr ""
+msgstr "Ұйқыдан бас тарту"
 
 msgid "Discover & Import stations (TiMonde)"
-msgstr ""
+msgstr "Радиостанцияларды табу және импорттау (TiMonde)"
 
 msgid "Verified DAB+ Bouquets"
-msgstr ""
+msgstr "Расталған гүл шоқтары (DAB+)"
 
 msgid "Radio-Browser Search"
-msgstr ""
+msgstr "Радио-браузерден іздеу"
 
 msgid "Sample Files"
-msgstr ""
+msgstr "Мысал файлдар"
 
 msgid "Import my files"
-msgstr ""
+msgstr "Менің файлдарымды импорттаңыз"
 
 msgid "<b> Country:</b>"
-msgstr ""
+msgstr "<b>Ел:</b>"
 
 msgid "<b>Language:</b>"
-msgstr ""
+msgstr "<b>Тіл:</b>"
 
 msgid "Name / Keyword:"
-msgstr ""
+msgstr "Аты/Кілт сөз:"
 
 msgid "Genre:"
-msgstr ""
+msgstr "Жынысы:"
 
 msgid "<b>Sample file:</b>"
-msgstr ""
+msgstr "<b>Мысал файл:</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr ""
+msgstr "<b>Таңдаулыларыңыздағы топ атауы:</b>"
 
 msgid "Select all"
-msgstr ""
+msgstr "Барлығын тексеріңіз"
 
 msgid "Deselect all"
-msgstr ""
+msgstr "Барлығын алып тастаңыз"
 
 msgid "Import into favorites"
-msgstr ""
+msgstr "Таңдаулыларыма импорттау"
 
 msgid "Close"
 msgstr "Жабу"
 
 msgid "Add a station (TiMonde)"
-msgstr ""
+msgstr "Станция қосу (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
-msgstr ""
+msgstr "<b>Жаңа радио үшін ақпаратты енгізіңіз:</b>"
 
 msgid "Add to my stations"
-msgstr ""
+msgstr "Менің радиоларыма қосыңыз"
 
 msgid "Save station to favorites (TiMonde)"
-msgstr ""
+msgstr "Радионы таңдаулыларыма сақтаңыз (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr ""
+msgstr "<b>Осы кездейсоқ табылған радиостанцияны таңдаулыларыңызда сақтаңыз:</b>"
 
 msgid "Keep in favorites"
-msgstr ""
+msgstr "Таңдаулыларыма сақтаңыз"
 
 msgid "Edit station (TiMonde)"
-msgstr ""
+msgstr "Радионы өңдеу (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr ""
+msgstr "<b>Станция параметрлерін өзгерту:</b>"
 
 msgid "Save"
 msgstr "Сақтау"
@@ -152,82 +154,82 @@ msgid "Station name:"
 msgstr "Станция атауы:"
 
 msgid "Audio stream URL:"
-msgstr ""
+msgstr "Аудио ағынының URL мекенжайы:"
 
 msgid "Group / Folder:"
-msgstr ""
+msgstr "Топ/қалта:"
 
 msgid "Country & Timezone:"
-msgstr ""
+msgstr "Ел және уақыт белдеуі:"
 
 msgid "Timezone:"
-msgstr ""
+msgstr "Уақыт белдеуі:"
 
 msgid "Delete this station"
-msgstr ""
+msgstr "Осы радионы жойыңыз"
 
 msgid "Cancel"
 msgstr "Бас тарту"
 
 msgid "Delete « {} » from favorites?"
-msgstr ""
+msgstr "\"{}\" таңдаулылардан өшірілсін бе?"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr ""
+msgstr "Бұл әрекет осы станцияны коллекцияңыздан біржола жояды."
 
 msgid "Manage groups, stations and separators (TiMonde)"
-msgstr ""
+msgstr "Топтарды, радиоларды және сепараторларды басқару (TiMonde)"
 
 msgid "Back to groups"
-msgstr ""
+msgstr "⬅ Топтарға оралу"
 
 msgid "Add station"
-msgstr ""
+msgstr "Радио қосыңыз"
 
 msgid "Open"
-msgstr ""
+msgstr "Ашық"
 
 msgid "New group"
-msgstr ""
+msgstr "Жаңа топ"
 
 msgid "Move to..."
-msgstr ""
+msgstr "Жылжыту..."
 
 msgid "Top"
-msgstr ""
+msgstr "Бірінші"
 
 msgid "Move up"
-msgstr ""
+msgstr "⬆ Жоғары көтеріліңіз"
 
 msgid "Move down"
-msgstr ""
+msgstr "⬇ Төмен түсіңіз"
 
 msgid "Separator"
-msgstr ""
+msgstr "Бөлгіш"
 
 msgid "Sort A-Z"
-msgstr ""
+msgstr "A-Z сұрыптау"
 
 msgid "Save and reload"
-msgstr ""
+msgstr "Сақтау және қайта жүктеу"
 
 msgid "Same time"
-msgstr ""
+msgstr "Дәл сол уақытта"
 
 msgid "Dawn"
-msgstr ""
+msgstr "Таң"
 
 msgid "Morning"
-msgstr ""
+msgstr "Таң"
 
 msgid "Daytime"
-msgstr ""
+msgstr "Күн"
 
 msgid "Evening"
-msgstr ""
+msgstr "Кеш"
 
 msgid "Night"
-msgstr ""
+msgstr "Түн"
 
 msgid "Tomorrow"
 msgstr "Ертең"
@@ -236,64 +238,64 @@ msgid "Yesterday"
 msgstr "Кеше"
 
 msgid "Maintenance & Data"
-msgstr ""
+msgstr "Техникалық қызмет көрсету және деректер"
 
 msgid "Check streams (dead links)..."
-msgstr ""
+msgstr "Арналарды тексеру (өлі сілтемелер)..."
 
 msgid "Export my stations to CSV..."
-msgstr ""
+msgstr "Радиоларымды CSV-ге экспорттау..."
 
 msgid "Check streams"
-msgstr ""
+msgstr "Арналарды тексеріңіз"
 
 msgid "Dead links only"
-msgstr ""
+msgstr "Тек өлі сілтемелер"
 
 msgid "Apply redirects"
-msgstr ""
+msgstr "Қайта бағыттауларды қолданыңыз"
 
 msgid "Repair stream..."
-msgstr ""
+msgstr "Жөндеу ағыны..."
 
 msgid "Export to CSV"
-msgstr ""
+msgstr "CSV файлына экспорттау"
 
 msgid "Test stream availability and locate broken links"
-msgstr ""
+msgstr "Радио станцияларыңыздың тікелей қолжетімділігін тексеріңіз және өлі сілтемелерді табыңыз"
 
 msgid "Display offline radio streams only"
-msgstr ""
+msgstr "Тек ағыны желіден тыс радиостанцияларды көрсетіңіз"
 
 msgid "Automatically update redirected streams to direct URL"
-msgstr ""
+msgstr "Тікелей URL мекенжайына қайта бағытталған арналарды автоматты түрде жаңарту"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
+msgstr "Осы өлі сілтеме үшін Radio-Browser-де ауыстырылатын белсенді ағынды автоматты түрде іздеңіз"
 
 msgid "Export all stations to CSV spreadsheet format"
-msgstr ""
+msgstr "Барлық радиоларды CSV электрондық кесте пішімінде экспорттаңыз"
 
 msgid "Export my stations to CSV"
-msgstr ""
+msgstr "Радиоларымды CSV-ге экспорттаңыз"
 
 msgid "CSV files (*.csv)"
-msgstr ""
+msgstr "CSV файлдары (*.csv)"
 
 msgid "All files (*.*)"
-msgstr ""
+msgstr "Барлық файлдар (*.*)"
 
 msgid "Export"
-msgstr ""
+msgstr "Экспорттау"
 
 msgid "Export successful!"
-msgstr ""
+msgstr "Экспорт сәтті болды!"
 
 msgid "Error during CSV export:"
-msgstr ""
+msgstr "CSV экспорттау кезіндегі қате:"
 
 msgid "station(s) saved to:"
-msgstr ""
+msgstr "жазылған радио(лар):"
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "Параметрлер..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "Радио қосу (TiMonde)"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "Менің радиоларыма қосыңыз"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "Жаңа радиолар қосылмаған (қазірдің өзінде бар)."
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "DAB+ гүл шоқтары және ресми таңдаулар"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "Таңдаулыларыма сақтаңыз"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "Радионы таңдаулылар тізімінде сақтаңыз (TiMonde)"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "Файлды ашу:"
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "Радиостанцияларды табу және импорттау (TiMonde)"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "Сақтау"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "Орындау қатесі:"
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "JSON импорттау қатесі:"
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "Автоматты іске қосуды өзгерту қатесі."
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "DAB+ шолу..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "CSV экспорты аяқталды."
 
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "Жабу"
 
 msgid "Fichiers exemples"
 msgstr "Sample Files"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "Жеке файлдарды импорттау"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "Файлды импорттау..."
 
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "Қалтаны ашу мүмкін емес:"
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "Мәзірді желдету үшін топтарға бөлгіштерді (---) немесе бөлім тақырыптарын енгізіңіз."
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "Өзгерістер ескерілді."
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "Радионы өңдеу (TiMonde)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "Қалтаны ашу"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "Шолу..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "Ғаламдық іздеу радио-браузері"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "Іздеу..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "Бетбелгілер қайта ұйымдастырылды және сәтті сақталды!"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "Жою"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,13 +653,13 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "үлгі файлдары қалпына келтірілді"
 
 msgid "online"
 msgstr "online"
 
 msgid "radio"
-msgstr "radio"
+msgstr "радио"
 
 msgid "radio(s) ajoutée(s) à vos signets !"
 msgstr "station(s) added to your bookmarks!"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ Ұйымдастыру"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 Көрнекі орналасу туралы кеңес"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 Деректер мен файлдар"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻 Кітапхана"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️ Жалпы"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>• Топтарға тапсырыс беру үшін <b>#</b> белгісін өзгертіңіз немесе <b>Жоғары / Төмен жылжыту</b> функциясын пайдаланыңыз. \n"
+" • Радиолар мен бөлгіштерді сұрыптау үшін <b>топты екі рет басыңыз</b> (немесе Ашу). \n"
+" • Мазмұнды біріктіру немесе басқа топқа жылжыту үшін <b>Тасымалдау...</b> опциясын пайдаланыңыз. \n"
+" • Радиолар қалтасын қосу үшін <b>Жаңа топ</b> пайдаланыңыз.</small>."
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<small>• Радиоларды сұрыптау үшін <b>#</b> белгісін өзгертіңіз немесе <b>Жоғары / Төмен жылжыту</b> түймесін пайдаланыңыз. \n"
+" • Өлі сілтемелерді (қызыл) тауып, оларды жөндеу үшін <b>Арналарды тексеру</b> түймесін басыңыз. \n"
+" • Radio-Browser қолданбасында ауыстырылатын белсенді ағынды іздеу үшін <b>Жөндеу ағыны...</b> түймесін басыңыз. \n"
+" • Бөлім тақырыбын енгізу үшін <b>Бөлгіш</b> түймесін басыңыз.</small>."
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>Жоғарыдағы файлды немесе мысалды таңдаңыз.</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>• Топтарға тапсырыс беру үшін <b>#</b> белгісін өзгертіңіз немесе <b>Жоғары / Төмен жылжыту</b> функциясын пайдаланыңыз. \n"
+" • Радиолар мен бөлгіштерді сұрыптау үшін <b>топты екі рет басыңыз</b> (немесе Ашу). \n"
+" • Мазмұнды біріктіру немесе жылжыту үшін <b>Жылжыту...</b> опциясын пайдаланыңыз. \n"
+" • Радиолар қалтасын жасау үшін <b>Жаңа топты</b> пайдаланыңыз.</small>."
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<small>• Радиоларға тапсырыс беру үшін <b>#</b> белгісін өзгертіңіз немесе <b>Жоғары / Төмен жылжыту</b> түймесін пайдаланыңыз. \n"
+" • Офлайн сілтемелерді (қызыл түспен) табу үшін <b>Арналарды тексеру</b> түймесін басыңыз. \n"
+" • Белсенді ауыстыру ағынын іздеу үшін <b>Ағынды жөндеу...</b> түймесін басыңыз. \n"
+" • Субтитр немесе бөлу жолын кірістіру үшін <b>Бөлгіш</b> түймесін басыңыз.</small>."
+
+msgid "Actualiser la liste des exemples"
+msgstr "Мысалдар тізімін жаңарту"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "Топтар мен топшаларға көмектесу"
+
+msgid "Ajouter"
+msgstr "қосу"
+
+msgid "Annuler"
+msgstr "Болдырмау"
+
+msgid "Arrêter"
+msgstr "Тоқта"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "Сақталатын bookmarks.xml файлдары табылмады."
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "Жаңа радиостанциялар қосылмаған (белгілеріңізде бұрыннан бар)."
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "Радио-браузерде осы критерийлер бойынша бірде-бір радиостанция табылмады."
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "Ұлттық букет (ірі курорттар)"
+
+msgid "Bouquets par pays"
+msgstr "Ел бойынша гүл шоқтары"
+
+msgid "Bureau graphique & Plateau"
+msgstr "Графикалық үстел және науа"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "Бұл станцияда аудио ағынының URL мекенжайлары жоқ."
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "XML, CSV, JSON, M3U немесе PLS файлын жүктеп салыңыз"
+
+msgid "Charger un fichier..."
+msgstr "Файлды жүктеу..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "Бар топтардан таңдаңыз"
+
+msgid "Choisir un fichier de radios"
+msgstr "Радио файлды таңдаңыз"
+
+msgid "Collections & Fichiers"
+msgstr "Жинақтар мен файлдар"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "Ұйымды файлда сақтаңыз"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "Топтаманың толық сақтық көшірмесін жасаңыз (қалталармен және уақыт белдеулерімен)"
+
+msgid "Disponibilité"
+msgstr "Қол жетімділік"
+
+msgid "Disponibilité en direct"
+msgstr "Тікелей қолжетімділік"
+
+msgid "Dossier / Groupe"
+msgstr "Қалта / Топ"
+
+msgid "Dossier des exemples"
+msgstr "Мысалдар қалтасы"
+
+msgid "Dossier des signets"
+msgstr "Бетбелгілер қалтасы"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "Linux ортасының аймақтық параметрлеріне сәйкес автоматты анықтау."
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "ОРТА АНЫҚТАЛДЫ (ТЕК ОҚУ ҮШІН)"
+
+msgid "Effacer le champ"
+msgstr "Өрісті тазалау"
+
+msgid "Effacer le filtre langue"
+msgstr "Тіл сүзгісін тазалау"
+
+msgid "Effacer le filtre pays"
+msgstr "Ел сүзгісін тазалау"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "GNOME Shell ортасы анықталды"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "Сақтау кезіндегі қате:"
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "Мысалы: /Франция/Джаз немесе түбір үшін /"
+
+msgid "Exemples thématiques :"
+msgstr "Тақырыптық мысалдар:"
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "Кестеге экспорттау (CSV)..."
+
+msgid "Fichier :"
+msgstr "Файл:"
+
+msgid "Fichier externe :"
+msgstr "Сыртқы файл:"
+
+msgid "Fichiers XML (*.xml)"
+msgstr "XML файлдары (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "Ел бойынша сүзгі:"
+
+msgid "Format & Débit"
+msgstr "Пішім және бит жылдамдығы"
+
+msgid "Genre / Tags"
+msgstr "Жыныс / Тегтер"
+
+msgid "Genre / Thématique"
+msgstr "Жанр / Тақырып"
+
+msgid "Genre :"
+msgstr "Жынысы:"
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "Танылмаған пакет менеджері."
+
+msgid "Groupe :"
+msgstr "Топ:"
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "Calc немесе Excel электрондық кестесі үшін тегіс тізімді жасаңыз"
+
+msgid "Importer"
+msgstr "Импорттау"
+
+msgid "Importer & Exporter"
+msgstr "Импорт және экспорт"
+
+msgid "Importer dans mes favoris"
+msgstr "Таңдаулыларыма импорттау"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "Орнату орындалуда (жүйе нұсқаулығын растаңыз)..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "GNOME интеграциясын орнатыңыз"
+
+msgid "Intégration GNOME requise"
+msgstr "GNOME интеграциясы қажет"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "GNOME жоғарғы тақтасына интеграция"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "StatusNotifierItem / XEmbed арқылы хабарландыру аймағына жергілікті интеграция."
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "CSV экспорттау параметрлерінен қол жетімді."
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "AppIndicator кеңейтімі GNOME жоғарғы жолағындағы белгішені көрсету үшін қажет."
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "Орнату тоқтатылды немесе орындалмады."
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "XML сақтық көшірмесіне параметрлерден қол жеткізуге болады."
+
+msgid "Langue du système"
+msgstr "Жүйе тілі"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "Бөлгіштер мен интертитрлерді тыңдау мүмкін емес."
+
+msgid "Mes Radios"
+msgstr "Менің радиоларым"
+
+msgid "Mot-clé :"
+msgstr "Негізгі сөз:"
+
+msgid "Nouveaux uniquement"
+msgstr "Тек жаңа"
+
+msgid "OPTIONS DE SESSION"
+msgstr "СЕССИЯ ОПЕРАЦИЯЛАРЫ"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "Топтар мен топшаларды ұйымдастыру (Linux конвенциясы)"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "Алдымен оның радиоларын тыңдау үшін топ ашыңыз."
+
+msgid "Ouvrir"
+msgstr "Ашық"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "~/.config/timonde ашыңыз"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "~/.config/timonde/examples файлын ашыңыз"
+
+msgid "Pays"
+msgstr "Ел"
+
+msgid "Pays :"
+msgstr "Ел:"
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "GNOME жұмыс үстелінің жоғарғы жолағында ойнату белгішесін жасырын түрде көрсету үшін <b>AppIndicator</b> жүйелік кеңейтімі қажет.<br/><br/>Оны қазір орнатқыңыз келе ме?"
+
+msgid "Préférences"
+msgstr "Параметрлер"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "Барлығын бір топқа импорттаудың орнына файлда анықталған ішкі топтарды сақтаңыз."
+
+msgid "Quitter"
+msgstr "Шығу"
+
+msgid "Recharger"
+msgstr "Қайта жүктеңіз"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "Ағымдағы көрсетілген файлды қайта жүктеңіз"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "Тегін және бірлескен <b>Radio-Browser</b> каталогында дүниежүзілік іздеу (+45 000 станция)."
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "Радио-браузерден іздеу орындалуда..."
+
+msgid "Rechercher"
+msgstr "Іздеу"
+
+msgid "Rechercher en ligne"
+msgstr "Интернетте іздеу"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "Таңдалған сілтемені белсенді ресми арнамен ауыстырыңыз"
+
+msgid "Restaurer exemples"
+msgstr "Мысалдар қалпына келтіру"
+
+msgid "Régions & Locales :"
+msgstr "Аймақтар және жергілікті тұрғындар:"
+
+msgid "Réparer le flux..."
+msgstr "Ағынды түзетіңіз..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "Бастапқы 19 мысалды қалпына келтіріңіз"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "Кілт сөзді енгізіңіз немесе каталогты зерттеу үшін Іздеу түймесін басыңыз."
+
+msgid "Sauvegarde réussie !"
+msgstr "Сақтық көшірме сәтті болды!"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "Радиоларымды сақтау (XML)..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "Бетбелгілерімді сақтау (XML)"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "Бетбелгілер мен радиолар сәтті сақталды!"
+
+msgid "Station"
+msgstr "Курорт"
+
+msgid "Statut Favoris"
+msgstr "Таңдаулылар күйі"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "146 ел мен аймақтың ресми және расталған таңдауы (DAB+ сандық гүл шоқтары және ірі ұлттық станциялар)."
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "Оны тыңдау үшін радионы таңдаңыз."
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "Тыңдау үшін кестеден станцияны таңдаңыз."
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "Елді теріңіз (мысалы: Франция, Дойчланд, Канада...)"
+
+msgid "Tester"
+msgstr "Сынақ"
+
+msgid "Tester les flux"
+msgstr "Сынақ ағындары"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "TiMonde — GNOME Desktop Integration"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "Барлық файлдар (*.*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "Барлық елдер (жаһандық)"
+
+msgid "Tout cocher"
+msgstr "Барлығын тексеріңіз"
+
+msgid "Tout décocher"
+msgstr "Барлығын алып тастаңыз"
+
+msgid "Toutes les langues"
+msgstr "Барлық тілдер"
+
+msgid "URL du flux"
+msgstr "Арна URL мекенжайы"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "Тыңдау үшін тізімнен радионы таңдаңыз."
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "Толық бетбелгілеріңіз мына жерде сақталды:"
+
+msgid "Votes"
+msgstr "Дауыстар"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "Сілтеменің қолжетімділігін тікелей эфирде тексеріңіз"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "Тікелей радионың қолжетімділігін тексеріңіз"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "Табылған радиолардың тікелей қолжетімділігін тексеріңіз"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "Сілтеме жарамдылығын тексеріңіз және ағынды алдын ала қараңыз"
+
+msgid "ajoutée avec succès !"
+msgstr "сәтті қосылды!"
+
+msgid "fichiers exemples restaurés."
+msgstr "қалпына келтірілген үлгі файлдар."
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "жаңа радио(лар) импортталды!"
+
+msgid "Écouter"
+msgstr "Тыңда"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "Таңдалған радионы тыңдау"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "Таңдалған радионы тыңдаңыз немесе тексеріңіз"
+

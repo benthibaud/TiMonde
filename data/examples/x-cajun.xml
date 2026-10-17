@@ -1,7 +1,11 @@
-<?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Musique Cajun &amp; Louisiane" flag="" category="Exemples">
-  <national>
-    <station name="KBON (Louisiana)" url="https://ice64.securenetsystems.net/KBON" genre="Cajun / Acadie" />
-    <station name="Mustang 107.1 - Louisiana" url="https://ice6.securenetsystems.net/KOGM" genre="Cajun / Acadie" />
-    </national>
-  </bouquet>
+<?xml version="1.0" encoding="utf-8"?>
+<bookmarks>
+	<group name="Cajun &amp; Louisiane">
+		<bookmark name="Cajun Country Radio" url="https://streaming.live365.com/a18002" country="US" timezone="America/Chicago"/>
+		<bookmark name="Cajun Sounds Internet Radio" url="https://streaming.live365.com/a93734" country="US" timezone="America/Chicago"/>
+		<bookmark name="KBON (Louisiana)" url="https://ice64.securenetsystems.net/KBON" country="US" timezone="America/Chicago"/>
+		<bookmark name="KVPIAM (Cajun)" url="https://ice8.securenetsystems.net/KVPIAM?playSessionID=4A24A7D7-F682-4571-8CC09C5D0AE217D1" country="US" timezone="America/Chicago"/>
+		<bookmark name="Mustang 107.1 - Louisiana" url="https://ice6.securenetsystems.net/KOGM" country="US" timezone="America/Chicago"/>
+		<bookmark name="Zydeco / Cajun / Creole Music - Radio Caprice" url="http://213.141.131.10:8002/zydeco" country="RU" timezone="Europe/Moscow"/>
+	</group>
+</bookmarks>

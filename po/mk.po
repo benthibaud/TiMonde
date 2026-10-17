@@ -1,14 +1,16 @@
-# TiMonde — MK Translation
+# TiMonde — Traduction MK
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: mk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: mk\n"
 
 msgid "Play"
 msgstr "Пушти"
@@ -26,124 +28,124 @@ msgid "Delete"
 msgstr "Избриши"
 
 msgid "Zap to another random station"
-msgstr ""
+msgstr "Запирајте на друго случајно радио"
 
 msgid "Play random radio (Ephemeral discovery)"
-msgstr ""
+msgstr "Слушајте случајна радио станица (ефемерно откритие)"
 
 msgid "[ Ephemeral]"
-msgstr ""
+msgstr "[Ефемерно]"
 
 msgid "Options"
 msgstr "Опции"
 
 msgid "Add a station..."
-msgstr ""
+msgstr "Додајте радио..."
 
 msgid "Discover & Import stations..."
-msgstr ""
+msgstr "Откријте и увезете радија..."
 
 msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr ""
+msgstr "Увези ги моите датотеки (XML, CSV, JSON, M3U)..."
 
 msgid "Manage groups and stations..."
-msgstr ""
+msgstr "Класифицирајте групи и радија..."
 
 msgid "Open bookmarks.xml"
-msgstr ""
+msgstr "Отворете обележувачи.xml"
 
 msgid "Quit TiMonde"
 msgstr "Излези од TiMonde"
 
 msgid "Mute (0%)"
-msgstr ""
+msgstr "Исклучи звук (0%)"
 
 msgid "Sleep timer"
-msgstr ""
+msgstr "Тајмер за спиење"
 
 msgid "In 15 minutes"
-msgstr ""
+msgstr "За 15 минути"
 
 msgid "In 30 minutes"
-msgstr ""
+msgstr "За 30 минути"
 
 msgid "In 45 minutes"
-msgstr ""
+msgstr "За 45 минути"
 
 msgid "In 60 minutes (1h)"
-msgstr ""
+msgstr "За 60 минути (1 час)"
 
 msgid "Cancel sleep timer"
-msgstr ""
+msgstr "Откажете го спиењето"
 
 msgid "Discover & Import stations (TiMonde)"
-msgstr ""
+msgstr "Откријте и увезете радио станици (TiMonde)"
 
 msgid "Verified DAB+ Bouquets"
-msgstr ""
+msgstr "Потврдени букети (DAB+)"
 
 msgid "Radio-Browser Search"
-msgstr ""
+msgstr "Пребарајте радио-прелистувач"
 
 msgid "Sample Files"
-msgstr ""
+msgstr "Пример датотеки"
 
 msgid "Import my files"
-msgstr ""
+msgstr "Увезете ги моите датотеки"
 
 msgid "<b> Country:</b>"
-msgstr ""
+msgstr "<b>Земја:</b>"
 
 msgid "<b>Language:</b>"
-msgstr ""
+msgstr "<b>Јазик:</b>"
 
 msgid "Name / Keyword:"
-msgstr ""
+msgstr "Име / Клучен збор:"
 
 msgid "Genre:"
-msgstr ""
+msgstr "Пол:"
 
 msgid "<b>Sample file:</b>"
-msgstr ""
+msgstr "<b>Примерна датотека:</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr ""
+msgstr "<b>Името на групата во вашите омилени:</b>"
 
 msgid "Select all"
-msgstr ""
+msgstr "Проверете ги сите"
 
 msgid "Deselect all"
-msgstr ""
+msgstr "Отштиклирајте ги сите"
 
 msgid "Import into favorites"
-msgstr ""
+msgstr "Увези во моите омилени"
 
 msgid "Close"
 msgstr "Затвори"
 
 msgid "Add a station (TiMonde)"
-msgstr ""
+msgstr "Додајте станица (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
-msgstr ""
+msgstr "<b>Внесете ги информациите за новото радио:</b>"
 
 msgid "Add to my stations"
-msgstr ""
+msgstr "Додај во моите радија"
 
 msgid "Save station to favorites (TiMonde)"
-msgstr ""
+msgstr "Зачувај го радиото во моите омилени (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr ""
+msgstr "<b>Чувајте ја оваа случајно откриена радио станица во вашите омилени:</b>"
 
 msgid "Keep in favorites"
-msgstr ""
+msgstr "Зачувај во моите омилени"
 
 msgid "Edit station (TiMonde)"
-msgstr ""
+msgstr "Уредете го радиото (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr ""
+msgstr "<b>Променете ги поставките на станицата:</b>"
 
 msgid "Save"
 msgstr "Зачувај"
@@ -152,82 +154,82 @@ msgid "Station name:"
 msgstr "Име на станицата:"
 
 msgid "Audio stream URL:"
-msgstr ""
+msgstr "URL на аудио пренос:"
 
 msgid "Group / Folder:"
-msgstr ""
+msgstr "Група / Папка:"
 
 msgid "Country & Timezone:"
-msgstr ""
+msgstr "Земја и временска зона:"
 
 msgid "Timezone:"
-msgstr ""
+msgstr "Временска зона:"
 
 msgid "Delete this station"
-msgstr ""
+msgstr "Избришете го ова радио"
 
 msgid "Cancel"
 msgstr "Откажи"
 
 msgid "Delete « {} » from favorites?"
-msgstr ""
+msgstr "Да се отстрани „{}“ од омилените?"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr ""
+msgstr "Ова дејство трајно ќе ја отстрани станицава од вашата колекција."
 
 msgid "Manage groups, stations and separators (TiMonde)"
-msgstr ""
+msgstr "Управување со групи, радија и сепаратори (TiMonde)"
 
 msgid "Back to groups"
-msgstr ""
+msgstr "⬅ Назад во групите"
 
 msgid "Add station"
-msgstr ""
+msgstr "Додадете радио"
 
 msgid "Open"
-msgstr ""
+msgstr "Отвори"
 
 msgid "New group"
-msgstr ""
+msgstr "Нова група"
 
 msgid "Move to..."
-msgstr ""
+msgstr "Преместете се во..."
 
 msgid "Top"
-msgstr ""
+msgstr "Прво"
 
 msgid "Move up"
-msgstr ""
+msgstr "⬆ Оди нагоре"
 
 msgid "Move down"
-msgstr ""
+msgstr "⬇ Одете надолу"
 
 msgid "Separator"
-msgstr ""
+msgstr "Сепаратор"
 
 msgid "Sort A-Z"
-msgstr ""
+msgstr "Подреди A-Z"
 
 msgid "Save and reload"
-msgstr ""
+msgstr "Зачувајте и вчитајте повторно"
 
 msgid "Same time"
 msgstr "Исто време"
 
 msgid "Dawn"
-msgstr ""
+msgstr "Зора"
 
 msgid "Morning"
-msgstr ""
+msgstr "Утро"
 
 msgid "Daytime"
-msgstr ""
+msgstr "Ден"
 
 msgid "Evening"
-msgstr ""
+msgstr "Вечер"
 
 msgid "Night"
-msgstr ""
+msgstr "Ноќ"
 
 msgid "Tomorrow"
 msgstr "Утре"
@@ -236,64 +238,64 @@ msgid "Yesterday"
 msgstr "Вчера"
 
 msgid "Maintenance & Data"
-msgstr ""
+msgstr "Одржување и податоци"
 
 msgid "Check streams (dead links)..."
-msgstr ""
+msgstr "Проверете доводи (мртви врски)..."
 
 msgid "Export my stations to CSV..."
-msgstr ""
+msgstr "Извези ги моите радија во CSV..."
 
 msgid "Check streams"
-msgstr ""
+msgstr "Проверете ги доводите"
 
 msgid "Dead links only"
-msgstr ""
+msgstr "Само мртви врски"
 
 msgid "Apply redirects"
-msgstr ""
+msgstr "Примени пренасочувања"
 
 msgid "Repair stream..."
-msgstr ""
+msgstr "Поправка на протокот ..."
 
 msgid "Export to CSV"
-msgstr ""
+msgstr "Извези во CSV"
 
 msgid "Test stream availability and locate broken links"
-msgstr ""
+msgstr "Тестирајте ја достапноста во живо на вашите радио станици и забележајте мртви врски"
 
 msgid "Display offline radio streams only"
-msgstr ""
+msgstr "Прикажи само радио станици чиј пренос е офлајн"
 
 msgid "Automatically update redirected streams to direct URL"
-msgstr ""
+msgstr "Автоматски ажурирајте доводи пренасочени на нивната директна URL-адреса"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
+msgstr "Автоматски барајте заменски активен пренос на Радио-прелистувачот за оваа мртва врска"
 
 msgid "Export all stations to CSV spreadsheet format"
-msgstr ""
+msgstr "Извезете ги сите ваши радија во формат на табеларни пресметки CSV"
 
 msgid "Export my stations to CSV"
-msgstr ""
+msgstr "Извезете ги моите радија во CSV"
 
 msgid "CSV files (*.csv)"
-msgstr ""
+msgstr "CSV-датотеки (*.csv)"
 
 msgid "All files (*.*)"
-msgstr ""
+msgstr "Сите датотеки (*.*)"
 
 msgid "Export"
-msgstr ""
+msgstr "Извоз"
 
 msgid "Export successful!"
-msgstr ""
+msgstr "Извозот е успешен!"
 
 msgid "Error during CSV export:"
-msgstr ""
+msgstr "Грешка при извоз на CSV:"
 
 msgid "station(s) saved to:"
-msgstr ""
+msgstr "радио(а) снимени во:"
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "Поставки..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "Додајте радио (TiMonde)"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "Додај во моите радија"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "Не се додадени нови радија (веќе присутни)."
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "DAB+ букети и официјални селекции"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "Зачувај во моите омилени"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "Чувајте го радиото во омилени (TiMonde)"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "Отвори датотека:"
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "Откријте и увезете радио станици (TiMonde)"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "Зачувај"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "Грешка при извршувањето:"
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "Грешка за увоз на JSON:"
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "Грешка при менување на автоматското стартување."
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "Истражете го DAB+..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "Извозот на CSV е завршен."
 
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "Затвори"
 
 msgid "Fichiers exemples"
 msgstr "Sample Files"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "Увезете лични датотеки"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "Увези датотека..."
 
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "Не може да се отвори папката:"
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "Вметнете сепаратори (---) или наслови на секции во вашите групи за да го проветрите вашето мени."
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "Промените земени во предвид."
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "Уредете го радиото (TiMonde)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "Отворете ја папката"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "Прелистајте..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "Глобално пребарување на радио-прелистувач"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "Барај..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "Обележувачите се реорганизирани и успешно зачувани!"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "Избриши"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,7 +653,7 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "примерок од датотеки вратени во"
 
 msgid "online"
 msgstr "online"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ Организација"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 Совет за визуелен распоред"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 Податоци и датотеки"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻 Библиотека"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️ Општо"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>• Променете го <b>#</b> или користете <b>Премести нагоре/надолу</b> за да ги наредите групите. \n"
+" • <b>Двоен-клик на група</b> (или Отвори) за да ги сортирате нејзините радија и разделувачи. \n"
+" • Користете <b>Пренеси...</b> за спојување или преместување содржина во друга група. \n"
+" • Користете <b>Нова група</b> за да додадете папка со радија.</small>"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<small>• Променете го <b>#</b> или користете <b>Премести нагоре/надолу</b> за подредување на радијата. \n"
+" • Кликнете <b>Проверете ги доводите</b> за да ги забележите мртвите врски (црвено) и да ги поправите. \n"
+" • Кликнете на <b>Поправете го преносот...</b> за да пребарувате за заменлив активен пренос на Radio-Browser. \n"
+" • Кликнете <b>Сепаратор</b> за да вметнете наслов на секцијата.</small>"
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>Изберете датотека или пример погоре.</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>• Променете го <b>#</b> или користете <b>Премести нагоре/надолу</b> за да ги наредите групите. \n"
+" • <b>Двоен-клик на група</b> (или Отвори) за да ги подредите нејзините радија и сепаратори. \n"
+" • Користете <b>Премести во...</b> за спојување или преместување содржина. \n"
+" • Користете <b>Нова група</b> за да креирате папка со радија.</small>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<small>• Променете го <b>#</b> или користете <b>Премести нагоре/надолу</b> за да ги нарачате радијата. \n"
+" • Кликнете <b>Проверете ги доводите</b> за да ги лоцирате офлајн врските (во црвено). \n"
+" • Кликнете <b>Поправете го преносот...</b> за да пребарувате за активен пренос за замена. \n"
+" • Кликнете на <b>Сепаратор</b> за да вметнете титл или линија за одвојување.</small>"
+
+msgid "Actualiser la liste des exemples"
+msgstr "Освежете ја листата на примери"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "Помош со групи и подгрупи"
+
+msgid "Ajouter"
+msgstr "Додадете"
+
+msgid "Annuler"
+msgstr "Откажи"
+
+msgid "Arrêter"
+msgstr "Стоп"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "Не се пронајдени датотеки на bookmarks.xml за зачувување."
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "Не се додадени нови радио станици (веќе се присутни во вашите обележувачи)."
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "Не се најдени радио станици на Radio-Browser за овие критериуми."
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "Национален букет (главни одморалишта)"
+
+msgid "Bouquets par pays"
+msgstr "Букети по земја"
+
+msgid "Bureau graphique & Plateau"
+msgstr "Графичко биро и фиока"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "Оваа станица нема URL-адреси за аудио пренос."
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "Поставете датотека XML, CSV, JSON, M3U или PLS"
+
+msgid "Charger un fichier..."
+msgstr "Вчитај датотека..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "Изберете од постоечките групи"
+
+msgid "Choisir un fichier de radios"
+msgstr "Изберете радио датотека"
+
+msgid "Collections & Fichiers"
+msgstr "Колекции и датотеки"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "Чувајте организација во датотека"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "Направете целосна копија од вашата колекција (со папки и временски зони)"
+
+msgid "Disponibilité"
+msgstr "Достапност"
+
+msgid "Disponibilité en direct"
+msgstr "Достапност во живо"
+
+msgid "Dossier / Groupe"
+msgstr "Папка / Група"
+
+msgid "Dossier des exemples"
+msgstr "Папка со примери"
+
+msgid "Dossier des signets"
+msgstr "Папка со обележувачи"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "Автоматско откривање според регионалните поставки на вашата околина на Linux."
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "ОКРИВАНА ОКОЛИНА (САМО ЗА ЧИТАЊЕ)"
+
+msgid "Effacer le champ"
+msgstr "Чисто поле"
+
+msgid "Effacer le filtre langue"
+msgstr "Исчисти јазичен филтер"
+
+msgid "Effacer le filtre pays"
+msgstr "Исчистете го филтерот за земја"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "Откриена е околина на GNOME Shell"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "Грешка при зачувување:"
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "На пример: /Франција/џез или / за root"
+
+msgid "Exemples thématiques :"
+msgstr "Тематски примери:"
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "Извези во табела (CSV)..."
+
+msgid "Fichier :"
+msgstr "Датотека:"
+
+msgid "Fichier externe :"
+msgstr "Надворешна датотека:"
+
+msgid "Fichiers XML (*.xml)"
+msgstr "XML-датотеки (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "Филтрирај по земја:"
+
+msgid "Format & Débit"
+msgstr "Формат и брзина на битови"
+
+msgid "Genre / Tags"
+msgstr "Пол / Тагови"
+
+msgid "Genre / Thématique"
+msgstr "Жанр / Тема"
+
+msgid "Genre :"
+msgstr "Пол:"
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "Непрепознат менаџер на пакети."
+
+msgid "Groupe :"
+msgstr "Група:"
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "Создадете рамен список за табеларни пресметки Calc или Excel"
+
+msgid "Importer"
+msgstr "Увоз"
+
+msgid "Importer & Exporter"
+msgstr "Увоз и извоз"
+
+msgid "Importer dans mes favoris"
+msgstr "Увези во моите омилени"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "Инсталирањето е во тек (ве молиме потврдете го известувањето на системот)..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "Инсталирајте интеграција на GNOME"
+
+msgid "Intégration GNOME requise"
+msgstr "Потребна е интеграција на GNOME"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "Интеграција во горната лента на GNOME"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "Матична интеграција во областа за известување преку StatusNotifierItem / XEmbed."
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "Извозот на CSV е достапен од поставките."
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "Екстензијата AppIndicator е потребна за прикажување на иконата во горната лента во GNOME."
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "Инсталирањето беше откажано или не успеа."
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "Резервната XML е достапна од поставките."
+
+msgid "Langue du système"
+msgstr "Системски јазик"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "Сепараторите и меѓунасловите не можат да се слушаат."
+
+msgid "Mes Radios"
+msgstr "Моите радија"
+
+msgid "Mot-clé :"
+msgstr "Клучен збор:"
+
+msgid "Nouveaux uniquement"
+msgstr "Само ново"
+
+msgid "OPTIONS DE SESSION"
+msgstr "ОПЦИИ ЗА СЕСИЈА"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "Организација на групи и подгрупи (Конвенција за Линукс)"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "Прво отворете група за да ги слушате нејзините радија."
+
+msgid "Ouvrir"
+msgstr "Отвори"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "Отворете ~/.config/timonde"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "Отворете ~/.config/timonde/examples"
+
+msgid "Pays"
+msgstr "Земја"
+
+msgid "Pays :"
+msgstr "Земја:"
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "За дискретно прикажување на иконата за репродукција во горната лента на вашата работна површина на GNOME, потребна е системска наставка <b>AppIndicator</b>.<br/><br/>Дали би сакале да ја инсталирате сега?"
+
+msgid "Préférences"
+msgstr "Преференци"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "Зачувајте ги подгрупите дефинирани во датотеката наместо да внесувате сè во една група."
+
+msgid "Quitter"
+msgstr "Излезете"
+
+msgid "Recharger"
+msgstr "Вчитај повторно"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "Повторно вчитајте ја тековно прикажаната датотека"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "Пребарување низ целиот свет на бесплатниот и заеднички директориум <b>Radio-Browser</b> (+45.000 станици)."
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "Пребарувањето на радио-прелистувачот е во тек..."
+
+msgid "Rechercher"
+msgstr "Пребарување"
+
+msgid "Rechercher en ligne"
+msgstr "Пребарувајте онлајн"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "Заменете ја избраната врска со активен официјален извор"
+
+msgid "Restaurer exemples"
+msgstr "Врати примери"
+
+msgid "Régions & Locales :"
+msgstr "Региони и локални жители:"
+
+msgid "Réparer le flux..."
+msgstr "Поправете го протокот..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "Вратете ги оригиналните 19 примери"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "Внесете клучен збор или кликнете Пребарај за да го истражите директориумот."
+
+msgid "Sauvegarde réussie !"
+msgstr "Резервната копија е успешна!"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "Зачувај ги моите радија (XML)..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "Зачувај ги моите обележувачи (XML)"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "Обележувачите и радијата се успешно зачувани!"
+
+msgid "Station"
+msgstr "Одморалиште"
+
+msgid "Statut Favoris"
+msgstr "Статус на омилени"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "Официјален и проверен избор од 146 земји и региони (ДАБ+ дигитални букети и големи национални станици)."
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "Изберете радио за да го слушате."
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "Изберете станица од табелата за да ја слушате."
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "Напишете земја (на пр.: Франција, Германија, Канада...)"
+
+msgid "Tester"
+msgstr "Тест"
+
+msgid "Tester les flux"
+msgstr "Тест текови"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "TiMonde — Интеграција на работната површина на GNOME"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "Сите датотеки (*.*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "Сите земји (глобални)"
+
+msgid "Tout cocher"
+msgstr "Проверете ги сите"
+
+msgid "Tout décocher"
+msgstr "Отштиклирајте ги сите"
+
+msgid "Toutes les langues"
+msgstr "Сите јазици"
+
+msgid "URL du flux"
+msgstr "URL на довод"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "Изберете радио од списокот за да го слушате."
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "Вашите целосни обележувачи се зачувани во:"
+
+msgid "Votes"
+msgstr "Гласови"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "Проверете ја достапноста на врската во живо"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "Проверете ја достапноста на радио во живо"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "Проверете ја достапноста во живо на пронајдените радија"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "Проверете ја валидноста на врската и прегледајте го преносот"
+
+msgid "ajoutée avec succès !"
+msgstr "успешно додаден!"
+
+msgid "fichiers exemples restaurés."
+msgstr "обновени примероци на датотеки."
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "увезено ново радио!"
+
+msgid "Écouter"
+msgstr "Слушај"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "Слушајте го избраното радио"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "Слушајте го или тестирајте го избраното радио"
+

@@ -1,14 +1,16 @@
-# TiMonde — BN Translation
+# TiMonde — Traduction BN
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: bn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bn\n"
 
 msgid "Play"
 msgstr "চালান"
@@ -26,124 +28,124 @@ msgid "Delete"
 msgstr "মুছুন"
 
 msgid "Zap to another random station"
-msgstr ""
+msgstr "অন্য এলোমেলো রেডিওতে জ্যাপ করুন"
 
 msgid "Play random radio (Ephemeral discovery)"
-msgstr ""
+msgstr "একটি এলোমেলো রেডিও স্টেশন শুনুন (ক্ষণস্থায়ী আবিষ্কার)"
 
 msgid "[ Ephemeral]"
-msgstr ""
+msgstr "[স্বল্পস্থায়ী]"
 
 msgid "Options"
 msgstr "অপশন"
 
 msgid "Add a station..."
-msgstr ""
+msgstr "একটি রেডিও যোগ করুন..."
 
 msgid "Discover & Import stations..."
-msgstr ""
+msgstr "রেডিও আবিষ্কার করুন এবং আমদানি করুন..."
 
 msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr ""
+msgstr "আমার ফাইল আমদানি করুন (XML, CSV, JSON, M3U)..."
 
 msgid "Manage groups and stations..."
-msgstr ""
+msgstr "গ্রুপ এবং রেডিও শ্রেণীবদ্ধ করুন..."
 
 msgid "Open bookmarks.xml"
-msgstr ""
+msgstr "bookmarks.xml খুলুন"
 
 msgid "Quit TiMonde"
-msgstr ""
+msgstr "টিমন্ডে ছেড়ে দিন"
 
 msgid "Mute (0%)"
-msgstr ""
+msgstr "নিঃশব্দ (0%)"
 
 msgid "Sleep timer"
-msgstr ""
+msgstr "ঘুমের টাইমার"
 
 msgid "In 15 minutes"
-msgstr ""
+msgstr "15 মিনিটের মধ্যে"
 
 msgid "In 30 minutes"
-msgstr ""
+msgstr "30 মিনিটের মধ্যে"
 
 msgid "In 45 minutes"
-msgstr ""
+msgstr "45 মিনিটের মধ্যে"
 
 msgid "In 60 minutes (1h)"
-msgstr ""
+msgstr "60 মিনিটে (1 ঘন্টা)"
 
 msgid "Cancel sleep timer"
-msgstr ""
+msgstr "ঘুম বাতিল করুন"
 
 msgid "Discover & Import stations (TiMonde)"
-msgstr ""
+msgstr "রেডিও স্টেশন আবিষ্কার করুন এবং আমদানি করুন (টিমন্ডে)"
 
 msgid "Verified DAB+ Bouquets"
-msgstr ""
+msgstr "যাচাইকৃত তোড়া (DAB+)"
 
 msgid "Radio-Browser Search"
-msgstr ""
+msgstr "রেডিও ব্রাউজার অনুসন্ধান করুন"
 
 msgid "Sample Files"
-msgstr ""
+msgstr "উদাহরণ ফাইল"
 
 msgid "Import my files"
-msgstr ""
+msgstr "আমার ফাইল আমদানি করুন"
 
 msgid "<b> Country:</b>"
-msgstr ""
+msgstr "<b>দেশ:</b>"
 
 msgid "<b>Language:</b>"
-msgstr ""
+msgstr "<b>ভাষা:</b>"
 
 msgid "Name / Keyword:"
-msgstr ""
+msgstr "নাম / কীওয়ার্ড:"
 
 msgid "Genre:"
-msgstr ""
+msgstr "লিঙ্গ:"
 
 msgid "<b>Sample file:</b>"
-msgstr ""
+msgstr "<b>উদাহরণ ফাইল:</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr ""
+msgstr "<b>আপনার পছন্দের গ্রুপের নাম:</b>"
 
 msgid "Select all"
-msgstr ""
+msgstr "সব চেক করুন"
 
 msgid "Deselect all"
-msgstr ""
+msgstr "সবগুলো আনচেক করুন"
 
 msgid "Import into favorites"
-msgstr ""
+msgstr "আমার প্রিয়তে আমদানি করুন"
 
 msgid "Close"
 msgstr "বন্ধ করুন"
 
 msgid "Add a station (TiMonde)"
-msgstr ""
+msgstr "একটি স্টেশন যোগ করুন (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
-msgstr ""
+msgstr "<b>নতুন রেডিওর জন্য তথ্য লিখুন:</b>"
 
 msgid "Add to my stations"
-msgstr ""
+msgstr "আমার রেডিও যোগ করুন"
 
 msgid "Save station to favorites (TiMonde)"
-msgstr ""
+msgstr "রেডিওকে আমার প্রিয়তে সংরক্ষণ করুন (টিমন্ডে)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr ""
+msgstr "<b>এলোমেলোভাবে আবিষ্কৃত এই রেডিও স্টেশনটিকে আপনার পছন্দের মধ্যে রাখুন:</b>"
 
 msgid "Keep in favorites"
-msgstr ""
+msgstr "আমার প্রিয়তে সংরক্ষণ করুন"
 
 msgid "Edit station (TiMonde)"
-msgstr ""
+msgstr "রেডিও সম্পাদনা করুন (টিমন্ডে)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr ""
+msgstr "<b>স্টেশন সেটিংস পরিবর্তন করুন:</b>"
 
 msgid "Save"
 msgstr "সংরক্ষণ"
@@ -152,82 +154,82 @@ msgid "Station name:"
 msgstr "স্টেশনের নাম:"
 
 msgid "Audio stream URL:"
-msgstr ""
+msgstr "অডিও স্ট্রিম URL:"
 
 msgid "Group / Folder:"
-msgstr ""
+msgstr "গ্রুপ / ফোল্ডার:"
 
 msgid "Country & Timezone:"
-msgstr ""
+msgstr "দেশ এবং সময় অঞ্চল:"
 
 msgid "Timezone:"
-msgstr ""
+msgstr "সময় অঞ্চল:"
 
 msgid "Delete this station"
-msgstr ""
+msgstr "এই রেডিও মুছুন"
 
 msgid "Cancel"
 msgstr "বাতিল"
 
 msgid "Delete « {} » from favorites?"
-msgstr ""
+msgstr "প্রিয় থেকে \"{}\" সরান?"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr ""
+msgstr "এই ক্রিয়াটি স্থায়ীভাবে এই স্টেশনটিকে আপনার সংগ্রহ থেকে সরিয়ে দেবে৷"
 
 msgid "Manage groups, stations and separators (TiMonde)"
-msgstr ""
+msgstr "গ্রুপ, রেডিও এবং বিভাজক ব্যবস্থাপনা (টিমন্ডে)"
 
 msgid "Back to groups"
-msgstr ""
+msgstr "⬅ গ্রুপে ফিরে যান"
 
 msgid "Add station"
-msgstr ""
+msgstr "রেডিও যোগ করুন"
 
 msgid "Open"
-msgstr ""
+msgstr "খোলা"
 
 msgid "New group"
-msgstr ""
+msgstr "নতুন গ্রুপ"
 
 msgid "Move to..."
-msgstr ""
+msgstr "এখানে সরান..."
 
 msgid "Top"
-msgstr ""
+msgstr "প্রথম"
 
 msgid "Move up"
-msgstr ""
+msgstr "⬆ উপরে যাও"
 
 msgid "Move down"
-msgstr ""
+msgstr "⬇ নিচে যাও"
 
 msgid "Separator"
-msgstr ""
+msgstr "বিভাজক"
 
 msgid "Sort A-Z"
-msgstr ""
+msgstr "A-Z সাজান"
 
 msgid "Save and reload"
-msgstr ""
+msgstr "সংরক্ষণ করুন এবং পুনরায় লোড করুন"
 
 msgid "Same time"
-msgstr ""
+msgstr "একই সময়"
 
 msgid "Dawn"
-msgstr ""
+msgstr "ডন"
 
 msgid "Morning"
-msgstr ""
+msgstr "সকাল"
 
 msgid "Daytime"
-msgstr ""
+msgstr "দিনের বেলা"
 
 msgid "Evening"
-msgstr ""
+msgstr "সন্ধ্যা"
 
 msgid "Night"
-msgstr ""
+msgstr "রাত্রি"
 
 msgid "Tomorrow"
 msgstr "আগামীকাল"
@@ -236,64 +238,64 @@ msgid "Yesterday"
 msgstr "গতকাল"
 
 msgid "Maintenance & Data"
-msgstr ""
+msgstr "রক্ষণাবেক্ষণ এবং ডেটা"
 
 msgid "Check streams (dead links)..."
-msgstr ""
+msgstr "ফিড চেক করুন (মৃত লিঙ্ক)..."
 
 msgid "Export my stations to CSV..."
-msgstr ""
+msgstr "আমার রেডিও CSV তে রপ্তানি করুন..."
 
 msgid "Check streams"
-msgstr ""
+msgstr "ফিড চেক করুন"
 
 msgid "Dead links only"
-msgstr ""
+msgstr "শুধুমাত্র মৃত লিঙ্ক"
 
 msgid "Apply redirects"
-msgstr ""
+msgstr "পুনঃনির্দেশ প্রয়োগ করুন"
 
 msgid "Repair stream..."
-msgstr ""
+msgstr "মেরামত প্রবাহ..."
 
 msgid "Export to CSV"
-msgstr ""
+msgstr "CSV-এ রপ্তানি করুন"
 
 msgid "Test stream availability and locate broken links"
-msgstr ""
+msgstr "আপনার রেডিও স্টেশন এবং স্পট ডেড লিঙ্কগুলির লাইভ উপলব্ধতা পরীক্ষা করুন"
 
 msgid "Display offline radio streams only"
-msgstr ""
+msgstr "শুধুমাত্র সেই রেডিও স্টেশনগুলি দেখান যেগুলির স্ট্রিম অফলাইন৷"
 
 msgid "Automatically update redirected streams to direct URL"
-msgstr ""
+msgstr "স্বয়ংক্রিয়ভাবে তাদের সরাসরি URL এ পুনঃনির্দেশিত ফিড আপডেট করুন"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
+msgstr "এই মৃত লিঙ্কের জন্য রেডিও-ব্রাউজারে একটি প্রতিস্থাপন সক্রিয় স্ট্রিমের জন্য স্বয়ংক্রিয়ভাবে অনুসন্ধান করুন"
 
 msgid "Export all stations to CSV spreadsheet format"
-msgstr ""
+msgstr "CSV স্প্রেডশীট বিন্যাসে আপনার সমস্ত রেডিও রপ্তানি করুন৷"
 
 msgid "Export my stations to CSV"
-msgstr ""
+msgstr "CSV তে আমার রেডিও রপ্তানি করুন৷"
 
 msgid "CSV files (*.csv)"
-msgstr ""
+msgstr "CSV ফাইল (*.csv)"
 
 msgid "All files (*.*)"
-msgstr ""
+msgstr "সমস্ত ফাইল (*)"
 
 msgid "Export"
-msgstr ""
+msgstr "রপ্তানি"
 
 msgid "Export successful!"
-msgstr ""
+msgstr "রপ্তানি সফল!"
 
 msgid "Error during CSV export:"
-msgstr ""
+msgstr "CSV রপ্তানির সময় ত্রুটি:"
 
 msgid "station(s) saved to:"
-msgstr ""
+msgstr "রেডিও(গুলি) রেকর্ড করা হয়েছে:"
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "সেটিংস..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "একটি রেডিও যোগ করুন (TiMonde)"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "আমার রেডিও যোগ করুন"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "কোন নতুন রেডিও যোগ করা হয়নি (ইতিমধ্যে বর্তমান)।"
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "DAB+ তোড়া এবং অফিসিয়াল নির্বাচন"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "আমার প্রিয়তে সংরক্ষণ করুন"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "রেডিওকে ফেভারিটে রাখুন (টিমন্ডে)"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "ফাইল খুলুন:"
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "রেডিও স্টেশন আবিষ্কার করুন এবং আমদানি করুন (TiMonde)"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "সংরক্ষণ করুন"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "সম্পাদন ত্রুটি:"
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "JSON আমদানি ত্রুটি:"
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "অটোস্টার্ট সংশোধন করার সময় ত্রুটি৷"
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "DAB+ অন্বেষণ করুন..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "CSV রপ্তানি সম্পন্ন হয়েছে৷"
 
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "বন্ধ"
 
 msgid "Fichiers exemples"
 msgstr "Sample Files"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "ব্যক্তিগত ফাইল আমদানি করুন"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "ফাইল আমদানি করুন..."
 
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "ফোল্ডার খুলতে অক্ষম:"
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "আপনার মেনুকে বায়ুচলাচল করতে আপনার গ্রুপে বিভাজক (---) বা বিভাগের শিরোনাম সন্নিবেশ করুন।"
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "একাউন্টে নেওয়া পরিবর্তন."
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "রেডিও সম্পাদনা করুন (টিমন্ডে)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "ফোল্ডার খুলুন"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "ব্রাউজ করুন..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "গ্লোবাল সার্চ রেডিও-ব্রাউজার"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "অনুসন্ধান করুন..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "বুকমার্ক পুনর্গঠিত এবং সফলভাবে সংরক্ষিত!"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "মুছে দিন"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,7 +653,7 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "নমুনা ফাইল পুনরুদ্ধার করা হয়েছে"
 
 msgid "online"
 msgstr "online"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ সংগঠন"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 ভিজ্যুয়াল লেআউট টিপ"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 ডেটা এবং ফাইল"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻 লাইব্রেরি"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️ সাধারণ"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>• <b>#</b> পরিবর্তন করুন অথবা গ্রুপগুলি অর্ডার করতে <b>উপরে/নীচে</b> ব্যবহার করুন।\n"
+"• রেডিও এবং স্প্লিটার বাছাই করতে <b>একটি গ্রুপে ডাবল ক্লিক করুন</b> (বা খুলুন)।\n"
+"• সামগ্রীকে একত্রিত করতে বা অন্য গোষ্ঠীতে স্থানান্তর করতে <b>স্থানান্তর...</b> ব্যবহার করুন৷\n"
+"• রেডিওর ফোল্ডার যোগ করতে <b>নতুন গ্রুপ</b> ব্যবহার করুন।</small>"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<small>• <b>#</b> পরিবর্তন করুন অথবা রেডিও সাজাতে <b>উপরে/নীচে</b> ব্যবহার করুন।\n"
+"• মৃত লিঙ্কগুলি (লাল) চিহ্নিত করতে এবং সেগুলি মেরামত করতে <b>ফিড চেক করুন</b> ক্লিক করুন৷\n"
+"• রেডিও-ব্রাউজারে একটি প্রতিস্থাপন সক্রিয় স্ট্রিম অনুসন্ধান করতে <b>রিপেয়ার স্ট্রিম...</b> এ ক্লিক করুন।\n"
+"• একটি বিভাগ শিরোনাম সন্নিবেশ করতে <b>বিভাজক</b> ক্লিক করুন৷</small>৷"
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>উপরে একটি ফাইল বা উদাহরণ নির্বাচন করুন।</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>• <b>#</b> পরিবর্তন করুন অথবা গ্রুপগুলি অর্ডার করতে <b>উপরে/নীচে</b> ব্যবহার করুন।\n"
+"• রেডিও এবং বিভাজক বাছাই করতে <b>একটি গ্রুপে ডাবল ক্লিক করুন</b> (বা খুলুন)।\n"
+"• সামগ্রী একত্রিত করতে বা সরাতে <b>এতে সরান...</b> ব্যবহার করুন।\n"
+"• রেডিওর একটি ফোল্ডার তৈরি করতে <b>নতুন গ্রুপ</b> ব্যবহার করুন।</small>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<small>• <b>#</b> পরিবর্তন করুন অথবা রেডিও অর্ডার করতে <b>উপরে/নীচে</b> ব্যবহার করুন।\n"
+"• অফলাইন লিঙ্কগুলি দেখতে (লাল রঙে) <b>ফিড চেক করুন</b> ক্লিক করুন।\n"
+"• একটি সক্রিয় প্রতিস্থাপন স্ট্রীম অনুসন্ধান করতে <b>রিপেয়ার স্ট্রিম...</b> ক্লিক করুন৷\n"
+"• একটি আন্তঃশিরোনাম বা বিভাজক লাইন সন্নিবেশ করতে <b>সেপারেটর</b>-এ ক্লিক করুন।</small>"
+
+msgid "Actualiser la liste des exemples"
+msgstr "উদাহরণের তালিকা রিফ্রেশ করুন"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "গ্রুপ এবং সাবগ্রুপের সাথে সাহায্য করুন"
+
+msgid "Ajouter"
+msgstr "যোগ করুন"
+
+msgid "Annuler"
+msgstr "বাতিল করুন"
+
+msgid "Arrêter"
+msgstr "থামো"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "সংরক্ষণ করার জন্য কোনো bookmarks.xml ফাইল পাওয়া যায়নি।"
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "কোন নতুন রেডিও স্টেশন যোগ করা হয়নি (ইতিমধ্যে আপনার বুকমার্কে উপস্থিত)।"
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "এই মানদণ্ডের জন্য রেডিও-ব্রাউজারে কোনো রেডিও স্টেশন পাওয়া যায়নি।"
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "জাতীয় তোড়া (প্রধান রিসর্ট)"
+
+msgid "Bouquets par pays"
+msgstr "দেশ অনুযায়ী তোড়া"
+
+msgid "Bureau graphique & Plateau"
+msgstr "গ্রাফিক ডেস্ক এবং ট্রে"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "এই স্টেশনে কোনো অডিও স্ট্রিম URL নেই৷"
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "একটি XML, CSV, JSON, M3U বা PLS ফাইল আপলোড করুন৷"
+
+msgid "Charger un fichier..."
+msgstr "একটি ফাইল লোড করুন..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "বিদ্যমান গ্রুপ থেকে চয়ন করুন"
+
+msgid "Choisir un fichier de radios"
+msgstr "একটি রেডিও ফাইল নির্বাচন করুন"
+
+msgid "Collections & Fichiers"
+msgstr "সংগ্রহ এবং ফাইল"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "ফাইলে সংগঠন রাখুন"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "আপনার সংগ্রহের একটি সম্পূর্ণ ব্যাকআপ তৈরি করুন (ফোল্ডার এবং সময় অঞ্চল সহ)"
+
+msgid "Disponibilité"
+msgstr "প্রাপ্যতা"
+
+msgid "Disponibilité en direct"
+msgstr "লাইভ প্রাপ্যতা"
+
+msgid "Dossier / Groupe"
+msgstr "ফোল্ডার/গ্রুপ"
+
+msgid "Dossier des exemples"
+msgstr "উদাহরণ ফোল্ডার"
+
+msgid "Dossier des signets"
+msgstr "বুকমার্ক ফোল্ডার"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "আপনার লিনাক্স পরিবেশের আঞ্চলিক সেটিংস অনুযায়ী স্বয়ংক্রিয় সনাক্তকরণ।"
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "পরিবেশ শনাক্ত করা হয়েছে (শুধু পঠনযোগ্য)"
+
+msgid "Effacer le champ"
+msgstr "পরিষ্কার ক্ষেত্র"
+
+msgid "Effacer le filtre langue"
+msgstr "ভাষা ফিল্টার পরিষ্কার করুন"
+
+msgid "Effacer le filtre pays"
+msgstr "দেশ ফিল্টার পরিষ্কার করুন"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "জিনোম শেল পরিবেশ সনাক্ত করা হয়েছে"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "সংরক্ষণ করার সময় ত্রুটি:"
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "যেমন: /ফ্রান্স/জ্যাজ বা / রুটের জন্য"
+
+msgid "Exemples thématiques :"
+msgstr "বিষয়ভিত্তিক উদাহরণ:"
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "টেবিলে রপ্তানি করুন (CSV)..."
+
+msgid "Fichier :"
+msgstr "ফাইল:"
+
+msgid "Fichier externe :"
+msgstr "বাহ্যিক ফাইল:"
+
+msgid "Fichiers XML (*.xml)"
+msgstr "XML ফাইল (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "দেশ অনুযায়ী ফিল্টার করুন:"
+
+msgid "Format & Débit"
+msgstr "ফরম্যাট এবং বিটরেট"
+
+msgid "Genre / Tags"
+msgstr "লিঙ্গ / ট্যাগ"
+
+msgid "Genre / Thématique"
+msgstr "জেনার/থিম"
+
+msgid "Genre :"
+msgstr "লিঙ্গ:"
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "অচেনা প্যাকেজ ম্যানেজার।"
+
+msgid "Groupe :"
+msgstr "ব্যান্ড:"
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "ক্যালক বা এক্সেল স্প্রেডশীটের জন্য একটি সমতল তালিকা তৈরি করুন"
+
+msgid "Importer"
+msgstr "আমদানি"
+
+msgid "Importer & Exporter"
+msgstr "আমদানি ও রপ্তানি"
+
+msgid "Importer dans mes favoris"
+msgstr "আমার প্রিয়তে আমদানি করুন"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "ইনস্টলেশন চলছে (দয়া করে সিস্টেম প্রম্পট যাচাই করুন)..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "জিনোম ইন্টিগ্রেশন ইনস্টল করুন"
+
+msgid "Intégration GNOME requise"
+msgstr "GNOME ইন্টিগ্রেশন প্রয়োজন"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "জিনোম টপবারে ইন্টিগ্রেশন"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "StatusNotifierItem/XEmbed এর মাধ্যমে বিজ্ঞপ্তি এলাকায় নেটিভ ইন্টিগ্রেশন।"
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "CSV এক্সপোর্ট সেটিংস থেকে অ্যাক্সেসযোগ্য।"
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "GNOME-এর উপরের বারে আইকন প্রদর্শনের জন্য AppIndicator এক্সটেনশন প্রয়োজন।"
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "ইনস্টলেশন বাতিল বা ব্যর্থ হয়েছে."
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "XML ব্যাকআপ সেটিংস থেকে অ্যাক্সেসযোগ্য।"
+
+msgid "Langue du système"
+msgstr "সিস্টেম ভাষা"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "বিভাজক এবং ইন্টারটাইটেল শোনা যাবে না।"
+
+msgid "Mes Radios"
+msgstr "আমার রেডিও"
+
+msgid "Mot-clé :"
+msgstr "মূলশব্দ:"
+
+msgid "Nouveaux uniquement"
+msgstr "শুধুমাত্র নতুন"
+
+msgid "OPTIONS DE SESSION"
+msgstr "সেশন অপশন"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "গ্রুপ এবং উপগোষ্ঠীর সংগঠন (লিনাক্স কনভেনশন)"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "এর রেডিও শোনার জন্য প্রথমে একটি গ্রুপ খুলুন।"
+
+msgid "Ouvrir"
+msgstr "খোলা"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "~/.config/timonde খুলুন"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "~/.config/timonde/examples খুলুন"
+
+msgid "Pays"
+msgstr "দেশ"
+
+msgid "Pays :"
+msgstr "দেশ:"
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "আপনার GNOME ডেস্কটপের উপরের বারে প্লে আইকনটি বিচক্ষণতার সাথে প্রদর্শন করার জন্য, <b>AppIndicator</b> সিস্টেম এক্সটেনশন প্রয়োজন।<br/><br/>আপনি কি এখন এটি ইনস্টল করতে চান?"
+
+msgid "Préférences"
+msgstr "পছন্দসমূহ"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "একটি একক গ্রুপে সবকিছু আমদানি করার পরিবর্তে ফাইলে সংজ্ঞায়িত সাবগ্রুপ সংরক্ষণ করুন।"
+
+msgid "Quitter"
+msgstr "চলে যেতে"
+
+msgid "Recharger"
+msgstr "পুনরায় লোড করুন"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "বর্তমানে প্রদর্শিত ফাইল পুনরায় লোড করুন"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "বিনামূল্যে এবং সহযোগী <b>রেডিও-ব্রাউজার</b> ডিরেক্টরিতে বিশ্বব্যাপী অনুসন্ধান করুন (+45,000 স্টেশন)।"
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "রেডিও-ব্রাউজারে অনুসন্ধান চলছে..."
+
+msgid "Rechercher"
+msgstr "গবেষণা করতে"
+
+msgid "Rechercher en ligne"
+msgstr "অনলাইনে অনুসন্ধান করুন"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "একটি সক্রিয় অফিসিয়াল ফিড দিয়ে নির্বাচিত লিঙ্কটি প্রতিস্থাপন করুন"
+
+msgid "Restaurer exemples"
+msgstr "উদাহরণ পুনরুদ্ধার করুন"
+
+msgid "Régions & Locales :"
+msgstr "অঞ্চল এবং স্থানীয়:"
+
+msgid "Réparer le flux..."
+msgstr "প্রবাহ ঠিক করুন..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "মূল 19টি উদাহরণ পুনরুদ্ধার করুন"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "একটি কীওয়ার্ড লিখুন বা ডিরেক্টরিটি অন্বেষণ করতে অনুসন্ধানে ক্লিক করুন।"
+
+msgid "Sauvegarde réussie !"
+msgstr "ব্যাকআপ সফল!"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "আমার রেডিও (XML) সংরক্ষণ করুন..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "আমার বুকমার্ক সংরক্ষণ করুন (XML)"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "বুকমার্ক এবং রেডিও সফলভাবে সংরক্ষিত!"
+
+msgid "Station"
+msgstr "স্টেশন"
+
+msgid "Statut Favoris"
+msgstr "প্রিয় স্থিতি"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "146টি দেশ এবং অঞ্চল থেকে অফিসিয়াল এবং যাচাইকৃত নির্বাচন (DAB+ ডিজিটাল তোড়া এবং প্রধান জাতীয় স্টেশন)।"
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "এটি শোনার জন্য একটি রেডিও নির্বাচন করুন৷"
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "এটি শুনতে টেবিল থেকে একটি স্টেশন নির্বাচন করুন."
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "একটি দেশ টাইপ করুন (যেমন: ফ্রান্স, ডয়েচল্যান্ড, কানাডা...)"
+
+msgid "Tester"
+msgstr "পরীক্ষা"
+
+msgid "Tester les flux"
+msgstr "পরীক্ষা প্রবাহ"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "টিমন্ড - জিনোম ডেস্কটপ ইন্টিগ্রেশন"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "সমস্ত ফাইল (*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "সমস্ত দেশ (বিশ্বব্যাপী)"
+
+msgid "Tout cocher"
+msgstr "সব চেক করুন"
+
+msgid "Tout décocher"
+msgstr "সবগুলো আনচেক করুন"
+
+msgid "Toutes les langues"
+msgstr "সব ভাষা"
+
+msgid "URL du flux"
+msgstr "ফিড URL"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "এটি শোনার জন্য তালিকা থেকে একটি রেডিও নির্বাচন করুন."
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "আপনার সম্পূর্ণ বুকমার্কগুলি এতে সংরক্ষিত হয়েছে:"
+
+msgid "Votes"
+msgstr "ভোট"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "লাইভ লিঙ্ক প্রাপ্যতা চেক করুন"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "লাইভ রেডিও উপলব্ধতা পরীক্ষা করুন"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "পাওয়া রেডিওগুলির লাইভ প্রাপ্যতা পরীক্ষা করুন"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "লিঙ্কের বৈধতা পরীক্ষা করুন এবং স্ট্রিমটির পূর্বরূপ দেখুন"
+
+msgid "ajoutée avec succès !"
+msgstr "সফলভাবে যোগ করা হয়েছে!"
+
+msgid "fichiers exemples restaurés."
+msgstr "নমুনা ফাইল পুনরুদ্ধার করা হয়েছে।"
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "নতুন রেডিও(গুলি) আমদানি করা হয়েছে!"
+
+msgid "Écouter"
+msgstr "শুনুন"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "নির্বাচিত রেডিও শুনুন"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "নির্বাচিত রেডিও শুনুন বা পরীক্ষা করুন"
+

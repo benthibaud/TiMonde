@@ -20,6 +20,7 @@ pub struct TiMondeTray {
     pub current_title: Arc<Mutex<Option<String>>>,
     pub is_ephemeral: Arc<AtomicBool>,
     pub play_generation: Arc<AtomicU64>,
+    pub sleep_generation: Arc<AtomicU64>,
     pub tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
     pub sleep_timer: Arc<Mutex<Option<std::time::Instant>>>,
 }
@@ -40,19 +41,17 @@ impl TiMondeTray {
         None
     }
     pub fn new(root_group: Group, bookmarks_path: PathBuf) -> Self {
-        let initial_last_station = {
-            let state = crate::state::AppState::load(&crate::state::AppState::default_path());
-            // Si la dernière station sauvegardée existe toujours dans les bookmarks, l'utiliser
-            if let Some(ref st) = state.last_station {
-                Self::find_station_by_url(&root_group, &st.url).or(Some(st.clone()))
-            } else {
-                None
-            }
+        let state = crate::state::AppState::load(&crate::state::AppState::default_path());
+        let initial_last_station = if let Some(ref st) = state.last_station {
+            Self::find_station_by_url(&root_group, &st.url).or(Some(st.clone()))
+        } else {
+            None
         };
+        let initial_volume = state.volume.clamp(0.0, 1.0);
 
         Self {
             audio: Arc::new(Mutex::new(None)),
-            current_volume: Arc::new(Mutex::new(0.80)),
+            current_volume: Arc::new(Mutex::new(initial_volume)),
             root_group: Arc::new(Mutex::new(root_group)),
             bookmarks_path,
             last_station: Arc::new(Mutex::new(initial_last_station)),
@@ -60,6 +59,7 @@ impl TiMondeTray {
             current_title: Arc::new(Mutex::new(None)),
             is_ephemeral: Arc::new(AtomicBool::new(false)),
             play_generation: Arc::new(AtomicU64::new(0)),
+            sleep_generation: Arc::new(AtomicU64::new(0)),
             tray_handle: Arc::new(Mutex::new(None)),
             sleep_timer: Arc::new(Mutex::new(None)),
         }
@@ -346,6 +346,7 @@ impl TiMondeTray {
         info!("Écoute éphémère : {} ({})", station_name, raw_url);
 
         self.is_ephemeral.store(true, Ordering::SeqCst);
+        self.play_generation.fetch_add(1, Ordering::SeqCst);
 
         let resolved_url = resolve_stream_url(&raw_url);
 
@@ -464,7 +465,7 @@ Radio éphémère non enregistrée.",
             let default_grp = all_groups.first().cloned().unwrap_or_else(|| "Sélection".to_string());
 
             let (new_name, new_url, new_country, new_timezone, new_target_group) = if let Some(script_path) = Self::find_edit_script() {
-                let out = match std::process::Command::new(script_path)
+                let out = match Self::prepare_python_command(&script_path)
                     .arg("--mode")
                     .arg("save-ephemeral")
                     .arg("--station-name")
@@ -571,13 +572,17 @@ Radio éphémère non enregistrée.",
         let current_title = Arc::clone(&self.current_title);
         let sleep_timer = Arc::clone(&self.sleep_timer);
         let tray_handle = Arc::clone(&self.tray_handle);
-        let gen = self.play_generation.load(Ordering::SeqCst);
-        let play_gen = Arc::clone(&self.play_generation);
+        let gen = self.sleep_generation.fetch_add(1, Ordering::SeqCst) + 1;
+        let sleep_gen = Arc::clone(&self.sleep_generation);
 
-        notify("TiMonde", &format!("Minuteur activé : arrêt dans {} minutes", minutes));
+        notify("TiMonde", &format!("Minuterie d'arrêt activée : coupure dans {} minutes", minutes));
 
         std::thread::spawn(move || {
             std::thread::sleep(dur);
+
+            if sleep_gen.load(Ordering::SeqCst) != gen {
+                return;
+            }
 
             let mut guard = sleep_timer.lock().unwrap();
             if let Some(t) = *guard {
@@ -585,12 +590,10 @@ Radio éphémère non enregistrée.",
                     *guard = None;
                     drop(guard);
 
-                    if play_gen.load(Ordering::SeqCst) == gen {
-                        Self::stop_and_trim_flow(&audio, &current_station, &current_title);
-                        notify("TiMonde", "Minuteur écoulé : mise en veille et arrêt de la lecture.");
-                        if let Some(ref h) = *tray_handle.lock().unwrap() {
-                            h.update(|_| {});
-                        }
+                    Self::stop_and_trim_flow(&audio, &current_station, &current_title);
+                    notify("TiMonde", "Minuterie d'arrêt : coupure de la radio.");
+                    if let Some(ref h) = *tray_handle.lock().unwrap() {
+                        h.update(|_| {});
                     }
                 }
             }
@@ -599,8 +602,9 @@ Radio éphémère non enregistrée.",
 
     /// Annule la mise en veille programmée
     pub fn cancel_sleep_timer(&mut self) {
+        self.sleep_generation.fetch_add(1, Ordering::SeqCst);
         *self.sleep_timer.lock().unwrap() = None;
-        notify("TiMonde", "Minuteur de mise en veille annulé.");
+        notify("TiMonde", "Minuterie d'arrêt annulée.");
     }
 
     /// Construit récursivement les éléments de menu pour un groupe donné
@@ -774,9 +778,22 @@ Radio éphémère non enregistrée.",
     pub fn find_script(script_name: &str) -> Option<PathBuf> {
         let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
 
-        // 1. Relatif au binaire en cours d exécution (archive portable .tar.gz)
+        // 1. Relatif au binaire en cours d'exécution (dossier dev target/release ou target/debug, ou archive portable)
         if let Ok(exe) = std::env::current_exe() {
             if let Some(exe_dir) = exe.parent() {
+                // Cas standard du binaire de test compilé dans target/release ou target/debug
+                let candidate_dev_root = exe_dir.join("../../data/scripts").join(script_name);
+                if candidate_dev_root.exists() {
+                    return Some(candidate_dev_root);
+                }
+                let candidate_parent_data = exe_dir.join("../data/scripts").join(script_name);
+                if candidate_parent_data.exists() {
+                    return Some(candidate_parent_data);
+                }
+                let candidate_rel_data = exe_dir.join("data/scripts").join(script_name);
+                if candidate_rel_data.exists() {
+                    return Some(candidate_rel_data);
+                }
                 let candidate_share = exe_dir.join("../share/timonde/scripts").join(script_name);
                 if candidate_share.exists() {
                     return Some(candidate_share);
@@ -789,25 +806,13 @@ Radio éphémère non enregistrée.",
                 if candidate_parent_scripts.exists() {
                     return Some(candidate_parent_scripts);
                 }
-                let candidate_rel_data = exe_dir.join("data/scripts").join(script_name);
-                if candidate_rel_data.exists() {
-                    return Some(candidate_rel_data);
-                }
-                let candidate_parent_data = exe_dir.join("../data/scripts").join(script_name);
-                if candidate_parent_data.exists() {
-                    return Some(candidate_parent_data);
-                }
             }
         }
 
-        // 2. Emplacement système officiel du paquet (.deb, .rpm)
-        let sys_share = PathBuf::from("/usr/share/timonde/scripts").join(script_name);
-        if sys_share.exists() {
-            return Some(sys_share);
-        }
-        let local_sys_share = PathBuf::from("/usr/local/share/timonde/scripts").join(script_name);
-        if local_sys_share.exists() {
-            return Some(local_sys_share);
+        // 2. Dossier relatif au répertoire courant de travail
+        let dev_path = PathBuf::from("data/scripts").join(script_name);
+        if dev_path.exists() {
+            return Some(dev_path);
         }
 
         // 3. Emplacement utilisateur XDG ~/.local/share/timonde/scripts/
@@ -816,10 +821,14 @@ Radio éphémère non enregistrée.",
             return Some(user_share);
         }
 
-        // 4. Dossier relatif au répertoire courant de travail
-        let dev_path = PathBuf::from("data/scripts").join(script_name);
-        if dev_path.exists() {
-            return Some(dev_path);
+        // 4. Emplacement système officiel du paquet (.deb, .rpm)
+        let sys_share = PathBuf::from("/usr/share/timonde/scripts").join(script_name);
+        if sys_share.exists() {
+            return Some(sys_share);
+        }
+        let local_sys_share = PathBuf::from("/usr/local/share/timonde/scripts").join(script_name);
+        if local_sys_share.exists() {
+            return Some(local_sys_share);
         }
 
         None
@@ -1052,6 +1061,61 @@ Radio éphémère non enregistrée.",
         });
     }
 
+    /// Copie discrètement un texte (ex: titre musical en cours) dans le presse-papier du système
+    pub fn copy_to_clipboard(text: &str) {
+        let t = text.to_string();
+        std::thread::spawn(move || {
+            let mut copied = false;
+            // Essai 1 : xclip (standard sous X11/XFCE/antiX)
+            if let Ok(mut child) = std::process::Command::new("xclip")
+                .arg("-selection")
+                .arg("clipboard")
+                .stdin(std::process::Stdio::piped())
+                .spawn()
+            {
+                if let Some(mut stdin) = child.stdin.take() {
+                    use std::io::Write;
+                    let _ = stdin.write_all(t.as_bytes());
+                }
+                let _ = child.wait();
+                copied = true;
+            }
+            // Essai 2 : wl-copy (Wayland)
+            if !copied {
+                if let Ok(mut child) = std::process::Command::new("wl-copy")
+                    .stdin(std::process::Stdio::piped())
+                    .spawn()
+                {
+                    if let Some(mut stdin) = child.stdin.take() {
+                        use std::io::Write;
+                        let _ = stdin.write_all(t.as_bytes());
+                    }
+                    let _ = child.wait();
+                    copied = true;
+                }
+            }
+            // Essai 3 : xsel
+            if !copied {
+                if let Ok(mut child) = std::process::Command::new("xsel")
+                    .arg("-b")
+                    .arg("-i")
+                    .stdin(std::process::Stdio::piped())
+                    .spawn()
+                {
+                    if let Some(mut stdin) = child.stdin.take() {
+                        use std::io::Write;
+                        let _ = stdin.write_all(t.as_bytes());
+                    }
+                    let _ = child.wait();
+                    copied = true;
+                }
+            }
+            if copied {
+                crate::radio_browser::notify("TiMonde", &format!("Morceau copié dans le presse-papier :\n{}", t));
+            }
+        });
+    }
+
     fn find_bouquets_script() -> Option<PathBuf> {
         Self::find_script("browse_bouquets.py")
     }
@@ -1147,6 +1211,8 @@ Radio éphémère non enregistrée.",
                     #[serde(default)]
                     country: Option<String>,
                     #[serde(default)]
+                    timezone: Option<String>,
+                    #[serde(default)]
                     group: Option<String>,
                 }
                 #[derive(serde::Deserialize)]
@@ -1198,10 +1264,21 @@ Radio éphémère non enregistrée.",
                             };
 
                             if !target_grp.stations.iter().any(|s| s.url == st.url || s.name == st.name) {
-                                let station_item = if let Some(c) = st.country.as_deref().or(res.country_code.as_deref()) {
-                                    Station::with_country(st.name, st.url, c)
-                                } else {
-                                    Station::new(st.name, st.url)
+                                let country_val = st.country.or_else(|| res.country_code.clone());
+                                let timezone_val = st.timezone.or_else(|| {
+                                    crate::timezone::get_local_time_for_station(country_val.as_deref(), &st.name, Some(&clean_path), None)
+                                        .map(|t| t.timezone)
+                                });
+
+                                let station_item = match (country_val, timezone_val) {
+                                    (Some(c), Some(tz)) => Station::with_timezone(st.name, st.url, c, tz),
+                                    (Some(c), None) => Station::with_country(st.name, st.url, c),
+                                    (None, Some(tz)) => {
+                                        let mut s = Station::new(st.name, st.url);
+                                        s.timezone = Some(tz);
+                                        s
+                                    }
+                                    (None, None) => Station::new(st.name, st.url),
                                 };
                                 target_grp.stations.push(station_item);
                                 added += 1;
@@ -1651,6 +1728,20 @@ X-GNOME-Autostart-enabled=true\n";
             success
         }
     }
+
+    pub fn set_volume_level(&mut self, vol: f64) {
+        let clamped = vol.clamp(0.0, 1.0);
+        *self.current_volume.lock().unwrap() = clamped;
+        if let Some(ref e) = *self.audio.lock().unwrap() {
+            e.set_volume(clamped);
+        }
+        std::thread::spawn(move || {
+            let path = crate::state::AppState::default_path();
+            let mut state = crate::state::AppState::load(&path);
+            state.volume = clamped;
+            let _ = state.save(&path);
+        });
+    }
 }
 
 impl ksni::Tray for TiMondeTray {
@@ -1727,8 +1818,15 @@ impl ksni::Tray for TiMondeTray {
         if std::path::Path::new(&local_icons).exists() {
             local_icons
         } else {
-            let project_icons = concat!(env!("CARGO_MANIFEST_DIR"), "/data/icons");
-            project_icons.to_string()
+            #[cfg(debug_assertions)]
+            {
+                let project_icons = concat!(env!("CARGO_MANIFEST_DIR"), "/data/icons");
+                project_icons.to_string()
+            }
+            #[cfg(not(debug_assertions))]
+            {
+                "/usr/share/icons/hicolor/24x24/apps".to_string()
+            }
         }
     }
 
@@ -1752,16 +1850,23 @@ impl ksni::Tray for TiMondeTray {
         }
     }
 
-    /// Défilement de la molette sur l'icône de la barre des tâches : Ajustement direct du volume
+    /// Défilement de la molette sur l'icône de la barre des tâches : Ajustement direct du volume (pas de 1%)
     fn scroll(&mut self, delta: i32, _orientation: ksni::Orientation) {
-        let step = if delta > 0 { -0.05 } else { 0.05 };
+        let step = if delta > 0 { -0.01 } else { 0.01 };
         let mut cur = self.current_volume.lock().unwrap();
         let new_vol = (*cur + step).clamp(0.0, 1.0);
         *cur = new_vol;
+        drop(cur);
         let guard = self.audio.lock().unwrap();
         if let Some(ref engine) = *guard {
             engine.set_volume(new_vol);
         }
+        drop(guard);
+        std::thread::spawn(move || {
+            let mut state = crate::state::AppState::load(&crate::state::AppState::default_path());
+            state.volume = new_vol;
+            let _ = state.save(&crate::state::AppState::default_path());
+        });
     }
 
     fn menu(&self) -> Vec<MenuItem<Self>> {
@@ -1778,6 +1883,7 @@ impl ksni::Tray for TiMondeTray {
                 let label = crate::i18n::connecting_station_label(&st.name, is_eph);
                 menu.push(MenuItem::Standard(StandardItem {
                     label,
+                    icon_name: "media-playback-stop".to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         tray.stop_and_trim();
                     }),
@@ -1790,6 +1896,7 @@ impl ksni::Tray for TiMondeTray {
                 let label = crate::i18n::stop_station_label(&st.name, is_eph);
                 menu.push(MenuItem::Standard(StandardItem {
                     label,
+                    icon_name: "media-playback-stop".to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         tray.stop_and_trim();
                     }),
@@ -1814,6 +1921,7 @@ impl ksni::Tray for TiMondeTray {
                     let label = crate::i18n::play_station_label(&st.name);
                     menu.push(MenuItem::Standard(StandardItem {
                         label,
+                        icon_name: "media-playback-start".to_string(),
                         activate: Box::new(move |tray: &mut Self| {
                             tray.play_station(st_clone.clone());
                         }),
@@ -1824,6 +1932,7 @@ impl ksni::Tray for TiMondeTray {
                 } else {
                     menu.push(MenuItem::Standard(StandardItem {
                         label: crate::i18n::tr("Play").to_string(),
+                        icon_name: "media-playback-start".to_string(),
                         enabled: false,
                         visible: true,
                         ..Default::default()
@@ -1832,99 +1941,113 @@ impl ksni::Tray for TiMondeTray {
             }
         }
 
-        // 2. Actions et informations contextuelles sur la station active
+        // 2. Cartouche d'informations et actions contextuelles sur la station active
         if let Some(ref st) = *cur_st {
-                let group_name = {
-                    let guard = self.root_group.lock().unwrap();
-                    Self::find_group_name_for_station(&guard, &st.url)
-                };
+            let group_name = {
+                let guard = self.root_group.lock().unwrap();
+                Self::find_group_name_for_station(&guard, &st.url)
+            };
 
-                // Ligne d'heure locale & décalage (non-cliquable)
-                if let Some(time_info) = crate::timezone::get_local_time_for_station(st.country.as_deref(), &st.name, group_name.as_deref(), st.timezone.as_deref()) {
-                    let offset_str = if time_info.offset_hours >= 0.0 {
-                        format!("+{}", time_info.offset_hours)
-                    } else {
-                        format!("{}", time_info.offset_hours)
-                    };
-                    let date_tag = if !time_info.day_diff_label.is_empty() {
-                        format!(" ({})", time_info.day_diff_label)
-                    } else {
-                        String::new()
-                    };
-                    let info_label = format!(
-                        "[{}] {} • {}{} • Décalage : {} (UTC{})",
-                        time_info.country_code,
-                        time_info.country_name,
-                        time_info.formatted_time,
-                        date_tag,
-                        time_info.user_diff_label,
-                        offset_str
-                    );
-                    menu.push(MenuItem::Standard(StandardItem {
-                        label: info_label,
-                        activate: Box::new(|_| {}),
-                        enabled: true,
-                        visible: true,
-                        ..Default::default()
-                    }));
-                }
-
-                // Ligne du titre du morceau en cours (texte informatif bien lisible)
-                if let Some(ref title) = *cur_title {
-                    if !title.trim().is_empty() {
-                        menu.push(MenuItem::Standard(StandardItem {
-                            label: format!("♪ {}", title.trim()),
-                            activate: Box::new(|_| {}),
-                            enabled: true,
-                            visible: true,
-                            ..Default::default()
-                        }));
-                    }
-                }
-
-                // Boutons d'action : Édition (qui inclut la suppression) ou découverte éphémère
-                if is_eph {
-                    let st_name = st.name.clone();
-                    menu.push(MenuItem::Standard(StandardItem {
-                        label: crate::i18n::save_ephemeral_label(&st_name),
-                        activate: Box::new(|tray: &mut Self| {
-                            tray.trigger_save_current_ephemeral_station();
-                        }),
-                        enabled: true,
-                        visible: true,
-                        ..Default::default()
-                    }));
-
-                    menu.push(MenuItem::Standard(StandardItem {
-                        label: crate::i18n::tr("Zap to another random station").to_string(),
-                        activate: Box::new(|tray: &mut Self| {
-                            tray.play_random_ephemeral_station();
-                        }),
-                        enabled: true,
-                        visible: true,
-                        ..Default::default()
-                    }));
+            // Ligne d'heure locale & décalage (encart informatif mis en retrait, non-cliquable mais enabled: true pour préserver 100% de contraste)
+            if let Some(time_info) = crate::timezone::get_local_time_for_station(st.country.as_deref(), &st.name, group_name.as_deref(), st.timezone.as_deref()) {
+                let offset_str = if time_info.offset_hours >= 0.0 {
+                    format!("+{}", time_info.offset_hours)
                 } else {
-                    let st_edit = st.clone();
+                    format!("{}", time_info.offset_hours)
+                };
+                let date_tag = if !time_info.day_diff_label.is_empty() {
+                    format!(" ({})", time_info.day_diff_label)
+                } else {
+                    String::new()
+                };
+                let info_label = format!(
+                    "   [{}] {} • {}{} • {} (UTC{})",
+                    time_info.country_code,
+                    time_info.country_name,
+                    time_info.formatted_time,
+                    date_tag,
+                    time_info.user_diff_label,
+                    offset_str
+                );
+                menu.push(MenuItem::Standard(StandardItem {
+                    label: info_label,
+                    icon_name: "appointment-soon".to_string(),
+                    activate: Box::new(|_| {}),
+                    enabled: true,
+                    visible: true,
+                    ..Default::default()
+                }));
+            }
+
+            // Ligne du titre du morceau en cours (encart informatif mis en valeur, clic pour copier dans le presse-papier)
+            if let Some(ref title) = *cur_title {
+                if !title.trim().is_empty() {
+                    let clean_title = title.trim().to_string();
+                    let title_copy = clean_title.clone();
+                    let display_title = if clean_title.chars().count() > 55 {
+                        format!("{}…", clean_title.chars().take(52).collect::<String>())
+                    } else {
+                        clean_title
+                    };
                     menu.push(MenuItem::Standard(StandardItem {
-                        label: crate::i18n::tr("Edit").to_string(),
-                        activate: Box::new(move |tray: &mut Self| {
-                            Self::trigger_edit_station_dialog(
-                                st_edit.clone(),
-                                Arc::clone(&tray.root_group),
-                                tray.bookmarks_path.clone(),
-                                Arc::clone(&tray.tray_handle),
-                                Arc::clone(&tray.current_station),
-                                Arc::clone(&tray.last_station),
-                                Arc::clone(&tray.audio),
-                                Arc::clone(&tray.current_title),
-                            );
+                        label: format!("   ♪ {}", display_title),
+                        icon_name: "audio-x-generic".to_string(),
+                        activate: Box::new(move |_| {
+                            Self::copy_to_clipboard(&title_copy);
                         }),
                         enabled: true,
                         visible: true,
                         ..Default::default()
                     }));
                 }
+            }
+
+            // Boutons d'action : Édition (qui inclut la suppression) ou découverte éphémère
+            if is_eph {
+                let st_name = st.name.clone();
+                menu.push(MenuItem::Standard(StandardItem {
+                    label: format!("   {}", crate::i18n::save_ephemeral_label(&st_name)),
+                    icon_name: "list-add".to_string(),
+                    activate: Box::new(|tray: &mut Self| {
+                        tray.trigger_save_current_ephemeral_station();
+                    }),
+                    enabled: true,
+                    visible: true,
+                    ..Default::default()
+                }));
+
+                menu.push(MenuItem::Standard(StandardItem {
+                    label: format!("   {}", crate::i18n::tr("Zap to another random station")),
+                    icon_name: "media-skip-forward".to_string(),
+                    activate: Box::new(|tray: &mut Self| {
+                        tray.play_random_ephemeral_station();
+                    }),
+                    enabled: true,
+                    visible: true,
+                    ..Default::default()
+                }));
+            } else {
+                let st_edit = st.clone();
+                menu.push(MenuItem::Standard(StandardItem {
+                    label: format!("   {}", crate::i18n::tr("Edit")),
+                    icon_name: "document-edit".to_string(),
+                    activate: Box::new(move |tray: &mut Self| {
+                        Self::trigger_edit_station_dialog(
+                            st_edit.clone(),
+                            Arc::clone(&tray.root_group),
+                            tray.bookmarks_path.clone(),
+                            Arc::clone(&tray.tray_handle),
+                            Arc::clone(&tray.current_station),
+                            Arc::clone(&tray.last_station),
+                            Arc::clone(&tray.audio),
+                            Arc::clone(&tray.current_title),
+                        );
+                    }),
+                    enabled: true,
+                    visible: true,
+                    ..Default::default()
+                }));
+            }
         }
 
         drop(cur_st);
@@ -1936,6 +2059,7 @@ impl ksni::Tray for TiMondeTray {
         if !is_eph {
             menu.push(MenuItem::Standard(StandardItem {
                 label: crate::i18n::tr("Play random radio (Ephemeral discovery)").to_string(),
+                icon_name: "media-playlist-shuffle".to_string(),
                 activate: Box::new(|tray: &mut Self| {
                     tray.play_random_ephemeral_station();
                 }),
@@ -1968,6 +2092,7 @@ impl ksni::Tray for TiMondeTray {
                 if !submenu_items.is_empty() {
                     menu.push(MenuItem::SubMenu(SubMenu {
                         label: sub.name.clone(),
+                        icon_name: "folder".to_string(),
                         submenu: submenu_items,
                         enabled: true,
                         visible: true,
@@ -2011,54 +2136,40 @@ impl ksni::Tray for TiMondeTray {
         let vol_percent = (current_vol * 100.0).round() as i32;
         menu.push(MenuItem::SubMenu(SubMenu {
             label: format!("Volume ({vol_percent}%)"),
+            icon_name: "audio-volume-high".to_string(),
             submenu: vec![
                 MenuItem::Standard(StandardItem {
                     label: "100%".to_string(),
                     activate: Box::new(|tray| {
-                        *tray.current_volume.lock().unwrap() = 1.0;
-                        if let Some(ref e) = *tray.audio.lock().unwrap() {
-                            e.set_volume(1.0);
-                        }
+                        tray.set_volume_level(1.0);
                     }),
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
                     label: "75%".to_string(),
                     activate: Box::new(|tray| {
-                        *tray.current_volume.lock().unwrap() = 0.75;
-                        if let Some(ref e) = *tray.audio.lock().unwrap() {
-                            e.set_volume(0.75);
-                        }
+                        tray.set_volume_level(0.75);
                     }),
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
                     label: "50%".to_string(),
                     activate: Box::new(|tray| {
-                        *tray.current_volume.lock().unwrap() = 0.50;
-                        if let Some(ref e) = *tray.audio.lock().unwrap() {
-                            e.set_volume(0.50);
-                        }
+                        tray.set_volume_level(0.50);
                     }),
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
                     label: "25%".to_string(),
                     activate: Box::new(|tray| {
-                        *tray.current_volume.lock().unwrap() = 0.25;
-                        if let Some(ref e) = *tray.audio.lock().unwrap() {
-                            e.set_volume(0.25);
-                        }
+                        tray.set_volume_level(0.25);
                     }),
                     ..Default::default()
                 }),
                 MenuItem::Standard(StandardItem {
                     label: crate::i18n::tr("Mute (0%)").to_string(),
                     activate: Box::new(|tray| {
-                        *tray.current_volume.lock().unwrap() = 0.0;
-                        if let Some(ref e) = *tray.audio.lock().unwrap() {
-                            e.set_volume(0.0);
-                        }
+                        tray.set_volume_level(0.0);
                     }),
                     ..Default::default()
                 }),
@@ -2085,6 +2196,7 @@ impl ksni::Tray for TiMondeTray {
 
         menu.push(MenuItem::SubMenu(SubMenu {
             label: sleep_label,
+            icon_name: "appointment-new".to_string(),
             submenu: vec![
                 MenuItem::Standard(StandardItem {
                     label: crate::i18n::tr("In 15 minutes").to_string(),
@@ -2133,6 +2245,7 @@ impl ksni::Tray for TiMondeTray {
         // 6. Console de Paramètres unifiée (sans sous-menus)
         menu.push(MenuItem::Standard(StandardItem {
             label: crate::i18n::tr("Settings...").to_string(),
+            icon_name: "preferences-system".to_string(),
             activate: Box::new(|tray: &mut Self| {
                 Self::trigger_settings_dialog(
                     Arc::clone(&tray.root_group),
@@ -2145,9 +2258,10 @@ impl ksni::Tray for TiMondeTray {
             ..Default::default()
         }));
 
-        // 6. Quitter proprement l'application
+        // 7. Quitter proprement l'application
         menu.push(MenuItem::Standard(StandardItem {
             label: crate::i18n::tr("Quit TiMonde").to_string(),
+            icon_name: "application-exit".to_string(),
             activate: Box::new(|tray: &mut Self| {
                 info!("Fermeture demandée par l'utilisateur.");
                 tray.stop_and_trim();
@@ -2166,6 +2280,14 @@ impl ksni::Tray for TiMondeTray {
 mod tests {
     use super::*;
     use ksni::Tray;
+
+    #[test]
+    fn test_find_script_prioritizes_local_data_scripts() {
+        let p = TiMondeTray::find_script("timonde_settings.py");
+        assert!(p.is_some(), "Le script timonde_settings.py doit être trouvé");
+        let path_str = p.unwrap().to_string_lossy().to_string();
+        assert!(path_str.contains("data/scripts"), "find_script doit prioriser data/scripts et non /usr/share : {}", path_str);
+    }
 
     #[test]
     fn test_find_station_and_edit_params() {

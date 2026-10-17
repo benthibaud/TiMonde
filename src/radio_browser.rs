@@ -101,7 +101,7 @@ pub fn find_backup_stream(station_name: &str) -> Option<(String, String)> {
         for endpoint in ENDPOINTS {
             let url = format!("{}/json/stations/byname/{}", endpoint, urlencoding(query));
             match ureq::get(&url)
-                .set("User-Agent", "TiMonde/0.1.0")
+                .set("User-Agent", concat!("TiMonde/", env!("CARGO_PKG_VERSION")))
                 .timeout(Duration::from_secs(3))
                 .call()
             {
@@ -177,7 +177,7 @@ pub fn search_advanced(filter: &SearchFilter) -> Vec<SearchResult> {
         let url = format!("{}/json/stations/search?{}", endpoint, query_string);
 
         match ureq::get(&url)
-            .set("User-Agent", "TiMonde/0.1.0")
+            .set("User-Agent", concat!("TiMonde/", env!("CARGO_PKG_VERSION")))
             .timeout(Duration::from_secs(5))
             .call()
         {

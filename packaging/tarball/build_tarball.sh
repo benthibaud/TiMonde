@@ -4,7 +4,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
-VERSION="0.1.0"
+VERSION="0.2.0"
 ARCH="x86_64"
 ARCHIVE_NAME="timonde-${VERSION}-linux-${ARCH}.tar.gz"
 STAGING_DIR="${ROOT_DIR}/temp/tarball_staging/timonde-${VERSION}"

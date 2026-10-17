@@ -1,14 +1,16 @@
-# TiMonde — KM Translation
+# TiMonde — Traduction KM
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: km\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: km\n"
 
 msgid "Play"
 msgstr "ចាក់"
@@ -26,124 +28,124 @@ msgid "Delete"
 msgstr "លុប"
 
 msgid "Zap to another random station"
-msgstr ""
+msgstr "Zap ទៅវិទ្យុចៃដន្យផ្សេងទៀត។"
 
 msgid "Play random radio (Ephemeral discovery)"
-msgstr ""
+msgstr "ស្តាប់ស្ថានីយ៍វិទ្យុចៃដន្យ (ការរកឃើញដោយចៃដន្យ)"
 
 msgid "[ Ephemeral]"
-msgstr ""
+msgstr "[អព្យាក្រឹត]"
 
 msgid "Options"
 msgstr "ជម្រើស"
 
 msgid "Add a station..."
-msgstr ""
+msgstr "បញ្ចូលវិទ្យុ..."
 
 msgid "Discover & Import stations..."
-msgstr ""
+msgstr "ស្វែងរក និងនាំចូលវិទ្យុ..."
 
 msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr ""
+msgstr "នាំចូលឯកសាររបស់ខ្ញុំ (XML, CSV, JSON, M3U)..."
 
 msgid "Manage groups and stations..."
-msgstr ""
+msgstr "ចាត់ថ្នាក់ក្រុម និងវិទ្យុ..."
 
 msgid "Open bookmarks.xml"
-msgstr ""
+msgstr "បើក bookmarks.xml"
 
 msgid "Quit TiMonde"
-msgstr ""
+msgstr "ចាកចេញពី TiMonde"
 
 msgid "Mute (0%)"
-msgstr ""
+msgstr "បិទសំឡេង (0%)"
 
 msgid "Sleep timer"
-msgstr ""
+msgstr "កម្មវិធីកំណត់ម៉ោងគេង"
 
 msgid "In 15 minutes"
-msgstr ""
+msgstr "ក្នុងរយៈពេល 15 នាទី។"
 
 msgid "In 30 minutes"
-msgstr ""
+msgstr "ក្នុងរយៈពេល 30 នាទី។"
 
 msgid "In 45 minutes"
-msgstr ""
+msgstr "ក្នុងរយៈពេល 45 នាទី។"
 
 msgid "In 60 minutes (1h)"
-msgstr ""
+msgstr "ក្នុងរយៈពេល 60 នាទី (1 ម៉ោង)"
 
 msgid "Cancel sleep timer"
-msgstr ""
+msgstr "បោះបង់ការគេង"
 
 msgid "Discover & Import stations (TiMonde)"
-msgstr ""
+msgstr "ស្វែងរក និងនាំចូលស្ថានីយ៍វិទ្យុ (TiMonde)"
 
 msgid "Verified DAB+ Bouquets"
-msgstr ""
+msgstr "ភួងដែលបានផ្ទៀងផ្ទាត់ (DAB+)"
 
 msgid "Radio-Browser Search"
-msgstr ""
+msgstr "ស្វែងរកវិទ្យុ-កម្មវិធីរុករក"
 
 msgid "Sample Files"
-msgstr ""
+msgstr "ឯកសារឧទាហរណ៍"
 
 msgid "Import my files"
-msgstr ""
+msgstr "នាំចូលឯកសាររបស់ខ្ញុំ"
 
 msgid "<b> Country:</b>"
-msgstr ""
+msgstr "<b>ប្រទេស៖</b>"
 
 msgid "<b>Language:</b>"
-msgstr ""
+msgstr "<b>ភាសា៖</b>"
 
 msgid "Name / Keyword:"
-msgstr ""
+msgstr "ឈ្មោះ/ពាក្យគន្លឹះ៖"
 
 msgid "Genre:"
-msgstr ""
+msgstr "ភេទ៖"
 
 msgid "<b>Sample file:</b>"
-msgstr ""
+msgstr "<b>ឯកសារឧទាហរណ៍៖</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr ""
+msgstr "<b>ឈ្មោះក្រុមនៅក្នុងចំណូលចិត្តរបស់អ្នក៖</b>"
 
 msgid "Select all"
-msgstr ""
+msgstr "ពិនិត្យទាំងអស់។"
 
 msgid "Deselect all"
-msgstr ""
+msgstr "ដោះធីកទាំងអស់។"
 
 msgid "Import into favorites"
-msgstr ""
+msgstr "នាំចូលទៅចំណូលចិត្តរបស់ខ្ញុំ"
 
 msgid "Close"
 msgstr "បិទ"
 
 msgid "Add a station (TiMonde)"
-msgstr ""
+msgstr "បន្ថែមស្ថានីយ៍ (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
-msgstr ""
+msgstr "<b>បញ្ចូលព័ត៌មានសម្រាប់វិទ្យុថ្មី៖</b>"
 
 msgid "Add to my stations"
-msgstr ""
+msgstr "បន្ថែមទៅវិទ្យុរបស់ខ្ញុំ"
 
 msgid "Save station to favorites (TiMonde)"
-msgstr ""
+msgstr "រក្សាទុកវិទ្យុទៅសំណព្វរបស់ខ្ញុំ (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr ""
+msgstr "<b>រក្សា​ស្ថានីយ​វិទ្យុ​ដែល​បាន​រក​ឃើញ​ដោយ​ចៃដន្យ​នេះ​ក្នុង​ចំណូល​ចិត្ត​របស់​អ្នក៖</b>"
 
 msgid "Keep in favorites"
-msgstr ""
+msgstr "រក្សាទុកទៅសំណព្វរបស់ខ្ញុំ"
 
 msgid "Edit station (TiMonde)"
-msgstr ""
+msgstr "កែសម្រួលវិទ្យុ (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr ""
+msgstr "<b>ផ្លាស់ប្តូរការកំណត់ស្ថានីយ៍៖</b>"
 
 msgid "Save"
 msgstr "រក្សាទុក"
@@ -152,82 +154,82 @@ msgid "Station name:"
 msgstr "ឈ្មោះវិទ្យុ:"
 
 msgid "Audio stream URL:"
-msgstr ""
+msgstr "URL ស្ទ្រីមអូឌីយ៉ូ៖"
 
 msgid "Group / Folder:"
-msgstr ""
+msgstr "ក្រុម / ថតឯកសារ៖"
 
 msgid "Country & Timezone:"
-msgstr ""
+msgstr "ប្រទេស និងតំបន់ពេលវេលា៖"
 
 msgid "Timezone:"
-msgstr ""
+msgstr "តំបន់ពេលវេលា៖"
 
 msgid "Delete this station"
-msgstr ""
+msgstr "លុបវិទ្យុនេះ។"
 
 msgid "Cancel"
 msgstr "បោះបង់"
 
 msgid "Delete « {} » from favorites?"
-msgstr ""
+msgstr "លុប “{}” ចេញពី​ចំណូលចិត្ត?"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr ""
+msgstr "សកម្មភាពនេះនឹងលុបស្ថានីយនេះចេញពីបណ្តុំរបស់អ្នក។"
 
 msgid "Manage groups, stations and separators (TiMonde)"
-msgstr ""
+msgstr "ការគ្រប់គ្រងក្រុម វិទ្យុ និងឧបករណ៍បំបែក (TiMonde)"
 
 msgid "Back to groups"
-msgstr ""
+msgstr "⬅ ត្រឡប់ទៅក្រុម"
 
 msgid "Add station"
-msgstr ""
+msgstr "បន្ថែមវិទ្យុ"
 
 msgid "Open"
-msgstr ""
+msgstr "បើក"
 
 msgid "New group"
-msgstr ""
+msgstr "ក្រុមថ្មី។"
 
 msgid "Move to..."
-msgstr ""
+msgstr "ផ្លាស់ទី​ទៅ..."
 
 msgid "Top"
-msgstr ""
+msgstr "ទីមួយ"
 
 msgid "Move up"
-msgstr ""
+msgstr "⬆ ឡើង"
 
 msgid "Move down"
-msgstr ""
+msgstr "⬇ ចុះ"
 
 msgid "Separator"
-msgstr ""
+msgstr "សញ្ញាបំបែក"
 
 msgid "Sort A-Z"
-msgstr ""
+msgstr "តម្រៀប A-Z"
 
 msgid "Save and reload"
-msgstr ""
+msgstr "រក្សាទុក និងផ្ទុកឡើងវិញ"
 
 msgid "Same time"
-msgstr ""
+msgstr "ពេលវេលាដូចគ្នា។"
 
 msgid "Dawn"
-msgstr ""
+msgstr "ព្រលឹម"
 
 msgid "Morning"
-msgstr ""
+msgstr "ព្រឹក"
 
 msgid "Daytime"
-msgstr ""
+msgstr "ថ្ងៃ"
 
 msgid "Evening"
-msgstr ""
+msgstr "ល្ងាច"
 
 msgid "Night"
-msgstr ""
+msgstr "យប់"
 
 msgid "Tomorrow"
 msgstr "ថ្ងៃស្អែក"
@@ -236,64 +238,64 @@ msgid "Yesterday"
 msgstr "ម្សិលមិញ"
 
 msgid "Maintenance & Data"
-msgstr ""
+msgstr "ការថែទាំ និងទិន្នន័យ"
 
 msgid "Check streams (dead links)..."
-msgstr ""
+msgstr "ពិនិត្យមើលព័ត៌មាន (តំណភ្ជាប់ស្លាប់)..."
 
 msgid "Export my stations to CSV..."
-msgstr ""
+msgstr "នាំចេញវិទ្យុរបស់ខ្ញុំទៅ CSV..."
 
 msgid "Check streams"
-msgstr ""
+msgstr "ពិនិត្យព័ត៌មាន"
 
 msgid "Dead links only"
-msgstr ""
+msgstr "តំណភ្ជាប់ស្លាប់តែប៉ុណ្ណោះ"
 
 msgid "Apply redirects"
-msgstr ""
+msgstr "អនុវត្តការបញ្ជូនបន្ត"
 
 msgid "Repair stream..."
-msgstr ""
+msgstr "ជួសជុលលំហូរ ..."
 
 msgid "Export to CSV"
-msgstr ""
+msgstr "នាំចេញទៅ CSV"
 
 msgid "Test stream availability and locate broken links"
-msgstr ""
+msgstr "សាកល្បងភាពអាចរកបានផ្ទាល់នៃស្ថានីយ៍វិទ្យុរបស់អ្នក និងស្វែងរកតំណភ្ជាប់ដែលស្លាប់"
 
 msgid "Display offline radio streams only"
-msgstr ""
+msgstr "បង្ហាញតែស្ថានីយ៍វិទ្យុដែលស្ទ្រីមគ្មានអ៊ីនធឺណិត"
 
 msgid "Automatically update redirected streams to direct URL"
-msgstr ""
+msgstr "ធ្វើបច្ចុប្បន្នភាពដោយស្វ័យប្រវត្តិនូវព័ត៌មានដែលបានបញ្ជូនបន្តទៅ URL ផ្ទាល់របស់ពួកគេ។"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
+msgstr "ស្វែងរកដោយស្វ័យប្រវត្តិសម្រាប់ស្ទ្រីមសកម្មជំនួសនៅលើ Radio-Browser សម្រាប់តំណស្លាប់នេះ។"
 
 msgid "Export all stations to CSV spreadsheet format"
-msgstr ""
+msgstr "នាំចេញវិទ្យុរបស់អ្នកទាំងអស់ជាទម្រង់សៀវភៅបញ្ជី CSV"
 
 msgid "Export my stations to CSV"
-msgstr ""
+msgstr "នាំចេញវិទ្យុរបស់ខ្ញុំទៅ CSV"
 
 msgid "CSV files (*.csv)"
-msgstr ""
+msgstr "ឯកសារ CSV (*.csv)"
 
 msgid "All files (*.*)"
-msgstr ""
+msgstr "ឯកសារទាំងអស់ (*.*)"
 
 msgid "Export"
-msgstr ""
+msgstr "នាំចេញ"
 
 msgid "Export successful!"
-msgstr ""
+msgstr "ការនាំចេញជោគជ័យ!"
 
 msgid "Error during CSV export:"
-msgstr ""
+msgstr "កំហុសក្នុងអំឡុងពេលនាំចេញ CSV៖"
 
 msgid "station(s) saved to:"
-msgstr ""
+msgstr "វិទ្យុ​ដែល​បាន​ថត​នៅ​ក្នុង៖"
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "ការកំណត់..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "បន្ថែមវិទ្យុ (TiMonde)"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "បន្ថែមទៅវិទ្យុរបស់ខ្ញុំ"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "មិនមានវិទ្យុថ្មីបន្ថែមទេ (មានស្រាប់)។"
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "DAB+ ភួង & ជម្រើសផ្លូវការ"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "រក្សាទុកទៅសំណព្វរបស់ខ្ញុំ"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "រក្សា​វិទ្យុ​ក្នុង​ការ​ពេញ​ចិត្ត (TiMonde​)"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "បើកឯកសារ៖"
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "ស្វែងរក និងនាំចូលស្ថានីយ៍វិទ្យុ (TiMonde)"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "រក្សាទុក"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "កំហុសក្នុងការអនុវត្ត៖"
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "កំហុសក្នុងការនាំចូល JSON៖"
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "កំហុសក្នុងការកែប្រែការចាប់ផ្តើមស្វ័យប្រវត្តិ។"
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "រុករក DAB+..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "ការនាំចេញ CSV បានបញ្ចប់។"
 
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "បិទ"
 
 msgid "Fichiers exemples"
 msgstr "Sample Files"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "នាំចូលឯកសារផ្ទាល់ខ្លួន"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "នាំចូលឯកសារ..."
 
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "មិន​អាច​បើក​ថត៖"
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "បញ្ចូល​សញ្ញា​បំបែក (---) ឬ​ក្បាល​ផ្នែក​ក្នុង​ក្រុម​របស់​អ្នក​ដើម្បី​បញ្ចេញ​ខ្យល់​ក្នុង​ម៉ឺនុយ​របស់​អ្នក។"
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "ការផ្លាស់ប្តូរយកទៅក្នុងគណនី។"
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "កែសម្រួលវិទ្យុ (TiMonde)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "បើកថត"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "រុករក..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "ស្វែងរកសកល វិទ្យុ-កម្មវិធីរុករក"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "ស្វែងរក..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "ចំណាំត្រូវបានរៀបចំឡើងវិញ និងរក្សាទុកដោយជោគជ័យ!"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "លុប"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,7 +653,7 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "ឯកសារគំរូដែលបានស្ដារឡើងវិញនៅក្នុង"
 
 msgid "online"
 msgstr "online"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ អង្គការ"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 គន្លឹះប្លង់ដែលមើលឃើញ"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 ទិន្នន័យ និងឯកសារ"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻 បណ្ណាល័យ"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️ ទូទៅ"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>• ផ្លាស់ប្តូរ <b>#</b> ឬប្រើ <b>ផ្លាស់ទីឡើងលើ/ចុះក្រោម</b> ដើម្បីបញ្ជាក្រុម។ \n"
+" • <b>ចុចពីរដងលើក្រុមមួយ</b> (ឬបើក) ដើម្បីតម្រៀបវិទ្យុ និងឧបករណ៍បំបែករបស់វា។ \n"
+" • ប្រើ <b>ផ្ទេរ...</b> ដើម្បីបញ្ចូល ឬផ្លាស់ទីមាតិកាទៅក្រុមផ្សេងទៀត។ \n"
+" • ប្រើ <b>ក្រុមថ្មី</b> ដើម្បីបន្ថែមថតវិទ្យុ។</small>"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<small>• ផ្លាស់ប្តូរ <b>#</b> ឬប្រើ <b>ផ្លាស់ទីឡើងលើ/ចុះក្រោម</b> ដើម្បីតម្រៀបវិទ្យុ។ \n"
+" • ចុច <b>ពិនិត្យ Feeds</b> ដើម្បីរកមើលតំណភ្ជាប់ដែលស្លាប់ (ពណ៌ក្រហម) និងជួសជុលពួកវា។ \n"
+" • ចុចលើ <b>Repair stream...</b> ដើម្បីស្វែងរកការជំនួសការផ្សាយសកម្មនៅលើ Radio-Browser។ \n"
+" • ចុច <b>Separator</b> ដើម្បីបញ្ចូលចំណងជើងផ្នែក។</small>"
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>ជ្រើសរើសឯកសារ ឬឧទាហរណ៍ខាងលើ។</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>• ផ្លាស់ប្តូរ <b>#</b> ឬប្រើ <b>ផ្លាស់ទីឡើងលើ/ចុះក្រោម</b> ដើម្បីបញ្ជាក្រុម។ \n"
+" • <b>ចុចពីរដងលើក្រុមមួយ</b> (ឬបើក) ដើម្បីតម្រៀបវិទ្យុ និងសញ្ញាបំបែករបស់វា។ \n"
+" • ប្រើ <b>ផ្លាស់ទីទៅ...</b> ដើម្បីបញ្ចូលគ្នា ឬផ្លាស់ទីមាតិកា។ \n"
+" • ប្រើ <b>ក្រុមថ្មី</b> ដើម្បីបង្កើតថតវិទ្យុ។</small>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<small>• ផ្លាស់ប្តូរ <b>#</b> ឬប្រើ <b>ផ្លាស់ទីឡើងលើ/ចុះក្រោម</b> ដើម្បីបញ្ជាវិទ្យុ។ \n"
+" • ចុច <b>ពិនិត្យព័ត៌មាន</b> ដើម្បីកំណត់ទីតាំងតំណភ្ជាប់ក្រៅបណ្តាញ (ជាពណ៌ក្រហម)។ \n"
+" • ចុច <b>Repair Stream...</b> ដើម្បីស្វែងរកចរន្តជំនួសសកម្ម។ \n"
+" • ចុចលើ <b>អ្នកបំបែក</b> ដើម្បីបញ្ចូលចំណងជើងរង ឬបន្ទាត់បំបែក។</small>"
+
+msgid "Actualiser la liste des exemples"
+msgstr "ធ្វើឱ្យបញ្ជីឧទាហរណ៍ឡើងវិញ"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "ជួយជាក្រុម និងក្រុមរង"
+
+msgid "Ajouter"
+msgstr "បន្ថែម"
+
+msgid "Annuler"
+msgstr "បោះបង់"
+
+msgid "Arrêter"
+msgstr "ឈប់"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "រកមិនឃើញឯកសារ bookmarks.xml ដើម្បីរក្សាទុកទេ។"
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "គ្មាន​ស្ថានីយ​វិទ្យុ​ថ្មី​បន្ថែម​ទេ (មាន​ស្រាប់​ក្នុង​ចំណាំ​របស់​អ្នក)។"
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "រកមិនឃើញស្ថានីយ៍វិទ្យុនៅលើ Radio-Browser សម្រាប់លក្ខណៈវិនិច្ឆ័យទាំងនេះទេ។"
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "ភួងជាតិ (រមណីយដ្ឋានសំខាន់ៗ)"
+
+msgid "Bouquets par pays"
+msgstr "ភួងតាមប្រទេស"
+
+msgid "Bureau graphique & Plateau"
+msgstr "តុក្រាហ្វិច និងថាស"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "ស្ថានីយ៍នេះមិនមាន URL ស្ទ្រីមអូឌីយ៉ូទេ។"
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "បង្ហោះឯកសារ XML, CSV, JSON, M3U ឬ PLS"
+
+msgid "Charger un fichier..."
+msgstr "ផ្ទុកឯកសារ..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "ជ្រើសរើសពីក្រុមដែលមានស្រាប់"
+
+msgid "Choisir un fichier de radios"
+msgstr "ជ្រើសរើសឯកសារវិទ្យុ"
+
+msgid "Collections & Fichiers"
+msgstr "បណ្តុំ និងឯកសារ"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "រក្សាអង្គភាពនៅលើឯកសារ"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "បង្កើតការបម្រុងទុកពេញលេញនៃការប្រមូលរបស់អ្នក (ជាមួយថតឯកសារ និងតំបន់ពេលវេលា)"
+
+msgid "Disponibilité"
+msgstr "ភាពអាចរកបាន"
+
+msgid "Disponibilité en direct"
+msgstr "ភាពអាចរកបានផ្ទាល់"
+
+msgid "Dossier / Groupe"
+msgstr "ថតឯកសារ / ក្រុម"
+
+msgid "Dossier des exemples"
+msgstr "ថតឧទាហរណ៍"
+
+msgid "Dossier des signets"
+msgstr "ថតចំណាំ"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "ការរកឃើញដោយស្វ័យប្រវត្តិយោងទៅតាមការកំណត់ក្នុងតំបន់នៃបរិស្ថានលីនុចរបស់អ្នក។"
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "បាន​រក​ឃើញ​បរិស្ថាន (អាន​តែ​ប៉ុណ្ណោះ)"
+
+msgid "Effacer le champ"
+msgstr "ជម្រះវាល"
+
+msgid "Effacer le filtre langue"
+msgstr "សម្អាតតម្រងភាសា"
+
+msgid "Effacer le filtre pays"
+msgstr "សម្អាត​តម្រង​ប្រទេស"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "បានរកឃើញបរិស្ថាន GNOME Shell"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "កំហុសខណៈពេលរក្សាទុក៖"
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "ឧទាហរណ៍៖ / France / Jazz ឬ / សម្រាប់ root"
+
+msgid "Exemples thématiques :"
+msgstr "ឧទាហរណ៍ប្រធានបទ៖"
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "នាំចេញទៅតារាង (CSV)..."
+
+msgid "Fichier :"
+msgstr "ឯកសារ៖"
+
+msgid "Fichier externe :"
+msgstr "ឯកសារខាងក្រៅ៖"
+
+msgid "Fichiers XML (*.xml)"
+msgstr "ឯកសារ XML (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "ត្រងតាមប្រទេស៖"
+
+msgid "Format & Débit"
+msgstr "ទម្រង់ និងអត្រាប៊ីត"
+
+msgid "Genre / Tags"
+msgstr "យេនឌ័រ / ស្លាក"
+
+msgid "Genre / Thématique"
+msgstr "ប្រភេទ / ប្រធានបទ"
+
+msgid "Genre :"
+msgstr "ភេទ៖"
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "កម្មវិធីគ្រប់គ្រងកញ្ចប់ដែលមិនស្គាល់។"
+
+msgid "Groupe :"
+msgstr "ក្រុម៖"
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "បង្កើតបញ្ជីរាបស្មើសម្រាប់ Calc ឬ Excel សៀវភៅបញ្ជី"
+
+msgid "Importer"
+msgstr "នាំចូល"
+
+msgid "Importer & Exporter"
+msgstr "នាំចូល និងនាំចេញ"
+
+msgid "Importer dans mes favoris"
+msgstr "នាំចូលទៅចំណូលចិត្តរបស់ខ្ញុំ"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "ការ​ដំឡើង​កំពុង​ដំណើរការ (សូម​បញ្ជាក់​ការ​បញ្ជាក់​ប្រព័ន្ធ)..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "ដំឡើងការរួមបញ្ចូល GNOME"
+
+msgid "Intégration GNOME requise"
+msgstr "ការរួមបញ្ចូល GNOME ត្រូវបានទាមទារ"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "ការរួមបញ្ចូលទៅក្នុងរបារកំពូល GNOME"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "ការរួមបញ្ចូលដើមចូលទៅក្នុងតំបន់ជូនដំណឹងតាមរយៈ StatusNotifierItem / XEmbed ។"
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "ការនាំចេញ CSV អាចចូលប្រើបានពីការកំណត់។"
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "ផ្នែកបន្ថែម AppIndicator តម្រូវឱ្យបង្ហាញរូបតំណាងនៅក្នុងរបារកំពូលនៅក្នុង GNOME ។"
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "ការដំឡើងត្រូវបានលុបចោល ឬបរាជ័យ។"
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "ការបម្រុងទុក XML អាចចូលប្រើបានពីការកំណត់។"
+
+msgid "Langue du système"
+msgstr "ភាសាប្រព័ន្ធ"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "មិន​អាច​ស្តាប់​អក្សរ​បំបែក និង​ចំណង​ជើង​បាន​ទេ។"
+
+msgid "Mes Radios"
+msgstr "វិទ្យុរបស់ខ្ញុំ"
+
+msgid "Mot-clé :"
+msgstr "ពាក្យ​គន្លឹះ៖"
+
+msgid "Nouveaux uniquement"
+msgstr "ថ្មីតែប៉ុណ្ណោះ"
+
+msgid "OPTIONS DE SESSION"
+msgstr "ជម្រើសសម័យ"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "ការរៀបចំក្រុម និងក្រុមរង (អនុសញ្ញាលីនុច)"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "ដំបូងបើកក្រុមមួយដើម្បីស្តាប់វិទ្យុរបស់ខ្លួន។"
+
+msgid "Ouvrir"
+msgstr "បើក"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "បើក ~/.config/timeonde"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "បើក ~/.config/timeonde/examples"
+
+msgid "Pays"
+msgstr "ប្រទេស"
+
+msgid "Pays :"
+msgstr "ប្រទេស៖"
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "ដើម្បីបង្ហាញរូបតំណាងលេងដោយប្រយ័ត្នប្រយែងនៅក្នុងរបារកំពូលនៃផ្ទៃតុ GNOME របស់អ្នក កម្មវិធីបន្ថែមប្រព័ន្ធ <b>AppIndicator</b> ត្រូវបានទាមទារ។<br/><br/>តើអ្នកចង់ដំឡើងវាឥឡូវនេះទេ?"
+
+msgid "Préférences"
+msgstr "ចំណូលចិត្ត"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "រក្សា​ក្រុម​រង​ដែល​បាន​កំណត់​ក្នុង​ឯកសារ​ជា​ជាង​ការ​នាំ​ចូល​អ្វី​គ្រប់​យ៉ាង​ទៅ​ក្នុង​ក្រុម​តែ​មួយ។"
+
+msgid "Quitter"
+msgstr "ចេញ"
+
+msgid "Recharger"
+msgstr "ផ្ទុកឡើងវិញ"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "ផ្ទុកឯកសារដែលបានបង្ហាញបច្ចុប្បន្នឡើងវិញ"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "ការស្វែងរកទូទាំងពិភពលោកនៅលើថត <b>Radio-Browser</b> ឥតគិតថ្លៃ និងសហការគ្នា (+45,000 ស្ថានីយ៍)។"
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "ស្វែងរកនៅលើ Radio-Browser កំពុងដំណើរការ..."
+
+msgid "Rechercher"
+msgstr "ស្វែងរក"
+
+msgid "Rechercher en ligne"
+msgstr "ស្វែងរកតាមអ៊ីនធឺណិត"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "ជំនួសតំណដែលបានជ្រើសរើសជាមួយនឹងព័ត៌មានផ្លូវការសកម្ម"
+
+msgid "Restaurer exemples"
+msgstr "ស្ដារឧទាហរណ៍"
+
+msgid "Régions & Locales :"
+msgstr "តំបន់ និងតំបន់៖"
+
+msgid "Réparer le flux..."
+msgstr "ជួសជុលលំហូរ ..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "ស្ដារ​ឧទាហរណ៍ 19 ដើម"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "បញ្ចូលពាក្យគន្លឹះ ឬចុច ស្វែងរក ដើម្បីរុករកបញ្ជី។"
+
+msgid "Sauvegarde réussie !"
+msgstr "ការបម្រុងទុកបានជោគជ័យ!"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "រក្សាទុកវិទ្យុរបស់ខ្ញុំ (XML)..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "រក្សាទុកចំណាំរបស់ខ្ញុំ (XML)"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "ចំណាំ និងវិទ្យុត្រូវបានរក្សាទុកដោយជោគជ័យ!"
+
+msgid "Station"
+msgstr "រមណីយដ្ឋាន"
+
+msgid "Statut Favoris"
+msgstr "ស្ថានភាពសំណព្វ"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "ការជ្រើសរើសជាផ្លូវការ និងផ្ទៀងផ្ទាត់ពីប្រទេស និងតំបន់ចំនួន 146 (DAB+ ភួងឌីជីថល និងស្ថានីយ៍ជាតិសំខាន់ៗ)។"
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "ជ្រើសរើសវិទ្យុដើម្បីស្តាប់វា។"
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "ជ្រើសរើសស្ថានីយ៍មួយពីតុដើម្បីស្តាប់វា។"
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "វាយបញ្ចូលប្រទេសមួយ (ឧទាហរណ៍៖ បារាំង ឌុចឡិន កាណាដា...)"
+
+msgid "Tester"
+msgstr "សាកល្បង"
+
+msgid "Tester les flux"
+msgstr "ការធ្វើតេស្តលំហូរ"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "TiMonde - ការរួមបញ្ចូលផ្ទៃតុ GNOME"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "ឯកសារទាំងអស់ (*.*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "ប្រទេសទាំងអស់ (សកល)"
+
+msgid "Tout cocher"
+msgstr "ពិនិត្យទាំងអស់។"
+
+msgid "Tout décocher"
+msgstr "ដោះធីកទាំងអស់។"
+
+msgid "Toutes les langues"
+msgstr "គ្រប់ភាសា"
+
+msgid "URL du flux"
+msgstr "មតិព័ត៌មាន URL"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "សូមជ្រើសរើសវិទ្យុពីបញ្ជីដើម្បីស្តាប់វា។"
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "ចំណាំពេញលេញរបស់អ្នកត្រូវបានរក្សាទុកនៅក្នុង៖"
+
+msgid "Votes"
+msgstr "ការបោះឆ្នោត"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "ពិនិត្យមើលភាពអាចរកបាននៃតំណផ្ទាល់"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "ពិនិត្យមើលភាពអាចរកបាននៃវិទ្យុផ្ទាល់"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "ពិនិត្យមើលភាពអាចរកបានផ្ទាល់នៃវិទ្យុដែលបានរកឃើញ"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "ពិនិត្យភាពត្រឹមត្រូវនៃតំណ និងមើលការផ្សាយជាមុន"
+
+msgid "ajoutée avec succès !"
+msgstr "បន្ថែមដោយជោគជ័យ!"
+
+msgid "fichiers exemples restaurés."
+msgstr "ឯកសារគំរូដែលបានស្តារឡើងវិញ។"
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "វិទ្យុ​ថ្មី​បាន​នាំ​ចូល​!"
+
+msgid "Écouter"
+msgstr "ស្តាប់"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "ស្តាប់វិទ្យុដែលបានជ្រើសរើស"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "ស្តាប់ ឬសាកល្បងវិទ្យុដែលបានជ្រើសរើស"
+

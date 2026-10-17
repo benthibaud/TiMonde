@@ -1,14 +1,16 @@
-# TiMonde — LV Translation
+# TiMonde — Traduction LV
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lv\n"
 
 msgid "Play"
 msgstr "Atskaņot"
@@ -26,124 +28,124 @@ msgid "Delete"
 msgstr "Dzēst"
 
 msgid "Zap to another random station"
-msgstr ""
+msgstr "Pārslēdzieties uz citu nejaušu radio"
 
 msgid "Play random radio (Ephemeral discovery)"
-msgstr ""
+msgstr "Klausieties nejaušu radio staciju (īslaicīgs atklājums)"
 
 msgid "[ Ephemeral]"
-msgstr ""
+msgstr "[īslaicīga]"
 
 msgid "Options"
 msgstr "Opcijas"
 
 msgid "Add a station..."
-msgstr ""
+msgstr "Pievienot radio..."
 
 msgid "Discover & Import stations..."
-msgstr ""
+msgstr "Atklājiet un importējiet radio..."
 
 msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr ""
+msgstr "Importēt manus failus (XML, CSV, JSON, M3U)..."
 
 msgid "Manage groups and stations..."
-msgstr ""
+msgstr "Klasificēt grupas un radio..."
 
 msgid "Open bookmarks.xml"
-msgstr ""
+msgstr "Atveriet grāmatzīmes.xml"
 
 msgid "Quit TiMonde"
-msgstr ""
+msgstr "Atstāj TiMonde"
 
 msgid "Mute (0%)"
-msgstr ""
+msgstr "Izslēgt skaņu (0%)"
 
 msgid "Sleep timer"
-msgstr ""
+msgstr "Miega taimeris"
 
 msgid "In 15 minutes"
-msgstr ""
+msgstr "15 minūšu laikā"
 
 msgid "In 30 minutes"
-msgstr ""
+msgstr "30 minūšu laikā"
 
 msgid "In 45 minutes"
-msgstr ""
+msgstr "45 minūtēs"
 
 msgid "In 60 minutes (1h)"
-msgstr ""
+msgstr "Pēc 60 minūtēm (1 stunda)"
 
 msgid "Cancel sleep timer"
-msgstr ""
+msgstr "Atcelt miegu"
 
 msgid "Discover & Import stations (TiMonde)"
-msgstr ""
+msgstr "Atklājiet un importējiet radiostacijas (TiMonde)"
 
 msgid "Verified DAB+ Bouquets"
-msgstr ""
+msgstr "Verificēti pušķi (DAB+)"
 
 msgid "Radio-Browser Search"
-msgstr ""
+msgstr "Meklēt radio pārlūkprogrammā"
 
 msgid "Sample Files"
-msgstr ""
+msgstr "Piemēri faili"
 
 msgid "Import my files"
-msgstr ""
+msgstr "Importēt manus failus"
 
 msgid "<b> Country:</b>"
-msgstr ""
+msgstr "<b>Valsts:</b>"
 
 msgid "<b>Language:</b>"
-msgstr ""
+msgstr "<b>Valoda:</b>"
 
 msgid "Name / Keyword:"
-msgstr ""
+msgstr "Vārds/Atslēgvārds:"
 
 msgid "Genre:"
-msgstr ""
+msgstr "Dzimums:"
 
 msgid "<b>Sample file:</b>"
-msgstr ""
+msgstr "<b>Faila piemērs:</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr ""
+msgstr "<b>Grupas nosaukums jūsu izlasē:</b>"
 
 msgid "Select all"
-msgstr ""
+msgstr "Pārbaudiet visu"
 
 msgid "Deselect all"
-msgstr ""
+msgstr "Noņemiet atzīmi no visiem"
 
 msgid "Import into favorites"
-msgstr ""
+msgstr "Importēt manā izlasē"
 
 msgid "Close"
 msgstr "Aizvērt"
 
 msgid "Add a station (TiMonde)"
-msgstr ""
+msgstr "Pievienojiet staciju (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
-msgstr ""
+msgstr "<b>Ievadiet informāciju par jauno radio:</b>"
 
 msgid "Add to my stations"
-msgstr ""
+msgstr "Pievienot maniem radioaparātiem"
 
 msgid "Save station to favorites (TiMonde)"
-msgstr ""
+msgstr "Saglabāt radio manā izlasē (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr ""
+msgstr "<b>Saglabājiet šo nejauši atklāto radiostaciju savos izlasēs:</b>"
 
 msgid "Keep in favorites"
-msgstr ""
+msgstr "Saglabāt manā izlasē"
 
 msgid "Edit station (TiMonde)"
-msgstr ""
+msgstr "Rediģēt radio (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr ""
+msgstr "<b>Mainīt stacijas iestatījumus:</b>"
 
 msgid "Save"
 msgstr "Saglabāt"
@@ -152,82 +154,82 @@ msgid "Station name:"
 msgstr "Stacijas nosaukums:"
 
 msgid "Audio stream URL:"
-msgstr ""
+msgstr "Audio straumes URL:"
 
 msgid "Group / Folder:"
-msgstr ""
+msgstr "Grupa/mape:"
 
 msgid "Country & Timezone:"
-msgstr ""
+msgstr "Valsts un laika josla:"
 
 msgid "Timezone:"
-msgstr ""
+msgstr "Laika josla:"
 
 msgid "Delete this station"
-msgstr ""
+msgstr "Dzēst šo radio"
 
 msgid "Cancel"
 msgstr "Atcelt"
 
 msgid "Delete « {} » from favorites?"
-msgstr ""
+msgstr "Vai noņemt “{}” no izlases?"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr ""
+msgstr "Veicot šo darbību, šī stacija tiks neatgriezeniski noņemta no jūsu kolekcijas."
 
 msgid "Manage groups, stations and separators (TiMonde)"
-msgstr ""
+msgstr "Grupu, radio un separatoru pārvaldība (TiMonde)"
 
 msgid "Back to groups"
-msgstr ""
+msgstr "⬅ Atpakaļ uz grupām"
 
 msgid "Add station"
-msgstr ""
+msgstr "Pievienojiet radio"
 
 msgid "Open"
-msgstr ""
+msgstr "Atvērt"
 
 msgid "New group"
-msgstr ""
+msgstr "Jauna grupa"
 
 msgid "Move to..."
-msgstr ""
+msgstr "Pārvietot uz..."
 
 msgid "Top"
-msgstr ""
+msgstr "Pirmkārt"
 
 msgid "Move up"
-msgstr ""
+msgstr "⬆ Ej augšā"
 
 msgid "Move down"
-msgstr ""
+msgstr "⬇ Ejiet uz leju"
 
 msgid "Separator"
-msgstr ""
+msgstr "Atdalītājs"
 
 msgid "Sort A-Z"
-msgstr ""
+msgstr "Kārtot A–Z"
 
 msgid "Save and reload"
-msgstr ""
+msgstr "Saglabājiet un ielādējiet atkārtoti"
 
 msgid "Same time"
-msgstr ""
+msgstr "Tajā pašā laikā"
 
 msgid "Dawn"
-msgstr ""
+msgstr "Rītausma"
 
 msgid "Morning"
-msgstr ""
+msgstr "Rīts"
 
 msgid "Daytime"
-msgstr ""
+msgstr "diena"
 
 msgid "Evening"
-msgstr ""
+msgstr "Vakars"
 
 msgid "Night"
-msgstr ""
+msgstr "Nakts"
 
 msgid "Tomorrow"
 msgstr "Rīt"
@@ -236,64 +238,64 @@ msgid "Yesterday"
 msgstr "Vakar"
 
 msgid "Maintenance & Data"
-msgstr ""
+msgstr "Apkope un dati"
 
 msgid "Check streams (dead links)..."
-msgstr ""
+msgstr "Pārbaudiet plūsmas (mirušās saites)..."
 
 msgid "Export my stations to CSV..."
-msgstr ""
+msgstr "Eksportēt manus radio uz CSV..."
 
 msgid "Check streams"
-msgstr ""
+msgstr "Pārbaudiet plūsmas"
 
 msgid "Dead links only"
-msgstr ""
+msgstr "Tikai nedzīvas saites"
 
 msgid "Apply redirects"
-msgstr ""
+msgstr "Lietot novirzīšanu"
 
 msgid "Repair stream..."
-msgstr ""
+msgstr "Remonta plūsma..."
 
 msgid "Export to CSV"
-msgstr ""
+msgstr "Eksportēt uz CSV"
 
 msgid "Test stream availability and locate broken links"
-msgstr ""
+msgstr "Pārbaudiet savu radiostaciju pieejamību tiešraidē un atrodiet mirušās saites"
 
 msgid "Display offline radio streams only"
-msgstr ""
+msgstr "Rādīt tikai tās radiostacijas, kuru straume ir bezsaistē"
 
 msgid "Automatically update redirected streams to direct URL"
-msgstr ""
+msgstr "Automātiski atjaunināt plūsmas, kas novirzītas uz to tiešo URL"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
+msgstr "Automātiski meklējiet aizvietojošu aktīvo straumi Radio-Browser šai nedzīvajai saitei"
 
 msgid "Export all stations to CSV spreadsheet format"
-msgstr ""
+msgstr "Eksportējiet visus savus radioaparātus CSV izklājlapas formātā"
 
 msgid "Export my stations to CSV"
-msgstr ""
+msgstr "Eksportēt manus radio uz CSV"
 
 msgid "CSV files (*.csv)"
-msgstr ""
+msgstr "CSV faili (*.csv)"
 
 msgid "All files (*.*)"
-msgstr ""
+msgstr "Visi faili (*.*)"
 
 msgid "Export"
-msgstr ""
+msgstr "Eksportēt"
 
 msgid "Export successful!"
-msgstr ""
+msgstr "Eksports veiksmīgi!"
 
 msgid "Error during CSV export:"
-msgstr ""
+msgstr "Kļūda CSV eksportēšanas laikā:"
 
 msgid "station(s) saved to:"
-msgstr ""
+msgstr "radioaparāti, kas ierakstīti:"
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "Iestatījumi..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "Pievienojiet radio (TiMonde)"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "Pievienot maniem radioaparātiem"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "Nav pievienots neviens jauns radioaparāts (jau ir)."
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "DAB+ pušķi un oficiālā izvēle"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "Saglabāt manā izlasē"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "Saglabājiet radio izlasē (TiMonde)"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "Atvērt failu:"
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "Atklājiet un importējiet radiostacijas (TiMonde)"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "Saglabāt"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "Izpildes kļūda:"
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "JSON importēšanas kļūda:"
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "Modificējot automātisko palaišanu, radās kļūda."
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "Izpētiet DAB+..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "CSV eksportēšana ir pabeigta."
 
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "Aizvērt"
 
 msgid "Fichiers exemples"
 msgstr "Sample Files"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "Importēt personiskos failus"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "Importēt failu..."
 
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "Nevar atvērt mapi:"
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "Ievietojiet savās grupās atdalītājus (---) vai sadaļu virsrakstus, lai izvēdinātu izvēlni."
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "Izmaiņas ņemtas vērā."
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "Rediģēt radio (TiMonde)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "Atvērt mapi"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "Pārlūkot..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "Globālās meklēšanas radio pārlūks"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "Meklēt..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "Grāmatzīmes ir reorganizētas un veiksmīgi saglabātas!"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "Dzēst"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,7 +653,7 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "failu paraugi, kas atjaunoti"
 
 msgid "online"
 msgstr "online"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ Organizācija"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 Vizuālā izkārtojuma padoms"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 Dati un faili"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻 Bibliotēka"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️ Ģenerālis"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>• Mainiet <b>#</b> vai izmantojiet <b>Pārvietot uz augšu/Uz leju</b>, lai sakārtotu grupas. \n"
+" • <b>Veiciet dubultklikšķi uz grupas</b> (vai Atvērt), lai sakārtotu tās radio un sadalītājus. \n"
+" • Izmantojiet <b>Pārsūtīt...</b>, lai sapludinātu vai pārvietotu saturu uz citu grupu. \n"
+" • Izmantojiet <b>Jauna grupa</b>, lai pievienotu radioaparātu mapi.</small>"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<small>• Mainiet <b>#</b> vai izmantojiet <b>Pārvietot uz augšu/Uz leju</b>, lai kārtotu radio. \n"
+" • Noklikšķiniet uz <b>Pārbaudīt plūsmas</b>, lai pamanītu mirušās saites (sarkanā krāsā) un tās labotu. \n"
+" • Noklikšķiniet uz <b>Labot straumi...</b>, lai Radio-Browser meklētu aizvietojošu aktīvo straumi. \n"
+" • Noklikšķiniet uz <b>Atdalītājs</b>, lai ievietotu sadaļas virsrakstu.</small>"
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>Iepriekš atlasiet failu vai piemēru.</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>• Mainiet <b>#</b> vai izmantojiet <b>Pārvietot uz augšu/Uz leju</b>, lai sakārtotu grupas. \n"
+" • <b>Veiciet dubultklikšķi uz grupas</b> (vai Atvērt), lai sakārtotu tās radio un atdalītājus. \n"
+" • Izmantojiet <b>Pārvietot uz...</b>, lai sapludinātu vai pārvietotu saturu. \n"
+" • Izmantojiet <b>Jauna grupa</b>, lai izveidotu radioaparātu mapi.</small>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<small>• Mainiet <b>#</b> vai izmantojiet <b>Pārvietot uz augšu/Uz leju</b>, lai pasūtītu radio. \n"
+" • Noklikšķiniet uz <b>Pārbaudīt plūsmas</b>, lai atrastu bezsaistes saites (sarkanā krāsā). \n"
+" • Noklikšķiniet uz <b>Labot straumi...</b>, lai meklētu aktīvu nomaiņas straumi. \n"
+" • Noklikšķiniet uz <b>Atdalītājs</b>, lai ievietotu subtitru vai atdalītāju.</small>"
+
+msgid "Actualiser la liste des exemples"
+msgstr "Atsvaidziniet piemēru sarakstu"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "Palīdzība grupām un apakšgrupām"
+
+msgid "Ajouter"
+msgstr "Pievienot"
+
+msgid "Annuler"
+msgstr "Atcelt"
+
+msgid "Arrêter"
+msgstr "Stop"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "Nav atrasts neviens fails bookmarks.xml, ko saglabāt."
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "Nav pievienota neviena jauna radio stacija (jau ir jūsu grāmatzīmēs)."
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "Radio-Browser nav atrasta neviena radio stacija atbilstoši šiem kritērijiem."
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "Nacionālais pušķis (lielākie kūrorti)"
+
+msgid "Bouquets par pays"
+msgstr "Pušķi pa valstīm"
+
+msgid "Bureau graphique & Plateau"
+msgstr "Grafiskais galds un paplāte"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "Šai stacijai nav audio straumes URL."
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "Augšupielādējiet XML, CSV, JSON, M3U vai PLS failu"
+
+msgid "Charger un fichier..."
+msgstr "Ielādēt failu..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "Izvēlieties no esošajām grupām"
+
+msgid "Choisir un fichier de radios"
+msgstr "Izvēlieties radio failu"
+
+msgid "Collections & Fichiers"
+msgstr "Kolekcijas un faili"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "Saglabājiet organizāciju failā"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "Izveidojiet pilnu kolekcijas dublējumu (ar mapēm un laika joslām)"
+
+msgid "Disponibilité"
+msgstr "Pieejamība"
+
+msgid "Disponibilité en direct"
+msgstr "Tiešraides pieejamība"
+
+msgid "Dossier / Groupe"
+msgstr "Mape / grupa"
+
+msgid "Dossier des exemples"
+msgstr "Piemēru mape"
+
+msgid "Dossier des signets"
+msgstr "Grāmatzīmju mape"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "Automātiska noteikšana atbilstoši jūsu Linux vides reģionālajiem iestatījumiem."
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "KONSTATĒTA VIDE (TIKAI LASĪT)"
+
+msgid "Effacer le champ"
+msgstr "Notīrīt lauku"
+
+msgid "Effacer le filtre langue"
+msgstr "Notīrīt valodas filtru"
+
+msgid "Effacer le filtre pays"
+msgstr "Notīrīt valsts filtru"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "Konstatēta GNOME Shell vide"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "Kļūda saglabāšanas laikā:"
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "Piemēram: /Francija/Džezs vai / saknei"
+
+msgid "Exemples thématiques :"
+msgstr "Tematiskie piemēri:"
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "Eksportēt uz tabulu (CSV)..."
+
+msgid "Fichier :"
+msgstr "Fails:"
+
+msgid "Fichier externe :"
+msgstr "Ārējais fails:"
+
+msgid "Fichiers XML (*.xml)"
+msgstr "XML faili (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "Filtrēt pēc valsts:"
+
+msgid "Format & Débit"
+msgstr "Formāts un bitu pārraides ātrums"
+
+msgid "Genre / Tags"
+msgstr "Dzimums / Tagi"
+
+msgid "Genre / Thématique"
+msgstr "Žanrs / tēma"
+
+msgid "Genre :"
+msgstr "Dzimums:"
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "Neatpazīts pakotņu pārvaldnieks."
+
+msgid "Groupe :"
+msgstr "Grupa:"
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "Izveidojiet vienotu sarakstu Calc vai Excel izklājlapai"
+
+msgid "Importer"
+msgstr "Importēt"
+
+msgid "Importer & Exporter"
+msgstr "Importēt un eksportēt"
+
+msgid "Importer dans mes favoris"
+msgstr "Importēt manā izlasē"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "Notiek instalēšana (lūdzu, apstipriniet sistēmas uzvedni)..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "Instalējiet GNOME integrāciju"
+
+msgid "Intégration GNOME requise"
+msgstr "Nepieciešama GNOME integrācija"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "Integrācija GNOME augšējā joslā"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "Vietējā integrācija paziņojumu apgabalā, izmantojot StatusNotifierItem / XEmbed."
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "CSV eksportēšanai var piekļūt no iestatījumiem."
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "AppIndicator paplašinājums ir nepieciešams, lai GNOME augšējā joslā parādītu ikonu."
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "Instalēšana tika atcelta vai neizdevās."
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "XML dublējums ir pieejams no iestatījumiem."
+
+msgid "Langue du système"
+msgstr "Sistēmas valoda"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "Atdalītājus un starptitru nevar klausīties."
+
+msgid "Mes Radios"
+msgstr "Mani radio"
+
+msgid "Mot-clé :"
+msgstr "Atslēgvārds:"
+
+msgid "Nouveaux uniquement"
+msgstr "Tikai jauns"
+
+msgid "OPTIONS DE SESSION"
+msgstr "SESIJAS IESPĒJAS"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "Grupu un apakšgrupu organizācija (Linux konvencija)"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "Vispirms atveriet grupu, lai klausītos tās radio."
+
+msgid "Ouvrir"
+msgstr "Atvērt"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "Atveriet ~/.config/timonde"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "Atveriet ~/.config/timonde/examples"
+
+msgid "Pays"
+msgstr "Valsts"
+
+msgid "Pays :"
+msgstr "Valsts:"
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "Lai GNOME darbvirsmas augšējā joslā diskrēti parādītu atskaņošanas ikonu, ir nepieciešams sistēmas paplašinājums <b>AppIndicator</b>.<br/><br/>Vai vēlaties to instalēt tūlīt?"
+
+msgid "Préférences"
+msgstr "Preferences"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "Saglabājiet failā definētās apakšgrupas, nevis importējiet visu vienā grupā."
+
+msgid "Quitter"
+msgstr "Iziet"
+
+msgid "Recharger"
+msgstr "Pārlādēt"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "Pārlādēt pašlaik parādīto failu"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "Vispasaules meklēšana bezmaksas un sadarbīgajā <b>Radio-Browser</b> direktorijā (+45 000 staciju)."
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "Notiek meklēšana Radio-Browser..."
+
+msgid "Rechercher"
+msgstr "Meklēt"
+
+msgid "Rechercher en ligne"
+msgstr "Meklēt tiešsaistē"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "Aizstāt atlasīto saiti ar aktīvu oficiālu plūsmu"
+
+msgid "Restaurer exemples"
+msgstr "Atjaunot piemērus"
+
+msgid "Régions & Locales :"
+msgstr "Reģioni un vietējie iedzīvotāji:"
+
+msgid "Réparer le flux..."
+msgstr "Labojiet plūsmu..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "Atjaunojiet sākotnējos 19 piemērus"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "Ievadiet atslēgvārdu vai noklikšķiniet uz Meklēt, lai izpētītu direktoriju."
+
+msgid "Sauvegarde réussie !"
+msgstr "Dublēšana ir veiksmīga!"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "Saglabāt manus radio (XML)..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "Saglabāt manas grāmatzīmes (XML)"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "Grāmatzīmes un radioaparāti ir veiksmīgi saglabāti!"
+
+msgid "Station"
+msgstr "Kūrorts"
+
+msgid "Statut Favoris"
+msgstr "Izlases statuss"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "Oficiāla un pārbaudīta izlase no 146 valstīm un reģioniem (DAB+ digitālie pušķi un lielākās nacionālās stacijas)."
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "Izvēlieties radio, lai to klausītos."
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "Izvēlieties staciju no tabulas, lai to klausītos."
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "Ierakstiet valsti (piemēram, Francija, Vācija, Kanāda...)"
+
+msgid "Tester"
+msgstr "Pārbaude"
+
+msgid "Tester les flux"
+msgstr "Pārbaudes plūsmas"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "TiMonde — GNOME darbvirsmas integrācija"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "Visi faili (*.*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "Visas valstis (pasaulē)"
+
+msgid "Tout cocher"
+msgstr "Pārbaudiet visu"
+
+msgid "Tout décocher"
+msgstr "Noņemiet atzīmi no visiem"
+
+msgid "Toutes les langues"
+msgstr "Visas valodas"
+
+msgid "URL du flux"
+msgstr "Plūsmas URL"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "Lūdzu, izvēlieties radio no saraksta, lai to klausītos."
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "Visas jūsu grāmatzīmes ir saglabātas mapē:"
+
+msgid "Votes"
+msgstr "Balsis"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "Pārbaudiet saites pieejamību tiešraidē"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "Pārbaudiet tiešraides radio pieejamību"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "Pārbaudiet atrasto radio pieejamību tiešraidē"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "Pārbaudiet saites derīgumu un priekšskatiet straumi"
+
+msgid "ajoutée avec succès !"
+msgstr "veiksmīgi pievienots!"
+
+msgid "fichiers exemples restaurés."
+msgstr "atjaunoti parauga faili."
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "importēti jauni radioaparāti!"
+
+msgid "Écouter"
+msgstr "Klausies"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "Klausieties izvēlēto radio"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "Klausieties vai pārbaudiet izvēlēto radio"
+

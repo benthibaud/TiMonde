@@ -1,14 +1,16 @@
-# TiMonde — MS Translation
+# TiMonde — Traduction MS
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: ms\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ms\n"
 
 msgid "Play"
 msgstr "Mainkan"
@@ -26,124 +28,124 @@ msgid "Delete"
 msgstr "Padam"
 
 msgid "Zap to another random station"
-msgstr ""
+msgstr "Zap ke radio rawak yang lain"
 
 msgid "Play random radio (Ephemeral discovery)"
-msgstr ""
+msgstr "Dengar stesen radio rawak (Penemuan Ephemeral)"
 
 msgid "[ Ephemeral]"
-msgstr ""
+msgstr "[Ephemeral]"
 
 msgid "Options"
 msgstr "Pilihan"
 
 msgid "Add a station..."
-msgstr ""
+msgstr "Tambah radio..."
 
 msgid "Discover & Import stations..."
-msgstr ""
+msgstr "Temui & Import radio..."
 
 msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr ""
+msgstr "Import fail saya (XML, CSV, JSON, M3U)..."
 
 msgid "Manage groups and stations..."
-msgstr ""
+msgstr "Kelaskan kumpulan dan radio..."
 
 msgid "Open bookmarks.xml"
-msgstr ""
+msgstr "Buka penanda halaman.xml"
 
 msgid "Quit TiMonde"
 msgstr "Keluar dari TiMonde"
 
 msgid "Mute (0%)"
-msgstr ""
+msgstr "Redam (0%)"
 
 msgid "Sleep timer"
-msgstr ""
+msgstr "Pemasa tidur"
 
 msgid "In 15 minutes"
-msgstr ""
+msgstr "Dalam 15 minit"
 
 msgid "In 30 minutes"
-msgstr ""
+msgstr "Dalam 30 minit"
 
 msgid "In 45 minutes"
-msgstr ""
+msgstr "Dalam 45 minit"
 
 msgid "In 60 minutes (1h)"
-msgstr ""
+msgstr "Dalam 60 minit (1 jam)"
 
 msgid "Cancel sleep timer"
-msgstr ""
+msgstr "Batalkan tidur"
 
 msgid "Discover & Import stations (TiMonde)"
-msgstr ""
+msgstr "Temui & Import stesen radio (TiMonde)"
 
 msgid "Verified DAB+ Bouquets"
-msgstr ""
+msgstr "Sejambak yang disahkan (DAB+)"
 
 msgid "Radio-Browser Search"
-msgstr ""
+msgstr "Cari Penyemak Imbas Radio"
 
 msgid "Sample Files"
-msgstr ""
+msgstr "Contoh fail"
 
 msgid "Import my files"
-msgstr ""
+msgstr "Import fail saya"
 
 msgid "<b> Country:</b>"
-msgstr ""
+msgstr "<b>Negara:</b>"
 
 msgid "<b>Language:</b>"
-msgstr ""
+msgstr "<b>Bahasa:</b>"
 
 msgid "Name / Keyword:"
-msgstr ""
+msgstr "Nama / Kata Kunci:"
 
 msgid "Genre:"
-msgstr ""
+msgstr "Jantina:"
 
 msgid "<b>Sample file:</b>"
-msgstr ""
+msgstr "<b>Contoh fail:</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr ""
+msgstr "<b>Nama kumpulan dalam kegemaran anda:</b>"
 
 msgid "Select all"
-msgstr ""
+msgstr "Semak semua"
 
 msgid "Deselect all"
-msgstr ""
+msgstr "Nyahtanda semua"
 
 msgid "Import into favorites"
-msgstr ""
+msgstr "Import ke kegemaran saya"
 
 msgid "Close"
 msgstr "Tutup"
 
 msgid "Add a station (TiMonde)"
-msgstr ""
+msgstr "Tambah stesen (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
-msgstr ""
+msgstr "<b>Masukkan maklumat untuk radio baharu:</b>"
 
 msgid "Add to my stations"
-msgstr ""
+msgstr "Tambahkan pada radio saya"
 
 msgid "Save station to favorites (TiMonde)"
-msgstr ""
+msgstr "Simpan radio ke kegemaran saya (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr ""
+msgstr "<b>Simpan stesen radio yang ditemui secara rawak ini dalam kegemaran anda:</b>"
 
 msgid "Keep in favorites"
-msgstr ""
+msgstr "Simpan ke kegemaran saya"
 
 msgid "Edit station (TiMonde)"
-msgstr ""
+msgstr "Edit radio (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr ""
+msgstr "<b>Tukar tetapan stesen:</b>"
 
 msgid "Save"
 msgstr "Simpan"
@@ -152,82 +154,82 @@ msgid "Station name:"
 msgstr "Nama stesen:"
 
 msgid "Audio stream URL:"
-msgstr ""
+msgstr "URL strim audio:"
 
 msgid "Group / Folder:"
-msgstr ""
+msgstr "Kumpulan / Folder:"
 
 msgid "Country & Timezone:"
-msgstr ""
+msgstr "Negara & Zon Waktu:"
 
 msgid "Timezone:"
-msgstr ""
+msgstr "Zon waktu:"
 
 msgid "Delete this station"
-msgstr ""
+msgstr "Padamkan radio ini"
 
 msgid "Cancel"
 msgstr "Batal"
 
 msgid "Delete « {} » from favorites?"
-msgstr ""
+msgstr "Alih keluar “{}” daripada kegemaran?"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr ""
+msgstr "Tindakan ini akan mengalih keluar stesen ini daripada koleksi anda secara kekal."
 
 msgid "Manage groups, stations and separators (TiMonde)"
-msgstr ""
+msgstr "Pengurusan kumpulan, radio dan pemisah (TiMonde)"
 
 msgid "Back to groups"
-msgstr ""
+msgstr "⬅ Kembali kepada kumpulan"
 
 msgid "Add station"
-msgstr ""
+msgstr "Tambah radio"
 
 msgid "Open"
-msgstr ""
+msgstr "Buka"
 
 msgid "New group"
-msgstr ""
+msgstr "Kumpulan baru"
 
 msgid "Move to..."
-msgstr ""
+msgstr "Pindah ke..."
 
 msgid "Top"
-msgstr ""
+msgstr "Pertama"
 
 msgid "Move up"
-msgstr ""
+msgstr "⬆ Naik"
 
 msgid "Move down"
-msgstr ""
+msgstr "⬇ Turun"
 
 msgid "Separator"
-msgstr ""
+msgstr "Pemisah"
 
 msgid "Sort A-Z"
-msgstr ""
+msgstr "Isih A-Z"
 
 msgid "Save and reload"
-msgstr ""
+msgstr "Simpan dan muat semula"
 
 msgid "Same time"
 msgstr "Masa yang sama"
 
 msgid "Dawn"
-msgstr ""
+msgstr "Subuh"
 
 msgid "Morning"
-msgstr ""
+msgstr "Pagi"
 
 msgid "Daytime"
-msgstr ""
+msgstr "Hari"
 
 msgid "Evening"
-msgstr ""
+msgstr "Petang"
 
 msgid "Night"
-msgstr ""
+msgstr "Malam"
 
 msgid "Tomorrow"
 msgstr "Esok"
@@ -236,64 +238,64 @@ msgid "Yesterday"
 msgstr "Semalam"
 
 msgid "Maintenance & Data"
-msgstr ""
+msgstr "Penyelenggaraan & Data"
 
 msgid "Check streams (dead links)..."
-msgstr ""
+msgstr "Semak suapan (pautan mati)..."
 
 msgid "Export my stations to CSV..."
-msgstr ""
+msgstr "Eksport radio saya ke CSV..."
 
 msgid "Check streams"
-msgstr ""
+msgstr "Semak suapan"
 
 msgid "Dead links only"
-msgstr ""
+msgstr "Pautan mati sahaja"
 
 msgid "Apply redirects"
-msgstr ""
+msgstr "Gunakan ubah hala"
 
 msgid "Repair stream..."
-msgstr ""
+msgstr "Aliran pembaikan..."
 
 msgid "Export to CSV"
-msgstr ""
+msgstr "Eksport ke CSV"
 
 msgid "Test stream availability and locate broken links"
-msgstr ""
+msgstr "Uji ketersediaan langsung stesen radio anda dan cari pautan mati"
 
 msgid "Display offline radio streams only"
-msgstr ""
+msgstr "Tunjukkan hanya stesen radio yang alirannya di luar talian"
 
 msgid "Automatically update redirected streams to direct URL"
-msgstr ""
+msgstr "Kemas kini suapan yang diubah hala secara automatik ke URL langsung mereka"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
+msgstr "Cari strim aktif gantian secara automatik di Radio-Browser untuk pautan mati ini"
 
 msgid "Export all stations to CSV spreadsheet format"
-msgstr ""
+msgstr "Eksport semua radio anda dalam format hamparan CSV"
 
 msgid "Export my stations to CSV"
-msgstr ""
+msgstr "Eksport radio saya ke CSV"
 
 msgid "CSV files (*.csv)"
-msgstr ""
+msgstr "Fail CSV (*.csv)"
 
 msgid "All files (*.*)"
-msgstr ""
+msgstr "Semua fail (*.*)"
 
 msgid "Export"
-msgstr ""
+msgstr "Eksport"
 
 msgid "Export successful!"
-msgstr ""
+msgstr "Eksport berjaya!"
 
 msgid "Error during CSV export:"
-msgstr ""
+msgstr "Ralat semasa eksport CSV:"
 
 msgid "station(s) saved to:"
-msgstr ""
+msgstr "radio yang dirakam dalam:"
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "Tetapan..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "Tambahkan radio (TiMonde)"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "Tambahkan pada radio saya"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "Tiada radio baharu ditambah (sudah ada)."
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "DAB+ Bouquets & Pilihan Rasmi"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "Simpan ke kegemaran saya"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "Simpan radio dalam kegemaran (TiMonde)"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "Buka fail:"
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "Temui dan import stesen radio (TiMonde)"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "Jimat"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "Ralat pelaksanaan:"
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "Ralat import JSON:"
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "Ralat mengubah suai autostart."
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "Terokai DAB+..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "Eksport CSV selesai."
 
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "tutup"
 
 msgid "Fichiers exemples"
 msgstr "Sample Files"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "Import fail peribadi"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "Import fail..."
 
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "Tidak dapat membuka folder:"
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "Masukkan pemisah (---) atau tajuk bahagian dalam kumpulan anda untuk mengalihkan menu anda."
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "Perubahan diambil kira."
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "Edit radio (TiMonde)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "Buka folder"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "Semak imbas..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "Pelayar Radio Carian Global"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "Cari..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "Penanda halaman disusun semula dan disimpan dengan jayanya!"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "Padam"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,7 +653,7 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "fail sampel dipulihkan dalam"
 
 msgid "online"
 msgstr "online"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ Organisasi"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 Petua reka letak visual"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 Data & Fail"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻 Perpustakaan"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️ Umum"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>• Tukar <b>#</b> atau gunakan <b>Move Up / Down</b> untuk memesan kumpulan. \n"
+" • <b>Klik dua kali pada kumpulan</b> (atau Buka) untuk mengisih radio dan pembahaginya. \n"
+" • Gunakan <b>Pindah...</b> untuk menggabungkan atau mengalihkan kandungan ke kumpulan lain. \n"
+" • Gunakan <b>Kumpulan Baharu</b> untuk menambah folder radio.</small>"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<small>• Tukar <b>#</b> atau gunakan <b>Move Up / Down</b> untuk mengisih radio. \n"
+" • Klik <b>Semak Suapan</b> untuk melihat pautan mati (merah) dan membaikinya. \n"
+" • Klik pada <b>Baiki strim...</b> untuk mencari penggantian strim aktif pada Radio-Browser. \n"
+" • Klik <b>Pemisah</b> untuk memasukkan tajuk bahagian.</small>"
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>Pilih fail atau contoh di atas.</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>• Tukar <b>#</b> atau gunakan <b>Move Up / Down</b> untuk memesan kumpulan. \n"
+" • <b>Klik dua kali pada kumpulan</b> (atau Buka) untuk mengisih radio dan pemisahnya. \n"
+" • Gunakan <b>Alih ke...</b> untuk menggabungkan atau mengalihkan kandungan. \n"
+" • Gunakan <b>Kumpulan Baharu</b> untuk mencipta folder radio.</small>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<small>• Tukar <b>#</b> atau gunakan <b>Move Up / Down</b> untuk memesan radio. \n"
+" • Klik <b>Semak suapan</b> untuk mencari pautan luar talian (berwarna merah). \n"
+" • Klik <b>Baiki Strim...</b> untuk mencari strim gantian yang aktif. \n"
+" • Klik pada <b>Separator</b> untuk memasukkan sari kata atau baris pemisah.</small>"
+
+msgid "Actualiser la liste des exemples"
+msgstr "Muat semula senarai contoh"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "Bantu dengan kumpulan dan subkumpulan"
+
+msgid "Ajouter"
+msgstr "Tambah"
+
+msgid "Annuler"
+msgstr "Batal"
+
+msgid "Arrêter"
+msgstr "Berhenti"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "Tiada fail bookmarks.xml ditemui untuk disimpan."
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "Tiada stesen radio baharu ditambah (sudah ada dalam penanda halaman anda)."
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "Tiada stesen radio ditemui di Radio-Browser untuk kriteria ini."
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "Sejambak Nasional (tempat peranginan utama)"
+
+msgid "Bouquets par pays"
+msgstr "Sejambak mengikut negara"
+
+msgid "Bureau graphique & Plateau"
+msgstr "Meja grafik & Dulang"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "Stesen ini tidak mempunyai URL strim audio."
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "Muat naik fail XML, CSV, JSON, M3U atau PLS"
+
+msgid "Charger un fichier..."
+msgstr "Muatkan fail..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "Pilih daripada kumpulan sedia ada"
+
+msgid "Choisir un fichier de radios"
+msgstr "Pilih fail radio"
+
+msgid "Collections & Fichiers"
+msgstr "Koleksi & Fail"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "Simpan organisasi dalam fail"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "Buat sandaran penuh koleksi anda (dengan folder dan zon waktu)"
+
+msgid "Disponibilité"
+msgstr "Ketersediaan"
+
+msgid "Disponibilité en direct"
+msgstr "Ketersediaan langsung"
+
+msgid "Dossier / Groupe"
+msgstr "Folder / Kumpulan"
+
+msgid "Dossier des exemples"
+msgstr "Contoh folder"
+
+msgid "Dossier des signets"
+msgstr "Folder penanda halaman"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "Pengesanan automatik mengikut tetapan serantau persekitaran Linux anda."
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "PERSEKITARAN DIKESAN (BACA SAHAJA)"
+
+msgid "Effacer le champ"
+msgstr "Kosongkan medan"
+
+msgid "Effacer le filtre langue"
+msgstr "Penapis bahasa yang jelas"
+
+msgid "Effacer le filtre pays"
+msgstr "Kosongkan penapis negara"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "Persekitaran Shell GNOME dikesan"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "Ralat semasa menyimpan:"
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "Cth: /Perancis/Jazz atau / untuk akar"
+
+msgid "Exemples thématiques :"
+msgstr "Contoh tematik:"
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "Eksport ke jadual (CSV)..."
+
+msgid "Fichier :"
+msgstr "Fail:"
+
+msgid "Fichier externe :"
+msgstr "Fail luaran:"
+
+msgid "Fichiers XML (*.xml)"
+msgstr "Fail XML (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "Tapis mengikut negara:"
+
+msgid "Format & Débit"
+msgstr "Format & Kadar Bit"
+
+msgid "Genre / Tags"
+msgstr "Jantina / Tag"
+
+msgid "Genre / Thématique"
+msgstr "Genre / Tema"
+
+msgid "Genre :"
+msgstr "Jantina:"
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "Pengurus pakej tidak dikenali."
+
+msgid "Groupe :"
+msgstr "Kumpulan:"
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "Hasilkan senarai rata untuk hamparan Calc atau Excel"
+
+msgid "Importer"
+msgstr "Import"
+
+msgid "Importer & Exporter"
+msgstr "Import & Eksport"
+
+msgid "Importer dans mes favoris"
+msgstr "Import ke kegemaran saya"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "Pemasangan sedang dijalankan (sila sahkan gesaan sistem)..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "Pasang integrasi GNOME"
+
+msgid "Intégration GNOME requise"
+msgstr "Penyepaduan GNOME diperlukan"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "Integrasi ke dalam bar atas GNOME"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "Penyepaduan asli ke dalam kawasan pemberitahuan melalui StatusNotifierItem / XEmbed."
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "Eksport CSV boleh diakses daripada tetapan."
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "Sambungan AppIndicator diperlukan untuk memaparkan ikon di bar atas dalam GNOME."
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "Pemasangan telah dibatalkan atau gagal."
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "Sandaran XML boleh diakses daripada tetapan."
+
+msgid "Langue du système"
+msgstr "Bahasa sistem"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "Pemisah dan intertitle tidak boleh didengari."
+
+msgid "Mes Radios"
+msgstr "Radio Saya"
+
+msgid "Mot-clé :"
+msgstr "Kata kunci:"
+
+msgid "Nouveaux uniquement"
+msgstr "Baru sahaja"
+
+msgid "OPTIONS DE SESSION"
+msgstr "PILIHAN SESI"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "Organisasi kumpulan dan subkumpulan (Konvensyen Linux)"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "Mula-mula buka kumpulan untuk mendengar radionya."
+
+msgid "Ouvrir"
+msgstr "Buka"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "Buka ~/.config/timonde"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "Buka ~/.config/timonde/examples"
+
+msgid "Pays"
+msgstr "Negara"
+
+msgid "Pays :"
+msgstr "negara:"
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "Untuk memaparkan ikon main secara diam-diam di bar atas desktop GNOME anda, sambungan sistem <b>AppIndicator</b> diperlukan.<br/><br/>Adakah anda mahu memasangnya sekarang?"
+
+msgid "Préférences"
+msgstr "Keutamaan"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "Kekalkan subkumpulan yang ditakrifkan dalam fail dan bukannya mengimport semuanya ke dalam satu kumpulan."
+
+msgid "Quitter"
+msgstr "Keluar"
+
+msgid "Recharger"
+msgstr "Muat semula"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "Muat semula fail yang sedang dipaparkan"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "Carian seluruh dunia pada direktori <b>Radio-Browser</b> percuma dan kolaboratif (+45,000 stesen)."
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "Carian di Pelayar Radio sedang berjalan..."
+
+msgid "Rechercher"
+msgstr "Cari"
+
+msgid "Rechercher en ligne"
+msgstr "Cari dalam talian"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "Gantikan pautan yang dipilih dengan suapan rasmi yang aktif"
+
+msgid "Restaurer exemples"
+msgstr "Pulihkan contoh"
+
+msgid "Régions & Locales :"
+msgstr "Wilayah & Tempatan:"
+
+msgid "Réparer le flux..."
+msgstr "Betulkan aliran..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "Pulihkan 19 contoh asal"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "Masukkan kata kunci atau klik Cari untuk meneroka direktori."
+
+msgid "Sauvegarde réussie !"
+msgstr "Sandaran berjaya!"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "Simpan radio saya (XML)..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "Simpan penanda halaman saya (XML)"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "Penanda halaman dan radio berjaya disimpan!"
+
+msgid "Station"
+msgstr "Tempat peranginan"
+
+msgid "Statut Favoris"
+msgstr "Status Kegemaran"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "Pilihan rasmi dan disahkan dari 146 negara dan wilayah (jambak digital DAB+ dan stesen nasional utama)."
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "Pilih radio untuk mendengarnya."
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "Pilih stesen daripada jadual untuk mendengarnya."
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "Taip negara (cth: Perancis, Deutschland, Kanada...)"
+
+msgid "Tester"
+msgstr "Ujian"
+
+msgid "Tester les flux"
+msgstr "Aliran ujian"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "TiMonde — Integrasi Desktop GNOME"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "Semua fail (*.*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "Semua negara (global)"
+
+msgid "Tout cocher"
+msgstr "Semak semua"
+
+msgid "Tout décocher"
+msgstr "Nyahtanda semua"
+
+msgid "Toutes les langues"
+msgstr "Semua bahasa"
+
+msgid "URL du flux"
+msgstr "URL suapan"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "Sila pilih radio daripada senarai untuk mendengarnya."
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "Penanda halaman lengkap anda telah disimpan dalam:"
+
+msgid "Votes"
+msgstr "Undi"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "Semak ketersediaan pautan secara langsung"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "Semak ketersediaan radio langsung"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "Semak ketersediaan langsung radio yang ditemui"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "Semak kesahihan pautan dan pratonton strim"
+
+msgid "ajoutée avec succès !"
+msgstr "berjaya ditambah!"
+
+msgid "fichiers exemples restaurés."
+msgstr "fail sampel dipulihkan."
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "radio baharu diimport!"
+
+msgid "Écouter"
+msgstr "Dengar"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "Dengar radio terpilih"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "Dengar atau uji radio yang dipilih"
+

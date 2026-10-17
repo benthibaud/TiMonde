@@ -111,5 +111,67 @@ class TestTiMondeCommon(unittest.TestCase):
         self.assertEqual(infer_timezone("DZ", "Chaine 1", ""), "Africa/Algiers")
         self.assertEqual(infer_timezone("CO", "Caracol Radio", ""), "America/Bogota")
 
+    def test_multilingual_55_countries_and_language_aliases(self):
+        from timonde_world_data import resolve_country_code, resolve_language_api_key
+        country_cases = [
+            ("Deutschland", "DE"), ("Germany", "DE"), ("Allemagne", "DE"), ("Alemania", "DE"),
+            ("Germania", "DE"), ("Duitsland", "DE"), ("Niemcy", "DE"), ("Германия", "DE"),
+            ("ألمانيا", "DE"), ("ドイツ", "DE"), ("德国", "DE"), ("德國", "DE"), ("Saksa", "DE"), ("Tyskland", "DE"),
+            ("Suisse", "CH"), ("Schweiz", "CH"), ("Switzerland", "CH"), ("Svizzera", "CH"), ("Suiza", "CH"),
+            ("España", "ES"), ("Spain", "ES"), ("Espagne", "ES"), ("Spanien", "ES"),
+            ("United Kingdom", "GB"), ("Royaume-Uni", "GB"), ("UK", "GB"), ("England", "GB"),
+            ("United States", "US"), ("USA", "US"), ("États-Unis", "US"), ("アメリカ合衆国", "US"), ("美国", "US"),
+            ("Россия", "RU"), ("Russia", "RU"), ("Russie", "RU"),
+            ("日本", "JP"), ("Japan", "JP"), ("Japon", "JP"),
+            ("Ελλάδα", "GR"), ("Greece", "GR"), ("Grèce", "GR"),
+        ]
+        for query, expected in country_cases:
+            self.assertEqual(resolve_country_code(query), expected, f"Échec pour {query}")
+
+        lang_cases = [
+            ("english", "english"), ("Anglais", "english"), ("English", "english"),
+            ("engilsh", "english"), ("american english", "english"), ("english uk", "english"),
+            ("American english (american english)", "american english"),
+            ("deutch", "german"), ("Deutsch", "german"),
+            ("espanish", "spanish"), ("francaise", "french"),
+        ]
+        for query, expected in lang_cases:
+            self.assertEqual(resolve_language_api_key(query), expected, f"Échec langue pour {query}")
+
+    def test_bookmarks_tree_root_and_nested_groups(self):
+        from timonde_settings import load_bookmarks_tree, save_bookmarks_tree
+        xml_sample = """<?xml version="1.0" encoding="utf-8"?>
+<bookmarks>
+    <bookmark name="Root Radio" url="https://example.com/root.mp3" country="FR" timezone="Europe/Paris"/>
+    <group name="France">
+        <group name="Bretagne">
+            <bookmark name="Radio Armorique" url="https://example.com/bzh.mp3" country="FR" timezone="Europe/Paris"/>
+        </group>
+    </group>
+</bookmarks>
+"""
+        with tempfile.NamedTemporaryFile("w", suffix=".xml", delete=False) as f:
+            f.write(xml_sample)
+            temp_path = f.name
+
+        try:
+            tree = load_bookmarks_tree(temp_path)
+            self.assertEqual(len(tree), 2)
+            self.assertEqual(tree[0]["name"], "[ / ] (Racine — Sans groupe)")
+            self.assertEqual(tree[0]["stations"][0]["name"], "Root Radio")
+            self.assertEqual(tree[1]["name"], "France/Bretagne")
+            self.assertEqual(tree[1]["stations"][0]["name"], "Radio Armorique")
+
+            save_bookmarks_tree(temp_path, tree)
+            reloaded = load_bookmarks_tree(temp_path)
+            self.assertEqual(len(reloaded), 2)
+            self.assertEqual(reloaded[0]["stations"][0]["name"], "Root Radio")
+            self.assertEqual(reloaded[0]["stations"][0]["timezone"], "Europe/Paris")
+            self.assertEqual(reloaded[1]["name"], "France/Bretagne")
+            self.assertEqual(reloaded[1]["stations"][0]["name"], "Radio Armorique")
+        finally:
+            if os.path.exists(temp_path):
+                os.remove(temp_path)
+
 if __name__ == "__main__":
     unittest.main()

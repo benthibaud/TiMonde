@@ -17,6 +17,7 @@ os.environ.pop("GTK_IM_MODULE", None)
 os.environ.pop("XMODIFIERS", None)
 os.environ.pop("QT_IM_MODULE", None)
 import json
+import html
 import subprocess
 
 # Module d'internationalisation & socle commun TiMonde
@@ -26,7 +27,7 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import strip_unsupported_emojis, make_btn
+from timonde_common import strip_unsupported_emojis, make_btn, StreamPreviewPlayer, update_btn_content
 
 import urllib.request
 import urllib.parse
@@ -120,27 +121,34 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, Pango, GLib
 
 class ReorderWindow(Gtk.Window):
-    def __init__(self, data, auto_check=False):
-        super().__init__(title=_("Organize groups and stations (TiMonde)"))
-        self.set_default_size(760, 550)
-        self.set_position(Gtk.WindowPosition.CENTER)
-        self.set_border_width(12)
-        
-        # Icône PNG native multi-résolutions
-        for icon_path in [
-            "/usr/share/icons/hicolor/48x48/apps/timonde_on.png",
-            "/usr/share/icons/hicolor/32x32/apps/timonde_on.png",
-            "/usr/share/icons/hicolor/24x24/apps/timonde_on.png",
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), "../icons/hicolor/48x48/apps/timonde_on.png"),
-        ]:
-            if os.path.exists(icon_path):
-                try:
-                    self.set_icon_from_file(icon_path)
-                    break
-                except Exception:
-                    pass
+    def __init__(self, data, auto_check=False, embedded=False, on_save_callback=None):
+        self.embedded = embedded
+        self.on_save_callback = on_save_callback
+        if not embedded:
+            super().__init__(title=_("Organize groups and stations (TiMonde)"))
+            self.set_default_size(760, 550)
+            self.set_position(Gtk.WindowPosition.CENTER)
+            self.set_border_width(12)
+            
+            # Icône PNG native multi-résolutions
+            for icon_path in [
+                "/usr/share/icons/hicolor/48x48/apps/timonde_on.png",
+                "/usr/share/icons/hicolor/32x32/apps/timonde_on.png",
+                "/usr/share/icons/hicolor/24x24/apps/timonde_on.png",
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), "../icons/hicolor/48x48/apps/timonde_on.png"),
+            ]:
+                if os.path.exists(icon_path):
+                    try:
+                        self.set_icon_from_file(icon_path)
+                        break
+                    except Exception:
+                        pass
+            else:
+                self.set_icon_name("audio-x-generic")
+
+            self.connect("destroy", self.on_destroy_window)
         else:
-            self.set_icon_name("audio-x-generic")
+            super().__init__()
 
         self.data = data
         self.auto_check = auto_check
@@ -149,10 +157,13 @@ class ReorderWindow(Gtk.Window):
         self.audit_results = {}  # url -> {"status": "online"|"offline"|"geo"|"redirect", "msg": str, "redirect": str|None}
         self.filter_broken_only = False
 
+        self.preview_player = StreamPreviewPlayer(on_status_change=self.on_preview_status_update)
+
         self.connect("key-press-event", self.on_key_press_event)
 
         self.vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
-        self.add(self.vbox)
+        if not self.embedded:
+            self.add(self.vbox)
 
         # 1. En-tête de navigation
         self.nav_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
@@ -246,20 +257,36 @@ class ReorderWindow(Gtk.Window):
         sep0 = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
         side_box.pack_start(sep0, False, False, 2)
 
-        btn_top = make_btn(_("Top"), "go-top", _("Move selected item to the top"))
+        # Grille 2x2 compacte pour l'ordre (idéale pour antiX et petits écrans)
+        grid_order = Gtk.Grid()
+        grid_order.set_column_spacing(4)
+        grid_order.set_row_spacing(4)
+        grid_order.set_column_homogeneous(True)
+        side_box.pack_start(grid_order, False, False, 0)
+
+        btn_top = make_btn("⤒ " + _("Top"), "go-top", _("Move selected item to the top"))
         btn_top.connect("clicked", self.on_move_top_clicked)
-        side_box.pack_start(btn_top, False, False, 0)
+        grid_order.attach(btn_top, 0, 0, 1, 1)
 
-        btn_up = make_btn(_("Move up"), "go-up", _("Move up one rank"))
+        btn_up = make_btn("↑ " + _("Move up"), "go-up", _("Move up one rank"))
         btn_up.connect("clicked", self.on_move_up_clicked)
-        side_box.pack_start(btn_up, False, False, 0)
+        grid_order.attach(btn_up, 1, 0, 1, 1)
 
-        btn_down = make_btn(_("Move down"), "go-down", _("Move down one rank"))
+        btn_down = make_btn("↓ " + _("Move down"), "go-down", _("Move down one rank"))
         btn_down.connect("clicked", self.on_move_down_clicked)
-        side_box.pack_start(btn_down, False, False, 0)
+        grid_order.attach(btn_down, 0, 1, 1, 1)
+
+        btn_sort = make_btn("A-Z", "view-sort-ascending", _("Sort this list alphabetically"))
+        btn_sort.connect("clicked", self.on_sort_az_clicked)
+        grid_order.attach(btn_sort, 1, 1, 1, 1)
 
         sep1 = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
         side_box.pack_start(sep1, False, False, 2)
+
+        # Bouton d'écoute / test direct du flux sélectionné
+        self.btn_preview = make_btn(_("Écouter"), "media-playback-start", _("Écouter ou tester la radio sélectionnée"))
+        self.btn_preview.connect("clicked", self.on_preview_clicked)
+        side_box.pack_start(self.btn_preview, False, False, 0)
 
         self.btn_add_station = make_btn(_("Add station"), "list-add", _("Add a new station to this group"))
         self.btn_add_station.connect("clicked", self.on_add_station_clicked)
@@ -268,10 +295,6 @@ class ReorderWindow(Gtk.Window):
         self.btn_add_sep = make_btn(_("Separator"), "format-line-spacing", _("Insert a separator or header in this group"))
         self.btn_add_sep.connect("clicked", self.on_add_separator_clicked)
         side_box.pack_start(self.btn_add_sep, False, False, 0)
-
-        btn_sort = make_btn(_("Sort A-Z"), "view-sort-ascending", _("Sort this list alphabetically"))
-        btn_sort.connect("clicked", self.on_sort_az_clicked)
-        side_box.pack_start(btn_sort, False, False, 0)
 
         sep2 = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
         side_box.pack_start(sep2, False, False, 2)
@@ -297,9 +320,10 @@ class ReorderWindow(Gtk.Window):
         btn_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         self.vbox.pack_start(btn_box, False, False, 0)
 
-        btn_cancel = make_btn(_("Cancel"), "process-stop")
-        btn_cancel.connect("clicked", self.on_cancel_clicked)
-        btn_box.pack_start(btn_cancel, False, False, 0)
+        if not self.embedded:
+            btn_cancel = make_btn(_("Cancel"), "process-stop")
+            btn_cancel.connect("clicked", self.on_cancel_clicked)
+            btn_box.pack_start(btn_cancel, False, False, 0)
 
         self.btn_export_csv = make_btn(_("Export to CSV"), "document-save-as", _("Export all stations to CSV spreadsheet format"))
         self.btn_export_csv.connect("clicked", lambda w: self.on_export_csv_clicked())
@@ -312,8 +336,6 @@ class ReorderWindow(Gtk.Window):
         btn_save.get_style_context().add_class("suggested-action")
         btn_save.connect("clicked", self.on_save_clicked)
         btn_box.pack_start(btn_save, False, False, 0)
-
-        self.connect("destroy", Gtk.main_quit)
 
         # Affichage initial
         self.update_view()
@@ -370,6 +392,7 @@ class ReorderWindow(Gtk.Window):
             self.btn_open.show()
             self.btn_add_sep.show()
             self.btn_add_station.hide()
+            self.btn_preview.hide()
             if hasattr(self.btn_move_to, "_label_widget"):
                 self.btn_move_to._label_widget.set_text(_("Transfer..."))
             else:
@@ -378,10 +401,10 @@ class ReorderWindow(Gtk.Window):
             self.btn_new_group.set_tooltip_text(_("Create a new group of radio stations (Ctrl+N)"))
             self.header_title.set_markup(_("<b>Radio groups</b>"))
             self.help_label.set_markup(
-                _("<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
-                  "• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
-                  "• Use <b>Transfer...</b> to merge or move content to another group.\n"
-                  "• Use <b>New group</b> to add a station folder.</small>")
+                _("<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+                  "• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+                  "• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+                  "• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>")
             )
             self.col_name.set_title(_("Group name"))
             self.col_info.set_title(_("Contents"))
@@ -426,6 +449,7 @@ class ReorderWindow(Gtk.Window):
             self.btn_open.hide()
             self.btn_add_sep.show()
             self.btn_add_station.show()
+            self.btn_preview.show()
             if hasattr(self.btn_move_to, "_label_widget"):
                 self.btn_move_to._label_widget.set_text(_("Move to..."))
             else:
@@ -436,12 +460,12 @@ class ReorderWindow(Gtk.Window):
             if "/" in clean_grp_title:
                 clean_grp_title = clean_grp_title.replace("/", " / ")
             grp_label = _("Stations in group:")
-            self.header_title.set_markup(f"<b>{grp_label} {clean_grp_title}</b>")
+            self.header_title.set_markup(f"<b>{html.escape(grp_label)} {html.escape(clean_grp_title)}</b>")
             self.help_label.set_markup(
-                _("<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
-                  "• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
-                  "• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
-                  "• Click <b>Separator</b> to insert a section header.</small>")
+                _("<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+                  "• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+                  "• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+                  "• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>")
             )
             self.col_name.set_title(_("Name / Header"))
             self.col_info.set_title(_("Details"))
@@ -572,6 +596,15 @@ class ReorderWindow(Gtk.Window):
             target = items[idx] if idx is not None and idx < len(items) else None
             is_sep = target and self.is_item_separator(target)
 
+            if not is_sep and target and target.get("url"):
+                clean_url = target.get("url", "").strip()
+                is_playing_this = (hasattr(self, "preview_player") and self.preview_player.is_playing and self.preview_player.current_url == clean_url)
+                lbl_audio = "Arrêter l'écoute" if is_playing_this else "Écouter cette radio"
+                item_audio = Gtk.MenuItem(label=lbl_audio)
+                item_audio.connect("activate", lambda w: self.on_preview_clicked(None))
+                menu.append(item_audio)
+                menu.append(Gtk.SeparatorMenuItem())
+
             if is_sep:
                 item_edit = Gtk.MenuItem(label="Modifier l'intertitre...")
                 item_edit.connect("activate", self.on_edit_clicked)
@@ -613,7 +646,7 @@ class ReorderWindow(Gtk.Window):
 
     def show_feedback(self, text, is_success=True):
         color = "#27ae60" if is_success else "#e67e22"
-        self.lbl_feedback.set_markup(f"<span foreground='{color}'><b>{text}</b></span>")
+        self.lbl_feedback.set_markup(f"<span foreground='{color}'><b>{html.escape(text or '')}</b></span>")
 
     def on_create_group_clicked(self, widget):
         dialog = Gtk.Dialog(
@@ -1400,15 +1433,71 @@ class ReorderWindow(Gtk.Window):
             next_idx = min(indices[0], max(0, len(items) - 1)) if items else None
             self.update_view(select_idx=next_idx)
 
+    def on_destroy_window(self, widget=None):
+        if hasattr(self, "preview_player") and self.preview_player:
+            self.preview_player.stop()
+        if not getattr(self, "embedded", False):
+            Gtk.main_quit()
+
     def on_cancel_clicked(self, widget):
         self.saved = False
-        self.destroy()
+        if hasattr(self, "preview_player") and self.preview_player:
+            self.preview_player.stop()
+        if not self.embedded:
+            self.destroy()
 
     def on_save_clicked(self, widget):
         self.saved = True
-        self.destroy()
+        if hasattr(self, "preview_player") and self.preview_player:
+            self.preview_player.stop()
+        if self.on_save_callback:
+            self.on_save_callback(self.data)
+        if not self.embedded:
+            self.destroy()
 
+    def on_preview_status_update(self, is_playing, url, message, is_error):
+        if is_playing:
+            update_btn_content(self.btn_preview, _("Arrêter"), "media-playback-stop")
+            self.btn_preview.get_style_context().add_class("destructive-action")
+        else:
+            update_btn_content(self.btn_preview, _("Écouter"), "media-playback-start")
+            self.btn_preview.get_style_context().remove_class("destructive-action")
 
+        if is_error:
+            self.show_feedback(message, is_success=False)
+        elif message:
+            self.show_feedback(message, is_success=True)
+        else:
+            self.show_feedback("")
+
+    def on_preview_clicked(self, widget):
+        if hasattr(self, "preview_player") and self.preview_player.is_playing:
+            self.preview_player.stop()
+            return
+
+        if self.current_group_idx is None:
+            self.show_feedback(_("Ouvrez d'abord un groupe pour écouter ses radios."), is_success=False)
+            return
+
+        selection = self.treeview.get_selection()
+        model, paths = selection.get_selected_rows()
+        if not paths:
+            self.show_feedback(_("Veuillez sélectionner une radio dans la liste pour l'écouter."), is_success=False)
+            return
+
+        real_idx = model.get_value(model.get_iter(paths[0]), 0)
+        items = self.get_current_list()
+        if real_idx < len(items):
+            item = items[real_idx]
+            if self.is_item_separator(item):
+                self.show_feedback(_("Les séparateurs et intertitres ne peuvent pas être écoutés."), is_success=False)
+                return
+            url = item.get("url", "").strip()
+            if not url:
+                self.show_feedback(_("Cette station n'a aucune URL de flux audio."), is_success=False)
+                return
+            name = item.get("name", "Radio")
+            self.preview_player.play(name, url)
 
     # -------------------------------------------------------------------------
     # Vérification de santé des flux et réparation des liens morts
@@ -1694,6 +1783,65 @@ class ReorderWindow(Gtk.Window):
                     type=Gtk.MessageType.ERROR,
                     buttons=Gtk.ButtonsType.OK,
                     message_format=f"{_('Error during CSV export:')}\n{e}",
+                )
+                err_diag.run()
+                err_diag.destroy()
+
+    def on_backup_xml_clicked(self, widget=None):
+        import shutil
+        src_path = os.path.expanduser("~/.config/timonde/bookmarks.xml")
+        if not os.path.isfile(src_path):
+            self.show_feedback(_("Aucun fichier bookmarks.xml trouvé à sauvegarder."))
+            return
+
+        dialog = Gtk.FileChooserDialog(
+            title=_("Sauvegarder mes signets (XML)"),
+            parent=self,
+            action=Gtk.FileChooserAction.SAVE,
+            buttons=(_("Annuler"), Gtk.ResponseType.CANCEL, _("Enregistrer"), Gtk.ResponseType.OK),
+        )
+        dialog.set_default_response(Gtk.ResponseType.OK)
+        dialog.set_current_name("bookmarks_timonde_backup.xml")
+        dialog.set_do_overwrite_confirmation(True)
+
+        filter_xml = Gtk.FileFilter()
+        filter_xml.set_name(_("Fichiers XML (*.xml)"))
+        filter_xml.add_pattern("*.xml")
+        dialog.add_filter(filter_xml)
+
+        filter_all = Gtk.FileFilter()
+        filter_all.set_name(_("Tous les fichiers (*.*)"))
+        filter_all.add_pattern("*")
+        dialog.add_filter(filter_all)
+
+        res = dialog.run()
+        chosen_path = dialog.get_filename()
+        dialog.destroy()
+
+        if res == Gtk.ResponseType.OK and chosen_path:
+            if not chosen_path.lower().endswith(".xml"):
+                chosen_path += ".xml"
+            try:
+                tmp_target = f"{chosen_path}.tmp"
+                shutil.copy2(src_path, tmp_target)
+                os.replace(tmp_target, chosen_path)
+                self.show_feedback(f"Sauvegarde XML réussie dans {os.path.basename(chosen_path)}")
+                msg_diag = Gtk.MessageDialog(
+                    parent=self,
+                    flags=Gtk.DialogFlags.MODAL,
+                    type=Gtk.MessageType.INFO,
+                    buttons=Gtk.ButtonsType.OK,
+                    message_format=f"{_('Sauvegarde réussie !')}\n\n{_('Vos signets complets ont été enregistrés dans :')}\n{chosen_path}",
+                )
+                msg_diag.run()
+                msg_diag.destroy()
+            except Exception as e:
+                err_diag = Gtk.MessageDialog(
+                    parent=self,
+                    flags=Gtk.DialogFlags.MODAL,
+                    type=Gtk.MessageType.ERROR,
+                    buttons=Gtk.ButtonsType.OK,
+                    message_format=f"{_('Erreur lors de la sauvegarde :')}\n{e}",
                 )
                 err_diag.run()
                 err_diag.destroy()

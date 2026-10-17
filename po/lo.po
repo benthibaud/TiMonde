@@ -1,14 +1,16 @@
-# TiMonde — LO Translation
+# TiMonde — Traduction LO
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: lo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lo\n"
 
 msgid "Play"
 msgstr "ຫຼິ້ນ"
@@ -26,124 +28,124 @@ msgid "Delete"
 msgstr "ລຶບ"
 
 msgid "Zap to another random station"
-msgstr ""
+msgstr "Zap ໄປຫາວິທະຍຸແບບສຸ່ມອື່ນ"
 
 msgid "Play random radio (Ephemeral discovery)"
-msgstr ""
+msgstr "ຟັງ​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ Random (ການ​ຄົ້ນ​ພົບ Ephemeral​)"
 
 msgid "[ Ephemeral]"
-msgstr ""
+msgstr "[ຊົ່ວຊ້າ]"
 
 msgid "Options"
 msgstr "ຕົວເລືອກ"
 
 msgid "Add a station..."
-msgstr ""
+msgstr "ເພີ່ມວິທະຍຸ..."
 
 msgid "Discover & Import stations..."
-msgstr ""
+msgstr "ຄົ້ນພົບ ແລະນຳເຂົ້າວິທະຍຸ..."
 
 msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr ""
+msgstr "ນຳເຂົ້າໄຟລ໌ຂອງຂ້ອຍ (XML, CSV, JSON, M3U)..."
 
 msgid "Manage groups and stations..."
-msgstr ""
+msgstr "ຈັດແບ່ງກຸ່ມ ແລະວິທະຍຸ..."
 
 msgid "Open bookmarks.xml"
-msgstr ""
+msgstr "ເປີດ bookmarks.xml"
 
 msgid "Quit TiMonde"
-msgstr ""
+msgstr "ອອກຈາກ TiMonde"
 
 msgid "Mute (0%)"
-msgstr ""
+msgstr "ປິດສຽງ (0%)"
 
 msgid "Sleep timer"
-msgstr ""
+msgstr "ໂມງຈັບເວລານອນ"
 
 msgid "In 15 minutes"
-msgstr ""
+msgstr "ໃນ 15 ນາທີ"
 
 msgid "In 30 minutes"
-msgstr ""
+msgstr "ໃນ 30 ນາທີ"
 
 msgid "In 45 minutes"
-msgstr ""
+msgstr "ໃນ 45 ນາທີ"
 
 msgid "In 60 minutes (1h)"
-msgstr ""
+msgstr "ໃນ 60 ນາ​ທີ (1 ຊົ່ວ​ໂມງ​)"
 
 msgid "Cancel sleep timer"
-msgstr ""
+msgstr "ຍົກເລີກການນອນ"
 
 msgid "Discover & Import stations (TiMonde)"
-msgstr ""
+msgstr "ຄົ້ນພົບ ແລະນຳເຂົ້າສະຖານີວິທະຍຸ (TiMonde)"
 
 msgid "Verified DAB+ Bouquets"
-msgstr ""
+msgstr "ຊໍ່ດອກໄມ້ທີ່ຢັ້ງຢືນແລ້ວ (DAB+)"
 
 msgid "Radio-Browser Search"
-msgstr ""
+msgstr "ຊອກຫາ Radio-Browser"
 
 msgid "Sample Files"
-msgstr ""
+msgstr "ໄຟລ໌ຕົວຢ່າງ"
 
 msgid "Import my files"
-msgstr ""
+msgstr "ນໍາເຂົ້າໄຟລ໌ຂອງຂ້ອຍ"
 
 msgid "<b> Country:</b>"
-msgstr ""
+msgstr "<b>ປະເທດ:</b>"
 
 msgid "<b>Language:</b>"
-msgstr ""
+msgstr "<b>ພາສາ:</b>"
 
 msgid "Name / Keyword:"
-msgstr ""
+msgstr "ຊື່ / ຄໍາສໍາຄັນ:"
 
 msgid "Genre:"
-msgstr ""
+msgstr "ເພດ:"
 
 msgid "<b>Sample file:</b>"
-msgstr ""
+msgstr "<b>ໄຟລ໌ຕົວຢ່າງ:</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr ""
+msgstr "<b>ຊື່ກຸ່ມໃນລາຍການທີ່ທ່ານມັກ:</b>"
 
 msgid "Select all"
-msgstr ""
+msgstr "ກວດເບິ່ງທັງຫມົດ"
 
 msgid "Deselect all"
-msgstr ""
+msgstr "ຍົກເລີກການເລືອກທັງໝົດ"
 
 msgid "Import into favorites"
-msgstr ""
+msgstr "ນຳເຂົ້າໃສ່ລາຍການທີ່ມັກຂອງຂ້ອຍ"
 
 msgid "Close"
 msgstr "ປິດ"
 
 msgid "Add a station (TiMonde)"
-msgstr ""
+msgstr "ເພີ່ມສະຖານີ (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
-msgstr ""
+msgstr "<b>ໃສ່ຂໍ້ມູນສຳລັບວິທະຍຸໃໝ່:</b>"
 
 msgid "Add to my stations"
-msgstr ""
+msgstr "ເພີ່ມໃສ່ວິທະຍຸຂອງຂ້ອຍ"
 
 msgid "Save station to favorites (TiMonde)"
-msgstr ""
+msgstr "ຊ່ວຍ​ປະ​ຢັດ​ວິ​ທະ​ຍຸ​ທີ່​ມັກ​ຂອງ​ຂ້າ​ພະ​ເຈົ້າ (TiMonde​)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr ""
+msgstr "<b>ເກັບ​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ​ທີ່​ຖືກ​ຄົ້ນ​ພົບ​ໂດຍ​ສຸ່ມ​ນີ້​ໃນ​ທີ່​ມັກ​ຂອງ​ທ່ານ​:</b>"
 
 msgid "Keep in favorites"
-msgstr ""
+msgstr "ບັນທຶກໃສ່ລາຍການທີ່ມັກຂອງຂ້ອຍ"
 
 msgid "Edit station (TiMonde)"
-msgstr ""
+msgstr "ແກ້​ໄຂ​ວິ​ທະ​ຍຸ (TiMonde​)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr ""
+msgstr "<b>ປ່ຽນການຕັ້ງຄ່າສະຖານີ:</b>"
 
 msgid "Save"
 msgstr "ບັນທຶກ"
@@ -152,82 +154,82 @@ msgid "Station name:"
 msgstr "ຊື່ສະຖານີ:"
 
 msgid "Audio stream URL:"
-msgstr ""
+msgstr "URL ການຖ່າຍທອດສຽງ:"
 
 msgid "Group / Folder:"
-msgstr ""
+msgstr "ກຸ່ມ / ໂຟນເດີ:"
 
 msgid "Country & Timezone:"
-msgstr ""
+msgstr "ປະເທດ ແລະເຂດເວລາ:"
 
 msgid "Timezone:"
-msgstr ""
+msgstr "ເຂດເວລາ:"
 
 msgid "Delete this station"
-msgstr ""
+msgstr "ລຶບວິທະຍຸນີ້"
 
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
 
 msgid "Delete « {} » from favorites?"
-msgstr ""
+msgstr "ລຶບ “{}” ອອກຈາກລາຍການທີ່ມັກບໍ?"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr ""
+msgstr "ຄຳສັ່ງນີ້ຈະລຶບສະຖານີນີ້ອອກຈາກຄໍເລັກຊັນຂອງເຈົ້າຢ່າງຖາວອນ."
 
 msgid "Manage groups, stations and separators (TiMonde)"
-msgstr ""
+msgstr "ການຄຸ້ມຄອງກຸ່ມ, ວິທະຍຸ ແລະຕົວແຍກ (TiMonde)"
 
 msgid "Back to groups"
-msgstr ""
+msgstr "⬅ ກັບໄປທີ່ກຸ່ມ"
 
 msgid "Add station"
-msgstr ""
+msgstr "ເພີ່ມວິທະຍຸ"
 
 msgid "Open"
-msgstr ""
+msgstr "ເປີດ"
 
 msgid "New group"
-msgstr ""
+msgstr "ກຸ່ມໃໝ່"
 
 msgid "Move to..."
-msgstr ""
+msgstr "ຍ້າຍໄປ..."
 
 msgid "Top"
-msgstr ""
+msgstr "ທໍາອິດ"
 
 msgid "Move up"
-msgstr ""
+msgstr "⬆ ຂຶ້ນ"
 
 msgid "Move down"
-msgstr ""
+msgstr "⬇ ລົງໄປ"
 
 msgid "Separator"
-msgstr ""
+msgstr "ຕົວແຍກ"
 
 msgid "Sort A-Z"
-msgstr ""
+msgstr "ຈັດຮຽງ A-Z"
 
 msgid "Save and reload"
-msgstr ""
+msgstr "ບັນທຶກ ແລະໂຫຼດຄືນໃໝ່"
 
 msgid "Same time"
-msgstr ""
+msgstr "ເວລາດຽວກັນ"
 
 msgid "Dawn"
-msgstr ""
+msgstr "ອາລຸນ"
 
 msgid "Morning"
-msgstr ""
+msgstr "ຕອນເຊົ້າ"
 
 msgid "Daytime"
-msgstr ""
+msgstr "ມື້"
 
 msgid "Evening"
-msgstr ""
+msgstr "ຕອນແລງ"
 
 msgid "Night"
-msgstr ""
+msgstr "ກາງຄືນ"
 
 msgid "Tomorrow"
 msgstr "ມື້ອື່ນ"
@@ -236,64 +238,64 @@ msgid "Yesterday"
 msgstr "ມື້ວານ"
 
 msgid "Maintenance & Data"
-msgstr ""
+msgstr "ການຮັກສາ & ຂໍ້ມູນ"
 
 msgid "Check streams (dead links)..."
-msgstr ""
+msgstr "ກວດເບິ່ງຟີດ (ລິ້ງທີ່ຕາຍແລ້ວ)..."
 
 msgid "Export my stations to CSV..."
-msgstr ""
+msgstr "ສົ່ງອອກວິທະຍຸຂອງຂ້ອຍໄປ CSV..."
 
 msgid "Check streams"
-msgstr ""
+msgstr "ກວດເບິ່ງຟີດ"
 
 msgid "Dead links only"
-msgstr ""
+msgstr "ການເຊື່ອມຕໍ່ຕາຍເທົ່ານັ້ນ"
 
 msgid "Apply redirects"
-msgstr ""
+msgstr "ນຳໃຊ້ການປ່ຽນເສັ້ນທາງ"
 
 msgid "Repair stream..."
-msgstr ""
+msgstr "ສ້ອມແປງກະແສ..."
 
 msgid "Export to CSV"
-msgstr ""
+msgstr "ສົ່ງອອກເປັນ CSV"
 
 msgid "Test stream availability and locate broken links"
-msgstr ""
+msgstr "ທົດ​ສອບ​ການ​ມີ​ຊີ​ວິດ​ຂອງ​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ​ຂອງ​ທ່ານ​ແລະ​ຊອກ​ຫາ​ການ​ເຊື່ອມ​ຕໍ່​ທີ່​ຕາຍ​ແລ້ວ​"
 
 msgid "Display offline radio streams only"
-msgstr ""
+msgstr "ສະ​ແດງ​ໃຫ້​ເຫັນ​ພຽງ​ແຕ່​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ​ທີ່​ມີ​ການ​ສະ​ຕ​ຣີມ offline​"
 
 msgid "Automatically update redirected streams to direct URL"
-msgstr ""
+msgstr "ປັບປຸງອັດຕະໂນມັດ feeds redirected ກັບ URL ໂດຍກົງຂອງເຂົາເຈົ້າ"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
+msgstr "ຄົ້ນຫາອັດຕະໂນມັດສໍາລັບການປ່ຽນແທນການຖ່າຍທອດຢູ່ໃນ Radio-Browser ສໍາລັບການເຊື່ອມຕໍ່ຕາຍນີ້"
 
 msgid "Export all stations to CSV spreadsheet format"
-msgstr ""
+msgstr "ສົ່ງອອກວິທະຍຸທັງໝົດຂອງເຈົ້າໃນຮູບແບບສະເປຣດຊີດ CSV"
 
 msgid "Export my stations to CSV"
-msgstr ""
+msgstr "ສົ່ງອອກວິທະຍຸຂອງຂ້ອຍໄປ CSV"
 
 msgid "CSV files (*.csv)"
-msgstr ""
+msgstr "ໄຟລ໌ CSV (*.csv)"
 
 msgid "All files (*.*)"
-msgstr ""
+msgstr "ໄຟລ໌ທັງໝົດ (*.*)"
 
 msgid "Export"
-msgstr ""
+msgstr "ສົ່ງອອກ"
 
 msgid "Export successful!"
-msgstr ""
+msgstr "ສົ່ງອອກສຳເລັດ!"
 
 msgid "Error during CSV export:"
-msgstr ""
+msgstr "ເກີດຄວາມຜິດພາດໃນລະຫວ່າງການສົ່ງອອກ CSV:"
 
 msgid "station(s) saved to:"
-msgstr ""
+msgstr "ວິ​ທະ​ຍຸ​ທີ່​ບັນ​ທຶກ​ໄວ້​ໃນ​:"
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "ການຕັ້ງຄ່າ..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "ເພີ່ມວິທະຍຸ (TiMonde)"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "ເພີ່ມໃສ່ວິທະຍຸຂອງຂ້ອຍ"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "ບໍ່ມີການເພີ່ມວິທະຍຸໃໝ່ (ມີຢູ່ແລ້ວ)."
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "DAB+ Bouquets ແລະການຄັດເລືອກຢ່າງເປັນທາງການ"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "ບັນທຶກໃສ່ລາຍການທີ່ມັກຂອງຂ້ອຍ"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "ຮັກສາວິທະຍຸໃນລາຍການທີ່ມັກ (TiMonde)"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "ເປີດໄຟລ໌:"
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "ຄົ້ນ​ພົບ​ແລະ​ນໍາ​ເຂົ້າ​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ (TiMonde​)"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "ບັນທຶກ"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "ການ​ປະ​ຕິ​ບັດ​ຄວາມ​ຜິດ​ພາດ​:"
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "ການນໍາເຂົ້າ JSON ຜິດພາດ:"
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "ເກີດຄວາມຜິດພາດໃນການແກ້ໄຂການເລີ່ມຕົ້ນອັດຕະໂນມັດ."
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "ສຳຫຼວດ DAB+..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "ການສົ່ງອອກ CSV ສຳເລັດແລ້ວ."
 
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "ປິດ"
 
 msgid "Fichiers exemples"
 msgstr "Sample Files"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "ນໍາເຂົ້າໄຟລ໌ສ່ວນບຸກຄົນ"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "ນຳເຂົ້າໄຟລ໌..."
 
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "ບໍ່ສາມາດເປີດໂຟນເດີໄດ້:"
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "ໃສ່ຕົວແຍກ (---) ຫຼືຫົວຂໍ້ພາກໃນກຸ່ມຂອງທ່ານເພື່ອລະບາຍອາກາດໃນເມນູຂອງທ່ານ."
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "ການປ່ຽນແປງທີ່ພິຈາລະນາ."
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "ແກ້​ໄຂ​ວິ​ທະ​ຍຸ (TiMonde​)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "ເປີດໂຟນເດີ"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "ຊອກຫາ..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "Global Search Radio-Browser"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "ຊອກຫາ..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "ບຸກມາກຈັດລະບຽບຄືນໃໝ່ ແລະບັນທຶກສຳເລັດແລ້ວ!"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "ລຶບ"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,7 +653,7 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "ໄຟລ໌ຕົວຢ່າງຖືກຟື້ນຟູໃນ"
 
 msgid "online"
 msgstr "online"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ ອົງການຈັດຕັ້ງ"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 ເຄັດລັບການຈັດຮູບແບບພາບ"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 ຂໍ້ມູນ ແລະ ໄຟລ໌"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻 ຫໍສະໝຸດ"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️ ທົ່ວໄປ"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>• ປ່ຽນ <b>#</b> ຫຼືໃຊ້ <b>ຍ້າຍຂຶ້ນ / ລົງ</b> ເພື່ອສັ່ງກຸ່ມ. \n"
+" • <b>ຄລິກສອງເທື່ອໃສ່ກຸ່ມ</b> (ຫຼືເປີດ) ເພື່ອຈັດຮຽງວິທະຍຸ ແລະຕົວແຍກຂອງມັນ. \n"
+" • ໃຊ້ <b>ໂອນຍ້າຍ...</b> ເພື່ອຮວມ ຫຼືຍ້າຍເນື້ອຫາໄປຫາກຸ່ມອື່ນ. \n"
+" • ໃຊ້ <b>ກຸ່ມໃໝ່</b> ເພື່ອເພີ່ມໂຟນເດີຂອງວິທະຍຸ.</small>"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<small>• ປ່ຽນ <b>#</b> ຫຼື ໃຊ້ <b>ຍ້າຍຂຶ້ນ / ລົງ</b> ເພື່ອຈັດຮຽງວິທະຍຸ. \n"
+" • ຄລິກ <b>ກວດເບິ່ງ Feeds</b> ເພື່ອເບິ່ງລິ້ງທີ່ຕາຍແລ້ວ (ສີແດງ) ແລະສ້ອມແປງພວກມັນ. \n"
+" • ຄລິກທີ່ <b>ສ້ອມແປງການຖ່າຍທອດ...</b> ເພື່ອຊອກຫາການປ່ຽນແທນການຖ່າຍທອດຢູ່ໃນ Radio-Browser. \n"
+" • ຄລິກ <b>ຕົວແຍກ</b> ເພື່ອໃສ່ຫົວຂໍ້ພາກສ່ວນ.</small>"
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>ເລືອກໄຟລ໌ ຫຼືຕົວຢ່າງຂ້າງເທິງ.</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>• ປ່ຽນ <b>#</b> ຫຼືໃຊ້ <b>ຍ້າຍຂຶ້ນ / ລົງ</b> ເພື່ອສັ່ງກຸ່ມ. \n"
+" • <b>ຄລິກສອງເທື່ອໃສ່ກຸ່ມ</b> (ຫຼືເປີດ) ເພື່ອຈັດຮຽງວິທະຍຸ ແລະຕົວແຍກຂອງມັນ. \n"
+" • ໃຊ້ <b>ຍ້າຍໄປ...</b> ເພື່ອຮວມ ຫຼືຍ້າຍເນື້ອຫາ. \n"
+" • ໃຊ້ <b>ກຸ່ມໃໝ່</b> ເພື່ອສ້າງໂຟນເດີຂອງວິທະຍຸ.</small>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<small>• ປ່ຽນ <b>#</b> ຫຼື ໃຊ້ <b>ຍ້າຍຂຶ້ນ / ລົງ</b> ເພື່ອສັ່ງວິທະຍຸ. \n"
+" • ຄລິກ <b>ກວດເບິ່ງຟີດ</b> ເພື່ອຊອກຫາລິ້ງອອບລາຍ (ເປັນສີແດງ). \n"
+" • ຄລິກ <b>Repair Stream...</b> ເພື່ອຊອກຫາກະແສການປ່ຽນແທນທີ່ເຮັດວຽກຢູ່. \n"
+" • ຄລິກທີ່ <b>ຕົວແຍກ</b> ເພື່ອໃສ່ຄຳບັນຍາຍ ຫຼືແຖວຕົວແຍກ.</small>"
+
+msgid "Actualiser la liste des exemples"
+msgstr "ໂຫຼດລາຍຊື່ຕົວຢ່າງຄືນໃໝ່"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "ຊ່ວຍໃນກຸ່ມ ແລະກຸ່ມຍ່ອຍ"
+
+msgid "Ajouter"
+msgstr "ເພີ່ມ"
+
+msgid "Annuler"
+msgstr "ຍົກເລີກ"
+
+msgid "Arrêter"
+msgstr "ຢຸດ"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "ບໍ່ພົບໄຟລ໌ bookmarks.xml ເພື່ອບັນທຶກ."
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "ບໍ່ໄດ້ເພີ່ມສະຖານີວິທະຍຸໃໝ່ (ມີຢູ່ໃນບຸກມາກຂອງທ່ານແລ້ວ)."
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "ບໍ່ພົບສະຖານີວິທະຍຸໃນ Radio-Browser ສໍາລັບເງື່ອນໄຂເຫຼົ່ານີ້."
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "ຊໍ່ດອກໄມ້ແຫ່ງຊາດ (ຣີສອດສຳຄັນ)"
+
+msgid "Bouquets par pays"
+msgstr "ຊໍ່ດອກໄມ້ຕາມປະເທດ"
+
+msgid "Bureau graphique & Plateau"
+msgstr "ໂຕະກາຟິກ ແລະຖາດ"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "ສະຖານີນີ້ບໍ່ມີ URL ການຖ່າຍທອດສຽງ."
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "ອັບໂຫຼດໄຟລ໌ XML, CSV, JSON, M3U ຫຼື PLS"
+
+msgid "Charger un fichier..."
+msgstr "ໂຫຼດໄຟລ໌..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "ເລືອກຈາກກຸ່ມທີ່ມີຢູ່ແລ້ວ"
+
+msgid "Choisir un fichier de radios"
+msgstr "ເລືອກໄຟລ໌ວິທະຍຸ"
+
+msgid "Collections & Fichiers"
+msgstr "ຄໍເລັກຊັນ & ໄຟລ໌"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "ຮັກສາການຈັດຕັ້ງຢູ່ໃນໄຟລ໌"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "ສ້າງ​ການ​ສໍາ​ຮອງ​ຂໍ້​ມູນ​ຢ່າງ​ເຕັມ​ທີ່​ຂອງ​ການ​ເກັບ​ກໍາ​ຂອງ​ທ່ານ (ມີ​ໂຟນ​ເດີ​ແລະ​ເຂດ​ເວ​ລາ​)"
+
+msgid "Disponibilité"
+msgstr "ຄວາມພ້ອມ"
+
+msgid "Disponibilité en direct"
+msgstr "ການມີຢູ່ສົດ"
+
+msgid "Dossier / Groupe"
+msgstr "ໂຟນເດີ / ກຸ່ມ"
+
+msgid "Dossier des exemples"
+msgstr "ໂຟນເດີຕົວຢ່າງ"
+
+msgid "Dossier des signets"
+msgstr "ໂຟນເດີ Bookmarks"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "ການກວດຫາອັດຕະໂນມັດອີງຕາມການຕັ້ງຄ່າພາກພື້ນຂອງສະພາບແວດລ້ອມ Linux ຂອງທ່ານ."
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "ກວດພົບສະພາບແວດລ້ອມ (ອ່ານເທົ່ານັ້ນ)"
+
+msgid "Effacer le champ"
+msgstr "ຊ່ອງຫວ່າງ"
+
+msgid "Effacer le filtre langue"
+msgstr "ລ້າງຕົວກອງພາສາ"
+
+msgid "Effacer le filtre pays"
+msgstr "ລຶບການກັ່ນຕອງປະເທດ"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "ກວດພົບສະພາບແວດລ້ອມຂອງ GNOME Shell"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "ເກີດຄວາມຜິດພາດໃນການບັນທຶກ:"
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "ຕົວຢ່າງ: / France / Jazz ຫຼື / ສໍາລັບຮາກ"
+
+msgid "Exemples thématiques :"
+msgstr "ຕົວຢ່າງຫົວຂໍ້:"
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "ສົ່ງອອກໄປຍັງຕາຕາລາງ (CSV)..."
+
+msgid "Fichier :"
+msgstr "ໄຟລ໌:"
+
+msgid "Fichier externe :"
+msgstr "ໄຟລ໌ພາຍນອກ:"
+
+msgid "Fichiers XML (*.xml)"
+msgstr "ໄຟລ໌ XML (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "ກັ່ນຕອງຕາມປະເທດ:"
+
+msgid "Format & Débit"
+msgstr "ຮູບແບບ ແລະອັດຕາບິດ"
+
+msgid "Genre / Tags"
+msgstr "ເພດ / Tags"
+
+msgid "Genre / Thématique"
+msgstr "ປະເພດ / ຫົວຂໍ້"
+
+msgid "Genre :"
+msgstr "ເພດ:"
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "ຜູ້ຈັດການແພັກເກດທີ່ບໍ່ຮູ້ຈັກ."
+
+msgid "Groupe :"
+msgstr "ກຸ່ມ:"
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "ສ້າງບັນຊີລາຍຊື່ຮາບພຽງສໍາລັບ Calc ຫຼື Excel spreadsheet"
+
+msgid "Importer"
+msgstr "ນໍາເຂົ້າ"
+
+msgid "Importer & Exporter"
+msgstr "ນຳເຂົ້າ ແລະສົ່ງອອກ"
+
+msgid "Importer dans mes favoris"
+msgstr "ນຳເຂົ້າໃສ່ລາຍການທີ່ມັກຂອງຂ້ອຍ"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "ກຳລັງຕິດຕັ້ງຢູ່ (ກະລຸນາກວດສອບການເຕືອນລະບົບ)..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "ຕິດຕັ້ງການເຊື່ອມໂຍງ GNOME"
+
+msgid "Intégration GNOME requise"
+msgstr "ຕ້ອງການການເຊື່ອມໂຍງ GNOME"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "ການເຊື່ອມໂຍງເຂົ້າໄປໃນແຖບເທິງຂອງ GNOME"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "ການເຊື່ອມໂຍງພື້ນເມືອງເຂົ້າໄປໃນພື້ນທີ່ການແຈ້ງເຕືອນຜ່ານ StatusNotifierItem / XEmbed."
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "ການສົ່ງອອກ CSV ແມ່ນສາມາດເຂົ້າເຖິງໄດ້ຈາກການຕັ້ງຄ່າ."
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "ຕ້ອງໃຊ້ສ່ວນຂະຫຍາຍ AppIndicator ເພື່ອສະແດງໄອຄອນຢູ່ໃນແຖບເທິງສຸດໃນ GNOME."
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "ການຕິດຕັ້ງຖືກຍົກເລີກ ຫຼືລົ້ມເຫລວ."
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "ການສໍາຮອງຂໍ້ມູນ XML ແມ່ນສາມາດເຂົ້າເຖິງໄດ້ຈາກການຕັ້ງຄ່າ."
+
+msgid "Langue du système"
+msgstr "ພາສາລະບົບ"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "ບໍ່ສາມາດຟັງຕົວແຍກ ແລະ intertitles ໄດ້."
+
+msgid "Mes Radios"
+msgstr "ວິ​ທະ​ຍຸ​ຂອງ​ຂ້າ​ພະ​ເຈົ້າ​"
+
+msgid "Mot-clé :"
+msgstr "ຄໍາສໍາຄັນ:"
+
+msgid "Nouveaux uniquement"
+msgstr "ໃໝ່ເທົ່ານັ້ນ"
+
+msgid "OPTIONS DE SESSION"
+msgstr "ຕົວເລືອກ Session"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "ການຈັດຕັ້ງກຸ່ມ ແລະກຸ່ມຍ່ອຍ (ສົນທິສັນຍາ Linux)"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "ທໍາອິດເປີດກຸ່ມເພື່ອຟັງວິທະຍຸຂອງຕົນ."
+
+msgid "Ouvrir"
+msgstr "ເປີດ"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "ເປີດ ~/.config/timeonde"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "ເປີດ ~/.config/timeonde/examples"
+
+msgid "Pays"
+msgstr "ປະເທດ"
+
+msgid "Pays :"
+msgstr "ປະເທດ:"
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "ເພື່ອສະແດງໄອຄອນການຫຼິ້ນຢ່າງລະມັດລະວັງໃນແຖບດ້ານເທິງຂອງເດັສທັອບ GNOME ຂອງທ່ານ, ຕ້ອງໃຊ້ສ່ວນຂະຫຍາຍລະບົບ <b>AppIndicator</b>.<br/><br/>ທ່ານຕ້ອງການຕິດຕັ້ງມັນດຽວນີ້ບໍ?"
+
+msgid "Préférences"
+msgstr "ການຕັ້ງຄ່າ"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "ຮັກສາກຸ່ມຍ່ອຍທີ່ກໍານົດໄວ້ໃນໄຟລ໌ແທນທີ່ຈະນໍາເຂົ້າທຸກສິ່ງທຸກຢ່າງເຂົ້າໄປໃນກຸ່ມດຽວ."
+
+msgid "Quitter"
+msgstr "ອອກໄປ"
+
+msgid "Recharger"
+msgstr "ໂຫຼດໃໝ່"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "ໂຫຼດໄຟລ໌ທີ່ສະແດງໃນປັດຈຸບັນຄືນໃໝ່"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "ຄົ້ນຫາທົ່ວໂລກໃນໄດເລກະທໍລີ <b>Radio-Browser</b> ທີ່ບໍ່ເສຍຄ່າ ແລະຮ່ວມມືກັນ (+45,000 ສະຖານີ)."
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "ຄົ້ນຫາໃນ Radio-Browser ພວມດຳເນີນຢູ່..."
+
+msgid "Rechercher"
+msgstr "ຊອກຫາ"
+
+msgid "Rechercher en ligne"
+msgstr "ຊອກຫາອອນໄລນ໌"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "ປ່ຽນແທນລິ້ງທີ່ເລືອກດ້ວຍຟີດທີ່ເປັນທາງການ"
+
+msgid "Restaurer exemples"
+msgstr "ຟື້ນຟູຕົວຢ່າງ"
+
+msgid "Régions & Locales :"
+msgstr "ພາກພື້ນ ແລະທ້ອງຖິ່ນ:"
+
+msgid "Réparer le flux..."
+msgstr "ແກ້​ໄຂ​ການ​ໄຫຼ ..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "ຟື້ນຟູຕົ້ນສະບັບ 19 ຕົວຢ່າງ"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "ໃສ່ຄໍາສໍາຄັນຫຼືຄລິກຄົ້ນຫາເພື່ອຄົ້ນຫາໄດເລກະທໍລີ."
+
+msgid "Sauvegarde réussie !"
+msgstr "ສຳຮອງຂໍ້ມູນສຳເລັດແລ້ວ!"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "ບັນທຶກວິທະຍຸຂອງຂ້ອຍ (XML)..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "ບັນທຶກບຸກມາກຂອງຂ້ອຍ (XML)"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "ບັນທຶກບຸກມາກ ແລະວິທະຍຸສຳເລັດແລ້ວ!"
+
+msgid "Station"
+msgstr "ຣີສອດ"
+
+msgid "Statut Favoris"
+msgstr "ສະຖານະທີ່ມັກ"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "ການ​ຄັດ​ເລືອກ​ຢ່າງ​ເປັນ​ທາງ​ການ​ແລະ​ການ​ກວດ​ສອບ​ຈາກ 146 ປະ​ເທດ​ແລະ​ພາກ​ພື້ນ (DAB+ bouquets ດິ​ຈິ​ຕອນ​ແລະ​ສະ​ຖາ​ນີ​ທີ່​ສໍາ​ຄັນ​ແຫ່ງ​ຊາດ​)​."
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "ເລືອກວິທະຍຸເພື່ອຟັງມັນ."
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "ເລືອກສະຖານີຈາກຕາຕະລາງເພື່ອຟັງມັນ."
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "ພິມປະເທດ (ເຊັ່ນ: ປະເທດຝຣັ່ງ, Deutschland, ການາດາ...)"
+
+msgid "Tester"
+msgstr "ການທົດສອບ"
+
+msgid "Tester les flux"
+msgstr "ທົດສອບກະແສ"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "TiMonde — ການເຊື່ອມໂຍງ GNOME Desktop"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "ໄຟລ໌ທັງໝົດ (*.*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "ປະເທດທັງໝົດ (ທົ່ວໂລກ)"
+
+msgid "Tout cocher"
+msgstr "ກວດເບິ່ງທັງຫມົດ"
+
+msgid "Tout décocher"
+msgstr "ຍົກເລີກການເລືອກທັງໝົດ"
+
+msgid "Toutes les langues"
+msgstr "ພາສາທັງໝົດ"
+
+msgid "URL du flux"
+msgstr "Feed URL"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "ກະລຸນາເລືອກວິທະຍຸຈາກລາຍການເພື່ອຟັງມັນ."
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "ບຸກມາກທີ່ສົມບູນຂອງທ່ານໄດ້ຖືກບັນທຶກໄວ້ໃນ:"
+
+msgid "Votes"
+msgstr "ຄະແນນສຽງ"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "ກວດເບິ່ງຄວາມພ້ອມຂອງລິ້ງສົດ"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "ກວດເບິ່ງຄວາມພ້ອມຂອງວິທະຍຸສົດ"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "ກວດ​ສອບ​ການ​ມີ​ຊີ​ວິດ​ຂອງ​ວິ​ທະ​ຍຸ​ໄດ້​ພົບ​ເຫັນ​"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "ກວດສອບຄວາມຖືກຕ້ອງຂອງລິ້ງ ແລະເບິ່ງຕົວຢ່າງການຖ່າຍທອດ"
+
+msgid "ajoutée avec succès !"
+msgstr "ເພີ່ມສຳເລັດແລ້ວ!"
+
+msgid "fichiers exemples restaurés."
+msgstr "ກູ້ໄຟລ໌ຕົວຢ່າງ."
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "ວິ​ທະ​ຍຸ​ໃຫມ່​ນໍາ​ເຂົ້າ​!"
+
+msgid "Écouter"
+msgstr "ຟັງ"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "ຟັງວິທະຍຸທີ່ເລືອກ"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "ຟັງ ຫຼືທົດສອບວິທະຍຸທີ່ເລືອກ"
+

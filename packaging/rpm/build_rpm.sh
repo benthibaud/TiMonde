@@ -4,7 +4,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
-VERSION="0.1.1"
+VERSION="0.2.0"
 ARCH="x86_64"
 RPM_NAME="timonde-${VERSION}-1.${ARCH}.rpm"
 

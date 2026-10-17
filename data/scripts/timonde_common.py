@@ -227,9 +227,16 @@ COUNTRIES_DB = [
     ("LB", "Liban", ""),
 ]
 
-# Enrichissement avec tous les pays du monde depuis zone.tab
+# Enrichissement avec tous les pays du monde depuis timonde_world_data et zone.tab
 def build_countries_registry():
     d = {code: (name, flag) for code, name, flag in COUNTRIES_DB}
+    try:
+        from timonde_world_data import WORLD_COUNTRIES
+        for code, fr_name, _en_name in WORLD_COUNTRIES:
+            if code not in d:
+                d[code] = (fr_name, "")
+    except Exception:
+        pass
     zone_tab = "/usr/share/zoneinfo/zone.tab"
     if os.path.exists(zone_tab):
         try:
@@ -564,20 +571,395 @@ DEFAULT_WORLD_TIMEZONES = [
 # -----------------------------------------------------------------------------
 
 def make_btn(label_text, icon_name=None, tooltip=None):
-    """Génère un bouton GTK avec icône et libellé alignés proprement."""
+    """Génère un bouton GTK avec icône et libellé alignés proprement sans doublon d'icône."""
     import gi
     gi.require_version("Gtk", "3.0")
     from gi.repository import Gtk
     btn = Gtk.Button()
     box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
     box.set_halign(Gtk.Align.CENTER)
+    img = None
     if icon_name:
         img = Gtk.Image.new_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
         box.pack_start(img, False, False, 0)
-    lbl = Gtk.Label(label=label_text)
-    box.pack_start(lbl, False, False, 0)
+
+    clean_text = label_text or ""
+    if icon_name:
+        if clean_text == "?":
+            clean_text = ""
+        elif clean_text.startswith("▶ "):
+            clean_text = clean_text[2:].strip()
+        elif clean_text.startswith("⏹ "):
+            clean_text = clean_text[2:].strip()
+
+    lbl = Gtk.Label(label=clean_text)
+    if clean_text:
+        box.pack_start(lbl, False, False, 0)
     btn.add(box)
     btn._label_widget = lbl
+    btn._image_widget = img
     if tooltip:
         btn.set_tooltip_text(tooltip)
     return btn
+
+
+def update_btn_content(btn, label_text, icon_name=None):
+    """Met à jour dynamiquement le texte et l'icône d'un bouton créé via make_btn sans doublon d'icône."""
+    import gi
+    gi.require_version("Gtk", "3.0")
+    from gi.repository import Gtk
+    clean_text = label_text or ""
+    if icon_name:
+        if clean_text == "?":
+            clean_text = ""
+        elif clean_text.startswith("▶ "):
+            clean_text = clean_text[2:].strip()
+        elif clean_text.startswith("⏹ "):
+            clean_text = clean_text[2:].strip()
+
+    if hasattr(btn, "_label_widget") and btn._label_widget:
+        btn._label_widget.set_text(clean_text)
+        btn._label_widget.set_visible(bool(clean_text))
+    if icon_name and hasattr(btn, "_image_widget") and btn._image_widget:
+        btn._image_widget.set_from_icon_name(icon_name, Gtk.IconSize.BUTTON)
+
+
+# -----------------------------------------------------------------------------
+# 6. Stylisation du Menu Systray GTK3 (XEmbed IceWM/Fluxbox & show_menu.py)
+# -----------------------------------------------------------------------------
+
+_MENU_CSS_APPLIED = False
+
+def apply_timonde_menu_css():
+    """Injecte la feuille de style GTK3 pour hiérarchiser visuellement l'en-tête 'En écoute'."""
+    global _MENU_CSS_APPLIED
+    if _MENU_CSS_APPLIED:
+        return
+    try:
+        import gi
+        gi.require_version("Gtk", "3.0")
+        from gi.repository import Gtk, Gdk
+        provider = Gtk.CssProvider()
+        provider.load_from_data(b"""
+        menu separator, menuitem.separator {
+            min-height: 2px;
+            margin: 4px 8px;
+            background-color: alpha(@theme_fg_color, 0.28);
+        }
+        menuitem.timonde-header-action {
+            background-color: alpha(@theme_selected_bg_color, 0.14);
+            border-radius: 2px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        menuitem.timonde-info-time,
+        menuitem.timonde-info-time:disabled {
+            background-color: alpha(@theme_fg_color, 0.08);
+            border-left: 3px solid @theme_selected_bg_color;
+            color: @theme_fg_color;
+            opacity: 0.92;
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+        menuitem.timonde-info-track,
+        menuitem.timonde-info-track:disabled {
+            background-color: alpha(@theme_fg_color, 0.08);
+            border-left: 3px solid @theme_selected_bg_color;
+            color: @theme_fg_color;
+            opacity: 0.95;
+            padding-top: 3px;
+            padding-bottom: 4px;
+        }
+        menuitem.timonde-sep-header,
+        menuitem.timonde-sep-header:disabled {
+            color: @theme_fg_color;
+            opacity: 0.75;
+        }
+        """)
+        screen = Gdk.Screen.get_default()
+        if screen:
+            Gtk.StyleContext.add_provider_for_screen(
+                screen,
+                provider,
+                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            )
+            _MENU_CSS_APPLIED = True
+    except Exception:
+        pass
+
+
+def _find_label_widget(widget):
+    """Recherche récursivement le premier Gtk.Label enfant d'un Gtk.MenuItem."""
+    import gi
+    gi.require_version("Gtk", "3.0")
+    from gi.repository import Gtk
+    if isinstance(widget, Gtk.Label):
+        return widget
+    if isinstance(widget, Gtk.Container):
+        for child in widget.get_children():
+            found = _find_label_widget(child)
+            if found is not None:
+                return found
+    return None
+
+
+def style_dbusmenu_gtk(menu, is_root=True):
+    """
+    Parcourt un DbusmenuGtk3.Menu pour :
+    - Corriger les séparateurs libdbusmenu ("Label Empty")
+    - Mettre en gras l'action principale de la station en tête
+    - Appliquer un fond distinct et une taille adaptée à la ligne d'heure locale
+    - Mettre en italique avec fond distinct le titre du morceau en cours (♪)
+    """
+    if not menu:
+        return
+    apply_timonde_menu_css()
+    try:
+        import html
+        import gi
+        gi.require_version("Gtk", "3.0")
+        from gi.repository import Gtk
+
+        children = menu.get_children()
+        for idx, child in enumerate(children):
+            if isinstance(child, Gtk.SeparatorMenuItem):
+                child.set_visible(True)
+                continue
+            if not isinstance(child, Gtk.MenuItem):
+                continue
+
+            raw_lbl = getattr(child, "get_label", lambda: None)() or ""
+            lbl_widget = _find_label_widget(child)
+            ctx = child.get_style_context()
+
+            # 1. Séparateurs textuels ou bug "Label Empty"
+            if raw_lbl == "Label Empty" or (raw_lbl.strip() == "" and not isinstance(child, Gtk.SeparatorMenuItem)):
+                child.set_label("────────────────────────")
+                child.set_sensitive(False)
+                ctx.add_class("timonde-sep-header")
+            elif "─────" in raw_lbl or "───" in raw_lbl:
+                child.set_sensitive(False)
+                ctx.add_class("timonde-sep-header")
+                if lbl_widget:
+                    lbl_widget.set_markup(f"<span size='small'><b>{html.escape(raw_lbl.strip())}</b></span>")
+
+            # 2. En-tête de lecture principal (ligne 0 du menu racine)
+            elif is_root and idx == 0:
+                ctx.add_class("timonde-header-action")
+                if lbl_widget:
+                    lbl_widget.set_markup(f"<b>{html.escape(raw_lbl)}</b>")
+
+            # 3. Ligne d'heure locale de la station en cours
+            elif is_root and ("│ [" in raw_lbl or (raw_lbl.strip().startswith("[") and "•" in raw_lbl and "UTC" in raw_lbl)):
+                ctx.add_class("timonde-info-time")
+                clean_time = raw_lbl.replace("  │ ", "").replace("│ ", "").strip()
+                if lbl_widget:
+                    parts = clean_time.split("•", 1)
+                    if len(parts) == 2:
+                        lbl_widget.set_markup(
+                            f"<span size='small'><b>{html.escape(parts[0].strip())}</b> • {html.escape(parts[1].strip())}</span>"
+                        )
+                    else:
+                        lbl_widget.set_markup(f"<span size='small'>{html.escape(clean_time)}</span>")
+
+            # 4. Ligne du titre musical en cours (♪)
+            elif is_root and "♪" in raw_lbl:
+                ctx.add_class("timonde-info-track")
+                clean_track = raw_lbl.replace("  │ ", "").replace("│ ", "").strip()
+                if lbl_widget:
+                    lbl_widget.set_markup(f"<i>{html.escape(clean_track)}</i>")
+
+            sub = child.get_submenu()
+            if sub:
+                style_dbusmenu_gtk(sub, is_root=False)
+    except Exception:
+        pass
+
+
+# -----------------------------------------------------------------------------
+# 7. Vérification HTTP & Lecteur de Pré-écoute GStreamer (StreamPreviewPlayer)
+# -----------------------------------------------------------------------------
+
+PREVIEW_USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) TiMonde/0.2.0"
+
+
+def resolve_playlist_stream_url(url, timeout=3.5):
+    """Résout si nécessaire une playlist .m3u/.pls vers l'URL de flux direct."""
+    import urllib.request
+    clean = clean_stream_url(url)
+    lower = clean.lower().split("?")[0]
+    if not (lower.endswith(".pls") or lower.endswith(".m3u") or lower.endswith(".m3u8")):
+        return clean
+    try:
+        req = urllib.request.Request(clean, headers={"User-Agent": PREVIEW_USER_AGENT})
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            ctype = (resp.headers.get("Content-Type") or "").lower()
+            if any(x in ctype for x in ("audio/mpeg", "audio/aac", "audio/ogg", "audio/flac", "application/ogg")):
+                return resp.geturl() or clean
+            body = resp.read(8192).decode("utf-8", errors="replace")
+            for line in body.splitlines():
+                l = line.strip()
+                if not l or l.startswith("#"):
+                    continue
+                if l.lower().startswith("file") and "=" in l:
+                    candidate = l.split("=", 1)[1].strip()
+                    if candidate.startswith("http://") or candidate.startswith("https://"):
+                        return candidate
+                elif l.startswith("http://") or l.startswith("https://"):
+                    return l
+    except Exception:
+        pass
+    return clean
+
+
+def pause_main_timonde_instance():
+    """Met en pause le flux principal de TiMonde via D-Bus MPRIS2 pour éviter deux flux simultanés."""
+    try:
+        import dbus
+        bus = dbus.SessionBus()
+        if bus.name_has_owner("org.mpris.MediaPlayer2.timonde"):
+            obj = bus.get_object("org.mpris.MediaPlayer2.timonde", "/org/mpris/MediaPlayer2")
+            player = dbus.Interface(obj, "org.mpris.MediaPlayer2.Player")
+            player.Pause()
+    except Exception:
+        pass
+
+
+class StreamPreviewPlayer:
+    """
+    Lecteur d'aperçu audio léger basé sur GStreamer playbin.
+    Permet de vérifier et d'écouter immédiatement une station avant de l'importer
+    ou pendant l'édition/organisation, sans conflit avec l'instance principale TiMonde.
+    """
+    def __init__(self, on_status_changed=None, on_status_change=None):
+        self.on_status_changed = on_status_changed or on_status_change
+        self.playbin = None
+        self.current_url = None
+        self.current_name = None
+        self.is_playing = False
+        self._gst_ready = False
+
+    def _ensure_gst(self):
+        if self._gst_ready:
+            return self.playbin is not None
+        self._gst_ready = True
+        try:
+            import gi
+            gi.require_version("Gst", "1.0")
+            from gi.repository import Gst
+            Gst.init(None)
+            self.Gst = Gst
+            self.playbin = Gst.ElementFactory.make("playbin", "timonde-preview")
+            if self.playbin:
+                self.playbin.set_property("volume", 0.85)
+                bus = self.playbin.get_bus()
+                bus.add_signal_watch()
+                bus.connect("message", self._on_bus_message)
+            return self.playbin is not None
+        except Exception:
+            self.playbin = None
+            return False
+
+    def _emit_status(self, playing, message, is_error=False):
+        if self.on_status_changed:
+            try:
+                from gi.repository import GLib
+                GLib.idle_add(self.on_status_changed, playing, self.current_url or "", message, is_error)
+            except Exception:
+                pass
+
+    def _on_bus_message(self, _bus, msg):
+        if not hasattr(self, "Gst"):
+            return
+        t = msg.type
+        if t == self.Gst.MessageType.ERROR:
+            err, _dbg = msg.parse_error()
+            err_str = str(err.message) if err else "Flux illisible"
+            self.stop(silent=True)
+            self._emit_status(False, f"❌ Flux inaccessible ({err_str})", is_error=True)
+        elif t == self.Gst.MessageType.EOS:
+            self.stop(silent=True)
+            self._emit_status(False, "⏹ Fin du flux", is_error=False)
+        elif t == self.Gst.MessageType.STATE_CHANGED:
+            if msg.src == self.playbin:
+                _old, new_state, _pending = msg.parse_state_changed()
+                if new_state == self.Gst.State.PLAYING:
+                    self.is_playing = True
+                    self._emit_status(True, f"🔊 En écoute : « {self.current_name or 'Radio'} »", is_error=False)
+        elif t == self.Gst.MessageType.TAG:
+            taglist = msg.parse_tag()
+            ok, title = taglist.get_string("title")
+            if ok and title and title.strip():
+                self.is_playing = True
+                self._emit_status(
+                    True,
+                    f"🔊 « {self.current_name or 'Radio'} » — ♪ {title.strip()}",
+                    is_error=False
+                )
+
+    def is_playing_url(self, url):
+        return bool(self.is_playing and self.current_url and clean_stream_url(url) == self.current_url)
+
+    def toggle(self, station_name, url=None):
+        if url is None:
+            url = station_name
+            station_name = "Radio"
+        clean = clean_stream_url(url)
+        if not clean:
+            self._emit_status(False, "❌ URL de flux vide", is_error=True)
+            return False
+        if self.is_playing and self.current_url == clean:
+            self.stop()
+            return False
+        return self.play(station_name, clean)
+
+    def play(self, station_name, url=None):
+        if url is None:
+            url = station_name
+            station_name = "Radio"
+        import threading
+        clean = clean_stream_url(url)
+        if not clean:
+            self._emit_status(False, "❌ URL de flux vide", is_error=True)
+            return False
+
+        if not self._ensure_gst():
+            self._emit_status(False, "❌ GStreamer non disponible", is_error=True)
+            return False
+
+        self.stop(silent=True)
+        pause_main_timonde_instance()
+
+        self.current_url = clean
+        self.current_name = station_name or "Radio"
+        self.is_playing = True
+        self._emit_status(True, f"⏳ Connexion à « {self.current_name} »...", is_error=False)
+
+        def start_worker(target_url, target_name):
+            resolved = resolve_playlist_stream_url(target_url)
+            from gi.repository import GLib
+            def apply_uri():
+                if self.current_url != target_url or not self.playbin:
+                    return False
+                self.playbin.set_state(self.Gst.State.NULL)
+                self.playbin.set_property("uri", resolved)
+                self.playbin.set_state(self.Gst.State.PLAYING)
+                return False
+            GLib.idle_add(apply_uri)
+
+        threading.Thread(target=start_worker, args=(clean, self.current_name), daemon=True).start()
+        return True
+
+    def stop(self, silent=False):
+        if self.playbin and hasattr(self, "Gst"):
+            try:
+                self.playbin.set_state(self.Gst.State.NULL)
+            except Exception:
+                pass
+        was_playing = self.is_playing
+        self.is_playing = False
+        self.current_url = None
+        self.current_name = None
+        if was_playing and not silent:
+            self._emit_status(False, "", is_error=False)
+

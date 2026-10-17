@@ -7,12 +7,29 @@ use std::io::{BufReader, BufWriter};
 use std::path::{Path, PathBuf};
 use crate::models::Station;
 
-#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq)]
+fn default_volume() -> f64 {
+    0.80
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct AppState {
     /// Dernière station favorite écoutée (utilisée au démarrage pour "Allumer la radio")
     pub last_station: Option<Station>,
     /// Dernière station éphémère jouée (mémorisée pour un ajout ultérieur éventuel)
     pub last_ephemeral: Option<Station>,
+    /// Volume audio persistant entre 0.0 et 1.0 (80% par défaut)
+    #[serde(default = "default_volume")]
+    pub volume: f64,
+}
+
+impl Default for AppState {
+    fn default() -> Self {
+        Self {
+            last_station: None,
+            last_ephemeral: None,
+            volume: default_volume(),
+        }
+    }
 }
 
 impl AppState {

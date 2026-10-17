@@ -1,20 +1,20 @@
-<?xml version='1.0' encoding='utf-8'?>
-<bouquet name="Cool, New Age &amp; Méditation" flag="" category="Exemples">
-  <national>
-    <station name="1.FM - Destination SPA" url="https://strm112.1.fm/spa_mobile_mp3" genre="Chill / Méditation" />
-    <station name="Anotherplanet.fm ambient radio" url="https://stream.anotherplanet.fm:8000/stream.mp3" genre="Chill / Méditation" />
-    <station name="ANTENNE BAYERN - Chillout" url="https://s1-webradio.antenne.de/chillout" genre="Chill / Méditation" />
-    <station name="Beat Blender" url="https://ice4.somafm.com/beatblender-128-mp3" genre="Chill / Méditation" />
-    <station name="CALM RADIO - Native" url="https://streams.calmradio.com:3428/stream/1/" genre="Chill / Méditation" />
-    <station name="Costa Del Mar - Chillout - Ibiza" url="https://radio4.cdm-radio.com:18020/stream-mp3-Chill" genre="Chill / Méditation" />
-    <station name="Forest Green Radio - Perth-Andover, Canada" url="https://stream.streamaudio.de:8000/forest-green" genre="Chill / Méditation" />
-    <station name="Groove Salad" url="https://ice2.somafm.com/groovesalad-128-mp3" genre="Chill / Méditation" />
-    <station name="Illinois Street Lounge" url="https://ice2.somafm.com/illstreet-128-mp3" genre="Chill / Méditation" />
-    <station name="Journeyscapes Radio - Toronto" url="http://eagle.streemlion.com:4580/stream" genre="Chill / Méditation" />
-    <station name="LoungeRadio" url="https://fr1.streamhosting.ch/lounge128.mp3" genre="Chill / Méditation" />
-    <station name="RadioArt: Lute" url="https://live.radioart.com/fLute.mp3" genre="Chill / Méditation" />
-    <station name="RadioArt: Shakuhachi" url="https://live.radioart.com/fShakuhachi.mp3" genre="Chill / Méditation" />
-    <station name="Secret Agent" url="https://ice6.somafm.com/secretagent-128-mp3" genre="Chill / Méditation" />
-    <station name="Yimago Earth - Toronto" url="https://strw3.openstream.co/870" genre="Chill / Méditation" />
-    </national>
-  </bouquet>
+<?xml version="1.0" encoding="utf-8"?>
+<bookmarks>
+	<group name="Cool, New Age &amp; Méditation">
+		<bookmark name="1.FM - Destination SPA" url="https://strm112.1.fm/spa_mobile_mp3" country="CH" timezone="Europe/Zurich"/>
+		<bookmark name="Anotherplanet.fm ambient radio" url="https://stream.anotherplanet.fm:8000/stream.mp3" country="FR" timezone="Europe/Paris"/>
+		<bookmark name="ANTENNE BAYERN - Chillout" url="https://s1-webradio.antenne.de/chillout" country="DE" timezone="Europe/Berlin"/>
+		<bookmark name="Beat Blender" url="https://ice4.somafm.com/beatblender-128-mp3" country="US" timezone="America/Los_Angeles"/>
+		<bookmark name="CALM RADIO - Native" url="https://streams.calmradio.com:3428/stream/1/" country="CA" timezone="America/Toronto"/>
+		<bookmark name="Costa Del Mar - Chillout - Ibiza" url="https://radio4.cdm-radio.com:18020/stream-mp3-Chill" country="ES" timezone="Europe/Madrid"/>
+		<bookmark name="Forest Green Radio - Perth-Andover, Canada" url="https://stream.streamaudio.de:8000/forest-green" country="CA" timezone="America/Moncton"/>
+		<bookmark name="Groove Salad" url="https://ice2.somafm.com/groovesalad-128-mp3" country="US" timezone="America/Los_Angeles"/>
+		<bookmark name="Illinois Street Lounge" url="https://ice2.somafm.com/illstreet-128-mp3" country="US" timezone="America/Los_Angeles"/>
+		<bookmark name="Journeyscapes Radio - Toronto" url="http://eagle.streemlion.com:4580/stream" country="CA" timezone="America/Toronto"/>
+		<bookmark name="LoungeRadio" url="https://fr1.streamhosting.ch/lounge128.mp3" country="CH" timezone="Europe/Zurich"/>
+		<bookmark name="RadioArt: Lute" url="https://live.radioart.com/fLute.mp3" country="GR" timezone="Europe/Athens"/>
+		<bookmark name="RadioArt: Shakuhachi" url="https://live.radioart.com/fShakuhachi.mp3" country="GR" timezone="Europe/Athens"/>
+		<bookmark name="Secret Agent" url="https://ice6.somafm.com/secretagent-128-mp3" country="US" timezone="America/Los_Angeles"/>
+		<bookmark name="Yimago Earth - Toronto" url="https://strw3.openstream.co/870" country="CA" timezone="America/Toronto"/>
+	</group>
+</bookmarks>

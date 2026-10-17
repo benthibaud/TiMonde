@@ -166,42 +166,17 @@ def attach_item(service):
         except Exception as e:
             sys.stderr.write(f"TiMonde XEmbed Bridge: Erreur création Dbusmenu: {e}\n")
 
-        # Style CSS pour forcer la visibilité contrastée des séparateurs GTK3 sur les thèmes sombres et légers (IceWM/antiX)
+        # Stylisation unifiée GTK3 pour hiérarchiser le bloc "En écoute" et les séparateurs (IceWM/Fluxbox/antiX)
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
         try:
-            provider = Gtk.CssProvider()
-            provider.load_from_data(b"""
-            menu separator, menuitem.separator {
-                min-height: 2px;
-                margin: 4px 8px;
-                background-color: #555555;
-            }
-            """)
-            Gtk.StyleContext.add_provider_for_screen(
-                Gdk.Screen.get_default(),
-                provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-            )
+            from timonde_common import apply_timonde_menu_css, style_dbusmenu_gtk
+            apply_timonde_menu_css()
         except Exception:
-            pass
+            def style_dbusmenu_gtk(_m, is_root=True):
+                pass
 
         def sanitize_menu(m):
-            if not m:
-                return
-            for child in m.get_children():
-                if isinstance(child, Gtk.SeparatorMenuItem):
-                    child.set_visible(True)
-                elif isinstance(child, Gtk.MenuItem):
-                    lbl = getattr(child, "get_label", lambda: None)() or ""
-                    # Détection et correction immédiate du bug "Label Empty" de libdbusmenu
-                    if lbl == "Label Empty" or (lbl.strip() == "" and not isinstance(child, Gtk.SeparatorMenuItem)):
-                        child.set_label("────────────────────────")
-                        child.set_sensitive(False)
-                    elif "─────" in lbl or "───" in lbl:
-                        child.set_sensitive(False)
-                    
-                    sub = child.get_submenu()
-                    if sub:
-                        sanitize_menu(sub)
+            style_dbusmenu_gtk(m, is_root=True)
 
         def calculate_menu_position(menu, _x, _y, icon):
             try:

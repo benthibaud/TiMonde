@@ -1,14 +1,16 @@
-# TiMonde — VI Translation
+# TiMonde — Traduction VI
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: vi\n"
 
 msgid "Play"
 msgstr "Phát"
@@ -26,124 +28,124 @@ msgid "Delete"
 msgstr "Xóa"
 
 msgid "Zap to another random station"
-msgstr ""
+msgstr "Chuyển sang một đài phát thanh ngẫu nhiên khác"
 
 msgid "Play random radio (Ephemeral discovery)"
-msgstr ""
+msgstr "Nghe một đài phát thanh ngẫu nhiên (Khám phá phù du)"
 
 msgid "[ Ephemeral]"
-msgstr ""
+msgstr "[phù du]"
 
 msgid "Options"
 msgstr "Tùy chọn"
 
 msgid "Add a station..."
-msgstr ""
+msgstr "Thêm đài..."
 
 msgid "Discover & Import stations..."
-msgstr ""
+msgstr "Khám phá và nhập radio..."
 
 msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr ""
+msgstr "Nhập tệp của tôi (XML, CSV, JSON, M3U)..."
 
 msgid "Manage groups and stations..."
-msgstr ""
+msgstr "Phân loại nhóm và đài..."
 
 msgid "Open bookmarks.xml"
-msgstr ""
+msgstr "Mở dấu trang.xml"
 
 msgid "Quit TiMonde"
-msgstr ""
+msgstr "Rời khỏi TiMonde"
 
 msgid "Mute (0%)"
-msgstr ""
+msgstr "Tắt tiếng (0%)"
 
 msgid "Sleep timer"
-msgstr ""
+msgstr "Hẹn giờ ngủ"
 
 msgid "In 15 minutes"
-msgstr ""
+msgstr "Trong 15 phút nữa"
 
 msgid "In 30 minutes"
-msgstr ""
+msgstr "trong 30 phút nữa"
 
 msgid "In 45 minutes"
-msgstr ""
+msgstr "Trong 45 phút nữa"
 
 msgid "In 60 minutes (1h)"
-msgstr ""
+msgstr "Trong 60 phút (1 giờ)"
 
 msgid "Cancel sleep timer"
-msgstr ""
+msgstr "Hủy giấc ngủ"
 
 msgid "Discover & Import stations (TiMonde)"
-msgstr ""
+msgstr "Khám phá và nhập đài phát thanh (TiMonde)"
 
 msgid "Verified DAB+ Bouquets"
-msgstr ""
+msgstr "Bó hoa đã được xác minh (DAB+)"
 
 msgid "Radio-Browser Search"
-msgstr ""
+msgstr "Tìm kiếm Trình duyệt Radio"
 
 msgid "Sample Files"
-msgstr ""
+msgstr "Tệp ví dụ"
 
 msgid "Import my files"
-msgstr ""
+msgstr "Nhập tập tin của tôi"
 
 msgid "<b> Country:</b>"
-msgstr ""
+msgstr "<b>Quốc gia:</b>"
 
 msgid "<b>Language:</b>"
-msgstr ""
+msgstr "<b>Ngôn ngữ:</b>"
 
 msgid "Name / Keyword:"
-msgstr ""
+msgstr "Tên / Từ khóa:"
 
 msgid "Genre:"
-msgstr ""
+msgstr "Giới tính:"
 
 msgid "<b>Sample file:</b>"
-msgstr ""
+msgstr "<b>Tệp ví dụ:</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr ""
+msgstr "<b>Tên nhóm trong mục yêu thích của bạn:</b>"
 
 msgid "Select all"
-msgstr ""
+msgstr "Kiểm tra tất cả"
 
 msgid "Deselect all"
-msgstr ""
+msgstr "Bỏ chọn tất cả"
 
 msgid "Import into favorites"
-msgstr ""
+msgstr "Nhập vào mục yêu thích của tôi"
 
 msgid "Close"
 msgstr "Đóng"
 
 msgid "Add a station (TiMonde)"
-msgstr ""
+msgstr "Thêm trạm (TiMonde)"
 
 msgid "<b>Enter new station details:</b>"
-msgstr ""
+msgstr "<b>Nhập thông tin cho đài mới:</b>"
 
 msgid "Add to my stations"
-msgstr ""
+msgstr "Thêm vào đài của tôi"
 
 msgid "Save station to favorites (TiMonde)"
-msgstr ""
+msgstr "Lưu đài vào mục yêu thích của tôi (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr ""
+msgstr "<b>Giữ đài phát thanh được phát hiện ngẫu nhiên này trong mục yêu thích của bạn:</b>"
 
 msgid "Keep in favorites"
-msgstr ""
+msgstr "Lưu vào mục yêu thích của tôi"
 
 msgid "Edit station (TiMonde)"
-msgstr ""
+msgstr "Chỉnh sửa đài phát thanh (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr ""
+msgstr "<b>Thay đổi cài đặt đài:</b>"
 
 msgid "Save"
 msgstr "Lưu"
@@ -152,82 +154,82 @@ msgid "Station name:"
 msgstr "Tên đài:"
 
 msgid "Audio stream URL:"
-msgstr ""
+msgstr "URL luồng âm thanh:"
 
 msgid "Group / Folder:"
-msgstr ""
+msgstr "Nhóm/Thư mục:"
 
 msgid "Country & Timezone:"
-msgstr ""
+msgstr "Quốc gia & Múi giờ:"
 
 msgid "Timezone:"
-msgstr ""
+msgstr "Múi giờ:"
 
 msgid "Delete this station"
-msgstr ""
+msgstr "Xóa đài này"
 
 msgid "Cancel"
 msgstr "Hủy"
 
 msgid "Delete « {} » from favorites?"
-msgstr ""
+msgstr "Xóa “{}” khỏi mục yêu thích?"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr ""
+msgstr "Hành động này sẽ xóa vĩnh viễn đài này khỏi bộ sưu tập của bạn."
 
 msgid "Manage groups, stations and separators (TiMonde)"
-msgstr ""
+msgstr "Quản lý nhóm, bộ đàm và dải phân cách (TiMonde)"
 
 msgid "Back to groups"
-msgstr ""
+msgstr "⬅ Quay lại nhóm"
 
 msgid "Add station"
-msgstr ""
+msgstr "Thêm đài phát thanh"
 
 msgid "Open"
-msgstr ""
+msgstr "Mở"
 
 msgid "New group"
-msgstr ""
+msgstr "Nhóm mới"
 
 msgid "Move to..."
-msgstr ""
+msgstr "Di chuyển đến..."
 
 msgid "Top"
-msgstr ""
+msgstr "Đầu tiên"
 
 msgid "Move up"
-msgstr ""
+msgstr "⬆ Đi lên"
 
 msgid "Move down"
-msgstr ""
+msgstr "⬇ Đi xuống"
 
 msgid "Separator"
-msgstr ""
+msgstr "Dấu phân cách"
 
 msgid "Sort A-Z"
-msgstr ""
+msgstr "Sắp xếp A-Z"
 
 msgid "Save and reload"
-msgstr ""
+msgstr "Lưu và tải lại"
 
 msgid "Same time"
 msgstr "Cùng giờ"
 
 msgid "Dawn"
-msgstr ""
+msgstr "bình minh"
 
 msgid "Morning"
-msgstr ""
+msgstr "buổi sáng"
 
 msgid "Daytime"
-msgstr ""
+msgstr "ngày"
 
 msgid "Evening"
-msgstr ""
+msgstr "Buổi tối"
 
 msgid "Night"
-msgstr ""
+msgstr "Đêm"
 
 msgid "Tomorrow"
 msgstr "Ngày mai"
@@ -236,64 +238,64 @@ msgid "Yesterday"
 msgstr "Hôm qua"
 
 msgid "Maintenance & Data"
-msgstr ""
+msgstr "Bảo trì & Dữ liệu"
 
 msgid "Check streams (dead links)..."
-msgstr ""
+msgstr "Kiểm tra nguồn cấp dữ liệu (liên kết chết)..."
 
 msgid "Export my stations to CSV..."
-msgstr ""
+msgstr "Xuất radio của tôi sang CSV..."
 
 msgid "Check streams"
-msgstr ""
+msgstr "Kiểm tra nguồn cấp dữ liệu"
 
 msgid "Dead links only"
-msgstr ""
+msgstr "Chỉ liên kết chết"
 
 msgid "Apply redirects"
-msgstr ""
+msgstr "Áp dụng chuyển hướng"
 
 msgid "Repair stream..."
-msgstr ""
+msgstr "Dòng chảy sửa chữa..."
 
 msgid "Export to CSV"
-msgstr ""
+msgstr "Xuất sang CSV"
 
 msgid "Test stream availability and locate broken links"
-msgstr ""
+msgstr "Kiểm tra tính khả dụng trực tiếp của các đài phát thanh của bạn và phát hiện các liên kết chết"
 
 msgid "Display offline radio streams only"
-msgstr ""
+msgstr "Chỉ hiển thị các đài phát thanh có luồng ngoại tuyến"
 
 msgid "Automatically update redirected streams to direct URL"
-msgstr ""
+msgstr "Tự động cập nhật nguồn cấp dữ liệu được chuyển hướng đến URL trực tiếp của chúng"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
+msgstr "Tự động tìm kiếm luồng hoạt động thay thế trên Radio-Browser cho liên kết chết này"
 
 msgid "Export all stations to CSV spreadsheet format"
-msgstr ""
+msgstr "Xuất tất cả radio của bạn ở định dạng bảng tính CSV"
 
 msgid "Export my stations to CSV"
-msgstr ""
+msgstr "Xuất radio của tôi sang CSV"
 
 msgid "CSV files (*.csv)"
-msgstr ""
+msgstr "Tệp CSV (*.csv)"
 
 msgid "All files (*.*)"
-msgstr ""
+msgstr "Tất cả các tệp (*.*)"
 
 msgid "Export"
-msgstr ""
+msgstr "Xuất khẩu"
 
 msgid "Export successful!"
-msgstr ""
+msgstr "Xuất khẩu thành công!"
 
 msgid "Error during CSV export:"
-msgstr ""
+msgstr "Lỗi trong quá trình xuất CSV:"
 
 msgid "station(s) saved to:"
-msgstr ""
+msgstr "(các) đài được ghi trong:"
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "Cài đặt..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "Thêm đài phát thanh (TiMonde)"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "Thêm vào đài của tôi"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "Không có đài mới nào được thêm vào (đã có mặt)."
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "Bó hoa DAB+ & Lựa chọn chính thức"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "Lưu vào mục yêu thích của tôi"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "Giữ đài trong mục yêu thích (TiMonde)"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "Mở tập tin:"
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "Khám phá và nhập các đài phát thanh (TiMonde)"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "Lưu"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "Lỗi thực thi:"
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "Lỗi nhập JSON:"
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "Lỗi sửa đổi autostart."
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "Khám phá DAB+..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "Quá trình xuất CSV đã hoàn tất."
 
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "Đóng"
 
 msgid "Fichiers exemples"
 msgstr "Sample Files"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "Nhập tập tin cá nhân"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "Nhập tệp..."
 
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "Không thể mở thư mục:"
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "Chèn các dấu phân cách (---) hoặc tiêu đề phần vào nhóm của bạn để thông thoáng cho menu của bạn."
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "Những thay đổi được tính đến."
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "Chỉnh sửa đài phát thanh (TiMonde)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "Mở thư mục"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "Duyệt..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "Trình duyệt Radio Tìm kiếm Toàn cầu"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "Tìm kiếm..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "Dấu trang được sắp xếp lại và lưu thành công!"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "Xóa"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,7 +653,7 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "tập tin mẫu được khôi phục trong"
 
 msgid "online"
 msgstr "online"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ Tổ chức"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 Mẹo bố cục trực quan"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 Dữ liệu & Tệp"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻 Thư viện"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️ Chung"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>→ Thay đổi <b>#</b> hoặc sử dụng <b>Di chuyển lên / xuống</b> để sắp xếp các nhóm. \n"
+" • <b>Nhấp đúp vào một nhóm</b> (hoặc Mở) để sắp xếp radio và bộ chia của nhóm đó. \n"
+" • Sử dụng <b>Chuyển...</b> để hợp nhất hoặc di chuyển nội dung sang nhóm khác. \n"
+" • Sử dụng <b>Nhóm mới</b> để thêm thư mục radio.</small>"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<small>→ Thay đổi <b>#</b> hoặc sử dụng <b>Di chuyển lên / xuống</b> để sắp xếp radio. \n"
+" • Nhấp vào <b>Kiểm tra nguồn cấp dữ liệu</b> để phát hiện các liên kết chết (màu đỏ) và sửa chữa chúng. \n"
+" • Nhấp vào <b>Sửa chữa luồng...</b> để tìm kiếm luồng hoạt động thay thế trên Radio-Browser. \n"
+" • Nhấp vào <b>Dấu phân cách</b> để chèn tiêu đề phần.</small>"
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>Chọn tệp hoặc ví dụ ở trên.</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>→ Thay đổi <b>#</b> hoặc sử dụng <b>Di chuyển lên / xuống</b> để sắp xếp các nhóm. \n"
+" • <b>Nhấp đúp vào một nhóm</b> (hoặc Mở) để sắp xếp radio và dấu phân cách của nhóm đó. \n"
+" • Sử dụng <b>Di chuyển tới...</b> để hợp nhất hoặc di chuyển nội dung. \n"
+" • Sử dụng <b>Nhóm mới</b> để tạo thư mục radio.</small>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<small>→ Thay đổi <b>#</b> hoặc sử dụng <b>Di chuyển Lên / Xuống</b> để ra lệnh cho radio. \n"
+" • Nhấp vào <b>Kiểm tra nguồn cấp dữ liệu</b> để định vị các liên kết ngoại tuyến (màu đỏ). \n"
+" • Nhấp vào <b>Sửa chữa luồng...</b> để tìm kiếm luồng thay thế đang hoạt động. \n"
+" • Bấm vào <b>Dấu phân cách</b> để chèn phụ đề hoặc dòng phân cách.</small>"
+
+msgid "Actualiser la liste des exemples"
+msgstr "Làm mới danh sách ví dụ"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "Trợ giúp với các nhóm và nhóm con"
+
+msgid "Ajouter"
+msgstr "Thêm"
+
+msgid "Annuler"
+msgstr "Hủy bỏ"
+
+msgid "Arrêter"
+msgstr "Dừng lại"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "Không tìm thấy tệp bookmarks.xml nào để lưu."
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "Không có đài phát thanh mới nào được thêm vào (đã có trong dấu trang của bạn)."
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "Không tìm thấy đài phát thanh nào trên Radio-Browser cho các tiêu chí này."
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "Bó Hoa Quốc Gia (Các khu nghỉ dưỡng lớn)"
+
+msgid "Bouquets par pays"
+msgstr "Bó hoa theo quốc gia"
+
+msgid "Bureau graphique & Plateau"
+msgstr "Bàn & khay đồ họa"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "Đài này không có URL luồng âm thanh."
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "Tải lên tệp XML, CSV, JSON, M3U hoặc PLS"
+
+msgid "Charger un fichier..."
+msgstr "Tải một tập tin..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "Chọn từ các nhóm hiện có"
+
+msgid "Choisir un fichier de radios"
+msgstr "Chọn một tập tin radio"
+
+msgid "Collections & Fichiers"
+msgstr "Bộ sưu tập & Tệp"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "Giữ tổ chức trong hồ sơ"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "Tạo bản sao lưu đầy đủ cho bộ sưu tập của bạn (với các thư mục và múi giờ)"
+
+msgid "Disponibilité"
+msgstr "sẵn có"
+
+msgid "Disponibilité en direct"
+msgstr "Tính khả dụng trực tiếp"
+
+msgid "Dossier / Groupe"
+msgstr "Thư mục/Nhóm"
+
+msgid "Dossier des exemples"
+msgstr "Thư mục ví dụ"
+
+msgid "Dossier des signets"
+msgstr "Thư mục dấu trang"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "Tự động phát hiện theo cài đặt khu vực của môi trường Linux của bạn."
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "MÔI TRƯỜNG ĐƯỢC PHÁT HIỆN (CHỈ ĐỌC)"
+
+msgid "Effacer le champ"
+msgstr "Xóa trường"
+
+msgid "Effacer le filtre langue"
+msgstr "Xóa bộ lọc ngôn ngữ"
+
+msgid "Effacer le filtre pays"
+msgstr "Xóa bộ lọc quốc gia"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "Đã phát hiện thấy môi trường Gnome Shell"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "Lỗi khi lưu:"
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "Ví dụ: /France/Jazz hoặc / cho root"
+
+msgid "Exemples thématiques :"
+msgstr "Ví dụ chuyên đề:"
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "Xuất sang bảng (CSV)..."
+
+msgid "Fichier :"
+msgstr "Tập tin:"
+
+msgid "Fichier externe :"
+msgstr "Tập tin bên ngoài:"
+
+msgid "Fichiers XML (*.xml)"
+msgstr "Các tệp XML (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "Lọc theo quốc gia:"
+
+msgid "Format & Débit"
+msgstr "Định dạng & Tốc độ bit"
+
+msgid "Genre / Tags"
+msgstr "Giới tính / Thẻ"
+
+msgid "Genre / Thématique"
+msgstr "Thể loại/Chủ đề"
+
+msgid "Genre :"
+msgstr "Giới tính:"
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "Trình quản lý gói không được công nhận."
+
+msgid "Groupe :"
+msgstr "Nhóm:"
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "Tạo danh sách phẳng cho bảng tính Calc hoặc Excel"
+
+msgid "Importer"
+msgstr "Nhập khẩu"
+
+msgid "Importer & Exporter"
+msgstr "Xuất nhập khẩu"
+
+msgid "Importer dans mes favoris"
+msgstr "Nhập vào mục yêu thích của tôi"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "Đang trong quá trình cài đặt (vui lòng xác nhận lời nhắc của hệ thống)..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "Cài đặt tích hợp Gnome"
+
+msgid "Intégration GNOME requise"
+msgstr "Yêu cầu tích hợp Gnome"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "Tích hợp vào thanh trên cùng của Gnome"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "Tích hợp tự nhiên vào khu vực thông báo thông qua StatusNotifierItem / XEmbed."
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "Xuất CSV có thể truy cập được từ cài đặt."
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "Cần có tiện ích mở rộng AppIndicator để hiển thị biểu tượng ở thanh trên cùng trong Gnome."
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "Quá trình cài đặt đã bị hủy hoặc không thành công."
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "Bản sao lưu XML có thể truy cập được từ cài đặt."
+
+msgid "Langue du système"
+msgstr "Ngôn ngữ hệ thống"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "Không thể nghe được dấu phân cách và phụ đề."
+
+msgid "Mes Radios"
+msgstr "Radio của tôi"
+
+msgid "Mot-clé :"
+msgstr "từ khóa:"
+
+msgid "Nouveaux uniquement"
+msgstr "Chỉ mới"
+
+msgid "OPTIONS DE SESSION"
+msgstr "TÙY CHỌN PHIÊN"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "Tổ chức các nhóm và nhóm con (Công ước Linux)"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "Đầu tiên hãy mở một nhóm để nghe radio của nhóm đó."
+
+msgid "Ouvrir"
+msgstr "Mở"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "Mở ~/.config/timonde"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "Mở ~/.config/timonde/examples"
+
+msgid "Pays"
+msgstr "Quốc gia"
+
+msgid "Pays :"
+msgstr "Quốc gia:"
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "Để hiển thị kín đáo biểu tượng phát trên thanh trên cùng của màn hình Gnome, cần có tiện ích mở rộng hệ thống <b>AppIndicator</b>.<br/><br/>Bạn có muốn cài đặt tiện ích mở rộng này ngay bây giờ không?"
+
+msgid "Préférences"
+msgstr "Tùy chọn"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "Giữ nguyên các nhóm con được xác định trong tệp thay vì nhập mọi thứ vào một nhóm duy nhất."
+
+msgid "Quitter"
+msgstr "Thoát"
+
+msgid "Recharger"
+msgstr "Tải lại"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "Tải lại tập tin hiện đang hiển thị"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "Tìm kiếm trên toàn thế giới trên thư mục <b>Radio-Browser</b> miễn phí và hợp tác (+45.000 đài)."
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "Đang tiến hành tìm kiếm trên Radio-Browser..."
+
+msgid "Rechercher"
+msgstr "Tìm kiếm"
+
+msgid "Rechercher en ligne"
+msgstr "Tìm kiếm trực tuyến"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "Thay thế liên kết đã chọn bằng nguồn cấp dữ liệu chính thức đang hoạt động"
+
+msgid "Restaurer exemples"
+msgstr "Khôi phục ví dụ"
+
+msgid "Régions & Locales :"
+msgstr "Khu vực & Địa phương:"
+
+msgid "Réparer le flux..."
+msgstr "Sửa dòng chảy..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "Khôi phục 19 ví dụ ban đầu"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "Nhập từ khóa hoặc nhấp vào Tìm kiếm để khám phá thư mục."
+
+msgid "Sauvegarde réussie !"
+msgstr "Sao lưu thành công!"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "Lưu radio của tôi (XML)..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "Lưu dấu trang của tôi (XML)"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "Dấu trang và radio đã được lưu thành công!"
+
+msgid "Station"
+msgstr "Khu nghỉ dưỡng"
+
+msgid "Statut Favoris"
+msgstr "Trạng thái yêu thích"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "Lựa chọn chính thức và đã được xác minh từ 146 quốc gia và khu vực (bó hoa kỹ thuật số DAB + và các đài quốc gia lớn)."
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "Chọn một đài để nghe nó."
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "Chọn một đài từ bảng để nghe nó."
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "Nhập quốc gia (ví dụ: Pháp, Deutschland, Canada...)"
+
+msgid "Tester"
+msgstr "kiểm tra"
+
+msgid "Tester les flux"
+msgstr "Luồng thử nghiệm"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "TiMonde — Tích hợp máy tính để bàn Gnome"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "Tất cả các tệp (*.*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "Tất cả các quốc gia (toàn cầu)"
+
+msgid "Tout cocher"
+msgstr "Kiểm tra tất cả"
+
+msgid "Tout décocher"
+msgstr "Bỏ chọn tất cả"
+
+msgid "Toutes les langues"
+msgstr "Tất cả ngôn ngữ"
+
+msgid "URL du flux"
+msgstr "URL nguồn cấp dữ liệu"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "Vui lòng chọn một đài từ danh sách để nghe."
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "Dấu trang hoàn chỉnh của bạn đã được lưu vào:"
+
+msgid "Votes"
+msgstr "Phiếu bầu"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "Kiểm tra tính khả dụng của liên kết trực tiếp"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "Kiểm tra tính khả dụng của đài phát thanh trực tiếp"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "Kiểm tra tính khả dụng trực tiếp của radio được tìm thấy"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "Kiểm tra tính hợp lệ của liên kết và xem trước luồng"
+
+msgid "ajoutée avec succès !"
+msgstr "đã thêm thành công!"
+
+msgid "fichiers exemples restaurés."
+msgstr "tập tin mẫu được khôi phục."
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "(các) đài mới được nhập khẩu!"
+
+msgid "Écouter"
+msgstr "Nghe"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "Nghe đài đã chọn"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "Nghe hoặc kiểm tra đài đã chọn"
+

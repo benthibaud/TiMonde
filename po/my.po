@@ -1,14 +1,16 @@
-# TiMonde — MY Translation
+# TiMonde — Traduction MY
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: TiMonde 0.1.0\n"
+"Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
+"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"PO-Revision-Date: 2026-10-17 17:00+0200\n"
+"Language: my\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: my\n"
 
 msgid "Play"
 msgstr "ဖွင့်ပါ"
@@ -26,124 +28,124 @@ msgid "Delete"
 msgstr "ဖျက်ပါ"
 
 msgid "Zap to another random station"
-msgstr ""
+msgstr "အခြားကျပန်းရေဒီယိုသို့ Zap"
 
 msgid "Play random radio (Ephemeral discovery)"
-msgstr ""
+msgstr "ကျပန်းရေဒီယိုဌာနကို နားထောင်ပါ (တဒင်္ဂရှာဖွေတွေ့ရှိမှု)"
 
 msgid "[ Ephemeral]"
-msgstr ""
+msgstr "[ပေါ်ပင်]"
 
 msgid "Options"
 msgstr "ရွေးချယ်စရာများ"
 
 msgid "Add a station..."
-msgstr ""
+msgstr "ရေဒီယိုထည့်ပါ..."
 
 msgid "Discover & Import stations..."
-msgstr ""
+msgstr "ရေဒီယိုများကို ရှာဖွေပြီး တင်သွင်းပါ..."
 
 msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr ""
+msgstr "ကျွန်ုပ်၏ဖိုင်များကို တင်သွင်းပါ (XML၊ CSV၊ JSON၊ M3U)..."
 
 msgid "Manage groups and stations..."
-msgstr ""
+msgstr "အုပ်စုများနှင့် ရေဒီယိုများကို အမျိုးအစားခွဲပါ..."
 
 msgid "Open bookmarks.xml"
-msgstr ""
+msgstr "bookmarks.xml ကိုဖွင့်ပါ။"
 
 msgid "Quit TiMonde"
-msgstr ""
+msgstr "TiMonde မှ ထွက်ခွာပါ။"
 
 msgid "Mute (0%)"
-msgstr ""
+msgstr "အသံတိတ် (0%)"
 
 msgid "Sleep timer"
-msgstr ""
+msgstr "အိပ်ချိန်ချိန်စက်"
 
 msgid "In 15 minutes"
-msgstr ""
+msgstr "15 မိနစ်အတွင်း"
 
 msgid "In 30 minutes"
-msgstr ""
+msgstr "မိနစ် 30 အတွင်း"
 
 msgid "In 45 minutes"
-msgstr ""
+msgstr "45 မိနစ်အတွင်း"
 
 msgid "In 60 minutes (1h)"
-msgstr ""
+msgstr "မိနစ် 60 (1 နာရီ)"
 
 msgid "Cancel sleep timer"
-msgstr ""
+msgstr "အိပ်စက်ခြင်းကို ပယ်ဖျက်ပါ။"
 
 msgid "Discover & Import stations (TiMonde)"
-msgstr ""
+msgstr "ရေဒီယိုစခန်းများ (TiMonde) ကို ရှာဖွေပြီး တင်သွင်းပါ"
 
 msgid "Verified DAB+ Bouquets"
-msgstr ""
+msgstr "အတည်ပြုထားသော ပန်းစည်းများ (DAB+)"
 
 msgid "Radio-Browser Search"
-msgstr ""
+msgstr "Radio-Browser ကိုရှာပါ။"
 
 msgid "Sample Files"
-msgstr ""
+msgstr "နမူနာဖိုင်များ"
 
 msgid "Import my files"
-msgstr ""
+msgstr "ကျွန်ုပ်၏ဖိုင်များကို တင်သွင်းပါ။"
 
 msgid "<b> Country:</b>"
-msgstr ""
+msgstr "<b>နိုင်ငံ-</b>"
 
 msgid "<b>Language:</b>"
-msgstr ""
+msgstr "<b>ဘာသာစကား-</b>"
 
 msgid "Name / Keyword:"
-msgstr ""
+msgstr "အမည် / အဓိကစကားလုံး"
 
 msgid "Genre:"
-msgstr ""
+msgstr "လိင်-"
 
 msgid "<b>Sample file:</b>"
-msgstr ""
+msgstr "<b>ဥပမာ ဖိုင်-</b>"
 
 msgid "<b>Group name in your favorites:</b>"
-msgstr ""
+msgstr "<b>သင်အကြိုက်ဆုံးများထဲတွင် အုပ်စုအမည်-</b>"
 
 msgid "Select all"
-msgstr ""
+msgstr "အားလုံးစစ်ဆေးပါ။"
 
 msgid "Deselect all"
-msgstr ""
+msgstr "အားလုံးကို အမှန်ခြစ်ဖြုတ်ပါ။"
 
 msgid "Import into favorites"
-msgstr ""
+msgstr "ကျွန်ုပ်၏စိတ်ကြိုက်များသို့ တင်သွင်းပါ။"
 
 msgid "Close"
 msgstr "ပိတ်ပါ"
 
 msgid "Add a station (TiMonde)"
-msgstr ""
+msgstr "ဘူတာရုံ (TiMonde) ထည့်ပါ"
 
 msgid "<b>Enter new station details:</b>"
-msgstr ""
+msgstr "<b>ရေဒီယိုအသစ်အတွက် အချက်အလက်ကို ထည့်ပါ-</b>"
 
 msgid "Add to my stations"
-msgstr ""
+msgstr "ကျွန်ုပ်၏ ရေဒီယိုများတွင် ထည့်ပါ။"
 
 msgid "Save station to favorites (TiMonde)"
-msgstr ""
+msgstr "ရေဒီယိုကို ကျွန်ုပ်အကြိုက်ဆုံးများ (TiMonde) တွင် သိမ်းဆည်းပါ"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr ""
+msgstr "<b>ဤကျပန်းရှာဖွေတွေ့ရှိထားသော ရေဒီယိုအသံလွှင့်ဌာနကို သင့်စိတ်ကြိုက်များတွင် ထားရှိပါ-</b>"
 
 msgid "Keep in favorites"
-msgstr ""
+msgstr "ကျွန်ုပ်၏အကြိုက်ဆုံးများထဲတွင် သိမ်းဆည်းပါ။"
 
 msgid "Edit station (TiMonde)"
-msgstr ""
+msgstr "ရေဒီယိုကိုတည်းဖြတ်ပါ (TiMonde)"
 
 msgid "<b>Edit station settings:</b>"
-msgstr ""
+msgstr "<b>ဘူတာဆက်တင်များကို ပြောင်းပါ-</b>"
 
 msgid "Save"
 msgstr "သိမ်းပါ"
@@ -152,82 +154,82 @@ msgid "Station name:"
 msgstr "လိုင်းအမည်:"
 
 msgid "Audio stream URL:"
-msgstr ""
+msgstr "အသံလွှင့် URL-"
 
 msgid "Group / Folder:"
-msgstr ""
+msgstr "အဖွဲ့/ဖိုလ်ဒါ-"
 
 msgid "Country & Timezone:"
-msgstr ""
+msgstr "နိုင်ငံနှင့် အချိန်ဇုန်-"
 
 msgid "Timezone:"
-msgstr ""
+msgstr "အချိန်ဇုန်-"
 
 msgid "Delete this station"
-msgstr ""
+msgstr "ဤရေဒီယိုကို ဖျက်ပါ။"
 
 msgid "Cancel"
 msgstr "မလုပ်တော့ပါ"
 
 msgid "Delete « {} » from favorites?"
-msgstr ""
+msgstr "“{}” ကို အကြိုက်ဆုံးများမှ ဖယ်ရှားမလား။"
 
 msgid "This action will permanently remove this station from your collection."
-msgstr ""
+msgstr "ဤလုပ်ဆောင်ချက်သည် သင့်စုဆောင်းမှုမှ ဤဘူတာရုံကို အပြီးတိုင်ဖယ်ရှားပါမည်။"
 
 msgid "Manage groups, stations and separators (TiMonde)"
-msgstr ""
+msgstr "အုပ်စုများ၊ ရေဒီယိုများနှင့် ခွဲထွက်ခြင်းများကို စီမံခန့်ခွဲခြင်း (TiMonde)"
 
 msgid "Back to groups"
-msgstr ""
+msgstr "⬅ အဖွဲ့များသို့ ပြန်သွားရန်"
 
 msgid "Add station"
-msgstr ""
+msgstr "ရေဒီယိုထည့်ပါ။"
 
 msgid "Open"
-msgstr ""
+msgstr "ဖွင့်သည်။"
 
 msgid "New group"
-msgstr ""
+msgstr "အဖွဲ့သစ်"
 
 msgid "Move to..."
-msgstr ""
+msgstr "သို့ရွှေ့ပါ..."
 
 msgid "Top"
-msgstr ""
+msgstr "ပထမ"
 
 msgid "Move up"
-msgstr ""
+msgstr "⬆ အပေါ်တက်ပါ။"
 
 msgid "Move down"
-msgstr ""
+msgstr "⬇ဆင်းပါ။"
 
 msgid "Separator"
-msgstr ""
+msgstr "ခွဲထုတ်ခြင်း။"
 
 msgid "Sort A-Z"
-msgstr ""
+msgstr "A-Z စီပါ။"
 
 msgid "Save and reload"
-msgstr ""
+msgstr "သိမ်းဆည်းပြီး ပြန်လည်စတင်ပါ။"
 
 msgid "Same time"
-msgstr ""
+msgstr "အတူတူပါပဲ။"
 
 msgid "Dawn"
-msgstr ""
+msgstr "မိုးသောက်"
 
 msgid "Morning"
-msgstr ""
+msgstr "မနက်ခင်း"
 
 msgid "Daytime"
-msgstr ""
+msgstr "နေ့"
 
 msgid "Evening"
-msgstr ""
+msgstr "ညနေပိုင်း"
 
 msgid "Night"
-msgstr ""
+msgstr "ည"
 
 msgid "Tomorrow"
 msgstr "မနက်ဖြန်"
@@ -236,64 +238,64 @@ msgid "Yesterday"
 msgstr "မနေ့က"
 
 msgid "Maintenance & Data"
-msgstr ""
+msgstr "ပြုပြင်ထိန်းသိမ်းမှုနှင့် ဒေတာ"
 
 msgid "Check streams (dead links)..."
-msgstr ""
+msgstr "feeds ကိုစစ်ဆေးပါ (dead links)..."
 
 msgid "Export my stations to CSV..."
-msgstr ""
+msgstr "ကျွန်ုပ်၏ရေဒီယိုများကို CSV သို့ တင်ပို့ပါ..."
 
 msgid "Check streams"
-msgstr ""
+msgstr "feeds ကိုစစ်ဆေးပါ။"
 
 msgid "Dead links only"
-msgstr ""
+msgstr "Dead links များသာဖြစ်သည်။"
 
 msgid "Apply redirects"
-msgstr ""
+msgstr "ပြန်ညွှန်းချက်များကို အသုံးပြုပါ။"
 
 msgid "Repair stream..."
-msgstr ""
+msgstr "လည်ပတ်စီးဆင်းမှု..."
 
 msgid "Export to CSV"
-msgstr ""
+msgstr "CSV သို့ တင်ပို့ပါ။"
 
 msgid "Test stream availability and locate broken links"
-msgstr ""
+msgstr "သင့်ရေဒီယိုဌာနများ၏ တိုက်ရိုက်ရရှိနိုင်မှုကို စမ်းသပ်ပြီး အသေခံလင့်ခ်များကို ရှာဖွေပါ။"
 
 msgid "Display offline radio streams only"
-msgstr ""
+msgstr "အော့ဖ်လိုင်းဖြစ်နေသော ရေဒီယိုလိုင်းများကိုသာ ပြသပါ။"
 
 msgid "Automatically update redirected streams to direct URL"
-msgstr ""
+msgstr "၎င်းတို့၏ တိုက်ရိုက် URL သို့ ပြန်ညွှန်းထားသော ဖိဒ်များကို အလိုအလျောက် အပ်ဒိတ်လုပ်ပါ။"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
+msgstr "ဤအသေသတ်လင့်ခ်အတွက် Radio-Browser တွင် အစားထိုးအသက်ဝင်သောစီးကြောင်းကို အလိုအလျောက်ရှာဖွေပါ။"
 
 msgid "Export all stations to CSV spreadsheet format"
-msgstr ""
+msgstr "သင့်ရေဒီယိုအားလုံးကို CSV စာရင်းဇယားဖော်မတ်ဖြင့် ထုတ်ယူပါ။"
 
 msgid "Export my stations to CSV"
-msgstr ""
+msgstr "ကျွန်ုပ်၏ ရေဒီယိုများကို CSV သို့ တင်ပို့ပါ။"
 
 msgid "CSV files (*.csv)"
-msgstr ""
+msgstr "CSV ဖိုင်များ (*.csv)"
 
 msgid "All files (*.*)"
-msgstr ""
+msgstr "ဖိုင်အားလုံး (*.*)"
 
 msgid "Export"
-msgstr ""
+msgstr "တင်ပို့ခြင်း။"
 
 msgid "Export successful!"
-msgstr ""
+msgstr "တင်ပို့မှု အောင်မြင်ပါပြီ။"
 
 msgid "Error during CSV export:"
-msgstr ""
+msgstr "CSV ထုတ်ယူနေစဉ် အမှားအယွင်း"
 
 msgid "station(s) saved to:"
-msgstr ""
+msgstr "မှတ်တမ်းတင်ထားသော ရေဒီယို(များ)"
 
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
@@ -302,7 +304,6 @@ msgid "Settings..."
 msgstr "ဆက်တင်များ..."
 
 # --- Mises à jour TiMonde ---
-
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
@@ -331,16 +332,16 @@ msgid "Add a new station to this group"
 msgstr "Add a new station to this group"
 
 msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgstr "ရေဒီယို (TiMonde) ထည့်ပါ"
 
 msgid "Ajouter une radio manuellement"
 msgstr "Add station manually"
 
 msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgstr "ကျွန်ုပ်၏ ရေဒီယိုများတွင် ထည့်ပါ။"
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+msgstr "ရေဒီယိုအသစ်မထည့်ပါ (လက်ရှိဖြစ်နေပါပြီ)။"
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
@@ -349,7 +350,7 @@ msgid "Back to main group list (Esc)"
 msgstr "Back to main group list (Esc)"
 
 msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgstr "DAB+ ပန်းစည်းများနှင့် တရားဝင်ရွေးချယ်မှုများ"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
@@ -361,10 +362,10 @@ msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, G
 msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
+msgstr "ကျွန်ုပ်၏အကြိုက်ဆုံးများထဲတွင် သိမ်းဆည်းပါ။"
 
 msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
+msgstr "ရေဒီယိုကို အကြိုက်ဆုံးများ (TiMonde) တွင်ထားပါ"
 
 msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
 msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
@@ -385,10 +386,10 @@ msgid "Details"
 msgstr "Details"
 
 msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
+msgstr "ဖိုင်ကိုဖွင့်ပါ-"
 
 msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
+msgstr "ရေဒီယိုလိုင်းများ (TiMonde) ရှာဖွေပြီး တင်သွင်းပါ"
 
 msgid "Démarrage automatique"
 msgstr "Autostart"
@@ -403,25 +404,25 @@ msgid "Edit selected name, URL or header (F2)"
 msgstr "Edit selected name, URL or header (F2)"
 
 msgid "Enregistrer"
-msgstr "Enregistrer"
+msgstr "သိမ်းဆည်းပါ။"
 
 msgid "Erreur :"
 msgstr "Error:"
 
 msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
+msgstr "လုပ်ဆောင်မှု အမှား-"
 
 msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
+msgstr "JSON တင်သွင်းမှု အမှား-"
 
 msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
+msgstr "အလိုအလျောက်စတင်ခြင်းကို မွမ်းမံရာတွင် အမှားအယွင်းရှိသည်။"
 
 msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
+msgstr "DAB+ ကိုလေ့လာပါ..."
 
 msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
+msgstr "CSV ထုတ်ယူမှု ပြီးပါပြီ။"
 
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
@@ -430,7 +431,7 @@ msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout e
 msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
 
 msgid "Fermer"
-msgstr "Fermer"
+msgstr "ပိတ်လိုက်"
 
 msgid "Fichiers exemples"
 msgstr "Sample Files"
@@ -454,10 +455,10 @@ msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
 msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
+msgstr "ကိုယ်ရေးကိုယ်တာဖိုင်များကို တင်သွင်းပါ။"
 
 msgid "Importer fichier..."
-msgstr "Importer fichier..."
+msgstr "ဖိုင်ကိုတင်သွင်းပါ..."
 
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
@@ -466,13 +467,13 @@ msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV,
 msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
+msgstr "ဖိုင်တွဲကို ဖွင့်၍မရပါ"
 
 msgid "Insert a separator or header in this group"
 msgstr "Insert a separator or header in this group"
 
 msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
+msgstr "သင့်မီနူးကို လေဝင်လေထွက်ကောင်းစေရန် သင့်အုပ်စုများအတွင်း ပိုင်းခြားခြင်း (---) သို့မဟုတ် ကဏ္ဍခေါင်းစဉ်များကို ထည့်သွင်းပါ။"
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -490,10 +491,10 @@ msgid "Langue et Région"
 msgstr "Language & Region"
 
 msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
+msgstr "အပြောင်းအလဲများကို ထည့်သွင်းစဉ်းစားပါ။"
 
 msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
+msgstr "ရေဒီယိုကိုတည်းဖြတ်ပါ (TiMonde)"
 
 msgid "Move down one rank"
 msgstr "Move down one rank"
@@ -529,7 +530,7 @@ msgid "Outil introuvable :"
 msgstr "Tool not found:"
 
 msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
+msgstr "ဖိုင်တွဲကိုဖွင့်ပါ။"
 
 msgid "Paramètres & Contrôle TiMonde"
 msgstr "TiMonde Settings & Control"
@@ -541,7 +542,7 @@ msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter vo
 msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
 
 msgid "Parcourir..."
-msgstr "Parcourir..."
+msgstr "လှန်ကြည့်..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
@@ -553,10 +554,10 @@ msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
 
 msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
+msgstr "ကမ္ဘာလုံးဆိုင်ရာ ရှာဖွေမှု ရေဒီယို-ဘရောက်ဇာ"
 
 msgid "Rechercher..."
-msgstr "Rechercher..."
+msgstr "ရှာဖွေပါ..."
 
 msgid "Restaurer"
 msgstr "Restore"
@@ -577,7 +578,7 @@ msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
 
 msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
+msgstr "စာညှပ်များကို ပြန်လည်ဖွဲ့စည်းပြီး အောင်မြင်စွာ သိမ်းဆည်းခဲ့သည်။"
 
 msgid "Sort stations in this group (Enter or double-click)"
 msgstr "Sort stations in this group (Enter or double-click)"
@@ -592,7 +593,7 @@ msgid "Stations in group:"
 msgstr "Stations in group:"
 
 msgid "Supprimer"
-msgstr "Supprimer"
+msgstr "ဖျက်ပါ။"
 
 msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
 msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
@@ -652,7 +653,7 @@ msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
+msgstr "နမူနာဖိုင်များကို ပြန်လည်ရယူသည်။"
 
 msgid "online"
 msgstr "online"
@@ -682,16 +683,418 @@ msgid "— Separator —"
 msgstr "— Separator —"
 
 msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
+msgstr "↕️ အဖွဲ့အစည်း"
 
 msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
+msgstr "💡 မြင်သာသော အပြင်အဆင် ထိပ်ဖျား"
 
 msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
+msgstr "💾 ဒေတာနှင့် ဖိုင်များ"
 
 msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
+msgstr "📻 စာကြည့်တိုက်"
 
 msgid "🖥️ Général"
-msgstr "🖥️ Général"
+msgstr "🖥️ အထွေထွေ"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
+"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
+"• Use <b>Transfer...</b> to merge or move content to another group.\n"
+"• Use <b>New group</b> to add a station folder.</small>"
+msgstr ""
+"<small>• အဖွဲ့များကိုမှာယူရန် <b>#</b> ကိုပြောင်းပါ သို့မဟုတ် <b>အပေါ်သို့ရွှေ့ပါ/ အောက်သို့ရွှေ့ပါ</b> ကိုအသုံးပြုပါ။ \n"
+" • ၎င်း၏ ရေဒီယိုနှင့် ခွဲခြမ်းများကို စီရန် <b>အဖွဲ့ကို နှစ်ချက်နှိပ်ပါ</b> (သို့မဟုတ် ဖွင့်ပါ)။ \n"
+" • အကြောင်းအရာကို အခြားအဖွဲ့သို့ ပေါင်းစည်းရန် သို့မဟုတ် ရွှေ့ရန် <b>လွှဲပြောင်း...</b> ကို အသုံးပြုပါ။ \n"
+" • ရေဒီယိုဖိုင်တွဲတစ်ခုထည့်ရန် <b>အဖွဲ့အသစ်</b> ကိုသုံးပါ။</small>"
+
+msgid ""
+"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
+"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
+"• Click <b>Separator</b> to insert a section header.</small>"
+msgstr ""
+"<small>• ရေဒီယိုများကိုစီရန် <b>#</b> ကိုပြောင်းပါ သို့မဟုတ် <b>အပေါ်သို့ရွှေ့ပါ/ အောက်သို့ရွှေ့ပါ</b> ကိုအသုံးပြုပါ။ \n"
+" • သေနေသောလင့်ခ်များ (အနီရောင်) ကိုတွေ့ပြီး ၎င်းတို့ကို ပြုပြင်ရန် <b>စစ်ဆေးရန်</b> ကိုနှိပ်ပါ။ \n"
+" • Radio-Browser တွင် အစားထိုးအသက်ဝင်သော ထုတ်လွှင့်မှုကို ရှာဖွေရန် <b>ပြန်လည်ပြုပြင်ခြင်း...</b> ကို နှိပ်ပါ။ \n"
+" • ကဏ္ဍခေါင်းစဉ်တစ်ခုထည့်သွင်းရန် <b>Separator</b> ကိုနှိပ်ပါ။</small>"
+
+msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgstr "<i>အထက်တွင် ဖိုင် သို့မဟုတ် ဥပမာတစ်ခုကို ရွေးပါ။</i>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
+"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
+"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
+"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgstr ""
+"<small>• အဖွဲ့များကိုမှာယူရန် <b>#</b> ကိုပြောင်းပါ သို့မဟုတ် <b>အပေါ်သို့ရွှေ့ပါ/ အောက်သို့ရွှေ့ပါ</b> ကိုအသုံးပြုပါ။ \n"
+" • ၎င်း၏ ရေဒီယိုနှင့် ခြားနားချက်များကို စီရန် <b>အဖွဲ့ကို နှစ်ချက်နှိပ်ပါ</b> (သို့မဟုတ် ဖွင့်ပါ)။ \n"
+" • အကြောင်းအရာကို ပေါင်းစည်းရန် သို့မဟုတ် ရွှေ့ရန် <b>ရွှေ့ရန်...</b> ကို အသုံးပြုပါ။ \n"
+" • ရေဒီယိုဖိုင်တွဲတစ်ခုဖန်တီးရန် <b>အဖွဲ့သစ်</b>ကို အသုံးပြုပါ။</small>"
+
+msgid ""
+"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
+"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
+"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
+"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
+msgstr ""
+"<small>• ရေဒီယိုများကိုမှာယူရန် <b>#</b> ကိုပြောင်းပါ သို့မဟုတ် <b>အပေါ်သို့ရွှေ့ပါ/ အောက်သို့ရွှေ့ပါ</b> ကိုသုံးပါ။ \n"
+" • အော့ဖ်လိုင်းလင့်ခ်များ (အနီရောင်ဖြင့်) ရှာဖွေရန် <b>ဖိဒ်များကို စစ်ဆေးပါ</b> ကိုနှိပ်ပါ။ \n"
+" • အသက်ဝင်သော အစားထိုးစီးကြောင်းကို ရှာဖွေရန် <b>ပြန်လည်ပြုပြင်ထုတ်လွှင့်ခြင်း...</b> ကိုနှိပ်ပါ။ \n"
+" • စာတန်းထိုး သို့မဟုတ် စာတန်းခွဲစာကြောင်းကို ထည့်သွင်းရန် <b>Separator</b> ကို နှိပ်ပါ။</small>"
+
+msgid "Actualiser la liste des exemples"
+msgstr "ဥပမာများစာရင်းကို ပြန်လည်စတင်ပါ။"
+
+msgid "Aide sur les groupes et sous-groupes"
+msgstr "အုပ်စုများနှင့် အုပ်စုခွဲများဖြင့် ကူညီပါ။"
+
+msgid "Ajouter"
+msgstr "ထည့်ပါ။"
+
+msgid "Annuler"
+msgstr "မလုပ်တော့"
+
+msgid "Arrêter"
+msgstr "ရပ်လိုက်ပါ။"
+
+msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+msgstr "သိမ်းဆည်းရန် bookmarks.xml ဖိုင်များ မတွေ့ပါ။"
+
+msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+msgstr "ရေဒီယိုလိုင်းအသစ်များ မထည့်ပါ (သင့်စာညှပ်များထဲတွင် ရှိနှင့်ပြီးသား)။"
+
+msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgstr "ဤသတ်မှတ်ချက်များအတွက် Radio-Browser တွင် ရေဒီယိုလိုင်းများ မတွေ့ပါ။"
+
+msgid "Bouquet National (Grandes stations)"
+msgstr "အမျိုးသားပန်းစည်း (အဓိကအပန်းဖြေစခန်းများ)"
+
+msgid "Bouquets par pays"
+msgstr "နိုင်ငံအလိုက် ပန်းစည်းများ"
+
+msgid "Bureau graphique & Plateau"
+msgstr "ဂရပ်ဖစ်စားပွဲနှင့် ဗန်း"
+
+msgid "Cette station n'a aucune URL de flux audio."
+msgstr "ဤဌာနတွင် အသံလွှင့် URL များ မရှိပါ။"
+
+msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+msgstr "XML၊ CSV၊ JSON၊ M3U သို့မဟုတ် PLS ဖိုင်တစ်ခုကို အပ်လုဒ်လုပ်ပါ။"
+
+msgid "Charger un fichier..."
+msgstr "ဖိုင်တစ်ခု တင်ပါ..."
+
+msgid "Choisir parmi les groupes existants"
+msgstr "ရှိပြီးသားအဖွဲ့များမှ ရွေးချယ်ပါ။"
+
+msgid "Choisir un fichier de radios"
+msgstr "ရေဒီယိုဖိုင်ကို ရွေးပါ။"
+
+msgid "Collections & Fichiers"
+msgstr "စုစည်းမှုများနှင့် ဖိုင်များ"
+
+msgid "Conserver l'organisation en dossiers"
+msgstr "အဖွဲ့အစည်းကို ဖိုင်တွင်ထားရှိပါ။"
+
+msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+msgstr "သင့်စုစည်းမှု၏ အပြည့်အဝ အရန်ကူးတစ်ခု ဖန်တီးပါ (ဖိုင်တွဲများနှင့် အချိန်ဇုန်များနှင့်အတူ)"
+
+msgid "Disponibilité"
+msgstr "ရရှိနိုင်မှု"
+
+msgid "Disponibilité en direct"
+msgstr "တိုက်ရိုက်ရရှိနိုင်မှု"
+
+msgid "Dossier / Groupe"
+msgstr "ဖိုဒါ/အုပ်စု"
+
+msgid "Dossier des exemples"
+msgstr "နမူနာဖိုင်တွဲ"
+
+msgid "Dossier des signets"
+msgstr "စာညှပ်များ ဖိုဒါ"
+
+msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
+msgstr "သင်၏ Linux ပတ်ဝန်းကျင်၏ ဒေသဆိုင်ရာ ဆက်တင်များအတိုင်း အလိုအလျောက် ထောက်လှမ်းခြင်း။"
+
+msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+msgstr "ပတ်ဝန်းကျင်ကို ထောက်လှမ်းထားသည် (ဖတ်ရန်သာ)"
+
+msgid "Effacer le champ"
+msgstr "ကြည်လင်သောအကွက်"
+
+msgid "Effacer le filtre langue"
+msgstr "ဘာသာစကား စစ်ထုတ်မှုကို ရှင်းလင်းပါ။"
+
+msgid "Effacer le filtre pays"
+msgstr "နိုင်ငံစစ်ထုတ်မှုကို ရှင်းလင်းပါ။"
+
+msgid "Environnement GNOME Shell détecté"
+msgstr "GNOME Shell ပတ်ဝန်းကျင်ကို တွေ့ရှိခဲ့သည်။"
+
+msgid "Erreur lors de la sauvegarde :"
+msgstr "သိမ်းဆည်းနေစဉ် အမှားအယွင်း"
+
+msgid "Ex: /France/Jazz ou / pour racine"
+msgstr "ဥပမာ- /France/Jazz သို့မဟုတ် / root အတွက်"
+
+msgid "Exemples thématiques :"
+msgstr "အကြောင်းအရာဆိုင်ရာ ဥပမာများ-"
+
+msgid "Exporter en tableau (CSV)..."
+msgstr "ဇယား (CSV) သို့ တင်ပို့ပါ..."
+
+msgid "Fichier :"
+msgstr "ဖိုင်-"
+
+msgid "Fichier externe :"
+msgstr "ပြင်ပဖိုင်-"
+
+msgid "Fichiers XML (*.xml)"
+msgstr "XML ဖိုင်များ (*.xml)"
+
+msgid "Filtrer par pays :"
+msgstr "နိုင်ငံအလိုက် စစ်ထုတ်ပါ-"
+
+msgid "Format & Débit"
+msgstr "ဖော်မတ်နှင့် ဘစ်နှုန်း"
+
+msgid "Genre / Tags"
+msgstr "ကျား/မ"
+
+msgid "Genre / Thématique"
+msgstr "အမျိုးအစား/အကြောင်းအရာ"
+
+msgid "Genre :"
+msgstr "လိင်-"
+
+msgid "Gestionnaire de paquets non reconnu."
+msgstr "အသိအမှတ်ပြုမထားသော ပက်ကေ့ဂျ်မန်နေဂျာ။"
+
+msgid "Groupe :"
+msgstr "အဖွဲ့-"
+
+msgid "Générer une liste plate pour tableur Calc ou Excel"
+msgstr "Calc သို့မဟုတ် Excel ဇယားကွက်အတွက် ပြားသောစာရင်းကို ဖန်တီးပါ။"
+
+msgid "Importer"
+msgstr "သွင်းကုန်"
+
+msgid "Importer & Exporter"
+msgstr "သွင်းကုန်၊ ပို့ကုန်"
+
+msgid "Importer dans mes favoris"
+msgstr "ကျွန်ုပ်၏စိတ်ကြိုက်များသို့ တင်သွင်းပါ။"
+
+msgid "Installation en cours (veuillez valider l'invite système)..."
+msgstr "ထည့်သွင်းခြင်း လုပ်ဆောင်နေပါသည် ( system prompt ကို အတည်ပြုပါ )..."
+
+msgid "Installer l'intégration GNOME"
+msgstr "GNOME ပေါင်းစည်းမှုကို ထည့်သွင်းပါ။"
+
+msgid "Intégration GNOME requise"
+msgstr "GNOME ပေါင်းစည်းမှု လိုအပ်သည်။"
+
+msgid "Intégration dans la barre supérieure GNOME"
+msgstr "GNOME အပေါ်ဘားသို့ ပေါင်းစည်းခြင်း။"
+
+msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+msgstr "StatusNotifierItem / XEmbed မှတဆင့် အကြောင်းကြားချက် ဧရိယာသို့ ဇာတိပေါင်းစည်းခြင်း။"
+
+msgid "L'exportation CSV est accessible depuis les paramètres."
+msgstr "CSV ထုတ်ယူမှုကို ဆက်တင်များမှ ဝင်ရောက်နိုင်သည်။"
+
+msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
+msgstr "GNOME ရှိ ထိပ်ဘားရှိ အိုင်ကွန်ကို ပြသရန် AppIndicator တိုးချဲ့မှု လိုအပ်သည်။"
+
+msgid "L'installation a été annulée ou a échoué."
+msgstr "တပ်ဆင်မှုကို ပယ်ဖျက်ခဲ့သည် သို့မဟုတ် မအောင်မြင်ပါ။"
+
+msgid "La sauvegarde XML est accessible depuis les paramètres."
+msgstr "XML မိတ္တူကို ဆက်တင်များမှ ဝင်ရောက်နိုင်သည်။"
+
+msgid "Langue du système"
+msgstr "စနစ်ဘာသာစကား"
+
+msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
+msgstr "ခြားနားချက်များနှင့် စကားစုများကို နားမထောင်နိုင်ပါ။"
+
+msgid "Mes Radios"
+msgstr "ကျွန်ုပ်၏ ရေဒီယိုများ"
+
+msgid "Mot-clé :"
+msgstr "အဓိကစကားလုံး-"
+
+msgid "Nouveaux uniquement"
+msgstr "အသစ်သာ"
+
+msgid "OPTIONS DE SESSION"
+msgstr "Session ရွေးစရာများ"
+
+msgid "Organisation des groupes et sous-groupes (Convention Linux)"
+msgstr "အုပ်စုများနှင့် အုပ်စုခွဲများဖွဲ့စည်းခြင်း (Linux Convention)"
+
+msgid "Ouvrez d'abord un groupe pour écouter ses radios."
+msgstr "၎င်း၏ ရေဒီယိုများကို နားထောင်ရန် အဖွဲ့တစ်ဖွဲ့ကို ဦးစွာဖွင့်ပါ။"
+
+msgid "Ouvrir"
+msgstr "ဖွင့်သည်။"
+
+msgid "Ouvrir ~/.config/timonde"
+msgstr "~/.config/timeonde ကိုဖွင့်ပါ။"
+
+msgid "Ouvrir ~/.config/timonde/examples"
+msgstr "~/.config/timeonde/examples ကိုဖွင့်ပါ။"
+
+msgid "Pays"
+msgstr "တိုင်းပြည်"
+
+msgid "Pays :"
+msgstr "နိုင်ငံ-"
+
+msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr "သင့် GNOME ဒက်စ်တော့၏ ထိပ်ဘားရှိ ကစားသင်္ကေတကို သတိရှိရှိပြသရန် <b>AppIndicator</b> စနစ် တိုးချဲ့မှု လိုအပ်ပါသည်။<br/><br/>၎င်းကို ယခု ထည့်သွင်းလိုပါသလား။"
+
+msgid "Préférences"
+msgstr "နှစ်သက်ရာ"
+
+msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
+msgstr "အရာအားလုံးကို အဖွဲ့တစ်ခုတည်းသို့ တင်သွင်းမည့်အစား ဖိုင်တွင် သတ်မှတ်ထားသော အုပ်စုခွဲများကို ထိန်းသိမ်းပါ။"
+
+msgid "Quitter"
+msgstr "ထွက်ပေါက်"
+
+msgid "Recharger"
+msgstr "ပြန်တင်ပါ။"
+
+msgid "Recharger le fichier actuellement affiché"
+msgstr "လက်ရှိပြသနေသောဖိုင်ကို ပြန်လည်စတင်ပါ။"
+
+msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
+msgstr "အခမဲ့နှင့် ပူးပေါင်းဆောင်ရွက်သော <b>ရေဒီယို-ဘရောက်ဆာ</b> လမ်းညွှန် (+45,000 ဘူတာများ) တွင် ကမ္ဘာတစ်ဝှမ်း ရှာဖွေမှု။"
+
+msgid "Recherche sur Radio-Browser en cours..."
+msgstr "Radio-Browser တွင် ရှာဖွေနေဆဲ..."
+
+msgid "Rechercher"
+msgstr "ရှာရန်"
+
+msgid "Rechercher en ligne"
+msgstr "အွန်လိုင်းရှာပါ။"
+
+msgid "Remplacer le lien sélectionné par un flux officiel actif"
+msgstr "ရွေးချယ်ထားသောလင့်ခ်ကို လက်ရှိတရားဝင်အဖိဒ်တစ်ခုဖြင့် အစားထိုးပါ။"
+
+msgid "Restaurer exemples"
+msgstr "ဥပမာများကို ပြန်ယူပါ။"
+
+msgid "Régions & Locales :"
+msgstr "ဒေသများနှင့် ဒေသန္တရ-"
+
+msgid "Réparer le flux..."
+msgstr "စီးဆင်းမှုကိုပြင်ပါ ..."
+
+msgid "Rétablir les 19 exemples d'origine"
+msgstr "မူရင်း နမူနာ ၁၉ ခုကို ပြန်ယူပါ။"
+
+msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgstr "လမ်းညွှန်ကို စူးစမ်းလေ့လာရန် သော့ချက်စကားလုံးကို ထည့်ပါ သို့မဟုတ် Search ကိုနှိပ်ပါ။"
+
+msgid "Sauvegarde réussie !"
+msgstr "အရန်သိမ်းခြင်း အောင်မြင်ပါပြီ။"
+
+msgid "Sauvegarder mes radios (XML)..."
+msgstr "ကျွန်ုပ်၏ ရေဒီယိုများ (XML) ကို သိမ်းဆည်းပါ..."
+
+msgid "Sauvegarder mes signets (XML)"
+msgstr "ကျွန်ုပ်၏ စာညှပ်များကို သိမ်းဆည်းပါ (XML)"
+
+msgid "Signets et radios enregistrés avec succès !"
+msgstr "စာညှပ်များနှင့် ရေဒီယိုများကို အောင်မြင်စွာ သိမ်းဆည်းပြီးပါပြီ။"
+
+msgid "Station"
+msgstr "အပန်းဖြေစခန်း"
+
+msgid "Statut Favoris"
+msgstr "အကြိုက်ဆုံးအခြေအနေ"
+
+msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
+msgstr "နိုင်ငံနှင့် ဒေသပေါင်း 146 မှ တရားဝင် စိစစ်ပြီး ရွေးချယ်ခြင်း (DAB+ ဒစ်ဂျစ်တယ် ပန်းစည်းများနှင့် အဓိက နိုင်ငံတော် ဘူတာများ)။"
+
+msgid "Sélectionnez une radio pour l'écouter."
+msgstr "၎င်းကိုနားဆင်ရန် ရေဒီယိုတစ်ခုကို ရွေးပါ။"
+
+msgid "Sélectionnez une station dans le tableau pour l'écouter."
+msgstr "၎င်းကိုနားဆင်ရန် စားပွဲမှ ဘူတာရုံတစ်ခုကို ရွေးပါ။"
+
+msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
+msgstr "နိုင်ငံတစ်ခုကို ရိုက်ထည့်ပါ (ဥပမာ- ပြင်သစ်၊ Deutschland၊ Canada...)"
+
+msgid "Tester"
+msgstr "စမ်း"
+
+msgid "Tester les flux"
+msgstr "စမ်းသပ်စီးဆင်းမှု"
+
+msgid "TiMonde — Intégration Bureau GNOME"
+msgstr "TiMonde — GNOME ဒက်စ်တော့ ပေါင်းစပ်မှု"
+
+msgid "Tous les fichiers (*.*)"
+msgstr "ဖိုင်အားလုံး (*.*)"
+
+msgid "Tous les pays (mondial)"
+msgstr "နိုင်ငံအားလုံး (ကမ္ဘာ့)"
+
+msgid "Tout cocher"
+msgstr "အားလုံးစစ်ဆေးပါ။"
+
+msgid "Tout décocher"
+msgstr "အားလုံးကို အမှန်ခြစ်ဖြုတ်ပါ။"
+
+msgid "Toutes les langues"
+msgstr "ဘာသာစကားအားလုံး"
+
+msgid "URL du flux"
+msgstr "Feed URL"
+
+msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
+msgstr "၎င်းကိုနားဆင်ရန် စာရင်းထဲမှ ရေဒီယိုတစ်ခုကို ရွေးပါ။"
+
+msgid "Vos signets complets ont été enregistrés dans :"
+msgstr "သင်၏ စာညှပ်များ အပြည့်အစုံကို တွင် သိမ်းဆည်းထားသည်-"
+
+msgid "Votes"
+msgstr "မဲများ"
+
+msgid "Vérifier en direct la disponibilité des liens"
+msgstr "လင့်ခ်ရရှိနိုင်မှုကို တိုက်ရိုက်ကြည့်ရှုပါ။"
+
+msgid "Vérifier la disponibilité en direct des radios"
+msgstr "တိုက်ရိုက်ရေဒီယိုရရှိနိုင်မှုကို စစ်ဆေးပါ။"
+
+msgid "Vérifier la disponibilité en direct des radios trouvées"
+msgstr "ရေဒီယိုများ၏ တိုက်ရိုက်ရရှိနိုင်မှုကို စစ်ဆေးတွေ့ရှိရပါသည်။"
+
+msgid "Vérifier la validité du lien et écouter un aperçu du flux"
+msgstr "လင့်ခ်တရားဝင်မှုကို စစ်ဆေးပြီး ထုတ်လွှင့်မှုကို အစမ်းကြည့်ရှုပါ။"
+
+msgid "ajoutée avec succès !"
+msgstr "အောင်မြင်စွာ ထည့်သွင်းခဲ့သည်။"
+
+msgid "fichiers exemples restaurés."
+msgstr "နမူနာဖိုင်များကို ပြန်လည်ရယူသည်။"
+
+msgid "nouvelle(s) radio(s) importée(s) !"
+msgstr "ရေဒီယိုအသစ် (များ) တင်သွင်းခဲ့သည်။"
+
+msgid "Écouter"
+msgstr "နားထောင်ပါ။"
+
+msgid "Écouter la radio sélectionnée"
+msgstr "ရွေးချယ်ထားသော ရေဒီယိုကို နားထောင်ပါ။"
+
+msgid "Écouter ou tester la radio sélectionnée"
+msgstr "ရွေးချယ်ထားသော ရေဒီယိုကို နားထောင်ပါ သို့မဟုတ် စမ်းသပ်ပါ။"
+

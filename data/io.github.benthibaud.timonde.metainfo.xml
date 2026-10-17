@@ -30,6 +30,26 @@
     <category>Player</category>
   </categories>
   <releases>
+    <release version="0.2.0" date="2026-10-17">
+      <description>
+        <p>Traduction intégrale native dans 56 langues avec catalogues Gettext compilés. Intégration de 146 bouquets DAB+ et sélections officielles par pays, 19 sélections thématiques restaurables, refonte ergonomique du sélecteur de bouquets et de l'organiseur avec outil de réparation des flux hors-ligne via Radio-Browser.</p>
+      </description>
+    </release>
+    <release version="0.1.3" date="2026-10-16">
+      <description>
+        <p>Amélioration majeure de la lisibilité et du contraste dans la barre des tâches (mode clair et sombre), cartouche en écoute aéré avec copie directe du titre musical au presse-papier, compatibilité totale antiX/IceWM/Fluxbox sans émoticônes cassées, et intégration du Centre de contrôle unifié.</p>
+      </description>
+    </release>
+    <release version="0.1.2" date="2026-10-16">
+      <description>
+        <p>Recherche de pays multilingue dans les 55 langues (DAB+ et Radio-Browser), enrichissement des alias linguistiques, persistance du volume sonore et fiabilisation atomique des favoris.</p>
+      </description>
+    </release>
+    <release version="0.1.1" date="2026-10-10">
+      <description>
+        <p>Harmonisation multi-bureaux (LXQt, XFCE, Cinnamon, KDE Plasma, GNOME) et support des thèmes d'icônes clairs/sombres.</p>
+      </description>
+    </release>
     <release version="0.1.0" date="2026-10-08">
       <description>
         <p>Version initiale avec support MPRIS2, bouquets DAB+ mondiaux et mode basse consommation.</p>

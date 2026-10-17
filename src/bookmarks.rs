@@ -206,41 +206,43 @@ pub fn save_bookmarks(group: &Group, path: impl AsRef<Path>) -> Result<(), Bookm
         let _ = std::fs::copy(path, bak_path);
     }
 
-    let file = File::create(path)?;
-    let mut writer = std::io::BufWriter::new(file);
+    let tmp_path = path.with_extension("xml.tmp");
+    {
+        let file = File::create(&tmp_path)?;
+        let mut writer = std::io::BufWriter::new(file);
 
-    writeln!(writer, "<bookmarks>")?;
-    for sub in &group.subgroups {
-        if sub.is_separator() {
-            let title = sub.separator_title().unwrap_or_default();
-            writeln!(writer, "\t<separator title=\"{}\"/>", escape_xml(&title))?;
-        } else {
-            write_group_xml(&mut writer, sub, 1)?;
+        writeln!(writer, "<bookmarks>")?;
+        for sub in &group.subgroups {
+            if sub.is_separator() {
+                let title = sub.separator_title().unwrap_or_default();
+                writeln!(writer, "\t<separator title=\"{}\"/>", escape_xml(&title))?;
+            } else {
+                write_group_xml(&mut writer, sub, 1)?;
+            }
         }
-    }
-    for st in &group.stations {
-        if st.is_separator() {
-            let title = st.separator_title().unwrap_or_default();
-            writeln!(writer, "\t<separator title=\"{}\"/>", escape_xml(&title))?;
-        } else if let Some(country) = &st.country {
-            writeln!(
-                writer,
-                "\t<bookmark name=\"{}\" url=\"{}\" country=\"{}\"/>",
-                escape_xml(&st.name),
-                escape_xml(&st.url),
-                escape_xml(country)
-            )?;
-        } else {
-            writeln!(
-                writer,
-                "\t<bookmark name=\"{}\" url=\"{}\"/>",
-                escape_xml(&st.name),
-                escape_xml(&st.url)
-            )?;
+        for st in &group.stations {
+            if st.is_separator() {
+                let title = st.separator_title().unwrap_or_default();
+                writeln!(writer, "\t<separator title=\"{}\"/>", escape_xml(&title))?;
+            } else {
+                let mut attrs = format!(
+                    "name=\"{}\" url=\"{}\"",
+                    escape_xml(&st.name),
+                    escape_xml(&st.url)
+                );
+                if let Some(country) = &st.country {
+                    attrs.push_str(&format!(" country=\"{}\"", escape_xml(country)));
+                }
+                if let Some(tz) = &st.timezone {
+                    attrs.push_str(&format!(" timezone=\"{}\"", escape_xml(tz)));
+                }
+                writeln!(writer, "\t<bookmark {}/>", attrs)?;
+            }
         }
+        writeln!(writer, "</bookmarks>")?;
+        writer.flush()?;
     }
-    writeln!(writer, "</bookmarks>")?;
-    writer.flush()?;
+    std::fs::rename(&tmp_path, path)?;
 
     Ok(())
 }
