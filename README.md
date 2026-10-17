@@ -46,33 +46,25 @@ sudo apt install ./timonde_0.2.0_amd64.deb
 sudo dnf install ./timonde-0.2.0-1.x86_64.rpm
 ```
 
-### 3. Installation universelle automatique (tous bureaux Linux)
+### 3. Installation depuis les sources (Makefile & Cargo)
 
-Un script d'installation tout-en-un avec détection automatique de votre environnement de bureau est fourni à la racine :
-
-```bash
-./install.sh
-```
-
-### 4. Compilation depuis les sources (toutes distributions)
-
-**Prérequis :** Rust (`cargo`), GStreamer et bibliothèques de développement :
-* **Debian/Ubuntu :** `sudo apt install cargo libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev python3-gi gir1.2-gtk-3.0`
-* **Fedora :** `sudo dnf install cargo gstreamer1-devel gstreamer1-plugins-base-devel python3-gobject gtk3`
-* **Arch Linux :** `sudo pacman -S rust gstreamer gst-plugins-base gst-plugins-good python-gobject gtk3`
-
-**Compilation et installation pour l'utilisateur courant :**
+Pour compiler et installer directement TiMonde pour l'utilisateur courant (sans mot de passe root requis) :
 
 ```bash
 git clone https://github.com/benthibaud/TiMonde.git
 cd TiMonde
-
-# Compilation en mode release
-cargo build --release
-
-# Installation dans ~/.local/bin et ~/.local/share
 make install-user
 ```
+
+Ou pour tous les utilisateurs du système :
+```bash
+sudo make install
+```
+
+**Prérequis de compilation :** Rust (`cargo`), GStreamer et bibliothèques GTK3 :
+* **Debian / Ubuntu / Mint :** `sudo apt install cargo libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev python3-gi gir1.2-gtk-3.0`
+* **Fedora / RHEL :** `sudo dnf install cargo gstreamer1-devel gstreamer1-plugins-base-devel python3-gobject gtk3`
+* **Arch Linux :** `sudo pacman -S rust gstreamer gst-plugins-base gst-plugins-good python-gobject gtk3`
 
 ---
 
