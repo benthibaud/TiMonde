@@ -21,21 +21,40 @@ Inspiré de l'esprit du classique *Radio Tray*, TiMonde se concentre sur l'essen
 
 ---
 
-## 🚀 Installation
+## 🚀 Installation & Téléchargements
+
+Les paquets précompilés officiels sont disponibles au téléchargement sur la page des [**Releases GitHub TiMonde**](https://github.com/benthibaud/TiMonde/releases/latest).
 
 ### 1. Sur Debian, Ubuntu et Linux Mint (paquet `.deb`)
 
-Téléchargez le paquet `.deb` précompilé ou générez-le localement :
+1. Téléchargez le paquet [**timonde_0.2.0_amd64.deb**](https://github.com/benthibaud/TiMonde/releases/latest) depuis les releases GitHub.
+2. Installez-le avec vos outils habituels ou en ligne de commande :
 
 ```bash
-# Génération et installation du paquet :
-make deb
-sudo dpkg -i packaging/deb/timonde_0.2.0_amd64.deb
+sudo apt install ./timonde_0.2.0_amd64.deb
+# ou : sudo dpkg -i timonde_0.2.0_amd64.deb
 ```
 
-*Dépendances requises :* `libgstreamer1.0-0`, `gstreamer1.0-plugins-base`, `gstreamer1.0-plugins-good`, `python3-gi`, `gir1.2-gtk-3.0`.
+*Dépendances système (automatiquement gérées par apt) :* `libgstreamer1.0-0`, `gstreamer1.0-plugins-base`, `gstreamer1.0-plugins-good`, `python3-gi`, `gir1.2-gtk-3.0`.
 
-### 2. Compilation depuis les sources (toutes distributions)
+### 2. Sur Fedora, RHEL et openSUSE (paquet `.rpm`)
+
+1. Téléchargez le paquet [**timonde-0.2.0-1.x86_64.rpm**](https://github.com/benthibaud/TiMonde/releases/latest).
+2. Installez-le avec `dnf` :
+
+```bash
+sudo dnf install ./timonde-0.2.0-1.x86_64.rpm
+```
+
+### 3. Installation universelle automatique (tous bureaux Linux)
+
+Un script d'installation tout-en-un avec détection automatique de votre environnement de bureau est fourni à la racine :
+
+```bash
+./install.sh
+```
+
+### 4. Compilation depuis les sources (toutes distributions)
 
 **Prérequis :** Rust (`cargo`), GStreamer et bibliothèques de développement :
 * **Debian/Ubuntu :** `sudo apt install cargo libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev python3-gi gir1.2-gtk-3.0`
