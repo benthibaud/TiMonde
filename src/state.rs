@@ -79,6 +79,25 @@ impl AppState {
     }
 }
 
+use std::sync::atomic::{AtomicU64, Ordering};
+
+static VOLUME_SAVE_GENERATION: AtomicU64 = AtomicU64::new(0);
+
+/// Planifie la persistance du volume dans state.json avec un anti-rebond (debounce) de 500 ms.
+/// Évite d'écrire et synchroniser sur disque à chaque cran de molette ou curseur de volume.
+pub fn schedule_volume_save(volume: f64) {
+    let gen = VOLUME_SAVE_GENERATION.fetch_add(1, Ordering::SeqCst) + 1;
+    std::thread::spawn(move || {
+        std::thread::sleep(std::time::Duration::from_millis(500));
+        if VOLUME_SAVE_GENERATION.load(Ordering::SeqCst) == gen {
+            let path = AppState::default_path();
+            let mut state = AppState::load(&path);
+            state.volume = volume;
+            let _ = state.save(&path);
+        }
+    });
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

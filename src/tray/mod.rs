@@ -19,6 +19,22 @@ use crate::radio_browser::{find_backup_stream, notify};
 /// Mémorisation de l'horodatage de la dernière écriture interne pour éviter les doubles rechargements
 pub static LAST_RELOAD_MTIME_MILLIS: AtomicU64 = AtomicU64::new(0);
 
+/// Déclenche un rafraîchissement asynchrone non-bloquant de l'icône du plateau.
+/// Clone le `Handle` de ksni (qui implémente `Clone` dans ksni 0.3.6), relâche immédiatement
+/// le verrou du `Mutex` pour interdire tout interblocage (*deadlock*), et exécute
+/// l'appel `update` bloquant dans un thread détaché.
+pub fn request_tray_refresh(handle_cell: &Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>) {
+    let handle_opt = {
+        let guard = handle_cell.lock().unwrap();
+        guard.clone()
+    };
+    if let Some(h) = handle_opt {
+        std::thread::spawn(move || {
+            h.update(|_| {});
+        });
+    }
+}
+
 pub struct TiMondeTray {
     pub(crate) audio: Arc<Mutex<Option<AudioEngine>>>,
     pub(crate) current_volume: Arc<Mutex<f64>>,
@@ -35,6 +51,10 @@ pub struct TiMondeTray {
 }
 
 impl TiMondeTray {
+    pub fn request_tray_refresh(handle_cell: &Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>) {
+        request_tray_refresh(handle_cell);
+    }
+
     pub fn new(root_group: Group, bookmarks_path: PathBuf) -> Self {
         let state = crate::state::AppState::load(&crate::state::AppState::default_path());
         let initial_last_station = if let Some(ref st) = state.last_station {
@@ -81,12 +101,7 @@ impl TiMondeTray {
                     }
                 }
 
-                let handle_cell = Arc::clone(tray_handle);
-                std::thread::spawn(move || {
-                    if let Some(ref h) = *handle_cell.lock().unwrap() {
-                        h.update(|_| {});
-                    }
-                });
+                request_tray_refresh(tray_handle);
 
                 Ok(total)
             }
@@ -329,12 +344,7 @@ impl TiMondeTray {
             &self.root_group,
             &self.bookmarks_path,
         );
-        let handle_cell = Arc::clone(&self.tray_handle);
-        std::thread::spawn(move || {
-            if let Some(ref h) = *handle_cell.lock().unwrap() {
-                h.update(|_| {});
-            }
-        });
+        Self::request_tray_refresh(&self.tray_handle);
     }
 
     /// Arrête la lecture et restitue la mémoire vers le système d'exploitation
@@ -361,12 +371,7 @@ impl TiMondeTray {
         self.play_generation.fetch_add(1, Ordering::SeqCst);
         self.is_ephemeral.store(false, Ordering::SeqCst);
         Self::stop_and_trim_flow(&self.audio, &self.current_station, &self.current_title);
-        let handle_cell = Arc::clone(&self.tray_handle);
-        std::thread::spawn(move || {
-            if let Some(ref h) = *handle_cell.lock().unwrap() {
-                h.update(|_| {});
-            }
-        });
+        Self::request_tray_refresh(&self.tray_handle);
     }
 
     pub fn play_ephemeral_station(&self, station: Station) {
@@ -396,18 +401,11 @@ impl TiMondeTray {
             Arc::clone(&self.current_volume),
             Arc::clone(&self.current_title),
             move || {
-                if let Some(ref h) = *handle_cell.lock().unwrap() {
-                    h.update(|_| {});
-                }
+                Self::request_tray_refresh(&handle_cell);
             },
         );
 
-        let handle_cell = Arc::clone(&self.tray_handle);
-        std::thread::spawn(move || {
-            if let Some(ref h) = *handle_cell.lock().unwrap() {
-                h.update(|_| {});
-            }
-        });
+        Self::request_tray_refresh(&self.tray_handle);
     }
 
     /// Choisit une station au hasard dans le catalogue mondial et lance sa lecture éphémère
@@ -596,9 +594,7 @@ impl TiMondeTray {
 
                     Self::stop_and_trim_flow(&audio, &current_station, &current_title);
                     notify("TiMonde", crate::i18n::tr("Sleep timer: stopping radio."));
-                    if let Some(ref h) = *tray_handle.lock().unwrap() {
-                        h.update(|_| {});
-                    }
+                    Self::request_tray_refresh(&tray_handle);
                 }
             }
         });
@@ -711,12 +707,7 @@ X-GNOME-Autostart-enabled=true\n";
         if let Some(ref e) = *self.audio.lock().unwrap() {
             e.set_volume(clamped);
         }
-        std::thread::spawn(move || {
-            let path = crate::state::AppState::default_path();
-            let mut state = crate::state::AppState::load(&path);
-            state.volume = clamped;
-            let _ = state.save(&path);
-        });
+        crate::state::schedule_volume_save(clamped);
     }
 
     pub(crate) fn find_first_station(group: &Group) -> Option<Station> {

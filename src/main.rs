@@ -608,12 +608,7 @@ fn main() {
     let trigger_tray_update = {
         let handle_cell = Arc::clone(&tray_handle_cell);
         Arc::new(move || {
-            let handle_cell = Arc::clone(&handle_cell);
-            std::thread::spawn(move || {
-                if let Some(ref h) = *handle_cell.lock().unwrap() {
-                    h.update(|_| {});
-                }
-            });
+            tray::request_tray_refresh(&handle_cell);
         })
     };
 
@@ -767,9 +762,7 @@ fn main() {
                     };
 
                     if is_active {
-                        if let Some(ref h) = *handle_clock.lock().unwrap() {
-                            h.update(|_| {});
-                        }
+                        tray::request_tray_refresh(&handle_clock);
                     }
                 }
             })

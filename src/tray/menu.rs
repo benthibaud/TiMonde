@@ -212,11 +212,7 @@ impl ksni::Tray for TiMondeTray {
             engine.set_volume(new_vol);
         }
         drop(guard);
-        std::thread::spawn(move || {
-            let mut state = crate::state::AppState::load(&crate::state::AppState::default_path());
-            state.volume = new_vol;
-            let _ = state.save(&crate::state::AppState::default_path());
-        });
+        crate::state::schedule_volume_save(new_vol);
     }
 
     fn menu(&self) -> Vec<MenuItem<Self>> {

@@ -12,6 +12,17 @@
 /// - Zéro processus externe forké, zéro allocation mémoire lourde.
 /// - Liaison dynamique FFI sans dépendance de compilation statique obligatoire.
 pub fn try_trigger_context_menu_x11() -> bool {
+    // Si la session est sous Wayland (pur ou avec XWayland), XTest ne doit pas être utilisé :
+    // il frapperait dans le vide ou n'atteindrait pas le compositeur Wayland.
+    // On laisse alors s'exécuter le repli D-Bus natif (show_menu.py).
+    if std::env::var_os("WAYLAND_DISPLAY").is_some()
+        || std::env::var("XDG_SESSION_TYPE")
+            .map(|v| v.eq_ignore_ascii_case("wayland"))
+            .unwrap_or(false)
+    {
+        return false;
+    }
+
     if std::env::var_os("DISPLAY").is_none() {
         return false;
     }

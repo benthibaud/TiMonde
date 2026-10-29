@@ -262,9 +262,7 @@ pub fn trigger_edit_station_dialog(
                             "TiMonde",
                             &format!("« {} » {}", station.name, crate::i18n::tr("deleted from your favorites.")),
                         );
-                        if let Some(ref h) = *tray_handle.lock().unwrap() {
-                            h.update(|_| {});
-                        }
+                        crate::tray::request_tray_refresh(&tray_handle);
                         return;
                     }
 
