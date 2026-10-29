@@ -32,6 +32,7 @@ from timonde_common import (
     update_btn_content,
     StreamPreviewPlayer,
     set_window_icon,
+    show_group_naming_help_dialog,
 )
 
 from timonde_world_data import (
@@ -511,24 +512,7 @@ class EditStationWindow(Gtk.Window):
         self.destroy()
 
     def on_show_group_naming_help(self, widget):
-        dialog = Gtk.MessageDialog(
-            transient_for=self,
-            flags=Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
-            type=Gtk.MessageType.INFO,
-            buttons=Gtk.ButtonsType.OK,
-            message_format="Organisation des groupes et sous-groupes (Convention Linux)"
-        )
-        dialog.format_secondary_markup(
-            "TiMonde utilise la convention des chemins avec le séparateur <b>/</b> :\n\n"
-            "• <b>/</b> ou <b>(Racine)</b> : Place la radio à la racine du menu (sans aucun groupe).\n"
-            "• <b>/Gabon</b> ou <b>Gabon</b> : Place la radio dans le groupe « Gabon ».\n"
-            "• <b>/France/Bretagne</b> : Place la radio dans le sous-groupe « Bretagne » sous « France ».\n"
-            "• <b>/Belgique/NL</b> : Place la radio dans le sous-groupe « NL » sous « Belgique ».\n"
-            "• <b>France/Radios locales ICI</b> : Sous-groupe à espaces sous « France ».\n\n"
-            "<i>Les groupes et sous-groupes sont créés automatiquement s'ils n'existent pas encore.</i>"
-        )
-        dialog.run()
-        dialog.destroy()
+        show_group_naming_help_dialog(self)
 
     def on_save_clicked(self, widget):
         self.preview_player.stop(silent=True)

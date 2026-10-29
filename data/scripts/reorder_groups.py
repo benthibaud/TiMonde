@@ -27,7 +27,16 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import strip_unsupported_emojis, make_btn, StreamPreviewPlayer, update_btn_content, check_stream_url, set_window_icon, find_script
+from timonde_common import (
+    strip_unsupported_emojis,
+    make_btn,
+    StreamPreviewPlayer,
+    update_btn_content,
+    check_stream_url,
+    set_window_icon,
+    find_script,
+    RepairStreamDialog,
+)
 try:
     from edit_station import EditStationWindow
 except ImportError:
@@ -38,57 +47,6 @@ import urllib.parse
 import urllib.error
 import re
 import threading
-
-USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-
-def search_radio_browser_replacement(station_name):
-    clean = re.sub(r'\s*-\s*[A-Za-z0-9\s,]+$', '', station_name).strip()
-    clean = re.sub(r'\(.*?\)', '', clean).strip()
-    clean = re.sub(r'\b(FM|AM|Radio|Webradio|Live)\b', '', clean, flags=re.IGNORECASE).strip()
-
-    candidates = []
-    queries = [clean]
-    if len(clean.split()) > 1 and len(clean.split()[0]) >= 4:
-        queries.append(clean.split()[0])
-
-    norm_target = re.sub(r'[^a-z0-9]', '', clean.lower())
-
-    for q in queries:
-        if len(q) < 3:
-            continue
-        for endpoint in ["https://de1.api.radio-browser.info", "https://all.api.radio-browser.info"]:
-            try:
-                api_url = f"{endpoint}/json/stations/byname/{urllib.parse.quote(q)}?limit=8"
-                req = urllib.request.Request(api_url, headers={"User-Agent": USER_AGENT})
-                with urllib.request.urlopen(req, timeout=3.0) as resp:
-                    if resp.getcode() == 200:
-                        data = json.loads(resp.read().decode("utf-8"))
-                        for s in data:
-                            s_name = s.get("name", "")
-                            norm_s = re.sub(r'[^a-z0-9]', '', s_name.lower())
-                            if norm_target in norm_s or norm_s in norm_target:
-                                u = (s.get("url_resolved") or s.get("url") or "").strip()
-                                bitrate = s.get("bitrate", 0)
-                                country = s.get("countrycode", "")
-                                if u and u.startswith("http"):
-                                    candidates.append((s_name, u, bitrate, country))
-                        break
-            except Exception:
-                continue
-
-    valid_candidates = []
-    for c_name, c_url, bitrate, country in candidates[:5]:
-        ok, msg, final_u = check_stream_url(c_url, timeout=3.0, with_redirect=True)
-        if ok is True:
-            valid_candidates.append({
-                "name": c_name,
-                "url": final_u or c_url,
-                "bitrate": bitrate,
-                "country": country,
-                "status": msg
-            })
-
-    return valid_candidates
 
 import gi
 
@@ -1662,88 +1620,20 @@ class ReorderWindow(Gtk.Window):
 
         st_name = st.get("name", "")
         old_url = st.get("url", "")
+        st_country = st.get("country", "")
 
-        # Dialogue de recherche
-        dialog = Gtk.Dialog(
-            title=f"Réparation de « {st_name} »",
-            parent=self.get_parent_window() if hasattr(self, "get_parent_window") else self,
-            flags=Gtk.DialogFlags.MODAL,
-            buttons=("Annuler", Gtk.ResponseType.CANCEL, "Remplacer l'URL", Gtk.ResponseType.OK)
-        )
-        dialog.set_default_size(520, 260)
-        dialog.set_response_sensitive(Gtk.ResponseType.OK, False)
-        box = dialog.get_content_area()
-        box.set_spacing(10)
-        box.set_border_width(12)
-
-        lbl_info = Gtk.Label(label=f"<b>Ancienne URL :</b> <small>{old_url}</small>")
-        lbl_info.set_use_markup(True)
-        lbl_info.set_halign(Gtk.Align.START)
-        lbl_info.set_ellipsize(Pango.EllipsizeMode.END)
-        box.add(lbl_info)
-
-        search_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-        spinner = Gtk.Spinner()
-        spinner.start()
-        search_box.pack_start(spinner, False, False, 0)
-        lbl_searching = Gtk.Label(label="Recherche d'un flux en direct sur Radio-Browser...")
-        search_box.pack_start(lbl_searching, False, False, 0)
-        box.add(search_box)
-
-        cands_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        scrolled = Gtk.ScrolledWindow()
-        scrolled.set_min_content_height(140)
-        scrolled.add(cands_box)
-        box.add(scrolled)
-
-        selected_candidate = [None]
-        dialog_active = [True]
-
-        def on_search_done(cands):
-            if not dialog_active[0]:
-                return
-            spinner.stop()
-            search_box.hide()
-            if cands:
-                lbl_title = Gtk.Label(label=f"<b>{len(cands)} flux actif{'s' if len(cands) > 1 else ''} trouvé{'s' if len(cands) > 1 else ''} :</b>")
-                lbl_title.set_use_markup(True)
-                lbl_title.set_halign(Gtk.Align.START)
-                cands_box.add(lbl_title)
-
-                radio_group = None
-                for c in cands:
-                    label_txt = f"{c['name']} [{c.get('country','')}] · {c.get('bitrate', 0)} kbps\n<small>{c['url']}</small>"
-                    rb = Gtk.RadioButton.new_with_label_from_widget(radio_group, label_txt)
-                    rb.get_child().set_use_markup(True)
-                    if radio_group is None:
-                        radio_group = rb
-                        selected_candidate[0] = c['url']
-                    rb.connect("toggled", lambda w, u=c['url']: selected_candidate.__setitem__(0, u))
-                    cands_box.add(rb)
-                dialog.set_response_sensitive(Gtk.ResponseType.OK, True)
-            else:
-                lbl_none = Gtk.Label(label="Aucun flux alternatif actif n'a pu être trouvé automatiquement.\nVous pouvez modifier l'URL manuellement avec le bouton Modifier.")
-                lbl_none.set_use_markup(True)
-                cands_box.add(lbl_none)
-            cands_box.show_all()
-
-        def background_search():
-            results = search_radio_browser_replacement(st_name)
-            GLib.idle_add(on_search_done, results)
-
-        threading.Thread(target=background_search, daemon=True).start()
-        dialog.show_all()
-
+        parent_win = self.get_parent_window() if hasattr(self, "get_parent_window") else self
+        dialog = RepairStreamDialog(parent_win, st_name, old_url, country_code=st_country)
         res = dialog.run()
-        dialog_active[0] = False
-        if res == Gtk.ResponseType.OK and selected_candidate[0]:
-            new_u = selected_candidate[0]
-            st["url"] = new_u
-            self.audit_results[new_u] = {"status": "online", "msg": "En direct (réparé)", "redirect": None}
-            self.show_feedback(f"Lien réparé avec succès pour « {st_name} » !")
-            self.update_view(select_idx=idx)
-
+        new_url = dialog.get_chosen_url()
         dialog.destroy()
+
+        if res == Gtk.ResponseType.OK and new_url:
+            st["url"] = new_url
+            self.audit_results[new_url] = {"status": "online", "msg": _("En direct (réparé)"), "redirect": None}
+            self.set_dirty(True)
+            self.show_feedback(f"{_('Lien réparé avec succès pour')} « {st_name} » !")
+            self.update_view(select_idx=idx)
 
     def write_csv_export(self, filepath):
         import csv

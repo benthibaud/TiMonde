@@ -26,7 +26,7 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import make_btn, safe_parse_xml, clean_stream_url, infer_timezone, normalize_group_path, find_or_create_group, set_window_icon, find_script
+from timonde_common import make_btn, safe_parse_xml, clean_stream_url, infer_timezone, normalize_group_path, find_or_create_group, set_window_icon, find_script, get_user_bookmarks_groups
 from reorder_groups import ReorderWindow
 from browse_bouquets import DiscoverRadiosWindow, parse_bouquets_xml
 from edit_station import EditStationWindow
@@ -92,23 +92,6 @@ def get_bookmarks_stats(path):
         return 0, 0
 
 
-def load_bookmarks_groups_list(path):
-    groups = []
-    if not os.path.isfile(path):
-        return groups
-    root = safe_parse_xml(path)
-    if root is None:
-        return groups
-    def walk(el, prefix):
-        for child in el.findall("group"):
-            name = child.attrib.get("name", "").strip() or child.attrib.get("title", "").strip()
-            if name and name.lower() != "root":
-                full = f"{prefix}/{name}" if prefix else name
-                if full not in groups:
-                    groups.append(full)
-                walk(child, full)
-    walk(root, "")
-    return groups
 
 
 def load_bookmarks_tree(path):
@@ -528,7 +511,7 @@ class SettingsWindow(Gtk.Window):
         current_grp = None
         if self.reorder_view.current_group_idx is not None:
             current_grp = self.reorder_view.data[self.reorder_view.current_group_idx].get("name", "")
-        groups = load_bookmarks_groups_list(self.bookmarks_path)
+        groups = get_user_bookmarks_groups(self.bookmarks_path)
         dlg = EditStationWindow(
             mode="add",
             current_group=current_grp or "",
@@ -573,7 +556,7 @@ class SettingsWindow(Gtk.Window):
                             "timezone": el.attrib.get("timezone", "")
                         })
 
-        available_groups = load_bookmarks_groups_list(self.bookmarks_path)
+        available_groups = get_user_bookmarks_groups(self.bookmarks_path)
         self.discover_view = DiscoverRadiosWindow(
             existing_stations=existing_stations,
             bouquets_db=bouquets_db,

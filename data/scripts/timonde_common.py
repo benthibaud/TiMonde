@@ -28,7 +28,9 @@ try:
 except ImportError:
     def _(s): return s
 
-USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) TiMonde/0.2.1"
+TIMONDE_USER_AGENT = "TiMonde/0.2.1"
+USER_AGENT = TIMONDE_USER_AGENT
+USER_AGENT_PROBE = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) TiMonde/0.2.1"
 
 
 # -----------------------------------------------------------------------------
@@ -192,23 +194,23 @@ def find_or_create_group(parent_elem, group_path: str):
     return curr
 
 
-def get_user_bookmarks_groups():
-    """Lit les groupes et sous-groupes existants depuis bookmarks.xml de l'utilisateur."""
-    candidates = [
+def get_user_bookmarks_groups(path=None):
+    """Lit les groupes et sous-groupes existants depuis bookmarks.xml (chemin spécifié ou par défaut)."""
+    candidates = [path] if path else [
         os.path.expanduser("~/.config/timonde/bookmarks.xml"),
         os.path.expanduser("~/.local/share/timonde/bookmarks.xml"),
         os.path.expanduser("~/.config/radiotray-ng/bookmarks.xml"),
         "bookmarks.xml",
     ]
     groups = []
-    for path in candidates:
-        if os.path.exists(path):
-            root = safe_parse_xml(path)
+    for cand in candidates:
+        if cand and os.path.exists(cand):
+            root = safe_parse_xml(cand)
             if root is not None:
                 def walk_groups(el, prefix):
                     for g in el.findall("group"):
                         g_title = g.attrib.get("title", "").strip() or g.attrib.get("name", "").strip()
-                        if g_title:
+                        if g_title and g_title.lower() != "root":
                             full = f"{prefix}/{g_title}" if prefix else g_title
                             if full not in groups:
                                 groups.append(full)
@@ -1069,4 +1071,240 @@ def find_script(script_name: str):
         if os.path.isfile(c):
             return c
     return None
+
+
+# -----------------------------------------------------------------------------
+# 8. API Radio-Browser & Boîte de Dialogue de Réparation de Flux
+# -----------------------------------------------------------------------------
+
+import urllib.request
+import urllib.parse
+import json
+from concurrent.futures import ThreadPoolExecutor
+
+RADIO_BROWSER_ENDPOINTS = [
+    "https://de1.api.radio-browser.info",
+    "https://nl1.api.radio-browser.info",
+    "https://at1.api.radio-browser.info",
+]
+
+
+def query_radio_browser(endpoint, path, params):
+    """Interroge l'annuaire Radio-Browser API de façon sécurisée avec TIMONDE_USER_AGENT."""
+    query_str = urllib.parse.urlencode(params)
+    url = f"{endpoint}/json/{path}?{query_str}"
+    req = urllib.request.Request(url, headers={"User-Agent": TIMONDE_USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=3.5) as resp:
+            if resp.getcode() == 200:
+                return json.loads(resp.read().decode("utf-8"))
+    except Exception:
+        pass
+    return None
+
+
+def search_radio_browser_api(name="", country_code="", tag="", language="", limit=30):
+    """Recherche multicritères sur les miroirs Radio-Browser (nom, pays, genre, langue)."""
+    try:
+        from timonde_world_data import NATIVE_LANGUAGE_NAMES
+    except ImportError:
+        NATIVE_LANGUAGE_NAMES = {}
+
+    lang_queries = []
+    if language:
+        lang_clean = language.strip().lower()
+        lang_queries.append(lang_clean)
+        if lang_clean in NATIVE_LANGUAGE_NAMES:
+            for nat_alias in NATIVE_LANGUAGE_NAMES[lang_clean][:3]:
+                if nat_alias not in lang_queries:
+                    lang_queries.append(nat_alias)
+    else:
+        lang_queries.append("")
+
+    all_stations = []
+    seen_keys = set()
+
+    for l_val in lang_queries:
+        params = {"limit": str(limit), "hidebroken": "true", "order": "votes", "reverse": "true"}
+        if name: params["name"] = name
+        if country_code:
+            cc_up = country_code.strip().upper()
+            params["countrycode"] = "GB" if cc_up == "UK" else cc_up
+        if tag: params["tag"] = tag
+        if l_val: params["language"] = l_val
+
+        for ep in RADIO_BROWSER_ENDPOINTS:
+            res = query_radio_browser(ep, "stations/search", params)
+            if res is not None:
+                for s in res:
+                    uid = s.get("stationuuid") or s.get("url_resolved") or s.get("url", "")
+                    clean_uid = uid.strip()
+                    if clean_uid and clean_uid not in seen_keys:
+                        seen_keys.add(clean_uid)
+                        all_stations.append(s)
+                break
+
+    return all_stations
+
+
+def show_group_naming_help_dialog(parent):
+    """Affiche la boîte de dialogue modale d'aide sur la convention Linux des groupes /."""
+    try:
+        import gi
+        gi.require_version("Gtk", "3.0")
+        from gi.repository import Gtk
+    except (ImportError, ValueError):
+        return
+
+    dialog = Gtk.MessageDialog(
+        transient_for=parent,
+        flags=Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
+        type=Gtk.MessageType.INFO,
+        buttons=Gtk.ButtonsType.OK,
+        message_format=_("Organisation des groupes et sous-groupes (Convention Linux)")
+    )
+    dialog.format_secondary_markup(
+        _("TiMonde utilise la convention des chemins avec le séparateur <b>/</b> :\n\n"
+          "• <b>/</b> ou <b>(Racine)</b> : Place la radio à la racine du menu (sans aucun groupe).\n"
+          "• <b>/Gabon</b> ou <b>Gabon</b> : Place la radio dans le groupe « Gabon ».\n"
+          "• <b>/France/Bretagne</b> : Place la radio dans le sous-groupe « Bretagne » sous « France ».\n"
+          "• <b>/Belgique/NL</b> : Place la radio dans le sous-groupe « NL » sous « Belgique ».\n"
+          "• <b>France/Radios locales ICI</b> : Sous-groupe à espaces sous « France ».\n\n"
+          "<i>Les groupes et sous-groupes sont créés automatiquement s'ils n'existent pas encore.</i>")
+    )
+    dialog.run()
+    dialog.destroy()
+
+
+try:
+    import gi
+    gi.require_version("Gtk", "3.0")
+    from gi.repository import Gtk, GLib
+    _GtkDialogBase = Gtk.Dialog
+except (ImportError, ValueError):
+    _GtkDialogBase = object
+
+
+class RepairStreamDialog(_GtkDialogBase):
+    """Boîte de dialogue partagée de recherche et réparation de flux radio via Radio-Browser."""
+
+    def __init__(self, parent, station_name, current_url, country_code=""):
+        if _GtkDialogBase is object:
+            raise RuntimeError("GTK 3.0 n'est pas disponible pour afficher ce dialogue.")
+
+        from gi.repository import Gtk, GLib
+        super().__init__(
+            title=f"{_('Remplacer le flux :')} {station_name}",
+            transient_for=parent,
+            modal=True,
+        )
+        self.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
+        self.add_button(_("Valider et remplacer"), Gtk.ResponseType.OK)
+        self.set_default_size(720, 420)
+        self.set_border_width(10)
+        self.station_name = station_name
+        self.country_code = country_code
+        self.selected_url = None
+
+        content = self.get_content_area()
+        content.set_spacing(10)
+
+        # En-tête explicatif
+        url_snippet = (current_url[:65] + "...") if len(current_url) > 65 else current_url
+        orig_title = _("Le flux d'origine ne répond plus :")
+        select_subtitle = _("Sélectionnez un flux de remplacement vérifié sur Radio-Browser :")
+        info_lbl = Gtk.Label(
+            label=f"<b>{orig_title}</b>\n"
+                  f"<small><tt>{html.escape(url_snippet)}</tt></small>\n\n"
+                  f"{select_subtitle}"
+        )
+        info_lbl.set_use_markup(True)
+        info_lbl.set_halign(Gtk.Align.START)
+        content.pack_start(info_lbl, False, False, 0)
+
+        # Barre de recherche
+        search_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        content.pack_start(search_box, False, False, 0)
+
+        self.entry_query = Gtk.Entry()
+        self.entry_query.set_text(station_name)
+        self.entry_query.set_hexpand(True)
+        self.entry_query.connect("activate", lambda w: self.perform_search())
+        search_box.pack_start(self.entry_query, True, True, 0)
+
+        btn_search = make_btn(_("Rechercher"), "system-search")
+        btn_search.connect("clicked", lambda w: self.perform_search())
+        search_box.pack_start(btn_search, False, False, 0)
+
+        # Liste des résultats: [name, codec, bitrate, country, url, votes]
+        self.store = Gtk.ListStore(str, str, str, str, str, int)
+        self.tree = Gtk.TreeView(model=self.store)
+
+        col_name = Gtk.TreeViewColumn(_("Station"), Gtk.CellRendererText(), text=0)
+        col_name.set_expand(True)
+        self.tree.append_column(col_name)
+
+        col_codec = Gtk.TreeViewColumn(_("Format"), Gtk.CellRendererText(), text=1)
+        self.tree.append_column(col_codec)
+
+        col_bitrate = Gtk.TreeViewColumn(_("Débit"), Gtk.CellRendererText(), text=2)
+        self.tree.append_column(col_bitrate)
+
+        col_country = Gtk.TreeViewColumn(_("Pays"), Gtk.CellRendererText(), text=3)
+        self.tree.append_column(col_country)
+
+        col_votes = Gtk.TreeViewColumn(_("Popularité"), Gtk.CellRendererText(), text=5)
+        self.tree.append_column(col_votes)
+
+        scroll = Gtk.ScrolledWindow()
+        scroll.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        scroll.set_shadow_type(Gtk.ShadowType.IN)
+        scroll.add(self.tree)
+        content.pack_start(scroll, True, True, 0)
+
+        self.lbl_status = Gtk.Label(label=_("Recherche des flux en cours..."))
+        self.lbl_status.set_halign(Gtk.Align.START)
+        content.pack_start(self.lbl_status, False, False, 0)
+
+        self.show_all()
+        GLib.idle_add(self.perform_search)
+
+    def perform_search(self):
+        from gi.repository import GLib
+        query = self.entry_query.get_text().strip()
+        self.lbl_status.set_text(_("Searching on Radio-Browser..."))
+        self.store.clear()
+
+        def worker():
+            results = search_radio_browser_api(name=query, country_code=self.country_code, limit=20)
+            if not results and self.country_code:
+                results = search_radio_browser_api(name=query, limit=20)
+
+            def on_done():
+                if not results:
+                    self.lbl_status.set_text(_("No stream found for this name. Modify the text above."))
+                    return
+                for r in results:
+                    name = r.get("name", "Sans nom")
+                    codec = r.get("codec", "MP3")
+                    bitrate = f"{r.get('bitrate', 128)} kbps" if r.get('bitrate') else "-"
+                    country = r.get("country", "")
+                    url = r.get("url_resolved") or r.get("url", "")
+                    votes = r.get("votes", 0)
+                    self.store.append([name, codec, bitrate, country, url, votes])
+                self.lbl_status.set_text(_("{count} streams found. Select the desired stream and validate.").format(count=len(results)))
+                it = self.store.get_iter_first()
+                if it:
+                    self.tree.get_selection().select_iter(it)
+
+            GLib.idle_add(on_done)
+
+        ThreadPoolExecutor(max_workers=1).submit(worker)
+
+    def get_chosen_url(self):
+        model, tree_iter = self.tree.get_selection().get_selected()
+        if tree_iter:
+            return model[tree_iter][4]
+        return None
+
 

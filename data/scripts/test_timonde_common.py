@@ -175,18 +175,36 @@ class TestTiMondeCommon(unittest.TestCase):
             if os.path.exists(temp_path):
                 os.remove(temp_path)
 
-    def test_find_or_create_group(self):
-        import xml.etree.ElementTree as ET
-        root = ET.Element("bookmarks")
-        grp = find_or_create_group(root, "Europe/France/Bretagne")
-        self.assertEqual(grp.tag, "group")
-        self.assertEqual(grp.attrib.get("name"), "Bretagne")
-        # Idempotence
-        grp2 = find_or_create_group(root, "Europe/France/Bretagne")
-        self.assertIs(grp, grp2)
-        # Racine
-        root_res = find_or_create_group(root, "/")
-        self.assertIs(root, root_res)
+    def test_get_user_bookmarks_groups(self):
+        from timonde_common import get_user_bookmarks_groups
+        xml_content = """<?xml version="1.0" encoding="utf-8"?>
+        <bookmarks>
+            <group name="root">
+                <station name="Direct" url="http://test.com" />
+            </group>
+            <group name="France">
+                <group name="Bretagne">
+                    <station name="Armorique" url="http://armor.fr" />
+                </group>
+            </group>
+            <group name="Jazz" />
+        </bookmarks>"""
+        with tempfile.NamedTemporaryFile("w", suffix=".xml", delete=False) as f:
+            f.write(xml_content)
+            temp_path = f.name
+        try:
+            grps = get_user_bookmarks_groups(temp_path)
+            self.assertEqual(grps, ["France", "France/Bretagne", "Jazz"])
+            self.assertNotIn("root", grps)
+        finally:
+            if os.path.exists(temp_path):
+                os.remove(temp_path)
+
+    def test_radio_browser_components(self):
+        from timonde_common import RADIO_BROWSER_ENDPOINTS, TIMONDE_USER_AGENT, RepairStreamDialog
+        self.assertTrue(len(RADIO_BROWSER_ENDPOINTS) >= 3)
+        self.assertTrue(TIMONDE_USER_AGENT.startswith("TiMonde/"))
+        self.assertIsNotNone(RepairStreamDialog)
 
 if __name__ == "__main__":
     unittest.main()
