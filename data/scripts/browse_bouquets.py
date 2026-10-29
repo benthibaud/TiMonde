@@ -51,6 +51,8 @@ from timonde_common import (
     search_radio_browser_api,
     show_group_naming_help_dialog,
     RepairStreamDialog,
+    status_markup,
+    apply_timonde_app_css,
 )
 
 from timonde_world_data import (
@@ -80,7 +82,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 import gi
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gdk, GLib
+from gi.repository import Gtk, Gdk, GLib, Pango
 
 # -----------------------------------------------------------------------------
 # Configuration & Constantes / Configuration & Constants
@@ -523,6 +525,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.on_import_callback = on_import_callback
         self.on_export_csv_callback = on_export_csv_callback
         self.on_backup_xml_callback = on_backup_xml_callback
+        apply_timonde_app_css()
         if not embedded:
             super().__init__(title=_("Découvrir et importer des radios (TiMonde)"))
             screen = Gdk.Screen.get_default()
@@ -869,34 +872,49 @@ class DiscoverRadiosWindow(Gtk.Window):
         renderer_rb_check = Gtk.CellRendererToggle()
         renderer_rb_check.connect("toggled", self.on_rb_check_toggled)
         col_rb_check = Gtk.TreeViewColumn(_("Ajouter"), renderer_rb_check, active=0)
+        col_rb_check.set_resizable(False)
         self.rb_tree.append_column(col_rb_check)
 
-        col_rb_name = Gtk.TreeViewColumn(_("Station"), Gtk.CellRendererText(), text=1)
+        rend_rb_name = Gtk.CellRendererText()
+        rend_rb_name.set_property("ellipsize", Pango.EllipsizeMode.END)
+        col_rb_name = Gtk.TreeViewColumn(_("Station"), rend_rb_name, text=1)
         col_rb_name.set_expand(True)
+        col_rb_name.set_resizable(True)
+        col_rb_name.set_min_width(120)
         self.rb_tree.append_column(col_rb_name)
 
         col_rb_c = Gtk.TreeViewColumn(_("Pays"), Gtk.CellRendererText(), text=2)
-        col_rb_c.set_fixed_width(65)
+        col_rb_c.set_resizable(True)
+        col_rb_c.set_min_width(45)
         self.rb_tree.append_column(col_rb_c)
 
-        col_rb_tags = Gtk.TreeViewColumn(_("Genre / Tags"), Gtk.CellRendererText(), text=3)
-        col_rb_tags.set_fixed_width(160)
+        rend_rb_tags = Gtk.CellRendererText()
+        rend_rb_tags.set_property("ellipsize", Pango.EllipsizeMode.END)
+        col_rb_tags = Gtk.TreeViewColumn(_("Genre / Tags"), rend_rb_tags, text=3)
+        col_rb_tags.set_resizable(True)
+        col_rb_tags.set_min_width(90)
         self.rb_tree.append_column(col_rb_tags)
 
         col_rb_codec = Gtk.TreeViewColumn(_("Format & Débit"), Gtk.CellRendererText(), text=4)
-        col_rb_codec.set_fixed_width(120)
+        col_rb_codec.set_resizable(True)
+        col_rb_codec.set_min_width(75)
         self.rb_tree.append_column(col_rb_codec)
 
-        col_rb_health = Gtk.TreeViewColumn(_("Disponibilité"), Gtk.CellRendererText(), markup=8)
-        col_rb_health.set_fixed_width(150)
+        rend_rb_health = Gtk.CellRendererText()
+        rend_rb_health.set_property("ellipsize", Pango.EllipsizeMode.END)
+        col_rb_health = Gtk.TreeViewColumn(_("Disponibilité"), rend_rb_health, markup=8)
+        col_rb_health.set_resizable(True)
+        col_rb_health.set_min_width(105)
         self.rb_tree.append_column(col_rb_health)
 
         col_rb_dup = Gtk.TreeViewColumn(_("Statut Favoris"), Gtk.CellRendererText(), markup=9)
-        col_rb_dup.set_fixed_width(130)
+        col_rb_dup.set_resizable(True)
+        col_rb_dup.set_min_width(85)
         self.rb_tree.append_column(col_rb_dup)
 
         col_rb_votes = Gtk.TreeViewColumn(_("Votes"), Gtk.CellRendererText(), text=5)
-        col_rb_votes.set_fixed_width(65)
+        col_rb_votes.set_resizable(True)
+        col_rb_votes.set_min_width(45)
         self.rb_tree.append_column(col_rb_votes)
 
         scroll_rb = Gtk.ScrolledWindow()
@@ -1011,24 +1029,35 @@ class DiscoverRadiosWindow(Gtk.Window):
         renderer_check = Gtk.CellRendererToggle()
         renderer_check.connect("toggled", self.on_bouquet_check_toggled)
         col_check = Gtk.TreeViewColumn(_("Importer"), renderer_check, active=0)
+        col_check.set_resizable(False)
         self.bouquet_tree.append_column(col_check)
 
-        col_name = Gtk.TreeViewColumn(_("Station"), Gtk.CellRendererText(), text=1)
+        rend_name = Gtk.CellRendererText()
+        rend_name.set_property("ellipsize", Pango.EllipsizeMode.END)
+        col_name = Gtk.TreeViewColumn(_("Station"), rend_name, text=1)
         col_name.set_expand(True)
+        col_name.set_resizable(True)
+        col_name.set_min_width(130)
         self.bouquet_tree.append_column(col_name)
 
-        col_genre = Gtk.TreeViewColumn(_("Genre / Thématique"), Gtk.CellRendererText(), text=2)
-        col_genre.set_fixed_width(170)
+        rend_genre = Gtk.CellRendererText()
+        rend_genre.set_property("ellipsize", Pango.EllipsizeMode.END)
+        col_genre = Gtk.TreeViewColumn(_("Genre / Thématique"), rend_genre, text=2)
+        col_genre.set_resizable(True)
+        col_genre.set_min_width(110)
         self.bouquet_tree.append_column(col_genre)
 
-        renderer_health = Gtk.CellRendererText()
-        col_health = Gtk.TreeViewColumn(_("Disponibilité en direct"), renderer_health, markup=3)
-        col_health.set_fixed_width(160)
+        rend_health = Gtk.CellRendererText()
+        rend_health.set_property("ellipsize", Pango.EllipsizeMode.END)
+        col_health = Gtk.TreeViewColumn(_("Disponibilité en direct"), rend_health, markup=3)
+        col_health.set_resizable(True)
+        col_health.set_min_width(115)
         self.bouquet_tree.append_column(col_health)
 
-        renderer_dup = Gtk.CellRendererText()
-        col_dup = Gtk.TreeViewColumn(_("Statut Favoris"), renderer_dup, markup=4)
-        col_dup.set_fixed_width(150)
+        rend_dup = Gtk.CellRendererText()
+        col_dup = Gtk.TreeViewColumn(_("Statut Favoris"), rend_dup, markup=4)
+        col_dup.set_resizable(True)
+        col_dup.set_min_width(90)
         self.bouquet_tree.append_column(col_dup)
 
         # Bannière informative pour pays sans bouquet DAB+ pré-embarqué (Pont Radio-Browser)
@@ -1184,30 +1213,46 @@ class DiscoverRadiosWindow(Gtk.Window):
         renderer_f_check = Gtk.CellRendererToggle()
         renderer_f_check.connect("toggled", self.on_files_check_toggled)
         col_f_check = Gtk.TreeViewColumn(_("Importer"), renderer_f_check, active=0)
+        col_f_check.set_resizable(False)
         self.files_tree.append_column(col_f_check)
 
-        col_f_name = Gtk.TreeViewColumn(_("Station"), Gtk.CellRendererText(), text=1)
+        rend_f_name = Gtk.CellRendererText()
+        rend_f_name.set_property("ellipsize", Pango.EllipsizeMode.END)
+        col_f_name = Gtk.TreeViewColumn(_("Station"), rend_f_name, text=1)
         col_f_name.set_expand(True)
+        col_f_name.set_resizable(True)
+        col_f_name.set_min_width(120)
         self.files_tree.append_column(col_f_name)
 
-        col_f_grp = Gtk.TreeViewColumn(_("Dossier / Groupe"), Gtk.CellRendererText(), text=2)
-        col_f_grp.set_fixed_width(170)
+        rend_f_grp = Gtk.CellRendererText()
+        rend_f_grp.set_property("ellipsize", Pango.EllipsizeMode.END)
+        col_f_grp = Gtk.TreeViewColumn(_("Dossier / Groupe"), rend_f_grp, text=2)
+        col_f_grp.set_resizable(True)
+        col_f_grp.set_min_width(90)
         self.files_tree.append_column(col_f_grp)
 
         col_f_country = Gtk.TreeViewColumn(_("Pays"), Gtk.CellRendererText(), text=3)
-        col_f_country.set_fixed_width(65)
+        col_f_country.set_resizable(True)
+        col_f_country.set_min_width(45)
         self.files_tree.append_column(col_f_country)
 
-        col_f_health = Gtk.TreeViewColumn(_("Disponibilité"), Gtk.CellRendererText(), markup=4)
-        col_f_health.set_fixed_width(150)
+        rend_f_health = Gtk.CellRendererText()
+        rend_f_health.set_property("ellipsize", Pango.EllipsizeMode.END)
+        col_f_health = Gtk.TreeViewColumn(_("Disponibilité"), rend_f_health, markup=4)
+        col_f_health.set_resizable(True)
+        col_f_health.set_min_width(105)
         self.files_tree.append_column(col_f_health)
 
         col_f_dup = Gtk.TreeViewColumn(_("Statut Favoris"), Gtk.CellRendererText(), markup=5)
-        col_f_dup.set_fixed_width(130)
+        col_f_dup.set_resizable(True)
+        col_f_dup.set_min_width(85)
         self.files_tree.append_column(col_f_dup)
 
-        col_f_url = Gtk.TreeViewColumn(_("URL du flux"), Gtk.CellRendererText(), text=6)
-        col_f_url.set_fixed_width(220)
+        rend_f_url = Gtk.CellRendererText()
+        rend_f_url.set_property("ellipsize", Pango.EllipsizeMode.END)
+        col_f_url = Gtk.TreeViewColumn(_("URL du flux"), rend_f_url, text=6)
+        col_f_url.set_resizable(True)
+        col_f_url.set_min_width(110)
         self.files_tree.append_column(col_f_url)
 
         scroll_files = Gtk.ScrolledWindow()
@@ -1512,17 +1557,17 @@ class DiscoverRadiosWindow(Gtk.Window):
                 while it:
                     if store.get_value(it, id_col) == item_id:
                         if is_ok in ("GEO", "GEOBLOCKED"):
-                            markup = f"<span foreground='#f57c00'><b>● {msg}</b></span>"
+                            markup = status_markup(f"● {msg}", kind="geo", bold=True)
                             store.set_value(it, health_col, markup)
                             if broken_col is not None:
                                 store.set_value(it, broken_col, False)
                         elif is_ok:
-                            markup = f"<span foreground='#2ecc71'><b>●</b> {msg}</span>"
+                            markup = status_markup(msg, kind="ok", with_bullet=True)
                             store.set_value(it, health_col, markup)
                             if broken_col is not None:
                                 store.set_value(it, broken_col, False)
                         else:
-                            markup = f"<span foreground='#e74c3c'><b>● {msg}</b></span>"
+                            markup = status_markup(f"● {msg}", kind="error", bold=True)
                             store.set_value(it, health_col, markup)
                             if broken_col is not None:
                                 store.set_value(it, broken_col, True)
@@ -1597,8 +1642,8 @@ class DiscoverRadiosWindow(Gtk.Window):
 
             is_dup = (clean_url in self.existing_urls) or (clean_name in self.existing_names)
             checked = False
-            status_note = "<span color='#888888'><i>(Déjà dans vos favoris)</i></span>" if is_dup else "<span color='#2e7d32'><b>Nouveau</b></span>"
-            health_note = "<span color='#888888'>Vérification...</span>"
+            status_note = status_markup(_("(Déjà dans vos favoris)"), kind="muted") if is_dup else status_markup(_("Nouveau"), kind="ok", bold=True)
+            health_note = status_markup(_("Vérification..."), kind="muted")
 
             self.bouquet_store.append([checked, name, genre, health_note, status_note, clean_url, is_dup, False, i])
             items_to_check.append((i, clean_url))
@@ -1621,7 +1666,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         while it:
             row_id = self.bouquet_store.get_value(it, 8)
             url = self.bouquet_store.get_value(it, 5)
-            self.bouquet_store.set_value(it, 3, "<span foreground='#888888'>Test...</span>")
+            self.bouquet_store.set_value(it, 3, status_markup(_("Testing..."), kind="muted"))
             items_to_check.append((row_id, url))
             it = self.bouquet_store.iter_next(it)
 
@@ -1782,9 +1827,8 @@ class DiscoverRadiosWindow(Gtk.Window):
 
                     is_dup = (url in self.existing_urls) or (name.lower() in self.existing_names)
                     dup_tag = _("[Present]") if is_dup else _("[New]")
-                    dup_color = "#e67e22" if is_dup else "#27ae60"
-                    dup_markup = f'<span foreground="{dup_color}">{dup_tag}</span>'
-                    health_markup = f'<span foreground="#95a5a6">{_("○ Untested")}</span>'
+                    dup_markup = status_markup(dup_tag, kind="warn" if is_dup else "new")
+                    health_markup = status_markup(f"○ {_('Untested')}", kind="untested")
                     self.rb_store.append([False, name, c_code, tags[:30], codec_str, votes, url, is_dup, health_markup, dup_markup, i])
 
                 self.lbl_rb_status.set_text(_("{count} stations found.").format(count=len(results)))
@@ -1800,7 +1844,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         while it:
             row_id = self.rb_store.get_value(it, 10)
             url = self.rb_store.get_value(it, 6)
-            self.rb_store.set_value(it, 8, f"<span foreground='#888888'>{_('Testing...')}</span>")
+            self.rb_store.set_value(it, 8, status_markup(_("Testing..."), kind="muted"))
             items_to_check.append((row_id, url))
             it = self.rb_store.iter_next(it)
 
@@ -1926,8 +1970,9 @@ class DiscoverRadiosWindow(Gtk.Window):
 
             is_dup = (url in self.existing_urls) or (name.strip().lower() in self.existing_names)
             checked = False
-            dup_markup = '<span foreground="#e67e22">[Présent]</span>' if is_dup else '<span foreground="#27ae60">[Nouveau]</span>'
-            health_markup = '<span foreground="#95a5a6">○ Non testé</span>'
+            dup_tag = _("[Present]") if is_dup else _("[New]")
+            dup_markup = status_markup(dup_tag, kind="warn" if is_dup else "new")
+            health_markup = status_markup(f"○ {_('Untested')}", kind="untested")
 
             # Store: [checked, name, group_display, country, health_markup, dup_markup, url, is_dup, is_dead, row_id, raw_group]
             self.files_store.append([checked, name, grp, country, health_markup, dup_markup, url, is_dup, False, i, grp])
@@ -1963,7 +2008,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         while it:
             row_id = self.files_store.get_value(it, 9)
             url = self.files_store.get_value(it, 6)
-            self.files_store.set_value(it, 4, "<span foreground='#888888'>Test...</span>")
+            self.files_store.set_value(it, 4, status_markup(_("Testing..."), kind="muted"))
             items_to_check.append((row_id, url))
             it = self.files_store.iter_next(it)
 

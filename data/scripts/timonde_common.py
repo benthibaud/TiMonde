@@ -16,6 +16,7 @@ import os
 import re
 import xml.etree.ElementTree as ET
 import collections
+import html
 
 # Neutralisation inconditionnelle d'IBus et XMODIFIERS dès le chargement du module
 for _var in ("GTK_IM_MODULE", "XMODIFIERS", "QT_IM_MODULE"):
@@ -778,6 +779,70 @@ def apply_timonde_menu_css():
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             )
             _MENU_CSS_APPLIED = True
+    except Exception:
+        pass
+
+
+def status_markup(text: str, kind: str = "ok", with_bullet: bool = False, bold: bool = False) -> str:
+    """
+    Génère un balisage Pango harmonisé pour les indicateurs d'état et de santé des flux,
+    garantissant un contraste optimal sur thèmes GTK clairs et sombres.
+    """
+    kind_lower = (kind or "ok").lower()
+    palette = {
+        "ok": "#2ecc71",
+        "online": "#2ecc71",
+        "success": "#2ecc71",
+        "new": "#2ecc71",
+        "warn": "#f39c12",
+        "warning": "#f39c12",
+        "geo": "#f39c12",
+        "geoblocked": "#f39c12",
+        "error": "#e74c3c",
+        "offline": "#e74c3c",
+        "dead": "#e74c3c",
+        "muted": "#888888",
+        "dim": "#888888",
+        "info": "#3498db",
+        "untested": "#888888",
+    }
+    color = palette.get(kind_lower, "#888888")
+    escaped = html.escape(str(text))
+    content = f"<b>{escaped}</b>" if bold else escaped
+    if with_bullet:
+        return f'<span foreground="{color}"><b>●</b> {content}</span>'
+    return f'<span foreground="{color}">{content}</span>'
+
+
+_APP_CSS_APPLIED = False
+
+def apply_timonde_app_css():
+    """Injecte un style GTK3 sobre et cohérent, respectant strictement le thème système (clair/sombre)."""
+    global _APP_CSS_APPLIED
+    if _APP_CSS_APPLIED:
+        return
+    try:
+        import gi
+        gi.require_version("Gtk", "3.0")
+        from gi.repository import Gtk, Gdk
+        provider = Gtk.CssProvider()
+        provider.load_from_data(b"""
+        .timonde-status-ok { color: #2ecc71; }
+        .timonde-status-warn { color: #f39c12; }
+        .timonde-status-error { color: #e74c3c; }
+        .timonde-status-muted { color: alpha(@theme_fg_color, 0.65); }
+        treeview.timonde-tree {
+            border-radius: 3px;
+        }
+        """)
+        screen = Gdk.Screen.get_default()
+        if screen:
+            Gtk.StyleContext.add_provider_for_screen(
+                screen,
+                provider,
+                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            )
+            _APP_CSS_APPLIED = True
     except Exception:
         pass
 

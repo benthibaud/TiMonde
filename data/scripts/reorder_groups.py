@@ -36,6 +36,8 @@ from timonde_common import (
     set_window_icon,
     find_script,
     RepairStreamDialog,
+    apply_timonde_app_css,
+    status_markup,
 )
 try:
     from edit_station import EditStationWindow
@@ -57,6 +59,7 @@ class ReorderWindow(Gtk.Window):
     def __init__(self, data, auto_check=False, embedded=False, on_save_callback=None):
         self.embedded = embedded
         self.on_save_callback = on_save_callback
+        apply_timonde_app_css()
         if not embedded:
             super().__init__(title=_("Organize groups and stations (TiMonde)"))
             self.set_default_size(760, 550)
@@ -141,6 +144,8 @@ class ReorderWindow(Gtk.Window):
         self.renderer_name.set_property("ellipsize", Pango.EllipsizeMode.END)
         self.col_name = Gtk.TreeViewColumn("Nom", self.renderer_name, text=2)
         self.col_name.set_expand(True)
+        self.col_name.set_resizable(True)
+        self.col_name.set_min_width(140)
         self.treeview.append_column(self.col_name)
 
         # Colonne 3 : Info (Radios / URL / Séparateur / État du flux)
@@ -148,7 +153,8 @@ class ReorderWindow(Gtk.Window):
         renderer_info.set_property("xalign", 1.0)
         renderer_info.set_property("ellipsize", Pango.EllipsizeMode.MIDDLE)
         self.col_info = Gtk.TreeViewColumn("Détails", renderer_info, markup=3)
-        self.col_info.set_fixed_width(180)
+        self.col_info.set_resizable(True)
+        self.col_info.set_min_width(120)
         self.treeview.append_column(self.col_info)
 
         # Défilement
@@ -448,16 +454,16 @@ class ReorderWindow(Gtk.Window):
                         st_val = audit.get("status")
                         st_msg = audit.get("msg", "")
                         if st_val == "online":
-                            info_str = "<span foreground='#2ecc71'>" + _("[OK] Live") + "</span>"
+                            info_str = status_markup(_("[OK] Live"), kind="ok")
                         elif st_val == "offline":
                             dead_label = _("[!] Dead link")
-                            info_str = f"<span foreground='#e74c3c'><b>{dead_label}</b> ({st_msg})</span>"
+                            info_str = status_markup(f"{dead_label} ({st_msg})", kind="error", bold=True)
                         elif st_val == "redirect":
-                            info_str = "<span foreground='#e67e22'>" + _("[~] Redirected") + "</span>"
+                            info_str = status_markup(_("[~] Redirected"), kind="warn")
                         elif st_val == "geo":
-                            info_str = "<span foreground='#f1c40f'>" + _("[?] Geo-restricted") + "</span>"
+                            info_str = status_markup(_("[?] Geo-restricted"), kind="geo")
                         else:
-                            info_str = st_msg
+                            info_str = html.escape(st_msg)
                     else:
                         country_tag = s.get("country", "")
                         if country_tag:

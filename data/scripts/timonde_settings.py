@@ -26,7 +26,7 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import make_btn, safe_parse_xml, clean_stream_url, infer_timezone, normalize_group_path, find_or_create_group, set_window_icon, find_script, get_user_bookmarks_groups
+from timonde_common import make_btn, safe_parse_xml, clean_stream_url, infer_timezone, normalize_group_path, find_or_create_group, set_window_icon, find_script, get_user_bookmarks_groups, apply_timonde_app_css
 from reorder_groups import ReorderWindow
 from browse_bouquets import DiscoverRadiosWindow, parse_bouquets_xml
 from edit_station import EditStationWindow
@@ -314,6 +314,7 @@ class SettingsWindow(Gtk.Window):
         self.setup_ui()
 
     def apply_custom_css(self):
+        apply_timonde_app_css()
         css_data = b"""
         .settings-card {
             background-color: alpha(@theme_base_color, 0.4);

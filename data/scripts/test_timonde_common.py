@@ -206,5 +206,22 @@ class TestTiMondeCommon(unittest.TestCase):
         self.assertTrue(TIMONDE_USER_AGENT.startswith("TiMonde/"))
         self.assertIsNotNone(RepairStreamDialog)
 
+    def test_status_markup(self):
+        from timonde_common import status_markup
+        ok_m = status_markup("En ligne", kind="ok")
+        self.assertIn("#2ecc71", ok_m)
+        self.assertIn("En ligne", ok_m)
+
+        err_m = status_markup("Mort", kind="error", bold=True)
+        self.assertIn("#e74c3c", err_m)
+        self.assertIn("<b>Mort</b>", err_m)
+
+        bullet_m = status_markup("Actif", kind="ok", with_bullet=True)
+        self.assertIn("<b>●</b>", bullet_m)
+
+        # Test d'échappement HTML anti-injection Pango
+        esc_m = status_markup("Rock & Roll <Live>", kind="info")
+        self.assertIn("Rock &amp; Roll &lt;Live&gt;", esc_m)
+
 if __name__ == "__main__":
     unittest.main()
