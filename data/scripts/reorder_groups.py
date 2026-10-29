@@ -115,6 +115,7 @@ class ReorderWindow(Gtk.Window):
         self.auto_check = auto_check
         self.current_group_idx = None  # None = vue Groupes, int = vue Radios du groupe data[idx]
         self.saved = False
+        self.dirty = False
         self.audit_results = {}  # url -> {"status": "online"|"offline"|"geo"|"redirect", "msg": str, "redirect": str|None}
         self.filter_broken_only = False
 
@@ -293,13 +294,35 @@ class ReorderWindow(Gtk.Window):
         spacer = Gtk.Box()
         btn_box.pack_start(spacer, True, True, 0)
 
-        btn_save = make_btn(_("Save and reload"), "document-save")
-        btn_save.get_style_context().add_class("suggested-action")
-        btn_save.connect("clicked", self.on_save_clicked)
-        btn_box.pack_start(btn_save, False, False, 0)
+        self.lbl_dirty_status = Gtk.Label()
+        self.lbl_dirty_status.set_valign(Gtk.Align.CENTER)
+        self.set_dirty(False)
+        btn_box.pack_start(self.lbl_dirty_status, False, False, 6)
+
+        save_label = _("Enregistrer maintenant") if self.embedded else _("Save and reload")
+        self.btn_save = make_btn(save_label, "document-save")
+        self.btn_save.get_style_context().add_class("suggested-action")
+        self.btn_save.connect("clicked", self.on_save_clicked)
+        btn_box.pack_start(self.btn_save, False, False, 0)
 
         # Affichage initial
         self.update_view()
+
+    def set_dirty(self, is_dirty=True):
+        self.dirty = is_dirty
+        if hasattr(self, "lbl_dirty_status") and self.lbl_dirty_status:
+            if is_dirty:
+                self.lbl_dirty_status.set_markup(_("<small><span foreground='#d97706' weight='bold'>● Modifications non enregistrées</span></small>"))
+            else:
+                self.lbl_dirty_status.set_markup(_("<small><span alpha='65%'>Tout est enregistré</span></small>"))
+
+    def flush_pending(self):
+        """Sauvegarde immédiatement les modifications en attente via on_save_callback si dirty."""
+        if getattr(self, "dirty", False) and self.on_save_callback:
+            self.on_save_callback(self.data)
+            self.set_dirty(False)
+            return True
+        return False
 
     def on_key_press_event(self, widget, event):
         # Vérifier si l'utilisateur appuie sur des raccourcis claviers globaux
@@ -686,9 +709,11 @@ class ReorderWindow(Gtk.Window):
                         moved.append(src_stations.pop(i))
                 moved.reverse()
                 new_grp["stations"].extend(moved)
+                self.set_dirty(True)
                 self.update_view()
                 self.show_feedback(f"Groupe « {name} » créé avec {len(moved)} radio(s) transférée(s)")
             else:
+                self.set_dirty(True)
                 if self.current_group_idx is None:
                     self.update_view(select_idx=len(self.data) - 1)
                 else:
@@ -829,6 +854,7 @@ class ReorderWindow(Gtk.Window):
                 else:
                     target_stations.extend(moved_items)
 
+                self.set_dirty(True)
                 self.update_view()
                 self.show_feedback(f"{len(moved_items)} élément(s) déplacé(s) vers « {target_name} »")
 
@@ -943,6 +969,7 @@ class ReorderWindow(Gtk.Window):
                         src_stations = src_grp.get("stations", [])
                         self.data[target_idx].setdefault("stations", []).extend(src_stations)
 
+                        self.set_dirty(True)
                         if should_del:
                             self.data.pop(src_idx)
                             self.update_view()
@@ -1042,6 +1069,7 @@ class ReorderWindow(Gtk.Window):
                             if i != target_idx and i < len(self.data):
                                 self.data.pop(i)
 
+                    self.set_dirty(True)
                     self.update_view()
                     self.show_feedback(f"{total_transferred} radio(s) transférée(s) dans « {target_grp['name']} »")
 
@@ -1078,6 +1106,7 @@ class ReorderWindow(Gtk.Window):
         if old_idx != new_idx:
             item = items.pop(old_idx)
             items.insert(new_idx, item)
+            self.set_dirty(True)
             self.update_view(select_idx=new_idx)
 
     def on_move_top_clicked(self, widget):
@@ -1086,6 +1115,7 @@ class ReorderWindow(Gtk.Window):
         if idx is not None and idx > 0:
             item = items.pop(idx)
             items.insert(0, item)
+            self.set_dirty(True)
             self.update_view(select_idx=0)
 
     def on_move_up_clicked(self, widget):
@@ -1093,6 +1123,7 @@ class ReorderWindow(Gtk.Window):
         items = self.get_current_list()
         if idx is not None and idx > 0:
             items[idx], items[idx - 1] = items[idx - 1], items[idx]
+            self.set_dirty(True)
             self.update_view(select_idx=idx - 1)
 
     def on_move_down_clicked(self, widget):
@@ -1100,12 +1131,14 @@ class ReorderWindow(Gtk.Window):
         items = self.get_current_list()
         if idx is not None and idx < len(items) - 1:
             items[idx], items[idx + 1] = items[idx + 1], items[idx]
+            self.set_dirty(True)
             self.update_view(select_idx=idx + 1)
 
     def on_sort_az_clicked(self, widget):
         items = self.get_current_list()
         # On trie en conservant un ordre alphabétique par nom
         items.sort(key=lambda x: x["name"].lower())
+        self.set_dirty(True)
         self.update_view(select_idx=0)
 
     def on_add_station_clicked(self, widget):
@@ -1128,6 +1161,7 @@ class ReorderWindow(Gtk.Window):
             target_grp_name = val.get("group") or current_grp_name
             target_grp = next((g for g in self.data if g["name"] == target_grp_name), grp)
             target_grp.setdefault("stations", []).append(new_st)
+            self.set_dirty(True)
             self.show_feedback(f"Radio « {val['name']} » ajoutée")
             self.update_view(select_idx=len(target_grp.get("stations", [])) - 1 if target_grp == grp else None)
 
@@ -1202,6 +1236,7 @@ class ReorderWindow(Gtk.Window):
             if self.current_group_idx is None:
                 new_sep["stations"] = []
             items.insert(insert_pos, new_sep)
+            self.set_dirty(True)
             self.update_view(select_idx=insert_pos)
         dialog.destroy()
 
@@ -1245,6 +1280,7 @@ class ReorderWindow(Gtk.Window):
                 target["name"] = new_title
                 target["url"] = ""
                 target["is_separator"] = True
+                self.set_dirty(True)
                 self.update_view(select_idx=idx)
             dialog.destroy()
         elif self.current_group_idx is None:
@@ -1279,6 +1315,7 @@ class ReorderWindow(Gtk.Window):
                         if g.get("name", "").startswith(old_name + "/"):
                             suffix = g["name"][len(old_name):]
                             g["name"] = f"{new_name}{suffix}"
+                    self.set_dirty(True)
                     self.update_view(select_idx=idx)
             dialog.destroy()
         else:
@@ -1291,6 +1328,7 @@ class ReorderWindow(Gtk.Window):
                     return
                 if val.get("action") == "delete":
                     items.pop(idx)
+                    self.set_dirty(True)
                     self.show_feedback(_("Station deleted"))
                     self.update_view()
                     return
@@ -1306,6 +1344,7 @@ class ReorderWindow(Gtk.Window):
                         items.pop(idx)
                         target_grp.setdefault("stations", []).append(target)
                         self.show_feedback(f"Radio déplacée vers « {new_grp_name} »")
+                self.set_dirty(True)
                 self.update_view(select_idx=idx if self.current_group_idx is not None else None)
 
             if EditStationWindow is not None:
@@ -1401,9 +1440,11 @@ class ReorderWindow(Gtk.Window):
                     if i < len(items):
                         items.pop(i)
             next_idx = min(indices[0], max(0, len(items) - 1)) if items else None
+            self.set_dirty(True)
             self.update_view(select_idx=next_idx)
 
     def on_destroy_window(self, widget=None):
+        self.flush_pending()
         if hasattr(self, "preview_player") and self.preview_player:
             self.preview_player.stop()
         if not getattr(self, "embedded", False):
@@ -1422,6 +1463,7 @@ class ReorderWindow(Gtk.Window):
             self.preview_player.stop()
         if self.on_save_callback:
             self.on_save_callback(self.data)
+            self.set_dirty(False)
         if not self.embedded:
             self.destroy()
 
@@ -1486,6 +1528,8 @@ class ReorderWindow(Gtk.Window):
                     s["url"] = self.audit_results[u]["redirect"]
                     count += 1
         self.btn_apply_redirects.hide()
+        if count > 0:
+            self.set_dirty(True)
         self.show_feedback(f"{count} flux redirigés mis à jour vers leur adresse directe !")
         self.update_view()
 

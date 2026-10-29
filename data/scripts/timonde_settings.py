@@ -543,11 +543,14 @@ class SettingsWindow(Gtk.Window):
     def on_embedded_station_added(self, data):
         if not data:
             return
+        if hasattr(self, "reorder_view"):
+            self.reorder_view.flush_pending()
         added = add_stations_to_bookmarks_xml(self.bookmarks_path, [data], default_group=data.get("group"))
         if added > 0:
             self.has_modifications = True
             payload = load_bookmarks_tree(self.bookmarks_path)
             self.reorder_view.data = payload
+            self.reorder_view.set_dirty(False)
             self.reorder_view.update_view()
             self.refresh_stats()
             self.show_feedback(f"« {data.get('name', 'Radio')} » {_('ajoutée avec succès !')}")
@@ -579,7 +582,7 @@ class SettingsWindow(Gtk.Window):
             embedded=True,
             on_import_callback=self.on_embedded_discovery_import,
             on_export_csv_callback=lambda: self.reorder_view.on_export_csv_clicked(),
-            on_backup_xml_callback=lambda: self.reorder_view.on_backup_xml_clicked(),
+            on_backup_xml_callback=lambda: (self.reorder_view.flush_pending(), self.reorder_view.on_backup_xml_clicked()),
         )
 
         # 3 Ateliers directs dans le volet principal
@@ -588,6 +591,8 @@ class SettingsWindow(Gtk.Window):
         self.stack.add_titled(self.discover_view.view_files, "files", _("Collections & Fichiers"))
 
     def on_embedded_discovery_import(self, result):
+        if hasattr(self, "reorder_view"):
+            self.reorder_view.flush_pending()
         stations = result.get("stations", [])
         grp_name = result.get("group_name", "Mes Radios")
         c_code = result.get("country_code")
@@ -596,6 +601,7 @@ class SettingsWindow(Gtk.Window):
             self.has_modifications = True
             payload = load_bookmarks_tree(self.bookmarks_path)
             self.reorder_view.data = payload
+            self.reorder_view.set_dirty(False)
             self.reorder_view.update_view()
             self.refresh_stats()
             self.show_feedback(f"{added} {_('nouvelle(s) radio(s) importée(s) !')}")
@@ -604,9 +610,11 @@ class SettingsWindow(Gtk.Window):
             self.show_feedback(_("Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."))
 
     def on_stack_page_changed(self, stack, gparam):
-        """Arrête instantanément toute lecture de pré-écoute lors du changement d'onglet."""
-        if hasattr(self, "reorder_view") and hasattr(self.reorder_view, "preview_player") and self.reorder_view.preview_player:
-            self.reorder_view.preview_player.stop(silent=True)
+        """Sauvegarde les modifications en attente et arrête la pré-écoute lors du changement d'onglet."""
+        if hasattr(self, "reorder_view"):
+            self.reorder_view.flush_pending()
+            if hasattr(self.reorder_view, "preview_player") and self.reorder_view.preview_player:
+                self.reorder_view.preview_player.stop(silent=True)
         if hasattr(self, "discover_view") and hasattr(self.discover_view, "preview_player") and self.discover_view.preview_player:
             self.discover_view.preview_player.stop(silent=True)
 
@@ -746,9 +754,12 @@ class SettingsWindow(Gtk.Window):
         self.destroy()
 
     def on_destroy_window(self, widget):
-        # Arrêt étanche des lecteurs de pré-écoute
-        if hasattr(self, "reorder_view") and hasattr(self.reorder_view, "preview_player") and self.reorder_view.preview_player:
-            self.reorder_view.preview_player.stop(silent=True)
+        # Sauvegarde étanche de toute modification de réorganisation en attente
+        if hasattr(self, "reorder_view"):
+            if self.reorder_view.flush_pending():
+                self.has_modifications = True
+            if hasattr(self.reorder_view, "preview_player") and self.reorder_view.preview_player:
+                self.reorder_view.preview_player.stop(silent=True)
         if hasattr(self, "discover_view") and hasattr(self.discover_view, "preview_player") and self.discover_view.preview_player:
             self.discover_view.preview_player.stop(silent=True)
         # Transmettre le résultat JSON sur stdout à destination de TiMonde en Rust
