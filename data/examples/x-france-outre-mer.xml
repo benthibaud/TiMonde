@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bookmarks>
+	<group name="France Outre-mer">
+		<group name="La Réunion">
+			<bookmark name="Réunion 1ère" url="https://reunion.ice.infomaniak.ch/reunion-128.mp3" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="102FM.RE" url="https://ecmanager4.pro-fhi.net/102fmoriginale" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Antenne Réunion Radio" url="https://rtlre.ice.infomaniak.ch/rtlre-64.aac" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="AZOT Radio" url="https://azotradio1.ice.infomaniak.ch/azotradio1-128.mp3" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Capital FM Réunion" url="https://capitalfmreunion.ice.infomaniak.ch/capitalfmreunion.mp3" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Chérie FM Réunion" url="https://streaming.nrjaudio.fm/ouw82wsk6j4d" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Exo FM" url="https://exofmreunion.ice.infomaniak.ch/exofmreunion-64.aac" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="FREE DOM 1" url="https://freedomice.streamakaci.com/freedom.mp3" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="FREE DOM 2" url="https://freedomice.streamakaci.com/freedom2.mp3" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="HIT FM" url="https://hitfm.ice.infomaniak.ch/hitfm-192.mp3" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="KreolFM Live" url="https://kreolfm.ice.infomaniak.ch/kreolfm-96.aac" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Kreolkoneksyon Radio" url="https://listen.radioking.com/radio/511600/stream/569401" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Le passage du chat blanc" url="https://play.radioking.io/wa-ho" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="louange radio" url="https://radio13.pro-fhi.net:19079/" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Love Hit Reunion" url="https://stream.zeno.fm/wcfjkonehdlvv.mp3" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="MaronRfm" url="https://listen.radioking.com/radio/331087/stream/379402" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="NRJ Réunion" url="https://streaming.nrjaudio.fm/ougonmrb92oc?origine=fluxradios" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Passion Tropical" url="https://listen.radioking.com/radio/7495/stream/16988" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Radio Coloris" url="https://listen.radioking.com/radio/1743/stream/125" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Radio First Réunion" url="http://radio7.pro-fhi.net/listen-zntwyaal-stream.mp3" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Radio Kayanm" url="https://hosting.studioradiomedia.fr:2245/stream" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Radio Merveille Océan Indien" url="https://listen.radioking.com/radio/694373/stream/759203" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Radio Oxygène" url="https://ecmanager2.pro-fhi.net:1535/stream" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Radio Pikan" url="https://stream4.vestaradio.com/RADIOPIKAN?nocache=6650" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Radio Sud Plus" url="http://srv1.coollabel-productions.com:8040/;" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="RC Radio Reconnaissance du Coeur" url="https://listen.radioking.com/radio/672001/stream/736156" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Rire et Chansons Réunion" url="https://streaming.nrjaudio.fm/oun3wuqn5eyc" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="RSL Radio" url="https://rslradio.ice.infomaniak.ch/rslradio-128.mp3" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Sensuelle Radio Réunion" url="https://radio10.pro-fhi.net/radio/9169/stream" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="SUN FM | 97.8 | 102 | 94.1" url="https://listen.radioking.com/radio/669814/stream/733864" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Sunlight FM" url="https://listen.radioking.com/radio/355933/stream/405250" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Top FM" url="https://radio6.pro-fhi.net/radio/9070/stream" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Urban Hit Réunion" url="https://listen.radioking.com/radio/400111/stream/452236" country="FR" timezone="Indian/Reunion"/>
+			<bookmark name="Waho" url="https://listen.radioking.com/radio/214300/stream/257431" country="FR" timezone="Indian/Reunion"/>
+		</group>
+		<group name="Guadeloupe">
+			<bookmark name="Guadeloupe La 1ère" url="https://guadeloupe.ice.infomaniak.ch/guadeloupe-128.mp3" country="GP" timezone="America/Guadeloupe"/>
+			<bookmark name="RCI Guadeloupe" url="https://rciguadeloupe.ice.infomaniak.ch/rciguadeloupe-64.aac" country="GP" timezone="America/Guadeloupe"/>
+			<bookmark name="Bel Radio Guadeloupe" url="https://belradioguadeloupe.ice.infomaniak.ch/belradioguadeloupe-64.aac" country="GP" timezone="America/Guadeloupe"/>
+		</group>
+		<group name="Martinique">
+			<bookmark name="Martinique La 1ère" url="https://martinique.ice.infomaniak.ch/martinique-128.mp3" country="MQ" timezone="America/Martinique"/>
+			<bookmark name="RCI Martinique" url="https://rcimartinique.ice.infomaniak.ch/rcimartinique-64.aac" country="MQ" timezone="America/Martinique"/>
+			<bookmark name="Radio Fusion" url="http://france16.coollabel-productions.com:8276/;listen.m3u" country="MQ" timezone="America/Martinique"/>
+		</group>
+		<group name="Mayotte">
+			<bookmark name="Mayotte La 1ère" url="https://mayotte.ice.infomaniak.ch/mayotte-128.mp3" country="YT" timezone="Indian/Mayotte"/>
+			<bookmark name="Radio Dziani" url="https://listen.radioking.com/radio/3331/stream/63166" country="YT" timezone="Indian/Mayotte"/>
+		</group>
+		<group name="Guyane">
+			<bookmark name="Guyane La 1ère" url="https://guyane.ice.infomaniak.ch/guyane-128.mp3" country="GF" timezone="America/Cayenne"/>
+			<bookmark name="Chérie FM Guyane" url="http://cheriefmguyane.ice.infomaniak.ch/cheriefmguyane-64.aac" country="GF" timezone="America/Cayenne"/>
+		</group>
+		<group name="Saint-Pierre-et-Miquelon">
+			<bookmark name="Saint-Pierre et Miquelon La 1ère" url="https://saint-pierreetmiquelon.ice.infomaniak.ch/saint-pierreetmiquelon-128.mp3" country="PM" timezone="America/Miquelon"/>
+		</group>
+		<group name="Nouvelle-Calédonie">
+			<bookmark name="Nouvelle-Calédonie La 1ère" url="https://nouvelle-caledonie.ice.infomaniak.ch/nouvelle-caledonie-128.mp3" country="NC" timezone="Pacific/Noumea"/>
+			<bookmark name="Radio Djiido" url="http://radiodjiido.nc:8002/" country="NC" timezone="Pacific/Noumea"/>
+		</group>
+		<group name="Polynésie française">
+			<bookmark name="Polynésie La 1ère" url="https://polynesie.ice.infomaniak.ch/polynesie-128.mp3" country="PF" timezone="Pacific/Tahiti"/>
+			<bookmark name="Tiare FM" url="https://live.tiarefm.pf:8443/tiarefm" country="PF" timezone="Pacific/Tahiti"/>
+		</group>
+	</group>
+</bookmarks>

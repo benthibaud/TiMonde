@@ -1098,3 +1098,123 @@ msgstr "選択したラジオを聞く"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "選択したラジオを聞くかテストします"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "応答がありません。バックアップストリームを検索中..."
+
+msgid "Stream repaired and saved for"
+msgstr "ストリームが修復され保存されました："
+
+msgid "is currently unavailable"
+msgstr "現在利用できません"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "花束カタログにステーションが見つかりません。"
+
+msgid "No radio is currently playing."
+msgstr "現在再生中のラジオはありません。"
+
+msgid "Selection"
+msgstr "選択"
+
+msgid "Save error"
+msgstr "保存エラー"
+
+msgid "Saved!"
+msgstr "保存完了！"
+
+msgid "saved in your favorites!"
+msgstr "お気に入りに保存されました！"
+
+msgid "Station added but reload error"
+msgstr "ステーションは追加されましたが再読み込みエラーが発生しました"
+
+msgid "Sleep timer activated"
+msgstr "おやすみタイマーが有効になりました"
+
+msgid "stopping in"
+msgstr "停止までの時間："
+
+msgid "Sleep timer: stopping radio."
+msgstr "おやすみタイマー：ラジオを停止します。"
+
+msgid "Sleep timer cancelled."
+msgstr "おやすみタイマーがキャンセルされました。"
+
+msgid "Track copied to clipboard:"
+msgstr "トラック情報をクリップボードにコピーしました："
+
+msgid "deleted from your favorites."
+msgstr "お気に入りから削除されました。"
+
+msgid "updated successfully!"
+msgstr "正常に更新されました！"
+
+msgid "Settings console not found"
+msgstr "設定コンソールが見つかりません"
+
+msgid "Paused"
+msgstr "一時停止"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Radio-Browser で検索中..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "この名前のストリームが見つかりません。上のテキストを変更してください。"
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} 件のストリームが見つかりました。希望のストリームを選択して確定してください。"
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "この国には事前読み込みされた DAB+ パックがありません。"
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "グローバルディレクトリから直接この地域のステーションを探索・インポートできます。"
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Radio-Browser で {country} のステーションを探索 ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Radio-Browser でこの国のステーションを探索"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "この国を事前に選択してグローバルディレクトリに切り替える"
+
+msgid "this country"
+msgstr "この国"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "{country} の DAB+ パックはありません — 「オンライン検索」をご利用ください。"
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} 件のステーションを選択中"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "{country} でこの言語のラジオは見つかりませんでした。「国で絞り込む」のチェックを外すか言語をクリアしてください。"
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "{country} で条件に一致するラジオは見つかりませんでした。「国で絞り込む」のチェックを外して全体を検索してください。"
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "これらの条件に一致するラジオは Radio-Browser で見つかりませんでした。"
+
+msgid "[Present]"
+msgstr "[登録済み]"
+
+msgid "[New]"
+msgstr "[新規]"
+
+msgid "○ Untested"
+msgstr "○ 未テスト"
+
+msgid "{count} stations found."
+msgstr "{count} 件のステーションが見つかりました。"
+
+msgid "Testing..."
+msgstr "テスト中..."
+
+msgid "{count} available timezones"
+msgstr "{count} 件のタイムゾーンが利用可能"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_gr}</b> グループ中の <b>{nb_st}</b> ステーション。"

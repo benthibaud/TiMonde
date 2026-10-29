@@ -28,6 +28,8 @@ try:
 except ImportError:
     def _(s): return s
 
+USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) TiMonde/0.2.1"
+
 
 # -----------------------------------------------------------------------------
 # 1. Nettoyage d'URLs & Utilitaires Textuels
@@ -104,6 +106,51 @@ def safe_parse_xml(path: str):
         return None
 
 
+def check_stream_url(url, timeout=3.0, with_redirect=False):
+    """
+    Test universel, frugal et rapide de disponibilité d'un flux audio (en-têtes HTTP uniquement).
+    Retourne (status, msg) par défaut, ou (status, msg, redirected_url) si with_redirect=True.
+    Status vaut True, False, ou 'GEO' (géo-restreint).
+    """
+    import urllib.request
+    import urllib.error
+    if not url or not url.strip():
+        return (False, "URL vide", None) if with_redirect else (False, "URL vide")
+    clean = url.strip()
+    try:
+        req = urllib.request.Request(
+            clean,
+            headers={
+                "User-Agent": USER_AGENT,
+                "Accept": "*/*",
+                "Icy-MetaData": "1",
+            }
+        )
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            code = resp.getcode()
+            final_url = resp.geturl()
+            redir = final_url if final_url != clean else None
+            if 200 <= code < 400:
+                ct = resp.headers.get("Content-Type", "")
+                codec = "Audio"
+                if "aac" in ct: codec = "AAC"
+                elif "mpeg" in ct or "mp3" in ct: codec = "MP3"
+                elif "ogg" in ct: codec = "OGG"
+                elif "flac" in ct: codec = "FLAC"
+                msg = f"En ligne ({codec})"
+                return (True, msg, redir) if with_redirect else (True, msg)
+            return (False, f"Erreur HTTP {code}", None) if with_redirect else (False, f"Erreur HTTP {code}")
+    except urllib.error.HTTPError as e:
+        if e.code in (403, 451) or (e.code == 503 and any(k in clean.lower() for k in ["amperwave", "audacy", "streamtheworld", "akamai", "geoblock", "leanstream"])):
+            return ("GEO", "Géobloqué (VPN)", None) if with_redirect else ("GEO", "Géobloqué (VPN)")
+        return (False, f"Erreur {e.code}", None) if with_redirect else (False, f"Erreur {e.code}")
+    except urllib.error.URLError:
+        return (False, "Serveur inaccessible", None) if with_redirect else (False, "Serveur inaccessible")
+    except Exception:
+        return (False, "Délai dépassé", None) if with_redirect else (False, "Délai dépassé")
+
+
+
 # -----------------------------------------------------------------------------
 # 3. Convention Linux pour les Groupes & Chemins (Arborescence '/')
 # -----------------------------------------------------------------------------
@@ -121,6 +168,28 @@ def normalize_group_path(raw_path: str, return_root_literal: bool = False) -> st
     if not cleaned:
         return "root" if return_root_literal else ""
     return cleaned
+
+
+def find_or_create_group(parent_elem, group_path: str):
+    """
+    Parcourt ou crée récursivement les éléments <group> XML correspondants à un chemin avec slashes (ex: /France/Bretagne).
+    Retourne l'élément parent_elem si le chemin est la racine ou vide.
+    """
+    norm = normalize_group_path(group_path, return_root_literal=False)
+    if not norm:
+        return parent_elem
+    parts = [p.strip() for p in norm.split("/") if p.strip() and p.strip().lower() != "root"]
+    curr = parent_elem
+    for part in parts:
+        found = None
+        for child in curr.findall("group"):
+            if child.attrib.get("name", "").strip().lower() == part.lower():
+                found = child
+                break
+        if found is None:
+            found = ET.SubElement(curr, "group", {"name": part})
+        curr = found
+    return curr
 
 
 def get_user_bookmarks_groups():
@@ -630,6 +699,29 @@ def update_btn_content(btn, label_text, icon_name=None):
 
 _MENU_CSS_APPLIED = False
 
+def set_window_icon(window, icon_name="timonde_on"):
+    """
+    Définit l'icône d'une fenêtre GTK3 en essayant les chemins système standard multi-résolutions ou le dossier local data/icons/.
+    """
+    for icon_path in [
+        f"/usr/share/icons/hicolor/48x48/apps/{icon_name}.png",
+        f"/usr/share/icons/hicolor/32x32/apps/{icon_name}.png",
+        f"/usr/share/icons/hicolor/24x24/apps/{icon_name}.png",
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), f"../icons/hicolor/48x48/apps/{icon_name}.png"),
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), f"../icons/{icon_name}.svg"),
+    ]:
+        if os.path.exists(icon_path):
+            try:
+                window.set_icon_from_file(icon_path)
+                return
+            except Exception:
+                pass
+    try:
+        window.set_icon_name("audio-x-generic")
+    except Exception:
+        pass
+
+
 def apply_timonde_menu_css():
     """Injecte la feuille de style GTK3 pour hiérarchiser visuellement l'en-tête 'En écoute'."""
     global _MENU_CSS_APPLIED
@@ -876,16 +968,16 @@ class StreamPreviewPlayer:
             err, _dbg = msg.parse_error()
             err_str = str(err.message) if err else "Flux illisible"
             self.stop(silent=True)
-            self._emit_status(False, f"❌ Flux inaccessible ({err_str})", is_error=True)
+            self._emit_status(False, f"[!] Flux inaccessible ({err_str})", is_error=True)
         elif t == self.Gst.MessageType.EOS:
             self.stop(silent=True)
-            self._emit_status(False, "⏹ Fin du flux", is_error=False)
+            self._emit_status(False, "[■] Fin du flux", is_error=False)
         elif t == self.Gst.MessageType.STATE_CHANGED:
             if msg.src == self.playbin:
                 _old, new_state, _pending = msg.parse_state_changed()
                 if new_state == self.Gst.State.PLAYING:
                     self.is_playing = True
-                    self._emit_status(True, f"🔊 En écoute : « {self.current_name or 'Radio'} »", is_error=False)
+                    self._emit_status(True, f"[►] En écoute : « {self.current_name or 'Radio'} »", is_error=False)
         elif t == self.Gst.MessageType.TAG:
             taglist = msg.parse_tag()
             ok, title = taglist.get_string("title")
@@ -893,7 +985,7 @@ class StreamPreviewPlayer:
                 self.is_playing = True
                 self._emit_status(
                     True,
-                    f"🔊 « {self.current_name or 'Radio'} » — ♪ {title.strip()}",
+                    f"[►] « {self.current_name or 'Radio'} » — ♪ {title.strip()}",
                     is_error=False
                 )
 
@@ -906,7 +998,7 @@ class StreamPreviewPlayer:
             station_name = "Radio"
         clean = clean_stream_url(url)
         if not clean:
-            self._emit_status(False, "❌ URL de flux vide", is_error=True)
+            self._emit_status(False, "[!] URL de flux vide", is_error=True)
             return False
         if self.is_playing and self.current_url == clean:
             self.stop()
@@ -920,11 +1012,11 @@ class StreamPreviewPlayer:
         import threading
         clean = clean_stream_url(url)
         if not clean:
-            self._emit_status(False, "❌ URL de flux vide", is_error=True)
+            self._emit_status(False, "[!] URL de flux vide", is_error=True)
             return False
 
         if not self._ensure_gst():
-            self._emit_status(False, "❌ GStreamer non disponible", is_error=True)
+            self._emit_status(False, "[!] GStreamer non disponible", is_error=True)
             return False
 
         self.stop(silent=True)
@@ -933,7 +1025,7 @@ class StreamPreviewPlayer:
         self.current_url = clean
         self.current_name = station_name or "Radio"
         self.is_playing = True
-        self._emit_status(True, f"⏳ Connexion à « {self.current_name} »...", is_error=False)
+        self._emit_status(True, f"[...] Connexion à « {self.current_name} »...", is_error=False)
 
         def start_worker(target_url, target_name):
             resolved = resolve_playlist_stream_url(target_url)
@@ -962,4 +1054,19 @@ class StreamPreviewPlayer:
         self.current_name = None
         if was_playing and not silent:
             self._emit_status(False, "", is_error=False)
+
+
+def find_script(script_name: str):
+    """Localise un script Python compagnon dans les répertoires standards ou locaux."""
+    candidates = [
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), script_name),
+        os.path.join("/usr/share/timonde/scripts", script_name),
+        os.path.join("/usr/local/share/timonde/scripts", script_name),
+        os.path.expanduser(f"~/.local/share/timonde/scripts/{script_name}"),
+        f"data/scripts/{script_name}"
+    ]
+    for c in candidates:
+        if os.path.isfile(c):
+            return c
+    return None
 

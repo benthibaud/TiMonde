@@ -27,7 +27,11 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import strip_unsupported_emojis, make_btn, StreamPreviewPlayer, update_btn_content
+from timonde_common import strip_unsupported_emojis, make_btn, StreamPreviewPlayer, update_btn_content, check_stream_url, set_window_icon, find_script
+try:
+    from edit_station import EditStationWindow
+except ImportError:
+    EditStationWindow = None
 
 import urllib.request
 import urllib.parse
@@ -36,35 +40,6 @@ import re
 import threading
 
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-
-def check_stream_url(url, timeout=3.5):
-    if not url or not url.strip():
-        return False, "URL vide", None
-    clean = url.strip()
-    try:
-        req = urllib.request.Request(
-            clean,
-            headers={
-                "User-Agent": USER_AGENT,
-                "Icy-MetaData": "1",
-                "Range": "bytes=0-1024"
-            }
-        )
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            code = resp.getcode()
-            final_url = resp.geturl()
-            redir = final_url if final_url != clean else None
-            if 200 <= code < 400:
-                return True, f"HTTP {code}", redir
-            return False, f"HTTP {code}", None
-    except urllib.error.HTTPError as e:
-        if e.code in (403, 451):
-            return "GEO", f"Géo-restreint ({e.code})", None
-        return False, f"Erreur {e.code}", None
-    except urllib.error.URLError as e:
-        return False, "Inaccessible", None
-    except Exception as e:
-        return False, "Délai dépassé", None
 
 def search_radio_browser_replacement(station_name):
     clean = re.sub(r'\s*-\s*[A-Za-z0-9\s,]+$', '', station_name).strip()
@@ -103,7 +78,7 @@ def search_radio_browser_replacement(station_name):
 
     valid_candidates = []
     for c_name, c_url, bitrate, country in candidates[:5]:
-        ok, msg, final_u = check_stream_url(c_url, timeout=3.0)
+        ok, msg, final_u = check_stream_url(c_url, timeout=3.0, with_redirect=True)
         if ok is True:
             valid_candidates.append({
                 "name": c_name,
@@ -130,21 +105,7 @@ class ReorderWindow(Gtk.Window):
             self.set_position(Gtk.WindowPosition.CENTER)
             self.set_border_width(12)
             
-            # Icône PNG native multi-résolutions
-            for icon_path in [
-                "/usr/share/icons/hicolor/48x48/apps/timonde_on.png",
-                "/usr/share/icons/hicolor/32x32/apps/timonde_on.png",
-                "/usr/share/icons/hicolor/24x24/apps/timonde_on.png",
-                os.path.join(os.path.dirname(os.path.abspath(__file__)), "../icons/hicolor/48x48/apps/timonde_on.png"),
-            ]:
-                if os.path.exists(icon_path):
-                    try:
-                        self.set_icon_from_file(icon_path)
-                        break
-                    except Exception:
-                        pass
-            else:
-                self.set_icon_name("audio-x-generic")
+            set_window_icon(self)
 
             self.connect("destroy", self.on_destroy_window)
         else:
@@ -264,15 +225,15 @@ class ReorderWindow(Gtk.Window):
         grid_order.set_column_homogeneous(True)
         side_box.pack_start(grid_order, False, False, 0)
 
-        btn_top = make_btn("⤒ " + _("Top"), "go-top", _("Move selected item to the top"))
+        btn_top = make_btn(_("Top"), "go-top", _("Move selected item to the top"))
         btn_top.connect("clicked", self.on_move_top_clicked)
         grid_order.attach(btn_top, 0, 0, 1, 1)
 
-        btn_up = make_btn("↑ " + _("Move up"), "go-up", _("Move up one rank"))
+        btn_up = make_btn(_("Move up"), "go-up", _("Move up one rank"))
         btn_up.connect("clicked", self.on_move_up_clicked)
         grid_order.attach(btn_up, 1, 0, 1, 1)
 
-        btn_down = make_btn("↓ " + _("Move down"), "go-down", _("Move down one rank"))
+        btn_down = make_btn(_("Move down"), "go-down", _("Move down one rank"))
         btn_down.connect("clicked", self.on_move_down_clicked)
         grid_order.attach(btn_down, 0, 1, 1, 1)
 
@@ -364,6 +325,13 @@ class ReorderWindow(Gtk.Window):
             return True
 
         return False
+
+    def get_parent_window(self):
+        if getattr(self, "embedded", False) and hasattr(self, "vbox"):
+            toplevel = self.vbox.get_toplevel()
+            if isinstance(toplevel, Gtk.Window):
+                return toplevel
+        return self
 
     def get_current_list(self):
         if self.current_group_idx is None:
@@ -573,23 +541,23 @@ class ReorderWindow(Gtk.Window):
         items = self.get_current_list()
 
         if self.current_group_idx is None:
-            item_open = Gtk.MenuItem(label="Ouvrir les radios")
+            item_open = Gtk.MenuItem(label=_("Ouvrir les radios"))
             item_open.connect("activate", self.on_open_clicked)
             menu.append(item_open)
 
-            item_new_g = Gtk.MenuItem(label="Nouveau groupe...")
+            item_new_g = Gtk.MenuItem(label=_("Nouveau groupe..."))
             item_new_g.connect("activate", self.on_create_group_clicked)
             menu.append(item_new_g)
 
-            item_move_g = Gtk.MenuItem(label="Transférer le contenu vers un autre groupe...")
+            item_move_g = Gtk.MenuItem(label=_("Transférer le contenu vers un autre groupe..."))
             item_move_g.connect("activate", self.on_move_to_clicked)
             menu.append(item_move_g)
 
-            item_edit = Gtk.MenuItem(label="Renommer le groupe...")
+            item_edit = Gtk.MenuItem(label=_("Renommer le groupe..."))
             item_edit.connect("activate", self.on_edit_clicked)
             menu.append(item_edit)
 
-            item_del = Gtk.MenuItem(label="Supprimer le groupe...")
+            item_del = Gtk.MenuItem(label=_("Supprimer le groupe..."))
             item_del.connect("activate", self.on_delete_clicked)
             menu.append(item_del)
         else:
@@ -599,45 +567,45 @@ class ReorderWindow(Gtk.Window):
             if not is_sep and target and target.get("url"):
                 clean_url = target.get("url", "").strip()
                 is_playing_this = (hasattr(self, "preview_player") and self.preview_player.is_playing and self.preview_player.current_url == clean_url)
-                lbl_audio = "Arrêter l'écoute" if is_playing_this else "Écouter cette radio"
+                lbl_audio = _("Arrêter l'écoute") if is_playing_this else _("Écouter cette radio")
                 item_audio = Gtk.MenuItem(label=lbl_audio)
                 item_audio.connect("activate", lambda w: self.on_preview_clicked(None))
                 menu.append(item_audio)
                 menu.append(Gtk.SeparatorMenuItem())
 
             if is_sep:
-                item_edit = Gtk.MenuItem(label="Modifier l'intertitre...")
+                item_edit = Gtk.MenuItem(label=_("Modifier l'intertitre..."))
                 item_edit.connect("activate", self.on_edit_clicked)
                 menu.append(item_edit)
             else:
-                item_edit = Gtk.MenuItem(label="Modifier la radio...")
+                item_edit = Gtk.MenuItem(label=_("Modifier la radio..."))
                 item_edit.connect("activate", self.on_edit_clicked)
                 menu.append(item_edit)
 
-            item_move_st = Gtk.MenuItem(label="Déplacer vers un autre groupe...")
+            item_move_st = Gtk.MenuItem(label=_("Déplacer vers un autre groupe..."))
             item_move_st.connect("activate", self.on_move_to_clicked)
             menu.append(item_move_st)
 
-            item_new_g_here = Gtk.MenuItem(label="Nouveau groupe...")
+            item_new_g_here = Gtk.MenuItem(label=_("Nouveau groupe..."))
             item_new_g_here.connect("activate", self.on_create_group_clicked)
             menu.append(item_new_g_here)
 
-            item_add_st = Gtk.MenuItem(label="Ajouter une radio...")
+            item_add_st = Gtk.MenuItem(label=_("Ajouter une radio..."))
             item_add_st.connect("activate", self.on_add_station_clicked)
             menu.append(item_add_st)
 
-            item_add_sep = Gtk.MenuItem(label="Insérer un séparateur ici...")
+            item_add_sep = Gtk.MenuItem(label=_("Insérer un séparateur ici..."))
             item_add_sep.connect("activate", self.on_add_separator_clicked)
             menu.append(item_add_sep)
 
-            item_top = Gtk.MenuItem(label="Placer en premier")
+            item_top = Gtk.MenuItem(label=_("Placer en premier"))
             item_top.connect("activate", self.on_move_top_clicked)
             menu.append(item_top)
 
             if is_sep:
-                item_del = Gtk.MenuItem(label="Supprimer ce séparateur")
+                item_del = Gtk.MenuItem(label=_("Supprimer ce séparateur"))
             else:
-                item_del = Gtk.MenuItem(label="Supprimer cette radio...")
+                item_del = Gtk.MenuItem(label=_("Supprimer cette radio..."))
             item_del.connect("activate", self.on_delete_clicked)
             menu.append(item_del)
 
@@ -651,7 +619,7 @@ class ReorderWindow(Gtk.Window):
     def on_create_group_clicked(self, widget):
         dialog = Gtk.Dialog(
             title="Créer un nouveau groupe",
-            transient_for=self,
+            transient_for=self.get_parent_window(),
             flags=0
         )
         dialog.add_button("Annuler", Gtk.ResponseType.CANCEL)
@@ -696,7 +664,7 @@ class ReorderWindow(Gtk.Window):
             for g in self.data:
                 if g["name"].strip().lower() == name.lower():
                     md = Gtk.MessageDialog(
-                        transient_for=self,
+                        transient_for=self.get_parent_window(),
                         flags=0,
                         message_type=Gtk.MessageType.WARNING,
                         buttons=Gtk.ButtonsType.OK,
@@ -731,7 +699,7 @@ class ReorderWindow(Gtk.Window):
         indices = self.get_selected_indices()
         if not indices:
             md = Gtk.MessageDialog(
-                transient_for=self,
+                transient_for=self.get_parent_window(),
                 flags=0,
                 message_type=Gtk.MessageType.INFO,
                 buttons=Gtk.ButtonsType.OK,
@@ -761,7 +729,7 @@ class ReorderWindow(Gtk.Window):
 
             dialog = Gtk.Dialog(
                 title="Déplacer vers un autre groupe",
-                transient_for=self,
+                transient_for=self.get_parent_window(),
                 flags=0
             )
             dialog.add_button("Annuler", Gtk.ResponseType.CANCEL)
@@ -875,7 +843,7 @@ class ReorderWindow(Gtk.Window):
 
                 if not available_targets:
                     md = Gtk.MessageDialog(
-                        transient_for=self,
+                        transient_for=self.get_parent_window(),
                         flags=0,
                         message_type=Gtk.MessageType.INFO,
                         buttons=Gtk.ButtonsType.OK,
@@ -888,7 +856,7 @@ class ReorderWindow(Gtk.Window):
 
                 dialog = Gtk.Dialog(
                     title="Déplacer ou fusionner le groupe",
-                    transient_for=self,
+                    transient_for=self.get_parent_window(),
                     flags=0
                 )
                 dialog.add_button("Annuler", Gtk.ResponseType.CANCEL)
@@ -990,7 +958,7 @@ class ReorderWindow(Gtk.Window):
 
                 dialog = Gtk.Dialog(
                     title="Transférer les groupes sélectionnés",
-                    transient_for=self,
+                    transient_for=self.get_parent_window(),
                     flags=0
                 )
                 dialog.add_button("Annuler", Gtk.ResponseType.CANCEL)
@@ -1148,13 +1116,38 @@ class ReorderWindow(Gtk.Window):
         current_grp_name = grp["name"]
         all_groups = [g["name"] for g in self.data]
 
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        edit_script = os.path.join(script_dir, "edit_station.py")
-        if not os.path.exists(edit_script):
-            for cand in ["/usr/share/timonde/scripts/edit_station.py", os.path.expanduser("~/.local/share/timonde/scripts/edit_station.py")]:
-                if os.path.exists(cand):
-                    edit_script = cand
-                    break
+        def on_station_added(val):
+            if not val:
+                return
+            new_st = {
+                "name": val["name"],
+                "url": val["url"],
+                "country": val.get("country"),
+                "timezone": val.get("timezone"),
+            }
+            target_grp_name = val.get("group") or current_grp_name
+            target_grp = next((g for g in self.data if g["name"] == target_grp_name), grp)
+            target_grp.setdefault("stations", []).append(new_st)
+            self.show_feedback(f"Radio « {val['name']} » ajoutée")
+            self.update_view(select_idx=len(target_grp.get("stations", [])) - 1 if target_grp == grp else None)
+
+        if EditStationWindow is not None:
+            dlg = EditStationWindow(
+                mode="add",
+                current_group=current_grp_name,
+                available_groups=all_groups,
+                standalone=False,
+                on_done_callback=on_station_added,
+            )
+            dlg.set_transient_for(self.get_parent_window())
+            dlg.set_modal(True)
+            dlg.show_all()
+            return
+
+        edit_script = find_script("edit_station.py")
+        if not edit_script:
+            self.show_feedback("Erreur : script edit_station.py introuvable.", is_success=False)
+            return
 
         cmd = [
             sys.executable, edit_script,
@@ -1166,24 +1159,14 @@ class ReorderWindow(Gtk.Window):
             res = subprocess.run(cmd, capture_output=True, text=True)
             if res.returncode == 0 and res.stdout.strip():
                 val = json.loads(res.stdout.strip())
-                new_st = {
-                    "name": val["name"],
-                    "url": val["url"],
-                    "country": val.get("country"),
-                    "timezone": val.get("timezone"),
-                }
-                target_grp_name = val.get("group") or current_grp_name
-                target_grp = next((g for g in self.data if g["name"] == target_grp_name), grp)
-                target_grp.setdefault("stations", []).append(new_st)
-                self.show_feedback(f"Radio « {val['name']} » ajoutée")
-                self.update_view(select_idx=len(target_grp.get("stations", [])) - 1 if target_grp == grp else None)
+                on_station_added(val)
         except Exception as e:
             sys.stderr.write(f"Erreur ajout station: {e}\n")
 
     def on_add_separator_clicked(self, widget):
         dialog = Gtk.Dialog(
             title="Insérer un séparateur",
-            parent=self,
+            parent=self.get_parent_window(),
             flags=Gtk.DialogFlags.MODAL,
             buttons=("Annuler", Gtk.ResponseType.CANCEL, "Insérer", Gtk.ResponseType.OK),
         )
@@ -1234,7 +1217,7 @@ class ReorderWindow(Gtk.Window):
             # Éditer le titre du séparateur (intertitre)
             dialog = Gtk.Dialog(
                 title="Modifier le titre du séparateur",
-                parent=self,
+                parent=self.get_parent_window(),
                 flags=Gtk.DialogFlags.MODAL,
                 buttons=("Annuler", Gtk.ResponseType.CANCEL, "Enregistrer", Gtk.ResponseType.OK),
             )
@@ -1268,7 +1251,7 @@ class ReorderWindow(Gtk.Window):
             # Éditer le nom du groupe
             dialog = Gtk.Dialog(
                 title="Renommer le groupe",
-                parent=self,
+                parent=self.get_parent_window(),
                 flags=Gtk.DialogFlags.MODAL,
                 buttons=("Annuler", Gtk.ResponseType.CANCEL, "Enregistrer", Gtk.ResponseType.OK),
             )
@@ -1298,50 +1281,54 @@ class ReorderWindow(Gtk.Window):
                             g["name"] = f"{new_name}{suffix}"
                     self.update_view(select_idx=idx)
             dialog.destroy()
-        elif self.is_item_separator(target):
-            # Éditer le titre du séparateur
-            dialog = Gtk.Dialog(
-                title="Modifier le titre du séparateur",
-                parent=self,
-                flags=Gtk.DialogFlags.MODAL,
-                buttons=("Annuler", Gtk.ResponseType.CANCEL, "Enregistrer", Gtk.ResponseType.OK),
-            )
-            dialog.set_default_size(380, 140)
-            box = dialog.get_content_area()
-            box.set_spacing(10)
-            box.set_border_width(12)
-
-            lbl = Gtk.Label(
-                label="Titre d'intertitre :\n<small>(Effacez tout pour un trait simple)</small>"
-            )
-            lbl.set_use_markup(True)
-            lbl.set_halign(Gtk.Align.START)
-            box.add(lbl)
-
-            entry = Gtk.Entry()
-            entry.set_text(target.get("name", ""))
-            box.add(entry)
-            dialog.show_all()
-
-            if dialog.run() == Gtk.ResponseType.OK:
-                new_title = entry.get_text().strip()
-                target["name"] = new_title
-                target["url"] = ""
-                target["is_separator"] = True
-                self.update_view(select_idx=idx)
-            dialog.destroy()
         else:
             # Éditer la radio via le composant unifié edit_station.py
-            script_dir = os.path.dirname(os.path.abspath(__file__))
-            edit_script = os.path.join(script_dir, "edit_station.py")
-            if not os.path.exists(edit_script):
-                for cand in ["/usr/share/timonde/scripts/edit_station.py", os.path.expanduser("~/.local/share/timonde/scripts/edit_station.py")]:
-                    if os.path.exists(cand):
-                        edit_script = cand
-                        break
-
             current_grp_name = self.data[self.current_group_idx]["name"] if self.current_group_idx is not None else ""
             all_groups = [g["name"] for g in self.data]
+
+            def on_station_edited(val):
+                if not val:
+                    return
+                if val.get("action") == "delete":
+                    items.pop(idx)
+                    self.show_feedback(_("Station deleted"))
+                    self.update_view()
+                    return
+                target["name"] = val["name"]
+                target["url"] = val["url"]
+                target["country"] = val.get("country")
+                target["timezone"] = val.get("timezone")
+
+                new_grp_name = val.get("group")
+                if self.current_group_idx is not None and new_grp_name and new_grp_name != current_grp_name:
+                    target_grp = next((g for g in self.data if g["name"] == new_grp_name), None)
+                    if target_grp:
+                        items.pop(idx)
+                        target_grp.setdefault("stations", []).append(target)
+                        self.show_feedback(f"Radio déplacée vers « {new_grp_name} »")
+                self.update_view(select_idx=idx if self.current_group_idx is not None else None)
+
+            if EditStationWindow is not None:
+                dlg = EditStationWindow(
+                    mode="edit",
+                    current_name=target.get("name", ""),
+                    current_url=target.get("url", ""),
+                    current_country=target.get("country", "") or "",
+                    current_timezone=target.get("timezone", "") or "",
+                    current_group=current_grp_name,
+                    available_groups=all_groups,
+                    standalone=False,
+                    on_done_callback=on_station_edited,
+                )
+                dlg.set_transient_for(self.get_parent_window())
+                dlg.set_modal(True)
+                dlg.show_all()
+                return
+
+            edit_script = find_script("edit_station.py")
+            if not edit_script:
+                self.show_feedback("Erreur : script edit_station.py introuvable.", is_success=False)
+                return
 
             cmd = [
                 sys.executable, edit_script,
@@ -1357,24 +1344,7 @@ class ReorderWindow(Gtk.Window):
                 res = subprocess.run(cmd, capture_output=True, text=True)
                 if res.returncode == 0 and res.stdout.strip():
                     val = json.loads(res.stdout.strip())
-                    if val.get("action") == "delete":
-                        items.pop(idx)
-                        self.show_feedback(_("Station deleted"))
-                        self.update_view()
-                        return
-                    target["name"] = val["name"]
-                    target["url"] = val["url"]
-                    target["country"] = val.get("country")
-                    target["timezone"] = val.get("timezone")
-
-                    new_grp_name = val.get("group")
-                    if self.current_group_idx is not None and new_grp_name and new_grp_name != current_grp_name:
-                        target_grp = next((g for g in self.data if g["name"] == new_grp_name), None)
-                        if target_grp:
-                            items.pop(idx)
-                            target_grp.setdefault("stations", []).append(target)
-                            self.show_feedback(f"Radio déplacée vers « {new_grp_name} »")
-                    self.update_view(select_idx=idx if self.current_group_idx is not None else None)
+                    on_station_edited(val)
             except Exception as e:
                 pass
 
@@ -1408,7 +1378,7 @@ class ReorderWindow(Gtk.Window):
                 msg = f"Voulez-vous vraiment supprimer ces {nb} éléments ?"
 
         dialog = Gtk.MessageDialog(
-            parent=self,
+            parent=self.get_parent_window(),
             flags=Gtk.DialogFlags.MODAL,
             type=Gtk.MessageType.QUESTION,
             buttons=Gtk.ButtonsType.OK_CANCEL,
@@ -1542,7 +1512,7 @@ class ReorderWindow(Gtk.Window):
         # Dialogue de progression modal
         dialog = Gtk.Dialog(
             title=_("Checking your radio stations"),
-            parent=self,
+            parent=self.get_parent_window(),
             flags=Gtk.DialogFlags.MODAL,
             buttons=(_("Stop"), Gtk.ResponseType.CANCEL)
         )
@@ -1572,7 +1542,7 @@ class ReorderWindow(Gtk.Window):
                 if cancel_event.is_set():
                     break
                 url = s.get("url", "")
-                ok, msg, redir = check_stream_url(url, timeout=3.0)
+                ok, msg, redir = check_stream_url(url, timeout=3.0, with_redirect=True)
                 if ok is True:
                     status = "redirect" if redir else "online"
                 elif ok == "GEO":
@@ -1652,11 +1622,12 @@ class ReorderWindow(Gtk.Window):
         # Dialogue de recherche
         dialog = Gtk.Dialog(
             title=f"Réparation de « {st_name} »",
-            parent=self,
+            parent=self.get_parent_window() if hasattr(self, "get_parent_window") else self,
             flags=Gtk.DialogFlags.MODAL,
             buttons=("Annuler", Gtk.ResponseType.CANCEL, "Remplacer l'URL", Gtk.ResponseType.OK)
         )
         dialog.set_default_size(520, 260)
+        dialog.set_response_sensitive(Gtk.ResponseType.OK, False)
         box = dialog.get_content_area()
         box.set_spacing(10)
         box.set_border_width(12)
@@ -1667,44 +1638,61 @@ class ReorderWindow(Gtk.Window):
         lbl_info.set_ellipsize(Pango.EllipsizeMode.END)
         box.add(lbl_info)
 
+        search_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        spinner = Gtk.Spinner()
+        spinner.start()
+        search_box.pack_start(spinner, False, False, 0)
         lbl_searching = Gtk.Label(label="Recherche d'un flux en direct sur Radio-Browser...")
-        box.add(lbl_searching)
+        search_box.pack_start(lbl_searching, False, False, 0)
+        box.add(search_box)
 
-        radio_group = None
         cands_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         scrolled = Gtk.ScrolledWindow()
         scrolled.set_min_content_height(140)
         scrolled.add(cands_box)
         box.add(scrolled)
 
-        cands = search_radio_browser_replacement(st_name)
-        lbl_searching.hide()
-
         selected_candidate = [None]
+        dialog_active = [True]
 
-        if cands:
-            lbl_title = Gtk.Label(label=f"<b>{len(cands)} flux actif{'s' if len(cands) > 1 else ''} trouvé{'s' if len(cands) > 1 else ''} :</b>")
-            lbl_title.set_use_markup(True)
-            lbl_title.set_halign(Gtk.Align.START)
-            cands_box.add(lbl_title)
+        def on_search_done(cands):
+            if not dialog_active[0]:
+                return
+            spinner.stop()
+            search_box.hide()
+            if cands:
+                lbl_title = Gtk.Label(label=f"<b>{len(cands)} flux actif{'s' if len(cands) > 1 else ''} trouvé{'s' if len(cands) > 1 else ''} :</b>")
+                lbl_title.set_use_markup(True)
+                lbl_title.set_halign(Gtk.Align.START)
+                cands_box.add(lbl_title)
 
-            for i, c in enumerate(cands):
-                label_txt = f"{c['name']} [{c.get('country','')}] · {c.get('bitrate', 0)} kbps\n<small>{c['url']}</small>"
-                rb = Gtk.RadioButton.new_with_label_from_widget(radio_group, label_txt)
-                rb.get_child().set_use_markup(True)
-                if radio_group is None:
-                    radio_group = rb
-                    selected_candidate[0] = c['url']
-                rb.connect("toggled", lambda w, u=c['url']: selected_candidate.__setitem__(0, u))
-                cands_box.add(rb)
-        else:
-            lbl_none = Gtk.Label(label="Aucun flux alternatif actif n'a pu être trouvé automatiquement.\nVous pouvez modifier l'URL manuellement avec le bouton Modifier.")
-            lbl_none.set_use_markup(True)
-            cands_box.add(lbl_none)
-            dialog.set_response_sensitive(Gtk.ResponseType.OK, False)
+                radio_group = None
+                for c in cands:
+                    label_txt = f"{c['name']} [{c.get('country','')}] · {c.get('bitrate', 0)} kbps\n<small>{c['url']}</small>"
+                    rb = Gtk.RadioButton.new_with_label_from_widget(radio_group, label_txt)
+                    rb.get_child().set_use_markup(True)
+                    if radio_group is None:
+                        radio_group = rb
+                        selected_candidate[0] = c['url']
+                    rb.connect("toggled", lambda w, u=c['url']: selected_candidate.__setitem__(0, u))
+                    cands_box.add(rb)
+                dialog.set_response_sensitive(Gtk.ResponseType.OK, True)
+            else:
+                lbl_none = Gtk.Label(label="Aucun flux alternatif actif n'a pu être trouvé automatiquement.\nVous pouvez modifier l'URL manuellement avec le bouton Modifier.")
+                lbl_none.set_use_markup(True)
+                cands_box.add(lbl_none)
+            cands_box.show_all()
 
+        def background_search():
+            results = search_radio_browser_replacement(st_name)
+            GLib.idle_add(on_search_done, results)
+
+        threading.Thread(target=background_search, daemon=True).start()
         dialog.show_all()
-        if dialog.run() == Gtk.ResponseType.OK and selected_candidate[0]:
+
+        res = dialog.run()
+        dialog_active[0] = False
+        if res == Gtk.ResponseType.OK and selected_candidate[0]:
             new_u = selected_candidate[0]
             st["url"] = new_u
             self.audit_results[new_u] = {"status": "online", "msg": "En direct (réparé)", "redirect": None}
@@ -1739,7 +1727,7 @@ class ReorderWindow(Gtk.Window):
     def on_export_csv_clicked(self, widget=None):
         dialog = Gtk.FileChooserDialog(
             title=_("Export my stations to CSV"),
-            parent=self,
+            parent=self.get_parent_window(),
             action=Gtk.FileChooserAction.SAVE,
             buttons=(_("Cancel"), Gtk.ResponseType.CANCEL, _("Export"), Gtk.ResponseType.OK),
         )
@@ -1768,7 +1756,7 @@ class ReorderWindow(Gtk.Window):
                 count = self.write_csv_export(chosen_path)
                 self.show_feedback(f"{count} radio(s) exportée(s) dans {os.path.basename(chosen_path)}")
                 msg_diag = Gtk.MessageDialog(
-                    parent=self,
+                    parent=self.get_parent_window(),
                     flags=Gtk.DialogFlags.MODAL,
                     type=Gtk.MessageType.INFO,
                     buttons=Gtk.ButtonsType.OK,
@@ -1778,7 +1766,7 @@ class ReorderWindow(Gtk.Window):
                 msg_diag.destroy()
             except Exception as e:
                 err_diag = Gtk.MessageDialog(
-                    parent=self,
+                    parent=self.get_parent_window(),
                     flags=Gtk.DialogFlags.MODAL,
                     type=Gtk.MessageType.ERROR,
                     buttons=Gtk.ButtonsType.OK,
@@ -1796,7 +1784,7 @@ class ReorderWindow(Gtk.Window):
 
         dialog = Gtk.FileChooserDialog(
             title=_("Sauvegarder mes signets (XML)"),
-            parent=self,
+            parent=self.get_parent_window(),
             action=Gtk.FileChooserAction.SAVE,
             buttons=(_("Annuler"), Gtk.ResponseType.CANCEL, _("Enregistrer"), Gtk.ResponseType.OK),
         )
@@ -1827,7 +1815,7 @@ class ReorderWindow(Gtk.Window):
                 os.replace(tmp_target, chosen_path)
                 self.show_feedback(f"Sauvegarde XML réussie dans {os.path.basename(chosen_path)}")
                 msg_diag = Gtk.MessageDialog(
-                    parent=self,
+                    parent=self.get_parent_window(),
                     flags=Gtk.DialogFlags.MODAL,
                     type=Gtk.MessageType.INFO,
                     buttons=Gtk.ButtonsType.OK,
@@ -1837,7 +1825,7 @@ class ReorderWindow(Gtk.Window):
                 msg_diag.destroy()
             except Exception as e:
                 err_diag = Gtk.MessageDialog(
-                    parent=self,
+                    parent=self.get_parent_window(),
                     flags=Gtk.DialogFlags.MODAL,
                     type=Gtk.MessageType.ERROR,
                     buttons=Gtk.ButtonsType.OK,

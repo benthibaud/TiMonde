@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <bookmarks>
 	<group name="Musiques de Films &amp; Bandes Originales">
+		<bookmark name="1.FM - Movie Soundtracks" url="https://strm112.1.fm/moviesoundtracks_mobile_mp3" country="CH" timezone="Europe/Zurich"/>
+		<bookmark name="CINEMIX" url="https://kathy.torontocast.com:1825/stream" country="CA" timezone="America/Toronto"/>
+		<bookmark name="Cinemusic Radio" url="https://listen.radioking.com/radio/422/stream/62785" country="FR" timezone="Europe/Paris"/>
+		<bookmark name="France Musique - La B.O. Musiques de Films" url="https://icecast.radiofrance.fr/francemusiquelabo-hifi.aac" country="FR" timezone="Europe/Paris"/>
 		<bookmark name="Jazz et Cinéma" url="https://jzr-wr20.ice.infomaniak.ch/jzr-wr20.aac" country="FR" timezone="Europe/Paris"/>
 		<bookmark name="RFM Cinéma" url="https://rfm.lmn.fm/rfm-wr19.mp3" country="FR" timezone="Europe/Paris"/>
-		<bookmark name="France Musique - La B.O. Musiques de Films" url="https://icecast.radiofrance.fr/francemusiquelabo-hifi.aac" country="FR" timezone="Europe/Paris"/>
-		<bookmark name="1.FM - Movie Soundtracks" url="https://strm112.1.fm/moviesoundtracks_mobile_mp3" country="CH" timezone="Europe/Zurich"/>
 	</group>
 </bookmarks>

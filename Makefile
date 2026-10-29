@@ -7,7 +7,18 @@ ICONSDIR ?= $(DATADIR)/icons/hicolor/scalable
 
 all: build
 
-build:
+icons:
+	python3 data/scripts/generate_png_icons.py
+
+mo:
+	@mkdir -p po/locale
+	@for po in po/*.po; do \
+		lang=$$(basename "$$po" .po); \
+		mkdir -p "po/locale/$$lang/LC_MESSAGES"; \
+		msgfmt -o "po/locale/$$lang/LC_MESSAGES/timonde.mo" "$$po"; \
+	done
+
+build: mo icons
 	cargo build --release
 
 install: build
@@ -97,9 +108,14 @@ uninstall:
 
 test:
 	cargo test
+	python3 data/scripts/test_timonde_common.py
 
 clean:
 	cargo clean
+	rm -rf packaging/dist
 
 deb: build
 	packaging/deb/build_deb.sh
+
+rpm: build
+	packaging/rpm/build_rpm.sh

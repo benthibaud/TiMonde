@@ -1098,3 +1098,123 @@ msgstr "Kuuntele valittua radiota"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Kuuntele tai testaa valittua radiota"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "ei vastaa. Etsitään varalähetystä..."
+
+msgid "Stream repaired and saved for"
+msgstr "Lähetys korjattu ja tallennettu kanavalle"
+
+msgid "is currently unavailable"
+msgstr "ei ole tällä hetkellä saatavilla"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Kanavaa ei löytynyt kanavanippujen luettelosta."
+
+msgid "No radio is currently playing."
+msgstr "Radiota ei toisteta tällä hetkellä."
+
+msgid "Selection"
+msgstr "Valikoima"
+
+msgid "Save error"
+msgstr "Tallennusvirhe"
+
+msgid "Saved!"
+msgstr "Tallennettu!"
+
+msgid "saved in your favorites!"
+msgstr "tallennettu suosikkeihisi!"
+
+msgid "Station added but reload error"
+msgstr "Kanava lisätty, mutta uudelleenlatausvirhe"
+
+msgid "Sleep timer activated"
+msgstr "Uniajastin aktivoitu"
+
+msgid "stopping in"
+msgstr "sammutus ajassa"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Uniajastin: pysäytetään radio."
+
+msgid "Sleep timer cancelled."
+msgstr "Uniajastin peruutettu."
+
+msgid "Track copied to clipboard:"
+msgstr "Kappaleen nimi kopioitu leikepöydälle:"
+
+msgid "deleted from your favorites."
+msgstr "poistettu suosikeistasi."
+
+msgid "updated successfully!"
+msgstr "päivitetty onnistuneesti!"
+
+msgid "Settings console not found"
+msgstr "Asetuskonsolia ei löytynyt"
+
+msgid "Paused"
+msgstr "Pysäytetty"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Etsitään Radio-Browserista..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Tälle nimelle ei löytynyt lähetystä. Muokkaa yllä olevaa tekstiä."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Löytyi {count} lähetystä. Valitse haluamasi lähetys ja vahvista."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Ei esiladattua DAB+-kanavanippua tälle maalle."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Voit tutkia ja tuoda tämän alueen kanavia suoraan maailmanlaajuisesta hakemistosta."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Tutki kanavia maasta {country} Radio-Browserissa ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Tutki tämän maan kanavia Radio-Browserissa"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Vaihda maailmanlaajuiseen hakemistoon tämä maa esivalittuna"
+
+msgid "this country"
+msgstr "tämä maa"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Ei DAB+-kanavanippua maalle {country} — Käytä 'Hae verkosta'."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} kanava(a) valittu"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Tälle kielelle ei löytynyt radiota maassa {country}. Poista valinta 'Suodata maittain' tai tyhjennä kieli."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Näillä ehdoilla ei löytynyt radiota maassa {country}. Poista valinta 'Suodata maittain' hakeaksesi maailmanlaajuisesti."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Radio-Browserista ei löytynyt radiota näillä ehdoilla."
+
+msgid "[Present]"
+msgstr "[Olemassa]"
+
+msgid "[New]"
+msgstr "[Uusi]"
+
+msgid "○ Untested"
+msgstr "○ Ei testattu"
+
+msgid "{count} stations found."
+msgstr "Löytyi {count} kanavaa."
+
+msgid "Testing..."
+msgstr "Testataan..."
+
+msgid "{count} available timezones"
+msgstr "{count} käytettävissä olevaa aikavyöhykettä"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> kanava(a) <b>{nb_gr}</b> ryhmässä."

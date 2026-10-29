@@ -1098,3 +1098,123 @@ msgstr "Сонгосон радио сонсох"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Сонгосон радиог сонсох эсвэл турших"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "хариу өгөхгүй байна. Нөөц урсгал хайж байна..."
+
+msgid "Stream repaired and saved for"
+msgstr "Урсгалыг сэргээж хадгалав:"
+
+msgid "is currently unavailable"
+msgstr "одоогоор боломжгүй байна"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Багцын каталогоос станц олдсонгүй."
+
+msgid "No radio is currently playing."
+msgstr "Одоогоор ямар ч радио тоглоогүй байна."
+
+msgid "Selection"
+msgstr "Сонголт"
+
+msgid "Save error"
+msgstr "Хадгалах алдаа"
+
+msgid "Saved!"
+msgstr "Хадгалагдлаа!"
+
+msgid "saved in your favorites!"
+msgstr "таны дуртай жагсаалтад хадгалагдлаа!"
+
+msgid "Station added but reload error"
+msgstr "Станц нэмэгдсэн боловч дахин ачаалахад алдаа гарлаа"
+
+msgid "Sleep timer activated"
+msgstr "Унтрах цаг идэвхжсэн"
+
+msgid "stopping in"
+msgstr "унтрах хугацаа:"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Унтрах цаг: радиог зогсоож байна."
+
+msgid "Sleep timer cancelled."
+msgstr "Унтрах цаг цуцлагдлаа."
+
+msgid "Track copied to clipboard:"
+msgstr "Замын нэрийг санах ойд хууллаа:"
+
+msgid "deleted from your favorites."
+msgstr "таны дуртай жагсаалтаас устгагдлаа."
+
+msgid "updated successfully!"
+msgstr "амжилттай шинэчлэгдлээ!"
+
+msgid "Settings console not found"
+msgstr "Тохиргооны консол олдсонгүй"
+
+msgid "Paused"
+msgstr "Түр зогссон"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Radio-Browser дээр хайж байна..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Энэ нэртэй урсгал олдсонгүй. Дээрх текстийг өөрчилнө үү."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} урсгал олдлоо. Хүссэн урсгалаа сонгоод баталгаажуулна уу."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Энэ улсад урьдчилан ачаалсан DAB+ багц байхгүй байна."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Та энэ бүс нутгийн станцуудыг дэлхийн лавлахаас шууд үзэж, импортлох боломжтой."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "{country}-н станцуудыг Radio-Browser дээр үзэх ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Энэ улсын станцуудыг Radio-Browser дээр үзэх"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Энэ улсыг сонгосон байдлаар дэлхийн лавлах руу шилжих"
+
+msgid "this country"
+msgstr "энэ улс"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "{country}-д DAB+ багц байхгүй — 'Онлайнаар хайх'-г ашиглана уу."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} станц сонгогдсон"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "{country}-д энэ хэл дээр радио олдсонгүй. 'Улсаар шүүх'-г арилгах эсвэл хэлийг арилгана уу."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "{country}-д эдгээр шалгуурт нийцэх радио олдсонгүй. Дэлхий даяар хайхын тулд 'Улсаар шүүх'-г арилгана уу."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Radio-Browser дээр эдгээр шалгуурт тохирох радио олдсонгүй."
+
+msgid "[Present]"
+msgstr "[Байгаа]"
+
+msgid "[New]"
+msgstr "[Шинэ]"
+
+msgid "○ Untested"
+msgstr "○ Туршаагүй"
+
+msgid "{count} stations found."
+msgstr "{count} станц олдлоо."
+
+msgid "Testing..."
+msgstr "Туршиж байна..."
+
+msgid "{count} available timezones"
+msgstr "{count} боломжит цагийн бүс"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_gr}</b> бүлэг дэх <b>{nb_st}</b> станц."

@@ -1098,3 +1098,123 @@ msgstr "Klausytis pasirinkto radijo"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Klausykite arba išbandykite pasirinktą radiją"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "neatsako. Ieškoma atsarginio srauto..."
+
+msgid "Stream repaired and saved for"
+msgstr "Srautas pataisytas ir išsaugotas stotiai"
+
+msgid "is currently unavailable"
+msgstr "šiuo metu nepasiekiama"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Rinkinių kataloge nepavyko rasti stoties."
+
+msgid "No radio is currently playing."
+msgstr "Šiuo metu negroja joks radijas."
+
+msgid "Selection"
+msgstr "Atranka"
+
+msgid "Save error"
+msgstr "Išsaugojimo klaida"
+
+msgid "Saved!"
+msgstr "Išsaugota!"
+
+msgid "saved in your favorites!"
+msgstr "išsaugota jūsų mėgstamiausiuose!"
+
+msgid "Station added but reload error"
+msgstr "Stotis pridėta, bet įvyko perkrovimo klaida"
+
+msgid "Sleep timer activated"
+msgstr "Miego laikmatis suaktyvintas"
+
+msgid "stopping in"
+msgstr "išsijungs po"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Miego laikmatis: stabdomas radijas."
+
+msgid "Sleep timer cancelled."
+msgstr "Miego laikmatis atšauktas."
+
+msgid "Track copied to clipboard:"
+msgstr "Kūrinio pavadinimas nukopijuotas į iškarpinę:"
+
+msgid "deleted from your favorites."
+msgstr "pašalinta iš jūsų mėgstamiausių."
+
+msgid "updated successfully!"
+msgstr "sėkmingai atnaujinta!"
+
+msgid "Settings console not found"
+msgstr "Nustatymų pultas nerastas"
+
+msgid "Paused"
+msgstr "Pristabdyta"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Ieškoma Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Šiuo pavadinimu srautas nerastas. Pakeiskite tekstą aukščiau."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Rasta {count} srautų. Pasirinkite norimą srautą ir patvirtinkite."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Šiai šaliai nėra iš anksto įkelto DAB+ rinkinio."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Galite naršyti ir importuoti šios teritorijos stotis tiesiai iš pasaulinio katalogo."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Naršyti stotis iš {country} Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Naršyti šios šalies stotis Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Perjungti į pasaulinį katalogą su iš anksto pasirinkta šia šalimi"
+
+msgid "this country"
+msgstr "ši šalis"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "{country} nėra DAB+ rinkinio — naudokite „Ieškoti internete“."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "Pasirinkta {checked} / {total} stotis(-ys)"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Šia kalba {country} radijo nerasta. Atžymėkite „Filtruoti pagal šalį“ arba išvalykite kalbą."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Pagal šiuos kriterijus {country} radijo nerasta. Atžymėkite „Filtruoti pagal šalį“, kad ieškotumėte visame pasaulyje."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Radio-Browser pagal šiuos kriterijus radijo nerasta."
+
+msgid "[Present]"
+msgstr "[Yra]"
+
+msgid "[New]"
+msgstr "[Nauja]"
+
+msgid "○ Untested"
+msgstr "○ Netikrinta"
+
+msgid "{count} stations found."
+msgstr "Rasta {count} stočių."
+
+msgid "Testing..."
+msgstr "Tikrinama..."
+
+msgid "{count} available timezones"
+msgstr "{count} pasiekiamos laiko juostos"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> stotis(-ys) <b>{nb_gr}</b> grupėje(-ėse)."

@@ -1098,3 +1098,123 @@ msgstr "ရွေးချယ်ထားသော ရေဒီယိုကိ�
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "ရွေးချယ်ထားသော ရေဒီယိုကို နားထောင်ပါ သို့မဟုတ် စမ်းသပ်ပါ။"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "တုံ့ပြန်မှုမရှိပါ။ အရန်လိုင်း ရှာဖွေနေသည်..."
+
+msgid "Stream repaired and saved for"
+msgstr "လိုင်းကို ပြင်ဆင်ပြီး သိမ်းဆည်းခဲ့သည် -"
+
+msgid "is currently unavailable"
+msgstr "လောလောဆယ် မရရှိနိုင်ပါ"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "လိုင်းတွဲများ စာရင်းတွင် ရေဒီယိုလိုင်း ရှာမတွေ့ပါ။"
+
+msgid "No radio is currently playing."
+msgstr "လက်ရှိတွင် မည်သည့်ရေဒီယိုမျှ ဖွင့်မထားပါ။"
+
+msgid "Selection"
+msgstr "ရွေးချယ်မှု"
+
+msgid "Save error"
+msgstr "သိမ်းဆည်းမှု အမှား"
+
+msgid "Saved!"
+msgstr "သိမ်းဆည်းပြီးပါပြီ!"
+
+msgid "saved in your favorites!"
+msgstr "သင်အကြိုက်ဆုံးထဲတွင် သိမ်းဆည်းပြီးပါပြီ!"
+
+msgid "Station added but reload error"
+msgstr "လိုင်းထည့်သွင်းပြီးသော်လည်း ပြန်လည်ဖွင့်ရာတွင် အမှားဖြစ်ပွားသည်"
+
+msgid "Sleep timer activated"
+msgstr "အိပ်ချိန်သတ်မှတ်ချက် ဖွင့်ထားသည်"
+
+msgid "stopping in"
+msgstr "ရပ်တန့်မည့်အချိန် -"
+
+msgid "Sleep timer: stopping radio."
+msgstr "အိပ်ချိန်သတ်မှတ်ချက် - ရေဒီယို ပိတ်နေသည်။"
+
+msgid "Sleep timer cancelled."
+msgstr "အိပ်ချိန်သတ်မှတ်ချက်ကို ပယ်ဖျက်လိုက်သည်။"
+
+msgid "Track copied to clipboard:"
+msgstr "သီချင်းအမည်ကို ကလစ်ဘုတ်သို့ ကူးယူပြီးပါပြီ -"
+
+msgid "deleted from your favorites."
+msgstr "သင်အကြိုက်ဆုံးထဲမှ ဖျက်လိုက်ပါပြီ။"
+
+msgid "updated successfully!"
+msgstr "အောင်မြင်စွာ အပ်ဒိတ်လုပ်ပြီးပါပြီ!"
+
+msgid "Settings console not found"
+msgstr "ဆက်တင် ကွန်ဆိုးလ် ရှာမတွေ့ပါ"
+
+msgid "Paused"
+msgstr "ခေတ္တရပ်ထားသည်"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Radio-Browser တွင် ရှာဖွေနေသည်..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "ဤအမည်အတွက် လိုင်းရှာမတွေ့ပါ။ အထက်ပါ စာသားကို ပြင်ဆင်ပါ။"
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} လိုင်း တွေ့ရှိသည်။ လိုချင်သောလိုင်းကို ရွေးပြီး အတည်ပြုပါ။"
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "ဤနိုင်ငံအတွက် ကြိုတင်ထည့်သွင်းထားသော DAB+ လိုင်းတွဲ မရှိပါ။"
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "ဤဒေသအတွက် လိုင်းများကို ကမ္ဘာလုံးဆိုင်ရာ လမ်းညွှန်မှ တိုက်ရိုက် ရှာဖွေတင်သွင်းနိုင်သည်။"
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Radio-Browser တွင် {country} မှ လိုင်းများကို ရှာဖွေပါ ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Radio-Browser တွင် ဤနိုင်ငံမှ လိုင်းများကို ရှာဖွေပါ"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "ဤနိုင်ငံကို ရွေးချယ်ပြီး ကမ္ဘာလုံးဆိုင်ရာ လမ်းညွှန်သို့ ပြောင်းပါ"
+
+msgid "this country"
+msgstr "ဤနိုင်ငံ"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "{country} အတွက် DAB+ လိုင်းတွဲ မရှိပါ — 'အွန်လိုင်းရှာဖွေမှု' ကို အသုံးပြုပါ။"
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} လိုင်း ရွေးချယ်ထားသည်"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "{country} တွင် ဤဘာသာစကားအတွက် ရေဒီယို ရှာမတွေ့ပါ။ 'နိုင်ငံအလိုက် စစ်ထုတ်ခြင်း' ကို ဖြုတ်ပါ သို့မဟုတ် ဘာသာစကားကို ရှင်းပါ။"
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "{country} တွင် ဤသတ်မှတ်ချက်များအတွက် ရေဒီယို ရှာမတွေ့ပါ။ ကမ္ဘာအနှံ့ ရှာရန် 'နိုင်ငံအလိုက် စစ်ထုတ်ခြင်း' ကို ဖြုတ်ပါ။"
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "ဤသတ်မှတ်ချက်များအတွက် Radio-Browser တွင် ရေဒီယို ရှာမတွေ့ပါ။"
+
+msgid "[Present]"
+msgstr "[ရှိပြီး]"
+
+msgid "[New]"
+msgstr "[အသစ်]"
+
+msgid "○ Untested"
+msgstr "○ မစမ်းသပ်ရသေးပါ"
+
+msgid "{count} stations found."
+msgstr "{count} လိုင်း တွေ့ရှိသည်။"
+
+msgid "Testing..."
+msgstr "စမ်းသပ်နေသည်..."
+
+msgid "{count} available timezones"
+msgstr "{count} ရရှိနိုင်သော အချိန်ဇုန်များ"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "အုပ်စု <b>{nb_gr}</b> ခုတွင် လိုင်း <b>{nb_st}</b> လိုင်း။"

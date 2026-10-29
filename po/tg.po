@@ -1098,3 +1098,123 @@ msgstr "Радиои интихобшударо гӯш кунед"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Радиои интихобшударо гӯш кунед ё санҷед"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "посух намедиҳад. Ҷустуҷӯи ҷараёни эҳтиётӣ..."
+
+msgid "Stream repaired and saved for"
+msgstr "Ҷараён барқарор ва сабт карда шуд барои"
+
+msgid "is currently unavailable"
+msgstr "ҳоло дастнорас аст"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Дар феҳристи бастаҳо пойгоҳ ёфт нашуд."
+
+msgid "No radio is currently playing."
+msgstr "Ҳоло ягон радио пахш намешавад."
+
+msgid "Selection"
+msgstr "Интихоб"
+
+msgid "Save error"
+msgstr "Хатои сабт"
+
+msgid "Saved!"
+msgstr "Сабт шуд!"
+
+msgid "saved in your favorites!"
+msgstr "ба баргузидаҳои шумо сабт шуд!"
+
+msgid "Station added but reload error"
+msgstr "Пойгоҳ илова шуд, аммо хатои аз нав боркунӣ рӯй дод"
+
+msgid "Sleep timer activated"
+msgstr "Таймери хоб фаъол шуд"
+
+msgid "stopping in"
+msgstr "хомӯшшавӣ баъд аз"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Таймери хоб: қатъи пахши радио."
+
+msgid "Sleep timer cancelled."
+msgstr "Таймери хоб бекор карда шуд."
+
+msgid "Track copied to clipboard:"
+msgstr "Номи суруд ба буфер нусхабардорӣ шуд:"
+
+msgid "deleted from your favorites."
+msgstr "аз баргузидаҳои шумо нест карда шуд."
+
+msgid "updated successfully!"
+msgstr "бомуваффақият нав карда шуд!"
+
+msgid "Settings console not found"
+msgstr "Консоли танзимот ёфт нашуд"
+
+msgid "Paused"
+msgstr "Таваққуф"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Ҷустуҷӯ дар Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Бо ин ном ҷараён ёфт нашуд. Матни болоро тағйир диҳед."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} ҷараён ёфт шуд. Ҷараёни дилхоҳро интихоб ва тасдиқ кунед."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Барои ин кишвар бастаи пешакӣ боршудаи DAB+ вуҷуд надорад."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Шумо метавонед пойгоҳҳои ин минтақаро мустақиман аз феҳристи ҷаҳонӣ ҷӯед ва ворид кунед."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Баррасии пойгоҳҳо аз {country} дар Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Баррасии пойгоҳҳои ин кишвар дар Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Гузариш ба феҳристи ҷаҳонӣ бо интихоби пешакии ин кишвар"
+
+msgid "this country"
+msgstr "ин кишвар"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Барои {country} бастаи DAB+ нест — «Ҷустуҷӯи онлайн»-ро истифода баред."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} пойгоҳ интихоб шуд"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Дар {country} бо ин забон радио ёфт нашуд. Интихоби «Филтр аз рӯи кишвар»-ро бекор кунед ё забонро пок созед."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Дар {country} бо ин меъёрҳо радио ёфт нашуд. Барои ҷустуҷӯи саросарӣ «Филтр аз рӯи кишвар»-ро бекор кунед."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Дар Radio-Browser бо ин меъёрҳо радио ёфт нашуд."
+
+msgid "[Present]"
+msgstr "[Мавҷуд]"
+
+msgid "[New]"
+msgstr "[Нав]"
+
+msgid "○ Untested"
+msgstr "○ Озмоишнашуда"
+
+msgid "{count} stations found."
+msgstr "{count} пойгоҳ ёфт шуд."
+
+msgid "Testing..."
+msgstr "Озмоиш..."
+
+msgid "{count} available timezones"
+msgstr "{count} минтақаи вақти дастрас"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> пойгоҳ дар <b>{nb_gr}</b> гурӯҳ."

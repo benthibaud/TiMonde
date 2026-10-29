@@ -327,7 +327,7 @@ def extract_multilingual_countries():
 
 
 def update_data():
-    out_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "timonde_world_data.py"))
+    out_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "scripts", "timonde_world_data.py"))
     force_update = "--force" in sys.argv or "-f" in sys.argv
 
     if not force_update and os.path.exists(out_file):
@@ -438,7 +438,7 @@ def update_data():
         sorted_langs = sorted(clean_langs, key=lambda x: strip_accents(x[1]))
     else:
         print("   -> Mode hors-ligne : conservation des langues et alias Radio-Browser existants.")
-        sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+        sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "scripts")))
         import timonde_world_data as existing_twd
         sorted_langs = list(existing_twd.RADIO_BROWSER_LANGUAGES)
         for k, v in existing_twd.NATIVE_LANGUAGE_NAMES.items():

@@ -1098,3 +1098,123 @@ msgstr "Լսեք ընտրված ռադիոն"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Լսեք կամ փորձարկեք ընտրված ռադիոն"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "չի պատասխանում: Պահուստային հոսքի որոնում..."
+
+msgid "Stream repaired and saved for"
+msgstr "Հոսքը վերականգնվել և պահպանվել է՝"
+
+msgid "is currently unavailable"
+msgstr "ներկայումս անհասանելի է"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Փաթեթների կատալոգում կայան չի գտնվել:"
+
+msgid "No radio is currently playing."
+msgstr "Ներկայումս ոչ մի ռադիո չի նվագարկվում:"
+
+msgid "Selection"
+msgstr "Ընտրանի"
+
+msgid "Save error"
+msgstr "Պահպանման սխալ"
+
+msgid "Saved!"
+msgstr "Պահպանվեց!"
+
+msgid "saved in your favorites!"
+msgstr "պահպանվել է ձեր ընտրյալներում!"
+
+msgid "Station added but reload error"
+msgstr "Կայանն ավելացվել է, բայց վերաբեռնման սխալ է առաջացել"
+
+msgid "Sleep timer activated"
+msgstr "Քնի ժամանակաչափն ակտիվացված է"
+
+msgid "stopping in"
+msgstr "անջատումը՝"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Քնի ժամանակաչափ. ռադիոյի դադարեցում:"
+
+msgid "Sleep timer cancelled."
+msgstr "Քնի ժամանակաչափը չեղարկվել է:"
+
+msgid "Track copied to clipboard:"
+msgstr "Երգի անվանումը պատճենվեց փոխանակման բուֆերում՝"
+
+msgid "deleted from your favorites."
+msgstr "հեռացվել է ձեր ընտրյալներից:"
+
+msgid "updated successfully!"
+msgstr "հաջողությամբ թարմացվեց!"
+
+msgid "Settings console not found"
+msgstr "Կարգավորումների վահանակը չի գտնվել"
+
+msgid "Paused"
+msgstr "Դադարեցված"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Որոնում Radio-Browser-ում..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Այս անվամբ հոսք չի գտնվել: Փոխեք վերևի տեքստը:"
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Գտնվել է {count} հոսք: Ընտրեք ցանկալի հոսքը և հաստատեք:"
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Այս երկրի համար նախապես բեռնված DAB+ փաթեթ չկա:"
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Դուք կարող եք ուսումնասիրել և ներմուծել այս տարածքի կայանները անմիջապես գլոբալ գրացուցակից:"
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Ուսումնասիրել {country}-ի կայանները Radio-Browser-ում ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Ուսումնասիրել այս երկրի կայանները Radio-Browser-ում"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Անցնել գլոբալ գրացուցակին՝ այս երկիրը նախապես ընտրված վիճակում"
+
+msgid "this country"
+msgstr "այս երկիրը"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "{country}-ի համար DAB+ փաթեթ չկա — Օգտագործեք «Որոնել առցանց»:"
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "Ընտրված է {checked} / {total} կայան"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "{country}-ում այս լեզվով ռադիո չի գտնվել: Ապաակտիվացրեք «Զտել ըստ երկրի» կամ մաքրեք լեզուն:"
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "{country}-ում այս չափանիշներով ռադիո չի գտնվել: Ապաակտիվացրեք «Զտել ըստ երկրի» գլոբալ որոնման համար:"
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Radio-Browser-ում այս չափանիշներով ռադիո չի գտնվել:"
+
+msgid "[Present]"
+msgstr "[Առկա է]"
+
+msgid "[New]"
+msgstr "[Նոր]"
+
+msgid "○ Untested"
+msgstr "○ Չփորձարկված"
+
+msgid "{count} stations found."
+msgstr "Գտնվել է {count} կայան:"
+
+msgid "Testing..."
+msgstr "Փորձարկվում է..."
+
+msgid "{count} available timezones"
+msgstr "{count} հասանելի ժամային գոտի"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> կայան <b>{nb_gr}</b> խմբերում:"

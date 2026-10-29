@@ -1098,3 +1098,123 @@ msgstr "Lyssna på vald radio"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Lyssna på eller testa den valda radion"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "svarar inte. Söker efter reservström..."
+
+msgid "Stream repaired and saved for"
+msgstr "Ström reparerad och sparad för"
+
+msgid "is currently unavailable"
+msgstr "är för närvarande inte tillgänglig"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Kunde inte hitta en station i bukettkatalogen."
+
+msgid "No radio is currently playing."
+msgstr "Ingen radio spelas för närvarande."
+
+msgid "Selection"
+msgstr "Urval"
+
+msgid "Save error"
+msgstr "Fel vid sparande"
+
+msgid "Saved!"
+msgstr "Sparat!"
+
+msgid "saved in your favorites!"
+msgstr "sparad i dina favoriter!"
+
+msgid "Station added but reload error"
+msgstr "Station lades till men omladdningsfel inträffade"
+
+msgid "Sleep timer activated"
+msgstr "Insomningstimer aktiverad"
+
+msgid "stopping in"
+msgstr "stängs av om"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Insomningstimer: stoppar radion."
+
+msgid "Sleep timer cancelled."
+msgstr "Insomningstimer avbruten."
+
+msgid "Track copied to clipboard:"
+msgstr "Låttitel kopierad till urklipp:"
+
+msgid "deleted from your favorites."
+msgstr "borttagen från dina favoriter."
+
+msgid "updated successfully!"
+msgstr "uppdaterades framgångsrikt!"
+
+msgid "Settings console not found"
+msgstr "Inställningskonsolen hittades inte"
+
+msgid "Paused"
+msgstr "Pausad"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Söker på Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Ingen ström hittades för detta namn. Ändra texten ovan."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} strömmar hittades. Välj önskad ström och bekräfta."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Ingen förladdad DAB+-bukett för detta land."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Du kan utforska och importera stationer för detta territorium direkt från den globala katalogen."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Utforska stationer från {country} på Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Utforska stationer från detta land på Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Växla till den globala katalogen med detta land förvalt"
+
+msgid "this country"
+msgstr "detta land"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Ingen DAB+-bukett för {country} — Använd 'Sök online'."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} station(er) valda"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Ingen radio hittades för detta språk i {country}. Avmarkera 'Filtrera efter land' eller rensa språket."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Ingen radio hittades för dessa kriterier i {country}. Avmarkera 'Filtrera efter land' för att söka globalt."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Ingen radio hittades på Radio-Browser för dessa kriterier."
+
+msgid "[Present]"
+msgstr "[Finns]"
+
+msgid "[New]"
+msgstr "[Ny]"
+
+msgid "○ Untested"
+msgstr "○ Otestad"
+
+msgid "{count} stations found."
+msgstr "{count} stationer hittades."
+
+msgid "Testing..."
+msgstr "Testar..."
+
+msgid "{count} available timezones"
+msgstr "{count} tidszoner tillgängliga"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> station(er) i <b>{nb_gr}</b> grupp(er)."

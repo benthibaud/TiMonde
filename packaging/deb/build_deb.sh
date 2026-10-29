@@ -4,12 +4,16 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
-VERSION="0.2.0"
+CARGO_TOML="${ROOT_DIR}/Cargo.toml"
+VERSION_FROM_CARGO=$(grep -m1 '^version = ' "${CARGO_TOML}" 2>/dev/null | cut -d '"' -f2)
+VERSION="${1:-${VERSION_FROM_CARGO:-0.2.0}}"
 ARCH=$(dpkg --print-architecture 2>/dev/null || echo "amd64")
 PACKAGE_NAME="timonde_${VERSION}_${ARCH}.deb"
+DIST_DIR="${ROOT_DIR}/packaging/dist"
+mkdir -p "${DIST_DIR}"
 STAGING_DIR="${ROOT_DIR}/temp/deb_staging"
 
-echo "Préparation du paquet Debian/Ubuntu/Mint : ${PACKAGE_NAME}"
+echo "Préparation du paquet Debian/Ubuntu/Mint : ${PACKAGE_NAME} (v${VERSION})"
 
 # 1. Compilation du binaire release si nécessaire
 if command -v cargo >/dev/null 2>&1; then
@@ -145,12 +149,12 @@ for mo in "${ROOT_DIR}"/po/locale/*/LC_MESSAGES/timonde.mo; do
 done
 
 # 7. Construction du paquet .deb unique universel
-dpkg-deb --build --root-owner-group "${STAGING_DIR}" "${ROOT_DIR}/${PACKAGE_NAME}"
-cp "${ROOT_DIR}/${PACKAGE_NAME}" "${SCRIPT_DIR}/${PACKAGE_NAME}"
+dpkg-deb --build --root-owner-group "${STAGING_DIR}" "${DIST_DIR}/${PACKAGE_NAME}"
+cp "${DIST_DIR}/${PACKAGE_NAME}" "${SCRIPT_DIR}/${PACKAGE_NAME}"
 rm -rf "${STAGING_DIR}"
 
-echo "Paquet Debian unique généré avec succès :"
-echo "   - ${ROOT_DIR}/${PACKAGE_NAME}"
+echo "Paquet Debian généré avec succès :"
+echo "   - ${DIST_DIR}/${PACKAGE_NAME}"
 echo "   - ${SCRIPT_DIR}/${PACKAGE_NAME}"
 
 

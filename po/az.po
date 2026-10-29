@@ -1098,3 +1098,123 @@ msgstr "Seçilmiş radioya qulaq asın"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Seçilmiş radioya qulaq asın və ya sınaqdan keçirin"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "cavab vermir. Ehtiyat axın axtarılır..."
+
+msgid "Stream repaired and saved for"
+msgstr "Axın bərpa edildi və yadda saxlanıldı:"
+
+msgid "is currently unavailable"
+msgstr "hazırda əlçatan deyil"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Buketlər kataloqunda stansiya tapılmadı."
+
+msgid "No radio is currently playing."
+msgstr "Hazırda heç bir radio səsləndirilmir."
+
+msgid "Selection"
+msgstr "Seçim"
+
+msgid "Save error"
+msgstr "Yadda saxlama xətası"
+
+msgid "Saved!"
+msgstr "Yadda saxlanıldı!"
+
+msgid "saved in your favorites!"
+msgstr "sevimlilərinizdə yadda saxlanıldı!"
+
+msgid "Station added but reload error"
+msgstr "Stansiya əlavə edildi, lakin yenidən yükləmə xətası baş verdi"
+
+msgid "Sleep timer activated"
+msgstr "Yuxu taymeri aktivləşdirildi"
+
+msgid "stopping in"
+msgstr "sönmə vaxtı:"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Yuxu taymeri: radio dayandırılır."
+
+msgid "Sleep timer cancelled."
+msgstr "Yuxu taymeri ləğv edildi."
+
+msgid "Track copied to clipboard:"
+msgstr "Mahnının adı buferə kopyalandı:"
+
+msgid "deleted from your favorites."
+msgstr "sevimlilərinizdən silindi."
+
+msgid "updated successfully!"
+msgstr "uğurla yeniləndi!"
+
+msgid "Settings console not found"
+msgstr "Tənzimləmələr paneli tapılmadı"
+
+msgid "Paused"
+msgstr "Fasilə"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Radio-Browser-də axtarılır..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Bu ad üçün axın tapılmadı. Yuxarıdakı mətni dəyişdirin."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} axın tapıldı. İstədiyiniz axını seçin və təsdiqləyin."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Bu ölkə üçün əvvəlcədən yüklənmiş DAB+ buketi yoxdur."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Bu ərazinin stansiyalarını birbaşa qlobal kataloqdan kəşf edib idxal edə bilərsiniz."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "{country} stansiyalarını Radio-Browser-də kəşf edin ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Bu ölkənin stansiyalarını Radio-Browser-də kəşf edin"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Bu ölkə əvvəlcədən seçilmiş halda qlobal kataloqa keçin"
+
+msgid "this country"
+msgstr "bu ölkə"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "{country} üçün DAB+ buketi yoxdur — 'Onlayn axtar' seçimindən istifadə edin."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} stansiya seçildi"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "{country} ərazisində bu dil üçün radio tapılmadı. 'Ölkəyə görə süzgəc' seçimini ləğv edin və ya dili təmizləyin."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "{country} ərazisində bu meyarlara uyğun radio tapılmadı. Qlobal axtarış üçün 'Ölkəyə görə süzgəc' seçimini ləğv edin."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Radio-Browser-də bu meyarlara uyğun radio tapılmadı."
+
+msgid "[Present]"
+msgstr "[Mövcuddur]"
+
+msgid "[New]"
+msgstr "[Yeni]"
+
+msgid "○ Untested"
+msgstr "○ Yoxlanılmayıb"
+
+msgid "{count} stations found."
+msgstr "{count} stansiya tapıldı."
+
+msgid "Testing..."
+msgstr "Yoxlanılır..."
+
+msgid "{count} available timezones"
+msgstr "{count} əlçatan saat qurşağı"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_gr}</b> qrupda <b>{nb_st}</b> stansiya."

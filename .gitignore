@@ -7,3 +7,4 @@ temp/
 
 *.rpm
 *.tar.gz
+packaging/dist/

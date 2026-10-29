@@ -64,7 +64,7 @@ msgid "Mute (0%)"
 msgstr "Muet (0%)"
 
 msgid "Sleep timer"
-msgstr "Minuteur de veille"
+msgstr "Minuterie d'arrêt"
 
 msgid "In 15 minutes"
 msgstr "Dans 15 minutes"
@@ -79,7 +79,7 @@ msgid "In 60 minutes (1h)"
 msgstr "Dans 60 minutes (1h)"
 
 msgid "Cancel sleep timer"
-msgstr "Annuler la mise en veille"
+msgstr "Annuler la minuterie d'arrêt"
 
 # --- Discovery Window (browse_bouquets.py) ---
 msgid "Discover & Import stations (TiMonde)"
@@ -1226,3 +1226,125 @@ msgstr "Écouter la radio sélectionnée"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Écouter ou tester la radio sélectionnée"
 
+#: data/scripts
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Explorer les radios de ce pays sur Radio-Browser"
+
+#: data/scripts
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Basculer vers l'annuaire mondial avec ce pays pré-sélectionné"
+
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "ne répond pas. Recherche d'un flux de secours..."
+
+msgid "Stream repaired and saved for"
+msgstr "Flux réparé et enregistré pour"
+
+msgid "is currently unavailable"
+msgstr "est indisponible actuellement"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Impossible de trouver une station dans le catalogue des bouquets."
+
+msgid "No radio is currently playing."
+msgstr "Aucune radio n'est en cours d'écoute."
+
+msgid "Selection"
+msgstr "Sélection"
+
+msgid "Save error"
+msgstr "Erreur de sauvegarde"
+
+msgid "Saved!"
+msgstr "Sauvegardée !"
+
+msgid "saved in your favorites!"
+msgstr "conservée dans vos favoris !"
+
+msgid "Station added but reload error"
+msgstr "Station ajoutée mais erreur de rechargement"
+
+msgid "Sleep timer activated"
+msgstr "Minuterie d'arrêt activée"
+
+msgid "stopping in"
+msgstr "coupure dans"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Minuterie d'arrêt : coupure de la radio."
+
+msgid "Sleep timer cancelled."
+msgstr "Minuterie d'arrêt annulée."
+
+msgid "Track copied to clipboard:"
+msgstr "Morceau copié dans le presse-papier :"
+
+msgid "deleted from your favorites."
+msgstr "supprimée de vos favoris."
+
+msgid "updated successfully!"
+msgstr "mise à jour avec succès !"
+
+msgid "Settings console not found"
+msgstr "Console de paramètres introuvable"
+
+msgid "Paused"
+msgstr "Pause"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Recherche sur Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Aucun flux trouvé pour ce nom. Modifiez le texte ci-dessus."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} flux trouvés. Sélectionnez le flux souhaité puis validez."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Aucun bouquet DAB+ pré-embarqué pour ce pays."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Vous pouvez explorer et importer les radios de ce territoire en direct depuis l'annuaire mondial."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Explorer les radios de {country} sur Radio-Browser ➔"
+
+msgid "this country"
+msgstr "ce pays"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Aucun bouquet DAB+ pour {country} — Utilisez « Rechercher en ligne »."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} station(s) sélectionnée(s)"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Aucune radio trouvée pour cette langue en {country}. Décochez « Filtrer par pays » ou effacez la langue."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Aucune radio trouvée pour ces critères en {country}. Décochez « Filtrer par pays » pour chercher mondialement."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Aucune radio trouvée sur Radio-Browser pour ces critères."
+
+msgid "[Present]"
+msgstr "[Présent]"
+
+msgid "[New]"
+msgstr "[Nouveau]"
+
+msgid "○ Untested"
+msgstr "○ Non testé"
+
+msgid "{count} stations found."
+msgstr "{count} stations trouvées."
+
+msgid "Testing..."
+msgstr "Test..."
+
+msgid "{count} available timezones"
+msgstr "{count} fuseaux disponibles"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> station(s) réparties dans <b>{nb_gr}</b> groupe(s)."

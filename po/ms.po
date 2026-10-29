@@ -1098,3 +1098,123 @@ msgstr "Dengar radio terpilih"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Dengar atau uji radio yang dipilih"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "tidak bertindak balas. Mencari strim sandaran..."
+
+msgid "Stream repaired and saved for"
+msgstr "Strim dibaiki dan disimpan untuk"
+
+msgid "is currently unavailable"
+msgstr "pada masa ini tidak tersedia"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Tidak dapat mencari stesen dalam katalog jambangan."
+
+msgid "No radio is currently playing."
+msgstr "Tiada radio sedang dimainkan pada masa ini."
+
+msgid "Selection"
+msgstr "Pilihan"
+
+msgid "Save error"
+msgstr "Ralat menyimpan"
+
+msgid "Saved!"
+msgstr "Disimpan!"
+
+msgid "saved in your favorites!"
+msgstr "disimpan dalam kegemaran anda!"
+
+msgid "Station added but reload error"
+msgstr "Stesen ditambah tetapi ralat muat semula berlaku"
+
+msgid "Sleep timer activated"
+msgstr "Pemasa tidur diaktifkan"
+
+msgid "stopping in"
+msgstr "berhenti dalam"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Pemasa tidur: menghentikan radio."
+
+msgid "Sleep timer cancelled."
+msgstr "Pemasa tidur dibatalkan."
+
+msgid "Track copied to clipboard:"
+msgstr "Tajuk lagu disalin ke papan keratan:"
+
+msgid "deleted from your favorites."
+msgstr "dipadamkan daripada kegemaran anda."
+
+msgid "updated successfully!"
+msgstr "berjaya dikemas kini!"
+
+msgid "Settings console not found"
+msgstr "Konsol tetapan tidak ditemui"
+
+msgid "Paused"
+msgstr "Dijeda"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Mencari di Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Tiada strim ditemui untuk nama ini. Ubah suai teks di atas."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} strim ditemui. Pilih strim yang dikehendaki dan sahkan."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Tiada jambangan DAB+ pramuat untuk negara ini."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Anda boleh meneroka dan mengimport stesen untuk wilayah ini terus dari direktori global."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Teroka stesen dari {country} di Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Teroka stesen dari negara ini di Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Beralih ke direktori global dengan negara ini dipilih terlebih dahulu"
+
+msgid "this country"
+msgstr "negara ini"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Tiada jambangan DAB+ untuk {country} — Gunakan 'Cari dalam talian'."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} stesen dipilih"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Tiada radio ditemui untuk bahasa ini di {country}. Nyahpilih 'Tapis mengikut negara' atau kosongkan bahasa."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Tiada radio ditemui untuk kriteria ini di {country}. Nyahpilih 'Tapis mengikut negara' untuk mencari secara global."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Tiada radio ditemui di Radio-Browser untuk kriteria ini."
+
+msgid "[Present]"
+msgstr "[Ada]"
+
+msgid "[New]"
+msgstr "[Baharu]"
+
+msgid "○ Untested"
+msgstr "○ Belum diuji"
+
+msgid "{count} stations found."
+msgstr "{count} stesen ditemui."
+
+msgid "Testing..."
+msgstr "Menguji..."
+
+msgid "{count} available timezones"
+msgstr "{count} zon masa tersedia"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> stesen dalam <b>{nb_gr}</b> kumpulan."

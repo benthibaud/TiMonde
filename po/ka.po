@@ -1098,3 +1098,123 @@ msgstr "მოუსმინეთ არჩეულ რადიოს"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "მოუსმინეთ ან შეამოწმეთ არჩეული რადიოს"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "არ პასუხობს. სარეზერვო ნაკადის ძიება..."
+
+msgid "Stream repaired and saved for"
+msgstr "ნაკადი აღდგენილია და შენახულია:"
+
+msgid "is currently unavailable"
+msgstr "ამჟამად მიუწვდომელია"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "თაიგულების კატალოგში სადგური ვერ მოიძებნა."
+
+msgid "No radio is currently playing."
+msgstr "ამჟამად რადიო არ უკრავს."
+
+msgid "Selection"
+msgstr "შერჩევა"
+
+msgid "Save error"
+msgstr "შენახვის შეცდომა"
+
+msgid "Saved!"
+msgstr "შენახულია!"
+
+msgid "saved in your favorites!"
+msgstr "შენახულია რჩეულებში!"
+
+msgid "Station added but reload error"
+msgstr "სადგური დაემატა, მაგრამ გადატვირთვის შეცდომაა"
+
+msgid "Sleep timer activated"
+msgstr "ძილის ტაიმერი გააქტიურებულია"
+
+msgid "stopping in"
+msgstr "გამორთვა:"
+
+msgid "Sleep timer: stopping radio."
+msgstr "ძილის ტაიმერი: რადიოს გაჩერება."
+
+msgid "Sleep timer cancelled."
+msgstr "ძილის ტაიმერი გაუქმებულია."
+
+msgid "Track copied to clipboard:"
+msgstr "სიმღერის სახელი კოპირებულია ბუფერში:"
+
+msgid "deleted from your favorites."
+msgstr "წაიშალა თქვენი რჩეულებიდან."
+
+msgid "updated successfully!"
+msgstr "წარმატებით განახლდა!"
+
+msgid "Settings console not found"
+msgstr "პარამეტრების კონსოლი ვერ მოიძებნა"
+
+msgid "Paused"
+msgstr "შეჩერებულია"
+
+msgid "Searching on Radio-Browser..."
+msgstr "ძიება Radio-Browser-ზე..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "ამ სახელით ნაკადი ვერ მოიძებნა. შეცვალეთ ზემოთ მოცემული ტექსტი."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "ნაპოვნია {count} ნაკადი. აირჩიეთ სასურველი ნაკადი და დაადასტურეთ."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "ამ ქვეყნისთვის წინასწარ ჩატვირთული DAB+ თაიგული არ არის."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "შეგიძლიათ შეისწავლოთ და შემოიტანოთ ამ რეგიონის სადგურები პირდაპირ გლობალური კატალოგიდან."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "{country}-ის სადგურების შესწავლა Radio-Browser-ზე ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "ამ ქვეყნის სადგურების შესწავლა Radio-Browser-ზე"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "გლობალურ კატალოგზე გადასვლა ამ ქვეყნის წინასწარი არჩევით"
+
+msgid "this country"
+msgstr "ეს ქვეყანა"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "{country}-ისთვის DAB+ თაიგული არ არის — გამოიყენეთ «ონლაინ ძიება»."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "არჩეულია {checked} / {total} სადგური"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "{country}-ში ამ ენაზე რადიო ვერ მოიძებნა. გააუქმეთ «ქვეყნით გაფილტვრა» ან გაასუფთავეთ ენა."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "{country}-ში ამ კრიტერიუმებით რადიო ვერ მოიძებნა. გააუქმეთ «ქვეყნით გაფილტვრა» გლობალური ძიებისთვის."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Radio-Browser-ზე ამ კრიტერიუმებით რადიო ვერ მოიძებნა."
+
+msgid "[Present]"
+msgstr "[არსებული]"
+
+msgid "[New]"
+msgstr "[ახალი]"
+
+msgid "○ Untested"
+msgstr "○ გამოუცდელი"
+
+msgid "{count} stations found."
+msgstr "ნაპოვნია {count} სადგური."
+
+msgid "Testing..."
+msgstr "ტესტირება..."
+
+msgid "{count} available timezones"
+msgstr "{count} ხელმისაწვდომი დროის სარტყელი"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> სადგური <b>{nb_gr}</b> ჯგუფში."

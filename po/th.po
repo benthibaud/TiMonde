@@ -1098,3 +1098,123 @@ msgstr "ฟังวิทยุที่เลือก"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "ฟังหรือทดสอบวิทยุที่เลือก"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "ไม่ตอบสนอง กำลังค้นหาสตรีมสำรอง..."
+
+msgid "Stream repaired and saved for"
+msgstr "ซ่อมแซมสตรีมและบันทึกแล้วสำหรับ"
+
+msgid "is currently unavailable"
+msgstr "ไม่พร้อมใช้งานในขณะนี้"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "ไม่พบสถานีในแคตตาล็อกชุดสถานี"
+
+msgid "No radio is currently playing."
+msgstr "ขณะนี้ไม่มีวิทยุที่กำลังเล่นอยู่"
+
+msgid "Selection"
+msgstr "คัดสรร"
+
+msgid "Save error"
+msgstr "ข้อผิดพลาดในการบันทึก"
+
+msgid "Saved!"
+msgstr "บันทึกแล้ว!"
+
+msgid "saved in your favorites!"
+msgstr "บันทึกในรายการโปรดของคุณแล้ว!"
+
+msgid "Station added but reload error"
+msgstr "เพิ่มสถานีแล้วแต่เกิดข้อผิดพลาดในการโหลดใหม่"
+
+msgid "Sleep timer activated"
+msgstr "เปิดใช้งานตัวตั้งเวลาปิดเครื่องแล้ว"
+
+msgid "stopping in"
+msgstr "จะหยุดในอีก"
+
+msgid "Sleep timer: stopping radio."
+msgstr "ตัวตั้งเวลาปิดเครื่อง: กำลังหยุดวิทยุ"
+
+msgid "Sleep timer cancelled."
+msgstr "ยกเลิกตัวตั้งเวลาปิดเครื่องแล้ว"
+
+msgid "Track copied to clipboard:"
+msgstr "คัดลอกชื่อเพลงลงในคลิปบอร์ดแล้ว:"
+
+msgid "deleted from your favorites."
+msgstr "ลบออกจากรายการโปรดของคุณแล้ว"
+
+msgid "updated successfully!"
+msgstr "อัปเดตเรียบร้อยแล้ว!"
+
+msgid "Settings console not found"
+msgstr "ไม่พบคอนโซลการตั้งค่า"
+
+msgid "Paused"
+msgstr "หยุดชั่วคราว"
+
+msgid "Searching on Radio-Browser..."
+msgstr "กำลังค้นหาบน Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "ไม่พบสตรีมสำหรับชื่อนี้ โปรดแก้ไขข้อความด้านบน"
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "พบ {count} สตรีม เลือกสตรีมที่ต้องการแล้วยืนยัน"
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "ไม่มีชุดสถานี DAB+ ที่โหลดไว้ล่วงหน้าสำหรับประเทศนี้"
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "คุณสามารถสำรวจและนำเข้าสถานีสำหรับดินแดนนี้ได้โดยตรงจากสารบบทั่วโลก"
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "สำรวจสถานีจาก {country} บน Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "สำรวจสถานีจากประเทศนี้บน Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "สลับไปยังสารบบทั่วโลกโดยเลือกประเทศนี้ไว้ล่วงหน้า"
+
+msgid "this country"
+msgstr "ประเทศนี้"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "ไม่มีชุดสถานี DAB+ สำหรับ {country} — ใช้ 'ค้นหาออนไลน์'"
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "เลือกแล้ว {checked} / {total} สถานี"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "ไม่พบวิทยุสำหรับภาษานี้ใน {country} ยกเลิกการเลือก 'กรองตามประเทศ' หรือล้างภาษา"
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "ไม่พบวิทยุสำหรับเกณฑ์เหล่านี้ใน {country} ยกเลิกการเลือก 'กรองตามประเทศ' เพื่อค้นหาทั่วโลก"
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "ไม่พบวิทยุบน Radio-Browser สำหรับเกณฑ์เหล่านี้"
+
+msgid "[Present]"
+msgstr "[มีอยู่แล้ว]"
+
+msgid "[New]"
+msgstr "[ใหม่]"
+
+msgid "○ Untested"
+msgstr "○ ยังไม่ได้ทดสอบ"
+
+msgid "{count} stations found."
+msgstr "พบ {count} สถานี"
+
+msgid "Testing..."
+msgstr "กำลังทดสอบ..."
+
+msgid "{count} available timezones"
+msgstr "{count} เขตเวลาที่ใช้ได้"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> สถานีใน <b>{nb_gr}</b> กลุ่ม"

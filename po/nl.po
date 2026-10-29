@@ -1098,3 +1098,123 @@ msgstr "Luister naar geselecteerde radio"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Luister naar of test de geselecteerde radio"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "reageert niet. Zoeken naar een reservestream..."
+
+msgid "Stream repaired and saved for"
+msgstr "Stream hersteld en opgeslagen voor"
+
+msgid "is currently unavailable"
+msgstr "is momenteel niet beschikbaar"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Kan geen station vinden in de bouquetcatalogus."
+
+msgid "No radio is currently playing."
+msgstr "Er wordt momenteel geen radio afgespeeld."
+
+msgid "Selection"
+msgstr "Selectie"
+
+msgid "Save error"
+msgstr "Fout bij opslaan"
+
+msgid "Saved!"
+msgstr "Opgeslagen!"
+
+msgid "saved in your favorites!"
+msgstr "opgeslagen in uw favorieten!"
+
+msgid "Station added but reload error"
+msgstr "Station toegevoegd maar herlaadfout opgetreden"
+
+msgid "Sleep timer activated"
+msgstr "Slaaptimer geactiveerd"
+
+msgid "stopping in"
+msgstr "stopt over"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Slaaptimer: radio wordt gestopt."
+
+msgid "Sleep timer cancelled."
+msgstr "Slaaptimer geannuleerd."
+
+msgid "Track copied to clipboard:"
+msgstr "Titel gekopieerd naar klembord:"
+
+msgid "deleted from your favorites."
+msgstr "verwijderd uit uw favorieten."
+
+msgid "updated successfully!"
+msgstr "succesvol bijgewerkt!"
+
+msgid "Settings console not found"
+msgstr "Instellingenconsole niet gevonden"
+
+msgid "Paused"
+msgstr "Gepauzeerd"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Zoeken op Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Geen stream gevonden voor deze naam. Wijzig de bovenstaande tekst."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} streams gevonden. Selecteer de gewenste stream en bevestig."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Geen vooraf geladen DAB+-bouquet voor dit land."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "U kunt stations voor dit gebied rechtstreeks vanuit de wereldwijde map verkennen en importeren."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Verken stations uit {country} op Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Verken stations uit dit land op Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Schakel over naar de globale map met dit land vooraf geselecteerd"
+
+msgid "this country"
+msgstr "dit land"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Geen DAB+-bouquet voor {country} — Gebruik 'Online zoeken'."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} station(s) geselecteerd"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Geen radio gevonden voor deze taal in {country}. Vink 'Filter op land' uit of wis de taal."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Geen radio gevonden voor deze criteria in {country}. Vink 'Filter op land' uit om wereldwijd te zoeken."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Geen radio gevonden op Radio-Browser voor deze criteria."
+
+msgid "[Present]"
+msgstr "[Aanwezig]"
+
+msgid "[New]"
+msgstr "[Nieuw]"
+
+msgid "○ Untested"
+msgstr "○ Niet getest"
+
+msgid "{count} stations found."
+msgstr "{count} stations gevonden."
+
+msgid "Testing..."
+msgstr "Testen..."
+
+msgid "{count} available timezones"
+msgstr "{count} tijdzones beschikbaar"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> groep(en)."

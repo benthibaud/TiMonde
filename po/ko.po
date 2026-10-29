@@ -1098,3 +1098,123 @@ msgstr "선택한 라디오 듣기"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "선택한 라디오를 듣거나 테스트해 보세요."
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "응답이 없습니다. 대체 스트림 검색 중..."
+
+msgid "Stream repaired and saved for"
+msgstr "스트림이 복구되어 저장되었습니다:"
+
+msgid "is currently unavailable"
+msgstr "현재 사용할 수 없습니다"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "부케 카탈로그에서 방송국을 찾을 수 없습니다."
+
+msgid "No radio is currently playing."
+msgstr "현재 재생 중인 라디오가 없습니다."
+
+msgid "Selection"
+msgstr "선택"
+
+msgid "Save error"
+msgstr "저장 오류"
+
+msgid "Saved!"
+msgstr "저장됨!"
+
+msgid "saved in your favorites!"
+msgstr "즐겨찾기에 저장되었습니다!"
+
+msgid "Station added but reload error"
+msgstr "방송국이 추가되었으나 다시 로드 오류 발생"
+
+msgid "Sleep timer activated"
+msgstr "취침 예약 타이머 활성화됨"
+
+msgid "stopping in"
+msgstr "종료 예정:"
+
+msgid "Sleep timer: stopping radio."
+msgstr "취침 타이머: 라디오 재생을 중지합니다."
+
+msgid "Sleep timer cancelled."
+msgstr "취침 타이머가 취소되었습니다."
+
+msgid "Track copied to clipboard:"
+msgstr "트랙이 클립보드에 복사되었습니다:"
+
+msgid "deleted from your favorites."
+msgstr "즐겨찾기에서 삭제되었습니다."
+
+msgid "updated successfully!"
+msgstr "성공적으로 업데이트되었습니다!"
+
+msgid "Settings console not found"
+msgstr "설정 콘솔을 찾을 수 없습니다"
+
+msgid "Paused"
+msgstr "일시정지"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Radio-Browser에서 검색 중..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "이 이름에 대한 스트림을 찾을 수 없습니다. 위의 검색어를 변경하세요."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count}개의 스트림을 찾았습니다. 원하는 스트림을 선택하고 확인하세요."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "이 국가에 대해 사전 로드된 DAB+ 부케가 없습니다."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "글로벌 디렉터리에서 직접 이 지역의 라디오 방송국을 검색하고 가져올 수 있습니다."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Radio-Browser에서 {country}의 방송국 탐색 ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Radio-Browser에서 이 국가의 방송국 탐색"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "이 국가가 미리 선택된 상태로 전 세계 디렉터리로 전환"
+
+msgid "this country"
+msgstr "이 국가"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "{country}에 대한 DAB+ 부케가 없습니다 — '온라인 검색'을 사용하세요."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total}개 방송국 선택됨"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "{country}에서 이 언어의 라디오를 찾을 수 없습니다. '국가별 필터'를 해제하거나 언어를 삭제하세요."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "{country}에서 해당 조건에 맞는 라디오를 찾을 수 없습니다. 전 세계 검색을 위해 '국가별 필터'를 해제하세요."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "해당 조건에 맞는 라디오를 Radio-Browser에서 찾을 수 없습니다."
+
+msgid "[Present]"
+msgstr "[이미 있음]"
+
+msgid "[New]"
+msgstr "[신규]"
+
+msgid "○ Untested"
+msgstr "○ 테스트 안 됨"
+
+msgid "{count} stations found."
+msgstr "{count}개 방송국을 찾았습니다."
+
+msgid "Testing..."
+msgstr "테스트 중..."
+
+msgid "{count} available timezones"
+msgstr "{count}개 표준시 사용 가능"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_gr}</b>개 그룹 내 <b>{nb_st}</b>개 방송국."

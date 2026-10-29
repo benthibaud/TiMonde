@@ -1098,3 +1098,123 @@ msgstr "Dengarkan radio yang dipilih"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Dengarkan atau uji radio yang dipilih"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "tidak merespons. Mencari aliran cadangan..."
+
+msgid "Stream repaired and saved for"
+msgstr "Aliran diperbaiki dan disimpan untuk"
+
+msgid "is currently unavailable"
+msgstr "saat ini tidak tersedia"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Tidak dapat menemukan stasiun di katalog buket."
+
+msgid "No radio is currently playing."
+msgstr "Saat ini tidak ada radio yang diputar."
+
+msgid "Selection"
+msgstr "Pilihan"
+
+msgid "Save error"
+msgstr "Kesalahan menyimpan"
+
+msgid "Saved!"
+msgstr "Tersimpan!"
+
+msgid "saved in your favorites!"
+msgstr "disimpan di favorit Anda!"
+
+msgid "Station added but reload error"
+msgstr "Stasiun ditambahkan tetapi terjadi kesalahan memuat ulang"
+
+msgid "Sleep timer activated"
+msgstr "Pengatur waktu tidur diaktifkan"
+
+msgid "stopping in"
+msgstr "berhenti dalam"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Pengatur waktu tidur: menghentikan radio."
+
+msgid "Sleep timer cancelled."
+msgstr "Pengatur waktu tidur dibatalkan."
+
+msgid "Track copied to clipboard:"
+msgstr "Judul lagu disalin ke papan klip:"
+
+msgid "deleted from your favorites."
+msgstr "dihapus dari favorit Anda."
+
+msgid "updated successfully!"
+msgstr "berhasil diperbarui!"
+
+msgid "Settings console not found"
+msgstr "Konsol pengaturan tidak ditemukan"
+
+msgid "Paused"
+msgstr "Dijeda"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Mencari di Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Tidak ada aliran yang ditemukan untuk nama ini. Ubah teks di atas."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} aliran ditemukan. Pilih aliran yang diinginkan dan konfirmasi."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Tidak ada buket DAB+ yang dimuat sebelumnya untuk negara ini."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Anda dapat menjelajahi dan mengimpor stasiun untuk wilayah ini langsung dari direktori global."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Jelajahi stasiun dari {country} di Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Jelajahi stasiun dari negara ini di Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Beralih ke direktori global dengan negara ini dipilih sebelumnya"
+
+msgid "this country"
+msgstr "negara ini"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Tidak ada buket DAB+ untuk {country} — Gunakan 'Cari online'."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} stasiun dipilih"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Tidak ada radio yang ditemukan untuk bahasa ini di {country}. Hapus centang 'Filter berdasarkan negara' atau bersihkan bahasa."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Tidak ada radio yang ditemukan untuk kriteria ini di {country}. Hapus centang 'Filter berdasarkan negara' untuk mencari secara global."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Tidak ada radio yang ditemukan di Radio-Browser untuk kriteria ini."
+
+msgid "[Present]"
+msgstr "[Ada]"
+
+msgid "[New]"
+msgstr "[Baru]"
+
+msgid "○ Untested"
+msgstr "○ Belum diuji"
+
+msgid "{count} stations found."
+msgstr "{count} stasiun ditemukan."
+
+msgid "Testing..."
+msgstr "Menguji..."
+
+msgid "{count} available timezones"
+msgstr "{count} zona waktu tersedia"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> stasiun dalam <b>{nb_gr}</b> grup."

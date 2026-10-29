@@ -67,9 +67,12 @@ impl AppState {
         }
         let temp_path = path.with_extension("tmp");
         {
+            use std::io::Write;
             let file = File::create(&temp_path)?;
-            let writer = BufWriter::new(file);
-            serde_json::to_writer_pretty(writer, self)?;
+            let mut writer = BufWriter::new(file);
+            serde_json::to_writer_pretty(&mut writer, self)?;
+            writer.flush()?;
+            writer.get_ref().sync_all()?;
         }
         fs::rename(temp_path, path)?;
         Ok(())

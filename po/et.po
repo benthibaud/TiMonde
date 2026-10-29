@@ -1098,3 +1098,123 @@ msgstr "Kuulake valitud raadiot"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Kuulake või testige valitud raadiot"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "ei vasta. Otsitakse varuvoogu..."
+
+msgid "Stream repaired and saved for"
+msgstr "Voog parandatud ja salvestatud jaamale"
+
+msgid "is currently unavailable"
+msgstr "pole praegu saadaval"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Kimpude kataloogist ei leitud jaama."
+
+msgid "No radio is currently playing."
+msgstr "Hetkel raadiot ei mängita."
+
+msgid "Selection"
+msgstr "Valik"
+
+msgid "Save error"
+msgstr "Salvestamise viga"
+
+msgid "Saved!"
+msgstr "Salvestatud!"
+
+msgid "saved in your favorites!"
+msgstr "salvestatud teie lemmikutesse!"
+
+msgid "Station added but reload error"
+msgstr "Jaam lisatud, kuid ilmnes taaslaadimise viga"
+
+msgid "Sleep timer activated"
+msgstr "Unetaimer aktiveeritud"
+
+msgid "stopping in"
+msgstr "seiskub"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Unetaimer: raadio peatamine."
+
+msgid "Sleep timer cancelled."
+msgstr "Unetaimer tühistatud."
+
+msgid "Track copied to clipboard:"
+msgstr "Loo pealkiri kopeeritud lõikelauale:"
+
+msgid "deleted from your favorites."
+msgstr "teie lemmikutest kustutatud."
+
+msgid "updated successfully!"
+msgstr "edukalt värskendatud!"
+
+msgid "Settings console not found"
+msgstr "Seadete konsooli ei leitud"
+
+msgid "Paused"
+msgstr "Pausil"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Otsimine Radio-Browserist..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Selle nimega voogu ei leitud. Muutke ülaltoodud teksti."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Leitud {count} voogu. Valige soovitud voog ja kinnitage."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Selle riigi jaoks pole eellaaditud DAB+ kimpu."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Saate selle piirkonna jaamu uurida ja importida otse globaalsest kataloogist."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Uuri jaamu riigist {country} Radio-Browseris ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Uuri selle riigi jaamu Radio-Browseris"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Lülitu globaalsesse kataloogi, see riik eelvalitud"
+
+msgid "this country"
+msgstr "see riik"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "{country} jaoks pole DAB+ kimpu — Kasutage 'Otsi veebist'."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} jaam(a) valitud"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Selle keele jaoks ei leitud raadiot riigis {country}. Tühjendage 'Filtreeri riigi järgi' või eemaldage keel."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Nende kriteeriumide järgi ei leitud raadiot riigis {country}. Tühjendage 'Filtreeri riigi järgi' globaalseks otsinguks."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Radio-Browserist ei leitud raadiot nende kriteeriumide järgi."
+
+msgid "[Present]"
+msgstr "[Olemas]"
+
+msgid "[New]"
+msgstr "[Uus]"
+
+msgid "○ Untested"
+msgstr "○ Testimata"
+
+msgid "{count} stations found."
+msgstr "Leitud {count} jaama."
+
+msgid "Testing..."
+msgstr "Testimine..."
+
+msgid "{count} available timezones"
+msgstr "{count} saadaolevat ajavööndit"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> jaam(a) <b>{nb_gr}</b> rühmas."

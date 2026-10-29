@@ -804,6 +804,8 @@ mod tests {
 
     #[test]
     fn test_user_offset_diff_label() {
+        let _lock = crate::i18n::I18N_TEST_MUTEX.lock().unwrap();
+        crate::i18n::set_language("fr");
         let info = get_local_time_for_station(
             Some("CA"),
             ", CHOY Fm 99.9 L'Acadie Country",
@@ -816,6 +818,8 @@ mod tests {
 
     #[test]
     fn test_international_date_line_detection() {
+        let _lock = crate::i18n::I18N_TEST_MUTEX.lock().unwrap();
+        crate::i18n::set_language("fr");
         let info_nz = get_local_time_for_station(
             Some("NZ"),
             "RNZ National",

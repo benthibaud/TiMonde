@@ -1098,3 +1098,123 @@ msgstr "Dëgjoni radion e zgjedhur"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Dëgjoni ose provoni radion e zgjedhur"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "nuk po përgjigjet. Po kërkohet një transmetim rezervë..."
+
+msgid "Stream repaired and saved for"
+msgstr "Transmetimi u riparua dhe u ruajt për"
+
+msgid "is currently unavailable"
+msgstr "nuk është i disponueshëm aktualisht"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Nuk u gjet asnjë stacion në katalogun e buqetave."
+
+msgid "No radio is currently playing."
+msgstr "Aktualisht nuk po luhet asnjë radio."
+
+msgid "Selection"
+msgstr "Zgjedhje"
+
+msgid "Save error"
+msgstr "Gabim gjatë ruajtjes"
+
+msgid "Saved!"
+msgstr "U ruajt!"
+
+msgid "saved in your favorites!"
+msgstr "u ruajt në të preferuarat tuaja!"
+
+msgid "Station added but reload error"
+msgstr "Stacioni u shtua por pati një gabim gjatë ringarkimit"
+
+msgid "Sleep timer activated"
+msgstr "Kohëmatësi i gjumit u aktivizua"
+
+msgid "stopping in"
+msgstr "fiket për"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Kohëmatësi i gjumit: po ndalon radion."
+
+msgid "Sleep timer cancelled."
+msgstr "Kohëmatësi i gjumit u anulua."
+
+msgid "Track copied to clipboard:"
+msgstr "Titulli i këngës u kopjua në kujtesën e fragmenteve:"
+
+msgid "deleted from your favorites."
+msgstr "u fshi nga të preferuarat tuaja."
+
+msgid "updated successfully!"
+msgstr "u përditësua me sukses!"
+
+msgid "Settings console not found"
+msgstr "Konsola e cilësimeve nuk u gjet"
+
+msgid "Paused"
+msgstr "Në pauzë"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Po kërkohet në Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Nuk u gjet asnjë transmetim për këtë emër. Ndryshoni tekstin më sipër."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "U gjetën {count} transmetime. Zgjidhni transmetimin e dëshiruar dhe konfirmoni."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Nuk ka asnjë buqetë DAB+ të parangarkuar për këtë vend."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Mund të eksploroni dhe importoni stacione për këtë territor drejtpërdrejt nga drejtoria globale."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Eksploroni stacione nga {country} në Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Eksploroni stacione nga ky vend në Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Kalo te drejtoria globale me këtë vend të parazgjedhur"
+
+msgid "this country"
+msgstr "ky vend"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Nuk ka buqetë DAB+ për {country} — Përdorni 'Kërko në internet'."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "U zgjodhën {checked} / {total} stacion(e)"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Nuk u gjet radio për këtë gjuhë në {country}. Çaktivizoni 'Filtro sipas vendit' ose fshini gjuhën."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Nuk u gjet radio për këto kritere në {country}. Çaktivizoni 'Filtro sipas vendit' për kërkim global."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Nuk u gjet radio në Radio-Browser për këto kritere."
+
+msgid "[Present]"
+msgstr "[Ekzistues]"
+
+msgid "[New]"
+msgstr "[E re]"
+
+msgid "○ Untested"
+msgstr "○ E patestuar"
+
+msgid "{count} stations found."
+msgstr "U gjetën {count} stacione."
+
+msgid "Testing..."
+msgstr "Po testohet..."
+
+msgid "{count} available timezones"
+msgstr "{count} zona kohore të disponueshme"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> stacion(e) në <b>{nb_gr}</b> grup(e)."

@@ -1098,3 +1098,123 @@ msgstr "የተመረጠውን ሬዲዮ ያዳምጡ"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "የተመረጠውን ሬዲዮ ያዳምጡ ወይም ይሞክሩት።"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "ምላሽ እየሰጠ አይደለም። ተለዋጭ ዥረት በመፈለግ ላይ..."
+
+msgid "Stream repaired and saved for"
+msgstr "ዥረቱ ተስተካክሎ ተቀምጧል ለ"
+
+msgid "is currently unavailable"
+msgstr "በአሁኑ ጊዜ አይገኝም"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "በእቅፍ ካታሎግ ውስጥ ጣቢያ ማግኘት አልተቻለም።"
+
+msgid "No radio is currently playing."
+msgstr "በአሁኑ ጊዜ ምንም ሬዲዮ እየተጫወተ አይደለም።"
+
+msgid "Selection"
+msgstr "ምርጫ"
+
+msgid "Save error"
+msgstr "የማስቀመጥ ስህተት"
+
+msgid "Saved!"
+msgstr "ተቀምጧል!"
+
+msgid "saved in your favorites!"
+msgstr "በተወዳጆችዎ ውስጥ ተቀምጧል!"
+
+msgid "Station added but reload error"
+msgstr "ጣቢያው ታክሏል ነገር ግን እንደገና በመጫን ላይ ስህተት ተከስቷል"
+
+msgid "Sleep timer activated"
+msgstr "የእንቅልፍ ሰዓት ቆጣሪ ነቅቷል"
+
+msgid "stopping in"
+msgstr "የሚቆመው በ"
+
+msgid "Sleep timer: stopping radio."
+msgstr "የእንቅልፍ ሰዓት ቆጣሪ፡ ሬዲዮን በማቆም ላይ።"
+
+msgid "Sleep timer cancelled."
+msgstr "የእንቅልፍ ሰዓት ቆጣሪ ተሰርዟል።"
+
+msgid "Track copied to clipboard:"
+msgstr "የትራክ ርዕስ ወደ ቅንጥብ ሰሌዳ ተቀድቷል፡"
+
+msgid "deleted from your favorites."
+msgstr "ከተወዳጆችዎ ተሰርዟል።"
+
+msgid "updated successfully!"
+msgstr "በተሳካ ሁኔታ ተዘምኗል!"
+
+msgid "Settings console not found"
+msgstr "የቅንብሮች መሥሪያ አልተገኘም"
+
+msgid "Paused"
+msgstr "ለአፍታ ቆሟል"
+
+msgid "Searching on Radio-Browser..."
+msgstr "በRadio-Browser ላይ በመፈለግ ላይ..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "ለዚህ ስም ዥረት አልተገኘም። ከላይ ያለውን ጽሑፍ ያሻሽሉ።"
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} ዥረቶች ተገኝተዋል። የሚፈለገውን ዥረት ይምረጡ እና ያረጋግጡ።"
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "ለዚህች አገር ቀድሞ የተጫነ የDAB+ እቅፍ የለም።"
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "የዚህን ክልል ጣቢያዎች በቀጥታ ከዓለም አቀፍ ማውጫ መፈለግ እና ማስመጣት ይችላሉ።"
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "የ{country} ጣቢያዎችን በRadio-Browser ላይ ያስሱ ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "የዚህችን አገር ጣቢያዎች በRadio-Browser ላይ ያስሱ"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "ይህችን አገር አስቀድመው በመምረጥ ወደ ዓለም አቀፍ ማውጫ ይቀይሩ"
+
+msgid "this country"
+msgstr "ይህች አገር"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "ለ{country} ምንም የDAB+ እቅፍ የለም — 'በመስመር ላይ ፈልግ'ን ይጠቀሙ።"
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} ጣቢያዎች ተመርጠዋል"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "በ{country} ውስጥ ለዚህ ቋንቋ ምንም ሬዲዮ አልተገኘም። 'በአገር አጣራ' የሚለውን ያንሱ ወይም ቋንቋውን ያጽዱ።"
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "በ{country} ውስጥ ለእነዚህ መስፈርቶች ምንም ሬዲዮ አልተገኘም። በዓለም አቀፍ ደረጃ ለመፈለግ 'በአገር አጣራ' የሚለውን ያንሱ።"
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "በRadio-Browser ላይ ለእነዚህ መስፈርቶች ምንም ሬዲዮ አልተገኘም።"
+
+msgid "[Present]"
+msgstr "[አለ]"
+
+msgid "[New]"
+msgstr "[አዲስ]"
+
+msgid "○ Untested"
+msgstr "○ ያልተሞከረ"
+
+msgid "{count} stations found."
+msgstr "{count} ጣቢያዎች ተገኝተዋል።"
+
+msgid "Testing..."
+msgstr "በመሞከር ላይ..."
+
+msgid "{count} available timezones"
+msgstr "{count} የሚገኙ የሰዓት ሰቆች"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> ጣቢያዎች በ<b>{nb_gr}</b> ቡድኖች ውስጥ።"

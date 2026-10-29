@@ -1098,3 +1098,123 @@ msgstr "चयन गरिएको रेडियो सुन्नुहो
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "चयन गरिएको रेडियो सुन्नुहोस् वा परीक्षण गर्नुहोस्"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "प्रतिक्रिया दिइरहेको छैन। ब्याकअप स्ट्रिम खोज्दै..."
+
+msgid "Stream repaired and saved for"
+msgstr "स्ट्रिम मर्मत गरी सुरक्षित गरियो:"
+
+msgid "is currently unavailable"
+msgstr "हाल उपलब्ध छैन"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "गुलदस्ता क्याटलगमा स्टेशन फेला पार्न सकिएन।"
+
+msgid "No radio is currently playing."
+msgstr "हाल कुनै पनि रेडियो बजिरहेको छैन।"
+
+msgid "Selection"
+msgstr "चयन"
+
+msgid "Save error"
+msgstr "बचत त्रुटि"
+
+msgid "Saved!"
+msgstr "सुरक्षित गरियो!"
+
+msgid "saved in your favorites!"
+msgstr "तपाईंको मनपर्नेमा सुरक्षित गरियो!"
+
+msgid "Station added but reload error"
+msgstr "स्टेशन थपियो तर पुन: लोड गर्दा त्रुटि भयो"
+
+msgid "Sleep timer activated"
+msgstr "स्लीप टाइमर सक्रिय गरियो"
+
+msgid "stopping in"
+msgstr "बन्द हुने समय:"
+
+msgid "Sleep timer: stopping radio."
+msgstr "स्लीप टाइमर: रेडियो बन्द गर्दै।"
+
+msgid "Sleep timer cancelled."
+msgstr "स्लीप टाइमर रद्द गरियो।"
+
+msgid "Track copied to clipboard:"
+msgstr "ट्र्याकको नाम क्लिपबोर्डमा प्रतिलिपि गरियो:"
+
+msgid "deleted from your favorites."
+msgstr "तपाईंको मनपर्नेबाट हटाइयो।"
+
+msgid "updated successfully!"
+msgstr "सफलतापूर्वक अद्यावधिक गरियो!"
+
+msgid "Settings console not found"
+msgstr "सेटिङ कन्सोल फेला परेन"
+
+msgid "Paused"
+msgstr "रोकिएको"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Radio-Browser मा खोज्दै..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "यो नामको लागि कुनै स्ट्रिम फेला परेन। माथिको पाठ परिमार्जन गर्नुहोस्।"
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} स्ट्रिमहरू फेला परे। इच्छित स्ट्रिम चयन गर्नुहोस् र पुष्टि गर्नुहोस्।"
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "यस देशको लागि कुनै पूर्व-लोड गरिएको DAB+ गुलदस्ता छैन।"
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "तपाईं विश्वव्यापी निर्देशिकाबाट सिधै यस क्षेत्रका स्टेशनहरू अन्वेषण र आयात गर्न सक्नुहुन्छ।"
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Radio-Browser मा {country} का स्टेशनहरू अन्वेषण गर्नुहोस् ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Radio-Browser मा यस देशका स्टेशनहरू अन्वेषण गर्नुहोस्"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "यो देश पूर्व-चयन गरी विश्वव्यापी निर्देशिकामा जानुहोस्"
+
+msgid "this country"
+msgstr "यो देश"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "{country} को लागि कुनै DAB+ गुलदस्ता छैन — 'अनलाइन खोज्नुहोस्' प्रयोग गर्नुहोस्।"
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} स्टेशनहरू चयन गरियो"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "{country} मा यो भाषाको लागि कुनै रेडियो फेला परेन। 'देश अनुसार फिल्टर' अनचेक गर्नुहोस् वा भाषा खाली गर्नुहोस्।"
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "{country} मा यी मापदण्डहरूको लागि कुनै रेडियो फेला परेन। विश्वव्यापी खोज्न 'देश अनुसार फिल्टर' अनचेक गर्नुहोस्।"
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "यी मापदण्डहरूको लागि Radio-Browser मा कुनै रेडियो फेला परेन।"
+
+msgid "[Present]"
+msgstr "[विद्यमान]"
+
+msgid "[New]"
+msgstr "[नयाँ]"
+
+msgid "○ Untested"
+msgstr "○ परीक्षण नगरिएको"
+
+msgid "{count} stations found."
+msgstr "{count} स्टेशनहरू फेला परे।"
+
+msgid "Testing..."
+msgstr "परीक्षण गर्दै..."
+
+msgid "{count} available timezones"
+msgstr "{count} उपलब्ध समय क्षेत्रहरू"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_gr}</b> समूहहरूमा <b>{nb_st}</b> स्टेशनहरू।"

@@ -1,5 +1,5 @@
 Name:           timonde
-Version:        0.2.0
+Version:        0.2.1
 Release:        1%{?dist}
 Summary:        Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux
 
@@ -63,6 +63,14 @@ make DESTDIR=%{buildroot} PREFIX=/usr install
 /usr/share/metainfo/io.github.benthibaud.timonde.metainfo.xml
 
 %changelog
+* Wed Oct 28 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.1-1
+- Modularisation de l'architecture Rust (découpage en sous-modules src/tray/)
+- Factorisation du socle partagé Python timonde_common.py
+- Ajout du fichier exemple complet pour la France d'Outre-mer (8 territoires)
+- Passerelle dynamique vers Radio-Browser pour les pays sans bouquet DAB+ pré-embarqué
+- Restauration et mise à jour des flux radio hors-ligne (BF, BJ, CD, KH, BD, FR)
+- Tests unitaires et multithread-safety renforcés
+
 * Sat Oct 17 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.0-1
 - Traduction intégrale native dans 56 langues avec catalogues Gettext compilés (.mo)
 - Intégration de 146 bouquets DAB+ et sélections officielles par pays

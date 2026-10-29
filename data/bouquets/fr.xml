@@ -40,7 +40,7 @@
     <region name="Île-de-France (Paris)">
       <station name="Générations" url="http://generationfm-slowjam.ice.infomaniak.ch/generationfm-slowjam-high.mp3" genre="Hip-Hop &amp; Soul" />
       <station name="Voltage" url="http://start-voltage.ice.infomaniak.ch/start-voltage-high.mp3" genre="Hits franciliens" />
-      <station name="Aligre FM" url="https://aligrefm.org/aligrefm-128.mp3" genre="Associative parisienne" />
+      <station name="Aligre FM" url="https://stream3.vestaradio.com/aligrefmradio" genre="Associative parisienne" />
       <station name="Tropiques FM" url="http://listen.radioking.com/radio/8916/stream/19088" genre="Musiques tropicales" />
       <station name="Crooner Radio" url="https://croonerradio.ice.infomaniak.ch/croonerradio-midfi.mp3" genre="Grands crooners" />
       </region>

@@ -31,6 +31,7 @@ from timonde_common import (
     make_btn,
     update_btn_content,
     StreamPreviewPlayer,
+    set_window_icon,
 )
 
 from timonde_world_data import (
@@ -47,24 +48,28 @@ from gi.repository import Gtk, Gdk, GLib
 
 
 class EditStationWindow(Gtk.Window):
-    def __init__(self, mode="edit", current_name="", current_url="", current_country="", current_timezone="", current_group="", available_groups=None, standalone=True, on_done_callback=None):
+    def __init__(self, mode="edit", current_name="", current_url="", current_country="", current_timezone="", current_group="", available_groups=None, standalone=True, on_done_callback=None, groups=None, default_group=None, **kwargs):
+        if available_groups is None and groups is not None:
+            available_groups = groups
+        if not current_group and default_group:
+            current_group = default_group
         self.mode = mode
         self.standalone = standalone
         self.on_done_callback = on_done_callback
         if self.mode == "add":
-            title = _("Ajouter une radio (TiMonde)")
+            title = _("Add a station (TiMonde)")
             header_text = _("<b>Enter new station details:</b>")
-            save_label = _("Ajouter à mes radios")
+            save_label = _("Add to my stations")
             save_icon = "list-add"
         elif self.mode == "save-ephemeral":
-            title = _("Conserver la radio dans les favoris (TiMonde)")
+            title = _("Save station to favorites (TiMonde)")
             header_text = _("<b>Keep this randomly discovered station in your favorites:</b>")
-            save_label = _("Conserver dans mes favoris")
+            save_label = _("Keep in favorites")
             save_icon = "document-save"
         else:
-            title = _("Modifier la radio (TiMonde)")
+            title = _("Edit station (TiMonde)")
             header_text = _("<b>Edit station settings:</b>")
-            save_label = _("Enregistrer")
+            save_label = _("Save")
             save_icon = "document-save"
         self.save_icon = save_icon
 
@@ -73,21 +78,7 @@ class EditStationWindow(Gtk.Window):
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_border_width(14)
         
-        # Icône PNG native
-        for icon_path in [
-            "/usr/share/icons/hicolor/48x48/apps/timonde_on.png",
-            "/usr/share/icons/hicolor/32x32/apps/timonde_on.png",
-            "/usr/share/icons/hicolor/24x24/apps/timonde_on.png",
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), "../icons/hicolor/48x48/apps/timonde_on.png"),
-        ]:
-            if os.path.exists(icon_path):
-                try:
-                    self.set_icon_from_file(icon_path)
-                    break
-                except Exception:
-                    pass
-        else:
-            self.set_icon_name("audio-x-generic")
+        set_window_icon(self)
 
         self.saved = False
         self.result_data = None
@@ -123,7 +114,7 @@ class EditStationWindow(Gtk.Window):
         grid.attach(self.entry_name, 1, 0, 1, 1)
 
         # 2. URL du flux audio + Bouton Tester / Écouter en direct
-        lbl_url = Gtk.Label(label="URL du flux :")
+        lbl_url = Gtk.Label(label=_("Audio stream URL:"))
         lbl_url.set_halign(Gtk.Align.END)
         lbl_url.set_valign(Gtk.Align.START)
         grid.attach(lbl_url, 0, 1, 1, 1)
@@ -151,7 +142,7 @@ class EditStationWindow(Gtk.Window):
         grid.attach(url_vbox, 1, 1, 1, 1)
 
         # 3. Groupe d'appartenance
-        lbl_group = Gtk.Label(label="Groupe :")
+        lbl_group = Gtk.Label(label=_("Group / Folder:"))
         lbl_group.set_halign(Gtk.Align.END)
         grid.attach(lbl_group, 0, 2, 1, 1)
 
@@ -203,7 +194,7 @@ class EditStationWindow(Gtk.Window):
 
         group_container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
         group_container.pack_start(group_box, False, False, 0)
-        lbl_grp_hint = Gtk.Label(label="<small><i>💡 Astuce : Tapez un nom libre ou utilisez / pour sous-dossiers (ex: /Musique/Jazz ou / pour racine)</i></small>")
+        lbl_grp_hint = Gtk.Label(label="<small><i>[i] Astuce : Tapez un nom libre ou utilisez / pour sous-dossiers (ex: /Musique/Jazz ou / pour racine)</i></small>")
         lbl_grp_hint.set_use_markup(True)
         lbl_grp_hint.set_halign(Gtk.Align.START)
         group_container.pack_start(lbl_grp_hint, False, False, 0)
@@ -211,7 +202,7 @@ class EditStationWindow(Gtk.Window):
         grid.attach(group_container, 1, 2, 1, 1)
 
         # 4. Sélecteur de Pays avec recherche affinante en direct
-        lbl_country = Gtk.Label(label="Pays :")
+        lbl_country = Gtk.Label(label=_("Country:"))
         lbl_country.set_halign(Gtk.Align.END)
         grid.attach(lbl_country, 0, 3, 1, 1)
 
@@ -248,8 +239,8 @@ class EditStationWindow(Gtk.Window):
         country_box.pack_start(self.entry_country_search, True, True, 0)
 
         # Bouton pour effacer le pays ou réinitialiser
-        btn_clear_country = Gtk.Button(label="Effacer")
-        btn_clear_country.set_tooltip_text("Effacer / Mode automatique")
+        btn_clear_country = Gtk.Button(label=_("Effacer"))
+        btn_clear_country.set_tooltip_text(_("Effacer / Mode automatique"))
         btn_clear_country.connect("clicked", lambda b: self.entry_country_search.set_text(""))
         country_box.pack_start(btn_clear_country, False, False, 0)
 
@@ -319,7 +310,7 @@ class EditStationWindow(Gtk.Window):
         url = clean_stream_url(self.entry_url.get_text().strip())
         name = self.entry_name.get_text().strip() or "Aperçu du flux"
         if not url:
-            self._on_preview_status(False, "", "⚠️ Veuillez saisir une URL de flux valide.", True)
+            self._on_preview_status(False, "", "[!] Veuillez saisir une URL de flux valide.", True)
             return
         self.preview_player.toggle(name, url)
 
@@ -463,7 +454,7 @@ class EditStationWindow(Gtk.Window):
         elif code_upper == "FR":
             self.lbl_tz_hint.set_markup("<small><i>" + _("(Metropolitan or Overseas)") + "</i></small>")
         else:
-            self.lbl_tz_hint.set_markup(f"<small><i>({len(tz_list)} fuseaux disponibles)</i></small>")
+            self.lbl_tz_hint.set_markup(f"<small><i>({_('{count} available timezones').format(count=len(tz_list))})</i></small>")
 
     def get_selected_timezone_id(self):
         code_upper = (self.selected_country_code or "").strip().upper()

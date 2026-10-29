@@ -208,7 +208,6 @@ impl AudioEngine {
 
     pub fn stop(&self) -> Result<(), AudioError> {
         info!("Arrêt du flux et réinitialisation du pipeline");
-        let _ = self.pipeline.set_state(gstreamer::State::Null);
         self.pipeline
             .set_state(gstreamer::State::Null)
             .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;

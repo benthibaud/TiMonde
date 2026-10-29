@@ -1098,3 +1098,123 @@ msgstr "Hallgassa meg a kiválasztott rádiót"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Hallgassa meg vagy tesztelje a kiválasztott rádiót"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "nem válaszol. Tartalék adatfolyam keresése..."
+
+msgid "Stream repaired and saved for"
+msgstr "Adatfolyam javítva és elmentve:"
+
+msgid "is currently unavailable"
+msgstr "jelenleg nem érhető el"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Nem található állomás a csomagkatalógusban."
+
+msgid "No radio is currently playing."
+msgstr "Jelenleg nem szól rádió."
+
+msgid "Selection"
+msgstr "Válogatás"
+
+msgid "Save error"
+msgstr "Mentési hiba"
+
+msgid "Saved!"
+msgstr "Mentve!"
+
+msgid "saved in your favorites!"
+msgstr "elmentve a kedvencek közé!"
+
+msgid "Station added but reload error"
+msgstr "Állomás hozzáadva, de újratöltési hiba történt"
+
+msgid "Sleep timer activated"
+msgstr "Elalváskapcsoló aktiválva"
+
+msgid "stopping in"
+msgstr "leállítás:"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Elalváskapcsoló: rádió leállítása."
+
+msgid "Sleep timer cancelled."
+msgstr "Elalváskapcsoló törölve."
+
+msgid "Track copied to clipboard:"
+msgstr "Szám címe a vágólapra másolva:"
+
+msgid "deleted from your favorites."
+msgstr "törölve a kedvencek közül."
+
+msgid "updated successfully!"
+msgstr "sikeresen frissítve!"
+
+msgid "Settings console not found"
+msgstr "Beállítási konzol nem található"
+
+msgid "Paused"
+msgstr "Szüneteltetve"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Keresés a Radio-Browseren..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Nem található adatfolyam ehhez a névhez. Módosítsa a fenti szöveget."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} adatfolyam található. Válassza ki a kívántat és erősítse meg."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Nincs előre betöltött DAB+ csomag ehhez az országhoz."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Közvetlenül a globális könyvtárból böngészhet és importálhat állomásokat ezen a területen."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Állomások böngészése innen: {country} a Radio-Browseren ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Ezen ország állomásainak böngészése a Radio-Browseren"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Váltás a globális könyvtárra ezzel az országgal előre kiválasztva"
+
+msgid "this country"
+msgstr "ez az ország"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Nincs DAB+ csomag ehhez: {country} — Használja az „Online keresés” lehetőséget."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} állomás kiválasztva"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Nem található rádió ezen a nyelven itt: {country}. Törölje a „Szűrés ország szerint” jelölést vagy ürítse a nyelvet."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Nem található rádió ezekkel a feltételekkel itt: {country}. Törölje a „Szűrés ország szerint” jelölést a globális kereséshez."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "A Radio-Browseren nem található rádió ezekkel a feltételekkel."
+
+msgid "[Present]"
+msgstr "[Meglévő]"
+
+msgid "[New]"
+msgstr "[Új]"
+
+msgid "○ Untested"
+msgstr "○ Nem tesztelt"
+
+msgid "{count} stations found."
+msgstr "{count} állomás található."
+
+msgid "Testing..."
+msgstr "Tesztelés..."
+
+msgid "{count} available timezones"
+msgstr "{count} elérhető időzóna"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> állomás <b>{nb_gr}</b> csoportban."

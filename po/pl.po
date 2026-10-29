@@ -1098,3 +1098,123 @@ msgstr "Słuchaj wybranego radia"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Posłuchaj lub przetestuj wybrane radio"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "nie odpowiada. Wyszukiwanie zapasowego strumienia..."
+
+msgid "Stream repaired and saved for"
+msgstr "Strumień naprawiony i zapisany dla"
+
+msgid "is currently unavailable"
+msgstr "jest obecnie niedostępna"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Nie udało się znaleźć stacji w katalogu bukietów."
+
+msgid "No radio is currently playing."
+msgstr "Obecnie żadne radio nie jest odtwarzane."
+
+msgid "Selection"
+msgstr "Wybór"
+
+msgid "Save error"
+msgstr "Błąd zapisu"
+
+msgid "Saved!"
+msgstr "Zapisano!"
+
+msgid "saved in your favorites!"
+msgstr "zapisano w Twoich ulubionych!"
+
+msgid "Station added but reload error"
+msgstr "Stacja dodana, ale wystąpił błąd ponownego ładowania"
+
+msgid "Sleep timer activated"
+msgstr "Wyłącznik czasowy włączony"
+
+msgid "stopping in"
+msgstr "wyłączenie za"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Wyłącznik czasowy: zatrzymywanie radia."
+
+msgid "Sleep timer cancelled."
+msgstr "Wyłącznik czasowy anulowany."
+
+msgid "Track copied to clipboard:"
+msgstr "Tytuł utworu skopiowany do schowka:"
+
+msgid "deleted from your favorites."
+msgstr "usunięto z Twoich ulubionych."
+
+msgid "updated successfully!"
+msgstr "pomyślnie zaktualizowano!"
+
+msgid "Settings console not found"
+msgstr "Nie znaleziono konsoli ustawień"
+
+msgid "Paused"
+msgstr "Wstrzymano"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Wyszukiwanie w Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Nie znaleziono strumienia dla tej nazwy. Zmień powyższy tekst."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Znaleziono {count} strumieni. Wybierz żądany strumień i zatwierdź."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Brak wstępnie załadowanego bukietu DAB+ dla tego kraju."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Możesz przeglądać i importować stacje dla tego terytorium bezpośrednio z globalnego katalogu."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Przeglądaj stacje z {country} w Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Przeglądaj stacje z tego kraju w Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Przełącz na katalog globalny z wstępnie wybranym tym krajem"
+
+msgid "this country"
+msgstr "ten kraj"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Brak bukietu DAB+ dla {country} — Użyj „Szukaj online”."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "Wybrano {checked} / {total} stacji"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Nie znaleziono radia dla tego języka w {country}. Odznacz „Filtruj według kraju” lub wyczyść język."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Nie znaleziono radia dla tych kryteriów w {country}. Odznacz „Filtruj według kraju”, aby szukać globalnie."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Nie znaleziono radia w Radio-Browser dla tych kryteriów."
+
+msgid "[Present]"
+msgstr "[Istnieje]"
+
+msgid "[New]"
+msgstr "[Nowa]"
+
+msgid "○ Untested"
+msgstr "○ Nieprzetestowano"
+
+msgid "{count} stations found."
+msgstr "Znaleziono {count} stacji."
+
+msgid "Testing..."
+msgstr "Testowanie..."
+
+msgid "{count} available timezones"
+msgstr "{count} dostępnych stref czasowych"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> stacji w <b>{nb_gr}</b> grupach."

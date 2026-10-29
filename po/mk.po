@@ -1098,3 +1098,123 @@ msgstr "Слушајте го избраното радио"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Слушајте го или тестирајте го избраното радио"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "не одговара. Барање резервен стрим..."
+
+msgid "Stream repaired and saved for"
+msgstr "Стримот е поправен и зачуван за"
+
+msgid "is currently unavailable"
+msgstr "моментално не е достапна"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Не може да се најде станица во каталогот на букети."
+
+msgid "No radio is currently playing."
+msgstr "Моментално не се репродуцира радио."
+
+msgid "Selection"
+msgstr "Избор"
+
+msgid "Save error"
+msgstr "Грешка при зачувување"
+
+msgid "Saved!"
+msgstr "Зачувано!"
+
+msgid "saved in your favorites!"
+msgstr "зачувано во вашите омилени!"
+
+msgid "Station added but reload error"
+msgstr "Станицата е додадена, но грешка при повторно вчитување"
+
+msgid "Sleep timer activated"
+msgstr "Тајмерот за спиење е активиран"
+
+msgid "stopping in"
+msgstr "исклучување за"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Тајмер за спиење: запирање на радиото."
+
+msgid "Sleep timer cancelled."
+msgstr "Тајмерот за спиење е откажан."
+
+msgid "Track copied to clipboard:"
+msgstr "Името на песната е копирано во клипборд:"
+
+msgid "deleted from your favorites."
+msgstr "отстрането од вашите омилени."
+
+msgid "updated successfully!"
+msgstr "успешно ажурирано!"
+
+msgid "Settings console not found"
+msgstr "Конзолата за поставки не е пронајдена"
+
+msgid "Paused"
+msgstr "Паузирано"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Пребарување на Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Не е пронајден стрим за ова име. Променете го текстот погоре."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Пронајдени се {count} стримови. Изберете го посакуваниот стрим и потврдете."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Нема однапред вчитан DAB+ букет за оваа земја."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Можете да истражувате и увезувате станици за оваа територија директно од глобалниот директориум."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Истражете станици од {country} на Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Истражете станици од оваа земја на Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Префрлете се на глобалниот директориум со претходно избрана оваа земја"
+
+msgid "this country"
+msgstr "оваа земја"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Нема DAB+ букет за {country} — користете „Пребарај онлајн“."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "Избрани се {checked} / {total} станици"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Не е пронајдено радио за овој јазик во {country}. Одштиклирајте „Филтрирај по земја“ или избришете го јазикот."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Не е пронајдено радио за овие критериуми во {country}. Одштиклирајте „Филтрирај по земја“ за глобално пребарување."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Не е пронајдено радио на Radio-Browser за овие критериуми."
+
+msgid "[Present]"
+msgstr "[Присутна]"
+
+msgid "[New]"
+msgstr "[Нова]"
+
+msgid "○ Untested"
+msgstr "○ Нетестирано"
+
+msgid "{count} stations found."
+msgstr "Пронајдени се {count} станици."
+
+msgid "Testing..."
+msgstr "Тестирање..."
+
+msgid "{count} available timezones"
+msgstr "{count} достапни временски зони"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> станици во <b>{nb_gr}</b> групи."

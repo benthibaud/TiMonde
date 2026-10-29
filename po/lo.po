@@ -1098,3 +1098,123 @@ msgstr "ຟັງວິທະຍຸທີ່ເລືອກ"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "ຟັງ ຫຼືທົດສອບວິທະຍຸທີ່ເລືອກ"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "ບໍ່ຕອບສະໜອງ. ກຳລັງຊອກຫາສາຍສັນຍານສຳຮອງ..."
+
+msgid "Stream repaired and saved for"
+msgstr "ສາຍສັນຍານໄດ້ຮັບການສ້ອມແປງ ແລະ ບັນທຶກແລ້ວສຳລັບ"
+
+msgid "is currently unavailable"
+msgstr "ບໍ່ພ້ອມໃຊ້ງານໃນຕອນນີ້"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "ບໍ່ພົບສະຖານີໃນລາຍການຊຸດສະຖານີ."
+
+msgid "No radio is currently playing."
+msgstr "ບໍ່ມີວິທະຍຸທີ່ກຳລັງຫຼິ້ນຢູ່ໃນຕອນນີ້."
+
+msgid "Selection"
+msgstr "ຄັດສັນ"
+
+msgid "Save error"
+msgstr "ຂໍ້ຜິດພາດໃນການບັນທຶກ"
+
+msgid "Saved!"
+msgstr "ບັນທຶກແລ້ວ!"
+
+msgid "saved in your favorites!"
+msgstr "ບັນທຶກໃນລາຍການໂປດຂອງທ່ານແລ້ວ!"
+
+msgid "Station added but reload error"
+msgstr "ເພີ່ມສະຖານີແລ້ວ ແຕ່ເກີດຂໍ້ຜິດພາດໃນການໂຫຼດໃໝ່"
+
+msgid "Sleep timer activated"
+msgstr "ເປີດໃຊ້ງານໂມງນັບຖອຍຫຼັງປິດເຄື່ອງແລ້ວ"
+
+msgid "stopping in"
+msgstr "ຈະຢຸດໃນອີກ"
+
+msgid "Sleep timer: stopping radio."
+msgstr "ໂມງນັບຖອຍຫຼັງປິດເຄື່ອງ: ກຳລັງຢຸດວິທະຍຸ."
+
+msgid "Sleep timer cancelled."
+msgstr "ຍົກເລີກໂມງນັບຖອຍຫຼັງປິດເຄື່ອງແລ້ວ."
+
+msgid "Track copied to clipboard:"
+msgstr "ສຳເນົາຊື່ເພງໃສ່ຄລິບບອດແລ້ວ:"
+
+msgid "deleted from your favorites."
+msgstr "ລຶບອອກຈາກລາຍການໂປດຂອງທ່ານແລ້ວ."
+
+msgid "updated successfully!"
+msgstr "ອັບເດດສຳເລັດແລ້ວ!"
+
+msgid "Settings console not found"
+msgstr "ບໍ່ພົບໜ້າຕ່າງການຕັ້ງຄ່າ"
+
+msgid "Paused"
+msgstr "ຢຸດຊົ່ວຄາວ"
+
+msgid "Searching on Radio-Browser..."
+msgstr "ກຳລັງຊອກຫາໃນ Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "ບໍ່ພົບສາຍສັນຍານສຳລັບຊື່ນີ້. ກະລຸນາແກ້ໄຂຂໍ້ຄວາມຂ້າງເທິງ."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "ພົບ {count} ສາຍສັນຍານ. ເລືອກສາຍສັນຍານທີ່ຕ້ອງການແລ້ວຢືນຢັນ."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "ບໍ່ມີຊຸດສະຖານີ DAB+ ທີ່ໂຫຼດໄວ້ລ່ວງໜ້າສຳລັບປະເທດນີ້."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "ທ່ານສາມາດສຳຫຼວດ ແລະ ນຳເຂົ້າສະຖານີສຳລັບເຂດແດນນີ້ໄດ້ໂດຍກົງຈາກສາລະບົບທົ່ວໂລກ."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "ສຳຫຼວດສະຖານີຈາກ {country} ໃນ Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "ສຳຫຼວດສະຖານີຈາກປະເທດນີ້ໃນ Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "ປ່ຽນໄປຫາສາລະບົບທົ່ວໂລກໂດຍເລືອກປະເທດນີ້ໄວ້ລ່ວງໜ້າ"
+
+msgid "this country"
+msgstr "ປະເທດນີ້"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "ບໍ່ມີຊຸດສະຖານີ DAB+ ສຳລັບ {country} — ໃຊ້ 'ຊອກຫາອອນລາຍ'."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "ເລືອກແລ້ວ {checked} / {total} ສະຖານີ"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "ບໍ່ພົບວິທະຍຸສຳລັບພາສານີ້ໃນ {country}. ຍົກເລີກການເລືອກ 'ກັ່ນຕອງຕາມປະເທດ' ຫຼື ລຶບພາສາອອກ."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "ບໍ່ພົບວິທະຍຸສຳລັບເງື່ອນໄຂເຫຼົ່ານີ້ໃນ {country}. ຍົກເລີກການເລືອກ 'ກັ່ນຕອງຕາມປະເທດ' ເພື່ອຊອກຫາທົ່ວໂລກ."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "ບໍ່ພົບວິທະຍຸໃນ Radio-Browser ສຳລັບເງື່ອນໄຂເຫຼົ່ານີ້."
+
+msgid "[Present]"
+msgstr "[ມີຢູ່ແລ້ວ]"
+
+msgid "[New]"
+msgstr "[ໃໝ່]"
+
+msgid "○ Untested"
+msgstr "○ ຍັງບໍ່ໄດ້ທົດສອບ"
+
+msgid "{count} stations found."
+msgstr "ພົບ {count} ສະຖານີ."
+
+msgid "Testing..."
+msgstr "ກຳລັງທົດສອບ..."
+
+msgid "{count} available timezones"
+msgstr "{count} ເຂດເວລາທີ່ໃຊ້ໄດ້"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> ສະຖານີໃນ <b>{nb_gr}</b> ກຸ່ມ."

@@ -241,6 +241,7 @@ pub fn save_bookmarks(group: &Group, path: impl AsRef<Path>) -> Result<(), Bookm
         }
         writeln!(writer, "</bookmarks>")?;
         writer.flush()?;
+        writer.get_ref().sync_all()?;
     }
     std::fs::rename(&tmp_path, path)?;
 

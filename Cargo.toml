@@ -1,6 +1,6 @@
 [package]
 name = "timonde"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2021"
 authors = ["Ben Thibaud <b_thibaud@laposte.net>"]
 description = "Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux"
@@ -249,6 +249,7 @@ assets = [
     { source = "data/examples/x-classical.xml", dest = "/usr/share/timonde/examples/x-classical.xml", mode = "644" },
     { source = "data/examples/x-country.xml", dest = "/usr/share/timonde/examples/x-country.xml", mode = "644" },
     { source = "data/examples/x-fg-web-radios.xml", dest = "/usr/share/timonde/examples/x-fg-web-radios.xml", mode = "644" },
+    { source = "data/examples/x-france-outre-mer.xml", dest = "/usr/share/timonde/examples/x-france-outre-mer.xml", mode = "644" },
     { source = "data/examples/x-jazz-blues.xml", dest = "/usr/share/timonde/examples/x-jazz-blues.xml", mode = "644" },
     { source = "data/examples/x-latin.xml", dest = "/usr/share/timonde/examples/x-latin.xml", mode = "644" },
     { source = "data/examples/x-metal.xml", dest = "/usr/share/timonde/examples/x-metal.xml", mode = "644" },

@@ -192,7 +192,7 @@ pub fn load_all_bouquet_stations() -> &'static [Station] {
                 let mut paths: Vec<PathBuf> = entries
                     .flatten()
                     .map(|e| e.path())
-                    .filter(|p| p.extension().map_or(false, |ext| ext == "xml"))
+                    .filter(|p| p.extension().is_some_and(|ext| ext == "xml"))
                     .collect();
                 paths.sort();
 
@@ -209,7 +209,7 @@ pub fn load_all_bouquet_stations() -> &'static [Station] {
                 let mut paths: Vec<PathBuf> = entries
                     .flatten()
                     .map(|e| e.path())
-                    .filter(|p| p.extension().map_or(false, |ext| ext == "xml"))
+                    .filter(|p| p.extension().is_some_and(|ext| ext == "xml"))
                     .collect();
                 paths.sort();
 

@@ -1098,3 +1098,123 @@ msgstr "Ascultați radioul selectat"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Ascultați sau testați radioul selectat"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "nu răspunde. Se caută un flux de rezervă..."
+
+msgid "Stream repaired and saved for"
+msgstr "Flux reparat și salvat pentru"
+
+msgid "is currently unavailable"
+msgstr "este indisponibil în prezent"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Nu s-a putut găsi un post în catalogul de buchete."
+
+msgid "No radio is currently playing."
+msgstr "În prezent nu este redat niciun radio."
+
+msgid "Selection"
+msgstr "Selecție"
+
+msgid "Save error"
+msgstr "Eroare la salvare"
+
+msgid "Saved!"
+msgstr "Salvat!"
+
+msgid "saved in your favorites!"
+msgstr "salvat în favoritele dumneavoastră!"
+
+msgid "Station added but reload error"
+msgstr "Postul a fost adăugat, dar a apărut o eroare la reîncărcare"
+
+msgid "Sleep timer activated"
+msgstr "Temporizatorul de oprire a fost activat"
+
+msgid "stopping in"
+msgstr "oprire în"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Temporizator de oprire: se oprește radioul."
+
+msgid "Sleep timer cancelled."
+msgstr "Temporizatorul de oprire a fost anulat."
+
+msgid "Track copied to clipboard:"
+msgstr "Titlul piesei a fost copiat în clipboard:"
+
+msgid "deleted from your favorites."
+msgstr "șters din favoritele dumneavoastră."
+
+msgid "updated successfully!"
+msgstr "actualizat cu succes!"
+
+msgid "Settings console not found"
+msgstr "Consola de setări nu a fost găsită"
+
+msgid "Paused"
+msgstr "În pauză"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Se caută pe Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Nu s-a găsit niciun flux pentru acest nume. Modificați textul de mai sus."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "S-au găsit {count} fluxuri. Selectați fluxul dorit și confirmați."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Nu există niciun buchet DAB+ preîncărcat pentru această țară."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Puteți explora și importa posturi din acest teritoriu direct din directorul global."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Explorați posturi din {country} pe Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Explorați posturile din această țară pe Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Comutați la directorul global cu această țară preselectată"
+
+msgid "this country"
+msgstr "această țară"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Nu există buchet DAB+ pentru {country} — Utilizați „Căutare online”."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} post(uri) selectat(e)"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Nu s-a găsit niciun radio pentru această limbă în {country}. Debifați „Filtrează după țară” sau ștergeți limba."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Nu s-a găsit niciun radio pentru aceste criterii în {country}. Debifați „Filtrează după țară” pentru căutare globală."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Nu s-a găsit niciun radio pe Radio-Browser pentru aceste criterii."
+
+msgid "[Present]"
+msgstr "[Prezent]"
+
+msgid "[New]"
+msgstr "[Nou]"
+
+msgid "○ Untested"
+msgstr "○ Netestat"
+
+msgid "{count} stations found."
+msgstr "S-au găsit {count} posturi."
+
+msgid "Testing..."
+msgstr "Se testează..."
+
+msgid "{count} available timezones"
+msgstr "{count} fusuri orare disponibile"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> post(uri) în <b>{nb_gr}</b> grup(uri)."

@@ -1098,3 +1098,123 @@ msgstr "Ακούστε επιλεγμένο ραδιόφωνο"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Ακούστε ή δοκιμάστε το επιλεγμένο ραδιόφωνο"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "δεν ανταποκρίνεται. Αναζήτηση εφεδρικής ροής..."
+
+msgid "Stream repaired and saved for"
+msgstr "Η ροή επιδιορθώθηκε και αποθηκεύτηκε για"
+
+msgid "is currently unavailable"
+msgstr "δεν είναι διαθέσιμος αυτή τη στιγμή"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Δεν ήταν δυνατή η εύρεση σταθμού στον κατάλογο μπουκέτων."
+
+msgid "No radio is currently playing."
+msgstr "Δεν αναπαράγεται ραδιόφωνο αυτή τη στιγμή."
+
+msgid "Selection"
+msgstr "Επιλογή"
+
+msgid "Save error"
+msgstr "Σφάλμα αποθήκευσης"
+
+msgid "Saved!"
+msgstr "Αποθηκεύτηκε!"
+
+msgid "saved in your favorites!"
+msgstr "αποθηκεύτηκε στα αγαπημένα σας!"
+
+msgid "Station added but reload error"
+msgstr "Ο σταθμός προστέθηκε αλλά παρουσιάστηκε σφάλμα επαναφόρτωσης"
+
+msgid "Sleep timer activated"
+msgstr "Ο χρονοδιακόπτης ύπνου ενεργοποιήθηκε"
+
+msgid "stopping in"
+msgstr "τερματισμός σε"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Χρονοδιακόπτης ύπνου: διακοπή ραδιοφώνου."
+
+msgid "Sleep timer cancelled."
+msgstr "Ο χρονοδιακόπτης ύπνου ακυρώθηκε."
+
+msgid "Track copied to clipboard:"
+msgstr "Ο τίτλος κομματιού αντιγράφηκε στο πρόχειρο:"
+
+msgid "deleted from your favorites."
+msgstr "διαγράφηκε από τα αγαπημένα σας."
+
+msgid "updated successfully!"
+msgstr "ενημερώθηκε με επιτυχία!"
+
+msgid "Settings console not found"
+msgstr "Η κονσόλα ρυθμίσεων δεν βρέθηκε"
+
+msgid "Paused"
+msgstr "Σε παύση"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Αναζήτηση στο Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Δεν βρέθηκε ροή για αυτό το όνομα. Τροποποιήστε το παραπάνω κείμενο."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Βρέθηκαν {count} ροές. Επιλέξτε την επιθυμητή ροή και επιβεβαιώστε."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Δεν υπάρχει προφορτωμένο μπουκέτο DAB+ για αυτήν τη χώρα."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Μπορείτε να εξερευνήσετε και να εισαγάγετε σταθμούς για αυτήν την περιοχή απευθείας από τον παγκόσμιο κατάλογο."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Εξερεύνηση σταθμών από {country} στο Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Εξερεύνηση σταθμών αυτής της χώρας στο Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Μετάβαση στον παγκόσμιο κατάλογο με προεπιλεγμένη αυτήν τη χώρα"
+
+msgid "this country"
+msgstr "αυτή η χώρα"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Δεν υπάρχει μπουκέτο DAB+ για {country} — Χρησιμοποιήστε «Αναζήτηση online»."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "Επιλέχθηκαν {checked} / {total} σταθμοί"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Δεν βρέθηκε ραδιόφωνο για αυτήν τη γλώσσα σε {country}. Αποεπιλέξτε «Φιλτράρισμα κατά χώρα» ή καθαρίστε τη γλώσσα."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Δεν βρέθηκε ραδιόφωνο για αυτά τα κριτήρια σε {country}. Αποεπιλέξτε «Φιλτράρισμα κατά χώρα» για παγκόσμια αναζήτηση."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Δεν βρέθηκε ραδιόφωνο στο Radio-Browser για αυτά τα κριτήρια."
+
+msgid "[Present]"
+msgstr "[Υπάρχει]"
+
+msgid "[New]"
+msgstr "[Νέο]"
+
+msgid "○ Untested"
+msgstr "○ Μη δοκιμασμένο"
+
+msgid "{count} stations found."
+msgstr "Βρέθηκαν {count} σταθμοί."
+
+msgid "Testing..."
+msgstr "Δοκιμή..."
+
+msgid "{count} available timezones"
+msgstr "{count} διαθέσιμες ζώνες ώρας"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> σταθμοί σε <b>{nb_gr}</b> ομάδες."

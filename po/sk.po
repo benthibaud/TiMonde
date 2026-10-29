@@ -1098,3 +1098,123 @@ msgstr "Počúvajte vybrané rádio"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Vypočujte si alebo otestujte vybrané rádio"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "neodpovedá. Hľadá sa záložný stream..."
+
+msgid "Stream repaired and saved for"
+msgstr "Stream opravený a uložený pre"
+
+msgid "is currently unavailable"
+msgstr "je momentálne nedostupná"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "V katalógu balíčkov sa nepodarilo nájsť stanicu."
+
+msgid "No radio is currently playing."
+msgstr "Momentálne nehrá žiadne rádio."
+
+msgid "Selection"
+msgstr "Výber"
+
+msgid "Save error"
+msgstr "Chyba pri ukladaní"
+
+msgid "Saved!"
+msgstr "Uložené!"
+
+msgid "saved in your favorites!"
+msgstr "uložené do obľúbených!"
+
+msgid "Station added but reload error"
+msgstr "Stanica pridaná, ale došlo k chybe pri opätovnom načítaní"
+
+msgid "Sleep timer activated"
+msgstr "Časovač vypnutia aktivovaný"
+
+msgid "stopping in"
+msgstr "vypnutie o"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Časovač vypnutia: zastavuje sa rádio."
+
+msgid "Sleep timer cancelled."
+msgstr "Časovač vypnutia zrušený."
+
+msgid "Track copied to clipboard:"
+msgstr "Názov skladby skopírovaný do schránky:"
+
+msgid "deleted from your favorites."
+msgstr "odstránené z obľúbených."
+
+msgid "updated successfully!"
+msgstr "úspešne aktualizované!"
+
+msgid "Settings console not found"
+msgstr "Konzola nastavení sa nenašla"
+
+msgid "Paused"
+msgstr "Pozastavené"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Hľadanie na Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Pre tento názov sa nenašiel žiadny stream. Upravte text vyššie."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Našlo sa {count} streamov. Vyberte požadovaný stream a potvrďte."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Pre túto krajinu nie je vopred načítaný žiadny DAB+ balíček."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Môžete preskúmať a importovať stanice pre toto územie priamo z globálneho adresára."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Preskúmať stanice z {country} na Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Preskúmať stanice z tejto krajiny na Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Prepnúť do globálneho adresára s touto predvolenou krajinou"
+
+msgid "this country"
+msgstr "táto krajina"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Žiadny DAB+ balíček pre {country} — Použite „Hľadať online“."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "Vybraté {checked} / {total} staníc"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "V {country} sa pre tento jazyk nenašlo žiadne rádio. Zrušte začiarknutie „Filtrovať podľa krajiny“ alebo vymažte jazyk."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "V {country} sa pre tieto kritériá nenašlo žiadne rádio. Zrušte začiarknutie „Filtrovať podľa krajiny“ pre globálne hľadanie."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Na Radio-Browser sa pre tieto kritériá nenašlo žiadne rádio."
+
+msgid "[Present]"
+msgstr "[Existuje]"
+
+msgid "[New]"
+msgstr "[Nová]"
+
+msgid "○ Untested"
+msgstr "○ Netestované"
+
+msgid "{count} stations found."
+msgstr "Našlo sa {count} staníc."
+
+msgid "Testing..."
+msgstr "Testuje sa..."
+
+msgid "{count} available timezones"
+msgstr "{count} dostupných časových pásiem"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> staníc v <b>{nb_gr}</b> skupinách."

@@ -1098,3 +1098,123 @@ msgstr "收听选定的广播"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "收听或测试所选的广播"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "无响应。正在搜索备用流..."
+
+msgid "Stream repaired and saved for"
+msgstr "已成功修复并保存流："
+
+msgid "is currently unavailable"
+msgstr "当前不可用"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "无法在推荐花束目录中找到电台。"
+
+msgid "No radio is currently playing."
+msgstr "当前没有正在播放的广播。"
+
+msgid "Selection"
+msgstr "精选"
+
+msgid "Save error"
+msgstr "保存错误"
+
+msgid "Saved!"
+msgstr "已保存！"
+
+msgid "saved in your favorites!"
+msgstr "已保存到您的收藏夹！"
+
+msgid "Station added but reload error"
+msgstr "电台已添加但重载出错"
+
+msgid "Sleep timer activated"
+msgstr "睡眠定时器已激活"
+
+msgid "stopping in"
+msgstr "将在以下时间后停止："
+
+msgid "Sleep timer: stopping radio."
+msgstr "睡眠定时器：正在关闭广播。"
+
+msgid "Sleep timer cancelled."
+msgstr "睡眠定时器已取消。"
+
+msgid "Track copied to clipboard:"
+msgstr "曲目信息已复制到剪贴板："
+
+msgid "deleted from your favorites."
+msgstr "已从收藏夹中删除。"
+
+msgid "updated successfully!"
+msgstr "更新成功！"
+
+msgid "Settings console not found"
+msgstr "未找到设置控制台"
+
+msgid "Paused"
+msgstr "暂停"
+
+msgid "Searching on Radio-Browser..."
+msgstr "正在 Radio-Browser 上搜索..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "未找到该名称的流。请修改上方文本。"
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "找到 {count} 个流。请选择所需的流并确认。"
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "该国家/地区暂无预载的 DAB+ 花束。"
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "您可以直接从全球目录中探索并导入该地区的电台。"
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "在 Radio-Browser 上探索来自 {country} 的电台 ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "在 Radio-Browser 上探索该国家的电台"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "切换到全球目录并预选该国家"
+
+msgid "this country"
+msgstr "该国家/地区"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "{country} 暂无 DAB+ 花束 — 请使用“在线搜索”。"
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "已选择 {checked} / {total} 个电台"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "在 {country} 未找到该语言的电台。取消勾选“按国家筛选”或清空语言。"
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "在 {country} 未找到符合条件的电台。取消勾选“按国家筛选”以在全网搜索。"
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "在 Radio-Browser 上未找到符合这些条件的电台。"
+
+msgid "[Present]"
+msgstr "[已存在]"
+
+msgid "[New]"
+msgstr "[新电台]"
+
+msgid "○ Untested"
+msgstr "○ 未测试"
+
+msgid "{count} stations found."
+msgstr "找到 {count} 个电台。"
+
+msgid "Testing..."
+msgstr "正在测试..."
+
+msgid "{count} available timezones"
+msgstr "{count} 个可用时区"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "分布在 <b>{nb_gr}</b> 个分组中的 <b>{nb_st}</b> 个电台。"

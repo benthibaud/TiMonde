@@ -1216,3 +1216,124 @@ msgstr "Listen to selected station"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Listen to or test selected station"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "is not responding. Searching for a backup stream..."
+
+msgid "Stream repaired and saved for"
+msgstr "Stream repaired and saved for"
+
+msgid "is currently unavailable"
+msgstr "is currently unavailable"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Unable to find a station in the bouquets catalog."
+
+msgid "No radio is currently playing."
+msgstr "No radio is currently playing."
+
+msgid "Selection"
+msgstr "Selection"
+
+msgid "Save error"
+msgstr "Save error"
+
+msgid "Saved!"
+msgstr "Saved!"
+
+msgid "saved in your favorites!"
+msgstr "saved in your favorites!"
+
+msgid "Station added but reload error"
+msgstr "Station added but reload error"
+
+msgid "Sleep timer activated"
+msgstr "Sleep timer activated"
+
+msgid "stopping in"
+msgstr "stopping in"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Sleep timer: stopping radio."
+
+msgid "Sleep timer cancelled."
+msgstr "Sleep timer cancelled."
+
+msgid "Track copied to clipboard:"
+msgstr "Track copied to clipboard:"
+
+msgid "deleted from your favorites."
+msgstr "deleted from your favorites."
+
+msgid "updated successfully!"
+msgstr "updated successfully!"
+
+msgid "Settings console not found"
+msgstr "Settings console not found"
+
+msgid "Paused"
+msgstr "Paused"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Searching on Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "No stream found for this name. Modify the text above."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} streams found. Select the desired stream and validate."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "No pre-loaded DAB+ bouquet for this country."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "You can explore and import stations for this territory directly from the global directory."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Explore stations from {country} on Radio-Browser ➔"
+
+msgid "this country"
+msgstr "this country"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "No DAB+ bouquet for {country} — Use 'Search online'."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} station(s) selected"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "No radio found on Radio-Browser for these criteria."
+
+msgid "[Present]"
+msgstr "[Present]"
+
+msgid "[New]"
+msgstr "[New]"
+
+msgid "○ Untested"
+msgstr "○ Untested"
+
+msgid "{count} stations found."
+msgstr "{count} stations found."
+
+msgid "Testing..."
+msgstr "Testing..."
+
+msgid "{count} available timezones"
+msgstr "{count} available timezones"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Explore stations from this country on Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Switch to the global directory with this country pre-selected"
+

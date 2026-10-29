@@ -1098,3 +1098,123 @@ msgstr "Nghe đài đã chọn"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Nghe hoặc kiểm tra đài đã chọn"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "không phản hồi. Đang tìm kiếm luồng dự phòng..."
+
+msgid "Stream repaired and saved for"
+msgstr "Luồng đã được sửa và lưu cho"
+
+msgid "is currently unavailable"
+msgstr "hiện không khả dụng"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Không thể tìm thấy đài trong danh mục nhóm đài."
+
+msgid "No radio is currently playing."
+msgstr "Hiện không có đài nào đang phát."
+
+msgid "Selection"
+msgstr "Tuyển chọn"
+
+msgid "Save error"
+msgstr "Lỗi lưu"
+
+msgid "Saved!"
+msgstr "Đã lưu!"
+
+msgid "saved in your favorites!"
+msgstr "đã lưu vào mục yêu thích của bạn!"
+
+msgid "Station added but reload error"
+msgstr "Đã thêm đài nhưng xảy ra lỗi khi tải lại"
+
+msgid "Sleep timer activated"
+msgstr "Hẹn giờ ngủ đã được kích hoạt"
+
+msgid "stopping in"
+msgstr "tắt sau"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Hẹn giờ ngủ: đang dừng đài."
+
+msgid "Sleep timer cancelled."
+msgstr "Đã hủy hẹn giờ ngủ."
+
+msgid "Track copied to clipboard:"
+msgstr "Tên bài hát đã được sao chép vào khay nhớ tạm:"
+
+msgid "deleted from your favorites."
+msgstr "đã xóa khỏi mục yêu thích của bạn."
+
+msgid "updated successfully!"
+msgstr "cập nhật thành công!"
+
+msgid "Settings console not found"
+msgstr "Không tìm thấy bảng điều khiển cài đặt"
+
+msgid "Paused"
+msgstr "Tạm dừng"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Đang tìm kiếm trên Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Không tìm thấy luồng cho tên này. Vui lòng sửa đổi văn bản trên."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Đã tìm thấy {count} luồng. Chọn luồng mong muốn và xác nhận."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Không có nhóm đài DAB+ tải sẵn cho quốc gia này."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Bạn có thể khám phá và nhập các đài cho vùng lãnh thổ này trực tiếp từ thư mục toàn cầu."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Khám phá các đài từ {country} trên Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Khám phá các đài của quốc gia này trên Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Chuyển sang thư mục toàn cầu với quốc gia này được chọn sẵn"
+
+msgid "this country"
+msgstr "quốc gia này"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Không có nhóm đài DAB+ cho {country} — Sử dụng 'Tìm kiếm trực tuyến'."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "Đã chọn {checked} / {total} đài"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Không tìm thấy đài cho ngôn ngữ này ở {country}. Bỏ chọn 'Lọc theo quốc gia' hoặc xóa ngôn ngữ."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Không tìm thấy đài cho các tiêu chí này ở {country}. Bỏ chọn 'Lọc theo quốc gia' để tìm kiếm toàn cầu."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Không tìm thấy đài trên Radio-Browser cho các tiêu chí này."
+
+msgid "[Present]"
+msgstr "[Đã có]"
+
+msgid "[New]"
+msgstr "[Mới]"
+
+msgid "○ Untested"
+msgstr "○ Chưa kiểm tra"
+
+msgid "{count} stations found."
+msgstr "Đã tìm thấy {count} đài."
+
+msgid "Testing..."
+msgstr "Đang kiểm tra..."
+
+msgid "{count} available timezones"
+msgstr "{count} múi giờ khả dụng"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> đài trong <b>{nb_gr}</b> nhóm."

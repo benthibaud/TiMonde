@@ -1098,3 +1098,123 @@ msgstr "තෝරාගත් ගුවන් විදුලියට සවන
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "තෝරාගත් ගුවන් විදුලියට සවන් දෙන්න හෝ පරීක්ෂා කරන්න"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "ප්‍රතිචාර නොදක්වයි. උපස්ථ ධාරාවක් සොයමින්..."
+
+msgid "Stream repaired and saved for"
+msgstr "ධාරාව අලුත්වැඩියා කර සුරකින ලදි:"
+
+msgid "is currently unavailable"
+msgstr "දැනට ලබා ගත නොහැක"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "පොකුරු නාමාවලියෙහි ස්ථානයක් සොයාගත නොහැක."
+
+msgid "No radio is currently playing."
+msgstr "දැනට කිසිදු ගුවන් විදුලියක් වාදනය නොවේ."
+
+msgid "Selection"
+msgstr "තෝරාගැනීම"
+
+msgid "Save error"
+msgstr "සුරැකීමේ දෝෂයකි"
+
+msgid "Saved!"
+msgstr "සුරකින ලදි!"
+
+msgid "saved in your favorites!"
+msgstr "ඔබගේ ප්‍රියතමයන් තුළ සුරකින ලදි!"
+
+msgid "Station added but reload error"
+msgstr "ස්ථානය එක් කරන ලද නමුත් නැවත පැටවීමේ දෝෂයක් ඇති විය"
+
+msgid "Sleep timer activated"
+msgstr "නින්ද ටයිමරය සක්‍රිය කරන ලදි"
+
+msgid "stopping in"
+msgstr "නැවතීමට කාලය:"
+
+msgid "Sleep timer: stopping radio."
+msgstr "නින්ද ටයිමරය: ගුවන් විදුලිය නවත්වමින්."
+
+msgid "Sleep timer cancelled."
+msgstr "නින්ද ටයිමරය අවලංගු කරන ලදි."
+
+msgid "Track copied to clipboard:"
+msgstr "ගීතයේ නම පසුරු පුවරුවට පිටපත් කරන ලදි:"
+
+msgid "deleted from your favorites."
+msgstr "ඔබගේ ප්‍රියතමයන්ගෙන් මකා දමන ලදි."
+
+msgid "updated successfully!"
+msgstr "සාර්ථකව යාවත්කාලීන කරන ලදි!"
+
+msgid "Settings console not found"
+msgstr "සැකසුම් කොන්සෝලය හමු නොවීය"
+
+msgid "Paused"
+msgstr "විරාම කර ඇත"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Radio-Browser හි සොයමින්..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "මෙම නම සඳහා ධාරාවක් හමු නොවීය. ඉහත පෙළ වෙනස් කරන්න."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "ධාරාවන් {count}ක් හමු විය. අවශ්‍ය ධාරාව තෝරා තහවුරු කරන්න."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "මෙම රට සඳහා පෙර පටවන ලද DAB+ පොකුරක් නොමැත."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "ඔබට ගෝලීය නාමාවලියෙන් සෘජුවම මෙම කලාපය සඳහා ස්ථාන ගවේෂණය කර ආයාත කළ හැක."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Radio-Browser හි {country} වෙතින් ස්ථාන ගවේෂණය කරන්න ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Radio-Browser හි මෙම රටේ ස්ථාන ගවේෂණය කරන්න"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "මෙම රට පෙර-තෝරාගෙන ගෝලීය නාමාවලිය වෙත මාරු වන්න"
+
+msgid "this country"
+msgstr "මෙම රට"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "{country} සඳහා DAB+ පොකුරක් නොමැත — 'මාර්ගගතව සොයන්න' භාවිතා කරන්න."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "ස්ථාන {checked} / {total}ක් තෝරා ඇත"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "{country} හි මෙම භාෂාව සඳහා ගුවන් විදුලියක් හමු නොවීය. 'රට අනුව පෙරීම' සලකුණු නොකරන්න හෝ භාෂාව හිස් කරන්න."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "{country} හි මෙම නිර්ණායක සඳහා ගුවන් විදුලියක් හමු නොවීය. ගෝලීයව සෙවීමට 'රට අනුව පෙරීම' සලකුණු නොකරන්න."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "මෙම නිර්ණායක සඳහා Radio-Browser හි ගුවන් විදුලියක් හමු නොවීය."
+
+msgid "[Present]"
+msgstr "[පවතී]"
+
+msgid "[New]"
+msgstr "[නව]"
+
+msgid "○ Untested"
+msgstr "○ අත්හදා බලා නැත"
+
+msgid "{count} stations found."
+msgstr "ස්ථාන {count}ක් හමු විය."
+
+msgid "Testing..."
+msgstr "පරීක්ෂා කරමින්..."
+
+msgid "{count} available timezones"
+msgstr "පවතින වේලා කලාප {count}ක්"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "කණ්ඩායම් <b>{nb_gr}</b>ක් තුළ ස්ථාන <b>{nb_st}</b>ක්."

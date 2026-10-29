@@ -1098,3 +1098,123 @@ msgstr "Hlustaðu á valið útvarp"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Hlustaðu á eða prófaðu valið útvarp"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "svarar ekki. Leitar að varastreymi..."
+
+msgid "Stream repaired and saved for"
+msgstr "Streymi gert við og vistað fyrir"
+
+msgid "is currently unavailable"
+msgstr "er ekki tiltæk eins og er"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Gat ekki fundið stöð í vöndulskránni."
+
+msgid "No radio is currently playing."
+msgstr "Ekkert útvarp er í spilun eins og er."
+
+msgid "Selection"
+msgstr "Val"
+
+msgid "Save error"
+msgstr "Vistunarvilla"
+
+msgid "Saved!"
+msgstr "Vistað!"
+
+msgid "saved in your favorites!"
+msgstr "vistað í eftirlæti þitt!"
+
+msgid "Station added but reload error"
+msgstr "Stöð bætt við en villa kom upp við endurhleðslu"
+
+msgid "Sleep timer activated"
+msgstr "Svefnteljari virkjaður"
+
+msgid "stopping in"
+msgstr "slekkur eftir"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Svefnteljari: stöðvar útvarpið."
+
+msgid "Sleep timer cancelled."
+msgstr "Hætt við svefnteljara."
+
+msgid "Track copied to clipboard:"
+msgstr "Lagaheiti afritað á klippiborð:"
+
+msgid "deleted from your favorites."
+msgstr "eytt úr eftirlæti þínu."
+
+msgid "updated successfully!"
+msgstr "uppfært með árangri!"
+
+msgid "Settings console not found"
+msgstr "Stillingaborð fannst ekki"
+
+msgid "Paused"
+msgstr "Í bið"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Leitar á Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Ekkert streymi fannst fyrir þetta nafn. Breyttu textanum hér að ofan."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} streymi fundust. Veldu æskilegt streymi og staðfestu."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Enginn forhlaðinn DAB+ vöndull fyrir þetta land."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Þú getur skoðað og flutt inn stöðvar fyrir þetta svæði beint úr alþjóðlegu skránni."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Skoða stöðvar frá {country} á Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Skoða stöðvar frá þessu landi á Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Skipta yfir í alþjóðlega skrá með þetta land valið fyrirfram"
+
+msgid "this country"
+msgstr "þetta land"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "Enginn DAB+ vöndull fyrir {country} — Notaðu 'Leita á netinu'."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} stöð(var) valin(ar)"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Ekkert útvarp fannst fyrir þetta tungumál í {country}. Afskráðu 'Sía eftir landi' eða hreinsaðu tungumálið."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Ekkert útvarp fannst fyrir þessi skilyrði í {country}. Afskráðu 'Sía eftir landi' til að leita um allan heim."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Ekkert útvarp fannst á Radio-Browser fyrir þessi skilyrði."
+
+msgid "[Present]"
+msgstr "[Til staðar]"
+
+msgid "[New]"
+msgstr "[Nýtt]"
+
+msgid "○ Untested"
+msgstr "○ Óprófað"
+
+msgid "{count} stations found."
+msgstr "{count} stöðvar fundust."
+
+msgid "Testing..."
+msgstr "Prófar..."
+
+msgid "{count} available timezones"
+msgstr "{count} tiltæk tímabelti"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> stöð(var) í <b>{nb_gr}</b> hóp(um)."

@@ -207,11 +207,15 @@ pub fn sleep_timer_active_label(remaining_mins: u64) -> String {
 }
 
 #[cfg(test)]
+pub static I18N_TEST_MUTEX: std::sync::Mutex<()> = std::sync::Mutex::new(());
+
+#[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn test_chinese_mandarin_and_cantonese_distinction() {
+        let _lock = I18N_TEST_MUTEX.lock().unwrap();
         assert_eq!(normalize_lang_code("zh_CN.UTF-8"), "zh_CN");
         assert_eq!(normalize_lang_code("zh_SG.UTF-8"), "zh_CN");
         assert_eq!(normalize_lang_code("zh.UTF-8"), "zh_CN");
@@ -235,6 +239,7 @@ mod tests {
 
     #[test]
     fn test_multilingual_european_and_world_support() {
+        let _lock = I18N_TEST_MUTEX.lock().unwrap();
         set_language("en");
         assert_eq!(tr("Play"), "Play");
         assert_eq!(tr("Stop"), "Stop");

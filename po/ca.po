@@ -1098,3 +1098,123 @@ msgstr "Escolta la ràdio seleccionada"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Escolta o prova la ràdio seleccionada"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "no respon. S'està cercant un flux de reserva..."
+
+msgid "Stream repaired and saved for"
+msgstr "Flux reparat i desat per a"
+
+msgid "is currently unavailable"
+msgstr "no està disponible actualment"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "No s'ha pogut trobar cap emissora al catàleg de paquets."
+
+msgid "No radio is currently playing."
+msgstr "Actualment no s'està reproduint cap ràdio."
+
+msgid "Selection"
+msgstr "Selecció"
+
+msgid "Save error"
+msgstr "Error en desar"
+
+msgid "Saved!"
+msgstr "Desada!"
+
+msgid "saved in your favorites!"
+msgstr "desada als vostres preferits!"
+
+msgid "Station added but reload error"
+msgstr "Emissora afegida però s'ha produït un error de recàrrega"
+
+msgid "Sleep timer activated"
+msgstr "Temporitzador de son activat"
+
+msgid "stopping in"
+msgstr "aturada en"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Temporitzador de son: s'està aturant la ràdio."
+
+msgid "Sleep timer cancelled."
+msgstr "Temporitzador de son cancel·lat."
+
+msgid "Track copied to clipboard:"
+msgstr "Nom de la pista copiat al porta-retalls:"
+
+msgid "deleted from your favorites."
+msgstr "s'ha suprimit dels vostres preferits."
+
+msgid "updated successfully!"
+msgstr "s'ha actualitzat correctament!"
+
+msgid "Settings console not found"
+msgstr "No s'ha trobat la consola de configuració"
+
+msgid "Paused"
+msgstr "En pausa"
+
+msgid "Searching on Radio-Browser..."
+msgstr "S'està cercant a Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "No s'ha trobat cap flux per a aquest nom. Modifiqueu el text superior."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "S'han trobat {count} fluxos. Seleccioneu el flux desitjat i confirmeu."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "No hi ha cap paquet DAB+ precarregat per a aquest país."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Podeu explorar i importar emissores d'aquest territori directament des del directori global."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Explora emissores de {country} a Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Explora emissores d'aquest país a Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Canvia al directori global amb aquest país preseleccionat"
+
+msgid "this country"
+msgstr "aquest país"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "No hi ha cap paquet DAB+ per a {country} — Utilitzeu «Cerca en línia»."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} emissora/es seleccionada/es"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "No s'ha trobat cap ràdio per a aquest idioma a {country}. Desmarqueu «Filtra per país» o esborreu l'idioma."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "No s'ha trobat cap ràdio per a aquests criteris a {country}. Desmarqueu «Filtra per país» per cercar globalment."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "No s'ha trobat cap ràdio a Radio-Browser per a aquests criteris."
+
+msgid "[Present]"
+msgstr "[Present]"
+
+msgid "[New]"
+msgstr "[Nova]"
+
+msgid "○ Untested"
+msgstr "○ No provat"
+
+msgid "{count} stations found."
+msgstr "S'han trobat {count} emissores."
+
+msgid "Testing..."
+msgstr "S'està provant..."
+
+msgid "{count} available timezones"
+msgstr "{count} zones horàries disponibles"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> emissora/es en <b>{nb_gr}</b> grup(s)."

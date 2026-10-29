@@ -1098,3 +1098,123 @@ msgstr "Klausieties izvēlēto radio"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Klausieties vai pārbaudiet izvēlēto radio"
 
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "neatbild. Meklē rezerves straumi..."
+
+msgid "Stream repaired and saved for"
+msgstr "Straumējums salabots un saglabāts stacijai"
+
+msgid "is currently unavailable"
+msgstr "pašlaik nav pieejama"
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Brikešu katalogā nevarēja atrast staciju."
+
+msgid "No radio is currently playing."
+msgstr "Pašlaik netiek atskaņots neviens radio."
+
+msgid "Selection"
+msgstr "Izlase"
+
+msgid "Save error"
+msgstr "Saglabāšanas kļūda"
+
+msgid "Saved!"
+msgstr "Saglabāts!"
+
+msgid "saved in your favorites!"
+msgstr "saglabāts jūsu izlasē!"
+
+msgid "Station added but reload error"
+msgstr "Stacija pievienota, bet radās pārlādēšanas kļūda"
+
+msgid "Sleep timer activated"
+msgstr "Miega taimeris aktivizēts"
+
+msgid "stopping in"
+msgstr "izslēgsies pēc"
+
+msgid "Sleep timer: stopping radio."
+msgstr "Miega taimeris: radio apturēšana."
+
+msgid "Sleep timer cancelled."
+msgstr "Miega taimeris atcelts."
+
+msgid "Track copied to clipboard:"
+msgstr "Dziesmas nosaukums nokopēts starpliktuvē:"
+
+msgid "deleted from your favorites."
+msgstr "dzēsta no jūsu izlases."
+
+msgid "updated successfully!"
+msgstr "veiksmīgi atjaunināts!"
+
+msgid "Settings console not found"
+msgstr "Iestatījumu konsole nav atrasta"
+
+msgid "Paused"
+msgstr "Pauzēts"
+
+msgid "Searching on Radio-Browser..."
+msgstr "Meklēšana Radio-Browser..."
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Šim nosaukumam netika atrasts straumējums. Mainiet iepriekš minēto tekstu."
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Atrasti {count} straumējumi. Izvēlieties vēlamo straumējumu un apstipriniet."
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Šai valstij nav iepriekš ielādētas DAB+ pakotnes."
+
+msgid "You can explore and import stations for this territory directly from the global directory."
+msgstr "Varat izpētīt un importēt šīs teritorijas stacijas tieši no globālā kataloga."
+
+msgid "Explore stations from {country} on Radio-Browser ➔"
+msgstr "Izpētīt stacijas no {country} vietnē Radio-Browser ➔"
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Izpētīt šīs valsts stacijas vietnē Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Pārslēgties uz globālo katalogu ar iepriekš atlasītu šo valsti"
+
+msgid "this country"
+msgstr "šī valsts"
+
+msgid "No DAB+ bouquet for {country} — Use 'Search online'."
+msgstr "{country} nav DAB+ pakotnes — izmantojiet 'Meklēt tiešsaistē'."
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "Atlasīta(s) {checked} / {total} stacija(s)"
+
+msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
+msgstr "Šajā valodā {country} netika atrasts neviens radio. Noņemiet atzīmi 'Filtrēt pēc valsts' vai notīriet valodu."
+
+msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
+msgstr "Šiem kritērijiem {country} netika atrasts neviens radio. Noņemiet atzīmi 'Filtrēt pēc valsts', lai meklētu globāli."
+
+msgid "No radio found on Radio-Browser for these criteria."
+msgstr "Radio-Browser netika atrasts neviens radio šiem kritērijiem."
+
+msgid "[Present]"
+msgstr "[Esošs]"
+
+msgid "[New]"
+msgstr "[Jauns]"
+
+msgid "○ Untested"
+msgstr "○ Nepārbaudīts"
+
+msgid "{count} stations found."
+msgstr "Atrastas {count} stacijas."
+
+msgid "Testing..."
+msgstr "Pārbauda..."
+
+msgid "{count} available timezones"
+msgstr "{count} pieejamās laika joslas"
+
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> stacija(s) <b>{nb_gr}</b> grupā(s)."

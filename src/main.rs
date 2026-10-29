@@ -141,22 +141,15 @@ fn ensure_sni_host() -> Option<std::process::Child> {
 
     if !has_watcher {
         info!("Aucun StatusNotifierWatcher détecté sur le bureau hôte (IceWM/Fluxbox).");
-        let candidates = [
-            "/usr/share/timonde/scripts/timonde_xembed_bridge.py",
-            #[cfg(debug_assertions)]
-            concat!(env!("CARGO_MANIFEST_DIR"), "/data/scripts/timonde_xembed_bridge.py"),
-        ];
-        for script in &candidates {
-            if Path::new(script).exists() {
-                info!("Activation du pont XEmbed natif : {}", script);
-                if let Ok(child) = std::process::Command::new("python3")
-                    .arg(script)
-                    .spawn()
-                {
-                    // Laisse le temps au script d'enregistrer le nom de service sur D-Bus
-                    std::thread::sleep(std::time::Duration::from_millis(200));
-                    return Some(child);
-                }
+        if let Some(script_path) = crate::tray::TiMondeTray::find_script("timonde_xembed_bridge.py") {
+            info!("Activation du pont XEmbed natif : {:?}", script_path);
+            if let Ok(child) = std::process::Command::new("python3")
+                .arg(&script_path)
+                .spawn()
+            {
+                // Laisse le temps au script d'enregistrer le nom de service sur D-Bus
+                std::thread::sleep(std::time::Duration::from_millis(200));
+                return Some(child);
             }
         }
     }
@@ -168,35 +161,28 @@ fn ensure_sni_host() -> Option<std::process::Child> {
 /// propose l'assistant graphique d'installation. Si l'utilisateur refuse ou annule,
 /// retourne false pour interrompre le démarrage sans laisser tourner d'application invisible.
 fn ensure_desktop_integration() -> bool {
-    let candidates = [
-        "/usr/share/timonde/scripts/gnome_tray_helper.py",
-        concat!(env!("CARGO_MANIFEST_DIR"), "/data/scripts/gnome_tray_helper.py"),
-    ];
-    for script in &candidates {
-        if Path::new(script).exists() {
-            // Test rapide non-intrusif
-            if let Ok(st) = std::process::Command::new("python3")
-                .arg(script)
-                .arg("--check")
-                .status()
-            {
-                if st.code() == Some(1) {
-                    info!("Environnement GNOME Shell détecté sans support AppIndicator. Lancement de l'assistant...");
-                    if let Ok(prompt_st) = std::process::Command::new("python3")
-                        .arg(script)
-                        .arg("--prompt")
-                        .status()
-                    {
-                        if !prompt_st.success() {
-                            info!("Installation de l'intégration GNOME ignorée ou annulée. Arrêt propre de TiMonde.");
-                            return false;
-                        }
-                    } else {
+    if let Some(script_path) = crate::tray::TiMondeTray::find_script("gnome_tray_helper.py") {
+        // Test rapide non-intrusif
+        if let Ok(st) = std::process::Command::new("python3")
+            .arg(&script_path)
+            .arg("--check")
+            .status()
+        {
+            if st.code() == Some(1) {
+                info!("Environnement GNOME Shell détecté sans support AppIndicator. Lancement de l'assistant...");
+                if let Ok(prompt_st) = std::process::Command::new("python3")
+                    .arg(&script_path)
+                    .arg("--prompt")
+                    .status()
+                {
+                    if !prompt_st.success() {
+                        info!("Installation de l'intégration GNOME ignorée ou annulée. Arrêt propre de TiMonde.");
                         return false;
                     }
+                } else {
+                    return false;
                 }
             }
-            break;
         }
     }
     true
@@ -368,17 +354,13 @@ fn main() {
                                 i += 2;
                             } else { i += 1; }
                         }
-                        "--country" | "-c" => {
-                            if i + 1 < args.len() {
-                                country_code = Some(args[i + 1].as_str());
-                                i += 2;
-                            } else { i += 1; }
+                        "--country" | "-c" if i + 1 < args.len() => {
+                            country_code = Some(args[i + 1].as_str());
+                            i += 2;
                         }
-                        "--timezone" | "--tz" | "-t" => {
-                            if i + 1 < args.len() {
-                                timezone_iana = Some(args[i + 1].as_str());
-                                i += 2;
-                            } else { i += 1; }
+                        "--timezone" | "--tz" | "-t" if i + 1 < args.len() => {
+                            timezone_iana = Some(args[i + 1].as_str());
+                            i += 2;
                         }
                         _ => { i += 1; }
                     }
@@ -603,6 +585,12 @@ fn main() {
     // 4. Initialisation du plateau système
     let tray = tray::TiMondeTray::new(root_group, bookmarks_path);
 
+    // Restitution immédiate de la mémoire tas après parsing de bookmarks.xml
+    #[cfg(target_os = "linux")]
+    unsafe {
+        libc::malloc_trim(0);
+    }
+
     // Clones des Arcs partagés avec le serveur MPRIS2
     let audio = Arc::clone(&tray.audio);
     let current_volume = Arc::clone(&tray.current_volume);
@@ -728,7 +716,13 @@ fn main() {
 
                 if let Ok(meta) = std::fs::metadata(&bpath_watcher) {
                     if let Ok(modified) = meta.modified() {
-                        if Some(modified) != last_modified {
+                        let cur_millis = modified
+                            .duration_since(std::time::UNIX_EPOCH)
+                            .map(|d| d.as_millis() as u64)
+                            .unwrap_or(0);
+                        let last_internal = tray::LAST_RELOAD_MTIME_MILLIS.load(std::sync::atomic::Ordering::SeqCst);
+
+                        if Some(modified) != last_modified && cur_millis != last_internal {
                             last_modified = Some(modified);
                             info!("Fichier bookmarks.xml modifié, rechargement automatique...");
                             let _ = tray::TiMondeTray::reload_bookmarks_and_update_tray(
@@ -736,6 +730,8 @@ fn main() {
                                 &bpath_watcher,
                                 &handle_watcher,
                             );
+                        } else if cur_millis == last_internal {
+                            last_modified = Some(modified);
                         }
                     }
                 }

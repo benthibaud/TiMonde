@@ -2,7 +2,7 @@
 <bouquet country="BJ" name="Bénin" flag="" multilingual="false">
   <national>
     <station name="ORTB Radio Bénin" url="https://listen.radioking.com/radio/47608/stream/84430" genre="L'antenne nationale de l'ORTB" />
-    <station name="Cotonou FM" url="https://stream.zeno.fm/6cgt4w4k0heuv" genre="La radio urbaine de Cotonou" />
+    <station name="Cotonou FM" url="https://stream-286.surfernetwork.com/o9bspgm4y78vv" genre="La radio urbaine de Cotonou" />
     <station name="Radio Tokpa" url="https://radiotokpa.info/liveradio" genre="La première radio privée du Bénin" />
     </national>
   </bouquet>

@@ -26,7 +26,7 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import make_btn, safe_parse_xml, clean_stream_url, infer_timezone, normalize_group_path
+from timonde_common import make_btn, safe_parse_xml, clean_stream_url, infer_timezone, normalize_group_path, find_or_create_group, set_window_icon, find_script
 from reorder_groups import ReorderWindow
 from browse_bouquets import DiscoverRadiosWindow, parse_bouquets_xml
 from edit_station import EditStationWindow
@@ -193,7 +193,7 @@ def _write_bookmarks_element_tree_atomic(path, root_el):
     lines = ['<?xml version="1.0" encoding="utf-8"?>', '<!DOCTYPE bookmarks>', '<bookmarks>']
 
     def esc(val):
-        return (val or "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
+        return (val or "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;").replace("'", "&apos;")
 
     def dump_station(st_el, indent):
         prefix = "\t" * indent
@@ -233,28 +233,13 @@ def _write_bookmarks_element_tree_atomic(path, root_el):
     tmp_path = f"{abs_path}.tmp"
     with open(tmp_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
+        f.flush()
+        os.fsync(f.fileno())
     os.replace(tmp_path, abs_path)
 
 
 def save_bookmarks_tree(path, groups_payload):
     root = ET.Element("bookmarks")
-
-    def find_or_create_group(parent_elem, group_path):
-        norm = normalize_group_path(group_path, return_root_literal=False)
-        if not norm:
-            return parent_elem
-        parts = [p.strip() for p in norm.split("/") if p.strip() and p.strip().lower() != "root"]
-        curr = parent_elem
-        for part in parts:
-            found = None
-            for child in curr.findall("group"):
-                if child.attrib.get("name", "").strip().lower() == part.lower():
-                    found = child
-                    break
-            if found is None:
-                found = ET.SubElement(curr, "group", {"name": part})
-            curr = found
-        return curr
 
     for grp in groups_payload:
         if grp.get("is_separator", False):
@@ -293,23 +278,6 @@ def add_stations_to_bookmarks_xml(path, stations_list, default_group="Mes Radios
             if u:
                 existing_urls.add(u)
 
-    def find_or_create_group(parent_elem, group_path):
-        norm = normalize_group_path(group_path, return_root_literal=False)
-        if not norm:
-            return parent_elem
-        parts = [p.strip() for p in norm.split("/") if p.strip() and p.strip().lower() != "root"]
-        curr = parent_elem
-        for part in parts:
-            found = None
-            for child in curr.findall("group"):
-                if child.attrib.get("name", "").strip().lower() == part.lower():
-                    found = child
-                    break
-            if found is None:
-                found = ET.SubElement(curr, "group", {"name": part})
-            curr = found
-        return curr
-
     added_count = 0
     for st in stations_list:
         url = clean_stream_url(st.get("url", "").strip())
@@ -342,28 +310,22 @@ def add_stations_to_bookmarks_xml(path, stations_list, default_group="Mes Radios
 class SettingsWindow(Gtk.Window):
     def __init__(self, bookmarks_path=None):
         super().__init__(title=_("Paramètres & Contrôle TiMonde"))
-        self.set_default_size(960, 640)
+        screen = Gdk.Screen.get_default()
+        target_w, target_h = 960, 640
+        if screen:
+            geom = screen.get_monitor_geometry(screen.get_primary_monitor() or 0)
+            max_w = int(geom.width * 0.90)
+            max_h = int(geom.height * 0.85)
+            target_w = min(target_w, max_w)
+            target_h = min(target_h, max_h)
+        self.set_default_size(max(target_w, 750), max(target_h, 480))
         self.set_position(Gtk.WindowPosition.CENTER)
         self.set_border_width(10)
 
         self.bookmarks_path = bookmarks_path or DEFAULT_BOOKMARKS_PATH
         self.has_modifications = False
 
-        # Icône native multi-résolutions
-        for icon_path in [
-            "/usr/share/icons/hicolor/48x48/apps/timonde_on.png",
-            "/usr/share/icons/hicolor/32x32/apps/timonde_on.png",
-            "/usr/share/icons/hicolor/24x24/apps/timonde_on.png",
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), "../icons/hicolor/48x48/apps/timonde_on.png"),
-        ]:
-            if os.path.exists(icon_path):
-                try:
-                    self.set_icon_from_file(icon_path)
-                    break
-                except Exception:
-                    pass
-        else:
-            self.set_icon_name("preferences-system")
+        set_window_icon(self)
 
         self.apply_custom_css()
         self.setup_ui()
@@ -454,8 +416,11 @@ class SettingsWindow(Gtk.Window):
 
         sidebar = Gtk.StackSidebar()
         sidebar.set_stack(self.stack)
-        sidebar.set_size_request(210, -1)
-        hcontent.pack_start(sidebar, False, False, 0)
+        sidebar_scroll = Gtk.ScrolledWindow()
+        sidebar_scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+        sidebar_scroll.add(sidebar)
+        sidebar_scroll.set_size_request(185, -1)
+        hcontent.pack_start(sidebar_scroll, False, False, 0)
 
         hcontent.pack_start(self.stack, True, True, 0)
 
@@ -566,8 +531,8 @@ class SettingsWindow(Gtk.Window):
         groups = load_bookmarks_groups_list(self.bookmarks_path)
         dlg = EditStationWindow(
             mode="add",
-            groups=groups,
-            default_group=current_grp,
+            current_group=current_grp or "",
+            available_groups=groups,
             standalone=False,
             on_done_callback=self.on_embedded_station_added
         )
@@ -722,125 +687,15 @@ class SettingsWindow(Gtk.Window):
     def refresh_stats(self):
         nb_st, nb_gr = get_bookmarks_stats(self.bookmarks_path)
         if hasattr(self, "lbl_bm_desc"):
-            self.lbl_bm_desc.set_markup(f"{html.escape(self.bookmarks_path)}\n<b>{nb_st}</b> station(s) réparties dans <b>{nb_gr}</b> groupe(s).")
+            desc = _("<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s).").format(nb_st=nb_st, nb_gr=nb_gr)
+            self.lbl_bm_desc.set_markup(f"{html.escape(self.bookmarks_path)}\n{desc}")
 
     # -------------------------------------------------------------------------
     # Actions Métier & Intégration des sous-outils
     # -------------------------------------------------------------------------
     def find_script(self, script_name):
-        candidates = [
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), script_name),
-            os.path.join("/usr/share/timonde/scripts", script_name),
-            os.path.join("/usr/local/share/timonde/scripts", script_name),
-            os.path.expanduser(f"~/.local/share/timonde/scripts/{script_name}"),
-            f"data/scripts/{script_name}"
-        ]
-        for c in candidates:
-            if os.path.isfile(c):
-                return c
-        return None
+        return find_script(script_name)
 
-    def action_add_station(self):
-        script_path = self.find_script("edit_station.py")
-        if not script_path:
-            self.show_feedback(f"{_('Outil introuvable :')} edit_station.py", is_error=True)
-            return
-
-        groups = load_bookmarks_groups_list(self.bookmarks_path)
-        cmd = [
-            sys.executable,
-            script_path,
-            "--mode", "add",
-            "--groups-json", json.dumps(groups)
-        ]
-
-        try:
-            self.set_sensitive(False)
-            res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-            self.set_sensitive(True)
-            if res.returncode == 0 and res.stdout.strip():
-                data = json.loads(res.stdout.strip())
-                added = add_stations_to_bookmarks_xml(self.bookmarks_path, [data], default_group=data.get("group"))
-                if added > 0:
-                    self.has_modifications = True
-                    self.refresh_stats()
-                    st_name = data.get("name", "Nouvelle radio")
-                    self.show_feedback(f"« {st_name} » {_('ajoutée avec succès à vos signets !')}")
-            elif res.returncode != 0:
-                pass # Annulé par l'utilisateur
-        except Exception as e:
-            self.set_sensitive(True)
-            self.show_feedback(f"{_('Erreur :')} {e}", is_error=True)
-
-    def action_browse_bouquets(self, tab_index):
-        script_path = self.find_script("browse_bouquets.py")
-        if not script_path:
-            self.show_feedback(f"{_('Outil introuvable :')} browse_bouquets.py", is_error=True)
-            return
-
-        cmd = [sys.executable, script_path, f"--tab={tab_index}"]
-
-        try:
-            self.set_sensitive(False)
-            res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-            self.set_sensitive(True)
-            if res.returncode == 0 and res.stdout.strip():
-                try:
-                    data = json.loads(res.stdout.strip())
-                    stations = data.get("stations", [])
-                    group_name = data.get("group_name", "Mes Stations")
-                    country_code = data.get("country_code")
-                    added = add_stations_to_bookmarks_xml(self.bookmarks_path, stations, default_group=group_name, country_code=country_code)
-                    if added > 0:
-                        self.has_modifications = True
-                        self.refresh_stats()
-                        self.show_feedback(f"{added} {_('radio(s) ajoutée(s) à vos signets !')}")
-                    else:
-                        self.show_feedback(_("Aucune nouvelle radio ajoutée (déjà présentes)."))
-                except Exception as ex:
-                    self.show_feedback(f"{_('Erreur import JSON :')} {ex}", is_error=True)
-        except Exception as e:
-            self.set_sensitive(True)
-            self.show_feedback(f"{_('Erreur :')} {e}", is_error=True)
-
-    def action_reorder_groups(self, check_mode=False, export_mode=False):
-        script_path = self.find_script("reorder_groups.py")
-        if not script_path:
-            self.show_feedback(f"{_('Outil introuvable :')} reorder_groups.py", is_error=True)
-            return
-
-        payload = load_bookmarks_tree(self.bookmarks_path)
-        json_input = json.dumps(payload)
-
-        cmd = [sys.executable, script_path]
-        if check_mode:
-            cmd.append("--check")
-        elif export_mode:
-            cmd.append("--export")
-
-        try:
-            self.set_sensitive(False)
-            proc = subprocess.Popen(
-                cmd,
-                stdin=subprocess.PIPE,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                text=True
-            )
-            stdout_str, stderr_str = proc.communicate(input=json_input)
-            self.set_sensitive(True)
-
-            if proc.returncode == 0 and not export_mode and stdout_str.strip():
-                new_payload = json.loads(stdout_str.strip())
-                save_bookmarks_tree(self.bookmarks_path, new_payload)
-                self.has_modifications = True
-                self.refresh_stats()
-                self.show_feedback(_("Signets réorganisés et enregistrés avec succès !"))
-            elif export_mode and proc.returncode == 0:
-                self.show_feedback(_("Exportation CSV terminée."))
-        except Exception as e:
-            self.set_sensitive(True)
-            self.show_feedback(f"{_('Erreur :')} {e}", is_error=True)
 
     # -------------------------------------------------------------------------
     # Actions & Exécution des sous-outils

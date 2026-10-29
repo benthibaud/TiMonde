@@ -43,6 +43,8 @@ from timonde_common import (
     infer_timezone,
     StreamPreviewPlayer,
     update_btn_content,
+    check_stream_url,
+    set_window_icon,
 )
 
 from timonde_world_data import (
@@ -84,7 +86,7 @@ RADIO_BROWSER_ENDPOINTS = [
     "https://at1.api.radio-browser.info",
 ]
 
-USER_AGENT = "TiMonde/0.2.0 (Linux; x86_64; VLC/3.0.20)"
+USER_AGENT = "TiMonde/0.2.1 (Linux; x86_64; VLC/3.0.20)"
 
 # Répertoires de recherche des bouquets XML / Bouquets search paths
 BOUQUETS_CANDIDATES = [
@@ -207,42 +209,7 @@ def find_bouquets_dir():
             return os.path.abspath(path)
     return None
 
-def check_stream_url(url, timeout=2.0):
-    """
-    Test frugal et rapide de disponibilité d'un flux audio (en-têtes HTTP uniquement).
-    Lightweight, fast HTTP stream health check (headers only, no body download).
-    """
-    if not url or url.strip() == "":
-        return False, "URL vide"
-    url = url.strip()
-    try:
-        req = urllib.request.Request(
-            url,
-            headers={
-                "User-Agent": USER_AGENT,
-                "Accept": "*/*",
-                "Icy-MetaData": "1"
-            }
-        )
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            code = resp.getcode()
-            if 200 <= code < 400:
-                ct = resp.headers.get("Content-Type", "")
-                codec = "Audio"
-                if "aac" in ct: codec = "AAC"
-                elif "mpeg" in ct or "mp3" in ct: codec = "MP3"
-                elif "ogg" in ct: codec = "OGG"
-                elif "flac" in ct: codec = "FLAC"
-                return True, f"En ligne ({codec})"
-            return False, f"Erreur HTTP {code}"
-    except urllib.error.HTTPError as e:
-        if e.code in (403, 451) or (e.code == 503 and any(k in url.lower() for k in ["amperwave", "audacy", "streamtheworld", "akamai", "geoblock", "leanstream"])):
-            return "GEOBLOCKED", f"Géobloqué (VPN)"
-        return False, f"Erreur {e.code}"
-    except urllib.error.URLError:
-        return False, "Serveur inaccessible"
-    except Exception as e:
-        return False, "Délai dépassé"
+
 
 def query_radio_browser(endpoint, path, params):
     """Interroge l'annuaire Radio-Browser / Query Radio-Browser API"""
@@ -404,7 +371,7 @@ class RepairStreamDialog(Gtk.Dialog):
 
     def perform_search(self):
         query = self.entry_query.get_text().strip()
-        self.lbl_status.set_text("Recherche sur Radio-Browser...")
+        self.lbl_status.set_text(_("Searching on Radio-Browser..."))
         self.store.clear()
 
         def worker():
@@ -415,7 +382,7 @@ class RepairStreamDialog(Gtk.Dialog):
 
             def on_done():
                 if not results:
-                    self.lbl_status.set_text("Aucun flux trouvé pour ce nom. Modifiez le texte ci-dessus.")
+                    self.lbl_status.set_text(_("No stream found for this name. Modify the text above."))
                     return
                 for r in results:
                     name = r.get("name", "Sans nom")
@@ -425,7 +392,7 @@ class RepairStreamDialog(Gtk.Dialog):
                     url = r.get("url_resolved") or r.get("url", "")
                     votes = r.get("votes", 0)
                     self.store.append([name, codec, bitrate, country, url, votes])
-                self.lbl_status.set_text(f"{len(results)} flux trouvés. Sélectionnez le flux souhaité puis validez.")
+                self.lbl_status.set_text(_("{count} streams found. Select the desired stream and validate.").format(count=len(results)))
                 # Sélectionner le premier résultat par défaut
                 it = self.store.get_iter_first()
                 if it:
@@ -734,24 +701,19 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.on_backup_xml_callback = on_backup_xml_callback
         if not embedded:
             super().__init__(title=_("Découvrir et importer des radios (TiMonde)"))
-            self.set_default_size(960, 640)
+            screen = Gdk.Screen.get_default()
+            target_w, target_h = 960, 640
+            if screen:
+                geom = screen.get_monitor_geometry(screen.get_primary_monitor() or 0)
+                max_w = int(geom.width * 0.90)
+                max_h = int(geom.height * 0.85)
+                target_w = min(target_w, max_w)
+                target_h = min(target_h, max_h)
+            self.set_default_size(max(target_w, 750), max(target_h, 480))
             self.set_position(Gtk.WindowPosition.CENTER)
             self.set_border_width(10)
 
-            for icon_path in [
-                "/usr/share/icons/hicolor/48x48/apps/timonde_on.png",
-                "/usr/share/icons/hicolor/32x32/apps/timonde_on.png",
-                "/usr/share/icons/hicolor/24x24/apps/timonde_on.png",
-                os.path.join(os.path.dirname(os.path.abspath(__file__)), "../icons/hicolor/48x48/apps/timonde_on.png"),
-            ]:
-                if os.path.exists(icon_path):
-                    try:
-                        self.set_icon_from_file(icon_path)
-                        break
-                    except Exception:
-                        pass
-            else:
-                self.set_icon_name("audio-x-generic")
+            set_window_icon(self)
 
             self.connect("destroy", self.on_destroy)
             self.set_focus_on_map(True)
@@ -807,6 +769,15 @@ class DiscoverRadiosWindow(Gtk.Window):
 
         if not self.embedded:
             self.build_standalone_window(initial_tab)
+
+    def get_parent_window(self):
+        if getattr(self, "embedded", False):
+            for v in (getattr(self, "view_search", None), getattr(self, "view_bouquets", None), getattr(self, "view_files", None)):
+                if v is not None:
+                    toplevel = v.get_toplevel()
+                    if isinstance(toplevel, Gtk.Window):
+                        return toplevel
+        return self
 
     def setup_country_completion(self, entry, on_selected_cb=None):
         country_completion = Gtk.EntryCompletion()
@@ -1236,41 +1207,67 @@ class DiscoverRadiosWindow(Gtk.Window):
         col_dup.set_fixed_width(150)
         self.bouquet_tree.append_column(col_dup)
 
-        scroll_b = Gtk.ScrolledWindow()
-        scroll_b.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
-        scroll_b.set_shadow_type(Gtk.ShadowType.IN)
-        scroll_b.add(self.bouquet_tree)
-        tab_bouquets.pack_start(scroll_b, True, True, 0)
+        # Bannière informative pour pays sans bouquet DAB+ pré-embarqué (Pont Radio-Browser)
+        self.banner_no_bouquet = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+        self.banner_no_bouquet.set_border_width(18)
+        self.banner_no_bouquet.set_no_show_all(True)
+
+        self.lbl_no_bouquet = Gtk.Label()
+        self.lbl_no_bouquet.set_use_markup(True)
+        self.lbl_no_bouquet.set_line_wrap(True)
+        self.lbl_no_bouquet.set_justify(Gtk.Justification.CENTER)
+        self.banner_no_bouquet.pack_start(self.lbl_no_bouquet, False, False, 0)
+
+        btn_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        btn_box.set_halign(Gtk.Align.CENTER)
+        self.banner_no_bouquet.pack_start(btn_box, False, False, 0)
+
+        self.btn_goto_radio_browser = make_btn(
+            _("Explore stations from this country on Radio-Browser"),
+            "system-search",
+            _("Switch to the global directory with this country pre-selected")
+        )
+        self.btn_goto_radio_browser.get_style_context().add_class("suggested-action")
+        self.btn_goto_radio_browser.connect("clicked", self.on_goto_radio_browser_clicked)
+        btn_box.pack_start(self.btn_goto_radio_browser, False, False, 0)
+
+        tab_bouquets.pack_start(self.banner_no_bouquet, True, True, 10)
+
+        self.scroll_b = Gtk.ScrolledWindow()
+        self.scroll_b.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        self.scroll_b.set_shadow_type(Gtk.ShadowType.IN)
+        self.scroll_b.add(self.bouquet_tree)
+        tab_bouquets.pack_start(self.scroll_b, True, True, 0)
 
         # Ligne d'actions sous la liste
-        b_action_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-        tab_bouquets.pack_start(b_action_box, False, False, 0)
+        self.b_action_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        tab_bouquets.pack_start(self.b_action_box, False, False, 0)
 
         self.btn_bouquet_check_all = make_btn(_("Tout cocher"), "edit-select-all")
         self.btn_bouquet_check_all.connect("clicked", lambda w: self.set_bouquet_checks(True))
-        b_action_box.pack_start(self.btn_bouquet_check_all, False, False, 0)
+        self.b_action_box.pack_start(self.btn_bouquet_check_all, False, False, 0)
 
         self.btn_bouquet_uncheck_all = make_btn(_("Tout décocher"), "edit-clear")
         self.btn_bouquet_uncheck_all.connect("clicked", lambda w: self.set_bouquet_checks(False))
-        b_action_box.pack_start(self.btn_bouquet_uncheck_all, False, False, 0)
+        self.b_action_box.pack_start(self.btn_bouquet_uncheck_all, False, False, 0)
 
         self.btn_bouquet_test = make_btn(_("Tester les flux"), "network-idle", _("Vérifier la disponibilité en direct des radios"))
         self.btn_bouquet_test.connect("clicked", lambda w: self.test_bouquet_streams())
-        b_action_box.pack_start(self.btn_bouquet_test, False, False, 0)
+        self.b_action_box.pack_start(self.btn_bouquet_test, False, False, 0)
 
         self.btn_repair = make_btn(_("Réparer le flux..."), "system-search", _("Remplacer le lien sélectionné par un flux officiel actif"))
         self.btn_repair.connect("clicked", self.on_repair_clicked)
-        b_action_box.pack_start(self.btn_repair, False, False, 0)
+        self.b_action_box.pack_start(self.btn_repair, False, False, 0)
 
         self.lbl_bouquet_count = Gtk.Label()
         self.lbl_bouquet_count.set_halign(Gtk.Align.END)
-        b_action_box.pack_end(self.lbl_bouquet_count, False, False, 0)
+        self.b_action_box.pack_end(self.lbl_bouquet_count, False, False, 0)
 
         # Barre de groupe et import
-        bar_box, self.entry_group_bouquets, self.btn_import_bouquets = self.create_target_group_bar(
+        self.bar_box_bouquets, self.entry_group_bouquets, self.btn_import_bouquets = self.create_target_group_bar(
             "bouquets", "Radios Nationales (France)", self.on_import_bouquets
         )
-        tab_bouquets.pack_start(bar_box, False, False, 0)
+        tab_bouquets.pack_start(self.bar_box_bouquets, False, False, 0)
 
         return tab_bouquets
 
@@ -1578,6 +1575,29 @@ class DiscoverRadiosWindow(Gtk.Window):
             if c_info:
                 self.entry_rb_country.set_text(c_info.get("name", c_code))
 
+    def on_goto_radio_browser_clicked(self, widget):
+        c_code = self.get_selected_country_code()
+        c_info = self.bouquets_db.get(c_code, {})
+        c_name = c_info.get("country_name") or c_info.get("name", c_code).split("  [")[0]
+
+        # Configurer l'onglet Recherche (Radio-Browser)
+        if hasattr(self, "check_rb_only_country"):
+            self.check_rb_only_country.set_active(True)
+        if hasattr(self, "entry_rb_country"):
+            self.entry_rb_country.set_sensitive(True)
+            self.entry_rb_country.set_text(c_name)
+        if hasattr(self, "entry_rb_name"):
+            self.entry_rb_name.set_text("")
+        if hasattr(self, "entry_rb_tag"):
+            self.entry_rb_tag.set_text("")
+
+        # Basculer vers l'onglet Recherche
+        if hasattr(self, "stack") and self.stack:
+            self.stack.set_visible_child_name("search")
+
+        # Déclencher la recherche
+        GLib.idle_add(self.on_search_rb_clicked)
+
     def update_languages(self):
         country_id = self.get_selected_country_code()
         info = self.bouquets_db.get(country_id, {})
@@ -1677,6 +1697,32 @@ class DiscoverRadiosWindow(Gtk.Window):
         if hasattr(self, "entry_group_bouquets"):
             self.entry_group_bouquets.set_text(default_group)
 
+        has_bouquet = info.get("has_bouquet", False) and bool(stations)
+        if hasattr(self, "banner_no_bouquet"):
+            if not has_bouquet:
+                self.banner_no_bouquet.show()
+                country_label = info.get("country_name") or info.get("name", country_id).split("  [")[0]
+                self.lbl_no_bouquet.set_markup(
+                    f"<span size='large'><b>{_('No pre-loaded DAB+ bouquet for this country.')}</b></span>\n\n"
+                    f"{_('You can explore and import stations for this territory directly from the global directory.')}"
+                )
+                btn_txt = _("Explore stations from {country} on Radio-Browser ➔").format(country=country_label)
+                update_btn_content(self.btn_goto_radio_browser, btn_txt, "system-search")
+                if hasattr(self, "scroll_b"):
+                    self.scroll_b.hide()
+                if hasattr(self, "b_action_box"):
+                    self.b_action_box.hide()
+                if hasattr(self, "bar_box_bouquets"):
+                    self.bar_box_bouquets.hide()
+            else:
+                self.banner_no_bouquet.hide()
+                if hasattr(self, "scroll_b"):
+                    self.scroll_b.show()
+                if hasattr(self, "b_action_box"):
+                    self.b_action_box.show()
+                if hasattr(self, "bar_box_bouquets"):
+                    self.bar_box_bouquets.show()
+
         self.bouquet_store.clear()
         self.current_check_generation += 1
         gen = self.current_check_generation
@@ -1705,7 +1751,7 @@ class DiscoverRadiosWindow(Gtk.Window):
                 it = self.bouquet_store.get_iter_first()
                 while it:
                     if self.bouquet_store.get_value(it, 8) == item_id:
-                        if is_ok == "GEOBLOCKED":
+                        if is_ok in ("GEO", "GEOBLOCKED"):
                             markup = f"<span color='#f57c00'><b>● {msg}</b></span>"
                             self.bouquet_store.set_value(it, 3, markup)
                             self.bouquet_store.set_value(it, 7, False)
@@ -1749,7 +1795,7 @@ class DiscoverRadiosWindow(Gtk.Window):
                 it_find = self.bouquet_store.get_iter_first()
                 while it_find:
                     if self.bouquet_store.get_value(it_find, 8) == item_id:
-                        if is_ok == "GEOBLOCKED":
+                        if is_ok in ("GEO", "GEOBLOCKED"):
                             markup = f"<span color='#f57c00'><b>● {msg}</b></span>"
                             self.bouquet_store.set_value(it_find, 3, markup)
                             self.bouquet_store.set_value(it_find, 7, False)
@@ -1801,13 +1847,16 @@ class DiscoverRadiosWindow(Gtk.Window):
 
         if total == 0:
             c_code = self.get_selected_country_code()
-            c_name = self.bouquets_db.get(c_code, {}).get("country_name", c_code or "ce pays")
-            self.lbl_bouquet_count.set_markup(f"<span color='#888888'><i>Aucun bouquet DAB+ pour {html.escape(c_name)} — Utilisez « Rechercher en ligne ».</i></span>")
+            c_name = self.bouquets_db.get(c_code, {}).get("country_name", c_code or _("this country"))
+            msg = _("No DAB+ bouquet for {country} — Use 'Search online'.").format(country=html.escape(c_name))
+            self.lbl_bouquet_count.set_markup(f"<span color='#888888'><i>{msg}</i></span>")
             self.btn_bouquet_check_all.set_sensitive(False)
             self.btn_bouquet_uncheck_all.set_sensitive(False)
             self.btn_repair.set_sensitive(False)
         else:
-            self.lbl_bouquet_count.set_text(f"{checked} / {total} station(s) sélectionnée(s)")
+            self.lbl_bouquet_count.set_text(
+                _("{checked} / {total} station(s) selected").format(checked=checked, total=total)
+            )
             self.btn_bouquet_check_all.set_sensitive(True)
             self.btn_bouquet_uncheck_all.set_sensitive(True)
             self.btn_repair.set_sensitive(True)
@@ -1894,12 +1943,12 @@ class DiscoverRadiosWindow(Gtk.Window):
                 if not results:
                     if country_code and lang:
                         c_name = self.bouquets_db.get(country_code, {}).get("country_name", country_code)
-                        self.lbl_rb_status.set_text(f"Aucune radio trouvée pour cette langue en {c_name}. Décochez « Filtrer par pays » ou effacez la langue.")
+                        self.lbl_rb_status.set_text(_("No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language.").format(country=c_name))
                     elif country_code:
                         c_name = self.bouquets_db.get(country_code, {}).get("country_name", country_code)
-                        self.lbl_rb_status.set_text(f"Aucune radio trouvée pour ces critères en {c_name}. Décochez « Filtrer par pays » pour chercher mondialement.")
+                        self.lbl_rb_status.set_text(_("No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally.").format(country=c_name))
                     else:
-                        self.lbl_rb_status.set_text(_("Aucune radio trouvée sur Radio-Browser pour ces critères."))
+                        self.lbl_rb_status.set_text(_("No radio found on Radio-Browser for these criteria."))
                     return
                 for i, r in enumerate(results):
                     name = r.get("name", "Sans nom").strip()
@@ -1912,11 +1961,13 @@ class DiscoverRadiosWindow(Gtk.Window):
                     url = (r.get("url_resolved") or r.get("url", "")).strip()
 
                     is_dup = (url in self.existing_urls) or (name.lower() in self.existing_names)
-                    dup_markup = '<span foreground="#e67e22">[Présent]</span>' if is_dup else '<span foreground="#27ae60">[Nouveau]</span>'
-                    health_markup = '<span foreground="#95a5a6">○ Non testé</span>'
+                    dup_tag = _("[Present]") if is_dup else _("[New]")
+                    dup_color = "#e67e22" if is_dup else "#27ae60"
+                    dup_markup = f'<span foreground="{dup_color}">{dup_tag}</span>'
+                    health_markup = f'<span foreground="#95a5a6">{_("○ Untested")}</span>'
                     self.rb_store.append([False, name, c_code, tags[:30], codec_str, votes, url, is_dup, health_markup, dup_markup, i])
 
-                self.lbl_rb_status.set_text(f"{len(results)} stations trouvées.")
+                self.lbl_rb_status.set_text(_("{count} stations found.").format(count=len(results)))
                 self.update_rb_count()
 
             GLib.idle_add(on_done)
@@ -1929,7 +1980,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         while it:
             row_id = self.rb_store.get_value(it, 10)
             url = self.rb_store.get_value(it, 6)
-            self.rb_store.set_value(it, 8, "<span foreground='#888888'>Test...</span>")
+            self.rb_store.set_value(it, 8, f"<span foreground='#888888'>{_('Testing...')}</span>")
             items_to_check.append((row_id, url))
             it = self.rb_store.iter_next(it)
 
@@ -1945,7 +1996,7 @@ class DiscoverRadiosWindow(Gtk.Window):
                 it_find = self.rb_store.get_iter_first()
                 while it_find:
                     if self.rb_store.get_value(it_find, 10) == item_id:
-                        if is_ok == "GEOBLOCKED":
+                        if is_ok in ("GEO", "GEOBLOCKED"):
                             markup = f"<span foreground='#f57c00'><b>● {msg}</b></span>"
                         elif is_ok:
                             markup = f"<span foreground='#2ecc71'><b>●</b> {msg}</span>"
@@ -1994,7 +2045,7 @@ class DiscoverRadiosWindow(Gtk.Window):
     def on_files_browse_clicked(self, widget):
         chooser = Gtk.FileChooserDialog(
             title=_("Choisir un fichier de radios"),
-            transient_for=self if not self.embedded else None,
+            transient_for=self.get_parent_window(),
             action=Gtk.FileChooserAction.OPEN,
         )
         chooser.add_button(_("Annuler"), Gtk.ResponseType.CANCEL)
@@ -2125,7 +2176,7 @@ class DiscoverRadiosWindow(Gtk.Window):
                 it_find = self.files_store.get_iter_first()
                 while it_find:
                     if self.files_store.get_value(it_find, 9) == item_id:
-                        if is_ok == "GEOBLOCKED":
+                        if is_ok in ("GEO", "GEOBLOCKED"):
                             markup = f"<span foreground='#f57c00'><b>● {msg}</b></span>"
                             self.files_store.set_value(it_find, 4, markup)
                             self.files_store.set_value(it_find, 8, False)
@@ -2156,7 +2207,9 @@ class DiscoverRadiosWindow(Gtk.Window):
             if self.files_store.get_value(it, 0):
                 checked += 1
             it = self.files_store.iter_next(it)
-        self.lbl_files_count.set_text(f"{checked} / {total} station(s) sélectionnée(s)")
+        self.lbl_files_count.set_text(
+            _("{checked} / {total} station(s) selected").format(checked=checked, total=total)
+        )
         if hasattr(self, "btn_import_files"):
             self.btn_import_files.set_sensitive(checked > 0)
 
@@ -2271,7 +2324,7 @@ class DiscoverRadiosWindow(Gtk.Window):
 
     def on_show_group_naming_help(self, widget):
         dialog = Gtk.MessageDialog(
-            transient_for=self if not self.embedded else None,
+            transient_for=self.get_parent_window(),
             flags=Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
             type=Gtk.MessageType.INFO,
             buttons=Gtk.ButtonsType.OK,

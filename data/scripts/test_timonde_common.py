@@ -23,6 +23,8 @@ from timonde_common import (
     safe_parse_xml,
     normalize_group_path,
     infer_timezone,
+    find_or_create_group,
+    set_window_icon,
     COUNTRIES_DB,
     COUNTRIES_REGISTRY,
     FRANCE_TIMEZONES,
@@ -172,6 +174,19 @@ class TestTiMondeCommon(unittest.TestCase):
         finally:
             if os.path.exists(temp_path):
                 os.remove(temp_path)
+
+    def test_find_or_create_group(self):
+        import xml.etree.ElementTree as ET
+        root = ET.Element("bookmarks")
+        grp = find_or_create_group(root, "Europe/France/Bretagne")
+        self.assertEqual(grp.tag, "group")
+        self.assertEqual(grp.attrib.get("name"), "Bretagne")
+        # Idempotence
+        grp2 = find_or_create_group(root, "Europe/France/Bretagne")
+        self.assertIs(grp, grp2)
+        # Racine
+        root_res = find_or_create_group(root, "/")
+        self.assertIs(root, root_res)
 
 if __name__ == "__main__":
     unittest.main()
