@@ -1642,8 +1642,8 @@ class DiscoverRadiosWindow(Gtk.Window):
 
             is_dup = (clean_url in self.existing_urls) or (clean_name in self.existing_names)
             checked = False
-            status_note = status_markup(_("(Déjà dans vos favoris)"), kind="muted") if is_dup else status_markup(_("Nouveau"), kind="ok", bold=True)
-            health_note = status_markup(_("Vérification..."), kind="muted")
+            status_note = status_markup(_("(Already in favorites)"), kind="muted") if is_dup else status_markup(_("New"), kind="ok", bold=True)
+            health_note = status_markup(_("Checking..."), kind="muted")
 
             self.bouquet_store.append([checked, name, genre, health_note, status_note, clean_url, is_dup, False, i])
             items_to_check.append((i, clean_url))

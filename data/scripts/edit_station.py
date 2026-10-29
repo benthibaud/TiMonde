@@ -160,9 +160,9 @@ class EditStationWindow(Gtk.Window):
 
         entry_group_child = self.combo_group.get_child()
         if entry_group_child:
-            entry_group_child.set_placeholder_text("Sélectionnez ou tapez (ex: /France/Bretagne ou / pour racine)")
+            entry_group_child.set_placeholder_text(_("Select or type (e.g. /France/Brittany or / for root)"))
             entry_group_child.set_icon_from_icon_name(Gtk.EntryIconPosition.SECONDARY, "edit-clear")
-            entry_group_child.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, "Effacer le champ (clic pour vider)")
+            entry_group_child.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, _("Clear field (click to empty)"))
             def on_eg_icon_press(entry, icon_pos, event):
                 if icon_pos == Gtk.EntryIconPosition.SECONDARY:
                     entry.set_text("")
@@ -240,8 +240,8 @@ class EditStationWindow(Gtk.Window):
         country_box.pack_start(self.entry_country_search, True, True, 0)
 
         # Bouton pour effacer le pays ou réinitialiser
-        btn_clear_country = Gtk.Button(label=_("Effacer"))
-        btn_clear_country.set_tooltip_text(_("Effacer / Mode automatique"))
+        btn_clear_country = Gtk.Button(label=_("Clear"))
+        btn_clear_country.set_tooltip_text(_("Clear / Automatic mode"))
         btn_clear_country.connect("clicked", lambda b: self.entry_country_search.set_text(""))
         country_box.pack_start(btn_clear_country, False, False, 0)
 

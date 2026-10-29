@@ -210,7 +210,7 @@ class ReorderWindow(Gtk.Window):
         side_box.pack_start(sep1, False, False, 2)
 
         # Bouton d'écoute / test direct du flux sélectionné
-        self.btn_preview = make_btn(_("Écouter"), "media-playback-start", _("Écouter ou tester la radio sélectionnée"))
+        self.btn_preview = make_btn(_("Listen"), "media-playback-start", _("Preview selected radio stream"))
         self.btn_preview.connect("clicked", self.on_preview_clicked)
         side_box.pack_start(self.btn_preview, False, False, 0)
 
@@ -263,7 +263,7 @@ class ReorderWindow(Gtk.Window):
         self.set_dirty(False)
         btn_box.pack_start(self.lbl_dirty_status, False, False, 6)
 
-        save_label = _("Enregistrer maintenant") if self.embedded else _("Save and reload")
+        save_label = _("Save now") if self.embedded else _("Save and reload")
         self.btn_save = make_btn(save_label, "document-save")
         self.btn_save.get_style_context().add_class("suggested-action")
         self.btn_save.connect("clicked", self.on_save_clicked)
@@ -276,9 +276,9 @@ class ReorderWindow(Gtk.Window):
         self.dirty = is_dirty
         if hasattr(self, "lbl_dirty_status") and self.lbl_dirty_status:
             if is_dirty:
-                self.lbl_dirty_status.set_markup(_("<small><span foreground='#d97706' weight='bold'>● Modifications non enregistrées</span></small>"))
+                self.lbl_dirty_status.set_markup(status_markup(_("Unsaved changes"), kind="warn", with_bullet=True, bold=True))
             else:
-                self.lbl_dirty_status.set_markup(_("<small><span alpha='65%'>Tout est enregistré</span></small>"))
+                self.lbl_dirty_status.set_markup(f"<small><span alpha='65%'>{html.escape(_('All changes saved'))}</span></small>")
 
     def flush_pending(self):
         """Sauvegarde immédiatement les modifications en attente via on_save_callback si dirty."""
@@ -528,23 +528,23 @@ class ReorderWindow(Gtk.Window):
         items = self.get_current_list()
 
         if self.current_group_idx is None:
-            item_open = Gtk.MenuItem(label=_("Ouvrir les radios"))
+            item_open = Gtk.MenuItem(label=_("Open stations"))
             item_open.connect("activate", self.on_open_clicked)
             menu.append(item_open)
 
-            item_new_g = Gtk.MenuItem(label=_("Nouveau groupe..."))
+            item_new_g = Gtk.MenuItem(label=_("New group..."))
             item_new_g.connect("activate", self.on_create_group_clicked)
             menu.append(item_new_g)
 
-            item_move_g = Gtk.MenuItem(label=_("Transférer le contenu vers un autre groupe..."))
+            item_move_g = Gtk.MenuItem(label=_("Transfer contents to another group..."))
             item_move_g.connect("activate", self.on_move_to_clicked)
             menu.append(item_move_g)
 
-            item_edit = Gtk.MenuItem(label=_("Renommer le groupe..."))
+            item_edit = Gtk.MenuItem(label=_("Rename group..."))
             item_edit.connect("activate", self.on_edit_clicked)
             menu.append(item_edit)
 
-            item_del = Gtk.MenuItem(label=_("Supprimer le groupe..."))
+            item_del = Gtk.MenuItem(label=_("Delete group..."))
             item_del.connect("activate", self.on_delete_clicked)
             menu.append(item_del)
         else:
@@ -554,45 +554,45 @@ class ReorderWindow(Gtk.Window):
             if not is_sep and target and target.get("url"):
                 clean_url = target.get("url", "").strip()
                 is_playing_this = (hasattr(self, "preview_player") and self.preview_player.is_playing and self.preview_player.current_url == clean_url)
-                lbl_audio = _("Arrêter l'écoute") if is_playing_this else _("Écouter cette radio")
+                lbl_audio = _("Stop playback") if is_playing_this else _("Play this station")
                 item_audio = Gtk.MenuItem(label=lbl_audio)
                 item_audio.connect("activate", lambda w: self.on_preview_clicked(None))
                 menu.append(item_audio)
                 menu.append(Gtk.SeparatorMenuItem())
 
             if is_sep:
-                item_edit = Gtk.MenuItem(label=_("Modifier l'intertitre..."))
+                item_edit = Gtk.MenuItem(label=_("Edit header..."))
                 item_edit.connect("activate", self.on_edit_clicked)
                 menu.append(item_edit)
             else:
-                item_edit = Gtk.MenuItem(label=_("Modifier la radio..."))
+                item_edit = Gtk.MenuItem(label=_("Edit station..."))
                 item_edit.connect("activate", self.on_edit_clicked)
                 menu.append(item_edit)
 
-            item_move_st = Gtk.MenuItem(label=_("Déplacer vers un autre groupe..."))
+            item_move_st = Gtk.MenuItem(label=_("Move to another group..."))
             item_move_st.connect("activate", self.on_move_to_clicked)
             menu.append(item_move_st)
 
-            item_new_g_here = Gtk.MenuItem(label=_("Nouveau groupe..."))
+            item_new_g_here = Gtk.MenuItem(label=_("New group..."))
             item_new_g_here.connect("activate", self.on_create_group_clicked)
             menu.append(item_new_g_here)
 
-            item_add_st = Gtk.MenuItem(label=_("Ajouter une radio..."))
+            item_add_st = Gtk.MenuItem(label=_("Add station..."))
             item_add_st.connect("activate", self.on_add_station_clicked)
             menu.append(item_add_st)
 
-            item_add_sep = Gtk.MenuItem(label=_("Insérer un séparateur ici..."))
+            item_add_sep = Gtk.MenuItem(label=_("Insert separator here..."))
             item_add_sep.connect("activate", self.on_add_separator_clicked)
             menu.append(item_add_sep)
 
-            item_top = Gtk.MenuItem(label=_("Placer en premier"))
+            item_top = Gtk.MenuItem(label=_("Move to top"))
             item_top.connect("activate", self.on_move_top_clicked)
             menu.append(item_top)
 
             if is_sep:
-                item_del = Gtk.MenuItem(label=_("Supprimer ce séparateur"))
+                item_del = Gtk.MenuItem(label=_("Delete this separator"))
             else:
-                item_del = Gtk.MenuItem(label=_("Supprimer cette radio..."))
+                item_del = Gtk.MenuItem(label=_("Delete this station..."))
             item_del.connect("activate", self.on_delete_clicked)
             menu.append(item_del)
 
@@ -1636,9 +1636,9 @@ class ReorderWindow(Gtk.Window):
 
         if res == Gtk.ResponseType.OK and new_url:
             st["url"] = new_url
-            self.audit_results[new_url] = {"status": "online", "msg": _("En direct (réparé)"), "redirect": None}
+            self.audit_results[new_url] = {"status": "online", "msg": _("Live (repaired)"), "redirect": None}
             self.set_dirty(True)
-            self.show_feedback(f"{_('Lien réparé avec succès pour')} « {st_name} » !")
+            self.show_feedback(f"{_('Stream successfully repaired for')} « {st_name} » !")
             self.update_view(select_idx=idx)
 
     def write_csv_export(self, filepath):

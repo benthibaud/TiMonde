@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
-"POT-Creation-Date: 2026-10-17 14:00+0200\n"
+"POT-Creation-Date: 2026-10-29 06:50+0200\n"
 "PO-Revision-Date: 2026-10-17 17:00+0200\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -136,7 +136,8 @@ msgid "Save station to favorites (TiMonde)"
 msgstr "Gem radioen til mine favoritter (TiMonde)"
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr "<b>Behold denne tilfældigt opdagede radiostation i dine favoritter:</b>"
+msgstr ""
+"<b>Behold denne tilfældigt opdagede radiostation i dine favoritter:</b>"
 
 msgid "Keep in favorites"
 msgstr "Gem til mine favoritter"
@@ -271,7 +272,9 @@ msgid "Automatically update redirected streams to direct URL"
 msgstr "Opdater automatisk feeds, der er omdirigeret til deres direkte URL"
 
 msgid "Search Radio-Browser for a working replacement stream"
-msgstr "Søg automatisk efter en erstatning aktiv stream på Radio-Browser for dette døde link"
+msgstr ""
+"Søg automatisk efter en erstatning aktiv stream på Radio-Browser for dette "
+"døde link"
 
 msgid "Export all stations to CSV spreadsheet format"
 msgstr "Eksporter alle dine radioer i CSV-regnearksformat"
@@ -300,6 +303,138 @@ msgstr "radio(er) optaget i:"
 msgid "Start automatically at login"
 msgstr "Start automatically at login"
 
+msgid "Organize groups and stations (TiMonde)"
+msgstr "Organize groups and stations (TiMonde)"
+
+msgid "Back to main group list (Esc)"
+msgstr "Back to main group list (Esc)"
+
+msgid "Sort stations in this group (Enter or double-click)"
+msgstr "Sort stations in this group (Enter or double-click)"
+
+msgid "Create a new group of radio stations (Ctrl+N)"
+msgstr "Create a new group of radio stations (Ctrl+N)"
+
+msgid "Move selection to another group (Ctrl+M)"
+msgstr "Move selection to another group (Ctrl+M)"
+
+msgid "Move selected item to the top"
+msgstr "Move selected item to the top"
+
+msgid "Move up one rank"
+msgstr "Move up one rank"
+
+msgid "Move down one rank"
+msgstr "Move down one rank"
+
+msgid "Add a new station to this group"
+msgstr "Add a new station to this group"
+
+msgid "Insert a separator or header in this group"
+msgstr "Insert a separator or header in this group"
+
+msgid "Sort this list alphabetically"
+msgstr "Sort this list alphabetically"
+
+msgid "Edit selected name, URL or header (F2)"
+msgstr "Edit selected name, URL or header (F2)"
+
+msgid "Delete selected item or group (Del)"
+msgstr "Delete selected item or group (Del)"
+
+msgid "Transfer..."
+msgstr "Transfer..."
+
+msgid "Transfer the content of this group to another group (Ctrl+M)"
+msgstr "Transfer the content of this group to another group (Ctrl+M)"
+
+msgid "<b>Radio groups</b>"
+msgstr "<b>Radio groups</b>"
+
+msgid "— Separator —"
+msgstr "— Separator —"
+
+msgid "radio"
+msgstr "radio"
+
+msgid "radios"
+msgstr "radios"
+
+msgid "sep."
+msgstr "sep."
+
+msgid "dead link"
+msgstr "dead link"
+
+msgid "dead links"
+msgstr "dead links"
+
+msgid "redir."
+msgstr "redir."
+
+msgid "[OK] All online"
+msgstr "[OK] All online"
+
+msgid "Move selected stations to another group (Ctrl+M)"
+msgstr "Move selected stations to another group (Ctrl+M)"
+
+msgid "Create a new group and move selected stations there (Ctrl+N)"
+msgstr "Create a new group and move selected stations there (Ctrl+N)"
+
+msgid "Stations in group:"
+msgstr "Stations in group:"
+
+msgid "Header"
+msgstr "Header"
+
+msgid "[OK] Live"
+msgstr "[OK] Live"
+
+msgid "[!] Dead link"
+msgstr "[!] Dead link"
+
+msgid "[~] Redirected"
+msgstr "[~] Redirected"
+
+msgid "[?] Geo-restricted"
+msgstr "[?] Geo-restricted"
+
+msgid "Audit completed:"
+msgstr "Audit completed:"
+
+msgid "online"
+msgstr "online"
+
+msgid "broken"
+msgstr "broken"
+
+msgid "redirected"
+msgstr "redirected"
+
+msgid "No stations to check."
+msgstr "No stations to check."
+
+msgid "Checking your radio stations"
+msgstr "Checking your radio stations"
+
+msgid "Testing live radio streams..."
+msgstr "Testing live radio streams..."
+
+msgid "stations checked..."
+msgstr "stations checked..."
+
+msgid "checked:"
+msgstr "checked:"
+
+msgid "Please select a station to repair."
+msgstr "Please select a station to repair."
+
+msgid "This item is a separator."
+msgstr "This item is a separator."
+
+msgid "Station deleted"
+msgstr "Station deleted"
+
 msgid "Settings..."
 msgstr "Indstillinger..."
 
@@ -322,14 +457,11 @@ msgstr "<b>Country:</b>"
 msgid "<b>Fichier exemple :</b>"
 msgstr "<b>Sample file:</b>"
 
-msgid "<b>Radio groups</b>"
-msgstr "<b>Radio groups</b>"
-
-msgid "Accédez à plus de 40 000 stations en ligne classées par pays, genre ou mots-clés."
-msgstr "Access over 40,000 online stations sorted by country, genre or keywords."
-
-msgid "Add a new station to this group"
-msgstr "Add a new station to this group"
+msgid ""
+"Accédez à plus de 40 000 stations en ligne classées par pays, genre ou mots-"
+"clés."
+msgstr ""
+"Access over 40,000 online stations sorted by country, genre or keywords."
 
 msgid "Ajouter une radio (TiMonde)"
 msgstr "Tilføj en radio (TiMonde)"
@@ -343,23 +475,18 @@ msgstr "Tilføj til mine radioer"
 msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
 msgstr "Ingen nye radioer tilføjet (allerede til stede)."
 
-msgid "Audit completed:"
-msgstr "Audit completed:"
-
-msgid "Back to main group list (Esc)"
-msgstr "Back to main group list (Esc)"
-
 msgid "Bouquets DAB+ & Sélections officielles"
 msgstr "DAB+ buketter og officielle udvalg"
 
 msgid "Bouquets DAB+ vérifiés"
 msgstr "Verified DAB+ Bouquets"
 
-msgid "Checking your radio stations"
-msgstr "Checking your radio stations"
-
-msgid "Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
-msgstr "Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, GNOME, KDE, MATE)."
+msgid ""
+"Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, "
+"GNOME, KDE, MATE)."
+msgstr ""
+"Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, "
+"GNOME, KDE, MATE)."
 
 msgid "Conserver dans mes favoris"
 msgstr "Gem til mine favoritter"
@@ -367,20 +494,15 @@ msgstr "Gem til mine favoritter"
 msgid "Conserver la radio dans les favoris (TiMonde)"
 msgstr "Hold radioen i favoritter (TiMonde)"
 
-msgid "Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans ~/.config/timonde/examples/."
-msgstr "Browse the 17 thematic selections or drop your own files into ~/.config/timonde/examples/."
+msgid ""
+"Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans "
+"~/.config/timonde/examples/."
+msgstr ""
+"Browse the 17 thematic selections or drop your own files into ~/.config/"
+"timonde/examples/."
 
 msgid "Contents"
 msgstr "Contents"
-
-msgid "Create a new group and move selected stations there (Ctrl+N)"
-msgstr "Create a new group and move selected stations there (Ctrl+N)"
-
-msgid "Create a new group of radio stations (Ctrl+N)"
-msgstr "Create a new group of radio stations (Ctrl+N)"
-
-msgid "Delete selected item or group (Del)"
-msgstr "Delete selected item or group (Del)"
 
 msgid "Details"
 msgstr "Details"
@@ -394,14 +516,18 @@ msgstr "Opdag og importer radiostationer (TiMonde)"
 msgid "Démarrage automatique"
 msgstr "Autostart"
 
-msgid "Démarre discrètement TiMonde en arrière-plan dès l'ouverture de votre session graphique."
-msgstr "Launches TiMonde discreetly in the background when your graphical session starts."
+msgid ""
+"Démarre discrètement TiMonde en arrière-plan dès l'ouverture de votre "
+"session graphique."
+msgstr ""
+"Launches TiMonde discreetly in the background when your graphical session "
+"starts."
 
-msgid "Détection automatique selon votre système. 55 langues mondiales supportées avec drapeaux."
-msgstr "Automatic detection based on your system. 55 world languages supported."
-
-msgid "Edit selected name, URL or header (F2)"
-msgstr "Edit selected name, URL or header (F2)"
+msgid ""
+"Détection automatique selon votre système. 55 langues mondiales supportées "
+"avec drapeaux."
+msgstr ""
+"Automatic detection based on your system. 55 world languages supported."
 
 msgid "Enregistrer"
 msgstr "Gem"
@@ -427,8 +553,12 @@ msgstr "CSV-eksport afsluttet."
 msgid "Exporter en CSV..."
 msgstr "Export to CSV..."
 
-msgid "Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout en conservant bookmarks.xml comme référence."
-msgstr "Export or sync your radio stations with LibreOffice Calc or Excel while keeping bookmarks.xml as reference."
+msgid ""
+"Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout en "
+"conservant bookmarks.xml comme référence."
+msgstr ""
+"Export or sync your radio stations with LibreOffice Calc or Excel while "
+"keeping bookmarks.xml as reference."
 
 msgid "Fermer"
 msgstr "Luk"
@@ -448,9 +578,6 @@ msgstr "Generate a CSV spreadsheet of your radio stations"
 msgid "Gérer les radios..."
 msgstr "Manage stations..."
 
-msgid "Header"
-msgstr "Header"
-
 msgid "Importer depuis CSV..."
 msgstr "Import from CSV..."
 
@@ -463,17 +590,22 @@ msgstr "Importer fil..."
 msgid "Importer mes fichiers"
 msgstr "Import My Files"
 
-msgid "Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV, JSON, M3U ou PLS."
-msgstr "Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U or PLS formats."
+msgid ""
+"Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV, "
+"JSON, M3U ou PLS."
+msgstr ""
+"Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U "
+"or PLS formats."
 
 msgid "Impossible d ouvrir le dossier :"
 msgstr "Kan ikke åbne mappen:"
 
-msgid "Insert a separator or header in this group"
-msgstr "Insert a separator or header in this group"
-
-msgid "Insérez des séparateurs (---) ou des intertitres de section dans vos groupes pour aérer votre menu."
-msgstr "Indsæt separatorer (---) eller sektionsoverskrifter i dine grupper for at ventilere din menu."
+msgid ""
+"Insérez des séparateurs (---) ou des intertitres de section dans vos groupes "
+"pour aérer votre menu."
+msgstr ""
+"Indsæt separatorer (---) eller sektionsoverskrifter i dine grupper for at "
+"ventilere din menu."
 
 msgid "Intégration du bureau & Plateau"
 msgstr "Desktop Integration & Tray"
@@ -496,35 +628,14 @@ msgstr "Ændringer taget i betragtning."
 msgid "Modifier la radio (TiMonde)"
 msgstr "Rediger radioen (TiMonde)"
 
-msgid "Move down one rank"
-msgstr "Move down one rank"
-
-msgid "Move selected item to the top"
-msgstr "Move selected item to the top"
-
-msgid "Move selected stations to another group (Ctrl+M)"
-msgstr "Move selected stations to another group (Ctrl+M)"
-
-msgid "Move selection to another group (Ctrl+M)"
-msgstr "Move selection to another group (Ctrl+M)"
-
-msgid "Move up one rank"
-msgstr "Move up one rank"
-
 msgid "Name / Header"
 msgstr "Name / Header"
-
-msgid "No stations to check."
-msgstr "No stations to check."
 
 msgid "Nouvelle radio..."
 msgstr "New station..."
 
 msgid "Organiser les groupes et les radios"
 msgstr "Organize groups and stations"
-
-msgid "Organize groups and stations (TiMonde)"
-msgstr "Organize groups and stations (TiMonde)"
 
 msgid "Outil introuvable :"
 msgstr "Tool not found:"
@@ -538,17 +649,18 @@ msgstr "TiMonde Settings & Control"
 msgid "Paramètres TiMonde"
 msgstr "TiMonde Settings"
 
-msgid "Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter votre bureau."
-msgstr "Browse 146 verified national and regional bouquets without leaving your desktop."
+msgid ""
+"Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter votre "
+"bureau."
+msgstr ""
+"Browse 146 verified national and regional bouquets without leaving your "
+"desktop."
 
 msgid "Parcourir..."
 msgstr "Gennemse..."
 
 msgid "Passerelle Tableur (CSV)"
 msgstr "Spreadsheet Gateway (CSV)"
-
-msgid "Please select a station to repair."
-msgstr "Please select a station to repair."
 
 msgid "Recherche Radio-Browser"
 msgstr "Radio-Browser Search"
@@ -568,11 +680,17 @@ msgstr "Restore sample files"
 msgid "Réimportez ou synchronisez des radios modifiées depuis un tableur CSV"
 msgstr "Re-import or sync modified radio stations from a CSV spreadsheet"
 
-msgid "Rétablit les 17 exemples thématiques par défaut dans votre dossier personnel s'ils ont été supprimés."
-msgstr "Restores the 17 default thematic samples in your personal folder if deleted."
+msgid ""
+"Rétablit les 17 exemples thématiques par défaut dans votre dossier personnel "
+"s'ils ont été supprimés."
+msgstr ""
+"Restores the 17 default thematic samples in your personal folder if deleted."
 
-msgid "Saisir directement un nom, une URL de flux (AAC, MP3, HLS), un pays et un fuseau horaire."
-msgstr "Directly enter a name, stream URL (AAC, MP3, HLS), country and timezone."
+msgid ""
+"Saisir directement un nom, une URL de flux (AAC, MP3, HLS), un pays et un "
+"fuseau horaire."
+msgstr ""
+"Directly enter a name, stream URL (AAC, MP3, HLS), country and timezone."
 
 msgid "Signets actuels (bookmarks.xml)"
 msgstr "Current bookmarks (bookmarks.xml)"
@@ -580,56 +698,25 @@ msgstr "Current bookmarks (bookmarks.xml)"
 msgid "Signets réorganisés et enregistrés avec succès !"
 msgstr "Bogmærker blev omorganiseret og gemt!"
 
-msgid "Sort stations in this group (Enter or double-click)"
-msgstr "Sort stations in this group (Enter or double-click)"
-
-msgid "Sort this list alphabetically"
-msgstr "Sort this list alphabetically"
-
-msgid "Station deleted"
-msgstr "Station deleted"
-
-msgid "Stations in group:"
-msgstr "Stations in group:"
-
 msgid "Supprimer"
 msgstr "Slet"
 
-msgid "Teste en direct la disponibilité de tous vos flux, détecte les liens inactifs et applique les redirections."
-msgstr "Tests live availability of all your streams, detects broken links and applies redirects."
+msgid ""
+"Teste en direct la disponibilité de tous vos flux, détecte les liens "
+"inactifs et applique les redirections."
+msgstr ""
+"Tests live availability of all your streams, detects broken links and "
+"applies redirects."
 
-msgid "Testing live radio streams..."
-msgstr "Testing live radio streams..."
-
-msgid "This item is a separator."
-msgstr "This item is a separator."
-
-msgid "Transfer the content of this group to another group (Ctrl+M)"
-msgstr "Transfer the content of this group to another group (Ctrl+M)"
-
-msgid "Transfer..."
-msgstr "Transfer..."
-
-msgid "Triez, renommez, supprimez et déplacez vos stations. Créez des dossiers et des sous-groupes (ex: Musique/Jazz)."
-msgstr "Sort, rename, delete and move your stations. Create folders and sub-groups (e.g. Music/Jazz)."
+msgid ""
+"Triez, renommez, supprimez et déplacez vos stations. Créez des dossiers et "
+"des sous-groupes (ex: Musique/Jazz)."
+msgstr ""
+"Sort, rename, delete and move your stations. Create folders and sub-groups "
+"(e.g. Music/Jazz)."
 
 msgid "Vérificateur de flux & Liens morts"
 msgstr "Stream health check & Dead links"
-
-msgid "[!] Dead link"
-msgstr "[!] Dead link"
-
-msgid "[?] Geo-restricted"
-msgstr "[?] Geo-restricted"
-
-msgid "[OK] All online"
-msgstr "[OK] All online"
-
-msgid "[OK] Live"
-msgstr "[OK] Live"
-
-msgid "[~] Redirected"
-msgstr "[~] Redirected"
 
 msgid "activé"
 msgstr "enabled"
@@ -637,50 +724,14 @@ msgstr "enabled"
 msgid "ajoutée avec succès à vos signets !"
 msgstr "successfully added to your bookmarks!"
 
-msgid "broken"
-msgstr "broken"
-
-msgid "checked:"
-msgstr "checked:"
-
-msgid "dead link"
-msgstr "dead link"
-
-msgid "dead links"
-msgstr "dead links"
-
 msgid "désactivé"
 msgstr "disabled"
 
 msgid "fichiers exemples restaurés dans"
 msgstr "eksempelfiler gendannet i"
 
-msgid "online"
-msgstr "online"
-
-msgid "radio"
-msgstr "radio"
-
 msgid "radio(s) ajoutée(s) à vos signets !"
 msgstr "station(s) added to your bookmarks!"
-
-msgid "radios"
-msgstr "radios"
-
-msgid "redir."
-msgstr "redir."
-
-msgid "redirected"
-msgstr "redirected"
-
-msgid "sep."
-msgstr "sep."
-
-msgid "stations checked..."
-msgstr "stations checked..."
-
-msgid "— Separator —"
-msgstr "— Separator —"
 
 msgid "↕️ Organisation"
 msgstr "↕️ Organisation"
@@ -697,52 +748,8 @@ msgstr "📻 Bibliotek"
 msgid "🖥️ Général"
 msgstr "🖥️ Generelt"
 
-msgid ""
-"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order groups.\n"
-"• <b>Double-click a group</b> (or Open) to sort its stations and separators.\n"
-"• Use <b>Transfer...</b> to merge or move content to another group.\n"
-"• Use <b>New group</b> to add a station folder.</small>"
-msgstr ""
-"<small>• Skift <b>#</b> eller brug <b>Flyt op/ned</b> for at sortere grupperne.\n"
-"• <b>Dobbeltklik på en gruppe</b> (eller Åbn) for at sortere dens radioer og splittere.\n"
-"• Brug <b>Overfør...</b> til at flette eller flytte indhold til en anden gruppe.\n"
-"• Brug <b>Ny gruppe</b> til at tilføje en mappe med radioer.</small>"
-
-msgid ""
-"<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order stations.\n"
-"• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
-"• Click <b>Repair stream...</b> to search Radio-Browser for a working replacement stream.\n"
-"• Click <b>Separator</b> to insert a section header.</small>"
-msgstr ""
-"<small>• Skift <b>#</b> eller brug <b>Flyt op/ned</b> til at sortere radioerne.\n"
-"• Klik på <b>Kontroller feeds</b> for at se døde links (røde) og reparere dem.\n"
-"• Klik på <b>Reparer stream...</b> for at søge efter en erstatning for aktiv stream på Radio-Browser.\n"
-"• Klik på <b>Separator</b> for at indsætte en sektionsoverskrift.</small>"
-
 msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
 msgstr "<i>Vælg en fil eller et eksempel ovenfor.</i>"
-
-msgid ""
-"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les groupes.\n"
-"• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios et séparateurs.\n"
-"• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du contenu.\n"
-"• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
-msgstr ""
-"<small>• Skift <b>#</b> eller brug <b>Flyt op/ned</b> for at sortere grupperne.\n"
-"• <b>Dobbeltklik på en gruppe</b> (eller Åbn) for at sortere dens radioer og separatorer.\n"
-"• Brug <b>Flyt til...</b> til at flette eller flytte indhold.\n"
-"• Brug <b>Ny gruppe</b> til at oprette en mappe med radioer.</small>"
-
-msgid ""
-"<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour ordonner les radios.\n"
-"• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne (en rouge).\n"
-"• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de remplacement actif.\n"
-"• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de séparation.</small>"
-msgstr ""
-"<small>• Skift <b>#</b> eller brug <b>Flyt op/ned</b> for at bestille radioerne.\n"
-"• Klik på <b>Kontroller feeds</b> for at se offline links (i rødt).\n"
-"• Klik på <b>Reparer stream...</b> for at søge efter en aktiv erstatningsstream.\n"
-"• Klik på <b>Separator</b> for at indsætte en mellemtitel eller skillelinje.</small>"
 
 msgid "Actualiser la liste des exemples"
 msgstr "Opdater listen over eksempler"
@@ -763,7 +770,8 @@ msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
 msgstr "Ingen bookmarks.xml-filer fundet at gemme."
 
 msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
-msgstr "Ingen nye radiostationer tilføjet (allerede til stede i dine bogmærker)."
+msgstr ""
+"Ingen nye radiostationer tilføjet (allerede til stede i dine bogmærker)."
 
 msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
 msgstr "Ingen radiostationer fundet på Radio-Browser for disse kriterier."
@@ -798,8 +806,11 @@ msgstr "Samlinger og filer"
 msgid "Conserver l'organisation en dossiers"
 msgstr "Hold organisationen registreret"
 
-msgid "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
-msgstr "Opret en komplet sikkerhedskopi af din samling (med mapper og tidszoner)"
+msgid ""
+"Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux "
+"horaires)"
+msgstr ""
+"Opret en komplet sikkerhedskopi af din samling (med mapper og tidszoner)"
 
 msgid "Disponibilité"
 msgstr "Tilgængelighed"
@@ -816,8 +827,12 @@ msgstr "Eksempler mappe"
 msgid "Dossier des signets"
 msgstr "Bogmærker mappe"
 
-msgid "Détection automatique selon les paramètres régionaux de votre environnement Linux."
-msgstr "Automatisk registrering i henhold til de regionale indstillinger i dit Linux-miljø."
+msgid ""
+"Détection automatique selon les paramètres régionaux de votre environnement "
+"Linux."
+msgstr ""
+"Automatisk registrering i henhold til de regionale indstillinger i dit Linux-"
+"miljø."
 
 msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
 msgstr "MILJØ DETEKTERET (LÆSEKUN)"
@@ -900,14 +915,21 @@ msgstr "GNOME-integration påkrævet"
 msgid "Intégration dans la barre supérieure GNOME"
 msgstr "Integration i GNOME-topbjælken"
 
-msgid "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
-msgstr "Indbygget integration i meddelelsesområdet via StatusNotifierItem / XEmbed."
+msgid ""
+"Intégration native dans la zone de notification via StatusNotifierItem / "
+"XEmbed."
+msgstr ""
+"Indbygget integration i meddelelsesområdet via StatusNotifierItem / XEmbed."
 
 msgid "L'exportation CSV est accessible depuis les paramètres."
 msgstr "CSV-eksport er tilgængelig fra indstillinger."
 
-msgid "L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."
-msgstr "AppIndicator-udvidelsen er påkrævet for at vise ikonet i den øverste bjælke i GNOME."
+msgid ""
+"L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre "
+"supérieure sous GNOME."
+msgstr ""
+"AppIndicator-udvidelsen er påkrævet for at vise ikonet i den øverste bjælke "
+"i GNOME."
 
 msgid "L'installation a été annulée ou a échoué."
 msgstr "Installationen blev annulleret eller mislykkedes."
@@ -954,14 +976,24 @@ msgstr "Land"
 msgid "Pays :"
 msgstr "Land:"
 
-msgid "Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>Souhaitez-vous l'installer maintenant ?"
-msgstr "For diskret at vise afspilningsikonet i den øverste bjælke på dit GNOME-skrivebord kræves systemudvidelsen <b>AppIndicator</b>.<br/><br/>Vil du installere det nu?"
+msgid ""
+"Pour afficher discrètement l'icône de lecture dans la barre supérieure de "
+"votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire."
+"<br/><br/>Souhaitez-vous l'installer maintenant ?"
+msgstr ""
+"For diskret at vise afspilningsikonet i den øverste bjælke på dit GNOME-"
+"skrivebord kræves systemudvidelsen <b>AppIndicator</b>.<br/><br/>Vil du "
+"installere det nu?"
 
 msgid "Préférences"
 msgstr "Præferencer"
 
-msgid "Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."
-msgstr "Bevar undergrupper defineret i filen i stedet for at importere alt til en enkelt gruppe."
+msgid ""
+"Préserver les sous-groupes définis dans le fichier au lieu de tout importer "
+"dans un groupe unique."
+msgstr ""
+"Bevar undergrupper defineret i filen i stedet for at importere alt til en "
+"enkelt gruppe."
 
 msgid "Quitter"
 msgstr "Afslut"
@@ -972,8 +1004,12 @@ msgstr "Genindlæs"
 msgid "Recharger le fichier actuellement affiché"
 msgstr "Genindlæs den aktuelt viste fil"
 
-msgid "Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations)."
-msgstr "Verdensomspændende søgning på den gratis og kollaborative <b>Radio-Browser</b>-mappe (+45.000 stationer)."
+msgid ""
+"Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> "
+"(+45 000 stations)."
+msgstr ""
+"Verdensomspændende søgning på den gratis og kollaborative <b>Radio-Browser</"
+"b>-mappe (+45.000 stationer)."
 
 msgid "Recherche sur Radio-Browser en cours..."
 msgstr "Søgning på Radio-Browser i gang..."
@@ -999,7 +1035,8 @@ msgstr "Fix flowet..."
 msgid "Rétablir les 19 exemples d'origine"
 msgstr "Gendan de originale 19 eksempler"
 
-msgid "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
+msgid ""
+"Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
 msgstr "Indtast et søgeord, eller klik på Søg for at udforske biblioteket."
 
 msgid "Sauvegarde réussie !"
@@ -1020,8 +1057,12 @@ msgstr "Resort"
 msgid "Statut Favoris"
 msgstr "Favoritter Status"
 
-msgid "Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales)."
-msgstr "Officielt og verificeret udvalg fra 146 lande og regioner (DAB+ digitale buketter og store nationale stationer)."
+msgid ""
+"Sélection officielle et vérifiée parmi 146 pays et régions (bouquets "
+"numériques DAB+ et grandes stations nationales)."
+msgstr ""
+"Officielt og verificeret udvalg fra 146 lande og regioner (DAB+ digitale "
+"buketter og store nationale stationer)."
 
 msgid "Sélectionnez une radio pour l'écouter."
 msgstr "Vælg en radio for at lytte til den."
@@ -1098,7 +1139,6 @@ msgstr "Lyt til den valgte radio"
 msgid "Écouter ou tester la radio sélectionnée"
 msgstr "Lyt til eller test den valgte radio"
 
-
 msgid "is not responding. Searching for a backup stream..."
 msgstr "svarer ikke. Søger efter reservestrøm..."
 
@@ -1168,17 +1208,15 @@ msgstr "{count} strømme fundet. Vælg den ønskede strøm og bekræft."
 msgid "No pre-loaded DAB+ bouquet for this country."
 msgstr "Ingen forudindlæst DAB+-buket for dette land."
 
-msgid "You can explore and import stations for this territory directly from the global directory."
-msgstr "Du kan udforske og importere stationer for dette område direkte fra det globale katalog."
+msgid ""
+"You can explore and import stations for this territory directly from the "
+"global directory."
+msgstr ""
+"Du kan udforske og importere stationer for dette område direkte fra det "
+"globale katalog."
 
 msgid "Explore stations from {country} on Radio-Browser ➔"
 msgstr "Udforsk stationer fra {country} på Radio-Browser ➔"
-
-msgid "Explore stations from this country on Radio-Browser"
-msgstr "Udforsk stationer fra dette land på Radio-Browser"
-
-msgid "Switch to the global directory with this country pre-selected"
-msgstr "Skift til det globale katalog med dette land forudvalgt"
 
 msgid "this country"
 msgstr "dette land"
@@ -1189,11 +1227,19 @@ msgstr "Ingen DAB+-buket for {country} — Brug 'Søg online'."
 msgid "{checked} / {total} station(s) selected"
 msgstr "{checked} / {total} station(er) valgt"
 
-msgid "No radio found for this language in {country}. Uncheck 'Filter by country' or clear the language."
-msgstr "Ingen radio fundet for dette sprog i {country}. Fjern markeringen af 'Filtrer efter land' eller ryd sproget."
+msgid ""
+"No radio found for this language in {country}. Uncheck 'Filter by country' "
+"or clear the language."
+msgstr ""
+"Ingen radio fundet for dette sprog i {country}. Fjern markeringen af "
+"'Filtrer efter land' eller ryd sproget."
 
-msgid "No radio found for these criteria in {country}. Uncheck 'Filter by country' to search globally."
-msgstr "Ingen radio fundet for disse kriterier i {country}. Fjern markeringen af 'Filtrer efter land' for global søgning."
+msgid ""
+"No radio found for these criteria in {country}. Uncheck 'Filter by country' "
+"to search globally."
+msgstr ""
+"Ingen radio fundet for disse kriterier i {country}. Fjern markeringen af "
+"'Filtrer efter land' for global søgning."
 
 msgid "No radio found on Radio-Browser for these criteria."
 msgstr "Ingen radio fundet på Radio-Browser for disse kriterier."
@@ -1218,3 +1264,255 @@ msgstr "{count} tilgængelige tidszoner"
 
 msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
 msgstr "<b>{nb_st}</b> station(er) i <b>{nb_gr}</b> gruppe(r)."
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Udforsk stationer fra dette land på Radio-Browser"
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Skift til det globale katalog med dette land forudvalgt"
+
+#, fuzzy
+msgid " [Ephemeral]"
+msgstr "[Efemær]"
+
+msgid "%20"
+msgstr ""
+
+#, fuzzy
+msgid "(Already in favorites)"
+msgstr "Gem til mine favoritter"
+
+msgid "/org/mpris/MediaPlayer2/CurrentTrack"
+msgstr ""
+
+#, fuzzy
+msgid "Add station..."
+msgstr "Tilføj en station..."
+
+msgid "Bitrate"
+msgstr ""
+
+#, fuzzy
+msgid "Checking..."
+msgstr "Forbinder..."
+
+msgid "Clear"
+msgstr ""
+
+msgid "Clear / Automatic mode"
+msgstr ""
+
+msgid "Clear field (click to empty)"
+msgstr ""
+
+#, fuzzy
+msgid "Country"
+msgstr "<b>Country:</b>"
+
+#, fuzzy
+msgid "Country:"
+msgstr "<b>Country:</b>"
+
+msgid "Delete group..."
+msgstr ""
+
+#, fuzzy
+msgid "Delete this separator"
+msgstr "Slet denne radio"
+
+#, fuzzy
+msgid "Delete this station..."
+msgstr "Slet denne radio"
+
+msgid "Edit header..."
+msgstr ""
+
+#, fuzzy
+msgid "Edit station..."
+msgstr "Tilføj en station..."
+
+msgid "Empty URL"
+msgstr ""
+
+msgid "Ephemeral radio (not saved)."
+msgstr ""
+
+msgid "Error {code}"
+msgstr ""
+
+msgid "Format"
+msgstr ""
+
+msgid "Geoblocked (VPN)"
+msgstr ""
+
+msgid "HTTP Error {code}"
+msgstr ""
+
+#, fuzzy
+msgid "Insert separator here..."
+msgstr "Insert a separator or header in this group"
+
+msgid "Listen"
+msgstr ""
+
+msgid "Live (repaired)"
+msgstr ""
+
+msgid "Live ({codec})"
+msgstr ""
+
+#, fuzzy
+msgid "Move to another group..."
+msgstr "Move selection to another group (Ctrl+M)"
+
+#, fuzzy
+msgid "Move to top"
+msgstr "Flyt til..."
+
+#, fuzzy
+msgid "New"
+msgstr "[Ny]"
+
+#, fuzzy
+msgid "New group..."
+msgstr "Ny gruppe"
+
+#, fuzzy
+msgid "No station loaded"
+msgstr "No stations to check."
+
+#, fuzzy
+msgid "Open stations"
+msgstr "Indstillinger"
+
+msgid "Original stream is unreachable:"
+msgstr ""
+
+#, fuzzy
+msgid "Play this station"
+msgstr "Slet denne radio"
+
+msgid "Popularity"
+msgstr ""
+
+#, fuzzy
+msgid "Preview selected radio stream"
+msgstr "Testing live radio streams..."
+
+msgid "Rename group..."
+msgstr ""
+
+#, fuzzy
+msgid "Save now"
+msgstr "Fejl ved lagring"
+
+msgid "Search"
+msgstr ""
+
+#, fuzzy
+msgid "Searching for streams..."
+msgstr "Reparer flow..."
+
+msgid "Select a verified replacement stream from Radio-Browser:"
+msgstr ""
+
+msgid "Select or type (e.g. /France/Brittany or / for root)"
+msgstr ""
+
+msgid "Server unreachable"
+msgstr ""
+
+msgid "Stop playback"
+msgstr ""
+
+#, fuzzy
+msgid "TiMonde • Ephemeral discovery"
+msgstr "Afspil tilfældig station (Opdagelse)"
+
+#, fuzzy
+msgid "Timeout"
+msgstr "Tidszone:"
+
+#, fuzzy
+msgid "Transfer contents to another group..."
+msgstr "Transfer the content of this group to another group (Ctrl+M)"
+
+msgid "Unable to initialize audio"
+msgstr ""
+
+msgid "Unable to play"
+msgstr ""
+
+msgid "Unsaved changes"
+msgstr ""
+
+#, fuzzy
+msgid "Validate and replace"
+msgstr "Gem og genindlæs"
+
+#~ msgid ""
+#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
+#~ "groups.\n"
+#~ "• <b>Double-click a group</b> (or Open) to sort its stations and "
+#~ "separators.\n"
+#~ "• Use <b>Transfer...</b> to merge or move content to another group.\n"
+#~ "• Use <b>New group</b> to add a station folder.</small>"
+#~ msgstr ""
+#~ "<small>• Skift <b>#</b> eller brug <b>Flyt op/ned</b> for at sortere "
+#~ "grupperne.\n"
+#~ "• <b>Dobbeltklik på en gruppe</b> (eller Åbn) for at sortere dens radioer "
+#~ "og splittere.\n"
+#~ "• Brug <b>Overfør...</b> til at flette eller flytte indhold til en anden "
+#~ "gruppe.\n"
+#~ "• Brug <b>Ny gruppe</b> til at tilføje en mappe med radioer.</small>"
+
+#~ msgid ""
+#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
+#~ "stations.\n"
+#~ "• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
+#~ "• Click <b>Repair stream...</b> to search Radio-Browser for a working "
+#~ "replacement stream.\n"
+#~ "• Click <b>Separator</b> to insert a section header.</small>"
+#~ msgstr ""
+#~ "<small>• Skift <b>#</b> eller brug <b>Flyt op/ned</b> til at sortere "
+#~ "radioerne.\n"
+#~ "• Klik på <b>Kontroller feeds</b> for at se døde links (røde) og reparere "
+#~ "dem.\n"
+#~ "• Klik på <b>Reparer stream...</b> for at søge efter en erstatning for "
+#~ "aktiv stream på Radio-Browser.\n"
+#~ "• Klik på <b>Separator</b> for at indsætte en sektionsoverskrift.</small>"
+
+#~ msgid ""
+#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
+#~ "ordonner les groupes.\n"
+#~ "• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios "
+#~ "et séparateurs.\n"
+#~ "• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du "
+#~ "contenu.\n"
+#~ "• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+#~ msgstr ""
+#~ "<small>• Skift <b>#</b> eller brug <b>Flyt op/ned</b> for at sortere "
+#~ "grupperne.\n"
+#~ "• <b>Dobbeltklik på en gruppe</b> (eller Åbn) for at sortere dens radioer "
+#~ "og separatorer.\n"
+#~ "• Brug <b>Flyt til...</b> til at flette eller flytte indhold.\n"
+#~ "• Brug <b>Ny gruppe</b> til at oprette en mappe med radioer.</small>"
+
+#~ msgid ""
+#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
+#~ "ordonner les radios.\n"
+#~ "• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne "
+#~ "(en rouge).\n"
+#~ "• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de "
+#~ "remplacement actif.\n"
+#~ "• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de "
+#~ "séparation.</small>"
+#~ msgstr ""
+#~ "<small>• Skift <b>#</b> eller brug <b>Flyt op/ned</b> for at bestille "
+#~ "radioerne.\n"
+#~ "• Klik på <b>Kontroller feeds</b> for at se offline links (i rødt).\n"
+#~ "• Klik på <b>Reparer stream...</b> for at søge efter en aktiv "
+#~ "erstatningsstream.\n"
+#~ "• Klik på <b>Separator</b> for at indsætte en mellemtitel eller "
+#~ "skillelinje.</small>"

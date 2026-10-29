@@ -118,7 +118,8 @@ def check_stream_url(url, timeout=3.0, with_redirect=False):
     import urllib.request
     import urllib.error
     if not url or not url.strip():
-        return (False, "URL vide", None) if with_redirect else (False, "URL vide")
+        msg_empty = _("Empty URL")
+        return (False, msg_empty, None) if with_redirect else (False, msg_empty)
     clean = url.strip()
     try:
         req = urllib.request.Request(
@@ -140,17 +141,22 @@ def check_stream_url(url, timeout=3.0, with_redirect=False):
                 elif "mpeg" in ct or "mp3" in ct: codec = "MP3"
                 elif "ogg" in ct: codec = "OGG"
                 elif "flac" in ct: codec = "FLAC"
-                msg = f"En ligne ({codec})"
+                msg = _("Live ({codec})").format(codec=codec)
                 return (True, msg, redir) if with_redirect else (True, msg)
-            return (False, f"Erreur HTTP {code}", None) if with_redirect else (False, f"Erreur HTTP {code}")
+            err_http = _("HTTP Error {code}").format(code=code)
+            return (False, err_http, None) if with_redirect else (False, err_http)
     except urllib.error.HTTPError as e:
         if e.code in (403, 451) or (e.code == 503 and any(k in clean.lower() for k in ["amperwave", "audacy", "streamtheworld", "akamai", "geoblock", "leanstream"])):
-            return ("GEO", "Géobloqué (VPN)", None) if with_redirect else ("GEO", "Géobloqué (VPN)")
-        return (False, f"Erreur {e.code}", None) if with_redirect else (False, f"Erreur {e.code}")
+            msg_geo = _("Geoblocked (VPN)")
+            return ("GEO", msg_geo, None) if with_redirect else ("GEO", msg_geo)
+        err_code = _("Error {code}").format(code=e.code)
+        return (False, err_code, None) if with_redirect else (False, err_code)
     except urllib.error.URLError:
-        return (False, "Serveur inaccessible", None) if with_redirect else (False, "Serveur inaccessible")
+        msg_unreach = _("Server unreachable")
+        return (False, msg_unreach, None) if with_redirect else (False, msg_unreach)
     except Exception:
-        return (False, "Délai dépassé", None) if with_redirect else (False, "Délai dépassé")
+        msg_timeout = _("Timeout")
+        return (False, msg_timeout, None) if with_redirect else (False, msg_timeout)
 
 
 
@@ -1259,12 +1265,12 @@ class RepairStreamDialog(_GtkDialogBase):
 
         from gi.repository import Gtk, GLib
         super().__init__(
-            title=f"{_('Remplacer le flux :')} {station_name}",
+            title=f"{_('Replace stream:')} {station_name}",
             transient_for=parent,
             modal=True,
         )
         self.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
-        self.add_button(_("Valider et remplacer"), Gtk.ResponseType.OK)
+        self.add_button(_("Validate and replace"), Gtk.ResponseType.OK)
         self.set_default_size(720, 420)
         self.set_border_width(10)
         self.station_name = station_name
@@ -1276,8 +1282,8 @@ class RepairStreamDialog(_GtkDialogBase):
 
         # En-tête explicatif
         url_snippet = (current_url[:65] + "...") if len(current_url) > 65 else current_url
-        orig_title = _("Le flux d'origine ne répond plus :")
-        select_subtitle = _("Sélectionnez un flux de remplacement vérifié sur Radio-Browser :")
+        orig_title = _("Original stream is unreachable:")
+        select_subtitle = _("Select a verified replacement stream from Radio-Browser:")
         info_lbl = Gtk.Label(
             label=f"<b>{orig_title}</b>\n"
                   f"<small><tt>{html.escape(url_snippet)}</tt></small>\n\n"
@@ -1297,7 +1303,7 @@ class RepairStreamDialog(_GtkDialogBase):
         self.entry_query.connect("activate", lambda w: self.perform_search())
         search_box.pack_start(self.entry_query, True, True, 0)
 
-        btn_search = make_btn(_("Rechercher"), "system-search")
+        btn_search = make_btn(_("Search"), "system-search")
         btn_search.connect("clicked", lambda w: self.perform_search())
         search_box.pack_start(btn_search, False, False, 0)
 
@@ -1312,13 +1318,13 @@ class RepairStreamDialog(_GtkDialogBase):
         col_codec = Gtk.TreeViewColumn(_("Format"), Gtk.CellRendererText(), text=1)
         self.tree.append_column(col_codec)
 
-        col_bitrate = Gtk.TreeViewColumn(_("Débit"), Gtk.CellRendererText(), text=2)
+        col_bitrate = Gtk.TreeViewColumn(_("Bitrate"), Gtk.CellRendererText(), text=2)
         self.tree.append_column(col_bitrate)
 
-        col_country = Gtk.TreeViewColumn(_("Pays"), Gtk.CellRendererText(), text=3)
+        col_country = Gtk.TreeViewColumn(_("Country"), Gtk.CellRendererText(), text=3)
         self.tree.append_column(col_country)
 
-        col_votes = Gtk.TreeViewColumn(_("Popularité"), Gtk.CellRendererText(), text=5)
+        col_votes = Gtk.TreeViewColumn(_("Popularity"), Gtk.CellRendererText(), text=5)
         self.tree.append_column(col_votes)
 
         scroll = Gtk.ScrolledWindow()
@@ -1327,7 +1333,7 @@ class RepairStreamDialog(_GtkDialogBase):
         scroll.add(self.tree)
         content.pack_start(scroll, True, True, 0)
 
-        self.lbl_status = Gtk.Label(label=_("Recherche des flux en cours..."))
+        self.lbl_status = Gtk.Label(label=_("Searching for streams..."))
         self.lbl_status.set_halign(Gtk.Align.START)
         content.pack_start(self.lbl_status, False, False, 0)
 
