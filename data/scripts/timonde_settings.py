@@ -26,7 +26,7 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import make_btn, safe_parse_xml, clean_stream_url, infer_timezone, normalize_group_path, find_or_create_group, set_window_icon, find_script, get_user_bookmarks_groups, apply_timonde_app_css
+from timonde_common import make_btn, safe_parse_xml, clean_stream_url, infer_timezone, normalize_group_path, find_or_create_group, set_window_icon, find_script, get_user_bookmarks_groups, apply_timonde_app_css, status_markup
 from reorder_groups import ReorderWindow
 from browse_bouquets import DiscoverRadiosWindow, parse_bouquets_xml
 from edit_station import EditStationWindow
@@ -656,7 +656,7 @@ class SettingsWindow(Gtk.Window):
         page.pack_start(card_desktop, False, False, 0)
 
         # Détection proactive d'intégration GNOME (si AppIndicator est manquant)
-        helper_path = self.find_script("gnome_tray_helper.py")
+        helper_path = find_script("gnome_tray_helper.py")
         if helper_path:
             try:
                 chk = subprocess.run([sys.executable, helper_path, "--check"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -683,14 +683,7 @@ class SettingsWindow(Gtk.Window):
             self.lbl_bm_desc.set_markup(f"{html.escape(self.bookmarks_path)}\n{desc}")
 
     # -------------------------------------------------------------------------
-    # Actions Métier & Intégration des sous-outils
-    # -------------------------------------------------------------------------
-    def find_script(self, script_name):
-        return find_script(script_name)
-
-
-    # -------------------------------------------------------------------------
-    # Actions & Exécution des sous-outils
+    # Actions & Exécution
     # -------------------------------------------------------------------------
     def on_autostart_toggled(self, switch, gparam):
         active = switch.get_active()
@@ -701,38 +694,9 @@ class SettingsWindow(Gtk.Window):
         else:
             self.show_feedback(_("Erreur lors de la modification de l'autostart."), is_error=True)
 
-    def open_directory(self, path):
-        try:
-            os.makedirs(path, exist_ok=True)
-            subprocess.Popen(["xdg-open", path])
-            self.show_feedback(f"{_('Dossier ouvert :')} {os.path.basename(path)}")
-        except Exception as e:
-            self.show_feedback(f"{_('Impossible d ouvrir le dossier :')} {e}", is_error=True)
-
-    def restore_default_examples(self):
-        source_dirs = [
-            "/usr/share/timonde/examples",
-            os.path.join(os.path.dirname(__file__), "../examples"),
-            os.path.join(os.path.dirname(__file__), "../../data/examples"),
-            "data/examples"
-        ]
-        restored = 0
-        os.makedirs(USER_EXAMPLES_DIR, exist_ok=True)
-        for sdir in source_dirs:
-            if os.path.isdir(sdir):
-                for fname in os.listdir(sdir):
-                    src_file = os.path.join(sdir, fname)
-                    dst_file = os.path.join(USER_EXAMPLES_DIR, fname)
-                    if os.path.isfile(src_file):
-                        shutil.copy2(src_file, dst_file)
-                        restored += 1
-                if restored > 0:
-                    break
-        self.show_feedback(f"{restored} {_('fichiers exemples restaurés dans')} ~/.config/timonde/examples/")
-
     def show_feedback(self, msg, is_error=False):
-        color = "#e74c3c" if is_error else "#2ecc71"
-        self.lbl_feedback.set_markup(f"<span foreground='{color}'><b>{html.escape(msg or '')}</b></span>")
+        kind = "error" if is_error else "ok"
+        self.lbl_feedback.set_markup(status_markup(msg or "", kind=kind, with_bullet=False, bold=True))
 
     def on_close_clicked(self):
         self.destroy()

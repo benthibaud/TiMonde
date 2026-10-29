@@ -1,5 +1,5 @@
 Name:           timonde
-Version:        0.2.1
+Version:        0.2.2
 Release:        1%{?dist}
 Summary:        Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux
 
@@ -63,6 +63,14 @@ make DESTDIR=%{buildroot} PREFIX=/usr install
 /usr/share/metainfo/io.github.benthibaud.timonde.metainfo.xml
 
 %changelog
+* Thu Oct 29 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.2-1
+- Optimisation de la mémoire vive au repos (< 15 Mo de RAM avec malloc_trim)
+- Anti-rebond sur la persistance du volume sonore (debounce 300 ms)
+- Factorisation des composants partagés (RepairStreamDialog, _run_batch_checks)
+- Harmonisation du Design System GTK3 (status_markup, TreeView adaptatifs sans ascenseur horizontal forcé)
+- Parité absolue et complétude des 56 catalogues Gettext
+- Documentation technique consolidée (docs/ARCHITECTURE.md)
+
 * Wed Oct 28 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.1-1
 - Modularisation de l'architecture Rust (découpage en sous-modules src/tray/)
 - Factorisation du socle partagé Python timonde_common.py

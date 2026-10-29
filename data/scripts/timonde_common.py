@@ -29,9 +29,9 @@ try:
 except ImportError:
     def _(s): return s
 
-TIMONDE_USER_AGENT = "TiMonde/0.2.1"
+TIMONDE_USER_AGENT = "TiMonde/0.2.2"
 USER_AGENT = TIMONDE_USER_AGENT
-USER_AGENT_PROBE = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) TiMonde/0.2.1"
+USER_AGENT_PROBE = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) TiMonde/0.2.2"
 
 
 # -----------------------------------------------------------------------------
