@@ -16,7 +16,6 @@ os.environ.pop("QT_IM_MODULE", None)
 
 import json
 import subprocess
-import shutil
 import html
 import xml.etree.ElementTree as ET
 
@@ -26,7 +25,7 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import make_btn, safe_parse_xml, clean_stream_url, infer_timezone, normalize_group_path, find_or_create_group, set_window_icon, find_script, get_user_bookmarks_groups, apply_timonde_app_css, status_markup
+from timonde_common import make_btn, safe_parse_xml, clean_stream_url, infer_timezone, find_or_create_group, set_window_icon, find_script, get_user_bookmarks_groups, apply_timonde_app_css, status_markup
 from reorder_groups import ReorderWindow
 from browse_bouquets import DiscoverRadiosWindow, parse_bouquets_xml
 from edit_station import EditStationWindow
@@ -254,24 +253,46 @@ def add_stations_to_bookmarks_xml(path, stations_list, default_group="Mes Radios
     if root is None or root.tag not in ("bookmarks", "radios"):
         root = ET.Element("bookmarks")
 
-    existing_urls = set()
-    for elem in root.iter():
-        if elem.tag in ("bookmark", "station"):
-            u = elem.attrib.get("url", "").strip()
-            if u:
-                existing_urls.add(u)
+    # Mappage de chaque URL existante vers (parent_elem, child_elem)
+    existing_map = {}
+    for parent in root.iter():
+        for child in list(parent):
+            if child.tag in ("bookmark", "station"):
+                u = child.attrib.get("url", "").strip()
+                if u:
+                    existing_map[u] = (parent, child)
 
     added_count = 0
+    moved_count = 0
     for st in stations_list:
         url = clean_stream_url(st.get("url", "").strip())
         name = st.get("name", "").strip()
         if not url or not name:
             continue
-        if url in existing_urls:
-            continue
-        grp_name = st.get("group") or default_group or "Mes Radios"
+
+        grp_name = st.get("group")
+        if not grp_name:
+            grp_name = default_group or "root"
         target_group = find_or_create_group(root, grp_name)
-        
+
+        if url in existing_map:
+            old_parent, existing_elem = existing_map[url]
+            if old_parent != target_group and existing_elem is not None:
+                # La station existe déjà mais l'utilisateur l'importe dans une nouvelle cible -> déplacement !
+                old_parent.remove(existing_elem)
+                if name:
+                    existing_elem.attrib["name"] = name
+                c = st.get("country") or country_code
+                if c:
+                    existing_elem.attrib["country"] = str(c).strip().upper()
+                tz = st.get("timezone")
+                if tz:
+                    existing_elem.attrib["timezone"] = str(tz).strip()
+                target_group.append(existing_elem)
+                existing_map[url] = (target_group, existing_elem)
+                moved_count += 1
+            continue
+
         attribs = {"name": name, "url": url}
         c = st.get("country") or country_code
         if c:
@@ -279,15 +300,15 @@ def add_stations_to_bookmarks_xml(path, stations_list, default_group="Mes Radios
         tz = st.get("timezone") or infer_timezone(attribs.get("country", ""), name, grp_name)
         if tz:
             attribs["timezone"] = str(tz).strip()
-        
-        ET.SubElement(target_group, "bookmark", attribs)
-        existing_urls.add(url)
+
+        new_el = ET.SubElement(target_group, "bookmark", attribs)
+        existing_map[url] = (target_group, new_el)
         added_count += 1
 
-    if added_count > 0:
+    if added_count > 0 or moved_count > 0:
         _write_bookmarks_element_tree_atomic(path, root)
 
-    return added_count
+    return added_count, moved_count
 
 
 class SettingsWindow(Gtk.Window):
@@ -509,9 +530,7 @@ class SettingsWindow(Gtk.Window):
         self.show_feedback(_("Signets et radios enregistrés avec succès !"))
 
     def on_embedded_add_station_clicked(self, widget):
-        current_grp = None
-        if self.reorder_view.current_group_idx is not None:
-            current_grp = self.reorder_view.data[self.reorder_view.current_group_idx].get("name", "")
+        current_grp = self.reorder_view.get_selected_group_name() if hasattr(self.reorder_view, "get_selected_group_name") else ""
         groups = get_user_bookmarks_groups(self.bookmarks_path)
         dlg = EditStationWindow(
             mode="add",
@@ -529,15 +548,15 @@ class SettingsWindow(Gtk.Window):
             return
         if hasattr(self, "reorder_view"):
             self.reorder_view.flush_pending()
-        added = add_stations_to_bookmarks_xml(self.bookmarks_path, [data], default_group=data.get("group"))
-        if added > 0:
+        added, moved = add_stations_to_bookmarks_xml(self.bookmarks_path, [data], default_group=data.get("group"))
+        if added > 0 or moved > 0:
             self.has_modifications = True
             payload = load_bookmarks_tree(self.bookmarks_path)
             self.reorder_view.data = payload
             self.reorder_view.set_dirty(False)
             self.reorder_view.update_view()
             self.refresh_stats()
-            self.show_feedback(f"« {data.get('name', 'Radio')} » {_('ajoutée avec succès !')}")
+            self.show_feedback(f"« {data.get('name', 'Radio')} » {_('enregistrée avec succès !')}")
 
     # -------------------------------------------------------------------------
     # 2, 3, 4. Ateliers Recherche, Bouquets, et Fichiers (DiscoverRadiosWindow)
@@ -580,15 +599,20 @@ class SettingsWindow(Gtk.Window):
         stations = result.get("stations", [])
         grp_name = result.get("group_name", "Mes Radios")
         c_code = result.get("country_code")
-        added = add_stations_to_bookmarks_xml(self.bookmarks_path, stations, default_group=grp_name, country_code=c_code)
-        if added > 0:
+        added, moved = add_stations_to_bookmarks_xml(self.bookmarks_path, stations, default_group=grp_name, country_code=c_code)
+        if added > 0 or moved > 0:
             self.has_modifications = True
             payload = load_bookmarks_tree(self.bookmarks_path)
             self.reorder_view.data = payload
             self.reorder_view.set_dirty(False)
             self.reorder_view.update_view()
             self.refresh_stats()
-            self.show_feedback(f"{added} {_('nouvelle(s) radio(s) importée(s) !')}")
+            msgs = []
+            if added > 0:
+                msgs.append(f"{added} {_('nouvelle(s) radio(s) importée(s)')}")
+            if moved > 0:
+                msgs.append(f"{moved} {_('radio(s) déplacée(s) vers la cible')}")
+            self.show_feedback(" & ".join(msgs) + " !")
             self.stack.set_visible_child_name("organization")
         else:
             self.show_feedback(_("Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."))
@@ -671,6 +695,40 @@ class SettingsWindow(Gtk.Window):
                         btn_fix
                     )
                     page.pack_start(card_gnome_warning, False, False, 0)
+            except Exception:
+                pass
+
+        # Détection proactive Cinnamon (Harmonisation Clic Gauche / Droit)
+        cinnamon_patch_path = find_script("patch_cinnamon_status_applet.py")
+        is_cinnamon = "cinnamon" in desktop_raw.lower() or os.path.isdir(os.path.expanduser("~/.local/share/cinnamon"))
+        if is_cinnamon and cinnamon_patch_path:
+            try:
+                chk = subprocess.run([sys.executable, cinnamon_patch_path, "--check"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                is_active = (chk.returncode == 0)
+                btn_cin = make_btn(
+                    _("Active (Left & Right clicks unified)") if is_active else _("Enable Left-Click"),
+                    "emblem-default" if is_active else "system-run-symbolic",
+                    primary=not is_active
+                )
+                if is_active:
+                    btn_cin.set_sensitive(False)
+                else:
+                    def on_patch_cinnamon_clicked(widget):
+                        res = subprocess.run([sys.executable, cinnamon_patch_path, "--user"])
+                        if res.returncode == 0:
+                            widget.set_label(_("Active (Left & Right clicks unified)"))
+                            widget.set_sensitive(False)
+                            self.show_feedback(_("Cinnamon left-click unification successfully enabled!"))
+                        else:
+                            self.show_feedback(_("Failed to enable Cinnamon unification."), is_error=True)
+                    btn_cin.connect("clicked", on_patch_cinnamon_clicked)
+
+                card_cinnamon = self.create_card(
+                    _("Cinnamon Left-Click Unification"),
+                    _("Allows opening the station menu interchangeably with left or right click."),
+                    btn_cin
+                )
+                page.pack_start(card_cinnamon, False, False, 0)
             except Exception:
                 pass
 

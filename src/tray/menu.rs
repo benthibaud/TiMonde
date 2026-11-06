@@ -229,7 +229,7 @@ impl ksni::Tray for TiMondeTray {
                 let label = crate::i18n::connecting_station_label(&st.name, is_eph);
                 menu.push(MenuItem::Standard(StandardItem {
                     label,
-                    icon_name: "media-playback-stop".to_string(),
+                    icon_name: "media-playback-stop-symbolic".to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         tray.stop_and_trim();
                     }),
@@ -242,7 +242,7 @@ impl ksni::Tray for TiMondeTray {
                 let label = crate::i18n::stop_station_label(&st.name, is_eph);
                 menu.push(MenuItem::Standard(StandardItem {
                     label,
-                    icon_name: "media-playback-stop".to_string(),
+                    icon_name: "media-playback-stop-symbolic".to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         tray.stop_and_trim();
                     }),
@@ -267,7 +267,7 @@ impl ksni::Tray for TiMondeTray {
                     let label = crate::i18n::play_station_label(&st.name);
                     menu.push(MenuItem::Standard(StandardItem {
                         label,
-                        icon_name: "media-playback-start".to_string(),
+                        icon_name: "media-playback-start-symbolic".to_string(),
                         activate: Box::new(move |tray: &mut Self| {
                             tray.play_station(st_clone.clone());
                         }),
@@ -278,7 +278,7 @@ impl ksni::Tray for TiMondeTray {
                 } else {
                     menu.push(MenuItem::Standard(StandardItem {
                         label: crate::i18n::tr("No station loaded").to_string(),
-                        icon_name: "audio-x-generic".to_string(),
+                        icon_name: "audio-x-generic-symbolic".to_string(),
                         enabled: false,
                         visible: true,
                         ..Default::default()
@@ -297,7 +297,7 @@ impl ksni::Tray for TiMondeTray {
                     let t_clone = title.clone();
                     menu.push(MenuItem::Standard(StandardItem {
                         label: format!("♪ {}", title),
-                        icon_name: "audio-speakers".to_string(),
+                        icon_name: "audio-speakers-symbolic".to_string(),
                         activate: Box::new(move |_tray: &mut Self| {
                             Self::copy_to_clipboard(&t_clone);
                         }),
@@ -324,7 +324,7 @@ impl ksni::Tray for TiMondeTray {
                 };
                 menu.push(MenuItem::Standard(StandardItem {
                     label: format!("   {}", tz_label),
-                    icon_name: "appointment-soon".to_string(),
+                    icon_name: "appointment-soon-symbolic".to_string(),
                     activate: Box::new(|_| {}),
                     enabled: true,
                     visible: true,
@@ -337,7 +337,7 @@ impl ksni::Tray for TiMondeTray {
                 let st_name = st.name.clone();
                 menu.push(MenuItem::Standard(StandardItem {
                     label: format!("   {}", crate::i18n::save_ephemeral_label(&st_name)),
-                    icon_name: "list-add".to_string(),
+                    icon_name: "list-add-symbolic".to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         tray.trigger_save_current_ephemeral_station();
                     }),
@@ -348,7 +348,7 @@ impl ksni::Tray for TiMondeTray {
 
                 menu.push(MenuItem::Standard(StandardItem {
                     label: format!("   {}", crate::i18n::tr("Zap to another random station")),
-                    icon_name: "media-skip-forward".to_string(),
+                    icon_name: "media-skip-forward-symbolic".to_string(),
                     activate: Box::new(|tray: &mut Self| {
                         tray.play_random_ephemeral_station();
                     }),
@@ -360,7 +360,7 @@ impl ksni::Tray for TiMondeTray {
                 let st_edit = st.clone();
                 menu.push(MenuItem::Standard(StandardItem {
                     label: format!("   {}", crate::i18n::tr("Edit")),
-                    icon_name: "document-edit".to_string(),
+                    icon_name: "document-edit-symbolic".to_string(),
                     activate: Box::new(move |tray: &mut Self| {
                         Self::trigger_edit_station_dialog(
                             st_edit.clone(),
@@ -389,7 +389,7 @@ impl ksni::Tray for TiMondeTray {
         if !is_eph {
             menu.push(MenuItem::Standard(StandardItem {
                 label: crate::i18n::tr("Play random radio (Ephemeral discovery)").to_string(),
-                icon_name: "media-playlist-shuffle".to_string(),
+                icon_name: "media-playlist-shuffle-symbolic".to_string(),
                 activate: Box::new(|tray: &mut Self| {
                     tray.play_random_ephemeral_station();
                 }),
@@ -422,7 +422,6 @@ impl ksni::Tray for TiMondeTray {
                 if !submenu_items.is_empty() {
                     menu.push(MenuItem::SubMenu(SubMenu {
                         label: sub.name.clone(),
-                        icon_name: "folder".to_string(),
                         submenu: submenu_items,
                         enabled: true,
                         visible: true,
@@ -466,7 +465,7 @@ impl ksni::Tray for TiMondeTray {
         let vol_percent = (current_vol * 100.0).round() as i32;
         menu.push(MenuItem::SubMenu(SubMenu {
             label: format!("Volume ({vol_percent}%)"),
-            icon_name: "audio-volume-high".to_string(),
+            icon_name: "audio-volume-high-symbolic".to_string(),
             submenu: vec![
                 MenuItem::Standard(StandardItem {
                     label: "100%".to_string(),
@@ -533,7 +532,7 @@ impl ksni::Tray for TiMondeTray {
 
         menu.push(MenuItem::SubMenu(SubMenu {
             label: sleep_label,
-            icon_name: "appointment-new".to_string(),
+            icon_name: "appointment-new-symbolic".to_string(),
             submenu: vec![
                 MenuItem::Standard(StandardItem {
                     label: crate::i18n::tr("In 15 minutes").to_string(),
@@ -582,7 +581,7 @@ impl ksni::Tray for TiMondeTray {
         // 6. Console de Paramètres unifiée (sans sous-menus)
         menu.push(MenuItem::Standard(StandardItem {
             label: crate::i18n::tr("Settings...").to_string(),
-            icon_name: "preferences-system".to_string(),
+            icon_name: "preferences-system-symbolic".to_string(),
             activate: Box::new(|tray: &mut Self| {
                 Self::trigger_settings_dialog(
                     Arc::clone(&tray.root_group),
@@ -598,7 +597,7 @@ impl ksni::Tray for TiMondeTray {
         // 7. Quitter proprement l'application
         menu.push(MenuItem::Standard(StandardItem {
             label: crate::i18n::tr("Quit TiMonde").to_string(),
-            icon_name: "application-exit".to_string(),
+            icon_name: "application-exit-symbolic".to_string(),
             activate: Box::new(|tray: &mut Self| {
                 info!("Fermeture demandée par l'utilisateur.");
                 tray.stop_and_trim();

@@ -1,15 +1,35 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Script d'harmonisation Cinnamon pour TiMonde :
+Script d'harmonisation Cinnamon pour TiMonde (Approche Hybride Automatique) :
 Permet d'ouvrir indifféremment le menu des radios avec le CLIC GAUCHE ou le CLIC DROIT.
-Recharge l'applet xapp-status@cinnamon.org à chaud sans fermer la session.
+
+Modes d'exécution :
+- Mode Utilisateur (par défaut hors root ou avec --user) :
+  Si ~/.local/share/cinnamon/ existe, installe l'applet harmonisée dans
+  ~/.local/share/cinnamon/applets/xapp-status@cinnamon.org/ (immunisé contre les mises à jour APT).
+  Si ~/.local/share/cinnamon/ n'existe pas, ne fait rien (système hôte non-Cinnamon préservé).
+- Mode Système (root ou avec --system) :
+  Si /usr/share/cinnamon/ existe, patche l'applet système et installe un hook APT
+  dans /etc/apt/apt.conf.d/99timonde-cinnamon pour pérenniser le patch pour toutes les sessions.
+- Mode Diagnostic (--check) :
+  Retourne le code 0 si TiMonde est harmonisé sous Cinnamon, code 1 sinon.
+- Mode Restauration (--restore / --uninstall) :
+  Restaure l'applet Cinnamon d'origine.
 """
 
 import os
 import sys
+import shutil
 
-APPLET_PATH = "/usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js"
+SYS_APPLET_DIR = "/usr/share/cinnamon/applets/xapp-status@cinnamon.org"
+SYS_APPLET_PATH = os.path.join(SYS_APPLET_DIR, "applet.js")
+SYS_BACKUP_PATH = f"{SYS_APPLET_PATH}.orig_timonde"
+APT_HOOK_PATH = "/etc/apt/apt.conf.d/99timonde-cinnamon"
+
+USER_CINNAMON_DIR = os.path.expanduser("~/.local/share/cinnamon")
+USER_APPLET_DIR = os.path.join(USER_CINNAMON_DIR, "applets", "xapp-status@cinnamon.org")
+USER_APPLET_PATH = os.path.join(USER_APPLET_DIR, "applet.js")
 
 TARGET = """    onButtonPressEvent(actor, event) {
         this._tooltip.hide();
@@ -69,53 +89,182 @@ REPLACEMENT = """    onButtonPressEvent(actor, event) {
         return Clutter.EVENT_STOP;
     }"""
 
-def main():
-    if not os.path.exists(APPLET_PATH):
-        # Cinnamon n'est pas installé sur cette machine
-        return
 
-    backup_path = f"{APPLET_PATH}.orig_timonde"
+def reload_cinnamon_applet():
+    """Recharge l'applet Cinnamon à chaud via D-Bus sans redémarrer la session."""
+    if "DBUS_SESSION_BUS_ADDRESS" not in os.environ:
+        return False
+    try:
+        import dbus
+        bus = dbus.SessionBus()
+        obj = bus.get_object("org.Cinnamon", "/org/Cinnamon")
+        iface = dbus.Interface(obj, "org.Cinnamon")
+        iface.ReloadXlet("xapp-status@cinnamon.org", "APPLET")
+        return True
+    except Exception:
+        return False
 
-    if "--restore" in sys.argv:
-        if os.path.exists(backup_path):
-            import shutil
-            shutil.copy2(backup_path, APPLET_PATH)
-            os.remove(backup_path)
-            print("Applet Cinnamon originale restaurée.")
-        return
 
-    with open(APPLET_PATH, "r", encoding="utf-8") as f:
-        content = f.read()
+def is_patched(filepath):
+    if not os.path.isfile(filepath):
+        return False
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        return "iconStr.indexOf('timonde')" in content
+    except Exception:
+        return False
 
+
+def apply_patch_to_string(content):
     if "iconStr.indexOf('timonde')" in content:
-        print("L'applet Cinnamon prend déjà en charge le clic gauche pour TiMonde.")
-    elif TARGET in content:
-        # Création du backup d'origine avant modification
-        if not os.path.exists(backup_path):
-            try:
-                import shutil
-                shutil.copy2(APPLET_PATH, backup_path)
-            except Exception as e:
-                sys.stderr.write(f"Avertissement création backup : {e}\n")
+        return content, True
+    if TARGET in content:
+        return content.replace(TARGET, REPLACEMENT), True
+    return content, False
 
-        new_content = content.replace(TARGET, REPLACEMENT)
-        with open(APPLET_PATH, "w", encoding="utf-8") as f:
-            f.write(new_content)
-        print("Cinnamon détecté : patch harmonisation clic gauche appliqué avec succès !")
-    else:
-        print("Motif cible non trouvé dans applet.js (version de Cinnamon différente).")
 
-    # Rechargement D-Bus à chaud si exécuté dans la session de l'utilisateur
-    if "DBUS_SESSION_BUS_ADDRESS" in os.environ:
+def check_status():
+    """Retourne 0 si un patch actif est détecté, 1 sinon."""
+    if is_patched(USER_APPLET_PATH) or is_patched(SYS_APPLET_PATH):
+        return 0
+    return 1
+
+
+def restore():
+    restored = False
+    # 1. Restauration utilisateur
+    if os.path.exists(USER_APPLET_DIR):
         try:
-            import dbus
-            bus = dbus.SessionBus()
-            obj = bus.get_object("org.Cinnamon", "/org/Cinnamon")
-            iface = dbus.Interface(obj, "org.Cinnamon")
-            iface.ReloadXlet("xapp-status@cinnamon.org", "APPLET")
-            print("Applet Cinnamon rechargée à chaud avec succès !")
+            shutil.rmtree(USER_APPLET_DIR)
+            print(f"[OK] Applet utilisateur supprimée : {USER_APPLET_DIR}")
+            restored = True
+        except Exception as e:
+            sys.stderr.write(f"Erreur suppression {USER_APPLET_DIR}: {e}\n")
+
+    # 2. Restauration système si root
+    if os.path.exists(SYS_BACKUP_PATH) and os.access(SYS_APPLET_DIR, os.W_OK):
+        try:
+            shutil.copy2(SYS_BACKUP_PATH, SYS_APPLET_PATH)
+            os.remove(SYS_BACKUP_PATH)
+            print(f"[OK] Applet système d'origine restaurée : {SYS_APPLET_PATH}")
+            restored = True
+        except Exception as e:
+            sys.stderr.write(f"Erreur restauration {SYS_APPLET_PATH}: {e}\n")
+
+    if os.path.exists(APT_HOOK_PATH) and os.access(os.path.dirname(APT_HOOK_PATH), os.W_OK):
+        try:
+            os.remove(APT_HOOK_PATH)
         except Exception:
             pass
+
+    if restored:
+        reload_cinnamon_applet()
+    return 0
+
+
+def install_user_mode():
+    # Si ~/.local/share/cinnamon/ n'existe pas, l'utilisateur n'est pas sous Cinnamon
+    if not os.path.isdir(USER_CINNAMON_DIR):
+        print(f"Environnement Cinnamon non détecté ({USER_CINNAMON_DIR} absent). Aucune action requise.")
+        return 0
+
+    if not os.path.isfile(SYS_APPLET_PATH):
+        print("Applet système xapp-status@cinnamon.org introuvable.")
+        return 0
+
+    os.makedirs(USER_APPLET_DIR, exist_ok=True)
+
+    # Copier metadata.json si absent
+    src_meta = os.path.join(SYS_APPLET_DIR, "metadata.json")
+    dst_meta = os.path.join(USER_APPLET_DIR, "metadata.json")
+    if os.path.isfile(src_meta) and not os.path.isfile(dst_meta):
+        shutil.copy2(src_meta, dst_meta)
+
+    # Récupérer la version propre d'applet.js
+    source_js = SYS_BACKUP_PATH if os.path.isfile(SYS_BACKUP_PATH) else SYS_APPLET_PATH
+    with open(source_js, "r", encoding="utf-8") as f:
+        src_content = f.read()
+
+    new_content, ok = apply_patch_to_string(src_content)
+    if not ok:
+        print("Avertissement : motif de patch introuvable dans applet.js.")
+        return 1
+
+    with open(USER_APPLET_PATH, "w", encoding="utf-8") as f:
+        f.write(new_content)
+
+    print(f"[OK] Patch Cinnamon installé dans l'espace utilisateur : {USER_APPLET_PATH}")
+    if reload_cinnamon_applet():
+        print("[OK] Applet Cinnamon rechargée à chaud avec succès !")
+    return 0
+
+
+def install_system_mode():
+    if not os.path.isfile(SYS_APPLET_PATH):
+        print(f"Cinnamon non détecté au niveau système ({SYS_APPLET_PATH} absent).")
+        return 0
+
+    if not os.access(SYS_APPLET_PATH, os.W_OK):
+        sys.stderr.write("Erreur : droits administrateur (root/sudo) requis pour le mode système.\n")
+        return 1
+
+    with open(SYS_APPLET_PATH, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    if is_patched(SYS_APPLET_PATH):
+        print("L'applet système Cinnamon prend déjà en charge TiMonde.")
+    else:
+        # Créer le backup si absent
+        if not os.path.exists(SYS_BACKUP_PATH):
+            shutil.copy2(SYS_APPLET_PATH, SYS_BACKUP_PATH)
+
+        new_content, ok = apply_patch_to_string(content)
+        if not ok:
+            print("Avertissement : motif de patch introuvable dans applet.js.")
+            return 1
+
+        with open(SYS_APPLET_PATH, "w", encoding="utf-8") as f:
+            f.write(new_content)
+        print(f"[OK] Patch Cinnamon appliqué au niveau système : {SYS_APPLET_PATH}")
+
+    # Installer le hook APT si possible pour pérenniser lors des mises à jour système
+    apt_dir = os.path.dirname(APT_HOOK_PATH)
+    if os.path.isdir(apt_dir) and os.access(apt_dir, os.W_OK):
+        hook_content = (
+            '// Maintien automatique de l\'harmonisation TiMonde sous Cinnamon\n'
+            'DPkg::Post-Invoke {"if [ -x /usr/share/timonde/scripts/patch_cinnamon_status_applet.py ]; '
+            'then /usr/share/timonde/scripts/patch_cinnamon_status_applet.py --system >/dev/null 2>&1 || true; fi;"};\n'
+        )
+        try:
+            with open(APT_HOOK_PATH, "w", encoding="utf-8") as f:
+                f.write(hook_content)
+            print(f"[OK] Hook APT enregistré : {APT_HOOK_PATH}")
+        except Exception:
+            pass
+
+    reload_cinnamon_applet()
+    return 0
+
+
+def main():
+    if "--check" in sys.argv:
+        sys.exit(check_status())
+
+    if "--restore" in sys.argv or "--uninstall" in sys.argv:
+        sys.exit(restore())
+
+    force_system = "--system" in sys.argv
+    force_user = "--user" in sys.argv
+
+    # Décision automatique :
+    # Si root ou explicitement demandé, mode système.
+    # Sinon, mode utilisateur.
+    if force_system or (os.geteuid() == 0 and not force_user):
+        sys.exit(install_system_mode())
+    else:
+        sys.exit(install_user_mode())
+
 
 if __name__ == "__main__":
     main()

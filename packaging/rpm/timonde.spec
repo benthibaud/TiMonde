@@ -1,5 +1,5 @@
 Name:           timonde
-Version:        0.2.2
+Version:        0.2.3
 Release:        1%{?dist}
 Summary:        Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux
 
@@ -62,7 +62,55 @@ make DESTDIR=%{buildroot} PREFIX=/usr install
 /usr/share/locale/*/LC_MESSAGES/timonde.mo
 /usr/share/metainfo/io.github.benthibaud.timonde.metainfo.xml
 
+%post
+if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || :
+fi
+if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q || :
+fi
+
+# Détection d'environnement de bureau et configurations contextuelles
+# 1. Cinnamon : harmonisation automatique du clic gauche/droit unifié
+if [ -f "/usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js" ] && [ -f "/usr/share/timonde/scripts/patch_cinnamon_status_applet.py" ]; then
+    python3 /usr/share/timonde/scripts/patch_cinnamon_status_applet.py --system || :
+fi
+
+# 2. GNOME Shell : vérification de la présence de l'extension AppIndicator
+if command -v gnome-shell >/dev/null 2>&1; then
+    echo "------------------------------------------------------------------"
+    echo " [TiMonde] Bureau GNOME détecté :"
+    echo " Pour afficher l'icône dans la barre supérieure sous GNOME,"
+    echo " installez l'extension AppIndicator si besoin :"
+    echo "   gnome-shell-extension-appindicator"
+    echo "------------------------------------------------------------------"
+fi
+
+%postun
+if [ "$1" -eq 0 ]; then
+    if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || :
+    fi
+    if command -v update-desktop-database >/dev/null 2>&1; then
+        update-desktop-database -q || :
+    fi
+    # Restauration de l'applet Cinnamon originale si backup présent
+    if [ -f "/usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js.orig_timonde" ]; then
+        mv -f /usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js.orig_timonde /usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js 2>/dev/null || :
+    fi
+    rm -f /etc/apt/apt.conf.d/99timonde-cinnamon 2>/dev/null || :
+fi
+
 %changelog
+* Fri Nov 06 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.3-1
+- Navigation arborescente naturelle Gtk.TreeStore dans l'atelier « Mes Radios »
+- Gestion fidèle des radios sans groupe au premier niveau (Option 1 racine directe)
+- Maintien du groupe déployé et sélectionné lors du tri alphabétique A-Z
+- Vue d'ensemble repliée par défaut à l'ouverture pour une lisibilité immédiate
+- Sécurisation ergonomique de la suppression avec décompte récursif des stations
+- Factorisation de la boîte de dialogue textuelle prompt_text_dialog et purge du code mort
+- Centralisation de la version applicative TIMONDE_VERSION
+
 * Thu Oct 29 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.2-1
 - Optimisation de la mémoire vive au repos (< 15 Mo de RAM avec malloc_trim)
 - Anti-rebond sur la persistance du volume sonore (debounce 300 ms)

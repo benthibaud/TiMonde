@@ -45,9 +45,6 @@ from timonde_common import (
     update_btn_content,
     check_stream_url,
     set_window_icon,
-    TIMONDE_USER_AGENT,
-    RADIO_BROWSER_ENDPOINTS,
-    query_radio_browser,
     search_radio_browser_api,
     show_group_naming_help_dialog,
     RepairStreamDialog,
@@ -72,9 +69,6 @@ import json
 import html
 import glob
 import shutil
-import urllib.request
-import urllib.parse
-import urllib.error
 import xml.etree.ElementTree as ET
 import re
 import csv
@@ -681,6 +675,11 @@ class DiscoverRadiosWindow(Gtk.Window):
         btn_choose = make_btn("", "pan-down", _("Choisir parmi les groupes existants"))
         def on_choose(b):
             menu = Gtk.Menu()
+            if view_key == "files":
+                it_orig = Gtk.MenuItem(label=_("(Original folder structure)"))
+                it_orig.connect("activate", lambda mi: entry.set_text(_("(Original folder structure)")))
+                menu.append(it_orig)
+                menu.append(Gtk.SeparatorMenuItem())
             it_root = Gtk.MenuItem(label="[ / ] (Racine — Sans groupe)")
             it_root.connect("activate", lambda mi: entry.set_text("/"))
             menu.append(it_root)
@@ -695,6 +694,9 @@ class DiscoverRadiosWindow(Gtk.Window):
             menu.popup_at_widget(b, Gdk.Gravity.SOUTH_WEST, Gdk.Gravity.NORTH_WEST, None)
         btn_choose.connect("clicked", on_choose)
         hbox.pack_start(btn_choose, False, False, 0)
+
+        if view_key == "files":
+            entry.connect("changed", lambda e: self.update_files_group_column())
 
         btn_help = make_btn("", "help-browser", _("Aide sur les groupes et sous-groupes"))
         btn_help.connect("clicked", self.on_show_group_naming_help)
@@ -1179,12 +1181,6 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.btn_files_reload.set_sensitive(False)
         self.btn_files_reload.connect("clicked", lambda w: self.load_file_into_store(self.current_file_path) if self.current_file_path else None)
         ext_bar.pack_start(self.btn_files_reload, False, False, 0)
-
-        self.chk_preserve_groups = Gtk.CheckButton(label=_("Conserver l'organisation en dossiers"))
-        self.chk_preserve_groups.set_active(True)
-        self.chk_preserve_groups.set_tooltip_text(_("Préserver les sous-groupes définis dans le fichier au lieu de tout importer dans un groupe unique."))
-        self.chk_preserve_groups.connect("toggled", self.on_files_preserve_toggled)
-        ext_bar.pack_start(self.chk_preserve_groups, False, False, 0)
 
         btn_csv = make_btn(_("Exporter en tableau (CSV)..."), "x-office-spreadsheet", _("Générer une liste plate pour tableur Calc ou Excel"))
         btn_csv.connect("clicked", self.on_export_csv_action)
@@ -1928,12 +1924,34 @@ class DiscoverRadiosWindow(Gtk.Window):
         if self.available_examples:
             self.combo_examples.set_active(0)
 
-    def on_files_preserve_toggled(self, widget):
-        if self.chk_preserve_groups.get_active():
-            self.entry_group_files.set_text("(Groupes préservés du fichier)")
+    def update_files_group_column(self):
+        if not hasattr(self, "entry_group_files") or not hasattr(self, "files_store"):
+            return
+        raw_text = self.entry_group_files.get_text().strip()
+        is_orig = raw_text in (
+            _("(Original folder structure)"),
+            "(Original folder structure)",
+            "(Dossiers d'origine du fichier)",
+            "(Groupes préservés du fichier)",
+        )
+
+        if is_orig:
+            target_display = None
         else:
-            base_name = os.path.splitext(os.path.basename(self.current_file_path or ""))[0] or "Import"
-            self.entry_group_files.set_text(f"Import {base_name}")
+            norm = normalize_group_path(raw_text, return_root_literal=True)
+            if norm in ("[ / ] (Racine — Sans groupe)", "/", "root", "(Racine)", ""):
+                target_display = "[ / ] (Racine)"
+            else:
+                target_display = norm
+
+        it = self.files_store.get_iter_first()
+        while it:
+            if is_orig:
+                raw_grp = self.files_store.get_value(it, 10) or "[ / ] (Racine)"
+                self.files_store.set_value(it, 2, raw_grp)
+            else:
+                self.files_store.set_value(it, 2, target_display)
+            it = self.files_store.iter_next(it)
 
     def load_file_into_store(self, path):
         if not path or not os.path.isfile(path):
@@ -1953,11 +1971,12 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.lbl_files_info.set_markup(info_text)
 
         if hasattr(self, "entry_group_files"):
-            if self.chk_preserve_groups.get_active() and len(groups) > 1:
-                self.entry_group_files.set_text("(Groupes préservés du fichier)")
+            if len(groups) > 1:
+                self.entry_group_files.set_text(_("(Original folder structure)"))
+            elif len(groups) == 1:
+                self.entry_group_files.set_text(next(iter(groups)))
             else:
-                first_grp = next(iter(groups)) if groups else base_name
-                self.entry_group_files.set_text(first_grp or f"Import {base_name}")
+                self.entry_group_files.set_text(f"Import {base_name}")
 
         self.files_store.clear()
         self.current_files_check_generation += 1
@@ -1977,6 +1996,7 @@ class DiscoverRadiosWindow(Gtk.Window):
             # Store: [checked, name, group_display, country, health_markup, dup_markup, url, is_dup, is_dead, row_id, raw_group]
             self.files_store.append([checked, name, grp, country, health_markup, dup_markup, url, is_dup, False, i, grp])
 
+        self.update_files_group_column()
         self.update_files_count()
 
     def on_files_check_toggled(self, widget, path):
@@ -2085,8 +2105,19 @@ class DiscoverRadiosWindow(Gtk.Window):
 
     def on_import_files(self):
         raw_grp = self.entry_group_files.get_text().strip()
-        group_name = normalize_group_path(raw_grp, return_root_literal=True)
-        preserve = self.chk_preserve_groups.get_active()
+        is_original = raw_grp in (
+            _("(Original folder structure)"),
+            "(Original folder structure)",
+            "(Dossiers d'origine du fichier)",
+            "(Groupes préservés du fichier)",
+        )
+
+        if is_original:
+            group_name = "root"
+        else:
+            group_name = normalize_group_path(raw_grp, return_root_literal=True)
+            if group_name in ("[ / ] (Racine — Sans groupe)", "/", "root", "(Racine)", ""):
+                group_name = "root"
 
         selected = []
         it = self.files_store.get_iter_first()
@@ -2096,15 +2127,15 @@ class DiscoverRadiosWindow(Gtk.Window):
                 url = self.files_store.get_value(it, 6)
                 st_group_raw = self.files_store.get_value(it, 10)
                 st_country = self.files_store.get_value(it, 3) or ""
-                raw_target = st_group_raw if (preserve and st_group_raw) else group_name
-                if raw_target:
-                    clean_t = raw_target.strip()
-                    if clean_t in ("[ / ] (Racine — Sans groupe)", "/", "root", "(Racine)"):
+
+                if is_original and st_group_raw:
+                    clean_orig = st_group_raw.strip()
+                    if clean_orig in ("[ / ] (Racine — Sans groupe)", "/", "root", "(Racine)"):
                         target_st_grp = "root"
                     else:
-                        target_st_grp = clean_t.strip("/").strip()
+                        target_st_grp = clean_orig.strip("/").strip()
                 else:
-                    target_st_grp = "root"
+                    target_st_grp = group_name
 
                 row_id = self.files_store.get_value(it, 9)
                 orig_tz = ""
@@ -2122,7 +2153,7 @@ class DiscoverRadiosWindow(Gtk.Window):
                 selected.append(st_data)
             it = self.files_store.iter_next(it)
 
-        self.finalize_import(selected, group_name, None)
+        self.finalize_import(selected, group_name if not is_original else "root", None)
 
     def finalize_import(self, stations, group_name, country_code=None):
         if hasattr(self, "preview_player") and self.preview_player:

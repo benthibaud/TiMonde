@@ -1418,6 +1418,32 @@ msgstr "Unsaved changes"
 msgid "Validate and replace"
 msgstr "Validate and replace"
 
+msgid "Active (Left & Right clicks unified)"
+msgstr "Active (Left & Right clicks unified)"
+
+msgid "Enable Left-Click"
+msgstr "Enable Left-Click"
+
+msgid "Cinnamon left-click unification successfully enabled!"
+msgstr "Cinnamon left-click unification successfully enabled!"
+
+msgid "Failed to enable Cinnamon unification."
+msgstr "Failed to enable Cinnamon unification."
+
+msgid "Cinnamon Left-Click Unification"
+msgstr "Cinnamon Left-Click Unification"
+
+msgid ""
+"Allows opening the station menu interchangeably with left or right click."
+msgstr "Allows opening the station menu interchangeably with left or right click."
+
+msgid "(Original folder structure)"
+msgstr "(Original folder structure)"
+
+msgid "station(s) moved to target"
+msgstr "station(s) moved to target"
+
+
 #~ msgid ""
 #~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
 #~ "groups.\n"

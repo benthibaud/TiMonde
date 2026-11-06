@@ -917,24 +917,6 @@ COUNTRY_EN_BY_CODE["UK"] = COUNTRY_EN_BY_CODE.get("GB", "United Kingdom")
 if "GB" in NATIVE_COUNTRY_NAMES and "UK" not in NATIVE_COUNTRY_NAMES:
     NATIVE_COUNTRY_NAMES["UK"] = NATIVE_COUNTRY_NAMES["GB"]
 
-def get_localized_country_name(code: str) -> str:
-    """Retourne le nom du pays traduit dans la langue système courante (ou français par défaut)."""
-    c_up = (code or "").strip().upper()
-    if c_up == "UK":
-        c_up = "GB"
-    en_name = COUNTRY_EN_BY_CODE.get(c_up)
-    fr_name = COUNTRY_BY_CODE.get(c_up, c_up)
-    if not en_name:
-        return fr_name
-    try:
-        t = gettext.translation("iso_3166-1", fallback=True)
-        loc = t.gettext(en_name)
-        if loc and loc != en_name:
-            return loc
-    except Exception:
-        pass
-    return fr_name
-
 _MINOR_TERRITORIES = {
     "UM", "VI", "VG", "IO", "TF", "BQ", "HM", "BV", "GS", "AQ",
     "AS", "GU", "MP", "CC", "CX", "NF", "SH", "PM", "WF", "BL",

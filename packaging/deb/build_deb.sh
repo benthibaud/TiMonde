@@ -6,7 +6,7 @@ ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
 CARGO_TOML="${ROOT_DIR}/Cargo.toml"
 VERSION_FROM_CARGO=$(grep -m1 '^version = ' "${CARGO_TOML}" 2>/dev/null | cut -d '"' -f2)
-VERSION="${1:-${VERSION_FROM_CARGO:-0.2.0}}"
+VERSION="${1:-${VERSION_FROM_CARGO:-0.2.3}}"
 ARCH=$(dpkg --print-architecture 2>/dev/null || echo "amd64")
 PACKAGE_NAME="timonde_${VERSION}_${ARCH}.deb"
 DIST_DIR="${ROOT_DIR}/packaging/dist"
@@ -21,6 +21,13 @@ if command -v cargo >/dev/null 2>&1; then
 elif [ ! -f "${ROOT_DIR}/target/release/timonde" ]; then
     echo "cargo est requis pour compiler timonde."
     exit 1
+else
+    STALE=$(find "${ROOT_DIR}/src" -name '*.rs' -newer "${ROOT_DIR}/target/release/timonde" | head -n 5)
+    if [ -n "${STALE}" ]; then
+        echo "ATTENTION : cargo absent, le binaire existant est PLUS ANCIEN que ces sources :"
+        echo "${STALE}"
+        echo "Le paquet n'intégrera pas ces modifications Rust."
+    fi
 fi
 
 # 2. Génération des icônes matricielles PNG (16x16 à 256x256)
@@ -69,7 +76,7 @@ fi
 # Détection d'environnement de bureau et configurations contextuelles
 # 1. Cinnamon : harmonisation automatique du clic gauche/droit unifié
 if [ -f "/usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js" ] && [ -f "/usr/share/timonde/scripts/patch_cinnamon_status_applet.py" ]; then
-    python3 /usr/share/timonde/scripts/patch_cinnamon_status_applet.py || true
+    python3 /usr/share/timonde/scripts/patch_cinnamon_status_applet.py --system || true
 fi
 
 # 2. GNOME Shell : vérification de la présence de l'extension AppIndicator
@@ -102,6 +109,7 @@ if [ "$1" = "remove" ] || [ "$1" = "purge" ]; then
     if [ -f "/usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js.orig_timonde" ]; then
         mv -f /usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js.orig_timonde /usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js 2>/dev/null || true
     fi
+    rm -f /etc/apt/apt.conf.d/99timonde-cinnamon 2>/dev/null || true
 fi
 exit 0
 POSTRM_EOF
@@ -120,6 +128,13 @@ install -m 644 "${ROOT_DIR}/data/icons/timonde_on.svg" "${STAGING_DIR}/usr/share
 install -m 644 "${ROOT_DIR}/data/icons/timonde_off.svg" "${STAGING_DIR}/usr/share/icons/hicolor/scalable/panel/timonde_off.svg"
 install -m 644 "${ROOT_DIR}/data/icons/timonde_on.svg" "${STAGING_DIR}/usr/share/icons/hicolor/scalable/panel/timonde_on.svg"
 install -m 644 "${ROOT_DIR}/data/icons/timonde_error.svg" "${STAGING_DIR}/usr/share/icons/hicolor/scalable/panel/timonde_error.svg"
+
+# Icônes privées TiMonde (flèches de sous-menus etc.)
+mkdir -p "${STAGING_DIR}/usr/share/timonde/icons"
+install -m 644 "${ROOT_DIR}/data/icons/pan-end-symbolic.svg" "${STAGING_DIR}/usr/share/timonde/icons/pan-end-symbolic.svg"
+install -m 644 "${ROOT_DIR}/data/icons/pan-end-symbolic-dark.svg" "${STAGING_DIR}/usr/share/timonde/icons/pan-end-symbolic-dark.svg"
+install -m 644 "${ROOT_DIR}/data/icons/pan-end-symbolic-rtl.svg" "${STAGING_DIR}/usr/share/timonde/icons/pan-end-symbolic-rtl.svg"
+install -m 644 "${ROOT_DIR}/data/icons/pan-end-symbolic-rtl-dark.svg" "${STAGING_DIR}/usr/share/timonde/icons/pan-end-symbolic-rtl-dark.svg"
 
 # Icônes matricielles PNG multi-résolutions (16, 22, 24, 32, 48, 64, 128, 256)
 cp -r "${ROOT_DIR}/data/icons/hicolor"/* "${STAGING_DIR}/usr/share/icons/hicolor/"

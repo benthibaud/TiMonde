@@ -1442,6 +1442,32 @@ msgstr "Modifications non enregistrées"
 msgid "Validate and replace"
 msgstr "Valider et remplacer"
 
+msgid "Active (Left & Right clicks unified)"
+msgstr "Actif (clic gauche & droit unifiés)"
+
+msgid "Enable Left-Click"
+msgstr "Activer le clic gauche"
+
+msgid "Cinnamon left-click unification successfully enabled!"
+msgstr "Harmonisation Cinnamon activée avec succès !"
+
+msgid "Failed to enable Cinnamon unification."
+msgstr "Erreur lors de l'activation de l'harmonisation Cinnamon."
+
+msgid "Cinnamon Left-Click Unification"
+msgstr "Harmonisation Clic Gauche Cinnamon"
+
+msgid ""
+"Allows opening the station menu interchangeably with left or right click."
+msgstr "Permet d'ouvrir le menu des radios indifféremment avec le clic gauche ou le clic droit."
+
+msgid "(Original folder structure)"
+msgstr "(Dossiers d'origine du fichier)"
+
+msgid "station(s) moved to target"
+msgstr "radio(s) déplacée(s) vers la cible"
+
+
 #~ msgid ""
 #~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
 #~ "groups.\n"

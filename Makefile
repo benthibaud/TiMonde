@@ -56,6 +56,9 @@ install: build
 	install -m 644 data/bouquets/*.xml $(DESTDIR)$(DATADIR)/timonde/bouquets/
 	install -d $(DESTDIR)$(DATADIR)/timonde/examples
 	install -m 644 data/examples/* $(DESTDIR)$(DATADIR)/timonde/examples/
+	@if [ -d "/usr/share/cinnamon/applets/xapp-status@cinnamon.org" ] && [ -z "$(DESTDIR)" ]; then \
+		python3 data/scripts/patch_cinnamon_status_applet.py --system || true; \
+	fi
 
 install-user: build
 	install -d $(HOME)/.local/bin
@@ -92,6 +95,9 @@ install-user: build
 	install -m 644 data/bouquets/*.xml $(HOME)/.local/share/timonde/bouquets/
 	install -d $(HOME)/.local/share/timonde/examples
 	install -m 644 data/examples/* $(HOME)/.local/share/timonde/examples/
+	@if [ -d "$(HOME)/.local/share/cinnamon" ]; then \
+		python3 data/scripts/patch_cinnamon_status_applet.py --user || true; \
+	fi
 
 uninstall:
 	rm -f $(DESTDIR)$(BINDIR)/timonde
@@ -105,6 +111,23 @@ uninstall:
 	rm -f $(DESTDIR)$(DATADIR)/icons/hicolor/*/panel/timonde_*.png
 	rm -rf $(DESTDIR)$(DATADIR)/timonde
 	rm -f $(DESTDIR)$(DATADIR)/locale/*/LC_MESSAGES/timonde.mo
+	@if [ -f "/usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js.orig_timonde" ] && [ -z "$(DESTDIR)" ]; then \
+		python3 data/scripts/patch_cinnamon_status_applet.py --restore || true; \
+	fi
+
+uninstall-user:
+	rm -f $(HOME)/.local/bin/timonde
+	rm -f $(HOME)/.local/share/applications/timonde.desktop
+	rm -f $(HOME)/.local/share/metainfo/io.github.benthibaud.timonde.metainfo.xml
+	rm -f $(HOME)/.local/share/icons/hicolor/scalable/apps/timonde_on.svg
+	rm -f $(HOME)/.local/share/icons/hicolor/scalable/panel/timonde_*.svg
+	rm -rf $(HOME)/.local/share/icons/hicolor/*/apps/timonde_*.png
+	rm -rf $(HOME)/.local/share/icons/hicolor/*/panel/timonde_*.png
+	rm -rf $(HOME)/.local/share/timonde
+	rm -f $(HOME)/.local/share/locale/*/LC_MESSAGES/timonde.mo
+	@if [ -d "$(HOME)/.local/share/cinnamon/applets/xapp-status@cinnamon.org" ]; then \
+		python3 data/scripts/patch_cinnamon_status_applet.py --restore || true; \
+	fi
 
 test:
 	cargo test

@@ -1,6 +1,6 @@
 [package]
 name = "timonde"
-version = "0.2.2"
+version = "0.2.3"
 edition = "2021"
 authors = ["Ben Thibaud <b_thibaud@laposte.net>"]
 description = "Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux"
@@ -29,6 +29,30 @@ strip = true
 [package.metadata.generate-rpm]
 summary = "Lecteur de webradios ultra-leger et discret pour la barre des taches Linux"
 license = "GPL-3.0-or-later"
+post_install_script = """
+if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || :
+fi
+if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q || :
+fi
+if [ -f "/usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js" ] && [ -f "/usr/share/timonde/scripts/patch_cinnamon_status_applet.py" ]; then
+    python3 /usr/share/timonde/scripts/patch_cinnamon_status_applet.py --system || :
+fi
+"""
+post_uninstall_script = """
+if [ "$1" -eq 0 ]; then
+    if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || :
+    fi
+    if command -v update-desktop-database >/dev/null 2>&1; then
+        update-desktop-database -q || :
+    fi
+    if [ -f "/usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js.orig_timonde" ]; then
+        mv -f /usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js.orig_timonde /usr/share/cinnamon/applets/xapp-status@cinnamon.org/applet.js 2>/dev/null || :
+    fi
+fi
+"""
 assets = [
     { source = "target/release/timonde", dest = "/usr/bin/timonde", mode = "755" },
     { source = "data/timonde.desktop", dest = "/usr/share/applications/timonde.desktop", mode = "644" },
@@ -336,4 +360,5 @@ python3-dbus = "*"
 
 [package.metadata.generate-rpm.suggests]
 gnome-shell-extension-appindicator = "*"
+
 

@@ -1452,6 +1452,25 @@ msgstr ""
 msgid "Validate and replace"
 msgstr "Պահպանեք և վերաբեռնեք"
 
+msgid "Active (Left & Right clicks unified)"
+msgstr ""
+
+msgid "Enable Left-Click"
+msgstr ""
+
+msgid "Cinnamon left-click unification successfully enabled!"
+msgstr ""
+
+msgid "Failed to enable Cinnamon unification."
+msgstr ""
+
+msgid "Cinnamon Left-Click Unification"
+msgstr ""
+
+msgid ""
+"Allows opening the station menu interchangeably with left or right click."
+msgstr ""
+
 #~ msgid ""
 #~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
 #~ "groups.\n"

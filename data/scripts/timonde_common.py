@@ -29,9 +29,11 @@ try:
 except ImportError:
     def _(s): return s
 
-TIMONDE_USER_AGENT = "TiMonde/0.2.2"
+TIMONDE_VERSION = "0.2.3"
+TIMONDE_USER_AGENT = f"TiMonde/{TIMONDE_VERSION}"
 USER_AGENT = TIMONDE_USER_AGENT
-USER_AGENT_PROBE = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) TiMonde/0.2.2"
+USER_AGENT_PROBE = f"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) TiMonde/{TIMONDE_VERSION}"
+PREVIEW_USER_AGENT = USER_AGENT_PROBE
 
 
 # -----------------------------------------------------------------------------
@@ -740,53 +742,112 @@ def apply_timonde_menu_css():
         import gi
         gi.require_version("Gtk", "3.0")
         from gi.repository import Gtk, Gdk
+
+        # Détection dynamique du contraste du menu pour garantir une flèche éclatante
+        suffix = ""
+        try:
+            test_m = Gtk.Menu()
+            test_mi = Gtk.MenuItem(label="t")
+            test_m.append(test_mi)
+            test_m.show_all()
+            fg = test_mi.get_style_context().get_color(Gtk.StateFlags.NORMAL)
+            lum = (fg.red * 0.299 + fg.green * 0.587 + fg.blue * 0.114)
+            if lum < 0.45:
+                suffix = "-dark"
+            test_m.destroy()
+        except Exception:
+            pass
+
+        # Flèches de sous-menus : certains packs d'icônes (ex. Qogir sous antiX) fournissent
+        # pan-end-symbolic en PNG gris fixe, invisible sur fond sombre. On impose notre SVG.
+        # Si le SVG est absent, aucune règle n'est émise : la flèche du thème reste en place.
+        icon_dirs = [
+            "/usr/share/timonde/icons",
+            os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "icons"),
+        ]
+        arrow_css = ""
+        for direction, name in (("ltr", "pan-end-symbolic"), ("rtl", "pan-end-symbolic-rtl")):
+            svg = next((os.path.join(d, f"{name}{suffix}.svg") for d in icon_dirs
+                        if os.path.exists(os.path.join(d, f"{name}{suffix}.svg"))), None)
+            if svg:
+                arrow_css += (
+                    f"menu menuitem arrow:dir({direction}), .menu menuitem arrow:dir({direction}) {{\n"
+                    f"    min-width: 16px;\n    min-height: 16px;\n"
+                    f"    -gtk-icon-source: url(\"{svg}\");\n}}\n"
+                )
+
+        # Rappel : GTK3 rejette TOUTE la feuille à la moindre propriété inconnue
+        # (ex. width/height n'existent pas, seulement min-width/min-height).
         provider = Gtk.CssProvider()
-        provider.load_from_data(b"""
-        menu separator, menuitem.separator {
+        provider.load_from_data(f"""
+        menu separator, menuitem.separator {{
             min-height: 2px;
             margin: 4px 8px;
-            background-color: alpha(@theme_fg_color, 0.28);
-        }
-        menuitem.timonde-header-action {
+            background-color: alpha(currentColor, 0.28);
+        }}
+        menuitem.timonde-header-action {{
             background-color: alpha(@theme_selected_bg_color, 0.14);
             border-radius: 2px;
             padding-top: 5px;
             padding-bottom: 5px;
-        }
+        }}
         menuitem.timonde-info-time,
-        menuitem.timonde-info-time:disabled {
-            background-color: alpha(@theme_fg_color, 0.08);
+        menuitem.timonde-info-time:disabled {{
+            background-color: alpha(currentColor, 0.08);
             border-left: 3px solid @theme_selected_bg_color;
-            color: @theme_fg_color;
+            color: inherit;
             opacity: 0.92;
             padding-top: 3px;
             padding-bottom: 3px;
-        }
+        }}
+        menuitem.timonde-info-time label,
+        menuitem.timonde-info-time:disabled label {{
+            color: inherit;
+        }}
         menuitem.timonde-info-track,
-        menuitem.timonde-info-track:disabled {
-            background-color: alpha(@theme_fg_color, 0.08);
+        menuitem.timonde-info-track:disabled {{
+            background-color: alpha(currentColor, 0.08);
             border-left: 3px solid @theme_selected_bg_color;
-            color: @theme_fg_color;
+            color: inherit;
             opacity: 0.95;
             padding-top: 3px;
             padding-bottom: 4px;
-        }
+        }}
+        menuitem.timonde-info-track label,
+        menuitem.timonde-info-track:disabled label {{
+            color: inherit;
+            font-style: italic;
+            font-weight: bold;
+        }}
         menuitem.timonde-sep-header,
-        menuitem.timonde-sep-header:disabled {
-            color: @theme_fg_color;
+        menuitem.timonde-sep-header:disabled {{
+            color: inherit;
             opacity: 0.75;
-        }
-        """)
+        }}
+        {arrow_css}
+        /* Icones de menu : heritent de la couleur du texte et restent parfaitement lisibles */
+        menu menuitem image,
+        menuitem image,
+        menu image {{
+            color: inherit;
+            opacity: 0.90;
+        }}
+        menu menuitem:hover image,
+        menuitem:hover image {{
+            color: inherit;
+            opacity: 1.0;
+        }}
+        """.encode("utf-8"))
         screen = Gdk.Screen.get_default()
         if screen:
             Gtk.StyleContext.add_provider_for_screen(
                 screen,
                 provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+                Gtk.STYLE_PROVIDER_PRIORITY_USER
             )
             _MENU_CSS_APPLIED = True
-    except Exception:
-        pass
+    except Exception as e:
+        sys.stderr.write(f"TiMonde: CSS du menu rejeté par GTK : {e}\n")
 
 
 def status_markup(text: str, kind: str = "ok", with_bullet: bool = False, bold: bool = False) -> str:
@@ -849,16 +910,16 @@ def apply_timonde_app_css():
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             )
             _APP_CSS_APPLIED = True
-    except Exception:
-        pass
+    except Exception as e:
+        sys.stderr.write(f"TiMonde: CSS applicatif rejeté par GTK : {e}\n")
 
 
 def _find_label_widget(widget):
-    """Recherche récursivement le premier Gtk.Label enfant d'un Gtk.MenuItem."""
+    """Recherche récursivement le label de texte principal d'un Gtk.MenuItem."""
     import gi
     gi.require_version("Gtk", "3.0")
     from gi.repository import Gtk
-    if isinstance(widget, Gtk.Label):
+    if isinstance(widget, (Gtk.AccelLabel, Gtk.Label)):
         return widget
     if isinstance(widget, Gtk.Container):
         for child in widget.get_children():
@@ -868,6 +929,105 @@ def _find_label_widget(widget):
     return None
 
 
+_RECOLORED_ICONS_CACHE = {}
+
+def get_recolored_menu_pixbuf(icon_name: str, fg_rgba, size_px: int = 16):
+    """
+    Charge une icône et recolorise directement ses canaux RVB selon la couleur du texte du menu,
+    en conservant intact son canal alpha (antialiasing).
+    Garantit un contraste parfait même lorsque le pack d'icônes fournit des PNG matriciels fixes.
+    """
+    import gi
+    gi.require_version("Gtk", "3.0")
+    gi.require_version("GdkPixbuf", "2.0")
+    from gi.repository import Gtk, GdkPixbuf, GLib
+
+    r = int(getattr(fg_rgba, "red", 1.0) * 255)
+    g = int(getattr(fg_rgba, "green", 1.0) * 255)
+    b = int(getattr(fg_rgba, "blue", 1.0) * 255)
+    cache_key = (icon_name, r, g, b, size_px)
+    if cache_key in _RECOLORED_ICONS_CACHE:
+        return _RECOLORED_ICONS_CACHE[cache_key]
+
+    theme = Gtk.IconTheme.get_default()
+    if not theme:
+        return None
+
+    clean_name = icon_name.replace("-symbolic", "")
+    candidates = [f"{clean_name}-symbolic", clean_name]
+    icon_info = None
+    for cand in candidates:
+        if theme.has_icon(cand):
+            icon_info = theme.lookup_icon(cand, size_px, 0)
+            if icon_info:
+                break
+
+    if not icon_info:
+        return None
+
+    try:
+        pix = icon_info.load_icon()
+        if not pix:
+            return None
+
+        if pix.get_width() != size_px or pix.get_height() != size_px:
+            pix = pix.scale_simple(size_px, size_px, GdkPixbuf.InterpType.BILINEAR)
+
+        if not pix.get_has_alpha():
+            pix = pix.add_alpha(False, 0, 0, 0)
+
+        w, h = pix.get_width(), pix.get_height()
+        rowstride = pix.get_rowstride()
+        n_channels = pix.get_n_channels()
+        data = bytearray(pix.get_pixels())
+
+        for y in range(h):
+            for x in range(w):
+                idx = y * rowstride + x * n_channels
+                data[idx] = r
+                data[idx + 1] = g
+                data[idx + 2] = b
+
+        recolored = GdkPixbuf.Pixbuf.new_from_bytes(
+            GLib.Bytes.new(bytes(data)),
+            pix.get_colorspace(),
+            True,
+            pix.get_bits_per_sample(),
+            w,
+            h,
+            rowstride
+        )
+        _RECOLORED_ICONS_CACHE[cache_key] = recolored
+        return recolored
+    except Exception:
+        return None
+
+
+def _find_and_convert_images(widget, fg_rgba):
+    """Recherche récursivement tous les Gtk.Image et leur injecte le Pixbuf recolorisé contrasté."""
+    import gi
+    gi.require_version("Gtk", "3.0")
+    from gi.repository import Gtk
+    if isinstance(widget, Gtk.Image):
+        try:
+            orig_name = getattr(widget, "_timonde_orig_icon", None)
+            if not orig_name:
+                icon_info = widget.get_icon_name()
+                if icon_info and icon_info[0]:
+                    orig_name = icon_info[0]
+                    widget._timonde_orig_icon = orig_name
+
+            if orig_name:
+                pix = get_recolored_menu_pixbuf(orig_name, fg_rgba, size_px=16)
+                if pix:
+                    widget.set_from_pixbuf(pix)
+        except Exception:
+            pass
+    elif isinstance(widget, Gtk.Container):
+        for child in widget.get_children():
+            _find_and_convert_images(child, fg_rgba)
+
+
 def style_dbusmenu_gtk(menu, is_root=True):
     """
     Parcourt un DbusmenuGtk3.Menu pour :
@@ -875,6 +1035,7 @@ def style_dbusmenu_gtk(menu, is_root=True):
     - Mettre en gras l'action principale de la station en tête
     - Appliquer un fond distinct et une taille adaptée à la ligne d'heure locale
     - Mettre en italique avec fond distinct le titre du morceau en cours (♪)
+    - Garantir la netteté et le contraste des icônes symboliques
     """
     if not menu:
         return
@@ -883,7 +1044,16 @@ def style_dbusmenu_gtk(menu, is_root=True):
         import html
         import gi
         gi.require_version("Gtk", "3.0")
-        from gi.repository import Gtk
+        from gi.repository import Gtk, Gdk
+
+        ctx_menu = menu.get_style_context()
+        fg_rgba = None
+        try:
+            fg_rgba = ctx_menu.get_color(Gtk.StateFlags.NORMAL)
+        except Exception:
+            pass
+        if not fg_rgba:
+            fg_rgba = Gdk.RGBA(0.96, 0.96, 0.96, 1.0)
 
         children = menu.get_children()
         for idx, child in enumerate(children):
@@ -892,6 +1062,14 @@ def style_dbusmenu_gtk(menu, is_root=True):
                 continue
             if not isinstance(child, Gtk.MenuItem):
                 continue
+
+            # Conversion et recoloration immédiate des icônes du menuitem
+            child_fg = None
+            try:
+                child_fg = child.get_style_context().get_color(Gtk.StateFlags.NORMAL)
+            except Exception:
+                pass
+            _find_and_convert_images(child, child_fg or fg_rgba)
 
             raw_lbl = getattr(child, "get_label", lambda: None)() or ""
             lbl_widget = _find_label_widget(child)
@@ -937,15 +1115,19 @@ def style_dbusmenu_gtk(menu, is_root=True):
             sub = child.get_submenu()
             if sub:
                 style_dbusmenu_gtk(sub, is_root=False)
-    except Exception:
-        pass
+                if not getattr(sub, "_timonde_show_connected", False):
+                    try:
+                        sub.connect("show", lambda s: style_dbusmenu_gtk(s, is_root=False))
+                        sub._timonde_show_connected = True
+                    except Exception:
+                        pass
+    except Exception as e:
+        sys.stderr.write(f"TiMonde: erreur de stylisation du menu : {e}\n")
 
 
 # -----------------------------------------------------------------------------
 # 7. Vérification HTTP & Lecteur de Pré-écoute GStreamer (StreamPreviewPlayer)
 # -----------------------------------------------------------------------------
-
-PREVIEW_USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) TiMonde/0.2.0"
 
 
 def resolve_playlist_stream_url(url, timeout=3.5):
@@ -1061,9 +1243,6 @@ class StreamPreviewPlayer:
                     f"[►] « {self.current_name or 'Radio'} » — ♪ {title.strip()}",
                     is_error=False
                 )
-
-    def is_playing_url(self, url):
-        return bool(self.is_playing and self.current_url and clean_stream_url(url) == self.current_url)
 
     def toggle(self, station_name, url=None):
         if url is None:
@@ -1377,5 +1556,48 @@ class RepairStreamDialog(_GtkDialogBase):
         if tree_iter:
             return model[tree_iter][4]
         return None
+
+
+def prompt_text_dialog(parent_window, title: str, label_text: str, default_text: str = "", ok_label: str = None) -> str:
+    """
+    Dialogue modal léger GTK3 de saisie textuelle unifié.
+    Retourne la chaîne saisie ou None si annulé.
+    """
+    import gi
+    gi.require_version("Gtk", "3.0")
+    from gi.repository import Gtk
+
+    dlg = Gtk.Dialog(
+        title=title,
+        transient_for=parent_window,
+        flags=Gtk.DialogFlags.MODAL
+    )
+    dlg.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
+    dlg.add_button(ok_label or _("OK"), Gtk.ResponseType.OK)
+    dlg.set_default_response(Gtk.ResponseType.OK)
+
+    box = dlg.get_content_area()
+    box.set_spacing(10)
+    box.set_border_width(12)
+
+    lbl = Gtk.Label()
+    lbl.set_markup(label_text)
+    lbl.set_halign(Gtk.Align.START)
+    box.pack_start(lbl, False, False, 0)
+
+    entry = Gtk.Entry()
+    entry.set_text(default_text or "")
+    entry.set_width_chars(35)
+    entry.set_activates_default(True)
+    box.pack_start(entry, False, False, 0)
+
+    dlg.show_all()
+    resp = dlg.run()
+    txt = entry.get_text().strip()
+    dlg.destroy()
+
+    if resp == Gtk.ResponseType.OK:
+        return txt
+    return None
 
 
