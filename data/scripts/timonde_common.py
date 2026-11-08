@@ -114,16 +114,35 @@ def safe_parse_xml(path: str):
         return None
 
 
+def find_timonde_binary():
+    """Localise le binaire officiel ou local de TiMonde."""
+    w = shutil.which("timonde")
+    if w and os.path.exists(w):
+        return w
+    local = os.path.expanduser("~/.local/bin/timonde")
+    if os.path.exists(local):
+        return local
+    if os.path.exists("/usr/bin/timonde"):
+        return "/usr/bin/timonde"
+    # Localisation pour le développement
+    dev_rel = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../target/release/timonde"))
+    if os.path.exists(dev_rel):
+        return dev_rel
+    dev_deb = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../target/debug/timonde"))
+    if os.path.exists(dev_deb):
+        return dev_deb
+    return None
+
+
 def check_stream_url(url, timeout=3.0, with_redirect=False, fetch_meta=False):
     """
-    Test universel, frugal et rapide de disponibilité d'un flux audio (en-têtes HTTP uniquement).
+    Test universel, frugal et rapide de disponibilité d'un flux audio.
+    Délègue en priorité absolue au moteur natif Rust (timonde --probe-stream).
     Retourne (status, msg) par défaut, ou (status, msg, redirected_url) si with_redirect=True.
     Si fetch_meta=True, retourne (status, msg, meta) ou (status, msg, redirected_url, meta)
     où meta est un dictionnaire {'icy_name': ..., 'icy_genre': ..., 'icy_br': ..., 'content_type': ...}.
     Status vaut True, False, ou 'GEO' (géo-restreint).
     """
-    import urllib.request
-    import urllib.error
     meta = {"icy_name": "", "icy_genre": "", "icy_br": "", "content_type": ""}
 
     def _format_ret(st, m, rd=None):
@@ -136,6 +155,47 @@ def check_stream_url(url, timeout=3.0, with_redirect=False, fetch_meta=False):
         return _format_ret(False, msg_empty)
 
     clean = url.strip()
+
+    # 1. Délégation native vers le moteur Rust (sans GIL, sans socket urllib lourd)
+    timonde_bin = find_timonde_binary()
+    if timonde_bin:
+        try:
+            to_sec = str(max(1, int(round(timeout))))
+            cmd = [timonde_bin, "--probe-stream", clean, "--timeout", to_sec, "--json"]
+            res = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout + 1.5)
+            if res.returncode == 0 and res.stdout.strip():
+                data = json.loads(res.stdout)
+                ok = data.get("ok", False)
+                is_geo = data.get("is_geo", False)
+                msg_raw = data.get("message", "")
+                redir = data.get("redirected_url")
+                raw_meta = data.get("meta", {})
+                meta["icy_name"] = raw_meta.get("icy_name", "")
+                meta["icy_genre"] = raw_meta.get("icy_genre", "")
+                meta["icy_br"] = raw_meta.get("icy_br", "")
+                meta["content_type"] = raw_meta.get("content_type", "")
+
+                if is_geo:
+                    return _format_ret("GEO", _("Geoblocked (VPN)"), redir)
+                elif ok:
+                    codec = data.get("codec") or "Audio"
+                    return _format_ret(True, _("Live ({codec})").format(codec=codec), redir)
+                else:
+                    if "HTML" in msg_raw:
+                        msg = _("Offline (HTML error page)")
+                    elif "inaccessible" in msg_raw:
+                        msg = _("Server unreachable")
+                    elif "dépassé" in msg_raw:
+                        msg = _("Timeout")
+                    else:
+                        msg = msg_raw
+                    return _format_ret(False, msg, redir)
+        except Exception:
+            pass
+
+    # 2. Fallback de secours minimal en pur Python
+    import urllib.request
+    import urllib.error
     try:
         req = urllib.request.Request(
             clean,
@@ -150,21 +210,17 @@ def check_stream_url(url, timeout=3.0, with_redirect=False, fetch_meta=False):
             final_url = resp.geturl()
             redir = final_url if final_url != clean else None
 
-            # Extraction sécurisée des métadonnées ICY / Shoutcast / Icecast
             raw_name = resp.headers.get("icy-name") or resp.headers.get("x-audiocast-name") or ""
             raw_genre = resp.headers.get("icy-genre") or ""
             raw_br = resp.headers.get("icy-br") or ""
             ct = resp.headers.get("Content-Type", "")
 
-            # Décodage tolérant ISO-8859-1 / UTF-8
             def _safe_header_str(val):
                 if not val:
                     return ""
                 try:
-                    # Si la chaîne contient des octets ISO-8859-1 mal convertis, tenter un décodage strict
                     return val.encode("latin-1").decode("utf-8", errors="strict").strip()
                 except Exception:
-                    # En cas d'erreur de décodage UTF-8, la chaîne est déjà de l'ISO-8859-1 (Latin-1) valide
                     return str(val).strip()
 
             meta["icy_name"] = _safe_header_str(raw_name)
@@ -174,9 +230,7 @@ def check_stream_url(url, timeout=3.0, with_redirect=False, fetch_meta=False):
 
             if 200 <= code < 400:
                 ct_low = ct.lower()
-                # Rejet catégorique des pages web HTML retournant un faux code 200 (ex: serveurs de radios éteintes)
                 if "text/html" in ct_low or "text/plain" in ct_low:
-                    # Vérifier si c'est une playlist texte (ex: .m3u, .pls)
                     if not any(ext in clean.lower() for ext in [".m3u", ".m3u8", ".pls", ".asx"]):
                         msg_html = _("Offline (HTML error page)")
                         return _format_ret(False, msg_html, redir)
@@ -201,7 +255,6 @@ def check_stream_url(url, timeout=3.0, with_redirect=False, fetch_meta=False):
         msg_unreach = _("Server unreachable")
         return _format_ret(False, msg_unreach)
     except Exception as e:
-        # Prise en charge des serveurs SHOUTcast v1 / ICY (BadStatusLine: ICY 200 OK)
         line = getattr(e, "line", "") or str(e)
         if "ICY 200" in line or "200 OK" in line:
             msg_icy = _("Live (Shoutcast)")
@@ -262,8 +315,8 @@ def get_user_bookmarks_groups(path=None):
 # -----------------------------------------------------------------------------
 
 def _load_countries_from_rust():
-    timonde_bin = shutil.which("timonde") or os.path.expanduser("~/.local/bin/timonde")
-    if os.path.exists(timonde_bin):
+    timonde_bin = find_timonde_binary()
+    if timonde_bin and os.path.exists(timonde_bin):
         try:
             res = subprocess.run([timonde_bin, "--dump-countries-json"], capture_output=True, text=True, timeout=2.0)
             if res.returncode == 0 and res.stdout.strip():

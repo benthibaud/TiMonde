@@ -12,6 +12,7 @@ pub mod timezone;
 pub mod discovery;
 pub mod cli;
 pub mod sync_util;
+pub mod probe;
 
 use bookmarks::{create_default_bookmarks, ensure_config_examples, find_bookmarks_path, load_bookmarks};
 use ksni::blocking::TrayMethods;

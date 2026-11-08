@@ -4,6 +4,7 @@ use crate::models::{self, Group};
 use crate::mpris;
 use crate::radio_browser;
 use crate::timezone;
+use crate::probe;
 use std::path::PathBuf;
 
 /// Traite les arguments passés en ligne de commande.
@@ -495,6 +496,56 @@ pub fn handle_cli(args: &[String]) -> bool {
                         explicit_tz.as_deref(),
                     )
                 );
+                true
+            }
+            "--probe-stream" => {
+                if args.len() < 3 {
+                    eprintln!("Usage : timonde --probe-stream <URL> [--timeout <SECS>] [--json]");
+                    std::process::exit(1);
+                }
+                let mut url = String::new();
+                let mut timeout_secs = 3;
+                let mut as_json = false;
+
+                let mut i = 2;
+                while i < args.len() {
+                    match args[i].as_str() {
+                        "--json" => {
+                            as_json = true;
+                            i += 1;
+                        }
+                        "--timeout" if i + 1 < args.len() => {
+                            timeout_secs = args[i + 1].parse().unwrap_or(3);
+                            i += 2;
+                        }
+                        other if !other.starts_with("--") && url.is_empty() => {
+                            url = other.to_string();
+                            i += 1;
+                        }
+                        _ => {
+                            i += 1;
+                        }
+                    }
+                }
+
+                if as_json {
+                    println!("{}", probe::probe_stream_json(&url, timeout_secs));
+                } else {
+                    let res = probe::probe_stream_url(&url, timeout_secs);
+                    if res.ok {
+                        println!("Statut : OK ({})", res.message);
+                        if let Some(r) = res.redirected_url {
+                            println!("Redirection : {}", r);
+                        }
+                        if !res.meta.icy_name.is_empty() {
+                            println!("Nom ICY : {}", res.meta.icy_name);
+                        }
+                    } else if res.is_geo {
+                        println!("Statut : GÉOBLOQUÉ ({})", res.message);
+                    } else {
+                        println!("Statut : ERREUR ({})", res.message);
+                    }
+                }
                 true
             }
             other => {
