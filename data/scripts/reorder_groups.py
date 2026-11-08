@@ -1075,21 +1075,27 @@ class ReorderWindow(Gtk.Window):
             self.show_feedback(_("Please select a station to repair."))
             return
 
-        def on_repaired(new_url):
-            if new_url and new_url.strip():
-                data_obj["url"] = new_url.strip()
-                self.store.set_value(tree_iter, 3, data_obj)
-                self.store.set_value(tree_iter, 2, status_markup(_("[OK] Repaired"), kind="ok"))
-                self.set_dirty(True)
-                self.show_feedback(f"{_('Stream successfully repaired for')} « {name} »")
+        station_name = name or data_obj.get("name", "")
+        current_url = data_obj.get("url", "")
+        country_id = data_obj.get("country", "")
 
         dlg = RepairStreamDialog(
-            station_name=name,
-            current_url=data_obj.get("url", ""),
-            parent_window=self.get_parent_window(),
-            on_apply_callback=on_repaired
+            parent=self.get_parent_window(),
+            station_name=station_name,
+            current_url=current_url,
+            country_code=country_id,
         )
-        dlg.run()
+        res = dlg.run()
+        new_url = dlg.get_chosen_url()
+        dlg.destroy()
+
+        if res == Gtk.ResponseType.OK and new_url:
+            clean_url = new_url.strip()
+            data_obj["url"] = clean_url
+            self.store.set_value(tree_iter, 3, data_obj)
+            self.store.set_value(tree_iter, 2, self.format_station_details(data_obj))
+            self.set_dirty(True)
+            self.show_feedback(f"{_('Stream successfully repaired for')} « {station_name} »")
 
     def on_contribute_station_clicked(self, widget):
         node_type, name, data_obj, tree_iter, parent_iter = self.get_selected_node()
@@ -1215,35 +1221,8 @@ class ReorderWindow(Gtk.Window):
             GLib.idle_add(on_finished)
 
         def on_finished():
-            dialog.destroy()
-            nb_online = sum(1 for r in self.audit_results.values() if r["status"] == "online")
-            nb_dead = sum(1 for r in self.audit_results.values() if r["status"] == "offline")
-            nb_redir = sum(1 for r in self.audit_results.values() if r["status"] == "redirect")
-
-            audit_done = _("Audit completed:")
-            lbl_online = _("online")
-            lbl_dead = _("broken")
-            lbl_redir = _("redirected")
-            self.show_feedback(f"{audit_done} {nb_online} {lbl_online} · {nb_dead} {lbl_dead} · {nb_redir} {lbl_redir}")
-
-            if nb_dead > 0:
-                self.chk_broken_only.show()
-                self.chk_broken_only.set_label(f"{_('Dead links only')} ({nb_dead})")
-                self.chk_broken_only.set_active(True)
-            else:
-                self.chk_broken_only.hide()
-                self.chk_broken_only.set_active(False)
-
-            if nb_redir > 0:
-                self.btn_apply_redirects.show()
-                update_btn_content(self.btn_apply_redirects, f"{_('Apply redirects')} ({nb_redir})", "emblem-symbolic-link")
-            else:
-                self.btn_apply_redirects.hide()
-
-            # Rafraîchit les statuts dans l'arbre
-            self.data = self.serialize_tree()
-            self.populate_tree()
-            self.treeview.expand_all()
+            # Clôture propre de la boucle modale sans destruction prématurée
+            dialog.response(Gtk.ResponseType.OK)
 
         thread = threading.Thread(target=run_checks, daemon=True)
         thread.start()
@@ -1251,6 +1230,36 @@ class ReorderWindow(Gtk.Window):
         if res == Gtk.ResponseType.CANCEL:
             cancel_event.set()
         dialog.destroy()
+
+        # Dépilement des résultats après la fermeture effective du dialogue
+        nb_online = sum(1 for r in self.audit_results.values() if r["status"] == "online")
+        nb_dead = sum(1 for r in self.audit_results.values() if r["status"] == "offline")
+        nb_redir = sum(1 for r in self.audit_results.values() if r["status"] == "redirect")
+
+        audit_done = _("Audit completed:")
+        lbl_online = _("online")
+        lbl_dead = _("broken")
+        lbl_redir = _("redirected")
+        self.show_feedback(f"{audit_done} {nb_online} {lbl_online} · {nb_dead} {lbl_dead} · {nb_redir} {lbl_redir}")
+
+        if nb_dead > 0:
+            self.chk_broken_only.show()
+            self.chk_broken_only.set_label(f"{_('Dead links only')} ({nb_dead})")
+            self.chk_broken_only.set_active(True)
+        else:
+            self.chk_broken_only.hide()
+            self.chk_broken_only.set_active(False)
+
+        if nb_redir > 0:
+            self.btn_apply_redirects.show()
+            update_btn_content(self.btn_apply_redirects, f"{_('Apply redirects')} ({nb_redir})", "emblem-symbolic-link")
+        else:
+            self.btn_apply_redirects.hide()
+
+        # Rafraîchit les statuts dans l'arbre
+        self.data = self.serialize_tree()
+        self.populate_tree()
+        self.treeview.expand_all()
 
     def on_filter_broken_toggled(self, widget):
         self.filter_broken_only = widget.get_active()
@@ -1317,11 +1326,13 @@ class ReorderWindow(Gtk.Window):
         f_csv.add_pattern("*.csv")
         chooser.add_filter(f_csv)
 
-        if chooser.run() == Gtk.ResponseType.OK:
-            path = chooser.get_filename()
+        res = chooser.run()
+        path = chooser.get_filename()
+        chooser.destroy()
+
+        if res == Gtk.ResponseType.OK and path:
             if not path.endswith(".csv"):
                 path += ".csv"
-            chooser.destroy()
             try:
                 self.data = self.serialize_tree()
                 import csv

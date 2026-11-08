@@ -30,11 +30,11 @@ Face à la dette technique accumulée (duplication de code entre Rust et Python,
 - [x] Gravure de la doctrine Option B dans `docs/ARCHITECTURE.md`, `ROADMAP.md` et `MAINTENANCE_FLUX.md`.
 - [x] Release et publication GitHub de la version `v0.2.4`.
 
-### Jalon 2 : Sécurisation Immédiate du Code Existant — v0.2.5 (En cours 🔄)
-- [ ] Sortir `resolve_stream_url` du verrou `audio.lock()` dans `src/tray/dialogs.rs`.
-- [ ] Remplacer le spawn Python au boot par le test natif `XDG_CURRENT_DESKTOP` dans `src/main.rs`.
-- [ ] Corriger l'appel à `RepairStreamDialog` et dépiler proprement `on_check_streams_clicked` dans `reorder_groups.py`.
-- [ ] Ajouter la destruction systématique (`dlg.destroy()`) sur tous les dialogues de `browse_bouquets.py`.
+### Jalon 2 : Sécurisation Immédiate du Code Existant — v0.2.5 (Terminé ✅)
+- [x] Sortir `resolve_stream_url` du verrou `audio.lock()` dans `src/tray/dialogs.rs`.
+- [x] Remplacer le spawn Python au boot par le test natif `XDG_CURRENT_DESKTOP` dans `src/main.rs`.
+- [x] Corriger l'appel à `RepairStreamDialog` et dépiler proprement `on_check_streams_clicked` dans `reorder_groups.py`.
+- [x] Ajouter la destruction systématique (`dlg.destroy()`) sur tous les dialogues de `browse_bouquets.py`.
 
 ### Jalon 3 : Bascule vers l'Option B Complète (À venir ⏳)
 - [ ] Exposer une interface de commandes / D-Bus propre côté Rust (`timonde --api ...` ou méthodes D-Bus).

@@ -315,7 +315,23 @@ class TestGtkEventLoopAndScope(unittest.TestCase):
                 updated_details = win.store.get_value(c, 2)
                 self.assertEqual(updated_details, "[FR]", "La colonne Détails/Pays doit afficher immédiatement [FR] sans réouverture")
 
-            # 3. Tester l'appel de réorganisation et de déplacement
+            # 3. Tester la réparation de flux avec RepairStreamDialog (signature et mise à jour)
+            with patch("reorder_groups.RepairStreamDialog") as MockRepair:
+                inst_rep = MagicMock()
+                inst_rep.run.return_value = Gtk.ResponseType.OK
+                inst_rep.get_chosen_url.return_value = "http://repaired-stream.example.com/live"
+                MockRepair.return_value = inst_rep
+
+                win.on_repair_stream_clicked(None)
+                drain_gtk_events()
+
+                self.assertTrue(MockRepair.called)
+                self.assertTrue(inst_rep.destroy.called, "Le dialogue RepairStreamDialog doit impérativement être détruit")
+                if c:
+                    rep_url = win.store.get_value(c, 3)["url"]
+                    self.assertEqual(rep_url, "http://repaired-stream.example.com/live")
+
+            # 4. Tester l'appel de réorganisation et de déplacement
             groups = win.get_all_group_paths()
             self.assertIn("Sélection perso", groups)
 

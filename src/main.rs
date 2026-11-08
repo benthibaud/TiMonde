@@ -121,31 +121,52 @@ fn ensure_config_examples(config_dir: &Path) {
     }
 }
 
-/// Vérifie si un démon StatusNotifierWatcher est actif sur D-Bus.
-/// S'il est absent (ex: bureau IceWM ou Fluxbox sous antiX), démarre automatiquement
-/// le pont léger timonde_xembed_bridge.py pour créer une icône XEmbed compatible.
-fn ensure_sni_host() -> Option<std::process::Child> {
-    let has_watcher = if let Ok(connection) = zbus::blocking::Connection::session() {
-        let proxy = zbus::blocking::Proxy::new(
+/// Vérifie si un démon StatusNotifierWatcher est actif sur D-Bus (sans aucun sous-processus).
+fn has_status_notifier_watcher() -> bool {
+    if let Ok(connection) = zbus::blocking::Connection::session() {
+        if let Ok(proxy) = zbus::blocking::Proxy::new(
             &connection,
             "org.freedesktop.DBus",
             "/org/freedesktop/DBus",
             "org.freedesktop.DBus",
-        );
-        if let Ok(proxy) = proxy {
+        ) {
             let res: Result<bool, _> = proxy.call(
                 "NameHasOwner",
                 &("org.kde.StatusNotifierWatcher",),
             );
-            res.unwrap_or(false)
-        } else {
-            false
+            return res.unwrap_or(false);
         }
-    } else {
-        false
-    };
+    }
+    false
+}
 
-    if !has_watcher {
+/// Détecte si les descripteurs d'environnement graphique correspondent à GNOME Shell pur.
+fn is_gnome_shell_env(desktop: &str, session: &str) -> bool {
+    let d = desktop.to_uppercase();
+    let s = session.to_uppercase();
+
+    // Exclure formellement les environnements disposant de leur propre barre native
+    for other in &["XFCE", "CINNAMON", "MATE", "KDE", "LXQT", "PANTHEON", "COSMIC", "ICEWM", "FLUXBOX"] {
+        if d.contains(other) || s.contains(other) {
+            return false;
+        }
+    }
+
+    d.contains("GNOME") || s.contains("GNOME")
+}
+
+/// Détecte nativement si l'environnement graphique de session est GNOME Shell.
+fn is_gnome_shell() -> bool {
+    let desktop = std::env::var("XDG_CURRENT_DESKTOP").unwrap_or_default();
+    let session = std::env::var("DESKTOP_SESSION").unwrap_or_default();
+    is_gnome_shell_env(&desktop, &session)
+}
+
+/// Vérifie si un démon StatusNotifierWatcher est actif sur D-Bus.
+/// S'il est absent (ex: bureau IceWM ou Fluxbox sous antiX), démarre automatiquement
+/// le pont léger timonde_xembed_bridge.py pour créer une icône XEmbed compatible.
+fn ensure_sni_host() -> Option<std::process::Child> {
+    if !has_status_notifier_watcher() {
         info!("Aucun StatusNotifierWatcher détecté sur le bureau hôte (IceWM/Fluxbox).");
         if let Some(script_path) = crate::tray::TiMondeTray::find_script("timonde_xembed_bridge.py") {
             info!("Activation du pont XEmbed natif : {:?}", script_path);
@@ -167,27 +188,22 @@ fn ensure_sni_host() -> Option<std::process::Child> {
 /// propose l'assistant graphique d'installation. Si l'utilisateur refuse ou annule,
 /// retourne false pour interrompre le démarrage sans laisser tourner d'application invisible.
 fn ensure_desktop_integration() -> bool {
-    if let Some(script_path) = crate::tray::TiMondeTray::find_script("gnome_tray_helper.py") {
-        // Test rapide non-intrusif
-        if let Ok(st) = std::process::Command::new("python3")
-            .arg(&script_path)
-            .arg("--check")
-            .status()
-        {
-            if st.code() == Some(1) {
-                info!("Environnement GNOME Shell détecté sans support AppIndicator. Lancement de l'assistant...");
-                if let Ok(prompt_st) = std::process::Command::new("python3")
-                    .arg(&script_path)
-                    .arg("--prompt")
-                    .status()
-                {
-                    if !prompt_st.success() {
-                        info!("Installation de l'intégration GNOME ignorée ou annulée. Arrêt propre de TiMonde.");
-                        return false;
-                    }
-                } else {
+    // Évaluation native sans aucun sous-processus Python
+    if is_gnome_shell() && !has_status_notifier_watcher() {
+        info!("Environnement GNOME Shell détecté sans support AppIndicator.");
+        if let Some(script_path) = crate::tray::TiMondeTray::find_script("gnome_tray_helper.py") {
+            info!("Lancement de l'assistant d'intégration GNOME...");
+            if let Ok(prompt_st) = std::process::Command::new("python3")
+                .arg(&script_path)
+                .arg("--prompt")
+                .status()
+            {
+                if !prompt_st.success() {
+                    info!("Installation de l'intégration GNOME ignorée ou annulée. Arrêt propre de TiMonde.");
                     return false;
                 }
+            } else {
+                return false;
             }
         }
     }
@@ -781,3 +797,21 @@ fn main() {
     let main_loop = gstreamer::glib::MainLoop::new(None, false);
     main_loop.run();
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_gnome_shell_detection() {
+        assert!(is_gnome_shell_env("GNOME", "gnome"));
+        assert!(is_gnome_shell_env("ubuntu:GNOME", "ubuntu"));
+        assert!(!is_gnome_shell_env("XFCE", "xfce"));
+        assert!(!is_gnome_shell_env("X-Cinnamon", "cinnamon"));
+        assert!(!is_gnome_shell_env("KDE", "plasma"));
+        assert!(!is_gnome_shell_env("antiX", "icewm"));
+        assert!(!is_gnome_shell_env("Fluxbox", "fluxbox"));
+        assert!(!is_gnome_shell_env("MATE", "mate"));
+    }
+}
+

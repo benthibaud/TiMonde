@@ -1773,6 +1773,7 @@ class DiscoverRadiosWindow(Gtk.Window):
             country_code=c_code
         )
         dlg.run()
+        dlg.destroy()
 
     def on_contribute_bouquet_to_radio_browser(self):
         model, tree_iter = self.bouquet_tree.get_selection().get_selected()
@@ -1797,6 +1798,7 @@ class DiscoverRadiosWindow(Gtk.Window):
             country_code=country_id
         )
         dlg.run()
+        dlg.destroy()
 
     def on_contribute_files_to_radio_browser(self):
         model, tree_iter = self.files_tree.get_selection().get_selected()
@@ -1837,6 +1839,7 @@ class DiscoverRadiosWindow(Gtk.Window):
             country_code=country_id
         )
         dlg.run()
+        dlg.destroy()
 
     def save_stream_to_xml(self, station_name, old_url, new_url):
         country_id, info, _nat, _regs = self.get_current_data()

@@ -352,12 +352,20 @@ pub fn trigger_edit_station_dialog(
             }
         }
         if url_changed_while_playing {
-            let guard = audio.lock().unwrap();
-            if let Some(ref engine) = *guard {
-                if engine.state() == crate::audio::PlaybackState::Playing
-                    || engine.state() == crate::audio::PlaybackState::Buffering
-                {
-                    let resolved = crate::playlist::resolve_stream_url(&new_url);
+            let was_playing = {
+                let guard = audio.lock().unwrap();
+                if let Some(ref engine) = *guard {
+                    engine.state() == crate::audio::PlaybackState::Playing
+                        || engine.state() == crate::audio::PlaybackState::Buffering
+                } else {
+                    false
+                }
+            };
+            if was_playing {
+                // Résolution réseau hors verrou audio pour ne pas bloquer le thread de contrôle
+                let resolved = crate::playlist::resolve_stream_url(&new_url);
+                let guard = audio.lock().unwrap();
+                if let Some(ref engine) = *guard {
                     let _ = engine.play(&resolved);
                 }
             }
