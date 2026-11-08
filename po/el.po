@@ -1,1250 +1,1110 @@
 # TiMonde — Traduction EL
+
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
+
 #
+
 msgid ""
 msgstr ""
 "Project-Id-Version: TiMonde 0.1.3\n"
-"Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
-"POT-Creation-Date: 2026-10-29 06:50+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 20:23+0100\n"
 "PO-Revision-Date: 2026-10-17 17:00+0200\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Play"
-msgstr "Αναπαραγωγή"
+#: src/i18n.rs:186 src/i18n.rs:193
 
-msgid "Stop"
-msgstr "Διακοπή"
-
-msgid "Connecting..."
-msgstr "Σύνδεση..."
-
-msgid "Edit"
-msgstr "Επεξεργασία"
-
-msgid "Delete"
-msgstr "Διαγραφή"
-
-msgid "Zap to another random station"
-msgstr "Τυχαίος σταθμός"
-
-msgid "Play random radio (Ephemeral discovery)"
-msgstr "Ακούστε έναν τυχαίο ραδιοφωνικό σταθμό (Εφήμερη ανακάλυψη)"
-
-msgid "[ Ephemeral]"
+msgid " [Ephemeral]"
 msgstr "[Μικρής διάρκειας]"
 
-msgid "Options"
-msgstr "Επιλογές"
+#: data/scripts/browse_bouquets.py:1655
 
-msgid "Add a station..."
-msgstr "Προσθήκη σταθμού..."
+msgid "(Already in favorites)"
+msgstr "Αποθήκευση στα αγαπημένα μου"
 
-msgid "Discover & Import stations..."
-msgstr "Ανακαλύψτε & Εισαγάγετε ραδιόφωνα..."
+# --- Mises à jour TiMonde ---
 
-msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr "Εισαγωγή των αρχείων μου (XML, CSV, JSON, M3U)..."
+#: data/scripts/edit_station.py:541
 
-msgid "Manage groups and stations..."
-msgstr "Ταξινόμηση ομάδων και ραδιοφώνων..."
+msgid "(Metropolitan or Overseas)"
+msgstr "(Metropolitan or Overseas)"
 
-msgid "Open bookmarks.xml"
-msgstr "Ανοίξτε το bookmarks.xml"
+#: data/scripts/browse_bouquets.py:680 data/scripts/browse_bouquets.py:681
 
-msgid "Quit TiMonde"
-msgstr "Έξοδος από το TiMonde"
+#: data/scripts/browse_bouquets.py:2020 data/scripts/browse_bouquets.py:2063
 
-msgid "Mute (0%)"
-msgstr "Σίγαση (0%)"
+#: data/scripts/browse_bouquets.py:2197
 
-msgid "Sleep timer"
-msgstr "Χρονοδιακόπτης ύπνου"
+msgid "(Original folder structure)"
+msgstr "(Δομή αρχικού φακέλου)"
 
-msgid "In 15 minutes"
-msgstr "Σε 15 λεπτά"
+#: data/scripts/edit_station.py:539
 
-msgid "In 30 minutes"
-msgstr "Σε 30 λεπτά"
+msgid "(Single inferred timezone)"
+msgstr "(Single inferred timezone)"
 
-msgid "In 45 minutes"
-msgstr "Σε 45 λεπτά"
+#: data/scripts/edit_station.py:518
 
-msgid "In 60 minutes (1h)"
-msgstr "Σε 60 λεπτά (1 ώρα)"
+msgid "(Timezone not defined)"
+msgstr "(Timezone not defined)"
 
-msgid "Cancel sleep timer"
-msgstr "Ακύρωση ύπνου"
+#: data/scripts/edit_station.py:521
 
-msgid "Discover & Import stations (TiMonde)"
-msgstr "Ανακαλύψτε & Εισαγάγετε ραδιοφωνικούς σταθμούς (TiMonde)"
+msgid "(Unknown)"
+msgstr "(Unknown)"
 
-msgid "Verified DAB+ Bouquets"
-msgstr "Επαληθευμένες ανθοδέσμες (DAB+)"
+#: data/scripts/edit_station.py:75
 
-msgid "Radio-Browser Search"
-msgstr "Αναζήτηση Radio-Browser"
+msgid "<b>Edit station settings:</b>"
+msgstr "<b>Αλλαγή ρυθμίσεων σταθμού:</b>"
 
-msgid "Sample Files"
-msgstr "Παραδείγματα αρχείων"
-
-msgid "Import my files"
-msgstr "Εισαγωγή των αρχείων μου"
-
-msgid "<b> Country:</b>"
-msgstr "<b>Χώρα:</b>"
-
-msgid "<b>Language:</b>"
-msgstr "<b>Γλώσσα:</b>"
-
-msgid "Name / Keyword:"
-msgstr "Όνομα / Λέξη-κλειδί:"
-
-msgid "Genre:"
-msgstr "Φύλο:"
-
-msgid "<b>Sample file:</b>"
-msgstr "<b>Παράδειγμα αρχείου:</b>"
-
-msgid "<b>Group name in your favorites:</b>"
-msgstr "<b>Όνομα ομάδας στα αγαπημένα σας:</b>"
-
-msgid "Select all"
-msgstr "Ελέγξτε όλα"
-
-msgid "Deselect all"
-msgstr "Καταργήστε την επιλογή όλων"
-
-msgid "Import into favorites"
-msgstr "Εισαγωγή στα αγαπημένα μου"
-
-msgid "Close"
-msgstr "Κλείσιμο"
-
-msgid "Add a station (TiMonde)"
-msgstr "Προσθήκη σταθμού (TiMonde)"
+#: data/scripts/edit_station.py:65
 
 msgid "<b>Enter new station details:</b>"
 msgstr "<b>Εισαγάγετε τις πληροφορίες για το νέο ραδιόφωνο:</b>"
 
-msgid "Add to my stations"
-msgstr "Προσθήκη στα ραδιόφωνα μου"
-
-msgid "Save station to favorites (TiMonde)"
-msgstr "Αποθήκευση του ραδιοφώνου στα αγαπημένα μου (TiMonde)"
+#: data/scripts/edit_station.py:70
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
 msgstr ""
 "<b>Διατηρήστε αυτόν τον τυχαία ανακαλυφθέν ραδιοφωνικό σταθμό στα αγαπημένα "
 "σας:</b>"
 
-msgid "Keep in favorites"
-msgstr "Αποθήκευση στα αγαπημένα μου"
+#: data/scripts/timonde_settings.py:740
 
-msgid "Edit station (TiMonde)"
-msgstr "Επεξεργασία του ραδιοφώνου (TiMonde)"
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> σταθμοί σε <b>{nb_gr}</b> ομάδες."
 
-msgid "<b>Edit station settings:</b>"
-msgstr "<b>Αλλαγή ρυθμίσεων σταθμού:</b>"
+#: data/scripts/browse_bouquets.py:1208
 
-msgid "Save"
-msgstr "Αποθήκευση"
+msgid "<i>Select a file or sample above.</i>"
+msgstr "<i>Επιλέξτε ένα αρχείο ή ένα δείγμα παραπάνω.</i>"
 
-msgid "Station name:"
-msgstr "Όνομα σταθμού:"
+#: data/scripts/timonde_settings.py:709 data/scripts/timonde_settings.py:719
 
-msgid "Audio stream URL:"
-msgstr "URL ροής ήχου:"
+msgid "Active (Left & Right clicks unified)"
+msgstr "Aktiv (Links- & Rechtsklick vereinheitlicht)"
 
-msgid "Group / Folder:"
-msgstr "Ομάδα / Φάκελος:"
+#: data/scripts/browse_bouquets.py:882
 
-msgid "Country & Timezone:"
-msgstr "Χώρα & Ζώνη ώρας:"
+msgid "Add"
+msgstr "Προσθέτω"
 
-msgid "Timezone:"
-msgstr "Ζώνη ώρας:"
+#: data/scripts/reorder_groups.py:189
 
-msgid "Delete this station"
-msgstr "Διαγράψτε αυτό το ραδιόφωνο"
+msgid "Add a new station to this group or to root"
+msgstr "Î ÏÎ¿ÏÎ¸Î®ÎºÎ· Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÎµ Î±ÏÏÎ® ÏÎ·Î½ Î¿Î¼Î¬Î´Î± Î® ÏÏÎ· ÏÎ¯Î¶Î±"
 
-msgid "Cancel"
-msgstr "Ακύρωση"
+#: data/scripts/edit_station.py:64
 
-msgid "Delete « {} » from favorites?"
-msgstr "Κατάργηση του \"{}\" από τα αγαπημένα;"
+msgid "Add a station (TiMonde)"
+msgstr "Προσθήκη σταθμού (TiMonde)"
 
-msgid "This action will permanently remove this station from your collection."
-msgstr ""
-"Αυτή η ενέργεια θα καταργήσει οριστικά αυτόν τον σταθμό από τη συλλογή σας."
-
-msgid "Manage groups, stations and separators (TiMonde)"
-msgstr "Διαχείριση ομάδων, ραδιοφώνων και διαχωριστών (TiMonde)"
-
-msgid "Back to groups"
-msgstr "⬅ Επιστροφή στις ομάδες"
+#: data/scripts/reorder_groups.py:189
 
 msgid "Add station"
 msgstr "Προσθήκη ραδιοφώνου"
 
-msgid "Open"
-msgstr "Ανοιχτό"
+#: data/scripts/reorder_groups.py:576
 
-msgid "New group"
-msgstr "Νέα ομάδα"
+msgid "Add station here..."
+msgstr "Î ÏÎ¿ÏÎ¸Î®ÎºÎ· ÏÏÎ±Î¸Î¼Î¿Ï ÎµÎ´Ï..."
 
-msgid "Move to..."
-msgstr "Μετακίνηση σε..."
+#: data/scripts/reorder_groups.py:597
 
-msgid "Top"
-msgstr "Πρώτα"
+msgid "Add station..."
+msgstr "Προσθήκη σταθμού..."
 
-msgid "Move up"
-msgstr "⬆ Ανεβείτε"
+#: data/scripts/edit_station.py:66
 
-msgid "Move down"
-msgstr "⬇ Κατεβείτε"
+msgid "Add to my stations"
+msgstr "Προσθήκη στα ραδιόφωνα μου"
 
-msgid "Separator"
-msgstr "Διαχωριστής"
+#: data/scripts/edit_station.py:159
 
-msgid "Sort A-Z"
-msgstr "Ταξινόμηση Α-Ω"
+msgid "Align name"
+msgstr "ÎÏÎ¸ÏÎ³ÏÎ¬Î¼Î¼Î¹ÏÎ· Î¿Î½ÏÎ¼Î±ÏÎ¿Ï"
 
-msgid "Save and reload"
-msgstr "Αποθήκευση και επαναφόρτωση"
+#: data/scripts/reorder_groups.py:295
 
-msgid "Same time"
-msgstr "Ίδια ώρα"
+msgid "All changes saved"
+msgstr "ÎÎ»ÎµÏ Î¿Î¹ Î±Î»Î»Î±Î³Î­Ï Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎ±Î½"
 
-msgid "Dawn"
-msgstr "Αυγή"
+#: data/scripts/browse_bouquets.py:784
 
-msgid "Morning"
-msgstr "Πρωί"
+msgid "All countries (Worldwide)"
+msgstr "Όλες οι χώρες (σε όλο τον κόσμο)"
 
-msgid "Daytime"
-msgstr "Την ημέρα"
+#: data/scripts/reorder_groups.py:1281
 
-msgid "Evening"
-msgstr "Απόγευμα"
+msgid "All files (*.*)"
+msgstr "Όλα τα αρχεία (*.*)"
 
-msgid "Night"
-msgstr "Νύχτα"
+#: data/scripts/browse_bouquets.py:823
 
-msgid "Tomorrow"
-msgstr "Αύριο"
+msgid "All languages"
+msgstr "Όλες οι γλώσσες"
 
-msgid "Yesterday"
-msgstr "Χθες"
+#: data/scripts/timonde_settings.py:728
 
-msgid "Maintenance & Data"
-msgstr "Συντήρηση & Δεδομένα"
+msgid ""
+"Allows opening the station menu interchangeably with left or right click."
+msgstr "Επιτρέπει το άνοιγμα του μενού σταθμών εναλλακτικά με αριστερό ή δεξί κλικ."
 
-msgid "Check streams (dead links)..."
-msgstr "Ελέγξτε τις ροές (νεκρούς συνδέσμους)..."
+#: data/scripts/timonde_common.py:1904
 
-msgid "Export my stations to CSV..."
-msgstr "Εξαγωγή των ραδιοφώνων μου σε CSV..."
+msgid "Already registered"
+msgstr "ÎÎ´Î· ÎºÎ±ÏÎ±ÏÏÏÎ·Î¼Î­Î½Î¿"
 
-msgid "Check streams"
-msgstr "Ελέγξτε τις ροές"
+#: data/scripts/timonde_common.py:1899
 
-msgid "Dead links only"
-msgstr "Μόνο νεκροί σύνδεσμοι"
+msgid "Already registered:"
+msgstr "ÎÎ´Î· ÎºÎ±ÏÎ±ÏÏÏÎ·Î¼Î­Î½Î¿:"
+
+#: data/scripts/reorder_groups.py:111 data/scripts/reorder_groups.py:1155
 
 msgid "Apply redirects"
 msgstr "Εφαρμογή ανακατευθύνσεων"
 
-msgid "Repair stream..."
-msgstr "Ροή επισκευής..."
+#: data/scripts/reorder_groups.py:783 data/scripts/reorder_groups.py:785
 
-msgid "Export to CSV"
-msgstr "Εξαγωγή σε CSV"
+#: data/scripts/reorder_groups.py:787
 
-msgid "Test stream availability and locate broken links"
-msgstr ""
-"Δοκιμάστε τη ζωντανή διαθεσιμότητα των ραδιοφωνικών σταθμών σας και "
-"εντοπίστε νεκρούς συνδέσμους"
+msgid "Are you sure you want to delete « {name} » ?"
+msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε το « {name} » ;"
+
+#: data/scripts/edit_station.py:121
+
+msgid "Audio stream URL:"
+msgstr "URL ροής ήχου:"
+
+#: data/scripts/reorder_groups.py:1139
+
+msgid "Audit completed:"
+msgstr "Audit completed:"
+
+#: data/scripts/timonde_settings.py:666
+
+msgid "Automatic detection according to your Linux locale settings."
+msgstr "Αυτόματος εντοπισμός σύμφωνα με τις τοπικές ρυθμίσεις Linux."
+
+#: data/scripts/timonde_settings.py:648
+
+msgid "Automatic launch on startup"
+msgstr "Αυτόματη εκκίνηση κατά την εκκίνηση"
+
+#: data/scripts/timonde_settings.py:751
+
+msgid "Automatic startup"
+msgstr "Αυτόματη εκκίνηση"
+
+#: data/scripts/reorder_groups.py:111
+
+msgid "Automatically update redirected streams to direct URL"
+msgstr "Αυτόματη ενημέρωση των ροών που ανακατευθύνονται στο άμεσο URL τους"
+
+#: data/scripts/browse_bouquets.py:913 data/scripts/browse_bouquets.py:1247
+
+msgid "Availability"
+msgstr "Διαθεσιμότητα"
+
+#: data/scripts/reorder_groups.py:1266
+
+msgid "Backup my bookmarks (XML)"
+msgstr "ÎÎ½ÏÎ¯Î³ÏÎ±ÏÎ¿ Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¹ÎºÏÏÎ½ (XML)"
+
+#: data/scripts/browse_bouquets.py:1199
+
+msgid "Backup my radios (XML)..."
+msgstr "Δημιουργία αντιγράφων ασφαλείας των ραδιοφώνων μου (XML)..."
+
+#: data/scripts/reorder_groups.py:1302
+
+msgid "Backup successful!"
+msgstr "ÎÏÎ¹ÏÏÏÎ®Ï Î´Î·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î±Î½ÏÎ¹Î³ÏÎ¬ÏÎ¿Ï Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï!"
+
+#: data/scripts/timonde_common.py:1645
+
+msgid "Bitrate"
+msgstr "Bitrate"
+
+#: data/scripts/timonde_settings.py:530
+
+msgid "Bookmarks and stations saved successfully!"
+msgstr "Οι σελιδοδείκτες και οι σταθμοί αποθηκεύτηκαν με επιτυχία!"
+
+#: data/scripts/browse_bouquets.py:1203
+
+msgid "Bookmarks folder"
+msgstr "Φάκελος σελιδοδεικτών"
+
+#: data/scripts/browse_bouquets.py:2312
+
+msgid "CSV export is available from settings."
+msgstr "Η εξαγωγή CSV είναι διαθέσιμη από τις ρυθμίσεις."
+
+#: data/scripts/reorder_groups.py:1252
+
+msgid "CSV export successful:"
+msgstr "ÎÏÎ¹ÏÏÏÎ®Ï ÎµÎ¾Î±Î³ÏÎ³Î® CSV:"
+
+#: data/scripts/browse_bouquets.py:1982 data/scripts/edit_station.py:308
+
+#: data/scripts/edit_station.py:575 data/scripts/reorder_groups.py:260
+
+#: data/scripts/reorder_groups.py:638 data/scripts/reorder_groups.py:948
+
+#: data/scripts/reorder_groups.py:1228 data/scripts/reorder_groups.py:1269
+
+#: data/scripts/timonde_common.py:1596 data/scripts/timonde_common.py:1720
+
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: src/tray/menu.rs:589
+
+msgid "Cancel sleep timer"
+msgstr "Ακύρωση ύπνου"
+
+#: data/scripts/timonde_common.py:1814
+
+msgid "Check"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï"
+
+#: data/scripts/browse_bouquets.py:938 data/scripts/browse_bouquets.py:1107
+
+#: data/scripts/browse_bouquets.py:1274
+
+msgid "Check all"
+msgstr "Ελέγξτε όλα"
+
+#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
+
+msgid "Check and submit selected station to Radio-Browser directory"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï ÎºÎ±Î¹ ÏÏÎ¿Î²Î¿Î»Î® ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1814
+
+msgid "Check entered stream URL again on Radio-Browser"
+msgstr "ÎÏÎ±Î½Î­Î»ÎµÎ³ÏÎ¿Ï Î´Î¹ÎµÏÎ¸ÏÎ½ÏÎ·Ï ÏÎ¿Î®Ï ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/edit_station.py:139
+
+msgid "Check if stream is listed or contribute to directory"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï Î±Î½ Î· ÏÎ¿Î® ÏÏÎ¬ÏÏÎµÎ¹ Î® ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿"
+
+#: data/scripts/edit_station.py:135
+
+msgid "Check link validity and listen to stream preview"
+msgstr "Ελέγξτε την εγκυρότητα του συνδέσμου και ακούστε την προεπισκόπηση ροής"
+
+#: data/scripts/browse_bouquets.py:1286
+
+msgid "Check links availability live"
+msgstr "Ελέγξτε ζωντανά τη διαθεσιμότητα των συνδέσμων"
+
+#: data/scripts/browse_bouquets.py:946
+
+msgid "Check live availability of found stations"
+msgstr "Ελέγξτε τη ζωντανή διαθεσιμότητα των σταθμών που βρέθηκαν"
+
+#: data/scripts/reorder_groups.py:242
+
+msgid "Check or contribute selected station to Radio-Browser"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï Î® ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/browse_bouquets.py:1115
+
+msgid "Check stations live availability"
+msgstr "Ελέγξτε τη ζωντανή διαθεσιμότητα των σταθμών"
+
+#: data/scripts/reorder_groups.py:102
+
+msgid "Check streams"
+msgstr "Ελέγξτε τις ροές"
+
+#: data/scripts/timonde_common.py:1882
+
+msgid "Checking Radio-Browser directory..."
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï ÎºÎ±ÏÎ±Î»ÏÎ³Î¿Ï Radio-Browser..."
+
+#: data/scripts/reorder_groups.py:1077
+
+msgid "Checking your radio stations"
+msgstr "Checking your radio stations"
+
+#: data/scripts/browse_bouquets.py:1656
+
+msgid "Checking..."
+msgstr "Σύνδεση..."
+
+#: data/scripts/browse_bouquets.py:1978
+
+msgid "Choose a radio station file"
+msgstr "Επιλέξτε ένα αρχείο ραδιοφωνικού σταθμού"
+
+#: data/scripts/browse_bouquets.py:676
+
+msgid "Choose from existing groups"
+msgstr "Επιλέξτε από τις υπάρχουσες ομάδες"
+
+#: data/scripts/timonde_settings.py:727
+
+msgid "Cinnamon Left-Click Unification"
+msgstr "Cinnamon Linksklick-Vereinheitlichung"
+
+#: data/scripts/timonde_settings.py:721
+
+msgid "Cinnamon left-click unification successfully enabled!"
+msgstr "Cinnamon Linksklick-Vereinheitlichung erfolgreich aktiviert!"
+
+#: data/scripts/edit_station.py:265
+
+msgid "Clear"
+msgstr "Clear"
+
+#: data/scripts/edit_station.py:266
+
+msgid "Clear / Automatic mode"
+msgstr "LÃ¶schen / Automatischer Modus"
+
+#: data/scripts/browse_bouquets.py:789
+
+msgid "Clear country filter"
+msgstr "Διαγραφή φίλτρου χώρας"
+
+#: data/scripts/browse_bouquets.py:669
+
+msgid "Clear field"
+msgstr "Καθαρό πεδίο"
+
+#: data/scripts/edit_station.py:187
+
+msgid "Clear field (click to empty)"
+msgstr "Feld leeren (Klicken zum Leeren)"
+
+#: data/scripts/browse_bouquets.py:828
+
+msgid "Clear language filter"
+msgstr "Διαγραφή φίλτρου γλώσσας"
+
+#: data/scripts/browse_bouquets.py:1335 data/scripts/timonde_common.py:1858
+
+#: data/scripts/timonde_settings.py:447
+
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: data/scripts/reorder_groups.py:88
+
+msgid "Collapse all"
+msgstr "Î£ÏÎ¼ÏÏÏÎ¾Î· ÏÎ»ÏÎ½"
+
+#: data/scripts/reorder_groups.py:88
+
+msgid "Collapse all groups for an overview"
+msgstr "Î£ÏÎ¼ÏÏÏÎ¾Î· ÏÎ»ÏÎ½ ÏÏÎ½ Î¿Î¼Î¬Î´ÏÎ½ Î³Î¹Î± ÎµÏÎ¹ÏÎºÏÏÎ·ÏÎ·"
+
+#: data/scripts/timonde_settings.py:594
+
+msgid "Collections & Files"
+msgstr "Συλλογές & Αρχεία"
+
+#: data/scripts/reorder_groups.py:794
+
+msgid "Confirm deletion"
+msgstr "ÎÏÎ¹Î²ÎµÎ²Î±Î¯ÏÏÎ· Î´Î¹Î±Î³ÏÎ±ÏÎ®Ï"
+
+#: data/scripts/timonde_common.py:1328
+
+msgid "Connecting to"
+msgstr "Σύνδεση με"
+
+#: src/i18n.rs:192 src/tray/menu.rs:159
+
+msgid "Connecting..."
+msgstr "Σύνδεση..."
+
+#: data/scripts/browse_bouquets.py:739
+
+msgid "Contribute a station"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ±Î¸Î¼Î¿Ï"
+
+#: data/scripts/timonde_common.py:1781
+
+msgid "Contribute a station to the community Radio-Browser directory"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ¿Î¹Î½Î¿ÏÎ¹ÎºÏ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
+
+#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
+
+#: data/scripts/timonde_common.py:1761
+
+msgid "Contribute to Radio-Browser"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/reorder_groups.py:242 data/scripts/reorder_groups.py:567
+
+msgid "Contribute to Radio-Browser..."
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser..."
+
+#: data/scripts/browse_bouquets.py:894 data/scripts/browse_bouquets.py:1240
+
+#: data/scripts/timonde_common.py:1648
+
+msgid "Country"
+msgstr "<b>Country:</b>"
+
+#: data/scripts/browse_bouquets.py:1327 data/scripts/timonde_settings.py:593
+
+msgid "Country bouquets"
+msgstr "Μπουκέτα εξοχής"
+
+#: data/scripts/timonde_common.py:1821
+
+msgid "Country code (ISO):"
+msgstr "ÎÏÎ´Î¹ÎºÏÏ ÏÏÏÎ±Ï (ISO):"
+
+#: data/scripts/browse_bouquets.py:981 data/scripts/edit_station.py:228
+
+#: data/scripts/timonde_common.py:1900
+
+msgid "Country:"
+msgstr "Country:"
+
+#: data/scripts/reorder_groups.py:639
+
+msgid "Create"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î±"
+
+#: data/scripts/browse_bouquets.py:1199
+
+msgid "Create a full backup of your collection (with folders and timezones)"
+msgstr "Δημιουργήστε ένα πλήρες αντίγραφο ασφαλείας της συλλογής σας (με φακέλους και ζώνες ώρας)"
+
+#: data/scripts/reorder_groups.py:634
+
+msgid "Create a new group"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:193
+
+msgid "Create a new group or subgroup (Ctrl+N)"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï Î® ÏÏÎ¿Î¿Î¼Î¬Î´Î±Ï (Ctrl+N)"
+
+#: data/scripts/reorder_groups.py:658
+
+msgid "Create as a subgroup inside"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± ÏÏ ÏÏÎ¿Î¿Î¼Î¬Î´Î± ÎµÎ½ÏÏÏ"
+
+#: data/scripts/timonde_settings.py:656
+
+msgid "DETECTED ENVIRONMENT (READ ONLY)"
+msgstr "ΕΝΤΟΠΙΣΜΕΝΟ ΠΕΡΙΒΑΛΛΟΝ (ΜΟΝΟ για ανάγνωση)"
+
+#: src/timezone.rs:521
+
+msgid "Daytime"
+msgstr "Την ημέρα"
+
+#: data/scripts/reorder_groups.py:106 data/scripts/reorder_groups.py:1147
+
+msgid "Dead links only"
+msgstr "Μόνο νεκροί σύνδεσμοι"
+
+#: data/scripts/edit_station.py:576 data/scripts/reorder_groups.py:246
+
+#: src/i18n.rs:230 src/i18n.rs:236
+
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: data/scripts/reorder_groups.py:588
+
+msgid "Delete group and stations"
+msgstr "ÎÎ¹Î±Î³ÏÎ±ÏÎ® Î¿Î¼Î¬Î´Î±Ï ÎºÎ±Î¹ ÏÏÎ±Î¸Î¼ÏÎ½"
+
+#: data/scripts/reorder_groups.py:246
+
+msgid "Delete selected item or group (Del)"
+msgstr "Delete selected item or group (Del)"
+
+#: data/scripts/edit_station.py:303 data/scripts/reorder_groups.py:571
+
+msgid "Delete this station"
+msgstr "Διαγράψτε αυτό το ραδιόφωνο"
+
+#: data/scripts/edit_station.py:572
+
+msgid "Delete « {} » from favorites?"
+msgstr "Διαγραφή « {} » από τα αγαπημένα;"
+
+#: data/scripts/reorder_groups.py:803
+
+msgid "Deleted:"
+msgstr "ÎÎ¹Î±Î³ÏÎ¬ÏÎ·ÎºÎµ:"
+
+#: data/scripts/timonde_settings.py:676
+
+msgid "Desktop environment & Tray"
+msgstr "Περιβάλλον επιφάνειας εργασίας & δίσκος"
+
+#: data/scripts/reorder_groups.py:169
+
+msgid "Details / Status"
+msgstr "ÎÎµÏÏÎ¿Î¼Î­ÏÎµÎ¹ÎµÏ / ÎÎ±ÏÎ¬ÏÏÎ±ÏÎ·"
+
+#: data/scripts/browse_bouquets.py:525
+
+msgid "Discover & Import stations (TiMonde)"
+msgstr "Ανακαλύψτε & Εισαγάγετε ραδιοφωνικούς σταθμούς (TiMonde)"
+
+#: data/scripts/timonde_settings.py:649
+
+msgid ""
+"Discreetly starts TiMonde in the background as soon as your graphical "
+"session opens."
+msgstr "Ξεκινά διακριτικά το TiMonde στο παρασκήνιο αμέσως μόλις ανοίξει η συνεδρία γραφικών σας."
+
+#: data/scripts/reorder_groups.py:107
 
 msgid "Display offline radio streams only"
 msgstr ""
 "Εμφάνιση μόνο ραδιοφωνικών σταθμών των οποίων η ροή είναι εκτός σύνδεσης"
 
-msgid "Automatically update redirected streams to direct URL"
-msgstr "Αυτόματη ενημέρωση των ροών που ανακατευθύνονται στο άμεσο URL τους"
+#: data/scripts/reorder_groups.py:234 src/i18n.rs:229 src/i18n.rs:235
 
-msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
-"Αναζητήστε αυτόματα μια ενεργή ροή αντικατάστασης στο Radio-Browser για "
-"αυτόν τον νεκρό σύνδεσμο"
+#: src/tray/menu.rs:384
 
-msgid "Export all stations to CSV spreadsheet format"
-msgstr "Εξάγετε όλα τα ραδιόφωνά σας σε μορφή υπολογιστικού φύλλου CSV"
+msgid "Edit"
+msgstr "Επεξεργασία"
 
-msgid "Export my stations to CSV"
-msgstr "Εξαγωγή των ραδιοφώνων μου σε CSV"
+#: data/scripts/reorder_groups.py:234
 
-msgid "CSV files (*.csv)"
-msgstr "Αρχεία CSV (*.csv)"
+msgid "Edit selected name, URL or group (F2)"
+msgstr "ÎÏÎµÎ¾ÎµÏÎ³Î±ÏÎ¯Î± ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï Î¿Î½ÏÎ¼Î±ÏÎ¿Ï, URL Î® Î¿Î¼Î¬Î´Î±Ï (F2)"
 
-msgid "All files (*.*)"
-msgstr "Όλα τα αρχεία (*.*)"
+#: data/scripts/edit_station.py:74
 
-msgid "Export"
-msgstr "Εξαγωγή"
-
-msgid "Export successful!"
-msgstr "Επιτυχής εξαγωγή!"
-
-msgid "Error during CSV export:"
-msgstr "Σφάλμα κατά την εξαγωγή CSV:"
-
-msgid "station(s) saved to:"
-msgstr "ραδιόφωνο (α) ηχογραφημένο(α) σε:"
-
-msgid "Start automatically at login"
-msgstr "Start automatically at login"
-
-msgid "Organize groups and stations (TiMonde)"
-msgstr "Organize groups and stations (TiMonde)"
-
-msgid "Back to main group list (Esc)"
-msgstr "Back to main group list (Esc)"
-
-msgid "Sort stations in this group (Enter or double-click)"
-msgstr "Sort stations in this group (Enter or double-click)"
-
-msgid "Create a new group of radio stations (Ctrl+N)"
-msgstr "Create a new group of radio stations (Ctrl+N)"
-
-msgid "Move selection to another group (Ctrl+M)"
-msgstr "Move selection to another group (Ctrl+M)"
-
-msgid "Move selected item to the top"
-msgstr "Move selected item to the top"
-
-msgid "Move up one rank"
-msgstr "Move up one rank"
-
-msgid "Move down one rank"
-msgstr "Move down one rank"
-
-msgid "Add a new station to this group"
-msgstr "Add a new station to this group"
-
-msgid "Insert a separator or header in this group"
-msgstr "Insert a separator or header in this group"
-
-msgid "Sort this list alphabetically"
-msgstr "Sort this list alphabetically"
-
-msgid "Edit selected name, URL or header (F2)"
-msgstr "Edit selected name, URL or header (F2)"
-
-msgid "Delete selected item or group (Del)"
-msgstr "Delete selected item or group (Del)"
-
-msgid "Transfer..."
-msgstr "Transfer..."
-
-msgid "Transfer the content of this group to another group (Ctrl+M)"
-msgstr "Transfer the content of this group to another group (Ctrl+M)"
-
-msgid "<b>Radio groups</b>"
-msgstr "<b>Radio groups</b>"
-
-msgid "— Separator —"
-msgstr "— Separator —"
-
-msgid "radio"
-msgstr "radio"
-
-msgid "radios"
-msgstr "radios"
-
-msgid "sep."
-msgstr "sep."
-
-msgid "dead link"
-msgstr "dead link"
-
-msgid "dead links"
-msgstr "dead links"
-
-msgid "redir."
-msgstr "redir."
-
-msgid "[OK] All online"
-msgstr "[OK] All online"
-
-msgid "Move selected stations to another group (Ctrl+M)"
-msgstr "Move selected stations to another group (Ctrl+M)"
-
-msgid "Create a new group and move selected stations there (Ctrl+N)"
-msgstr "Create a new group and move selected stations there (Ctrl+N)"
-
-msgid "Stations in group:"
-msgstr "Stations in group:"
-
-msgid "Header"
-msgstr "Header"
-
-msgid "[OK] Live"
-msgstr "[OK] Live"
-
-msgid "[!] Dead link"
-msgstr "[!] Dead link"
-
-msgid "[~] Redirected"
-msgstr "[~] Redirected"
-
-msgid "[?] Geo-restricted"
-msgstr "[?] Geo-restricted"
-
-msgid "Audit completed:"
-msgstr "Audit completed:"
-
-msgid "online"
-msgstr "online"
-
-msgid "broken"
-msgstr "broken"
-
-msgid "redirected"
-msgstr "redirected"
-
-msgid "No stations to check."
-msgstr "No stations to check."
-
-msgid "Checking your radio stations"
-msgstr "Checking your radio stations"
-
-msgid "Testing live radio streams..."
-msgstr "Testing live radio streams..."
-
-msgid "stations checked..."
-msgstr "stations checked..."
-
-msgid "checked:"
-msgstr "checked:"
-
-msgid "Please select a station to repair."
-msgstr "Please select a station to repair."
-
-msgid "This item is a separator."
-msgstr "This item is a separator."
-
-msgid "Station deleted"
-msgstr "Station deleted"
-
-msgid "Settings..."
-msgstr "Ρυθμίσεις..."
-
-# --- Mises à jour TiMonde ---
-msgid "(Metropolitan or Overseas)"
-msgstr "(Metropolitan or Overseas)"
-
-msgid "(Single inferred timezone)"
-msgstr "(Single inferred timezone)"
-
-msgid "(Timezone not defined)"
-msgstr "(Timezone not defined)"
-
-msgid "(Unknown)"
-msgstr "(Unknown)"
-
-msgid "<b>Country:</b>"
-msgstr "<b>Country:</b>"
-
-msgid "<b>Fichier exemple :</b>"
-msgstr "<b>Sample file:</b>"
-
-msgid ""
-"Accédez à plus de 40 000 stations en ligne classées par pays, genre ou mots-"
-"clés."
-msgstr ""
-"Access over 40,000 online stations sorted by country, genre or keywords."
-
-msgid "Ajouter une radio (TiMonde)"
-msgstr "Προσθήκη ραδιοφώνου (TiMonde)"
-
-msgid "Ajouter une radio manuellement"
-msgstr "Add station manually"
-
-msgid "Ajouter à mes radios"
-msgstr "Προσθήκη στα ραδιόφωνα μου"
-
-msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Δεν προστέθηκαν νέα ραδιόφωνα (ήδη υπάρχουν)."
-
-msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "DAB+ Μπουκέτα & Επίσημες Επιλογές"
-
-msgid "Bouquets DAB+ vérifiés"
-msgstr "Verified DAB+ Bouquets"
-
-msgid ""
-"Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, "
-"GNOME, KDE, MATE)."
-msgstr ""
-"Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, "
-"GNOME, KDE, MATE)."
-
-msgid "Conserver dans mes favoris"
-msgstr "Αποθήκευση στα αγαπημένα μου"
-
-msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Κρατήστε το ραδιόφωνο στα αγαπημένα (TiMonde)"
-
-msgid ""
-"Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans "
-"~/.config/timonde/examples/."
-msgstr ""
-"Browse the 17 thematic selections or drop your own files into ~/.config/"
-"timonde/examples/."
-
-msgid "Contents"
-msgstr "Contents"
-
-msgid "Details"
-msgstr "Details"
-
-msgid "Dossier ouvert :"
-msgstr "Άνοιγμα αρχείου:"
-
-msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Ανακαλύψτε και εισαγάγετε ραδιοφωνικούς σταθμούς (TiMonde)"
-
-msgid "Démarrage automatique"
-msgstr "Autostart"
-
-msgid ""
-"Démarre discrètement TiMonde en arrière-plan dès l'ouverture de votre "
-"session graphique."
-msgstr ""
-"Launches TiMonde discreetly in the background when your graphical session "
-"starts."
-
-msgid ""
-"Détection automatique selon votre système. 55 langues mondiales supportées "
-"avec drapeaux."
-msgstr ""
-"Automatic detection based on your system. 55 world languages supported."
-
-msgid "Enregistrer"
-msgstr "Αποθήκευση"
-
-msgid "Erreur :"
-msgstr "Error:"
-
-msgid "Erreur exécution :"
-msgstr "Σφάλμα εκτέλεσης:"
-
-msgid "Erreur import JSON :"
-msgstr "Σφάλμα εισαγωγής JSON:"
-
-msgid "Erreur lors de la modification de l'autostart."
-msgstr "Σφάλμα κατά την τροποποίηση της αυτόματης εκκίνησης."
-
-msgid "Explorer DAB+..."
-msgstr "Εξερευνήστε το DAB+..."
-
-msgid "Exportation CSV terminée."
-msgstr "Η εξαγωγή CSV ολοκληρώθηκε."
-
-msgid "Exporter en CSV..."
-msgstr "Export to CSV..."
-
-msgid ""
-"Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout en "
-"conservant bookmarks.xml comme référence."
-msgstr ""
-"Export or sync your radio stations with LibreOffice Calc or Excel while "
-"keeping bookmarks.xml as reference."
-
-msgid "Fermer"
-msgstr "Κλείσιμο"
-
-msgid "Fichiers exemples"
-msgstr "Sample Files"
-
-msgid "Fichiers exemples thématiques"
-msgstr "Thematic Sample Files"
-
-msgid "Group name"
-msgstr "Group name"
-
-msgid "Générez une feuille de calcul CSV de vos radios"
-msgstr "Generate a CSV spreadsheet of your radio stations"
-
-msgid "Gérer les radios..."
-msgstr "Manage stations..."
-
-msgid "Importer depuis CSV..."
-msgstr "Import from CSV..."
-
-msgid "Importer des fichiers personnels"
-msgstr "Εισαγωγή προσωπικών αρχείων"
-
-msgid "Importer fichier..."
-msgstr "Εισαγωγή αρχείου..."
-
-msgid "Importer mes fichiers"
-msgstr "Import My Files"
-
-msgid ""
-"Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV, "
-"JSON, M3U ou PLS."
-msgstr ""
-"Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U "
-"or PLS formats."
-
-msgid "Impossible d ouvrir le dossier :"
-msgstr "Δεν είναι δυνατό το άνοιγμα του φακέλου:"
-
-msgid ""
-"Insérez des séparateurs (---) ou des intertitres de section dans vos groupes "
-"pour aérer votre menu."
-msgstr ""
-"Εισαγάγετε διαχωριστικά (---) ή επικεφαλίδες ενοτήτων στις ομάδες σας για να "
-"αερίζετε το μενού σας."
-
-msgid "Intégration du bureau & Plateau"
-msgstr "Desktop Integration & Tray"
-
-msgid "Lancement automatique au démarrage"
-msgstr "Launch automatically at startup"
-
-msgid "Lancer l'audit..."
-msgstr "Start audit..."
-
-msgid "Langue :"
-msgstr "Language:"
-
-msgid "Langue et Région"
-msgstr "Language & Region"
-
-msgid "Modifications prises en compte."
-msgstr "Αλλαγές που λαμβάνονται υπόψη."
-
-msgid "Modifier la radio (TiMonde)"
+msgid "Edit station (TiMonde)"
 msgstr "Επεξεργασία του ραδιοφώνου (TiMonde)"
 
-msgid "Name / Header"
-msgstr "Name / Header"
+#: data/scripts/reorder_groups.py:555
 
-msgid "Nouvelle radio..."
-msgstr "New station..."
+msgid "Edit station..."
+msgstr "Προσθήκη σταθμού..."
 
-msgid "Organiser les groupes et les radios"
-msgstr "Organize groups and stations"
+#: data/scripts/timonde_common.py:132
 
-msgid "Outil introuvable :"
-msgstr "Tool not found:"
+msgid "Empty URL"
+msgstr "Leere URL"
 
-msgid "Ouvrir dossier"
-msgstr "Άνοιγμα φακέλου"
+#: data/scripts/timonde_common.py:1301 data/scripts/timonde_common.py:1315
 
-msgid "Paramètres & Contrôle TiMonde"
-msgstr "TiMonde Settings & Control"
+msgid "Empty stream URL"
+msgstr "Κενή διεύθυνση URL ροής"
 
-msgid "Paramètres TiMonde"
-msgstr "TiMonde Settings"
+#: data/scripts/timonde_settings.py:709
 
-msgid ""
-"Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter votre "
-"bureau."
-msgstr ""
-"Browse 146 verified national and regional bouquets without leaving your "
-"desktop."
+msgid "Enable Left-Click"
+msgstr "Linksklick aktivieren"
 
-msgid "Parcourir..."
-msgstr "Περιήγηση..."
+#: data/scripts/timonde_common.py:1277
 
-msgid "Passerelle Tableur (CSV)"
-msgstr "Spreadsheet Gateway (CSV)"
+msgid "End of stream"
+msgstr "Τέλος ροής"
 
-msgid "Recherche Radio-Browser"
-msgstr "Radio-Browser Search"
+#: data/scripts/browse_bouquets.py:950
 
-msgid "Recherche mondiale Radio-Browser"
-msgstr "Πρόγραμμα περιήγησης ραδιοφώνου παγκόσμιας αναζήτησης"
+msgid "Enter a keyword or click Search to browse the directory."
+msgstr "Εισαγάγετε μια λέξη-κλειδί ή κάντε κλικ στην Αναζήτηση για να περιηγηθείτε στον κατάλογο."
 
-msgid "Rechercher..."
-msgstr "Αναζήτηση..."
+#: src/tray/mod.rs:155
 
-msgid "Restaurer"
-msgstr "Restore"
+msgid "Ephemeral radio (not saved)."
+msgstr "FlÃ¼chtiges Radio (nicht gespeichert)."
 
-msgid "Restaurer les fichiers exemples"
-msgstr "Restore sample files"
+#: data/scripts/reorder_groups.py:1312
 
-msgid "Réimportez ou synchronisez des radios modifiées depuis un tableur CSV"
-msgstr "Re-import or sync modified radio stations from a CSV spreadsheet"
+msgid "Error during backup:"
+msgstr "Σφάλμα κατά τη δημιουργία αντιγράφων ασφαλείας:"
 
-msgid ""
-"Rétablit les 17 exemples thématiques par défaut dans votre dossier personnel "
-"s'ils ont été supprimés."
-msgstr ""
-"Restores the 17 default thematic samples in your personal folder if deleted."
+#: data/scripts/timonde_settings.py:753
 
-msgid ""
-"Saisir directement un nom, une URL de flux (AAC, MP3, HLS), un pays et un "
-"fuseau horaire."
-msgstr ""
-"Directly enter a name, stream URL (AAC, MP3, HLS), country and timezone."
+msgid "Error modifying autostart."
+msgstr "Σφάλμα κατά την τροποποίηση της αυτόματης εκκίνησης."
 
-msgid "Signets actuels (bookmarks.xml)"
-msgstr "Current bookmarks (bookmarks.xml)"
+#: data/scripts/timonde_common.py:195
 
-msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Οι σελιδοδείκτες αναδιοργανώθηκαν και αποθηκεύτηκαν με επιτυχία!"
+msgid "Error {code}"
+msgstr "Fehler {code}"
 
-msgid "Supprimer"
-msgstr "Διαγραφή"
+#: data/scripts/gnome_tray_helper.py:217
 
-msgid ""
-"Teste en direct la disponibilité de tous vos flux, détecte les liens "
-"inactifs et applique les redirections."
-msgstr ""
-"Tests live availability of all your streams, detects broken links and "
-"applies redirects."
+msgid "Error:"
+msgstr "Σφάλμα:"
 
-msgid ""
-"Triez, renommez, supprimez et déplacez vos stations. Créez des dossiers et "
-"des sous-groupes (ex: Musique/Jazz)."
-msgstr ""
-"Sort, rename, delete and move your stations. Create folders and sub-groups "
-"(e.g. Music/Jazz)."
+#: src/timezone.rs:521
 
-msgid "Vérificateur de flux & Liens morts"
-msgstr "Stream health check & Dead links"
+msgid "Evening"
+msgstr "Απόγευμα"
 
-msgid "activé"
-msgstr "enabled"
+#: data/scripts/browse_bouquets.py:652
 
-msgid "ajoutée avec succès à vos signets !"
-msgstr "successfully added to your bookmarks!"
-
-msgid "désactivé"
-msgstr "disabled"
-
-msgid "fichiers exemples restaurés dans"
-msgstr "δείγματα αρχείων που αποκαταστάθηκαν στο"
-
-msgid "radio(s) ajoutée(s) à vos signets !"
-msgstr "station(s) added to your bookmarks!"
-
-msgid "↕️ Organisation"
-msgstr "↕️ Οργάνωση"
-
-msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Συμβουλή οπτικής διάταξης"
-
-msgid "💾 Données & Fichiers"
-msgstr "💾 Δεδομένα & Αρχεία"
-
-msgid "📻 Bibliothèque"
-msgstr "📻 Βιβλιοθήκη"
-
-msgid "🖥️ Général"
-msgstr "🖥️ Στρατηγός"
-
-msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
-msgstr "<i>Επιλέξτε ένα αρχείο ή ένα παράδειγμα παραπάνω.</i>"
-
-msgid "Actualiser la liste des exemples"
-msgstr "Ανανέωση λίστας παραδειγμάτων"
-
-msgid "Aide sur les groupes et sous-groupes"
-msgstr "Βοήθεια με ομάδες και υποομάδες"
-
-msgid "Ajouter"
-msgstr "Προσθέτω"
-
-msgid "Annuler"
-msgstr "Ματαίωση"
-
-msgid "Arrêter"
-msgstr "Στάση"
-
-msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
-msgstr "Δεν βρέθηκαν αρχεία bookmarks.xml για αποθήκευση."
-
-msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
-msgstr ""
-"Δεν προστέθηκαν νέοι ραδιοφωνικοί σταθμοί (υπάρχουν ήδη στους σελιδοδείκτες "
-"σας)."
-
-msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
-msgstr ""
-"Δεν βρέθηκαν ραδιοφωνικοί σταθμοί στο Radio-Browser για αυτά τα κριτήρια."
-
-msgid "Bouquet National (Grandes stations)"
-msgstr "National Bouquet (Κύρια θέρετρα)"
-
-msgid "Bouquets par pays"
-msgstr "Μπουκέτα ανά χώρα"
-
-msgid "Bureau graphique & Plateau"
-msgstr "Γραφικό γραφείο & δίσκος"
-
-msgid "Cette station n'a aucune URL de flux audio."
-msgstr "Αυτός ο σταθμός δεν έχει URL ροής ήχου."
-
-msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
-msgstr "Ανεβάστε ένα αρχείο XML, CSV, JSON, M3U ή PLS"
-
-msgid "Charger un fichier..."
-msgstr "Φόρτωση αρχείου..."
-
-msgid "Choisir parmi les groupes existants"
-msgstr "Επιλέξτε από τις υπάρχουσες ομάδες"
-
-msgid "Choisir un fichier de radios"
-msgstr "Επιλέξτε ένα αρχείο ραδιοφώνου"
-
-msgid "Collections & Fichiers"
-msgstr "Συλλογές & Αρχεία"
-
-msgid "Conserver l'organisation en dossiers"
-msgstr "Διατηρήστε την οργάνωση στο αρχείο"
-
-msgid ""
-"Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux "
-"horaires)"
-msgstr ""
-"Δημιουργήστε ένα πλήρες αντίγραφο ασφαλείας της συλλογής σας (με φακέλους "
-"και ζώνες ώρας)"
-
-msgid "Disponibilité"
-msgstr "Διαθεσιμότητα"
-
-msgid "Disponibilité en direct"
-msgstr "Ζωντανή διαθεσιμότητα"
-
-msgid "Dossier / Groupe"
-msgstr "Φάκελος / Ομάδα"
-
-msgid "Dossier des exemples"
-msgstr "Φάκελος παραδειγμάτων"
-
-msgid "Dossier des signets"
-msgstr "Φάκελος σελιδοδεικτών"
-
-msgid ""
-"Détection automatique selon les paramètres régionaux de votre environnement "
-"Linux."
-msgstr ""
-"Αυτόματος εντοπισμός σύμφωνα με τις τοπικές ρυθμίσεις του περιβάλλοντος "
-"Linux σας."
-
-msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
-msgstr "ΑΝΙΧΝΕΥΤΗΚΕ ΠΕΡΙΒΑΛΛΟΝ (ΜΟΝΟ για ανάγνωση)"
-
-msgid "Effacer le champ"
-msgstr "Καθαρό πεδίο"
-
-msgid "Effacer le filtre langue"
-msgstr "Διαγραφή φίλτρου γλώσσας"
-
-msgid "Effacer le filtre pays"
-msgstr "Διαγραφή φίλτρου χώρας"
-
-msgid "Environnement GNOME Shell détecté"
-msgstr "Εντοπίστηκε περιβάλλον GNOME Shell"
-
-msgid "Erreur lors de la sauvegarde :"
-msgstr "Σφάλμα κατά την αποθήκευση:"
-
-msgid "Ex: /France/Jazz ou / pour racine"
+msgid "Ex: /France/Jazz or / for root"
 msgstr "Για παράδειγμα: /Γαλλία/Τζαζ ή / για root"
 
-msgid "Exemples thématiques :"
-msgstr "Θεματικά παραδείγματα:"
+#: data/scripts/browse_bouquets.py:1169
 
-msgid "Exporter en tableau (CSV)..."
-msgstr "Εξαγωγή σε πίνακα (CSV)..."
+msgid "Examples folder"
+msgstr "Φάκελος παραδειγμάτων"
 
-msgid "Fichier :"
-msgstr "Αρχείο :"
+#: data/scripts/reorder_groups.py:92
 
-msgid "Fichier externe :"
-msgstr "Εξωτερικό αρχείο:"
+msgid "Expand all"
+msgstr "ÎÎ½Î¬ÏÏÏÎ¾Î· ÏÎ»ÏÎ½"
 
-msgid "Fichiers XML (*.xml)"
-msgstr "Αρχεία XML (*.xml)"
+#: data/scripts/reorder_groups.py:92
 
-msgid "Filtrer par pays :"
-msgstr "Φιλτράρισμα ανά χώρα:"
+msgid "Expand all groups and subgroups"
+msgstr "ÎÎ½Î¬ÏÏÏÎ¾Î· ÏÎ»ÏÎ½ ÏÏÎ½ Î¿Î¼Î¬Î´ÏÎ½ ÎºÎ±Î¹ ÏÏÎ¿Î¿Î¼Î¬Î´ÏÎ½"
 
-msgid "Format & Débit"
-msgstr "Μορφή & Ρυθμός Bit"
+#: data/scripts/browse_bouquets.py:1087
 
-msgid "Genre / Tags"
-msgstr "Φύλο / Ετικέτες"
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Εξερεύνηση σταθμών αυτής της χώρας στο Radio-Browser"
 
-msgid "Genre / Thématique"
-msgstr "Είδος / Θέμα"
-
-msgid "Genre :"
-msgstr "Φύλο:"
-
-msgid "Gestionnaire de paquets non reconnu."
-msgstr "Μη αναγνωρισμένος διαχειριστής πακέτων."
-
-msgid "Groupe :"
-msgstr "Μπάντα:"
-
-msgid "Générer une liste plate pour tableur Calc ou Excel"
-msgstr "Δημιουργήστε μια επίπεδη λίστα για υπολογιστικό φύλλο Calc ή Excel"
-
-msgid "Importer"
-msgstr "Εισαγωγή"
-
-msgid "Importer & Exporter"
-msgstr "Εισαγωγή & Εξαγωγή"
-
-msgid "Importer dans mes favoris"
-msgstr "Εισαγωγή στα αγαπημένα μου"
-
-msgid "Installation en cours (veuillez valider l'invite système)..."
-msgstr "Η εγκατάσταση σε εξέλιξη (παρακαλώ επικυρώστε το μήνυμα συστήματος)..."
-
-msgid "Installer l'intégration GNOME"
-msgstr "Εγκαταστήστε την ενοποίηση GNOME"
-
-msgid "Intégration GNOME requise"
-msgstr "Απαιτείται ενσωμάτωση GNOME"
-
-msgid "Intégration dans la barre supérieure GNOME"
-msgstr "Ενσωμάτωση στην επάνω γραμμή του GNOME"
-
-msgid ""
-"Intégration native dans la zone de notification via StatusNotifierItem / "
-"XEmbed."
-msgstr ""
-"Εγγενής ενσωμάτωση στην περιοχή ειδοποιήσεων μέσω StatusNotifierItem / "
-"XEmbed."
-
-msgid "L'exportation CSV est accessible depuis les paramètres."
-msgstr "Η εξαγωγή CSV είναι προσβάσιμη από τις ρυθμίσεις."
-
-msgid ""
-"L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre "
-"supérieure sous GNOME."
-msgstr ""
-"Η επέκταση AppIndicator απαιτείται για την εμφάνιση του εικονιδίου στην "
-"επάνω γραμμή του GNOME."
-
-msgid "L'installation a été annulée ou a échoué."
-msgstr "Η εγκατάσταση ακυρώθηκε ή απέτυχε."
-
-msgid "La sauvegarde XML est accessible depuis les paramètres."
-msgstr "Το αντίγραφο ασφαλείας XML είναι προσβάσιμο από τις ρυθμίσεις."
-
-msgid "Langue du système"
-msgstr "Γλώσσα συστήματος"
-
-msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
-msgstr "Τα διαχωριστικά και οι μεσότιτλοι δεν μπορούν να ακουστούν."
-
-msgid "Mes Radios"
-msgstr "Τα ραδιόφωνα μου"
-
-msgid "Mot-clé :"
-msgstr "Λέξη-κλειδί:"
-
-msgid "Nouveaux uniquement"
-msgstr "Μόνο καινούργιο"
-
-msgid "OPTIONS DE SESSION"
-msgstr "ΕΠΙΛΟΓΕΣ ΣΥΝΕΔΡΙΑΣ"
-
-msgid "Organisation des groupes et sous-groupes (Convention Linux)"
-msgstr "Οργάνωση ομάδων και υποομάδων (Σύμβαση Linux)"
-
-msgid "Ouvrez d'abord un groupe pour écouter ses radios."
-msgstr "Πρώτα ανοίξτε μια ομάδα για να ακούσετε τα ραδιόφωνά της."
-
-msgid "Ouvrir"
-msgstr "Ανοιχτό"
-
-msgid "Ouvrir ~/.config/timonde"
-msgstr "Ανοίξτε το ~/.config/timonde"
-
-msgid "Ouvrir ~/.config/timonde/examples"
-msgstr "Ανοίξτε το ~/.config/timonde/examples"
-
-msgid "Pays"
-msgstr "Χώρα"
-
-msgid "Pays :"
-msgstr "Χώρα :"
-
-msgid ""
-"Pour afficher discrètement l'icône de lecture dans la barre supérieure de "
-"votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire."
-"<br/><br/>Souhaitez-vous l'installer maintenant ?"
-msgstr ""
-"Για να εμφανίσετε διακριτικά το εικονίδιο αναπαραγωγής στην επάνω γραμμή της "
-"επιφάνειας εργασίας GNOME, απαιτείται η επέκταση συστήματος <b>AppIndicator</"
-"b>.<br/><br/>Θέλετε να την εγκαταστήσετε τώρα;"
-
-msgid "Préférences"
-msgstr "Προτιμήσεις"
-
-msgid ""
-"Préserver les sous-groupes définis dans le fichier au lieu de tout importer "
-"dans un groupe unique."
-msgstr ""
-"Διατηρήστε τις υποομάδες που ορίζονται στο αρχείο αντί να εισάγετε τα πάντα "
-"σε μια ενιαία ομάδα."
-
-msgid "Quitter"
-msgstr "Να φύγω"
-
-msgid "Recharger"
-msgstr "Γεμίζω πάλι"
-
-msgid "Recharger le fichier actuellement affiché"
-msgstr "Επαναφόρτωση του αρχείου που εμφανίζεται αυτήν τη στιγμή"
-
-msgid ""
-"Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> "
-"(+45 000 stations)."
-msgstr ""
-"Παγκόσμια αναζήτηση στον δωρεάν και συνεργατικό κατάλογο <b>Radio-Browser</"
-"b> (+45.000 σταθμοί)."
-
-msgid "Recherche sur Radio-Browser en cours..."
-msgstr "Αναζήτηση στο Radio-Browser σε εξέλιξη..."
-
-msgid "Rechercher"
-msgstr "Για έρευνα"
-
-msgid "Rechercher en ligne"
-msgstr "Αναζήτηση στο διαδίκτυο"
-
-msgid "Remplacer le lien sélectionné par un flux officiel actif"
-msgstr "Αντικαταστήστε τον επιλεγμένο σύνδεσμο με μια ενεργή επίσημη ροή"
-
-msgid "Restaurer exemples"
-msgstr "Επαναφορά παραδειγμάτων"
-
-msgid "Régions & Locales :"
-msgstr "Περιοχές και ντόπιοι:"
-
-msgid "Réparer le flux..."
-msgstr "Διορθώστε τη ροή..."
-
-msgid "Rétablir les 19 exemples d'origine"
-msgstr "Επαναφέρετε τα αρχικά 19 παραδείγματα"
-
-msgid ""
-"Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
-msgstr ""
-"Εισαγάγετε μια λέξη-κλειδί ή κάντε κλικ στην Αναζήτηση για να εξερευνήσετε "
-"τον κατάλογο."
-
-msgid "Sauvegarde réussie !"
-msgstr "Επιτυχής δημιουργία αντιγράφων ασφαλείας!"
-
-msgid "Sauvegarder mes radios (XML)..."
-msgstr "Save my radios (XML)..."
-
-msgid "Sauvegarder mes signets (XML)"
-msgstr "Αποθήκευση των σελιδοδεικτών μου (XML)"
-
-msgid "Signets et radios enregistrés avec succès !"
-msgstr "Οι σελιδοδείκτες και τα ραδιόφωνα αποθηκεύτηκαν με επιτυχία!"
-
-msgid "Station"
-msgstr "Σταθμός"
-
-msgid "Statut Favoris"
-msgstr "Κατάσταση αγαπημένων"
-
-msgid ""
-"Sélection officielle et vérifiée parmi 146 pays et régions (bouquets "
-"numériques DAB+ et grandes stations nationales)."
-msgstr ""
-"Επίσημη και επαληθευμένη επιλογή από 146 χώρες και περιοχές (ψηφιακά "
-"μπουκέτα DAB+ και μεγάλοι εθνικοί σταθμοί)."
-
-msgid "Sélectionnez une radio pour l'écouter."
-msgstr "Επιλέξτε ένα ραδιόφωνο για να το ακούσετε."
-
-msgid "Sélectionnez une station dans le tableau pour l'écouter."
-msgstr "Επιλέξτε έναν σταθμό από τον πίνακα για να τον ακούσετε."
-
-msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
-msgstr "Πληκτρολογήστε μια χώρα (π.χ.: Γαλλία, Γερμανία, Καναδάς...)"
-
-msgid "Tester"
-msgstr "Δοκιμή"
-
-msgid "Tester les flux"
-msgstr "Δοκιμαστικές ροές"
-
-msgid "TiMonde — Intégration Bureau GNOME"
-msgstr "TiMonde — Ενσωμάτωση επιφάνειας εργασίας GNOME"
-
-msgid "Tous les fichiers (*.*)"
-msgstr "Όλα τα αρχεία (*.*)"
-
-msgid "Tous les pays (mondial)"
-msgstr "Όλες οι χώρες (παγκόσμια)"
-
-msgid "Tout cocher"
-msgstr "Ελέγξτε όλα"
-
-msgid "Tout décocher"
-msgstr "Καταργήστε την επιλογή όλων"
-
-msgid "Toutes les langues"
-msgstr "Όλες οι γλώσσες"
-
-msgid "URL du flux"
-msgstr "URL ροής"
-
-msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
-msgstr "Επιλέξτε ένα ραδιόφωνο από τη λίστα για να το ακούσετε."
-
-msgid "Vos signets complets ont été enregistrés dans :"
-msgstr "Οι πλήρεις σελιδοδείκτες σας έχουν αποθηκευτεί σε:"
-
-msgid "Votes"
-msgstr "Ψήφοι"
-
-msgid "Vérifier en direct la disponibilité des liens"
-msgstr "Ελέγξτε ζωντανά τη διαθεσιμότητα του συνδέσμου"
-
-msgid "Vérifier la disponibilité en direct des radios"
-msgstr "Ελέγξτε τη διαθεσιμότητα ζωντανού ραδιοφώνου"
-
-msgid "Vérifier la disponibilité en direct des radios trouvées"
-msgstr "Ελέγξτε τη ζωντανή διαθεσιμότητα των ραδιοφώνων που βρέθηκαν"
-
-msgid "Vérifier la validité du lien et écouter un aperçu du flux"
-msgstr "Ελέγξτε την εγκυρότητα του συνδέσμου και κάντε προεπισκόπηση της ροής"
-
-msgid "ajoutée avec succès !"
-msgstr "προστέθηκε με επιτυχία!"
-
-msgid "fichiers exemples restaurés."
-msgstr "αποκαταστάθηκαν δείγματα αρχείων."
-
-msgid "nouvelle(s) radio(s) importée(s) !"
-msgstr "νέο(α) ραδιόφωνο(α) εισαγωγής!"
-
-msgid "Écouter"
-msgstr "Ακούω"
-
-msgid "Écouter la radio sélectionnée"
-msgstr "Ακούστε επιλεγμένο ραδιόφωνο"
-
-msgid "Écouter ou tester la radio sélectionnée"
-msgstr "Ακούστε ή δοκιμάστε το επιλεγμένο ραδιόφωνο"
-
-msgid "is not responding. Searching for a backup stream..."
-msgstr "δεν ανταποκρίνεται. Αναζήτηση εφεδρικής ροής..."
-
-msgid "Stream repaired and saved for"
-msgstr "Η ροή επιδιορθώθηκε και αποθηκεύτηκε για"
-
-msgid "is currently unavailable"
-msgstr "δεν είναι διαθέσιμος αυτή τη στιγμή"
-
-msgid "Unable to find a station in the bouquets catalog."
-msgstr "Δεν ήταν δυνατή η εύρεση σταθμού στον κατάλογο μπουκέτων."
-
-msgid "No radio is currently playing."
-msgstr "Δεν αναπαράγεται ραδιόφωνο αυτή τη στιγμή."
-
-msgid "Selection"
-msgstr "Επιλογή"
-
-msgid "Save error"
-msgstr "Σφάλμα αποθήκευσης"
-
-msgid "Saved!"
-msgstr "Αποθηκεύτηκε!"
-
-msgid "saved in your favorites!"
-msgstr "αποθηκεύτηκε στα αγαπημένα σας!"
-
-msgid "Station added but reload error"
-msgstr "Ο σταθμός προστέθηκε αλλά παρουσιάστηκε σφάλμα επαναφόρτωσης"
-
-msgid "Sleep timer activated"
-msgstr "Ο χρονοδιακόπτης ύπνου ενεργοποιήθηκε"
-
-msgid "stopping in"
-msgstr "τερματισμός σε"
-
-msgid "Sleep timer: stopping radio."
-msgstr "Χρονοδιακόπτης ύπνου: διακοπή ραδιοφώνου."
-
-msgid "Sleep timer cancelled."
-msgstr "Ο χρονοδιακόπτης ύπνου ακυρώθηκε."
-
-msgid "Track copied to clipboard:"
-msgstr "Ο τίτλος κομματιού αντιγράφηκε στο πρόχειρο:"
-
-msgid "deleted from your favorites."
-msgstr "διαγράφηκε από τα αγαπημένα σας."
-
-msgid "updated successfully!"
-msgstr "ενημερώθηκε με επιτυχία!"
-
-msgid "Settings console not found"
-msgstr "Η κονσόλα ρυθμίσεων δεν βρέθηκε"
-
-msgid "Paused"
-msgstr "Σε παύση"
-
-msgid "Searching on Radio-Browser..."
-msgstr "Αναζήτηση στο Radio-Browser..."
-
-msgid "No stream found for this name. Modify the text above."
-msgstr "Δεν βρέθηκε ροή για αυτό το όνομα. Τροποποιήστε το παραπάνω κείμενο."
-
-msgid "{count} streams found. Select the desired stream and validate."
-msgstr "Βρέθηκαν {count} ροές. Επιλέξτε την επιθυμητή ροή και επιβεβαιώστε."
-
-msgid "No pre-loaded DAB+ bouquet for this country."
-msgstr "Δεν υπάρχει προφορτωμένο μπουκέτο DAB+ για αυτήν τη χώρα."
-
-msgid ""
-"You can explore and import stations for this territory directly from the "
-"global directory."
-msgstr ""
-"Μπορείτε να εξερευνήσετε και να εισαγάγετε σταθμούς για αυτήν την περιοχή "
-"απευθείας από τον παγκόσμιο κατάλογο."
+#: data/scripts/browse_bouquets.py:1628
 
 msgid "Explore stations from {country} on Radio-Browser ➔"
 msgstr "Εξερεύνηση σταθμών από {country} στο Radio-Browser ➔"
 
-msgid "this country"
-msgstr "αυτή η χώρα"
+#: data/scripts/reorder_groups.py:1228
+
+msgid "Export"
+msgstr "Εξαγωγή"
+
+#: data/scripts/reorder_groups.py:264
+
+msgid "Export all stations to CSV spreadsheet format"
+msgstr "Εξάγετε όλα τα ραδιόφωνά σας σε μορφή υπολογιστικού φύλλου CSV"
+
+#: data/scripts/reorder_groups.py:1254
+
+msgid "Export error:"
+msgstr "Î£ÏÎ¬Î»Î¼Î± ÎµÎ¾Î±Î³ÏÎ³Î®Ï:"
+
+#: data/scripts/reorder_groups.py:1225
+
+msgid "Export stations to CSV"
+msgstr "ÎÎ¾Î±Î³ÏÎ³Î® ÏÏÎ±Î¸Î¼ÏÎ½ ÏÎµ CSV"
+
+#: data/scripts/reorder_groups.py:264
+
+msgid "Export to CSV"
+msgstr "Εξαγωγή σε CSV"
+
+#: data/scripts/browse_bouquets.py:1195
+
+msgid "Export to spreadsheet (CSV)..."
+msgstr "Εξαγωγή σε υπολογιστικό φύλλο (CSV)..."
+
+#: data/scripts/browse_bouquets.py:1182
+
+msgid "External file:"
+msgstr "Εξωτερικό αρχείο:"
+
+#: data/scripts/timonde_common.py:1530
+
+msgid "Failed to add station"
+msgstr "ÎÏÎ¿ÏÏÏÎ¯Î± ÏÏÎ¿ÏÎ¸Î®ÎºÎ·Ï ÏÏÎ±Î¸Î¼Î¿Ï"
+
+#: data/scripts/timonde_settings.py:723
+
+msgid "Failed to enable Cinnamon unification."
+msgstr "Aktivierung der Cinnamon-Vereinheitlichung fehlgeschlagen."
+
+#: data/scripts/browse_bouquets.py:918 data/scripts/browse_bouquets.py:1066
+
+#: data/scripts/browse_bouquets.py:1252
+
+msgid "Favorite status"
+msgstr "Αγαπημένη κατάσταση"
+
+#: data/scripts/browse_bouquets.py:2056
+
+msgid "File:"
+msgstr "Αρχείο:"
+
+#: data/scripts/browse_bouquets.py:779
+
+msgid "Filter by country:"
+msgstr "Φιλτράρισμα ανά χώρα:"
+
+#: data/scripts/browse_bouquets.py:1235
+
+msgid "Folder / Group"
+msgstr "Φάκελος / Ομάδα"
+
+#: data/scripts/timonde_common.py:1642
+
+msgid "Format"
+msgstr "Format"
+
+#: data/scripts/browse_bouquets.py:906
+
+msgid "Format & Bitrate"
+msgstr "Μορφή & Ρυθμός Bit"
+
+#: data/scripts/gnome_tray_helper.py:150
+
+msgid "GNOME Shell environment detected"
+msgstr "Εντοπίστηκε περιβάλλον GNOME Shell"
+
+#: data/scripts/timonde_settings.py:693
+
+msgid "GNOME integration required"
+msgstr "Απαιτείται ενσωμάτωση GNOME"
+
+#: data/scripts/timonde_common.py:1319
+
+msgid "GStreamer not available"
+msgstr "Το GStreamer δεν είναι διαθέσιμο"
+
+#: data/scripts/browse_bouquets.py:1195
+
+msgid "Generate a flat list for Calc or Excel spreadsheet"
+msgstr "Δημιουργήστε μια επίπεδη λίστα για υπολογιστικό φύλλο Calc ή Excel"
+
+#: data/scripts/browse_bouquets.py:901
+
+msgid "Genre / Tags"
+msgstr "Φύλο / Ετικέτες"
+
+#: data/scripts/browse_bouquets.py:1053
+
+msgid "Genre / Topic"
+msgstr "Είδος / Θέμα"
+
+#: data/scripts/browse_bouquets.py:759
+
+msgid "Genre:"
+msgstr "Φύλο:"
+
+#: data/scripts/timonde_common.py:193
+
+msgid "Geoblocked (VPN)"
+msgstr "Geoblockiert (VPN)"
+
+#: data/scripts/browse_bouquets.py:735
+
+msgid ""
+"Global search on the free and open <b>Radio-Browser</b> directory (+45,000 "
+"stations)."
+msgstr "Παγκόσμια αναζήτηση στον δωρεάν και ανοιχτό κατάλογο <b>Radio-Browser</b> (+45.000 σταθμοί)."
+
+#: data/scripts/edit_station.py:168
+
+msgid "Group / Folder:"
+msgstr "Ομάδα / Φάκελος:"
+
+#: data/scripts/reorder_groups.py:677
+
+msgid "Group created:"
+msgstr "Î Î¿Î¼Î¬Î´Î± Î´Î·Î¼Î¹Î¿ÏÏÎ³Î®Î¸Î·ÎºÎµ:"
+
+#: data/scripts/reorder_groups.py:734
+
+msgid "Group renamed:"
+msgstr "Î Î¿Î¼Î¬Î´Î± Î¼ÎµÏÎ¿Î½Î¿Î¼Î¬ÏÏÎ·ÎºÎµ:"
+
+#: data/scripts/browse_bouquets.py:645
+
+msgid "Group:"
+msgstr "Ομάδα:"
+
+#: data/scripts/timonde_common.py:189
+
+msgid "HTTP Error {code}"
+msgstr "HTTP-Fehler {code}"
+
+#: data/scripts/browse_bouquets.py:702
+
+msgid "Help on groups and subgroups"
+msgstr "Βοήθεια σε ομάδες και υποομάδες"
+
+#: data/scripts/browse_bouquets.py:1039 data/scripts/browse_bouquets.py:1221
+
+msgid "Import"
+msgstr "Εισαγωγή"
+
+#: data/scripts/browse_bouquets.py:1328
+
+msgid "Import & Export"
+msgstr "Εισαγωγή & Εξαγωγή"
+
+#: data/scripts/browse_bouquets.py:717
+
+msgid "Import to my favorites"
+msgstr "Εισαγωγή στα αγαπημένα μου"
+
+#: src/tray/menu.rs:560
+
+msgid "In 15 minutes"
+msgstr "Σε 15 λεπτά"
+
+#: src/tray/menu.rs:567
+
+msgid "In 30 minutes"
+msgstr "Σε 30 λεπτά"
+
+#: src/tray/menu.rs:574
+
+msgid "In 45 minutes"
+msgstr "Σε 45 λεπτά"
+
+#: src/tray/menu.rs:581
+
+msgid "In 60 minutes (1h)"
+msgstr "Σε 60 λεπτά (1 ώρα)"
+
+#: data/scripts/reorder_groups.py:707
+
+msgid "Insert"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î®"
+
+#: data/scripts/reorder_groups.py:230
+
+msgid "Insert a separator or header"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î® Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï Î® ÎµÏÎ¹ÎºÎµÏÎ±Î»Î¯Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:705
+
+msgid "Insert separator"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î® Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï"
+
+#: data/scripts/gnome_tray_helper.py:179 data/scripts/timonde_settings.py:688
+
+msgid "Install GNOME integration"
+msgstr "Εγκαταστήστε την ενοποίηση GNOME"
+
+#: data/scripts/gnome_tray_helper.py:198
+
+msgid "Installation in progress (please confirm system prompt)..."
+msgstr "Η εγκατάσταση σε εξέλιξη (επιβεβαιώστε το μήνυμα συστήματος)..."
+
+#: data/scripts/gnome_tray_helper.py:213
+
+msgid "Installation was cancelled or failed."
+msgstr "Η εγκατάσταση ακυρώθηκε ή απέτυχε."
+
+#: data/scripts/gnome_tray_helper.py:145
+
+msgid "Integration in GNOME top bar"
+msgstr "Ενσωμάτωση στην επάνω γραμμή του GNOME"
+
+#: data/scripts/edit_station.py:71
+
+msgid "Keep in favorites"
+msgstr "Αποθήκευση στα αγαπημένα μου"
+
+#: data/scripts/browse_bouquets.py:749
+
+msgid "Keyword:"
+msgstr "Λέξη-κλειδί:"
+
+#: data/scripts/browse_bouquets.py:819 data/scripts/browse_bouquets.py:1023
+
+msgid "Language:"
+msgstr "Γλώσσα:"
+
+#: data/scripts/browse_bouquets.py:706 data/scripts/browse_bouquets.py:1399
+
+#: data/scripts/reorder_groups.py:185 data/scripts/reorder_groups.py:1005
+
+msgid "Listen"
+msgstr "AnhÃ¶ren"
+
+#: data/scripts/browse_bouquets.py:706
+
+msgid "Listen to selected station"
+msgstr "Ακούστε τον επιλεγμένο σταθμό"
+
+#: data/scripts/timonde_common.py:204
+
+msgid "Live (Shoutcast)"
+msgstr "ÎÏÎ½ÏÎ±Î½Î¬ (Shoutcast)"
+
+#: data/scripts/timonde_common.py:187
+
+msgid "Live ({codec})"
+msgstr "Ζωντανά ({codec})"
+
+#: data/scripts/browse_bouquets.py:1060
+
+msgid "Live availability"
+msgstr "Ζωντανή διαθεσιμότητα"
+
+#: data/scripts/browse_bouquets.py:1186
+
+msgid "Load a file..."
+msgstr "Φόρτωση αρχείου..."
+
+#: data/scripts/browse_bouquets.py:1186
+
+msgid "Load an XML, CSV, JSON, M3U or PLS file"
+msgstr "Φορτώστε ένα αρχείο XML, CSV, JSON, M3U ή PLS"
+
+#: src/timezone.rs:521
+
+msgid "Morning"
+msgstr "Πρωί"
+
+#: data/scripts/reorder_groups.py:949
+
+msgid "Move"
+msgstr "ÎÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ·"
+
+#: data/scripts/reorder_groups.py:219
+
+msgid "Move down"
+msgstr "⬇ Κατεβείτε"
+
+#: data/scripts/reorder_groups.py:219
+
+msgid "Move down one rank"
+msgstr "Move down one rank"
+
+#: data/scripts/reorder_groups.py:211
+
+msgid "Move selected item to the top"
+msgstr "Move selected item to the top"
+
+#: data/scripts/reorder_groups.py:197
+
+msgid "Move selection to another group (Ctrl+M)"
+msgstr "Move selection to another group (Ctrl+M)"
+
+#: data/scripts/reorder_groups.py:944
+
+msgid "Move to another group"
+msgstr "ÎÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ· ÏÎµ Î¬Î»Î»Î· Î¿Î¼Î¬Î´Î±"
+
+#: data/scripts/reorder_groups.py:559
+
+msgid "Move to another group..."
+msgstr "Move selection to another group (Ctrl+M)"
+
+#: data/scripts/reorder_groups.py:197
+
+msgid "Move to..."
+msgstr "Μετακίνηση σε..."
+
+#: data/scripts/reorder_groups.py:215
+
+msgid "Move up"
+msgstr "⬆ Ανεβείτε"
+
+#: data/scripts/reorder_groups.py:215
+
+msgid "Move up one rank"
+msgstr "Move up one rank"
+
+#: src/tray/menu.rs:528
+
+msgid "Mute (0%)"
+msgstr "Σίγαση (0%)"
+
+#: data/scripts/reorder_groups.py:98 data/scripts/timonde_settings.py:524
+
+msgid "My Radios"
+msgstr "Τα ραδιόφωνα μου"
+
+#: data/scripts/timonde_common.py:1925
+
+msgid "Name and Stream URL are mandatory."
+msgstr "Î¤Î¿ ÏÎ½Î¿Î¼Î± ÎºÎ±Î¹ Î· Î´Î¹ÎµÏÎ¸ÏÎ½ÏÎ· URL ÏÎ·Ï ÏÎ¿Î®Ï ÎµÎ¯Î½Î±Î¹ ÏÏÎ¿ÏÏÎµÏÏÎ¹ÎºÎ¬."
+
+#: data/scripts/reorder_groups.py:646
+
+msgid "Name of the new group:"
+msgstr "ÎÎ½Î¿Î¼Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï:"
+
+#: data/scripts/browse_bouquets.py:1011
+
+msgid "National Bouquet (Major stations)"
+msgstr "National Bouquet (Κύριοι σταθμοί)"
+
+#: data/scripts/timonde_settings.py:677
+
+msgid ""
+"Native integration in notification tray via StatusNotifierItem / XEmbed."
+msgstr "Εγγενής ενσωμάτωση στο δίσκο ειδοποιήσεων μέσω StatusNotifierItem / XEmbed."
+
+#: data/scripts/browse_bouquets.py:1655
+
+msgid "New"
+msgstr "[Νέο]"
+
+#: data/scripts/reorder_groups.py:193
+
+msgid "New group"
+msgstr "Νέα ομάδα"
+
+#: data/scripts/reorder_groups.py:593
+
+msgid "New group..."
+msgstr "Νέα ομάδα"
+
+#: data/scripts/reorder_groups.py:725
+
+msgid "New name for group:"
+msgstr "ÎÎ­Î¿ ÏÎ½Î¿Î¼Î± Î¿Î¼Î¬Î´Î±Ï:"
+
+#: data/scripts/browse_bouquets.py:1282
+
+msgid "New only"
+msgstr "Μόνο καινούργιο"
+
+#: data/scripts/reorder_groups.py:580
+
+msgid "New subgroup here..."
+msgstr "ÎÎ­Î± ÏÏÎ¿Î¿Î¼Î¬Î´Î± ÎµÎ´Ï..."
+
+#: src/timezone.rs:521
+
+msgid "Night"
+msgstr "Νύχτα"
+
+#: data/scripts/browse_bouquets.py:1726
 
 msgid "No DAB+ bouquet for {country} — Use 'Search online'."
 msgstr ""
 "Δεν υπάρχει μπουκέτο DAB+ για {country} — Χρησιμοποιήστε «Αναζήτηση online»."
 
-msgid "{checked} / {total} station(s) selected"
-msgstr "Επιλέχθηκαν {checked} / {total} σταθμοί"
+#: data/scripts/reorder_groups.py:1262
 
-msgid ""
-"No radio found for this language in {country}. Uncheck 'Filter by country' "
-"or clear the language."
-msgstr ""
-"Δεν βρέθηκε ραδιόφωνο για αυτήν τη γλώσσα σε {country}. Αποεπιλέξτε "
-"«Φιλτράρισμα κατά χώρα» ή καθαρίστε τη γλώσσα."
+msgid "No bookmarks.xml file found to backup."
+msgstr "ÎÎµÎ½ Î²ÏÎ­Î¸Î·ÎºÎµ Î±ÏÏÎµÎ¯Î¿ bookmarks.xml Î³Î¹Î± Î´Î·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î±Î½ÏÎ¹Î³ÏÎ¬ÏÎ¿Ï."
+
+#: data/scripts/reorder_groups.py:872
+
+msgid "No items to sort in this group."
+msgstr "ÎÎµÎ½ ÏÏÎ¬ÏÏÎ¿ÏÎ½ ÏÏÎ¿Î¹ÏÎµÎ¯Î± ÏÏÎ¿Ï ÏÎ±Î¾Î¹Î½ÏÎ¼Î·ÏÎ· ÏÎµ Î±ÏÏÎ®Î½ ÏÎ·Î½ Î¿Î¼Î¬Î´Î±."
+
+#: data/scripts/timonde_settings.py:618
+
+msgid "No new stations added (already in your bookmarks)."
+msgstr "ÎÎµÎ½ ÏÏÎ¿ÏÏÎ­Î¸Î·ÎºÎ±Î½ Î½Î­Î¿Î¹ ÏÏÎ±Î¸Î¼Î¿Î¯ (ÏÏÎ¬ÏÏÎ¿ÏÎ½ Î®Î´Î· ÏÏÎ¿ÏÏ ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎµÏ ÏÎ±Ï)."
+
+#: data/scripts/browse_bouquets.py:1625
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Δεν υπάρχει προφορτωμένο μπουκέτο DAB+ για αυτήν τη χώρα."
+
+#: data/scripts/browse_bouquets.py:1898
 
 msgid ""
 "No radio found for these criteria in {country}. Uncheck 'Filter by country' "
@@ -1253,302 +1113,1005 @@ msgstr ""
 "Δεν βρέθηκε ραδιόφωνο για αυτά τα κριτήρια σε {country}. Αποεπιλέξτε "
 "«Φιλτράρισμα κατά χώρα» για παγκόσμια αναζήτηση."
 
+#: data/scripts/browse_bouquets.py:1895
+
+msgid ""
+"No radio found for this language in {country}. Uncheck 'Filter by country' "
+"or clear the language."
+msgstr ""
+"Δεν βρέθηκε ραδιόφωνο για αυτήν τη γλώσσα σε {country}. Αποεπιλέξτε "
+"«Φιλτράρισμα κατά χώρα» ή καθαρίστε τη γλώσσα."
+
+#: data/scripts/browse_bouquets.py:1900
+
 msgid "No radio found on Radio-Browser for these criteria."
 msgstr "Δεν βρέθηκε ραδιόφωνο στο Radio-Browser για αυτά τα κριτήρια."
 
-msgid "[Present]"
-msgstr "[Υπάρχει]"
+#: src/tray/mod.rs:459
 
-msgid "[New]"
-msgstr "[Νέο]"
+msgid "No radio is currently playing."
+msgstr "Δεν αναπαράγεται ραδιόφωνο αυτή τη στιγμή."
 
-msgid "○ Untested"
-msgstr "○ Μη δοκιμασμένο"
+#: src/tray/menu.rs:297
 
-msgid "{count} stations found."
-msgstr "Βρέθηκαν {count} σταθμοί."
+msgid "No station loaded"
+msgstr "No stations to check."
 
-msgid "Testing..."
-msgstr "Δοκιμή..."
+#: data/scripts/reorder_groups.py:1072
 
-msgid "{count} available timezones"
-msgstr "{count} διαθέσιμες ζώνες ώρας"
+msgid "No stations to check."
+msgstr "No stations to check."
 
-msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
-msgstr "<b>{nb_st}</b> σταθμοί σε <b>{nb_gr}</b> ομάδες."
+#: data/scripts/timonde_common.py:1680
 
-msgid "Explore stations from this country on Radio-Browser"
-msgstr "Εξερεύνηση σταθμών αυτής της χώρας στο Radio-Browser"
+msgid "No stream found for this name. Modify the text above."
+msgstr "Δεν βρέθηκε ροή για αυτό το όνομα. Τροποποιήστε το παραπάνω κείμενο."
+
+#: data/scripts/timonde_common.py:1907
+
+msgid "Not listed yet!"
+msgstr "ÎÎµÎ½ Î­ÏÎµÎ¹ ÎºÎ±ÏÎ±ÏÏÏÎ·Î¸ÎµÎ¯ Î±ÎºÏÎ¼Î±!"
+
+#: data/scripts/timonde_common.py:1721
+
+msgid "OK"
+msgstr "OK"
+
+#: data/scripts/browse_bouquets.py:972
+
+msgid ""
+"Official and verified selection across 146 countries and regions (digital "
+"DAB+ bouquets and major national stations)."
+msgstr "Επίσημη και επαληθευμένη επιλογή σε 146 χώρες και περιοχές (ψηφιακά μπουκέτα DAB+ και μεγάλοι εθνικοί σταθμοί)."
+
+#: data/scripts/timonde_common.py:178
+
+msgid "Offline (HTML error page)"
+msgstr "Εκτός σύνδεσης (σελίδα σφάλματος HTML)"
+
+#: data/scripts/edit_station.py:366
+
+msgid "On-air broadcast name:"
+msgstr "ÎÎ½Î¿Î¼Î± Î¼ÎµÏÎ¬Î´Î¿ÏÎ·Ï ÏÏÎ¿Î½ Î±Î­ÏÎ±:"
+
+#: data/scripts/browse_bouquets.py:1983
+
+msgid "Open"
+msgstr "Ανοιχτό"
+
+#: data/scripts/browse_bouquets.py:1203
+
+msgid "Open ~/.config/timonde"
+msgstr "Ανοίξτε το ~/.config/timonde"
+
+#: data/scripts/browse_bouquets.py:1169
+
+msgid "Open ~/.config/timonde/examples"
+msgstr "Ανοίξτε το ~/.config/timonde/examples"
+
+#: data/scripts/reorder_groups.py:706
+
+msgid "Optional title for this separator (leave blank for a simple line):"
+msgstr "Î ÏÎ¿Î±Î¹ÏÎµÏÎ¹ÎºÏÏ ÏÎ¯ÏÎ»Î¿Ï Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï (Î±ÏÎ®ÏÏÎµ ÎºÎµÎ½Ï Î³Î¹Î± Î±ÏÎ»Î® Î³ÏÎ±Î¼Î¼Î®):"
+
+#: data/scripts/reorder_groups.py:60
+
+msgid "Organize groups and stations (TiMonde)"
+msgstr "Organize groups and stations (TiMonde)"
+
+#: data/scripts/timonde_common.py:1559
+
+msgid "Organizing groups and subgroups (Linux convention)"
+msgstr "ÎÏÎ³Î¬Î½ÏÏÎ· Î¿Î¼Î¬Î´ÏÎ½ ÎºÎ±Î¹ ÏÏÎ¿Î¿Î¼Î¬Î´ÏÎ½ (ÏÏÎ¼Î²Î±ÏÎ· Linux)"
+
+#: data/scripts/timonde_common.py:1609
+
+msgid "Original stream is unreachable:"
+msgstr "UrsprÃ¼nglicher Stream nicht erreichbar:"
+
+#: src/tray/menu.rs:160
+
+msgid "Paused"
+msgstr "Σε παύση"
+
+#: src/i18n.rs:179 src/i18n.rs:228 src/i18n.rs:234 src/i18n.rs:244
+
+#: src/i18n.rs:249 src/i18n.rs:254 src/i18n.rs:257 src/i18n.rs:260
+
+#: src/i18n.rs:263 src/i18n.rs:266 src/i18n.rs:269 src/i18n.rs:272
+
+msgid "Play"
+msgstr "Αναπαραγωγή"
+
+#: src/tray/menu.rs:413
+
+msgid "Play random radio (Ephemeral discovery)"
+msgstr "Ακούστε έναν τυχαίο ραδιοφωνικό σταθμό (Εφήμερη ανακάλυψη)"
+
+#: data/scripts/reorder_groups.py:549
+
+msgid "Play this station"
+msgstr "Διαγράψτε αυτό το ραδιόφωνο"
+
+#: data/scripts/timonde_common.py:1283
+
+msgid "Playing:"
+msgstr "Παιχνίδι:"
+
+#: data/scripts/edit_station.py:388
+
+msgid "Please enter a stream URL first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÎ¹ÏÎ±Î³Î¬Î³ÎµÏÎµ ÏÏÏÏÎ± Î­Î½Î± URL ÏÎ¿Î®Ï."
+
+#: data/scripts/timonde_common.py:1877
+
+msgid "Please enter a stream URL."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÎ¹ÏÎ±Î³Î¬Î³ÎµÏÎµ Î­Î½Î± URL ÏÎ¿Î®Ï."
+
+#: data/scripts/browse_bouquets.py:1783
+
+msgid "Please select a radio station in the list first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ ÏÏÏÏÎ± Î­Î½Î±Î½ ÏÎ±Î´Î¹Î¿ÏÏÎ½Î¹ÎºÏ ÏÏÎ±Î¸Î¼Ï Î±ÏÏ ÏÎ· Î»Î¯ÏÏÎ±."
+
+#: data/scripts/reorder_groups.py:926
+
+msgid "Please select a radio station to move."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î­Î½Î±Î½ ÏÏÎ±Î¸Î¼Ï Î³Î¹Î± Î¼ÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ·."
+
+#: data/scripts/reorder_groups.py:1042
+
+msgid "Please select a station to contribute."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î­Î½Î±Î½ ÏÏÎ±Î¸Î¼Ï ÏÏÎ¿Ï ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬."
+
+#: data/scripts/reorder_groups.py:1020
+
+msgid "Please select a station to repair."
+msgstr "Please select a station to repair."
+
+#: data/scripts/browse_bouquets.py:1825
+
+msgid "Please select or check a radio station in the list first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î® ÏÎ·Î¼ÎµÎ¹ÏÏÏÎµ Î­Î½Î±Î½ ÏÎ±Î´Î¹Î¿ÏÏÎ½Î¹ÎºÏ ÏÏÎ±Î¸Î¼Ï ÏÏÏÏÎ±."
+
+#: data/scripts/timonde_common.py:1651
+
+msgid "Popularity"
+msgstr "Beliebtheit"
+
+#: data/scripts/timonde_settings.py:735
+
+msgid "Preferences"
+msgstr "Προτιμήσεις"
+
+#: data/scripts/reorder_groups.py:185
+
+msgid "Preview selected radio stream"
+msgstr "Testing live radio streams..."
+
+#: data/scripts/gnome_tray_helper.py:175
+
+msgid "Quit"
+msgstr "Εγκαταλείπω"
+
+#: src/tray/menu.rs:621
+
+msgid "Quit TiMonde"
+msgstr "Έξοδος από το TiMonde"
+
+#: data/scripts/timonde_common.py:1283 data/scripts/timonde_common.py:1291
+
+#: data/scripts/timonde_common.py:1298 data/scripts/timonde_common.py:1311
+
+#: data/scripts/timonde_common.py:1326
+
+msgid "Radio"
+msgstr "Radio"
+
+#: data/scripts/reorder_groups.py:147
+
+msgid "Radio / Group"
+msgstr "Î¡Î±Î´Î¹ÏÏÏÎ½Î¿ / ÎÎ¼Î¬Î´Î±"
+
+#: data/scripts/edit_station.py:139
+
+msgid "Radio-Browser"
+msgstr "Radio-Browser"
+
+#: data/scripts/timonde_common.py:1949
+
+msgid "Radio-Browser contribution"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1782
+
+msgid ""
+"Radio-Browser is an open directory (+45 000 stations). Shared stations "
+"benefit all users."
+msgstr "Το Radio-Browser είναι ένας ανοιχτός κατάλογος (+45 000 σταθμοί). Οι κοινόχρηστοι σταθμοί ωφελούν όλους τους χρήστες."
+
+#: data/scripts/timonde_common.py:1901
+
+msgid "Radio-Browser prevents duplicate stream URLs. No submission required."
+msgstr "Το Radio-Browser αποτρέπει τις διπλότυπες διευθύνσεις URL ροής. Δεν απαιτείται υποβολή."
+
+#: data/scripts/timonde_common.py:1542
+
+msgid "Radio-Browser servers unreachable"
+msgstr "ÎÎ¹ Î´Î¹Î±ÎºÎ¿Î¼Î¹ÏÏÎ­Ï ÏÎ¿Ï Radio-Browser Î´ÎµÎ½ ÎµÎ¯Î½Î±Î¹ ÏÏÎ¿ÏÎ²Î¬ÏÎ¹Î¼Î¿Î¹"
+
+#: data/scripts/reorder_groups.py:1200
+
+msgid "Redirects applied:"
+msgstr "ÎÏÎ±ÏÎ¼ÏÏÏÎ·ÎºÎ±Î½ Î±Î½Î±ÎºÎ±ÏÎµÏÎ¸ÏÎ½ÏÎµÎ¹Ï:"
+
+#: data/scripts/browse_bouquets.py:1165
+
+msgid "Refresh examples list"
+msgstr "Ανανέωση λίστας παραδειγμάτων"
+
+#: data/scripts/browse_bouquets.py:1015
+
+msgid "Regions & Local:"
+msgstr "Περιοχές & Τοπικές:"
+
+#: data/scripts/browse_bouquets.py:1190
+
+msgid "Reload"
+msgstr "Γεμίζω πάλι"
+
+#: data/scripts/browse_bouquets.py:1190
+
+msgid "Reload currently displayed file"
+msgstr "Επαναφόρτωση του αρχείου που εμφανίζεται αυτήν τη στιγμή"
+
+#: data/scripts/reorder_groups.py:724
+
+msgid "Rename group"
+msgstr "ÎÎµÏÎ¿Î½Î¿Î¼Î±ÏÎ¯Î± Î¿Î¼Î¬Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:584
+
+msgid "Rename group..."
+msgstr "Gruppe umbenennen..."
+
+#: data/scripts/browse_bouquets.py:1119 data/scripts/reorder_groups.py:238
+
+#: data/scripts/reorder_groups.py:563
+
+msgid "Repair stream..."
+msgstr "Ροή επισκευής..."
+
+#: data/scripts/browse_bouquets.py:1119
+
+msgid "Replace selected link with an active official stream"
+msgstr "Αντικαταστήστε τον επιλεγμένο σύνδεσμο με μια ενεργή επίσημη ροή"
+
+#: data/scripts/timonde_common.py:1592
+
+msgid "Replace stream:"
+msgstr "ÎÎ½ÏÎ¹ÎºÎ±ÏÎ¬ÏÏÎ±ÏÎ· ÏÎ¿Î®Ï:"
+
+#: data/scripts/browse_bouquets.py:1173
+
+msgid "Restore samples"
+msgstr "Επαναφορά δειγμάτων"
+
+#: data/scripts/browse_bouquets.py:1173
+
+msgid "Restore the 19 original samples"
+msgstr "Επαναφέρετε τα 19 αρχικά δείγματα"
+
+#: data/scripts/reorder_groups.py:861
+
+msgid "Root"
+msgstr "Î¡Î¯Î¶Î±"
+
+#: data/scripts/reorder_groups.py:903
+
+msgid "Root items sorted alphabetically."
+msgstr "Î¤Î± ÏÏÎ¿Î¹ÏÎµÎ¯Î± ÏÎ·Ï ÏÎ¯Î¶Î±Ï ÏÎ±Î¾Î¹Î½Î¿Î¼Î®Î¸Î·ÎºÎ±Î½ Î±Î»ÏÎ±Î²Î·ÏÎ¹ÎºÎ¬."
+
+#: data/scripts/timonde_settings.py:638
+
+msgid "SESSION OPTIONS"
+msgstr "ΕΠΙΛΟΓΕΣ ΣΥΝΕΔΡΙΑΣ"
+
+#: src/timezone.rs:657
+
+msgid "Same time"
+msgstr "Ίδια ώρα"
+
+#: data/scripts/edit_station.py:76 data/scripts/reorder_groups.py:727
+
+#: data/scripts/reorder_groups.py:1269
+
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: data/scripts/reorder_groups.py:276
+
+msgid "Save and reload"
+msgstr "Αποθήκευση και επαναφόρτωση"
+
+#: src/tray/dialogs.rs:328 src/tray/mod.rs:541
+
+msgid "Save error"
+msgstr "Σφάλμα αποθήκευσης"
+
+#: data/scripts/reorder_groups.py:276
+
+msgid "Save now"
+msgstr "Σφάλμα αποθήκευσης"
+
+#: data/scripts/edit_station.py:69 src/i18n.rs:199
+
+msgid "Save station to favorites (TiMonde)"
+msgstr "Αποθήκευση του ραδιοφώνου στα αγαπημένα μου (TiMonde)"
+
+#: src/tray/mod.rs:561
+
+msgid "Saved!"
+msgstr "Αποθηκεύτηκε!"
+
+#: data/scripts/browse_bouquets.py:770 data/scripts/timonde_common.py:1630
+
+msgid "Search"
+msgstr "Suchen"
+
+#: data/scripts/reorder_groups.py:238
+
+msgid "Search Radio-Browser for a working replacement stream"
+msgstr ""
+"Αναζητήστε αυτόματα μια ενεργή ροή αντικατάστασης στο Radio-Browser για "
+"αυτόν τον νεκρό σύνδεσμο"
+
+#: data/scripts/browse_bouquets.py:1326 data/scripts/timonde_settings.py:592
+
+msgid "Search online"
+msgstr "Αναζήτηση στο διαδίκτυο"
+
+#: data/scripts/browse_bouquets.py:1885
+
+msgid "Searching Radio-Browser..."
+msgstr "Αναζήτηση στο πρόγραμμα περιήγησης ραδιοφώνου..."
+
+#: data/scripts/timonde_common.py:1660
+
+msgid "Searching for streams..."
+msgstr "Ροή επισκευής..."
+
+#: data/scripts/timonde_common.py:1670
+
+msgid "Searching on Radio-Browser..."
+msgstr "Αναζήτηση στο Radio-Browser..."
+
+#: data/scripts/browse_bouquets.py:1382
+
+msgid "Select a station in table to listen to."
+msgstr "Επιλέξτε έναν σταθμό στον πίνακα για ακρόαση."
+
+#: data/scripts/browse_bouquets.py:1386
+
+msgid "Select a station to listen to."
+msgstr "Επιλέξτε έναν σταθμό για ακρόαση."
+
+#: data/scripts/timonde_common.py:1610
+
+msgid "Select a verified replacement stream from Radio-Browser:"
+msgstr "GeprÃ¼ften Ersatzstream aus Radio-Browser auswÃ¤hlen:"
+
+#: data/scripts/edit_station.py:185
+
+msgid "Select or type (e.g. /France/Brittany or / for root)"
+msgstr "AuswÃ¤hlen oder eingeben (z.B. /Deutschland/Bayern oder / fÃ¼r Wurzel)"
+
+#: data/scripts/reorder_groups.py:956
+
+msgid "Select the target destination:"
+msgstr "ÎÏÎ¹Î»Î­Î¾ÏÎµ ÏÎ¿Î½ ÏÎ¬ÎºÎµÎ»Î¿ ÏÏÎ¿Î¿ÏÎ¹ÏÎ¼Î¿Ï:"
+
+#: src/tray/mod.rs:478
+
+msgid "Selection"
+msgstr "Επιλογή"
+
+#: data/scripts/reorder_groups.py:230
+
+msgid "Separator"
+msgstr "Διαχωριστής"
+
+#: data/scripts/timonde_common.py:1538
+
+msgid "Server rejected submission: {error}"
+msgstr "Î Î´Î¹Î±ÎºÎ¿Î¼Î¹ÏÏÎ®Ï Î±ÏÎ­ÏÏÎ¹ÏÎµ ÏÎ·Î½ ÏÏÎ¿Î²Î¿Î»Î®: {error}"
+
+#: data/scripts/timonde_common.py:198
+
+msgid "Server unreachable"
+msgstr "Server nicht erreichbar"
+
+#: data/scripts/timonde_settings.py:316
+
+msgid "Settings & Control TiMonde"
+msgstr "Ρυθμίσεις και έλεγχος TiMonde"
+
+#: src/tray/dialogs.rs:400
+
+msgid "Settings console not found"
+msgstr "Η κονσόλα ρυθμίσεων δεν βρέθηκε"
+
+#: src/tray/menu.rs:605
+
+msgid "Settings..."
+msgstr "Ρυθμίσεις..."
+
+#: src/i18n.rs:205 src/tray/menu.rs:549 src/tray/menu.rs:552
+
+msgid "Sleep timer"
+msgstr "Χρονοδιακόπτης ύπνου"
+
+#: src/tray/mod.rs:592
+
+msgid "Sleep timer activated"
+msgstr "Ο χρονοδιακόπτης ύπνου ενεργοποιήθηκε"
+
+#: src/tray/mod.rs:626
+
+msgid "Sleep timer cancelled."
+msgstr "Ο χρονοδιακόπτης ύπνου ακυρώθηκε."
+
+#: src/tray/mod.rs:615
+
+msgid "Sleep timer: stopping radio."
+msgstr "Χρονοδιακόπτης ύπνου: διακοπή ραδιοφώνου."
+
+#: data/scripts/reorder_groups.py:223
+
+msgid "Sort sibling items alphabetically"
+msgstr "ÎÎ»ÏÎ±Î²Î·ÏÎ¹ÎºÎ® ÏÎ±Î¾Î¹Î½ÏÎ¼Î·ÏÎ· Î¿Î¼ÏÏÎ¹Î¼ÏÎ½ ÏÏÎ¿Î¹ÏÎµÎ¯ÏÎ½"
+
+#: data/scripts/reorder_groups.py:901
+
+msgid "Sorted alphabetically:"
+msgstr "Î¤Î±Î¾Î¹Î½Î¿Î¼Î®Î¸Î·ÎºÎµ Î±Î»ÏÎ±Î²Î·ÏÎ¹ÎºÎ¬:"
+
+#: data/scripts/browse_bouquets.py:888 data/scripts/browse_bouquets.py:1045
+
+#: data/scripts/browse_bouquets.py:1227 data/scripts/timonde_common.py:1638
+
+msgid "Station"
+msgstr "Σταθμός"
+
+#: src/tray/mod.rs:566
+
+msgid "Station added but reload error"
+msgstr "Ο σταθμός προστέθηκε αλλά παρουσιάστηκε σφάλμα επαναφόρτωσης"
+
+#: data/scripts/reorder_groups.py:691
+
+msgid "Station added:"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÏÏÎ¿ÏÏÎ­Î¸Î·ÎºÎµ:"
+
+#: data/scripts/reorder_groups.py:683
+
+msgid "Station editor unavailable."
+msgstr "Î ÎµÏÎµÎ¾ÎµÏÎ³Î±ÏÏÎ®Ï ÏÏÎ±Î¸Î¼ÏÎ½ Î´ÎµÎ½ ÎµÎ¯Î½Î±Î¹ Î´Î¹Î±Î¸Î­ÏÎ¹Î¼Î¿Ï."
+
+#: data/scripts/reorder_groups.py:997
+
+msgid "Station moved to"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ Î¼ÎµÏÎ±ÎºÎ¹Î½Î®Î¸Î·ÎºÎµ ÏÏÎ¿"
+
+#: data/scripts/timonde_common.py:1476
+
+msgid "Station name cannot be empty"
+msgstr "Î¤Î¿ ÏÎ½Î¿Î¼Î± ÏÎ¿Ï ÏÏÎ±Î¸Î¼Î¿Ï Î´ÎµÎ½ Î¼ÏÎ¿ÏÎµÎ¯ Î½Î± ÎµÎ¯Î½Î±Î¹ ÎºÎµÎ½Ï"
+
+#: data/scripts/edit_station.py:110 data/scripts/timonde_common.py:1794
+
+msgid "Station name:"
+msgstr "Όνομα σταθμού:"
+
+#: data/scripts/timonde_common.py:1528
+
+msgid "Station successfully submitted to Radio-Browser."
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÏÏÎ¿Î²Î»Î®Î¸Î·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ ÏÏÎ¿ Radio-Browser."
+
+#: data/scripts/reorder_groups.py:745
+
+msgid "Station updated:"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÎµÎ½Î·Î¼ÎµÏÏÎ¸Î·ÎºÎµ:"
+
+#: data/scripts/browse_bouquets.py:1397 data/scripts/edit_station.py:405
+
+#: data/scripts/reorder_groups.py:1005 data/scripts/reorder_groups.py:1080
+
+#: src/i18n.rs:185 src/i18n.rs:245 src/i18n.rs:250
+
+msgid "Stop"
+msgstr "Διακοπή"
+
+#: data/scripts/reorder_groups.py:549
+
+msgid "Stop playback"
+msgstr "Wiedergabe stoppen"
+
+#: data/scripts/browse_bouquets.py:1259
+
+msgid "Stream URL"
+msgstr "URL ροής"
+
+#: data/scripts/timonde_common.py:1478
+
+msgid "Stream URL cannot be empty"
+msgstr "Î¤Î¿ URL ÏÎ·Ï ÏÎ¿Î®Ï Î´ÎµÎ½ Î¼ÏÎ¿ÏÎµÎ¯ Î½Î± ÎµÎ¯Î½Î±Î¹ ÎºÎµÎ½Ï"
+
+#: data/scripts/timonde_common.py:1804
+
+msgid "Stream URL:"
+msgstr "URL ÏÎ¿Î®Ï:"
+
+#: data/scripts/reorder_groups.py:1029
+
+msgid "Stream successfully repaired for"
+msgstr "Î ÏÎ¿Î® ÎµÏÎ¹ÏÎºÎµÏÎ¬ÏÏÎ·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ Î³Î¹Î±"
+
+#: data/scripts/timonde_common.py:1274
+
+msgid "Stream unreachable"
+msgstr "Η ροή δεν είναι προσβάσιμη"
+
+#: data/scripts/browse_bouquets.py:739
+
+msgid "Submit a new station to community Radio-Browser directory"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1859 data/scripts/timonde_common.py:1911
+
+#: data/scripts/timonde_common.py:1958
+
+msgid "Submit to Radio-Browser"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1931
+
+msgid "Submitting station to Radio-Browser..."
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿ Radio-Browser..."
+
+#: data/scripts/timonde_common.py:1930
+
+msgid "Submitting..."
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î®..."
+
+#: data/scripts/browse_bouquets.py:1089
 
 msgid "Switch to the global directory with this country pre-selected"
 msgstr "Μετάβαση στον παγκόσμιο κατάλογο με προεπιλεγμένη αυτήν τη χώρα"
 
-#, fuzzy
-msgid " [Ephemeral]"
-msgstr "[Μικρής διάρκειας]"
+#: data/scripts/timonde_settings.py:665
 
-msgid "%20"
+msgid "System language"
+msgstr "Γλώσσα συστήματος"
+
+#: data/scripts/timonde_common.py:1831
+
+msgid "Tags / Genres:"
+msgstr "ÎÏÎ¹ÎºÎ­ÏÎµÏ / ÎÎ¯Î´Î·:"
+
+#: src/tray/mod.rs:325
+
+msgid "Temporary backup stream found for"
+msgstr "Βρέθηκε προσωρινή εφεδρική ροή για"
+
+#: data/scripts/edit_station.py:135 data/scripts/edit_station.py:407
+
+msgid "Test"
+msgstr "Δοκιμή"
+
+#: data/scripts/reorder_groups.py:102
+
+msgid "Test stream availability and locate broken links"
 msgstr ""
+"Δοκιμάστε τη ζωντανή διαθεσιμότητα των ραδιοφωνικών σταθμών σας και "
+"εντοπίστε νεκρούς συνδέσμους"
 
-#, fuzzy
-msgid "(Already in favorites)"
-msgstr "Αποθήκευση στα αγαπημένα μου"
+#: data/scripts/browse_bouquets.py:946 data/scripts/browse_bouquets.py:1115
 
-msgid "/org/mpris/MediaPlayer2/CurrentTrack"
-msgstr ""
+#: data/scripts/browse_bouquets.py:1286
 
-#, fuzzy
-msgid "Add station..."
-msgstr "Προσθήκη σταθμού..."
+msgid "Test streams"
+msgstr "Δοκιμαστικές ροές"
 
-msgid "Bitrate"
-msgstr ""
+#: data/scripts/reorder_groups.py:1087
 
-#, fuzzy
-msgid "Checking..."
-msgstr "Σύνδεση..."
-
-msgid "Clear"
-msgstr ""
-
-msgid "Clear / Automatic mode"
-msgstr ""
-
-msgid "Clear field (click to empty)"
-msgstr ""
-
-#, fuzzy
-msgid "Country"
-msgstr "<b>Country:</b>"
-
-#, fuzzy
-msgid "Country:"
-msgstr "<b>Country:</b>"
-
-msgid "Delete group..."
-msgstr ""
-
-#, fuzzy
-msgid "Delete this separator"
-msgstr "Διαγράψτε αυτό το ραδιόφωνο"
-
-#, fuzzy
-msgid "Delete this station..."
-msgstr "Διαγράψτε αυτό το ραδιόφωνο"
-
-msgid "Edit header..."
-msgstr ""
-
-#, fuzzy
-msgid "Edit station..."
-msgstr "Προσθήκη σταθμού..."
-
-msgid "Empty URL"
-msgstr ""
-
-msgid "Ephemeral radio (not saved)."
-msgstr ""
-
-msgid "Error {code}"
-msgstr ""
-
-msgid "Format"
-msgstr ""
-
-msgid "Geoblocked (VPN)"
-msgstr ""
-
-msgid "HTTP Error {code}"
-msgstr ""
-
-#, fuzzy
-msgid "Insert separator here..."
-msgstr "Insert a separator or header in this group"
-
-msgid "Listen"
-msgstr ""
-
-msgid "Live (repaired)"
-msgstr ""
-
-msgid "Live ({codec})"
-msgstr ""
-
-#, fuzzy
-msgid "Move to another group..."
-msgstr "Move selection to another group (Ctrl+M)"
-
-#, fuzzy
-msgid "Move to top"
-msgstr "Μετακίνηση σε..."
-
-#, fuzzy
-msgid "New"
-msgstr "[Νέο]"
-
-#, fuzzy
-msgid "New group..."
-msgstr "Νέα ομάδα"
-
-#, fuzzy
-msgid "No station loaded"
-msgstr "No stations to check."
-
-#, fuzzy
-msgid "Open stations"
-msgstr "Επιλογές"
-
-msgid "Original stream is unreachable:"
-msgstr ""
-
-#, fuzzy
-msgid "Play this station"
-msgstr "Διαγράψτε αυτό το ραδιόφωνο"
-
-msgid "Popularity"
-msgstr ""
-
-#, fuzzy
-msgid "Preview selected radio stream"
+msgid "Testing live radio streams..."
 msgstr "Testing live radio streams..."
 
-msgid "Rename group..."
+#: data/scripts/browse_bouquets.py:1679 data/scripts/browse_bouquets.py:1931
+
+#: data/scripts/browse_bouquets.py:2119
+
+msgid "Testing..."
+msgstr "Δοκιμή..."
+
+#: data/scripts/timonde_settings.py:694
+
+msgid ""
+"The AppIndicator extension is required to display the icon in GNOME top bar."
+msgstr "Η επέκταση AppIndicator απαιτείται για την εμφάνιση του εικονιδίου στην επάνω γραμμή του GNOME."
+
+#: data/scripts/browse_bouquets.py:1151
+
+msgid "Thematic samples:"
+msgstr "Θεματικά δείγματα:"
+
+#: data/scripts/edit_station.py:574
+
+msgid "This action will permanently remove this station from your collection."
 msgstr ""
+"Αυτή η ενέργεια θα καταργήσει οριστικά αυτόν τον σταθμό από τη συλλογή σας."
 
-#, fuzzy
-msgid "Save now"
-msgstr "Σφάλμα αποθήκευσης"
+#: data/scripts/timonde_common.py:1489
 
-msgid "Search"
-msgstr ""
+msgid ""
+"This stream URL is already registered on Radio-Browser as '{existing_name}'."
+msgstr "Αυτή η διεύθυνση URL ροής είναι ήδη καταχωρημένη στο Radio-Browser ως '{existing_name}'."
 
-#, fuzzy
-msgid "Searching for streams..."
-msgstr "Ροή επισκευής..."
+#: data/scripts/timonde_common.py:1908
 
-msgid "Select a verified replacement stream from Radio-Browser:"
-msgstr ""
+msgid ""
+"This stream URL is unpublished on Radio-Browser and ready to be contributed."
+msgstr "Αυτή η διεύθυνση URL ροής δεν έχει δημοσιευτεί στο Radio-Browser και είναι έτοιμη για συνεισφορά."
 
-msgid "Select or type (e.g. /France/Brittany or / for root)"
-msgstr ""
+#: data/scripts/gnome_tray_helper.py:117
 
-msgid "Server unreachable"
-msgstr ""
+msgid "TiMonde — GNOME Desktop Integration"
+msgstr "TiMonde — Ενσωμάτωση επιφάνειας εργασίας GNOME"
 
-msgid "Stop playback"
-msgstr ""
+#: src/tray/mod.rs:150
 
-#, fuzzy
 msgid "TiMonde • Ephemeral discovery"
 msgstr "Ακούστε έναν τυχαίο ραδιοφωνικό σταθμό (Εφήμερη ανακάλυψη)"
 
-#, fuzzy
+#: data/scripts/timonde_common.py:206
+
 msgid "Timeout"
 msgstr "Ζώνη ώρας:"
 
-#, fuzzy
-msgid "Transfer contents to another group..."
-msgstr "Transfer the content of this group to another group (Ctrl+M)"
+#: data/scripts/edit_station.py:273
+
+msgid "Timezone:"
+msgstr "Ζώνη ώρας:"
+
+#: data/scripts/gnome_tray_helper.py:159
+
+msgid ""
+"To unobtrusively display the playback icon in the top bar of your GNOME "
+"desktop, the <b>AppIndicator</b> system extension is required.\n"
+"\n"
+"Would you like to install it now?"
+msgstr ""
+"Για να εμφανίσετε διακριτικά το εικονίδιο αναπαραγωγής στην επάνω γραμμή της επιφάνειας εργασίας GNOME, απαιτείται η επέκταση συστήματος <b>AppIndicator</b>.\n"
+"\n"
+"Θα θέλατε να το εγκαταστήσετε τώρα;"
+
+#: src/timezone.rs:669
+
+msgid "Tomorrow"
+msgstr "Αύριο"
+
+#: data/scripts/reorder_groups.py:211
+
+msgid "Top"
+msgstr "Πρώτα"
+
+#: src/tray/mod.rs:679
+
+msgid "Track copied to clipboard:"
+msgstr "Ο τίτλος κομματιού αντιγράφηκε στο πρόχειρο:"
+
+#: data/scripts/browse_bouquets.py:987
+
+msgid "Type a country (e.g. France, Germany, Canada...)"
+msgstr "Πληκτρολογήστε μια χώρα (π.χ. Γαλλία, Γερμανία, Καναδάς...)"
+
+#: src/tray/mod.rs:444
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Δεν ήταν δυνατή η εύρεση σταθμού στον κατάλογο μπουκέτων."
+
+#: src/tray/mod.rs:208
 
 msgid "Unable to initialize audio"
-msgstr ""
+msgstr "Audio konnte nicht initialisiert werden"
+
+#: src/tray/mod.rs:216
 
 msgid "Unable to play"
-msgstr ""
+msgstr "Wiedergabe nicht mÃ¶glich"
+
+#: data/scripts/browse_bouquets.py:942 data/scripts/browse_bouquets.py:1111
+
+#: data/scripts/browse_bouquets.py:1278
+
+msgid "Uncheck all"
+msgstr "Καταργήστε την επιλογή όλων"
+
+#: data/scripts/timonde_common.py:1486 data/scripts/timonde_common.py:1896
+
+#: data/scripts/timonde_common.py:1897
+
+msgid "Unknown"
+msgstr "ÎÎ³Î½ÏÏÏÎ¿"
+
+#: data/scripts/timonde_common.py:1530
+
+msgid "Unknown error"
+msgstr "ÎÎ³Î½ÏÏÏÎ¿ ÏÏÎ¬Î»Î¼Î±"
+
+#: data/scripts/timonde_common.py:1272
+
+msgid "Unreadable stream"
+msgstr "Μη αναγνώσιμη ροή"
+
+#: data/scripts/gnome_tray_helper.py:193
+
+msgid "Unrecognized package manager."
+msgstr "Μη αναγνωρισμένος διαχειριστής πακέτων."
+
+#: data/scripts/reorder_groups.py:293
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "Ungespeicherte Ãnderungen"
 
-#, fuzzy
+#: data/scripts/browse_bouquets.py:1915 data/scripts/browse_bouquets.py:2082
+
+msgid "Untested"
+msgstr "ÎÎ· ÎµÎ»ÎµÎ³Î¼Î­Î½Î¿"
+
+#: data/scripts/edit_station.py:159
+
+msgid "Use this on-air broadcast name for your bookmark"
+msgstr "Î§ÏÎ·ÏÎ¹Î¼Î¿ÏÎ¿Î¹Î®ÏÏÎµ Î±ÏÏÏ ÏÎ¿ ÏÎ½Î¿Î¼Î± Î¼ÎµÏÎ¬Î´Î¿ÏÎ·Ï Î³Î¹Î± ÏÎ¿Î½ ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎ· ÏÎ±Ï"
+
+#: data/scripts/timonde_common.py:1597
+
 msgid "Validate and replace"
 msgstr "Αποθήκευση και επαναφόρτωση"
 
-msgid "Active (Left & Right clicks unified)"
-msgstr ""
+#: data/scripts/browse_bouquets.py:923
 
-msgid "Enable Left-Click"
-msgstr ""
+msgid "Votes"
+msgstr "Ψήφοι"
 
-msgid "Cinnamon left-click unification successfully enabled!"
-msgstr ""
+#: data/scripts/reorder_groups.py:780
 
-msgid "Failed to enable Cinnamon unification."
-msgstr ""
+msgid "Warning: this group contains {count} {unit} that will also be deleted."
+msgstr "Προειδοποίηση: αυτή η ομάδα περιέχει {count} {unit} που επίσης θα διαγραφεί."
 
-msgid "Cinnamon Left-Click Unification"
-msgstr ""
+#: data/scripts/timonde_common.py:1841
+
+msgid "Website / Homepage:"
+msgstr "ÎÏÏÏÏÎ¿ÏÎ¿Ï / ÎÏÏÎ¹ÎºÎ® ÏÎµÎ»Î¯Î´Î±:"
+
+#: data/scripts/browse_bouquets.py:2318
+
+msgid "XML backup is available from settings."
+msgstr "Η δημιουργία αντιγράφων ασφαλείας XML είναι διαθέσιμη από τις ρυθμίσεις."
+
+#: data/scripts/reorder_groups.py:1296
+
+msgid "XML backup successfully created in"
+msgstr "Î¤Î¿ Î±Î½ÏÎ¯Î³ÏÎ±ÏÎ¿ Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï XML Î´Î·Î¼Î¹Î¿ÏÏÎ³Î®Î¸Î·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ ÏÏÎ¿"
+
+#: data/scripts/reorder_groups.py:1276
+
+msgid "XML files (*.xml)"
+msgstr "Αρχεία XML (*.xml)"
+
+#: src/timezone.rs:670
+
+msgid "Yesterday"
+msgstr "Χθες"
+
+#: data/scripts/browse_bouquets.py:1626
 
 msgid ""
-"Allows opening the station menu interchangeably with left or right click."
+"You can explore and import stations for this territory directly from the "
+"global directory."
 msgstr ""
+"Μπορείτε να εξερευνήσετε και να εισαγάγετε σταθμούς για αυτήν την περιοχή "
+"απευθείας από τον παγκόσμιο κατάλογο."
 
-#~ msgid ""
-#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
-#~ "groups.\n"
-#~ "• <b>Double-click a group</b> (or Open) to sort its stations and "
-#~ "separators.\n"
-#~ "• Use <b>Transfer...</b> to merge or move content to another group.\n"
-#~ "• Use <b>New group</b> to add a station folder.</small>"
-#~ msgstr ""
-#~ "<small>• Αλλάξτε το <b>#</b> ή χρησιμοποιήστε το <b>Μετακίνηση επάνω / "
-#~ "Κάτω</b> για να παραγγείλετε τις ομάδες.\n"
-#~ "• <b>Κάντε διπλό κλικ σε μια ομάδα</b> (ή Άνοιγμα) για να ταξινομήσετε τα "
-#~ "ραδιόφωνα και τους διαχωριστές της.\n"
-#~ "• Χρησιμοποιήστε τη <b>Μεταφορά...</b> για να συγχωνεύσετε ή να "
-#~ "μετακινήσετε περιεχόμενο σε άλλη ομάδα.\n"
-#~ "• Χρησιμοποιήστε τη <b>Νέα ομάδα</b> για να προσθέσετε έναν φάκελο με "
-#~ "ραδιόφωνα.</small>"
+#: data/scripts/reorder_groups.py:1302
 
-#~ msgid ""
-#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
-#~ "stations.\n"
-#~ "• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
-#~ "• Click <b>Repair stream...</b> to search Radio-Browser for a working "
-#~ "replacement stream.\n"
-#~ "• Click <b>Separator</b> to insert a section header.</small>"
-#~ msgstr ""
-#~ "<small>• Αλλάξτε το <b>#</b> ή χρησιμοποιήστε το <b>Μετακίνηση επάνω/"
-#~ "Κάτω</b> για να ταξινομήσετε τα ραδιόφωνα.\n"
-#~ "• Κάντε κλικ στο <b>Έλεγχος ροών</b> για να εντοπίσετε νεκρούς συνδέσμους "
-#~ "(κόκκινο) και να τους επιδιορθώσετε.\n"
-#~ "• Κάντε κλικ στο <b>Επισκευή ροής...</b> για να αναζητήσετε μια ενεργή "
-#~ "ροή αντικατάστασης στο Radio-Browser.\n"
-#~ "• Κάντε κλικ στο <b>Διαχωριστικό</b> για να εισαγάγετε μια επικεφαλίδα "
-#~ "ενότητας.</small>"
+msgid "Your complete bookmarks have been saved to:"
+msgstr "ÎÎ¹ ÏÎ»Î®ÏÎµÎ¹Ï ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎµÏ ÏÎ±Ï Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎ±Î½ ÏÏÎ¿:"
 
-#~ msgid ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les groupes.\n"
-#~ "• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios "
-#~ "et séparateurs.\n"
-#~ "• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du "
-#~ "contenu.\n"
-#~ "• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
-#~ msgstr ""
-#~ "<small>• Αλλάξτε το <b>#</b> ή χρησιμοποιήστε το <b>Μετακίνηση επάνω / "
-#~ "Κάτω</b> για να παραγγείλετε τις ομάδες.\n"
-#~ "• <b>Κάντε διπλό κλικ σε μια ομάδα</b> (ή Άνοιγμα) για να ταξινομήσετε τα "
-#~ "ραδιόφωνα και τα διαχωριστικά της.\n"
-#~ "• Χρησιμοποιήστε το <b>Μετακίνηση σε...</b> για να συγχωνεύσετε ή να "
-#~ "μετακινήσετε περιεχόμενο.\n"
-#~ "• Χρησιμοποιήστε τη <b>Νέα ομάδα</b> για να δημιουργήσετε έναν φάκελο με "
-#~ "ραδιόφωνα.</small>"
+#: src/i18n.rs:237 src/tray/menu.rs:372
 
-#~ msgid ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les radios.\n"
-#~ "• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne "
-#~ "(en rouge).\n"
-#~ "• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de "
-#~ "remplacement actif.\n"
-#~ "• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de "
-#~ "séparation.</small>"
-#~ msgstr ""
-#~ "<small>• Αλλάξτε το <b>#</b> ή χρησιμοποιήστε το <b>Μετακίνηση επάνω / "
-#~ "Κάτω</b> για να παραγγείλετε τα ραδιόφωνα.\n"
-#~ "• Κάντε κλικ στο <b>Έλεγχος ροών</b> για να εντοπίσετε συνδέσμους εκτός "
-#~ "σύνδεσης (με κόκκινο χρώμα).\n"
-#~ "• Κάντε κλικ στο <b>Επισκευή ροής...</b> για να αναζητήσετε μια ενεργή "
-#~ "ροή αντικατάστασης.\n"
-#~ "• Κάντε κλικ στο <b>Διαχωριστικό</b> για να εισαγάγετε έναν διάλογο ή "
-#~ "διαχωριστική γραμμή.</small>"
+msgid "Zap to another random station"
+msgstr "Τυχαίος σταθμός"
+
+#: data/scripts/reorder_groups.py:930
+
+msgid "[ / ] Root (Without group)"
+msgstr "[ / ] Î¡Î¯Î¶Î± (ÏÏÏÎ¯Ï Î¿Î¼Î¬Î´Î±)"
+
+#: data/scripts/reorder_groups.py:405
+
+msgid "[!] Dead link"
+msgstr "[!] Dead link"
+
+#: data/scripts/reorder_groups.py:409
+
+msgid "[?] Geo-restricted"
+msgstr "[?] Geo-restricted"
+
+#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
+
+msgid "[New]"
+msgstr "[Νέο]"
+
+#: data/scripts/reorder_groups.py:403
+
+msgid "[OK] Live"
+msgstr "[OK] Live"
+
+#: data/scripts/reorder_groups.py:1027
+
+msgid "[OK] Repaired"
+msgstr "[OK] ÎÏÎ¹ÏÎºÎµÏÎ¬ÏÏÎ·ÎºÎµ"
+
+#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
+
+msgid "[Present]"
+msgstr "[Υπάρχει]"
+
+#: data/scripts/reorder_groups.py:407
+
+msgid "[~] Redirected"
+msgstr "[~] Redirected"
+
+#: data/scripts/reorder_groups.py:1141
+
+msgid "broken"
+msgstr "broken"
+
+#: data/scripts/reorder_groups.py:1127
+
+msgid "checked:"
+msgstr "checked:"
+
+#: src/tray/dialogs.rs:263
+
+msgid "deleted from your favorites."
+msgstr "διαγράφηκε από τα αγαπημένα σας."
+
+#: data/scripts/timonde_settings.py:750
+
+msgid "disabled"
+msgstr "ανάπηρος"
+
+#: data/scripts/timonde_settings.py:750
+
+msgid "enabled"
+msgstr "ενεργοποιημένη"
+
+#: src/tray/mod.rs:332
+
+msgid "is currently unavailable"
+msgstr "δεν είναι διαθέσιμος αυτή τη στιγμή"
+
+#: src/tray/mod.rs:302
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "δεν ανταποκρίνεται. Αναζήτηση εφεδρικής ροής..."
+
+#: data/scripts/timonde_settings.py:612
+
+msgid "new station(s) imported"
+msgstr "Î½Î­Î¿Î¹ ÏÏÎ±Î¸Î¼Î¿Î¯ ÎµÎ¹ÏÎ®ÏÎ¸Î·ÏÎ±Î½"
+
+#: data/scripts/reorder_groups.py:1140
+
+msgid "online"
+msgstr "online"
+
+#: data/scripts/reorder_groups.py:372
+
+msgid "radio"
+msgstr "radio"
+
+#: data/scripts/reorder_groups.py:372 data/scripts/reorder_groups.py:672
+
+msgid "radios"
+msgstr "radios"
+
+#: data/scripts/reorder_groups.py:1142
+
+msgid "redirected"
+msgstr "redirected"
+
+#: data/scripts/browse_bouquets.py:2306
+
+msgid "sample files restored."
+msgstr "δείγμα αρχείων αποκαταστάθηκε."
+
+#: src/tray/mod.rs:562
+
+msgid "saved in your favorites!"
+msgstr "αποθηκεύτηκε στα αγαπημένα σας!"
+
+#: data/scripts/timonde_settings.py:559
+
+msgid "saved successfully!"
+msgstr "Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ!"
+
+#: data/scripts/reorder_groups.py:779
+
+msgid "station"
+msgstr "station"
+
+#: data/scripts/timonde_settings.py:614
+
+msgid "station(s) moved to destination"
+msgstr "ÏÏÎ±Î¸Î¼Î¿Î¯ Î¼ÎµÏÎ±ÎºÎ¹Î½Î®Î¸Î·ÎºÎ±Î½ ÏÏÎ¿Î½ ÏÏÎ¿Î¿ÏÎ¹ÏÎ¼Ï"
+
+#: data/scripts/reorder_groups.py:779
+
+msgid "stations"
+msgstr "stations"
+
+#: data/scripts/reorder_groups.py:1095
+
+msgid "stations checked..."
+msgstr "stations checked..."
+
+#: src/tray/mod.rs:592
+
+msgid "stopping in"
+msgstr "τερματισμός σε"
+
+#: data/scripts/reorder_groups.py:1200
+
+msgid "stream(s) updated."
+msgstr "ÏÎ¿Î­Ï ÎµÎ½Î·Î¼ÎµÏÏÎ¸Î·ÎºÎ±Î½."
+
+#: data/scripts/browse_bouquets.py:1725
+
+msgid "this country"
+msgstr "αυτή η χώρα"
+
+#: src/tray/dialogs.rs:385
+
+msgid "updated successfully!"
+msgstr "ενημερώθηκε με επιτυχία!"
+
+#: data/scripts/browse_bouquets.py:1733 data/scripts/browse_bouquets.py:2145
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "Επιλέχθηκαν {checked} / {total} σταθμοί"
+
+#: data/scripts/edit_station.py:543
+
+msgid "{count} available timezones"
+msgstr "{count} διαθέσιμες ζώνες ώρας"
+
+#: data/scripts/browse_bouquets.py:1918
+
+msgid "{count} stations found."
+msgstr "Βρέθηκαν {count} σταθμοί."
+
+#: data/scripts/timonde_common.py:1690
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Βρέθηκαν {count} ροές. Επιλέξτε την επιθυμητή ροή και επιβεβαιώστε."
+
+#: data/scripts/reorder_groups.py:352 data/scripts/reorder_groups.py:391
+
+#: data/scripts/reorder_groups.py:713
+
+msgid "— Separator —"
+msgstr "— Separator —"
+

@@ -1,1219 +1,1106 @@
 # TiMonde — Traduction LO
+
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
+
 #
+
 msgid ""
 msgstr ""
 "Project-Id-Version: TiMonde 0.1.3\n"
-"Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
-"POT-Creation-Date: 2026-10-29 06:50+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 20:23+0100\n"
 "PO-Revision-Date: 2026-10-17 17:00+0200\n"
 "Language: lo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Play"
-msgstr "ຫຼິ້ນ"
+#: src/i18n.rs:186 src/i18n.rs:193
 
-msgid "Stop"
-msgstr "ຢຸດ"
-
-msgid "Connecting..."
-msgstr "ກຳລັງເຊື່ອມຕໍ່..."
-
-msgid "Edit"
-msgstr "ແກ້ໄຂ"
-
-msgid "Delete"
-msgstr "ລຶບ"
-
-msgid "Zap to another random station"
-msgstr "Zap ໄປຫາວິທະຍຸແບບສຸ່ມອື່ນ"
-
-msgid "Play random radio (Ephemeral discovery)"
-msgstr "ຟັງ​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ Random (ການ​ຄົ້ນ​ພົບ Ephemeral​)"
-
-msgid "[ Ephemeral]"
+msgid " [Ephemeral]"
 msgstr "[ຊົ່ວຊ້າ]"
 
-msgid "Options"
-msgstr "ຕົວເລືອກ"
+#: data/scripts/browse_bouquets.py:1655
 
-msgid "Add a station..."
-msgstr "ເພີ່ມວິທະຍຸ..."
-
-msgid "Discover & Import stations..."
-msgstr "ຄົ້ນພົບ ແລະນຳເຂົ້າວິທະຍຸ..."
-
-msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr "ນຳເຂົ້າໄຟລ໌ຂອງຂ້ອຍ (XML, CSV, JSON, M3U)..."
-
-msgid "Manage groups and stations..."
-msgstr "ຈັດແບ່ງກຸ່ມ ແລະວິທະຍຸ..."
-
-msgid "Open bookmarks.xml"
-msgstr "ເປີດ bookmarks.xml"
-
-msgid "Quit TiMonde"
-msgstr "ອອກຈາກ TiMonde"
-
-msgid "Mute (0%)"
-msgstr "ປິດສຽງ (0%)"
-
-msgid "Sleep timer"
-msgstr "ໂມງຈັບເວລານອນ"
-
-msgid "In 15 minutes"
-msgstr "ໃນ 15 ນາທີ"
-
-msgid "In 30 minutes"
-msgstr "ໃນ 30 ນາທີ"
-
-msgid "In 45 minutes"
-msgstr "ໃນ 45 ນາທີ"
-
-msgid "In 60 minutes (1h)"
-msgstr "ໃນ 60 ນາ​ທີ (1 ຊົ່ວ​ໂມງ​)"
-
-msgid "Cancel sleep timer"
-msgstr "ຍົກເລີກການນອນ"
-
-msgid "Discover & Import stations (TiMonde)"
-msgstr "ຄົ້ນພົບ ແລະນຳເຂົ້າສະຖານີວິທະຍຸ (TiMonde)"
-
-msgid "Verified DAB+ Bouquets"
-msgstr "ຊໍ່ດອກໄມ້ທີ່ຢັ້ງຢືນແລ້ວ (DAB+)"
-
-msgid "Radio-Browser Search"
-msgstr "ຊອກຫາ Radio-Browser"
-
-msgid "Sample Files"
-msgstr "ໄຟລ໌ຕົວຢ່າງ"
-
-msgid "Import my files"
-msgstr "ນໍາເຂົ້າໄຟລ໌ຂອງຂ້ອຍ"
-
-msgid "<b> Country:</b>"
-msgstr "<b>ປະເທດ:</b>"
-
-msgid "<b>Language:</b>"
-msgstr "<b>ພາສາ:</b>"
-
-msgid "Name / Keyword:"
-msgstr "ຊື່ / ຄໍາສໍາຄັນ:"
-
-msgid "Genre:"
-msgstr "ເພດ:"
-
-msgid "<b>Sample file:</b>"
-msgstr "<b>ໄຟລ໌ຕົວຢ່າງ:</b>"
-
-msgid "<b>Group name in your favorites:</b>"
-msgstr "<b>ຊື່ກຸ່ມໃນລາຍການທີ່ທ່ານມັກ:</b>"
-
-msgid "Select all"
-msgstr "ກວດເບິ່ງທັງຫມົດ"
-
-msgid "Deselect all"
-msgstr "ຍົກເລີກການເລືອກທັງໝົດ"
-
-msgid "Import into favorites"
-msgstr "ນຳເຂົ້າໃສ່ລາຍການທີ່ມັກຂອງຂ້ອຍ"
-
-msgid "Close"
-msgstr "ປິດ"
-
-msgid "Add a station (TiMonde)"
-msgstr "ເພີ່ມສະຖານີ (TiMonde)"
-
-msgid "<b>Enter new station details:</b>"
-msgstr "<b>ໃສ່ຂໍ້ມູນສຳລັບວິທະຍຸໃໝ່:</b>"
-
-msgid "Add to my stations"
-msgstr "ເພີ່ມໃສ່ວິທະຍຸຂອງຂ້ອຍ"
-
-msgid "Save station to favorites (TiMonde)"
-msgstr "ຊ່ວຍ​ປະ​ຢັດ​ວິ​ທະ​ຍຸ​ທີ່​ມັກ​ຂອງ​ຂ້າ​ພະ​ເຈົ້າ (TiMonde​)"
-
-msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr "<b>ເກັບ​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ​ທີ່​ຖືກ​ຄົ້ນ​ພົບ​ໂດຍ​ສຸ່ມ​ນີ້​ໃນ​ທີ່​ມັກ​ຂອງ​ທ່ານ​:</b>"
-
-msgid "Keep in favorites"
+msgid "(Already in favorites)"
 msgstr "ບັນທຶກໃສ່ລາຍການທີ່ມັກຂອງຂ້ອຍ"
 
-msgid "Edit station (TiMonde)"
-msgstr "ແກ້​ໄຂ​ວິ​ທະ​ຍຸ (TiMonde​)"
-
-msgid "<b>Edit station settings:</b>"
-msgstr "<b>ປ່ຽນການຕັ້ງຄ່າສະຖານີ:</b>"
-
-msgid "Save"
-msgstr "ບັນທຶກ"
-
-msgid "Station name:"
-msgstr "ຊື່ສະຖານີ:"
-
-msgid "Audio stream URL:"
-msgstr "URL ການຖ່າຍທອດສຽງ:"
-
-msgid "Group / Folder:"
-msgstr "ກຸ່ມ / ໂຟນເດີ:"
-
-msgid "Country & Timezone:"
-msgstr "ປະເທດ ແລະເຂດເວລາ:"
-
-msgid "Timezone:"
-msgstr "ເຂດເວລາ:"
-
-msgid "Delete this station"
-msgstr "ລຶບວິທະຍຸນີ້"
-
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-msgid "Delete « {} » from favorites?"
-msgstr "ລຶບ “{}” ອອກຈາກລາຍການທີ່ມັກບໍ?"
-
-msgid "This action will permanently remove this station from your collection."
-msgstr "ຄຳສັ່ງນີ້ຈະລຶບສະຖານີນີ້ອອກຈາກຄໍເລັກຊັນຂອງເຈົ້າຢ່າງຖາວອນ."
-
-msgid "Manage groups, stations and separators (TiMonde)"
-msgstr "ການຄຸ້ມຄອງກຸ່ມ, ວິທະຍຸ ແລະຕົວແຍກ (TiMonde)"
-
-msgid "Back to groups"
-msgstr "⬅ ກັບໄປທີ່ກຸ່ມ"
-
-msgid "Add station"
-msgstr "ເພີ່ມວິທະຍຸ"
-
-msgid "Open"
-msgstr "ເປີດ"
-
-msgid "New group"
-msgstr "ກຸ່ມໃໝ່"
-
-msgid "Move to..."
-msgstr "ຍ້າຍໄປ..."
-
-msgid "Top"
-msgstr "ທໍາອິດ"
-
-msgid "Move up"
-msgstr "⬆ ຂຶ້ນ"
-
-msgid "Move down"
-msgstr "⬇ ລົງໄປ"
-
-msgid "Separator"
-msgstr "ຕົວແຍກ"
-
-msgid "Sort A-Z"
-msgstr "ຈັດຮຽງ A-Z"
-
-msgid "Save and reload"
-msgstr "ບັນທຶກ ແລະໂຫຼດຄືນໃໝ່"
-
-msgid "Same time"
-msgstr "ເວລາດຽວກັນ"
-
-msgid "Dawn"
-msgstr "ອາລຸນ"
-
-msgid "Morning"
-msgstr "ຕອນເຊົ້າ"
-
-msgid "Daytime"
-msgstr "ມື້"
-
-msgid "Evening"
-msgstr "ຕອນແລງ"
-
-msgid "Night"
-msgstr "ກາງຄືນ"
-
-msgid "Tomorrow"
-msgstr "ມື້ອື່ນ"
-
-msgid "Yesterday"
-msgstr "ມື້ວານ"
-
-msgid "Maintenance & Data"
-msgstr "ການຮັກສາ & ຂໍ້ມູນ"
-
-msgid "Check streams (dead links)..."
-msgstr "ກວດເບິ່ງຟີດ (ລິ້ງທີ່ຕາຍແລ້ວ)..."
-
-msgid "Export my stations to CSV..."
-msgstr "ສົ່ງອອກວິທະຍຸຂອງຂ້ອຍໄປ CSV..."
-
-msgid "Check streams"
-msgstr "ກວດເບິ່ງຟີດ"
-
-msgid "Dead links only"
-msgstr "ການເຊື່ອມຕໍ່ຕາຍເທົ່ານັ້ນ"
-
-msgid "Apply redirects"
-msgstr "ນຳໃຊ້ການປ່ຽນເສັ້ນທາງ"
-
-msgid "Repair stream..."
-msgstr "ສ້ອມແປງກະແສ..."
-
-msgid "Export to CSV"
-msgstr "ສົ່ງອອກເປັນ CSV"
-
-msgid "Test stream availability and locate broken links"
-msgstr "ທົດ​ສອບ​ການ​ມີ​ຊີ​ວິດ​ຂອງ​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ​ຂອງ​ທ່ານ​ແລະ​ຊອກ​ຫາ​ການ​ເຊື່ອມ​ຕໍ່​ທີ່​ຕາຍ​ແລ້ວ​"
-
-msgid "Display offline radio streams only"
-msgstr "ສະ​ແດງ​ໃຫ້​ເຫັນ​ພຽງ​ແຕ່​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ​ທີ່​ມີ​ການ​ສະ​ຕ​ຣີມ offline​"
-
-msgid "Automatically update redirected streams to direct URL"
-msgstr "ປັບປຸງອັດຕະໂນມັດ feeds redirected ກັບ URL ໂດຍກົງຂອງເຂົາເຈົ້າ"
-
-msgid "Search Radio-Browser for a working replacement stream"
-msgstr "ຄົ້ນຫາອັດຕະໂນມັດສໍາລັບການປ່ຽນແທນການຖ່າຍທອດຢູ່ໃນ Radio-Browser ສໍາລັບການເຊື່ອມຕໍ່ຕາຍນີ້"
-
-msgid "Export all stations to CSV spreadsheet format"
-msgstr "ສົ່ງອອກວິທະຍຸທັງໝົດຂອງເຈົ້າໃນຮູບແບບສະເປຣດຊີດ CSV"
-
-msgid "Export my stations to CSV"
-msgstr "ສົ່ງອອກວິທະຍຸຂອງຂ້ອຍໄປ CSV"
-
-msgid "CSV files (*.csv)"
-msgstr "ໄຟລ໌ CSV (*.csv)"
-
-msgid "All files (*.*)"
-msgstr "ໄຟລ໌ທັງໝົດ (*.*)"
-
-msgid "Export"
-msgstr "ສົ່ງອອກ"
-
-msgid "Export successful!"
-msgstr "ສົ່ງອອກສຳເລັດ!"
-
-msgid "Error during CSV export:"
-msgstr "ເກີດຄວາມຜິດພາດໃນລະຫວ່າງການສົ່ງອອກ CSV:"
-
-msgid "station(s) saved to:"
-msgstr "ວິ​ທະ​ຍຸ​ທີ່​ບັນ​ທຶກ​ໄວ້​ໃນ​:"
-
-msgid "Start automatically at login"
-msgstr "Start automatically at login"
-
-msgid "Organize groups and stations (TiMonde)"
-msgstr "Organize groups and stations (TiMonde)"
-
-msgid "Back to main group list (Esc)"
-msgstr "Back to main group list (Esc)"
-
-msgid "Sort stations in this group (Enter or double-click)"
-msgstr "Sort stations in this group (Enter or double-click)"
-
-msgid "Create a new group of radio stations (Ctrl+N)"
-msgstr "Create a new group of radio stations (Ctrl+N)"
-
-msgid "Move selection to another group (Ctrl+M)"
-msgstr "Move selection to another group (Ctrl+M)"
-
-msgid "Move selected item to the top"
-msgstr "Move selected item to the top"
-
-msgid "Move up one rank"
-msgstr "Move up one rank"
-
-msgid "Move down one rank"
-msgstr "Move down one rank"
-
-msgid "Add a new station to this group"
-msgstr "Add a new station to this group"
-
-msgid "Insert a separator or header in this group"
-msgstr "Insert a separator or header in this group"
-
-msgid "Sort this list alphabetically"
-msgstr "Sort this list alphabetically"
-
-msgid "Edit selected name, URL or header (F2)"
-msgstr "Edit selected name, URL or header (F2)"
-
-msgid "Delete selected item or group (Del)"
-msgstr "Delete selected item or group (Del)"
-
-msgid "Transfer..."
-msgstr "Transfer..."
-
-msgid "Transfer the content of this group to another group (Ctrl+M)"
-msgstr "Transfer the content of this group to another group (Ctrl+M)"
-
-msgid "<b>Radio groups</b>"
-msgstr "<b>Radio groups</b>"
-
-msgid "— Separator —"
-msgstr "— Separator —"
-
-msgid "radio"
-msgstr "radio"
-
-msgid "radios"
-msgstr "radios"
-
-msgid "sep."
-msgstr "sep."
-
-msgid "dead link"
-msgstr "dead link"
-
-msgid "dead links"
-msgstr "dead links"
-
-msgid "redir."
-msgstr "redir."
-
-msgid "[OK] All online"
-msgstr "[OK] All online"
-
-msgid "Move selected stations to another group (Ctrl+M)"
-msgstr "Move selected stations to another group (Ctrl+M)"
-
-msgid "Create a new group and move selected stations there (Ctrl+N)"
-msgstr "Create a new group and move selected stations there (Ctrl+N)"
-
-msgid "Stations in group:"
-msgstr "Stations in group:"
-
-msgid "Header"
-msgstr "Header"
-
-msgid "[OK] Live"
-msgstr "[OK] Live"
-
-msgid "[!] Dead link"
-msgstr "[!] Dead link"
-
-msgid "[~] Redirected"
-msgstr "[~] Redirected"
-
-msgid "[?] Geo-restricted"
-msgstr "[?] Geo-restricted"
-
-msgid "Audit completed:"
-msgstr "Audit completed:"
-
-msgid "online"
-msgstr "online"
-
-msgid "broken"
-msgstr "broken"
-
-msgid "redirected"
-msgstr "redirected"
-
-msgid "No stations to check."
-msgstr "No stations to check."
-
-msgid "Checking your radio stations"
-msgstr "Checking your radio stations"
-
-msgid "Testing live radio streams..."
-msgstr "Testing live radio streams..."
-
-msgid "stations checked..."
-msgstr "stations checked..."
-
-msgid "checked:"
-msgstr "checked:"
-
-msgid "Please select a station to repair."
-msgstr "Please select a station to repair."
-
-msgid "This item is a separator."
-msgstr "This item is a separator."
-
-msgid "Station deleted"
-msgstr "Station deleted"
-
-msgid "Settings..."
-msgstr "ການຕັ້ງຄ່າ..."
-
 # --- Mises à jour TiMonde ---
+
+#: data/scripts/edit_station.py:541
+
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
+
+#: data/scripts/browse_bouquets.py:680 data/scripts/browse_bouquets.py:681
+
+#: data/scripts/browse_bouquets.py:2020 data/scripts/browse_bouquets.py:2063
+
+#: data/scripts/browse_bouquets.py:2197
+
+msgid "(Original folder structure)"
+msgstr "(ໂຄງສ້າງໂຟນເດີຕົ້ນສະບັບ)"
+
+#: data/scripts/edit_station.py:539
 
 msgid "(Single inferred timezone)"
 msgstr "(Single inferred timezone)"
 
+#: data/scripts/edit_station.py:518
+
 msgid "(Timezone not defined)"
 msgstr "(Timezone not defined)"
+
+#: data/scripts/edit_station.py:521
 
 msgid "(Unknown)"
 msgstr "(Unknown)"
 
-msgid "<b>Country:</b>"
-msgstr "<b>Country:</b>"
+#: data/scripts/edit_station.py:75
 
-msgid "<b>Fichier exemple :</b>"
-msgstr "<b>Sample file:</b>"
+msgid "<b>Edit station settings:</b>"
+msgstr "<b>ປ່ຽນການຕັ້ງຄ່າສະຖານີ:</b>"
 
-msgid ""
-"Accédez à plus de 40 000 stations en ligne classées par pays, genre ou mots-"
-"clés."
-msgstr ""
-"Access over 40,000 online stations sorted by country, genre or keywords."
+#: data/scripts/edit_station.py:65
 
-msgid "Ajouter une radio (TiMonde)"
-msgstr "ເພີ່ມວິທະຍຸ (TiMonde)"
+msgid "<b>Enter new station details:</b>"
+msgstr "<b>ໃສ່ຂໍ້ມູນສຳລັບວິທະຍຸໃໝ່:</b>"
 
-msgid "Ajouter une radio manuellement"
-msgstr "Add station manually"
+#: data/scripts/edit_station.py:70
 
-msgid "Ajouter à mes radios"
-msgstr "ເພີ່ມໃສ່ວິທະຍຸຂອງຂ້ອຍ"
+msgid "<b>Keep this randomly discovered station in your favorites:</b>"
+msgstr "<b>ເກັບ​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ​ທີ່​ຖືກ​ຄົ້ນ​ພົບ​ໂດຍ​ສຸ່ມ​ນີ້​ໃນ​ທີ່​ມັກ​ຂອງ​ທ່ານ​:</b>"
 
-msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "ບໍ່ມີການເພີ່ມວິທະຍຸໃໝ່ (ມີຢູ່ແລ້ວ)."
+#: data/scripts/timonde_settings.py:740
 
-msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "DAB+ Bouquets ແລະການຄັດເລືອກຢ່າງເປັນທາງການ"
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> ສະຖານີໃນ <b>{nb_gr}</b> ກຸ່ມ."
 
-msgid "Bouquets DAB+ vérifiés"
-msgstr "Verified DAB+ Bouquets"
+#: data/scripts/browse_bouquets.py:1208
 
-msgid ""
-"Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, "
-"GNOME, KDE, MATE)."
-msgstr ""
-"Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, "
-"GNOME, KDE, MATE)."
-
-msgid "Conserver dans mes favoris"
-msgstr "ບັນທຶກໃສ່ລາຍການທີ່ມັກຂອງຂ້ອຍ"
-
-msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "ຮັກສາວິທະຍຸໃນລາຍການທີ່ມັກ (TiMonde)"
-
-msgid ""
-"Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans "
-"~/.config/timonde/examples/."
-msgstr ""
-"Browse the 17 thematic selections or drop your own files into ~/.config/"
-"timonde/examples/."
-
-msgid "Contents"
-msgstr "Contents"
-
-msgid "Details"
-msgstr "Details"
-
-msgid "Dossier ouvert :"
-msgstr "ເປີດໄຟລ໌:"
-
-msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "ຄົ້ນ​ພົບ​ແລະ​ນໍາ​ເຂົ້າ​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ (TiMonde​)"
-
-msgid "Démarrage automatique"
-msgstr "Autostart"
-
-msgid ""
-"Démarre discrètement TiMonde en arrière-plan dès l'ouverture de votre "
-"session graphique."
-msgstr ""
-"Launches TiMonde discreetly in the background when your graphical session "
-"starts."
-
-msgid ""
-"Détection automatique selon votre système. 55 langues mondiales supportées "
-"avec drapeaux."
-msgstr ""
-"Automatic detection based on your system. 55 world languages supported."
-
-msgid "Enregistrer"
-msgstr "ບັນທຶກ"
-
-msgid "Erreur :"
-msgstr "Error:"
-
-msgid "Erreur exécution :"
-msgstr "ການ​ປະ​ຕິ​ບັດ​ຄວາມ​ຜິດ​ພາດ​:"
-
-msgid "Erreur import JSON :"
-msgstr "ການນໍາເຂົ້າ JSON ຜິດພາດ:"
-
-msgid "Erreur lors de la modification de l'autostart."
-msgstr "ເກີດຄວາມຜິດພາດໃນການແກ້ໄຂການເລີ່ມຕົ້ນອັດຕະໂນມັດ."
-
-msgid "Explorer DAB+..."
-msgstr "ສຳຫຼວດ DAB+..."
-
-msgid "Exportation CSV terminée."
-msgstr "ການສົ່ງອອກ CSV ສຳເລັດແລ້ວ."
-
-msgid "Exporter en CSV..."
-msgstr "Export to CSV..."
-
-msgid ""
-"Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout en "
-"conservant bookmarks.xml comme référence."
-msgstr ""
-"Export or sync your radio stations with LibreOffice Calc or Excel while "
-"keeping bookmarks.xml as reference."
-
-msgid "Fermer"
-msgstr "ປິດ"
-
-msgid "Fichiers exemples"
-msgstr "Sample Files"
-
-msgid "Fichiers exemples thématiques"
-msgstr "Thematic Sample Files"
-
-msgid "Group name"
-msgstr "Group name"
-
-msgid "Générez une feuille de calcul CSV de vos radios"
-msgstr "Generate a CSV spreadsheet of your radio stations"
-
-msgid "Gérer les radios..."
-msgstr "Manage stations..."
-
-msgid "Importer depuis CSV..."
-msgstr "Import from CSV..."
-
-msgid "Importer des fichiers personnels"
-msgstr "ນໍາເຂົ້າໄຟລ໌ສ່ວນບຸກຄົນ"
-
-msgid "Importer fichier..."
-msgstr "ນຳເຂົ້າໄຟລ໌..."
-
-msgid "Importer mes fichiers"
-msgstr "Import My Files"
-
-msgid ""
-"Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV, "
-"JSON, M3U ou PLS."
-msgstr ""
-"Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U "
-"or PLS formats."
-
-msgid "Impossible d ouvrir le dossier :"
-msgstr "ບໍ່ສາມາດເປີດໂຟນເດີໄດ້:"
-
-msgid ""
-"Insérez des séparateurs (---) ou des intertitres de section dans vos groupes "
-"pour aérer votre menu."
-msgstr "ໃສ່ຕົວແຍກ (---) ຫຼືຫົວຂໍ້ພາກໃນກຸ່ມຂອງທ່ານເພື່ອລະບາຍອາກາດໃນເມນູຂອງທ່ານ."
-
-msgid "Intégration du bureau & Plateau"
-msgstr "Desktop Integration & Tray"
-
-msgid "Lancement automatique au démarrage"
-msgstr "Launch automatically at startup"
-
-msgid "Lancer l'audit..."
-msgstr "Start audit..."
-
-msgid "Langue :"
-msgstr "Language:"
-
-msgid "Langue et Région"
-msgstr "Language & Region"
-
-msgid "Modifications prises en compte."
-msgstr "ການປ່ຽນແປງທີ່ພິຈາລະນາ."
-
-msgid "Modifier la radio (TiMonde)"
-msgstr "ແກ້​ໄຂ​ວິ​ທະ​ຍຸ (TiMonde​)"
-
-msgid "Name / Header"
-msgstr "Name / Header"
-
-msgid "Nouvelle radio..."
-msgstr "New station..."
-
-msgid "Organiser les groupes et les radios"
-msgstr "Organize groups and stations"
-
-msgid "Outil introuvable :"
-msgstr "Tool not found:"
-
-msgid "Ouvrir dossier"
-msgstr "ເປີດໂຟນເດີ"
-
-msgid "Paramètres & Contrôle TiMonde"
-msgstr "TiMonde Settings & Control"
-
-msgid "Paramètres TiMonde"
-msgstr "TiMonde Settings"
-
-msgid ""
-"Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter votre "
-"bureau."
-msgstr ""
-"Browse 146 verified national and regional bouquets without leaving your "
-"desktop."
-
-msgid "Parcourir..."
-msgstr "ຊອກຫາ..."
-
-msgid "Passerelle Tableur (CSV)"
-msgstr "Spreadsheet Gateway (CSV)"
-
-msgid "Recherche Radio-Browser"
-msgstr "Radio-Browser Search"
-
-msgid "Recherche mondiale Radio-Browser"
-msgstr "Global Search Radio-Browser"
-
-msgid "Rechercher..."
-msgstr "ຊອກຫາ..."
-
-msgid "Restaurer"
-msgstr "Restore"
-
-msgid "Restaurer les fichiers exemples"
-msgstr "Restore sample files"
-
-msgid "Réimportez ou synchronisez des radios modifiées depuis un tableur CSV"
-msgstr "Re-import or sync modified radio stations from a CSV spreadsheet"
-
-msgid ""
-"Rétablit les 17 exemples thématiques par défaut dans votre dossier personnel "
-"s'ils ont été supprimés."
-msgstr ""
-"Restores the 17 default thematic samples in your personal folder if deleted."
-
-msgid ""
-"Saisir directement un nom, une URL de flux (AAC, MP3, HLS), un pays et un "
-"fuseau horaire."
-msgstr ""
-"Directly enter a name, stream URL (AAC, MP3, HLS), country and timezone."
-
-msgid "Signets actuels (bookmarks.xml)"
-msgstr "Current bookmarks (bookmarks.xml)"
-
-msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "ບຸກມາກຈັດລະບຽບຄືນໃໝ່ ແລະບັນທຶກສຳເລັດແລ້ວ!"
-
-msgid "Supprimer"
-msgstr "ລຶບ"
-
-msgid ""
-"Teste en direct la disponibilité de tous vos flux, détecte les liens "
-"inactifs et applique les redirections."
-msgstr ""
-"Tests live availability of all your streams, detects broken links and "
-"applies redirects."
-
-msgid ""
-"Triez, renommez, supprimez et déplacez vos stations. Créez des dossiers et "
-"des sous-groupes (ex: Musique/Jazz)."
-msgstr ""
-"Sort, rename, delete and move your stations. Create folders and sub-groups "
-"(e.g. Music/Jazz)."
-
-msgid "Vérificateur de flux & Liens morts"
-msgstr "Stream health check & Dead links"
-
-msgid "activé"
-msgstr "enabled"
-
-msgid "ajoutée avec succès à vos signets !"
-msgstr "successfully added to your bookmarks!"
-
-msgid "désactivé"
-msgstr "disabled"
-
-msgid "fichiers exemples restaurés dans"
-msgstr "ໄຟລ໌ຕົວຢ່າງຖືກຟື້ນຟູໃນ"
-
-msgid "radio(s) ajoutée(s) à vos signets !"
-msgstr "station(s) added to your bookmarks!"
-
-msgid "↕️ Organisation"
-msgstr "↕️ ອົງການຈັດຕັ້ງ"
-
-msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 ເຄັດລັບການຈັດຮູບແບບພາບ"
-
-msgid "💾 Données & Fichiers"
-msgstr "💾 ຂໍ້ມູນ ແລະ ໄຟລ໌"
-
-msgid "📻 Bibliothèque"
-msgstr "📻 ຫໍສະໝຸດ"
-
-msgid "🖥️ Général"
-msgstr "🖥️ ທົ່ວໄປ"
-
-msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgid "<i>Select a file or sample above.</i>"
 msgstr "<i>ເລືອກໄຟລ໌ ຫຼືຕົວຢ່າງຂ້າງເທິງ.</i>"
 
-msgid "Actualiser la liste des exemples"
-msgstr "ໂຫຼດລາຍຊື່ຕົວຢ່າງຄືນໃໝ່"
+#: data/scripts/timonde_settings.py:709 data/scripts/timonde_settings.py:719
 
-msgid "Aide sur les groupes et sous-groupes"
-msgstr "ຊ່ວຍໃນກຸ່ມ ແລະກຸ່ມຍ່ອຍ"
+msgid "Active (Left & Right clicks unified)"
+msgstr "Aktiv (Links- & Rechtsklick vereinheitlicht)"
 
-msgid "Ajouter"
+#: data/scripts/browse_bouquets.py:882
+
+msgid "Add"
 msgstr "ເພີ່ມ"
 
-msgid "Annuler"
-msgstr "ຍົກເລີກ"
+#: data/scripts/reorder_groups.py:189
 
-msgid "Arrêter"
-msgstr "ຢຸດ"
+msgid "Add a new station to this group or to root"
+msgstr "Î ÏÎ¿ÏÎ¸Î®ÎºÎ· Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÎµ Î±ÏÏÎ® ÏÎ·Î½ Î¿Î¼Î¬Î´Î± Î® ÏÏÎ· ÏÎ¯Î¶Î±"
 
-msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
-msgstr "ບໍ່ພົບໄຟລ໌ bookmarks.xml ເພື່ອບັນທຶກ."
+#: data/scripts/edit_station.py:64
 
-msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
-msgstr "ບໍ່ໄດ້ເພີ່ມສະຖານີວິທະຍຸໃໝ່ (ມີຢູ່ໃນບຸກມາກຂອງທ່ານແລ້ວ)."
+msgid "Add a station (TiMonde)"
+msgstr "ເພີ່ມສະຖານີ (TiMonde)"
 
-msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
-msgstr "ບໍ່ພົບສະຖານີວິທະຍຸໃນ Radio-Browser ສໍາລັບເງື່ອນໄຂເຫຼົ່ານີ້."
+#: data/scripts/reorder_groups.py:189
 
-msgid "Bouquet National (Grandes stations)"
-msgstr "ຊໍ່ດອກໄມ້ແຫ່ງຊາດ (ຣີສອດສຳຄັນ)"
+msgid "Add station"
+msgstr "ເພີ່ມວິທະຍຸ"
 
-msgid "Bouquets par pays"
-msgstr "ຊໍ່ດອກໄມ້ຕາມປະເທດ"
+#: data/scripts/reorder_groups.py:576
 
-msgid "Bureau graphique & Plateau"
-msgstr "ໂຕະກາຟິກ ແລະຖາດ"
+msgid "Add station here..."
+msgstr "Î ÏÎ¿ÏÎ¸Î®ÎºÎ· ÏÏÎ±Î¸Î¼Î¿Ï ÎµÎ´Ï..."
 
-msgid "Cette station n'a aucune URL de flux audio."
-msgstr "ສະຖານີນີ້ບໍ່ມີ URL ການຖ່າຍທອດສຽງ."
+#: data/scripts/reorder_groups.py:597
 
-msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
-msgstr "ອັບໂຫຼດໄຟລ໌ XML, CSV, JSON, M3U ຫຼື PLS"
+msgid "Add station..."
+msgstr "ເພີ່ມວິທະຍຸ..."
 
-msgid "Charger un fichier..."
-msgstr "ໂຫຼດໄຟລ໌..."
+#: data/scripts/edit_station.py:66
 
-msgid "Choisir parmi les groupes existants"
-msgstr "ເລືອກຈາກກຸ່ມທີ່ມີຢູ່ແລ້ວ"
+msgid "Add to my stations"
+msgstr "ເພີ່ມໃສ່ວິທະຍຸຂອງຂ້ອຍ"
 
-msgid "Choisir un fichier de radios"
-msgstr "ເລືອກໄຟລ໌ວິທະຍຸ"
+#: data/scripts/edit_station.py:159
 
-msgid "Collections & Fichiers"
-msgstr "ຄໍເລັກຊັນ & ໄຟລ໌"
+msgid "Align name"
+msgstr "ÎÏÎ¸ÏÎ³ÏÎ¬Î¼Î¼Î¹ÏÎ· Î¿Î½ÏÎ¼Î±ÏÎ¿Ï"
 
-msgid "Conserver l'organisation en dossiers"
-msgstr "ຮັກສາການຈັດຕັ້ງຢູ່ໃນໄຟລ໌"
+#: data/scripts/reorder_groups.py:295
 
-msgid ""
-"Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux "
-"horaires)"
-msgstr "ສ້າງ​ການ​ສໍາ​ຮອງ​ຂໍ້​ມູນ​ຢ່າງ​ເຕັມ​ທີ່​ຂອງ​ການ​ເກັບ​ກໍາ​ຂອງ​ທ່ານ (ມີ​ໂຟນ​ເດີ​ແລະ​ເຂດ​ເວ​ລາ​)"
+msgid "All changes saved"
+msgstr "ÎÎ»ÎµÏ Î¿Î¹ Î±Î»Î»Î±Î³Î­Ï Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎ±Î½"
 
-msgid "Disponibilité"
-msgstr "ຄວາມພ້ອມ"
+#: data/scripts/browse_bouquets.py:784
 
-msgid "Disponibilité en direct"
-msgstr "ການມີຢູ່ສົດ"
+msgid "All countries (Worldwide)"
+msgstr "ທຸກປະເທດ (ທົ່ວໂລກ)"
 
-msgid "Dossier / Groupe"
-msgstr "ໂຟນເດີ / ກຸ່ມ"
+#: data/scripts/reorder_groups.py:1281
 
-msgid "Dossier des exemples"
-msgstr "ໂຟນເດີຕົວຢ່າງ"
-
-msgid "Dossier des signets"
-msgstr "ໂຟນເດີ Bookmarks"
-
-msgid ""
-"Détection automatique selon les paramètres régionaux de votre environnement "
-"Linux."
-msgstr "ການກວດຫາອັດຕະໂນມັດອີງຕາມການຕັ້ງຄ່າພາກພື້ນຂອງສະພາບແວດລ້ອມ Linux ຂອງທ່ານ."
-
-msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
-msgstr "ກວດພົບສະພາບແວດລ້ອມ (ອ່ານເທົ່ານັ້ນ)"
-
-msgid "Effacer le champ"
-msgstr "ຊ່ອງຫວ່າງ"
-
-msgid "Effacer le filtre langue"
-msgstr "ລ້າງຕົວກອງພາສາ"
-
-msgid "Effacer le filtre pays"
-msgstr "ລຶບການກັ່ນຕອງປະເທດ"
-
-msgid "Environnement GNOME Shell détecté"
-msgstr "ກວດພົບສະພາບແວດລ້ອມຂອງ GNOME Shell"
-
-msgid "Erreur lors de la sauvegarde :"
-msgstr "ເກີດຄວາມຜິດພາດໃນການບັນທຶກ:"
-
-msgid "Ex: /France/Jazz ou / pour racine"
-msgstr "ຕົວຢ່າງ: / France / Jazz ຫຼື / ສໍາລັບຮາກ"
-
-msgid "Exemples thématiques :"
-msgstr "ຕົວຢ່າງຫົວຂໍ້:"
-
-msgid "Exporter en tableau (CSV)..."
-msgstr "ສົ່ງອອກໄປຍັງຕາຕາລາງ (CSV)..."
-
-msgid "Fichier :"
-msgstr "ໄຟລ໌:"
-
-msgid "Fichier externe :"
-msgstr "ໄຟລ໌ພາຍນອກ:"
-
-msgid "Fichiers XML (*.xml)"
-msgstr "ໄຟລ໌ XML (*.xml)"
-
-msgid "Filtrer par pays :"
-msgstr "ກັ່ນຕອງຕາມປະເທດ:"
-
-msgid "Format & Débit"
-msgstr "ຮູບແບບ ແລະອັດຕາບິດ"
-
-msgid "Genre / Tags"
-msgstr "ເພດ / Tags"
-
-msgid "Genre / Thématique"
-msgstr "ປະເພດ / ຫົວຂໍ້"
-
-msgid "Genre :"
-msgstr "ເພດ:"
-
-msgid "Gestionnaire de paquets non reconnu."
-msgstr "ຜູ້ຈັດການແພັກເກດທີ່ບໍ່ຮູ້ຈັກ."
-
-msgid "Groupe :"
-msgstr "ກຸ່ມ:"
-
-msgid "Générer une liste plate pour tableur Calc ou Excel"
-msgstr "ສ້າງບັນຊີລາຍຊື່ຮາບພຽງສໍາລັບ Calc ຫຼື Excel spreadsheet"
-
-msgid "Importer"
-msgstr "ນໍາເຂົ້າ"
-
-msgid "Importer & Exporter"
-msgstr "ນຳເຂົ້າ ແລະສົ່ງອອກ"
-
-msgid "Importer dans mes favoris"
-msgstr "ນຳເຂົ້າໃສ່ລາຍການທີ່ມັກຂອງຂ້ອຍ"
-
-msgid "Installation en cours (veuillez valider l'invite système)..."
-msgstr "ກຳລັງຕິດຕັ້ງຢູ່ (ກະລຸນາກວດສອບການເຕືອນລະບົບ)..."
-
-msgid "Installer l'intégration GNOME"
-msgstr "ຕິດຕັ້ງການເຊື່ອມໂຍງ GNOME"
-
-msgid "Intégration GNOME requise"
-msgstr "ຕ້ອງການການເຊື່ອມໂຍງ GNOME"
-
-msgid "Intégration dans la barre supérieure GNOME"
-msgstr "ການເຊື່ອມໂຍງເຂົ້າໄປໃນແຖບເທິງຂອງ GNOME"
-
-msgid ""
-"Intégration native dans la zone de notification via StatusNotifierItem / "
-"XEmbed."
-msgstr "ການເຊື່ອມໂຍງພື້ນເມືອງເຂົ້າໄປໃນພື້ນທີ່ການແຈ້ງເຕືອນຜ່ານ StatusNotifierItem / XEmbed."
-
-msgid "L'exportation CSV est accessible depuis les paramètres."
-msgstr "ການສົ່ງອອກ CSV ແມ່ນສາມາດເຂົ້າເຖິງໄດ້ຈາກການຕັ້ງຄ່າ."
-
-msgid ""
-"L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre "
-"supérieure sous GNOME."
-msgstr "ຕ້ອງໃຊ້ສ່ວນຂະຫຍາຍ AppIndicator ເພື່ອສະແດງໄອຄອນຢູ່ໃນແຖບເທິງສຸດໃນ GNOME."
-
-msgid "L'installation a été annulée ou a échoué."
-msgstr "ການຕິດຕັ້ງຖືກຍົກເລີກ ຫຼືລົ້ມເຫລວ."
-
-msgid "La sauvegarde XML est accessible depuis les paramètres."
-msgstr "ການສໍາຮອງຂໍ້ມູນ XML ແມ່ນສາມາດເຂົ້າເຖິງໄດ້ຈາກການຕັ້ງຄ່າ."
-
-msgid "Langue du système"
-msgstr "ພາສາລະບົບ"
-
-msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
-msgstr "ບໍ່ສາມາດຟັງຕົວແຍກ ແລະ intertitles ໄດ້."
-
-msgid "Mes Radios"
-msgstr "ວິ​ທະ​ຍຸ​ຂອງ​ຂ້າ​ພະ​ເຈົ້າ​"
-
-msgid "Mot-clé :"
-msgstr "ຄໍາສໍາຄັນ:"
-
-msgid "Nouveaux uniquement"
-msgstr "ໃໝ່ເທົ່ານັ້ນ"
-
-msgid "OPTIONS DE SESSION"
-msgstr "ຕົວເລືອກ Session"
-
-msgid "Organisation des groupes et sous-groupes (Convention Linux)"
-msgstr "ການຈັດຕັ້ງກຸ່ມ ແລະກຸ່ມຍ່ອຍ (ສົນທິສັນຍາ Linux)"
-
-msgid "Ouvrez d'abord un groupe pour écouter ses radios."
-msgstr "ທໍາອິດເປີດກຸ່ມເພື່ອຟັງວິທະຍຸຂອງຕົນ."
-
-msgid "Ouvrir"
-msgstr "ເປີດ"
-
-msgid "Ouvrir ~/.config/timonde"
-msgstr "ເປີດ ~/.config/timeonde"
-
-msgid "Ouvrir ~/.config/timonde/examples"
-msgstr "ເປີດ ~/.config/timeonde/examples"
-
-msgid "Pays"
-msgstr "ປະເທດ"
-
-msgid "Pays :"
-msgstr "ປະເທດ:"
-
-msgid ""
-"Pour afficher discrètement l'icône de lecture dans la barre supérieure de "
-"votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire."
-"<br/><br/>Souhaitez-vous l'installer maintenant ?"
-msgstr ""
-"ເພື່ອສະແດງໄອຄອນການຫຼິ້ນຢ່າງລະມັດລະວັງໃນແຖບດ້ານເທິງຂອງເດັສທັອບ GNOME ຂອງທ່ານ, "
-"ຕ້ອງໃຊ້ສ່ວນຂະຫຍາຍລະບົບ <b>AppIndicator</b>.<br/><br/>ທ່ານຕ້ອງການຕິດຕັ້ງມັນດຽວນີ້ບໍ?"
-
-msgid "Préférences"
-msgstr "ການຕັ້ງຄ່າ"
-
-msgid ""
-"Préserver les sous-groupes définis dans le fichier au lieu de tout importer "
-"dans un groupe unique."
-msgstr "ຮັກສາກຸ່ມຍ່ອຍທີ່ກໍານົດໄວ້ໃນໄຟລ໌ແທນທີ່ຈະນໍາເຂົ້າທຸກສິ່ງທຸກຢ່າງເຂົ້າໄປໃນກຸ່ມດຽວ."
-
-msgid "Quitter"
-msgstr "ອອກໄປ"
-
-msgid "Recharger"
-msgstr "ໂຫຼດໃໝ່"
-
-msgid "Recharger le fichier actuellement affiché"
-msgstr "ໂຫຼດໄຟລ໌ທີ່ສະແດງໃນປັດຈຸບັນຄືນໃໝ່"
-
-msgid ""
-"Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> "
-"(+45 000 stations)."
-msgstr ""
-"ຄົ້ນຫາທົ່ວໂລກໃນໄດເລກະທໍລີ <b>Radio-Browser</b> ທີ່ບໍ່ເສຍຄ່າ ແລະຮ່ວມມືກັນ (+45,000 ສະຖານີ)."
-
-msgid "Recherche sur Radio-Browser en cours..."
-msgstr "ຄົ້ນຫາໃນ Radio-Browser ພວມດຳເນີນຢູ່..."
-
-msgid "Rechercher"
-msgstr "ຊອກຫາ"
-
-msgid "Rechercher en ligne"
-msgstr "ຊອກຫາອອນໄລນ໌"
-
-msgid "Remplacer le lien sélectionné par un flux officiel actif"
-msgstr "ປ່ຽນແທນລິ້ງທີ່ເລືອກດ້ວຍຟີດທີ່ເປັນທາງການ"
-
-msgid "Restaurer exemples"
-msgstr "ຟື້ນຟູຕົວຢ່າງ"
-
-msgid "Régions & Locales :"
-msgstr "ພາກພື້ນ ແລະທ້ອງຖິ່ນ:"
-
-msgid "Réparer le flux..."
-msgstr "ແກ້​ໄຂ​ການ​ໄຫຼ ..."
-
-msgid "Rétablir les 19 exemples d'origine"
-msgstr "ຟື້ນຟູຕົ້ນສະບັບ 19 ຕົວຢ່າງ"
-
-msgid ""
-"Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
-msgstr "ໃສ່ຄໍາສໍາຄັນຫຼືຄລິກຄົ້ນຫາເພື່ອຄົ້ນຫາໄດເລກະທໍລີ."
-
-msgid "Sauvegarde réussie !"
-msgstr "ສຳຮອງຂໍ້ມູນສຳເລັດແລ້ວ!"
-
-msgid "Sauvegarder mes radios (XML)..."
-msgstr "ບັນທຶກວິທະຍຸຂອງຂ້ອຍ (XML)..."
-
-msgid "Sauvegarder mes signets (XML)"
-msgstr "ບັນທຶກບຸກມາກຂອງຂ້ອຍ (XML)"
-
-msgid "Signets et radios enregistrés avec succès !"
-msgstr "ບັນທຶກບຸກມາກ ແລະວິທະຍຸສຳເລັດແລ້ວ!"
-
-msgid "Station"
-msgstr "ຣີສອດ"
-
-msgid "Statut Favoris"
-msgstr "ສະຖານະທີ່ມັກ"
-
-msgid ""
-"Sélection officielle et vérifiée parmi 146 pays et régions (bouquets "
-"numériques DAB+ et grandes stations nationales)."
-msgstr ""
-"ການ​ຄັດ​ເລືອກ​ຢ່າງ​ເປັນ​ທາງ​ການ​ແລະ​ການ​ກວດ​ສອບ​ຈາກ 146 ປະ​ເທດ​ແລະ​ພາກ​ພື້ນ (DAB+ bouquets ດິ​ຈິ​ຕອນ​"
-"ແລະ​ສະ​ຖາ​ນີ​ທີ່​ສໍາ​ຄັນ​ແຫ່ງ​ຊາດ​)​."
-
-msgid "Sélectionnez une radio pour l'écouter."
-msgstr "ເລືອກວິທະຍຸເພື່ອຟັງມັນ."
-
-msgid "Sélectionnez une station dans le tableau pour l'écouter."
-msgstr "ເລືອກສະຖານີຈາກຕາຕະລາງເພື່ອຟັງມັນ."
-
-msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
-msgstr "ພິມປະເທດ (ເຊັ່ນ: ປະເທດຝຣັ່ງ, Deutschland, ການາດາ...)"
-
-msgid "Tester"
-msgstr "ການທົດສອບ"
-
-msgid "Tester les flux"
-msgstr "ທົດສອບກະແສ"
-
-msgid "TiMonde — Intégration Bureau GNOME"
-msgstr "TiMonde — ການເຊື່ອມໂຍງ GNOME Desktop"
-
-msgid "Tous les fichiers (*.*)"
+msgid "All files (*.*)"
 msgstr "ໄຟລ໌ທັງໝົດ (*.*)"
 
-msgid "Tous les pays (mondial)"
-msgstr "ປະເທດທັງໝົດ (ທົ່ວໂລກ)"
+#: data/scripts/browse_bouquets.py:823
 
-msgid "Tout cocher"
-msgstr "ກວດເບິ່ງທັງຫມົດ"
-
-msgid "Tout décocher"
-msgstr "ຍົກເລີກການເລືອກທັງໝົດ"
-
-msgid "Toutes les langues"
+msgid "All languages"
 msgstr "ພາສາທັງໝົດ"
 
-msgid "URL du flux"
-msgstr "Feed URL"
-
-msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
-msgstr "ກະລຸນາເລືອກວິທະຍຸຈາກລາຍການເພື່ອຟັງມັນ."
-
-msgid "Vos signets complets ont été enregistrés dans :"
-msgstr "ບຸກມາກທີ່ສົມບູນຂອງທ່ານໄດ້ຖືກບັນທຶກໄວ້ໃນ:"
-
-msgid "Votes"
-msgstr "ຄະແນນສຽງ"
-
-msgid "Vérifier en direct la disponibilité des liens"
-msgstr "ກວດເບິ່ງຄວາມພ້ອມຂອງລິ້ງສົດ"
-
-msgid "Vérifier la disponibilité en direct des radios"
-msgstr "ກວດເບິ່ງຄວາມພ້ອມຂອງວິທະຍຸສົດ"
-
-msgid "Vérifier la disponibilité en direct des radios trouvées"
-msgstr "ກວດ​ສອບ​ການ​ມີ​ຊີ​ວິດ​ຂອງ​ວິ​ທະ​ຍຸ​ໄດ້​ພົບ​ເຫັນ​"
-
-msgid "Vérifier la validité du lien et écouter un aperçu du flux"
-msgstr "ກວດສອບຄວາມຖືກຕ້ອງຂອງລິ້ງ ແລະເບິ່ງຕົວຢ່າງການຖ່າຍທອດ"
-
-msgid "ajoutée avec succès !"
-msgstr "ເພີ່ມສຳເລັດແລ້ວ!"
-
-msgid "fichiers exemples restaurés."
-msgstr "ກູ້ໄຟລ໌ຕົວຢ່າງ."
-
-msgid "nouvelle(s) radio(s) importée(s) !"
-msgstr "ວິ​ທະ​ຍຸ​ໃຫມ່​ນໍາ​ເຂົ້າ​!"
-
-msgid "Écouter"
-msgstr "ຟັງ"
-
-msgid "Écouter la radio sélectionnée"
-msgstr "ຟັງວິທະຍຸທີ່ເລືອກ"
-
-msgid "Écouter ou tester la radio sélectionnée"
-msgstr "ຟັງ ຫຼືທົດສອບວິທະຍຸທີ່ເລືອກ"
-
-msgid "is not responding. Searching for a backup stream..."
-msgstr "ບໍ່ຕອບສະໜອງ. ກຳລັງຊອກຫາສາຍສັນຍານສຳຮອງ..."
-
-msgid "Stream repaired and saved for"
-msgstr "ສາຍສັນຍານໄດ້ຮັບການສ້ອມແປງ ແລະ ບັນທຶກແລ້ວສຳລັບ"
-
-msgid "is currently unavailable"
-msgstr "ບໍ່ພ້ອມໃຊ້ງານໃນຕອນນີ້"
-
-msgid "Unable to find a station in the bouquets catalog."
-msgstr "ບໍ່ພົບສະຖານີໃນລາຍການຊຸດສະຖານີ."
-
-msgid "No radio is currently playing."
-msgstr "ບໍ່ມີວິທະຍຸທີ່ກຳລັງຫຼິ້ນຢູ່ໃນຕອນນີ້."
-
-msgid "Selection"
-msgstr "ຄັດສັນ"
-
-msgid "Save error"
-msgstr "ຂໍ້ຜິດພາດໃນການບັນທຶກ"
-
-msgid "Saved!"
-msgstr "ບັນທຶກແລ້ວ!"
-
-msgid "saved in your favorites!"
-msgstr "ບັນທຶກໃນລາຍການໂປດຂອງທ່ານແລ້ວ!"
-
-msgid "Station added but reload error"
-msgstr "ເພີ່ມສະຖານີແລ້ວ ແຕ່ເກີດຂໍ້ຜິດພາດໃນການໂຫຼດໃໝ່"
-
-msgid "Sleep timer activated"
-msgstr "ເປີດໃຊ້ງານໂມງນັບຖອຍຫຼັງປິດເຄື່ອງແລ້ວ"
-
-msgid "stopping in"
-msgstr "ຈະຢຸດໃນອີກ"
-
-msgid "Sleep timer: stopping radio."
-msgstr "ໂມງນັບຖອຍຫຼັງປິດເຄື່ອງ: ກຳລັງຢຸດວິທະຍຸ."
-
-msgid "Sleep timer cancelled."
-msgstr "ຍົກເລີກໂມງນັບຖອຍຫຼັງປິດເຄື່ອງແລ້ວ."
-
-msgid "Track copied to clipboard:"
-msgstr "ສຳເນົາຊື່ເພງໃສ່ຄລິບບອດແລ້ວ:"
-
-msgid "deleted from your favorites."
-msgstr "ລຶບອອກຈາກລາຍການໂປດຂອງທ່ານແລ້ວ."
-
-msgid "updated successfully!"
-msgstr "ອັບເດດສຳເລັດແລ້ວ!"
-
-msgid "Settings console not found"
-msgstr "ບໍ່ພົບໜ້າຕ່າງການຕັ້ງຄ່າ"
-
-msgid "Paused"
-msgstr "ຢຸດຊົ່ວຄາວ"
-
-msgid "Searching on Radio-Browser..."
-msgstr "ກຳລັງຊອກຫາໃນ Radio-Browser..."
-
-msgid "No stream found for this name. Modify the text above."
-msgstr "ບໍ່ພົບສາຍສັນຍານສຳລັບຊື່ນີ້. ກະລຸນາແກ້ໄຂຂໍ້ຄວາມຂ້າງເທິງ."
-
-msgid "{count} streams found. Select the desired stream and validate."
-msgstr "ພົບ {count} ສາຍສັນຍານ. ເລືອກສາຍສັນຍານທີ່ຕ້ອງການແລ້ວຢືນຢັນ."
-
-msgid "No pre-loaded DAB+ bouquet for this country."
-msgstr "ບໍ່ມີຊຸດສະຖານີ DAB+ ທີ່ໂຫຼດໄວ້ລ່ວງໜ້າສຳລັບປະເທດນີ້."
+#: data/scripts/timonde_settings.py:728
 
 msgid ""
-"You can explore and import stations for this territory directly from the "
-"global directory."
-msgstr "ທ່ານສາມາດສຳຫຼວດ ແລະ ນຳເຂົ້າສະຖານີສຳລັບເຂດແດນນີ້ໄດ້ໂດຍກົງຈາກສາລະບົບທົ່ວໂລກ."
+"Allows opening the station menu interchangeably with left or right click."
+msgstr "ອະນຸຍາດໃຫ້ເປີດເມນູສະຖານີແລກປ່ຽນກັນດ້ວຍການຄລິກຊ້າຍ ຫຼືຂວາ."
+
+#: data/scripts/timonde_common.py:1904
+
+msgid "Already registered"
+msgstr "ÎÎ´Î· ÎºÎ±ÏÎ±ÏÏÏÎ·Î¼Î­Î½Î¿"
+
+#: data/scripts/timonde_common.py:1899
+
+msgid "Already registered:"
+msgstr "ÎÎ´Î· ÎºÎ±ÏÎ±ÏÏÏÎ·Î¼Î­Î½Î¿:"
+
+#: data/scripts/reorder_groups.py:111 data/scripts/reorder_groups.py:1155
+
+msgid "Apply redirects"
+msgstr "ນຳໃຊ້ການປ່ຽນເສັ້ນທາງ"
+
+#: data/scripts/reorder_groups.py:783 data/scripts/reorder_groups.py:785
+
+#: data/scripts/reorder_groups.py:787
+
+msgid "Are you sure you want to delete « {name} » ?"
+msgstr "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບ « {name} » ?"
+
+#: data/scripts/edit_station.py:121
+
+msgid "Audio stream URL:"
+msgstr "URL ການຖ່າຍທອດສຽງ:"
+
+#: data/scripts/reorder_groups.py:1139
+
+msgid "Audit completed:"
+msgstr "Audit completed:"
+
+#: data/scripts/timonde_settings.py:666
+
+msgid "Automatic detection according to your Linux locale settings."
+msgstr "ການກວດຫາອັດຕະໂນມັດອີງຕາມການຕັ້ງຄ່າທ້ອງຖິ່ນ Linux ຂອງທ່ານ."
+
+#: data/scripts/timonde_settings.py:648
+
+msgid "Automatic launch on startup"
+msgstr "ເປີດອັດຕະໂນມັດໃນເວລາເລີ່ມຕົ້ນ"
+
+#: data/scripts/timonde_settings.py:751
+
+msgid "Automatic startup"
+msgstr "ເລີ່ມຕົ້ນອັດຕະໂນມັດ"
+
+#: data/scripts/reorder_groups.py:111
+
+msgid "Automatically update redirected streams to direct URL"
+msgstr "ປັບປຸງອັດຕະໂນມັດ feeds redirected ກັບ URL ໂດຍກົງຂອງເຂົາເຈົ້າ"
+
+#: data/scripts/browse_bouquets.py:913 data/scripts/browse_bouquets.py:1247
+
+msgid "Availability"
+msgstr "ຄວາມພ້ອມ"
+
+#: data/scripts/reorder_groups.py:1266
+
+msgid "Backup my bookmarks (XML)"
+msgstr "ÎÎ½ÏÎ¯Î³ÏÎ±ÏÎ¿ Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¹ÎºÏÏÎ½ (XML)"
+
+#: data/scripts/browse_bouquets.py:1199
+
+msgid "Backup my radios (XML)..."
+msgstr "ສຳຮອງຂໍ້ມູນວິທະຍຸຂອງຂ້ອຍ (XML)..."
+
+#: data/scripts/reorder_groups.py:1302
+
+msgid "Backup successful!"
+msgstr "ÎÏÎ¹ÏÏÏÎ®Ï Î´Î·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î±Î½ÏÎ¹Î³ÏÎ¬ÏÎ¿Ï Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï!"
+
+#: data/scripts/timonde_common.py:1645
+
+msgid "Bitrate"
+msgstr "Bitrate"
+
+#: data/scripts/timonde_settings.py:530
+
+msgid "Bookmarks and stations saved successfully!"
+msgstr "ບັນທຶກບຸກມາກ ແລະສະຖານີສຳເລັດແລ້ວ!"
+
+#: data/scripts/browse_bouquets.py:1203
+
+msgid "Bookmarks folder"
+msgstr "ໂຟນເດີ Bookmarks"
+
+#: data/scripts/browse_bouquets.py:2312
+
+msgid "CSV export is available from settings."
+msgstr "ການສົ່ງອອກ CSV ສາມາດໃຊ້ໄດ້ຈາກການຕັ້ງຄ່າ."
+
+#: data/scripts/reorder_groups.py:1252
+
+msgid "CSV export successful:"
+msgstr "ÎÏÎ¹ÏÏÏÎ®Ï ÎµÎ¾Î±Î³ÏÎ³Î® CSV:"
+
+#: data/scripts/browse_bouquets.py:1982 data/scripts/edit_station.py:308
+
+#: data/scripts/edit_station.py:575 data/scripts/reorder_groups.py:260
+
+#: data/scripts/reorder_groups.py:638 data/scripts/reorder_groups.py:948
+
+#: data/scripts/reorder_groups.py:1228 data/scripts/reorder_groups.py:1269
+
+#: data/scripts/timonde_common.py:1596 data/scripts/timonde_common.py:1720
+
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#: src/tray/menu.rs:589
+
+msgid "Cancel sleep timer"
+msgstr "ຍົກເລີກການນອນ"
+
+#: data/scripts/timonde_common.py:1814
+
+msgid "Check"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï"
+
+#: data/scripts/browse_bouquets.py:938 data/scripts/browse_bouquets.py:1107
+
+#: data/scripts/browse_bouquets.py:1274
+
+msgid "Check all"
+msgstr "ກວດເບິ່ງທັງຫມົດ"
+
+#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
+
+msgid "Check and submit selected station to Radio-Browser directory"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï ÎºÎ±Î¹ ÏÏÎ¿Î²Î¿Î»Î® ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1814
+
+msgid "Check entered stream URL again on Radio-Browser"
+msgstr "ÎÏÎ±Î½Î­Î»ÎµÎ³ÏÎ¿Ï Î´Î¹ÎµÏÎ¸ÏÎ½ÏÎ·Ï ÏÎ¿Î®Ï ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/edit_station.py:139
+
+msgid "Check if stream is listed or contribute to directory"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï Î±Î½ Î· ÏÎ¿Î® ÏÏÎ¬ÏÏÎµÎ¹ Î® ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿"
+
+#: data/scripts/edit_station.py:135
+
+msgid "Check link validity and listen to stream preview"
+msgstr "ກວດສອບຄວາມຖືກຕ້ອງຂອງລິ້ງ ແລະຟັງການເບິ່ງຕົວຢ່າງການຖ່າຍທອດ"
+
+#: data/scripts/browse_bouquets.py:1286
+
+msgid "Check links availability live"
+msgstr "ກວດເບິ່ງຄວາມພ້ອມຂອງລິ້ງສົດ"
+
+#: data/scripts/browse_bouquets.py:946
+
+msgid "Check live availability of found stations"
+msgstr "ກວດເບິ່ງຄວາມພ້ອມຂອງສະຖານີທີ່ພົບເຫັນ"
+
+#: data/scripts/reorder_groups.py:242
+
+msgid "Check or contribute selected station to Radio-Browser"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï Î® ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/browse_bouquets.py:1115
+
+msgid "Check stations live availability"
+msgstr "ກວດສອບການມີຢູ່ຂອງສະຖານີ"
+
+#: data/scripts/reorder_groups.py:102
+
+msgid "Check streams"
+msgstr "ກວດເບິ່ງຟີດ"
+
+#: data/scripts/timonde_common.py:1882
+
+msgid "Checking Radio-Browser directory..."
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï ÎºÎ±ÏÎ±Î»ÏÎ³Î¿Ï Radio-Browser..."
+
+#: data/scripts/reorder_groups.py:1077
+
+msgid "Checking your radio stations"
+msgstr "Checking your radio stations"
+
+#: data/scripts/browse_bouquets.py:1656
+
+msgid "Checking..."
+msgstr "ກຳລັງເຊື່ອມຕໍ່..."
+
+#: data/scripts/browse_bouquets.py:1978
+
+msgid "Choose a radio station file"
+msgstr "ເລືອກໄຟລ໌ສະຖານີວິທະຍຸ"
+
+#: data/scripts/browse_bouquets.py:676
+
+msgid "Choose from existing groups"
+msgstr "ເລືອກຈາກກຸ່ມທີ່ມີຢູ່ແລ້ວ"
+
+#: data/scripts/timonde_settings.py:727
+
+msgid "Cinnamon Left-Click Unification"
+msgstr "Cinnamon Linksklick-Vereinheitlichung"
+
+#: data/scripts/timonde_settings.py:721
+
+msgid "Cinnamon left-click unification successfully enabled!"
+msgstr "Cinnamon Linksklick-Vereinheitlichung erfolgreich aktiviert!"
+
+#: data/scripts/edit_station.py:265
+
+msgid "Clear"
+msgstr "Clear"
+
+#: data/scripts/edit_station.py:266
+
+msgid "Clear / Automatic mode"
+msgstr "LÃ¶schen / Automatischer Modus"
+
+#: data/scripts/browse_bouquets.py:789
+
+msgid "Clear country filter"
+msgstr "ລຶບການກັ່ນຕອງປະເທດ"
+
+#: data/scripts/browse_bouquets.py:669
+
+msgid "Clear field"
+msgstr "ຊ່ອງຫວ່າງ"
+
+#: data/scripts/edit_station.py:187
+
+msgid "Clear field (click to empty)"
+msgstr "Feld leeren (Klicken zum Leeren)"
+
+#: data/scripts/browse_bouquets.py:828
+
+msgid "Clear language filter"
+msgstr "ລຶບລ້າງຕົວກອງພາສາ"
+
+#: data/scripts/browse_bouquets.py:1335 data/scripts/timonde_common.py:1858
+
+#: data/scripts/timonde_settings.py:447
+
+msgid "Close"
+msgstr "ປິດ"
+
+#: data/scripts/reorder_groups.py:88
+
+msgid "Collapse all"
+msgstr "Î£ÏÎ¼ÏÏÏÎ¾Î· ÏÎ»ÏÎ½"
+
+#: data/scripts/reorder_groups.py:88
+
+msgid "Collapse all groups for an overview"
+msgstr "Î£ÏÎ¼ÏÏÏÎ¾Î· ÏÎ»ÏÎ½ ÏÏÎ½ Î¿Î¼Î¬Î´ÏÎ½ Î³Î¹Î± ÎµÏÎ¹ÏÎºÏÏÎ·ÏÎ·"
+
+#: data/scripts/timonde_settings.py:594
+
+msgid "Collections & Files"
+msgstr "ຄໍເລັກຊັນ & ໄຟລ໌"
+
+#: data/scripts/reorder_groups.py:794
+
+msgid "Confirm deletion"
+msgstr "ÎÏÎ¹Î²ÎµÎ²Î±Î¯ÏÏÎ· Î´Î¹Î±Î³ÏÎ±ÏÎ®Ï"
+
+#: data/scripts/timonde_common.py:1328
+
+msgid "Connecting to"
+msgstr "ກຳລັງເຊື່ອມຕໍ່ຫາ"
+
+#: src/i18n.rs:192 src/tray/menu.rs:159
+
+msgid "Connecting..."
+msgstr "ກຳລັງເຊື່ອມຕໍ່..."
+
+#: data/scripts/browse_bouquets.py:739
+
+msgid "Contribute a station"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ±Î¸Î¼Î¿Ï"
+
+#: data/scripts/timonde_common.py:1781
+
+msgid "Contribute a station to the community Radio-Browser directory"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ¿Î¹Î½Î¿ÏÎ¹ÎºÏ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
+
+#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
+
+#: data/scripts/timonde_common.py:1761
+
+msgid "Contribute to Radio-Browser"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/reorder_groups.py:242 data/scripts/reorder_groups.py:567
+
+msgid "Contribute to Radio-Browser..."
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser..."
+
+#: data/scripts/browse_bouquets.py:894 data/scripts/browse_bouquets.py:1240
+
+#: data/scripts/timonde_common.py:1648
+
+msgid "Country"
+msgstr "<b>Country:</b>"
+
+#: data/scripts/browse_bouquets.py:1327 data/scripts/timonde_settings.py:593
+
+msgid "Country bouquets"
+msgstr "bouquets ປະເທດ"
+
+#: data/scripts/timonde_common.py:1821
+
+msgid "Country code (ISO):"
+msgstr "ÎÏÎ´Î¹ÎºÏÏ ÏÏÏÎ±Ï (ISO):"
+
+#: data/scripts/browse_bouquets.py:981 data/scripts/edit_station.py:228
+
+#: data/scripts/timonde_common.py:1900
+
+msgid "Country:"
+msgstr "Country:"
+
+#: data/scripts/reorder_groups.py:639
+
+msgid "Create"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î±"
+
+#: data/scripts/browse_bouquets.py:1199
+
+msgid "Create a full backup of your collection (with folders and timezones)"
+msgstr "ສ້າງ​ການ​ສໍາ​ຮອງ​ຂໍ້​ມູນ​ເຕັມ​ຂອງ​ການ​ເກັບ​ກໍາ​ຂໍ້​ມູນ​ຂອງ​ທ່ານ (ມີ​ໂຟນ​ເດີ​ແລະ​ເຂດ​ເວ​ລາ​)"
+
+#: data/scripts/reorder_groups.py:634
+
+msgid "Create a new group"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:193
+
+msgid "Create a new group or subgroup (Ctrl+N)"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï Î® ÏÏÎ¿Î¿Î¼Î¬Î´Î±Ï (Ctrl+N)"
+
+#: data/scripts/reorder_groups.py:658
+
+msgid "Create as a subgroup inside"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± ÏÏ ÏÏÎ¿Î¿Î¼Î¬Î´Î± ÎµÎ½ÏÏÏ"
+
+#: data/scripts/timonde_settings.py:656
+
+msgid "DETECTED ENVIRONMENT (READ ONLY)"
+msgstr "ສະພາບແວດລ້ອມທີ່ກວດພົບ (ອ່ານເທົ່ານັ້ນ)"
+
+#: src/timezone.rs:521
+
+msgid "Daytime"
+msgstr "ມື້"
+
+#: data/scripts/reorder_groups.py:106 data/scripts/reorder_groups.py:1147
+
+msgid "Dead links only"
+msgstr "ການເຊື່ອມຕໍ່ຕາຍເທົ່ານັ້ນ"
+
+#: data/scripts/edit_station.py:576 data/scripts/reorder_groups.py:246
+
+#: src/i18n.rs:230 src/i18n.rs:236
+
+msgid "Delete"
+msgstr "ລຶບ"
+
+#: data/scripts/reorder_groups.py:588
+
+msgid "Delete group and stations"
+msgstr "ÎÎ¹Î±Î³ÏÎ±ÏÎ® Î¿Î¼Î¬Î´Î±Ï ÎºÎ±Î¹ ÏÏÎ±Î¸Î¼ÏÎ½"
+
+#: data/scripts/reorder_groups.py:246
+
+msgid "Delete selected item or group (Del)"
+msgstr "Delete selected item or group (Del)"
+
+#: data/scripts/edit_station.py:303 data/scripts/reorder_groups.py:571
+
+msgid "Delete this station"
+msgstr "ລຶບວິທະຍຸນີ້"
+
+#: data/scripts/edit_station.py:572
+
+msgid "Delete « {} » from favorites?"
+msgstr "ລຶບ “{}” ອອກຈາກລາຍການທີ່ມັກບໍ?"
+
+#: data/scripts/reorder_groups.py:803
+
+msgid "Deleted:"
+msgstr "ÎÎ¹Î±Î³ÏÎ¬ÏÎ·ÎºÎµ:"
+
+#: data/scripts/timonde_settings.py:676
+
+msgid "Desktop environment & Tray"
+msgstr "ສະພາບແວດລ້ອມ Desktop & Tray"
+
+#: data/scripts/reorder_groups.py:169
+
+msgid "Details / Status"
+msgstr "ÎÎµÏÏÎ¿Î¼Î­ÏÎµÎ¹ÎµÏ / ÎÎ±ÏÎ¬ÏÏÎ±ÏÎ·"
+
+#: data/scripts/browse_bouquets.py:525
+
+msgid "Discover & Import stations (TiMonde)"
+msgstr "ຄົ້ນພົບ ແລະນຳເຂົ້າສະຖານີວິທະຍຸ (TiMonde)"
+
+#: data/scripts/timonde_settings.py:649
+
+msgid ""
+"Discreetly starts TiMonde in the background as soon as your graphical "
+"session opens."
+msgstr "ເລີ່ມ TiMonde ໃນພື້ນຫຼັງຢ່າງລະມັດລະວັງທັນທີທີ່ເຊດຊັນກາຟິກຂອງທ່ານເປີດ."
+
+#: data/scripts/reorder_groups.py:107
+
+msgid "Display offline radio streams only"
+msgstr "ສະ​ແດງ​ໃຫ້​ເຫັນ​ພຽງ​ແຕ່​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ​ທີ່​ມີ​ການ​ສະ​ຕ​ຣີມ offline​"
+
+#: data/scripts/reorder_groups.py:234 src/i18n.rs:229 src/i18n.rs:235
+
+#: src/tray/menu.rs:384
+
+msgid "Edit"
+msgstr "ແກ້ໄຂ"
+
+#: data/scripts/reorder_groups.py:234
+
+msgid "Edit selected name, URL or group (F2)"
+msgstr "ÎÏÎµÎ¾ÎµÏÎ³Î±ÏÎ¯Î± ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï Î¿Î½ÏÎ¼Î±ÏÎ¿Ï, URL Î® Î¿Î¼Î¬Î´Î±Ï (F2)"
+
+#: data/scripts/edit_station.py:74
+
+msgid "Edit station (TiMonde)"
+msgstr "ແກ້​ໄຂ​ວິ​ທະ​ຍຸ (TiMonde​)"
+
+#: data/scripts/reorder_groups.py:555
+
+msgid "Edit station..."
+msgstr "ເພີ່ມວິທະຍຸ..."
+
+#: data/scripts/timonde_common.py:132
+
+msgid "Empty URL"
+msgstr "Leere URL"
+
+#: data/scripts/timonde_common.py:1301 data/scripts/timonde_common.py:1315
+
+msgid "Empty stream URL"
+msgstr "URL ການຖ່າຍທອດຫວ່າງເປົ່າ"
+
+#: data/scripts/timonde_settings.py:709
+
+msgid "Enable Left-Click"
+msgstr "Linksklick aktivieren"
+
+#: data/scripts/timonde_common.py:1277
+
+msgid "End of stream"
+msgstr "ສິ້ນສຸດການຖ່າຍທອດ"
+
+#: data/scripts/browse_bouquets.py:950
+
+msgid "Enter a keyword or click Search to browse the directory."
+msgstr "ໃສ່ຄໍາສໍາຄັນຫຼືຄລິກຄົ້ນຫາເພື່ອຄົ້ນຫາໄດເລກະທໍລີ."
+
+#: src/tray/mod.rs:155
+
+msgid "Ephemeral radio (not saved)."
+msgstr "FlÃ¼chtiges Radio (nicht gespeichert)."
+
+#: data/scripts/reorder_groups.py:1312
+
+msgid "Error during backup:"
+msgstr "ຄວາມ​ຜິດ​ພາດ​ໃນ​ລະ​ຫວ່າງ​ການ​ສໍາ​ຮອງ​ຂໍ້​ມູນ​:"
+
+#: data/scripts/timonde_settings.py:753
+
+msgid "Error modifying autostart."
+msgstr "ເກີດຄວາມຜິດພາດໃນການແກ້ໄຂການເລີ່ມຕົ້ນອັດຕະໂນມັດ."
+
+#: data/scripts/timonde_common.py:195
+
+msgid "Error {code}"
+msgstr "Fehler {code}"
+
+#: data/scripts/gnome_tray_helper.py:217
+
+msgid "Error:"
+msgstr "ຄວາມຜິດພາດ:"
+
+#: src/timezone.rs:521
+
+msgid "Evening"
+msgstr "ຕອນແລງ"
+
+#: data/scripts/browse_bouquets.py:652
+
+msgid "Ex: /France/Jazz or / for root"
+msgstr "ຕົວຢ່າງ: / France / Jazz ຫຼື / ສໍາລັບຮາກ"
+
+#: data/scripts/browse_bouquets.py:1169
+
+msgid "Examples folder"
+msgstr "ໂຟນເດີຕົວຢ່າງ"
+
+#: data/scripts/reorder_groups.py:92
+
+msgid "Expand all"
+msgstr "ÎÎ½Î¬ÏÏÏÎ¾Î· ÏÎ»ÏÎ½"
+
+#: data/scripts/reorder_groups.py:92
+
+msgid "Expand all groups and subgroups"
+msgstr "ÎÎ½Î¬ÏÏÏÎ¾Î· ÏÎ»ÏÎ½ ÏÏÎ½ Î¿Î¼Î¬Î´ÏÎ½ ÎºÎ±Î¹ ÏÏÎ¿Î¿Î¼Î¬Î´ÏÎ½"
+
+#: data/scripts/browse_bouquets.py:1087
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "ສຳຫຼວດສະຖານີຈາກປະເທດນີ້ໃນ Radio-Browser"
+
+#: data/scripts/browse_bouquets.py:1628
 
 msgid "Explore stations from {country} on Radio-Browser ➔"
 msgstr "ສຳຫຼວດສະຖານີຈາກ {country} ໃນ Radio-Browser ➔"
 
-msgid "this country"
-msgstr "ປະເທດນີ້"
+#: data/scripts/reorder_groups.py:1228
+
+msgid "Export"
+msgstr "ສົ່ງອອກ"
+
+#: data/scripts/reorder_groups.py:264
+
+msgid "Export all stations to CSV spreadsheet format"
+msgstr "ສົ່ງອອກວິທະຍຸທັງໝົດຂອງເຈົ້າໃນຮູບແບບສະເປຣດຊີດ CSV"
+
+#: data/scripts/reorder_groups.py:1254
+
+msgid "Export error:"
+msgstr "Î£ÏÎ¬Î»Î¼Î± ÎµÎ¾Î±Î³ÏÎ³Î®Ï:"
+
+#: data/scripts/reorder_groups.py:1225
+
+msgid "Export stations to CSV"
+msgstr "ÎÎ¾Î±Î³ÏÎ³Î® ÏÏÎ±Î¸Î¼ÏÎ½ ÏÎµ CSV"
+
+#: data/scripts/reorder_groups.py:264
+
+msgid "Export to CSV"
+msgstr "ສົ່ງອອກເປັນ CSV"
+
+#: data/scripts/browse_bouquets.py:1195
+
+msgid "Export to spreadsheet (CSV)..."
+msgstr "ສົ່ງອອກໄປຍັງສະເປຣດຊີດ (CSV)..."
+
+#: data/scripts/browse_bouquets.py:1182
+
+msgid "External file:"
+msgstr "ໄຟລ໌ພາຍນອກ:"
+
+#: data/scripts/timonde_common.py:1530
+
+msgid "Failed to add station"
+msgstr "ÎÏÎ¿ÏÏÏÎ¯Î± ÏÏÎ¿ÏÎ¸Î®ÎºÎ·Ï ÏÏÎ±Î¸Î¼Î¿Ï"
+
+#: data/scripts/timonde_settings.py:723
+
+msgid "Failed to enable Cinnamon unification."
+msgstr "Aktivierung der Cinnamon-Vereinheitlichung fehlgeschlagen."
+
+#: data/scripts/browse_bouquets.py:918 data/scripts/browse_bouquets.py:1066
+
+#: data/scripts/browse_bouquets.py:1252
+
+msgid "Favorite status"
+msgstr "ສະຖານະທີ່ມັກ"
+
+#: data/scripts/browse_bouquets.py:2056
+
+msgid "File:"
+msgstr "ໄຟລ໌:"
+
+#: data/scripts/browse_bouquets.py:779
+
+msgid "Filter by country:"
+msgstr "ກັ່ນຕອງຕາມປະເທດ:"
+
+#: data/scripts/browse_bouquets.py:1235
+
+msgid "Folder / Group"
+msgstr "ໂຟນເດີ / ກຸ່ມ"
+
+#: data/scripts/timonde_common.py:1642
+
+msgid "Format"
+msgstr "Format"
+
+#: data/scripts/browse_bouquets.py:906
+
+msgid "Format & Bitrate"
+msgstr "ຮູບແບບ ແລະອັດຕາບິດ"
+
+#: data/scripts/gnome_tray_helper.py:150
+
+msgid "GNOME Shell environment detected"
+msgstr "ກວດພົບສະພາບແວດລ້ອມຂອງ GNOME Shell"
+
+#: data/scripts/timonde_settings.py:693
+
+msgid "GNOME integration required"
+msgstr "ຕ້ອງການການເຊື່ອມໂຍງ GNOME"
+
+#: data/scripts/timonde_common.py:1319
+
+msgid "GStreamer not available"
+msgstr "GSStreamer ບໍ່ສາມາດໃຊ້ໄດ້"
+
+#: data/scripts/browse_bouquets.py:1195
+
+msgid "Generate a flat list for Calc or Excel spreadsheet"
+msgstr "ສ້າງບັນຊີລາຍຊື່ຮາບພຽງສໍາລັບ Calc ຫຼື Excel spreadsheet"
+
+#: data/scripts/browse_bouquets.py:901
+
+msgid "Genre / Tags"
+msgstr "ເພດ / Tags"
+
+#: data/scripts/browse_bouquets.py:1053
+
+msgid "Genre / Topic"
+msgstr "ປະເພດ / ຫົວຂໍ້"
+
+#: data/scripts/browse_bouquets.py:759
+
+msgid "Genre:"
+msgstr "ເພດ:"
+
+#: data/scripts/timonde_common.py:193
+
+msgid "Geoblocked (VPN)"
+msgstr "Geoblockiert (VPN)"
+
+#: data/scripts/browse_bouquets.py:735
+
+msgid ""
+"Global search on the free and open <b>Radio-Browser</b> directory (+45,000 "
+"stations)."
+msgstr "ການຊອກຫາທົ່ວໂລກໃນລະບົບ <b>Radio-Browser</b> ຟຣີ ແລະເປີດ (+45,000 ສະຖານີ)."
+
+#: data/scripts/edit_station.py:168
+
+msgid "Group / Folder:"
+msgstr "ກຸ່ມ / ໂຟນເດີ:"
+
+#: data/scripts/reorder_groups.py:677
+
+msgid "Group created:"
+msgstr "Î Î¿Î¼Î¬Î´Î± Î´Î·Î¼Î¹Î¿ÏÏÎ³Î®Î¸Î·ÎºÎµ:"
+
+#: data/scripts/reorder_groups.py:734
+
+msgid "Group renamed:"
+msgstr "Î Î¿Î¼Î¬Î´Î± Î¼ÎµÏÎ¿Î½Î¿Î¼Î¬ÏÏÎ·ÎºÎµ:"
+
+#: data/scripts/browse_bouquets.py:645
+
+msgid "Group:"
+msgstr "ກຸ່ມ:"
+
+#: data/scripts/timonde_common.py:189
+
+msgid "HTTP Error {code}"
+msgstr "HTTP-Fehler {code}"
+
+#: data/scripts/browse_bouquets.py:702
+
+msgid "Help on groups and subgroups"
+msgstr "ຊ່ວຍເຫຼືອໃນກຸ່ມ ແລະກຸ່ມຍ່ອຍ"
+
+#: data/scripts/browse_bouquets.py:1039 data/scripts/browse_bouquets.py:1221
+
+msgid "Import"
+msgstr "ນໍາເຂົ້າ"
+
+#: data/scripts/browse_bouquets.py:1328
+
+msgid "Import & Export"
+msgstr "ນຳເຂົ້າ ແລະສົ່ງອອກ"
+
+#: data/scripts/browse_bouquets.py:717
+
+msgid "Import to my favorites"
+msgstr "ນຳເຂົ້າໃສ່ລາຍການທີ່ມັກຂອງຂ້ອຍ"
+
+#: src/tray/menu.rs:560
+
+msgid "In 15 minutes"
+msgstr "ໃນ 15 ນາທີ"
+
+#: src/tray/menu.rs:567
+
+msgid "In 30 minutes"
+msgstr "ໃນ 30 ນາທີ"
+
+#: src/tray/menu.rs:574
+
+msgid "In 45 minutes"
+msgstr "ໃນ 45 ນາທີ"
+
+#: src/tray/menu.rs:581
+
+msgid "In 60 minutes (1h)"
+msgstr "ໃນ 60 ນາ​ທີ (1 ຊົ່ວ​ໂມງ​)"
+
+#: data/scripts/reorder_groups.py:707
+
+msgid "Insert"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î®"
+
+#: data/scripts/reorder_groups.py:230
+
+msgid "Insert a separator or header"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î® Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï Î® ÎµÏÎ¹ÎºÎµÏÎ±Î»Î¯Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:705
+
+msgid "Insert separator"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î® Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï"
+
+#: data/scripts/gnome_tray_helper.py:179 data/scripts/timonde_settings.py:688
+
+msgid "Install GNOME integration"
+msgstr "ຕິດຕັ້ງການເຊື່ອມໂຍງ GNOME"
+
+#: data/scripts/gnome_tray_helper.py:198
+
+msgid "Installation in progress (please confirm system prompt)..."
+msgstr "ກຳລັງຕິດຕັ້ງຢູ່ (ກະລຸນາຢືນຢັນການເຕືອນລະບົບ)..."
+
+#: data/scripts/gnome_tray_helper.py:213
+
+msgid "Installation was cancelled or failed."
+msgstr "ການຕິດຕັ້ງຖືກຍົກເລີກ ຫຼືລົ້ມເຫລວ."
+
+#: data/scripts/gnome_tray_helper.py:145
+
+msgid "Integration in GNOME top bar"
+msgstr "ການເຊື່ອມໂຍງໃນແຖບເທິງ GNOME"
+
+#: data/scripts/edit_station.py:71
+
+msgid "Keep in favorites"
+msgstr "ບັນທຶກໃສ່ລາຍການທີ່ມັກຂອງຂ້ອຍ"
+
+#: data/scripts/browse_bouquets.py:749
+
+msgid "Keyword:"
+msgstr "ຄໍາສໍາຄັນ:"
+
+#: data/scripts/browse_bouquets.py:819 data/scripts/browse_bouquets.py:1023
+
+msgid "Language:"
+msgstr "ພາສາ:"
+
+#: data/scripts/browse_bouquets.py:706 data/scripts/browse_bouquets.py:1399
+
+#: data/scripts/reorder_groups.py:185 data/scripts/reorder_groups.py:1005
+
+msgid "Listen"
+msgstr "AnhÃ¶ren"
+
+#: data/scripts/browse_bouquets.py:706
+
+msgid "Listen to selected station"
+msgstr "ຟັງສະຖານີທີ່ເລືອກ"
+
+#: data/scripts/timonde_common.py:204
+
+msgid "Live (Shoutcast)"
+msgstr "ÎÏÎ½ÏÎ±Î½Î¬ (Shoutcast)"
+
+#: data/scripts/timonde_common.py:187
+
+msgid "Live ({codec})"
+msgstr "ສົດ ({codec})"
+
+#: data/scripts/browse_bouquets.py:1060
+
+msgid "Live availability"
+msgstr "ການມີຢູ່ສົດ"
+
+#: data/scripts/browse_bouquets.py:1186
+
+msgid "Load a file..."
+msgstr "ໂຫຼດໄຟລ໌..."
+
+#: data/scripts/browse_bouquets.py:1186
+
+msgid "Load an XML, CSV, JSON, M3U or PLS file"
+msgstr "ໂຫລດໄຟລ໌ XML, CSV, JSON, M3U ຫຼື PLS"
+
+#: src/timezone.rs:521
+
+msgid "Morning"
+msgstr "ຕອນເຊົ້າ"
+
+#: data/scripts/reorder_groups.py:949
+
+msgid "Move"
+msgstr "ÎÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ·"
+
+#: data/scripts/reorder_groups.py:219
+
+msgid "Move down"
+msgstr "⬇ ລົງໄປ"
+
+#: data/scripts/reorder_groups.py:219
+
+msgid "Move down one rank"
+msgstr "Move down one rank"
+
+#: data/scripts/reorder_groups.py:211
+
+msgid "Move selected item to the top"
+msgstr "Move selected item to the top"
+
+#: data/scripts/reorder_groups.py:197
+
+msgid "Move selection to another group (Ctrl+M)"
+msgstr "Move selection to another group (Ctrl+M)"
+
+#: data/scripts/reorder_groups.py:944
+
+msgid "Move to another group"
+msgstr "ÎÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ· ÏÎµ Î¬Î»Î»Î· Î¿Î¼Î¬Î´Î±"
+
+#: data/scripts/reorder_groups.py:559
+
+msgid "Move to another group..."
+msgstr "Move selection to another group (Ctrl+M)"
+
+#: data/scripts/reorder_groups.py:197
+
+msgid "Move to..."
+msgstr "ຍ້າຍໄປ..."
+
+#: data/scripts/reorder_groups.py:215
+
+msgid "Move up"
+msgstr "⬆ ຂຶ້ນ"
+
+#: data/scripts/reorder_groups.py:215
+
+msgid "Move up one rank"
+msgstr "Move up one rank"
+
+#: src/tray/menu.rs:528
+
+msgid "Mute (0%)"
+msgstr "ປິດສຽງ (0%)"
+
+#: data/scripts/reorder_groups.py:98 data/scripts/timonde_settings.py:524
+
+msgid "My Radios"
+msgstr "ວິ​ທະ​ຍຸ​ຂອງ​ຂ້າ​ພະ​ເຈົ້າ​"
+
+#: data/scripts/timonde_common.py:1925
+
+msgid "Name and Stream URL are mandatory."
+msgstr "Î¤Î¿ ÏÎ½Î¿Î¼Î± ÎºÎ±Î¹ Î· Î´Î¹ÎµÏÎ¸ÏÎ½ÏÎ· URL ÏÎ·Ï ÏÎ¿Î®Ï ÎµÎ¯Î½Î±Î¹ ÏÏÎ¿ÏÏÎµÏÏÎ¹ÎºÎ¬."
+
+#: data/scripts/reorder_groups.py:646
+
+msgid "Name of the new group:"
+msgstr "ÎÎ½Î¿Î¼Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï:"
+
+#: data/scripts/browse_bouquets.py:1011
+
+msgid "National Bouquet (Major stations)"
+msgstr "ຊໍ່ດອກໄມ້ແຫ່ງຊາດ (ສະຖານີໃຫຍ່)"
+
+#: data/scripts/timonde_settings.py:677
+
+msgid ""
+"Native integration in notification tray via StatusNotifierItem / XEmbed."
+msgstr "ການເຊື່ອມໂຍງແບບເດີມໃນຖາດການແຈ້ງເຕືອນຜ່ານ StatusNotifierItem / XEmbed."
+
+#: data/scripts/browse_bouquets.py:1655
+
+msgid "New"
+msgstr "[ໃໝ່]"
+
+#: data/scripts/reorder_groups.py:193
+
+msgid "New group"
+msgstr "ກຸ່ມໃໝ່"
+
+#: data/scripts/reorder_groups.py:593
+
+msgid "New group..."
+msgstr "ກຸ່ມໃໝ່"
+
+#: data/scripts/reorder_groups.py:725
+
+msgid "New name for group:"
+msgstr "ÎÎ­Î¿ ÏÎ½Î¿Î¼Î± Î¿Î¼Î¬Î´Î±Ï:"
+
+#: data/scripts/browse_bouquets.py:1282
+
+msgid "New only"
+msgstr "ໃຫມ່ເທົ່ານັ້ນ"
+
+#: data/scripts/reorder_groups.py:580
+
+msgid "New subgroup here..."
+msgstr "ÎÎ­Î± ÏÏÎ¿Î¿Î¼Î¬Î´Î± ÎµÎ´Ï..."
+
+#: src/timezone.rs:521
+
+msgid "Night"
+msgstr "ກາງຄືນ"
+
+#: data/scripts/browse_bouquets.py:1726
 
 msgid "No DAB+ bouquet for {country} — Use 'Search online'."
 msgstr "ບໍ່ມີຊຸດສະຖານີ DAB+ ສຳລັບ {country} — ໃຊ້ 'ຊອກຫາອອນລາຍ'."
 
-msgid "{checked} / {total} station(s) selected"
-msgstr "ເລືອກແລ້ວ {checked} / {total} ສະຖານີ"
+#: data/scripts/reorder_groups.py:1262
 
-msgid ""
-"No radio found for this language in {country}. Uncheck 'Filter by country' "
-"or clear the language."
-msgstr ""
-"ບໍ່ພົບວິທະຍຸສຳລັບພາສານີ້ໃນ {country}. ຍົກເລີກການເລືອກ 'ກັ່ນຕອງຕາມປະເທດ' ຫຼື ລຶບພາສາອອກ."
+msgid "No bookmarks.xml file found to backup."
+msgstr "ÎÎµÎ½ Î²ÏÎ­Î¸Î·ÎºÎµ Î±ÏÏÎµÎ¯Î¿ bookmarks.xml Î³Î¹Î± Î´Î·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î±Î½ÏÎ¹Î³ÏÎ¬ÏÎ¿Ï."
+
+#: data/scripts/reorder_groups.py:872
+
+msgid "No items to sort in this group."
+msgstr "ÎÎµÎ½ ÏÏÎ¬ÏÏÎ¿ÏÎ½ ÏÏÎ¿Î¹ÏÎµÎ¯Î± ÏÏÎ¿Ï ÏÎ±Î¾Î¹Î½ÏÎ¼Î·ÏÎ· ÏÎµ Î±ÏÏÎ®Î½ ÏÎ·Î½ Î¿Î¼Î¬Î´Î±."
+
+#: data/scripts/timonde_settings.py:618
+
+msgid "No new stations added (already in your bookmarks)."
+msgstr "ÎÎµÎ½ ÏÏÎ¿ÏÏÎ­Î¸Î·ÎºÎ±Î½ Î½Î­Î¿Î¹ ÏÏÎ±Î¸Î¼Î¿Î¯ (ÏÏÎ¬ÏÏÎ¿ÏÎ½ Î®Î´Î· ÏÏÎ¿ÏÏ ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎµÏ ÏÎ±Ï)."
+
+#: data/scripts/browse_bouquets.py:1625
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "ບໍ່ມີຊຸດສະຖານີ DAB+ ທີ່ໂຫຼດໄວ້ລ່ວງໜ້າສຳລັບປະເທດນີ້."
+
+#: data/scripts/browse_bouquets.py:1898
 
 msgid ""
 "No radio found for these criteria in {country}. Uncheck 'Filter by country' "
@@ -1222,287 +1109,997 @@ msgstr ""
 "ບໍ່ພົບວິທະຍຸສຳລັບເງື່ອນໄຂເຫຼົ່ານີ້ໃນ {country}. ຍົກເລີກການເລືອກ 'ກັ່ນຕອງຕາມປະເທດ' "
 "ເພື່ອຊອກຫາທົ່ວໂລກ."
 
+#: data/scripts/browse_bouquets.py:1895
+
+msgid ""
+"No radio found for this language in {country}. Uncheck 'Filter by country' "
+"or clear the language."
+msgstr ""
+"ບໍ່ພົບວິທະຍຸສຳລັບພາສານີ້ໃນ {country}. ຍົກເລີກການເລືອກ 'ກັ່ນຕອງຕາມປະເທດ' ຫຼື ລຶບພາສາອອກ."
+
+#: data/scripts/browse_bouquets.py:1900
+
 msgid "No radio found on Radio-Browser for these criteria."
 msgstr "ບໍ່ພົບວິທະຍຸໃນ Radio-Browser ສຳລັບເງື່ອນໄຂເຫຼົ່ານີ້."
 
-msgid "[Present]"
-msgstr "[ມີຢູ່ແລ້ວ]"
+#: src/tray/mod.rs:459
 
-msgid "[New]"
-msgstr "[ໃໝ່]"
+msgid "No radio is currently playing."
+msgstr "ບໍ່ມີວິທະຍຸທີ່ກຳລັງຫຼິ້ນຢູ່ໃນຕອນນີ້."
 
-msgid "○ Untested"
-msgstr "○ ຍັງບໍ່ໄດ້ທົດສອບ"
+#: src/tray/menu.rs:297
 
-msgid "{count} stations found."
-msgstr "ພົບ {count} ສະຖານີ."
+msgid "No station loaded"
+msgstr "No stations to check."
 
-msgid "Testing..."
-msgstr "ກຳລັງທົດສອບ..."
+#: data/scripts/reorder_groups.py:1072
 
-msgid "{count} available timezones"
-msgstr "{count} ເຂດເວລາທີ່ໃຊ້ໄດ້"
+msgid "No stations to check."
+msgstr "No stations to check."
 
-msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
-msgstr "<b>{nb_st}</b> ສະຖານີໃນ <b>{nb_gr}</b> ກຸ່ມ."
+#: data/scripts/timonde_common.py:1680
 
-msgid "Explore stations from this country on Radio-Browser"
-msgstr "ສຳຫຼວດສະຖານີຈາກປະເທດນີ້ໃນ Radio-Browser"
+msgid "No stream found for this name. Modify the text above."
+msgstr "ບໍ່ພົບສາຍສັນຍານສຳລັບຊື່ນີ້. ກະລຸນາແກ້ໄຂຂໍ້ຄວາມຂ້າງເທິງ."
+
+#: data/scripts/timonde_common.py:1907
+
+msgid "Not listed yet!"
+msgstr "ÎÎµÎ½ Î­ÏÎµÎ¹ ÎºÎ±ÏÎ±ÏÏÏÎ·Î¸ÎµÎ¯ Î±ÎºÏÎ¼Î±!"
+
+#: data/scripts/timonde_common.py:1721
+
+msgid "OK"
+msgstr "OK"
+
+#: data/scripts/browse_bouquets.py:972
+
+msgid ""
+"Official and verified selection across 146 countries and regions (digital "
+"DAB+ bouquets and major national stations)."
+msgstr "ການ​ຄັດ​ເລືອກ​ຢ່າງ​ເປັນ​ທາງ​ການ​ແລະ​ການ​ກວດ​ສອບ​ໃນ​ທົ່ວ 146 ປະ​ເທດ​ແລະ​ພາກ​ພື້ນ (bouquets DAB + ດິ​ຈິ​ຕອນ​ແລະ​ສະ​ຖາ​ນີ​ທີ່​ສໍາ​ຄັນ​ແຫ່ງ​ຊາດ​)​."
+
+#: data/scripts/timonde_common.py:178
+
+msgid "Offline (HTML error page)"
+msgstr "ອອບລາຍ (ໜ້າຂໍ້ຜິດພາດ HTML)"
+
+#: data/scripts/edit_station.py:366
+
+msgid "On-air broadcast name:"
+msgstr "ÎÎ½Î¿Î¼Î± Î¼ÎµÏÎ¬Î´Î¿ÏÎ·Ï ÏÏÎ¿Î½ Î±Î­ÏÎ±:"
+
+#: data/scripts/browse_bouquets.py:1983
+
+msgid "Open"
+msgstr "ເປີດ"
+
+#: data/scripts/browse_bouquets.py:1203
+
+msgid "Open ~/.config/timonde"
+msgstr "ເປີດ ~/.config/timeonde"
+
+#: data/scripts/browse_bouquets.py:1169
+
+msgid "Open ~/.config/timonde/examples"
+msgstr "ເປີດ ~/.config/timeonde/examples"
+
+#: data/scripts/reorder_groups.py:706
+
+msgid "Optional title for this separator (leave blank for a simple line):"
+msgstr "Î ÏÎ¿Î±Î¹ÏÎµÏÎ¹ÎºÏÏ ÏÎ¯ÏÎ»Î¿Ï Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï (Î±ÏÎ®ÏÏÎµ ÎºÎµÎ½Ï Î³Î¹Î± Î±ÏÎ»Î® Î³ÏÎ±Î¼Î¼Î®):"
+
+#: data/scripts/reorder_groups.py:60
+
+msgid "Organize groups and stations (TiMonde)"
+msgstr "Organize groups and stations (TiMonde)"
+
+#: data/scripts/timonde_common.py:1559
+
+msgid "Organizing groups and subgroups (Linux convention)"
+msgstr "ÎÏÎ³Î¬Î½ÏÏÎ· Î¿Î¼Î¬Î´ÏÎ½ ÎºÎ±Î¹ ÏÏÎ¿Î¿Î¼Î¬Î´ÏÎ½ (ÏÏÎ¼Î²Î±ÏÎ· Linux)"
+
+#: data/scripts/timonde_common.py:1609
+
+msgid "Original stream is unreachable:"
+msgstr "UrsprÃ¼nglicher Stream nicht erreichbar:"
+
+#: src/tray/menu.rs:160
+
+msgid "Paused"
+msgstr "ຢຸດຊົ່ວຄາວ"
+
+#: src/i18n.rs:179 src/i18n.rs:228 src/i18n.rs:234 src/i18n.rs:244
+
+#: src/i18n.rs:249 src/i18n.rs:254 src/i18n.rs:257 src/i18n.rs:260
+
+#: src/i18n.rs:263 src/i18n.rs:266 src/i18n.rs:269 src/i18n.rs:272
+
+msgid "Play"
+msgstr "ຫຼິ້ນ"
+
+#: src/tray/menu.rs:413
+
+msgid "Play random radio (Ephemeral discovery)"
+msgstr "ຟັງ​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ Random (ການ​ຄົ້ນ​ພົບ Ephemeral​)"
+
+#: data/scripts/reorder_groups.py:549
+
+msgid "Play this station"
+msgstr "ລຶບວິທະຍຸນີ້"
+
+#: data/scripts/timonde_common.py:1283
+
+msgid "Playing:"
+msgstr "ກຳລັງຫຼິ້ນ:"
+
+#: data/scripts/edit_station.py:388
+
+msgid "Please enter a stream URL first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÎ¹ÏÎ±Î³Î¬Î³ÎµÏÎµ ÏÏÏÏÎ± Î­Î½Î± URL ÏÎ¿Î®Ï."
+
+#: data/scripts/timonde_common.py:1877
+
+msgid "Please enter a stream URL."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÎ¹ÏÎ±Î³Î¬Î³ÎµÏÎµ Î­Î½Î± URL ÏÎ¿Î®Ï."
+
+#: data/scripts/browse_bouquets.py:1783
+
+msgid "Please select a radio station in the list first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ ÏÏÏÏÎ± Î­Î½Î±Î½ ÏÎ±Î´Î¹Î¿ÏÏÎ½Î¹ÎºÏ ÏÏÎ±Î¸Î¼Ï Î±ÏÏ ÏÎ· Î»Î¯ÏÏÎ±."
+
+#: data/scripts/reorder_groups.py:926
+
+msgid "Please select a radio station to move."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î­Î½Î±Î½ ÏÏÎ±Î¸Î¼Ï Î³Î¹Î± Î¼ÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ·."
+
+#: data/scripts/reorder_groups.py:1042
+
+msgid "Please select a station to contribute."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î­Î½Î±Î½ ÏÏÎ±Î¸Î¼Ï ÏÏÎ¿Ï ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬."
+
+#: data/scripts/reorder_groups.py:1020
+
+msgid "Please select a station to repair."
+msgstr "Please select a station to repair."
+
+#: data/scripts/browse_bouquets.py:1825
+
+msgid "Please select or check a radio station in the list first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î® ÏÎ·Î¼ÎµÎ¹ÏÏÏÎµ Î­Î½Î±Î½ ÏÎ±Î´Î¹Î¿ÏÏÎ½Î¹ÎºÏ ÏÏÎ±Î¸Î¼Ï ÏÏÏÏÎ±."
+
+#: data/scripts/timonde_common.py:1651
+
+msgid "Popularity"
+msgstr "Beliebtheit"
+
+#: data/scripts/timonde_settings.py:735
+
+msgid "Preferences"
+msgstr "ຄວາມມັກ"
+
+#: data/scripts/reorder_groups.py:185
+
+msgid "Preview selected radio stream"
+msgstr "Testing live radio streams..."
+
+#: data/scripts/gnome_tray_helper.py:175
+
+msgid "Quit"
+msgstr "ເຊົາ"
+
+#: src/tray/menu.rs:621
+
+msgid "Quit TiMonde"
+msgstr "ອອກຈາກ TiMonde"
+
+#: data/scripts/timonde_common.py:1283 data/scripts/timonde_common.py:1291
+
+#: data/scripts/timonde_common.py:1298 data/scripts/timonde_common.py:1311
+
+#: data/scripts/timonde_common.py:1326
+
+msgid "Radio"
+msgstr "Radio"
+
+#: data/scripts/reorder_groups.py:147
+
+msgid "Radio / Group"
+msgstr "Î¡Î±Î´Î¹ÏÏÏÎ½Î¿ / ÎÎ¼Î¬Î´Î±"
+
+#: data/scripts/edit_station.py:139
+
+msgid "Radio-Browser"
+msgstr "Radio-Browser"
+
+#: data/scripts/timonde_common.py:1949
+
+msgid "Radio-Browser contribution"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1782
+
+msgid ""
+"Radio-Browser is an open directory (+45 000 stations). Shared stations "
+"benefit all users."
+msgstr "Radio-Browser ເປັນໄດເລກະທໍລີທີ່ເປີດ (+45 000 ສະຖານີ). ສະຖານີທີ່ແບ່ງປັນໃຫ້ຜົນປະໂຫຍດຜູ້ໃຊ້ທັງຫມົດ."
+
+#: data/scripts/timonde_common.py:1901
+
+msgid "Radio-Browser prevents duplicate stream URLs. No submission required."
+msgstr "Radio-Browser ປ້ອງກັນ URL stream ຊໍ້າກັນ. ບໍ່ຈໍາເປັນຕ້ອງຍື່ນສະເຫນີ."
+
+#: data/scripts/timonde_common.py:1542
+
+msgid "Radio-Browser servers unreachable"
+msgstr "ÎÎ¹ Î´Î¹Î±ÎºÎ¿Î¼Î¹ÏÏÎ­Ï ÏÎ¿Ï Radio-Browser Î´ÎµÎ½ ÎµÎ¯Î½Î±Î¹ ÏÏÎ¿ÏÎ²Î¬ÏÎ¹Î¼Î¿Î¹"
+
+#: data/scripts/reorder_groups.py:1200
+
+msgid "Redirects applied:"
+msgstr "ÎÏÎ±ÏÎ¼ÏÏÏÎ·ÎºÎ±Î½ Î±Î½Î±ÎºÎ±ÏÎµÏÎ¸ÏÎ½ÏÎµÎ¹Ï:"
+
+#: data/scripts/browse_bouquets.py:1165
+
+msgid "Refresh examples list"
+msgstr "ໂຫຼດລາຍຊື່ຕົວຢ່າງຄືນໃໝ່"
+
+#: data/scripts/browse_bouquets.py:1015
+
+msgid "Regions & Local:"
+msgstr "ພາກພື້ນ ແລະທ້ອງຖິ່ນ:"
+
+#: data/scripts/browse_bouquets.py:1190
+
+msgid "Reload"
+msgstr "ໂຫຼດໃໝ່"
+
+#: data/scripts/browse_bouquets.py:1190
+
+msgid "Reload currently displayed file"
+msgstr "ໂຫຼດໄຟລ໌ທີ່ສະແດງໃນປັດຈຸບັນຄືນໃໝ່"
+
+#: data/scripts/reorder_groups.py:724
+
+msgid "Rename group"
+msgstr "ÎÎµÏÎ¿Î½Î¿Î¼Î±ÏÎ¯Î± Î¿Î¼Î¬Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:584
+
+msgid "Rename group..."
+msgstr "Gruppe umbenennen..."
+
+#: data/scripts/browse_bouquets.py:1119 data/scripts/reorder_groups.py:238
+
+#: data/scripts/reorder_groups.py:563
+
+msgid "Repair stream..."
+msgstr "ສ້ອມແປງກະແສ..."
+
+#: data/scripts/browse_bouquets.py:1119
+
+msgid "Replace selected link with an active official stream"
+msgstr "ແທນທີ່ລິ້ງທີ່ເລືອກດ້ວຍການຖ່າຍທອດຢ່າງເປັນທາງການ"
+
+#: data/scripts/timonde_common.py:1592
+
+msgid "Replace stream:"
+msgstr "ÎÎ½ÏÎ¹ÎºÎ±ÏÎ¬ÏÏÎ±ÏÎ· ÏÎ¿Î®Ï:"
+
+#: data/scripts/browse_bouquets.py:1173
+
+msgid "Restore samples"
+msgstr "ຟື້ນຟູຕົວຢ່າງ"
+
+#: data/scripts/browse_bouquets.py:1173
+
+msgid "Restore the 19 original samples"
+msgstr "ຟື້ນຟູ 19 ຕົວຢ່າງຕົ້ນສະບັບ"
+
+#: data/scripts/reorder_groups.py:861
+
+msgid "Root"
+msgstr "Î¡Î¯Î¶Î±"
+
+#: data/scripts/reorder_groups.py:903
+
+msgid "Root items sorted alphabetically."
+msgstr "Î¤Î± ÏÏÎ¿Î¹ÏÎµÎ¯Î± ÏÎ·Ï ÏÎ¯Î¶Î±Ï ÏÎ±Î¾Î¹Î½Î¿Î¼Î®Î¸Î·ÎºÎ±Î½ Î±Î»ÏÎ±Î²Î·ÏÎ¹ÎºÎ¬."
+
+#: data/scripts/timonde_settings.py:638
+
+msgid "SESSION OPTIONS"
+msgstr "ຕົວເລືອກ Session"
+
+#: src/timezone.rs:657
+
+msgid "Same time"
+msgstr "ເວລາດຽວກັນ"
+
+#: data/scripts/edit_station.py:76 data/scripts/reorder_groups.py:727
+
+#: data/scripts/reorder_groups.py:1269
+
+msgid "Save"
+msgstr "ບັນທຶກ"
+
+#: data/scripts/reorder_groups.py:276
+
+msgid "Save and reload"
+msgstr "ບັນທຶກ ແລະໂຫຼດຄືນໃໝ່"
+
+#: src/tray/dialogs.rs:328 src/tray/mod.rs:541
+
+msgid "Save error"
+msgstr "ຂໍ້ຜິດພາດໃນການບັນທຶກ"
+
+#: data/scripts/reorder_groups.py:276
+
+msgid "Save now"
+msgstr "ຂໍ້ຜິດພາດໃນການບັນທຶກ"
+
+#: data/scripts/edit_station.py:69 src/i18n.rs:199
+
+msgid "Save station to favorites (TiMonde)"
+msgstr "ຊ່ວຍ​ປະ​ຢັດ​ວິ​ທະ​ຍຸ​ທີ່​ມັກ​ຂອງ​ຂ້າ​ພະ​ເຈົ້າ (TiMonde​)"
+
+#: src/tray/mod.rs:561
+
+msgid "Saved!"
+msgstr "ບັນທຶກແລ້ວ!"
+
+#: data/scripts/browse_bouquets.py:770 data/scripts/timonde_common.py:1630
+
+msgid "Search"
+msgstr "Suchen"
+
+#: data/scripts/reorder_groups.py:238
+
+msgid "Search Radio-Browser for a working replacement stream"
+msgstr "ຄົ້ນຫາອັດຕະໂນມັດສໍາລັບການປ່ຽນແທນການຖ່າຍທອດຢູ່ໃນ Radio-Browser ສໍາລັບການເຊື່ອມຕໍ່ຕາຍນີ້"
+
+#: data/scripts/browse_bouquets.py:1326 data/scripts/timonde_settings.py:592
+
+msgid "Search online"
+msgstr "ຊອກຫາອອນໄລນ໌"
+
+#: data/scripts/browse_bouquets.py:1885
+
+msgid "Searching Radio-Browser..."
+msgstr "ກຳລັງຊອກຫາ Radio-Browser..."
+
+#: data/scripts/timonde_common.py:1660
+
+msgid "Searching for streams..."
+msgstr "ສ້ອມແປງກະແສ..."
+
+#: data/scripts/timonde_common.py:1670
+
+msgid "Searching on Radio-Browser..."
+msgstr "ກຳລັງຊອກຫາໃນ Radio-Browser..."
+
+#: data/scripts/browse_bouquets.py:1382
+
+msgid "Select a station in table to listen to."
+msgstr "ເລືອກສະຖານີໃນຕາຕະລາງເພື່ອຟັງ."
+
+#: data/scripts/browse_bouquets.py:1386
+
+msgid "Select a station to listen to."
+msgstr "ເລືອກສະຖານີເພື່ອຟັງ."
+
+#: data/scripts/timonde_common.py:1610
+
+msgid "Select a verified replacement stream from Radio-Browser:"
+msgstr "GeprÃ¼ften Ersatzstream aus Radio-Browser auswÃ¤hlen:"
+
+#: data/scripts/edit_station.py:185
+
+msgid "Select or type (e.g. /France/Brittany or / for root)"
+msgstr "AuswÃ¤hlen oder eingeben (z.B. /Deutschland/Bayern oder / fÃ¼r Wurzel)"
+
+#: data/scripts/reorder_groups.py:956
+
+msgid "Select the target destination:"
+msgstr "ÎÏÎ¹Î»Î­Î¾ÏÎµ ÏÎ¿Î½ ÏÎ¬ÎºÎµÎ»Î¿ ÏÏÎ¿Î¿ÏÎ¹ÏÎ¼Î¿Ï:"
+
+#: src/tray/mod.rs:478
+
+msgid "Selection"
+msgstr "ຄັດສັນ"
+
+#: data/scripts/reorder_groups.py:230
+
+msgid "Separator"
+msgstr "ຕົວແຍກ"
+
+#: data/scripts/timonde_common.py:1538
+
+msgid "Server rejected submission: {error}"
+msgstr "Î Î´Î¹Î±ÎºÎ¿Î¼Î¹ÏÏÎ®Ï Î±ÏÎ­ÏÏÎ¹ÏÎµ ÏÎ·Î½ ÏÏÎ¿Î²Î¿Î»Î®: {error}"
+
+#: data/scripts/timonde_common.py:198
+
+msgid "Server unreachable"
+msgstr "Server nicht erreichbar"
+
+#: data/scripts/timonde_settings.py:316
+
+msgid "Settings & Control TiMonde"
+msgstr "ການຕັ້ງຄ່າ & ຄວບຄຸມ TiMonde"
+
+#: src/tray/dialogs.rs:400
+
+msgid "Settings console not found"
+msgstr "ບໍ່ພົບໜ້າຕ່າງການຕັ້ງຄ່າ"
+
+#: src/tray/menu.rs:605
+
+msgid "Settings..."
+msgstr "ການຕັ້ງຄ່າ..."
+
+#: src/i18n.rs:205 src/tray/menu.rs:549 src/tray/menu.rs:552
+
+msgid "Sleep timer"
+msgstr "ໂມງຈັບເວລານອນ"
+
+#: src/tray/mod.rs:592
+
+msgid "Sleep timer activated"
+msgstr "ເປີດໃຊ້ງານໂມງນັບຖອຍຫຼັງປິດເຄື່ອງແລ້ວ"
+
+#: src/tray/mod.rs:626
+
+msgid "Sleep timer cancelled."
+msgstr "ຍົກເລີກໂມງນັບຖອຍຫຼັງປິດເຄື່ອງແລ້ວ."
+
+#: src/tray/mod.rs:615
+
+msgid "Sleep timer: stopping radio."
+msgstr "ໂມງນັບຖອຍຫຼັງປິດເຄື່ອງ: ກຳລັງຢຸດວິທະຍຸ."
+
+#: data/scripts/reorder_groups.py:223
+
+msgid "Sort sibling items alphabetically"
+msgstr "ÎÎ»ÏÎ±Î²Î·ÏÎ¹ÎºÎ® ÏÎ±Î¾Î¹Î½ÏÎ¼Î·ÏÎ· Î¿Î¼ÏÏÎ¹Î¼ÏÎ½ ÏÏÎ¿Î¹ÏÎµÎ¯ÏÎ½"
+
+#: data/scripts/reorder_groups.py:901
+
+msgid "Sorted alphabetically:"
+msgstr "Î¤Î±Î¾Î¹Î½Î¿Î¼Î®Î¸Î·ÎºÎµ Î±Î»ÏÎ±Î²Î·ÏÎ¹ÎºÎ¬:"
+
+#: data/scripts/browse_bouquets.py:888 data/scripts/browse_bouquets.py:1045
+
+#: data/scripts/browse_bouquets.py:1227 data/scripts/timonde_common.py:1638
+
+msgid "Station"
+msgstr "ຣີສອດ"
+
+#: src/tray/mod.rs:566
+
+msgid "Station added but reload error"
+msgstr "ເພີ່ມສະຖານີແລ້ວ ແຕ່ເກີດຂໍ້ຜິດພາດໃນການໂຫຼດໃໝ່"
+
+#: data/scripts/reorder_groups.py:691
+
+msgid "Station added:"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÏÏÎ¿ÏÏÎ­Î¸Î·ÎºÎµ:"
+
+#: data/scripts/reorder_groups.py:683
+
+msgid "Station editor unavailable."
+msgstr "Î ÎµÏÎµÎ¾ÎµÏÎ³Î±ÏÏÎ®Ï ÏÏÎ±Î¸Î¼ÏÎ½ Î´ÎµÎ½ ÎµÎ¯Î½Î±Î¹ Î´Î¹Î±Î¸Î­ÏÎ¹Î¼Î¿Ï."
+
+#: data/scripts/reorder_groups.py:997
+
+msgid "Station moved to"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ Î¼ÎµÏÎ±ÎºÎ¹Î½Î®Î¸Î·ÎºÎµ ÏÏÎ¿"
+
+#: data/scripts/timonde_common.py:1476
+
+msgid "Station name cannot be empty"
+msgstr "Î¤Î¿ ÏÎ½Î¿Î¼Î± ÏÎ¿Ï ÏÏÎ±Î¸Î¼Î¿Ï Î´ÎµÎ½ Î¼ÏÎ¿ÏÎµÎ¯ Î½Î± ÎµÎ¯Î½Î±Î¹ ÎºÎµÎ½Ï"
+
+#: data/scripts/edit_station.py:110 data/scripts/timonde_common.py:1794
+
+msgid "Station name:"
+msgstr "ຊື່ສະຖານີ:"
+
+#: data/scripts/timonde_common.py:1528
+
+msgid "Station successfully submitted to Radio-Browser."
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÏÏÎ¿Î²Î»Î®Î¸Î·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ ÏÏÎ¿ Radio-Browser."
+
+#: data/scripts/reorder_groups.py:745
+
+msgid "Station updated:"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÎµÎ½Î·Î¼ÎµÏÏÎ¸Î·ÎºÎµ:"
+
+#: data/scripts/browse_bouquets.py:1397 data/scripts/edit_station.py:405
+
+#: data/scripts/reorder_groups.py:1005 data/scripts/reorder_groups.py:1080
+
+#: src/i18n.rs:185 src/i18n.rs:245 src/i18n.rs:250
+
+msgid "Stop"
+msgstr "ຢຸດ"
+
+#: data/scripts/reorder_groups.py:549
+
+msgid "Stop playback"
+msgstr "Wiedergabe stoppen"
+
+#: data/scripts/browse_bouquets.py:1259
+
+msgid "Stream URL"
+msgstr "URL ການຖ່າຍທອດ"
+
+#: data/scripts/timonde_common.py:1478
+
+msgid "Stream URL cannot be empty"
+msgstr "Î¤Î¿ URL ÏÎ·Ï ÏÎ¿Î®Ï Î´ÎµÎ½ Î¼ÏÎ¿ÏÎµÎ¯ Î½Î± ÎµÎ¯Î½Î±Î¹ ÎºÎµÎ½Ï"
+
+#: data/scripts/timonde_common.py:1804
+
+msgid "Stream URL:"
+msgstr "URL ÏÎ¿Î®Ï:"
+
+#: data/scripts/reorder_groups.py:1029
+
+msgid "Stream successfully repaired for"
+msgstr "Î ÏÎ¿Î® ÎµÏÎ¹ÏÎºÎµÏÎ¬ÏÏÎ·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ Î³Î¹Î±"
+
+#: data/scripts/timonde_common.py:1274
+
+msgid "Stream unreachable"
+msgstr "ບໍ່ສາມາດເຂົ້າເຖິງການຖ່າຍທອດໄດ້"
+
+#: data/scripts/browse_bouquets.py:739
+
+msgid "Submit a new station to community Radio-Browser directory"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1859 data/scripts/timonde_common.py:1911
+
+#: data/scripts/timonde_common.py:1958
+
+msgid "Submit to Radio-Browser"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1931
+
+msgid "Submitting station to Radio-Browser..."
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿ Radio-Browser..."
+
+#: data/scripts/timonde_common.py:1930
+
+msgid "Submitting..."
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î®..."
+
+#: data/scripts/browse_bouquets.py:1089
 
 msgid "Switch to the global directory with this country pre-selected"
 msgstr "ປ່ຽນໄປຫາສາລະບົບທົ່ວໂລກໂດຍເລືອກປະເທດນີ້ໄວ້ລ່ວງໜ້າ"
 
-#, fuzzy
-msgid " [Ephemeral]"
-msgstr "[ຊົ່ວຊ້າ]"
+#: data/scripts/timonde_settings.py:665
 
-msgid "%20"
-msgstr ""
+msgid "System language"
+msgstr "ພາສາລະບົບ"
 
-#, fuzzy
-msgid "(Already in favorites)"
-msgstr "ບັນທຶກໃສ່ລາຍການທີ່ມັກຂອງຂ້ອຍ"
+#: data/scripts/timonde_common.py:1831
 
-msgid "/org/mpris/MediaPlayer2/CurrentTrack"
-msgstr ""
+msgid "Tags / Genres:"
+msgstr "ÎÏÎ¹ÎºÎ­ÏÎµÏ / ÎÎ¯Î´Î·:"
 
-#, fuzzy
-msgid "Add station..."
-msgstr "ເພີ່ມວິທະຍຸ..."
+#: src/tray/mod.rs:325
 
-msgid "Bitrate"
-msgstr ""
+msgid "Temporary backup stream found for"
+msgstr "ພົບການຖ່າຍທອດຂໍ້ມູນສຳຮອງຊົ່ວຄາວສຳລັບ"
 
-#, fuzzy
-msgid "Checking..."
-msgstr "ກຳລັງເຊື່ອມຕໍ່..."
+#: data/scripts/edit_station.py:135 data/scripts/edit_station.py:407
 
-msgid "Clear"
-msgstr ""
+msgid "Test"
+msgstr "ການທົດສອບ"
 
-msgid "Clear / Automatic mode"
-msgstr ""
+#: data/scripts/reorder_groups.py:102
 
-msgid "Clear field (click to empty)"
-msgstr ""
+msgid "Test stream availability and locate broken links"
+msgstr "ທົດ​ສອບ​ການ​ມີ​ຊີ​ວິດ​ຂອງ​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ​ຂອງ​ທ່ານ​ແລະ​ຊອກ​ຫາ​ການ​ເຊື່ອມ​ຕໍ່​ທີ່​ຕາຍ​ແລ້ວ​"
 
-#, fuzzy
-msgid "Country"
-msgstr "<b>Country:</b>"
+#: data/scripts/browse_bouquets.py:946 data/scripts/browse_bouquets.py:1115
 
-#, fuzzy
-msgid "Country:"
-msgstr "<b>Country:</b>"
+#: data/scripts/browse_bouquets.py:1286
 
-msgid "Delete group..."
-msgstr ""
+msgid "Test streams"
+msgstr "ທົດສອບການຖ່າຍທອດ"
 
-#, fuzzy
-msgid "Delete this separator"
-msgstr "ລຶບວິທະຍຸນີ້"
+#: data/scripts/reorder_groups.py:1087
 
-#, fuzzy
-msgid "Delete this station..."
-msgstr "ລຶບວິທະຍຸນີ້"
-
-msgid "Edit header..."
-msgstr ""
-
-#, fuzzy
-msgid "Edit station..."
-msgstr "ເພີ່ມວິທະຍຸ..."
-
-msgid "Empty URL"
-msgstr ""
-
-msgid "Ephemeral radio (not saved)."
-msgstr ""
-
-msgid "Error {code}"
-msgstr ""
-
-msgid "Format"
-msgstr ""
-
-msgid "Geoblocked (VPN)"
-msgstr ""
-
-msgid "HTTP Error {code}"
-msgstr ""
-
-#, fuzzy
-msgid "Insert separator here..."
-msgstr "Insert a separator or header in this group"
-
-msgid "Listen"
-msgstr ""
-
-msgid "Live (repaired)"
-msgstr ""
-
-msgid "Live ({codec})"
-msgstr ""
-
-#, fuzzy
-msgid "Move to another group..."
-msgstr "Move selection to another group (Ctrl+M)"
-
-#, fuzzy
-msgid "Move to top"
-msgstr "ຍ້າຍໄປ..."
-
-#, fuzzy
-msgid "New"
-msgstr "[ໃໝ່]"
-
-#, fuzzy
-msgid "New group..."
-msgstr "ກຸ່ມໃໝ່"
-
-#, fuzzy
-msgid "No station loaded"
-msgstr "No stations to check."
-
-#, fuzzy
-msgid "Open stations"
-msgstr "ຕົວເລືອກ"
-
-msgid "Original stream is unreachable:"
-msgstr ""
-
-#, fuzzy
-msgid "Play this station"
-msgstr "ລຶບວິທະຍຸນີ້"
-
-msgid "Popularity"
-msgstr ""
-
-#, fuzzy
-msgid "Preview selected radio stream"
+msgid "Testing live radio streams..."
 msgstr "Testing live radio streams..."
 
-msgid "Rename group..."
-msgstr ""
+#: data/scripts/browse_bouquets.py:1679 data/scripts/browse_bouquets.py:1931
 
-#, fuzzy
-msgid "Save now"
-msgstr "ຂໍ້ຜິດພາດໃນການບັນທຶກ"
+#: data/scripts/browse_bouquets.py:2119
 
-msgid "Search"
-msgstr ""
+msgid "Testing..."
+msgstr "ກຳລັງທົດສອບ..."
 
-#, fuzzy
-msgid "Searching for streams..."
-msgstr "ສ້ອມແປງກະແສ..."
+#: data/scripts/timonde_settings.py:694
 
-msgid "Select a verified replacement stream from Radio-Browser:"
-msgstr ""
+msgid ""
+"The AppIndicator extension is required to display the icon in GNOME top bar."
+msgstr "ຕ້ອງໃຊ້ສ່ວນຂະຫຍາຍ AppIndicator ເພື່ອສະແດງໄອຄອນຢູ່ໃນແຖບເທິງສຸດຂອງ GNOME."
 
-msgid "Select or type (e.g. /France/Brittany or / for root)"
-msgstr ""
+#: data/scripts/browse_bouquets.py:1151
 
-msgid "Server unreachable"
-msgstr ""
+msgid "Thematic samples:"
+msgstr "ຕົວຢ່າງຫົວຂໍ້:"
 
-msgid "Stop playback"
-msgstr ""
+#: data/scripts/edit_station.py:574
 
-#, fuzzy
+msgid "This action will permanently remove this station from your collection."
+msgstr "ຄຳສັ່ງນີ້ຈະລຶບສະຖານີນີ້ອອກຈາກຄໍເລັກຊັນຂອງເຈົ້າຢ່າງຖາວອນ."
+
+#: data/scripts/timonde_common.py:1489
+
+msgid ""
+"This stream URL is already registered on Radio-Browser as '{existing_name}'."
+msgstr "URL ການຖ່າຍທອດນີ້ໄດ້ຖືກລົງທະບຽນຢູ່ໃນ Radio-Browser ເປັນ '{existing_name}'."
+
+#: data/scripts/timonde_common.py:1908
+
+msgid ""
+"This stream URL is unpublished on Radio-Browser and ready to be contributed."
+msgstr "URL ການຖ່າຍທອດນີ້ບໍ່ໄດ້ຖືກເຜີຍແຜ່ໃນ Radio-Browser ແລະພ້ອມທີ່ຈະໄດ້ຮັບການປະກອບສ່ວນ."
+
+#: data/scripts/gnome_tray_helper.py:117
+
+msgid "TiMonde — GNOME Desktop Integration"
+msgstr "TiMonde — ການເຊື່ອມໂຍງ GNOME Desktop"
+
+#: src/tray/mod.rs:150
+
 msgid "TiMonde • Ephemeral discovery"
 msgstr "ຟັງ​ສະ​ຖາ​ນີ​ວິ​ທະ​ຍຸ Random (ການ​ຄົ້ນ​ພົບ Ephemeral​)"
 
-#, fuzzy
+#: data/scripts/timonde_common.py:206
+
 msgid "Timeout"
 msgstr "ເຂດເວລາ:"
 
-#, fuzzy
-msgid "Transfer contents to another group..."
-msgstr "Transfer the content of this group to another group (Ctrl+M)"
+#: data/scripts/edit_station.py:273
+
+msgid "Timezone:"
+msgstr "ເຂດເວລາ:"
+
+#: data/scripts/gnome_tray_helper.py:159
+
+msgid ""
+"To unobtrusively display the playback icon in the top bar of your GNOME "
+"desktop, the <b>AppIndicator</b> system extension is required.\n"
+"\n"
+"Would you like to install it now?"
+msgstr ""
+"ເພື່ອສະແດງໄອຄອນການຫຼິ້ນໃນແຖບເທິງສຸດຂອງເດັສທັອບ GNOME ຂອງທ່ານຢ່າງບໍ່ສົນໃຈ, ຕ້ອງມີການຂະຫຍາຍລະບົບ <b>AppIndicator</b>.\n"
+"\n"
+"ທ່ານຕ້ອງການຕິດຕັ້ງມັນດຽວນີ້ບໍ?"
+
+#: src/timezone.rs:669
+
+msgid "Tomorrow"
+msgstr "ມື້ອື່ນ"
+
+#: data/scripts/reorder_groups.py:211
+
+msgid "Top"
+msgstr "ທໍາອິດ"
+
+#: src/tray/mod.rs:679
+
+msgid "Track copied to clipboard:"
+msgstr "ສຳເນົາຊື່ເພງໃສ່ຄລິບບອດແລ້ວ:"
+
+#: data/scripts/browse_bouquets.py:987
+
+msgid "Type a country (e.g. France, Germany, Canada...)"
+msgstr "ພິມປະເທດ (ເຊັ່ນ: ຝຣັ່ງ, ເຢຍລະມັນ, ການາດາ...)"
+
+#: src/tray/mod.rs:444
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "ບໍ່ພົບສະຖານີໃນລາຍການຊຸດສະຖານີ."
+
+#: src/tray/mod.rs:208
 
 msgid "Unable to initialize audio"
-msgstr ""
+msgstr "Audio konnte nicht initialisiert werden"
+
+#: src/tray/mod.rs:216
 
 msgid "Unable to play"
-msgstr ""
+msgstr "Wiedergabe nicht mÃ¶glich"
+
+#: data/scripts/browse_bouquets.py:942 data/scripts/browse_bouquets.py:1111
+
+#: data/scripts/browse_bouquets.py:1278
+
+msgid "Uncheck all"
+msgstr "ຍົກເລີກການເລືອກທັງໝົດ"
+
+#: data/scripts/timonde_common.py:1486 data/scripts/timonde_common.py:1896
+
+#: data/scripts/timonde_common.py:1897
+
+msgid "Unknown"
+msgstr "ÎÎ³Î½ÏÏÏÎ¿"
+
+#: data/scripts/timonde_common.py:1530
+
+msgid "Unknown error"
+msgstr "ÎÎ³Î½ÏÏÏÎ¿ ÏÏÎ¬Î»Î¼Î±"
+
+#: data/scripts/timonde_common.py:1272
+
+msgid "Unreadable stream"
+msgstr "ການຖ່າຍທອດທີ່ບໍ່ສາມາດອ່ານໄດ້"
+
+#: data/scripts/gnome_tray_helper.py:193
+
+msgid "Unrecognized package manager."
+msgstr "ຜູ້ຈັດການແພັກເກດທີ່ບໍ່ຮູ້ຈັກ."
+
+#: data/scripts/reorder_groups.py:293
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "Ungespeicherte Ãnderungen"
 
-#, fuzzy
+#: data/scripts/browse_bouquets.py:1915 data/scripts/browse_bouquets.py:2082
+
+msgid "Untested"
+msgstr "ÎÎ· ÎµÎ»ÎµÎ³Î¼Î­Î½Î¿"
+
+#: data/scripts/edit_station.py:159
+
+msgid "Use this on-air broadcast name for your bookmark"
+msgstr "Î§ÏÎ·ÏÎ¹Î¼Î¿ÏÎ¿Î¹Î®ÏÏÎµ Î±ÏÏÏ ÏÎ¿ ÏÎ½Î¿Î¼Î± Î¼ÎµÏÎ¬Î´Î¿ÏÎ·Ï Î³Î¹Î± ÏÎ¿Î½ ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎ· ÏÎ±Ï"
+
+#: data/scripts/timonde_common.py:1597
+
 msgid "Validate and replace"
 msgstr "ບັນທຶກ ແລະໂຫຼດຄືນໃໝ່"
 
-msgid "Active (Left & Right clicks unified)"
-msgstr ""
+#: data/scripts/browse_bouquets.py:923
 
-msgid "Enable Left-Click"
-msgstr ""
+msgid "Votes"
+msgstr "ຄະແນນສຽງ"
 
-msgid "Cinnamon left-click unification successfully enabled!"
-msgstr ""
+#: data/scripts/reorder_groups.py:780
 
-msgid "Failed to enable Cinnamon unification."
-msgstr ""
+msgid "Warning: this group contains {count} {unit} that will also be deleted."
+msgstr "ຄໍາເຕືອນ: ກຸ່ມນີ້ມີ {count} {unit} ທີ່ຈະຖືກລຶບຖິ້ມ."
 
-msgid "Cinnamon Left-Click Unification"
-msgstr ""
+#: data/scripts/timonde_common.py:1841
+
+msgid "Website / Homepage:"
+msgstr "ÎÏÏÏÏÎ¿ÏÎ¿Ï / ÎÏÏÎ¹ÎºÎ® ÏÎµÎ»Î¯Î´Î±:"
+
+#: data/scripts/browse_bouquets.py:2318
+
+msgid "XML backup is available from settings."
+msgstr "ການສຳຮອງຂໍ້ມູນ XML ສາມາດໃຊ້ໄດ້ຈາກການຕັ້ງຄ່າ."
+
+#: data/scripts/reorder_groups.py:1296
+
+msgid "XML backup successfully created in"
+msgstr "Î¤Î¿ Î±Î½ÏÎ¯Î³ÏÎ±ÏÎ¿ Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï XML Î´Î·Î¼Î¹Î¿ÏÏÎ³Î®Î¸Î·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ ÏÏÎ¿"
+
+#: data/scripts/reorder_groups.py:1276
+
+msgid "XML files (*.xml)"
+msgstr "ໄຟລ໌ XML (*.xml)"
+
+#: src/timezone.rs:670
+
+msgid "Yesterday"
+msgstr "ມື້ວານ"
+
+#: data/scripts/browse_bouquets.py:1626
 
 msgid ""
-"Allows opening the station menu interchangeably with left or right click."
-msgstr ""
+"You can explore and import stations for this territory directly from the "
+"global directory."
+msgstr "ທ່ານສາມາດສຳຫຼວດ ແລະ ນຳເຂົ້າສະຖານີສຳລັບເຂດແດນນີ້ໄດ້ໂດຍກົງຈາກສາລະບົບທົ່ວໂລກ."
 
-#~ msgid ""
-#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
-#~ "groups.\n"
-#~ "• <b>Double-click a group</b> (or Open) to sort its stations and "
-#~ "separators.\n"
-#~ "• Use <b>Transfer...</b> to merge or move content to another group.\n"
-#~ "• Use <b>New group</b> to add a station folder.</small>"
-#~ msgstr ""
-#~ "<small>• ປ່ຽນ <b>#</b> ຫຼືໃຊ້ <b>ຍ້າຍຂຶ້ນ / ລົງ</b> ເພື່ອສັ່ງກຸ່ມ. \n"
-#~ " • <b>ຄລິກສອງເທື່ອໃສ່ກຸ່ມ</b> (ຫຼືເປີດ) ເພື່ອຈັດຮຽງວິທະຍຸ ແລະຕົວແຍກຂອງມັນ. \n"
-#~ " • ໃຊ້ <b>ໂອນຍ້າຍ...</b> ເພື່ອຮວມ ຫຼືຍ້າຍເນື້ອຫາໄປຫາກຸ່ມອື່ນ. \n"
-#~ " • ໃຊ້ <b>ກຸ່ມໃໝ່</b> ເພື່ອເພີ່ມໂຟນເດີຂອງວິທະຍຸ.</small>"
+#: data/scripts/reorder_groups.py:1302
 
-#~ msgid ""
-#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
-#~ "stations.\n"
-#~ "• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
-#~ "• Click <b>Repair stream...</b> to search Radio-Browser for a working "
-#~ "replacement stream.\n"
-#~ "• Click <b>Separator</b> to insert a section header.</small>"
-#~ msgstr ""
-#~ "<small>• ປ່ຽນ <b>#</b> ຫຼື ໃຊ້ <b>ຍ້າຍຂຶ້ນ / ລົງ</b> ເພື່ອຈັດຮຽງວິທະຍຸ. \n"
-#~ " • ຄລິກ <b>ກວດເບິ່ງ Feeds</b> ເພື່ອເບິ່ງລິ້ງທີ່ຕາຍແລ້ວ (ສີແດງ) ແລະສ້ອມແປງພວກມັນ. \n"
-#~ " • ຄລິກທີ່ <b>ສ້ອມແປງການຖ່າຍທອດ...</b> ເພື່ອຊອກຫາການປ່ຽນແທນການຖ່າຍທອດຢູ່ໃນ Radio-"
-#~ "Browser. \n"
-#~ " • ຄລິກ <b>ຕົວແຍກ</b> ເພື່ອໃສ່ຫົວຂໍ້ພາກສ່ວນ.</small>"
+msgid "Your complete bookmarks have been saved to:"
+msgstr "ÎÎ¹ ÏÎ»Î®ÏÎµÎ¹Ï ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎµÏ ÏÎ±Ï Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎ±Î½ ÏÏÎ¿:"
 
-#~ msgid ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les groupes.\n"
-#~ "• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios "
-#~ "et séparateurs.\n"
-#~ "• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du "
-#~ "contenu.\n"
-#~ "• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
-#~ msgstr ""
-#~ "<small>• ປ່ຽນ <b>#</b> ຫຼືໃຊ້ <b>ຍ້າຍຂຶ້ນ / ລົງ</b> ເພື່ອສັ່ງກຸ່ມ. \n"
-#~ " • <b>ຄລິກສອງເທື່ອໃສ່ກຸ່ມ</b> (ຫຼືເປີດ) ເພື່ອຈັດຮຽງວິທະຍຸ ແລະຕົວແຍກຂອງມັນ. \n"
-#~ " • ໃຊ້ <b>ຍ້າຍໄປ...</b> ເພື່ອຮວມ ຫຼືຍ້າຍເນື້ອຫາ. \n"
-#~ " • ໃຊ້ <b>ກຸ່ມໃໝ່</b> ເພື່ອສ້າງໂຟນເດີຂອງວິທະຍຸ.</small>"
+#: src/i18n.rs:237 src/tray/menu.rs:372
 
-#~ msgid ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les radios.\n"
-#~ "• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne "
-#~ "(en rouge).\n"
-#~ "• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de "
-#~ "remplacement actif.\n"
-#~ "• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de "
-#~ "séparation.</small>"
-#~ msgstr ""
-#~ "<small>• ປ່ຽນ <b>#</b> ຫຼື ໃຊ້ <b>ຍ້າຍຂຶ້ນ / ລົງ</b> ເພື່ອສັ່ງວິທະຍຸ. \n"
-#~ " • ຄລິກ <b>ກວດເບິ່ງຟີດ</b> ເພື່ອຊອກຫາລິ້ງອອບລາຍ (ເປັນສີແດງ). \n"
-#~ " • ຄລິກ <b>Repair Stream...</b> ເພື່ອຊອກຫາກະແສການປ່ຽນແທນທີ່ເຮັດວຽກຢູ່. \n"
-#~ " • ຄລິກທີ່ <b>ຕົວແຍກ</b> ເພື່ອໃສ່ຄຳບັນຍາຍ ຫຼືແຖວຕົວແຍກ.</small>"
+msgid "Zap to another random station"
+msgstr "Zap ໄປຫາວິທະຍຸແບບສຸ່ມອື່ນ"
+
+#: data/scripts/reorder_groups.py:930
+
+msgid "[ / ] Root (Without group)"
+msgstr "[ / ] Î¡Î¯Î¶Î± (ÏÏÏÎ¯Ï Î¿Î¼Î¬Î´Î±)"
+
+#: data/scripts/reorder_groups.py:405
+
+msgid "[!] Dead link"
+msgstr "[!] Dead link"
+
+#: data/scripts/reorder_groups.py:409
+
+msgid "[?] Geo-restricted"
+msgstr "[?] Geo-restricted"
+
+#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
+
+msgid "[New]"
+msgstr "[ໃໝ່]"
+
+#: data/scripts/reorder_groups.py:403
+
+msgid "[OK] Live"
+msgstr "[OK] Live"
+
+#: data/scripts/reorder_groups.py:1027
+
+msgid "[OK] Repaired"
+msgstr "[OK] ÎÏÎ¹ÏÎºÎµÏÎ¬ÏÏÎ·ÎºÎµ"
+
+#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
+
+msgid "[Present]"
+msgstr "[ມີຢູ່ແລ້ວ]"
+
+#: data/scripts/reorder_groups.py:407
+
+msgid "[~] Redirected"
+msgstr "[~] Redirected"
+
+#: data/scripts/reorder_groups.py:1141
+
+msgid "broken"
+msgstr "broken"
+
+#: data/scripts/reorder_groups.py:1127
+
+msgid "checked:"
+msgstr "checked:"
+
+#: src/tray/dialogs.rs:263
+
+msgid "deleted from your favorites."
+msgstr "ລຶບອອກຈາກລາຍການໂປດຂອງທ່ານແລ້ວ."
+
+#: data/scripts/timonde_settings.py:750
+
+msgid "disabled"
+msgstr "ຄົນພິການ"
+
+#: data/scripts/timonde_settings.py:750
+
+msgid "enabled"
+msgstr "ເປີດໃຊ້ງານ"
+
+#: src/tray/mod.rs:332
+
+msgid "is currently unavailable"
+msgstr "ບໍ່ພ້ອມໃຊ້ງານໃນຕອນນີ້"
+
+#: src/tray/mod.rs:302
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "ບໍ່ຕອບສະໜອງ. ກຳລັງຊອກຫາສາຍສັນຍານສຳຮອງ..."
+
+#: data/scripts/timonde_settings.py:612
+
+msgid "new station(s) imported"
+msgstr "Î½Î­Î¿Î¹ ÏÏÎ±Î¸Î¼Î¿Î¯ ÎµÎ¹ÏÎ®ÏÎ¸Î·ÏÎ±Î½"
+
+#: data/scripts/reorder_groups.py:1140
+
+msgid "online"
+msgstr "online"
+
+#: data/scripts/reorder_groups.py:372
+
+msgid "radio"
+msgstr "radio"
+
+#: data/scripts/reorder_groups.py:372 data/scripts/reorder_groups.py:672
+
+msgid "radios"
+msgstr "radios"
+
+#: data/scripts/reorder_groups.py:1142
+
+msgid "redirected"
+msgstr "redirected"
+
+#: data/scripts/browse_bouquets.py:2306
+
+msgid "sample files restored."
+msgstr "ໄຟລ໌ຕົວຢ່າງຖືກຟື້ນຟູ."
+
+#: src/tray/mod.rs:562
+
+msgid "saved in your favorites!"
+msgstr "ບັນທຶກໃນລາຍການໂປດຂອງທ່ານແລ້ວ!"
+
+#: data/scripts/timonde_settings.py:559
+
+msgid "saved successfully!"
+msgstr "Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ!"
+
+#: data/scripts/reorder_groups.py:779
+
+msgid "station"
+msgstr "station"
+
+#: data/scripts/timonde_settings.py:614
+
+msgid "station(s) moved to destination"
+msgstr "ÏÏÎ±Î¸Î¼Î¿Î¯ Î¼ÎµÏÎ±ÎºÎ¹Î½Î®Î¸Î·ÎºÎ±Î½ ÏÏÎ¿Î½ ÏÏÎ¿Î¿ÏÎ¹ÏÎ¼Ï"
+
+#: data/scripts/reorder_groups.py:779
+
+msgid "stations"
+msgstr "stations"
+
+#: data/scripts/reorder_groups.py:1095
+
+msgid "stations checked..."
+msgstr "stations checked..."
+
+#: src/tray/mod.rs:592
+
+msgid "stopping in"
+msgstr "ຈະຢຸດໃນອີກ"
+
+#: data/scripts/reorder_groups.py:1200
+
+msgid "stream(s) updated."
+msgstr "ÏÎ¿Î­Ï ÎµÎ½Î·Î¼ÎµÏÏÎ¸Î·ÎºÎ±Î½."
+
+#: data/scripts/browse_bouquets.py:1725
+
+msgid "this country"
+msgstr "ປະເທດນີ້"
+
+#: src/tray/dialogs.rs:385
+
+msgid "updated successfully!"
+msgstr "ອັບເດດສຳເລັດແລ້ວ!"
+
+#: data/scripts/browse_bouquets.py:1733 data/scripts/browse_bouquets.py:2145
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "ເລືອກແລ້ວ {checked} / {total} ສະຖານີ"
+
+#: data/scripts/edit_station.py:543
+
+msgid "{count} available timezones"
+msgstr "{count} ເຂດເວລາທີ່ໃຊ້ໄດ້"
+
+#: data/scripts/browse_bouquets.py:1918
+
+msgid "{count} stations found."
+msgstr "ພົບ {count} ສະຖານີ."
+
+#: data/scripts/timonde_common.py:1690
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "ພົບ {count} ສາຍສັນຍານ. ເລືອກສາຍສັນຍານທີ່ຕ້ອງການແລ້ວຢືນຢັນ."
+
+#: data/scripts/reorder_groups.py:352 data/scripts/reorder_groups.py:391
+
+#: data/scripts/reorder_groups.py:713
+
+msgid "— Separator —"
+msgstr "— Separator —"
+

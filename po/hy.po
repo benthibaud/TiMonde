@@ -1,1239 +1,1107 @@
 # TiMonde — Traduction HY
+
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
+
 #
+
 msgid ""
 msgstr ""
 "Project-Id-Version: TiMonde 0.1.3\n"
-"Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
-"POT-Creation-Date: 2026-10-29 06:50+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 20:23+0100\n"
 "PO-Revision-Date: 2026-10-17 17:00+0200\n"
 "Language: hy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Play"
-msgstr "Նվագարկել"
+#: src/i18n.rs:186 src/i18n.rs:193
 
-msgid "Stop"
-msgstr "Կանգնեցնել"
-
-msgid "Connecting..."
-msgstr "Միանում է..."
-
-msgid "Edit"
-msgstr "Խմբագրել"
-
-msgid "Delete"
-msgstr "Ջնջել"
-
-msgid "Zap to another random station"
-msgstr "Zap դեպի մեկ այլ պատահական ռադիո"
-
-msgid "Play random radio (Ephemeral discovery)"
-msgstr "Լսեք պատահական ռադիոկայան (Վերջնական հայտնագործություն)"
-
-msgid "[ Ephemeral]"
+msgid " [Ephemeral]"
 msgstr "[Վերջնական]"
 
-msgid "Options"
-msgstr "Ընտրանքներ"
+#: data/scripts/browse_bouquets.py:1655
 
-msgid "Add a station..."
-msgstr "Ավելացնել ռադիո..."
+msgid "(Already in favorites)"
+msgstr "Պահել իմ ընտրյալների մեջ"
 
-msgid "Discover & Import stations..."
-msgstr "Բացահայտեք և ներմուծեք ռադիոներ..."
+# --- Mises à jour TiMonde ---
 
-msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr "Ներմուծել իմ ֆայլերը (XML, CSV, JSON, M3U)..."
+#: data/scripts/edit_station.py:541
 
-msgid "Manage groups and stations..."
-msgstr "Դասակարգել խմբերը և ռադիոն..."
+msgid "(Metropolitan or Overseas)"
+msgstr "(Metropolitan or Overseas)"
 
-msgid "Open bookmarks.xml"
-msgstr "Բացեք bookmarks.xml"
+#: data/scripts/browse_bouquets.py:680 data/scripts/browse_bouquets.py:681
 
-msgid "Quit TiMonde"
-msgstr "Ելք TiMonde-ից"
+#: data/scripts/browse_bouquets.py:2020 data/scripts/browse_bouquets.py:2063
 
-msgid "Mute (0%)"
-msgstr "Անջատել (0%)"
+#: data/scripts/browse_bouquets.py:2197
 
-msgid "Sleep timer"
-msgstr "Քնի ժամանակաչափ"
+msgid "(Original folder structure)"
+msgstr "(Թղթապանակի բնօրինակ կառուցվածքը)"
 
-msgid "In 15 minutes"
-msgstr "15 րոպեում"
+#: data/scripts/edit_station.py:539
 
-msgid "In 30 minutes"
-msgstr "30 րոպեում"
+msgid "(Single inferred timezone)"
+msgstr "(Single inferred timezone)"
 
-msgid "In 45 minutes"
-msgstr "45 րոպեում"
+#: data/scripts/edit_station.py:518
 
-msgid "In 60 minutes (1h)"
-msgstr "60 րոպեում (1 ժամ)"
+msgid "(Timezone not defined)"
+msgstr "(Timezone not defined)"
 
-msgid "Cancel sleep timer"
-msgstr "Չեղարկել քունը"
+#: data/scripts/edit_station.py:521
 
-msgid "Discover & Import stations (TiMonde)"
-msgstr "Բացահայտեք և ներմուծեք ռադիոկայաններ (TiMonde)"
+msgid "(Unknown)"
+msgstr "(Unknown)"
 
-msgid "Verified DAB+ Bouquets"
-msgstr "Ստուգված ծաղկեփնջեր (DAB+)"
+#: data/scripts/edit_station.py:75
 
-msgid "Radio-Browser Search"
-msgstr "Որոնել ռադիո-բրաուզեր"
+msgid "<b>Edit station settings:</b>"
+msgstr "<b>Փոխել կայանի կարգավորումները՝</b>"
 
-msgid "Sample Files"
-msgstr "Օրինակ ֆայլեր"
-
-msgid "Import my files"
-msgstr "Ներմուծել իմ ֆայլերը"
-
-msgid "<b> Country:</b>"
-msgstr "<b>Երկիր՝</b>"
-
-msgid "<b>Language:</b>"
-msgstr "<b>Լեզու՝</b>"
-
-msgid "Name / Keyword:"
-msgstr "Անուն / Հիմնաբառ."
-
-msgid "Genre:"
-msgstr "Սեռը:"
-
-msgid "<b>Sample file:</b>"
-msgstr "<b>Օրինակ ֆայլ՝</b>"
-
-msgid "<b>Group name in your favorites:</b>"
-msgstr "<b>Խմբի անունը ձեր ընտրյալներում.</b>"
-
-msgid "Select all"
-msgstr "Ստուգեք բոլորը"
-
-msgid "Deselect all"
-msgstr "Անջատեք բոլորը"
-
-msgid "Import into favorites"
-msgstr "Ներմուծել իմ ընտրյալներին"
-
-msgid "Close"
-msgstr "Փակել"
-
-msgid "Add a station (TiMonde)"
-msgstr "Ավելացնել կայան (TiMonde)"
+#: data/scripts/edit_station.py:65
 
 msgid "<b>Enter new station details:</b>"
 msgstr "<b>Մուտքագրեք նոր ռադիոյի տվյալները.</b>"
 
-msgid "Add to my stations"
-msgstr "Ավելացնել իմ ռադիոներում"
-
-msgid "Save station to favorites (TiMonde)"
-msgstr "Պահպանեք ռադիոն իմ ընտրյալների մեջ (TiMonde)"
+#: data/scripts/edit_station.py:70
 
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
 msgstr ""
 "<b>Պահեք այս պատահականորեն հայտնաբերված ռադիոկայանը ձեր ընտրյալների մեջ.</b>"
 
-msgid "Keep in favorites"
-msgstr "Պահել իմ ընտրյալների մեջ"
+#: data/scripts/timonde_settings.py:740
 
-msgid "Edit station (TiMonde)"
-msgstr "Խմբագրել ռադիոն (TiMonde)"
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> կայան <b>{nb_gr}</b> խմբերում:"
 
-msgid "<b>Edit station settings:</b>"
-msgstr "<b>Փոխել կայանի կարգավորումները՝</b>"
+#: data/scripts/browse_bouquets.py:1208
 
-msgid "Save"
-msgstr "Պահպանել"
+msgid "<i>Select a file or sample above.</i>"
+msgstr "<i>Ընտրեք վերը նշված ֆայլը կամ նմուշը:</i>"
 
-msgid "Station name:"
-msgstr "Կայանի անվանումը:"
+#: data/scripts/timonde_settings.py:709 data/scripts/timonde_settings.py:719
 
-msgid "Audio stream URL:"
-msgstr "Աուդիո հոսքի URL՝"
+msgid "Active (Left & Right clicks unified)"
+msgstr "Aktiv (Links- & Rechtsklick vereinheitlicht)"
 
-msgid "Group / Folder:"
-msgstr "Խումբ / Թղթապանակ:"
+#: data/scripts/browse_bouquets.py:882
 
-msgid "Country & Timezone:"
-msgstr "Երկիր և ժամային գոտի."
+msgid "Add"
+msgstr "Ավելացնել"
 
-msgid "Timezone:"
-msgstr "Ժամային գոտի."
+#: data/scripts/reorder_groups.py:189
 
-msgid "Delete this station"
-msgstr "Ջնջել այս ռադիոն"
+msgid "Add a new station to this group or to root"
+msgstr "Î ÏÎ¿ÏÎ¸Î®ÎºÎ· Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÎµ Î±ÏÏÎ® ÏÎ·Î½ Î¿Î¼Î¬Î´Î± Î® ÏÏÎ· ÏÎ¯Î¶Î±"
 
-msgid "Cancel"
-msgstr "Չեղարկել"
+#: data/scripts/edit_station.py:64
 
-msgid "Delete « {} » from favorites?"
-msgstr "Հեռացնե՞լ «{}»-ը ընտրյալներից:"
+msgid "Add a station (TiMonde)"
+msgstr "Ավելացնել կայան (TiMonde)"
 
-msgid "This action will permanently remove this station from your collection."
-msgstr "Այս գործողությունը ընդմիշտ կհեռացնի այս կայանը ձեր հավաքածուից:"
-
-msgid "Manage groups, stations and separators (TiMonde)"
-msgstr "Խմբերի, ռադիոկայանների և բաժանարարների կառավարում (TiMonde)"
-
-msgid "Back to groups"
-msgstr "⬅ Վերադառնալ խմբեր"
+#: data/scripts/reorder_groups.py:189
 
 msgid "Add station"
 msgstr "Ավելացնել ռադիո"
 
-msgid "Open"
-msgstr "Բաց"
+#: data/scripts/reorder_groups.py:576
 
-msgid "New group"
-msgstr "Նոր խումբ"
+msgid "Add station here..."
+msgstr "Î ÏÎ¿ÏÎ¸Î®ÎºÎ· ÏÏÎ±Î¸Î¼Î¿Ï ÎµÎ´Ï..."
 
-msgid "Move to..."
-msgstr "Տեղափոխել դեպի..."
+#: data/scripts/reorder_groups.py:597
 
-msgid "Top"
-msgstr "Առաջին"
+msgid "Add station..."
+msgstr "Ավելացնել ռադիո..."
 
-msgid "Move up"
-msgstr "⬆ Բարձրացե՛ք"
+#: data/scripts/edit_station.py:66
 
-msgid "Move down"
-msgstr "⬇ Իջիր ներքև"
+msgid "Add to my stations"
+msgstr "Ավելացնել իմ ռադիոներում"
 
-msgid "Separator"
-msgstr "Տարանջատող"
+#: data/scripts/edit_station.py:159
 
-msgid "Sort A-Z"
-msgstr "Տեսակավորել A-Z"
+msgid "Align name"
+msgstr "ÎÏÎ¸ÏÎ³ÏÎ¬Î¼Î¼Î¹ÏÎ· Î¿Î½ÏÎ¼Î±ÏÎ¿Ï"
 
-msgid "Save and reload"
-msgstr "Պահպանեք և վերաբեռնեք"
+#: data/scripts/reorder_groups.py:295
 
-msgid "Same time"
-msgstr "Նույն ժամանակ"
+msgid "All changes saved"
+msgstr "ÎÎ»ÎµÏ Î¿Î¹ Î±Î»Î»Î±Î³Î­Ï Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎ±Î½"
 
-msgid "Dawn"
-msgstr "Լուսաբաց"
+#: data/scripts/browse_bouquets.py:784
 
-msgid "Morning"
-msgstr "Առավոտյան"
+msgid "All countries (Worldwide)"
+msgstr "Բոլոր երկրները (աշխարհում)"
 
-msgid "Daytime"
-msgstr "Օր"
-
-msgid "Evening"
-msgstr "Երեկոյան"
-
-msgid "Night"
-msgstr "Գիշեր"
-
-msgid "Tomorrow"
-msgstr "Վաղը"
-
-msgid "Yesterday"
-msgstr "Երեկ"
-
-msgid "Maintenance & Data"
-msgstr "Տեխնիկական սպասարկում և տվյալներ"
-
-msgid "Check streams (dead links)..."
-msgstr "Ստուգեք հոսքերը (մեռած հղումները)..."
-
-msgid "Export my stations to CSV..."
-msgstr "Արտահանել իմ ռադիոները CSV..."
-
-msgid "Check streams"
-msgstr "Ստուգեք հոսքերը"
-
-msgid "Dead links only"
-msgstr "Միայն մեռած հղումներ"
-
-msgid "Apply redirects"
-msgstr "Կիրառել վերահղումներ"
-
-msgid "Repair stream..."
-msgstr "Վերանորոգման հոսք..."
-
-msgid "Export to CSV"
-msgstr "Արտահանել CSV"
-
-msgid "Test stream availability and locate broken links"
-msgstr ""
-"Ստուգեք ձեր ռադիոկայանների ուղիղ հասանելիությունը և նշեք մեռած հղումները"
-
-msgid "Display offline radio streams only"
-msgstr "Ցուցադրել միայն ռադիոկայանները, որոնց հոսքը անցանց է"
-
-msgid "Automatically update redirected streams to direct URL"
-msgstr "Ավտոմատ թարմացնել հոսքերը, որոնք վերահղված են դեպի իրենց ուղիղ URL"
-
-msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
-"Ավտոմատ կերպով որոնեք փոխարինող ակտիվ հոսք Radio-Browser-ում այս մեռած հղման "
-"համար"
-
-msgid "Export all stations to CSV spreadsheet format"
-msgstr "Արտահանեք ձեր բոլոր ռադիոկայանները CSV աղյուսակի ձևաչափով"
-
-msgid "Export my stations to CSV"
-msgstr "Արտահանել իմ ռադիոները CSV"
-
-msgid "CSV files (*.csv)"
-msgstr "CSV ֆայլեր (*.csv)"
+#: data/scripts/reorder_groups.py:1281
 
 msgid "All files (*.*)"
 msgstr "Բոլոր ֆայլերը (*.*)"
 
-msgid "Export"
-msgstr "Արտահանում"
+#: data/scripts/browse_bouquets.py:823
 
-msgid "Export successful!"
-msgstr "Արտահանումը հաջողվեց:"
+msgid "All languages"
+msgstr "Բոլոր լեզուները"
 
-msgid "Error during CSV export:"
-msgstr "Սխալ CSV արտահանման ժամանակ."
+#: data/scripts/timonde_settings.py:728
 
-msgid "station(s) saved to:"
-msgstr "ռադիո(ներ) ձայնագրված՝"
+msgid ""
+"Allows opening the station menu interchangeably with left or right click."
+msgstr "Թույլ է տալիս բացել կայանի ընտրացանկը ձախ կամ աջ սեղմումով:"
 
-msgid "Start automatically at login"
-msgstr "Start automatically at login"
+#: data/scripts/timonde_common.py:1904
 
-msgid "Organize groups and stations (TiMonde)"
-msgstr "Organize groups and stations (TiMonde)"
+msgid "Already registered"
+msgstr "ÎÎ´Î· ÎºÎ±ÏÎ±ÏÏÏÎ·Î¼Î­Î½Î¿"
 
-msgid "Back to main group list (Esc)"
-msgstr "Back to main group list (Esc)"
+#: data/scripts/timonde_common.py:1899
 
-msgid "Sort stations in this group (Enter or double-click)"
-msgstr "Sort stations in this group (Enter or double-click)"
+msgid "Already registered:"
+msgstr "ÎÎ´Î· ÎºÎ±ÏÎ±ÏÏÏÎ·Î¼Î­Î½Î¿:"
 
-msgid "Create a new group of radio stations (Ctrl+N)"
-msgstr "Create a new group of radio stations (Ctrl+N)"
+#: data/scripts/reorder_groups.py:111 data/scripts/reorder_groups.py:1155
 
-msgid "Move selection to another group (Ctrl+M)"
-msgstr "Move selection to another group (Ctrl+M)"
+msgid "Apply redirects"
+msgstr "Կիրառել վերահղումներ"
 
-msgid "Move selected item to the top"
-msgstr "Move selected item to the top"
+#: data/scripts/reorder_groups.py:783 data/scripts/reorder_groups.py:785
 
-msgid "Move up one rank"
-msgstr "Move up one rank"
+#: data/scripts/reorder_groups.py:787
 
-msgid "Move down one rank"
-msgstr "Move down one rank"
+msgid "Are you sure you want to delete « {name} » ?"
+msgstr "Իսկապե՞ս ուզում եք ջնջել « {name} »-ը:"
 
-msgid "Add a new station to this group"
-msgstr "Add a new station to this group"
+#: data/scripts/edit_station.py:121
 
-msgid "Insert a separator or header in this group"
-msgstr "Insert a separator or header in this group"
+msgid "Audio stream URL:"
+msgstr "Աուդիո հոսքի URL՝"
 
-msgid "Sort this list alphabetically"
-msgstr "Sort this list alphabetically"
-
-msgid "Edit selected name, URL or header (F2)"
-msgstr "Edit selected name, URL or header (F2)"
-
-msgid "Delete selected item or group (Del)"
-msgstr "Delete selected item or group (Del)"
-
-msgid "Transfer..."
-msgstr "Transfer..."
-
-msgid "Transfer the content of this group to another group (Ctrl+M)"
-msgstr "Transfer the content of this group to another group (Ctrl+M)"
-
-msgid "<b>Radio groups</b>"
-msgstr "<b>Radio groups</b>"
-
-msgid "— Separator —"
-msgstr "— Separator —"
-
-msgid "radio"
-msgstr "radio"
-
-msgid "radios"
-msgstr "radios"
-
-msgid "sep."
-msgstr "sep."
-
-msgid "dead link"
-msgstr "dead link"
-
-msgid "dead links"
-msgstr "dead links"
-
-msgid "redir."
-msgstr "redir."
-
-msgid "[OK] All online"
-msgstr "[OK] All online"
-
-msgid "Move selected stations to another group (Ctrl+M)"
-msgstr "Move selected stations to another group (Ctrl+M)"
-
-msgid "Create a new group and move selected stations there (Ctrl+N)"
-msgstr "Create a new group and move selected stations there (Ctrl+N)"
-
-msgid "Stations in group:"
-msgstr "Stations in group:"
-
-msgid "Header"
-msgstr "Header"
-
-msgid "[OK] Live"
-msgstr "[OK] Live"
-
-msgid "[!] Dead link"
-msgstr "[!] Dead link"
-
-msgid "[~] Redirected"
-msgstr "[~] Redirected"
-
-msgid "[?] Geo-restricted"
-msgstr "[?] Geo-restricted"
+#: data/scripts/reorder_groups.py:1139
 
 msgid "Audit completed:"
 msgstr "Audit completed:"
 
-msgid "online"
-msgstr "online"
+#: data/scripts/timonde_settings.py:666
 
-msgid "broken"
-msgstr "broken"
+msgid "Automatic detection according to your Linux locale settings."
+msgstr "Ավտոմատ հայտնաբերում ըստ ձեր Linux տեղանքի կարգավորումների:"
 
-msgid "redirected"
-msgstr "redirected"
+#: data/scripts/timonde_settings.py:648
 
-msgid "No stations to check."
-msgstr "No stations to check."
+msgid "Automatic launch on startup"
+msgstr "Ավտոմատ գործարկում գործարկման ժամանակ"
+
+#: data/scripts/timonde_settings.py:751
+
+msgid "Automatic startup"
+msgstr "Ավտոմատ գործարկում"
+
+#: data/scripts/reorder_groups.py:111
+
+msgid "Automatically update redirected streams to direct URL"
+msgstr "Ավտոմատ թարմացնել հոսքերը, որոնք վերահղված են դեպի իրենց ուղիղ URL"
+
+#: data/scripts/browse_bouquets.py:913 data/scripts/browse_bouquets.py:1247
+
+msgid "Availability"
+msgstr "Հասանելիություն"
+
+#: data/scripts/reorder_groups.py:1266
+
+msgid "Backup my bookmarks (XML)"
+msgstr "ÎÎ½ÏÎ¯Î³ÏÎ±ÏÎ¿ Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¹ÎºÏÏÎ½ (XML)"
+
+#: data/scripts/browse_bouquets.py:1199
+
+msgid "Backup my radios (XML)..."
+msgstr "Կրկնօրինակեք իմ ռադիոները (XML)..."
+
+#: data/scripts/reorder_groups.py:1302
+
+msgid "Backup successful!"
+msgstr "ÎÏÎ¹ÏÏÏÎ®Ï Î´Î·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î±Î½ÏÎ¹Î³ÏÎ¬ÏÎ¿Ï Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï!"
+
+#: data/scripts/timonde_common.py:1645
+
+msgid "Bitrate"
+msgstr "Bitrate"
+
+#: data/scripts/timonde_settings.py:530
+
+msgid "Bookmarks and stations saved successfully!"
+msgstr "Էջանիշները և կայանները հաջողությամբ պահպանվեցին:"
+
+#: data/scripts/browse_bouquets.py:1203
+
+msgid "Bookmarks folder"
+msgstr "Էջանիշերի թղթապանակ"
+
+#: data/scripts/browse_bouquets.py:2312
+
+msgid "CSV export is available from settings."
+msgstr "CSV արտահանումը հասանելի է կարգավորումներից:"
+
+#: data/scripts/reorder_groups.py:1252
+
+msgid "CSV export successful:"
+msgstr "ÎÏÎ¹ÏÏÏÎ®Ï ÎµÎ¾Î±Î³ÏÎ³Î® CSV:"
+
+#: data/scripts/browse_bouquets.py:1982 data/scripts/edit_station.py:308
+
+#: data/scripts/edit_station.py:575 data/scripts/reorder_groups.py:260
+
+#: data/scripts/reorder_groups.py:638 data/scripts/reorder_groups.py:948
+
+#: data/scripts/reorder_groups.py:1228 data/scripts/reorder_groups.py:1269
+
+#: data/scripts/timonde_common.py:1596 data/scripts/timonde_common.py:1720
+
+msgid "Cancel"
+msgstr "Չեղարկել"
+
+#: src/tray/menu.rs:589
+
+msgid "Cancel sleep timer"
+msgstr "Չեղարկել քունը"
+
+#: data/scripts/timonde_common.py:1814
+
+msgid "Check"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï"
+
+#: data/scripts/browse_bouquets.py:938 data/scripts/browse_bouquets.py:1107
+
+#: data/scripts/browse_bouquets.py:1274
+
+msgid "Check all"
+msgstr "Ստուգեք բոլորը"
+
+#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
+
+msgid "Check and submit selected station to Radio-Browser directory"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï ÎºÎ±Î¹ ÏÏÎ¿Î²Î¿Î»Î® ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1814
+
+msgid "Check entered stream URL again on Radio-Browser"
+msgstr "ÎÏÎ±Î½Î­Î»ÎµÎ³ÏÎ¿Ï Î´Î¹ÎµÏÎ¸ÏÎ½ÏÎ·Ï ÏÎ¿Î®Ï ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/edit_station.py:139
+
+msgid "Check if stream is listed or contribute to directory"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï Î±Î½ Î· ÏÎ¿Î® ÏÏÎ¬ÏÏÎµÎ¹ Î® ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿"
+
+#: data/scripts/edit_station.py:135
+
+msgid "Check link validity and listen to stream preview"
+msgstr "Ստուգեք հղման վավերականությունը և լսեք հոսքի նախադիտումը"
+
+#: data/scripts/browse_bouquets.py:1286
+
+msgid "Check links availability live"
+msgstr "Ստուգեք հղումների առկայությունը ուղիղ եթերում"
+
+#: data/scripts/browse_bouquets.py:946
+
+msgid "Check live availability of found stations"
+msgstr "Ստուգեք հայտնաբերված կայանների ուղիղ հասանելիությունը"
+
+#: data/scripts/reorder_groups.py:242
+
+msgid "Check or contribute selected station to Radio-Browser"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï Î® ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/browse_bouquets.py:1115
+
+msgid "Check stations live availability"
+msgstr "Ստուգեք կայանների ուղիղ հասանելիությունը"
+
+#: data/scripts/reorder_groups.py:102
+
+msgid "Check streams"
+msgstr "Ստուգեք հոսքերը"
+
+#: data/scripts/timonde_common.py:1882
+
+msgid "Checking Radio-Browser directory..."
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï ÎºÎ±ÏÎ±Î»ÏÎ³Î¿Ï Radio-Browser..."
+
+#: data/scripts/reorder_groups.py:1077
 
 msgid "Checking your radio stations"
 msgstr "Checking your radio stations"
 
-msgid "Testing live radio streams..."
-msgstr "Testing live radio streams..."
+#: data/scripts/browse_bouquets.py:1656
 
-msgid "stations checked..."
-msgstr "stations checked..."
+msgid "Checking..."
+msgstr "Միանում է..."
 
-msgid "checked:"
-msgstr "checked:"
+#: data/scripts/browse_bouquets.py:1978
 
-msgid "Please select a station to repair."
-msgstr "Please select a station to repair."
+msgid "Choose a radio station file"
+msgstr "Ընտրեք ռադիոկայանի ֆայլը"
 
-msgid "This item is a separator."
-msgstr "This item is a separator."
+#: data/scripts/browse_bouquets.py:676
 
-msgid "Station deleted"
-msgstr "Station deleted"
-
-msgid "Settings..."
-msgstr "Կարգավորումներ..."
-
-# --- Mises à jour TiMonde ---
-msgid "(Metropolitan or Overseas)"
-msgstr "(Metropolitan or Overseas)"
-
-msgid "(Single inferred timezone)"
-msgstr "(Single inferred timezone)"
-
-msgid "(Timezone not defined)"
-msgstr "(Timezone not defined)"
-
-msgid "(Unknown)"
-msgstr "(Unknown)"
-
-msgid "<b>Country:</b>"
-msgstr "<b>Country:</b>"
-
-msgid "<b>Fichier exemple :</b>"
-msgstr "<b>Sample file:</b>"
-
-msgid ""
-"Accédez à plus de 40 000 stations en ligne classées par pays, genre ou mots-"
-"clés."
-msgstr ""
-"Access over 40,000 online stations sorted by country, genre or keywords."
-
-msgid "Ajouter une radio (TiMonde)"
-msgstr "Ավելացնել ռադիո (TiMonde)"
-
-msgid "Ajouter une radio manuellement"
-msgstr "Add station manually"
-
-msgid "Ajouter à mes radios"
-msgstr "Ավելացնել իմ ռադիոներում"
-
-msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Նոր ռադիոներ ավելացված չեն (արդեն առկա են):"
-
-msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "DAB+ ծաղկեփնջեր և պաշտոնական ընտրանի"
-
-msgid "Bouquets DAB+ vérifiés"
-msgstr "Verified DAB+ Bouquets"
-
-msgid ""
-"Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, "
-"GNOME, KDE, MATE)."
-msgstr ""
-"Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, "
-"GNOME, KDE, MATE)."
-
-msgid "Conserver dans mes favoris"
-msgstr "Պահել իմ ընտրյալների մեջ"
-
-msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Պահպանեք ռադիոն ընտրյալների մեջ (TiMonde)"
-
-msgid ""
-"Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans "
-"~/.config/timonde/examples/."
-msgstr ""
-"Browse the 17 thematic selections or drop your own files into ~/.config/"
-"timonde/examples/."
-
-msgid "Contents"
-msgstr "Contents"
-
-msgid "Details"
-msgstr "Details"
-
-msgid "Dossier ouvert :"
-msgstr "Բացել ֆայլը՝"
-
-msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Բացահայտեք և ներմուծեք ռադիոկայաններ (TiMonde)"
-
-msgid "Démarrage automatique"
-msgstr "Autostart"
-
-msgid ""
-"Démarre discrètement TiMonde en arrière-plan dès l'ouverture de votre "
-"session graphique."
-msgstr ""
-"Launches TiMonde discreetly in the background when your graphical session "
-"starts."
-
-msgid ""
-"Détection automatique selon votre système. 55 langues mondiales supportées "
-"avec drapeaux."
-msgstr ""
-"Automatic detection based on your system. 55 world languages supported."
-
-msgid "Enregistrer"
-msgstr "Պահպանել"
-
-msgid "Erreur :"
-msgstr "Error:"
-
-msgid "Erreur exécution :"
-msgstr "Կատարման սխալ."
-
-msgid "Erreur import JSON :"
-msgstr "JSON ներմուծման սխալ."
-
-msgid "Erreur lors de la modification de l'autostart."
-msgstr "Ավտոմատ մեկնարկը փոփոխելիս սխալ առաջացավ:"
-
-msgid "Explorer DAB+..."
-msgstr "Ուսումնասիրեք DAB+..."
-
-msgid "Exportation CSV terminée."
-msgstr "CSV արտահանումն ավարտված է:"
-
-msgid "Exporter en CSV..."
-msgstr "Export to CSV..."
-
-msgid ""
-"Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout en "
-"conservant bookmarks.xml comme référence."
-msgstr ""
-"Export or sync your radio stations with LibreOffice Calc or Excel while "
-"keeping bookmarks.xml as reference."
-
-msgid "Fermer"
-msgstr "Փակել"
-
-msgid "Fichiers exemples"
-msgstr "Sample Files"
-
-msgid "Fichiers exemples thématiques"
-msgstr "Thematic Sample Files"
-
-msgid "Group name"
-msgstr "Group name"
-
-msgid "Générez une feuille de calcul CSV de vos radios"
-msgstr "Generate a CSV spreadsheet of your radio stations"
-
-msgid "Gérer les radios..."
-msgstr "Manage stations..."
-
-msgid "Importer depuis CSV..."
-msgstr "Import from CSV..."
-
-msgid "Importer des fichiers personnels"
-msgstr "Ներմուծեք անձնական ֆայլեր"
-
-msgid "Importer fichier..."
-msgstr "Ֆայլի ներմուծում..."
-
-msgid "Importer mes fichiers"
-msgstr "Import My Files"
-
-msgid ""
-"Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV, "
-"JSON, M3U ou PLS."
-msgstr ""
-"Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U "
-"or PLS formats."
-
-msgid "Impossible d ouvrir le dossier :"
-msgstr "Հնարավոր չէ բացել թղթապանակը՝"
-
-msgid ""
-"Insérez des séparateurs (---) ou des intertitres de section dans vos groupes "
-"pour aérer votre menu."
-msgstr ""
-"Տեղադրեք բաժանարարներ (---) կամ բաժինների վերնագրերը ձեր խմբերում՝ ձեր "
-"ընտրացանկը օդափոխելու համար:"
-
-msgid "Intégration du bureau & Plateau"
-msgstr "Desktop Integration & Tray"
-
-msgid "Lancement automatique au démarrage"
-msgstr "Launch automatically at startup"
-
-msgid "Lancer l'audit..."
-msgstr "Start audit..."
-
-msgid "Langue :"
-msgstr "Language:"
-
-msgid "Langue et Région"
-msgstr "Language & Region"
-
-msgid "Modifications prises en compte."
-msgstr "Հաշվի առնված փոփոխությունները."
-
-msgid "Modifier la radio (TiMonde)"
-msgstr "Խմբագրել ռադիոն (TiMonde)"
-
-msgid "Name / Header"
-msgstr "Name / Header"
-
-msgid "Nouvelle radio..."
-msgstr "New station..."
-
-msgid "Organiser les groupes et les radios"
-msgstr "Organize groups and stations"
-
-msgid "Outil introuvable :"
-msgstr "Tool not found:"
-
-msgid "Ouvrir dossier"
-msgstr "Բացել թղթապանակը"
-
-msgid "Paramètres & Contrôle TiMonde"
-msgstr "TiMonde Settings & Control"
-
-msgid "Paramètres TiMonde"
-msgstr "TiMonde Settings"
-
-msgid ""
-"Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter votre "
-"bureau."
-msgstr ""
-"Browse 146 verified national and regional bouquets without leaving your "
-"desktop."
-
-msgid "Parcourir..."
-msgstr "Թերթիր..."
-
-msgid "Passerelle Tableur (CSV)"
-msgstr "Spreadsheet Gateway (CSV)"
-
-msgid "Recherche Radio-Browser"
-msgstr "Radio-Browser Search"
-
-msgid "Recherche mondiale Radio-Browser"
-msgstr "Գլոբալ որոնման ռադիո-բրաուզեր"
-
-msgid "Rechercher..."
-msgstr "Որոնել..."
-
-msgid "Restaurer"
-msgstr "Restore"
-
-msgid "Restaurer les fichiers exemples"
-msgstr "Restore sample files"
-
-msgid "Réimportez ou synchronisez des radios modifiées depuis un tableur CSV"
-msgstr "Re-import or sync modified radio stations from a CSV spreadsheet"
-
-msgid ""
-"Rétablit les 17 exemples thématiques par défaut dans votre dossier personnel "
-"s'ils ont été supprimés."
-msgstr ""
-"Restores the 17 default thematic samples in your personal folder if deleted."
-
-msgid ""
-"Saisir directement un nom, une URL de flux (AAC, MP3, HLS), un pays et un "
-"fuseau horaire."
-msgstr ""
-"Directly enter a name, stream URL (AAC, MP3, HLS), country and timezone."
-
-msgid "Signets actuels (bookmarks.xml)"
-msgstr "Current bookmarks (bookmarks.xml)"
-
-msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Էջանիշները վերակազմավորվեցին և հաջողությամբ պահպանվեցին:"
-
-msgid "Supprimer"
-msgstr "Ջնջել"
-
-msgid ""
-"Teste en direct la disponibilité de tous vos flux, détecte les liens "
-"inactifs et applique les redirections."
-msgstr ""
-"Tests live availability of all your streams, detects broken links and "
-"applies redirects."
-
-msgid ""
-"Triez, renommez, supprimez et déplacez vos stations. Créez des dossiers et "
-"des sous-groupes (ex: Musique/Jazz)."
-msgstr ""
-"Sort, rename, delete and move your stations. Create folders and sub-groups "
-"(e.g. Music/Jazz)."
-
-msgid "Vérificateur de flux & Liens morts"
-msgstr "Stream health check & Dead links"
-
-msgid "activé"
-msgstr "enabled"
-
-msgid "ajoutée avec succès à vos signets !"
-msgstr "successfully added to your bookmarks!"
-
-msgid "désactivé"
-msgstr "disabled"
-
-msgid "fichiers exemples restaurés dans"
-msgstr "ֆայլերի նմուշը վերականգնվել է"
-
-msgid "radio(s) ajoutée(s) à vos signets !"
-msgstr "station(s) added to your bookmarks!"
-
-msgid "↕️ Organisation"
-msgstr "↕️ Կազմակերպություն"
-
-msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Տեսողական դասավորության հուշում"
-
-msgid "💾 Données & Fichiers"
-msgstr "💾 Տվյալներ և ֆայլեր"
-
-msgid "📻 Bibliothèque"
-msgstr "📻 Գրադարան"
-
-msgid "🖥️ Général"
-msgstr "🖥️ Գեներալ"
-
-msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
-msgstr "<i>Ընտրեք ֆայլ կամ օրինակ վերևում:</i>"
-
-msgid "Actualiser la liste des exemples"
-msgstr "Թարմացրեք օրինակների ցանկը"
-
-msgid "Aide sur les groupes et sous-groupes"
-msgstr "Օգնություն խմբերի և ենթախմբերի հետ"
-
-msgid "Ajouter"
-msgstr "Ավելացնել"
-
-msgid "Annuler"
-msgstr "Չեղարկել"
-
-msgid "Arrêter"
-msgstr "Դադարեցրեք"
-
-msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
-msgstr "Պահելու համար bookmarks.xml ֆայլեր չեն գտնվել:"
-
-msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
-msgstr "Նոր ռադիոկայաններ չեն ավելացվել (արդեն առկա են ձեր էջանիշներում):"
-
-msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
-msgstr "Այս չափանիշների համար Radio-Browser-ում ռադիոկայաններ չեն գտնվել:"
-
-msgid "Bouquet National (Grandes stations)"
-msgstr "Ազգային ծաղկեփունջ (խոշոր հանգստավայրեր)"
-
-msgid "Bouquets par pays"
-msgstr "Ծաղկեփնջեր ըստ երկրի"
-
-msgid "Bureau graphique & Plateau"
-msgstr "Գրաֆիկական գրասեղան և սկուտեղ"
-
-msgid "Cette station n'a aucune URL de flux audio."
-msgstr "Այս կայանը ձայնային հոսքի URL-ներ չունի:"
-
-msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
-msgstr "Վերբեռնեք XML, CSV, JSON, M3U կամ PLS ֆայլ"
-
-msgid "Charger un fichier..."
-msgstr "Բեռնել ֆայլը..."
-
-msgid "Choisir parmi les groupes existants"
+msgid "Choose from existing groups"
 msgstr "Ընտրեք գոյություն ունեցող խմբերից"
 
-msgid "Choisir un fichier de radios"
-msgstr "Ընտրեք ռադիո ֆայլ"
+#: data/scripts/timonde_settings.py:727
 
-msgid "Collections & Fichiers"
-msgstr "Հավաքածուներ և ֆայլեր"
+msgid "Cinnamon Left-Click Unification"
+msgstr "Cinnamon Linksklick-Vereinheitlichung"
 
-msgid "Conserver l'organisation en dossiers"
-msgstr "Կազմակերպությունը պահեք ֆայլում"
+#: data/scripts/timonde_settings.py:721
 
-msgid ""
-"Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux "
-"horaires)"
-msgstr ""
-"Ստեղծեք ձեր հավաքածուի ամբողջական կրկնօրինակը (թղթապանակներով և ժամային "
-"գոտիներով)"
+msgid "Cinnamon left-click unification successfully enabled!"
+msgstr "Cinnamon Linksklick-Vereinheitlichung erfolgreich aktiviert!"
 
-msgid "Disponibilité"
-msgstr "Հասանելիություն"
+#: data/scripts/edit_station.py:265
 
-msgid "Disponibilité en direct"
-msgstr "Ուղիղ հասանելիություն"
+msgid "Clear"
+msgstr "Clear"
 
-msgid "Dossier / Groupe"
-msgstr "Թղթապանակ / Խումբ"
+#: data/scripts/edit_station.py:266
 
-msgid "Dossier des exemples"
-msgstr "Օրինակների թղթապանակ"
+msgid "Clear / Automatic mode"
+msgstr "LÃ¶schen / Automatischer Modus"
 
-msgid "Dossier des signets"
-msgstr "Էջանիշերի թղթապանակ"
+#: data/scripts/browse_bouquets.py:789
 
-msgid ""
-"Détection automatique selon les paramètres régionaux de votre environnement "
-"Linux."
-msgstr ""
-"Ավտոմատ հայտնաբերում ըստ ձեր Linux միջավայրի տարածաշրջանային կարգավորումների:"
-
-msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
-msgstr "ԳՏՆՎԵԼ Է ՄԻՋԱՎԱՅՐ (ՄԻԱՅՆ ԿԱՐԴԱԼ)"
-
-msgid "Effacer le champ"
-msgstr "Մաքուր դաշտ"
-
-msgid "Effacer le filtre langue"
-msgstr "Մաքրել լեզվի զտիչը"
-
-msgid "Effacer le filtre pays"
+msgid "Clear country filter"
 msgstr "Մաքրել երկրի զտիչը"
 
-msgid "Environnement GNOME Shell détecté"
-msgstr "Հայտնաբերվել է GNOME Shell միջավայր"
+#: data/scripts/browse_bouquets.py:669
 
-msgid "Erreur lors de la sauvegarde :"
-msgstr "Սխալ պահելիս."
+msgid "Clear field"
+msgstr "Մաքուր դաշտ"
 
-msgid "Ex: /France/Jazz ou / pour racine"
+#: data/scripts/edit_station.py:187
+
+msgid "Clear field (click to empty)"
+msgstr "Feld leeren (Klicken zum Leeren)"
+
+#: data/scripts/browse_bouquets.py:828
+
+msgid "Clear language filter"
+msgstr "Մաքրել լեզվի զտիչը"
+
+#: data/scripts/browse_bouquets.py:1335 data/scripts/timonde_common.py:1858
+
+#: data/scripts/timonde_settings.py:447
+
+msgid "Close"
+msgstr "Փակել"
+
+#: data/scripts/reorder_groups.py:88
+
+msgid "Collapse all"
+msgstr "Î£ÏÎ¼ÏÏÏÎ¾Î· ÏÎ»ÏÎ½"
+
+#: data/scripts/reorder_groups.py:88
+
+msgid "Collapse all groups for an overview"
+msgstr "Î£ÏÎ¼ÏÏÏÎ¾Î· ÏÎ»ÏÎ½ ÏÏÎ½ Î¿Î¼Î¬Î´ÏÎ½ Î³Î¹Î± ÎµÏÎ¹ÏÎºÏÏÎ·ÏÎ·"
+
+#: data/scripts/timonde_settings.py:594
+
+msgid "Collections & Files"
+msgstr "Հավաքածուներ և ֆայլեր"
+
+#: data/scripts/reorder_groups.py:794
+
+msgid "Confirm deletion"
+msgstr "ÎÏÎ¹Î²ÎµÎ²Î±Î¯ÏÏÎ· Î´Î¹Î±Î³ÏÎ±ÏÎ®Ï"
+
+#: data/scripts/timonde_common.py:1328
+
+msgid "Connecting to"
+msgstr "Միանում է"
+
+#: src/i18n.rs:192 src/tray/menu.rs:159
+
+msgid "Connecting..."
+msgstr "Միանում է..."
+
+#: data/scripts/browse_bouquets.py:739
+
+msgid "Contribute a station"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ±Î¸Î¼Î¿Ï"
+
+#: data/scripts/timonde_common.py:1781
+
+msgid "Contribute a station to the community Radio-Browser directory"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ¿Î¹Î½Î¿ÏÎ¹ÎºÏ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
+
+#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
+
+#: data/scripts/timonde_common.py:1761
+
+msgid "Contribute to Radio-Browser"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/reorder_groups.py:242 data/scripts/reorder_groups.py:567
+
+msgid "Contribute to Radio-Browser..."
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser..."
+
+#: data/scripts/browse_bouquets.py:894 data/scripts/browse_bouquets.py:1240
+
+#: data/scripts/timonde_common.py:1648
+
+msgid "Country"
+msgstr "<b>Country:</b>"
+
+#: data/scripts/browse_bouquets.py:1327 data/scripts/timonde_settings.py:593
+
+msgid "Country bouquets"
+msgstr "Գյուղական ծաղկեփնջեր"
+
+#: data/scripts/timonde_common.py:1821
+
+msgid "Country code (ISO):"
+msgstr "ÎÏÎ´Î¹ÎºÏÏ ÏÏÏÎ±Ï (ISO):"
+
+#: data/scripts/browse_bouquets.py:981 data/scripts/edit_station.py:228
+
+#: data/scripts/timonde_common.py:1900
+
+msgid "Country:"
+msgstr "Country:"
+
+#: data/scripts/reorder_groups.py:639
+
+msgid "Create"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î±"
+
+#: data/scripts/browse_bouquets.py:1199
+
+msgid "Create a full backup of your collection (with folders and timezones)"
+msgstr "Ստեղծեք ձեր հավաքածուի ամբողջական կրկնօրինակը (թղթապանակներով և ժամային գոտիներով)"
+
+#: data/scripts/reorder_groups.py:634
+
+msgid "Create a new group"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:193
+
+msgid "Create a new group or subgroup (Ctrl+N)"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï Î® ÏÏÎ¿Î¿Î¼Î¬Î´Î±Ï (Ctrl+N)"
+
+#: data/scripts/reorder_groups.py:658
+
+msgid "Create as a subgroup inside"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± ÏÏ ÏÏÎ¿Î¿Î¼Î¬Î´Î± ÎµÎ½ÏÏÏ"
+
+#: data/scripts/timonde_settings.py:656
+
+msgid "DETECTED ENVIRONMENT (READ ONLY)"
+msgstr "ԳՏՆՎԱԾ ՄԻՋԱՎԱՅՐ (ՄԻԱՅՆ ԿԱՐԴԱԼ)"
+
+#: src/timezone.rs:521
+
+msgid "Daytime"
+msgstr "Օր"
+
+#: data/scripts/reorder_groups.py:106 data/scripts/reorder_groups.py:1147
+
+msgid "Dead links only"
+msgstr "Միայն մեռած հղումներ"
+
+#: data/scripts/edit_station.py:576 data/scripts/reorder_groups.py:246
+
+#: src/i18n.rs:230 src/i18n.rs:236
+
+msgid "Delete"
+msgstr "Ջնջել"
+
+#: data/scripts/reorder_groups.py:588
+
+msgid "Delete group and stations"
+msgstr "ÎÎ¹Î±Î³ÏÎ±ÏÎ® Î¿Î¼Î¬Î´Î±Ï ÎºÎ±Î¹ ÏÏÎ±Î¸Î¼ÏÎ½"
+
+#: data/scripts/reorder_groups.py:246
+
+msgid "Delete selected item or group (Del)"
+msgstr "Delete selected item or group (Del)"
+
+#: data/scripts/edit_station.py:303 data/scripts/reorder_groups.py:571
+
+msgid "Delete this station"
+msgstr "Ջնջել այս ռադիոն"
+
+#: data/scripts/edit_station.py:572
+
+msgid "Delete « {} » from favorites?"
+msgstr "Հեռացնե՞լ «{}»-ը ընտրյալներից:"
+
+#: data/scripts/reorder_groups.py:803
+
+msgid "Deleted:"
+msgstr "ÎÎ¹Î±Î³ÏÎ¬ÏÎ·ÎºÎµ:"
+
+#: data/scripts/timonde_settings.py:676
+
+msgid "Desktop environment & Tray"
+msgstr "Սեղանի միջավայր և սկուտեղ"
+
+#: data/scripts/reorder_groups.py:169
+
+msgid "Details / Status"
+msgstr "ÎÎµÏÏÎ¿Î¼Î­ÏÎµÎ¹ÎµÏ / ÎÎ±ÏÎ¬ÏÏÎ±ÏÎ·"
+
+#: data/scripts/browse_bouquets.py:525
+
+msgid "Discover & Import stations (TiMonde)"
+msgstr "Բացահայտեք և ներմուծեք ռադիոկայաններ (TiMonde)"
+
+#: data/scripts/timonde_settings.py:649
+
+msgid ""
+"Discreetly starts TiMonde in the background as soon as your graphical "
+"session opens."
+msgstr "Զգուշորեն սկսում է TiMonde-ը հետին պլանում, հենց որ ձեր գրաֆիկական նստաշրջանը բացվի:"
+
+#: data/scripts/reorder_groups.py:107
+
+msgid "Display offline radio streams only"
+msgstr "Ցուցադրել միայն ռադիոկայանները, որոնց հոսքը անցանց է"
+
+#: data/scripts/reorder_groups.py:234 src/i18n.rs:229 src/i18n.rs:235
+
+#: src/tray/menu.rs:384
+
+msgid "Edit"
+msgstr "Խմբագրել"
+
+#: data/scripts/reorder_groups.py:234
+
+msgid "Edit selected name, URL or group (F2)"
+msgstr "ÎÏÎµÎ¾ÎµÏÎ³Î±ÏÎ¯Î± ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï Î¿Î½ÏÎ¼Î±ÏÎ¿Ï, URL Î® Î¿Î¼Î¬Î´Î±Ï (F2)"
+
+#: data/scripts/edit_station.py:74
+
+msgid "Edit station (TiMonde)"
+msgstr "Խմբագրել ռադիոն (TiMonde)"
+
+#: data/scripts/reorder_groups.py:555
+
+msgid "Edit station..."
+msgstr "Ավելացնել ռադիո..."
+
+#: data/scripts/timonde_common.py:132
+
+msgid "Empty URL"
+msgstr "Leere URL"
+
+#: data/scripts/timonde_common.py:1301 data/scripts/timonde_common.py:1315
+
+msgid "Empty stream URL"
+msgstr "Դատարկ հոսքի URL"
+
+#: data/scripts/timonde_settings.py:709
+
+msgid "Enable Left-Click"
+msgstr "Linksklick aktivieren"
+
+#: data/scripts/timonde_common.py:1277
+
+msgid "End of stream"
+msgstr "Հոսքի ավարտը"
+
+#: data/scripts/browse_bouquets.py:950
+
+msgid "Enter a keyword or click Search to browse the directory."
+msgstr "Մուտքագրեք հիմնաբառ կամ սեղմեք Որոնում՝ գրացուցակը զննելու համար:"
+
+#: src/tray/mod.rs:155
+
+msgid "Ephemeral radio (not saved)."
+msgstr "FlÃ¼chtiges Radio (nicht gespeichert)."
+
+#: data/scripts/reorder_groups.py:1312
+
+msgid "Error during backup:"
+msgstr "Սխալ կրկնօրինակման ժամանակ."
+
+#: data/scripts/timonde_settings.py:753
+
+msgid "Error modifying autostart."
+msgstr "Ավտոմատ մեկնարկը փոփոխելիս սխալ առաջացավ:"
+
+#: data/scripts/timonde_common.py:195
+
+msgid "Error {code}"
+msgstr "Fehler {code}"
+
+#: data/scripts/gnome_tray_helper.py:217
+
+msgid "Error:"
+msgstr "Սխալ."
+
+#: src/timezone.rs:521
+
+msgid "Evening"
+msgstr "Երեկոյան"
+
+#: data/scripts/browse_bouquets.py:652
+
+msgid "Ex: /France/Jazz or / for root"
 msgstr "Օրինակ՝ /Ֆրանսիա/Ջազ կամ/ արմատի համար"
 
-msgid "Exemples thématiques :"
-msgstr "Թեմատիկ օրինակներ."
+#: data/scripts/browse_bouquets.py:1169
 
-msgid "Exporter en tableau (CSV)..."
-msgstr "Արտահանել աղյուսակ (CSV)..."
+msgid "Examples folder"
+msgstr "Օրինակների թղթապանակ"
 
-msgid "Fichier :"
-msgstr "Ֆայլ՝"
+#: data/scripts/reorder_groups.py:92
 
-msgid "Fichier externe :"
-msgstr "Արտաքին ֆայլ."
+msgid "Expand all"
+msgstr "ÎÎ½Î¬ÏÏÏÎ¾Î· ÏÎ»ÏÎ½"
 
-msgid "Fichiers XML (*.xml)"
-msgstr "XML ֆայլեր (*.xml)"
+#: data/scripts/reorder_groups.py:92
 
-msgid "Filtrer par pays :"
-msgstr "Զտել ըստ երկրի՝"
+msgid "Expand all groups and subgroups"
+msgstr "ÎÎ½Î¬ÏÏÏÎ¾Î· ÏÎ»ÏÎ½ ÏÏÎ½ Î¿Î¼Î¬Î´ÏÎ½ ÎºÎ±Î¹ ÏÏÎ¿Î¿Î¼Î¬Î´ÏÎ½"
 
-msgid "Format & Débit"
-msgstr "Ձևաչափ և բիթային արագություն"
+#: data/scripts/browse_bouquets.py:1087
 
-msgid "Genre / Tags"
-msgstr "Սեռ / Պիտակներ"
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Ուսումնասիրել այս երկրի կայանները Radio-Browser-ում"
 
-msgid "Genre / Thématique"
-msgstr "Ժանր / Թեմա"
-
-msgid "Genre :"
-msgstr "Սեռը:"
-
-msgid "Gestionnaire de paquets non reconnu."
-msgstr "Չճանաչված փաթեթի կառավարիչ:"
-
-msgid "Groupe :"
-msgstr "Խումբ:"
-
-msgid "Générer une liste plate pour tableur Calc ou Excel"
-msgstr "Ստեղծեք հարթ ցուցակ Calc կամ Excel աղյուսակների համար"
-
-msgid "Importer"
-msgstr "Ներմուծում"
-
-msgid "Importer & Exporter"
-msgstr "Ներմուծում և արտահանում"
-
-msgid "Importer dans mes favoris"
-msgstr "Ներմուծել իմ ընտրյալներին"
-
-msgid "Installation en cours (veuillez valider l'invite système)..."
-msgstr "Տեղադրումն ընթացքի մեջ է (խնդրում ենք հաստատել համակարգի հուշումը)..."
-
-msgid "Installer l'intégration GNOME"
-msgstr "Տեղադրեք GNOME ինտեգրումը"
-
-msgid "Intégration GNOME requise"
-msgstr "Պահանջվում է GNOME ինտեգրում"
-
-msgid "Intégration dans la barre supérieure GNOME"
-msgstr "Ինտեգրում GNOME վերին տողում"
-
-msgid ""
-"Intégration native dans la zone de notification via StatusNotifierItem / "
-"XEmbed."
-msgstr ""
-"Մայրենի ինտեգրում ծանուցման տարածքում StatusNotifierItem / XEmbed-ի միջոցով:"
-
-msgid "L'exportation CSV est accessible depuis les paramètres."
-msgstr "CSV արտահանումը հասանելի է կարգավորումներից:"
-
-msgid ""
-"L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre "
-"supérieure sous GNOME."
-msgstr ""
-"AppIndicator-ի ընդլայնումը պահանջվում է GNOME-ի վերևի տողում պատկերակը "
-"ցուցադրելու համար:"
-
-msgid "L'installation a été annulée ou a échoué."
-msgstr "Տեղադրումը չեղարկվեց կամ ձախողվեց:"
-
-msgid "La sauvegarde XML est accessible depuis les paramètres."
-msgstr "XML կրկնօրինակը հասանելի է կարգավորումներից:"
-
-msgid "Langue du système"
-msgstr "Համակարգի լեզու"
-
-msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
-msgstr "Անջատիչներն ու միջվերնագրերը չեն կարող լսել:"
-
-msgid "Mes Radios"
-msgstr "Իմ ռադիոները"
-
-msgid "Mot-clé :"
-msgstr "Բանալի բառ:"
-
-msgid "Nouveaux uniquement"
-msgstr "Միայն նոր"
-
-msgid "OPTIONS DE SESSION"
-msgstr "ՆԻՍՏԻ ՏԱՐԲԵՐԱԿՆԵՐԸ"
-
-msgid "Organisation des groupes et sous-groupes (Convention Linux)"
-msgstr "Խմբերի և ենթախմբերի կազմակերպում (Linux Convention)"
-
-msgid "Ouvrez d'abord un groupe pour écouter ses radios."
-msgstr "Սկզբում բացեք խումբ՝ նրա ռադիոները լսելու համար:"
-
-msgid "Ouvrir"
-msgstr "Բաց"
-
-msgid "Ouvrir ~/.config/timonde"
-msgstr "Բացեք ~/.config/timonde"
-
-msgid "Ouvrir ~/.config/timonde/examples"
-msgstr "Բացեք ~/.config/timonde/examples"
-
-msgid "Pays"
-msgstr "Երկիր"
-
-msgid "Pays :"
-msgstr "Երկիր:"
-
-msgid ""
-"Pour afficher discrètement l'icône de lecture dans la barre supérieure de "
-"votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire."
-"<br/><br/>Souhaitez-vous l'installer maintenant ?"
-msgstr ""
-"Խաղի պատկերակը ձեր GNOME աշխատասեղանի վերևի բարում զուսպ ցուցադրելու համար "
-"անհրաժեշտ է <b>AppIndicator</b> համակարգի ընդլայնումը:<br/><br/>Կցանկանայի՞ք "
-"տեղադրել այն հիմա:"
-
-msgid "Préférences"
-msgstr "Նախապատվություններ"
-
-msgid ""
-"Préserver les sous-groupes définis dans le fichier au lieu de tout importer "
-"dans un groupe unique."
-msgstr ""
-"Պահպանեք ֆայլում սահմանված ենթախմբերը՝ ամեն ինչ մեկ խմբի մեջ ներմուծելու "
-"փոխարեն:"
-
-msgid "Quitter"
-msgstr "Ելք"
-
-msgid "Recharger"
-msgstr "Վերբեռնել"
-
-msgid "Recharger le fichier actuellement affiché"
-msgstr "Վերբեռնել ներկա ցուցադրված ֆայլը"
-
-msgid ""
-"Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> "
-"(+45 000 stations)."
-msgstr ""
-"Համաշխարհային որոնում անվճար և համատեղ <b>Radio-Browser</b> գրացուցակում "
-"(+45,000 կայաններ):"
-
-msgid "Recherche sur Radio-Browser en cours..."
-msgstr "Որոնումը ռադիո-բրաուզերում շարունակվում է..."
-
-msgid "Rechercher"
-msgstr "Որոնում"
-
-msgid "Rechercher en ligne"
-msgstr "Որոնել առցանց"
-
-msgid "Remplacer le lien sélectionné par un flux officiel actif"
-msgstr "Փոխարինեք ընտրված հղումը ակտիվ պաշտոնական հոսքով"
-
-msgid "Restaurer exemples"
-msgstr "Վերականգնել օրինակները"
-
-msgid "Régions & Locales :"
-msgstr "Տարածաշրջաններ և տեղացիներ."
-
-msgid "Réparer le flux..."
-msgstr "Ուղղեք հոսքը..."
-
-msgid "Rétablir les 19 exemples d'origine"
-msgstr "Վերականգնել բնօրինակ 19 օրինակները"
-
-msgid ""
-"Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
-msgstr ""
-"Մուտքագրեք հիմնաբառ կամ սեղմեք Որոնում՝ գրացուցակը ուսումնասիրելու համար:"
-
-msgid "Sauvegarde réussie !"
-msgstr "Պահուստավորումը հաջողվեց:"
-
-msgid "Sauvegarder mes radios (XML)..."
-msgstr "Պահպանել իմ ռադիոները (XML)..."
-
-msgid "Sauvegarder mes signets (XML)"
-msgstr "Պահպանել իմ էջանիշները (XML)"
-
-msgid "Signets et radios enregistrés avec succès !"
-msgstr "Էջանիշներն ու ռադիոները հաջողությամբ պահպանվեցին:"
-
-msgid "Station"
-msgstr "Հանգստավայր"
-
-msgid "Statut Favoris"
-msgstr "Սիրվածների կարգավիճակը"
-
-msgid ""
-"Sélection officielle et vérifiée parmi 146 pays et régions (bouquets "
-"numériques DAB+ et grandes stations nationales)."
-msgstr ""
-"Պաշտոնական և ստուգված ընտրություն 146 երկրներից և տարածաշրջաններից (DAB+ "
-"թվային ծաղկեփնջեր և հիմնական ազգային կայաններ):"
-
-msgid "Sélectionnez une radio pour l'écouter."
-msgstr "Ընտրեք ռադիո՝ այն լսելու համար:"
-
-msgid "Sélectionnez une station dans le tableau pour l'écouter."
-msgstr "Աղյուսակից ընտրեք կայան՝ այն լսելու համար:"
-
-msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
-msgstr "Մուտքագրեք երկիր (օրինակ՝ Ֆրանսիա, Դոյչլանդիա, Կանադա...)"
-
-msgid "Tester"
-msgstr "Փորձարկում"
-
-msgid "Tester les flux"
-msgstr "Փորձարկման հոսքեր"
-
-msgid "TiMonde — Intégration Bureau GNOME"
-msgstr "TiMonde — GNOME աշխատասեղանի ինտեգրում"
-
-msgid "Tous les fichiers (*.*)"
-msgstr "Բոլոր ֆայլերը (*.*)"
-
-msgid "Tous les pays (mondial)"
-msgstr "Բոլոր երկրները (գլոբալ)"
-
-msgid "Tout cocher"
-msgstr "Ստուգեք բոլորը"
-
-msgid "Tout décocher"
-msgstr "Անջատեք բոլորը"
-
-msgid "Toutes les langues"
-msgstr "Բոլոր լեզուները"
-
-msgid "URL du flux"
-msgstr "Հոսքի URL"
-
-msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
-msgstr "Խնդրում ենք ցանկից ընտրել ռադիո՝ այն լսելու համար:"
-
-msgid "Vos signets complets ont été enregistrés dans :"
-msgstr "Ձեր ամբողջական էջանիշները պահվել են հետևյալում."
-
-msgid "Votes"
-msgstr "Ձայներ"
-
-msgid "Vérifier en direct la disponibilité des liens"
-msgstr "Ստուգեք հղումի առկայությունը ուղիղ եթերում"
-
-msgid "Vérifier la disponibilité en direct des radios"
-msgstr "Ստուգեք ուղիղ ռադիոյի առկայությունը"
-
-msgid "Vérifier la disponibilité en direct des radios trouvées"
-msgstr "Ստուգեք հայտնաբերված ռադիոկայանների ուղիղ հասանելիությունը"
-
-msgid "Vérifier la validité du lien et écouter un aperçu du flux"
-msgstr "Ստուգեք հղման վավերականությունը և նախադիտեք հոսքը"
-
-msgid "ajoutée avec succès !"
-msgstr "հաջողությամբ ավելացվեց:"
-
-msgid "fichiers exemples restaurés."
-msgstr "վերականգնված նմուշային ֆայլեր:"
-
-msgid "nouvelle(s) radio(s) importée(s) !"
-msgstr "ներմուծված նոր ռադիո(ներ)"
-
-msgid "Écouter"
-msgstr "Լսիր"
-
-msgid "Écouter la radio sélectionnée"
-msgstr "Լսեք ընտրված ռադիոն"
-
-msgid "Écouter ou tester la radio sélectionnée"
-msgstr "Լսեք կամ փորձարկեք ընտրված ռադիոն"
-
-msgid "is not responding. Searching for a backup stream..."
-msgstr "չի պատասխանում: Պահուստային հոսքի որոնում..."
-
-msgid "Stream repaired and saved for"
-msgstr "Հոսքը վերականգնվել և պահպանվել է՝"
-
-msgid "is currently unavailable"
-msgstr "ներկայումս անհասանելի է"
-
-msgid "Unable to find a station in the bouquets catalog."
-msgstr "Փաթեթների կատալոգում կայան չի գտնվել:"
-
-msgid "No radio is currently playing."
-msgstr "Ներկայումս ոչ մի ռադիո չի նվագարկվում:"
-
-msgid "Selection"
-msgstr "Ընտրանի"
-
-msgid "Save error"
-msgstr "Պահպանման սխալ"
-
-msgid "Saved!"
-msgstr "Պահպանվեց!"
-
-msgid "saved in your favorites!"
-msgstr "պահպանվել է ձեր ընտրյալներում!"
-
-msgid "Station added but reload error"
-msgstr "Կայանն ավելացվել է, բայց վերաբեռնման սխալ է առաջացել"
-
-msgid "Sleep timer activated"
-msgstr "Քնի ժամանակաչափն ակտիվացված է"
-
-msgid "stopping in"
-msgstr "անջատումը՝"
-
-msgid "Sleep timer: stopping radio."
-msgstr "Քնի ժամանակաչափ. ռադիոյի դադարեցում:"
-
-msgid "Sleep timer cancelled."
-msgstr "Քնի ժամանակաչափը չեղարկվել է:"
-
-msgid "Track copied to clipboard:"
-msgstr "Երգի անվանումը պատճենվեց փոխանակման բուֆերում՝"
-
-msgid "deleted from your favorites."
-msgstr "հեռացվել է ձեր ընտրյալներից:"
-
-msgid "updated successfully!"
-msgstr "հաջողությամբ թարմացվեց!"
-
-msgid "Settings console not found"
-msgstr "Կարգավորումների վահանակը չի գտնվել"
-
-msgid "Paused"
-msgstr "Դադարեցված"
-
-msgid "Searching on Radio-Browser..."
-msgstr "Որոնում Radio-Browser-ում..."
-
-msgid "No stream found for this name. Modify the text above."
-msgstr "Այս անվամբ հոսք չի գտնվել: Փոխեք վերևի տեքստը:"
-
-msgid "{count} streams found. Select the desired stream and validate."
-msgstr "Գտնվել է {count} հոսք: Ընտրեք ցանկալի հոսքը և հաստատեք:"
-
-msgid "No pre-loaded DAB+ bouquet for this country."
-msgstr "Այս երկրի համար նախապես բեռնված DAB+ փաթեթ չկա:"
-
-msgid ""
-"You can explore and import stations for this territory directly from the "
-"global directory."
-msgstr ""
-"Դուք կարող եք ուսումնասիրել և ներմուծել այս տարածքի կայանները անմիջապես "
-"գլոբալ գրացուցակից:"
+#: data/scripts/browse_bouquets.py:1628
 
 msgid "Explore stations from {country} on Radio-Browser ➔"
 msgstr "Ուսումնասիրել {country}-ի կայանները Radio-Browser-ում ➔"
 
-msgid "this country"
-msgstr "այս երկիրը"
+#: data/scripts/reorder_groups.py:1228
+
+msgid "Export"
+msgstr "Արտահանում"
+
+#: data/scripts/reorder_groups.py:264
+
+msgid "Export all stations to CSV spreadsheet format"
+msgstr "Արտահանեք ձեր բոլոր ռադիոկայանները CSV աղյուսակի ձևաչափով"
+
+#: data/scripts/reorder_groups.py:1254
+
+msgid "Export error:"
+msgstr "Î£ÏÎ¬Î»Î¼Î± ÎµÎ¾Î±Î³ÏÎ³Î®Ï:"
+
+#: data/scripts/reorder_groups.py:1225
+
+msgid "Export stations to CSV"
+msgstr "ÎÎ¾Î±Î³ÏÎ³Î® ÏÏÎ±Î¸Î¼ÏÎ½ ÏÎµ CSV"
+
+#: data/scripts/reorder_groups.py:264
+
+msgid "Export to CSV"
+msgstr "Արտահանել CSV"
+
+#: data/scripts/browse_bouquets.py:1195
+
+msgid "Export to spreadsheet (CSV)..."
+msgstr "Արտահանել աղյուսակ (CSV)..."
+
+#: data/scripts/browse_bouquets.py:1182
+
+msgid "External file:"
+msgstr "Արտաքին ֆայլ."
+
+#: data/scripts/timonde_common.py:1530
+
+msgid "Failed to add station"
+msgstr "ÎÏÎ¿ÏÏÏÎ¯Î± ÏÏÎ¿ÏÎ¸Î®ÎºÎ·Ï ÏÏÎ±Î¸Î¼Î¿Ï"
+
+#: data/scripts/timonde_settings.py:723
+
+msgid "Failed to enable Cinnamon unification."
+msgstr "Aktivierung der Cinnamon-Vereinheitlichung fehlgeschlagen."
+
+#: data/scripts/browse_bouquets.py:918 data/scripts/browse_bouquets.py:1066
+
+#: data/scripts/browse_bouquets.py:1252
+
+msgid "Favorite status"
+msgstr "Սիրված կարգավիճակը"
+
+#: data/scripts/browse_bouquets.py:2056
+
+msgid "File:"
+msgstr "Ֆայլ՝"
+
+#: data/scripts/browse_bouquets.py:779
+
+msgid "Filter by country:"
+msgstr "Զտել ըստ երկրի՝"
+
+#: data/scripts/browse_bouquets.py:1235
+
+msgid "Folder / Group"
+msgstr "Թղթապանակ / Խումբ"
+
+#: data/scripts/timonde_common.py:1642
+
+msgid "Format"
+msgstr "Format"
+
+#: data/scripts/browse_bouquets.py:906
+
+msgid "Format & Bitrate"
+msgstr "Ձևաչափ և բիթային արագություն"
+
+#: data/scripts/gnome_tray_helper.py:150
+
+msgid "GNOME Shell environment detected"
+msgstr "Հայտնաբերվել է GNOME Shell միջավայր"
+
+#: data/scripts/timonde_settings.py:693
+
+msgid "GNOME integration required"
+msgstr "Պահանջվում է GNOME ինտեգրում"
+
+#: data/scripts/timonde_common.py:1319
+
+msgid "GStreamer not available"
+msgstr "GStreamer-ը հասանելի չէ"
+
+#: data/scripts/browse_bouquets.py:1195
+
+msgid "Generate a flat list for Calc or Excel spreadsheet"
+msgstr "Ստեղծեք հարթ ցուցակ Calc կամ Excel աղյուսակների համար"
+
+#: data/scripts/browse_bouquets.py:901
+
+msgid "Genre / Tags"
+msgstr "Սեռ / Պիտակներ"
+
+#: data/scripts/browse_bouquets.py:1053
+
+msgid "Genre / Topic"
+msgstr "Ժանր / Թեմա"
+
+#: data/scripts/browse_bouquets.py:759
+
+msgid "Genre:"
+msgstr "Սեռը:"
+
+#: data/scripts/timonde_common.py:193
+
+msgid "Geoblocked (VPN)"
+msgstr "Geoblockiert (VPN)"
+
+#: data/scripts/browse_bouquets.py:735
+
+msgid ""
+"Global search on the free and open <b>Radio-Browser</b> directory (+45,000 "
+"stations)."
+msgstr "Համաշխարհային որոնում անվճար և բաց <b>Radio-Browser</b> գրացուցակում (+45,000 կայաններ):"
+
+#: data/scripts/edit_station.py:168
+
+msgid "Group / Folder:"
+msgstr "Խումբ / Թղթապանակ:"
+
+#: data/scripts/reorder_groups.py:677
+
+msgid "Group created:"
+msgstr "Î Î¿Î¼Î¬Î´Î± Î´Î·Î¼Î¹Î¿ÏÏÎ³Î®Î¸Î·ÎºÎµ:"
+
+#: data/scripts/reorder_groups.py:734
+
+msgid "Group renamed:"
+msgstr "Î Î¿Î¼Î¬Î´Î± Î¼ÎµÏÎ¿Î½Î¿Î¼Î¬ÏÏÎ·ÎºÎµ:"
+
+#: data/scripts/browse_bouquets.py:645
+
+msgid "Group:"
+msgstr "Խումբ:"
+
+#: data/scripts/timonde_common.py:189
+
+msgid "HTTP Error {code}"
+msgstr "HTTP-Fehler {code}"
+
+#: data/scripts/browse_bouquets.py:702
+
+msgid "Help on groups and subgroups"
+msgstr "Օգնություն խմբերի և ենթախմբերի վերաբերյալ"
+
+#: data/scripts/browse_bouquets.py:1039 data/scripts/browse_bouquets.py:1221
+
+msgid "Import"
+msgstr "Ներմուծում"
+
+#: data/scripts/browse_bouquets.py:1328
+
+msgid "Import & Export"
+msgstr "Ներմուծում և արտահանում"
+
+#: data/scripts/browse_bouquets.py:717
+
+msgid "Import to my favorites"
+msgstr "Ներմուծել իմ ընտրյալներին"
+
+#: src/tray/menu.rs:560
+
+msgid "In 15 minutes"
+msgstr "15 րոպեում"
+
+#: src/tray/menu.rs:567
+
+msgid "In 30 minutes"
+msgstr "30 րոպեում"
+
+#: src/tray/menu.rs:574
+
+msgid "In 45 minutes"
+msgstr "45 րոպեում"
+
+#: src/tray/menu.rs:581
+
+msgid "In 60 minutes (1h)"
+msgstr "60 րոպեում (1 ժամ)"
+
+#: data/scripts/reorder_groups.py:707
+
+msgid "Insert"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î®"
+
+#: data/scripts/reorder_groups.py:230
+
+msgid "Insert a separator or header"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î® Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï Î® ÎµÏÎ¹ÎºÎµÏÎ±Î»Î¯Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:705
+
+msgid "Insert separator"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î® Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï"
+
+#: data/scripts/gnome_tray_helper.py:179 data/scripts/timonde_settings.py:688
+
+msgid "Install GNOME integration"
+msgstr "Տեղադրեք GNOME ինտեգրումը"
+
+#: data/scripts/gnome_tray_helper.py:198
+
+msgid "Installation in progress (please confirm system prompt)..."
+msgstr "Տեղադրումն ընթացքի մեջ է (խնդրում ենք հաստատել համակարգի հուշումը)..."
+
+#: data/scripts/gnome_tray_helper.py:213
+
+msgid "Installation was cancelled or failed."
+msgstr "Տեղադրումը չեղարկվեց կամ ձախողվեց:"
+
+#: data/scripts/gnome_tray_helper.py:145
+
+msgid "Integration in GNOME top bar"
+msgstr "Ինտեգրում GNOME-ի վերին տողում"
+
+#: data/scripts/edit_station.py:71
+
+msgid "Keep in favorites"
+msgstr "Պահել իմ ընտրյալների մեջ"
+
+#: data/scripts/browse_bouquets.py:749
+
+msgid "Keyword:"
+msgstr "Բանալի բառ:"
+
+#: data/scripts/browse_bouquets.py:819 data/scripts/browse_bouquets.py:1023
+
+msgid "Language:"
+msgstr "Լեզուն:"
+
+#: data/scripts/browse_bouquets.py:706 data/scripts/browse_bouquets.py:1399
+
+#: data/scripts/reorder_groups.py:185 data/scripts/reorder_groups.py:1005
+
+msgid "Listen"
+msgstr "AnhÃ¶ren"
+
+#: data/scripts/browse_bouquets.py:706
+
+msgid "Listen to selected station"
+msgstr "Լսեք ընտրված կայանը"
+
+#: data/scripts/timonde_common.py:204
+
+msgid "Live (Shoutcast)"
+msgstr "ÎÏÎ½ÏÎ±Î½Î¬ (Shoutcast)"
+
+#: data/scripts/timonde_common.py:187
+
+msgid "Live ({codec})"
+msgstr "Ուղիղ ({codec})"
+
+#: data/scripts/browse_bouquets.py:1060
+
+msgid "Live availability"
+msgstr "Ուղիղ հասանելիություն"
+
+#: data/scripts/browse_bouquets.py:1186
+
+msgid "Load a file..."
+msgstr "Բեռնել ֆայլը..."
+
+#: data/scripts/browse_bouquets.py:1186
+
+msgid "Load an XML, CSV, JSON, M3U or PLS file"
+msgstr "Բեռնել XML, CSV, JSON, M3U կամ PLS ֆայլ"
+
+#: src/timezone.rs:521
+
+msgid "Morning"
+msgstr "Առավոտյան"
+
+#: data/scripts/reorder_groups.py:949
+
+msgid "Move"
+msgstr "ÎÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ·"
+
+#: data/scripts/reorder_groups.py:219
+
+msgid "Move down"
+msgstr "⬇ Իջիր ներքև"
+
+#: data/scripts/reorder_groups.py:219
+
+msgid "Move down one rank"
+msgstr "Move down one rank"
+
+#: data/scripts/reorder_groups.py:211
+
+msgid "Move selected item to the top"
+msgstr "Move selected item to the top"
+
+#: data/scripts/reorder_groups.py:197
+
+msgid "Move selection to another group (Ctrl+M)"
+msgstr "Move selection to another group (Ctrl+M)"
+
+#: data/scripts/reorder_groups.py:944
+
+msgid "Move to another group"
+msgstr "ÎÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ· ÏÎµ Î¬Î»Î»Î· Î¿Î¼Î¬Î´Î±"
+
+#: data/scripts/reorder_groups.py:559
+
+msgid "Move to another group..."
+msgstr "Move selection to another group (Ctrl+M)"
+
+#: data/scripts/reorder_groups.py:197
+
+msgid "Move to..."
+msgstr "Տեղափոխել դեպի..."
+
+#: data/scripts/reorder_groups.py:215
+
+msgid "Move up"
+msgstr "⬆ Բարձրացե՛ք"
+
+#: data/scripts/reorder_groups.py:215
+
+msgid "Move up one rank"
+msgstr "Move up one rank"
+
+#: src/tray/menu.rs:528
+
+msgid "Mute (0%)"
+msgstr "Անջատել (0%)"
+
+#: data/scripts/reorder_groups.py:98 data/scripts/timonde_settings.py:524
+
+msgid "My Radios"
+msgstr "Իմ ռադիոները"
+
+#: data/scripts/timonde_common.py:1925
+
+msgid "Name and Stream URL are mandatory."
+msgstr "Î¤Î¿ ÏÎ½Î¿Î¼Î± ÎºÎ±Î¹ Î· Î´Î¹ÎµÏÎ¸ÏÎ½ÏÎ· URL ÏÎ·Ï ÏÎ¿Î®Ï ÎµÎ¯Î½Î±Î¹ ÏÏÎ¿ÏÏÎµÏÏÎ¹ÎºÎ¬."
+
+#: data/scripts/reorder_groups.py:646
+
+msgid "Name of the new group:"
+msgstr "ÎÎ½Î¿Î¼Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï:"
+
+#: data/scripts/browse_bouquets.py:1011
+
+msgid "National Bouquet (Major stations)"
+msgstr "Ազգային ծաղկեփունջ (հիմնական կայարաններ)"
+
+#: data/scripts/timonde_settings.py:677
+
+msgid ""
+"Native integration in notification tray via StatusNotifierItem / XEmbed."
+msgstr "Մայրենի ինտեգրում ծանուցումների սկուտեղում StatusNotifierItem / XEmbed-ի միջոցով:"
+
+#: data/scripts/browse_bouquets.py:1655
+
+msgid "New"
+msgstr "[Նոր]"
+
+#: data/scripts/reorder_groups.py:193
+
+msgid "New group"
+msgstr "Նոր խումբ"
+
+#: data/scripts/reorder_groups.py:593
+
+msgid "New group..."
+msgstr "Նոր խումբ"
+
+#: data/scripts/reorder_groups.py:725
+
+msgid "New name for group:"
+msgstr "ÎÎ­Î¿ ÏÎ½Î¿Î¼Î± Î¿Î¼Î¬Î´Î±Ï:"
+
+#: data/scripts/browse_bouquets.py:1282
+
+msgid "New only"
+msgstr "Միայն նոր"
+
+#: data/scripts/reorder_groups.py:580
+
+msgid "New subgroup here..."
+msgstr "ÎÎ­Î± ÏÏÎ¿Î¿Î¼Î¬Î´Î± ÎµÎ´Ï..."
+
+#: src/timezone.rs:521
+
+msgid "Night"
+msgstr "Գիշեր"
+
+#: data/scripts/browse_bouquets.py:1726
 
 msgid "No DAB+ bouquet for {country} — Use 'Search online'."
 msgstr "{country}-ի համար DAB+ փաթեթ չկա — Օգտագործեք «Որոնել առցանց»:"
 
-msgid "{checked} / {total} station(s) selected"
-msgstr "Ընտրված է {checked} / {total} կայան"
+#: data/scripts/reorder_groups.py:1262
 
-msgid ""
-"No radio found for this language in {country}. Uncheck 'Filter by country' "
-"or clear the language."
-msgstr ""
-"{country}-ում այս լեզվով ռադիո չի գտնվել: Ապաակտիվացրեք «Զտել ըստ երկրի» կամ "
-"մաքրեք լեզուն:"
+msgid "No bookmarks.xml file found to backup."
+msgstr "ÎÎµÎ½ Î²ÏÎ­Î¸Î·ÎºÎµ Î±ÏÏÎµÎ¯Î¿ bookmarks.xml Î³Î¹Î± Î´Î·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î±Î½ÏÎ¹Î³ÏÎ¬ÏÎ¿Ï."
+
+#: data/scripts/reorder_groups.py:872
+
+msgid "No items to sort in this group."
+msgstr "ÎÎµÎ½ ÏÏÎ¬ÏÏÎ¿ÏÎ½ ÏÏÎ¿Î¹ÏÎµÎ¯Î± ÏÏÎ¿Ï ÏÎ±Î¾Î¹Î½ÏÎ¼Î·ÏÎ· ÏÎµ Î±ÏÏÎ®Î½ ÏÎ·Î½ Î¿Î¼Î¬Î´Î±."
+
+#: data/scripts/timonde_settings.py:618
+
+msgid "No new stations added (already in your bookmarks)."
+msgstr "ÎÎµÎ½ ÏÏÎ¿ÏÏÎ­Î¸Î·ÎºÎ±Î½ Î½Î­Î¿Î¹ ÏÏÎ±Î¸Î¼Î¿Î¯ (ÏÏÎ¬ÏÏÎ¿ÏÎ½ Î®Î´Î· ÏÏÎ¿ÏÏ ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎµÏ ÏÎ±Ï)."
+
+#: data/scripts/browse_bouquets.py:1625
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Այս երկրի համար նախապես բեռնված DAB+ փաթեթ չկա:"
+
+#: data/scripts/browse_bouquets.py:1898
 
 msgid ""
 "No radio found for these criteria in {country}. Uncheck 'Filter by country' "
@@ -1242,301 +1110,1003 @@ msgstr ""
 "{country}-ում այս չափանիշներով ռադիո չի գտնվել: Ապաակտիվացրեք «Զտել ըստ "
 "երկրի» գլոբալ որոնման համար:"
 
+#: data/scripts/browse_bouquets.py:1895
+
+msgid ""
+"No radio found for this language in {country}. Uncheck 'Filter by country' "
+"or clear the language."
+msgstr ""
+"{country}-ում այս լեզվով ռադիո չի գտնվել: Ապաակտիվացրեք «Զտել ըստ երկրի» կամ "
+"մաքրեք լեզուն:"
+
+#: data/scripts/browse_bouquets.py:1900
+
 msgid "No radio found on Radio-Browser for these criteria."
 msgstr "Radio-Browser-ում այս չափանիշներով ռադիո չի գտնվել:"
 
-msgid "[Present]"
-msgstr "[Առկա է]"
+#: src/tray/mod.rs:459
 
-msgid "[New]"
-msgstr "[Նոր]"
+msgid "No radio is currently playing."
+msgstr "Ներկայումս ոչ մի ռադիո չի նվագարկվում:"
 
-msgid "○ Untested"
-msgstr "○ Չփորձարկված"
+#: src/tray/menu.rs:297
 
-msgid "{count} stations found."
-msgstr "Գտնվել է {count} կայան:"
+msgid "No station loaded"
+msgstr "No stations to check."
 
-msgid "Testing..."
-msgstr "Փորձարկվում է..."
+#: data/scripts/reorder_groups.py:1072
 
-msgid "{count} available timezones"
-msgstr "{count} հասանելի ժամային գոտի"
+msgid "No stations to check."
+msgstr "No stations to check."
 
-msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
-msgstr "<b>{nb_st}</b> կայան <b>{nb_gr}</b> խմբերում:"
+#: data/scripts/timonde_common.py:1680
 
-msgid "Explore stations from this country on Radio-Browser"
-msgstr "Ուսումնասիրել այս երկրի կայանները Radio-Browser-ում"
+msgid "No stream found for this name. Modify the text above."
+msgstr "Այս անվամբ հոսք չի գտնվել: Փոխեք վերևի տեքստը:"
+
+#: data/scripts/timonde_common.py:1907
+
+msgid "Not listed yet!"
+msgstr "ÎÎµÎ½ Î­ÏÎµÎ¹ ÎºÎ±ÏÎ±ÏÏÏÎ·Î¸ÎµÎ¯ Î±ÎºÏÎ¼Î±!"
+
+#: data/scripts/timonde_common.py:1721
+
+msgid "OK"
+msgstr "OK"
+
+#: data/scripts/browse_bouquets.py:972
+
+msgid ""
+"Official and verified selection across 146 countries and regions (digital "
+"DAB+ bouquets and major national stations)."
+msgstr "Պաշտոնական և ստուգված ընտրություն 146 երկրներում և տարածաշրջաններում (թվային DAB+ ծաղկեփնջեր և հիմնական ազգային կայաններ):"
+
+#: data/scripts/timonde_common.py:178
+
+msgid "Offline (HTML error page)"
+msgstr "Անցանց (HTML սխալի էջ)"
+
+#: data/scripts/edit_station.py:366
+
+msgid "On-air broadcast name:"
+msgstr "ÎÎ½Î¿Î¼Î± Î¼ÎµÏÎ¬Î´Î¿ÏÎ·Ï ÏÏÎ¿Î½ Î±Î­ÏÎ±:"
+
+#: data/scripts/browse_bouquets.py:1983
+
+msgid "Open"
+msgstr "Բաց"
+
+#: data/scripts/browse_bouquets.py:1203
+
+msgid "Open ~/.config/timonde"
+msgstr "Բացեք ~/.config/timonde"
+
+#: data/scripts/browse_bouquets.py:1169
+
+msgid "Open ~/.config/timonde/examples"
+msgstr "Բացեք ~/.config/timonde/examples"
+
+#: data/scripts/reorder_groups.py:706
+
+msgid "Optional title for this separator (leave blank for a simple line):"
+msgstr "Î ÏÎ¿Î±Î¹ÏÎµÏÎ¹ÎºÏÏ ÏÎ¯ÏÎ»Î¿Ï Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï (Î±ÏÎ®ÏÏÎµ ÎºÎµÎ½Ï Î³Î¹Î± Î±ÏÎ»Î® Î³ÏÎ±Î¼Î¼Î®):"
+
+#: data/scripts/reorder_groups.py:60
+
+msgid "Organize groups and stations (TiMonde)"
+msgstr "Organize groups and stations (TiMonde)"
+
+#: data/scripts/timonde_common.py:1559
+
+msgid "Organizing groups and subgroups (Linux convention)"
+msgstr "ÎÏÎ³Î¬Î½ÏÏÎ· Î¿Î¼Î¬Î´ÏÎ½ ÎºÎ±Î¹ ÏÏÎ¿Î¿Î¼Î¬Î´ÏÎ½ (ÏÏÎ¼Î²Î±ÏÎ· Linux)"
+
+#: data/scripts/timonde_common.py:1609
+
+msgid "Original stream is unreachable:"
+msgstr "UrsprÃ¼nglicher Stream nicht erreichbar:"
+
+#: src/tray/menu.rs:160
+
+msgid "Paused"
+msgstr "Դադարեցված"
+
+#: src/i18n.rs:179 src/i18n.rs:228 src/i18n.rs:234 src/i18n.rs:244
+
+#: src/i18n.rs:249 src/i18n.rs:254 src/i18n.rs:257 src/i18n.rs:260
+
+#: src/i18n.rs:263 src/i18n.rs:266 src/i18n.rs:269 src/i18n.rs:272
+
+msgid "Play"
+msgstr "Նվագարկել"
+
+#: src/tray/menu.rs:413
+
+msgid "Play random radio (Ephemeral discovery)"
+msgstr "Լսեք պատահական ռադիոկայան (Վերջնական հայտնագործություն)"
+
+#: data/scripts/reorder_groups.py:549
+
+msgid "Play this station"
+msgstr "Ջնջել այս ռադիոն"
+
+#: data/scripts/timonde_common.py:1283
+
+msgid "Playing:"
+msgstr "Խաղում:"
+
+#: data/scripts/edit_station.py:388
+
+msgid "Please enter a stream URL first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÎ¹ÏÎ±Î³Î¬Î³ÎµÏÎµ ÏÏÏÏÎ± Î­Î½Î± URL ÏÎ¿Î®Ï."
+
+#: data/scripts/timonde_common.py:1877
+
+msgid "Please enter a stream URL."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÎ¹ÏÎ±Î³Î¬Î³ÎµÏÎµ Î­Î½Î± URL ÏÎ¿Î®Ï."
+
+#: data/scripts/browse_bouquets.py:1783
+
+msgid "Please select a radio station in the list first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ ÏÏÏÏÎ± Î­Î½Î±Î½ ÏÎ±Î´Î¹Î¿ÏÏÎ½Î¹ÎºÏ ÏÏÎ±Î¸Î¼Ï Î±ÏÏ ÏÎ· Î»Î¯ÏÏÎ±."
+
+#: data/scripts/reorder_groups.py:926
+
+msgid "Please select a radio station to move."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î­Î½Î±Î½ ÏÏÎ±Î¸Î¼Ï Î³Î¹Î± Î¼ÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ·."
+
+#: data/scripts/reorder_groups.py:1042
+
+msgid "Please select a station to contribute."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î­Î½Î±Î½ ÏÏÎ±Î¸Î¼Ï ÏÏÎ¿Ï ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬."
+
+#: data/scripts/reorder_groups.py:1020
+
+msgid "Please select a station to repair."
+msgstr "Please select a station to repair."
+
+#: data/scripts/browse_bouquets.py:1825
+
+msgid "Please select or check a radio station in the list first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î® ÏÎ·Î¼ÎµÎ¹ÏÏÏÎµ Î­Î½Î±Î½ ÏÎ±Î´Î¹Î¿ÏÏÎ½Î¹ÎºÏ ÏÏÎ±Î¸Î¼Ï ÏÏÏÏÎ±."
+
+#: data/scripts/timonde_common.py:1651
+
+msgid "Popularity"
+msgstr "Beliebtheit"
+
+#: data/scripts/timonde_settings.py:735
+
+msgid "Preferences"
+msgstr "Նախապատվություններ"
+
+#: data/scripts/reorder_groups.py:185
+
+msgid "Preview selected radio stream"
+msgstr "Testing live radio streams..."
+
+#: data/scripts/gnome_tray_helper.py:175
+
+msgid "Quit"
+msgstr "Դուրս գալ"
+
+#: src/tray/menu.rs:621
+
+msgid "Quit TiMonde"
+msgstr "Ելք TiMonde-ից"
+
+#: data/scripts/timonde_common.py:1283 data/scripts/timonde_common.py:1291
+
+#: data/scripts/timonde_common.py:1298 data/scripts/timonde_common.py:1311
+
+#: data/scripts/timonde_common.py:1326
+
+msgid "Radio"
+msgstr "Radio"
+
+#: data/scripts/reorder_groups.py:147
+
+msgid "Radio / Group"
+msgstr "Î¡Î±Î´Î¹ÏÏÏÎ½Î¿ / ÎÎ¼Î¬Î´Î±"
+
+#: data/scripts/edit_station.py:139
+
+msgid "Radio-Browser"
+msgstr "Radio-Browser"
+
+#: data/scripts/timonde_common.py:1949
+
+msgid "Radio-Browser contribution"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1782
+
+msgid ""
+"Radio-Browser is an open directory (+45 000 stations). Shared stations "
+"benefit all users."
+msgstr "Radio-Browser-ը բաց գրացուցակ է (+45 000 կայան): Համօգտագործվող կայանները շահում են բոլոր օգտատերերին:"
+
+#: data/scripts/timonde_common.py:1901
+
+msgid "Radio-Browser prevents duplicate stream URLs. No submission required."
+msgstr "Radio-Browser-ը կանխում է հոսքի կրկնօրինակ URL-ները: Ոչ մի ներկայացում չի պահանջվում:"
+
+#: data/scripts/timonde_common.py:1542
+
+msgid "Radio-Browser servers unreachable"
+msgstr "ÎÎ¹ Î´Î¹Î±ÎºÎ¿Î¼Î¹ÏÏÎ­Ï ÏÎ¿Ï Radio-Browser Î´ÎµÎ½ ÎµÎ¯Î½Î±Î¹ ÏÏÎ¿ÏÎ²Î¬ÏÎ¹Î¼Î¿Î¹"
+
+#: data/scripts/reorder_groups.py:1200
+
+msgid "Redirects applied:"
+msgstr "ÎÏÎ±ÏÎ¼ÏÏÏÎ·ÎºÎ±Î½ Î±Î½Î±ÎºÎ±ÏÎµÏÎ¸ÏÎ½ÏÎµÎ¹Ï:"
+
+#: data/scripts/browse_bouquets.py:1165
+
+msgid "Refresh examples list"
+msgstr "Թարմացրեք օրինակների ցանկը"
+
+#: data/scripts/browse_bouquets.py:1015
+
+msgid "Regions & Local:"
+msgstr "Տարածաշրջաններ և տեղական."
+
+#: data/scripts/browse_bouquets.py:1190
+
+msgid "Reload"
+msgstr "Վերբեռնել"
+
+#: data/scripts/browse_bouquets.py:1190
+
+msgid "Reload currently displayed file"
+msgstr "Վերբեռնել ներկա ցուցադրված ֆայլը"
+
+#: data/scripts/reorder_groups.py:724
+
+msgid "Rename group"
+msgstr "ÎÎµÏÎ¿Î½Î¿Î¼Î±ÏÎ¯Î± Î¿Î¼Î¬Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:584
+
+msgid "Rename group..."
+msgstr "Gruppe umbenennen..."
+
+#: data/scripts/browse_bouquets.py:1119 data/scripts/reorder_groups.py:238
+
+#: data/scripts/reorder_groups.py:563
+
+msgid "Repair stream..."
+msgstr "Վերանորոգման հոսք..."
+
+#: data/scripts/browse_bouquets.py:1119
+
+msgid "Replace selected link with an active official stream"
+msgstr "Փոխարինեք ընտրված հղումը ակտիվ պաշտոնական հոսքով"
+
+#: data/scripts/timonde_common.py:1592
+
+msgid "Replace stream:"
+msgstr "ÎÎ½ÏÎ¹ÎºÎ±ÏÎ¬ÏÏÎ±ÏÎ· ÏÎ¿Î®Ï:"
+
+#: data/scripts/browse_bouquets.py:1173
+
+msgid "Restore samples"
+msgstr "Վերականգնել նմուշները"
+
+#: data/scripts/browse_bouquets.py:1173
+
+msgid "Restore the 19 original samples"
+msgstr "Վերականգնել 19 բնօրինակ նմուշները"
+
+#: data/scripts/reorder_groups.py:861
+
+msgid "Root"
+msgstr "Î¡Î¯Î¶Î±"
+
+#: data/scripts/reorder_groups.py:903
+
+msgid "Root items sorted alphabetically."
+msgstr "Î¤Î± ÏÏÎ¿Î¹ÏÎµÎ¯Î± ÏÎ·Ï ÏÎ¯Î¶Î±Ï ÏÎ±Î¾Î¹Î½Î¿Î¼Î®Î¸Î·ÎºÎ±Î½ Î±Î»ÏÎ±Î²Î·ÏÎ¹ÎºÎ¬."
+
+#: data/scripts/timonde_settings.py:638
+
+msgid "SESSION OPTIONS"
+msgstr "ՆԻՍՏԻ ՏԱՐԲԵՐԱԿՆԵՐԸ"
+
+#: src/timezone.rs:657
+
+msgid "Same time"
+msgstr "Նույն ժամանակ"
+
+#: data/scripts/edit_station.py:76 data/scripts/reorder_groups.py:727
+
+#: data/scripts/reorder_groups.py:1269
+
+msgid "Save"
+msgstr "Պահպանել"
+
+#: data/scripts/reorder_groups.py:276
+
+msgid "Save and reload"
+msgstr "Պահպանեք և վերաբեռնեք"
+
+#: src/tray/dialogs.rs:328 src/tray/mod.rs:541
+
+msgid "Save error"
+msgstr "Պահպանման սխալ"
+
+#: data/scripts/reorder_groups.py:276
+
+msgid "Save now"
+msgstr "Պահպանման սխալ"
+
+#: data/scripts/edit_station.py:69 src/i18n.rs:199
+
+msgid "Save station to favorites (TiMonde)"
+msgstr "Պահպանեք ռադիոն իմ ընտրյալների մեջ (TiMonde)"
+
+#: src/tray/mod.rs:561
+
+msgid "Saved!"
+msgstr "Պահպանվեց!"
+
+#: data/scripts/browse_bouquets.py:770 data/scripts/timonde_common.py:1630
+
+msgid "Search"
+msgstr "Suchen"
+
+#: data/scripts/reorder_groups.py:238
+
+msgid "Search Radio-Browser for a working replacement stream"
+msgstr ""
+"Ավտոմատ կերպով որոնեք փոխարինող ակտիվ հոսք Radio-Browser-ում այս մեռած հղման "
+"համար"
+
+#: data/scripts/browse_bouquets.py:1326 data/scripts/timonde_settings.py:592
+
+msgid "Search online"
+msgstr "Որոնել առցանց"
+
+#: data/scripts/browse_bouquets.py:1885
+
+msgid "Searching Radio-Browser..."
+msgstr "Ռադիո-բրաուզերի որոնում..."
+
+#: data/scripts/timonde_common.py:1660
+
+msgid "Searching for streams..."
+msgstr "Վերանորոգման հոսք..."
+
+#: data/scripts/timonde_common.py:1670
+
+msgid "Searching on Radio-Browser..."
+msgstr "Որոնում Radio-Browser-ում..."
+
+#: data/scripts/browse_bouquets.py:1382
+
+msgid "Select a station in table to listen to."
+msgstr "Աղյուսակում ընտրեք կայան՝ լսելու համար:"
+
+#: data/scripts/browse_bouquets.py:1386
+
+msgid "Select a station to listen to."
+msgstr "Ընտրեք կայանը լսելու համար:"
+
+#: data/scripts/timonde_common.py:1610
+
+msgid "Select a verified replacement stream from Radio-Browser:"
+msgstr "GeprÃ¼ften Ersatzstream aus Radio-Browser auswÃ¤hlen:"
+
+#: data/scripts/edit_station.py:185
+
+msgid "Select or type (e.g. /France/Brittany or / for root)"
+msgstr "AuswÃ¤hlen oder eingeben (z.B. /Deutschland/Bayern oder / fÃ¼r Wurzel)"
+
+#: data/scripts/reorder_groups.py:956
+
+msgid "Select the target destination:"
+msgstr "ÎÏÎ¹Î»Î­Î¾ÏÎµ ÏÎ¿Î½ ÏÎ¬ÎºÎµÎ»Î¿ ÏÏÎ¿Î¿ÏÎ¹ÏÎ¼Î¿Ï:"
+
+#: src/tray/mod.rs:478
+
+msgid "Selection"
+msgstr "Ընտրանի"
+
+#: data/scripts/reorder_groups.py:230
+
+msgid "Separator"
+msgstr "Տարանջատող"
+
+#: data/scripts/timonde_common.py:1538
+
+msgid "Server rejected submission: {error}"
+msgstr "Î Î´Î¹Î±ÎºÎ¿Î¼Î¹ÏÏÎ®Ï Î±ÏÎ­ÏÏÎ¹ÏÎµ ÏÎ·Î½ ÏÏÎ¿Î²Î¿Î»Î®: {error}"
+
+#: data/scripts/timonde_common.py:198
+
+msgid "Server unreachable"
+msgstr "Server nicht erreichbar"
+
+#: data/scripts/timonde_settings.py:316
+
+msgid "Settings & Control TiMonde"
+msgstr "Կարգավորումներ և վերահսկում TiMonde-ը"
+
+#: src/tray/dialogs.rs:400
+
+msgid "Settings console not found"
+msgstr "Կարգավորումների վահանակը չի գտնվել"
+
+#: src/tray/menu.rs:605
+
+msgid "Settings..."
+msgstr "Կարգավորումներ..."
+
+#: src/i18n.rs:205 src/tray/menu.rs:549 src/tray/menu.rs:552
+
+msgid "Sleep timer"
+msgstr "Քնի ժամանակաչափ"
+
+#: src/tray/mod.rs:592
+
+msgid "Sleep timer activated"
+msgstr "Քնի ժամանակաչափն ակտիվացված է"
+
+#: src/tray/mod.rs:626
+
+msgid "Sleep timer cancelled."
+msgstr "Քնի ժամանակաչափը չեղարկվել է:"
+
+#: src/tray/mod.rs:615
+
+msgid "Sleep timer: stopping radio."
+msgstr "Քնի ժամանակաչափ. ռադիոյի դադարեցում:"
+
+#: data/scripts/reorder_groups.py:223
+
+msgid "Sort sibling items alphabetically"
+msgstr "ÎÎ»ÏÎ±Î²Î·ÏÎ¹ÎºÎ® ÏÎ±Î¾Î¹Î½ÏÎ¼Î·ÏÎ· Î¿Î¼ÏÏÎ¹Î¼ÏÎ½ ÏÏÎ¿Î¹ÏÎµÎ¯ÏÎ½"
+
+#: data/scripts/reorder_groups.py:901
+
+msgid "Sorted alphabetically:"
+msgstr "Î¤Î±Î¾Î¹Î½Î¿Î¼Î®Î¸Î·ÎºÎµ Î±Î»ÏÎ±Î²Î·ÏÎ¹ÎºÎ¬:"
+
+#: data/scripts/browse_bouquets.py:888 data/scripts/browse_bouquets.py:1045
+
+#: data/scripts/browse_bouquets.py:1227 data/scripts/timonde_common.py:1638
+
+msgid "Station"
+msgstr "Հանգստավայր"
+
+#: src/tray/mod.rs:566
+
+msgid "Station added but reload error"
+msgstr "Կայանն ավելացվել է, բայց վերաբեռնման սխալ է առաջացել"
+
+#: data/scripts/reorder_groups.py:691
+
+msgid "Station added:"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÏÏÎ¿ÏÏÎ­Î¸Î·ÎºÎµ:"
+
+#: data/scripts/reorder_groups.py:683
+
+msgid "Station editor unavailable."
+msgstr "Î ÎµÏÎµÎ¾ÎµÏÎ³Î±ÏÏÎ®Ï ÏÏÎ±Î¸Î¼ÏÎ½ Î´ÎµÎ½ ÎµÎ¯Î½Î±Î¹ Î´Î¹Î±Î¸Î­ÏÎ¹Î¼Î¿Ï."
+
+#: data/scripts/reorder_groups.py:997
+
+msgid "Station moved to"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ Î¼ÎµÏÎ±ÎºÎ¹Î½Î®Î¸Î·ÎºÎµ ÏÏÎ¿"
+
+#: data/scripts/timonde_common.py:1476
+
+msgid "Station name cannot be empty"
+msgstr "Î¤Î¿ ÏÎ½Î¿Î¼Î± ÏÎ¿Ï ÏÏÎ±Î¸Î¼Î¿Ï Î´ÎµÎ½ Î¼ÏÎ¿ÏÎµÎ¯ Î½Î± ÎµÎ¯Î½Î±Î¹ ÎºÎµÎ½Ï"
+
+#: data/scripts/edit_station.py:110 data/scripts/timonde_common.py:1794
+
+msgid "Station name:"
+msgstr "Կայանի անվանումը:"
+
+#: data/scripts/timonde_common.py:1528
+
+msgid "Station successfully submitted to Radio-Browser."
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÏÏÎ¿Î²Î»Î®Î¸Î·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ ÏÏÎ¿ Radio-Browser."
+
+#: data/scripts/reorder_groups.py:745
+
+msgid "Station updated:"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÎµÎ½Î·Î¼ÎµÏÏÎ¸Î·ÎºÎµ:"
+
+#: data/scripts/browse_bouquets.py:1397 data/scripts/edit_station.py:405
+
+#: data/scripts/reorder_groups.py:1005 data/scripts/reorder_groups.py:1080
+
+#: src/i18n.rs:185 src/i18n.rs:245 src/i18n.rs:250
+
+msgid "Stop"
+msgstr "Կանգնեցնել"
+
+#: data/scripts/reorder_groups.py:549
+
+msgid "Stop playback"
+msgstr "Wiedergabe stoppen"
+
+#: data/scripts/browse_bouquets.py:1259
+
+msgid "Stream URL"
+msgstr "Հոսքի URL"
+
+#: data/scripts/timonde_common.py:1478
+
+msgid "Stream URL cannot be empty"
+msgstr "Î¤Î¿ URL ÏÎ·Ï ÏÎ¿Î®Ï Î´ÎµÎ½ Î¼ÏÎ¿ÏÎµÎ¯ Î½Î± ÎµÎ¯Î½Î±Î¹ ÎºÎµÎ½Ï"
+
+#: data/scripts/timonde_common.py:1804
+
+msgid "Stream URL:"
+msgstr "URL ÏÎ¿Î®Ï:"
+
+#: data/scripts/reorder_groups.py:1029
+
+msgid "Stream successfully repaired for"
+msgstr "Î ÏÎ¿Î® ÎµÏÎ¹ÏÎºÎµÏÎ¬ÏÏÎ·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ Î³Î¹Î±"
+
+#: data/scripts/timonde_common.py:1274
+
+msgid "Stream unreachable"
+msgstr "Հեռարձակումն անհասանելի է"
+
+#: data/scripts/browse_bouquets.py:739
+
+msgid "Submit a new station to community Radio-Browser directory"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1859 data/scripts/timonde_common.py:1911
+
+#: data/scripts/timonde_common.py:1958
+
+msgid "Submit to Radio-Browser"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1931
+
+msgid "Submitting station to Radio-Browser..."
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿ Radio-Browser..."
+
+#: data/scripts/timonde_common.py:1930
+
+msgid "Submitting..."
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î®..."
+
+#: data/scripts/browse_bouquets.py:1089
 
 msgid "Switch to the global directory with this country pre-selected"
 msgstr "Անցնել գլոբալ գրացուցակին՝ այս երկիրը նախապես ընտրված վիճակում"
 
-#, fuzzy
-msgid " [Ephemeral]"
-msgstr "[Վերջնական]"
+#: data/scripts/timonde_settings.py:665
 
-msgid "%20"
+msgid "System language"
+msgstr "Համակարգի լեզու"
+
+#: data/scripts/timonde_common.py:1831
+
+msgid "Tags / Genres:"
+msgstr "ÎÏÎ¹ÎºÎ­ÏÎµÏ / ÎÎ¯Î´Î·:"
+
+#: src/tray/mod.rs:325
+
+msgid "Temporary backup stream found for"
+msgstr "Ժամանակավոր պահուստային հոսք է գտնվել"
+
+#: data/scripts/edit_station.py:135 data/scripts/edit_station.py:407
+
+msgid "Test"
+msgstr "Փորձարկում"
+
+#: data/scripts/reorder_groups.py:102
+
+msgid "Test stream availability and locate broken links"
 msgstr ""
+"Ստուգեք ձեր ռադիոկայանների ուղիղ հասանելիությունը և նշեք մեռած հղումները"
 
-#, fuzzy
-msgid "(Already in favorites)"
-msgstr "Պահել իմ ընտրյալների մեջ"
+#: data/scripts/browse_bouquets.py:946 data/scripts/browse_bouquets.py:1115
 
-msgid "/org/mpris/MediaPlayer2/CurrentTrack"
-msgstr ""
+#: data/scripts/browse_bouquets.py:1286
 
-#, fuzzy
-msgid "Add station..."
-msgstr "Ավելացնել ռադիո..."
+msgid "Test streams"
+msgstr "Փորձնական հոսքեր"
 
-msgid "Bitrate"
-msgstr ""
+#: data/scripts/reorder_groups.py:1087
 
-#, fuzzy
-msgid "Checking..."
-msgstr "Միանում է..."
-
-msgid "Clear"
-msgstr ""
-
-msgid "Clear / Automatic mode"
-msgstr ""
-
-msgid "Clear field (click to empty)"
-msgstr ""
-
-#, fuzzy
-msgid "Country"
-msgstr "<b>Country:</b>"
-
-#, fuzzy
-msgid "Country:"
-msgstr "<b>Country:</b>"
-
-msgid "Delete group..."
-msgstr ""
-
-#, fuzzy
-msgid "Delete this separator"
-msgstr "Ջնջել այս ռադիոն"
-
-#, fuzzy
-msgid "Delete this station..."
-msgstr "Ջնջել այս ռադիոն"
-
-msgid "Edit header..."
-msgstr ""
-
-#, fuzzy
-msgid "Edit station..."
-msgstr "Ավելացնել ռադիո..."
-
-msgid "Empty URL"
-msgstr ""
-
-msgid "Ephemeral radio (not saved)."
-msgstr ""
-
-msgid "Error {code}"
-msgstr ""
-
-msgid "Format"
-msgstr ""
-
-msgid "Geoblocked (VPN)"
-msgstr ""
-
-msgid "HTTP Error {code}"
-msgstr ""
-
-#, fuzzy
-msgid "Insert separator here..."
-msgstr "Insert a separator or header in this group"
-
-msgid "Listen"
-msgstr ""
-
-msgid "Live (repaired)"
-msgstr ""
-
-msgid "Live ({codec})"
-msgstr ""
-
-#, fuzzy
-msgid "Move to another group..."
-msgstr "Move selection to another group (Ctrl+M)"
-
-#, fuzzy
-msgid "Move to top"
-msgstr "Տեղափոխել դեպի..."
-
-#, fuzzy
-msgid "New"
-msgstr "[Նոր]"
-
-#, fuzzy
-msgid "New group..."
-msgstr "Նոր խումբ"
-
-#, fuzzy
-msgid "No station loaded"
-msgstr "No stations to check."
-
-#, fuzzy
-msgid "Open stations"
-msgstr "Ընտրանքներ"
-
-msgid "Original stream is unreachable:"
-msgstr ""
-
-#, fuzzy
-msgid "Play this station"
-msgstr "Ջնջել այս ռադիոն"
-
-msgid "Popularity"
-msgstr ""
-
-#, fuzzy
-msgid "Preview selected radio stream"
+msgid "Testing live radio streams..."
 msgstr "Testing live radio streams..."
 
-msgid "Rename group..."
-msgstr ""
+#: data/scripts/browse_bouquets.py:1679 data/scripts/browse_bouquets.py:1931
 
-#, fuzzy
-msgid "Save now"
-msgstr "Պահպանման սխալ"
+#: data/scripts/browse_bouquets.py:2119
 
-msgid "Search"
-msgstr ""
+msgid "Testing..."
+msgstr "Փորձարկվում է..."
 
-#, fuzzy
-msgid "Searching for streams..."
-msgstr "Վերանորոգման հոսք..."
+#: data/scripts/timonde_settings.py:694
 
-msgid "Select a verified replacement stream from Radio-Browser:"
-msgstr ""
+msgid ""
+"The AppIndicator extension is required to display the icon in GNOME top bar."
+msgstr "AppIndicator-ի ընդլայնումը պահանջվում է պատկերակը GNOME-ի վերին տողում ցուցադրելու համար:"
 
-msgid "Select or type (e.g. /France/Brittany or / for root)"
-msgstr ""
+#: data/scripts/browse_bouquets.py:1151
 
-msgid "Server unreachable"
-msgstr ""
+msgid "Thematic samples:"
+msgstr "Թեմատիկ նմուշներ."
 
-msgid "Stop playback"
-msgstr ""
+#: data/scripts/edit_station.py:574
 
-#, fuzzy
+msgid "This action will permanently remove this station from your collection."
+msgstr "Այս գործողությունը ընդմիշտ կհեռացնի այս կայանը ձեր հավաքածուից:"
+
+#: data/scripts/timonde_common.py:1489
+
+msgid ""
+"This stream URL is already registered on Radio-Browser as '{existing_name}'."
+msgstr "Այս հոսքի URL-ն արդեն գրանցված է Radio-Browser-ում որպես «{existing_name}»:"
+
+#: data/scripts/timonde_common.py:1908
+
+msgid ""
+"This stream URL is unpublished on Radio-Browser and ready to be contributed."
+msgstr "Այս հոսքի URL-ը չհրապարակված է Radio-Browser-ում և պատրաստ է տրամադրման:"
+
+#: data/scripts/gnome_tray_helper.py:117
+
+msgid "TiMonde — GNOME Desktop Integration"
+msgstr "TiMonde — GNOME աշխատասեղանի ինտեգրում"
+
+#: src/tray/mod.rs:150
+
 msgid "TiMonde • Ephemeral discovery"
 msgstr "Լսեք պատահական ռադիոկայան (Վերջնական հայտնագործություն)"
 
-#, fuzzy
+#: data/scripts/timonde_common.py:206
+
 msgid "Timeout"
 msgstr "Ժամային գոտի."
 
-#, fuzzy
-msgid "Transfer contents to another group..."
-msgstr "Transfer the content of this group to another group (Ctrl+M)"
+#: data/scripts/edit_station.py:273
+
+msgid "Timezone:"
+msgstr "Ժամային գոտի."
+
+#: data/scripts/gnome_tray_helper.py:159
+
+msgid ""
+"To unobtrusively display the playback icon in the top bar of your GNOME "
+"desktop, the <b>AppIndicator</b> system extension is required.\n"
+"\n"
+"Would you like to install it now?"
+msgstr ""
+"Նվագարկման պատկերակը ձեր GNOME աշխատասեղանի վերևի բարում աննկատ ցուցադրելու համար անհրաժեշտ է <b>AppIndicator</b> համակարգի ընդլայնումը:\n"
+"\n"
+"Ցանկանու՞մ եք տեղադրել այն հիմա:"
+
+#: src/timezone.rs:669
+
+msgid "Tomorrow"
+msgstr "Վաղը"
+
+#: data/scripts/reorder_groups.py:211
+
+msgid "Top"
+msgstr "Առաջին"
+
+#: src/tray/mod.rs:679
+
+msgid "Track copied to clipboard:"
+msgstr "Երգի անվանումը պատճենվեց փոխանակման բուֆերում՝"
+
+#: data/scripts/browse_bouquets.py:987
+
+msgid "Type a country (e.g. France, Germany, Canada...)"
+msgstr "Մուտքագրեք երկիր (օրինակ՝ Ֆրանսիա, Գերմանիա, Կանադա...)"
+
+#: src/tray/mod.rs:444
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Փաթեթների կատալոգում կայան չի գտնվել:"
+
+#: src/tray/mod.rs:208
 
 msgid "Unable to initialize audio"
-msgstr ""
+msgstr "Audio konnte nicht initialisiert werden"
+
+#: src/tray/mod.rs:216
 
 msgid "Unable to play"
-msgstr ""
+msgstr "Wiedergabe nicht mÃ¶glich"
+
+#: data/scripts/browse_bouquets.py:942 data/scripts/browse_bouquets.py:1111
+
+#: data/scripts/browse_bouquets.py:1278
+
+msgid "Uncheck all"
+msgstr "Անջատեք բոլորը"
+
+#: data/scripts/timonde_common.py:1486 data/scripts/timonde_common.py:1896
+
+#: data/scripts/timonde_common.py:1897
+
+msgid "Unknown"
+msgstr "ÎÎ³Î½ÏÏÏÎ¿"
+
+#: data/scripts/timonde_common.py:1530
+
+msgid "Unknown error"
+msgstr "ÎÎ³Î½ÏÏÏÎ¿ ÏÏÎ¬Î»Î¼Î±"
+
+#: data/scripts/timonde_common.py:1272
+
+msgid "Unreadable stream"
+msgstr "Անընթեռնելի հոսք"
+
+#: data/scripts/gnome_tray_helper.py:193
+
+msgid "Unrecognized package manager."
+msgstr "Չճանաչված փաթեթի կառավարիչ:"
+
+#: data/scripts/reorder_groups.py:293
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "Ungespeicherte Ãnderungen"
 
-#, fuzzy
+#: data/scripts/browse_bouquets.py:1915 data/scripts/browse_bouquets.py:2082
+
+msgid "Untested"
+msgstr "ÎÎ· ÎµÎ»ÎµÎ³Î¼Î­Î½Î¿"
+
+#: data/scripts/edit_station.py:159
+
+msgid "Use this on-air broadcast name for your bookmark"
+msgstr "Î§ÏÎ·ÏÎ¹Î¼Î¿ÏÎ¿Î¹Î®ÏÏÎµ Î±ÏÏÏ ÏÎ¿ ÏÎ½Î¿Î¼Î± Î¼ÎµÏÎ¬Î´Î¿ÏÎ·Ï Î³Î¹Î± ÏÎ¿Î½ ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎ· ÏÎ±Ï"
+
+#: data/scripts/timonde_common.py:1597
+
 msgid "Validate and replace"
 msgstr "Պահպանեք և վերաբեռնեք"
 
-msgid "Active (Left & Right clicks unified)"
-msgstr ""
+#: data/scripts/browse_bouquets.py:923
 
-msgid "Enable Left-Click"
-msgstr ""
+msgid "Votes"
+msgstr "Ձայներ"
 
-msgid "Cinnamon left-click unification successfully enabled!"
-msgstr ""
+#: data/scripts/reorder_groups.py:780
 
-msgid "Failed to enable Cinnamon unification."
-msgstr ""
+msgid "Warning: this group contains {count} {unit} that will also be deleted."
+msgstr "Զգուշացում. այս խումբը պարունակում է {count} {unit}, որը նույնպես կջնջվի:"
 
-msgid "Cinnamon Left-Click Unification"
-msgstr ""
+#: data/scripts/timonde_common.py:1841
+
+msgid "Website / Homepage:"
+msgstr "ÎÏÏÏÏÎ¿ÏÎ¿Ï / ÎÏÏÎ¹ÎºÎ® ÏÎµÎ»Î¯Î´Î±:"
+
+#: data/scripts/browse_bouquets.py:2318
+
+msgid "XML backup is available from settings."
+msgstr "XML կրկնօրինակը հասանելի է կարգավորումներից:"
+
+#: data/scripts/reorder_groups.py:1296
+
+msgid "XML backup successfully created in"
+msgstr "Î¤Î¿ Î±Î½ÏÎ¯Î³ÏÎ±ÏÎ¿ Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï XML Î´Î·Î¼Î¹Î¿ÏÏÎ³Î®Î¸Î·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ ÏÏÎ¿"
+
+#: data/scripts/reorder_groups.py:1276
+
+msgid "XML files (*.xml)"
+msgstr "XML ֆայլեր (*.xml)"
+
+#: src/timezone.rs:670
+
+msgid "Yesterday"
+msgstr "Երեկ"
+
+#: data/scripts/browse_bouquets.py:1626
 
 msgid ""
-"Allows opening the station menu interchangeably with left or right click."
+"You can explore and import stations for this territory directly from the "
+"global directory."
 msgstr ""
+"Դուք կարող եք ուսումնասիրել և ներմուծել այս տարածքի կայանները անմիջապես "
+"գլոբալ գրացուցակից:"
 
-#~ msgid ""
-#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
-#~ "groups.\n"
-#~ "• <b>Double-click a group</b> (or Open) to sort its stations and "
-#~ "separators.\n"
-#~ "• Use <b>Transfer...</b> to merge or move content to another group.\n"
-#~ "• Use <b>New group</b> to add a station folder.</small>"
-#~ msgstr ""
-#~ "<small>• Փոխեք <b>#</b>-ը կամ օգտագործեք <b>Տեղափոխել վեր/ներքև</b> "
-#~ "խմբերը պատվիրելու համար: \n"
-#~ " • <b>Կրկնակի սեղմեք խմբի վրա</b> (կամ Բացեք)՝ նրա ռադիոկայաններն ու "
-#~ "բաժանարարները տեսակավորելու համար: \n"
-#~ " • Օգտագործեք <b>Transfer...</b>՝ բովանդակությունը միաձուլելու կամ մեկ "
-#~ "այլ խումբ տեղափոխելու համար: \n"
-#~ " • Օգտագործեք <b>Նոր խումբ</b> ռադիոկայանների թղթապանակ ավելացնելու համար:"
-#~ "</small>"
+#: data/scripts/reorder_groups.py:1302
 
-#~ msgid ""
-#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
-#~ "stations.\n"
-#~ "• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
-#~ "• Click <b>Repair stream...</b> to search Radio-Browser for a working "
-#~ "replacement stream.\n"
-#~ "• Click <b>Separator</b> to insert a section header.</small>"
-#~ msgstr ""
-#~ "<small>• Փոխեք <b>#</b>-ը կամ օգտագործեք <b>Տեղափոխել վեր/ներքև</b> "
-#~ "ռադիոկայանները տեսակավորելու համար: \n"
-#~ " • Սեղմեք <b>Ստուգեք հոսքերը</b>՝ մեռած հղումները (կարմիր) հայտնաբերելու "
-#~ "և դրանք վերանորոգելու համար: \n"
-#~ " • Կտտացրեք <b>Վերականգնել հոսքը...</b>՝ Ռադիո դիտարկիչում փոխարինող "
-#~ "ակտիվ հոսք որոնելու համար: \n"
-#~ " • Սեղմեք <b>Separator</b>՝ բաժնի վերնագիր տեղադրելու համար:</small>"
+msgid "Your complete bookmarks have been saved to:"
+msgstr "ÎÎ¹ ÏÎ»Î®ÏÎµÎ¹Ï ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎµÏ ÏÎ±Ï Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎ±Î½ ÏÏÎ¿:"
 
-#~ msgid ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les groupes.\n"
-#~ "• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios "
-#~ "et séparateurs.\n"
-#~ "• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du "
-#~ "contenu.\n"
-#~ "• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
-#~ msgstr ""
-#~ "<small>• Փոխեք <b>#</b>-ը կամ օգտագործեք <b>Տեղափոխել վեր/ներքև</b> "
-#~ "խմբերը պատվիրելու համար: \n"
-#~ " • <b>Կրկնակի սեղմեք խմբի վրա</b> (կամ Բացեք)՝ նրա ռադիոկայաններն ու "
-#~ "բաժանարարները տեսակավորելու համար: \n"
-#~ " • Օգտագործեք <b>Տեղափոխել դեպի...</b>՝ բովանդակությունը միաձուլելու կամ "
-#~ "տեղափոխելու համար: \n"
-#~ " • Օգտագործեք <b>Նոր խումբ</b>՝ ռադիոների թղթապանակ ստեղծելու համար:</"
-#~ "small>"
+#: src/i18n.rs:237 src/tray/menu.rs:372
 
-#~ msgid ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les radios.\n"
-#~ "• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne "
-#~ "(en rouge).\n"
-#~ "• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de "
-#~ "remplacement actif.\n"
-#~ "• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de "
-#~ "séparation.</small>"
-#~ msgstr ""
-#~ "<small>• Ռադիոները պատվիրելու համար փոխեք <b>#</b>-ը կամ օգտագործեք "
-#~ "<b>Տեղափոխել վեր/ներքև</b>: \n"
-#~ " • Սեղմեք <b>Ստուգել հոսքերը</b>՝ անցանց հղումները (կարմիր գույնով) "
-#~ "գտնելու համար: \n"
-#~ " • Սեղմեք <b>Վերականգնել հոսքը...</b>՝ ակտիվ փոխարինող հոսք որոնելու "
-#~ "համար: \n"
-#~ " • Սեղմեք <b>Separator</b>՝ ենթավերնագիր կամ բաժանարար տող տեղադրելու "
-#~ "համար:</small>"
+msgid "Zap to another random station"
+msgstr "Zap դեպի մեկ այլ պատահական ռադիո"
+
+#: data/scripts/reorder_groups.py:930
+
+msgid "[ / ] Root (Without group)"
+msgstr "[ / ] Î¡Î¯Î¶Î± (ÏÏÏÎ¯Ï Î¿Î¼Î¬Î´Î±)"
+
+#: data/scripts/reorder_groups.py:405
+
+msgid "[!] Dead link"
+msgstr "[!] Dead link"
+
+#: data/scripts/reorder_groups.py:409
+
+msgid "[?] Geo-restricted"
+msgstr "[?] Geo-restricted"
+
+#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
+
+msgid "[New]"
+msgstr "[Նոր]"
+
+#: data/scripts/reorder_groups.py:403
+
+msgid "[OK] Live"
+msgstr "[OK] Live"
+
+#: data/scripts/reorder_groups.py:1027
+
+msgid "[OK] Repaired"
+msgstr "[OK] ÎÏÎ¹ÏÎºÎµÏÎ¬ÏÏÎ·ÎºÎµ"
+
+#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
+
+msgid "[Present]"
+msgstr "[Առկա է]"
+
+#: data/scripts/reorder_groups.py:407
+
+msgid "[~] Redirected"
+msgstr "[~] Redirected"
+
+#: data/scripts/reorder_groups.py:1141
+
+msgid "broken"
+msgstr "broken"
+
+#: data/scripts/reorder_groups.py:1127
+
+msgid "checked:"
+msgstr "checked:"
+
+#: src/tray/dialogs.rs:263
+
+msgid "deleted from your favorites."
+msgstr "հեռացվել է ձեր ընտրյալներից:"
+
+#: data/scripts/timonde_settings.py:750
+
+msgid "disabled"
+msgstr "հաշմանդամ"
+
+#: data/scripts/timonde_settings.py:750
+
+msgid "enabled"
+msgstr "միացված է"
+
+#: src/tray/mod.rs:332
+
+msgid "is currently unavailable"
+msgstr "ներկայումս անհասանելի է"
+
+#: src/tray/mod.rs:302
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "չի պատասխանում: Պահուստային հոսքի որոնում..."
+
+#: data/scripts/timonde_settings.py:612
+
+msgid "new station(s) imported"
+msgstr "Î½Î­Î¿Î¹ ÏÏÎ±Î¸Î¼Î¿Î¯ ÎµÎ¹ÏÎ®ÏÎ¸Î·ÏÎ±Î½"
+
+#: data/scripts/reorder_groups.py:1140
+
+msgid "online"
+msgstr "online"
+
+#: data/scripts/reorder_groups.py:372
+
+msgid "radio"
+msgstr "radio"
+
+#: data/scripts/reorder_groups.py:372 data/scripts/reorder_groups.py:672
+
+msgid "radios"
+msgstr "radios"
+
+#: data/scripts/reorder_groups.py:1142
+
+msgid "redirected"
+msgstr "redirected"
+
+#: data/scripts/browse_bouquets.py:2306
+
+msgid "sample files restored."
+msgstr "նմուշ ֆայլերը վերականգնվել են:"
+
+#: src/tray/mod.rs:562
+
+msgid "saved in your favorites!"
+msgstr "պահպանվել է ձեր ընտրյալներում!"
+
+#: data/scripts/timonde_settings.py:559
+
+msgid "saved successfully!"
+msgstr "Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ!"
+
+#: data/scripts/reorder_groups.py:779
+
+msgid "station"
+msgstr "station"
+
+#: data/scripts/timonde_settings.py:614
+
+msgid "station(s) moved to destination"
+msgstr "ÏÏÎ±Î¸Î¼Î¿Î¯ Î¼ÎµÏÎ±ÎºÎ¹Î½Î®Î¸Î·ÎºÎ±Î½ ÏÏÎ¿Î½ ÏÏÎ¿Î¿ÏÎ¹ÏÎ¼Ï"
+
+#: data/scripts/reorder_groups.py:779
+
+msgid "stations"
+msgstr "stations"
+
+#: data/scripts/reorder_groups.py:1095
+
+msgid "stations checked..."
+msgstr "stations checked..."
+
+#: src/tray/mod.rs:592
+
+msgid "stopping in"
+msgstr "անջատումը՝"
+
+#: data/scripts/reorder_groups.py:1200
+
+msgid "stream(s) updated."
+msgstr "ÏÎ¿Î­Ï ÎµÎ½Î·Î¼ÎµÏÏÎ¸Î·ÎºÎ±Î½."
+
+#: data/scripts/browse_bouquets.py:1725
+
+msgid "this country"
+msgstr "այս երկիրը"
+
+#: src/tray/dialogs.rs:385
+
+msgid "updated successfully!"
+msgstr "հաջողությամբ թարմացվեց!"
+
+#: data/scripts/browse_bouquets.py:1733 data/scripts/browse_bouquets.py:2145
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "Ընտրված է {checked} / {total} կայան"
+
+#: data/scripts/edit_station.py:543
+
+msgid "{count} available timezones"
+msgstr "{count} հասանելի ժամային գոտի"
+
+#: data/scripts/browse_bouquets.py:1918
+
+msgid "{count} stations found."
+msgstr "Գտնվել է {count} կայան:"
+
+#: data/scripts/timonde_common.py:1690
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Գտնվել է {count} հոսք: Ընտրեք ցանկալի հոսքը և հաստատեք:"
+
+#: data/scripts/reorder_groups.py:352 data/scripts/reorder_groups.py:391
+
+#: data/scripts/reorder_groups.py:713
+
+msgid "— Separator —"
+msgstr "— Separator —"
+

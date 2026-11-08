@@ -132,6 +132,7 @@ uninstall-user:
 test:
 	cargo test
 	python3 data/scripts/test_timonde_common.py
+	python3 data/scripts/test_gtk_event_loop.py
 
 clean:
 	cargo clean

@@ -48,6 +48,7 @@ from timonde_common import (
     search_radio_browser_api,
     show_group_naming_help_dialog,
     RepairStreamDialog,
+    ContributeStationDialog,
     status_markup,
     apply_timonde_app_css,
 )
@@ -521,7 +522,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.on_backup_xml_callback = on_backup_xml_callback
         apply_timonde_app_css()
         if not embedded:
-            super().__init__(title=_("Découvrir et importer des radios (TiMonde)"))
+            super().__init__(title=_("Discover & Import stations (TiMonde)"))
             screen = Gdk.Screen.get_default()
             target_w, target_h = 960, 640
             if screen:
@@ -641,14 +642,14 @@ class DiscoverRadiosWindow(Gtk.Window):
         hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         vbox.pack_start(hbox, False, False, 0)
 
-        lbl = Gtk.Label(label="<b>" + _("Groupe :") + "</b>")
+        lbl = Gtk.Label(label="<b>" + _("Group:") + "</b>")
         lbl.set_use_markup(True)
         hbox.pack_start(lbl, False, False, 0)
 
         entry = Gtk.Entry()
         entry.set_text(default_group_name)
         entry.set_width_chars(26)
-        entry.set_placeholder_text(_("Ex: /France/Jazz ou / pour racine"))
+        entry.set_placeholder_text(_("Ex: /France/Jazz or / for root"))
         entry.set_can_focus(True)
         entry.set_editable(True)
 
@@ -665,14 +666,14 @@ class DiscoverRadiosWindow(Gtk.Window):
         entry.set_completion(comp)
 
         entry.set_icon_from_icon_name(Gtk.EntryIconPosition.SECONDARY, "edit-clear")
-        entry.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, _("Effacer le champ"))
+        entry.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, _("Clear field"))
         def on_clear(e, icon_pos, event):
             if icon_pos == Gtk.EntryIconPosition.SECONDARY:
                 e.set_text("")
         entry.connect("icon-press", on_clear)
         hbox.pack_start(entry, True, True, 0)
 
-        btn_choose = make_btn("", "pan-down", _("Choisir parmi les groupes existants"))
+        btn_choose = make_btn("", "pan-down", _("Choose from existing groups"))
         def on_choose(b):
             menu = Gtk.Menu()
             if view_key == "files":
@@ -698,11 +699,11 @@ class DiscoverRadiosWindow(Gtk.Window):
         if view_key == "files":
             entry.connect("changed", lambda e: self.update_files_group_column())
 
-        btn_help = make_btn("", "help-browser", _("Aide sur les groupes et sous-groupes"))
+        btn_help = make_btn("", "help-browser", _("Help on groups and subgroups"))
         btn_help.connect("clicked", self.on_show_group_naming_help)
         hbox.pack_start(btn_help, False, False, 0)
 
-        btn_preview = make_btn(_("Écouter"), "media-playback-start", _("Écouter la radio sélectionnée"))
+        btn_preview = make_btn(_("Listen"), "media-playback-start", _("Listen to selected station"))
         btn_preview.connect("clicked", lambda w: self.on_preview_clicked(view_key))
         self.preview_buttons.append(btn_preview)
         hbox.pack_start(btn_preview, False, False, 0)
@@ -713,7 +714,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.preview_labels.append(lbl_preview)
         hbox.pack_start(lbl_preview, False, False, 0)
 
-        btn_import = make_btn(_("Importer dans mes favoris"), "list-add")
+        btn_import = make_btn(_("Import to my favorites"), "list-add")
         btn_import.get_style_context().add_class("suggested-action")
         btn_import.set_sensitive(False)
         btn_import.connect("clicked", lambda w: on_import_func())
@@ -729,18 +730,23 @@ class DiscoverRadiosWindow(Gtk.Window):
         tab_rb.set_border_width(8)
 
         # 1. En-tête explicatif Radio-Browser
-        info_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        info_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         lbl_info = Gtk.Label()
-        lbl_info.set_markup("<small><i>" + _("Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> (+45 000 stations).") + "</i></small>")
+        lbl_info.set_markup("<small><i>" + _("Global search on the free and open <b>Radio-Browser</b> directory (+45,000 stations).") + "</i></small>")
         lbl_info.set_xalign(0.0)
         info_box.pack_start(lbl_info, True, True, 0)
+
+        btn_contribute_new = make_btn(_("Contribute a station"), "list-add", _("Submit a new station to community Radio-Browser directory"))
+        btn_contribute_new.connect("clicked", lambda w: self.on_contribute_new_to_radio_browser())
+        info_box.pack_end(btn_contribute_new, False, False, 0)
+
         tab_rb.pack_start(info_box, False, False, 0)
 
         # 2. Ligne 1 : Mots-clés, Genre & Bouton de recherche
         rb_filter_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         tab_rb.pack_start(rb_filter_box, False, False, 0)
 
-        lbl_rb_name = Gtk.Label(label=_("Mot-clé :"))
+        lbl_rb_name = Gtk.Label(label=_("Keyword:"))
         rb_filter_box.pack_start(lbl_rb_name, False, False, 0)
 
         self.entry_rb_name = Gtk.Entry()
@@ -750,7 +756,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.entry_rb_name.connect("activate", lambda w: self.on_search_rb_clicked())
         rb_filter_box.pack_start(self.entry_rb_name, True, True, 0)
 
-        lbl_rb_tag = Gtk.Label(label=_("Genre :"))
+        lbl_rb_tag = Gtk.Label(label=_("Genre:"))
         rb_filter_box.pack_start(lbl_rb_tag, False, False, 0)
 
         self.entry_rb_tag = Gtk.Entry()
@@ -761,7 +767,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.entry_rb_tag.connect("activate", lambda w: self.on_search_rb_clicked())
         rb_filter_box.pack_start(self.entry_rb_tag, False, False, 0)
 
-        btn_rb_search = make_btn(_("Rechercher"), "system-search")
+        btn_rb_search = make_btn(_("Search"), "system-search")
         btn_rb_search.get_style_context().add_class("suggested-action")
         btn_rb_search.connect("clicked", lambda w: self.on_search_rb_clicked())
         rb_filter_box.pack_start(btn_rb_search, False, False, 0)
@@ -770,17 +776,17 @@ class DiscoverRadiosWindow(Gtk.Window):
         rb_geo_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         tab_rb.pack_start(rb_geo_box, False, False, 0)
 
-        self.check_rb_only_country = Gtk.CheckButton(label=_("Filtrer par pays :"))
+        self.check_rb_only_country = Gtk.CheckButton(label=_("Filter by country:"))
         self.check_rb_only_country.set_active(True)
         rb_geo_box.pack_start(self.check_rb_only_country, False, False, 0)
 
         self.entry_rb_country = Gtk.Entry()
-        self.entry_rb_country.set_placeholder_text(_("Tous les pays (mondial)"))
+        self.entry_rb_country.set_placeholder_text(_("All countries (Worldwide)"))
         self.entry_rb_country.set_width_chars(26)
         self.entry_rb_country.set_can_focus(True)
         self.entry_rb_country.set_editable(True)
         self.entry_rb_country.set_icon_from_icon_name(Gtk.EntryIconPosition.SECONDARY, "edit-clear")
-        self.entry_rb_country.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, _("Effacer le filtre pays"))
+        self.entry_rb_country.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, _("Clear country filter"))
         def on_rb_country_clear_press(entry, icon_pos, event):
             if icon_pos == Gtk.EntryIconPosition.SECONDARY:
                 entry.set_text("")
@@ -810,16 +816,16 @@ class DiscoverRadiosWindow(Gtk.Window):
         if init_c_code and init_c_code in self.bouquets_db:
             self.entry_rb_country.set_text(self.bouquets_db[init_c_code].get("name", init_c_code))
 
-        lbl_rb_lang = Gtk.Label(label=_("Langue :"))
+        lbl_rb_lang = Gtk.Label(label=_("Language:"))
         rb_geo_box.pack_start(lbl_rb_lang, False, False, 0)
 
         self.entry_rb_lang = Gtk.Entry()
-        self.entry_rb_lang.set_placeholder_text(_("Toutes les langues"))
+        self.entry_rb_lang.set_placeholder_text(_("All languages"))
         self.entry_rb_lang.set_width_chars(20)
         self.entry_rb_lang.set_can_focus(True)
         self.entry_rb_lang.set_editable(True)
         self.entry_rb_lang.set_icon_from_icon_name(Gtk.EntryIconPosition.SECONDARY, "edit-clear")
-        self.entry_rb_lang.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, _("Effacer le filtre langue"))
+        self.entry_rb_lang.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, _("Clear language filter"))
         def on_rb_lang_clear_press(entry, icon_pos, event):
             if icon_pos == Gtk.EntryIconPosition.SECONDARY:
                 entry.set_text("")
@@ -873,7 +879,7 @@ class DiscoverRadiosWindow(Gtk.Window):
 
         renderer_rb_check = Gtk.CellRendererToggle()
         renderer_rb_check.connect("toggled", self.on_rb_check_toggled)
-        col_rb_check = Gtk.TreeViewColumn(_("Ajouter"), renderer_rb_check, active=0)
+        col_rb_check = Gtk.TreeViewColumn(_("Add"), renderer_rb_check, active=0)
         col_rb_check.set_resizable(False)
         self.rb_tree.append_column(col_rb_check)
 
@@ -885,7 +891,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         col_rb_name.set_min_width(120)
         self.rb_tree.append_column(col_rb_name)
 
-        col_rb_c = Gtk.TreeViewColumn(_("Pays"), Gtk.CellRendererText(), text=2)
+        col_rb_c = Gtk.TreeViewColumn(_("Country"), Gtk.CellRendererText(), text=2)
         col_rb_c.set_resizable(True)
         col_rb_c.set_min_width(45)
         self.rb_tree.append_column(col_rb_c)
@@ -897,19 +903,19 @@ class DiscoverRadiosWindow(Gtk.Window):
         col_rb_tags.set_min_width(90)
         self.rb_tree.append_column(col_rb_tags)
 
-        col_rb_codec = Gtk.TreeViewColumn(_("Format & Débit"), Gtk.CellRendererText(), text=4)
+        col_rb_codec = Gtk.TreeViewColumn(_("Format & Bitrate"), Gtk.CellRendererText(), text=4)
         col_rb_codec.set_resizable(True)
         col_rb_codec.set_min_width(75)
         self.rb_tree.append_column(col_rb_codec)
 
         rend_rb_health = Gtk.CellRendererText()
         rend_rb_health.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_rb_health = Gtk.TreeViewColumn(_("Disponibilité"), rend_rb_health, markup=8)
+        col_rb_health = Gtk.TreeViewColumn(_("Availability"), rend_rb_health, markup=8)
         col_rb_health.set_resizable(True)
         col_rb_health.set_min_width(105)
         self.rb_tree.append_column(col_rb_health)
 
-        col_rb_dup = Gtk.TreeViewColumn(_("Statut Favoris"), Gtk.CellRendererText(), markup=9)
+        col_rb_dup = Gtk.TreeViewColumn(_("Favorite status"), Gtk.CellRendererText(), markup=9)
         col_rb_dup.set_resizable(True)
         col_rb_dup.set_min_width(85)
         self.rb_tree.append_column(col_rb_dup)
@@ -929,19 +935,19 @@ class DiscoverRadiosWindow(Gtk.Window):
         rb_bot_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         tab_rb.pack_start(rb_bot_box, False, False, 0)
 
-        btn_rb_check_all = make_btn(_("Tout cocher"), "edit-select-all")
+        btn_rb_check_all = make_btn(_("Check all"), "edit-select-all")
         btn_rb_check_all.connect("clicked", lambda w: self.set_rb_checks(True))
         rb_bot_box.pack_start(btn_rb_check_all, False, False, 0)
 
-        btn_rb_uncheck_all = make_btn(_("Tout décocher"), "edit-clear")
+        btn_rb_uncheck_all = make_btn(_("Uncheck all"), "edit-clear")
         btn_rb_uncheck_all.connect("clicked", lambda w: self.set_rb_checks(False))
         rb_bot_box.pack_start(btn_rb_uncheck_all, False, False, 0)
 
-        self.btn_rb_test = make_btn(_("Tester les flux"), "network-idle", _("Vérifier la disponibilité en direct des radios trouvées"))
+        self.btn_rb_test = make_btn(_("Test streams"), "network-idle", _("Check live availability of found stations"))
         self.btn_rb_test.connect("clicked", lambda w: self.test_rb_streams())
         rb_bot_box.pack_start(self.btn_rb_test, False, False, 0)
 
-        self.lbl_rb_status = Gtk.Label(label=_("Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."))
+        self.lbl_rb_status = Gtk.Label(label=_("Enter a keyword or click Search to browse the directory."))
         self.lbl_rb_status.set_halign(Gtk.Align.END)
         rb_bot_box.pack_end(self.lbl_rb_status, False, False, 0)
 
@@ -963,7 +969,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         # 1. En-tête explicatif Bouquets DAB+
         info_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         lbl_info = Gtk.Label()
-        lbl_info.set_markup("<small><i>" + _("Sélection officielle et vérifiée parmi 146 pays et régions (bouquets numériques DAB+ et grandes stations nationales).") + "</i></small>")
+        lbl_info.set_markup("<small><i>" + _("Official and verified selection across 146 countries and regions (digital DAB+ bouquets and major national stations).") + "</i></small>")
         lbl_info.set_xalign(0.0)
         info_box.pack_start(lbl_info, True, True, 0)
         tab_bouquets.pack_start(info_box, False, False, 0)
@@ -972,13 +978,13 @@ class DiscoverRadiosWindow(Gtk.Window):
         top_bar = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         tab_bouquets.pack_start(top_bar, False, False, 0)
 
-        lbl_country = Gtk.Label(label="<b>" + _("Pays :") + "</b>")
+        lbl_country = Gtk.Label(label="<b>" + _("Country:") + "</b>")
         lbl_country.set_use_markup(True)
         top_bar.pack_start(lbl_country, False, False, 0)
 
         self.combo_country = Gtk.ComboBoxText.new_with_entry()
         self.entry_country = self.combo_country.get_child()
-        self.entry_country.set_placeholder_text(_("Tapez un pays (ex: France, Deutschland, Canada...)"))
+        self.entry_country.set_placeholder_text(_("Type a country (e.g. France, Germany, Canada...)"))
         self.entry_country.set_width_chars(28)
         self._last_resolved_country = "FR"
 
@@ -1002,11 +1008,11 @@ class DiscoverRadiosWindow(Gtk.Window):
         scope_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         tab_bouquets.pack_start(scope_box, False, False, 0)
 
-        self.radio_national = Gtk.RadioButton.new_with_label(None, _("Bouquet National (Grandes stations)"))
+        self.radio_national = Gtk.RadioButton.new_with_label(None, _("National Bouquet (Major stations)"))
         self.radio_national.connect("toggled", self.on_scope_changed)
         scope_box.pack_start(self.radio_national, False, False, 0)
 
-        self.radio_region = Gtk.RadioButton.new_with_label_from_widget(self.radio_national, _("Régions & Locales :"))
+        self.radio_region = Gtk.RadioButton.new_with_label_from_widget(self.radio_national, _("Regions & Local:"))
         self.radio_region.connect("toggled", self.on_scope_changed)
         scope_box.pack_start(self.radio_region, False, False, 0)
 
@@ -1014,7 +1020,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.combo_region.connect("changed", self.on_region_changed)
         scope_box.pack_start(self.combo_region, False, False, 0)
 
-        self.lbl_lang = Gtk.Label(label="<b>" + _("Langue :") + "</b>")
+        self.lbl_lang = Gtk.Label(label="<b>" + _("Language:") + "</b>")
         self.lbl_lang.set_use_markup(True)
         scope_box.pack_start(self.lbl_lang, False, False, 0)
 
@@ -1030,7 +1036,7 @@ class DiscoverRadiosWindow(Gtk.Window):
 
         renderer_check = Gtk.CellRendererToggle()
         renderer_check.connect("toggled", self.on_bouquet_check_toggled)
-        col_check = Gtk.TreeViewColumn(_("Importer"), renderer_check, active=0)
+        col_check = Gtk.TreeViewColumn(_("Import"), renderer_check, active=0)
         col_check.set_resizable(False)
         self.bouquet_tree.append_column(col_check)
 
@@ -1044,20 +1050,20 @@ class DiscoverRadiosWindow(Gtk.Window):
 
         rend_genre = Gtk.CellRendererText()
         rend_genre.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_genre = Gtk.TreeViewColumn(_("Genre / Thématique"), rend_genre, text=2)
+        col_genre = Gtk.TreeViewColumn(_("Genre / Topic"), rend_genre, text=2)
         col_genre.set_resizable(True)
         col_genre.set_min_width(110)
         self.bouquet_tree.append_column(col_genre)
 
         rend_health = Gtk.CellRendererText()
         rend_health.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_health = Gtk.TreeViewColumn(_("Disponibilité en direct"), rend_health, markup=3)
+        col_health = Gtk.TreeViewColumn(_("Live availability"), rend_health, markup=3)
         col_health.set_resizable(True)
         col_health.set_min_width(115)
         self.bouquet_tree.append_column(col_health)
 
         rend_dup = Gtk.CellRendererText()
-        col_dup = Gtk.TreeViewColumn(_("Statut Favoris"), rend_dup, markup=4)
+        col_dup = Gtk.TreeViewColumn(_("Favorite status"), rend_dup, markup=4)
         col_dup.set_resizable(True)
         col_dup.set_min_width(90)
         self.bouquet_tree.append_column(col_dup)
@@ -1098,21 +1104,25 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.b_action_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         tab_bouquets.pack_start(self.b_action_box, False, False, 0)
 
-        self.btn_bouquet_check_all = make_btn(_("Tout cocher"), "edit-select-all")
+        self.btn_bouquet_check_all = make_btn(_("Check all"), "edit-select-all")
         self.btn_bouquet_check_all.connect("clicked", lambda w: self.set_bouquet_checks(True))
         self.b_action_box.pack_start(self.btn_bouquet_check_all, False, False, 0)
 
-        self.btn_bouquet_uncheck_all = make_btn(_("Tout décocher"), "edit-clear")
+        self.btn_bouquet_uncheck_all = make_btn(_("Uncheck all"), "edit-clear")
         self.btn_bouquet_uncheck_all.connect("clicked", lambda w: self.set_bouquet_checks(False))
         self.b_action_box.pack_start(self.btn_bouquet_uncheck_all, False, False, 0)
 
-        self.btn_bouquet_test = make_btn(_("Tester les flux"), "network-idle", _("Vérifier la disponibilité en direct des radios"))
+        self.btn_bouquet_test = make_btn(_("Test streams"), "network-idle", _("Check stations live availability"))
         self.btn_bouquet_test.connect("clicked", lambda w: self.test_bouquet_streams())
         self.b_action_box.pack_start(self.btn_bouquet_test, False, False, 0)
 
-        self.btn_repair = make_btn(_("Réparer le flux..."), "system-search", _("Remplacer le lien sélectionné par un flux officiel actif"))
+        self.btn_repair = make_btn(_("Repair stream..."), "system-search", _("Replace selected link with an active official stream"))
         self.btn_repair.connect("clicked", self.on_repair_clicked)
         self.b_action_box.pack_start(self.btn_repair, False, False, 0)
+
+        self.btn_bouquet_contribute = make_btn(_("Contribute to Radio-Browser"), "network-server", _("Check and submit selected station to Radio-Browser directory"))
+        self.btn_bouquet_contribute.connect("clicked", lambda w: self.on_contribute_bouquet_to_radio_browser())
+        self.b_action_box.pack_start(self.btn_bouquet_contribute, False, False, 0)
 
         self.lbl_bouquet_count = Gtk.Label()
         self.lbl_bouquet_count.set_halign(Gtk.Align.END)
@@ -1138,7 +1148,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         box.pack_start(ex_bar, False, False, 0)
 
         lbl_ex = Gtk.Label()
-        lbl_ex.set_markup("<b>" + _("Exemples thématiques :") + "</b>")
+        lbl_ex.set_markup("<b>" + _("Thematic samples:") + "</b>")
         lbl_ex.set_halign(Gtk.Align.START)
         ex_bar.pack_start(lbl_ex, False, False, 0)
 
@@ -1152,15 +1162,15 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.combo_examples.connect("changed", self.on_files_example_changed)
         ex_bar.pack_start(self.combo_examples, True, True, 0)
 
-        btn_refresh_ex = make_btn("", "view-refresh", _("Actualiser la liste des exemples"))
+        btn_refresh_ex = make_btn("", "view-refresh", _("Refresh examples list"))
         btn_refresh_ex.connect("clicked", self.on_refresh_examples_clicked)
         ex_bar.pack_start(btn_refresh_ex, False, False, 0)
 
-        btn_open_ex = make_btn(_("Dossier des exemples"), "folder-open", _("Ouvrir ~/.config/timonde/examples"))
+        btn_open_ex = make_btn(_("Examples folder"), "folder-open", _("Open ~/.config/timonde/examples"))
         btn_open_ex.connect("clicked", self.on_open_examples_folder)
         ex_bar.pack_start(btn_open_ex, False, False, 0)
 
-        btn_restore_ex = make_btn(_("Restaurer exemples"), "edit-undo", _("Rétablir les 19 exemples d'origine"))
+        btn_restore_ex = make_btn(_("Restore samples"), "edit-undo", _("Restore the 19 original samples"))
         btn_restore_ex.connect("clicked", self.on_restore_examples_action)
         ex_bar.pack_start(btn_restore_ex, False, False, 0)
 
@@ -1169,33 +1179,33 @@ class DiscoverRadiosWindow(Gtk.Window):
         box.pack_start(ext_bar, False, False, 0)
 
         lbl_custom = Gtk.Label()
-        lbl_custom.set_markup("<b>" + _("Fichier externe :") + "</b>")
+        lbl_custom.set_markup("<b>" + _("External file:") + "</b>")
         lbl_custom.set_halign(Gtk.Align.START)
         ext_bar.pack_start(lbl_custom, False, False, 0)
 
-        btn_browse = make_btn(_("Charger un fichier..."), "document-open", _("Charger un fichier XML, CSV, JSON, M3U ou PLS"))
+        btn_browse = make_btn(_("Load a file..."), "document-open", _("Load an XML, CSV, JSON, M3U or PLS file"))
         btn_browse.connect("clicked", self.on_files_browse_clicked)
         ext_bar.pack_start(btn_browse, False, False, 0)
 
-        self.btn_files_reload = make_btn(_("Recharger"), "view-refresh", _("Recharger le fichier actuellement affiché"))
+        self.btn_files_reload = make_btn(_("Reload"), "view-refresh", _("Reload currently displayed file"))
         self.btn_files_reload.set_sensitive(False)
         self.btn_files_reload.connect("clicked", lambda w: self.load_file_into_store(self.current_file_path) if self.current_file_path else None)
         ext_bar.pack_start(self.btn_files_reload, False, False, 0)
 
-        btn_csv = make_btn(_("Exporter en tableau (CSV)..."), "x-office-spreadsheet", _("Générer une liste plate pour tableur Calc ou Excel"))
+        btn_csv = make_btn(_("Export to spreadsheet (CSV)..."), "x-office-spreadsheet", _("Generate a flat list for Calc or Excel spreadsheet"))
         btn_csv.connect("clicked", self.on_export_csv_action)
         ext_bar.pack_end(btn_csv, False, False, 0)
 
-        btn_backup = make_btn(_("Sauvegarder mes radios (XML)..."), "document-save", _("Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"))
+        btn_backup = make_btn(_("Backup my radios (XML)..."), "document-save", _("Create a full backup of your collection (with folders and timezones)"))
         btn_backup.connect("clicked", self.on_backup_xml_action)
         ext_bar.pack_end(btn_backup, False, False, 0)
 
-        btn_open_bm = make_btn(_("Dossier des signets"), "folder", _("Ouvrir ~/.config/timonde"))
+        btn_open_bm = make_btn(_("Bookmarks folder"), "folder", _("Open ~/.config/timonde"))
         btn_open_bm.connect("clicked", lambda w: self.open_directory(os.path.expanduser("~/.config/timonde")))
         ext_bar.pack_end(btn_open_bm, False, False, 0)
 
         # 3. Label d'information sur la source
-        self.lbl_files_info = Gtk.Label(label=_("<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"))
+        self.lbl_files_info = Gtk.Label(label=_("<i>Select a file or sample above.</i>"))
         self.lbl_files_info.set_use_markup(True)
         self.lbl_files_info.set_halign(Gtk.Align.START)
         box.pack_start(self.lbl_files_info, False, False, 0)
@@ -1208,7 +1218,7 @@ class DiscoverRadiosWindow(Gtk.Window):
 
         renderer_f_check = Gtk.CellRendererToggle()
         renderer_f_check.connect("toggled", self.on_files_check_toggled)
-        col_f_check = Gtk.TreeViewColumn(_("Importer"), renderer_f_check, active=0)
+        col_f_check = Gtk.TreeViewColumn(_("Import"), renderer_f_check, active=0)
         col_f_check.set_resizable(False)
         self.files_tree.append_column(col_f_check)
 
@@ -1222,31 +1232,31 @@ class DiscoverRadiosWindow(Gtk.Window):
 
         rend_f_grp = Gtk.CellRendererText()
         rend_f_grp.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_f_grp = Gtk.TreeViewColumn(_("Dossier / Groupe"), rend_f_grp, text=2)
+        col_f_grp = Gtk.TreeViewColumn(_("Folder / Group"), rend_f_grp, text=2)
         col_f_grp.set_resizable(True)
         col_f_grp.set_min_width(90)
         self.files_tree.append_column(col_f_grp)
 
-        col_f_country = Gtk.TreeViewColumn(_("Pays"), Gtk.CellRendererText(), text=3)
+        col_f_country = Gtk.TreeViewColumn(_("Country"), Gtk.CellRendererText(), text=3)
         col_f_country.set_resizable(True)
         col_f_country.set_min_width(45)
         self.files_tree.append_column(col_f_country)
 
         rend_f_health = Gtk.CellRendererText()
         rend_f_health.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_f_health = Gtk.TreeViewColumn(_("Disponibilité"), rend_f_health, markup=4)
+        col_f_health = Gtk.TreeViewColumn(_("Availability"), rend_f_health, markup=4)
         col_f_health.set_resizable(True)
         col_f_health.set_min_width(105)
         self.files_tree.append_column(col_f_health)
 
-        col_f_dup = Gtk.TreeViewColumn(_("Statut Favoris"), Gtk.CellRendererText(), markup=5)
+        col_f_dup = Gtk.TreeViewColumn(_("Favorite status"), Gtk.CellRendererText(), markup=5)
         col_f_dup.set_resizable(True)
         col_f_dup.set_min_width(85)
         self.files_tree.append_column(col_f_dup)
 
         rend_f_url = Gtk.CellRendererText()
         rend_f_url.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_f_url = Gtk.TreeViewColumn(_("URL du flux"), rend_f_url, text=6)
+        col_f_url = Gtk.TreeViewColumn(_("Stream URL"), rend_f_url, text=6)
         col_f_url.set_resizable(True)
         col_f_url.set_min_width(110)
         self.files_tree.append_column(col_f_url)
@@ -1261,21 +1271,25 @@ class DiscoverRadiosWindow(Gtk.Window):
         f_action_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         box.pack_start(f_action_box, False, False, 0)
 
-        btn_f_check_all = make_btn(_("Tout cocher"), "edit-select-all")
+        btn_f_check_all = make_btn(_("Check all"), "edit-select-all")
         btn_f_check_all.connect("clicked", lambda w: self.set_files_checks(True))
         f_action_box.pack_start(btn_f_check_all, False, False, 0)
 
-        btn_f_uncheck_all = make_btn(_("Tout décocher"), "edit-clear")
+        btn_f_uncheck_all = make_btn(_("Uncheck all"), "edit-clear")
         btn_f_uncheck_all.connect("clicked", lambda w: self.set_files_checks(False))
         f_action_box.pack_start(btn_f_uncheck_all, False, False, 0)
 
-        btn_f_new_only = make_btn(_("Nouveaux uniquement"), "list-add")
+        btn_f_new_only = make_btn(_("New only"), "list-add")
         btn_f_new_only.connect("clicked", lambda w: self.set_files_checks_new_only())
         f_action_box.pack_start(btn_f_new_only, False, False, 0)
 
-        self.btn_files_test = make_btn(_("Tester les flux"), "network-idle", _("Vérifier en direct la disponibilité des liens"))
+        self.btn_files_test = make_btn(_("Test streams"), "network-idle", _("Check links availability live"))
         self.btn_files_test.connect("clicked", lambda w: self.test_files_streams())
         f_action_box.pack_start(self.btn_files_test, False, False, 0)
+
+        self.btn_files_contribute = make_btn(_("Contribute to Radio-Browser"), "network-server", _("Check and submit selected station to Radio-Browser directory"))
+        self.btn_files_contribute.connect("clicked", lambda w: self.on_contribute_files_to_radio_browser())
+        f_action_box.pack_start(self.btn_files_contribute, False, False, 0)
 
         self.lbl_files_count = Gtk.Label()
         self.lbl_files_count.set_halign(Gtk.Align.END)
@@ -1309,16 +1323,16 @@ class DiscoverRadiosWindow(Gtk.Window):
         hcontent.pack_start(sidebar, False, False, 0)
         hcontent.pack_start(self.stack, True, True, 0)
 
-        self.stack.add_titled(self.view_search, "search", _("Rechercher en ligne"))
-        self.stack.add_titled(self.view_bouquets, "bouquets", _("Bouquets par pays"))
-        self.stack.add_titled(self.view_files, "files", _("Importer & Exporter"))
+        self.stack.add_titled(self.view_search, "search", _("Search online"))
+        self.stack.add_titled(self.view_bouquets, "bouquets", _("Country bouquets"))
+        self.stack.add_titled(self.view_files, "files", _("Import & Export"))
 
         self.stack.connect("notify::visible-child-name", lambda s, p: self.preview_player.stop() if self.preview_player else None)
 
         bot_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         main_vbox.pack_start(bot_box, False, False, 0)
 
-        btn_close = make_btn(_("Fermer"), "window-close")
+        btn_close = make_btn(_("Close"), "window-close")
         btn_close.connect("clicked", lambda w: self.destroy())
         bot_box.pack_end(btn_close, False, False, 0)
 
@@ -1365,11 +1379,11 @@ class DiscoverRadiosWindow(Gtk.Window):
             if it:
                 self.toggle_preview_station(model.get_value(it, 1), model.get_value(it, 6))
                 return
-        self.show_preview_message(_("Sélectionnez une station dans le tableau pour l'écouter."))
+        self.show_preview_message(_("Select a station in table to listen to."))
 
     def toggle_preview_station(self, name, url):
         if not url:
-            self.show_preview_message(_("Sélectionnez une radio pour l'écouter."))
+            self.show_preview_message(_("Select a station to listen to."))
             return
         clean = clean_stream_url(url)
         if self.preview_player.is_playing and self.preview_player.current_url == clean:
@@ -1380,9 +1394,9 @@ class DiscoverRadiosWindow(Gtk.Window):
     def on_preview_status_update(self, is_playing, url, message, is_error):
         for btn in self.preview_buttons:
             if is_playing:
-                update_btn_content(btn, _("Arrêter"), "media-playback-stop")
+                update_btn_content(btn, _("Stop"), "media-playback-stop")
             else:
-                update_btn_content(btn, _("Écouter"), "media-playback-start")
+                update_btn_content(btn, _("Listen"), "media-playback-start")
 
         color = "#d32f2f" if is_error else ("#2e7d32" if is_playing else "#555555")
         markup = f"<small><span color='{color}'><b>{html.escape(message)}</b></span></small>" if message else ""
@@ -1592,12 +1606,13 @@ class DiscoverRadiosWindow(Gtk.Window):
             default_group = f"Radios {reg_name}"
         else:
             stations = national
+            nat_prefix = _("National Radios")
             if info.get("multilingual", False):
                 lang_text = self.combo_lang.get_active_text() or ""
                 lang_short = lang_text.split()[0] if lang_text else ""
-                default_group = f"Radios Nationales ({country_name} - {lang_short})"
+                default_group = f"{nat_prefix} ({country_name} - {lang_short})"
             else:
-                default_group = f"Radios Nationales ({country_name})"
+                default_group = f"{nat_prefix} ({country_name})"
 
         if hasattr(self, "entry_group_bouquets"):
             self.entry_group_bouquets.set_text(default_group)
@@ -1742,11 +1757,86 @@ class DiscoverRadiosWindow(Gtk.Window):
         if res == Gtk.ResponseType.OK and new_url:
             clean_new_url = new_url.strip()
             model.set_value(tree_iter, 5, clean_new_url)
-            model.set_value(tree_iter, 3, "<span color='#2e7d32'><b>● Réparé (En ligne)</b></span>")
+            repaired_lbl = _("● Repaired (Live)")
+            model.set_value(tree_iter, 3, f"<span color='#2e7d32'><b>{repaired_lbl}</b></span>")
             model.set_value(tree_iter, 7, False)
             model.set_value(tree_iter, 0, True)
             self.update_bouquet_count()
             self.save_stream_to_xml(station_name, current_url, clean_new_url)
+
+    def on_contribute_new_to_radio_browser(self):
+        c_code = self.get_selected_country_code() if hasattr(self, "get_selected_country_code") else ""
+        dlg = ContributeStationDialog(
+            parent=self.get_parent_window(),
+            station_name=self.entry_rb_name.get_text().strip() if hasattr(self, "entry_rb_name") else "",
+            current_url="",
+            country_code=c_code
+        )
+        dlg.run()
+
+    def on_contribute_bouquet_to_radio_browser(self):
+        model, tree_iter = self.bouquet_tree.get_selection().get_selected()
+        if not tree_iter:
+            d = Gtk.MessageDialog(
+                transient_for=self.get_parent_window(),
+                flags=Gtk.DialogFlags.MODAL,
+                type=Gtk.MessageType.INFO,
+                buttons=Gtk.ButtonsType.OK,
+                message_format=_("Please select a radio station in the list first.")
+            )
+            d.run()
+            d.destroy()
+            return
+        station_name = model.get_value(tree_iter, 1) or ""
+        current_url = model.get_value(tree_iter, 5) or ""
+        country_id = self.get_selected_country_code()
+        dlg = ContributeStationDialog(
+            parent=self.get_parent_window(),
+            station_name=station_name,
+            current_url=current_url,
+            country_code=country_id
+        )
+        dlg.run()
+
+    def on_contribute_files_to_radio_browser(self):
+        model, tree_iter = self.files_tree.get_selection().get_selected()
+        station_name = ""
+        current_url = ""
+        country_id = ""
+        if tree_iter:
+            station_name = model.get_value(tree_iter, 1) or ""
+            country_id = model.get_value(tree_iter, 3) or ""
+            current_url = model.get_value(tree_iter, 6) or ""
+        else:
+            # Si aucune sélection active, prendre la première station cochée
+            it = model.get_iter_first()
+            while it:
+                if model.get_value(it, 0):
+                    station_name = model.get_value(it, 1) or ""
+                    country_id = model.get_value(it, 3) or ""
+                    current_url = model.get_value(it, 6) or ""
+                    break
+                it = model.iter_next(it)
+
+        if not current_url:
+            d = Gtk.MessageDialog(
+                transient_for=self.get_parent_window(),
+                flags=Gtk.DialogFlags.MODAL,
+                type=Gtk.MessageType.INFO,
+                buttons=Gtk.ButtonsType.OK,
+                message_format=_("Please select or check a radio station in the list first.")
+            )
+            d.run()
+            d.destroy()
+            return
+
+        dlg = ContributeStationDialog(
+            parent=self.get_parent_window(),
+            station_name=station_name,
+            current_url=current_url,
+            country_code=country_id
+        )
+        dlg.run()
 
     def save_stream_to_xml(self, station_name, old_url, new_url):
         country_id, info, _nat, _regs = self.get_current_data()
@@ -1794,7 +1884,7 @@ class DiscoverRadiosWindow(Gtk.Window):
             else:
                 country_code = self.get_selected_country_code()
 
-        self.lbl_rb_status.set_text(_("Recherche sur Radio-Browser en cours..."))
+        self.lbl_rb_status.set_text(_("Searching Radio-Browser..."))
         self.rb_store.clear()
 
         def worker():
@@ -1887,12 +1977,12 @@ class DiscoverRadiosWindow(Gtk.Window):
     # -------------------------------------------------------------------------
     def on_files_browse_clicked(self, widget):
         chooser = Gtk.FileChooserDialog(
-            title=_("Choisir un fichier de radios"),
+            title=_("Choose a radio station file"),
             transient_for=self.get_parent_window(),
             action=Gtk.FileChooserAction.OPEN,
         )
-        chooser.add_button(_("Annuler"), Gtk.ResponseType.CANCEL)
-        chooser.add_button(_("Ouvrir"), Gtk.ResponseType.OK)
+        chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
+        chooser.add_button(_("Open"), Gtk.ResponseType.OK)
 
         filter_all = Gtk.FileFilter()
         filter_all.set_name("Tous fichiers supportés (*.xml, *.csv, *.json, *.m3u, *.pls)")
@@ -1965,7 +2055,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.current_file_stations = stations
         groups = set(s.get("group", "") for s in stations if s.get("group"))
 
-        info_text = f"<b>{_('Fichier :')}</b> {os.path.basename(path)} — <b>{len(stations)}</b> station(s)"
+        info_text = f"<b>{_("File:")}</b> {os.path.basename(path)} — <b>{len(stations)}</b> station(s)"
         if groups:
             info_text += f", <b>{len(groups)}</b> groupe(s)"
         self.lbl_files_info.set_markup(info_text)
@@ -2215,19 +2305,19 @@ class DiscoverRadiosWindow(Gtk.Window):
                 if restored > 0:
                     break
         self.on_refresh_examples_clicked(None)
-        self.show_preview_message(f"{restored} {_('fichiers exemples restaurés.')}")
+        self.show_preview_message(f"{restored} {_("sample files restored.")}")
 
     def on_export_csv_action(self, widget):
         if self.on_export_csv_callback:
             self.on_export_csv_callback()
         else:
-            self.show_preview_message(_("L'exportation CSV est accessible depuis les paramètres."))
+            self.show_preview_message(_("CSV export is available from settings."))
 
     def on_backup_xml_action(self, widget):
         if self.on_backup_xml_callback:
             self.on_backup_xml_callback()
         else:
-            self.show_preview_message(_("La sauvegarde XML est accessible depuis les paramètres."))
+            self.show_preview_message(_("XML backup is available from settings."))
 
     def on_destroy(self, widget):
         if hasattr(self, "preview_player") and self.preview_player:

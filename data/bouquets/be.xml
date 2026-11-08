@@ -9,15 +9,15 @@
       <station name="Musiq3" url="https://redbeemedia.streamabc.net/redbm-musiq3-mp3-320-9308179?sABC=6np7n55s%230%2385qq536q651r88556qo2r75134p68734%23ei&amp;aw_0_1st.playerid=rv&amp;amsparams=playerid:rv;skey:1791468895" genre="RTBF - Classique &amp; Jazz" />
       <station name="Bel RTL" url="https://belrtl.ice.infomaniak.ch/belrtl-mp3-128.mp3" genre="Généraliste privée" />
       <station name="Radio Contact" url="http://radiocontact.ice.infomaniak.ch/radiocontact-mp3-192.mp3" genre="Hits &amp; Divertissement" />
-      <station name="Nostalgie Belgique" url="https://n11-eu.rcs.revma.com/5gd04cwptg0uv?rj-ttl=5&amp;rj-tok=AAABoRvnJs0A4JAauvmJK61U7A" genre="Grands classiques" />
-      <station name="NRJ Belgique" url="https://n15a-eu.rcs.revma.com/xh00fwuptg0uv?rj-ttl=5&amp;rj-tok=AAABnYs3M-QAn5TkD3sejQ4IJg" genre="Hits du moment" />
-      <station name="DH Radio" url="https://n22-eu.rcs.revma.com/th89pet3pzzuv?rj-ttl=5&amp;rj-tok=AAABoRvnJwcALEY-UZyhJa9j4w" genre="Pop Rock" />
+      <station name="Nostalgie Belgique" url="https://n11-eu.rcs.revma.com/5gd04cwptg0uv" genre="Grands classiques" />
+      <station name="NRJ Belgique" url="https://n15a-eu.rcs.revma.com/xh00fwuptg0uv" genre="Hits du moment" />
+      <station name="DH Radio" url="https://n22-eu.rcs.revma.com/th89pet3pzzuv" genre="Pop Rock" />
       <station name="Fun Radio Belgique" url="https://funradiobe.ice.infomaniak.ch/funradiobe-high.mp3" genre="Dance &amp; Electro" />
       </national>
     <regions>
       <region name="Régionales &amp; Locales">
         <station name="Antipode" url="https://antipode.be/" genre="Brabant Wallon" />
-        <station name="Maximum FM" url="http://n02-eu.rcs.revma.com/vnmbzemrmm0uv?rj-ttl=5&amp;rj-tok=AAABoRvnJvsA1mqRpWdyAEGprA" genre="Liège &amp; Région" />
+        <station name="Maximum FM" url="http://n02-eu.rcs.revma.com/vnmbzemrmm0uv" genre="Liège &amp; Région" />
         <station name="Must FM" url="https://stream.radiomustathens.com/" genre="Namur &amp; Luxembourg" />
         <station name="Sud Radio Belgique" url="http://rcf.streamakaci.com/rcfsudbe.mp3" genre="Hainaut" />
         </region>

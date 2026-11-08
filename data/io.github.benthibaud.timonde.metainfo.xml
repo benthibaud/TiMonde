@@ -30,6 +30,11 @@
     <category>Player</category>
   </categories>
   <releases>
+    <release version="0.2.4" date="2026-11-08">
+      <description>
+        <p>Détection des flux réaffectés et stations saisonnières via capture des métadonnées d'antenne (icy-name) avec bouton interactif « Aligner le nom », module de contribution et vérification guidée vers Radio-Browser, support des flux Shoutcast v1 ICY 200 OK, nouvelles icônes contrastées et bouquet France d'Outre-mer assaini (116/116 stations actives, codes ISO GP/MQ/GF/PM/RE/YT/NC/PF/WF).</p>
+      </description>
+    </release>
     <release version="0.2.3" date="2026-11-06">
       <description>
         <p>Navigation en arborescence hiérarchique réelle Gtk.TreeStore dans l'atelier « Mes Radios », support direct des radios sans groupe à la racine, maintien du groupe ouvert lors du tri A-Z, sécurisation ergonomique lors de la suppression de groupe, factorisation des dialogues et purge du code mort.</p>
@@ -37,7 +42,7 @@
     </release>
     <release version="0.2.2" date="2026-10-29">
       <description>
-        <p>Amélioration majeure de la robustesse et de la frugalité : optimisation mémoire (< 15 Mo de RAM), factorisation des composants partagés (RepairStreamDialog, audit de flux asynchrone), harmonisation visuelle du Design System sans débordement horizontal, anti-rebond sur la persistance du volume sonore et parité absolue sur les 56 catalogues Gettext.</p>
+        <p>Amélioration majeure de la robustesse et de la frugalité : optimisation mémoire (&lt; 15 Mo de RAM), factorisation des composants partagés (RepairStreamDialog, audit de flux asynchrone), harmonisation visuelle du Design System sans débordement horizontal, anti-rebond sur la persistance du volume sonore et parité absolue sur les 56 catalogues Gettext.</p>
       </description>
     </release>
     <release version="0.2.0" date="2026-10-17">

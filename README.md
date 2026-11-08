@@ -10,6 +10,7 @@ Inspiré de l'esprit du classique *Radio Tray*, TiMonde se concentre sur l'essen
 
 * **Intégration discrète dans la barre des tâches :** Aucune fenêtre principale permanente. Tout se pilote depuis l'icône du plateau (compatible XFCE, Cinnamon, MATE, KDE Plasma, GNOME, LXQt, etc.).
 * **Frugal et réactif :** Développé en Rust avec GStreamer, il démarre instantanément avec une empreinte mémoire réduite (~15 Mo en veille).
+* **Architecture Client/Serveur robuste :** Démon Rust garant de l'intégrité des signets et du moteur audio, séparé d'une interface graphique GTK3 asynchrone évitant tout blocage ou gel d'écran.
 * **Heure locale et décalage horaire :** Affiche discrètement dans le menu l'heure réelle de la région d'émission et son décalage (avec icône jour/nuit ☀️/🌙).
 * **Explorateur de bouquets & découverte :** Accès à plus de 130 bouquets de stations (France, Belgique, Suisse, Canada, Afrique, Asie...) et à l'annuaire mondial Radio-Browser, sans doublons.
 * **Contrôles directs :**

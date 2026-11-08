@@ -36,6 +36,7 @@ from timonde_common import (
     check_stream_url,
     set_window_icon,
     RepairStreamDialog,
+    ContributeStationDialog,
     apply_timonde_app_css,
     status_markup,
     prompt_text_dialog,
@@ -94,7 +95,7 @@ class ReorderWindow(Gtk.Window):
 
         self.header_title = Gtk.Label()
         self.header_title.set_halign(Gtk.Align.START)
-        self.header_title.set_markup(f"<b>{_('Mes Radios')}</b>")
+        self.header_title.set_markup(f"<b>{_("My Radios")}</b>")
         self.nav_box.pack_start(self.header_title, True, True, 6)
 
         # Outils d'audit et vérification de santé des flux
@@ -116,9 +117,9 @@ class ReorderWindow(Gtk.Window):
         self.help_label.set_halign(Gtk.Align.START)
         self.help_label.set_line_wrap(True)
         self.help_label.set_markup(
-            _("<small>• Développez les dossiers <b>[▶]</b> pour explorer les sous-groupes et radios.\n"
-              "• Utilisez <b>Monter / Descendre</b> ou Glisser-Déposer pour réordonner.\n"
-              "• Utilisez <b>Déplacer vers...</b> pour ranger des radios dans un autre dossier.</small>")
+            _("<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
+              "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
+              "• Use <b>Move to...</b> to organize stations into another folder.</small>")
         )
         self.vbox.pack_start(self.help_label, False, False, 0)
 
@@ -237,6 +238,10 @@ class ReorderWindow(Gtk.Window):
         self.btn_repair = make_btn(_("Repair stream..."), "system-search", _("Search Radio-Browser for a working replacement stream"))
         self.btn_repair.connect("clicked", self.on_repair_stream_clicked)
         side_box.pack_start(self.btn_repair, False, False, 0)
+
+        self.btn_contribute = make_btn(_("Contribute to Radio-Browser..."), "network-server", _("Check or contribute selected station to Radio-Browser"))
+        self.btn_contribute.connect("clicked", self.on_contribute_station_clicked)
+        side_box.pack_start(self.btn_contribute, False, False, 0)
 
         btn_del = make_btn(_("Delete"), "edit-delete", _("Delete selected item or group (Del)"))
         btn_del.connect("clicked", self.on_delete_clicked)
@@ -377,6 +382,34 @@ class ReorderWindow(Gtk.Window):
             except Exception:
                 pass
 
+    def format_station_details(self, st):
+        """Formate le libellé de la colonne Détails/Statut pour une station (pays ou statut de flux)."""
+        if not st or not isinstance(st, dict):
+            return ""
+        url = st.get("url", "")
+        audit = self.audit_results.get(url)
+        if audit:
+            st_val = audit.get("status")
+            st_msg = audit.get("msg", "")
+            if st_val == "online":
+                return status_markup(_("[OK] Live"), kind="ok")
+            elif st_val == "offline":
+                return status_markup(f"{_('[!] Dead link')} ({st_msg})", kind="error", bold=True)
+            elif st_val == "redirect":
+                return status_markup(_("[~] Redirected"), kind="warn")
+            elif st_val == "geo":
+                return status_markup(_("[?] Geo-restricted"), kind="geo")
+            else:
+                return html.escape(st_msg)
+
+        country_tag = (st.get("country") or "").strip().upper()
+        if country_tag:
+            return f"[{country_tag}]"
+        elif len(url) > 28:
+            return url[:25] + "..."
+        else:
+            return url
+
     def _append_leaf(self, parent_iter, st):
         if self.is_item_separator(st):
             if self.filter_broken_only:
@@ -391,28 +424,7 @@ class ReorderWindow(Gtk.Window):
                 return
 
             disp = strip_unsupported_emojis(st.get("name", "")) or st.get("name", "")
-            if audit:
-                st_val = audit.get("status")
-                st_msg = audit.get("msg", "")
-                if st_val == "online":
-                    details = status_markup(_("[OK] Live"), kind="ok")
-                elif st_val == "offline":
-                    details = status_markup(f"{_('[!] Dead link')} ({st_msg})", kind="error", bold=True)
-                elif st_val == "redirect":
-                    details = status_markup(_("[~] Redirected"), kind="warn")
-                elif st_val == "geo":
-                    details = status_markup(_("[?] Geo-restricted"), kind="geo")
-                else:
-                    details = html.escape(st_msg)
-            else:
-                country_tag = st.get("country", "")
-                if country_tag:
-                    details = f"[{country_tag}]"
-                elif len(url) > 28:
-                    details = url[:25] + "..."
-                else:
-                    details = url
-
+            details = self.format_station_details(st)
             self.store.append(parent_iter, ["station", disp, details, st, "audio-x-generic", Pango.Weight.NORMAL])
 
     def serialize_tree(self):
@@ -495,6 +507,43 @@ class ReorderWindow(Gtk.Window):
                 return p_name
         return ""
 
+    def get_all_group_paths(self):
+        """Retourne la liste ordonnée de tous les chemins de dossiers existants dans l'arborescence."""
+        groups = []
+        def collect_groups(p_iter, prefix):
+            c = self.store.iter_children(p_iter)
+            while c is not None:
+                if self.store.get_value(c, 0) == "group":
+                    g_name = self.store.get_value(c, 1)
+                    full = f"{prefix}/{g_name}" if prefix else g_name
+                    groups.append(full)
+                    collect_groups(c, full)
+                c = self.store.iter_next(c)
+        collect_groups(None, "")
+        return groups
+
+    def find_group_iter(self, group_path):
+        """Trouve l'itérateur TreeIter d'un groupe selon son chemin complet (ex: 'Europe/France') ou None si racine/introuvable."""
+        clean_path = (group_path or "").strip().strip("/")
+        if not clean_path or clean_path in ("/", "[ / ] (Racine — Sans groupe)"):
+            return None
+
+        def search_level(p_iter, prefix):
+            c = self.store.iter_children(p_iter)
+            while c is not None:
+                if self.store.get_value(c, 0) == "group":
+                    g_name = self.store.get_value(c, 1)
+                    full = f"{prefix}/{g_name}" if prefix else g_name
+                    if full == clean_path:
+                        return c
+                    sub_res = search_level(c, full)
+                    if sub_res:
+                        return sub_res
+                c = self.store.iter_next(c)
+            return None
+
+        return search_level(None, "")
+
     @property
     def current_group_idx(self):
         """Rétrocompatibilité : None car la sélection est désormais arborescente."""
@@ -558,6 +607,10 @@ class ReorderWindow(Gtk.Window):
             item_repair = Gtk.MenuItem(label=_("Repair stream..."))
             item_repair.connect("activate", self.on_repair_stream_clicked)
             menu.append(item_repair)
+
+            item_contrib = Gtk.MenuItem(label=_("Contribute to Radio-Browser..."))
+            item_contrib.connect("activate", lambda w: self.on_contribute_station_clicked(None))
+            menu.append(item_contrib)
 
             item_del = Gtk.MenuItem(label=_("Delete this station"))
             item_del.connect("activate", self.on_delete_clicked)
@@ -684,10 +737,14 @@ class ReorderWindow(Gtk.Window):
         dlg = EditStationWindow(
             mode="add",
             current_group=current_grp,
+            available_groups=self.get_all_group_paths(),
             parent_window=self.get_parent_window(),
-            on_save=on_station_added
+            standalone=False,
+            on_done_callback=on_station_added
         )
-        dlg.run()
+        dlg.set_transient_for(self.get_parent_window())
+        dlg.set_modal(True)
+        dlg.show_all()
 
     def on_add_separator_clicked(self, widget):
         node_type, name, data_obj, tree_iter, parent_iter = self.get_selected_node()
@@ -728,20 +785,53 @@ class ReorderWindow(Gtk.Window):
             if EditStationWindow is None:
                 return
 
+            current_grp = self.get_selected_group_name() or ""
+
             def on_station_edited(val):
                 if val and isinstance(val, dict):
-                    self.store.set_value(tree_iter, 1, val.get("name", ""))
+                    if val.get("action") == "delete":
+                        self.store.remove(tree_iter)
+                        self.set_dirty(True)
+                        self.show_feedback(f"{_('Station deleted:')} « {name} »")
+                        return
+
+                    disp = strip_unsupported_emojis(val.get("name", "")) or val.get("name", "")
+                    details = self.format_station_details(val)
+                    self.store.set_value(tree_iter, 1, disp)
+                    self.store.set_value(tree_iter, 2, details)
                     self.store.set_value(tree_iter, 3, val)
                     self.set_dirty(True)
                     self.show_feedback(f"{_('Station updated:')} « {val.get('name', '')} »")
 
+                    # Si le groupe de la station a été modifié dans le dialogue d'édition
+                    new_grp = (val.get("group") or "").strip().strip("/")
+                    if new_grp != current_grp:
+                        target_iter = self.find_group_iter(new_grp)
+                        if new_grp and not target_iter:
+                            # Reconstruire proprement si le groupe cible n'existe pas encore dans l'arbre
+                            self.data = self.serialize_tree()
+                            self.populate_tree()
+                            self.set_dirty(True)
+                        else:
+                            row_data = [self.store.get_value(tree_iter, col) for col in range(6)]
+                            self.store.remove(tree_iter)
+                            new_node = self.store.append(target_iter, row_data)
+                            if target_iter:
+                                self.treeview.expand_row(self.store.get_path(target_iter), False)
+                            self.treeview.get_selection().select_iter(new_node)
+
             dlg = EditStationWindow(
                 mode="edit",
                 station_data=data_obj,
+                current_group=current_grp,
+                available_groups=self.get_all_group_paths(),
                 parent_window=self.get_parent_window(),
-                on_save=on_station_edited
+                standalone=False,
+                on_done_callback=on_station_edited
             )
-            dlg.run()
+            dlg.set_transient_for(self.get_parent_window())
+            dlg.set_modal(True)
+            dlg.show_all()
 
     def _count_stations_in_node(self, node_iter):
         """Compte récursivement les stations contenues dans un groupe et ses sous-groupes."""
@@ -918,18 +1008,7 @@ class ReorderWindow(Gtk.Window):
             return
 
         # Lister tous les groupes disponibles + la racine
-        groups = [("/", _("[ / ] Root (Without group)"))]
-        def collect_groups(p_iter, prefix):
-            c = self.store.iter_children(p_iter)
-            while c is not None:
-                if self.store.get_value(c, 0) == "group":
-                    g_name = self.store.get_value(c, 1)
-                    full = f"{prefix}/{g_name}" if prefix else g_name
-                    groups.append((full, full))
-                    collect_groups(c, full)
-                c = self.store.iter_next(c)
-
-        collect_groups(None, "")
+        groups = [("/", _("[ / ] Root (Without group)"))] + [(g, g) for g in self.get_all_group_paths()]
 
         dialog = Gtk.Dialog(
             title=_("Move to another group"),
@@ -962,22 +1041,7 @@ class ReorderWindow(Gtk.Window):
 
         if res == Gtk.ResponseType.OK and target_path:
             # Trouver l'iter cible
-            target_iter = None
-            if target_path != "/":
-                def find_target(p_iter, prefix):
-                    c = self.store.iter_children(p_iter)
-                    while c is not None:
-                        if self.store.get_value(c, 0) == "group":
-                            g_name = self.store.get_value(c, 1)
-                            full = f"{prefix}/{g_name}" if prefix else g_name
-                            if full == target_path:
-                                return c
-                            sub_res = find_target(c, full)
-                            if sub_res:
-                                return sub_res
-                        c = self.store.iter_next(c)
-                    return None
-                target_iter = find_target(None, "")
+            target_iter = self.find_group_iter(target_path)
 
             # Déplacer la station
             row_data = [self.store.get_value(tree_iter, col) for col in range(6)]
@@ -1027,7 +1091,40 @@ class ReorderWindow(Gtk.Window):
         )
         dlg.run()
 
+    def on_contribute_station_clicked(self, widget):
+        node_type, name, data_obj, tree_iter, parent_iter = self.get_selected_node()
+        if not data_obj or node_type != "station":
+            self.show_feedback(_("Please select a station to contribute."))
+            return
+
+        station_name = name or data_obj.get("name", "")
+        current_url = data_obj.get("url", "")
+        country_id = data_obj.get("country", "")
+
+        dlg = ContributeStationDialog(
+            parent=self.get_parent_window(),
+            station_name=station_name,
+            current_url=current_url,
+            country_code=country_id
+        )
+        resp = dlg.run()
+        existing = getattr(dlg, "existing_info", None)
+        dlg.destroy()
+
+        if resp == Gtk.ResponseType.APPLY:
+            # L'utilisateur a cliqué directement sur "Éditer la station" depuis le dialogue de contribution
+            if existing and existing.get("countrycode"):
+                rb_cc = (existing.get("countrycode") or "").strip().upper()
+                if rb_cc and data_obj.get("country") != rb_cc:
+                    data_obj["country"] = rb_cc
+                    self.store.set_value(tree_iter, 2, self.format_station_details(data_obj))
+                    self.store.set_value(tree_iter, 3, data_obj)
+                    self.set_dirty(True)
+            self.on_edit_clicked(None)
+
     def on_check_streams_clicked(self, widget):
+        from concurrent.futures import ThreadPoolExecutor
+
         stations_to_check = []
         def collect(p_iter):
             c = self.store.iter_children(p_iter)
@@ -1073,12 +1170,18 @@ class ReorderWindow(Gtk.Window):
         cancel_event = threading.Event()
 
         def run_checks():
-            done = 0
-            for c_iter, s in stations_to_check:
+            done = [0]
+            done_lock = threading.Lock()
+
+            def check_one(c_iter, s):
                 if cancel_event.is_set():
-                    break
+                    return
                 url = s.get("url", "")
                 ok, msg, redir = check_stream_url(url, timeout=3.0, with_redirect=True)
+                # Ignorer les redirections vers des CDN à jetons éphémères expirables (ex: ?rj-tok=..., &userConsent=...)
+                if redir and any(token in redir for token in ["rj-tok=", "rj-ttl=", "userConsent", "token=", "expires="]):
+                    redir = None
+
                 if ok is True:
                     status = "redirect" if redir else "online"
                 elif ok == "GEO":
@@ -1091,11 +1194,23 @@ class ReorderWindow(Gtk.Window):
                     "msg": msg,
                     "redirect": redir,
                 }
-                done += 1
-                fraction = done / float(total)
-                text = f"{done} / {total} " + _("checked:") + f" {s.get('name', '')[:25]}"
+                with done_lock:
+                    done[0] += 1
+                    cur_done = done[0]
+                fraction = cur_done / float(total)
+                text = f"{cur_done} / {total} " + _("checked:") + f" {s.get('name', '')[:25]}"
                 GLib.idle_add(pbar.set_fraction, fraction)
                 GLib.idle_add(lbl_status.set_text, text)
+
+            with ThreadPoolExecutor(max_workers=8) as executor:
+                futures = [executor.submit(check_one, c_iter, s) for c_iter, s in stations_to_check]
+                for f in futures:
+                    if cancel_event.is_set():
+                        break
+                    try:
+                        f.result()
+                    except Exception:
+                        pass
 
             GLib.idle_add(on_finished)
 
@@ -1121,7 +1236,7 @@ class ReorderWindow(Gtk.Window):
 
             if nb_redir > 0:
                 self.btn_apply_redirects.show()
-                self.btn_apply_redirects.set_label(f"{_('Apply redirects')} ({nb_redir})")
+                update_btn_content(self.btn_apply_redirects, f"{_('Apply redirects')} ({nb_redir})", "emblem-symbolic-link")
             else:
                 self.btn_apply_redirects.hide()
 
@@ -1228,26 +1343,26 @@ class ReorderWindow(Gtk.Window):
         import shutil
         src_path = os.path.expanduser("~/.config/timonde/bookmarks.xml")
         if not os.path.isfile(src_path):
-            self.show_feedback(_("Aucun fichier bookmarks.xml trouvé à sauvegarder."))
+            self.show_feedback(_("No bookmarks.xml file found to backup."))
             return
 
         dialog = Gtk.FileChooserDialog(
-            title=_("Sauvegarder mes signets (XML)"),
+            title=_("Backup my bookmarks (XML)"),
             parent=self.get_parent_window(),
             action=Gtk.FileChooserAction.SAVE,
-            buttons=(_("Annuler"), Gtk.ResponseType.CANCEL, _("Enregistrer"), Gtk.ResponseType.OK),
+            buttons=(_("Cancel"), Gtk.ResponseType.CANCEL, _("Save"), Gtk.ResponseType.OK),
         )
         dialog.set_default_response(Gtk.ResponseType.OK)
         dialog.set_current_name("bookmarks_timonde_backup.xml")
         dialog.set_do_overwrite_confirmation(True)
 
         filter_xml = Gtk.FileFilter()
-        filter_xml.set_name(_("Fichiers XML (*.xml)"))
+        filter_xml.set_name(_("XML files (*.xml)"))
         filter_xml.add_pattern("*.xml")
         dialog.add_filter(filter_xml)
 
         filter_all = Gtk.FileFilter()
-        filter_all.set_name(_("Tous les fichiers (*.*)"))
+        filter_all.set_name(_("All files (*.*)"))
         filter_all.add_pattern("*")
         dialog.add_filter(filter_all)
 
@@ -1262,13 +1377,13 @@ class ReorderWindow(Gtk.Window):
                 tmp_target = f"{chosen_path}.tmp"
                 shutil.copy2(src_path, tmp_target)
                 os.replace(tmp_target, chosen_path)
-                self.show_feedback(f"{_('Sauvegarde XML réussie dans')} {os.path.basename(chosen_path)}")
+                self.show_feedback(f"{_('XML backup successfully created in')} {os.path.basename(chosen_path)}")
                 msg_diag = Gtk.MessageDialog(
                     parent=self.get_parent_window(),
                     flags=Gtk.DialogFlags.MODAL,
                     type=Gtk.MessageType.INFO,
                     buttons=Gtk.ButtonsType.OK,
-                    message_format=f"{_('Sauvegarde réussie !')}\n\n{_('Vos signets complets ont été enregistrés dans :')}\n{chosen_path}",
+                    message_format=f"{_('Backup successful!')}\n\n{_('Your complete bookmarks have been saved to:')}\n{chosen_path}",
                 )
                 msg_diag.run()
                 msg_diag.destroy()
@@ -1278,7 +1393,7 @@ class ReorderWindow(Gtk.Window):
                     flags=Gtk.DialogFlags.MODAL,
                     type=Gtk.MessageType.ERROR,
                     buttons=Gtk.ButtonsType.OK,
-                    message_format=f"{_('Erreur lors de la sauvegarde :')}\n{e}",
+                    message_format=f"{_("Error during backup:")}\n{e}",
                 )
                 err_diag.run()
                 err_diag.destroy()

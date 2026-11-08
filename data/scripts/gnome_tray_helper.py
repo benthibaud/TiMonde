@@ -114,7 +114,7 @@ class GnomeHelperDialog:
         self.Gtk = Gtk
         self.success = False
 
-        self.win = Gtk.Window(title=_("TiMonde — Intégration Bureau GNOME"))
+        self.win = Gtk.Window(title=_("TiMonde — GNOME Desktop Integration"))
         self.win.set_position(Gtk.WindowPosition.CENTER)
         self.win.set_default_size(480, 220)
         self.win.set_border_width(16)
@@ -142,12 +142,12 @@ class GnomeHelperDialog:
 
         vbox_titles = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=3)
         lbl_title = Gtk.Label()
-        lbl_title.set_markup("<b><span size='large'>" + _("Intégration dans la barre supérieure GNOME") + "</span></b>")
+        lbl_title.set_markup("<b><span size='large'>" + _("Integration in GNOME top bar") + "</span></b>")
         lbl_title.set_halign(Gtk.Align.START)
         vbox_titles.pack_start(lbl_title, False, False, 0)
 
         lbl_sub = Gtk.Label()
-        lbl_sub.set_markup("<span opacity='0.75'>" + _("Environnement GNOME Shell détecté") + "</span>")
+        lbl_sub.set_markup("<span opacity='0.75'>" + _("GNOME Shell environment detected") + "</span>")
         lbl_sub.set_halign(Gtk.Align.START)
         vbox_titles.pack_start(lbl_sub, False, False, 0)
 
@@ -156,9 +156,7 @@ class GnomeHelperDialog:
         # Explication claire
         lbl_desc = Gtk.Label()
         lbl_desc.set_markup(
-            _("Pour afficher discrètement l'icône de lecture dans la barre supérieure de votre bureau GNOME, "
-              "l'extension système <b>AppIndicator</b> est nécessaire.<br/><br/>"
-              "Souhaitez-vous l'installer maintenant ?")
+            _("To unobtrusively display the playback icon in the top bar of your GNOME desktop, the <b>AppIndicator</b> system extension is required.\n\nWould you like to install it now?")
         )
         lbl_desc.set_line_wrap(True)
         lbl_desc.set_halign(Gtk.Align.START)
@@ -174,11 +172,11 @@ class GnomeHelperDialog:
         bbox.set_halign(Gtk.Align.END)
         vbox.pack_end(bbox, False, False, 0)
 
-        self.btn_quit = Gtk.Button(label=_("Quitter"))
+        self.btn_quit = Gtk.Button(label=_("Quit"))
         self.btn_quit.connect("clicked", self.on_quit_clicked)
         bbox.pack_start(self.btn_quit, False, False, 0)
 
-        self.btn_install = Gtk.Button(label=_("Installer l'intégration GNOME"))
+        self.btn_install = Gtk.Button(label=_("Install GNOME integration"))
         self.btn_install.get_style_context().add_class("suggested-action")
         self.btn_install.connect("clicked", self.on_install_clicked)
         bbox.pack_start(self.btn_install, False, False, 0)
@@ -192,12 +190,12 @@ class GnomeHelperDialog:
     def on_install_clicked(self, widget):
         cmd = get_install_command()
         if not cmd:
-            self.lbl_status.set_markup("<span color='#e06c75'>" + _("Gestionnaire de paquets non reconnu.") + "</span>")
+            self.lbl_status.set_markup("<span color='#e06c75'>" + _("Unrecognized package manager.") + "</span>")
             return
 
         self.btn_install.set_sensitive(False)
         self.btn_quit.set_sensitive(False)
-        self.lbl_status.set_markup("<i>" + _("Installation en cours (veuillez valider l'invite système)...") + "</i>")
+        self.lbl_status.set_markup("<i>" + _("Installation in progress (please confirm system prompt)...") + "</i>")
 
         # Forcer le rafraîchissement GTK avant de bloquer sur pkexec
         while self.Gtk.events_pending():
@@ -212,11 +210,11 @@ class GnomeHelperDialog:
             else:
                 self.btn_install.set_sensitive(True)
                 self.btn_quit.set_sensitive(True)
-                self.lbl_status.set_markup("<span color='#e06c75'>" + _("L'installation a été annulée ou a échoué.") + "</span>")
+                self.lbl_status.set_markup("<span color='#e06c75'>" + _("Installation was cancelled or failed.") + "</span>")
         except Exception as e:
             self.btn_install.set_sensitive(True)
             self.btn_quit.set_sensitive(True)
-            self.lbl_status.set_markup(f"<span color='#e06c75'>{_('Erreur :')} {e}</span>")
+            self.lbl_status.set_markup(f"<span color='#e06c75'>{_("Error:")} {e}</span>")
 
     def run(self):
         import gi

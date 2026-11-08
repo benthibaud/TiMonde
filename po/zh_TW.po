@@ -1,1221 +1,1110 @@
 # TiMonde — Traduction ZH_TW
+
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
+
 #
+
 msgid ""
 msgstr ""
 "Project-Id-Version: TiMonde 0.1.3\n"
-"Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
-"POT-Creation-Date: 2026-10-29 06:50+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 20:23+0100\n"
 "PO-Revision-Date: 2026-10-17 17:00+0200\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# --- Main Tray Menu ---
-msgid "Play"
-msgstr "播放"
+#: src/i18n.rs:186 src/i18n.rs:193
 
-msgid "Stop"
-msgstr "停止"
-
-msgid "Connecting..."
-msgstr "連接中..."
-
-msgid "Edit"
-msgstr "編輯"
-
-msgid "Delete"
-msgstr "刪除"
-
-msgid "Zap to another random station"
-msgstr "隨機切換到其他電台"
-
-msgid "Play random radio (Ephemeral discovery)"
-msgstr "隨機收聽電台 (探索)"
-
-msgid "[ Ephemeral]"
+msgid " [Ephemeral]"
 msgstr "[ 即時]"
 
-msgid "Options"
-msgstr "選項"
+#: data/scripts/browse_bouquets.py:1655
 
-msgid "Add a station..."
-msgstr "新增電台..."
-
-msgid "Discover & Import stations..."
-msgstr "探索與匯入電台..."
-
-msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr "匯入本機檔案 (XML, CSV, JSON, M3U)..."
-
-msgid "Manage groups and stations..."
-msgstr "管理分組與電台..."
-
-msgid "Open bookmarks.xml"
-msgstr "開啟 bookmarks.xml"
-
-msgid "Quit TiMonde"
-msgstr "結束 TiMonde"
-
-msgid "Mute (0%)"
-msgstr "靜音 (0%)"
-
-msgid "Sleep timer"
-msgstr "睡眠定時器"
-
-msgid "In 15 minutes"
-msgstr "15 分鐘後"
-
-msgid "In 30 minutes"
-msgstr "30 分鐘後"
-
-msgid "In 45 minutes"
-msgstr "45 分鐘後"
-
-msgid "In 60 minutes (1h)"
-msgstr "60 分鐘後 (1小時)"
-
-msgid "Cancel sleep timer"
-msgstr "取消睡眠定時"
-
-# --- Discovery Window (browse_bouquets.py) ---
-msgid "Discover & Import stations (TiMonde)"
-msgstr "探索與匯入電台 (TiMonde)"
-
-msgid "Verified DAB+ Bouquets"
-msgstr "官方精選 DAB+ 專輯"
-
-msgid "Radio-Browser Search"
-msgstr "Radio-Browser 線上搜尋"
-
-msgid "Sample Files"
-msgstr "範例檔案"
-
-msgid "Import my files"
-msgstr "匯入本機檔案"
-
-msgid "<b> Country:</b>"
-msgstr "<b> 國家:</b>"
-
-msgid "<b>Language:</b>"
-msgstr "<b>語言:</b>"
-
-msgid "Name / Keyword:"
-msgstr "名稱 / 關鍵字:"
-
-msgid "Genre:"
-msgstr "流派:"
-
-msgid "<b>Sample file:</b>"
-msgstr "<b>範例檔案:</b>"
-
-msgid "<b>Group name in your favorites:</b>"
-msgstr "<b>我的最愛中的分組名稱:</b>"
-
-msgid "Select all"
-msgstr "全選"
-
-msgid "Deselect all"
-msgstr "取消全選"
-
-msgid "Import into favorites"
-msgstr "匯入至我的最愛"
-
-msgid "Close"
-msgstr "關閉"
-
-# --- Edit Window (edit_station.py) ---
-msgid "Add a station (TiMonde)"
-msgstr "新增電台 (TiMonde)"
-
-msgid "<b>Enter new station details:</b>"
-msgstr "<b>輸入新電台詳細資訊:</b>"
-
-msgid "Add to my stations"
-msgstr "新增至我的電台"
-
-msgid "Save station to favorites (TiMonde)"
-msgstr "儲存電台至我的最愛 (TiMonde)"
-
-msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr "<b>將此探索電台保留在我的最愛中:</b>"
-
-msgid "Keep in favorites"
+msgid "(Already in favorites)"
 msgstr "保留在我的最愛"
 
-msgid "Edit station (TiMonde)"
-msgstr "編輯電台 (TiMonde)"
-
-msgid "<b>Edit station settings:</b>"
-msgstr "<b>編輯電台設定:</b>"
-
-msgid "Save"
-msgstr "儲存"
-
-msgid "Station name:"
-msgstr "電台名稱:"
-
-msgid "Audio stream URL:"
-msgstr "音訊串流網址 (URL):"
-
-msgid "Group / Folder:"
-msgstr "分組 / 資料夾:"
-
-msgid "Country & Timezone:"
-msgstr "國家與時區:"
-
-msgid "Timezone:"
-msgstr "時區:"
-
-msgid "Delete this station"
-msgstr "刪除此電台"
-
-msgid "Cancel"
-msgstr "取消"
-
-msgid "Delete « {} » from favorites?"
-msgstr "從我的最愛中刪除 « {} » ？"
-
-msgid "This action will permanently remove this station from your collection."
-msgstr "此操作將永久從您的收藏中移除該電台。"
-
-# --- Group Reorder Window (reorder_groups.py) ---
-msgid "Manage groups, stations and separators (TiMonde)"
-msgstr "管理分組、電台與分隔線 (TiMonde)"
-
-msgid "Back to groups"
-msgstr "⬅ 返回分組列表"
-
-msgid "Add station"
-msgstr "新增電台"
-
-msgid "Open"
-msgstr "開啟"
-
-msgid "New group"
-msgstr "新增分組"
-
-msgid "Move to..."
-msgstr "移動至..."
-
-msgid "Top"
-msgstr "置頂"
-
-msgid "Move up"
-msgstr "⬆ 上移"
-
-msgid "Move down"
-msgstr "⬇ 下移"
-
-msgid "Separator"
-msgstr "分隔線"
-
-msgid "Sort A-Z"
-msgstr "依名稱排序 A-Z"
-
-msgid "Save and reload"
-msgstr "儲存並重新載入"
-
-# --- Time & Astronomical Periods ---
-msgid "Same time"
-msgstr "相同時間"
-
-msgid "Dawn"
-msgstr "黎明"
-
-msgid "Morning"
-msgstr "早晨"
-
-msgid "Daytime"
-msgstr "白天"
-
-msgid "Evening"
-msgstr "傍晚"
-
-msgid "Night"
-msgstr "夜晚"
-
-msgid "Tomorrow"
-msgstr "明天"
-
-msgid "Yesterday"
-msgstr "昨天"
-
-msgid "Maintenance & Data"
-msgstr "維護與資料"
-
-msgid "Check streams (dead links)..."
-msgstr "檢查串流 (失效連結)..."
-
-msgid "Export my stations to CSV..."
-msgstr "匯出電台為 CSV..."
-
-msgid "Check streams"
-msgstr "檢查串流"
-
-msgid "Dead links only"
-msgstr "僅失效連結"
-
-msgid "Apply redirects"
-msgstr "套用重新導向"
-
-msgid "Repair stream..."
-msgstr "修復串流..."
-
-msgid "Export to CSV"
-msgstr "匯出為 CSV"
-
-msgid "Test stream availability and locate broken links"
-msgstr "測試串流可用性並尋找失效連結"
-
-msgid "Display offline radio streams only"
-msgstr "僅顯示離線電台"
-
-msgid "Automatically update redirected streams to direct URL"
-msgstr "自動將重新導向串流更新為直接連結"
-
-msgid "Search Radio-Browser for a working replacement stream"
-msgstr "在 Radio-Browser 搜尋可用的替代串流"
-
-msgid "Export all stations to CSV spreadsheet format"
-msgstr "將所有電台匯出為 CSV 試算表格式"
-
-msgid "Export my stations to CSV"
-msgstr "匯出電台為 CSV"
-
-msgid "CSV files (*.csv)"
-msgstr "CSV 檔案 (*.csv)"
-
-msgid "All files (*.*)"
-msgstr "所有檔案 (*.*)"
-
-msgid "Export"
-msgstr "匯出"
-
-msgid "Export successful!"
-msgstr "匯出成功！"
-
-msgid "Error during CSV export:"
-msgstr "匯出 CSV 時發生錯誤："
-
-msgid "station(s) saved to:"
-msgstr "電台已儲存至："
-
-msgid "Start automatically at login"
-msgstr "登入時自動啟動"
-
-msgid "Organize groups and stations (TiMonde)"
-msgstr "Organize groups and stations (TiMonde)"
-
-msgid "Back to main group list (Esc)"
-msgstr "Back to main group list (Esc)"
-
-msgid "Sort stations in this group (Enter or double-click)"
-msgstr "Sort stations in this group (Enter or double-click)"
-
-msgid "Create a new group of radio stations (Ctrl+N)"
-msgstr "Create a new group of radio stations (Ctrl+N)"
-
-msgid "Move selection to another group (Ctrl+M)"
-msgstr "Move selection to another group (Ctrl+M)"
-
-msgid "Move selected item to the top"
-msgstr "Move selected item to the top"
-
-msgid "Move up one rank"
-msgstr "Move up one rank"
-
-msgid "Move down one rank"
-msgstr "Move down one rank"
-
-msgid "Add a new station to this group"
-msgstr "Add a new station to this group"
-
-msgid "Insert a separator or header in this group"
-msgstr "Insert a separator or header in this group"
-
-msgid "Sort this list alphabetically"
-msgstr "Sort this list alphabetically"
-
-msgid "Edit selected name, URL or header (F2)"
-msgstr "Edit selected name, URL or header (F2)"
-
-msgid "Delete selected item or group (Del)"
-msgstr "Delete selected item or group (Del)"
-
-msgid "Transfer..."
-msgstr "Transfer..."
-
-msgid "Transfer the content of this group to another group (Ctrl+M)"
-msgstr "Transfer the content of this group to another group (Ctrl+M)"
-
-msgid "<b>Radio groups</b>"
-msgstr "<b>Radio groups</b>"
-
-msgid "— Separator —"
-msgstr "— Separator —"
-
-msgid "radio"
-msgstr "radio"
-
-msgid "radios"
-msgstr "radios"
-
-msgid "sep."
-msgstr "sep."
-
-msgid "dead link"
-msgstr "dead link"
-
-msgid "dead links"
-msgstr "dead links"
-
-msgid "redir."
-msgstr "redir."
-
-msgid "[OK] All online"
-msgstr "[OK] All online"
-
-msgid "Move selected stations to another group (Ctrl+M)"
-msgstr "Move selected stations to another group (Ctrl+M)"
-
-msgid "Create a new group and move selected stations there (Ctrl+N)"
-msgstr "Create a new group and move selected stations there (Ctrl+N)"
-
-msgid "Stations in group:"
-msgstr "Stations in group:"
-
-msgid "Header"
-msgstr "Header"
-
-msgid "[OK] Live"
-msgstr "[OK] Live"
-
-msgid "[!] Dead link"
-msgstr "[!] Dead link"
-
-msgid "[~] Redirected"
-msgstr "[~] Redirected"
-
-msgid "[?] Geo-restricted"
-msgstr "[?] Geo-restricted"
-
-msgid "Audit completed:"
-msgstr "Audit completed:"
-
-msgid "online"
-msgstr "online"
-
-msgid "broken"
-msgstr "broken"
-
-msgid "redirected"
-msgstr "redirected"
-
-msgid "No stations to check."
-msgstr "No stations to check."
-
-msgid "Checking your radio stations"
-msgstr "Checking your radio stations"
-
-msgid "Testing live radio streams..."
-msgstr "Testing live radio streams..."
-
-msgid "stations checked..."
-msgstr "stations checked..."
-
-msgid "checked:"
-msgstr "checked:"
-
-msgid "Please select a station to repair."
-msgstr "Please select a station to repair."
-
-msgid "This item is a separator."
-msgstr "This item is a separator."
-
-msgid "Station deleted"
-msgstr "Station deleted"
-
-msgid "Settings..."
-msgstr "設定..."
-
 # --- Mises à jour TiMonde ---
+
+#: data/scripts/edit_station.py:541
+
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
+
+#: data/scripts/browse_bouquets.py:680 data/scripts/browse_bouquets.py:681
+
+#: data/scripts/browse_bouquets.py:2020 data/scripts/browse_bouquets.py:2063
+
+#: data/scripts/browse_bouquets.py:2197
+
+msgid "(Original folder structure)"
+msgstr "（原始資料夾結構）"
+
+#: data/scripts/edit_station.py:539
 
 msgid "(Single inferred timezone)"
 msgstr "(Single inferred timezone)"
 
+#: data/scripts/edit_station.py:518
+
 msgid "(Timezone not defined)"
 msgstr "(Timezone not defined)"
+
+#: data/scripts/edit_station.py:521
 
 msgid "(Unknown)"
 msgstr "(Unknown)"
 
-msgid "<b>Country:</b>"
-msgstr "<b>Country:</b>"
+#: data/scripts/edit_station.py:75
 
-msgid "<b>Fichier exemple :</b>"
-msgstr "<b>Sample file:</b>"
+msgid "<b>Edit station settings:</b>"
+msgstr "<b>編輯電台設定:</b>"
 
-msgid ""
-"Accédez à plus de 40 000 stations en ligne classées par pays, genre ou mots-"
-"clés."
-msgstr ""
-"Access over 40,000 online stations sorted by country, genre or keywords."
+#: data/scripts/edit_station.py:65
 
-msgid "Ajouter une radio (TiMonde)"
-msgstr "添加收音機 (TiMonde)"
+msgid "<b>Enter new station details:</b>"
+msgstr "<b>輸入新電台詳細資訊:</b>"
 
-msgid "Ajouter une radio manuellement"
-msgstr "Add station manually"
+#: data/scripts/edit_station.py:70
 
-msgid "Ajouter à mes radios"
-msgstr "添加到我的收音機"
+msgid "<b>Keep this randomly discovered station in your favorites:</b>"
+msgstr "<b>將此探索電台保留在我的最愛中:</b>"
 
-msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "沒有添加新的無線電（已經存在）。"
+#: data/scripts/timonde_settings.py:740
 
-msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "DAB+ 花束和官方精選"
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "分佈在 <b>{nb_gr}</b> 個分組中的 <b>{nb_st}</b> 個電台。"
 
-msgid "Bouquets DAB+ vérifiés"
-msgstr "官方精選 DAB+ 專輯"
+#: data/scripts/browse_bouquets.py:1208
 
-msgid ""
-"Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, "
-"GNOME, KDE, MATE)."
-msgstr ""
-"Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, "
-"GNOME, KDE, MATE)."
+msgid "<i>Select a file or sample above.</i>"
+msgstr "<i>選擇上面的文件或樣本。 </i>"
 
-msgid "Conserver dans mes favoris"
-msgstr "儲存到我的收藏夾"
+#: data/scripts/timonde_settings.py:709 data/scripts/timonde_settings.py:719
 
-msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "將收音機保留在收藏夾中 (TiMonde)"
+msgid "Active (Left & Right clicks unified)"
+msgstr "å·²å¯ç¨ï¼å·¦å³é®ç¹å»ç»ä¸ï¼"
 
-msgid ""
-"Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans "
-"~/.config/timonde/examples/."
-msgstr ""
-"Browse the 17 thematic selections or drop your own files into ~/.config/"
-"timonde/examples/."
+#: data/scripts/browse_bouquets.py:882
 
-msgid "Contents"
-msgstr "Contents"
-
-msgid "Details"
-msgstr "Details"
-
-msgid "Dossier ouvert :"
-msgstr "開啟文件："
-
-msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "發現並導入廣播電台 (TiMonde)"
-
-msgid "Démarrage automatique"
-msgstr "Autostart"
-
-msgid ""
-"Démarre discrètement TiMonde en arrière-plan dès l'ouverture de votre "
-"session graphique."
-msgstr ""
-"Launches TiMonde discreetly in the background when your graphical session "
-"starts."
-
-msgid ""
-"Détection automatique selon votre système. 55 langues mondiales supportées "
-"avec drapeaux."
-msgstr ""
-"Automatic detection based on your system. 55 world languages supported."
-
-msgid "Enregistrer"
-msgstr "儲存"
-
-msgid "Erreur :"
-msgstr "Error:"
-
-msgid "Erreur exécution :"
-msgstr "執行錯誤："
-
-msgid "Erreur import JSON :"
-msgstr "JSON 匯入錯誤："
-
-msgid "Erreur lors de la modification de l'autostart."
-msgstr "修改自動啟動時發生錯誤。"
-
-msgid "Explorer DAB+..."
-msgstr "探索 DAB+..."
-
-msgid "Exportation CSV terminée."
-msgstr "CSV 匯出完成。"
-
-msgid "Exporter en CSV..."
-msgstr "匯出為 CSV..."
-
-msgid ""
-"Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout en "
-"conservant bookmarks.xml comme référence."
-msgstr ""
-"Export or sync your radio stations with LibreOffice Calc or Excel while "
-"keeping bookmarks.xml as reference."
-
-msgid "Fermer"
-msgstr "關閉"
-
-msgid "Fichiers exemples"
-msgstr "範例檔案"
-
-msgid "Fichiers exemples thématiques"
-msgstr "Thematic Sample Files"
-
-msgid "Group name"
-msgstr "Group name"
-
-msgid "Générez une feuille de calcul CSV de vos radios"
-msgstr "Generate a CSV spreadsheet of your radio stations"
-
-msgid "Gérer les radios..."
-msgstr "管理電台..."
-
-msgid "Importer depuis CSV..."
-msgstr "從 CSV 匯入..."
-
-msgid "Importer des fichiers personnels"
-msgstr "導入個人文件"
-
-msgid "Importer fichier..."
-msgstr "導入檔案..."
-
-msgid "Importer mes fichiers"
-msgstr "匯入本機檔案"
-
-msgid ""
-"Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV, "
-"JSON, M3U ou PLS."
-msgstr ""
-"Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U "
-"or PLS formats."
-
-msgid "Impossible d ouvrir le dossier :"
-msgstr "無法開啟資料夾："
-
-msgid ""
-"Insérez des séparateurs (---) ou des intertitres de section dans vos groupes "
-"pour aérer votre menu."
-msgstr "在群組中插入分隔符號 (---) 或節標題以使選單更通風。"
-
-msgid "Intégration du bureau & Plateau"
-msgstr "Desktop Integration & Tray"
-
-msgid "Lancement automatique au démarrage"
-msgstr "Launch automatically at startup"
-
-msgid "Lancer l'audit..."
-msgstr "開始檢查..."
-
-msgid "Langue :"
-msgstr "語言:"
-
-msgid "Langue et Région"
-msgstr "Language & Region"
-
-msgid "Modifications prises en compte."
-msgstr "考慮到變化。"
-
-msgid "Modifier la radio (TiMonde)"
-msgstr "編輯廣播 (TiMonde)"
-
-msgid "Name / Header"
-msgstr "Name / Header"
-
-msgid "Nouvelle radio..."
-msgstr "新增電台..."
-
-msgid "Organiser les groupes et les radios"
-msgstr "Organize groups and stations"
-
-msgid "Outil introuvable :"
-msgstr "Tool not found:"
-
-msgid "Ouvrir dossier"
-msgstr "打開資料夾"
-
-msgid "Paramètres & Contrôle TiMonde"
-msgstr "TiMonde Settings & Control"
-
-msgid "Paramètres TiMonde"
-msgstr "TiMonde 設定"
-
-msgid ""
-"Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter votre "
-"bureau."
-msgstr ""
-"Browse 146 verified national and regional bouquets without leaving your "
-"desktop."
-
-msgid "Parcourir..."
-msgstr "瀏覽..."
-
-msgid "Passerelle Tableur (CSV)"
-msgstr "電子試算表閘道 (CSV)"
-
-msgid "Recherche Radio-Browser"
-msgstr "Radio-Browser 線上搜尋"
-
-msgid "Recherche mondiale Radio-Browser"
-msgstr "全球搜尋廣播瀏覽器"
-
-msgid "Rechercher..."
-msgstr "搜尋..."
-
-msgid "Restaurer"
-msgstr "Restore"
-
-msgid "Restaurer les fichiers exemples"
-msgstr "Restore sample files"
-
-msgid "Réimportez ou synchronisez des radios modifiées depuis un tableur CSV"
-msgstr "Re-import or sync modified radio stations from a CSV spreadsheet"
-
-msgid ""
-"Rétablit les 17 exemples thématiques par défaut dans votre dossier personnel "
-"s'ils ont été supprimés."
-msgstr ""
-"Restores the 17 default thematic samples in your personal folder if deleted."
-
-msgid ""
-"Saisir directement un nom, une URL de flux (AAC, MP3, HLS), un pays et un "
-"fuseau horaire."
-msgstr ""
-"Directly enter a name, stream URL (AAC, MP3, HLS), country and timezone."
-
-msgid "Signets actuels (bookmarks.xml)"
-msgstr "Current bookmarks (bookmarks.xml)"
-
-msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "書籤重新組織並保存成功！"
-
-msgid "Supprimer"
-msgstr "刪除"
-
-msgid ""
-"Teste en direct la disponibilité de tous vos flux, détecte les liens "
-"inactifs et applique les redirections."
-msgstr ""
-"Tests live availability of all your streams, detects broken links and "
-"applies redirects."
-
-msgid ""
-"Triez, renommez, supprimez et déplacez vos stations. Créez des dossiers et "
-"des sous-groupes (ex: Musique/Jazz)."
-msgstr ""
-"Sort, rename, delete and move your stations. Create folders and sub-groups "
-"(e.g. Music/Jazz)."
-
-msgid "Vérificateur de flux & Liens morts"
-msgstr "Stream health check & Dead links"
-
-msgid "activé"
-msgstr "enabled"
-
-msgid "ajoutée avec succès à vos signets !"
-msgstr "successfully added to your bookmarks!"
-
-msgid "désactivé"
-msgstr "disabled"
-
-msgid "fichiers exemples restaurés dans"
-msgstr "範例文件恢復於"
-
-msgid "radio(s) ajoutée(s) à vos signets !"
-msgstr "station(s) added to your bookmarks!"
-
-msgid "↕️ Organisation"
-msgstr "↕️ 組織"
-
-msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 視覺佈置技巧"
-
-msgid "💾 Données & Fichiers"
-msgstr "💾 資料和文件"
-
-msgid "📻 Bibliothèque"
-msgstr "📻圖書館"
-
-msgid "🖥️ Général"
-msgstr "🖥️一般"
-
-msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
-msgstr "<i>選擇上面的文件或範例。 </i>"
-
-msgid "Actualiser la liste des exemples"
-msgstr "刷新範例列表"
-
-msgid "Aide sur les groupes et sous-groupes"
-msgstr "幫助處理組和子組"
-
-msgid "Ajouter"
+msgid "Add"
 msgstr "添加"
 
-msgid "Annuler"
-msgstr "取消"
+#: data/scripts/reorder_groups.py:189
 
-msgid "Arrêter"
-msgstr "停止"
+msgid "Add a new station to this group or to root"
+msgstr "åæ­¤åçµææ ¹ç®éæ°å¢é»å°"
 
-msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
-msgstr "找不到要儲存的 bookmarks.xml 檔案。"
+# --- Edit Window (edit_station.py) ---
 
-msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
-msgstr "沒有新增新的廣播電台（已存在於您的書籤中）。"
+#: data/scripts/edit_station.py:64
 
-msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
-msgstr "在廣播瀏覽器上找不到符合這些條件的廣播電台。"
+msgid "Add a station (TiMonde)"
+msgstr "新增電台 (TiMonde)"
 
-msgid "Bouquet National (Grandes stations)"
-msgstr "國家花束（主要度假村）"
+#: data/scripts/reorder_groups.py:189
 
-msgid "Bouquets par pays"
-msgstr "各國花束"
+msgid "Add station"
+msgstr "新增電台"
 
-msgid "Bureau graphique & Plateau"
-msgstr "圖形桌和托盤"
+#: data/scripts/reorder_groups.py:576
 
-msgid "Cette station n'a aucune URL de flux audio."
-msgstr "該電台沒有音訊串流 URL。"
+msgid "Add station here..."
+msgstr "å¨æ­¤æ°å¢é»å°..."
 
-msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
-msgstr "上傳 XML、CSV、JSON、M3U 或 PLS 文件"
+#: data/scripts/reorder_groups.py:597
 
-msgid "Charger un fichier..."
-msgstr "加載檔案..."
+msgid "Add station..."
+msgstr "新增電台..."
 
-msgid "Choisir parmi les groupes existants"
-msgstr "從現有群組中選擇"
+#: data/scripts/edit_station.py:66
 
-msgid "Choisir un fichier de radios"
-msgstr "選擇廣播文件"
+msgid "Add to my stations"
+msgstr "新增至我的電台"
 
-msgid "Collections & Fichiers"
-msgstr "收藏和文件"
+#: data/scripts/edit_station.py:159
 
-msgid "Conserver l'organisation en dossiers"
-msgstr "將組織存檔"
+msgid "Align name"
+msgstr "å°é½åç¨±"
 
-msgid ""
-"Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux "
-"horaires)"
-msgstr "建立您的收藏的完整備份（包含資料夾和時區）"
+#: data/scripts/reorder_groups.py:295
 
-msgid "Disponibilité"
-msgstr "可用性"
+msgid "All changes saved"
+msgstr "ææè®æ´å·²å²å­"
 
-msgid "Disponibilité en direct"
-msgstr "即時可用性"
+#: data/scripts/browse_bouquets.py:784
 
-msgid "Dossier / Groupe"
-msgstr "資料夾/群組"
-
-msgid "Dossier des exemples"
-msgstr "範例資料夾"
-
-msgid "Dossier des signets"
-msgstr "書籤資料夾"
-
-msgid ""
-"Détection automatique selon les paramètres régionaux de votre environnement "
-"Linux."
-msgstr "根據您的Linux環境的區域設定自動偵測。"
-
-msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
-msgstr "偵測到環境（唯讀）"
-
-msgid "Effacer le champ"
-msgstr "清晰的視野"
-
-msgid "Effacer le filtre langue"
-msgstr "清除語言過濾器"
-
-msgid "Effacer le filtre pays"
-msgstr "清除國家過濾器"
-
-msgid "Environnement GNOME Shell détecté"
-msgstr "偵測到 GNOME Shell 環境"
-
-msgid "Erreur lors de la sauvegarde :"
-msgstr "保存時發生錯誤："
-
-msgid "Ex: /France/Jazz ou / pour racine"
-msgstr "例如：/France/Jazz 或 / 表示根目錄"
-
-msgid "Exemples thématiques :"
-msgstr "專題範例："
-
-msgid "Exporter en tableau (CSV)..."
-msgstr "匯出到表 (CSV)..."
-
-msgid "Fichier :"
-msgstr "文件："
-
-msgid "Fichier externe :"
-msgstr "外部文件："
-
-msgid "Fichiers XML (*.xml)"
-msgstr "XML 檔案 (*.xml)"
-
-msgid "Filtrer par pays :"
-msgstr "按國家過濾："
-
-msgid "Format & Débit"
-msgstr "格式和位元率"
-
-msgid "Genre / Tags"
-msgstr "性別/標籤"
-
-msgid "Genre / Thématique"
-msgstr "類型/主題"
-
-msgid "Genre :"
-msgstr "性別："
-
-msgid "Gestionnaire de paquets non reconnu."
-msgstr "無法辨識的套件管理器。"
-
-msgid "Groupe :"
-msgstr "組："
-
-msgid "Générer une liste plate pour tableur Calc ou Excel"
-msgstr "為 Calc 或 Excel 電子表格產生平面列表"
-
-msgid "Importer"
-msgstr "進口"
-
-msgid "Importer & Exporter"
-msgstr "進出口"
-
-msgid "Importer dans mes favoris"
-msgstr "匯入到我的收藏夾"
-
-msgid "Installation en cours (veuillez valider l'invite système)..."
-msgstr "正在進行安裝（請驗證系統提示）..."
-
-msgid "Installer l'intégration GNOME"
-msgstr "安裝 GNOME 集成"
-
-msgid "Intégration GNOME requise"
-msgstr "需要 GNOME 集成"
-
-msgid "Intégration dans la barre supérieure GNOME"
-msgstr "整合到 GNOME 頂欄"
-
-msgid ""
-"Intégration native dans la zone de notification via StatusNotifierItem / "
-"XEmbed."
-msgstr "透過 StatusNotifierItem / XEmbed 本機整合到通知區域。"
-
-msgid "L'exportation CSV est accessible depuis les paramètres."
-msgstr "可從設定存取 CSV 匯出。"
-
-msgid ""
-"L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre "
-"supérieure sous GNOME."
-msgstr "需要 AppIndicator 擴充功能才能在 GNOME 的頂部欄中顯示圖示。"
-
-msgid "L'installation a été annulée ou a échoué."
-msgstr "安裝被取消或失敗。"
-
-msgid "La sauvegarde XML est accessible depuis les paramètres."
-msgstr "可從設定存取 XML 備份。"
-
-msgid "Langue du système"
-msgstr "系統語言"
-
-msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
-msgstr "無法收聽分隔符號和字幕。"
-
-msgid "Mes Radios"
-msgstr "我的收音機"
-
-msgid "Mot-clé :"
-msgstr "關鍵字："
-
-msgid "Nouveaux uniquement"
-msgstr "限新品"
-
-msgid "OPTIONS DE SESSION"
-msgstr "會話選項"
-
-msgid "Organisation des groupes et sous-groupes (Convention Linux)"
-msgstr "組和子組的組織（Linux 公約）"
-
-msgid "Ouvrez d'abord un groupe pour écouter ses radios."
-msgstr "先開個群聽它的廣播。"
-
-msgid "Ouvrir"
-msgstr "打開"
-
-msgid "Ouvrir ~/.config/timonde"
-msgstr "開啟~/.config/timonde"
-
-msgid "Ouvrir ~/.config/timonde/examples"
-msgstr "開啟~/.config/timonde/examples"
-
-msgid "Pays"
-msgstr "國家"
-
-msgid "Pays :"
-msgstr "國家："
-
-msgid ""
-"Pour afficher discrètement l'icône de lecture dans la barre supérieure de "
-"votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire."
-"<br/><br/>Souhaitez-vous l'installer maintenant ?"
-msgstr ""
-"要在 GNOME 桌面的頂部欄中謹慎地顯示播放圖標，需要 <b>AppIndicator</b> 系統擴"
-"充功能。 <br/><br/>您想立即安裝它嗎？"
-
-msgid "Préférences"
-msgstr "偏好設定"
-
-msgid ""
-"Préserver les sous-groupes définis dans le fichier au lieu de tout importer "
-"dans un groupe unique."
-msgstr "保留檔案中定義的子群組，而不是將所有內容匯入到單一群組中。"
-
-msgid "Quitter"
-msgstr "退出"
-
-msgid "Recharger"
-msgstr "重新載入"
-
-msgid "Recharger le fichier actuellement affiché"
-msgstr "重新載入目前顯示的文件"
-
-msgid ""
-"Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> "
-"(+45 000 stations)."
-msgstr ""
-"在免費的協作 <b>Radio-Browser</b> 目錄上進行全球搜尋（+45,000 個電台）。"
-
-msgid "Recherche sur Radio-Browser en cours..."
-msgstr "無線電瀏覽器搜尋正在進行中..."
-
-msgid "Rechercher"
-msgstr "搜尋"
-
-msgid "Rechercher en ligne"
-msgstr "網路搜尋"
-
-msgid "Remplacer le lien sélectionné par un flux officiel actif"
-msgstr "將選定的連結替換為有效的官方來源"
-
-msgid "Restaurer exemples"
-msgstr "恢復範例"
-
-msgid "Régions & Locales :"
-msgstr "地區和當地人："
-
-msgid "Réparer le flux..."
-msgstr "修復流量..."
-
-msgid "Rétablir les 19 exemples d'origine"
-msgstr "恢復原來的19個例子"
-
-msgid ""
-"Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
-msgstr "輸入關鍵字或按一下「搜尋」以瀏覽目錄。"
-
-msgid "Sauvegarde réussie !"
-msgstr "備份成功！"
-
-msgid "Sauvegarder mes radios (XML)..."
-msgstr "儲存我的收音機 (XML)..."
-
-msgid "Sauvegarder mes signets (XML)"
-msgstr "儲存我的書籤 (XML)"
-
-msgid "Signets et radios enregistrés avec succès !"
-msgstr "書籤和收音機保存成功！"
-
-msgid "Station"
-msgstr "度假村"
-
-msgid "Statut Favoris"
-msgstr "收藏夾狀態"
-
-msgid ""
-"Sélection officielle et vérifiée parmi 146 pays et régions (bouquets "
-"numériques DAB+ et grandes stations nationales)."
-msgstr "來自146個國家和地區的官方和驗證選擇（DAB+數位花束和主要國家電台）。"
-
-msgid "Sélectionnez une radio pour l'écouter."
-msgstr "選擇一個收音機來收聽。"
-
-msgid "Sélectionnez une station dans le tableau pour l'écouter."
-msgstr "從表格中選擇一個電台來收聽。"
-
-msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
-msgstr "輸入國家（例如：法國、德國、加拿大...）"
-
-msgid "Tester"
-msgstr "測試"
-
-msgid "Tester les flux"
-msgstr "測試流程"
-
-msgid "TiMonde — Intégration Bureau GNOME"
-msgstr "TiMonde — GNOME 桌面集成"
-
-msgid "Tous les fichiers (*.*)"
-msgstr "所有文件 (*.*)"
-
-msgid "Tous les pays (mondial)"
+msgid "All countries (Worldwide)"
 msgstr "所有國家（全球）"
 
-msgid "Tout cocher"
-msgstr "檢查全部"
+#: data/scripts/reorder_groups.py:1281
 
-msgid "Tout décocher"
-msgstr "全部取消勾選"
+msgid "All files (*.*)"
+msgstr "所有檔案 (*.*)"
 
-msgid "Toutes les langues"
+#: data/scripts/browse_bouquets.py:823
+
+msgid "All languages"
 msgstr "所有語言"
 
-msgid "URL du flux"
-msgstr "提要網址"
-
-msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
-msgstr "請從清單中選擇一個收音機來收聽。"
-
-msgid "Vos signets complets ont été enregistrés dans :"
-msgstr "您的完整書籤已儲存在："
-
-msgid "Votes"
-msgstr "投票數"
-
-msgid "Vérifier en direct la disponibilité des liens"
-msgstr "即時檢查連結可用性"
-
-msgid "Vérifier la disponibilité en direct des radios"
-msgstr "檢查現場廣播的可用性"
-
-msgid "Vérifier la disponibilité en direct des radios trouvées"
-msgstr "檢查找到的收音機的即時可用性"
-
-msgid "Vérifier la validité du lien et écouter un aperçu du flux"
-msgstr "檢查連結有效性並預覽串流"
-
-msgid "ajoutée avec succès !"
-msgstr "添加成功！"
-
-msgid "fichiers exemples restaurés."
-msgstr "恢復樣本檔案。"
-
-msgid "nouvelle(s) radio(s) importée(s) !"
-msgstr "進口新收音機！"
-
-msgid "Écouter"
-msgstr "聽"
-
-msgid "Écouter la radio sélectionnée"
-msgstr "收聽選定的廣播"
-
-msgid "Écouter ou tester la radio sélectionnée"
-msgstr "收聽或測試所選的廣播"
-
-msgid "is not responding. Searching for a backup stream..."
-msgstr "無回應。正在搜尋備用串流..."
-
-msgid "Stream repaired and saved for"
-msgstr "已成功修復並儲存串流："
-
-msgid "is currently unavailable"
-msgstr "目前無法使用"
-
-msgid "Unable to find a station in the bouquets catalog."
-msgstr "無法在精選電台目錄中找到電台。"
-
-msgid "No radio is currently playing."
-msgstr "目前沒有正在播放的廣播。"
-
-msgid "Selection"
-msgstr "精選"
-
-msgid "Save error"
-msgstr "儲存錯誤"
-
-msgid "Saved!"
-msgstr "已儲存！"
-
-msgid "saved in your favorites!"
-msgstr "已儲存到您的常用電台！"
-
-msgid "Station added but reload error"
-msgstr "電台已新增但重新載入失敗"
-
-msgid "Sleep timer activated"
-msgstr "睡眠定時器已啟動"
-
-msgid "stopping in"
-msgstr "將於以下時間後關閉："
-
-msgid "Sleep timer: stopping radio."
-msgstr "睡眠定時器：正在停止廣播。"
-
-msgid "Sleep timer cancelled."
-msgstr "睡眠定時器已取消。"
-
-msgid "Track copied to clipboard:"
-msgstr "曲目資訊已複製到剪貼簿："
-
-msgid "deleted from your favorites."
-msgstr "已從常用電台中刪除。"
-
-msgid "updated successfully!"
-msgstr "更新成功！"
-
-msgid "Settings console not found"
-msgstr "找不到設定控制台"
-
-msgid "Paused"
-msgstr "暫停"
-
-msgid "Searching on Radio-Browser..."
-msgstr "正在 Radio-Browser 上搜尋..."
-
-msgid "No stream found for this name. Modify the text above."
-msgstr "找不到此名稱的串流。請修改上方關鍵字。"
-
-msgid "{count} streams found. Select the desired stream and validate."
-msgstr "找到 {count} 個串流。請選擇所需串流並確認。"
-
-msgid "No pre-loaded DAB+ bouquet for this country."
-msgstr "該國家/地區暫無預載的 DAB+ 精選包。"
+#: data/scripts/timonde_settings.py:728
 
 msgid ""
-"You can explore and import stations for this territory directly from the "
-"global directory."
-msgstr "您可以直接從全球目錄中探索並匯入該地區的電台。"
+"Allows opening the station menu interchangeably with left or right click."
+msgstr "允許透過左鍵或右鍵點擊交替開啟電台選單。"
+
+#: data/scripts/timonde_common.py:1904
+
+msgid "Already registered"
+msgstr "å·²æ¶é"
+
+#: data/scripts/timonde_common.py:1899
+
+msgid "Already registered:"
+msgstr "å·²æ¶éï¼"
+
+#: data/scripts/reorder_groups.py:111 data/scripts/reorder_groups.py:1155
+
+msgid "Apply redirects"
+msgstr "套用重新導向"
+
+#: data/scripts/reorder_groups.py:783 data/scripts/reorder_groups.py:785
+
+#: data/scripts/reorder_groups.py:787
+
+msgid "Are you sure you want to delete « {name} » ?"
+msgstr "您確定要刪除 « {name} » 嗎？"
+
+#: data/scripts/edit_station.py:121
+
+msgid "Audio stream URL:"
+msgstr "音訊串流網址 (URL):"
+
+#: data/scripts/reorder_groups.py:1139
+
+msgid "Audit completed:"
+msgstr "Audit completed:"
+
+#: data/scripts/timonde_settings.py:666
+
+msgid "Automatic detection according to your Linux locale settings."
+msgstr "根據您的 Linux 區域設定自動檢測。"
+
+#: data/scripts/timonde_settings.py:648
+
+msgid "Automatic launch on startup"
+msgstr "啟動時自動啟動"
+
+#: data/scripts/timonde_settings.py:751
+
+msgid "Automatic startup"
+msgstr "自動啟動"
+
+#: data/scripts/reorder_groups.py:111
+
+msgid "Automatically update redirected streams to direct URL"
+msgstr "自動將重新導向串流更新為直接連結"
+
+#: data/scripts/browse_bouquets.py:913 data/scripts/browse_bouquets.py:1247
+
+msgid "Availability"
+msgstr "可用性"
+
+#: data/scripts/reorder_groups.py:1266
+
+msgid "Backup my bookmarks (XML)"
+msgstr "åä»½æçæ¸ç±¤ (XML)"
+
+#: data/scripts/browse_bouquets.py:1199
+
+msgid "Backup my radios (XML)..."
+msgstr "備份我的收音機 (XML)..."
+
+#: data/scripts/reorder_groups.py:1302
+
+msgid "Backup successful!"
+msgstr "åä»½æåï¼"
+
+#: data/scripts/timonde_common.py:1645
+
+msgid "Bitrate"
+msgstr "Bitrate"
+
+#: data/scripts/timonde_settings.py:530
+
+msgid "Bookmarks and stations saved successfully!"
+msgstr "書籤和電台已成功保存！"
+
+#: data/scripts/browse_bouquets.py:1203
+
+msgid "Bookmarks folder"
+msgstr "書籤資料夾"
+
+#: data/scripts/browse_bouquets.py:2312
+
+msgid "CSV export is available from settings."
+msgstr "可從設定匯出 CSV。"
+
+#: data/scripts/reorder_groups.py:1252
+
+msgid "CSV export successful:"
+msgstr "CSV å¯åºæåï¼"
+
+#: data/scripts/browse_bouquets.py:1982 data/scripts/edit_station.py:308
+
+#: data/scripts/edit_station.py:575 data/scripts/reorder_groups.py:260
+
+#: data/scripts/reorder_groups.py:638 data/scripts/reorder_groups.py:948
+
+#: data/scripts/reorder_groups.py:1228 data/scripts/reorder_groups.py:1269
+
+#: data/scripts/timonde_common.py:1596 data/scripts/timonde_common.py:1720
+
+msgid "Cancel"
+msgstr "取消"
+
+#: src/tray/menu.rs:589
+
+msgid "Cancel sleep timer"
+msgstr "取消睡眠定時"
+
+#: data/scripts/timonde_common.py:1814
+
+msgid "Check"
+msgstr "æª¢æ¥"
+
+#: data/scripts/browse_bouquets.py:938 data/scripts/browse_bouquets.py:1107
+
+#: data/scripts/browse_bouquets.py:1274
+
+msgid "Check all"
+msgstr "檢查全部"
+
+#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
+
+msgid "Check and submit selected station to Radio-Browser directory"
+msgstr "å¨ Radio-Browser ç®éä¸­æª¢æ¥ä¸¦æäº¤é¸åçé»å°"
+
+#: data/scripts/timonde_common.py:1814
+
+msgid "Check entered stream URL again on Radio-Browser"
+msgstr "å¨ Radio-Browser ä¸éæ°æª¢æ¥è¼¸å¥çä¸²æµç¶²å"
+
+#: data/scripts/edit_station.py:139
+
+msgid "Check if stream is listed or contribute to directory"
+msgstr "æª¢æ¥ä¸²æµæ¯å¦å·²æ¶éæåç®éè²¢ç»"
+
+#: data/scripts/edit_station.py:135
+
+msgid "Check link validity and listen to stream preview"
+msgstr "檢查連結有效性並收聽串流預覽"
+
+#: data/scripts/browse_bouquets.py:1286
+
+msgid "Check links availability live"
+msgstr "即時檢查連結可用性"
+
+#: data/scripts/browse_bouquets.py:946
+
+msgid "Check live availability of found stations"
+msgstr "檢查已找到電台的即時可用性"
+
+#: data/scripts/reorder_groups.py:242
+
+msgid "Check or contribute selected station to Radio-Browser"
+msgstr "å¨ Radio-Browser ä¸æª¢æ¥æè²¢ç»é¸åçé»å°"
+
+#: data/scripts/browse_bouquets.py:1115
+
+msgid "Check stations live availability"
+msgstr "檢查車站即時可用性"
+
+#: data/scripts/reorder_groups.py:102
+
+msgid "Check streams"
+msgstr "檢查串流"
+
+#: data/scripts/timonde_common.py:1882
+
+msgid "Checking Radio-Browser directory..."
+msgstr "æ­£å¨æ¥è©¢ Radio-Browser ç®é..."
+
+#: data/scripts/reorder_groups.py:1077
+
+msgid "Checking your radio stations"
+msgstr "Checking your radio stations"
+
+#: data/scripts/browse_bouquets.py:1656
+
+msgid "Checking..."
+msgstr "連接中..."
+
+#: data/scripts/browse_bouquets.py:1978
+
+msgid "Choose a radio station file"
+msgstr "選擇廣播電台文件"
+
+#: data/scripts/browse_bouquets.py:676
+
+msgid "Choose from existing groups"
+msgstr "從現有群組中選擇"
+
+#: data/scripts/timonde_settings.py:727
+
+msgid "Cinnamon Left-Click Unification"
+msgstr "Cinnamon å·¦é®ç»ä¸"
+
+#: data/scripts/timonde_settings.py:721
+
+msgid "Cinnamon left-click unification successfully enabled!"
+msgstr "Cinnamon å·¦é®ç»ä¸å·²æåå¯ç¨ï¼"
+
+#: data/scripts/edit_station.py:265
+
+msgid "Clear"
+msgstr "Clear"
+
+#: data/scripts/edit_station.py:266
+
+msgid "Clear / Automatic mode"
+msgstr "æ¸é¤ / èªå¨æ¨¡å¼"
+
+#: data/scripts/browse_bouquets.py:789
+
+msgid "Clear country filter"
+msgstr "清除國家過濾器"
+
+#: data/scripts/browse_bouquets.py:669
+
+msgid "Clear field"
+msgstr "清晰的視野"
+
+#: data/scripts/edit_station.py:187
+
+msgid "Clear field (click to empty)"
+msgstr "æ¸ç©ºå­æ®µï¼ç¹å»æ¸ç©ºï¼"
+
+#: data/scripts/browse_bouquets.py:828
+
+msgid "Clear language filter"
+msgstr "清除語言過濾器"
+
+#: data/scripts/browse_bouquets.py:1335 data/scripts/timonde_common.py:1858
+
+#: data/scripts/timonde_settings.py:447
+
+msgid "Close"
+msgstr "關閉"
+
+#: data/scripts/reorder_groups.py:88
+
+msgid "Collapse all"
+msgstr "å¨é¨æ¶å"
+
+#: data/scripts/reorder_groups.py:88
+
+msgid "Collapse all groups for an overview"
+msgstr "æ¶åææåçµä»¥æª¢è¦ç¸½è¦½"
+
+#: data/scripts/timonde_settings.py:594
+
+msgid "Collections & Files"
+msgstr "收藏和文件"
+
+#: data/scripts/reorder_groups.py:794
+
+msgid "Confirm deletion"
+msgstr "ç¢ºèªåªé¤"
+
+#: data/scripts/timonde_common.py:1328
+
+msgid "Connecting to"
+msgstr "正在連接到"
+
+#: src/i18n.rs:192 src/tray/menu.rs:159
+
+msgid "Connecting..."
+msgstr "連接中..."
+
+#: data/scripts/browse_bouquets.py:739
+
+msgid "Contribute a station"
+msgstr "è²¢ç»é»å°"
+
+#: data/scripts/timonde_common.py:1781
+
+msgid "Contribute a station to the community Radio-Browser directory"
+msgstr "åç¤¾ç¾¤ Radio-Browser ç®éè²¢ç»æ°é»å°"
+
+#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
+
+#: data/scripts/timonde_common.py:1761
+
+msgid "Contribute to Radio-Browser"
+msgstr "è²¢ç»è³ Radio-Browser"
+
+#: data/scripts/reorder_groups.py:242 data/scripts/reorder_groups.py:567
+
+msgid "Contribute to Radio-Browser..."
+msgstr "è²¢ç»è³ Radio-Browser..."
+
+#: data/scripts/browse_bouquets.py:894 data/scripts/browse_bouquets.py:1240
+
+#: data/scripts/timonde_common.py:1648
+
+msgid "Country"
+msgstr "<b>Country:</b>"
+
+#: data/scripts/browse_bouquets.py:1327 data/scripts/timonde_settings.py:593
+
+msgid "Country bouquets"
+msgstr "鄉村花束"
+
+#: data/scripts/timonde_common.py:1821
+
+msgid "Country code (ISO):"
+msgstr "åå®¶/å°åä»£ç¢¼ (ISO)ï¼"
+
+#: data/scripts/browse_bouquets.py:981 data/scripts/edit_station.py:228
+
+#: data/scripts/timonde_common.py:1900
+
+msgid "Country:"
+msgstr "Country:"
+
+#: data/scripts/reorder_groups.py:639
+
+msgid "Create"
+msgstr "å»ºç«"
+
+#: data/scripts/browse_bouquets.py:1199
+
+msgid "Create a full backup of your collection (with folders and timezones)"
+msgstr "建立您的收藏的完整備份（包含資料夾和時區）"
+
+#: data/scripts/reorder_groups.py:634
+
+msgid "Create a new group"
+msgstr "å»ºç«æ°åçµ"
+
+#: data/scripts/reorder_groups.py:193
+
+msgid "Create a new group or subgroup (Ctrl+N)"
+msgstr "å»ºç«æ°åçµæå­åçµ (Ctrl+N)"
+
+#: data/scripts/reorder_groups.py:658
+
+msgid "Create as a subgroup inside"
+msgstr "å»ºç«çºå§é¨å­åçµï¼"
+
+#: data/scripts/timonde_settings.py:656
+
+msgid "DETECTED ENVIRONMENT (READ ONLY)"
+msgstr "偵測到的環境（唯讀）"
+
+#: src/timezone.rs:521
+
+msgid "Daytime"
+msgstr "白天"
+
+#: data/scripts/reorder_groups.py:106 data/scripts/reorder_groups.py:1147
+
+msgid "Dead links only"
+msgstr "僅失效連結"
+
+#: data/scripts/edit_station.py:576 data/scripts/reorder_groups.py:246
+
+#: src/i18n.rs:230 src/i18n.rs:236
+
+msgid "Delete"
+msgstr "刪除"
+
+#: data/scripts/reorder_groups.py:588
+
+msgid "Delete group and stations"
+msgstr "åªé¤åçµåå¶é»å°"
+
+#: data/scripts/reorder_groups.py:246
+
+msgid "Delete selected item or group (Del)"
+msgstr "Delete selected item or group (Del)"
+
+#: data/scripts/edit_station.py:303 data/scripts/reorder_groups.py:571
+
+msgid "Delete this station"
+msgstr "刪除此電台"
+
+#: data/scripts/edit_station.py:572
+
+msgid "Delete « {} » from favorites?"
+msgstr "從我的最愛中刪除 « {} » ？"
+
+#: data/scripts/reorder_groups.py:803
+
+msgid "Deleted:"
+msgstr "å·²åªé¤ï¼"
+
+#: data/scripts/timonde_settings.py:676
+
+msgid "Desktop environment & Tray"
+msgstr "桌面環境和托盤"
+
+#: data/scripts/reorder_groups.py:169
+
+msgid "Details / Status"
+msgstr "è©³æ / çæ"
+
+# --- Discovery Window (browse_bouquets.py) ---
+
+#: data/scripts/browse_bouquets.py:525
+
+msgid "Discover & Import stations (TiMonde)"
+msgstr "探索與匯入電台 (TiMonde)"
+
+#: data/scripts/timonde_settings.py:649
+
+msgid ""
+"Discreetly starts TiMonde in the background as soon as your graphical "
+"session opens."
+msgstr "一旦您的圖形會話打開，就會在後台謹慎地啟動 TiMonde。"
+
+#: data/scripts/reorder_groups.py:107
+
+msgid "Display offline radio streams only"
+msgstr "僅顯示離線電台"
+
+#: data/scripts/reorder_groups.py:234 src/i18n.rs:229 src/i18n.rs:235
+
+#: src/tray/menu.rs:384
+
+msgid "Edit"
+msgstr "編輯"
+
+#: data/scripts/reorder_groups.py:234
+
+msgid "Edit selected name, URL or group (F2)"
+msgstr "ç·¨è¼¯é¸åçåç¨±ãç¶²åæåçµ (F2)"
+
+#: data/scripts/edit_station.py:74
+
+msgid "Edit station (TiMonde)"
+msgstr "編輯電台 (TiMonde)"
+
+#: data/scripts/reorder_groups.py:555
+
+msgid "Edit station..."
+msgstr "新增電台..."
+
+#: data/scripts/timonde_common.py:132
+
+msgid "Empty URL"
+msgstr "ç©ºç½å"
+
+#: data/scripts/timonde_common.py:1301 data/scripts/timonde_common.py:1315
+
+msgid "Empty stream URL"
+msgstr "空流 URL"
+
+#: data/scripts/timonde_settings.py:709
+
+msgid "Enable Left-Click"
+msgstr "å¯ç¨å·¦é®ç¹å»"
+
+#: data/scripts/timonde_common.py:1277
+
+msgid "End of stream"
+msgstr "串流結束"
+
+#: data/scripts/browse_bouquets.py:950
+
+msgid "Enter a keyword or click Search to browse the directory."
+msgstr "輸入關鍵字或按一下「搜尋」以瀏覽目錄。"
+
+#: src/tray/mod.rs:155
+
+msgid "Ephemeral radio (not saved)."
+msgstr "ä¸´æ¶çµå°ï¼æªä¿å­ï¼ã"
+
+#: data/scripts/reorder_groups.py:1312
+
+msgid "Error during backup:"
+msgstr "備份時發生錯誤："
+
+#: data/scripts/timonde_settings.py:753
+
+msgid "Error modifying autostart."
+msgstr "修改自動啟動時發生錯誤。"
+
+#: data/scripts/timonde_common.py:195
+
+msgid "Error {code}"
+msgstr "éè¯¯ {code}"
+
+#: data/scripts/gnome_tray_helper.py:217
+
+msgid "Error:"
+msgstr "錯誤："
+
+#: src/timezone.rs:521
+
+msgid "Evening"
+msgstr "傍晚"
+
+#: data/scripts/browse_bouquets.py:652
+
+msgid "Ex: /France/Jazz or / for root"
+msgstr "例如：/France/Jazz 或 / 表示根目錄"
+
+#: data/scripts/browse_bouquets.py:1169
+
+msgid "Examples folder"
+msgstr "範例資料夾"
+
+#: data/scripts/reorder_groups.py:92
+
+msgid "Expand all"
+msgstr "å¨é¨å±é"
+
+#: data/scripts/reorder_groups.py:92
+
+msgid "Expand all groups and subgroups"
+msgstr "å±éææåçµèå­åçµ"
+
+#: data/scripts/browse_bouquets.py:1087
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "在 Radio-Browser 上探索該國家的電台"
+
+#: data/scripts/browse_bouquets.py:1628
 
 msgid "Explore stations from {country} on Radio-Browser ➔"
 msgstr "在 Radio-Browser 上探索來自 {country} 的電台 ➔"
 
-msgid "this country"
-msgstr "該國家/地區"
+#: data/scripts/reorder_groups.py:1228
+
+msgid "Export"
+msgstr "匯出"
+
+#: data/scripts/reorder_groups.py:264
+
+msgid "Export all stations to CSV spreadsheet format"
+msgstr "將所有電台匯出為 CSV 試算表格式"
+
+#: data/scripts/reorder_groups.py:1254
+
+msgid "Export error:"
+msgstr "å¯åºé¯èª¤ï¼"
+
+#: data/scripts/reorder_groups.py:1225
+
+msgid "Export stations to CSV"
+msgstr "å¯åºé»å°è³ CSV"
+
+#: data/scripts/reorder_groups.py:264
+
+msgid "Export to CSV"
+msgstr "匯出為 CSV"
+
+#: data/scripts/browse_bouquets.py:1195
+
+msgid "Export to spreadsheet (CSV)..."
+msgstr "匯出到電子表格 (CSV)..."
+
+#: data/scripts/browse_bouquets.py:1182
+
+msgid "External file:"
+msgstr "外部文件："
+
+#: data/scripts/timonde_common.py:1530
+
+msgid "Failed to add station"
+msgstr "æ°å¢é»å°å¤±æ"
+
+#: data/scripts/timonde_settings.py:723
+
+msgid "Failed to enable Cinnamon unification."
+msgstr "å¯ç¨ Cinnamon ç»ä¸å¤±è´¥ã"
+
+#: data/scripts/browse_bouquets.py:918 data/scripts/browse_bouquets.py:1066
+
+#: data/scripts/browse_bouquets.py:1252
+
+msgid "Favorite status"
+msgstr "最喜歡的狀態"
+
+#: data/scripts/browse_bouquets.py:2056
+
+msgid "File:"
+msgstr "文件："
+
+#: data/scripts/browse_bouquets.py:779
+
+msgid "Filter by country:"
+msgstr "按國家過濾："
+
+#: data/scripts/browse_bouquets.py:1235
+
+msgid "Folder / Group"
+msgstr "資料夾/群組"
+
+#: data/scripts/timonde_common.py:1642
+
+msgid "Format"
+msgstr "Format"
+
+#: data/scripts/browse_bouquets.py:906
+
+msgid "Format & Bitrate"
+msgstr "格式和位元率"
+
+#: data/scripts/gnome_tray_helper.py:150
+
+msgid "GNOME Shell environment detected"
+msgstr "偵測到 GNOME Shell 環境"
+
+#: data/scripts/timonde_settings.py:693
+
+msgid "GNOME integration required"
+msgstr "需要 GNOME 集成"
+
+#: data/scripts/timonde_common.py:1319
+
+msgid "GStreamer not available"
+msgstr "GStreamer 不可用"
+
+#: data/scripts/browse_bouquets.py:1195
+
+msgid "Generate a flat list for Calc or Excel spreadsheet"
+msgstr "為 Calc 或 Excel 電子表格產生平面列表"
+
+#: data/scripts/browse_bouquets.py:901
+
+msgid "Genre / Tags"
+msgstr "性別/標籤"
+
+#: data/scripts/browse_bouquets.py:1053
+
+msgid "Genre / Topic"
+msgstr "類型/主題"
+
+#: data/scripts/browse_bouquets.py:759
+
+msgid "Genre:"
+msgstr "流派:"
+
+#: data/scripts/timonde_common.py:193
+
+msgid "Geoblocked (VPN)"
+msgstr "åºåå°é (VPN)"
+
+#: data/scripts/browse_bouquets.py:735
+
+msgid ""
+"Global search on the free and open <b>Radio-Browser</b> directory (+45,000 "
+"stations)."
+msgstr "在免費開放的 <b>Radio-Browser</b> 目錄上進行全域搜尋（+45,000 個電台）。"
+
+#: data/scripts/edit_station.py:168
+
+msgid "Group / Folder:"
+msgstr "分組 / 資料夾:"
+
+#: data/scripts/reorder_groups.py:677
+
+msgid "Group created:"
+msgstr "åçµå·²å»ºç«ï¼"
+
+#: data/scripts/reorder_groups.py:734
+
+msgid "Group renamed:"
+msgstr "åçµå·²éæ°å½åï¼"
+
+#: data/scripts/browse_bouquets.py:645
+
+msgid "Group:"
+msgstr "團體："
+
+#: data/scripts/timonde_common.py:189
+
+msgid "HTTP Error {code}"
+msgstr "HTTP éè¯¯ {code}"
+
+#: data/scripts/browse_bouquets.py:702
+
+msgid "Help on groups and subgroups"
+msgstr "關於組和子組的幫助"
+
+#: data/scripts/browse_bouquets.py:1039 data/scripts/browse_bouquets.py:1221
+
+msgid "Import"
+msgstr "進口"
+
+#: data/scripts/browse_bouquets.py:1328
+
+msgid "Import & Export"
+msgstr "進出口"
+
+#: data/scripts/browse_bouquets.py:717
+
+msgid "Import to my favorites"
+msgstr "匯入到我的收藏夾"
+
+#: src/tray/menu.rs:560
+
+msgid "In 15 minutes"
+msgstr "15 分鐘後"
+
+#: src/tray/menu.rs:567
+
+msgid "In 30 minutes"
+msgstr "30 分鐘後"
+
+#: src/tray/menu.rs:574
+
+msgid "In 45 minutes"
+msgstr "45 分鐘後"
+
+#: src/tray/menu.rs:581
+
+msgid "In 60 minutes (1h)"
+msgstr "60 分鐘後 (1小時)"
+
+#: data/scripts/reorder_groups.py:707
+
+msgid "Insert"
+msgstr "æå¥"
+
+#: data/scripts/reorder_groups.py:230
+
+msgid "Insert a separator or header"
+msgstr "æå¥åéç·ææ¨é¡"
+
+#: data/scripts/reorder_groups.py:705
+
+msgid "Insert separator"
+msgstr "æå¥åéç·"
+
+#: data/scripts/gnome_tray_helper.py:179 data/scripts/timonde_settings.py:688
+
+msgid "Install GNOME integration"
+msgstr "安裝 GNOME 集成"
+
+#: data/scripts/gnome_tray_helper.py:198
+
+msgid "Installation in progress (please confirm system prompt)..."
+msgstr "正在安裝（請確認系統提示）..."
+
+#: data/scripts/gnome_tray_helper.py:213
+
+msgid "Installation was cancelled or failed."
+msgstr "安裝被取消或失敗。"
+
+#: data/scripts/gnome_tray_helper.py:145
+
+msgid "Integration in GNOME top bar"
+msgstr "整合在 GNOME 頂部欄中"
+
+#: data/scripts/edit_station.py:71
+
+msgid "Keep in favorites"
+msgstr "保留在我的最愛"
+
+#: data/scripts/browse_bouquets.py:749
+
+msgid "Keyword:"
+msgstr "關鍵字："
+
+#: data/scripts/browse_bouquets.py:819 data/scripts/browse_bouquets.py:1023
+
+msgid "Language:"
+msgstr "語言："
+
+#: data/scripts/browse_bouquets.py:706 data/scripts/browse_bouquets.py:1399
+
+#: data/scripts/reorder_groups.py:185 data/scripts/reorder_groups.py:1005
+
+msgid "Listen"
+msgstr "æ¶å¬"
+
+#: data/scripts/browse_bouquets.py:706
+
+msgid "Listen to selected station"
+msgstr "收聽選定的電台"
+
+#: data/scripts/timonde_common.py:204
+
+msgid "Live (Shoutcast)"
+msgstr "å³æç´æ­ (Shoutcast)"
+
+#: data/scripts/timonde_common.py:187
+
+msgid "Live ({codec})"
+msgstr "ç´æ­ ({codec})"
+
+#: data/scripts/browse_bouquets.py:1060
+
+msgid "Live availability"
+msgstr "即時可用性"
+
+#: data/scripts/browse_bouquets.py:1186
+
+msgid "Load a file..."
+msgstr "加載檔案..."
+
+#: data/scripts/browse_bouquets.py:1186
+
+msgid "Load an XML, CSV, JSON, M3U or PLS file"
+msgstr "載入 XML、CSV、JSON、M3U 或 PLS 文件"
+
+#: src/timezone.rs:521
+
+msgid "Morning"
+msgstr "早晨"
+
+#: data/scripts/reorder_groups.py:949
+
+msgid "Move"
+msgstr "ç§»å"
+
+#: data/scripts/reorder_groups.py:219
+
+msgid "Move down"
+msgstr "⬇ 下移"
+
+#: data/scripts/reorder_groups.py:219
+
+msgid "Move down one rank"
+msgstr "Move down one rank"
+
+#: data/scripts/reorder_groups.py:211
+
+msgid "Move selected item to the top"
+msgstr "Move selected item to the top"
+
+#: data/scripts/reorder_groups.py:197
+
+msgid "Move selection to another group (Ctrl+M)"
+msgstr "Move selection to another group (Ctrl+M)"
+
+#: data/scripts/reorder_groups.py:944
+
+msgid "Move to another group"
+msgstr "ç§»åè³å¶ä»åçµ"
+
+#: data/scripts/reorder_groups.py:559
+
+msgid "Move to another group..."
+msgstr "Move selection to another group (Ctrl+M)"
+
+#: data/scripts/reorder_groups.py:197
+
+msgid "Move to..."
+msgstr "移動至..."
+
+#: data/scripts/reorder_groups.py:215
+
+msgid "Move up"
+msgstr "⬆ 上移"
+
+#: data/scripts/reorder_groups.py:215
+
+msgid "Move up one rank"
+msgstr "Move up one rank"
+
+#: src/tray/menu.rs:528
+
+msgid "Mute (0%)"
+msgstr "靜音 (0%)"
+
+#: data/scripts/reorder_groups.py:98 data/scripts/timonde_settings.py:524
+
+msgid "My Radios"
+msgstr "我的收音機"
+
+#: data/scripts/timonde_common.py:1925
+
+msgid "Name and Stream URL are mandatory."
+msgstr "åç¨±èä¸²æµç¶²åçºå¿å¡«æ¬ä½ã"
+
+#: data/scripts/reorder_groups.py:646
+
+msgid "Name of the new group:"
+msgstr "æ°åçµåç¨±ï¼"
+
+#: data/scripts/browse_bouquets.py:1011
+
+msgid "National Bouquet (Major stations)"
+msgstr "國家花束（主要車站）"
+
+#: data/scripts/timonde_settings.py:677
+
+msgid ""
+"Native integration in notification tray via StatusNotifierItem / XEmbed."
+msgstr "透過 StatusNotifierItem / XEmbed 在通知托盤中進行本機整合。"
+
+#: data/scripts/browse_bouquets.py:1655
+
+msgid "New"
+msgstr "[新電台]"
+
+#: data/scripts/reorder_groups.py:193
+
+msgid "New group"
+msgstr "新增分組"
+
+#: data/scripts/reorder_groups.py:593
+
+msgid "New group..."
+msgstr "新增分組"
+
+#: data/scripts/reorder_groups.py:725
+
+msgid "New name for group:"
+msgstr "åçµæ°åç¨±ï¼"
+
+#: data/scripts/browse_bouquets.py:1282
+
+msgid "New only"
+msgstr "限新品"
+
+#: data/scripts/reorder_groups.py:580
+
+msgid "New subgroup here..."
+msgstr "å¨æ­¤å»ºç«æ°å­åçµ..."
+
+#: src/timezone.rs:521
+
+msgid "Night"
+msgstr "夜晚"
+
+#: data/scripts/browse_bouquets.py:1726
 
 msgid "No DAB+ bouquet for {country} — Use 'Search online'."
 msgstr "{country} 暫無 DAB+ 精選包 — 請使用「線上搜尋」。"
 
-msgid "{checked} / {total} station(s) selected"
-msgstr "已選擇 {checked} / {total} 個電台"
+#: data/scripts/reorder_groups.py:1262
 
-msgid ""
-"No radio found for this language in {country}. Uncheck 'Filter by country' "
-"or clear the language."
-msgstr "在 {country} 找不到此語言的電台。取消勾選「按國家篩選」或清除語言。"
+msgid "No bookmarks.xml file found to backup."
+msgstr "æ¾ä¸å°è¦åä»½ç bookmarks.xml æªæ¡ã"
+
+#: data/scripts/reorder_groups.py:872
+
+msgid "No items to sort in this group."
+msgstr "æ­¤åçµä¸­æ²æå¯æåºçé ç®ã"
+
+#: data/scripts/timonde_settings.py:618
+
+msgid "No new stations added (already in your bookmarks)."
+msgstr "æªæ°å¢é»å°ï¼å·²å¨æ¨çæ¸ç±¤ä¸­ï¼ã"
+
+#: data/scripts/browse_bouquets.py:1625
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "該國家/地區暫無預載的 DAB+ 精選包。"
+
+#: data/scripts/browse_bouquets.py:1898
 
 msgid ""
 "No radio found for these criteria in {country}. Uncheck 'Filter by country' "
@@ -1223,286 +1112,1002 @@ msgid ""
 msgstr ""
 "在 {country} 找不到符合條件的電台。取消勾選「按國家篩選」以進行全球搜尋。"
 
+#: data/scripts/browse_bouquets.py:1895
+
+msgid ""
+"No radio found for this language in {country}. Uncheck 'Filter by country' "
+"or clear the language."
+msgstr "在 {country} 找不到此語言的電台。取消勾選「按國家篩選」或清除語言。"
+
+#: data/scripts/browse_bouquets.py:1900
+
 msgid "No radio found on Radio-Browser for these criteria."
 msgstr "在 Radio-Browser 上找不到符合這些條件的電台。"
 
-msgid "[Present]"
-msgstr "[已存在]"
+#: src/tray/mod.rs:459
 
-msgid "[New]"
-msgstr "[新電台]"
+msgid "No radio is currently playing."
+msgstr "目前沒有正在播放的廣播。"
 
-msgid "○ Untested"
-msgstr "○ 未測試"
+#: src/tray/menu.rs:297
 
-msgid "{count} stations found."
-msgstr "找到 {count} 個電台。"
+msgid "No station loaded"
+msgstr "No stations to check."
 
-msgid "Testing..."
-msgstr "正在測試..."
+#: data/scripts/reorder_groups.py:1072
 
-msgid "{count} available timezones"
-msgstr "{count} 個可用時區"
+msgid "No stations to check."
+msgstr "No stations to check."
 
-msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
-msgstr "分佈在 <b>{nb_gr}</b> 個分組中的 <b>{nb_st}</b> 個電台。"
+#: data/scripts/timonde_common.py:1680
 
-msgid "Explore stations from this country on Radio-Browser"
-msgstr "在 Radio-Browser 上探索該國家的電台"
+msgid "No stream found for this name. Modify the text above."
+msgstr "找不到此名稱的串流。請修改上方關鍵字。"
+
+#: data/scripts/timonde_common.py:1907
+
+msgid "Not listed yet!"
+msgstr "å°æªæ¶éï¼"
+
+#: data/scripts/timonde_common.py:1721
+
+msgid "OK"
+msgstr "OK"
+
+#: data/scripts/browse_bouquets.py:972
+
+msgid ""
+"Official and verified selection across 146 countries and regions (digital "
+"DAB+ bouquets and major national stations)."
+msgstr "146 個國家和地區的官方和驗證選擇（數位 DAB+ 花束和主要國家電台）。"
+
+#: data/scripts/timonde_common.py:178
+
+msgid "Offline (HTML error page)"
+msgstr "離線（HTML 錯誤頁面）"
+
+#: data/scripts/edit_station.py:366
+
+msgid "On-air broadcast name:"
+msgstr "é»å°å»£æ­æ­åºåç¨±ï¼"
+
+#: data/scripts/browse_bouquets.py:1983
+
+msgid "Open"
+msgstr "開啟"
+
+#: data/scripts/browse_bouquets.py:1203
+
+msgid "Open ~/.config/timonde"
+msgstr "開啟~/.config/timonde"
+
+#: data/scripts/browse_bouquets.py:1169
+
+msgid "Open ~/.config/timonde/examples"
+msgstr "開啟~/.config/timonde/examples"
+
+#: data/scripts/reorder_groups.py:706
+
+msgid "Optional title for this separator (leave blank for a simple line):"
+msgstr "æ­¤åéç·çé¸ç¨æ¨é¡ï¼çç©ºåçºå®ç´æ©«ç·ï¼ï¼"
+
+#: data/scripts/reorder_groups.py:60
+
+msgid "Organize groups and stations (TiMonde)"
+msgstr "Organize groups and stations (TiMonde)"
+
+#: data/scripts/timonde_common.py:1559
+
+msgid "Organizing groups and subgroups (Linux convention)"
+msgstr "åçµèå­åçµéå±¤è¦ç¯ (Linux)"
+
+#: data/scripts/timonde_common.py:1609
+
+msgid "Original stream is unreachable:"
+msgstr "åå§æµä¸å¯è®¿é®ï¼"
+
+#: src/tray/menu.rs:160
+
+msgid "Paused"
+msgstr "暫停"
+
+# --- Main Tray Menu ---
+
+#: src/i18n.rs:179 src/i18n.rs:228 src/i18n.rs:234 src/i18n.rs:244
+
+#: src/i18n.rs:249 src/i18n.rs:254 src/i18n.rs:257 src/i18n.rs:260
+
+#: src/i18n.rs:263 src/i18n.rs:266 src/i18n.rs:269 src/i18n.rs:272
+
+msgid "Play"
+msgstr "播放"
+
+#: src/tray/menu.rs:413
+
+msgid "Play random radio (Ephemeral discovery)"
+msgstr "隨機收聽電台 (探索)"
+
+#: data/scripts/reorder_groups.py:549
+
+msgid "Play this station"
+msgstr "刪除此電台"
+
+#: data/scripts/timonde_common.py:1283
+
+msgid "Playing:"
+msgstr "播放："
+
+#: data/scripts/edit_station.py:388
+
+msgid "Please enter a stream URL first."
+msgstr "è«åè¼¸å¥ä¸²æµç¶²åã"
+
+#: data/scripts/timonde_common.py:1877
+
+msgid "Please enter a stream URL."
+msgstr "è«è¼¸å¥ä¸²æµç¶²åã"
+
+#: data/scripts/browse_bouquets.py:1783
+
+msgid "Please select a radio station in the list first."
+msgstr "è«åå¨æ¸å®ä¸­é¸åä¸åå»£æ­é»å°ã"
+
+#: data/scripts/reorder_groups.py:926
+
+msgid "Please select a radio station to move."
+msgstr "è«é¸åè¦ç§»åçé»å°ã"
+
+#: data/scripts/reorder_groups.py:1042
+
+msgid "Please select a station to contribute."
+msgstr "è«é¸åè¦è²¢ç»çé»å°ã"
+
+#: data/scripts/reorder_groups.py:1020
+
+msgid "Please select a station to repair."
+msgstr "Please select a station to repair."
+
+#: data/scripts/browse_bouquets.py:1825
+
+msgid "Please select or check a radio station in the list first."
+msgstr "è«åå¨æ¸å®ä¸­é¸åæå¾é¸é»å°ã"
+
+#: data/scripts/timonde_common.py:1651
+
+msgid "Popularity"
+msgstr "ç­åº¦"
+
+#: data/scripts/timonde_settings.py:735
+
+msgid "Preferences"
+msgstr "偏好設定"
+
+#: data/scripts/reorder_groups.py:185
+
+msgid "Preview selected radio stream"
+msgstr "Testing live radio streams..."
+
+#: data/scripts/gnome_tray_helper.py:175
+
+msgid "Quit"
+msgstr "辭職"
+
+#: src/tray/menu.rs:621
+
+msgid "Quit TiMonde"
+msgstr "結束 TiMonde"
+
+#: data/scripts/timonde_common.py:1283 data/scripts/timonde_common.py:1291
+
+#: data/scripts/timonde_common.py:1298 data/scripts/timonde_common.py:1311
+
+#: data/scripts/timonde_common.py:1326
+
+msgid "Radio"
+msgstr "Radio"
+
+#: data/scripts/reorder_groups.py:147
+
+msgid "Radio / Group"
+msgstr "é»å° / åçµ"
+
+#: data/scripts/edit_station.py:139
+
+msgid "Radio-Browser"
+msgstr "Radio-Browser"
+
+#: data/scripts/timonde_common.py:1949
+
+msgid "Radio-Browser contribution"
+msgstr "Radio-Browser è²¢ç»"
+
+#: data/scripts/timonde_common.py:1782
+
+msgid ""
+"Radio-Browser is an open directory (+45 000 stations). Shared stations "
+"benefit all users."
+msgstr "Radio-Browser 是一個開放目錄（+45 000 個電台）。共享站惠及所有用戶。"
+
+#: data/scripts/timonde_common.py:1901
+
+msgid "Radio-Browser prevents duplicate stream URLs. No submission required."
+msgstr "Radio-Browser æé²æ­¢éè¤ä¸²æµç¶²åï¼ä¸ééè¤æäº¤ã"
+
+#: data/scripts/timonde_common.py:1542
+
+msgid "Radio-Browser servers unreachable"
+msgstr "ç¡æ³é£æ¥ Radio-Browser ä¼ºæå¨"
+
+#: data/scripts/reorder_groups.py:1200
+
+msgid "Redirects applied:"
+msgstr "å·²å¥ç¨éæ°å°åï¼"
+
+#: data/scripts/browse_bouquets.py:1165
+
+msgid "Refresh examples list"
+msgstr "刷新範例列表"
+
+#: data/scripts/browse_bouquets.py:1015
+
+msgid "Regions & Local:"
+msgstr "地區及本地："
+
+#: data/scripts/browse_bouquets.py:1190
+
+msgid "Reload"
+msgstr "重新載入"
+
+#: data/scripts/browse_bouquets.py:1190
+
+msgid "Reload currently displayed file"
+msgstr "重新載入目前顯示的文件"
+
+#: data/scripts/reorder_groups.py:724
+
+msgid "Rename group"
+msgstr "éæ°å½ååçµ"
+
+#: data/scripts/reorder_groups.py:584
+
+msgid "Rename group..."
+msgstr "éå½ååç»..."
+
+#: data/scripts/browse_bouquets.py:1119 data/scripts/reorder_groups.py:238
+
+#: data/scripts/reorder_groups.py:563
+
+msgid "Repair stream..."
+msgstr "修復串流..."
+
+#: data/scripts/browse_bouquets.py:1119
+
+msgid "Replace selected link with an active official stream"
+msgstr "將選定的連結替換為有效的官方串流"
+
+#: data/scripts/timonde_common.py:1592
+
+msgid "Replace stream:"
+msgstr "æ¿æä¸²æµï¼"
+
+#: data/scripts/browse_bouquets.py:1173
+
+msgid "Restore samples"
+msgstr "恢復樣本"
+
+#: data/scripts/browse_bouquets.py:1173
+
+msgid "Restore the 19 original samples"
+msgstr "恢復19個原始樣本"
+
+#: data/scripts/reorder_groups.py:861
+
+msgid "Root"
+msgstr "æ ¹ç®é"
+
+#: data/scripts/reorder_groups.py:903
+
+msgid "Root items sorted alphabetically."
+msgstr "æ ¹ç®éé ç®å·²æå­æ¯é åºæåºã"
+
+#: data/scripts/timonde_settings.py:638
+
+msgid "SESSION OPTIONS"
+msgstr "會話選項"
+
+# --- Time & Astronomical Periods ---
+
+#: src/timezone.rs:657
+
+msgid "Same time"
+msgstr "相同時間"
+
+#: data/scripts/edit_station.py:76 data/scripts/reorder_groups.py:727
+
+#: data/scripts/reorder_groups.py:1269
+
+msgid "Save"
+msgstr "儲存"
+
+#: data/scripts/reorder_groups.py:276
+
+msgid "Save and reload"
+msgstr "儲存並重新載入"
+
+#: src/tray/dialogs.rs:328 src/tray/mod.rs:541
+
+msgid "Save error"
+msgstr "儲存錯誤"
+
+#: data/scripts/reorder_groups.py:276
+
+msgid "Save now"
+msgstr "儲存錯誤"
+
+#: data/scripts/edit_station.py:69 src/i18n.rs:199
+
+msgid "Save station to favorites (TiMonde)"
+msgstr "儲存電台至我的最愛 (TiMonde)"
+
+#: src/tray/mod.rs:561
+
+msgid "Saved!"
+msgstr "已儲存！"
+
+#: data/scripts/browse_bouquets.py:770 data/scripts/timonde_common.py:1630
+
+msgid "Search"
+msgstr "æç´¢"
+
+#: data/scripts/reorder_groups.py:238
+
+msgid "Search Radio-Browser for a working replacement stream"
+msgstr "在 Radio-Browser 搜尋可用的替代串流"
+
+#: data/scripts/browse_bouquets.py:1326 data/scripts/timonde_settings.py:592
+
+msgid "Search online"
+msgstr "網路搜尋"
+
+#: data/scripts/browse_bouquets.py:1885
+
+msgid "Searching Radio-Browser..."
+msgstr "正在搜尋廣播瀏覽器..."
+
+#: data/scripts/timonde_common.py:1660
+
+msgid "Searching for streams..."
+msgstr "修復串流..."
+
+#: data/scripts/timonde_common.py:1670
+
+msgid "Searching on Radio-Browser..."
+msgstr "正在 Radio-Browser 上搜尋..."
+
+#: data/scripts/browse_bouquets.py:1382
+
+msgid "Select a station in table to listen to."
+msgstr "在表中選擇要收聽的電台。"
+
+#: data/scripts/browse_bouquets.py:1386
+
+msgid "Select a station to listen to."
+msgstr "選擇要收聽的電台。"
+
+#: data/scripts/timonde_common.py:1610
+
+msgid "Select a verified replacement stream from Radio-Browser:"
+msgstr "ä» Radio-Browser éæ©éªè¯è¿çæ¿ä»£æµï¼"
+
+#: data/scripts/edit_station.py:185
+
+msgid "Select or type (e.g. /France/Brittany or / for root)"
+msgstr "éæ©æè¾å¥ï¼ä¾å¦ /France/Brittany æ / ä»£è¡¨æ ¹ç®å½ï¼"
+
+#: data/scripts/reorder_groups.py:956
+
+msgid "Select the target destination:"
+msgstr "é¸åç®æ¨è³æå¤¾ï¼"
+
+#: src/tray/mod.rs:478
+
+msgid "Selection"
+msgstr "精選"
+
+#: data/scripts/reorder_groups.py:230
+
+msgid "Separator"
+msgstr "分隔線"
+
+#: data/scripts/timonde_common.py:1538
+
+msgid "Server rejected submission: {error}"
+msgstr "ä¼ºæå¨æçµäºæäº¤ï¼{error}"
+
+#: data/scripts/timonde_common.py:198
+
+msgid "Server unreachable"
+msgstr "æå¡å¨ä¸å¯è¾¾"
+
+#: data/scripts/timonde_settings.py:316
+
+msgid "Settings & Control TiMonde"
+msgstr "設定與控制 TiMonde"
+
+#: src/tray/dialogs.rs:400
+
+msgid "Settings console not found"
+msgstr "找不到設定控制台"
+
+#: src/tray/menu.rs:605
+
+msgid "Settings..."
+msgstr "設定..."
+
+#: src/i18n.rs:205 src/tray/menu.rs:549 src/tray/menu.rs:552
+
+msgid "Sleep timer"
+msgstr "睡眠定時器"
+
+#: src/tray/mod.rs:592
+
+msgid "Sleep timer activated"
+msgstr "睡眠定時器已啟動"
+
+#: src/tray/mod.rs:626
+
+msgid "Sleep timer cancelled."
+msgstr "睡眠定時器已取消。"
+
+#: src/tray/mod.rs:615
+
+msgid "Sleep timer: stopping radio."
+msgstr "睡眠定時器：正在停止廣播。"
+
+#: data/scripts/reorder_groups.py:223
+
+msgid "Sort sibling items alphabetically"
+msgstr "åå±¤é ç®ä¾å­æ¯é åºæåº"
+
+#: data/scripts/reorder_groups.py:901
+
+msgid "Sorted alphabetically:"
+msgstr "å·²æå­æ¯æåºï¼"
+
+#: data/scripts/browse_bouquets.py:888 data/scripts/browse_bouquets.py:1045
+
+#: data/scripts/browse_bouquets.py:1227 data/scripts/timonde_common.py:1638
+
+msgid "Station"
+msgstr "度假村"
+
+#: src/tray/mod.rs:566
+
+msgid "Station added but reload error"
+msgstr "電台已新增但重新載入失敗"
+
+#: data/scripts/reorder_groups.py:691
+
+msgid "Station added:"
+msgstr "å·²æ°å¢é»å°ï¼"
+
+#: data/scripts/reorder_groups.py:683
+
+msgid "Station editor unavailable."
+msgstr "é»å°ç·¨è¼¯å¨ç¡æ³ä½¿ç¨ã"
+
+#: data/scripts/reorder_groups.py:997
+
+msgid "Station moved to"
+msgstr "é»å°å·²ç§»åè³"
+
+#: data/scripts/timonde_common.py:1476
+
+msgid "Station name cannot be empty"
+msgstr "é»å°åç¨±ä¸å¯çºç©º"
+
+#: data/scripts/edit_station.py:110 data/scripts/timonde_common.py:1794
+
+msgid "Station name:"
+msgstr "電台名稱:"
+
+#: data/scripts/timonde_common.py:1528
+
+msgid "Station successfully submitted to Radio-Browser."
+msgstr "é»å°å·²æåæäº¤è³ Radio-Browserã"
+
+#: data/scripts/reorder_groups.py:745
+
+msgid "Station updated:"
+msgstr "é»å°å·²æ´æ°ï¼"
+
+#: data/scripts/browse_bouquets.py:1397 data/scripts/edit_station.py:405
+
+#: data/scripts/reorder_groups.py:1005 data/scripts/reorder_groups.py:1080
+
+#: src/i18n.rs:185 src/i18n.rs:245 src/i18n.rs:250
+
+msgid "Stop"
+msgstr "停止"
+
+#: data/scripts/reorder_groups.py:549
+
+msgid "Stop playback"
+msgstr "åæ­¢æ­æ¾"
+
+#: data/scripts/browse_bouquets.py:1259
+
+msgid "Stream URL"
+msgstr "串流網址"
+
+#: data/scripts/timonde_common.py:1478
+
+msgid "Stream URL cannot be empty"
+msgstr "ä¸²æµç¶²åä¸å¯çºç©º"
+
+#: data/scripts/timonde_common.py:1804
+
+msgid "Stream URL:"
+msgstr "ä¸²æµç¶²åï¼"
+
+#: data/scripts/reorder_groups.py:1029
+
+msgid "Stream successfully repaired for"
+msgstr "ä¸²æµå·²æåä¿®å¾©ï¼"
+
+#: data/scripts/timonde_common.py:1274
+
+msgid "Stream unreachable"
+msgstr "無法存取串流"
+
+#: data/scripts/browse_bouquets.py:739
+
+msgid "Submit a new station to community Radio-Browser directory"
+msgstr "åç¤¾ç¾¤ Radio-Browser ç®éæäº¤æ°é»å°"
+
+#: data/scripts/timonde_common.py:1859 data/scripts/timonde_common.py:1911
+
+#: data/scripts/timonde_common.py:1958
+
+msgid "Submit to Radio-Browser"
+msgstr "æäº¤è³ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1931
+
+msgid "Submitting station to Radio-Browser..."
+msgstr "æ­£å¨å Radio-Browser æäº¤é»å°..."
+
+#: data/scripts/timonde_common.py:1930
+
+msgid "Submitting..."
+msgstr "æ­£å¨æäº¤..."
+
+#: data/scripts/browse_bouquets.py:1089
 
 msgid "Switch to the global directory with this country pre-selected"
 msgstr "切換到全球目錄並預先選擇該國家"
 
-#, fuzzy
-msgid " [Ephemeral]"
-msgstr "[ 即時]"
+#: data/scripts/timonde_settings.py:665
 
-msgid "%20"
-msgstr ""
+msgid "System language"
+msgstr "系統語言"
 
-#, fuzzy
-msgid "(Already in favorites)"
-msgstr "保留在我的最愛"
+#: data/scripts/timonde_common.py:1831
 
-msgid "/org/mpris/MediaPlayer2/CurrentTrack"
-msgstr ""
+msgid "Tags / Genres:"
+msgstr "æ¨ç±¤ / é¡åï¼"
 
-#, fuzzy
-msgid "Add station..."
-msgstr "新增電台..."
+#: src/tray/mod.rs:325
 
-msgid "Bitrate"
-msgstr ""
+msgid "Temporary backup stream found for"
+msgstr "找到臨時備份流"
 
-#, fuzzy
-msgid "Checking..."
-msgstr "連接中..."
+#: data/scripts/edit_station.py:135 data/scripts/edit_station.py:407
 
-msgid "Clear"
-msgstr ""
+msgid "Test"
+msgstr "測試"
 
-msgid "Clear / Automatic mode"
-msgstr ""
+#: data/scripts/reorder_groups.py:102
 
-msgid "Clear field (click to empty)"
-msgstr ""
+msgid "Test stream availability and locate broken links"
+msgstr "測試串流可用性並尋找失效連結"
 
-#, fuzzy
-msgid "Country"
-msgstr "<b>Country:</b>"
+#: data/scripts/browse_bouquets.py:946 data/scripts/browse_bouquets.py:1115
 
-#, fuzzy
-msgid "Country:"
-msgstr "<b>Country:</b>"
+#: data/scripts/browse_bouquets.py:1286
 
-msgid "Delete group..."
-msgstr ""
+msgid "Test streams"
+msgstr "測試流程"
 
-#, fuzzy
-msgid "Delete this separator"
-msgstr "刪除此電台"
+#: data/scripts/reorder_groups.py:1087
 
-#, fuzzy
-msgid "Delete this station..."
-msgstr "刪除此電台"
-
-msgid "Edit header..."
-msgstr ""
-
-#, fuzzy
-msgid "Edit station..."
-msgstr "新增電台..."
-
-msgid "Empty URL"
-msgstr ""
-
-msgid "Ephemeral radio (not saved)."
-msgstr ""
-
-msgid "Error {code}"
-msgstr ""
-
-msgid "Format"
-msgstr ""
-
-msgid "Geoblocked (VPN)"
-msgstr ""
-
-msgid "HTTP Error {code}"
-msgstr ""
-
-#, fuzzy
-msgid "Insert separator here..."
-msgstr "Insert a separator or header in this group"
-
-msgid "Listen"
-msgstr ""
-
-msgid "Live (repaired)"
-msgstr ""
-
-msgid "Live ({codec})"
-msgstr ""
-
-#, fuzzy
-msgid "Move to another group..."
-msgstr "Move selection to another group (Ctrl+M)"
-
-#, fuzzy
-msgid "Move to top"
-msgstr "移動至..."
-
-#, fuzzy
-msgid "New"
-msgstr "[新電台]"
-
-#, fuzzy
-msgid "New group..."
-msgstr "新增分組"
-
-#, fuzzy
-msgid "No station loaded"
-msgstr "No stations to check."
-
-#, fuzzy
-msgid "Open stations"
-msgstr "選項"
-
-msgid "Original stream is unreachable:"
-msgstr ""
-
-#, fuzzy
-msgid "Play this station"
-msgstr "刪除此電台"
-
-msgid "Popularity"
-msgstr ""
-
-#, fuzzy
-msgid "Preview selected radio stream"
+msgid "Testing live radio streams..."
 msgstr "Testing live radio streams..."
 
-msgid "Rename group..."
-msgstr ""
+#: data/scripts/browse_bouquets.py:1679 data/scripts/browse_bouquets.py:1931
 
-#, fuzzy
-msgid "Save now"
-msgstr "儲存錯誤"
+#: data/scripts/browse_bouquets.py:2119
 
-msgid "Search"
-msgstr ""
+msgid "Testing..."
+msgstr "正在測試..."
 
-#, fuzzy
-msgid "Searching for streams..."
-msgstr "修復串流..."
+#: data/scripts/timonde_settings.py:694
 
-msgid "Select a verified replacement stream from Radio-Browser:"
-msgstr ""
+msgid ""
+"The AppIndicator extension is required to display the icon in GNOME top bar."
+msgstr "需要 AppIndicator 擴充功能才能在 GNOME 頂部欄中顯示圖示。"
 
-msgid "Select or type (e.g. /France/Brittany or / for root)"
-msgstr ""
+#: data/scripts/browse_bouquets.py:1151
 
-msgid "Server unreachable"
-msgstr ""
+msgid "Thematic samples:"
+msgstr "專題樣本："
 
-msgid "Stop playback"
-msgstr ""
+#: data/scripts/edit_station.py:574
 
-#, fuzzy
+msgid "This action will permanently remove this station from your collection."
+msgstr "此操作將永久從您的收藏中移除該電台。"
+
+#: data/scripts/timonde_common.py:1489
+
+msgid ""
+"This stream URL is already registered on Radio-Browser as '{existing_name}'."
+msgstr "該流 URL 已在 Radio-Browser 上註冊為「{existing_name}」。"
+
+#: data/scripts/timonde_common.py:1908
+
+msgid ""
+"This stream URL is unpublished on Radio-Browser and ready to be contributed."
+msgstr "此流 URL 未在 Radio-Browser 上發布並準備好進行貢獻。"
+
+#: data/scripts/gnome_tray_helper.py:117
+
+msgid "TiMonde — GNOME Desktop Integration"
+msgstr "TiMonde — GNOME 桌面集成"
+
+#: src/tray/mod.rs:150
+
 msgid "TiMonde • Ephemeral discovery"
 msgstr "隨機收聽電台 (探索)"
 
-#, fuzzy
+#: data/scripts/timonde_common.py:206
+
 msgid "Timeout"
 msgstr "時區:"
 
-#, fuzzy
-msgid "Transfer contents to another group..."
-msgstr "Transfer the content of this group to another group (Ctrl+M)"
+#: data/scripts/edit_station.py:273
+
+msgid "Timezone:"
+msgstr "時區:"
+
+#: data/scripts/gnome_tray_helper.py:159
+
+msgid ""
+"To unobtrusively display the playback icon in the top bar of your GNOME "
+"desktop, the <b>AppIndicator</b> system extension is required.\n"
+"\n"
+"Would you like to install it now?"
+msgstr ""
+"要在 GNOME 桌面的頂部欄中不顯眼地顯示播放圖標，需要 <b>AppIndicator</b> 系統擴充。\n"
+"\n"
+"您想現在安裝嗎？"
+
+#: src/timezone.rs:669
+
+msgid "Tomorrow"
+msgstr "明天"
+
+#: data/scripts/reorder_groups.py:211
+
+msgid "Top"
+msgstr "置頂"
+
+#: src/tray/mod.rs:679
+
+msgid "Track copied to clipboard:"
+msgstr "曲目資訊已複製到剪貼簿："
+
+#: data/scripts/browse_bouquets.py:987
+
+msgid "Type a country (e.g. France, Germany, Canada...)"
+msgstr "輸入國家（例如法國、德國、加拿大...）"
+
+#: src/tray/mod.rs:444
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "無法在精選電台目錄中找到電台。"
+
+#: src/tray/mod.rs:208
 
 msgid "Unable to initialize audio"
-msgstr ""
+msgstr "æ æ³åå§åé³é¢å¼æ"
+
+#: src/tray/mod.rs:216
 
 msgid "Unable to play"
-msgstr ""
+msgstr "æ æ³æ­æ¾"
+
+#: data/scripts/browse_bouquets.py:942 data/scripts/browse_bouquets.py:1111
+
+#: data/scripts/browse_bouquets.py:1278
+
+msgid "Uncheck all"
+msgstr "全部取消勾選"
+
+#: data/scripts/timonde_common.py:1486 data/scripts/timonde_common.py:1896
+
+#: data/scripts/timonde_common.py:1897
+
+msgid "Unknown"
+msgstr "æªç¥"
+
+#: data/scripts/timonde_common.py:1530
+
+msgid "Unknown error"
+msgstr "æªç¥é¯èª¤"
+
+#: data/scripts/timonde_common.py:1272
+
+msgid "Unreadable stream"
+msgstr "無法讀取的串流"
+
+#: data/scripts/gnome_tray_helper.py:193
+
+msgid "Unrecognized package manager."
+msgstr "無法辨識的套件管理器。"
+
+#: data/scripts/reorder_groups.py:293
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "æªä¿å­çæ´æ¹"
 
-#, fuzzy
+#: data/scripts/browse_bouquets.py:1915 data/scripts/browse_bouquets.py:2082
+
+msgid "Untested"
+msgstr "æªæ¸¬è©¦"
+
+#: data/scripts/edit_station.py:159
+
+msgid "Use this on-air broadcast name for your bookmark"
+msgstr "ä½¿ç¨æ­¤é»å°æ­åºåç¨±ä½çºæ¸ç±¤"
+
+#: data/scripts/timonde_common.py:1597
+
 msgid "Validate and replace"
 msgstr "儲存並重新載入"
 
-msgid "Active (Left & Right clicks unified)"
-msgstr ""
+#: data/scripts/browse_bouquets.py:923
 
-msgid "Enable Left-Click"
-msgstr ""
+msgid "Votes"
+msgstr "投票數"
 
-msgid "Cinnamon left-click unification successfully enabled!"
-msgstr ""
+#: data/scripts/reorder_groups.py:780
 
-msgid "Failed to enable Cinnamon unification."
-msgstr ""
+msgid "Warning: this group contains {count} {unit} that will also be deleted."
+msgstr "è­¦åï¼æ­¤åçµåå« {count} åä¹å°è¢«åªé¤ç{unit}ã"
 
-msgid "Cinnamon Left-Click Unification"
-msgstr ""
+#: data/scripts/timonde_common.py:1841
+
+msgid "Website / Homepage:"
+msgstr "å®æ¹ç¶²ç« / é¦é ï¼"
+
+#: data/scripts/browse_bouquets.py:2318
+
+msgid "XML backup is available from settings."
+msgstr "XML 備份可從設定中取得。"
+
+#: data/scripts/reorder_groups.py:1296
+
+msgid "XML backup successfully created in"
+msgstr "XML åä»½å·²æåå»ºç«æ¼"
+
+#: data/scripts/reorder_groups.py:1276
+
+msgid "XML files (*.xml)"
+msgstr "XML 檔案 (*.xml)"
+
+#: src/timezone.rs:670
+
+msgid "Yesterday"
+msgstr "昨天"
+
+#: data/scripts/browse_bouquets.py:1626
 
 msgid ""
-"Allows opening the station menu interchangeably with left or right click."
-msgstr ""
+"You can explore and import stations for this territory directly from the "
+"global directory."
+msgstr "您可以直接從全球目錄中探索並匯入該地區的電台。"
 
-#~ msgid ""
-#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
-#~ "groups.\n"
-#~ "• <b>Double-click a group</b> (or Open) to sort its stations and "
-#~ "separators.\n"
-#~ "• Use <b>Transfer...</b> to merge or move content to another group.\n"
-#~ "• Use <b>New group</b> to add a station folder.</small>"
-#~ msgstr ""
-#~ "<small>• 更改<b>#</b> 或使用<b>上移/下移</b> 對群組進行排序。 \n"
-#~ " • <b>雙擊某個群組</b>（或「開啟」）以對其無線電和分配器進行排序。 \n"
-#~ " • 使用<b>傳輸...</b> 將內容合併或移動到另一個群組。 \n"
-#~ " • 使用<b>新建群組</b>新增收音機資料夾。 </small>"
+#: data/scripts/reorder_groups.py:1302
 
-#~ msgid ""
-#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
-#~ "stations.\n"
-#~ "• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
-#~ "• Click <b>Repair stream...</b> to search Radio-Browser for a working "
-#~ "replacement stream.\n"
-#~ "• Click <b>Separator</b> to insert a section header.</small>"
-#~ msgstr ""
-#~ "<小>• 改變<b>#</b> 或使用<b>上移/下移</b> 對收音機進行排序。 \n"
-#~ " • 點擊<b>檢查來源</b>以發現死連結（紅色）並修復它們。 \n"
-#~ " • 點選<b>修復串流...</b> 在無線電瀏覽器上搜尋取代活動串流。 \n"
-#~ " • 點選<b>分隔符號</b>插入章節標題。 </small>"
+msgid "Your complete bookmarks have been saved to:"
+msgstr "æ¨çå®æ´æ¸ç±¤å·²å²å­è³ï¼"
 
-#~ msgid ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les groupes.\n"
-#~ "• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios "
-#~ "et séparateurs.\n"
-#~ "• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du "
-#~ "contenu.\n"
-#~ "• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
-#~ msgstr ""
-#~ "<small>• 更改<b>#</b> 或使用<b>上移/下移</b> 對群組進行排序。 \n"
-#~ " • <b>雙擊某個群組</b>（或「開啟」）對其單選按鈕和分隔符號進行排序。 \n"
-#~ " • 使用<b>移動到...</b>來合併或移動內容。 \n"
-#~ " • 使用<b>新建群組</b>建立收音機資料夾。 </small>"
+#: src/i18n.rs:237 src/tray/menu.rs:372
 
-#~ msgid ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les radios.\n"
-#~ "• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne "
-#~ "(en rouge).\n"
-#~ "• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de "
-#~ "remplacement actif.\n"
-#~ "• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de "
-#~ "séparation.</small>"
-#~ msgstr ""
-#~ "<小>• 改變<b>#</b> 或使用<b>上移/下移</b> 來排序無線電。 \n"
-#~ " • 按一下<b>檢查來源</b>以尋找離線連結（紅色）。 \n"
-#~ " • 點選<b>修復串流...</b> 搜尋活動的取代流。 \n"
-#~ " • 點選<b>分隔符號</b>插入字幕或分隔線。 </small>"
+msgid "Zap to another random station"
+msgstr "隨機切換到其他電台"
+
+#: data/scripts/reorder_groups.py:930
+
+msgid "[ / ] Root (Without group)"
+msgstr "[ / ] æ ¹ç®éï¼ç¡åçµï¼"
+
+#: data/scripts/reorder_groups.py:405
+
+msgid "[!] Dead link"
+msgstr "[!] Dead link"
+
+#: data/scripts/reorder_groups.py:409
+
+msgid "[?] Geo-restricted"
+msgstr "[?] Geo-restricted"
+
+#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
+
+msgid "[New]"
+msgstr "[新電台]"
+
+#: data/scripts/reorder_groups.py:403
+
+msgid "[OK] Live"
+msgstr "[OK] Live"
+
+#: data/scripts/reorder_groups.py:1027
+
+msgid "[OK] Repaired"
+msgstr "[OK] å·²ä¿®å¾©"
+
+#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
+
+msgid "[Present]"
+msgstr "[已存在]"
+
+#: data/scripts/reorder_groups.py:407
+
+msgid "[~] Redirected"
+msgstr "[~] Redirected"
+
+#: data/scripts/reorder_groups.py:1141
+
+msgid "broken"
+msgstr "broken"
+
+#: data/scripts/reorder_groups.py:1127
+
+msgid "checked:"
+msgstr "checked:"
+
+#: src/tray/dialogs.rs:263
+
+msgid "deleted from your favorites."
+msgstr "已從常用電台中刪除。"
+
+#: data/scripts/timonde_settings.py:750
+
+msgid "disabled"
+msgstr "殘障人士"
+
+#: data/scripts/timonde_settings.py:750
+
+msgid "enabled"
+msgstr "已啟用"
+
+#: src/tray/mod.rs:332
+
+msgid "is currently unavailable"
+msgstr "目前無法使用"
+
+#: src/tray/mod.rs:302
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "無回應。正在搜尋備用串流..."
+
+#: data/scripts/timonde_settings.py:612
+
+msgid "new station(s) imported"
+msgstr "åæ°é»å°å·²å¯å¥"
+
+#: data/scripts/reorder_groups.py:1140
+
+msgid "online"
+msgstr "online"
+
+#: data/scripts/reorder_groups.py:372
+
+msgid "radio"
+msgstr "radio"
+
+#: data/scripts/reorder_groups.py:372 data/scripts/reorder_groups.py:672
+
+msgid "radios"
+msgstr "radios"
+
+#: data/scripts/reorder_groups.py:1142
+
+msgid "redirected"
+msgstr "redirected"
+
+#: data/scripts/browse_bouquets.py:2306
+
+msgid "sample files restored."
+msgstr "範例檔案已恢復。"
+
+#: src/tray/mod.rs:562
+
+msgid "saved in your favorites!"
+msgstr "已儲存到您的常用電台！"
+
+#: data/scripts/timonde_settings.py:559
+
+msgid "saved successfully!"
+msgstr "å²å­æåï¼"
+
+#: data/scripts/reorder_groups.py:779
+
+msgid "station"
+msgstr "station"
+
+#: data/scripts/timonde_settings.py:614
+
+msgid "station(s) moved to destination"
+msgstr "åé»å°å·²ç§»åè³ç®æ¨åçµ"
+
+#: data/scripts/reorder_groups.py:779
+
+msgid "stations"
+msgstr "stations"
+
+#: data/scripts/reorder_groups.py:1095
+
+msgid "stations checked..."
+msgstr "stations checked..."
+
+#: src/tray/mod.rs:592
+
+msgid "stopping in"
+msgstr "將於以下時間後關閉："
+
+#: data/scripts/reorder_groups.py:1200
+
+msgid "stream(s) updated."
+msgstr "åä¸²æµå·²æ´æ°ã"
+
+#: data/scripts/browse_bouquets.py:1725
+
+msgid "this country"
+msgstr "該國家/地區"
+
+#: src/tray/dialogs.rs:385
+
+msgid "updated successfully!"
+msgstr "更新成功！"
+
+#: data/scripts/browse_bouquets.py:1733 data/scripts/browse_bouquets.py:2145
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "已選擇 {checked} / {total} 個電台"
+
+#: data/scripts/edit_station.py:543
+
+msgid "{count} available timezones"
+msgstr "{count} 個可用時區"
+
+#: data/scripts/browse_bouquets.py:1918
+
+msgid "{count} stations found."
+msgstr "找到 {count} 個電台。"
+
+#: data/scripts/timonde_common.py:1690
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "找到 {count} 個串流。請選擇所需串流並確認。"
+
+#: data/scripts/reorder_groups.py:352 data/scripts/reorder_groups.py:391
+
+#: data/scripts/reorder_groups.py:713
+
+msgid "— Separator —"
+msgstr "— Separator —"
+
+# --- Group Reorder Window (reorder_groups.py) ---
+

@@ -161,7 +161,7 @@ pub fn trigger_edit_station_dialog(
             let guard = root_group.lock().unwrap();
             find_group_name_for_station(&guard, &station.url)
         }
-        .unwrap_or_else(|| "Sélection".to_string());
+        .unwrap_or_else(|| "/".to_string());
 
         let all_groups: Vec<String> = {
             let guard = root_group.lock().unwrap();
@@ -329,13 +329,17 @@ pub fn trigger_edit_station_dialog(
             return;
         }
 
-        // Mettre à jour current_station si elle était en cours
+        // Mettre à jour current_station si elle était en cours et relancer le flux si l'URL a changé
+        let mut url_changed_while_playing = false;
         {
             let mut cur = current_station.lock().unwrap();
             if let Some(ref mut c) = *cur {
                 if crate::import::normalize_url(&c.url) == crate::import::normalize_url(&station.url)
                     || c.name == station.name
                 {
+                    if c.url != new_url {
+                        url_changed_while_playing = true;
+                    }
                     c.name = new_name.clone();
                     c.url = new_url.clone();
                     if let Some(nc) = &new_country {
@@ -344,6 +348,17 @@ pub fn trigger_edit_station_dialog(
                     if let Some(ntz) = &new_timezone {
                         c.timezone = ntz.clone();
                     }
+                }
+            }
+        }
+        if url_changed_while_playing {
+            let guard = audio.lock().unwrap();
+            if let Some(ref engine) = *guard {
+                if engine.state() == crate::audio::PlaybackState::Playing
+                    || engine.state() == crate::audio::PlaybackState::Buffering
+                {
+                    let resolved = crate::playlist::resolve_stream_url(&new_url);
+                    let _ = engine.play(&resolved);
                 }
             }
         }

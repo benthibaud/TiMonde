@@ -46,7 +46,10 @@ Les sélections personnalisées (ex: radios d'Outre-Mer français) sont héberg�
   3. **Bouquets par pays** (`browse_bouquets.py` / `view_bouquets`) : Exploration des 146 pays avec drapeaux, stations et statut DAB+.
   4. **Collections & Fichiers** (`browse_bouquets.py` / `view_files`) : Import/Export XML, JSON, CSV, M3U, PLS et restauration des 17 exemples.
   5. **Préférences & Autostart** : Bascule du démarrage de session, détection de bureau et statistiques de signets.
-- **Règle ergonomique modale** : Tout dialogue ou fenêtre fille doit obtenir sa fenêtre parente via `get_parent_window()` pour éviter tout dialogue flottant orphelin.
+- **Règle ergonomique modale & Cycle de vie GTK (Doctrine Option B) :**
+  - Tout dialogue ou fenêtre fille doit obtenir sa fenêtre parente via `get_parent_window()` pour éviter tout dialogue flottant orphelin.
+  - **Interdiction formelle de `dialog.run()`** : les boucles synchrones récursives sont proscrites au profit de `connect("response", ...)` et `show_all()`, afin d'éradiquer définitivement les blocages d'interface et d'entrée utilisateur.
+  - Seul le cœur Rust a autorité sur l'écriture de `bookmarks.xml`. L'interface Python délègue les opérations métier au moteur compilé.
 
 ### 2.3 Internationalisation Stricte (i18n)
 - **Pivot Anglais Universel** : Les fonctions `crate::i18n::tr("...")` en Rust et `_("...")` en Python utilisent rigoureusement des clés pivots en **anglais**.

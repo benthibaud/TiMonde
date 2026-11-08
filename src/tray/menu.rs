@@ -19,7 +19,11 @@ impl TiMondeTray {
             None,
             station.timezone.as_deref(),
         ) {
-            format!("{} {}", flag, station.name)
+            if flag.is_empty() {
+                station.name.clone()
+            } else {
+                format!("{} {}", flag, station.name)
+            }
         } else {
             station.name.clone()
         }
@@ -109,10 +113,15 @@ impl ksni::Tray for TiMondeTray {
         if let Some(script_path) = Self::find_script("show_menu.py") {
             let pid = std::process::id();
             let bus_name = format!("org.kde.StatusNotifierItem-{}-1", pid);
-            let _ = crate::tray::dialogs::prepare_python_command("python3")
-                .arg(script_path)
-                .arg(format!("--bus={}", bus_name))
-                .spawn();
+            std::thread::spawn(move || {
+                if let Ok(mut child) = crate::tray::dialogs::prepare_python_command("python3")
+                    .arg(script_path)
+                    .arg(format!("--bus={}", bus_name))
+                    .spawn()
+                {
+                    let _ = child.wait();
+                }
+            });
         }
     }
 
@@ -131,7 +140,15 @@ impl ksni::Tray for TiMondeTray {
                     None,
                     st.timezone.as_deref(),
                 )
-                .map(|t| format!(" • {} {} ({})", t.icon, t.formatted_time, t.relative_badge()))
+                .map(|t| {
+                    let badge = t.relative_badge();
+                    let badge_part = if badge.is_empty() { String::new() } else { format!(" ({})", badge) };
+                    if t.icon.is_empty() {
+                        format!(" • {}{}", t.formatted_time, badge_part)
+                    } else {
+                        format!(" • {} {}{}", t.icon, t.formatted_time, badge_part)
+                    }
+                })
                 .unwrap_or_default();
                 if let Some(ref t) = *cur_title {
                     format!("{} - {}{}", st.name, t, time_str)
@@ -317,10 +334,15 @@ impl ksni::Tray for TiMondeTray {
             );
             if let Some(t) = time_info {
                 let diff_label = t.relative_badge();
-                let tz_label = if diff_label.is_empty() {
-                    format!("{} {} ({})", t.icon, t.formatted_time, t.country_name)
+                let time_prefix = if t.icon.is_empty() {
+                    t.formatted_time.clone()
                 } else {
-                    format!("{} {} ({}, {})", t.icon, t.formatted_time, t.country_name, diff_label)
+                    format!("{} {}", t.icon, t.formatted_time)
+                };
+                let tz_label = if diff_label.is_empty() {
+                    format!("{} ({})", time_prefix, t.country_name)
+                } else {
+                    format!("{} ({}, {})", time_prefix, t.country_name, diff_label)
                 };
                 menu.push(MenuItem::Standard(StandardItem {
                     label: format!("   {}", tz_label),

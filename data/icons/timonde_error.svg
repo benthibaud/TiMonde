@@ -21,9 +21,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="22.627417"
-     inkscape:cx="9.3912619"
-     inkscape:cy="15.379572"
+     inkscape:zoom="28.669966"
+     inkscape:cx="11.667262"
+     inkscape:cy="11.056867"
      inkscape:window-width="1920"
      inkscape:window-height="1138"
      inkscape:window-x="0"
@@ -36,6 +36,11 @@
     .ColorScheme-Text { color: #232629; }
     .ColorScheme-PositiveText { color: #27ae60; }
   </style>
+  <path
+     id="path847"
+     style="opacity:1;fill:#fafafa;fill-opacity:1;stroke-width:28.4879;stroke-opacity:0.21;paint-order:markers fill stroke;stop-color:#000000"
+     d="M 0,0 V 22 H 22 V 0 Z"
+     sodipodi:nodetypes="ccccc" />
   <path
      id="rect1037"
      style="opacity:1;fill:#ff9955;stroke-width:28.4879;stroke-opacity:0.21;paint-order:markers fill stroke;stop-color:#000000;fill-opacity:1"

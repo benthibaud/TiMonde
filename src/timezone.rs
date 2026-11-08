@@ -459,9 +459,44 @@ pub fn resolve_station_meta(
 
     // 3. Inférence contextuelle d'autres pays si le pays n'est pas encore étiqueté
     let lower_context = combined_context.to_lowercase();
+    fn contains_whole_word(haystack: &str, needle: &str) -> bool {
+        if needle.is_empty() {
+            return false;
+        }
+        let n_len = needle.len();
+        let mut start = 0;
+        while let Some(pos) = haystack[start..].find(needle) {
+            let actual_pos = start + pos;
+            let end_pos = actual_pos + n_len;
+
+            let prev_ok = if actual_pos == 0 {
+                true
+            } else {
+                let prev_char = haystack[..actual_pos].chars().next_back().unwrap();
+                !prev_char.is_alphanumeric()
+            };
+
+            let next_ok = if end_pos >= haystack.len() {
+                true
+            } else {
+                let next_char = haystack[end_pos..].chars().next().unwrap();
+                !next_char.is_alphanumeric()
+            };
+
+            if prev_ok && next_ok {
+                return true;
+            }
+            start = actual_pos + 1;
+            if start >= haystack.len() {
+                break;
+            }
+        }
+        false
+    }
+
     for entry in COUNTRY_REGISTRY {
         let c_lower = entry.1.to_lowercase();
-        if lower_context.contains(&c_lower) {
+        if contains_whole_word(&lower_context, &c_lower) {
             return Some((entry.1, entry.2, entry.3.to_string(), entry.4));
         }
     }

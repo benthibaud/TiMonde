@@ -1,11 +1,14 @@
 # TiMonde — Traduction française officielle
+
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
+
 #
+
 msgid ""
 msgstr ""
 "Project-Id-Version: TiMonde 0.1.3\n"
-"Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
-"POT-Creation-Date: 2026-10-29 06:50+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 20:23+0100\n"
 "PO-Revision-Date: 2026-10-17 14:00+0200\n"
 "Last-Translator: Céline (Argon bis) <celine@antigravity>\n"
 "Language-Team: Français <fr@li.org>\n"
@@ -14,1240 +17,1098 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# --- Main Tray Menu ---
-msgid "Play"
-msgstr "Écouter"
+#: src/i18n.rs:186 src/i18n.rs:193
 
-msgid "Stop"
-msgstr "Éteindre"
+msgid " [Ephemeral]"
+msgstr " [Éphémère]"
 
-msgid "Connecting..."
-msgstr "Connexion..."
+#: data/scripts/browse_bouquets.py:1655
 
-msgid "Edit"
-msgstr "Éditer"
-
-msgid "Delete"
-msgstr "Supprimer"
-
-msgid "Zap to another random station"
-msgstr "Zapper vers une autre radio au hasard"
-
-msgid "Play random radio (Ephemeral discovery)"
-msgstr "Écouter une radio au hasard (Découverte éphémère)"
-
-msgid "[ Ephemeral]"
-msgstr "[ Éphémère]"
-
-msgid "Options"
-msgstr "Options"
-
-msgid "Add a station..."
-msgstr "Ajouter une radio..."
-
-msgid "Discover & Import stations..."
-msgstr "Découvrir & Importer des radios..."
-
-msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr "Importer mes fichiers (XML, CSV, JSON, M3U)..."
-
-msgid "Manage groups and stations..."
-msgstr "Classer groupes et radios..."
-
-msgid "Open bookmarks.xml"
-msgstr "Ouvrir bookmarks.xml"
-
-msgid "Quit TiMonde"
-msgstr "Quitter TiMonde"
-
-msgid "Mute (0%)"
-msgstr "Muet (0%)"
-
-msgid "Sleep timer"
-msgstr "Minuterie d'arrêt"
-
-msgid "In 15 minutes"
-msgstr "Dans 15 minutes"
-
-msgid "In 30 minutes"
-msgstr "Dans 30 minutes"
-
-msgid "In 45 minutes"
-msgstr "Dans 45 minutes"
-
-msgid "In 60 minutes (1h)"
-msgstr "Dans 60 minutes (1h)"
-
-msgid "Cancel sleep timer"
-msgstr "Annuler la minuterie d'arrêt"
-
-# --- Discovery Window (browse_bouquets.py) ---
-msgid "Discover & Import stations (TiMonde)"
-msgstr "Découvrir & Importer des radios (TiMonde)"
-
-msgid "Verified DAB+ Bouquets"
-msgstr "Bouquets vérifiés (DAB+)"
-
-msgid "Radio-Browser Search"
-msgstr "Recherche Radio-Browser"
-
-msgid "Sample Files"
-msgstr "Fichiers exemples"
-
-msgid "Import my files"
-msgstr "Importer mes fichiers"
-
-msgid "<b> Country:</b>"
-msgstr "<b> Pays :</b>"
-
-msgid "<b>Language:</b>"
-msgstr "<b>Langue :</b>"
-
-msgid "Name / Keyword:"
-msgstr "Nom / Mot-clé :"
-
-msgid "Genre:"
-msgstr "Genre :"
-
-msgid "<b>Sample file:</b>"
-msgstr "<b>Fichier exemple :</b>"
-
-msgid "<b>Group name in your favorites:</b>"
-msgstr "<b>Nom du groupe dans vos favoris :</b>"
-
-msgid "Select all"
-msgstr "Tout cocher"
-
-msgid "Deselect all"
-msgstr "Tout décocher"
-
-msgid "Import into favorites"
-msgstr "Importer dans mes favoris"
-
-msgid "Close"
-msgstr "Fermer"
-
-# --- Edit Window (edit_station.py) ---
-msgid "Add a station (TiMonde)"
-msgstr "Ajouter une station (TiMonde)"
-
-msgid "<b>Enter new station details:</b>"
-msgstr "<b>Entrez les informations de la nouvelle radio :</b>"
-
-msgid "Add to my stations"
-msgstr "Ajouter à mes radios"
-
-msgid "Save station to favorites (TiMonde)"
-msgstr "Enregistrer la radio dans mes favoris (TiMonde)"
-
-msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr "<b>Conserver cette radio découverte au hasard dans vos favoris :</b>"
-
-msgid "Keep in favorites"
-msgstr "Conserver dans mes favoris"
-
-msgid "Edit station (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
-
-msgid "<b>Edit station settings:</b>"
-msgstr "<b>Modifier les paramètres de la station :</b>"
-
-msgid "Save"
-msgstr "Enregistrer"
-
-msgid "Station name:"
-msgstr "Nom de la radio :"
-
-msgid "Audio stream URL:"
-msgstr "URL du flux audio :"
-
-msgid "Group / Folder:"
-msgstr "Groupe / Dossier :"
-
-msgid "Country & Timezone:"
-msgstr "Pays & Fuseau horaire :"
-
-msgid "Timezone:"
-msgstr "Fuseau horaire :"
-
-msgid "Delete this station"
-msgstr "Supprimer cette radio"
-
-msgid "Cancel"
-msgstr "Annuler"
-
-msgid "Delete « {} » from favorites?"
-msgstr "Supprimer « {} » des favoris ?"
-
-msgid "This action will permanently remove this station from your collection."
-msgstr ""
-"Cette action retirera définitivement cette station de votre collection."
-
-# --- Group Reorder Window (reorder_groups.py) ---
-msgid "Manage groups, stations and separators (TiMonde)"
-msgstr "Gestion des groupes, radios et séparateurs (TiMonde)"
-
-msgid "Back to groups"
-msgstr "⬅ Retour aux groupes"
-
-msgid "Add station"
-msgstr "Ajouter radio"
-
-msgid "Open"
-msgstr "Ouvrir"
-
-msgid "New group"
-msgstr "Nouveau groupe"
-
-msgid "Move to..."
-msgstr "Déplacer vers..."
-
-msgid "Top"
-msgstr "Premier"
-
-msgid "Move up"
-msgstr "⬆ Monter"
-
-msgid "Move down"
-msgstr "⬇ Descendre"
-
-msgid "Separator"
-msgstr "Séparateur"
-
-msgid "Sort A-Z"
-msgstr "Tri A-Z"
-
-msgid "Save and reload"
-msgstr "Enregistrer et recharger"
-
-# --- Time & Astronomical Periods ---
-msgid "Same time"
-msgstr "Même heure"
-
-msgid "Dawn"
-msgstr "Aube"
-
-msgid "Morning"
-msgstr "Matin"
-
-msgid "Daytime"
-msgstr "Journée"
-
-msgid "Evening"
-msgstr "Soirée"
-
-msgid "Night"
-msgstr "Nuit"
-
-msgid "Tomorrow"
-msgstr "Demain"
-
-msgid "Yesterday"
-msgstr "Hier"
-
-msgid "Maintenance & Data"
-msgstr "Maintenance & Données"
-
-msgid "Check streams (dead links)..."
-msgstr "Vérifier les flux (liens morts)..."
-
-msgid "Export my stations to CSV..."
-msgstr "Exporter mes radios en CSV..."
-
-msgid "Check streams"
-msgstr "Vérifier les flux"
-
-msgid "Dead links only"
-msgstr "Liens morts uniquement"
-
-msgid "Apply redirects"
-msgstr "Appliquer redirections"
-
-msgid "Repair stream..."
-msgstr "Réparer flux..."
-
-msgid "Export to CSV"
-msgstr "Exporter en CSV"
-
-msgid "Test stream availability and locate broken links"
-msgstr ""
-"Tester la disponibilité en direct de vos radios et repérer les liens morts"
-
-msgid "Display offline radio streams only"
-msgstr "Afficher uniquement les radios dont le flux est hors-ligne"
-
-msgid "Automatically update redirected streams to direct URL"
-msgstr "Mettre à jour automatiquement les flux redirigés vers leur URL directe"
-
-msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
-"Rechercher automatiquement un flux actif de remplacement sur Radio-Browser "
-"pour ce lien mort"
-
-msgid "Export all stations to CSV spreadsheet format"
-msgstr "Exporter l'ensemble de vos radios au format tableur CSV"
-
-msgid "Export my stations to CSV"
-msgstr "Exporter mes radios en CSV"
-
-msgid "CSV files (*.csv)"
-msgstr "Fichiers CSV (*.csv)"
-
-msgid "All files (*.*)"
-msgstr "Tous les fichiers (*.*)"
-
-msgid "Export"
-msgstr "Exporter"
-
-msgid "Export successful!"
-msgstr "Exportation réussie !"
-
-msgid "Error during CSV export:"
-msgstr "Erreur lors de l'exportation CSV :"
-
-msgid "station(s) saved to:"
-msgstr "radio(s) enregistrée(s) dans :"
-
-msgid "Start automatically at login"
-msgstr "Lancer automatiquement au démarrage"
-
-msgid "Organize groups and stations (TiMonde)"
-msgstr "Organiser les groupes et radios (TiMonde)"
-
-msgid "Back to main group list (Esc)"
-msgstr "Revenir à la liste principale des groupes (Échap)"
-
-msgid "Sort stations in this group (Enter or double-click)"
-msgstr "Classer les radios de ce groupe (Entrée ou double-clic)"
-
-msgid "Create a new group of radio stations (Ctrl+N)"
-msgstr "Créer un nouveau groupe de radios (Ctrl+N)"
-
-msgid "Move selection to another group (Ctrl+M)"
-msgstr "Déplacer la sélection vers un autre groupe (Ctrl+M)"
-
-msgid "Move selected item to the top"
-msgstr "Placer l'élément sélectionné en tout premier"
-
-msgid "Move up one rank"
-msgstr "Monter d'un rang"
-
-msgid "Move down one rank"
-msgstr "Descendre d'un rang"
-
-msgid "Add a new station to this group"
-msgstr "Ajouter une nouvelle radio dans ce groupe"
-
-msgid "Insert a separator or header in this group"
-msgstr "Insérer un séparateur ou un intertitre dans ce groupe"
-
-msgid "Sort this list alphabetically"
-msgstr "Trier automatiquement cette liste par ordre alphabétique"
-
-msgid "Edit selected name, URL or header (F2)"
-msgstr "Modifier le nom, l'URL ou l'intertitre sélectionné (F2)"
-
-msgid "Delete selected item or group (Del)"
-msgstr "Supprimer l'élément ou le groupe sélectionné (Suppr)"
-
-msgid "Transfer..."
-msgstr "Transférer..."
-
-msgid "Transfer the content of this group to another group (Ctrl+M)"
-msgstr "Transférer le contenu de ce groupe vers un autre groupe (Ctrl+M)"
-
-msgid "<b>Radio groups</b>"
-msgstr "<b>Groupes de radios</b>"
-
-msgid "— Separator —"
-msgstr "— Séparateur —"
-
-msgid "radio"
-msgstr "radio"
-
-msgid "radios"
-msgstr "radios"
-
-msgid "sep."
-msgstr "sép."
-
-msgid "dead link"
-msgstr "lien mort"
-
-msgid "dead links"
-msgstr "liens morts"
-
-msgid "redir."
-msgstr "redir."
-
-msgid "[OK] All online"
-msgstr "[OK] Tout est en ligne"
-
-msgid "Move selected stations to another group (Ctrl+M)"
-msgstr "Déplacer la ou les radios sélectionnées vers un autre groupe (Ctrl+M)"
-
-msgid "Create a new group and move selected stations there (Ctrl+N)"
-msgstr ""
-"Créer un nouveau groupe et y déplacer les radios sélectionnées (Ctrl+N)"
-
-msgid "Stations in group:"
-msgstr "Radios du groupe :"
-
-msgid "Header"
-msgstr "Intertitre"
-
-msgid "[OK] Live"
-msgstr "[OK] En direct"
-
-msgid "[!] Dead link"
-msgstr "[!] Lien mort"
-
-msgid "[~] Redirected"
-msgstr "[~] Redirigé"
-
-msgid "[?] Geo-restricted"
-msgstr "[?] Géo-restreint"
-
-msgid "Audit completed:"
-msgstr "Audit terminé :"
-
-msgid "online"
-msgstr "en ligne"
-
-msgid "broken"
-msgstr "liens morts"
-
-msgid "redirected"
-msgstr "redirigés"
-
-msgid "No stations to check."
-msgstr "Aucune radio à vérifier."
-
-msgid "Checking your radio stations"
-msgstr "Vérification de vos radios"
-
-msgid "Testing live radio streams..."
-msgstr "Vérification en direct de vos flux de radios..."
-
-msgid "stations checked..."
-msgstr "radios vérifiées..."
-
-msgid "checked:"
-msgstr "vérifiées :"
-
-msgid "Please select a station to repair."
-msgstr "Veuillez sélectionner une radio à réparer."
-
-msgid "This item is a separator."
-msgstr "Cet élément est un séparateur."
-
-msgid "Station deleted"
-msgstr "Radio supprimée"
-
-msgid "Settings..."
-msgstr "Paramètres..."
+msgid "(Already in favorites)"
+msgstr "(Déjà dans vos favoris)"
 
 # --- Mises à jour TiMonde ---
+
+#: data/scripts/edit_station.py:541
+
 msgid "(Metropolitan or Overseas)"
 msgstr "(Métropole ou Outre-mer)"
+
+#: data/scripts/browse_bouquets.py:680 data/scripts/browse_bouquets.py:681
+
+#: data/scripts/browse_bouquets.py:2020 data/scripts/browse_bouquets.py:2063
+
+#: data/scripts/browse_bouquets.py:2197
+
+msgid "(Original folder structure)"
+msgstr "(Dossiers d'origine du fichier)"
+
+#: data/scripts/edit_station.py:539
 
 msgid "(Single inferred timezone)"
 msgstr "(Fuseau horaire unique déduit)"
 
+#: data/scripts/edit_station.py:518
+
 msgid "(Timezone not defined)"
 msgstr "(Fuseau horaire non défini)"
+
+#: data/scripts/edit_station.py:521
 
 msgid "(Unknown)"
 msgstr "(Inconnu)"
 
-msgid "<b>Country:</b>"
-msgstr "<b>Pays :</b>"
+#: data/scripts/edit_station.py:75
 
-msgid "<b>Fichier exemple :</b>"
-msgstr "<b>Fichier exemple :</b>"
+msgid "<b>Edit station settings:</b>"
+msgstr "<b>Modifier les paramètres de la station :</b>"
 
-msgid ""
-"Accédez à plus de 40 000 stations en ligne classées par pays, genre ou mots-"
-"clés."
-msgstr ""
-"Accédez à plus de 40 000 stations en ligne classées par pays, genre ou mots-"
-"clés."
+#: data/scripts/edit_station.py:65
 
-msgid "Ajouter une radio (TiMonde)"
-msgstr "Ajouter une radio (TiMonde)"
+msgid "<b>Enter new station details:</b>"
+msgstr "<b>Entrez les informations de la nouvelle radio :</b>"
 
-msgid "Ajouter une radio manuellement"
-msgstr "Ajouter une radio manuellement"
+#: data/scripts/edit_station.py:70
 
-msgid "Ajouter à mes radios"
-msgstr "Ajouter à mes radios"
+msgid "<b>Keep this randomly discovered station in your favorites:</b>"
+msgstr "<b>Conserver cette radio découverte au hasard dans vos favoris :</b>"
 
-msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes)."
+#: data/scripts/timonde_settings.py:740
 
-msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "Bouquets DAB+ & Sélections officielles"
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_st}</b> station(s) réparties dans <b>{nb_gr}</b> groupe(s)."
 
-msgid "Bouquets DAB+ vérifiés"
-msgstr "Bouquets DAB+ vérifiés"
+#: data/scripts/browse_bouquets.py:1208
 
-msgid ""
-"Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, "
-"GNOME, KDE, MATE)."
-msgstr ""
-"Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, "
-"GNOME, KDE, MATE)."
-
-msgid "Conserver dans mes favoris"
-msgstr "Conserver dans mes favoris"
-
-msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "Conserver la radio dans les favoris (TiMonde)"
-
-msgid ""
-"Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans "
-"~/.config/timonde/examples/."
-msgstr ""
-"Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans "
-"~/.config/timonde/examples/."
-
-msgid "Contents"
-msgstr "Contenu"
-
-msgid "Details"
-msgstr "Détails"
-
-msgid "Dossier ouvert :"
-msgstr "Dossier ouvert :"
-
-msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "Découvrir et importer des radios (TiMonde)"
-
-msgid "Démarrage automatique"
-msgstr "Démarrage automatique"
-
-msgid ""
-"Démarre discrètement TiMonde en arrière-plan dès l'ouverture de votre "
-"session graphique."
-msgstr ""
-"Démarre discrètement TiMonde en arrière-plan dès l'ouverture de votre "
-"session graphique."
-
-msgid ""
-"Détection automatique selon votre système. 55 langues mondiales supportées "
-"avec drapeaux."
-msgstr ""
-"Détection automatique selon votre système. 55 langues mondiales supportées "
-"avec drapeaux."
-
-msgid "Enregistrer"
-msgstr "Enregistrer"
-
-msgid "Erreur :"
-msgstr "Erreur :"
-
-msgid "Erreur exécution :"
-msgstr "Erreur exécution :"
-
-msgid "Erreur import JSON :"
-msgstr "Erreur import JSON :"
-
-msgid "Erreur lors de la modification de l'autostart."
-msgstr "Erreur lors de la modification de l'autostart."
-
-msgid "Explorer DAB+..."
-msgstr "Explorer DAB+..."
-
-msgid "Exportation CSV terminée."
-msgstr "Exportation CSV terminée."
-
-msgid "Exporter en CSV..."
-msgstr "Exporter en CSV..."
-
-msgid ""
-"Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout en "
-"conservant bookmarks.xml comme référence."
-msgstr ""
-"Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout en "
-"conservant bookmarks.xml comme référence."
-
-msgid "Fermer"
-msgstr "Fermer"
-
-msgid "Fichiers exemples"
-msgstr "Fichiers exemples"
-
-msgid "Fichiers exemples thématiques"
-msgstr "Fichiers exemples thématiques"
-
-msgid "Group name"
-msgstr "Nom du groupe"
-
-msgid "Générez une feuille de calcul CSV de vos radios"
-msgstr "Générez une feuille de calcul CSV de vos radios"
-
-msgid "Gérer les radios..."
-msgstr "Gérer les radios..."
-
-msgid "Importer depuis CSV..."
-msgstr "Importer depuis CSV..."
-
-msgid "Importer des fichiers personnels"
-msgstr "Importer des fichiers personnels"
-
-msgid "Importer fichier..."
-msgstr "Importer fichier..."
-
-msgid "Importer mes fichiers"
-msgstr "Importer mes fichiers"
-
-msgid ""
-"Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV, "
-"JSON, M3U ou PLS."
-msgstr ""
-"Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV, "
-"JSON, M3U ou PLS."
-
-msgid "Impossible d ouvrir le dossier :"
-msgstr "Impossible d ouvrir le dossier :"
-
-msgid ""
-"Insérez des séparateurs (---) ou des intertitres de section dans vos groupes "
-"pour aérer votre menu."
-msgstr ""
-"Insérez des séparateurs (---) ou des intertitres de section dans vos groupes "
-"pour aérer votre menu."
-
-msgid "Intégration du bureau & Plateau"
-msgstr "Intégration du bureau & Plateau"
-
-msgid "Lancement automatique au démarrage"
-msgstr "Lancement automatique au démarrage"
-
-msgid "Lancer l'audit..."
-msgstr "Lancer l'audit..."
-
-msgid "Langue :"
-msgstr "Langue :"
-
-msgid "Langue et Région"
-msgstr "Langue et Région"
-
-msgid "Modifications prises en compte."
-msgstr "Modifications prises en compte."
-
-msgid "Modifier la radio (TiMonde)"
-msgstr "Modifier la radio (TiMonde)"
-
-msgid "Name / Header"
-msgstr "Nom / Intertitre"
-
-msgid "Nouvelle radio..."
-msgstr "Nouvelle radio..."
-
-msgid "Organiser les groupes et les radios"
-msgstr "Organiser les groupes et les radios"
-
-msgid "Outil introuvable :"
-msgstr "Outil introuvable :"
-
-msgid "Ouvrir dossier"
-msgstr "Ouvrir dossier"
-
-msgid "Paramètres & Contrôle TiMonde"
-msgstr "Paramètres & Contrôle TiMonde"
-
-msgid "Paramètres TiMonde"
-msgstr "Paramètres TiMonde"
-
-msgid ""
-"Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter votre "
-"bureau."
-msgstr ""
-"Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter votre "
-"bureau."
-
-msgid "Parcourir..."
-msgstr "Parcourir..."
-
-msgid "Passerelle Tableur (CSV)"
-msgstr "Passerelle Tableur (CSV)"
-
-msgid "Recherche Radio-Browser"
-msgstr "Recherche Radio-Browser"
-
-msgid "Recherche mondiale Radio-Browser"
-msgstr "Recherche mondiale Radio-Browser"
-
-msgid "Rechercher..."
-msgstr "Rechercher..."
-
-msgid "Restaurer"
-msgstr "Restaurer"
-
-msgid "Restaurer les fichiers exemples"
-msgstr "Restaurer les fichiers exemples"
-
-msgid "Réimportez ou synchronisez des radios modifiées depuis un tableur CSV"
-msgstr "Réimportez ou synchronisez des radios modifiées depuis un tableur CSV"
-
-msgid ""
-"Rétablit les 17 exemples thématiques par défaut dans votre dossier personnel "
-"s'ils ont été supprimés."
-msgstr ""
-"Rétablit les 17 exemples thématiques par défaut dans votre dossier personnel "
-"s'ils ont été supprimés."
-
-msgid ""
-"Saisir directement un nom, une URL de flux (AAC, MP3, HLS), un pays et un "
-"fuseau horaire."
-msgstr ""
-"Saisir directement un nom, une URL de flux (AAC, MP3, HLS), un pays et un "
-"fuseau horaire."
-
-msgid "Signets actuels (bookmarks.xml)"
-msgstr "Signets actuels (bookmarks.xml)"
-
-msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "Signets réorganisés et enregistrés avec succès !"
-
-msgid "Supprimer"
-msgstr "Supprimer"
-
-msgid ""
-"Teste en direct la disponibilité de tous vos flux, détecte les liens "
-"inactifs et applique les redirections."
-msgstr ""
-"Teste en direct la disponibilité de tous vos flux, détecte les liens "
-"inactifs et applique les redirections."
-
-msgid ""
-"Triez, renommez, supprimez et déplacez vos stations. Créez des dossiers et "
-"des sous-groupes (ex: Musique/Jazz)."
-msgstr ""
-"Triez, renommez, supprimez et déplacez vos stations. Créez des dossiers et "
-"des sous-groupes (ex: Musique/Jazz)."
-
-msgid "Vérificateur de flux & Liens morts"
-msgstr "Vérificateur de flux & Liens morts"
-
-msgid "activé"
-msgstr "activé"
-
-msgid "ajoutée avec succès à vos signets !"
-msgstr "ajoutée avec succès à vos signets !"
-
-msgid "désactivé"
-msgstr "désactivé"
-
-msgid "fichiers exemples restaurés dans"
-msgstr "fichiers exemples restaurés dans"
-
-msgid "radio(s) ajoutée(s) à vos signets !"
-msgstr "radio(s) ajoutée(s) à vos signets !"
-
-msgid "↕️ Organisation"
-msgstr "↕️ Organisation"
-
-msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 Astuce d'agencement visuel"
-
-msgid "💾 Données & Fichiers"
-msgstr "💾 Données & Fichiers"
-
-msgid "📻 Bibliothèque"
-msgstr "📻 Bibliothèque"
-
-msgid "🖥️ Général"
-msgstr "🖥️ Général"
-
-msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
+msgid "<i>Select a file or sample above.</i>"
 msgstr "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
 
-msgid "Actualiser la liste des exemples"
-msgstr "Actualiser la liste des exemples"
+#: data/scripts/timonde_settings.py:709 data/scripts/timonde_settings.py:719
 
-msgid "Aide sur les groupes et sous-groupes"
-msgstr "Aide sur les groupes et sous-groupes"
+msgid "Active (Left & Right clicks unified)"
+msgstr "Actif (clic gauche & droit unifiés)"
 
-msgid "Ajouter"
+#: data/scripts/browse_bouquets.py:882
+
+msgid "Add"
 msgstr "Ajouter"
 
-msgid "Annuler"
-msgstr "Annuler"
+#: data/scripts/reorder_groups.py:189
 
-msgid "Arrêter"
-msgstr "Arrêter"
+msgid "Add a new station to this group or to root"
+msgstr "Ajouter une nouvelle station à ce groupe ou à la racine"
 
-msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
-msgstr "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+# --- Edit Window (edit_station.py) ---
 
-msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
-msgstr "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
+#: data/scripts/edit_station.py:64
 
-msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
-msgstr "Aucune radio trouvée sur Radio-Browser pour ces critères."
+msgid "Add a station (TiMonde)"
+msgstr "Ajouter une station (TiMonde)"
 
-msgid "Bouquet National (Grandes stations)"
-msgstr "Bouquet National (Grandes stations)"
+#: data/scripts/reorder_groups.py:189
 
-msgid "Bouquets par pays"
-msgstr "Bouquets par pays"
+msgid "Add station"
+msgstr "Ajouter radio"
 
-msgid "Bureau graphique & Plateau"
-msgstr "Bureau graphique & Plateau"
+#: data/scripts/reorder_groups.py:576
 
-msgid "Cette station n'a aucune URL de flux audio."
-msgstr "Cette station n'a aucune URL de flux audio."
+msgid "Add station here..."
+msgstr "Ajouter une station ici..."
 
-msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
-msgstr "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+#: data/scripts/reorder_groups.py:597
 
-msgid "Charger un fichier..."
-msgstr "Charger un fichier..."
+msgid "Add station..."
+msgstr "Ajouter une radio..."
 
-msgid "Choisir parmi les groupes existants"
-msgstr "Choisir parmi les groupes existants"
+#: data/scripts/edit_station.py:66
 
-msgid "Choisir un fichier de radios"
-msgstr "Choisir un fichier de radios"
+msgid "Add to my stations"
+msgstr "Ajouter à mes radios"
 
-msgid "Collections & Fichiers"
-msgstr "Collections & Fichiers"
+#: data/scripts/edit_station.py:159
 
-msgid "Conserver l'organisation en dossiers"
-msgstr "Conserver l'organisation en dossiers"
+msgid "Align name"
+msgstr "Aligner le nom"
 
-msgid ""
-"Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux "
-"horaires)"
-msgstr ""
-"Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux "
-"horaires)"
+#: data/scripts/reorder_groups.py:295
 
-msgid "Disponibilité"
-msgstr "Disponibilité"
+msgid "All changes saved"
+msgstr "Toutes les modifications ont été enregistrées"
 
-msgid "Disponibilité en direct"
-msgstr "Disponibilité en direct"
+#: data/scripts/browse_bouquets.py:784
 
-msgid "Dossier / Groupe"
-msgstr "Dossier / Groupe"
+msgid "All countries (Worldwide)"
+msgstr "Tous les pays (Monde entier)"
 
-msgid "Dossier des exemples"
-msgstr "Dossier des exemples"
+#: data/scripts/reorder_groups.py:1281
 
-msgid "Dossier des signets"
-msgstr "Dossier des signets"
-
-msgid ""
-"Détection automatique selon les paramètres régionaux de votre environnement "
-"Linux."
-msgstr ""
-"Détection automatique selon les paramètres régionaux de votre environnement "
-"Linux."
-
-msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
-msgstr "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
-
-msgid "Effacer le champ"
-msgstr "Effacer le champ"
-
-msgid "Effacer le filtre langue"
-msgstr "Effacer le filtre langue"
-
-msgid "Effacer le filtre pays"
-msgstr "Effacer le filtre pays"
-
-msgid "Environnement GNOME Shell détecté"
-msgstr "Environnement GNOME Shell détecté"
-
-msgid "Erreur lors de la sauvegarde :"
-msgstr "Erreur lors de la sauvegarde :"
-
-msgid "Ex: /France/Jazz ou / pour racine"
-msgstr "Ex: /France/Jazz ou / pour racine"
-
-msgid "Exemples thématiques :"
-msgstr "Exemples thématiques :"
-
-msgid "Exporter en tableau (CSV)..."
-msgstr "Exporter en tableau (CSV)..."
-
-msgid "Fichier :"
-msgstr "Fichier :"
-
-msgid "Fichier externe :"
-msgstr "Fichier externe :"
-
-msgid "Fichiers XML (*.xml)"
-msgstr "Fichiers XML (*.xml)"
-
-msgid "Filtrer par pays :"
-msgstr "Filtrer par pays :"
-
-msgid "Format & Débit"
-msgstr "Format & Débit"
-
-msgid "Genre / Tags"
-msgstr "Genre / Tags"
-
-msgid "Genre / Thématique"
-msgstr "Genre / Thématique"
-
-msgid "Genre :"
-msgstr "Genre :"
-
-msgid "Gestionnaire de paquets non reconnu."
-msgstr "Gestionnaire de paquets non reconnu."
-
-msgid "Groupe :"
-msgstr "Groupe :"
-
-msgid "Générer une liste plate pour tableur Calc ou Excel"
-msgstr "Générer une liste plate pour tableur Calc ou Excel"
-
-msgid "Importer"
-msgstr "Importer"
-
-msgid "Importer & Exporter"
-msgstr "Importer & Exporter"
-
-msgid "Importer dans mes favoris"
-msgstr "Importer dans mes favoris"
-
-msgid "Installation en cours (veuillez valider l'invite système)..."
-msgstr "Installation en cours (veuillez valider l'invite système)..."
-
-msgid "Installer l'intégration GNOME"
-msgstr "Installer l'intégration GNOME"
-
-msgid "Intégration GNOME requise"
-msgstr "Intégration GNOME requise"
-
-msgid "Intégration dans la barre supérieure GNOME"
-msgstr "Intégration dans la barre supérieure GNOME"
-
-msgid ""
-"Intégration native dans la zone de notification via StatusNotifierItem / "
-"XEmbed."
-msgstr ""
-"Intégration native dans la zone de notification via StatusNotifierItem / "
-"XEmbed."
-
-msgid "L'exportation CSV est accessible depuis les paramètres."
-msgstr "L'exportation CSV est accessible depuis les paramètres."
-
-msgid ""
-"L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre "
-"supérieure sous GNOME."
-msgstr ""
-"L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre "
-"supérieure sous GNOME."
-
-msgid "L'installation a été annulée ou a échoué."
-msgstr "L'installation a été annulée ou a échoué."
-
-msgid "La sauvegarde XML est accessible depuis les paramètres."
-msgstr "La sauvegarde XML est accessible depuis les paramètres."
-
-msgid "Langue du système"
-msgstr "Langue du système"
-
-msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
-msgstr "Les séparateurs et intertitres ne peuvent pas être écoutés."
-
-msgid "Mes Radios"
-msgstr "Mes Radios"
-
-msgid "Mot-clé :"
-msgstr "Mot-clé :"
-
-msgid "Nouveaux uniquement"
-msgstr "Nouveaux uniquement"
-
-msgid "OPTIONS DE SESSION"
-msgstr "OPTIONS DE SESSION"
-
-msgid "Organisation des groupes et sous-groupes (Convention Linux)"
-msgstr "Organisation des groupes et sous-groupes (Convention Linux)"
-
-msgid "Ouvrez d'abord un groupe pour écouter ses radios."
-msgstr "Ouvrez d'abord un groupe pour écouter ses radios."
-
-msgid "Ouvrir"
-msgstr "Ouvrir"
-
-msgid "Ouvrir ~/.config/timonde"
-msgstr "Ouvrir ~/.config/timonde"
-
-msgid "Ouvrir ~/.config/timonde/examples"
-msgstr "Ouvrir ~/.config/timonde/examples"
-
-msgid "Pays"
-msgstr "Pays"
-
-msgid "Pays :"
-msgstr "Pays :"
-
-msgid ""
-"Pour afficher discrètement l'icône de lecture dans la barre supérieure de "
-"votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire."
-"<br/><br/>Souhaitez-vous l'installer maintenant ?"
-msgstr ""
-"Pour afficher discrètement l'icône de lecture dans la barre supérieure de "
-"votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire."
-"<br/><br/>Souhaitez-vous l'installer maintenant ?"
-
-msgid "Préférences"
-msgstr "Préférences"
-
-msgid ""
-"Préserver les sous-groupes définis dans le fichier au lieu de tout importer "
-"dans un groupe unique."
-msgstr ""
-"Préserver les sous-groupes définis dans le fichier au lieu de tout importer "
-"dans un groupe unique."
-
-msgid "Quitter"
-msgstr "Quitter"
-
-msgid "Recharger"
-msgstr "Recharger"
-
-msgid "Recharger le fichier actuellement affiché"
-msgstr "Recharger le fichier actuellement affiché"
-
-msgid ""
-"Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> "
-"(+45 000 stations)."
-msgstr ""
-"Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> "
-"(+45 000 stations)."
-
-msgid "Recherche sur Radio-Browser en cours..."
-msgstr "Recherche sur Radio-Browser en cours..."
-
-msgid "Rechercher"
-msgstr "Rechercher"
-
-msgid "Rechercher en ligne"
-msgstr "Rechercher en ligne"
-
-msgid "Remplacer le lien sélectionné par un flux officiel actif"
-msgstr "Remplacer le lien sélectionné par un flux officiel actif"
-
-msgid "Restaurer exemples"
-msgstr "Restaurer exemples"
-
-msgid "Régions & Locales :"
-msgstr "Régions & Locales :"
-
-msgid "Réparer le flux..."
-msgstr "Réparer le flux..."
-
-msgid "Rétablir les 19 exemples d'origine"
-msgstr "Rétablir les 19 exemples d'origine"
-
-msgid ""
-"Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
-msgstr ""
-"Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
-
-msgid "Sauvegarde réussie !"
-msgstr "Sauvegarde réussie !"
-
-msgid "Sauvegarder mes radios (XML)..."
-msgstr "Sauvegarder mes radios (XML)..."
-
-msgid "Sauvegarder mes signets (XML)"
-msgstr "Sauvegarder mes signets (XML)"
-
-msgid "Signets et radios enregistrés avec succès !"
-msgstr "Signets et radios enregistrés avec succès !"
-
-msgid "Station"
-msgstr "Station"
-
-msgid "Statut Favoris"
-msgstr "Statut Favoris"
-
-msgid ""
-"Sélection officielle et vérifiée parmi 146 pays et régions (bouquets "
-"numériques DAB+ et grandes stations nationales)."
-msgstr ""
-"Sélection officielle et vérifiée parmi 146 pays et régions (bouquets "
-"numériques DAB+ et grandes stations nationales)."
-
-msgid "Sélectionnez une radio pour l'écouter."
-msgstr "Sélectionnez une radio pour l'écouter."
-
-msgid "Sélectionnez une station dans le tableau pour l'écouter."
-msgstr "Sélectionnez une station dans le tableau pour l'écouter."
-
-msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
-msgstr "Tapez un pays (ex: France, Deutschland, Canada...)"
-
-msgid "Tester"
-msgstr "Tester"
-
-msgid "Tester les flux"
-msgstr "Tester les flux"
-
-msgid "TiMonde — Intégration Bureau GNOME"
-msgstr "TiMonde — Intégration Bureau GNOME"
-
-msgid "Tous les fichiers (*.*)"
+msgid "All files (*.*)"
 msgstr "Tous les fichiers (*.*)"
 
-msgid "Tous les pays (mondial)"
-msgstr "Tous les pays (mondial)"
+#: data/scripts/browse_bouquets.py:823
 
-msgid "Tout cocher"
-msgstr "Tout cocher"
-
-msgid "Tout décocher"
-msgstr "Tout décocher"
-
-msgid "Toutes les langues"
+msgid "All languages"
 msgstr "Toutes les langues"
 
-msgid "URL du flux"
-msgstr "URL du flux"
-
-msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
-msgstr "Veuillez sélectionner une radio dans la liste pour l'écouter."
-
-msgid "Vos signets complets ont été enregistrés dans :"
-msgstr "Vos signets complets ont été enregistrés dans :"
-
-msgid "Votes"
-msgstr "Votes"
-
-msgid "Vérifier en direct la disponibilité des liens"
-msgstr "Vérifier en direct la disponibilité des liens"
-
-msgid "Vérifier la disponibilité en direct des radios"
-msgstr "Vérifier la disponibilité en direct des radios"
-
-msgid "Vérifier la disponibilité en direct des radios trouvées"
-msgstr "Vérifier la disponibilité en direct des radios trouvées"
-
-msgid "Vérifier la validité du lien et écouter un aperçu du flux"
-msgstr "Vérifier la validité du lien et écouter un aperçu du flux"
-
-msgid "ajoutée avec succès !"
-msgstr "ajoutée avec succès !"
-
-msgid "fichiers exemples restaurés."
-msgstr "fichiers exemples restaurés."
-
-msgid "nouvelle(s) radio(s) importée(s) !"
-msgstr "nouvelle(s) radio(s) importée(s) !"
-
-msgid "Écouter"
-msgstr "Écouter"
-
-msgid "Écouter la radio sélectionnée"
-msgstr "Écouter la radio sélectionnée"
-
-msgid "Écouter ou tester la radio sélectionnée"
-msgstr "Écouter ou tester la radio sélectionnée"
-
-msgid "is not responding. Searching for a backup stream..."
-msgstr "ne répond pas. Recherche d'un flux de secours..."
-
-msgid "Stream repaired and saved for"
-msgstr "Flux réparé et enregistré pour"
-
-msgid "is currently unavailable"
-msgstr "est indisponible actuellement"
-
-msgid "Unable to find a station in the bouquets catalog."
-msgstr "Impossible de trouver une station dans le catalogue des bouquets."
-
-msgid "No radio is currently playing."
-msgstr "Aucune radio n'est en cours d'écoute."
-
-msgid "Selection"
-msgstr "Sélection"
-
-msgid "Save error"
-msgstr "Erreur de sauvegarde"
-
-msgid "Saved!"
-msgstr "Sauvegardée !"
-
-msgid "saved in your favorites!"
-msgstr "conservée dans vos favoris !"
-
-msgid "Station added but reload error"
-msgstr "Station ajoutée mais erreur de rechargement"
-
-msgid "Sleep timer activated"
-msgstr "Minuterie d'arrêt activée"
-
-msgid "stopping in"
-msgstr "coupure dans"
-
-msgid "Sleep timer: stopping radio."
-msgstr "Minuterie d'arrêt : coupure de la radio."
-
-msgid "Sleep timer cancelled."
-msgstr "Minuterie d'arrêt annulée."
-
-msgid "Track copied to clipboard:"
-msgstr "Morceau copié dans le presse-papier :"
-
-msgid "deleted from your favorites."
-msgstr "supprimée de vos favoris."
-
-msgid "updated successfully!"
-msgstr "mise à jour avec succès !"
-
-msgid "Settings console not found"
-msgstr "Console de paramètres introuvable"
-
-msgid "Paused"
-msgstr "Pause"
-
-msgid "Searching on Radio-Browser..."
-msgstr "Recherche sur Radio-Browser..."
-
-msgid "No stream found for this name. Modify the text above."
-msgstr "Aucun flux trouvé pour ce nom. Modifiez le texte ci-dessus."
-
-msgid "{count} streams found. Select the desired stream and validate."
-msgstr "{count} flux trouvés. Sélectionnez le flux souhaité puis validez."
-
-msgid "No pre-loaded DAB+ bouquet for this country."
-msgstr "Aucun bouquet DAB+ pré-embarqué pour ce pays."
+#: data/scripts/timonde_settings.py:728
 
 msgid ""
-"You can explore and import stations for this territory directly from the "
-"global directory."
+"Allows opening the station menu interchangeably with left or right click."
 msgstr ""
-"Vous pouvez explorer et importer les radios de ce territoire en direct "
-"depuis l'annuaire mondial."
+"Permet d'ouvrir le menu des radios indifféremment avec le clic gauche ou le "
+"clic droit."
+
+#: data/scripts/timonde_common.py:1904
+
+msgid "Already registered"
+msgstr "Déjà référencée"
+
+#: data/scripts/timonde_common.py:1899
+
+msgid "Already registered:"
+msgstr "Déjà référencée :"
+
+#: data/scripts/reorder_groups.py:111 data/scripts/reorder_groups.py:1155
+
+msgid "Apply redirects"
+msgstr "Appliquer redirections"
+
+#: data/scripts/reorder_groups.py:783 data/scripts/reorder_groups.py:785
+
+#: data/scripts/reorder_groups.py:787
+
+msgid "Are you sure you want to delete « {name} » ?"
+msgstr "Voulez-vous vraiment supprimer « {name} » ?"
+
+#: data/scripts/edit_station.py:121
+
+msgid "Audio stream URL:"
+msgstr "URL du flux audio :"
+
+#: data/scripts/reorder_groups.py:1139
+
+msgid "Audit completed:"
+msgstr "Audit terminé :"
+
+#: data/scripts/timonde_settings.py:666
+
+msgid "Automatic detection according to your Linux locale settings."
+msgstr "Détection automatique selon la configuration locale de votre système Linux."
+
+#: data/scripts/timonde_settings.py:648
+
+msgid "Automatic launch on startup"
+msgstr "Lancement automatique au démarrage"
+
+#: data/scripts/timonde_settings.py:751
+
+msgid "Automatic startup"
+msgstr "Démarrage automatique"
+
+#: data/scripts/reorder_groups.py:111
+
+msgid "Automatically update redirected streams to direct URL"
+msgstr "Mettre à jour automatiquement les flux redirigés vers leur URL directe"
+
+#: data/scripts/browse_bouquets.py:913 data/scripts/browse_bouquets.py:1247
+
+msgid "Availability"
+msgstr "Disponibilité"
+
+#: data/scripts/reorder_groups.py:1266
+
+msgid "Backup my bookmarks (XML)"
+msgstr "Sauvegarder mes favoris (XML)"
+
+#: data/scripts/browse_bouquets.py:1199
+
+msgid "Backup my radios (XML)..."
+msgstr "Sauvegarder mes radios (XML)..."
+
+#: data/scripts/reorder_groups.py:1302
+
+msgid "Backup successful!"
+msgstr "Sauvegarde réussie !"
+
+#: data/scripts/timonde_common.py:1645
+
+msgid "Bitrate"
+msgstr "Débit"
+
+#: data/scripts/timonde_settings.py:530
+
+msgid "Bookmarks and stations saved successfully!"
+msgstr "Favoris et radios enregistrés avec succès !"
+
+#: data/scripts/browse_bouquets.py:1203
+
+msgid "Bookmarks folder"
+msgstr "Dossier des favoris"
+
+#: data/scripts/browse_bouquets.py:2312
+
+msgid "CSV export is available from settings."
+msgstr "L’exportation CSV est disponible dans les préférences."
+
+#: data/scripts/reorder_groups.py:1252
+
+msgid "CSV export successful:"
+msgstr "Exportation CSV réussie :"
+
+#: data/scripts/browse_bouquets.py:1982 data/scripts/edit_station.py:308
+
+#: data/scripts/edit_station.py:575 data/scripts/reorder_groups.py:260
+
+#: data/scripts/reorder_groups.py:638 data/scripts/reorder_groups.py:948
+
+#: data/scripts/reorder_groups.py:1228 data/scripts/reorder_groups.py:1269
+
+#: data/scripts/timonde_common.py:1596 data/scripts/timonde_common.py:1720
+
+msgid "Cancel"
+msgstr "Annuler"
+
+#: src/tray/menu.rs:589
+
+msgid "Cancel sleep timer"
+msgstr "Annuler la minuterie d'arrêt"
+
+#: data/scripts/timonde_common.py:1814
+
+msgid "Check"
+msgstr "Vérifier"
+
+#: data/scripts/browse_bouquets.py:938 data/scripts/browse_bouquets.py:1107
+
+#: data/scripts/browse_bouquets.py:1274
+
+msgid "Check all"
+msgstr "Tout cocher"
+
+#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
+
+msgid "Check and submit selected station to Radio-Browser directory"
+msgstr "Vérifier et soumettre la radio sélectionnée à l’annuaire Radio-Browser"
+
+#: data/scripts/timonde_common.py:1814
+
+msgid "Check entered stream URL again on Radio-Browser"
+msgstr "Vérifier à nouveau l’URL du flux sur Radio-Browser"
+
+#: data/scripts/edit_station.py:139
+
+msgid "Check if stream is listed or contribute to directory"
+msgstr "Vérifier si le flux est répertorié ou contribuer à l’annuaire"
+
+#: data/scripts/edit_station.py:135
+
+msgid "Check link validity and listen to stream preview"
+msgstr "Vérifier la validité du lien et écouter un extrait du flux"
+
+#: data/scripts/browse_bouquets.py:1286
+
+msgid "Check links availability live"
+msgstr "Tester la disponibilité des liens en direct"
+
+#: data/scripts/browse_bouquets.py:946
+
+msgid "Check live availability of found stations"
+msgstr "Vérifier la disponibilité en direct des radios trouvées"
+
+#: data/scripts/reorder_groups.py:242
+
+msgid "Check or contribute selected station to Radio-Browser"
+msgstr "Vérifier ou partager la station sélectionnée sur Radio-Browser"
+
+#: data/scripts/browse_bouquets.py:1115
+
+msgid "Check stations live availability"
+msgstr "Tester la disponibilité des radios en direct"
+
+#: data/scripts/reorder_groups.py:102
+
+msgid "Check streams"
+msgstr "Vérifier les flux"
+
+#: data/scripts/timonde_common.py:1882
+
+msgid "Checking Radio-Browser directory..."
+msgstr "Vérification de l’annuaire Radio-Browser en cours..."
+
+#: data/scripts/reorder_groups.py:1077
+
+msgid "Checking your radio stations"
+msgstr "Vérification de vos radios"
+
+#: data/scripts/browse_bouquets.py:1656
+
+msgid "Checking..."
+msgstr "Vérification..."
+
+#: data/scripts/browse_bouquets.py:1978
+
+msgid "Choose a radio station file"
+msgstr "Choisir un fichier de stations de radio"
+
+#: data/scripts/browse_bouquets.py:676
+
+msgid "Choose from existing groups"
+msgstr "Choisir parmi les groupes existants"
+
+#: data/scripts/timonde_settings.py:727
+
+msgid "Cinnamon Left-Click Unification"
+msgstr "Harmonisation Clic Gauche Cinnamon"
+
+#: data/scripts/timonde_settings.py:721
+
+msgid "Cinnamon left-click unification successfully enabled!"
+msgstr "Harmonisation Cinnamon activée avec succès !"
+
+#: data/scripts/edit_station.py:265
+
+msgid "Clear"
+msgstr "Effacer"
+
+#: data/scripts/edit_station.py:266
+
+msgid "Clear / Automatic mode"
+msgstr "Effacer / Mode automatique"
+
+#: data/scripts/browse_bouquets.py:789
+
+msgid "Clear country filter"
+msgstr "Effacer le filtre par pays"
+
+#: data/scripts/browse_bouquets.py:669
+
+msgid "Clear field"
+msgstr "Effacer le champ"
+
+#: data/scripts/edit_station.py:187
+
+msgid "Clear field (click to empty)"
+msgstr "Vider le champ (cliquer pour effacer)"
+
+#: data/scripts/browse_bouquets.py:828
+
+msgid "Clear language filter"
+msgstr "Effacer le filtre par langue"
+
+#: data/scripts/browse_bouquets.py:1335 data/scripts/timonde_common.py:1858
+
+#: data/scripts/timonde_settings.py:447
+
+msgid "Close"
+msgstr "Fermer"
+
+#: data/scripts/reorder_groups.py:88
+
+msgid "Collapse all"
+msgstr "Tout replier"
+
+#: data/scripts/reorder_groups.py:88
+
+msgid "Collapse all groups for an overview"
+msgstr "Replier tous les groupes pour une vue d’ensemble"
+
+#: data/scripts/timonde_settings.py:594
+
+msgid "Collections & Files"
+msgstr "Collections & Fichiers"
+
+#: data/scripts/reorder_groups.py:794
+
+msgid "Confirm deletion"
+msgstr "Confirmer la suppression"
+
+#: data/scripts/timonde_common.py:1328
+
+msgid "Connecting to"
+msgstr "Connexion à"
+
+#: src/i18n.rs:192 src/tray/menu.rs:159
+
+msgid "Connecting..."
+msgstr "Connexion..."
+
+#: data/scripts/browse_bouquets.py:739
+
+msgid "Contribute a station"
+msgstr "Partager une station"
+
+#: data/scripts/timonde_common.py:1781
+
+msgid "Contribute a station to the community Radio-Browser directory"
+msgstr "Partager une station sur l’annuaire communautaire Radio-Browser"
+
+#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
+
+#: data/scripts/timonde_common.py:1761
+
+msgid "Contribute to Radio-Browser"
+msgstr "Partager sur Radio-Browser"
+
+#: data/scripts/reorder_groups.py:242 data/scripts/reorder_groups.py:567
+
+msgid "Contribute to Radio-Browser..."
+msgstr "Partager sur Radio-Browser..."
+
+#: data/scripts/browse_bouquets.py:894 data/scripts/browse_bouquets.py:1240
+
+#: data/scripts/timonde_common.py:1648
+
+msgid "Country"
+msgstr "Pays"
+
+#: data/scripts/browse_bouquets.py:1327 data/scripts/timonde_settings.py:593
+
+msgid "Country bouquets"
+msgstr "Bouquets par pays"
+
+#: data/scripts/timonde_common.py:1821
+
+msgid "Country code (ISO):"
+msgstr "Code pays (ISO) :"
+
+#: data/scripts/browse_bouquets.py:981 data/scripts/edit_station.py:228
+
+#: data/scripts/timonde_common.py:1900
+
+msgid "Country:"
+msgstr "Pays :"
+
+#: data/scripts/reorder_groups.py:639
+
+msgid "Create"
+msgstr "Créer"
+
+#: data/scripts/browse_bouquets.py:1199
+
+msgid "Create a full backup of your collection (with folders and timezones)"
+msgstr "Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux horaires)"
+
+#: data/scripts/reorder_groups.py:634
+
+msgid "Create a new group"
+msgstr "Créer un nouveau groupe"
+
+#: data/scripts/reorder_groups.py:193
+
+msgid "Create a new group or subgroup (Ctrl+N)"
+msgstr "Créer un nouveau groupe ou sous-groupe (Ctrl+N)"
+
+#: data/scripts/reorder_groups.py:658
+
+msgid "Create as a subgroup inside"
+msgstr "Créer comme sous-groupe dans"
+
+#: data/scripts/timonde_settings.py:656
+
+msgid "DETECTED ENVIRONMENT (READ ONLY)"
+msgstr "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
+
+#: src/timezone.rs:521
+
+msgid "Daytime"
+msgstr "Journée"
+
+#: data/scripts/reorder_groups.py:106 data/scripts/reorder_groups.py:1147
+
+msgid "Dead links only"
+msgstr "Liens morts uniquement"
+
+#: data/scripts/edit_station.py:576 data/scripts/reorder_groups.py:246
+
+#: src/i18n.rs:230 src/i18n.rs:236
+
+msgid "Delete"
+msgstr "Supprimer"
+
+#: data/scripts/reorder_groups.py:588
+
+msgid "Delete group and stations"
+msgstr "Supprimer le groupe et ses stations"
+
+#: data/scripts/reorder_groups.py:246
+
+msgid "Delete selected item or group (Del)"
+msgstr "Supprimer l'élément ou le groupe sélectionné (Suppr)"
+
+#: data/scripts/edit_station.py:303 data/scripts/reorder_groups.py:571
+
+msgid "Delete this station"
+msgstr "Supprimer cette radio"
+
+#: data/scripts/edit_station.py:572
+
+msgid "Delete « {} » from favorites?"
+msgstr "Supprimer « {} » des favoris ?"
+
+#: data/scripts/reorder_groups.py:803
+
+msgid "Deleted:"
+msgstr "Supprimé :"
+
+#: data/scripts/timonde_settings.py:676
+
+msgid "Desktop environment & Tray"
+msgstr "Environnement de bureau & Barre système"
+
+#: data/scripts/reorder_groups.py:169
+
+msgid "Details / Status"
+msgstr "Détails / État"
+
+# --- Discovery Window (browse_bouquets.py) ---
+
+#: data/scripts/browse_bouquets.py:525
+
+msgid "Discover & Import stations (TiMonde)"
+msgstr "Découvrir & Importer des radios (TiMonde)"
+
+#: data/scripts/timonde_settings.py:649
+
+msgid ""
+"Discreetly starts TiMonde in the background as soon as your graphical "
+"session opens."
+msgstr "Lance discrètement TiMonde en arrière-plan dès l’ouverture de votre session graphique."
+
+#: data/scripts/reorder_groups.py:107
+
+msgid "Display offline radio streams only"
+msgstr "Afficher uniquement les radios dont le flux est hors-ligne"
+
+#: data/scripts/reorder_groups.py:234 src/i18n.rs:229 src/i18n.rs:235
+
+#: src/tray/menu.rs:384
+
+msgid "Edit"
+msgstr "Éditer"
+
+#: data/scripts/reorder_groups.py:234
+
+msgid "Edit selected name, URL or group (F2)"
+msgstr "Modifier le nom, l’URL ou le groupe sélectionné (F2)"
+
+#: data/scripts/edit_station.py:74
+
+msgid "Edit station (TiMonde)"
+msgstr "Modifier la radio (TiMonde)"
+
+#: data/scripts/reorder_groups.py:555
+
+msgid "Edit station..."
+msgstr "Modifier la station..."
+
+#: data/scripts/timonde_common.py:132
+
+msgid "Empty URL"
+msgstr "URL vide"
+
+#: data/scripts/timonde_common.py:1301 data/scripts/timonde_common.py:1315
+
+msgid "Empty stream URL"
+msgstr "URL de flux vide"
+
+#: data/scripts/timonde_settings.py:709
+
+msgid "Enable Left-Click"
+msgstr "Activer le clic gauche"
+
+#: data/scripts/timonde_common.py:1277
+
+msgid "End of stream"
+msgstr "Fin du flux"
+
+#: data/scripts/browse_bouquets.py:950
+
+msgid "Enter a keyword or click Search to browse the directory."
+msgstr "Saisissez un mot-clé ou cliquez sur Rechercher pour explorer le catalogue."
+
+#: src/tray/mod.rs:155
+
+msgid "Ephemeral radio (not saved)."
+msgstr "Radio éphémère (non enregistrée)."
+
+#: data/scripts/reorder_groups.py:1312
+
+msgid "Error during backup:"
+msgstr "Erreur lors de la sauvegarde :"
+
+#: data/scripts/timonde_settings.py:753
+
+msgid "Error modifying autostart."
+msgstr "Erreur lors de la modification du démarrage automatique."
+
+#: data/scripts/timonde_common.py:195
+
+msgid "Error {code}"
+msgstr "Erreur {code}"
+
+#: data/scripts/gnome_tray_helper.py:217
+
+msgid "Error:"
+msgstr "Erreur :"
+
+#: src/timezone.rs:521
+
+msgid "Evening"
+msgstr "Soirée"
+
+#: data/scripts/browse_bouquets.py:652
+
+msgid "Ex: /France/Jazz or / for root"
+msgstr "Ex : /France/Jazz ou / pour la racine"
+
+#: data/scripts/browse_bouquets.py:1169
+
+msgid "Examples folder"
+msgstr "Dossier des exemples"
+
+#: data/scripts/reorder_groups.py:92
+
+msgid "Expand all"
+msgstr "Tout déplier"
+
+#: data/scripts/reorder_groups.py:92
+
+msgid "Expand all groups and subgroups"
+msgstr "Déplier tous les groupes et sous-groupes"
+
+#: data/scripts/browse_bouquets.py:1087
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Explorer les radios de ce pays sur Radio-Browser"
+
+#: data/scripts/browse_bouquets.py:1628
 
 msgid "Explore stations from {country} on Radio-Browser ➔"
 msgstr "Explorer les radios de {country} sur Radio-Browser ➔"
 
-msgid "this country"
-msgstr "ce pays"
+#: data/scripts/reorder_groups.py:1228
+
+msgid "Export"
+msgstr "Exporter"
+
+#: data/scripts/reorder_groups.py:264
+
+msgid "Export all stations to CSV spreadsheet format"
+msgstr "Exporter l'ensemble de vos radios au format tableur CSV"
+
+#: data/scripts/reorder_groups.py:1254
+
+msgid "Export error:"
+msgstr "Erreur d’exportation :"
+
+#: data/scripts/reorder_groups.py:1225
+
+msgid "Export stations to CSV"
+msgstr "Exporter les stations en CSV"
+
+#: data/scripts/reorder_groups.py:264
+
+msgid "Export to CSV"
+msgstr "Exporter en CSV"
+
+#: data/scripts/browse_bouquets.py:1195
+
+msgid "Export to spreadsheet (CSV)..."
+msgstr "Exporter vers un tableur (CSV)..."
+
+#: data/scripts/browse_bouquets.py:1182
+
+msgid "External file:"
+msgstr "Fichier externe :"
+
+#: data/scripts/timonde_common.py:1530
+
+msgid "Failed to add station"
+msgstr "Échec de l’ajout de la station"
+
+#: data/scripts/timonde_settings.py:723
+
+msgid "Failed to enable Cinnamon unification."
+msgstr "Erreur lors de l'activation de l'harmonisation Cinnamon."
+
+#: data/scripts/browse_bouquets.py:918 data/scripts/browse_bouquets.py:1066
+
+#: data/scripts/browse_bouquets.py:1252
+
+msgid "Favorite status"
+msgstr "Statut de favori"
+
+#: data/scripts/browse_bouquets.py:2056
+
+msgid "File:"
+msgstr "Fichier :"
+
+#: data/scripts/browse_bouquets.py:779
+
+msgid "Filter by country:"
+msgstr "Filtrer par pays :"
+
+#: data/scripts/browse_bouquets.py:1235
+
+msgid "Folder / Group"
+msgstr "Dossier / Groupe"
+
+#: data/scripts/timonde_common.py:1642
+
+msgid "Format"
+msgstr "Format"
+
+#: data/scripts/browse_bouquets.py:906
+
+msgid "Format & Bitrate"
+msgstr "Format & Débit"
+
+#: data/scripts/gnome_tray_helper.py:150
+
+msgid "GNOME Shell environment detected"
+msgstr "Environnement GNOME Shell détecté"
+
+#: data/scripts/timonde_settings.py:693
+
+msgid "GNOME integration required"
+msgstr "Intégration GNOME requise"
+
+#: data/scripts/timonde_common.py:1319
+
+msgid "GStreamer not available"
+msgstr "GStreamer non disponible"
+
+#: data/scripts/browse_bouquets.py:1195
+
+msgid "Generate a flat list for Calc or Excel spreadsheet"
+msgstr "Générer une liste plate pour tableur Calc ou Excel"
+
+#: data/scripts/browse_bouquets.py:901
+
+msgid "Genre / Tags"
+msgstr "Genre / Tags"
+
+#: data/scripts/browse_bouquets.py:1053
+
+msgid "Genre / Topic"
+msgstr "Genre / Thématique"
+
+#: data/scripts/browse_bouquets.py:759
+
+msgid "Genre:"
+msgstr "Genre :"
+
+#: data/scripts/timonde_common.py:193
+
+msgid "Geoblocked (VPN)"
+msgstr "Géobloqué (VPN)"
+
+#: data/scripts/browse_bouquets.py:735
+
+msgid ""
+"Global search on the free and open <b>Radio-Browser</b> directory (+45,000 "
+"stations)."
+msgstr "Recherche globale sur l’annuaire libre et communautaire <b>Radio-Browser</b> (+45 000 stations)."
+
+#: data/scripts/edit_station.py:168
+
+msgid "Group / Folder:"
+msgstr "Groupe / Dossier :"
+
+#: data/scripts/reorder_groups.py:677
+
+msgid "Group created:"
+msgstr "Groupe créé :"
+
+#: data/scripts/reorder_groups.py:734
+
+msgid "Group renamed:"
+msgstr "Groupe renommé :"
+
+#: data/scripts/browse_bouquets.py:645
+
+msgid "Group:"
+msgstr "Groupe :"
+
+#: data/scripts/timonde_common.py:189
+
+msgid "HTTP Error {code}"
+msgstr "Erreur HTTP {code}"
+
+#: data/scripts/browse_bouquets.py:702
+
+msgid "Help on groups and subgroups"
+msgstr "Aide sur les groupes et sous-groupes"
+
+#: data/scripts/browse_bouquets.py:1039 data/scripts/browse_bouquets.py:1221
+
+msgid "Import"
+msgstr "Importer"
+
+#: data/scripts/browse_bouquets.py:1328
+
+msgid "Import & Export"
+msgstr "Importer & Exporter"
+
+#: data/scripts/browse_bouquets.py:717
+
+msgid "Import to my favorites"
+msgstr "Importer dans mes favoris"
+
+#: src/tray/menu.rs:560
+
+msgid "In 15 minutes"
+msgstr "Dans 15 minutes"
+
+#: src/tray/menu.rs:567
+
+msgid "In 30 minutes"
+msgstr "Dans 30 minutes"
+
+#: src/tray/menu.rs:574
+
+msgid "In 45 minutes"
+msgstr "Dans 45 minutes"
+
+#: src/tray/menu.rs:581
+
+msgid "In 60 minutes (1h)"
+msgstr "Dans 60 minutes (1h)"
+
+#: data/scripts/reorder_groups.py:707
+
+msgid "Insert"
+msgstr "Insérer"
+
+#: data/scripts/reorder_groups.py:230
+
+msgid "Insert a separator or header"
+msgstr "Insérer un séparateur ou un en-tête"
+
+#: data/scripts/reorder_groups.py:705
+
+msgid "Insert separator"
+msgstr "Insérer un séparateur"
+
+#: data/scripts/gnome_tray_helper.py:179 data/scripts/timonde_settings.py:688
+
+msgid "Install GNOME integration"
+msgstr "Installer l’intégration GNOME"
+
+#: data/scripts/gnome_tray_helper.py:198
+
+msgid "Installation in progress (please confirm system prompt)..."
+msgstr "Installation en cours (veuillez confirmer l’invite système)..."
+
+#: data/scripts/gnome_tray_helper.py:213
+
+msgid "Installation was cancelled or failed."
+msgstr "L’installation a été annulée ou a échoué."
+
+#: data/scripts/gnome_tray_helper.py:145
+
+msgid "Integration in GNOME top bar"
+msgstr "Intégration dans la barre supérieure GNOME"
+
+#: data/scripts/edit_station.py:71
+
+msgid "Keep in favorites"
+msgstr "Conserver dans mes favoris"
+
+#: data/scripts/browse_bouquets.py:749
+
+msgid "Keyword:"
+msgstr "Mot-clé :"
+
+#: data/scripts/browse_bouquets.py:819 data/scripts/browse_bouquets.py:1023
+
+msgid "Language:"
+msgstr "Langue :"
+
+#: data/scripts/browse_bouquets.py:706 data/scripts/browse_bouquets.py:1399
+
+#: data/scripts/reorder_groups.py:185 data/scripts/reorder_groups.py:1005
+
+msgid "Listen"
+msgstr "Écouter"
+
+#: data/scripts/browse_bouquets.py:706
+
+msgid "Listen to selected station"
+msgstr "Écouter la radio sélectionnée"
+
+#: data/scripts/timonde_common.py:204
+
+msgid "Live (Shoutcast)"
+msgstr "En direct (Shoutcast)"
+
+#: data/scripts/timonde_common.py:187
+
+msgid "Live ({codec})"
+msgstr "En direct ({codec})"
+
+#: data/scripts/browse_bouquets.py:1060
+
+msgid "Live availability"
+msgstr "Disponibilité en direct"
+
+#: data/scripts/browse_bouquets.py:1186
+
+msgid "Load a file..."
+msgstr "Charger un fichier..."
+
+#: data/scripts/browse_bouquets.py:1186
+
+msgid "Load an XML, CSV, JSON, M3U or PLS file"
+msgstr "Charger un fichier XML, CSV, JSON, M3U ou PLS"
+
+#: src/timezone.rs:521
+
+msgid "Morning"
+msgstr "Matin"
+
+#: data/scripts/reorder_groups.py:949
+
+msgid "Move"
+msgstr "Déplacer"
+
+#: data/scripts/reorder_groups.py:219
+
+msgid "Move down"
+msgstr "⬇ Descendre"
+
+#: data/scripts/reorder_groups.py:219
+
+msgid "Move down one rank"
+msgstr "Descendre d'un rang"
+
+#: data/scripts/reorder_groups.py:211
+
+msgid "Move selected item to the top"
+msgstr "Placer l'élément sélectionné en tout premier"
+
+#: data/scripts/reorder_groups.py:197
+
+msgid "Move selection to another group (Ctrl+M)"
+msgstr "Déplacer la sélection vers un autre groupe (Ctrl+M)"
+
+#: data/scripts/reorder_groups.py:944
+
+msgid "Move to another group"
+msgstr "Déplacer vers un autre groupe"
+
+#: data/scripts/reorder_groups.py:559
+
+msgid "Move to another group..."
+msgstr "Déplacer vers un autre groupe..."
+
+#: data/scripts/reorder_groups.py:197
+
+msgid "Move to..."
+msgstr "Déplacer vers..."
+
+#: data/scripts/reorder_groups.py:215
+
+msgid "Move up"
+msgstr "⬆ Monter"
+
+#: data/scripts/reorder_groups.py:215
+
+msgid "Move up one rank"
+msgstr "Monter d'un rang"
+
+#: src/tray/menu.rs:528
+
+msgid "Mute (0%)"
+msgstr "Muet (0%)"
+
+#: data/scripts/reorder_groups.py:98 data/scripts/timonde_settings.py:524
+
+msgid "My Radios"
+msgstr "Mes Radios"
+
+#: data/scripts/timonde_common.py:1925
+
+msgid "Name and Stream URL are mandatory."
+msgstr "Le nom et l’URL du flux sont obligatoires."
+
+#: data/scripts/reorder_groups.py:646
+
+msgid "Name of the new group:"
+msgstr "Nom du nouveau groupe :"
+
+#: data/scripts/browse_bouquets.py:1011
+
+msgid "National Bouquet (Major stations)"
+msgstr "Bouquet National (Grandes radios)"
+
+#: data/scripts/timonde_settings.py:677
+
+msgid ""
+"Native integration in notification tray via StatusNotifierItem / XEmbed."
+msgstr "Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."
+
+#: data/scripts/browse_bouquets.py:1655
+
+msgid "New"
+msgstr "Nouveau"
+
+#: data/scripts/reorder_groups.py:193
+
+msgid "New group"
+msgstr "Nouveau groupe"
+
+#: data/scripts/reorder_groups.py:593
+
+msgid "New group..."
+msgstr "Nouveau groupe..."
+
+#: data/scripts/reorder_groups.py:725
+
+msgid "New name for group:"
+msgstr "Nouveau nom pour le groupe :"
+
+#: data/scripts/browse_bouquets.py:1282
+
+msgid "New only"
+msgstr "Nouveautés seules"
+
+#: data/scripts/reorder_groups.py:580
+
+msgid "New subgroup here..."
+msgstr "Nouveau sous-groupe ici..."
+
+#: src/timezone.rs:521
+
+msgid "Night"
+msgstr "Nuit"
+
+#: data/scripts/browse_bouquets.py:1726
 
 msgid "No DAB+ bouquet for {country} — Use 'Search online'."
 msgstr "Aucun bouquet DAB+ pour {country} — Utilisez « Rechercher en ligne »."
 
-msgid "{checked} / {total} station(s) selected"
-msgstr "{checked} / {total} station(s) sélectionnée(s)"
+#: data/scripts/reorder_groups.py:1262
 
-msgid ""
-"No radio found for this language in {country}. Uncheck 'Filter by country' "
-"or clear the language."
-msgstr ""
-"Aucune radio trouvée pour cette langue en {country}. Décochez « Filtrer par "
-"pays » ou effacez la langue."
+msgid "No bookmarks.xml file found to backup."
+msgstr "Aucun fichier bookmarks.xml trouvé à sauvegarder."
+
+#: data/scripts/reorder_groups.py:872
+
+msgid "No items to sort in this group."
+msgstr "Aucun élément à trier dans ce groupe."
+
+#: data/scripts/timonde_settings.py:618
+
+msgid "No new stations added (already in your bookmarks)."
+msgstr "Aucune nouvelle station ajoutée (déjà présente dans vos favoris)."
+
+#: data/scripts/browse_bouquets.py:1625
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "Aucun bouquet DAB+ pré-embarqué pour ce pays."
+
+#: data/scripts/browse_bouquets.py:1898
 
 msgid ""
 "No radio found for these criteria in {country}. Uncheck 'Filter by country' "
@@ -1256,284 +1117,1015 @@ msgstr ""
 "Aucune radio trouvée pour ces critères en {country}. Décochez « Filtrer par "
 "pays » pour chercher mondialement."
 
+#: data/scripts/browse_bouquets.py:1895
+
+msgid ""
+"No radio found for this language in {country}. Uncheck 'Filter by country' "
+"or clear the language."
+msgstr ""
+"Aucune radio trouvée pour cette langue en {country}. Décochez « Filtrer par "
+"pays » ou effacez la langue."
+
+#: data/scripts/browse_bouquets.py:1900
+
 msgid "No radio found on Radio-Browser for these criteria."
 msgstr "Aucune radio trouvée sur Radio-Browser pour ces critères."
 
-msgid "[Present]"
-msgstr "[Présent]"
+#: src/tray/mod.rs:459
 
-msgid "[New]"
-msgstr "[Nouveau]"
+msgid "No radio is currently playing."
+msgstr "Aucune radio n'est en cours d'écoute."
 
-msgid "○ Untested"
-msgstr "○ Non testé"
-
-msgid "{count} stations found."
-msgstr "{count} stations trouvées."
-
-msgid "Testing..."
-msgstr "Test..."
-
-msgid "{count} available timezones"
-msgstr "{count} fuseaux disponibles"
-
-msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
-msgstr "<b>{nb_st}</b> station(s) réparties dans <b>{nb_gr}</b> groupe(s)."
-
-msgid "Explore stations from this country on Radio-Browser"
-msgstr "Explorer les radios de ce pays sur Radio-Browser"
-
-msgid "Switch to the global directory with this country pre-selected"
-msgstr "Basculer vers l'annuaire mondial avec ce pays pré-sélectionné"
-
-msgid " [Ephemeral]"
-msgstr ""
-
-msgid "%20"
-msgstr ""
-
-msgid "(Already in favorites)"
-msgstr "(Déjà dans vos favoris)"
-
-msgid "/org/mpris/MediaPlayer2/CurrentTrack"
-msgstr ""
-
-msgid "Add station..."
-msgstr "Ajouter une radio..."
-
-msgid "Bitrate"
-msgstr "Débit"
-
-msgid "Checking..."
-msgstr "Vérification..."
-
-msgid "Clear"
-msgstr "Effacer"
-
-msgid "Clear / Automatic mode"
-msgstr "Effacer / Mode automatique"
-
-msgid "Clear field (click to empty)"
-msgstr "Vider le champ (cliquer pour effacer)"
-
-msgid "Country"
-msgstr "Pays"
-
-msgid "Country:"
-msgstr "Pays :"
-
-msgid "Delete group..."
-msgstr "Supprimer le groupe..."
-
-msgid "Delete this separator"
-msgstr "Supprimer ce séparateur"
-
-msgid "Delete this station..."
-msgstr "Supprimer cette station..."
-
-msgid "Edit header..."
-msgstr "Modifier l'intertitre..."
-
-msgid "Edit station..."
-msgstr "Modifier la station..."
-
-msgid "Empty URL"
-msgstr "URL vide"
-
-msgid "Ephemeral radio (not saved)."
-msgstr ""
-
-msgid "Error {code}"
-msgstr "Erreur {code}"
-
-msgid "Format"
-msgstr "Format"
-
-msgid "Geoblocked (VPN)"
-msgstr "Géobloqué (VPN)"
-
-msgid "HTTP Error {code}"
-msgstr "Erreur HTTP {code}"
-
-msgid "Insert separator here..."
-msgstr "Insérer un séparateur ici..."
-
-msgid "Listen"
-msgstr "Écouter"
-
-msgid "Live (repaired)"
-msgstr "En direct (réparé)"
-
-msgid "Live ({codec})"
-msgstr "En direct ({codec})"
-
-msgid "Move to another group..."
-msgstr "Déplacer vers un autre groupe..."
-
-msgid "Move to top"
-msgstr "Déplacer tout en haut"
-
-msgid "New"
-msgstr "Nouveau"
-
-msgid "New group..."
-msgstr "Nouveau groupe..."
+#: src/tray/menu.rs:297
 
 msgid "No station loaded"
-msgstr ""
+msgstr "Aucune station chargée"
 
-msgid "Open stations"
-msgstr "Ouvrir les radios"
+#: data/scripts/reorder_groups.py:1072
+
+msgid "No stations to check."
+msgstr "Aucune radio à vérifier."
+
+#: data/scripts/timonde_common.py:1680
+
+msgid "No stream found for this name. Modify the text above."
+msgstr "Aucun flux trouvé pour ce nom. Modifiez le texte ci-dessus."
+
+#: data/scripts/timonde_common.py:1907
+
+msgid "Not listed yet!"
+msgstr "Pas encore répertoriée !"
+
+#: data/scripts/timonde_common.py:1721
+
+msgid "OK"
+msgstr "OK"
+
+#: data/scripts/browse_bouquets.py:972
+
+msgid ""
+"Official and verified selection across 146 countries and regions (digital "
+"DAB+ bouquets and major national stations)."
+msgstr "Sélection officielle et vérifiée sur 146 pays et territoires (bouquets DAB+ numériques et grandes stations nationales)."
+
+#: data/scripts/timonde_common.py:178
+
+msgid "Offline (HTML error page)"
+msgstr "Hors-ligne (page d’erreur HTML)"
+
+#: data/scripts/edit_station.py:366
+
+msgid "On-air broadcast name:"
+msgstr "Nom diffusé à l’antenne :"
+
+#: data/scripts/browse_bouquets.py:1983
+
+msgid "Open"
+msgstr "Ouvrir"
+
+#: data/scripts/browse_bouquets.py:1203
+
+msgid "Open ~/.config/timonde"
+msgstr "Ouvrir ~/.config/timonde"
+
+#: data/scripts/browse_bouquets.py:1169
+
+msgid "Open ~/.config/timonde/examples"
+msgstr "Ouvrir ~/.config/timonde/examples"
+
+#: data/scripts/reorder_groups.py:706
+
+msgid "Optional title for this separator (leave blank for a simple line):"
+msgstr "Titre optionnel pour ce séparateur (laisser vide pour une simple ligne) :"
+
+#: data/scripts/reorder_groups.py:60
+
+msgid "Organize groups and stations (TiMonde)"
+msgstr "Organiser les groupes et radios (TiMonde)"
+
+#: data/scripts/timonde_common.py:1559
+
+msgid "Organizing groups and subgroups (Linux convention)"
+msgstr "Organisation des groupes et sous-groupes (convention Linux)"
+
+#: data/scripts/timonde_common.py:1609
 
 msgid "Original stream is unreachable:"
 msgstr "Le flux d'origine ne répond plus :"
 
+#: src/tray/menu.rs:160
+
+msgid "Paused"
+msgstr "Pause"
+
+# --- Main Tray Menu ---
+
+#: src/i18n.rs:179 src/i18n.rs:228 src/i18n.rs:234 src/i18n.rs:244
+
+#: src/i18n.rs:249 src/i18n.rs:254 src/i18n.rs:257 src/i18n.rs:260
+
+#: src/i18n.rs:263 src/i18n.rs:266 src/i18n.rs:269 src/i18n.rs:272
+
+msgid "Play"
+msgstr "Écouter"
+
+#: src/tray/menu.rs:413
+
+msgid "Play random radio (Ephemeral discovery)"
+msgstr "Écouter une radio au hasard (Découverte éphémère)"
+
+#: data/scripts/reorder_groups.py:549
+
 msgid "Play this station"
 msgstr "Écouter cette station"
+
+#: data/scripts/timonde_common.py:1283
+
+msgid "Playing:"
+msgstr "En lecture :"
+
+#: data/scripts/edit_station.py:388
+
+msgid "Please enter a stream URL first."
+msgstr "Veuillez d’abord saisir une URL de flux."
+
+#: data/scripts/timonde_common.py:1877
+
+msgid "Please enter a stream URL."
+msgstr "Veuillez saisir une URL de flux."
+
+#: data/scripts/browse_bouquets.py:1783
+
+msgid "Please select a radio station in the list first."
+msgstr "Veuillez d’abord sélectionner une station de radio dans la liste."
+
+#: data/scripts/reorder_groups.py:926
+
+msgid "Please select a radio station to move."
+msgstr "Veuillez sélectionner une station de radio à déplacer."
+
+#: data/scripts/reorder_groups.py:1042
+
+msgid "Please select a station to contribute."
+msgstr "Veuillez sélectionner une station à partager."
+
+#: data/scripts/reorder_groups.py:1020
+
+msgid "Please select a station to repair."
+msgstr "Veuillez sélectionner une radio à réparer."
+
+#: data/scripts/browse_bouquets.py:1825
+
+msgid "Please select or check a radio station in the list first."
+msgstr "Veuillez d’abord sélectionner ou cocher une station de radio dans la liste."
+
+#: data/scripts/timonde_common.py:1651
 
 msgid "Popularity"
 msgstr "Popularité"
 
+#: data/scripts/timonde_settings.py:735
+
+msgid "Preferences"
+msgstr "Préférences"
+
+#: data/scripts/reorder_groups.py:185
+
 msgid "Preview selected radio stream"
 msgstr "Tester le flux de la radio sélectionnée"
+
+#: data/scripts/gnome_tray_helper.py:175
+
+msgid "Quit"
+msgstr "Quitter"
+
+#: src/tray/menu.rs:621
+
+msgid "Quit TiMonde"
+msgstr "Quitter TiMonde"
+
+#: data/scripts/timonde_common.py:1283 data/scripts/timonde_common.py:1291
+
+#: data/scripts/timonde_common.py:1298 data/scripts/timonde_common.py:1311
+
+#: data/scripts/timonde_common.py:1326
+
+msgid "Radio"
+msgstr "Radio"
+
+#: data/scripts/reorder_groups.py:147
+
+msgid "Radio / Group"
+msgstr "Radio / Groupe"
+
+#: data/scripts/edit_station.py:139
+
+msgid "Radio-Browser"
+msgstr "Radio-Browser"
+
+#: data/scripts/timonde_common.py:1949
+
+msgid "Radio-Browser contribution"
+msgstr "Contribution à Radio-Browser"
+
+#: data/scripts/timonde_common.py:1782
+
+msgid ""
+"Radio-Browser is an open directory (+45 000 stations). Shared stations "
+"benefit all users."
+msgstr "Radio-Browser est un annuaire ouvert (+45 000 stations). Les partages bénéficient à tous."
+
+#: data/scripts/timonde_common.py:1901
+
+msgid "Radio-Browser prevents duplicate stream URLs. No submission required."
+msgstr "Radio-Browser empêche les doublons d’URL de flux. Aucune soumission nécessaire."
+
+#: data/scripts/timonde_common.py:1542
+
+msgid "Radio-Browser servers unreachable"
+msgstr "Serveurs Radio-Browser injoignables"
+
+#: data/scripts/reorder_groups.py:1200
+
+msgid "Redirects applied:"
+msgstr "Redirections appliquées :"
+
+#: data/scripts/browse_bouquets.py:1165
+
+msgid "Refresh examples list"
+msgstr "Actualiser la liste des exemples"
+
+#: data/scripts/browse_bouquets.py:1015
+
+msgid "Regions & Local:"
+msgstr "Régions & Local :"
+
+#: data/scripts/browse_bouquets.py:1190
+
+msgid "Reload"
+msgstr "Recharger"
+
+#: data/scripts/browse_bouquets.py:1190
+
+msgid "Reload currently displayed file"
+msgstr "Recharger le fichier actuellement affiché"
+
+#: data/scripts/reorder_groups.py:724
+
+msgid "Rename group"
+msgstr "Renommer le groupe"
+
+#: data/scripts/reorder_groups.py:584
 
 msgid "Rename group..."
 msgstr "Renommer le groupe..."
 
+#: data/scripts/browse_bouquets.py:1119 data/scripts/reorder_groups.py:238
+
+#: data/scripts/reorder_groups.py:563
+
+msgid "Repair stream..."
+msgstr "Réparer flux..."
+
+#: data/scripts/browse_bouquets.py:1119
+
+msgid "Replace selected link with an active official stream"
+msgstr "Remplacer le lien sélectionné par un flux officiel actif"
+
+#: data/scripts/timonde_common.py:1592
+
+msgid "Replace stream:"
+msgstr "Remplacer le flux :"
+
+#: data/scripts/browse_bouquets.py:1173
+
+msgid "Restore samples"
+msgstr "Restaurer les exemples"
+
+#: data/scripts/browse_bouquets.py:1173
+
+msgid "Restore the 19 original samples"
+msgstr "Restaurer les 19 exemples d’origine"
+
+#: data/scripts/reorder_groups.py:861
+
+msgid "Root"
+msgstr "Racine"
+
+#: data/scripts/reorder_groups.py:903
+
+msgid "Root items sorted alphabetically."
+msgstr "Éléments de la racine triés par ordre alphabétique."
+
+#: data/scripts/timonde_settings.py:638
+
+msgid "SESSION OPTIONS"
+msgstr "OPTIONS DE SESSION"
+
+# --- Time & Astronomical Periods ---
+
+#: src/timezone.rs:657
+
+msgid "Same time"
+msgstr "Même heure"
+
+#: data/scripts/edit_station.py:76 data/scripts/reorder_groups.py:727
+
+#: data/scripts/reorder_groups.py:1269
+
+msgid "Save"
+msgstr "Enregistrer"
+
+#: data/scripts/reorder_groups.py:276
+
+msgid "Save and reload"
+msgstr "Enregistrer et recharger"
+
+#: src/tray/dialogs.rs:328 src/tray/mod.rs:541
+
+msgid "Save error"
+msgstr "Erreur de sauvegarde"
+
+#: data/scripts/reorder_groups.py:276
+
 msgid "Save now"
 msgstr "Enregistrer maintenant"
+
+#: data/scripts/edit_station.py:69 src/i18n.rs:199
+
+msgid "Save station to favorites (TiMonde)"
+msgstr "Enregistrer la radio dans mes favoris (TiMonde)"
+
+#: src/tray/mod.rs:561
+
+msgid "Saved!"
+msgstr "Sauvegardée !"
+
+#: data/scripts/browse_bouquets.py:770 data/scripts/timonde_common.py:1630
 
 msgid "Search"
 msgstr "Rechercher"
 
+#: data/scripts/reorder_groups.py:238
+
+msgid "Search Radio-Browser for a working replacement stream"
+msgstr ""
+"Rechercher automatiquement un flux actif de remplacement sur Radio-Browser "
+"pour ce lien mort"
+
+#: data/scripts/browse_bouquets.py:1326 data/scripts/timonde_settings.py:592
+
+msgid "Search online"
+msgstr "Recherche en ligne"
+
+#: data/scripts/browse_bouquets.py:1885
+
+msgid "Searching Radio-Browser..."
+msgstr "Recherche sur Radio-Browser en cours..."
+
+#: data/scripts/timonde_common.py:1660
+
 msgid "Searching for streams..."
 msgstr "Recherche des flux en cours..."
+
+#: data/scripts/timonde_common.py:1670
+
+msgid "Searching on Radio-Browser..."
+msgstr "Recherche sur Radio-Browser..."
+
+#: data/scripts/browse_bouquets.py:1382
+
+msgid "Select a station in table to listen to."
+msgstr "Sélectionnez une station dans le tableau pour l’écouter."
+
+#: data/scripts/browse_bouquets.py:1386
+
+msgid "Select a station to listen to."
+msgstr "Sélectionnez une station pour l’écouter."
+
+#: data/scripts/timonde_common.py:1610
 
 msgid "Select a verified replacement stream from Radio-Browser:"
 msgstr "Sélectionnez un flux de remplacement vérifié sur Radio-Browser :"
 
+#: data/scripts/edit_station.py:185
+
 msgid "Select or type (e.g. /France/Brittany or / for root)"
 msgstr "Sélectionnez ou saisissez (ex: /France/Bretagne ou / pour la racine)"
+
+#: data/scripts/reorder_groups.py:956
+
+msgid "Select the target destination:"
+msgstr "Sélectionnez la destination cible :"
+
+#: src/tray/mod.rs:478
+
+msgid "Selection"
+msgstr "Sélection"
+
+#: data/scripts/reorder_groups.py:230
+
+msgid "Separator"
+msgstr "Séparateur"
+
+#: data/scripts/timonde_common.py:1538
+
+msgid "Server rejected submission: {error}"
+msgstr "Le serveur a rejeté la soumission : {error}"
+
+#: data/scripts/timonde_common.py:198
 
 msgid "Server unreachable"
 msgstr "Serveur inaccessible"
 
+#: data/scripts/timonde_settings.py:316
+
+msgid "Settings & Control TiMonde"
+msgstr "Réglages & Contrôle TiMonde"
+
+#: src/tray/dialogs.rs:400
+
+msgid "Settings console not found"
+msgstr "Console de paramètres introuvable"
+
+#: src/tray/menu.rs:605
+
+msgid "Settings..."
+msgstr "Paramètres..."
+
+#: src/i18n.rs:205 src/tray/menu.rs:549 src/tray/menu.rs:552
+
+msgid "Sleep timer"
+msgstr "Minuterie d'arrêt"
+
+#: src/tray/mod.rs:592
+
+msgid "Sleep timer activated"
+msgstr "Minuterie d'arrêt activée"
+
+#: src/tray/mod.rs:626
+
+msgid "Sleep timer cancelled."
+msgstr "Minuterie d'arrêt annulée."
+
+#: src/tray/mod.rs:615
+
+msgid "Sleep timer: stopping radio."
+msgstr "Minuterie d'arrêt : coupure de la radio."
+
+#: data/scripts/reorder_groups.py:223
+
+msgid "Sort sibling items alphabetically"
+msgstr "Trier les éléments du même niveau par ordre alphabétique"
+
+#: data/scripts/reorder_groups.py:901
+
+msgid "Sorted alphabetically:"
+msgstr "Trié par ordre alphabétique :"
+
+#: data/scripts/browse_bouquets.py:888 data/scripts/browse_bouquets.py:1045
+
+#: data/scripts/browse_bouquets.py:1227 data/scripts/timonde_common.py:1638
+
+msgid "Station"
+msgstr "Station"
+
+#: src/tray/mod.rs:566
+
+msgid "Station added but reload error"
+msgstr "Station ajoutée mais erreur de rechargement"
+
+#: data/scripts/reorder_groups.py:691
+
+msgid "Station added:"
+msgstr "Station ajoutée :"
+
+#: data/scripts/reorder_groups.py:683
+
+msgid "Station editor unavailable."
+msgstr "Éditeur de station indisponible."
+
+#: data/scripts/reorder_groups.py:997
+
+msgid "Station moved to"
+msgstr "Station déplacée vers"
+
+#: data/scripts/timonde_common.py:1476
+
+msgid "Station name cannot be empty"
+msgstr "Le nom de la station ne peut pas être vide"
+
+#: data/scripts/edit_station.py:110 data/scripts/timonde_common.py:1794
+
+msgid "Station name:"
+msgstr "Nom de la radio :"
+
+#: data/scripts/timonde_common.py:1528
+
+msgid "Station successfully submitted to Radio-Browser."
+msgstr "Station soumise avec succès à Radio-Browser."
+
+#: data/scripts/reorder_groups.py:745
+
+msgid "Station updated:"
+msgstr "Station mise à jour :"
+
+#: data/scripts/browse_bouquets.py:1397 data/scripts/edit_station.py:405
+
+#: data/scripts/reorder_groups.py:1005 data/scripts/reorder_groups.py:1080
+
+#: src/i18n.rs:185 src/i18n.rs:245 src/i18n.rs:250
+
+msgid "Stop"
+msgstr "Éteindre"
+
+#: data/scripts/reorder_groups.py:549
+
 msgid "Stop playback"
 msgstr "Arrêter la lecture"
 
-msgid "TiMonde • Ephemeral discovery"
+#: data/scripts/browse_bouquets.py:1259
+
+msgid "Stream URL"
+msgstr "URL du flux"
+
+#: data/scripts/timonde_common.py:1478
+
+msgid "Stream URL cannot be empty"
+msgstr "L’URL du flux ne peut pas être vide"
+
+#: data/scripts/timonde_common.py:1804
+
+msgid "Stream URL:"
+msgstr "URL du flux :"
+
+#: data/scripts/reorder_groups.py:1029
+
+msgid "Stream successfully repaired for"
+msgstr "Flux réparé avec succès pour"
+
+#: data/scripts/timonde_common.py:1274
+
+msgid "Stream unreachable"
+msgstr "Flux injoignable"
+
+#: data/scripts/browse_bouquets.py:739
+
+msgid "Submit a new station to community Radio-Browser directory"
+msgstr "Partager une nouvelle station sur l’annuaire communautaire Radio-Browser"
+
+#: data/scripts/timonde_common.py:1859 data/scripts/timonde_common.py:1911
+
+#: data/scripts/timonde_common.py:1958
+
+msgid "Submit to Radio-Browser"
+msgstr "Soumettre à Radio-Browser"
+
+#: data/scripts/timonde_common.py:1931
+
+msgid "Submitting station to Radio-Browser..."
+msgstr "Soumission de la station à Radio-Browser..."
+
+#: data/scripts/timonde_common.py:1930
+
+msgid "Submitting..."
+msgstr "Envoi en cours..."
+
+#: data/scripts/browse_bouquets.py:1089
+
+msgid "Switch to the global directory with this country pre-selected"
+msgstr "Basculer vers l'annuaire mondial avec ce pays pré-sélectionné"
+
+#: data/scripts/timonde_settings.py:665
+
+msgid "System language"
+msgstr "Langue du système"
+
+#: data/scripts/timonde_common.py:1831
+
+msgid "Tags / Genres:"
+msgstr "Mots-clés / Genres :"
+
+#: src/tray/mod.rs:325
+
+msgid "Temporary backup stream found for"
+msgstr "Flux de secours temporaire trouvé pour"
+
+#: data/scripts/edit_station.py:135 data/scripts/edit_station.py:407
+
+msgid "Test"
+msgstr "Tester"
+
+#: data/scripts/reorder_groups.py:102
+
+msgid "Test stream availability and locate broken links"
 msgstr ""
+"Tester la disponibilité en direct de vos radios et repérer les liens morts"
+
+#: data/scripts/browse_bouquets.py:946 data/scripts/browse_bouquets.py:1115
+
+#: data/scripts/browse_bouquets.py:1286
+
+msgid "Test streams"
+msgstr "Tester les flux"
+
+#: data/scripts/reorder_groups.py:1087
+
+msgid "Testing live radio streams..."
+msgstr "Vérification en direct de vos flux de radios..."
+
+#: data/scripts/browse_bouquets.py:1679 data/scripts/browse_bouquets.py:1931
+
+#: data/scripts/browse_bouquets.py:2119
+
+msgid "Testing..."
+msgstr "Test..."
+
+#: data/scripts/timonde_settings.py:694
+
+msgid ""
+"The AppIndicator extension is required to display the icon in GNOME top bar."
+msgstr "L’extension AppIndicator est requise pour afficher l’icône dans la barre supérieure de GNOME."
+
+#: data/scripts/browse_bouquets.py:1151
+
+msgid "Thematic samples:"
+msgstr "Exemples thématiques :"
+
+#: data/scripts/edit_station.py:574
+
+msgid "This action will permanently remove this station from your collection."
+msgstr ""
+"Cette action retirera définitivement cette station de votre collection."
+
+#: data/scripts/timonde_common.py:1489
+
+msgid ""
+"This stream URL is already registered on Radio-Browser as '{existing_name}'."
+msgstr "Cette URL de flux est déjà référencée sur Radio-Browser sous le nom '{existing_name}'."
+
+#: data/scripts/timonde_common.py:1908
+
+msgid ""
+"This stream URL is unpublished on Radio-Browser and ready to be contributed."
+msgstr "Cette URL de flux n’est pas encore référencée sur Radio-Browser et peut être partagée."
+
+#: data/scripts/gnome_tray_helper.py:117
+
+msgid "TiMonde — GNOME Desktop Integration"
+msgstr "TiMonde — Intégration au bureau GNOME"
+
+#: src/tray/mod.rs:150
+
+msgid "TiMonde • Ephemeral discovery"
+msgstr "TiMonde • Découverte éphémère"
+
+#: data/scripts/timonde_common.py:206
 
 msgid "Timeout"
 msgstr "Délai dépassé"
 
-msgid "Transfer contents to another group..."
-msgstr "Transférer le contenu vers un autre groupe..."
+#: data/scripts/edit_station.py:273
+
+msgid "Timezone:"
+msgstr "Fuseau horaire :"
+
+#: data/scripts/gnome_tray_helper.py:159
+
+msgid ""
+"To unobtrusively display the playback icon in the top bar of your GNOME "
+"desktop, the <b>AppIndicator</b> system extension is required.\n"
+"\n"
+"Would you like to install it now?"
+msgstr ""
+"Pour afficher discrètement l’icône de lecture dans la barre supérieure de votre bureau GNOME, l’extension système <b>AppIndicator</b> est nécessaire.\n"
+"\n"
+"Souhaitez-vous l’installer maintenant ?"
+
+#: src/timezone.rs:669
+
+msgid "Tomorrow"
+msgstr "Demain"
+
+#: data/scripts/reorder_groups.py:211
+
+msgid "Top"
+msgstr "Premier"
+
+#: src/tray/mod.rs:679
+
+msgid "Track copied to clipboard:"
+msgstr "Morceau copié dans le presse-papier :"
+
+#: data/scripts/browse_bouquets.py:987
+
+msgid "Type a country (e.g. France, Germany, Canada...)"
+msgstr "Saisissez un pays (ex : France, Allemagne, Canada...)"
+
+#: src/tray/mod.rs:444
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "Impossible de trouver une station dans le catalogue des bouquets."
+
+#: src/tray/mod.rs:208
 
 msgid "Unable to initialize audio"
-msgstr ""
+msgstr "Impossible d’initialiser l’audio"
+
+#: src/tray/mod.rs:216
 
 msgid "Unable to play"
-msgstr ""
+msgstr "Impossible de lire"
+
+#: data/scripts/browse_bouquets.py:942 data/scripts/browse_bouquets.py:1111
+
+#: data/scripts/browse_bouquets.py:1278
+
+msgid "Uncheck all"
+msgstr "Tout décocher"
+
+#: data/scripts/timonde_common.py:1486 data/scripts/timonde_common.py:1896
+
+#: data/scripts/timonde_common.py:1897
+
+msgid "Unknown"
+msgstr "Inconnu"
+
+#: data/scripts/timonde_common.py:1530
+
+msgid "Unknown error"
+msgstr "Erreur inconnue"
+
+#: data/scripts/timonde_common.py:1272
+
+msgid "Unreadable stream"
+msgstr "Flux illisible"
+
+#: data/scripts/gnome_tray_helper.py:193
+
+msgid "Unrecognized package manager."
+msgstr "Gestionnaire de paquets non reconnu."
+
+#: data/scripts/reorder_groups.py:293
 
 msgid "Unsaved changes"
 msgstr "Modifications non enregistrées"
 
+#: data/scripts/browse_bouquets.py:1915 data/scripts/browse_bouquets.py:2082
+
+msgid "Untested"
+msgstr "Non testé"
+
+#: data/scripts/edit_station.py:159
+
+msgid "Use this on-air broadcast name for your bookmark"
+msgstr "Utiliser ce nom d’antenne pour votre favori"
+
+#: data/scripts/timonde_common.py:1597
+
 msgid "Validate and replace"
 msgstr "Valider et remplacer"
 
-msgid "Active (Left & Right clicks unified)"
-msgstr "Actif (clic gauche & droit unifiés)"
+#: data/scripts/browse_bouquets.py:923
 
-msgid "Enable Left-Click"
-msgstr "Activer le clic gauche"
+msgid "Votes"
+msgstr "Votes"
 
-msgid "Cinnamon left-click unification successfully enabled!"
-msgstr "Harmonisation Cinnamon activée avec succès !"
+#: data/scripts/reorder_groups.py:780
 
-msgid "Failed to enable Cinnamon unification."
-msgstr "Erreur lors de l'activation de l'harmonisation Cinnamon."
+msgid "Warning: this group contains {count} {unit} that will also be deleted."
+msgstr "Attention : ce groupe contient {count} {unit} qui seront également supprimés."
 
-msgid "Cinnamon Left-Click Unification"
-msgstr "Harmonisation Clic Gauche Cinnamon"
+#: data/scripts/timonde_common.py:1841
+
+msgid "Website / Homepage:"
+msgstr "Site web / Page officielle :"
+
+#: data/scripts/browse_bouquets.py:2318
+
+msgid "XML backup is available from settings."
+msgstr "La sauvegarde XML est disponible dans les préférences."
+
+#: data/scripts/reorder_groups.py:1296
+
+msgid "XML backup successfully created in"
+msgstr "Sauvegarde XML créée avec succès dans"
+
+#: data/scripts/reorder_groups.py:1276
+
+msgid "XML files (*.xml)"
+msgstr "Fichiers XML (*.xml)"
+
+#: src/timezone.rs:670
+
+msgid "Yesterday"
+msgstr "Hier"
+
+#: data/scripts/browse_bouquets.py:1626
 
 msgid ""
-"Allows opening the station menu interchangeably with left or right click."
-msgstr "Permet d'ouvrir le menu des radios indifféremment avec le clic gauche ou le clic droit."
+"You can explore and import stations for this territory directly from the "
+"global directory."
+msgstr ""
+"Vous pouvez explorer et importer les radios de ce territoire en direct "
+"depuis l'annuaire mondial."
 
-msgid "(Original folder structure)"
-msgstr "(Dossiers d'origine du fichier)"
+#: data/scripts/reorder_groups.py:1302
 
-msgid "station(s) moved to target"
-msgstr "radio(s) déplacée(s) vers la cible"
+msgid "Your complete bookmarks have been saved to:"
+msgstr "Vos favoris complets ont été enregistrés dans :"
 
+#: src/i18n.rs:237 src/tray/menu.rs:372
 
-#~ msgid ""
-#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
-#~ "groups.\n"
-#~ "• <b>Double-click a group</b> (or Open) to sort its stations and "
-#~ "separators.\n"
-#~ "• Use <b>Transfer...</b> to merge or move content to another group.\n"
-#~ "• Use <b>New group</b> to add a station folder.</small>"
-#~ msgstr ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les groupes.\n"
-#~ "• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour classer ses radios "
-#~ "et séparateurs.\n"
-#~ "• Utilisez <b>Transférer...</b> pour fusionner ou déplacer le contenu "
-#~ "vers un autre groupe.\n"
-#~ "• Utilisez <b>Nouveau groupe</b> pour ajouter un dossier de radios.</"
-#~ "small>"
+msgid "Zap to another random station"
+msgstr "Zapper vers une autre radio au hasard"
 
-#~ msgid ""
-#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
-#~ "stations.\n"
-#~ "• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
-#~ "• Click <b>Repair stream...</b> to search Radio-Browser for a working "
-#~ "replacement stream.\n"
-#~ "• Click <b>Separator</b> to insert a section header.</small>"
-#~ msgstr ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "classer les radios.\n"
-#~ "• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens morts "
-#~ "(rouge) et les réparer.\n"
-#~ "• Cliquez sur <b>Réparer flux...</b> pour chercher un flux actif de "
-#~ "remplacement sur Radio-Browser.\n"
-#~ "• Cliquez sur <b>Séparateur</b> pour insérer un intertitre de section.</"
-#~ "small>"
+#: data/scripts/reorder_groups.py:930
 
-#~ msgid ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les groupes.\n"
-#~ "• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios "
-#~ "et séparateurs.\n"
-#~ "• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du "
-#~ "contenu.\n"
-#~ "• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
-#~ msgstr ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les groupes.\n"
-#~ "• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios "
-#~ "et séparateurs.\n"
-#~ "• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du "
-#~ "contenu.\n"
-#~ "• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
+msgid "[ / ] Root (Without group)"
+msgstr "[ / ] Racine (Sans groupe)"
 
-#~ msgid ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les radios.\n"
-#~ "• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne "
-#~ "(en rouge).\n"
-#~ "• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de "
-#~ "remplacement actif.\n"
-#~ "• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de "
-#~ "séparation.</small>"
-#~ msgstr ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les radios.\n"
-#~ "• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne "
-#~ "(en rouge).\n"
-#~ "• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de "
-#~ "remplacement actif.\n"
-#~ "• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de "
-#~ "séparation.</small>"
+#: data/scripts/reorder_groups.py:405
+
+msgid "[!] Dead link"
+msgstr "[!] Lien mort"
+
+#: data/scripts/reorder_groups.py:409
+
+msgid "[?] Geo-restricted"
+msgstr "[?] Géo-restreint"
+
+#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
+
+msgid "[New]"
+msgstr "[Nouveau]"
+
+#: data/scripts/reorder_groups.py:403
+
+msgid "[OK] Live"
+msgstr "[OK] En direct"
+
+#: data/scripts/reorder_groups.py:1027
+
+msgid "[OK] Repaired"
+msgstr "[OK] Réparé"
+
+#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
+
+msgid "[Present]"
+msgstr "[Présent]"
+
+#: data/scripts/reorder_groups.py:407
+
+msgid "[~] Redirected"
+msgstr "[~] Redirigé"
+
+#: data/scripts/reorder_groups.py:1141
+
+msgid "broken"
+msgstr "liens morts"
+
+#: data/scripts/reorder_groups.py:1127
+
+msgid "checked:"
+msgstr "vérifiées :"
+
+#: src/tray/dialogs.rs:263
+
+msgid "deleted from your favorites."
+msgstr "supprimée de vos favoris."
+
+#: data/scripts/timonde_settings.py:750
+
+msgid "disabled"
+msgstr "désactivé"
+
+#: data/scripts/timonde_settings.py:750
+
+msgid "enabled"
+msgstr "activé"
+
+#: src/tray/mod.rs:332
+
+msgid "is currently unavailable"
+msgstr "est indisponible actuellement"
+
+#: src/tray/mod.rs:302
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "ne répond pas. Recherche d'un flux de secours..."
+
+#: data/scripts/timonde_settings.py:612
+
+msgid "new station(s) imported"
+msgstr "nouvelle(s) station(s) importée(s)"
+
+#: data/scripts/reorder_groups.py:1140
+
+msgid "online"
+msgstr "en ligne"
+
+#: data/scripts/reorder_groups.py:372
+
+msgid "radio"
+msgstr "radio"
+
+#: data/scripts/reorder_groups.py:372 data/scripts/reorder_groups.py:672
+
+msgid "radios"
+msgstr "radios"
+
+#: data/scripts/reorder_groups.py:1142
+
+msgid "redirected"
+msgstr "redirigés"
+
+#: data/scripts/browse_bouquets.py:2306
+
+msgid "sample files restored."
+msgstr "fichiers exemples restaurés."
+
+#: src/tray/mod.rs:562
+
+msgid "saved in your favorites!"
+msgstr "conservée dans vos favoris !"
+
+#: data/scripts/timonde_settings.py:559
+
+msgid "saved successfully!"
+msgstr "enregistré avec succès !"
+
+#: data/scripts/reorder_groups.py:779
+
+msgid "station"
+msgstr "station"
+
+#: data/scripts/timonde_settings.py:614
+
+msgid "station(s) moved to destination"
+msgstr "station(s) déplacée(s) vers la destination"
+
+#: data/scripts/reorder_groups.py:779
+
+msgid "stations"
+msgstr "stations"
+
+#: data/scripts/reorder_groups.py:1095
+
+msgid "stations checked..."
+msgstr "radios vérifiées..."
+
+#: src/tray/mod.rs:592
+
+msgid "stopping in"
+msgstr "coupure dans"
+
+#: data/scripts/reorder_groups.py:1200
+
+msgid "stream(s) updated."
+msgstr "flux mis à jour."
+
+#: data/scripts/browse_bouquets.py:1725
+
+msgid "this country"
+msgstr "ce pays"
+
+#: src/tray/dialogs.rs:385
+
+msgid "updated successfully!"
+msgstr "mise à jour avec succès !"
+
+#: data/scripts/browse_bouquets.py:1733 data/scripts/browse_bouquets.py:2145
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} station(s) sélectionnée(s)"
+
+#: data/scripts/edit_station.py:543
+
+msgid "{count} available timezones"
+msgstr "{count} fuseaux disponibles"
+
+#: data/scripts/browse_bouquets.py:1918
+
+msgid "{count} stations found."
+msgstr "{count} stations trouvées."
+
+#: data/scripts/timonde_common.py:1690
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} flux trouvés. Sélectionnez le flux souhaité puis validez."
+
+#: data/scripts/reorder_groups.py:352 data/scripts/reorder_groups.py:391
+
+#: data/scripts/reorder_groups.py:713
+
+msgid "— Separator —"
+msgstr "— Séparateur —"
+
+# --- Group Reorder Window (reorder_groups.py) ---
+
+msgid "National Radios"
+msgstr "Radios Nationales"
+
+msgid "● Repaired (Live)"
+msgstr "● Réparé (En direct)"

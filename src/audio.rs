@@ -40,10 +40,15 @@ pub struct AudioEngine {
     current_url: Arc<Mutex<Option<String>>>,
     state: Arc<Mutex<PlaybackState>>,
     current_title: Arc<Mutex<Option<String>>>,
+    #[allow(dead_code)]
+    tray_notifier: Option<Arc<dyn Fn() + Send + Sync>>,
 }
 
 impl AudioEngine {
-    pub fn new(current_title: Arc<Mutex<Option<String>>>) -> Result<Self, AudioError> {
+    pub fn new(
+        current_title: Arc<Mutex<Option<String>>>,
+        tray_notifier: Option<Arc<dyn Fn() + Send + Sync>>,
+    ) -> Result<Self, AudioError> {
         gstreamer::init().map_err(AudioError::Init)?;
 
         let registry = gstreamer::Registry::get();
@@ -92,6 +97,7 @@ impl AudioEngine {
             let state_clone = Arc::clone(&state);
             let title_clone = Arc::clone(&current_title);
             let running_clone = Arc::clone(&bus_running);
+            let notifier_clone = tray_notifier.clone();
 
             std::thread::Builder::new()
                 .name("timonde-gst-bus".to_string())
@@ -103,39 +109,73 @@ impl AudioEngine {
                                 MessageView::StateChanged(sc) => {
                                     let is_player = sc.src().map(|s| s.name() == "timonde-player").unwrap_or(false);
                                     if is_player {
-                                        let mut st = state_clone.lock().unwrap();
-                                        match sc.current() {
-                                            gstreamer::State::Playing => {
-                                                info!("Flux GStreamer actif et en lecture");
-                                                *st = PlaybackState::Playing;
-                                            }
-                                            gstreamer::State::Paused => {
-                                                if *st != PlaybackState::Buffering {
-                                                    *st = PlaybackState::Paused;
+                                        let mut state_changed = false;
+                                        {
+                                            let mut st = state_clone.lock().unwrap();
+                                            match sc.current() {
+                                                gstreamer::State::Playing => {
+                                                    info!("Flux GStreamer actif et en lecture");
+                                                    if *st != PlaybackState::Playing {
+                                                        *st = PlaybackState::Playing;
+                                                        state_changed = true;
+                                                    }
                                                 }
+                                                gstreamer::State::Paused => {
+                                                    if *st != PlaybackState::Buffering && *st != PlaybackState::Paused {
+                                                        *st = PlaybackState::Paused;
+                                                        state_changed = true;
+                                                    }
+                                                }
+                                                gstreamer::State::Null => {
+                                                    if *st != PlaybackState::Stopped && *st != PlaybackState::Error {
+                                                        *st = PlaybackState::Stopped;
+                                                        state_changed = true;
+                                                    }
+                                                }
+                                                _ => {}
                                             }
-                                            gstreamer::State::Null => {
-                                                *st = PlaybackState::Stopped;
+                                        }
+                                        if state_changed {
+                                            if let Some(ref notify_tray) = notifier_clone {
+                                                notify_tray();
                                             }
-                                            _ => {}
                                         }
                                     }
                                 }
                                 MessageView::Buffering(b) => {
                                     let percent = b.percent();
-                                    if percent < 100 {
-                                        *state_clone.lock().unwrap() = PlaybackState::Buffering;
-                                    } else {
-                                        *state_clone.lock().unwrap() = PlaybackState::Playing;
+                                    let mut state_changed = false;
+                                    {
+                                        let mut st = state_clone.lock().unwrap();
+                                        if percent < 100 {
+                                            if *st != PlaybackState::Buffering {
+                                                *st = PlaybackState::Buffering;
+                                                state_changed = true;
+                                            }
+                                        } else if *st != PlaybackState::Playing {
+                                            *st = PlaybackState::Playing;
+                                            state_changed = true;
+                                        }
+                                    }
+                                    if state_changed {
+                                        if let Some(ref notify_tray) = notifier_clone {
+                                            notify_tray();
+                                        }
                                     }
                                 }
                                 MessageView::Error(err) => {
                                     error!("Erreur GStreamer : {} ({:?})", err.error(), err.debug());
                                     *state_clone.lock().unwrap() = PlaybackState::Error;
+                                    if let Some(ref notify_tray) = notifier_clone {
+                                        notify_tray();
+                                    }
                                 }
                                 MessageView::Eos(_) => {
                                     info!("Fin de flux atteinte (EOS)");
                                     *state_clone.lock().unwrap() = PlaybackState::Stopped;
+                                    if let Some(ref notify_tray) = notifier_clone {
+                                        notify_tray();
+                                    }
                                 }
                                 MessageView::Tag(tag) => {
                                     let tags = tag.tags();
@@ -152,6 +192,9 @@ impl AudioEngine {
                                         };
                                         if is_new {
                                             crate::radio_browser::notify("TiMonde", &title_str);
+                                            if let Some(ref notify_tray) = notifier_clone {
+                                                notify_tray();
+                                            }
                                         }
                                     }
                                 }
@@ -169,6 +212,7 @@ impl AudioEngine {
             current_url,
             state,
             current_title,
+            tray_notifier,
         })
     }
 
@@ -225,6 +269,12 @@ impl AudioEngine {
     }
 
     pub fn state(&self) -> PlaybackState {
+        // Si l'état interne a été positionné en Error, le renvoyer en priorité absolue
+        let internal_state = *self.state.lock().unwrap();
+        if internal_state == PlaybackState::Error {
+            return PlaybackState::Error;
+        }
+
         // Demande directe et synchrone de l'état réel au pipeline GStreamer
         let (_, cur, pen) = self.pipeline.state(Some(gstreamer::ClockTime::ZERO));
         match (cur, pen) {
@@ -233,8 +283,14 @@ impl AudioEngine {
             (gstreamer::State::Ready, gstreamer::State::Playing) => PlaybackState::Buffering,
             (gstreamer::State::Paused, _) => PlaybackState::Paused,
             (gstreamer::State::Ready, _) => PlaybackState::Buffering,
-            (gstreamer::State::Null, _) => PlaybackState::Stopped,
-            _ => *self.state.lock().unwrap(),
+            (gstreamer::State::Null, _) => {
+                if internal_state != PlaybackState::Stopped {
+                    internal_state
+                } else {
+                    PlaybackState::Stopped
+                }
+            }
+            _ => internal_state,
         }
     }
 }

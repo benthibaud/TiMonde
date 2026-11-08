@@ -29,7 +29,7 @@ try:
 except ImportError:
     def _(s): return s
 
-TIMONDE_VERSION = "0.2.3"
+TIMONDE_VERSION = "0.2.4"
 TIMONDE_USER_AGENT = f"TiMonde/{TIMONDE_VERSION}"
 USER_AGENT = TIMONDE_USER_AGENT
 USER_AGENT_PROBE = f"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) TiMonde/{TIMONDE_VERSION}"
@@ -111,17 +111,27 @@ def safe_parse_xml(path: str):
         return None
 
 
-def check_stream_url(url, timeout=3.0, with_redirect=False):
+def check_stream_url(url, timeout=3.0, with_redirect=False, fetch_meta=False):
     """
     Test universel, frugal et rapide de disponibilité d'un flux audio (en-têtes HTTP uniquement).
     Retourne (status, msg) par défaut, ou (status, msg, redirected_url) si with_redirect=True.
+    Si fetch_meta=True, retourne (status, msg, meta) ou (status, msg, redirected_url, meta)
+    où meta est un dictionnaire {'icy_name': ..., 'icy_genre': ..., 'icy_br': ..., 'content_type': ...}.
     Status vaut True, False, ou 'GEO' (géo-restreint).
     """
     import urllib.request
     import urllib.error
+    meta = {"icy_name": "", "icy_genre": "", "icy_br": "", "content_type": ""}
+
+    def _format_ret(st, m, rd=None):
+        if fetch_meta:
+            return (st, m, rd, meta) if with_redirect else (st, m, meta)
+        return (st, m, rd) if with_redirect else (st, m)
+
     if not url or not url.strip():
         msg_empty = _("Empty URL")
-        return (False, msg_empty, None) if with_redirect else (False, msg_empty)
+        return _format_ret(False, msg_empty)
+
     clean = url.strip()
     try:
         req = urllib.request.Request(
@@ -136,29 +146,65 @@ def check_stream_url(url, timeout=3.0, with_redirect=False):
             code = resp.getcode()
             final_url = resp.geturl()
             redir = final_url if final_url != clean else None
+
+            # Extraction sécurisée des métadonnées ICY / Shoutcast / Icecast
+            raw_name = resp.headers.get("icy-name") or resp.headers.get("x-audiocast-name") or ""
+            raw_genre = resp.headers.get("icy-genre") or ""
+            raw_br = resp.headers.get("icy-br") or ""
+            ct = resp.headers.get("Content-Type", "")
+
+            # Décodage tolérant ISO-8859-1 / UTF-8
+            def _safe_header_str(val):
+                if not val:
+                    return ""
+                try:
+                    # Si la chaîne contient des octets ISO-8859-1 mal convertis, tenter un décodage strict
+                    return val.encode("latin-1").decode("utf-8", errors="strict").strip()
+                except Exception:
+                    # En cas d'erreur de décodage UTF-8, la chaîne est déjà de l'ISO-8859-1 (Latin-1) valide
+                    return str(val).strip()
+
+            meta["icy_name"] = _safe_header_str(raw_name)
+            meta["icy_genre"] = _safe_header_str(raw_genre)
+            meta["icy_br"] = str(raw_br).strip()
+            meta["content_type"] = ct.strip()
+
             if 200 <= code < 400:
-                ct = resp.headers.get("Content-Type", "")
+                ct_low = ct.lower()
+                # Rejet catégorique des pages web HTML retournant un faux code 200 (ex: serveurs de radios éteintes)
+                if "text/html" in ct_low or "text/plain" in ct_low:
+                    # Vérifier si c'est une playlist texte (ex: .m3u, .pls)
+                    if not any(ext in clean.lower() for ext in [".m3u", ".m3u8", ".pls", ".asx"]):
+                        msg_html = _("Offline (HTML error page)")
+                        return _format_ret(False, msg_html, redir)
+
                 codec = "Audio"
-                if "aac" in ct: codec = "AAC"
-                elif "mpeg" in ct or "mp3" in ct: codec = "MP3"
-                elif "ogg" in ct: codec = "OGG"
-                elif "flac" in ct: codec = "FLAC"
+                if "aac" in ct_low: codec = "AAC"
+                elif "mpeg" in ct_low or "mp3" in ct_low: codec = "MP3"
+                elif "ogg" in ct_low: codec = "OGG"
+                elif "flac" in ct_low: codec = "FLAC"
+                elif "vnd.apple.mpegurl" in ct_low: codec = "HLS"
                 msg = _("Live ({codec})").format(codec=codec)
-                return (True, msg, redir) if with_redirect else (True, msg)
+                return _format_ret(True, msg, redir)
             err_http = _("HTTP Error {code}").format(code=code)
-            return (False, err_http, None) if with_redirect else (False, err_http)
+            return _format_ret(False, err_http, redir)
     except urllib.error.HTTPError as e:
         if e.code in (403, 451) or (e.code == 503 and any(k in clean.lower() for k in ["amperwave", "audacy", "streamtheworld", "akamai", "geoblock", "leanstream"])):
             msg_geo = _("Geoblocked (VPN)")
-            return ("GEO", msg_geo, None) if with_redirect else ("GEO", msg_geo)
+            return _format_ret("GEO", msg_geo)
         err_code = _("Error {code}").format(code=e.code)
-        return (False, err_code, None) if with_redirect else (False, err_code)
+        return _format_ret(False, err_code)
     except urllib.error.URLError:
         msg_unreach = _("Server unreachable")
-        return (False, msg_unreach, None) if with_redirect else (False, msg_unreach)
-    except Exception:
+        return _format_ret(False, msg_unreach)
+    except Exception as e:
+        # Prise en charge des serveurs SHOUTcast v1 / ICY (BadStatusLine: ICY 200 OK)
+        line = getattr(e, "line", "") or str(e)
+        if "ICY 200" in line or "200 OK" in line:
+            msg_icy = _("Live (Shoutcast)")
+            return _format_ret(True, msg_icy)
         msg_timeout = _("Timeout")
-        return (False, msg_timeout, None) if with_redirect else (False, msg_timeout)
+        return _format_ret(False, msg_timeout)
 
 
 
@@ -650,12 +696,14 @@ DEFAULT_WORLD_TIMEZONES = [
 # 5. Widget Helpers GTK3
 # -----------------------------------------------------------------------------
 
-def make_btn(label_text, icon_name=None, tooltip=None):
+def make_btn(label_text, icon_name=None, tooltip=None, primary=False):
     """Génère un bouton GTK avec icône et libellé alignés proprement sans doublon d'icône."""
     import gi
     gi.require_version("Gtk", "3.0")
     from gi.repository import Gtk
     btn = Gtk.Button()
+    if primary:
+        btn.get_style_context().add_class("suggested-action")
     box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
     box.set_halign(Gtk.Align.CENTER)
     img = None
@@ -1221,18 +1269,18 @@ class StreamPreviewPlayer:
         t = msg.type
         if t == self.Gst.MessageType.ERROR:
             err, _dbg = msg.parse_error()
-            err_str = str(err.message) if err else "Flux illisible"
+            err_str = str(err.message) if err else _("Unreadable stream")
             self.stop(silent=True)
-            self._emit_status(False, f"[!] Flux inaccessible ({err_str})", is_error=True)
+            self._emit_status(False, f"[!] {_('Stream unreachable')} ({err_str})", is_error=True)
         elif t == self.Gst.MessageType.EOS:
             self.stop(silent=True)
-            self._emit_status(False, "[■] Fin du flux", is_error=False)
+            self._emit_status(False, f"[■] {_('End of stream')}", is_error=False)
         elif t == self.Gst.MessageType.STATE_CHANGED:
             if msg.src == self.playbin:
                 _old, new_state, _pending = msg.parse_state_changed()
                 if new_state == self.Gst.State.PLAYING:
                     self.is_playing = True
-                    self._emit_status(True, f"[►] En écoute : « {self.current_name or 'Radio'} »", is_error=False)
+                    self._emit_status(True, f"[►] {_('Playing:')} « {self.current_name or _('Radio')} »", is_error=False)
         elif t == self.Gst.MessageType.TAG:
             taglist = msg.parse_tag()
             ok, title = taglist.get_string("title")
@@ -1240,17 +1288,17 @@ class StreamPreviewPlayer:
                 self.is_playing = True
                 self._emit_status(
                     True,
-                    f"[►] « {self.current_name or 'Radio'} » — ♪ {title.strip()}",
+                    f"[►] « {self.current_name or _('Radio')} » — ♪ {title.strip()}",
                     is_error=False
                 )
 
     def toggle(self, station_name, url=None):
         if url is None:
             url = station_name
-            station_name = "Radio"
+            station_name = _("Radio")
         clean = clean_stream_url(url)
         if not clean:
-            self._emit_status(False, "[!] URL de flux vide", is_error=True)
+            self._emit_status(False, f"[!] {_('Empty stream URL')}", is_error=True)
             return False
         if self.is_playing and self.current_url == clean:
             self.stop()
@@ -1260,24 +1308,24 @@ class StreamPreviewPlayer:
     def play(self, station_name, url=None):
         if url is None:
             url = station_name
-            station_name = "Radio"
+            station_name = _("Radio")
         import threading
         clean = clean_stream_url(url)
         if not clean:
-            self._emit_status(False, "[!] URL de flux vide", is_error=True)
+            self._emit_status(False, f"[!] {_('Empty stream URL')}", is_error=True)
             return False
 
         if not self._ensure_gst():
-            self._emit_status(False, "[!] GStreamer non disponible", is_error=True)
+            self._emit_status(False, f"[!] {_('GStreamer not available')}", is_error=True)
             return False
 
         self.stop(silent=True)
         pause_main_timonde_instance()
 
         self.current_url = clean
-        self.current_name = station_name or "Radio"
+        self.current_name = station_name or _("Radio")
         self.is_playing = True
-        self._emit_status(True, f"[...] Connexion à « {self.current_name} »...", is_error=False)
+        self._emit_status(True, f"[...] {_('Connecting to')} « {self.current_name} »...", is_error=False)
 
         def start_worker(target_url, target_name):
             resolved = resolve_playlist_stream_url(target_url)
@@ -1345,9 +1393,17 @@ def query_radio_browser(endpoint, path, params):
     url = f"{endpoint}/json/{path}?{query_str}"
     req = urllib.request.Request(url, headers={"User-Agent": TIMONDE_USER_AGENT})
     try:
-        with urllib.request.urlopen(req, timeout=3.5) as resp:
+        with urllib.request.urlopen(req, timeout=2.0) as resp:
             if resp.getcode() == 200:
-                return json.loads(resp.read().decode("utf-8"))
+                data = json.loads(resp.read().decode("utf-8"))
+                # Promotion du miroir actif en tête de liste pour accélérer les requêtes suivantes
+                if endpoint in RADIO_BROWSER_ENDPOINTS and RADIO_BROWSER_ENDPOINTS[0] != endpoint:
+                    try:
+                        RADIO_BROWSER_ENDPOINTS.remove(endpoint)
+                        RADIO_BROWSER_ENDPOINTS.insert(0, endpoint)
+                    except Exception:
+                        pass
+                return data
     except Exception:
         pass
     return None
@@ -1397,6 +1453,103 @@ def search_radio_browser_api(name="", country_code="", tag="", language="", limi
     return all_stations
 
 
+def lookup_station_by_url(stream_url: str):
+    """
+    Vérifie si une URL de flux (ou sa version nettoyée sans paramètres '?') est déjà répertoriée sur Radio-Browser.
+    Retourne la station distante (dict) si trouvée, ou None.
+    """
+    if not stream_url or not stream_url.strip():
+        return None
+    clean = stream_url.strip()
+    clean_no_query = clean.split("?")[0].strip()
+
+    urls_to_test = [clean]
+    if clean_no_query != clean:
+        urls_to_test.append(clean_no_query)
+
+    for ep in RADIO_BROWSER_ENDPOINTS:
+        for u in urls_to_test:
+            res = query_radio_browser(ep, "stations/byurl", {"url": u})
+            if res and isinstance(res, list) and len(res) > 0:
+                return res[0]
+    return None
+
+
+def contribute_station_to_radio_browser(name, url, country_code="", language="", tags="", homepage="", favicon=""):
+    """
+    Soumet une nouvelle radio à Radio-Browser via POST /json/add après vérification d'unicité.
+    Retourne un tuple (success: bool, message: str, station_info: dict ou None).
+    """
+    if not name or not name.strip():
+        return (False, _("Station name cannot be empty"), None)
+    if not url or not url.strip():
+        return (False, _("Stream URL cannot be empty"), None)
+
+    clean_name = name.strip()
+    clean_url = url.strip()
+
+    # 1. Vérification préalable d'existence pour éviter les rejets serveur
+    existing = lookup_station_by_url(clean_url)
+    if existing:
+        ex_name = existing.get("name", _("Unknown"))
+        return (
+            False,
+            _("This stream URL is already registered on Radio-Browser as '{existing_name}'.").format(
+                existing_name=ex_name
+            ),
+            existing
+        )
+
+    # 2. Préparation du payload
+    payload = {
+        "name": clean_name,
+        "url": clean_url,
+    }
+    if country_code:
+        cc_up = country_code.strip().upper()
+        payload["countrycode"] = "GB" if cc_up == "UK" else cc_up
+    if language:
+        payload["language"] = language.strip().lower()
+    if tags:
+        payload["tags"] = tags.strip()
+    if homepage:
+        payload["homepage"] = homepage.strip()
+    if favicon:
+        payload["favicon"] = favicon.strip()
+
+    # 3. Envoi POST aux miroirs
+    post_data = json.dumps(payload).encode("utf-8")
+    for ep in RADIO_BROWSER_ENDPOINTS:
+        req = urllib.request.Request(
+            f"{ep}/json/add",
+            data=post_data,
+            headers={
+                "User-Agent": TIMONDE_USER_AGENT,
+                "Content-Type": "application/json",
+            }
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=5.0) as resp:
+                if resp.getcode() in (200, 201):
+                    res_json = json.loads(resp.read().decode("utf-8"))
+                    if isinstance(res_json, dict) and res_json.get("ok"):
+                        msg_ok = _("Station successfully submitted to Radio-Browser.")
+                        return (True, msg_ok, res_json)
+                    msg_srv = res_json.get("message", _("Failed to add station")) if isinstance(res_json, dict) else _("Unknown error")
+                    return (False, msg_srv, None)
+        except urllib.error.HTTPError as e:
+            try:
+                err_body = json.loads(e.read().decode("utf-8"))
+                err_msg = err_body.get("message", str(e))
+            except Exception:
+                err_msg = str(e)
+            return (False, _("Server rejected submission: {error}").format(error=err_msg), None)
+        except Exception:
+            continue
+
+    return (False, _("Radio-Browser servers unreachable"), None)
+
+
 def show_group_naming_help_dialog(parent):
     """Affiche la boîte de dialogue modale d'aide sur la convention Linux des groupes /."""
     try:
@@ -1411,16 +1564,16 @@ def show_group_naming_help_dialog(parent):
         flags=Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
         type=Gtk.MessageType.INFO,
         buttons=Gtk.ButtonsType.OK,
-        message_format=_("Organisation des groupes et sous-groupes (Convention Linux)")
+        message_format=_("Organizing groups and subgroups (Linux convention)")
     )
     dialog.format_secondary_markup(
-        _("TiMonde utilise la convention des chemins avec le séparateur <b>/</b> :\n\n"
-          "• <b>/</b> ou <b>(Racine)</b> : Place la radio à la racine du menu (sans aucun groupe).\n"
-          "• <b>/Gabon</b> ou <b>Gabon</b> : Place la radio dans le groupe « Gabon ».\n"
-          "• <b>/France/Bretagne</b> : Place la radio dans le sous-groupe « Bretagne » sous « France ».\n"
-          "• <b>/Belgique/NL</b> : Place la radio dans le sous-groupe « NL » sous « Belgique ».\n"
-          "• <b>France/Radios locales ICI</b> : Sous-groupe à espaces sous « France ».\n\n"
-          "<i>Les groupes et sous-groupes sont créés automatiquement s'ils n'existent pas encore.</i>")
+        _("TiMonde uses path conventions with the <b>/</b> separator:\n\n"
+          "• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
+          "• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
+          "• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
+          "• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
+          "• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n\n"
+          "<i>Groups and subgroups are automatically created if they do not exist yet.</i>")
     )
     dialog.run()
     dialog.destroy()
@@ -1599,5 +1752,237 @@ def prompt_text_dialog(parent_window, title: str, label_text: str, default_text:
     if resp == Gtk.ResponseType.OK:
         return txt
     return None
+
+
+class ContributeStationDialog(_GtkDialogBase):
+    """Boîte de dialogue universelle de vérification et contribution de radios vers Radio-Browser."""
+
+    def __init__(self, parent, station_name="", current_url="", country_code="", tags="", homepage=""):
+        if _GtkDialogBase is object:
+            raise RuntimeError("GTK 3.0 n'est pas disponible pour afficher ce dialogue.")
+
+        from gi.repository import Gtk, GLib
+        import html
+        import threading
+
+        super().__init__(
+            title=_("Contribute to Radio-Browser"),
+            transient_for=parent,
+            modal=True,
+        )
+        self.set_default_size(580, 360)
+        self.set_border_width(12)
+
+        self.station_name = (station_name or "").strip()
+        self.current_url = (current_url or "").strip()
+        self.country_code = (country_code or "").strip().upper()
+        self.tags = (tags or "").strip()
+        self.homepage = (homepage or "").strip()
+        self.existing_info = None
+
+        content = self.get_content_area()
+        content.set_spacing(10)
+
+        # En-tête explicatif
+        self.lbl_header = Gtk.Label()
+        self.lbl_header.set_markup(
+            f"<b>{_('Contribute a station to the community Radio-Browser directory')}</b>\n"
+            f"<small><i>{_('Radio-Browser is an open directory (+45 000 stations). Shared stations benefit all users.')}</i></small>"
+        )
+        self.lbl_header.set_halign(Gtk.Align.START)
+        content.pack_start(self.lbl_header, False, False, 0)
+
+        # Formulaire
+        grid = Gtk.Grid()
+        grid.set_column_spacing(12)
+        grid.set_row_spacing(8)
+        content.pack_start(grid, True, True, 0)
+
+        # 1. Nom
+        lbl_name = Gtk.Label(label=_("Station name:"))
+        lbl_name.set_halign(Gtk.Align.END)
+        grid.attach(lbl_name, 0, 0, 1, 1)
+
+        self.entry_name = Gtk.Entry()
+        self.entry_name.set_text(self.station_name)
+        self.entry_name.set_hexpand(True)
+        grid.attach(self.entry_name, 1, 0, 1, 1)
+
+        # 2. URL
+        lbl_url = Gtk.Label(label=_("Stream URL:"))
+        lbl_url.set_halign(Gtk.Align.END)
+        grid.attach(lbl_url, 0, 1, 1, 1)
+
+        url_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        self.entry_url = Gtk.Entry()
+        self.entry_url.set_text(self.current_url)
+        self.entry_url.set_hexpand(True)
+        url_box.pack_start(self.entry_url, True, True, 0)
+
+        btn_check_again = make_btn(_("Check"), "view-refresh", _("Check entered stream URL again on Radio-Browser"))
+        btn_check_again.connect("clicked", lambda w: self._start_lookup(self.entry_url.get_text().strip()))
+        url_box.pack_start(btn_check_again, False, False, 0)
+
+        grid.attach(url_box, 1, 1, 1, 1)
+
+        # 3. Pays ISO
+        lbl_cc = Gtk.Label(label=_("Country code (ISO):"))
+        lbl_cc.set_halign(Gtk.Align.END)
+        grid.attach(lbl_cc, 0, 2, 1, 1)
+
+        self.entry_cc = Gtk.Entry()
+        self.entry_cc.set_text(self.country_code)
+        self.entry_cc.set_placeholder_text("Ex: FR, GP, MQ, GF, RE, YT, NC, PF, CA, BE...")
+        grid.attach(self.entry_cc, 1, 2, 1, 1)
+
+        # 4. Tags / Genres
+        lbl_tags = Gtk.Label(label=_("Tags / Genres:"))
+        lbl_tags.set_halign(Gtk.Align.END)
+        grid.attach(lbl_tags, 0, 3, 1, 1)
+
+        self.entry_tags = Gtk.Entry()
+        self.entry_tags.set_text(self.tags)
+        self.entry_tags.set_placeholder_text("Ex: news, talk, pop, zouk, kompa, rock...")
+        grid.attach(self.entry_tags, 1, 3, 1, 1)
+
+        # 5. Site Web
+        lbl_hp = Gtk.Label(label=_("Website / Homepage:"))
+        lbl_hp.set_halign(Gtk.Align.END)
+        grid.attach(lbl_hp, 0, 4, 1, 1)
+
+        self.entry_hp = Gtk.Entry()
+        self.entry_hp.set_text(self.homepage)
+        self.entry_hp.set_placeholder_text("https://...")
+        grid.attach(self.entry_hp, 1, 4, 1, 1)
+
+        # Zone d'information et de statut
+        self.lbl_status = Gtk.Label(label="")
+        self.lbl_status.set_use_markup(True)
+        self.lbl_status.set_halign(Gtk.Align.START)
+        self.lbl_status.set_no_show_all(True)
+        content.pack_start(self.lbl_status, False, False, 0)
+
+        # Boutons d'action intégrés (sans add_button pour ne pas fermer prématurément le dialogue sur soumission)
+        action_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        content.pack_start(action_box, False, False, 4)
+
+        self.btn_cancel = Gtk.Button(label=_("Close"))
+        self.btn_cancel.connect("clicked", lambda w: self.response(Gtk.ResponseType.CLOSE))
+        action_box.pack_start(self.btn_cancel, False, False, 0)
+
+        self.btn_edit = Gtk.Button(label=_("Edit station"))
+        self.btn_edit.connect("clicked", lambda w: self.response(Gtk.ResponseType.APPLY))
+        self.btn_edit.set_no_show_all(True)
+        self.btn_edit.hide()
+        action_box.pack_start(self.btn_edit, False, False, 0)
+
+        spacer = Gtk.Box()
+        action_box.pack_start(spacer, True, True, 0)
+
+        self.btn_submit = Gtk.Button(label=_("Submit to Radio-Browser"))
+        self.btn_submit.get_style_context().add_class("suggested-action")
+        self.btn_submit.connect("clicked", self._on_submit_clicked)
+        action_box.pack_start(self.btn_submit, False, False, 0)
+
+        self.connect("response", lambda d, r: self.hide())
+
+        # Lancer la vérification initiale si une URL est présente
+        if self.current_url:
+            self._start_lookup(self.current_url)
+
+        self.show_all()
+
+    def _start_lookup(self, url_to_check):
+        import html
+        import threading
+        from gi.repository import GLib
+
+        if not url_to_check:
+            self.lbl_status.set_markup(f"<small><span foreground='#e67e22'><b>{_('Please enter a stream URL.')}</b></span></small>")
+            self.lbl_status.show()
+            self.btn_submit.set_sensitive(False)
+            return
+
+        self.lbl_status.set_markup(f"<small><span foreground='#3498db'><b>{_('Checking Radio-Browser directory...')}</b></span></small>")
+        self.lbl_status.show()
+        self.btn_submit.set_sensitive(False)
+
+        def _worker():
+            res = lookup_station_by_url(url_to_check)
+            GLib.idle_add(self._on_lookup_done, url_to_check, res)
+
+        threading.Thread(target=_worker, daemon=True).start()
+
+    def _on_lookup_done(self, checked_url, existing):
+        import html
+        self.existing_info = existing
+        if existing:
+            ex_name = existing.get("name", _("Unknown"))
+            ex_cc = existing.get("countrycode", _("Unknown"))
+            self.lbl_status.set_markup(
+                f"<small><span foreground='#2ecc71'><b>● {_('Already registered:')}</b></span> "
+                f"« <b>{html.escape(ex_name)}</b> » ({_('Country:')} <b>{html.escape(ex_cc)}</b>)\n"
+                f"<span foreground='#7f8c8d'><i>{_('Radio-Browser prevents duplicate stream URLs. No submission required.')}</i></span></small>"
+            )
+            self.btn_submit.set_sensitive(False)
+            self.btn_submit.set_label(_("Already registered"))
+            self.btn_edit.set_label(f"{_('Edit station')} ({ex_cc})")
+            self.btn_edit.set_tooltip_text(_("Open editor to update this station and its country"))
+            self.btn_edit.show()
+        else:
+            self.lbl_status.set_markup(
+                f"<small><span foreground='#2980b9'><b>[+] {_('Not listed yet!')}</b></span> "
+                f"{_('This stream URL is unpublished on Radio-Browser and ready to be contributed.')}</small>"
+            )
+            self.btn_submit.set_sensitive(True)
+            self.btn_submit.set_label(_("Submit to Radio-Browser"))
+            self.btn_edit.hide()
+        self.lbl_status.show()
+
+    def _on_submit_clicked(self, _button):
+        from gi.repository import Gtk, GLib
+        import threading
+        import html
+
+        name = self.entry_name.get_text().strip()
+        url = clean_stream_url(self.entry_url.get_text().strip())
+        cc = self.entry_cc.get_text().strip().upper()
+        tags = self.entry_tags.get_text().strip()
+        hp = self.entry_hp.get_text().strip()
+
+        if not name or not url:
+            self.lbl_status.set_markup(f"<small><span foreground='#e74c3c'><b>{_('Name and Stream URL are mandatory.')}</b></span></small>")
+            self.lbl_status.show()
+            return
+
+        self.btn_submit.set_sensitive(False)
+        self.btn_submit.set_label(_("Submitting..."))
+        self.lbl_status.set_markup(f"<small><span foreground='#3498db'><b>{_('Submitting station to Radio-Browser...')}</b></span></small>")
+        self.lbl_status.show()
+
+        def _sub_worker():
+            ok, msg, _info = contribute_station_to_radio_browser(
+                name=name,
+                url=url,
+                country_code=cc,
+                tags=tags,
+                homepage=hp,
+            )
+            def _sub_done():
+                if ok:
+                    self.lbl_status.set_markup(f"<small><span foreground='#2ecc71'><b>● {html.escape(msg)}</b></span></small>")
+                    self.lbl_status.show()
+                    self.btn_submit.set_label(_("Submitted"))
+                    self.btn_submit.set_sensitive(False)
+                    self.btn_cancel.set_label(_("Close"))
+                else:
+                    self.lbl_status.set_markup(f"<small><span foreground='#e74c3c'><b>{html.escape(msg)}</b></span></small>")
+                    self.lbl_status.show()
+                    self.btn_submit.set_sensitive(True)
+                    self.btn_submit.set_label(_("Submit to Radio-Browser"))
+            GLib.idle_add(_sub_done)
+
+        threading.Thread(target=_sub_worker, daemon=True).start()
+
 
 

@@ -42,42 +42,43 @@ pub struct SearchFilter {
 
 /// Envoie une notification discrète et silencieuse sur le bureau via notify-send (sans interrompre la musique)
 pub fn notify(title: &str, body: &str) {
-    let _ = Command::new("notify-send")
-        .arg("-a")
-        .arg("TiMonde")
-        .arg("-i")
-        .arg("audio-speakers")
-        .arg("-h")
-        .arg("boolean:suppress-sound:true")
-        .arg(title)
-        .arg(body)
-        .stdout(std::process::Stdio::null())
-        .stderr(std::process::Stdio::null())
-        .spawn();
+    let title_owned = title.to_string();
+    let body_owned = body.to_string();
+    std::thread::spawn(move || {
+        if let Ok(mut child) = Command::new("notify-send")
+            .arg("-a")
+            .arg("TiMonde")
+            .arg("-i")
+            .arg("audio-speakers")
+            .arg("-h")
+            .arg("boolean:suppress-sound:true")
+            .arg(&title_owned)
+            .arg(&body_owned)
+            .stdout(std::process::Stdio::null())
+            .stderr(std::process::Stdio::null())
+            .spawn()
+        {
+            let _ = child.wait();
+        }
+    });
 }
 
 /// Nettoie un nom de station pour optimiser la recherche dans Radio-Browser
 fn extract_search_terms(name: &str) -> Vec<String> {
-    // Si le nom contient un tiret (ex: "Kickin' Country - 181 fm"), tester d'abord la partie gauche
-    let parts: Vec<&str> = name.split('-').collect();
     let mut queries = Vec::new();
+    let trimmed = name.trim();
+    if !trimmed.is_empty() {
+        queries.push(trimmed.to_string());
+    }
 
+    // Si le nom contient un tiret (ex: "Kickin' Country - 181 fm"), tester la partie gauche
+    let parts: Vec<&str> = name.split('-').collect();
     if parts.len() > 1 {
         let first_part = parts[0].trim().replace(['\'', '’', ':'], " ");
         let cleaned: Vec<&str> = first_part.split_whitespace().collect();
-        if !cleaned.is_empty() {
+        if cleaned.len() >= 2 {
             queries.push(cleaned.join(" "));
         }
-    }
-
-    let whole = name.replace(['-', '\'', '’', ':'], " ");
-    let words: Vec<&str> = whole
-        .split_whitespace()
-        .filter(|w| !w.is_empty() && w.len() > 1)
-        .take(2)
-        .collect();
-    if !words.is_empty() {
-        queries.push(words.join(" "));
     }
 
     queries

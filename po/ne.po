@@ -1,1229 +1,1107 @@
 # TiMonde — Traduction NE
+
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
+
 #
+
 msgid ""
 msgstr ""
 "Project-Id-Version: TiMonde 0.1.3\n"
-"Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
-"POT-Creation-Date: 2026-10-29 06:50+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 20:23+0100\n"
 "PO-Revision-Date: 2026-10-17 17:00+0200\n"
 "Language: ne\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Play"
-msgstr "बजाउनुहोस्"
+#: src/i18n.rs:186 src/i18n.rs:193
 
-msgid "Stop"
-msgstr "रोक्नुहोस्"
-
-msgid "Connecting..."
-msgstr "जडान हुँदैछ..."
-
-msgid "Edit"
-msgstr "सम्पादन"
-
-msgid "Delete"
-msgstr "मेटाउनुहोस्"
-
-msgid "Zap to another random station"
-msgstr "अर्को अनियमित रेडियोमा जाप गर्नुहोस्"
-
-msgid "Play random radio (Ephemeral discovery)"
-msgstr "एक अनियमित रेडियो स्टेशन सुन्नुहोस् (अस्थायी खोज)"
-
-msgid "[ Ephemeral]"
+msgid " [Ephemeral]"
 msgstr "[अस्थायी]"
 
-msgid "Options"
-msgstr "विकल्पहरू"
+#: data/scripts/browse_bouquets.py:1655
 
-msgid "Add a station..."
-msgstr "एउटा रेडियो थप्नुहोस्..."
-
-msgid "Discover & Import stations..."
-msgstr "रेडियोहरू पत्ता लगाउनुहोस् र आयात गर्नुहोस्..."
-
-msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr "मेरा फाइलहरू आयात गर्नुहोस् (XML, CSV, JSON, M3U)..."
-
-msgid "Manage groups and stations..."
-msgstr "समूह र रेडियो वर्गीकरण गर्नुहोस्..."
-
-msgid "Open bookmarks.xml"
-msgstr "bookmarks.xml खोल्नुहोस्"
-
-msgid "Quit TiMonde"
-msgstr "TiMonde छोड्नुहोस्"
-
-msgid "Mute (0%)"
-msgstr "म्युट (०%)"
-
-msgid "Sleep timer"
-msgstr "सुत्ने टाइमर"
-
-msgid "In 15 minutes"
-msgstr "१५ मिनेटमा"
-
-msgid "In 30 minutes"
-msgstr "30 मिनेटमा"
-
-msgid "In 45 minutes"
-msgstr "४५ मिनेटमा"
-
-msgid "In 60 minutes (1h)"
-msgstr "६० मिनेटमा (१ घण्टा)"
-
-msgid "Cancel sleep timer"
-msgstr "निद्रा रद्द गर्नुहोस्"
-
-msgid "Discover & Import stations (TiMonde)"
-msgstr "रेडियो स्टेशनहरू पत्ता लगाउनुहोस् र आयात गर्नुहोस् (TiMonde)"
-
-msgid "Verified DAB+ Bouquets"
-msgstr "प्रमाणित गुलदस्ता (DAB+)"
-
-msgid "Radio-Browser Search"
-msgstr "रेडियो ब्राउजर खोज्नुहोस्"
-
-msgid "Sample Files"
-msgstr "उदाहरण फाइलहरू"
-
-msgid "Import my files"
-msgstr "मेरो फाइलहरू आयात गर्नुहोस्"
-
-msgid "<b> Country:</b>"
-msgstr "<b>देश:</b>"
-
-msgid "<b>Language:</b>"
-msgstr "<b>भाषा:</b>"
-
-msgid "Name / Keyword:"
-msgstr "नाम / कुञ्जी शब्द:"
-
-msgid "Genre:"
-msgstr "लिङ्ग:"
-
-msgid "<b>Sample file:</b>"
-msgstr "<b>उदाहरण फाइल:</b>"
-
-msgid "<b>Group name in your favorites:</b>"
-msgstr "<b>तपाईंको मनपर्ने समूहको नाम:</b>"
-
-msgid "Select all"
-msgstr "सबै जाँच गर्नुहोस्"
-
-msgid "Deselect all"
-msgstr "सबै अनचेक गर्नुहोस्"
-
-msgid "Import into favorites"
-msgstr "मेरो मनपर्नेमा आयात गर्नुहोस्"
-
-msgid "Close"
-msgstr "बन्द गर्नुहोस्"
-
-msgid "Add a station (TiMonde)"
-msgstr "एउटा स्टेशन थप्नुहोस् (TiMonde)"
-
-msgid "<b>Enter new station details:</b>"
-msgstr "<b>नयाँ रेडियोको लागि जानकारी प्रविष्ट गर्नुहोस्:</b>"
-
-msgid "Add to my stations"
-msgstr "मेरो रेडियोमा थप्नुहोस्"
-
-msgid "Save station to favorites (TiMonde)"
-msgstr "मेरो मनपर्नेमा रेडियो बचत गर्नुहोस् (TiMonde)"
-
-msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr "<b>यो अनियमित रूपमा खोजिएको रेडियो स्टेशनलाई आफ्नो मनपर्नेमा राख्नुहोस्:</b>"
-
-msgid "Keep in favorites"
+msgid "(Already in favorites)"
 msgstr "मेरो मनपर्नेमा बचत गर्नुहोस्"
 
-msgid "Edit station (TiMonde)"
-msgstr "रेडियो सम्पादन गर्नुहोस् (TiMonde)"
+# --- Mises à jour TiMonde ---
+
+#: data/scripts/edit_station.py:541
+
+msgid "(Metropolitan or Overseas)"
+msgstr "(Metropolitan or Overseas)"
+
+#: data/scripts/browse_bouquets.py:680 data/scripts/browse_bouquets.py:681
+
+#: data/scripts/browse_bouquets.py:2020 data/scripts/browse_bouquets.py:2063
+
+#: data/scripts/browse_bouquets.py:2197
+
+msgid "(Original folder structure)"
+msgstr "(मूल फोल्डर संरचना)"
+
+#: data/scripts/edit_station.py:539
+
+msgid "(Single inferred timezone)"
+msgstr "(Single inferred timezone)"
+
+#: data/scripts/edit_station.py:518
+
+msgid "(Timezone not defined)"
+msgstr "(Timezone not defined)"
+
+#: data/scripts/edit_station.py:521
+
+msgid "(Unknown)"
+msgstr "(Unknown)"
+
+#: data/scripts/edit_station.py:75
 
 msgid "<b>Edit station settings:</b>"
 msgstr "<b>स्टेसन सेटिङहरू परिवर्तन गर्नुहोस्:</b>"
 
-msgid "Save"
-msgstr "बचत गर्नुहोस्"
+#: data/scripts/edit_station.py:65
 
-msgid "Station name:"
-msgstr "स्टेशनको नाम:"
+msgid "<b>Enter new station details:</b>"
+msgstr "<b>नयाँ रेडियोको लागि जानकारी प्रविष्ट गर्नुहोस्:</b>"
 
-msgid "Audio stream URL:"
-msgstr "अडियो स्ट्रिम URL:"
+#: data/scripts/edit_station.py:70
 
-msgid "Group / Folder:"
-msgstr "समूह / फोल्डर:"
+msgid "<b>Keep this randomly discovered station in your favorites:</b>"
+msgstr "<b>यो अनियमित रूपमा खोजिएको रेडियो स्टेशनलाई आफ्नो मनपर्नेमा राख्नुहोस्:</b>"
 
-msgid "Country & Timezone:"
-msgstr "देश र समय क्षेत्र:"
+#: data/scripts/timonde_settings.py:740
 
-msgid "Timezone:"
-msgstr "समय क्षेत्र:"
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "<b>{nb_gr}</b> समूहहरूमा <b>{nb_st}</b> स्टेशनहरू।"
 
-msgid "Delete this station"
-msgstr "यो रेडियो मेटाउनुहोस्"
+#: data/scripts/browse_bouquets.py:1208
 
-msgid "Cancel"
-msgstr "रद्द गर्नुहोस्"
+msgid "<i>Select a file or sample above.</i>"
+msgstr "<i>माथिको एउटा फाइल वा नमूना चयन गर्नुहोस्।</i>"
 
-msgid "Delete « {} » from favorites?"
-msgstr "मनपर्नेबाट \"{}\" हटाउने हो?"
+#: data/scripts/timonde_settings.py:709 data/scripts/timonde_settings.py:719
 
-msgid "This action will permanently remove this station from your collection."
-msgstr "यस कार्यले स्थायी रूपमा तपाईंको सङ्कलनबाट यो स्टेशन हटाउनेछ।"
+msgid "Active (Left & Right clicks unified)"
+msgstr "Aktiv (Links- & Rechtsklick vereinheitlicht)"
 
-msgid "Manage groups, stations and separators (TiMonde)"
-msgstr "समूह, रेडियो र विभाजकहरूको व्यवस्थापन (TiMonde)"
+#: data/scripts/browse_bouquets.py:882
 
-msgid "Back to groups"
-msgstr "⬅ समूहहरूमा फर्कनुहोस्"
+msgid "Add"
+msgstr "थप्नुहोस्"
+
+#: data/scripts/reorder_groups.py:189
+
+msgid "Add a new station to this group or to root"
+msgstr "Î ÏÎ¿ÏÎ¸Î®ÎºÎ· Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÎµ Î±ÏÏÎ® ÏÎ·Î½ Î¿Î¼Î¬Î´Î± Î® ÏÏÎ· ÏÎ¯Î¶Î±"
+
+#: data/scripts/edit_station.py:64
+
+msgid "Add a station (TiMonde)"
+msgstr "एउटा स्टेशन थप्नुहोस् (TiMonde)"
+
+#: data/scripts/reorder_groups.py:189
 
 msgid "Add station"
 msgstr "रेडियो थप्नुहोस्"
 
-msgid "Open"
-msgstr "खोल्नुहोस्"
+#: data/scripts/reorder_groups.py:576
 
-msgid "New group"
-msgstr "नयाँ समूह"
+msgid "Add station here..."
+msgstr "Î ÏÎ¿ÏÎ¸Î®ÎºÎ· ÏÏÎ±Î¸Î¼Î¿Ï ÎµÎ´Ï..."
 
-msgid "Move to..."
-msgstr "मा सार्नुहोस्..."
+#: data/scripts/reorder_groups.py:597
 
-msgid "Top"
-msgstr "पहिले"
+msgid "Add station..."
+msgstr "एउटा रेडियो थप्नुहोस्..."
 
-msgid "Move up"
-msgstr "⬆ माथि जानुहोस्"
+#: data/scripts/edit_station.py:66
 
-msgid "Move down"
-msgstr "⬇ तल जानुहोस्"
+msgid "Add to my stations"
+msgstr "मेरो रेडियोमा थप्नुहोस्"
 
-msgid "Separator"
-msgstr "विभाजक"
+#: data/scripts/edit_station.py:159
 
-msgid "Sort A-Z"
-msgstr "A-Z क्रमबद्ध गर्नुहोस्"
+msgid "Align name"
+msgstr "ÎÏÎ¸ÏÎ³ÏÎ¬Î¼Î¼Î¹ÏÎ· Î¿Î½ÏÎ¼Î±ÏÎ¿Ï"
 
-msgid "Save and reload"
-msgstr "बचत गर्नुहोस् र पुन: लोड गर्नुहोस्"
+#: data/scripts/reorder_groups.py:295
 
-msgid "Same time"
-msgstr "एकै समयमा"
+msgid "All changes saved"
+msgstr "ÎÎ»ÎµÏ Î¿Î¹ Î±Î»Î»Î±Î³Î­Ï Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎ±Î½"
 
-msgid "Dawn"
-msgstr "बिहान"
+#: data/scripts/browse_bouquets.py:784
 
-msgid "Morning"
-msgstr "बिहान"
+msgid "All countries (Worldwide)"
+msgstr "सबै देशहरू (विश्वव्यापी)"
 
-msgid "Daytime"
-msgstr "दिन"
+#: data/scripts/reorder_groups.py:1281
 
-msgid "Evening"
-msgstr "साँझ"
+msgid "All files (*.*)"
+msgstr "सबै फाइलहरू (*)"
 
-msgid "Night"
-msgstr "रात"
+#: data/scripts/browse_bouquets.py:823
 
-msgid "Tomorrow"
-msgstr "भोलि"
+msgid "All languages"
+msgstr "सबै भाषाहरू"
 
-msgid "Yesterday"
-msgstr "हिजो"
+#: data/scripts/timonde_settings.py:728
 
-msgid "Maintenance & Data"
-msgstr "मर्मत र डाटा"
+msgid ""
+"Allows opening the station menu interchangeably with left or right click."
+msgstr "बायाँ वा दायाँ क्लिकको साथ एकान्तर रूपमा स्टेशन मेनु खोल्न अनुमति दिन्छ।"
 
-msgid "Check streams (dead links)..."
-msgstr "फिडहरू जाँच गर्नुहोस् (मृत लिङ्कहरू)..."
+#: data/scripts/timonde_common.py:1904
 
-msgid "Export my stations to CSV..."
-msgstr "मेरो रेडियोहरू CSV मा निर्यात गर्नुहोस्..."
+msgid "Already registered"
+msgstr "ÎÎ´Î· ÎºÎ±ÏÎ±ÏÏÏÎ·Î¼Î­Î½Î¿"
 
-msgid "Check streams"
-msgstr "फिडहरू जाँच गर्नुहोस्"
+#: data/scripts/timonde_common.py:1899
 
-msgid "Dead links only"
-msgstr "मृत लिङ्कहरू मात्र"
+msgid "Already registered:"
+msgstr "ÎÎ´Î· ÎºÎ±ÏÎ±ÏÏÏÎ·Î¼Î­Î½Î¿:"
+
+#: data/scripts/reorder_groups.py:111 data/scripts/reorder_groups.py:1155
 
 msgid "Apply redirects"
 msgstr "पुनर्निर्देशनहरू लागू गर्नुहोस्"
 
-msgid "Repair stream..."
-msgstr "मर्मत प्रवाह..."
+#: data/scripts/reorder_groups.py:783 data/scripts/reorder_groups.py:785
 
-msgid "Export to CSV"
-msgstr "CSV मा निर्यात गर्नुहोस्"
+#: data/scripts/reorder_groups.py:787
 
-msgid "Test stream availability and locate broken links"
-msgstr "तपाईंको रेडियो स्टेशनहरू र स्पट डेड लिङ्कहरूको प्रत्यक्ष उपलब्धता परीक्षण गर्नुहोस्"
+msgid "Are you sure you want to delete « {name} » ?"
+msgstr "के तपाइँ निश्चित हुनुहुन्छ कि तपाइँ « {name} » मेटाउन चाहनुहुन्छ?"
 
-msgid "Display offline radio streams only"
-msgstr "स्ट्रिम अफलाइन भएका रेडियो स्टेशनहरू मात्र देखाउनुहोस्"
+#: data/scripts/edit_station.py:121
+
+msgid "Audio stream URL:"
+msgstr "अडियो स्ट्रिम URL:"
+
+#: data/scripts/reorder_groups.py:1139
+
+msgid "Audit completed:"
+msgstr "Audit completed:"
+
+#: data/scripts/timonde_settings.py:666
+
+msgid "Automatic detection according to your Linux locale settings."
+msgstr "तपाईंको लिनक्स लोकेल सेटिङहरू अनुसार स्वचालित पत्ता लगाउने।"
+
+#: data/scripts/timonde_settings.py:648
+
+msgid "Automatic launch on startup"
+msgstr "स्टार्टअपमा स्वचालित सुरुवात"
+
+#: data/scripts/timonde_settings.py:751
+
+msgid "Automatic startup"
+msgstr "स्वचालित स्टार्टअप"
+
+#: data/scripts/reorder_groups.py:111
 
 msgid "Automatically update redirected streams to direct URL"
 msgstr ""
 "तिनीहरूको प्रत्यक्ष URL मा रिडिरेक्ट गरिएका फिडहरू स्वचालित रूपमा अद्यावधिक गर्नुहोस्"
 
-msgid "Search Radio-Browser for a working replacement stream"
-msgstr ""
-"यस मृत लिङ्कको लागि रेडियो-ब्राउजरमा प्रतिस्थापन सक्रिय स्ट्रिमको लागि स्वचालित रूपमा "
-"खोज्नुहोस्"
+#: data/scripts/browse_bouquets.py:913 data/scripts/browse_bouquets.py:1247
 
-msgid "Export all stations to CSV spreadsheet format"
-msgstr "तपाईंका सबै रेडियोहरू CSV स्प्रेडसिट ढाँचामा निर्यात गर्नुहोस्"
+msgid "Availability"
+msgstr "उपलब्धता"
 
-msgid "Export my stations to CSV"
-msgstr "मेरो रेडियोहरू CSV मा निर्यात गर्नुहोस्"
+#: data/scripts/reorder_groups.py:1266
 
-msgid "CSV files (*.csv)"
-msgstr "CSV फाइलहरू (*.csv)"
+msgid "Backup my bookmarks (XML)"
+msgstr "ÎÎ½ÏÎ¯Î³ÏÎ±ÏÎ¿ Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¹ÎºÏÏÎ½ (XML)"
 
-msgid "All files (*.*)"
-msgstr "सबै फाइलहरू (*)"
+#: data/scripts/browse_bouquets.py:1199
 
-msgid "Export"
-msgstr "निर्यात गर्नुहोस्"
+msgid "Backup my radios (XML)..."
+msgstr "मेरो रेडियोहरू (XML) ब्याकअप गर्नुहोस्..."
 
-msgid "Export successful!"
-msgstr "निर्यात सफल भयो!"
+#: data/scripts/reorder_groups.py:1302
 
-msgid "Error during CSV export:"
-msgstr "CSV निर्यात गर्दा त्रुटि:"
+msgid "Backup successful!"
+msgstr "ÎÏÎ¹ÏÏÏÎ®Ï Î´Î·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î±Î½ÏÎ¹Î³ÏÎ¬ÏÎ¿Ï Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï!"
 
-msgid "station(s) saved to:"
-msgstr "रेडियो(हरू) मा रेकर्ड गरियो:"
+#: data/scripts/timonde_common.py:1645
 
-msgid "Start automatically at login"
-msgstr "Start automatically at login"
+msgid "Bitrate"
+msgstr "Bitrate"
 
-msgid "Organize groups and stations (TiMonde)"
-msgstr "Organize groups and stations (TiMonde)"
+#: data/scripts/timonde_settings.py:530
 
-msgid "Back to main group list (Esc)"
-msgstr "Back to main group list (Esc)"
+msgid "Bookmarks and stations saved successfully!"
+msgstr "बुकमार्कहरू र स्टेशनहरू सफलतापूर्वक सुरक्षित गरियो!"
 
-msgid "Sort stations in this group (Enter or double-click)"
-msgstr "Sort stations in this group (Enter or double-click)"
+#: data/scripts/browse_bouquets.py:1203
 
-msgid "Create a new group of radio stations (Ctrl+N)"
-msgstr "Create a new group of radio stations (Ctrl+N)"
+msgid "Bookmarks folder"
+msgstr "बुकमार्क फोल्डर"
 
-msgid "Move selection to another group (Ctrl+M)"
-msgstr "Move selection to another group (Ctrl+M)"
+#: data/scripts/browse_bouquets.py:2312
 
-msgid "Move selected item to the top"
-msgstr "Move selected item to the top"
+msgid "CSV export is available from settings."
+msgstr "CSV निर्यात सेटिङहरूबाट उपलब्ध छ।"
 
-msgid "Move up one rank"
-msgstr "Move up one rank"
+#: data/scripts/reorder_groups.py:1252
 
-msgid "Move down one rank"
-msgstr "Move down one rank"
+msgid "CSV export successful:"
+msgstr "ÎÏÎ¹ÏÏÏÎ®Ï ÎµÎ¾Î±Î³ÏÎ³Î® CSV:"
 
-msgid "Add a new station to this group"
-msgstr "Add a new station to this group"
+#: data/scripts/browse_bouquets.py:1982 data/scripts/edit_station.py:308
 
-msgid "Insert a separator or header in this group"
-msgstr "Insert a separator or header in this group"
+#: data/scripts/edit_station.py:575 data/scripts/reorder_groups.py:260
 
-msgid "Sort this list alphabetically"
-msgstr "Sort this list alphabetically"
+#: data/scripts/reorder_groups.py:638 data/scripts/reorder_groups.py:948
 
-msgid "Edit selected name, URL or header (F2)"
-msgstr "Edit selected name, URL or header (F2)"
+#: data/scripts/reorder_groups.py:1228 data/scripts/reorder_groups.py:1269
 
-msgid "Delete selected item or group (Del)"
-msgstr "Delete selected item or group (Del)"
+#: data/scripts/timonde_common.py:1596 data/scripts/timonde_common.py:1720
 
-msgid "Transfer..."
-msgstr "Transfer..."
+msgid "Cancel"
+msgstr "रद्द गर्नुहोस्"
 
-msgid "Transfer the content of this group to another group (Ctrl+M)"
-msgstr "Transfer the content of this group to another group (Ctrl+M)"
+#: src/tray/menu.rs:589
 
-msgid "<b>Radio groups</b>"
-msgstr "<b>Radio groups</b>"
+msgid "Cancel sleep timer"
+msgstr "निद्रा रद्द गर्नुहोस्"
 
-msgid "— Separator —"
-msgstr "— Separator —"
+#: data/scripts/timonde_common.py:1814
 
-msgid "radio"
-msgstr "radio"
+msgid "Check"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï"
 
-msgid "radios"
-msgstr "radios"
+#: data/scripts/browse_bouquets.py:938 data/scripts/browse_bouquets.py:1107
 
-msgid "sep."
-msgstr "sep."
+#: data/scripts/browse_bouquets.py:1274
 
-msgid "dead link"
-msgstr "dead link"
+msgid "Check all"
+msgstr "सबै जाँच गर्नुहोस्"
 
-msgid "dead links"
-msgstr "dead links"
+#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
 
-msgid "redir."
-msgstr "redir."
+msgid "Check and submit selected station to Radio-Browser directory"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï ÎºÎ±Î¹ ÏÏÎ¿Î²Î¿Î»Î® ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
 
-msgid "[OK] All online"
-msgstr "[OK] All online"
+#: data/scripts/timonde_common.py:1814
 
-msgid "Move selected stations to another group (Ctrl+M)"
-msgstr "Move selected stations to another group (Ctrl+M)"
+msgid "Check entered stream URL again on Radio-Browser"
+msgstr "ÎÏÎ±Î½Î­Î»ÎµÎ³ÏÎ¿Ï Î´Î¹ÎµÏÎ¸ÏÎ½ÏÎ·Ï ÏÎ¿Î®Ï ÏÏÎ¿ Radio-Browser"
 
-msgid "Create a new group and move selected stations there (Ctrl+N)"
-msgstr "Create a new group and move selected stations there (Ctrl+N)"
+#: data/scripts/edit_station.py:139
 
-msgid "Stations in group:"
-msgstr "Stations in group:"
+msgid "Check if stream is listed or contribute to directory"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï Î±Î½ Î· ÏÎ¿Î® ÏÏÎ¬ÏÏÎµÎ¹ Î® ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿"
 
-msgid "Header"
-msgstr "Header"
+#: data/scripts/edit_station.py:135
 
-msgid "[OK] Live"
-msgstr "[OK] Live"
+msgid "Check link validity and listen to stream preview"
+msgstr "लिङ्क वैधता जाँच गर्नुहोस् र स्ट्रिम पूर्वावलोकन सुन्नुहोस्"
 
-msgid "[!] Dead link"
-msgstr "[!] Dead link"
+#: data/scripts/browse_bouquets.py:1286
 
-msgid "[~] Redirected"
-msgstr "[~] Redirected"
+msgid "Check links availability live"
+msgstr "लिङ्क उपलब्धता लाइभ जाँच गर्नुहोस्"
 
-msgid "[?] Geo-restricted"
-msgstr "[?] Geo-restricted"
+#: data/scripts/browse_bouquets.py:946
 
-msgid "Audit completed:"
-msgstr "Audit completed:"
+msgid "Check live availability of found stations"
+msgstr "फेला परेका स्टेशनहरूको प्रत्यक्ष उपलब्धता जाँच गर्नुहोस्"
 
-msgid "online"
-msgstr "online"
+#: data/scripts/reorder_groups.py:242
 
-msgid "broken"
-msgstr "broken"
+msgid "Check or contribute selected station to Radio-Browser"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï Î® ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿ Radio-Browser"
 
-msgid "redirected"
-msgstr "redirected"
+#: data/scripts/browse_bouquets.py:1115
 
-msgid "No stations to check."
-msgstr "No stations to check."
+msgid "Check stations live availability"
+msgstr "स्टेशनहरू प्रत्यक्ष उपलब्धता जाँच गर्नुहोस्"
+
+#: data/scripts/reorder_groups.py:102
+
+msgid "Check streams"
+msgstr "फिडहरू जाँच गर्नुहोस्"
+
+#: data/scripts/timonde_common.py:1882
+
+msgid "Checking Radio-Browser directory..."
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï ÎºÎ±ÏÎ±Î»ÏÎ³Î¿Ï Radio-Browser..."
+
+#: data/scripts/reorder_groups.py:1077
 
 msgid "Checking your radio stations"
 msgstr "Checking your radio stations"
 
-msgid "Testing live radio streams..."
-msgstr "Testing live radio streams..."
+#: data/scripts/browse_bouquets.py:1656
 
-msgid "stations checked..."
-msgstr "stations checked..."
+msgid "Checking..."
+msgstr "जडान हुँदैछ..."
 
-msgid "checked:"
-msgstr "checked:"
+#: data/scripts/browse_bouquets.py:1978
 
-msgid "Please select a station to repair."
-msgstr "Please select a station to repair."
+msgid "Choose a radio station file"
+msgstr "एउटा रेडियो स्टेशन फाइल छान्नुहोस्"
 
-msgid "This item is a separator."
-msgstr "This item is a separator."
+#: data/scripts/browse_bouquets.py:676
 
-msgid "Station deleted"
-msgstr "Station deleted"
-
-msgid "Settings..."
-msgstr "सेटिङहरू..."
-
-# --- Mises à jour TiMonde ---
-msgid "(Metropolitan or Overseas)"
-msgstr "(Metropolitan or Overseas)"
-
-msgid "(Single inferred timezone)"
-msgstr "(Single inferred timezone)"
-
-msgid "(Timezone not defined)"
-msgstr "(Timezone not defined)"
-
-msgid "(Unknown)"
-msgstr "(Unknown)"
-
-msgid "<b>Country:</b>"
-msgstr "<b>Country:</b>"
-
-msgid "<b>Fichier exemple :</b>"
-msgstr "<b>Sample file:</b>"
-
-msgid ""
-"Accédez à plus de 40 000 stations en ligne classées par pays, genre ou mots-"
-"clés."
-msgstr ""
-"Access over 40,000 online stations sorted by country, genre or keywords."
-
-msgid "Ajouter une radio (TiMonde)"
-msgstr "एउटा रेडियो थप्नुहोस् (TiMonde)"
-
-msgid "Ajouter une radio manuellement"
-msgstr "Add station manually"
-
-msgid "Ajouter à mes radios"
-msgstr "मेरो रेडियोमा थप्नुहोस्"
-
-msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "कुनै नयाँ रेडियो थपिएको छैन (पहिले नै अवस्थित)।"
-
-msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "DAB+ गुलदस्ता र आधिकारिक चयनहरू"
-
-msgid "Bouquets DAB+ vérifiés"
-msgstr "Verified DAB+ Bouquets"
-
-msgid ""
-"Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, "
-"GNOME, KDE, MATE)."
-msgstr ""
-"Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, "
-"GNOME, KDE, MATE)."
-
-msgid "Conserver dans mes favoris"
-msgstr "मेरो मनपर्नेमा बचत गर्नुहोस्"
-
-msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "मनपर्नेमा रेडियो राख्नुहोस् (TiMonde)"
-
-msgid ""
-"Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans "
-"~/.config/timonde/examples/."
-msgstr ""
-"Browse the 17 thematic selections or drop your own files into ~/.config/"
-"timonde/examples/."
-
-msgid "Contents"
-msgstr "Contents"
-
-msgid "Details"
-msgstr "Details"
-
-msgid "Dossier ouvert :"
-msgstr "फाइल खोल्नुहोस्:"
-
-msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "रेडियो स्टेशनहरू पत्ता लगाउनुहोस् र आयात गर्नुहोस् (TiMonde)"
-
-msgid "Démarrage automatique"
-msgstr "Autostart"
-
-msgid ""
-"Démarre discrètement TiMonde en arrière-plan dès l'ouverture de votre "
-"session graphique."
-msgstr ""
-"Launches TiMonde discreetly in the background when your graphical session "
-"starts."
-
-msgid ""
-"Détection automatique selon votre système. 55 langues mondiales supportées "
-"avec drapeaux."
-msgstr ""
-"Automatic detection based on your system. 55 world languages supported."
-
-msgid "Enregistrer"
-msgstr "बचत गर्नुहोस्"
-
-msgid "Erreur :"
-msgstr "Error:"
-
-msgid "Erreur exécution :"
-msgstr "कार्यान्वयन त्रुटि:"
-
-msgid "Erreur import JSON :"
-msgstr "JSON आयात त्रुटि:"
-
-msgid "Erreur lors de la modification de l'autostart."
-msgstr "अटोस्टार्ट परिमार्जन गर्दा त्रुटि भयो।"
-
-msgid "Explorer DAB+..."
-msgstr "DAB+ अन्वेषण गर्नुहोस्..."
-
-msgid "Exportation CSV terminée."
-msgstr "CSV निर्यात पूरा भयो।"
-
-msgid "Exporter en CSV..."
-msgstr "Export to CSV..."
-
-msgid ""
-"Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout en "
-"conservant bookmarks.xml comme référence."
-msgstr ""
-"Export or sync your radio stations with LibreOffice Calc or Excel while "
-"keeping bookmarks.xml as reference."
-
-msgid "Fermer"
-msgstr "बन्द गर्नुहोस्"
-
-msgid "Fichiers exemples"
-msgstr "Sample Files"
-
-msgid "Fichiers exemples thématiques"
-msgstr "Thematic Sample Files"
-
-msgid "Group name"
-msgstr "Group name"
-
-msgid "Générez une feuille de calcul CSV de vos radios"
-msgstr "Generate a CSV spreadsheet of your radio stations"
-
-msgid "Gérer les radios..."
-msgstr "Manage stations..."
-
-msgid "Importer depuis CSV..."
-msgstr "Import from CSV..."
-
-msgid "Importer des fichiers personnels"
-msgstr "व्यक्तिगत फाइलहरू आयात गर्नुहोस्"
-
-msgid "Importer fichier..."
-msgstr "फाइल आयात गर्नुहोस्..."
-
-msgid "Importer mes fichiers"
-msgstr "Import My Files"
-
-msgid ""
-"Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV, "
-"JSON, M3U ou PLS."
-msgstr ""
-"Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U "
-"or PLS formats."
-
-msgid "Impossible d ouvrir le dossier :"
-msgstr "फोल्डर खोल्न असमर्थ:"
-
-msgid ""
-"Insérez des séparateurs (---) ou des intertitres de section dans vos groupes "
-"pour aérer votre menu."
-msgstr ""
-"विभाजकहरू (---) वा तपाईंको समूहहरूमा खण्ड शीर्षकहरू घुसाउनुहोस् तपाईंको मेनुलाई हावा "
-"चलाउन।"
-
-msgid "Intégration du bureau & Plateau"
-msgstr "Desktop Integration & Tray"
-
-msgid "Lancement automatique au démarrage"
-msgstr "Launch automatically at startup"
-
-msgid "Lancer l'audit..."
-msgstr "Start audit..."
-
-msgid "Langue :"
-msgstr "Language:"
-
-msgid "Langue et Région"
-msgstr "Language & Region"
-
-msgid "Modifications prises en compte."
-msgstr "ध्यानमा राखिएका परिवर्तनहरू।"
-
-msgid "Modifier la radio (TiMonde)"
-msgstr "रेडियो सम्पादन गर्नुहोस् (TiMonde)"
-
-msgid "Name / Header"
-msgstr "Name / Header"
-
-msgid "Nouvelle radio..."
-msgstr "New station..."
-
-msgid "Organiser les groupes et les radios"
-msgstr "Organize groups and stations"
-
-msgid "Outil introuvable :"
-msgstr "Tool not found:"
-
-msgid "Ouvrir dossier"
-msgstr "फोल्डर खोल्नुहोस्"
-
-msgid "Paramètres & Contrôle TiMonde"
-msgstr "TiMonde Settings & Control"
-
-msgid "Paramètres TiMonde"
-msgstr "TiMonde Settings"
-
-msgid ""
-"Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter votre "
-"bureau."
-msgstr ""
-"Browse 146 verified national and regional bouquets without leaving your "
-"desktop."
-
-msgid "Parcourir..."
-msgstr "ब्राउज गर्नुहोस्..."
-
-msgid "Passerelle Tableur (CSV)"
-msgstr "Spreadsheet Gateway (CSV)"
-
-msgid "Recherche Radio-Browser"
-msgstr "Radio-Browser Search"
-
-msgid "Recherche mondiale Radio-Browser"
-msgstr "ग्लोबल खोज रेडियो ब्राउजर"
-
-msgid "Rechercher..."
-msgstr "खोज..."
-
-msgid "Restaurer"
-msgstr "Restore"
-
-msgid "Restaurer les fichiers exemples"
-msgstr "Restore sample files"
-
-msgid "Réimportez ou synchronisez des radios modifiées depuis un tableur CSV"
-msgstr "Re-import or sync modified radio stations from a CSV spreadsheet"
-
-msgid ""
-"Rétablit les 17 exemples thématiques par défaut dans votre dossier personnel "
-"s'ils ont été supprimés."
-msgstr ""
-"Restores the 17 default thematic samples in your personal folder if deleted."
-
-msgid ""
-"Saisir directement un nom, une URL de flux (AAC, MP3, HLS), un pays et un "
-"fuseau horaire."
-msgstr ""
-"Directly enter a name, stream URL (AAC, MP3, HLS), country and timezone."
-
-msgid "Signets actuels (bookmarks.xml)"
-msgstr "Current bookmarks (bookmarks.xml)"
-
-msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "बुकमार्कहरू पुन: संगठित र सफलतापूर्वक सुरक्षित गरियो!"
-
-msgid "Supprimer"
-msgstr "मेट्नुहोस्"
-
-msgid ""
-"Teste en direct la disponibilité de tous vos flux, détecte les liens "
-"inactifs et applique les redirections."
-msgstr ""
-"Tests live availability of all your streams, detects broken links and "
-"applies redirects."
-
-msgid ""
-"Triez, renommez, supprimez et déplacez vos stations. Créez des dossiers et "
-"des sous-groupes (ex: Musique/Jazz)."
-msgstr ""
-"Sort, rename, delete and move your stations. Create folders and sub-groups "
-"(e.g. Music/Jazz)."
-
-msgid "Vérificateur de flux & Liens morts"
-msgstr "Stream health check & Dead links"
-
-msgid "activé"
-msgstr "enabled"
-
-msgid "ajoutée avec succès à vos signets !"
-msgstr "successfully added to your bookmarks!"
-
-msgid "désactivé"
-msgstr "disabled"
-
-msgid "fichiers exemples restaurés dans"
-msgstr "नमूना फाइलहरू पुनर्स्थापित गरियो"
-
-msgid "radio(s) ajoutée(s) à vos signets !"
-msgstr "station(s) added to your bookmarks!"
-
-msgid "↕️ Organisation"
-msgstr "↕️ संगठन"
-
-msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 भिजुअल लेआउट टिप"
-
-msgid "💾 Données & Fichiers"
-msgstr "💾 डाटा र फाइलहरू"
-
-msgid "📻 Bibliothèque"
-msgstr "📻 पुस्तकालय"
-
-msgid "🖥️ Général"
-msgstr "🖥️ सामान्य"
-
-msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
-msgstr "<i>माथिको एउटा फाइल वा उदाहरण चयन गर्नुहोस्।</i>"
-
-msgid "Actualiser la liste des exemples"
-msgstr "उदाहरणहरूको सूची ताजा गर्नुहोस्"
-
-msgid "Aide sur les groupes et sous-groupes"
-msgstr "समूह र उपसमूहहरूलाई मद्दत गर्नुहोस्"
-
-msgid "Ajouter"
-msgstr "थप्नुहोस्"
-
-msgid "Annuler"
-msgstr "रद्द गर्नुहोस्"
-
-msgid "Arrêter"
-msgstr "रोक्नुहोस्"
-
-msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
-msgstr "कुनै पनि bookmarks.xml फाइलहरू बचत गर्न फेला परेन।"
-
-msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
-msgstr "कुनै नयाँ रेडियो स्टेशनहरू थपिएका छैनन् (तपाईंको बुकमार्कहरूमा पहिले नै अवस्थित)।"
-
-msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
-msgstr "यी मापदण्डहरूको लागि रेडियो-ब्राउजरमा कुनै रेडियो स्टेशनहरू फेला परेनन्।"
-
-msgid "Bouquet National (Grandes stations)"
-msgstr "राष्ट्रिय गुलदस्ता (प्रमुख रिसोर्टहरू)"
-
-msgid "Bouquets par pays"
-msgstr "देश अनुसार गुलदस्ता"
-
-msgid "Bureau graphique & Plateau"
-msgstr "ग्राफिक डेस्क र ट्रे"
-
-msgid "Cette station n'a aucune URL de flux audio."
-msgstr "यो स्टेशनमा कुनै अडियो स्ट्रिम URL हरू छैनन्।"
-
-msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
-msgstr "XML, CSV, JSON, M3U वा PLS फाइल अपलोड गर्नुहोस्"
-
-msgid "Charger un fichier..."
-msgstr "फाइल लोड गर्नुहोस्..."
-
-msgid "Choisir parmi les groupes existants"
+msgid "Choose from existing groups"
 msgstr "अवस्थित समूहहरूबाट छान्नुहोस्"
 
-msgid "Choisir un fichier de radios"
-msgstr "एउटा रेडियो फाइल छान्नुहोस्"
+#: data/scripts/timonde_settings.py:727
 
-msgid "Collections & Fichiers"
-msgstr "संग्रह र फाइलहरू"
+msgid "Cinnamon Left-Click Unification"
+msgstr "Cinnamon Linksklick-Vereinheitlichung"
 
-msgid "Conserver l'organisation en dossiers"
-msgstr "फाइलमा संगठन राख्नुहोस्"
+#: data/scripts/timonde_settings.py:721
 
-msgid ""
-"Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux "
-"horaires)"
-msgstr "तपाईंको संग्रहको पूर्ण ब्याकअप बनाउनुहोस् (फोल्डरहरू र समय क्षेत्रहरू सहित)"
+msgid "Cinnamon left-click unification successfully enabled!"
+msgstr "Cinnamon Linksklick-Vereinheitlichung erfolgreich aktiviert!"
 
-msgid "Disponibilité"
-msgstr "उपलब्धता"
+#: data/scripts/edit_station.py:265
 
-msgid "Disponibilité en direct"
-msgstr "प्रत्यक्ष उपलब्धता"
+msgid "Clear"
+msgstr "Clear"
 
-msgid "Dossier / Groupe"
-msgstr "फोल्डर / समूह"
+#: data/scripts/edit_station.py:266
 
-msgid "Dossier des exemples"
-msgstr "उदाहरण फोल्डर"
+msgid "Clear / Automatic mode"
+msgstr "LÃ¶schen / Automatischer Modus"
 
-msgid "Dossier des signets"
-msgstr "बुकमार्क फोल्डर"
+#: data/scripts/browse_bouquets.py:789
 
-msgid ""
-"Détection automatique selon les paramètres régionaux de votre environnement "
-"Linux."
-msgstr "तपाईंको लिनक्स वातावरणको क्षेत्रीय सेटिङहरू अनुसार स्वचालित पत्ता लगाउने।"
-
-msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
-msgstr "वातावरण पत्ता लगाइयो (पढ्न मात्र)"
-
-msgid "Effacer le champ"
-msgstr "खाली क्षेत्र"
-
-msgid "Effacer le filtre langue"
-msgstr "भाषा फिल्टर खाली गर्नुहोस्"
-
-msgid "Effacer le filtre pays"
+msgid "Clear country filter"
 msgstr "देश फिल्टर खाली गर्नुहोस्"
 
-msgid "Environnement GNOME Shell détecté"
-msgstr "GNOME शेल वातावरण पत्ता लाग्यो"
+#: data/scripts/browse_bouquets.py:669
 
-msgid "Erreur lors de la sauvegarde :"
-msgstr "बचत गर्दा त्रुटि:"
+msgid "Clear field"
+msgstr "खाली क्षेत्र"
 
-msgid "Ex: /France/Jazz ou / pour racine"
+#: data/scripts/edit_station.py:187
+
+msgid "Clear field (click to empty)"
+msgstr "Feld leeren (Klicken zum Leeren)"
+
+#: data/scripts/browse_bouquets.py:828
+
+msgid "Clear language filter"
+msgstr "भाषा फिल्टर खाली गर्नुहोस्"
+
+#: data/scripts/browse_bouquets.py:1335 data/scripts/timonde_common.py:1858
+
+#: data/scripts/timonde_settings.py:447
+
+msgid "Close"
+msgstr "बन्द गर्नुहोस्"
+
+#: data/scripts/reorder_groups.py:88
+
+msgid "Collapse all"
+msgstr "Î£ÏÎ¼ÏÏÏÎ¾Î· ÏÎ»ÏÎ½"
+
+#: data/scripts/reorder_groups.py:88
+
+msgid "Collapse all groups for an overview"
+msgstr "Î£ÏÎ¼ÏÏÏÎ¾Î· ÏÎ»ÏÎ½ ÏÏÎ½ Î¿Î¼Î¬Î´ÏÎ½ Î³Î¹Î± ÎµÏÎ¹ÏÎºÏÏÎ·ÏÎ·"
+
+#: data/scripts/timonde_settings.py:594
+
+msgid "Collections & Files"
+msgstr "संग्रह र फाइलहरू"
+
+#: data/scripts/reorder_groups.py:794
+
+msgid "Confirm deletion"
+msgstr "ÎÏÎ¹Î²ÎµÎ²Î±Î¯ÏÏÎ· Î´Î¹Î±Î³ÏÎ±ÏÎ®Ï"
+
+#: data/scripts/timonde_common.py:1328
+
+msgid "Connecting to"
+msgstr "मा जडान गर्दै"
+
+#: src/i18n.rs:192 src/tray/menu.rs:159
+
+msgid "Connecting..."
+msgstr "जडान हुँदैछ..."
+
+#: data/scripts/browse_bouquets.py:739
+
+msgid "Contribute a station"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ±Î¸Î¼Î¿Ï"
+
+#: data/scripts/timonde_common.py:1781
+
+msgid "Contribute a station to the community Radio-Browser directory"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ¿Î¹Î½Î¿ÏÎ¹ÎºÏ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
+
+#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
+
+#: data/scripts/timonde_common.py:1761
+
+msgid "Contribute to Radio-Browser"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/reorder_groups.py:242 data/scripts/reorder_groups.py:567
+
+msgid "Contribute to Radio-Browser..."
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser..."
+
+#: data/scripts/browse_bouquets.py:894 data/scripts/browse_bouquets.py:1240
+
+#: data/scripts/timonde_common.py:1648
+
+msgid "Country"
+msgstr "<b>Country:</b>"
+
+#: data/scripts/browse_bouquets.py:1327 data/scripts/timonde_settings.py:593
+
+msgid "Country bouquets"
+msgstr "देशको गुलदस्ता"
+
+#: data/scripts/timonde_common.py:1821
+
+msgid "Country code (ISO):"
+msgstr "ÎÏÎ´Î¹ÎºÏÏ ÏÏÏÎ±Ï (ISO):"
+
+#: data/scripts/browse_bouquets.py:981 data/scripts/edit_station.py:228
+
+#: data/scripts/timonde_common.py:1900
+
+msgid "Country:"
+msgstr "Country:"
+
+#: data/scripts/reorder_groups.py:639
+
+msgid "Create"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î±"
+
+#: data/scripts/browse_bouquets.py:1199
+
+msgid "Create a full backup of your collection (with folders and timezones)"
+msgstr "तपाईंको संग्रहको पूर्ण जगेडा सिर्जना गर्नुहोस् (फोल्डरहरू र समय क्षेत्रहरू सहित)"
+
+#: data/scripts/reorder_groups.py:634
+
+msgid "Create a new group"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:193
+
+msgid "Create a new group or subgroup (Ctrl+N)"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï Î® ÏÏÎ¿Î¿Î¼Î¬Î´Î±Ï (Ctrl+N)"
+
+#: data/scripts/reorder_groups.py:658
+
+msgid "Create as a subgroup inside"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± ÏÏ ÏÏÎ¿Î¿Î¼Î¬Î´Î± ÎµÎ½ÏÏÏ"
+
+#: data/scripts/timonde_settings.py:656
+
+msgid "DETECTED ENVIRONMENT (READ ONLY)"
+msgstr "पत्ता लगाइएको वातावरण (पढ्न मात्र)"
+
+#: src/timezone.rs:521
+
+msgid "Daytime"
+msgstr "दिन"
+
+#: data/scripts/reorder_groups.py:106 data/scripts/reorder_groups.py:1147
+
+msgid "Dead links only"
+msgstr "मृत लिङ्कहरू मात्र"
+
+#: data/scripts/edit_station.py:576 data/scripts/reorder_groups.py:246
+
+#: src/i18n.rs:230 src/i18n.rs:236
+
+msgid "Delete"
+msgstr "मेटाउनुहोस्"
+
+#: data/scripts/reorder_groups.py:588
+
+msgid "Delete group and stations"
+msgstr "ÎÎ¹Î±Î³ÏÎ±ÏÎ® Î¿Î¼Î¬Î´Î±Ï ÎºÎ±Î¹ ÏÏÎ±Î¸Î¼ÏÎ½"
+
+#: data/scripts/reorder_groups.py:246
+
+msgid "Delete selected item or group (Del)"
+msgstr "Delete selected item or group (Del)"
+
+#: data/scripts/edit_station.py:303 data/scripts/reorder_groups.py:571
+
+msgid "Delete this station"
+msgstr "यो रेडियो मेटाउनुहोस्"
+
+#: data/scripts/edit_station.py:572
+
+msgid "Delete « {} » from favorites?"
+msgstr "मनपर्नेहरूबाट « {} » मेटाउने हो?"
+
+#: data/scripts/reorder_groups.py:803
+
+msgid "Deleted:"
+msgstr "ÎÎ¹Î±Î³ÏÎ¬ÏÎ·ÎºÎµ:"
+
+#: data/scripts/timonde_settings.py:676
+
+msgid "Desktop environment & Tray"
+msgstr "डेस्कटप वातावरण र ट्रे"
+
+#: data/scripts/reorder_groups.py:169
+
+msgid "Details / Status"
+msgstr "ÎÎµÏÏÎ¿Î¼Î­ÏÎµÎ¹ÎµÏ / ÎÎ±ÏÎ¬ÏÏÎ±ÏÎ·"
+
+#: data/scripts/browse_bouquets.py:525
+
+msgid "Discover & Import stations (TiMonde)"
+msgstr "रेडियो स्टेशनहरू पत्ता लगाउनुहोस् र आयात गर्नुहोस् (TiMonde)"
+
+#: data/scripts/timonde_settings.py:649
+
+msgid ""
+"Discreetly starts TiMonde in the background as soon as your graphical "
+"session opens."
+msgstr "तपाईको ग्राफिकल सत्र खुल्ने बित्तिकै पृष्ठभूमिमा TiMonde सावधानीपूर्वक सुरु हुन्छ।"
+
+#: data/scripts/reorder_groups.py:107
+
+msgid "Display offline radio streams only"
+msgstr "स्ट्रिम अफलाइन भएका रेडियो स्टेशनहरू मात्र देखाउनुहोस्"
+
+#: data/scripts/reorder_groups.py:234 src/i18n.rs:229 src/i18n.rs:235
+
+#: src/tray/menu.rs:384
+
+msgid "Edit"
+msgstr "सम्पादन"
+
+#: data/scripts/reorder_groups.py:234
+
+msgid "Edit selected name, URL or group (F2)"
+msgstr "ÎÏÎµÎ¾ÎµÏÎ³Î±ÏÎ¯Î± ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï Î¿Î½ÏÎ¼Î±ÏÎ¿Ï, URL Î® Î¿Î¼Î¬Î´Î±Ï (F2)"
+
+#: data/scripts/edit_station.py:74
+
+msgid "Edit station (TiMonde)"
+msgstr "रेडियो सम्पादन गर्नुहोस् (TiMonde)"
+
+#: data/scripts/reorder_groups.py:555
+
+msgid "Edit station..."
+msgstr "एउटा रेडियो थप्नुहोस्..."
+
+#: data/scripts/timonde_common.py:132
+
+msgid "Empty URL"
+msgstr "Leere URL"
+
+#: data/scripts/timonde_common.py:1301 data/scripts/timonde_common.py:1315
+
+msgid "Empty stream URL"
+msgstr "खाली स्ट्रिम URL"
+
+#: data/scripts/timonde_settings.py:709
+
+msgid "Enable Left-Click"
+msgstr "Linksklick aktivieren"
+
+#: data/scripts/timonde_common.py:1277
+
+msgid "End of stream"
+msgstr "स्ट्रिमको अन्त्य"
+
+#: data/scripts/browse_bouquets.py:950
+
+msgid "Enter a keyword or click Search to browse the directory."
+msgstr "खोजशब्द प्रविष्ट गर्नुहोस् वा डाइरेक्टरी ब्राउज गर्न खोज क्लिक गर्नुहोस्।"
+
+#: src/tray/mod.rs:155
+
+msgid "Ephemeral radio (not saved)."
+msgstr "FlÃ¼chtiges Radio (nicht gespeichert)."
+
+#: data/scripts/reorder_groups.py:1312
+
+msgid "Error during backup:"
+msgstr "ब्याकअप गर्दा त्रुटि:"
+
+#: data/scripts/timonde_settings.py:753
+
+msgid "Error modifying autostart."
+msgstr "अटोस्टार्ट परिमार्जन गर्दा त्रुटि भयो।"
+
+#: data/scripts/timonde_common.py:195
+
+msgid "Error {code}"
+msgstr "Fehler {code}"
+
+#: data/scripts/gnome_tray_helper.py:217
+
+msgid "Error:"
+msgstr "त्रुटि:"
+
+#: src/timezone.rs:521
+
+msgid "Evening"
+msgstr "साँझ"
+
+#: data/scripts/browse_bouquets.py:652
+
+msgid "Ex: /France/Jazz or / for root"
 msgstr "उदाहरण: /फ्रान्स/ज्याज वा / रूटको लागि"
 
-msgid "Exemples thématiques :"
-msgstr "विषयगत उदाहरणहरू:"
+#: data/scripts/browse_bouquets.py:1169
 
-msgid "Exporter en tableau (CSV)..."
-msgstr "तालिकामा निर्यात गर्नुहोस् (CSV)..."
+msgid "Examples folder"
+msgstr "उदाहरण फोल्डर"
 
-msgid "Fichier :"
-msgstr "फाइल:"
+#: data/scripts/reorder_groups.py:92
 
-msgid "Fichier externe :"
-msgstr "बाह्य फाइल:"
+msgid "Expand all"
+msgstr "ÎÎ½Î¬ÏÏÏÎ¾Î· ÏÎ»ÏÎ½"
 
-msgid "Fichiers XML (*.xml)"
-msgstr "XML फाइलहरू (*.xml)"
+#: data/scripts/reorder_groups.py:92
 
-msgid "Filtrer par pays :"
-msgstr "देश अनुसार फिल्टर गर्नुहोस्:"
+msgid "Expand all groups and subgroups"
+msgstr "ÎÎ½Î¬ÏÏÏÎ¾Î· ÏÎ»ÏÎ½ ÏÏÎ½ Î¿Î¼Î¬Î´ÏÎ½ ÎºÎ±Î¹ ÏÏÎ¿Î¿Î¼Î¬Î´ÏÎ½"
 
-msgid "Format & Débit"
-msgstr "ढाँचा र बिटरेट"
+#: data/scripts/browse_bouquets.py:1087
 
-msgid "Genre / Tags"
-msgstr "लिङ्ग / ट्यागहरू"
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Radio-Browser मा यस देशका स्टेशनहरू अन्वेषण गर्नुहोस्"
 
-msgid "Genre / Thématique"
-msgstr "विधा / विषयवस्तु"
-
-msgid "Genre :"
-msgstr "लिङ्ग:"
-
-msgid "Gestionnaire de paquets non reconnu."
-msgstr "अपरिचित प्याकेज प्रबन्धक।"
-
-msgid "Groupe :"
-msgstr "समूह:"
-
-msgid "Générer une liste plate pour tableur Calc ou Excel"
-msgstr "Calc वा एक्सेल स्प्रेडसिटको लागि फ्ल्याट सूची उत्पन्न गर्नुहोस्"
-
-msgid "Importer"
-msgstr "आयात गर्नुहोस्"
-
-msgid "Importer & Exporter"
-msgstr "आयात र निर्यात"
-
-msgid "Importer dans mes favoris"
-msgstr "मेरो मनपर्नेमा आयात गर्नुहोस्"
-
-msgid "Installation en cours (veuillez valider l'invite système)..."
-msgstr "स्थापना प्रगतिमा (कृपया प्रणाली प्रम्प्ट प्रमाणित गर्नुहोस्)..."
-
-msgid "Installer l'intégration GNOME"
-msgstr "GNOME एकीकरण स्थापना गर्नुहोस्"
-
-msgid "Intégration GNOME requise"
-msgstr "GNOME एकीकरण आवश्यक छ"
-
-msgid "Intégration dans la barre supérieure GNOME"
-msgstr "GNOME शीर्षपट्टीमा एकीकरण"
-
-msgid ""
-"Intégration native dans la zone de notification via StatusNotifierItem / "
-"XEmbed."
-msgstr "StatusNotifierItem / XEmbed मार्फत अधिसूचना क्षेत्रमा मूल एकीकरण।"
-
-msgid "L'exportation CSV est accessible depuis les paramètres."
-msgstr "CSV निर्यात सेटिङहरूबाट पहुँचयोग्य छ।"
-
-msgid ""
-"L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre "
-"supérieure sous GNOME."
-msgstr "GNOME मा शीर्ष पट्टीमा आइकन प्रदर्शन गर्न AppIndicator विस्तार आवश्यक छ।"
-
-msgid "L'installation a été annulée ou a échoué."
-msgstr "स्थापना रद्द वा असफल भयो।"
-
-msgid "La sauvegarde XML est accessible depuis les paramètres."
-msgstr "XML ब्याकअप सेटिङहरूबाट पहुँचयोग्य छ।"
-
-msgid "Langue du système"
-msgstr "प्रणाली भाषा"
-
-msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
-msgstr "विभाजक र अन्तरशीर्षकहरू सुन्न सकिँदैन।"
-
-msgid "Mes Radios"
-msgstr "मेरो रेडियोहरू"
-
-msgid "Mot-clé :"
-msgstr "कीवर्ड:"
-
-msgid "Nouveaux uniquement"
-msgstr "नयाँ मात्र"
-
-msgid "OPTIONS DE SESSION"
-msgstr "सत्र विकल्पहरू"
-
-msgid "Organisation des groupes et sous-groupes (Convention Linux)"
-msgstr "समूह र उपसमूहहरूको संगठन (लिनक्स कन्भेन्सन)"
-
-msgid "Ouvrez d'abord un groupe pour écouter ses radios."
-msgstr "पहिले यसको रेडियो सुन्न एउटा समूह खोल्नुहोस्।"
-
-msgid "Ouvrir"
-msgstr "खोल्नुहोस्"
-
-msgid "Ouvrir ~/.config/timonde"
-msgstr "खोल्नुहोस् ~/.config/timonde"
-
-msgid "Ouvrir ~/.config/timonde/examples"
-msgstr "खोल्नुहोस् ~/.config/timonde/examples"
-
-msgid "Pays"
-msgstr "देश"
-
-msgid "Pays :"
-msgstr "देश:"
-
-msgid ""
-"Pour afficher discrètement l'icône de lecture dans la barre supérieure de "
-"votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire."
-"<br/><br/>Souhaitez-vous l'installer maintenant ?"
-msgstr ""
-"तपाईँको GNOME डेस्कटपको शीर्ष पट्टीमा सावधानीपूर्वक प्ले आइकन प्रदर्शन गर्न, "
-"<b>AppIndicator</b> प्रणाली विस्तार आवश्यक छ।<br/><br/>के तपाईँ यसलाई अहिले स्थापना "
-"गर्न चाहनुहुन्छ?"
-
-msgid "Préférences"
-msgstr "प्राथमिकताहरू"
-
-msgid ""
-"Préserver les sous-groupes définis dans le fichier au lieu de tout importer "
-"dans un groupe unique."
-msgstr ""
-"एउटै समूहमा सबै कुरा आयात गर्नुको सट्टा फाइलमा परिभाषित उपसमूहहरू सुरक्षित गर्नुहोस्।"
-
-msgid "Quitter"
-msgstr "बाहिर निस्कनुहोस्"
-
-msgid "Recharger"
-msgstr "पुन: लोड गर्नुहोस्"
-
-msgid "Recharger le fichier actuellement affiché"
-msgstr "हाल प्रदर्शित फाइल पुन: लोड गर्नुहोस्"
-
-msgid ""
-"Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> "
-"(+45 000 stations)."
-msgstr ""
-"नि:शुल्क र सहयोगी <b>रेडियो-ब्राउजर</b> डाइरेक्टरी (+45,000 स्टेशनहरू) मा विश्वव्यापी "
-"खोज।"
-
-msgid "Recherche sur Radio-Browser en cours..."
-msgstr "रेडियो ब्राउजरमा खोजी भइरहेको छ..."
-
-msgid "Rechercher"
-msgstr "खोज्नुहोस्"
-
-msgid "Rechercher en ligne"
-msgstr "अनलाइन खोज्नुहोस्"
-
-msgid "Remplacer le lien sélectionné par un flux officiel actif"
-msgstr "चयन गरिएको लिङ्कलाई सक्रिय आधिकारिक फिडसँग बदल्नुहोस्"
-
-msgid "Restaurer exemples"
-msgstr "उदाहरणहरू पुनर्स्थापित गर्नुहोस्"
-
-msgid "Régions & Locales :"
-msgstr "क्षेत्र र स्थानीय:"
-
-msgid "Réparer le flux..."
-msgstr "प्रवाह ठीक गर्नुहोस् ..."
-
-msgid "Rétablir les 19 exemples d'origine"
-msgstr "मूल 19 उदाहरणहरू पुनर्स्थापित गर्नुहोस्"
-
-msgid ""
-"Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
-msgstr "खोजशब्द प्रविष्ट गर्नुहोस् वा डाइरेक्टरी अन्वेषण गर्न खोज क्लिक गर्नुहोस्।"
-
-msgid "Sauvegarde réussie !"
-msgstr "ब्याकअप सफल भयो!"
-
-msgid "Sauvegarder mes radios (XML)..."
-msgstr "मेरो रेडियोहरू (XML) बचत गर्नुहोस्..."
-
-msgid "Sauvegarder mes signets (XML)"
-msgstr "मेरो बुकमार्क (XML) बचत गर्नुहोस्"
-
-msgid "Signets et radios enregistrés avec succès !"
-msgstr "बुकमार्कहरू र रेडियोहरू सफलतापूर्वक सुरक्षित गरियो!"
-
-msgid "Station"
-msgstr "रिसोर्ट"
-
-msgid "Statut Favoris"
-msgstr "मनपर्ने स्थिति"
-
-msgid ""
-"Sélection officielle et vérifiée parmi 146 pays et régions (bouquets "
-"numériques DAB+ et grandes stations nationales)."
-msgstr ""
-"146 देशहरू र क्षेत्रहरू (DAB+ डिजिटल गुलदस्ता र प्रमुख राष्ट्रिय स्टेशनहरू) बाट आधिकारिक र "
-"प्रमाणित चयन।"
-
-msgid "Sélectionnez une radio pour l'écouter."
-msgstr "यसलाई सुन्नको लागि रेडियो चयन गर्नुहोस्।"
-
-msgid "Sélectionnez une station dans le tableau pour l'écouter."
-msgstr "यसलाई सुन्नको लागि तालिकाबाट एउटा स्टेशन चयन गर्नुहोस्।"
-
-msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
-msgstr "एउटा देश टाइप गर्नुहोस् (उदाहरण: फ्रान्स, डचल्याण्ड, क्यानाडा...)"
-
-msgid "Tester"
-msgstr "परीक्षण"
-
-msgid "Tester les flux"
-msgstr "परीक्षण प्रवाह"
-
-msgid "TiMonde — Intégration Bureau GNOME"
-msgstr "TiMonde - GNOME डेस्कटप एकीकरण"
-
-msgid "Tous les fichiers (*.*)"
-msgstr "सबै फाइलहरू (*)"
-
-msgid "Tous les pays (mondial)"
-msgstr "सबै देश (विश्व)"
-
-msgid "Tout cocher"
-msgstr "सबै जाँच गर्नुहोस्"
-
-msgid "Tout décocher"
-msgstr "सबै अनचेक गर्नुहोस्"
-
-msgid "Toutes les langues"
-msgstr "सबै भाषाहरू"
-
-msgid "URL du flux"
-msgstr "फिड URL"
-
-msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
-msgstr "कृपया सुन्नको लागि सूचीबाट एउटा रेडियो चयन गर्नुहोस्।"
-
-msgid "Vos signets complets ont été enregistrés dans :"
-msgstr "तपाईंका पूर्ण बुकमार्कहरू यसमा सुरक्षित गरिएका छन्:"
-
-msgid "Votes"
-msgstr "भोटहरू"
-
-msgid "Vérifier en direct la disponibilité des liens"
-msgstr "लिङ्क उपलब्धता लाइभ जाँच गर्नुहोस्"
-
-msgid "Vérifier la disponibilité en direct des radios"
-msgstr "प्रत्यक्ष रेडियो उपलब्धता जाँच गर्नुहोस्"
-
-msgid "Vérifier la disponibilité en direct des radios trouvées"
-msgstr "फेला परेका रेडियोहरूको प्रत्यक्ष उपलब्धता जाँच गर्नुहोस्"
-
-msgid "Vérifier la validité du lien et écouter un aperçu du flux"
-msgstr "लिङ्क वैधता जाँच गर्नुहोस् र स्ट्रिम पूर्वावलोकन गर्नुहोस्"
-
-msgid "ajoutée avec succès !"
-msgstr "सफलतापूर्वक थपियो!"
-
-msgid "fichiers exemples restaurés."
-msgstr "पुनर्स्थापित नमूना फाइलहरू।"
-
-msgid "nouvelle(s) radio(s) importée(s) !"
-msgstr "नयाँ रेडियो(हरू) आयात गरियो!"
-
-msgid "Écouter"
-msgstr "सुन्नुहोस्"
-
-msgid "Écouter la radio sélectionnée"
-msgstr "चयन गरिएको रेडियो सुन्नुहोस्"
-
-msgid "Écouter ou tester la radio sélectionnée"
-msgstr "चयन गरिएको रेडियो सुन्नुहोस् वा परीक्षण गर्नुहोस्"
-
-msgid "is not responding. Searching for a backup stream..."
-msgstr "प्रतिक्रिया दिइरहेको छैन। ब्याकअप स्ट्रिम खोज्दै..."
-
-msgid "Stream repaired and saved for"
-msgstr "स्ट्रिम मर्मत गरी सुरक्षित गरियो:"
-
-msgid "is currently unavailable"
-msgstr "हाल उपलब्ध छैन"
-
-msgid "Unable to find a station in the bouquets catalog."
-msgstr "गुलदस्ता क्याटलगमा स्टेशन फेला पार्न सकिएन।"
-
-msgid "No radio is currently playing."
-msgstr "हाल कुनै पनि रेडियो बजिरहेको छैन।"
-
-msgid "Selection"
-msgstr "चयन"
-
-msgid "Save error"
-msgstr "बचत त्रुटि"
-
-msgid "Saved!"
-msgstr "सुरक्षित गरियो!"
-
-msgid "saved in your favorites!"
-msgstr "तपाईंको मनपर्नेमा सुरक्षित गरियो!"
-
-msgid "Station added but reload error"
-msgstr "स्टेशन थपियो तर पुन: लोड गर्दा त्रुटि भयो"
-
-msgid "Sleep timer activated"
-msgstr "स्लीप टाइमर सक्रिय गरियो"
-
-msgid "stopping in"
-msgstr "बन्द हुने समय:"
-
-msgid "Sleep timer: stopping radio."
-msgstr "स्लीप टाइमर: रेडियो बन्द गर्दै।"
-
-msgid "Sleep timer cancelled."
-msgstr "स्लीप टाइमर रद्द गरियो।"
-
-msgid "Track copied to clipboard:"
-msgstr "ट्र्याकको नाम क्लिपबोर्डमा प्रतिलिपि गरियो:"
-
-msgid "deleted from your favorites."
-msgstr "तपाईंको मनपर्नेबाट हटाइयो।"
-
-msgid "updated successfully!"
-msgstr "सफलतापूर्वक अद्यावधिक गरियो!"
-
-msgid "Settings console not found"
-msgstr "सेटिङ कन्सोल फेला परेन"
-
-msgid "Paused"
-msgstr "रोकिएको"
-
-msgid "Searching on Radio-Browser..."
-msgstr "Radio-Browser मा खोज्दै..."
-
-msgid "No stream found for this name. Modify the text above."
-msgstr "यो नामको लागि कुनै स्ट्रिम फेला परेन। माथिको पाठ परिमार्जन गर्नुहोस्।"
-
-msgid "{count} streams found. Select the desired stream and validate."
-msgstr "{count} स्ट्रिमहरू फेला परे। इच्छित स्ट्रिम चयन गर्नुहोस् र पुष्टि गर्नुहोस्।"
-
-msgid "No pre-loaded DAB+ bouquet for this country."
-msgstr "यस देशको लागि कुनै पूर्व-लोड गरिएको DAB+ गुलदस्ता छैन।"
-
-msgid ""
-"You can explore and import stations for this territory directly from the "
-"global directory."
-msgstr ""
-"तपाईं विश्वव्यापी निर्देशिकाबाट सिधै यस क्षेत्रका स्टेशनहरू अन्वेषण र आयात गर्न सक्नुहुन्छ।"
+#: data/scripts/browse_bouquets.py:1628
 
 msgid "Explore stations from {country} on Radio-Browser ➔"
 msgstr "Radio-Browser मा {country} का स्टेशनहरू अन्वेषण गर्नुहोस् ➔"
 
-msgid "this country"
-msgstr "यो देश"
+#: data/scripts/reorder_groups.py:1228
+
+msgid "Export"
+msgstr "निर्यात गर्नुहोस्"
+
+#: data/scripts/reorder_groups.py:264
+
+msgid "Export all stations to CSV spreadsheet format"
+msgstr "तपाईंका सबै रेडियोहरू CSV स्प्रेडसिट ढाँचामा निर्यात गर्नुहोस्"
+
+#: data/scripts/reorder_groups.py:1254
+
+msgid "Export error:"
+msgstr "Î£ÏÎ¬Î»Î¼Î± ÎµÎ¾Î±Î³ÏÎ³Î®Ï:"
+
+#: data/scripts/reorder_groups.py:1225
+
+msgid "Export stations to CSV"
+msgstr "ÎÎ¾Î±Î³ÏÎ³Î® ÏÏÎ±Î¸Î¼ÏÎ½ ÏÎµ CSV"
+
+#: data/scripts/reorder_groups.py:264
+
+msgid "Export to CSV"
+msgstr "CSV मा निर्यात गर्नुहोस्"
+
+#: data/scripts/browse_bouquets.py:1195
+
+msgid "Export to spreadsheet (CSV)..."
+msgstr "स्प्रेडसिट (CSV) मा निर्यात गर्नुहोस्..."
+
+#: data/scripts/browse_bouquets.py:1182
+
+msgid "External file:"
+msgstr "बाह्य फाइल:"
+
+#: data/scripts/timonde_common.py:1530
+
+msgid "Failed to add station"
+msgstr "ÎÏÎ¿ÏÏÏÎ¯Î± ÏÏÎ¿ÏÎ¸Î®ÎºÎ·Ï ÏÏÎ±Î¸Î¼Î¿Ï"
+
+#: data/scripts/timonde_settings.py:723
+
+msgid "Failed to enable Cinnamon unification."
+msgstr "Aktivierung der Cinnamon-Vereinheitlichung fehlgeschlagen."
+
+#: data/scripts/browse_bouquets.py:918 data/scripts/browse_bouquets.py:1066
+
+#: data/scripts/browse_bouquets.py:1252
+
+msgid "Favorite status"
+msgstr "मनपर्ने स्थिति"
+
+#: data/scripts/browse_bouquets.py:2056
+
+msgid "File:"
+msgstr "फाइल:"
+
+#: data/scripts/browse_bouquets.py:779
+
+msgid "Filter by country:"
+msgstr "देश अनुसार फिल्टर गर्नुहोस्:"
+
+#: data/scripts/browse_bouquets.py:1235
+
+msgid "Folder / Group"
+msgstr "फोल्डर / समूह"
+
+#: data/scripts/timonde_common.py:1642
+
+msgid "Format"
+msgstr "Format"
+
+#: data/scripts/browse_bouquets.py:906
+
+msgid "Format & Bitrate"
+msgstr "ढाँचा र बिटरेट"
+
+#: data/scripts/gnome_tray_helper.py:150
+
+msgid "GNOME Shell environment detected"
+msgstr "GNOME शेल वातावरण पत्ता लाग्यो"
+
+#: data/scripts/timonde_settings.py:693
+
+msgid "GNOME integration required"
+msgstr "GNOME एकीकरण आवश्यक छ"
+
+#: data/scripts/timonde_common.py:1319
+
+msgid "GStreamer not available"
+msgstr "GStreamer उपलब्ध छैन"
+
+#: data/scripts/browse_bouquets.py:1195
+
+msgid "Generate a flat list for Calc or Excel spreadsheet"
+msgstr "Calc वा एक्सेल स्प्रेडसिटको लागि फ्ल्याट सूची उत्पन्न गर्नुहोस्"
+
+#: data/scripts/browse_bouquets.py:901
+
+msgid "Genre / Tags"
+msgstr "लिङ्ग / ट्यागहरू"
+
+#: data/scripts/browse_bouquets.py:1053
+
+msgid "Genre / Topic"
+msgstr "विधा / विषय"
+
+#: data/scripts/browse_bouquets.py:759
+
+msgid "Genre:"
+msgstr "लिङ्ग:"
+
+#: data/scripts/timonde_common.py:193
+
+msgid "Geoblocked (VPN)"
+msgstr "Geoblockiert (VPN)"
+
+#: data/scripts/browse_bouquets.py:735
+
+msgid ""
+"Global search on the free and open <b>Radio-Browser</b> directory (+45,000 "
+"stations)."
+msgstr "नि:शुल्क र खुला <b>रेडियो-ब्राउजर</b> डाइरेक्टरी (+४५,००० स्टेशनहरू) मा विश्वव्यापी खोज।"
+
+#: data/scripts/edit_station.py:168
+
+msgid "Group / Folder:"
+msgstr "समूह / फोल्डर:"
+
+#: data/scripts/reorder_groups.py:677
+
+msgid "Group created:"
+msgstr "Î Î¿Î¼Î¬Î´Î± Î´Î·Î¼Î¹Î¿ÏÏÎ³Î®Î¸Î·ÎºÎµ:"
+
+#: data/scripts/reorder_groups.py:734
+
+msgid "Group renamed:"
+msgstr "Î Î¿Î¼Î¬Î´Î± Î¼ÎµÏÎ¿Î½Î¿Î¼Î¬ÏÏÎ·ÎºÎµ:"
+
+#: data/scripts/browse_bouquets.py:645
+
+msgid "Group:"
+msgstr "समूह:"
+
+#: data/scripts/timonde_common.py:189
+
+msgid "HTTP Error {code}"
+msgstr "HTTP-Fehler {code}"
+
+#: data/scripts/browse_bouquets.py:702
+
+msgid "Help on groups and subgroups"
+msgstr "समूह र उपसमूहहरूमा मद्दत गर्नुहोस्"
+
+#: data/scripts/browse_bouquets.py:1039 data/scripts/browse_bouquets.py:1221
+
+msgid "Import"
+msgstr "आयात गर्नुहोस्"
+
+#: data/scripts/browse_bouquets.py:1328
+
+msgid "Import & Export"
+msgstr "आयात र निर्यात"
+
+#: data/scripts/browse_bouquets.py:717
+
+msgid "Import to my favorites"
+msgstr "मेरो मनपर्नेमा आयात गर्नुहोस्"
+
+#: src/tray/menu.rs:560
+
+msgid "In 15 minutes"
+msgstr "१५ मिनेटमा"
+
+#: src/tray/menu.rs:567
+
+msgid "In 30 minutes"
+msgstr "30 मिनेटमा"
+
+#: src/tray/menu.rs:574
+
+msgid "In 45 minutes"
+msgstr "४५ मिनेटमा"
+
+#: src/tray/menu.rs:581
+
+msgid "In 60 minutes (1h)"
+msgstr "६० मिनेटमा (१ घण्टा)"
+
+#: data/scripts/reorder_groups.py:707
+
+msgid "Insert"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î®"
+
+#: data/scripts/reorder_groups.py:230
+
+msgid "Insert a separator or header"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î® Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï Î® ÎµÏÎ¹ÎºÎµÏÎ±Î»Î¯Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:705
+
+msgid "Insert separator"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î® Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï"
+
+#: data/scripts/gnome_tray_helper.py:179 data/scripts/timonde_settings.py:688
+
+msgid "Install GNOME integration"
+msgstr "GNOME एकीकरण स्थापना गर्नुहोस्"
+
+#: data/scripts/gnome_tray_helper.py:198
+
+msgid "Installation in progress (please confirm system prompt)..."
+msgstr "स्थापना प्रगतिमा (कृपया प्रणाली प्रम्प्ट पुष्टि गर्नुहोस्)..."
+
+#: data/scripts/gnome_tray_helper.py:213
+
+msgid "Installation was cancelled or failed."
+msgstr "स्थापना रद्द वा असफल भयो।"
+
+#: data/scripts/gnome_tray_helper.py:145
+
+msgid "Integration in GNOME top bar"
+msgstr "GNOME शीर्ष पट्टीमा एकीकरण"
+
+#: data/scripts/edit_station.py:71
+
+msgid "Keep in favorites"
+msgstr "मेरो मनपर्नेमा बचत गर्नुहोस्"
+
+#: data/scripts/browse_bouquets.py:749
+
+msgid "Keyword:"
+msgstr "कीवर्ड:"
+
+#: data/scripts/browse_bouquets.py:819 data/scripts/browse_bouquets.py:1023
+
+msgid "Language:"
+msgstr "भाषा:"
+
+#: data/scripts/browse_bouquets.py:706 data/scripts/browse_bouquets.py:1399
+
+#: data/scripts/reorder_groups.py:185 data/scripts/reorder_groups.py:1005
+
+msgid "Listen"
+msgstr "AnhÃ¶ren"
+
+#: data/scripts/browse_bouquets.py:706
+
+msgid "Listen to selected station"
+msgstr "चयन गरिएको स्टेशन सुन्नुहोस्"
+
+#: data/scripts/timonde_common.py:204
+
+msgid "Live (Shoutcast)"
+msgstr "ÎÏÎ½ÏÎ±Î½Î¬ (Shoutcast)"
+
+#: data/scripts/timonde_common.py:187
+
+msgid "Live ({codec})"
+msgstr "प्रत्यक्ष ({codec})"
+
+#: data/scripts/browse_bouquets.py:1060
+
+msgid "Live availability"
+msgstr "प्रत्यक्ष उपलब्धता"
+
+#: data/scripts/browse_bouquets.py:1186
+
+msgid "Load a file..."
+msgstr "फाइल लोड गर्नुहोस्..."
+
+#: data/scripts/browse_bouquets.py:1186
+
+msgid "Load an XML, CSV, JSON, M3U or PLS file"
+msgstr "XML, CSV, JSON, M3U वा PLS फाइल लोड गर्नुहोस्"
+
+#: src/timezone.rs:521
+
+msgid "Morning"
+msgstr "बिहान"
+
+#: data/scripts/reorder_groups.py:949
+
+msgid "Move"
+msgstr "ÎÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ·"
+
+#: data/scripts/reorder_groups.py:219
+
+msgid "Move down"
+msgstr "⬇ तल जानुहोस्"
+
+#: data/scripts/reorder_groups.py:219
+
+msgid "Move down one rank"
+msgstr "Move down one rank"
+
+#: data/scripts/reorder_groups.py:211
+
+msgid "Move selected item to the top"
+msgstr "Move selected item to the top"
+
+#: data/scripts/reorder_groups.py:197
+
+msgid "Move selection to another group (Ctrl+M)"
+msgstr "Move selection to another group (Ctrl+M)"
+
+#: data/scripts/reorder_groups.py:944
+
+msgid "Move to another group"
+msgstr "ÎÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ· ÏÎµ Î¬Î»Î»Î· Î¿Î¼Î¬Î´Î±"
+
+#: data/scripts/reorder_groups.py:559
+
+msgid "Move to another group..."
+msgstr "Move selection to another group (Ctrl+M)"
+
+#: data/scripts/reorder_groups.py:197
+
+msgid "Move to..."
+msgstr "मा सार्नुहोस्..."
+
+#: data/scripts/reorder_groups.py:215
+
+msgid "Move up"
+msgstr "⬆ माथि जानुहोस्"
+
+#: data/scripts/reorder_groups.py:215
+
+msgid "Move up one rank"
+msgstr "Move up one rank"
+
+#: src/tray/menu.rs:528
+
+msgid "Mute (0%)"
+msgstr "म्युट (०%)"
+
+#: data/scripts/reorder_groups.py:98 data/scripts/timonde_settings.py:524
+
+msgid "My Radios"
+msgstr "मेरो रेडियोहरू"
+
+#: data/scripts/timonde_common.py:1925
+
+msgid "Name and Stream URL are mandatory."
+msgstr "Î¤Î¿ ÏÎ½Î¿Î¼Î± ÎºÎ±Î¹ Î· Î´Î¹ÎµÏÎ¸ÏÎ½ÏÎ· URL ÏÎ·Ï ÏÎ¿Î®Ï ÎµÎ¯Î½Î±Î¹ ÏÏÎ¿ÏÏÎµÏÏÎ¹ÎºÎ¬."
+
+#: data/scripts/reorder_groups.py:646
+
+msgid "Name of the new group:"
+msgstr "ÎÎ½Î¿Î¼Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï:"
+
+#: data/scripts/browse_bouquets.py:1011
+
+msgid "National Bouquet (Major stations)"
+msgstr "राष्ट्रिय गुलदस्ता (प्रमुख स्टेशनहरू)"
+
+#: data/scripts/timonde_settings.py:677
+
+msgid ""
+"Native integration in notification tray via StatusNotifierItem / XEmbed."
+msgstr "StatusNotifierItem / XEmbed मार्फत सूचना ट्रेमा नेटिभ एकीकरण।"
+
+#: data/scripts/browse_bouquets.py:1655
+
+msgid "New"
+msgstr "[नयाँ]"
+
+#: data/scripts/reorder_groups.py:193
+
+msgid "New group"
+msgstr "नयाँ समूह"
+
+#: data/scripts/reorder_groups.py:593
+
+msgid "New group..."
+msgstr "नयाँ समूह"
+
+#: data/scripts/reorder_groups.py:725
+
+msgid "New name for group:"
+msgstr "ÎÎ­Î¿ ÏÎ½Î¿Î¼Î± Î¿Î¼Î¬Î´Î±Ï:"
+
+#: data/scripts/browse_bouquets.py:1282
+
+msgid "New only"
+msgstr "नयाँ मात्र"
+
+#: data/scripts/reorder_groups.py:580
+
+msgid "New subgroup here..."
+msgstr "ÎÎ­Î± ÏÏÎ¿Î¿Î¼Î¬Î´Î± ÎµÎ´Ï..."
+
+#: src/timezone.rs:521
+
+msgid "Night"
+msgstr "रात"
+
+#: data/scripts/browse_bouquets.py:1726
 
 msgid "No DAB+ bouquet for {country} — Use 'Search online'."
 msgstr "{country} को लागि कुनै DAB+ गुलदस्ता छैन — 'अनलाइन खोज्नुहोस्' प्रयोग गर्नुहोस्।"
 
-msgid "{checked} / {total} station(s) selected"
-msgstr "{checked} / {total} स्टेशनहरू चयन गरियो"
+#: data/scripts/reorder_groups.py:1262
 
-msgid ""
-"No radio found for this language in {country}. Uncheck 'Filter by country' "
-"or clear the language."
-msgstr ""
-"{country} मा यो भाषाको लागि कुनै रेडियो फेला परेन। 'देश अनुसार फिल्टर' अनचेक गर्नुहोस् "
-"वा भाषा खाली गर्नुहोस्।"
+msgid "No bookmarks.xml file found to backup."
+msgstr "ÎÎµÎ½ Î²ÏÎ­Î¸Î·ÎºÎµ Î±ÏÏÎµÎ¯Î¿ bookmarks.xml Î³Î¹Î± Î´Î·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î±Î½ÏÎ¹Î³ÏÎ¬ÏÎ¿Ï."
+
+#: data/scripts/reorder_groups.py:872
+
+msgid "No items to sort in this group."
+msgstr "ÎÎµÎ½ ÏÏÎ¬ÏÏÎ¿ÏÎ½ ÏÏÎ¿Î¹ÏÎµÎ¯Î± ÏÏÎ¿Ï ÏÎ±Î¾Î¹Î½ÏÎ¼Î·ÏÎ· ÏÎµ Î±ÏÏÎ®Î½ ÏÎ·Î½ Î¿Î¼Î¬Î´Î±."
+
+#: data/scripts/timonde_settings.py:618
+
+msgid "No new stations added (already in your bookmarks)."
+msgstr "ÎÎµÎ½ ÏÏÎ¿ÏÏÎ­Î¸Î·ÎºÎ±Î½ Î½Î­Î¿Î¹ ÏÏÎ±Î¸Î¼Î¿Î¯ (ÏÏÎ¬ÏÏÎ¿ÏÎ½ Î®Î´Î· ÏÏÎ¿ÏÏ ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎµÏ ÏÎ±Ï)."
+
+#: data/scripts/browse_bouquets.py:1625
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "यस देशको लागि कुनै पूर्व-लोड गरिएको DAB+ गुलदस्ता छैन।"
+
+#: data/scripts/browse_bouquets.py:1898
 
 msgid ""
 "No radio found for these criteria in {country}. Uncheck 'Filter by country' "
@@ -1232,295 +1110,1001 @@ msgstr ""
 "{country} मा यी मापदण्डहरूको लागि कुनै रेडियो फेला परेन। विश्वव्यापी खोज्न 'देश अनुसार "
 "फिल्टर' अनचेक गर्नुहोस्।"
 
+#: data/scripts/browse_bouquets.py:1895
+
+msgid ""
+"No radio found for this language in {country}. Uncheck 'Filter by country' "
+"or clear the language."
+msgstr ""
+"{country} मा यो भाषाको लागि कुनै रेडियो फेला परेन। 'देश अनुसार फिल्टर' अनचेक गर्नुहोस् "
+"वा भाषा खाली गर्नुहोस्।"
+
+#: data/scripts/browse_bouquets.py:1900
+
 msgid "No radio found on Radio-Browser for these criteria."
 msgstr "यी मापदण्डहरूको लागि Radio-Browser मा कुनै रेडियो फेला परेन।"
 
-msgid "[Present]"
-msgstr "[विद्यमान]"
+#: src/tray/mod.rs:459
 
-msgid "[New]"
-msgstr "[नयाँ]"
+msgid "No radio is currently playing."
+msgstr "हाल कुनै पनि रेडियो बजिरहेको छैन।"
 
-msgid "○ Untested"
-msgstr "○ परीक्षण नगरिएको"
+#: src/tray/menu.rs:297
 
-msgid "{count} stations found."
-msgstr "{count} स्टेशनहरू फेला परे।"
+msgid "No station loaded"
+msgstr "No stations to check."
 
-msgid "Testing..."
-msgstr "परीक्षण गर्दै..."
+#: data/scripts/reorder_groups.py:1072
 
-msgid "{count} available timezones"
-msgstr "{count} उपलब्ध समय क्षेत्रहरू"
+msgid "No stations to check."
+msgstr "No stations to check."
 
-msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
-msgstr "<b>{nb_gr}</b> समूहहरूमा <b>{nb_st}</b> स्टेशनहरू।"
+#: data/scripts/timonde_common.py:1680
 
-msgid "Explore stations from this country on Radio-Browser"
-msgstr "Radio-Browser मा यस देशका स्टेशनहरू अन्वेषण गर्नुहोस्"
+msgid "No stream found for this name. Modify the text above."
+msgstr "यो नामको लागि कुनै स्ट्रिम फेला परेन। माथिको पाठ परिमार्जन गर्नुहोस्।"
+
+#: data/scripts/timonde_common.py:1907
+
+msgid "Not listed yet!"
+msgstr "ÎÎµÎ½ Î­ÏÎµÎ¹ ÎºÎ±ÏÎ±ÏÏÏÎ·Î¸ÎµÎ¯ Î±ÎºÏÎ¼Î±!"
+
+#: data/scripts/timonde_common.py:1721
+
+msgid "OK"
+msgstr "OK"
+
+#: data/scripts/browse_bouquets.py:972
+
+msgid ""
+"Official and verified selection across 146 countries and regions (digital "
+"DAB+ bouquets and major national stations)."
+msgstr "146 देशहरू र क्षेत्रहरूमा आधिकारिक र प्रमाणित चयन (डिजिटल DAB+ गुलदस्ता र प्रमुख राष्ट्रिय स्टेशनहरू)।"
+
+#: data/scripts/timonde_common.py:178
+
+msgid "Offline (HTML error page)"
+msgstr "अफलाइन (HTML त्रुटि पृष्ठ)"
+
+#: data/scripts/edit_station.py:366
+
+msgid "On-air broadcast name:"
+msgstr "ÎÎ½Î¿Î¼Î± Î¼ÎµÏÎ¬Î´Î¿ÏÎ·Ï ÏÏÎ¿Î½ Î±Î­ÏÎ±:"
+
+#: data/scripts/browse_bouquets.py:1983
+
+msgid "Open"
+msgstr "खोल्नुहोस्"
+
+#: data/scripts/browse_bouquets.py:1203
+
+msgid "Open ~/.config/timonde"
+msgstr "खोल्नुहोस् ~/.config/timonde"
+
+#: data/scripts/browse_bouquets.py:1169
+
+msgid "Open ~/.config/timonde/examples"
+msgstr "खोल्नुहोस् ~/.config/timonde/examples"
+
+#: data/scripts/reorder_groups.py:706
+
+msgid "Optional title for this separator (leave blank for a simple line):"
+msgstr "Î ÏÎ¿Î±Î¹ÏÎµÏÎ¹ÎºÏÏ ÏÎ¯ÏÎ»Î¿Ï Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï (Î±ÏÎ®ÏÏÎµ ÎºÎµÎ½Ï Î³Î¹Î± Î±ÏÎ»Î® Î³ÏÎ±Î¼Î¼Î®):"
+
+#: data/scripts/reorder_groups.py:60
+
+msgid "Organize groups and stations (TiMonde)"
+msgstr "Organize groups and stations (TiMonde)"
+
+#: data/scripts/timonde_common.py:1559
+
+msgid "Organizing groups and subgroups (Linux convention)"
+msgstr "ÎÏÎ³Î¬Î½ÏÏÎ· Î¿Î¼Î¬Î´ÏÎ½ ÎºÎ±Î¹ ÏÏÎ¿Î¿Î¼Î¬Î´ÏÎ½ (ÏÏÎ¼Î²Î±ÏÎ· Linux)"
+
+#: data/scripts/timonde_common.py:1609
+
+msgid "Original stream is unreachable:"
+msgstr "UrsprÃ¼nglicher Stream nicht erreichbar:"
+
+#: src/tray/menu.rs:160
+
+msgid "Paused"
+msgstr "रोकिएको"
+
+#: src/i18n.rs:179 src/i18n.rs:228 src/i18n.rs:234 src/i18n.rs:244
+
+#: src/i18n.rs:249 src/i18n.rs:254 src/i18n.rs:257 src/i18n.rs:260
+
+#: src/i18n.rs:263 src/i18n.rs:266 src/i18n.rs:269 src/i18n.rs:272
+
+msgid "Play"
+msgstr "बजाउनुहोस्"
+
+#: src/tray/menu.rs:413
+
+msgid "Play random radio (Ephemeral discovery)"
+msgstr "एक अनियमित रेडियो स्टेशन सुन्नुहोस् (अस्थायी खोज)"
+
+#: data/scripts/reorder_groups.py:549
+
+msgid "Play this station"
+msgstr "यो रेडियो मेटाउनुहोस्"
+
+#: data/scripts/timonde_common.py:1283
+
+msgid "Playing:"
+msgstr "खेल्दै:"
+
+#: data/scripts/edit_station.py:388
+
+msgid "Please enter a stream URL first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÎ¹ÏÎ±Î³Î¬Î³ÎµÏÎµ ÏÏÏÏÎ± Î­Î½Î± URL ÏÎ¿Î®Ï."
+
+#: data/scripts/timonde_common.py:1877
+
+msgid "Please enter a stream URL."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÎ¹ÏÎ±Î³Î¬Î³ÎµÏÎµ Î­Î½Î± URL ÏÎ¿Î®Ï."
+
+#: data/scripts/browse_bouquets.py:1783
+
+msgid "Please select a radio station in the list first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ ÏÏÏÏÎ± Î­Î½Î±Î½ ÏÎ±Î´Î¹Î¿ÏÏÎ½Î¹ÎºÏ ÏÏÎ±Î¸Î¼Ï Î±ÏÏ ÏÎ· Î»Î¯ÏÏÎ±."
+
+#: data/scripts/reorder_groups.py:926
+
+msgid "Please select a radio station to move."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î­Î½Î±Î½ ÏÏÎ±Î¸Î¼Ï Î³Î¹Î± Î¼ÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ·."
+
+#: data/scripts/reorder_groups.py:1042
+
+msgid "Please select a station to contribute."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î­Î½Î±Î½ ÏÏÎ±Î¸Î¼Ï ÏÏÎ¿Ï ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬."
+
+#: data/scripts/reorder_groups.py:1020
+
+msgid "Please select a station to repair."
+msgstr "Please select a station to repair."
+
+#: data/scripts/browse_bouquets.py:1825
+
+msgid "Please select or check a radio station in the list first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î® ÏÎ·Î¼ÎµÎ¹ÏÏÏÎµ Î­Î½Î±Î½ ÏÎ±Î´Î¹Î¿ÏÏÎ½Î¹ÎºÏ ÏÏÎ±Î¸Î¼Ï ÏÏÏÏÎ±."
+
+#: data/scripts/timonde_common.py:1651
+
+msgid "Popularity"
+msgstr "Beliebtheit"
+
+#: data/scripts/timonde_settings.py:735
+
+msgid "Preferences"
+msgstr "प्राथमिकताहरू"
+
+#: data/scripts/reorder_groups.py:185
+
+msgid "Preview selected radio stream"
+msgstr "Testing live radio streams..."
+
+#: data/scripts/gnome_tray_helper.py:175
+
+msgid "Quit"
+msgstr "छोड्नुहोस्"
+
+#: src/tray/menu.rs:621
+
+msgid "Quit TiMonde"
+msgstr "TiMonde छोड्नुहोस्"
+
+#: data/scripts/timonde_common.py:1283 data/scripts/timonde_common.py:1291
+
+#: data/scripts/timonde_common.py:1298 data/scripts/timonde_common.py:1311
+
+#: data/scripts/timonde_common.py:1326
+
+msgid "Radio"
+msgstr "Radio"
+
+#: data/scripts/reorder_groups.py:147
+
+msgid "Radio / Group"
+msgstr "Î¡Î±Î´Î¹ÏÏÏÎ½Î¿ / ÎÎ¼Î¬Î´Î±"
+
+#: data/scripts/edit_station.py:139
+
+msgid "Radio-Browser"
+msgstr "Radio-Browser"
+
+#: data/scripts/timonde_common.py:1949
+
+msgid "Radio-Browser contribution"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1782
+
+msgid ""
+"Radio-Browser is an open directory (+45 000 stations). Shared stations "
+"benefit all users."
+msgstr "रेडियो ब्राउजर एक खुला डाइरेक्टरी हो (+45 000 स्टेशनहरू)। साझा स्टेशनहरूले सबै प्रयोगकर्ताहरूलाई फाइदा पुर्‍याउँछ।"
+
+#: data/scripts/timonde_common.py:1901
+
+msgid "Radio-Browser prevents duplicate stream URLs. No submission required."
+msgstr "रेडियो ब्राउजरले डुप्लिकेट स्ट्रिम URL लाई रोक्छ। कुनै सबमिशन आवश्यक छैन।"
+
+#: data/scripts/timonde_common.py:1542
+
+msgid "Radio-Browser servers unreachable"
+msgstr "ÎÎ¹ Î´Î¹Î±ÎºÎ¿Î¼Î¹ÏÏÎ­Ï ÏÎ¿Ï Radio-Browser Î´ÎµÎ½ ÎµÎ¯Î½Î±Î¹ ÏÏÎ¿ÏÎ²Î¬ÏÎ¹Î¼Î¿Î¹"
+
+#: data/scripts/reorder_groups.py:1200
+
+msgid "Redirects applied:"
+msgstr "ÎÏÎ±ÏÎ¼ÏÏÏÎ·ÎºÎ±Î½ Î±Î½Î±ÎºÎ±ÏÎµÏÎ¸ÏÎ½ÏÎµÎ¹Ï:"
+
+#: data/scripts/browse_bouquets.py:1165
+
+msgid "Refresh examples list"
+msgstr "उदाहरणहरूको सूची ताजा गर्नुहोस्"
+
+#: data/scripts/browse_bouquets.py:1015
+
+msgid "Regions & Local:"
+msgstr "क्षेत्र र स्थानीय:"
+
+#: data/scripts/browse_bouquets.py:1190
+
+msgid "Reload"
+msgstr "पुन: लोड गर्नुहोस्"
+
+#: data/scripts/browse_bouquets.py:1190
+
+msgid "Reload currently displayed file"
+msgstr "हाल प्रदर्शित फाइल पुन: लोड गर्नुहोस्"
+
+#: data/scripts/reorder_groups.py:724
+
+msgid "Rename group"
+msgstr "ÎÎµÏÎ¿Î½Î¿Î¼Î±ÏÎ¯Î± Î¿Î¼Î¬Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:584
+
+msgid "Rename group..."
+msgstr "Gruppe umbenennen..."
+
+#: data/scripts/browse_bouquets.py:1119 data/scripts/reorder_groups.py:238
+
+#: data/scripts/reorder_groups.py:563
+
+msgid "Repair stream..."
+msgstr "मर्मत प्रवाह..."
+
+#: data/scripts/browse_bouquets.py:1119
+
+msgid "Replace selected link with an active official stream"
+msgstr "चयन गरिएको लिङ्कलाई सक्रिय आधिकारिक स्ट्रिमसँग बदल्नुहोस्"
+
+#: data/scripts/timonde_common.py:1592
+
+msgid "Replace stream:"
+msgstr "ÎÎ½ÏÎ¹ÎºÎ±ÏÎ¬ÏÏÎ±ÏÎ· ÏÎ¿Î®Ï:"
+
+#: data/scripts/browse_bouquets.py:1173
+
+msgid "Restore samples"
+msgstr "नमूनाहरू पुनर्स्थापित गर्नुहोस्"
+
+#: data/scripts/browse_bouquets.py:1173
+
+msgid "Restore the 19 original samples"
+msgstr "19 मौलिक नमूनाहरू पुनर्स्थापित गर्नुहोस्"
+
+#: data/scripts/reorder_groups.py:861
+
+msgid "Root"
+msgstr "Î¡Î¯Î¶Î±"
+
+#: data/scripts/reorder_groups.py:903
+
+msgid "Root items sorted alphabetically."
+msgstr "Î¤Î± ÏÏÎ¿Î¹ÏÎµÎ¯Î± ÏÎ·Ï ÏÎ¯Î¶Î±Ï ÏÎ±Î¾Î¹Î½Î¿Î¼Î®Î¸Î·ÎºÎ±Î½ Î±Î»ÏÎ±Î²Î·ÏÎ¹ÎºÎ¬."
+
+#: data/scripts/timonde_settings.py:638
+
+msgid "SESSION OPTIONS"
+msgstr "सत्र विकल्पहरू"
+
+#: src/timezone.rs:657
+
+msgid "Same time"
+msgstr "एकै समयमा"
+
+#: data/scripts/edit_station.py:76 data/scripts/reorder_groups.py:727
+
+#: data/scripts/reorder_groups.py:1269
+
+msgid "Save"
+msgstr "बचत गर्नुहोस्"
+
+#: data/scripts/reorder_groups.py:276
+
+msgid "Save and reload"
+msgstr "बचत गर्नुहोस् र पुन: लोड गर्नुहोस्"
+
+#: src/tray/dialogs.rs:328 src/tray/mod.rs:541
+
+msgid "Save error"
+msgstr "बचत त्रुटि"
+
+#: data/scripts/reorder_groups.py:276
+
+msgid "Save now"
+msgstr "बचत त्रुटि"
+
+#: data/scripts/edit_station.py:69 src/i18n.rs:199
+
+msgid "Save station to favorites (TiMonde)"
+msgstr "मेरो मनपर्नेमा रेडियो बचत गर्नुहोस् (TiMonde)"
+
+#: src/tray/mod.rs:561
+
+msgid "Saved!"
+msgstr "सुरक्षित गरियो!"
+
+#: data/scripts/browse_bouquets.py:770 data/scripts/timonde_common.py:1630
+
+msgid "Search"
+msgstr "Suchen"
+
+#: data/scripts/reorder_groups.py:238
+
+msgid "Search Radio-Browser for a working replacement stream"
+msgstr ""
+"यस मृत लिङ्कको लागि रेडियो-ब्राउजरमा प्रतिस्थापन सक्रिय स्ट्रिमको लागि स्वचालित रूपमा "
+"खोज्नुहोस्"
+
+#: data/scripts/browse_bouquets.py:1326 data/scripts/timonde_settings.py:592
+
+msgid "Search online"
+msgstr "अनलाइन खोज्नुहोस्"
+
+#: data/scripts/browse_bouquets.py:1885
+
+msgid "Searching Radio-Browser..."
+msgstr "रेडियो ब्राउजर खोज्दै..."
+
+#: data/scripts/timonde_common.py:1660
+
+msgid "Searching for streams..."
+msgstr "मर्मत प्रवाह..."
+
+#: data/scripts/timonde_common.py:1670
+
+msgid "Searching on Radio-Browser..."
+msgstr "Radio-Browser मा खोज्दै..."
+
+#: data/scripts/browse_bouquets.py:1382
+
+msgid "Select a station in table to listen to."
+msgstr "सुन्नको लागि तालिकामा एउटा स्टेशन चयन गर्नुहोस्।"
+
+#: data/scripts/browse_bouquets.py:1386
+
+msgid "Select a station to listen to."
+msgstr "सुन्नको लागि एउटा स्टेशन चयन गर्नुहोस्।"
+
+#: data/scripts/timonde_common.py:1610
+
+msgid "Select a verified replacement stream from Radio-Browser:"
+msgstr "GeprÃ¼ften Ersatzstream aus Radio-Browser auswÃ¤hlen:"
+
+#: data/scripts/edit_station.py:185
+
+msgid "Select or type (e.g. /France/Brittany or / for root)"
+msgstr "AuswÃ¤hlen oder eingeben (z.B. /Deutschland/Bayern oder / fÃ¼r Wurzel)"
+
+#: data/scripts/reorder_groups.py:956
+
+msgid "Select the target destination:"
+msgstr "ÎÏÎ¹Î»Î­Î¾ÏÎµ ÏÎ¿Î½ ÏÎ¬ÎºÎµÎ»Î¿ ÏÏÎ¿Î¿ÏÎ¹ÏÎ¼Î¿Ï:"
+
+#: src/tray/mod.rs:478
+
+msgid "Selection"
+msgstr "चयन"
+
+#: data/scripts/reorder_groups.py:230
+
+msgid "Separator"
+msgstr "विभाजक"
+
+#: data/scripts/timonde_common.py:1538
+
+msgid "Server rejected submission: {error}"
+msgstr "Î Î´Î¹Î±ÎºÎ¿Î¼Î¹ÏÏÎ®Ï Î±ÏÎ­ÏÏÎ¹ÏÎµ ÏÎ·Î½ ÏÏÎ¿Î²Î¿Î»Î®: {error}"
+
+#: data/scripts/timonde_common.py:198
+
+msgid "Server unreachable"
+msgstr "Server nicht erreichbar"
+
+#: data/scripts/timonde_settings.py:316
+
+msgid "Settings & Control TiMonde"
+msgstr "सेटिङहरू र नियन्त्रण TiMonde"
+
+#: src/tray/dialogs.rs:400
+
+msgid "Settings console not found"
+msgstr "सेटिङ कन्सोल फेला परेन"
+
+#: src/tray/menu.rs:605
+
+msgid "Settings..."
+msgstr "सेटिङहरू..."
+
+#: src/i18n.rs:205 src/tray/menu.rs:549 src/tray/menu.rs:552
+
+msgid "Sleep timer"
+msgstr "सुत्ने टाइमर"
+
+#: src/tray/mod.rs:592
+
+msgid "Sleep timer activated"
+msgstr "स्लीप टाइमर सक्रिय गरियो"
+
+#: src/tray/mod.rs:626
+
+msgid "Sleep timer cancelled."
+msgstr "स्लीप टाइमर रद्द गरियो।"
+
+#: src/tray/mod.rs:615
+
+msgid "Sleep timer: stopping radio."
+msgstr "स्लीप टाइमर: रेडियो बन्द गर्दै।"
+
+#: data/scripts/reorder_groups.py:223
+
+msgid "Sort sibling items alphabetically"
+msgstr "ÎÎ»ÏÎ±Î²Î·ÏÎ¹ÎºÎ® ÏÎ±Î¾Î¹Î½ÏÎ¼Î·ÏÎ· Î¿Î¼ÏÏÎ¹Î¼ÏÎ½ ÏÏÎ¿Î¹ÏÎµÎ¯ÏÎ½"
+
+#: data/scripts/reorder_groups.py:901
+
+msgid "Sorted alphabetically:"
+msgstr "Î¤Î±Î¾Î¹Î½Î¿Î¼Î®Î¸Î·ÎºÎµ Î±Î»ÏÎ±Î²Î·ÏÎ¹ÎºÎ¬:"
+
+#: data/scripts/browse_bouquets.py:888 data/scripts/browse_bouquets.py:1045
+
+#: data/scripts/browse_bouquets.py:1227 data/scripts/timonde_common.py:1638
+
+msgid "Station"
+msgstr "रिसोर्ट"
+
+#: src/tray/mod.rs:566
+
+msgid "Station added but reload error"
+msgstr "स्टेशन थपियो तर पुन: लोड गर्दा त्रुटि भयो"
+
+#: data/scripts/reorder_groups.py:691
+
+msgid "Station added:"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÏÏÎ¿ÏÏÎ­Î¸Î·ÎºÎµ:"
+
+#: data/scripts/reorder_groups.py:683
+
+msgid "Station editor unavailable."
+msgstr "Î ÎµÏÎµÎ¾ÎµÏÎ³Î±ÏÏÎ®Ï ÏÏÎ±Î¸Î¼ÏÎ½ Î´ÎµÎ½ ÎµÎ¯Î½Î±Î¹ Î´Î¹Î±Î¸Î­ÏÎ¹Î¼Î¿Ï."
+
+#: data/scripts/reorder_groups.py:997
+
+msgid "Station moved to"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ Î¼ÎµÏÎ±ÎºÎ¹Î½Î®Î¸Î·ÎºÎµ ÏÏÎ¿"
+
+#: data/scripts/timonde_common.py:1476
+
+msgid "Station name cannot be empty"
+msgstr "Î¤Î¿ ÏÎ½Î¿Î¼Î± ÏÎ¿Ï ÏÏÎ±Î¸Î¼Î¿Ï Î´ÎµÎ½ Î¼ÏÎ¿ÏÎµÎ¯ Î½Î± ÎµÎ¯Î½Î±Î¹ ÎºÎµÎ½Ï"
+
+#: data/scripts/edit_station.py:110 data/scripts/timonde_common.py:1794
+
+msgid "Station name:"
+msgstr "स्टेशनको नाम:"
+
+#: data/scripts/timonde_common.py:1528
+
+msgid "Station successfully submitted to Radio-Browser."
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÏÏÎ¿Î²Î»Î®Î¸Î·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ ÏÏÎ¿ Radio-Browser."
+
+#: data/scripts/reorder_groups.py:745
+
+msgid "Station updated:"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÎµÎ½Î·Î¼ÎµÏÏÎ¸Î·ÎºÎµ:"
+
+#: data/scripts/browse_bouquets.py:1397 data/scripts/edit_station.py:405
+
+#: data/scripts/reorder_groups.py:1005 data/scripts/reorder_groups.py:1080
+
+#: src/i18n.rs:185 src/i18n.rs:245 src/i18n.rs:250
+
+msgid "Stop"
+msgstr "रोक्नुहोस्"
+
+#: data/scripts/reorder_groups.py:549
+
+msgid "Stop playback"
+msgstr "Wiedergabe stoppen"
+
+#: data/scripts/browse_bouquets.py:1259
+
+msgid "Stream URL"
+msgstr "स्ट्रिम URL"
+
+#: data/scripts/timonde_common.py:1478
+
+msgid "Stream URL cannot be empty"
+msgstr "Î¤Î¿ URL ÏÎ·Ï ÏÎ¿Î®Ï Î´ÎµÎ½ Î¼ÏÎ¿ÏÎµÎ¯ Î½Î± ÎµÎ¯Î½Î±Î¹ ÎºÎµÎ½Ï"
+
+#: data/scripts/timonde_common.py:1804
+
+msgid "Stream URL:"
+msgstr "URL ÏÎ¿Î®Ï:"
+
+#: data/scripts/reorder_groups.py:1029
+
+msgid "Stream successfully repaired for"
+msgstr "Î ÏÎ¿Î® ÎµÏÎ¹ÏÎºÎµÏÎ¬ÏÏÎ·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ Î³Î¹Î±"
+
+#: data/scripts/timonde_common.py:1274
+
+msgid "Stream unreachable"
+msgstr "स्ट्रिम पहुँचयोग्य छैन"
+
+#: data/scripts/browse_bouquets.py:739
+
+msgid "Submit a new station to community Radio-Browser directory"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1859 data/scripts/timonde_common.py:1911
+
+#: data/scripts/timonde_common.py:1958
+
+msgid "Submit to Radio-Browser"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1931
+
+msgid "Submitting station to Radio-Browser..."
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿ Radio-Browser..."
+
+#: data/scripts/timonde_common.py:1930
+
+msgid "Submitting..."
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î®..."
+
+#: data/scripts/browse_bouquets.py:1089
 
 msgid "Switch to the global directory with this country pre-selected"
 msgstr "यो देश पूर्व-चयन गरी विश्वव्यापी निर्देशिकामा जानुहोस्"
 
-#, fuzzy
-msgid " [Ephemeral]"
-msgstr "[अस्थायी]"
+#: data/scripts/timonde_settings.py:665
 
-msgid "%20"
-msgstr ""
+msgid "System language"
+msgstr "प्रणाली भाषा"
 
-#, fuzzy
-msgid "(Already in favorites)"
-msgstr "मेरो मनपर्नेमा बचत गर्नुहोस्"
+#: data/scripts/timonde_common.py:1831
 
-msgid "/org/mpris/MediaPlayer2/CurrentTrack"
-msgstr ""
+msgid "Tags / Genres:"
+msgstr "ÎÏÎ¹ÎºÎ­ÏÎµÏ / ÎÎ¯Î´Î·:"
 
-#, fuzzy
-msgid "Add station..."
-msgstr "एउटा रेडियो थप्नुहोस्..."
+#: src/tray/mod.rs:325
 
-msgid "Bitrate"
-msgstr ""
+msgid "Temporary backup stream found for"
+msgstr "को लागि अस्थायी ब्याकअप स्ट्रिम फेला पर्यो"
 
-#, fuzzy
-msgid "Checking..."
-msgstr "जडान हुँदैछ..."
+#: data/scripts/edit_station.py:135 data/scripts/edit_station.py:407
 
-msgid "Clear"
-msgstr ""
+msgid "Test"
+msgstr "परीक्षण"
 
-msgid "Clear / Automatic mode"
-msgstr ""
+#: data/scripts/reorder_groups.py:102
 
-msgid "Clear field (click to empty)"
-msgstr ""
+msgid "Test stream availability and locate broken links"
+msgstr "तपाईंको रेडियो स्टेशनहरू र स्पट डेड लिङ्कहरूको प्रत्यक्ष उपलब्धता परीक्षण गर्नुहोस्"
 
-#, fuzzy
-msgid "Country"
-msgstr "<b>Country:</b>"
+#: data/scripts/browse_bouquets.py:946 data/scripts/browse_bouquets.py:1115
 
-#, fuzzy
-msgid "Country:"
-msgstr "<b>Country:</b>"
+#: data/scripts/browse_bouquets.py:1286
 
-msgid "Delete group..."
-msgstr ""
+msgid "Test streams"
+msgstr "परीक्षण स्ट्रिमहरू"
 
-#, fuzzy
-msgid "Delete this separator"
-msgstr "यो रेडियो मेटाउनुहोस्"
+#: data/scripts/reorder_groups.py:1087
 
-#, fuzzy
-msgid "Delete this station..."
-msgstr "यो रेडियो मेटाउनुहोस्"
-
-msgid "Edit header..."
-msgstr ""
-
-#, fuzzy
-msgid "Edit station..."
-msgstr "एउटा रेडियो थप्नुहोस्..."
-
-msgid "Empty URL"
-msgstr ""
-
-msgid "Ephemeral radio (not saved)."
-msgstr ""
-
-msgid "Error {code}"
-msgstr ""
-
-msgid "Format"
-msgstr ""
-
-msgid "Geoblocked (VPN)"
-msgstr ""
-
-msgid "HTTP Error {code}"
-msgstr ""
-
-#, fuzzy
-msgid "Insert separator here..."
-msgstr "Insert a separator or header in this group"
-
-msgid "Listen"
-msgstr ""
-
-msgid "Live (repaired)"
-msgstr ""
-
-msgid "Live ({codec})"
-msgstr ""
-
-#, fuzzy
-msgid "Move to another group..."
-msgstr "Move selection to another group (Ctrl+M)"
-
-#, fuzzy
-msgid "Move to top"
-msgstr "मा सार्नुहोस्..."
-
-#, fuzzy
-msgid "New"
-msgstr "[नयाँ]"
-
-#, fuzzy
-msgid "New group..."
-msgstr "नयाँ समूह"
-
-#, fuzzy
-msgid "No station loaded"
-msgstr "No stations to check."
-
-#, fuzzy
-msgid "Open stations"
-msgstr "विकल्पहरू"
-
-msgid "Original stream is unreachable:"
-msgstr ""
-
-#, fuzzy
-msgid "Play this station"
-msgstr "यो रेडियो मेटाउनुहोस्"
-
-msgid "Popularity"
-msgstr ""
-
-#, fuzzy
-msgid "Preview selected radio stream"
+msgid "Testing live radio streams..."
 msgstr "Testing live radio streams..."
 
-msgid "Rename group..."
-msgstr ""
+#: data/scripts/browse_bouquets.py:1679 data/scripts/browse_bouquets.py:1931
 
-#, fuzzy
-msgid "Save now"
-msgstr "बचत त्रुटि"
+#: data/scripts/browse_bouquets.py:2119
 
-msgid "Search"
-msgstr ""
+msgid "Testing..."
+msgstr "परीक्षण गर्दै..."
 
-#, fuzzy
-msgid "Searching for streams..."
-msgstr "मर्मत प्रवाह..."
+#: data/scripts/timonde_settings.py:694
 
-msgid "Select a verified replacement stream from Radio-Browser:"
-msgstr ""
+msgid ""
+"The AppIndicator extension is required to display the icon in GNOME top bar."
+msgstr "GNOME शीर्ष पट्टीमा प्रतिमा प्रदर्शन गर्न AppIndicator विस्तार आवश्यक छ।"
 
-msgid "Select or type (e.g. /France/Brittany or / for root)"
-msgstr ""
+#: data/scripts/browse_bouquets.py:1151
 
-msgid "Server unreachable"
-msgstr ""
+msgid "Thematic samples:"
+msgstr "विषयगत नमूनाहरू:"
 
-msgid "Stop playback"
-msgstr ""
+#: data/scripts/edit_station.py:574
 
-#, fuzzy
+msgid "This action will permanently remove this station from your collection."
+msgstr "यस कार्यले स्थायी रूपमा तपाईंको सङ्कलनबाट यो स्टेशन हटाउनेछ।"
+
+#: data/scripts/timonde_common.py:1489
+
+msgid ""
+"This stream URL is already registered on Radio-Browser as '{existing_name}'."
+msgstr "यो स्ट्रिम URL पहिले नै रेडियो-ब्राउजरमा '{existing_name}' को रूपमा दर्ता गरिएको छ।"
+
+#: data/scripts/timonde_common.py:1908
+
+msgid ""
+"This stream URL is unpublished on Radio-Browser and ready to be contributed."
+msgstr "यो स्ट्रिम URL रेडियो ब्राउजरमा अप्रकाशित छ र योगदान गर्न तयार छ।"
+
+#: data/scripts/gnome_tray_helper.py:117
+
+msgid "TiMonde — GNOME Desktop Integration"
+msgstr "TiMonde - GNOME डेस्कटप एकीकरण"
+
+#: src/tray/mod.rs:150
+
 msgid "TiMonde • Ephemeral discovery"
 msgstr "एक अनियमित रेडियो स्टेशन सुन्नुहोस् (अस्थायी खोज)"
 
-#, fuzzy
+#: data/scripts/timonde_common.py:206
+
 msgid "Timeout"
 msgstr "समय क्षेत्र:"
 
-#, fuzzy
-msgid "Transfer contents to another group..."
-msgstr "Transfer the content of this group to another group (Ctrl+M)"
+#: data/scripts/edit_station.py:273
+
+msgid "Timezone:"
+msgstr "समय क्षेत्र:"
+
+#: data/scripts/gnome_tray_helper.py:159
+
+msgid ""
+"To unobtrusively display the playback icon in the top bar of your GNOME "
+"desktop, the <b>AppIndicator</b> system extension is required.\n"
+"\n"
+"Would you like to install it now?"
+msgstr ""
+"तपाइँको GNOME डेस्कटपको शीर्ष पट्टीमा प्लेब्याक प्रतिमा अविवेकी रूपमा प्रदर्शन गर्न, <b>AppIndicator</b> प्रणाली विस्तार आवश्यक छ।\n"
+"\n"
+"के तपाइँ यसलाई अहिले स्थापना गर्न चाहनुहुन्छ?"
+
+#: src/timezone.rs:669
+
+msgid "Tomorrow"
+msgstr "भोलि"
+
+#: data/scripts/reorder_groups.py:211
+
+msgid "Top"
+msgstr "पहिले"
+
+#: src/tray/mod.rs:679
+
+msgid "Track copied to clipboard:"
+msgstr "ट्र्याकको नाम क्लिपबोर्डमा प्रतिलिपि गरियो:"
+
+#: data/scripts/browse_bouquets.py:987
+
+msgid "Type a country (e.g. France, Germany, Canada...)"
+msgstr "एउटा देश टाइप गर्नुहोस् (जस्तै फ्रान्स, जर्मनी, क्यानडा...)"
+
+#: src/tray/mod.rs:444
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "गुलदस्ता क्याटलगमा स्टेशन फेला पार्न सकिएन।"
+
+#: src/tray/mod.rs:208
 
 msgid "Unable to initialize audio"
-msgstr ""
+msgstr "Audio konnte nicht initialisiert werden"
+
+#: src/tray/mod.rs:216
 
 msgid "Unable to play"
-msgstr ""
+msgstr "Wiedergabe nicht mÃ¶glich"
+
+#: data/scripts/browse_bouquets.py:942 data/scripts/browse_bouquets.py:1111
+
+#: data/scripts/browse_bouquets.py:1278
+
+msgid "Uncheck all"
+msgstr "सबै अनचेक गर्नुहोस्"
+
+#: data/scripts/timonde_common.py:1486 data/scripts/timonde_common.py:1896
+
+#: data/scripts/timonde_common.py:1897
+
+msgid "Unknown"
+msgstr "ÎÎ³Î½ÏÏÏÎ¿"
+
+#: data/scripts/timonde_common.py:1530
+
+msgid "Unknown error"
+msgstr "ÎÎ³Î½ÏÏÏÎ¿ ÏÏÎ¬Î»Î¼Î±"
+
+#: data/scripts/timonde_common.py:1272
+
+msgid "Unreadable stream"
+msgstr "पढ्न नसकिने स्ट्रिम"
+
+#: data/scripts/gnome_tray_helper.py:193
+
+msgid "Unrecognized package manager."
+msgstr "अपरिचित प्याकेज प्रबन्धक।"
+
+#: data/scripts/reorder_groups.py:293
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "Ungespeicherte Ãnderungen"
 
-#, fuzzy
+#: data/scripts/browse_bouquets.py:1915 data/scripts/browse_bouquets.py:2082
+
+msgid "Untested"
+msgstr "ÎÎ· ÎµÎ»ÎµÎ³Î¼Î­Î½Î¿"
+
+#: data/scripts/edit_station.py:159
+
+msgid "Use this on-air broadcast name for your bookmark"
+msgstr "Î§ÏÎ·ÏÎ¹Î¼Î¿ÏÎ¿Î¹Î®ÏÏÎµ Î±ÏÏÏ ÏÎ¿ ÏÎ½Î¿Î¼Î± Î¼ÎµÏÎ¬Î´Î¿ÏÎ·Ï Î³Î¹Î± ÏÎ¿Î½ ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎ· ÏÎ±Ï"
+
+#: data/scripts/timonde_common.py:1597
+
 msgid "Validate and replace"
 msgstr "बचत गर्नुहोस् र पुन: लोड गर्नुहोस्"
 
-msgid "Active (Left & Right clicks unified)"
-msgstr ""
+#: data/scripts/browse_bouquets.py:923
 
-msgid "Enable Left-Click"
-msgstr ""
+msgid "Votes"
+msgstr "भोटहरू"
 
-msgid "Cinnamon left-click unification successfully enabled!"
-msgstr ""
+#: data/scripts/reorder_groups.py:780
 
-msgid "Failed to enable Cinnamon unification."
-msgstr ""
+msgid "Warning: this group contains {count} {unit} that will also be deleted."
+msgstr "चेतावनी: यस समूहमा {count} {unit} समावेश छ जुन पनि मेटिनेछ।"
 
-msgid "Cinnamon Left-Click Unification"
-msgstr ""
+#: data/scripts/timonde_common.py:1841
+
+msgid "Website / Homepage:"
+msgstr "ÎÏÏÏÏÎ¿ÏÎ¿Ï / ÎÏÏÎ¹ÎºÎ® ÏÎµÎ»Î¯Î´Î±:"
+
+#: data/scripts/browse_bouquets.py:2318
+
+msgid "XML backup is available from settings."
+msgstr "XML ब्याकअप सेटिङहरूबाट उपलब्ध छ।"
+
+#: data/scripts/reorder_groups.py:1296
+
+msgid "XML backup successfully created in"
+msgstr "Î¤Î¿ Î±Î½ÏÎ¯Î³ÏÎ±ÏÎ¿ Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï XML Î´Î·Î¼Î¹Î¿ÏÏÎ³Î®Î¸Î·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ ÏÏÎ¿"
+
+#: data/scripts/reorder_groups.py:1276
+
+msgid "XML files (*.xml)"
+msgstr "XML फाइलहरू (*.xml)"
+
+#: src/timezone.rs:670
+
+msgid "Yesterday"
+msgstr "हिजो"
+
+#: data/scripts/browse_bouquets.py:1626
 
 msgid ""
-"Allows opening the station menu interchangeably with left or right click."
+"You can explore and import stations for this territory directly from the "
+"global directory."
 msgstr ""
+"तपाईं विश्वव्यापी निर्देशिकाबाट सिधै यस क्षेत्रका स्टेशनहरू अन्वेषण र आयात गर्न सक्नुहुन्छ।"
 
-#~ msgid ""
-#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
-#~ "groups.\n"
-#~ "• <b>Double-click a group</b> (or Open) to sort its stations and "
-#~ "separators.\n"
-#~ "• Use <b>Transfer...</b> to merge or move content to another group.\n"
-#~ "• Use <b>New group</b> to add a station folder.</small>"
-#~ msgstr ""
-#~ "<small>• <b>#</b> परिवर्तन गर्नुहोस् वा समूहहरू अर्डर गर्न <b>माथि / तल सार्नुहोस्</"
-#~ "b> प्रयोग गर्नुहोस्। \n"
-#~ " • रेडियो र स्प्लिटरहरू क्रमबद्ध गर्न <b>समूहमा डबल क्लिक गर्नुहोस्</b> (वा "
-#~ "खोल्नुहोस्)। \n"
-#~ " • सामग्री मर्ज गर्न वा अर्को समूहमा सार्न <b>स्थानान्तरण...</b> प्रयोग गर्नुहोस्। \n"
-#~ " • रेडियोको फोल्डर थप्न <b>नयाँ समूह</b> प्रयोग गर्नुहोस्।</small>"
+#: data/scripts/reorder_groups.py:1302
 
-#~ msgid ""
-#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
-#~ "stations.\n"
-#~ "• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
-#~ "• Click <b>Repair stream...</b> to search Radio-Browser for a working "
-#~ "replacement stream.\n"
-#~ "• Click <b>Separator</b> to insert a section header.</small>"
-#~ msgstr ""
-#~ "<small>• <b>#</b> परिवर्तन गर्नुहोस् वा रेडियो क्रमबद्ध गर्न <b>माथि / तल "
-#~ "सार्नुहोस्</b> प्रयोग गर्नुहोस्। \n"
-#~ " • मृत लिङ्कहरू (रातो) भेट्टाउन र तिनीहरूलाई मर्मत गर्न <b>फिडहरू जाँच गर्नुहोस्</b> "
-#~ "मा क्लिक गर्नुहोस्। \n"
-#~ " • रेडियो ब्राउजरमा प्रतिस्थापन सक्रिय स्ट्रिम खोज्न <b>रिपेयर स्ट्रिम...</b> मा "
-#~ "क्लिक गर्नुहोस्। \n"
-#~ " • खण्ड शीर्षक सम्मिलित गर्न <b>सेपरेटर</b> मा क्लिक गर्नुहोस्।</small>"
+msgid "Your complete bookmarks have been saved to:"
+msgstr "ÎÎ¹ ÏÎ»Î®ÏÎµÎ¹Ï ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎµÏ ÏÎ±Ï Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎ±Î½ ÏÏÎ¿:"
 
-#~ msgid ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les groupes.\n"
-#~ "• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios "
-#~ "et séparateurs.\n"
-#~ "• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du "
-#~ "contenu.\n"
-#~ "• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
-#~ msgstr ""
-#~ "<small>• <b>#</b> परिवर्तन गर्नुहोस् वा समूहहरू अर्डर गर्न <b>माथि / तल सार्नुहोस्</"
-#~ "b> प्रयोग गर्नुहोस्। \n"
-#~ " • यसको रेडियो र विभाजकहरू क्रमबद्ध गर्न <b>समूहमा डबल-क्लिक गर्नुहोस्</b> (वा "
-#~ "खोल्नुहोस्)। \n"
-#~ " • सामग्री मर्ज गर्न वा सार्न <b>मा सार्नुहोस्...</b> प्रयोग गर्नुहोस्। \n"
-#~ " • रेडियोको फोल्डर बनाउन <b>नयाँ समूह</b> प्रयोग गर्नुहोस्।</small>"
+#: src/i18n.rs:237 src/tray/menu.rs:372
 
-#~ msgid ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les radios.\n"
-#~ "• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne "
-#~ "(en rouge).\n"
-#~ "• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de "
-#~ "remplacement actif.\n"
-#~ "• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de "
-#~ "séparation.</small>"
-#~ msgstr ""
-#~ "<small>• <b>#</b> परिवर्तन गर्नुहोस् वा रेडियोहरू अर्डर गर्न <b>माथि/डाउन</b> "
-#~ "प्रयोग गर्नुहोस्। \n"
-#~ " • अफलाइन लिङ्कहरू (रातोमा) पत्ता लगाउन <b>फिडहरू जाँच गर्नुहोस्</b> मा क्लिक "
-#~ "गर्नुहोस्। \n"
-#~ " • सक्रिय प्रतिस्थापन स्ट्रिम खोज्न <b>रिपेयर स्ट्रिम...</b> क्लिक गर्नुहोस्। \n"
-#~ " • उपशीर्षक वा विभाजक रेखा सम्मिलित गर्न <b>विभाजक</b> मा क्लिक गर्नुहोस्।</small>"
+msgid "Zap to another random station"
+msgstr "अर्को अनियमित रेडियोमा जाप गर्नुहोस्"
+
+#: data/scripts/reorder_groups.py:930
+
+msgid "[ / ] Root (Without group)"
+msgstr "[ / ] Î¡Î¯Î¶Î± (ÏÏÏÎ¯Ï Î¿Î¼Î¬Î´Î±)"
+
+#: data/scripts/reorder_groups.py:405
+
+msgid "[!] Dead link"
+msgstr "[!] Dead link"
+
+#: data/scripts/reorder_groups.py:409
+
+msgid "[?] Geo-restricted"
+msgstr "[?] Geo-restricted"
+
+#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
+
+msgid "[New]"
+msgstr "[नयाँ]"
+
+#: data/scripts/reorder_groups.py:403
+
+msgid "[OK] Live"
+msgstr "[OK] Live"
+
+#: data/scripts/reorder_groups.py:1027
+
+msgid "[OK] Repaired"
+msgstr "[OK] ÎÏÎ¹ÏÎºÎµÏÎ¬ÏÏÎ·ÎºÎµ"
+
+#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
+
+msgid "[Present]"
+msgstr "[विद्यमान]"
+
+#: data/scripts/reorder_groups.py:407
+
+msgid "[~] Redirected"
+msgstr "[~] Redirected"
+
+#: data/scripts/reorder_groups.py:1141
+
+msgid "broken"
+msgstr "broken"
+
+#: data/scripts/reorder_groups.py:1127
+
+msgid "checked:"
+msgstr "checked:"
+
+#: src/tray/dialogs.rs:263
+
+msgid "deleted from your favorites."
+msgstr "तपाईंको मनपर्नेबाट हटाइयो।"
+
+#: data/scripts/timonde_settings.py:750
+
+msgid "disabled"
+msgstr "असक्षम"
+
+#: data/scripts/timonde_settings.py:750
+
+msgid "enabled"
+msgstr "सक्षम गरियो"
+
+#: src/tray/mod.rs:332
+
+msgid "is currently unavailable"
+msgstr "हाल उपलब्ध छैन"
+
+#: src/tray/mod.rs:302
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "प्रतिक्रिया दिइरहेको छैन। ब्याकअप स्ट्रिम खोज्दै..."
+
+#: data/scripts/timonde_settings.py:612
+
+msgid "new station(s) imported"
+msgstr "Î½Î­Î¿Î¹ ÏÏÎ±Î¸Î¼Î¿Î¯ ÎµÎ¹ÏÎ®ÏÎ¸Î·ÏÎ±Î½"
+
+#: data/scripts/reorder_groups.py:1140
+
+msgid "online"
+msgstr "online"
+
+#: data/scripts/reorder_groups.py:372
+
+msgid "radio"
+msgstr "radio"
+
+#: data/scripts/reorder_groups.py:372 data/scripts/reorder_groups.py:672
+
+msgid "radios"
+msgstr "radios"
+
+#: data/scripts/reorder_groups.py:1142
+
+msgid "redirected"
+msgstr "redirected"
+
+#: data/scripts/browse_bouquets.py:2306
+
+msgid "sample files restored."
+msgstr "नमूना फाइलहरू पुनर्स्थापित।"
+
+#: src/tray/mod.rs:562
+
+msgid "saved in your favorites!"
+msgstr "तपाईंको मनपर्नेमा सुरक्षित गरियो!"
+
+#: data/scripts/timonde_settings.py:559
+
+msgid "saved successfully!"
+msgstr "Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ!"
+
+#: data/scripts/reorder_groups.py:779
+
+msgid "station"
+msgstr "station"
+
+#: data/scripts/timonde_settings.py:614
+
+msgid "station(s) moved to destination"
+msgstr "ÏÏÎ±Î¸Î¼Î¿Î¯ Î¼ÎµÏÎ±ÎºÎ¹Î½Î®Î¸Î·ÎºÎ±Î½ ÏÏÎ¿Î½ ÏÏÎ¿Î¿ÏÎ¹ÏÎ¼Ï"
+
+#: data/scripts/reorder_groups.py:779
+
+msgid "stations"
+msgstr "stations"
+
+#: data/scripts/reorder_groups.py:1095
+
+msgid "stations checked..."
+msgstr "stations checked..."
+
+#: src/tray/mod.rs:592
+
+msgid "stopping in"
+msgstr "बन्द हुने समय:"
+
+#: data/scripts/reorder_groups.py:1200
+
+msgid "stream(s) updated."
+msgstr "ÏÎ¿Î­Ï ÎµÎ½Î·Î¼ÎµÏÏÎ¸Î·ÎºÎ±Î½."
+
+#: data/scripts/browse_bouquets.py:1725
+
+msgid "this country"
+msgstr "यो देश"
+
+#: src/tray/dialogs.rs:385
+
+msgid "updated successfully!"
+msgstr "सफलतापूर्वक अद्यावधिक गरियो!"
+
+#: data/scripts/browse_bouquets.py:1733 data/scripts/browse_bouquets.py:2145
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} स्टेशनहरू चयन गरियो"
+
+#: data/scripts/edit_station.py:543
+
+msgid "{count} available timezones"
+msgstr "{count} उपलब्ध समय क्षेत्रहरू"
+
+#: data/scripts/browse_bouquets.py:1918
+
+msgid "{count} stations found."
+msgstr "{count} स्टेशनहरू फेला परे।"
+
+#: data/scripts/timonde_common.py:1690
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} स्ट्रिमहरू फेला परे। इच्छित स्ट्रिम चयन गर्नुहोस् र पुष्टि गर्नुहोस्।"
+
+#: data/scripts/reorder_groups.py:352 data/scripts/reorder_groups.py:391
+
+#: data/scripts/reorder_groups.py:713
+
+msgid "— Separator —"
+msgstr "— Separator —"
+

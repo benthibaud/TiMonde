@@ -8,11 +8,12 @@ Ce document consigne l'architecture globale, les choix de conception et les briq
 
 TiMonde est un lecteur de webradios ultra-léger pour le bureau Linux, fondé sur les principes suivants :
 1. **Frugalité stricte (Low-Tech) :** Empreinte mémoire au repos sous le seuil physique de **15 Mo de RAM RSS**.
-2. **Architecture hybride asymétrique :**
-   - **Cœur temps réel en Rust :** Exécutable unique, sans dépendance lourde, gérant le plateau système, l'audio GStreamer, D-Bus MPRIS2 et les fuseaux horaires.
-   - **Suite d'administration graphique en Python 3 / PyGObject GTK3 :** Lancée uniquement à la demande lors de l'accès aux ateliers de configuration ou de découverte, ne consommant zéro ressource résiduelle lorsque fermée.
-3. **Neutralité d'affichage :** Intégration irréprochable sous Wayland natif (StatusNotifierItem, D-BusMenu) comme sous X11 (XEmbed, IceWM, Fluxbox, XFCE).
-4. **Zéro boîte noire & Vérité de l'interaction humaine :** Toute action promise à l'utilisateur est réalisable de bout en bout via les dialogues graphiques.
+2. **Architecture hybride asymétrique — Doctrine Option B (Client/Serveur strict) :**
+   - **Cœur temps réel et Source Unique de Vérité en Rust :** Exécutable unique gérant l'intégrité des signets XML, l'état persistant (`state.json`), la résolution réseau, les fuseaux horaires, le watchdog et le pipeline audio GStreamer 1.0 unique.
+   - **Interface Graphique en Python 3 / PyGObject GTK3 « Dumb UI » (Affichage pur) :** Interdiction formelle pour le code Python d'écrire ou de manipuler directement `bookmarks.xml`, d'instancier un second moteur GStreamer concurrent, ou d'ouvrir des boucles synchrones `dialog.run()`. L'interface graphique n'est qu'un client de présentation, les actions métier sont déléguées au cœur Rust.
+3. **Éradication des blocages et boucle GTK saine :** Bannissement absolu de l'anti-pattern `dialog.run()` au profit d'un cycle de vie événementiel pur (`connect("response")` + `show()`), interdisant tout gel d'interface ou dialogue orphelin.
+4. **Neutralité d'affichage :** Intégration irréprochable sous Wayland natif (StatusNotifierItem, D-BusMenu) comme sous X11 (XEmbed, IceWM, Fluxbox, XFCE).
+5. **Zéro boîte noire & Vérité de l'interaction humaine :** Toute action promise à l'utilisateur est réalisable de bout en bout via les dialogues graphiques.
 
 ---
 
@@ -120,4 +121,20 @@ TiMonde met en œuvre une stratégie à deux niveaux pour garantir une expérien
 
 5. **Cycle de Vie & Désinstallation Propre :**
    - Lors de la désinstallation (`make uninstall`, `make uninstall-user`, suppression du paquet `.deb` via `postrm` ou du paquet `.rpm` via `%postun`), le fichier d'origine est fidèlement restauré et le hook APT `/etc/apt/apt.conf.d/99timonde-cinnamon` est purgé.
+
+---
+
+## 6. Spécification Normative : Doctrine Option B (Zéro Plantage & Client/Serveur Strict)
+
+Pour bannir définitivement la dette technique et les blocages récents, la **Doctrine Option B** régit désormais tous les développements futurs :
+
+### Règle d'Or 1 : Rust = Source Unique de Vérité Métier
+- **Fichiers de données :** Seul le cœur Rust manipule, assainit et écrit dans `~/.config/timonde/bookmarks.xml` et `~/.config/timonde/state.json`. Aucun script Python ne doit réimplémenter un moteur d'écriture XML ou de persistance d'état.
+- **Réseau & Audio :** Le pipeline GStreamer 1.0 est strictement unique et réside dans le démon Rust. Python ne doit plus instancier de `playbin` local concurrent. Toute demande de test de flux ou de pré-écoute doit être transmise au moteur audio de TiMonde via son interface de contrôle.
+- **Normalisation :** Le nettoyage d'URL (`clean_stream_url`), la détection de doublons, les fuseaux horaires et les métadonnées IANA sont validés côté Rust.
+
+### Règle d'Or 2 : Python = Affichage Pur (Dumb UI) & Zéro `dialog.run()`
+- **Composants en conteneurs `Gtk.Box` :** Les ateliers de l'interface (`reorder_groups.py`, `browse_bouquets.py`, etc.) ne doivent plus instancier de `Gtk.Window` fictives avec `embedded=True` pour leur voler des widgets. Ils héritent directement de `Gtk.Box`. Seule la coquille d'accueil crée la fenêtre principale.
+- **Bannissement de `dialog.run()` :** Les boucles d'événements récursives sont proscrites. Toute fenêtre modale ou dialogue doit impérativement utiliser `connect("response", self._on_response)` suivi de `show_all()`, avec destruction explicite (`destroy()`) dans le callback de réponse.
+- **Communication par API claire :** Les flux de données entre l'interface et le cœur Rust sont formalisés (CLI d'administration `--api` ou D-Bus), interdisant les lectures/écritures disques parallèles et asynchrones non coordonnées.
 

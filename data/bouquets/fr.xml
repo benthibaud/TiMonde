@@ -24,15 +24,15 @@
     <station name="Latina" url="https://cast3.my-control-panel.com/proxy/maslatina/stream" genre="Musique latine" />
     <station name="Radio Nova" url="http://radionova.ice.infomaniak.ch/radionova-256.aac" genre="Musiques actuelles" />
     <station name="TSF Jazz" url="https://tsfjazz.ice.infomaniak.ch/tsfjazz-high.mp3" genre="Jazz" />
-    <station name="Radio FG" url="https://n24-eu.rcs.revma.com/7081n2b6p98uv?rj-ttl=5&amp;rj-tok=AAABoRvnO6QAeaqZxCk5i7pDyw" genre="Électro &amp; House" />
+    <station name="Radio FG" url="https://n24-eu.rcs.revma.com/7081n2b6p98uv" genre="Électro &amp; House" />
     <station name="OUI FM" url="https://ouifm.ice.infomaniak.ch/ouifm-high.mp3" genre="Rock" />
     <station name="Jazz Radio" url="http://jazzradio.ice.infomaniak.ch/jazzradio-high.aac" genre="Jazz &amp; Soul" />
-    <station name="AirZen Radio" url="http://n25-eu.rcs.revma.com/vuumdncf368uv?rj-ttl=5&amp;rj-tok=AAABoRvnO0wAkv9aCq-bbWjsdg" genre="Bien-être &amp; Positif" />
+    <station name="AirZen Radio" url="http://n25-eu.rcs.revma.com/vuumdncf368uv" genre="Bien-être &amp; Positif" />
     </national>
   <regions>
     <region name="Bretagne">
       <station name="Radio Bonheur" url="http://radiobonheur.ice.infomaniak.ch/radiobonheur-128-1.mp3" genre="Chansons d'hier et d'aujourd'hui" />
-      <station name="Hit West" url="https://n12-eu.rcs.revma.com/rdma79x0am3vv?rj-ttl=5&amp;rj-tok=AAABoRvnO5kArWPovj4-7bDJaA" genre="Hits de l'Ouest" />
+      <station name="Hit West" url="https://n12-eu.rcs.revma.com/rdma79x0am3vv" genre="Hits de l'Ouest" />
       <station name="Bretagne 5" url="http://bretagne5.streamakaci.com/bretagne5.mp3" genre="Info &amp; Région" />
       <station name="Radio Laser" url="http://jazzblues.ice.infomaniak.ch/jazzblues-high.mp3" genre="Éclectique &amp; Découvertes" />
       <station name="Radio Balises" url="https://stream.radios.bzh/hls/radiobalises/live.m3u8" genre="Associative lorientaise" />
@@ -69,13 +69,13 @@
       <station name="Radio Emotion" url="http://radioemotion.ice.infomaniak.ch/radioemotion-128.mp3" genre="Nice &amp; Riviera" />
       </region>
     <region name="Hauts-de-France (Lille)">
-      <station name="Metropolys" url="https://n08-eu.rcs.revma.com/rvwymh32w42vv?rj-ttl=5&amp;rj-tok=AAABoRvnPJ8AV1mUzLJspNnlTg" genre="Pop / Électro" />
-      <station name="Contact FM" url="https://n16-eu.rcs.revma.com/6gygqc1gy7uvv?rj-ttl=5&amp;rj-tok=AAABoRvnPPUAjq-BM7KwcRPVrg" genre="Le Grand Nord" />
+      <station name="Metropolys" url="https://n08-eu.rcs.revma.com/rvwymh32w42vv" genre="Pop / Électro" />
+      <station name="Contact FM" url="https://n16-eu.rcs.revma.com/6gygqc1gy7uvv" genre="Le Grand Nord" />
       <station name="Mona FM" url="https://monafm.ice.infomaniak.ch/monafm-high.mp3" genre="Proximité &amp; Souvenirs" />
       </region>
     <region name="Grand Est (Strasbourg / Nancy)">
       <station name="Top Music" url="http://sc.creacast.com/topmusic_strasbourg" genre="Alsace" />
-      <station name="DKL Dreyeckland" url="http://n24-eu.rcs.revma.com/wcrk7f9fkzzuv.mp3?rj-ttl=5&amp;rj-tok=AAABoRvnPOoAhq0D80hVh1EdpQ" genre="Régionale Alsace" />
+      <station name="DKL Dreyeckland" url="http://n24-eu.rcs.revma.com/wcrk7f9fkzzuv.mp3" genre="Régionale Alsace" />
       <station name="Magnum la radio" url="http://str0.creacast.com/magnum" genre="Lorraine" />
       </region>
     </regions>

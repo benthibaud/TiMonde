@@ -1,1223 +1,1106 @@
 # TiMonde — Traduction MY
+
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
+
 #
+
 msgid ""
 msgstr ""
 "Project-Id-Version: TiMonde 0.1.3\n"
-"Report-Msgid-Bugs-To: https://github.com/benthibaud/TiMonde/issues\n"
-"POT-Creation-Date: 2026-10-29 06:50+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 20:23+0100\n"
 "PO-Revision-Date: 2026-10-17 17:00+0200\n"
 "Language: my\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Play"
-msgstr "ဖွင့်ပါ"
+#: src/i18n.rs:186 src/i18n.rs:193
 
-msgid "Stop"
-msgstr "ရပ်ပါ"
-
-msgid "Connecting..."
-msgstr "ချိတ်ဆက်နေသည်..."
-
-msgid "Edit"
-msgstr "ပြင်ဆင်ပါ"
-
-msgid "Delete"
-msgstr "ဖျက်ပါ"
-
-msgid "Zap to another random station"
-msgstr "အခြားကျပန်းရေဒီယိုသို့ Zap"
-
-msgid "Play random radio (Ephemeral discovery)"
-msgstr "ကျပန်းရေဒီယိုဌာနကို နားထောင်ပါ (တဒင်္ဂရှာဖွေတွေ့ရှိမှု)"
-
-msgid "[ Ephemeral]"
+msgid " [Ephemeral]"
 msgstr "[ပေါ်ပင်]"
 
-msgid "Options"
-msgstr "ရွေးချယ်စရာများ"
+#: data/scripts/browse_bouquets.py:1655
 
-msgid "Add a station..."
-msgstr "ရေဒီယိုထည့်ပါ..."
-
-msgid "Discover & Import stations..."
-msgstr "ရေဒီယိုများကို ရှာဖွေပြီး တင်သွင်းပါ..."
-
-msgid "Import my files (XML, CSV, JSON, M3U)..."
-msgstr "ကျွန်ုပ်၏ဖိုင်များကို တင်သွင်းပါ (XML၊ CSV၊ JSON၊ M3U)..."
-
-msgid "Manage groups and stations..."
-msgstr "အုပ်စုများနှင့် ရေဒီယိုများကို အမျိုးအစားခွဲပါ..."
-
-msgid "Open bookmarks.xml"
-msgstr "bookmarks.xml ကိုဖွင့်ပါ။"
-
-msgid "Quit TiMonde"
-msgstr "TiMonde မှ ထွက်ခွာပါ။"
-
-msgid "Mute (0%)"
-msgstr "အသံတိတ် (0%)"
-
-msgid "Sleep timer"
-msgstr "အိပ်ချိန်ချိန်စက်"
-
-msgid "In 15 minutes"
-msgstr "15 မိနစ်အတွင်း"
-
-msgid "In 30 minutes"
-msgstr "မိနစ် 30 အတွင်း"
-
-msgid "In 45 minutes"
-msgstr "45 မိနစ်အတွင်း"
-
-msgid "In 60 minutes (1h)"
-msgstr "မိနစ် 60 (1 နာရီ)"
-
-msgid "Cancel sleep timer"
-msgstr "အိပ်စက်ခြင်းကို ပယ်ဖျက်ပါ။"
-
-msgid "Discover & Import stations (TiMonde)"
-msgstr "ရေဒီယိုစခန်းများ (TiMonde) ကို ရှာဖွေပြီး တင်သွင်းပါ"
-
-msgid "Verified DAB+ Bouquets"
-msgstr "အတည်ပြုထားသော ပန်းစည်းများ (DAB+)"
-
-msgid "Radio-Browser Search"
-msgstr "Radio-Browser ကိုရှာပါ။"
-
-msgid "Sample Files"
-msgstr "နမူနာဖိုင်များ"
-
-msgid "Import my files"
-msgstr "ကျွန်ုပ်၏ဖိုင်များကို တင်သွင်းပါ။"
-
-msgid "<b> Country:</b>"
-msgstr "<b>နိုင်ငံ-</b>"
-
-msgid "<b>Language:</b>"
-msgstr "<b>ဘာသာစကား-</b>"
-
-msgid "Name / Keyword:"
-msgstr "အမည် / အဓိကစကားလုံး"
-
-msgid "Genre:"
-msgstr "လိင်-"
-
-msgid "<b>Sample file:</b>"
-msgstr "<b>ဥပမာ ဖိုင်-</b>"
-
-msgid "<b>Group name in your favorites:</b>"
-msgstr "<b>သင်အကြိုက်ဆုံးများထဲတွင် အုပ်စုအမည်-</b>"
-
-msgid "Select all"
-msgstr "အားလုံးစစ်ဆေးပါ။"
-
-msgid "Deselect all"
-msgstr "အားလုံးကို အမှန်ခြစ်ဖြုတ်ပါ။"
-
-msgid "Import into favorites"
-msgstr "ကျွန်ုပ်၏စိတ်ကြိုက်များသို့ တင်သွင်းပါ။"
-
-msgid "Close"
-msgstr "ပိတ်ပါ"
-
-msgid "Add a station (TiMonde)"
-msgstr "ဘူတာရုံ (TiMonde) ထည့်ပါ"
-
-msgid "<b>Enter new station details:</b>"
-msgstr "<b>ရေဒီယိုအသစ်အတွက် အချက်အလက်ကို ထည့်ပါ-</b>"
-
-msgid "Add to my stations"
-msgstr "ကျွန်ုပ်၏ ရေဒီယိုများတွင် ထည့်ပါ။"
-
-msgid "Save station to favorites (TiMonde)"
-msgstr "ရေဒီယိုကို ကျွန်ုပ်အကြိုက်ဆုံးများ (TiMonde) တွင် သိမ်းဆည်းပါ"
-
-msgid "<b>Keep this randomly discovered station in your favorites:</b>"
-msgstr "<b>ဤကျပန်းရှာဖွေတွေ့ရှိထားသော ရေဒီယိုအသံလွှင့်ဌာနကို သင့်စိတ်ကြိုက်များတွင် ထားရှိပါ-</b>"
-
-msgid "Keep in favorites"
+msgid "(Already in favorites)"
 msgstr "ကျွန်ုပ်၏အကြိုက်ဆုံးများထဲတွင် သိမ်းဆည်းပါ။"
 
-msgid "Edit station (TiMonde)"
-msgstr "ရေဒီယိုကိုတည်းဖြတ်ပါ (TiMonde)"
-
-msgid "<b>Edit station settings:</b>"
-msgstr "<b>ဘူတာဆက်တင်များကို ပြောင်းပါ-</b>"
-
-msgid "Save"
-msgstr "သိမ်းပါ"
-
-msgid "Station name:"
-msgstr "လိုင်းအမည်:"
-
-msgid "Audio stream URL:"
-msgstr "အသံလွှင့် URL-"
-
-msgid "Group / Folder:"
-msgstr "အဖွဲ့/ဖိုလ်ဒါ-"
-
-msgid "Country & Timezone:"
-msgstr "နိုင်ငံနှင့် အချိန်ဇုန်-"
-
-msgid "Timezone:"
-msgstr "အချိန်ဇုန်-"
-
-msgid "Delete this station"
-msgstr "ဤရေဒီယိုကို ဖျက်ပါ။"
-
-msgid "Cancel"
-msgstr "မလုပ်တော့ပါ"
-
-msgid "Delete « {} » from favorites?"
-msgstr "“{}” ကို အကြိုက်ဆုံးများမှ ဖယ်ရှားမလား။"
-
-msgid "This action will permanently remove this station from your collection."
-msgstr "ဤလုပ်ဆောင်ချက်သည် သင့်စုဆောင်းမှုမှ ဤဘူတာရုံကို အပြီးတိုင်ဖယ်ရှားပါမည်။"
-
-msgid "Manage groups, stations and separators (TiMonde)"
-msgstr "အုပ်စုများ၊ ရေဒီယိုများနှင့် ခွဲထွက်ခြင်းများကို စီမံခန့်ခွဲခြင်း (TiMonde)"
-
-msgid "Back to groups"
-msgstr "⬅ အဖွဲ့များသို့ ပြန်သွားရန်"
-
-msgid "Add station"
-msgstr "ရေဒီယိုထည့်ပါ။"
-
-msgid "Open"
-msgstr "ဖွင့်သည်။"
-
-msgid "New group"
-msgstr "အဖွဲ့သစ်"
-
-msgid "Move to..."
-msgstr "သို့ရွှေ့ပါ..."
-
-msgid "Top"
-msgstr "ပထမ"
-
-msgid "Move up"
-msgstr "⬆ အပေါ်တက်ပါ။"
-
-msgid "Move down"
-msgstr "⬇ဆင်းပါ။"
-
-msgid "Separator"
-msgstr "ခွဲထုတ်ခြင်း။"
-
-msgid "Sort A-Z"
-msgstr "A-Z စီပါ။"
-
-msgid "Save and reload"
-msgstr "သိမ်းဆည်းပြီး ပြန်လည်စတင်ပါ။"
-
-msgid "Same time"
-msgstr "အတူတူပါပဲ။"
-
-msgid "Dawn"
-msgstr "မိုးသောက်"
-
-msgid "Morning"
-msgstr "မနက်ခင်း"
-
-msgid "Daytime"
-msgstr "နေ့"
-
-msgid "Evening"
-msgstr "ညနေပိုင်း"
-
-msgid "Night"
-msgstr "ည"
-
-msgid "Tomorrow"
-msgstr "မနက်ဖြန်"
-
-msgid "Yesterday"
-msgstr "မနေ့က"
-
-msgid "Maintenance & Data"
-msgstr "ပြုပြင်ထိန်းသိမ်းမှုနှင့် ဒေတာ"
-
-msgid "Check streams (dead links)..."
-msgstr "feeds ကိုစစ်ဆေးပါ (dead links)..."
-
-msgid "Export my stations to CSV..."
-msgstr "ကျွန်ုပ်၏ရေဒီယိုများကို CSV သို့ တင်ပို့ပါ..."
-
-msgid "Check streams"
-msgstr "feeds ကိုစစ်ဆေးပါ။"
-
-msgid "Dead links only"
-msgstr "Dead links များသာဖြစ်သည်။"
-
-msgid "Apply redirects"
-msgstr "ပြန်ညွှန်းချက်များကို အသုံးပြုပါ။"
-
-msgid "Repair stream..."
-msgstr "လည်ပတ်စီးဆင်းမှု..."
-
-msgid "Export to CSV"
-msgstr "CSV သို့ တင်ပို့ပါ။"
-
-msgid "Test stream availability and locate broken links"
-msgstr "သင့်ရေဒီယိုဌာနများ၏ တိုက်ရိုက်ရရှိနိုင်မှုကို စမ်းသပ်ပြီး အသေခံလင့်ခ်များကို ရှာဖွေပါ။"
-
-msgid "Display offline radio streams only"
-msgstr "အော့ဖ်လိုင်းဖြစ်နေသော ရေဒီယိုလိုင်းများကိုသာ ပြသပါ။"
-
-msgid "Automatically update redirected streams to direct URL"
-msgstr "၎င်းတို့၏ တိုက်ရိုက် URL သို့ ပြန်ညွှန်းထားသော ဖိဒ်များကို အလိုအလျောက် အပ်ဒိတ်လုပ်ပါ။"
-
-msgid "Search Radio-Browser for a working replacement stream"
-msgstr "ဤအသေသတ်လင့်ခ်အတွက် Radio-Browser တွင် အစားထိုးအသက်ဝင်သောစီးကြောင်းကို အလိုအလျောက်ရှာဖွေပါ။"
-
-msgid "Export all stations to CSV spreadsheet format"
-msgstr "သင့်ရေဒီယိုအားလုံးကို CSV စာရင်းဇယားဖော်မတ်ဖြင့် ထုတ်ယူပါ။"
-
-msgid "Export my stations to CSV"
-msgstr "ကျွန်ုပ်၏ ရေဒီယိုများကို CSV သို့ တင်ပို့ပါ။"
-
-msgid "CSV files (*.csv)"
-msgstr "CSV ဖိုင်များ (*.csv)"
-
-msgid "All files (*.*)"
-msgstr "ဖိုင်အားလုံး (*.*)"
-
-msgid "Export"
-msgstr "တင်ပို့ခြင်း။"
-
-msgid "Export successful!"
-msgstr "တင်ပို့မှု အောင်မြင်ပါပြီ။"
-
-msgid "Error during CSV export:"
-msgstr "CSV ထုတ်ယူနေစဉ် အမှားအယွင်း"
-
-msgid "station(s) saved to:"
-msgstr "မှတ်တမ်းတင်ထားသော ရေဒီယို(များ)"
-
-msgid "Start automatically at login"
-msgstr "Start automatically at login"
-
-msgid "Organize groups and stations (TiMonde)"
-msgstr "Organize groups and stations (TiMonde)"
-
-msgid "Back to main group list (Esc)"
-msgstr "Back to main group list (Esc)"
-
-msgid "Sort stations in this group (Enter or double-click)"
-msgstr "Sort stations in this group (Enter or double-click)"
-
-msgid "Create a new group of radio stations (Ctrl+N)"
-msgstr "Create a new group of radio stations (Ctrl+N)"
-
-msgid "Move selection to another group (Ctrl+M)"
-msgstr "Move selection to another group (Ctrl+M)"
-
-msgid "Move selected item to the top"
-msgstr "Move selected item to the top"
-
-msgid "Move up one rank"
-msgstr "Move up one rank"
-
-msgid "Move down one rank"
-msgstr "Move down one rank"
-
-msgid "Add a new station to this group"
-msgstr "Add a new station to this group"
-
-msgid "Insert a separator or header in this group"
-msgstr "Insert a separator or header in this group"
-
-msgid "Sort this list alphabetically"
-msgstr "Sort this list alphabetically"
-
-msgid "Edit selected name, URL or header (F2)"
-msgstr "Edit selected name, URL or header (F2)"
-
-msgid "Delete selected item or group (Del)"
-msgstr "Delete selected item or group (Del)"
-
-msgid "Transfer..."
-msgstr "Transfer..."
-
-msgid "Transfer the content of this group to another group (Ctrl+M)"
-msgstr "Transfer the content of this group to another group (Ctrl+M)"
-
-msgid "<b>Radio groups</b>"
-msgstr "<b>Radio groups</b>"
-
-msgid "— Separator —"
-msgstr "— Separator —"
-
-msgid "radio"
-msgstr "radio"
-
-msgid "radios"
-msgstr "radios"
-
-msgid "sep."
-msgstr "sep."
-
-msgid "dead link"
-msgstr "dead link"
-
-msgid "dead links"
-msgstr "dead links"
-
-msgid "redir."
-msgstr "redir."
-
-msgid "[OK] All online"
-msgstr "[OK] All online"
-
-msgid "Move selected stations to another group (Ctrl+M)"
-msgstr "Move selected stations to another group (Ctrl+M)"
-
-msgid "Create a new group and move selected stations there (Ctrl+N)"
-msgstr "Create a new group and move selected stations there (Ctrl+N)"
-
-msgid "Stations in group:"
-msgstr "Stations in group:"
-
-msgid "Header"
-msgstr "Header"
-
-msgid "[OK] Live"
-msgstr "[OK] Live"
-
-msgid "[!] Dead link"
-msgstr "[!] Dead link"
-
-msgid "[~] Redirected"
-msgstr "[~] Redirected"
-
-msgid "[?] Geo-restricted"
-msgstr "[?] Geo-restricted"
-
-msgid "Audit completed:"
-msgstr "Audit completed:"
-
-msgid "online"
-msgstr "online"
-
-msgid "broken"
-msgstr "broken"
-
-msgid "redirected"
-msgstr "redirected"
-
-msgid "No stations to check."
-msgstr "No stations to check."
-
-msgid "Checking your radio stations"
-msgstr "Checking your radio stations"
-
-msgid "Testing live radio streams..."
-msgstr "Testing live radio streams..."
-
-msgid "stations checked..."
-msgstr "stations checked..."
-
-msgid "checked:"
-msgstr "checked:"
-
-msgid "Please select a station to repair."
-msgstr "Please select a station to repair."
-
-msgid "This item is a separator."
-msgstr "This item is a separator."
-
-msgid "Station deleted"
-msgstr "Station deleted"
-
-msgid "Settings..."
-msgstr "ဆက်တင်များ..."
-
 # --- Mises à jour TiMonde ---
+
+#: data/scripts/edit_station.py:541
+
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
+
+#: data/scripts/browse_bouquets.py:680 data/scripts/browse_bouquets.py:681
+
+#: data/scripts/browse_bouquets.py:2020 data/scripts/browse_bouquets.py:2063
+
+#: data/scripts/browse_bouquets.py:2197
+
+msgid "(Original folder structure)"
+msgstr "(မူရင်းဖိုင်တွဲဖွဲ့စည်းပုံ)"
+
+#: data/scripts/edit_station.py:539
 
 msgid "(Single inferred timezone)"
 msgstr "(Single inferred timezone)"
 
+#: data/scripts/edit_station.py:518
+
 msgid "(Timezone not defined)"
 msgstr "(Timezone not defined)"
+
+#: data/scripts/edit_station.py:521
 
 msgid "(Unknown)"
 msgstr "(Unknown)"
 
-msgid "<b>Country:</b>"
-msgstr "<b>Country:</b>"
+#: data/scripts/edit_station.py:75
 
-msgid "<b>Fichier exemple :</b>"
-msgstr "<b>Sample file:</b>"
+msgid "<b>Edit station settings:</b>"
+msgstr "<b>ဘူတာဆက်တင်များကို ပြောင်းပါ-</b>"
 
-msgid ""
-"Accédez à plus de 40 000 stations en ligne classées par pays, genre ou mots-"
-"clés."
-msgstr ""
-"Access over 40,000 online stations sorted by country, genre or keywords."
+#: data/scripts/edit_station.py:65
 
-msgid "Ajouter une radio (TiMonde)"
-msgstr "ရေဒီယို (TiMonde) ထည့်ပါ"
+msgid "<b>Enter new station details:</b>"
+msgstr "<b>ရေဒီယိုအသစ်အတွက် အချက်အလက်ကို ထည့်ပါ-</b>"
 
-msgid "Ajouter une radio manuellement"
-msgstr "Add station manually"
+#: data/scripts/edit_station.py:70
 
-msgid "Ajouter à mes radios"
-msgstr "ကျွန်ုပ်၏ ရေဒီယိုများတွင် ထည့်ပါ။"
+msgid "<b>Keep this randomly discovered station in your favorites:</b>"
+msgstr "<b>ဤကျပန်းရှာဖွေတွေ့ရှိထားသော ရေဒီယိုအသံလွှင့်ဌာနကို သင့်စိတ်ကြိုက်များတွင် ထားရှိပါ-</b>"
 
-msgid "Aucune nouvelle radio ajoutée (déjà présentes)."
-msgstr "ရေဒီယိုအသစ်မထည့်ပါ (လက်ရှိဖြစ်နေပါပြီ)။"
+#: data/scripts/timonde_settings.py:740
 
-msgid "Bouquets DAB+ & Sélections officielles"
-msgstr "DAB+ ပန်းစည်းများနှင့် တရားဝင်ရွေးချယ်မှုများ"
+msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
+msgstr "အုပ်စု <b>{nb_gr}</b> ခုတွင် လိုင်း <b>{nb_st}</b> လိုင်း။"
 
-msgid "Bouquets DAB+ vérifiés"
-msgstr "Verified DAB+ Bouquets"
+#: data/scripts/browse_bouquets.py:1208
 
-msgid ""
-"Compatible natif Wayland et X11 via StatusNotifierItem (XFCE, Cinnamon, "
-"GNOME, KDE, MATE)."
-msgstr ""
-"Native Wayland and X11 compatible via StatusNotifierItem (XFCE, Cinnamon, "
-"GNOME, KDE, MATE)."
+msgid "<i>Select a file or sample above.</i>"
+msgstr "<i>အထက်ပါ ဖိုင် သို့မဟုတ် နမူနာကို ရွေးပါ။</i>"
 
-msgid "Conserver dans mes favoris"
-msgstr "ကျွန်ုပ်၏အကြိုက်ဆုံးများထဲတွင် သိမ်းဆည်းပါ။"
+#: data/scripts/timonde_settings.py:709 data/scripts/timonde_settings.py:719
 
-msgid "Conserver la radio dans les favoris (TiMonde)"
-msgstr "ရေဒီယိုကို အကြိုက်ဆုံးများ (TiMonde) တွင်ထားပါ"
+msgid "Active (Left & Right clicks unified)"
+msgstr "Aktiv (Links- & Rechtsklick vereinheitlicht)"
 
-msgid ""
-"Consultez les 17 sélections thématiques ou déposez vos propres fichiers dans "
-"~/.config/timonde/examples/."
-msgstr ""
-"Browse the 17 thematic selections or drop your own files into ~/.config/"
-"timonde/examples/."
+#: data/scripts/browse_bouquets.py:882
 
-msgid "Contents"
-msgstr "Contents"
-
-msgid "Details"
-msgstr "Details"
-
-msgid "Dossier ouvert :"
-msgstr "ဖိုင်ကိုဖွင့်ပါ-"
-
-msgid "Découvrir et importer des radios (TiMonde)"
-msgstr "ရေဒီယိုလိုင်းများ (TiMonde) ရှာဖွေပြီး တင်သွင်းပါ"
-
-msgid "Démarrage automatique"
-msgstr "Autostart"
-
-msgid ""
-"Démarre discrètement TiMonde en arrière-plan dès l'ouverture de votre "
-"session graphique."
-msgstr ""
-"Launches TiMonde discreetly in the background when your graphical session "
-"starts."
-
-msgid ""
-"Détection automatique selon votre système. 55 langues mondiales supportées "
-"avec drapeaux."
-msgstr ""
-"Automatic detection based on your system. 55 world languages supported."
-
-msgid "Enregistrer"
-msgstr "သိမ်းဆည်းပါ။"
-
-msgid "Erreur :"
-msgstr "Error:"
-
-msgid "Erreur exécution :"
-msgstr "လုပ်ဆောင်မှု အမှား-"
-
-msgid "Erreur import JSON :"
-msgstr "JSON တင်သွင်းမှု အမှား-"
-
-msgid "Erreur lors de la modification de l'autostart."
-msgstr "အလိုအလျောက်စတင်ခြင်းကို မွမ်းမံရာတွင် အမှားအယွင်းရှိသည်။"
-
-msgid "Explorer DAB+..."
-msgstr "DAB+ ကိုလေ့လာပါ..."
-
-msgid "Exportation CSV terminée."
-msgstr "CSV ထုတ်ယူမှု ပြီးပါပြီ။"
-
-msgid "Exporter en CSV..."
-msgstr "Export to CSV..."
-
-msgid ""
-"Exportez ou synchronisez vos radios avec LibreOffice Calc ou Excel tout en "
-"conservant bookmarks.xml comme référence."
-msgstr ""
-"Export or sync your radio stations with LibreOffice Calc or Excel while "
-"keeping bookmarks.xml as reference."
-
-msgid "Fermer"
-msgstr "ပိတ်လိုက်"
-
-msgid "Fichiers exemples"
-msgstr "Sample Files"
-
-msgid "Fichiers exemples thématiques"
-msgstr "Thematic Sample Files"
-
-msgid "Group name"
-msgstr "Group name"
-
-msgid "Générez une feuille de calcul CSV de vos radios"
-msgstr "Generate a CSV spreadsheet of your radio stations"
-
-msgid "Gérer les radios..."
-msgstr "Manage stations..."
-
-msgid "Importer depuis CSV..."
-msgstr "Import from CSV..."
-
-msgid "Importer des fichiers personnels"
-msgstr "ကိုယ်ရေးကိုယ်တာဖိုင်များကို တင်သွင်းပါ။"
-
-msgid "Importer fichier..."
-msgstr "ဖိုင်ကိုတင်သွင်းပါ..."
-
-msgid "Importer mes fichiers"
-msgstr "Import My Files"
-
-msgid ""
-"Importez vos listes et favoris aux formats XML (RadioTray, TiMonde), CSV, "
-"JSON, M3U ou PLS."
-msgstr ""
-"Import your lists and favorites in XML (RadioTray, TiMonde), CSV, JSON, M3U "
-"or PLS formats."
-
-msgid "Impossible d ouvrir le dossier :"
-msgstr "ဖိုင်တွဲကို ဖွင့်၍မရပါ"
-
-msgid ""
-"Insérez des séparateurs (---) ou des intertitres de section dans vos groupes "
-"pour aérer votre menu."
-msgstr ""
-"သင့်မီနူးကို လေဝင်လေထွက်ကောင်းစေရန် သင့်အုပ်စုများအတွင်း ပိုင်းခြားခြင်း (---) သို့မဟုတ် "
-"ကဏ္ဍခေါင်းစဉ်များကို ထည့်သွင်းပါ။"
-
-msgid "Intégration du bureau & Plateau"
-msgstr "Desktop Integration & Tray"
-
-msgid "Lancement automatique au démarrage"
-msgstr "Launch automatically at startup"
-
-msgid "Lancer l'audit..."
-msgstr "Start audit..."
-
-msgid "Langue :"
-msgstr "Language:"
-
-msgid "Langue et Région"
-msgstr "Language & Region"
-
-msgid "Modifications prises en compte."
-msgstr "အပြောင်းအလဲများကို ထည့်သွင်းစဉ်းစားပါ။"
-
-msgid "Modifier la radio (TiMonde)"
-msgstr "ရေဒီယိုကိုတည်းဖြတ်ပါ (TiMonde)"
-
-msgid "Name / Header"
-msgstr "Name / Header"
-
-msgid "Nouvelle radio..."
-msgstr "New station..."
-
-msgid "Organiser les groupes et les radios"
-msgstr "Organize groups and stations"
-
-msgid "Outil introuvable :"
-msgstr "Tool not found:"
-
-msgid "Ouvrir dossier"
-msgstr "ဖိုင်တွဲကိုဖွင့်ပါ။"
-
-msgid "Paramètres & Contrôle TiMonde"
-msgstr "TiMonde Settings & Control"
-
-msgid "Paramètres TiMonde"
-msgstr "TiMonde Settings"
-
-msgid ""
-"Parcourez 146 bouquets nationaux et régionaux vérifiés sans quitter votre "
-"bureau."
-msgstr ""
-"Browse 146 verified national and regional bouquets without leaving your "
-"desktop."
-
-msgid "Parcourir..."
-msgstr "လှန်ကြည့်..."
-
-msgid "Passerelle Tableur (CSV)"
-msgstr "Spreadsheet Gateway (CSV)"
-
-msgid "Recherche Radio-Browser"
-msgstr "Radio-Browser Search"
-
-msgid "Recherche mondiale Radio-Browser"
-msgstr "ကမ္ဘာလုံးဆိုင်ရာ ရှာဖွေမှု ရေဒီယို-ဘရောက်ဇာ"
-
-msgid "Rechercher..."
-msgstr "ရှာဖွေပါ..."
-
-msgid "Restaurer"
-msgstr "Restore"
-
-msgid "Restaurer les fichiers exemples"
-msgstr "Restore sample files"
-
-msgid "Réimportez ou synchronisez des radios modifiées depuis un tableur CSV"
-msgstr "Re-import or sync modified radio stations from a CSV spreadsheet"
-
-msgid ""
-"Rétablit les 17 exemples thématiques par défaut dans votre dossier personnel "
-"s'ils ont été supprimés."
-msgstr ""
-"Restores the 17 default thematic samples in your personal folder if deleted."
-
-msgid ""
-"Saisir directement un nom, une URL de flux (AAC, MP3, HLS), un pays et un "
-"fuseau horaire."
-msgstr ""
-"Directly enter a name, stream URL (AAC, MP3, HLS), country and timezone."
-
-msgid "Signets actuels (bookmarks.xml)"
-msgstr "Current bookmarks (bookmarks.xml)"
-
-msgid "Signets réorganisés et enregistrés avec succès !"
-msgstr "စာညှပ်များကို ပြန်လည်ဖွဲ့စည်းပြီး အောင်မြင်စွာ သိမ်းဆည်းခဲ့သည်။"
-
-msgid "Supprimer"
-msgstr "ဖျက်ပါ။"
-
-msgid ""
-"Teste en direct la disponibilité de tous vos flux, détecte les liens "
-"inactifs et applique les redirections."
-msgstr ""
-"Tests live availability of all your streams, detects broken links and "
-"applies redirects."
-
-msgid ""
-"Triez, renommez, supprimez et déplacez vos stations. Créez des dossiers et "
-"des sous-groupes (ex: Musique/Jazz)."
-msgstr ""
-"Sort, rename, delete and move your stations. Create folders and sub-groups "
-"(e.g. Music/Jazz)."
-
-msgid "Vérificateur de flux & Liens morts"
-msgstr "Stream health check & Dead links"
-
-msgid "activé"
-msgstr "enabled"
-
-msgid "ajoutée avec succès à vos signets !"
-msgstr "successfully added to your bookmarks!"
-
-msgid "désactivé"
-msgstr "disabled"
-
-msgid "fichiers exemples restaurés dans"
-msgstr "နမူနာဖိုင်များကို ပြန်လည်ရယူသည်။"
-
-msgid "radio(s) ajoutée(s) à vos signets !"
-msgstr "station(s) added to your bookmarks!"
-
-msgid "↕️ Organisation"
-msgstr "↕️ အဖွဲ့အစည်း"
-
-msgid "💡 Astuce d'agencement visuel"
-msgstr "💡 မြင်သာသော အပြင်အဆင် ထိပ်ဖျား"
-
-msgid "💾 Données & Fichiers"
-msgstr "💾 ဒေတာနှင့် ဖိုင်များ"
-
-msgid "📻 Bibliothèque"
-msgstr "📻 စာကြည့်တိုက်"
-
-msgid "🖥️ Général"
-msgstr "🖥️ အထွေထွေ"
-
-msgid "<i>Sélectionnez un fichier ou un exemple ci-dessus.</i>"
-msgstr "<i>အထက်တွင် ဖိုင် သို့မဟုတ် ဥပမာတစ်ခုကို ရွေးပါ။</i>"
-
-msgid "Actualiser la liste des exemples"
-msgstr "ဥပမာများစာရင်းကို ပြန်လည်စတင်ပါ။"
-
-msgid "Aide sur les groupes et sous-groupes"
-msgstr "အုပ်စုများနှင့် အုပ်စုခွဲများဖြင့် ကူညီပါ။"
-
-msgid "Ajouter"
+msgid "Add"
 msgstr "ထည့်ပါ။"
 
-msgid "Annuler"
-msgstr "မလုပ်တော့"
+#: data/scripts/reorder_groups.py:189
 
-msgid "Arrêter"
-msgstr "ရပ်လိုက်ပါ။"
+msgid "Add a new station to this group or to root"
+msgstr "Î ÏÎ¿ÏÎ¸Î®ÎºÎ· Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÎµ Î±ÏÏÎ® ÏÎ·Î½ Î¿Î¼Î¬Î´Î± Î® ÏÏÎ· ÏÎ¯Î¶Î±"
 
-msgid "Aucun fichier bookmarks.xml trouvé à sauvegarder."
-msgstr "သိမ်းဆည်းရန် bookmarks.xml ဖိုင်များ မတွေ့ပါ။"
+#: data/scripts/edit_station.py:64
 
-msgid "Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."
-msgstr "ရေဒီယိုလိုင်းအသစ်များ မထည့်ပါ (သင့်စာညှပ်များထဲတွင် ရှိနှင့်ပြီးသား)။"
+msgid "Add a station (TiMonde)"
+msgstr "ဘူတာရုံ (TiMonde) ထည့်ပါ"
 
-msgid "Aucune radio trouvée sur Radio-Browser pour ces critères."
-msgstr "ဤသတ်မှတ်ချက်များအတွက် Radio-Browser တွင် ရေဒီယိုလိုင်းများ မတွေ့ပါ။"
+#: data/scripts/reorder_groups.py:189
 
-msgid "Bouquet National (Grandes stations)"
-msgstr "အမျိုးသားပန်းစည်း (အဓိကအပန်းဖြေစခန်းများ)"
+msgid "Add station"
+msgstr "ရေဒီယိုထည့်ပါ။"
 
-msgid "Bouquets par pays"
-msgstr "နိုင်ငံအလိုက် ပန်းစည်းများ"
+#: data/scripts/reorder_groups.py:576
 
-msgid "Bureau graphique & Plateau"
-msgstr "ဂရပ်ဖစ်စားပွဲနှင့် ဗန်း"
+msgid "Add station here..."
+msgstr "Î ÏÎ¿ÏÎ¸Î®ÎºÎ· ÏÏÎ±Î¸Î¼Î¿Ï ÎµÎ´Ï..."
 
-msgid "Cette station n'a aucune URL de flux audio."
-msgstr "ဤဌာနတွင် အသံလွှင့် URL များ မရှိပါ။"
+#: data/scripts/reorder_groups.py:597
 
-msgid "Charger un fichier XML, CSV, JSON, M3U ou PLS"
-msgstr "XML၊ CSV၊ JSON၊ M3U သို့မဟုတ် PLS ဖိုင်တစ်ခုကို အပ်လုဒ်လုပ်ပါ။"
+msgid "Add station..."
+msgstr "ရေဒီယိုထည့်ပါ..."
 
-msgid "Charger un fichier..."
-msgstr "ဖိုင်တစ်ခု တင်ပါ..."
+#: data/scripts/edit_station.py:66
 
-msgid "Choisir parmi les groupes existants"
-msgstr "ရှိပြီးသားအဖွဲ့များမှ ရွေးချယ်ပါ။"
+msgid "Add to my stations"
+msgstr "ကျွန်ုပ်၏ ရေဒီယိုများတွင် ထည့်ပါ။"
 
-msgid "Choisir un fichier de radios"
-msgstr "ရေဒီယိုဖိုင်ကို ရွေးပါ။"
+#: data/scripts/edit_station.py:159
 
-msgid "Collections & Fichiers"
-msgstr "စုစည်းမှုများနှင့် ဖိုင်များ"
+msgid "Align name"
+msgstr "ÎÏÎ¸ÏÎ³ÏÎ¬Î¼Î¼Î¹ÏÎ· Î¿Î½ÏÎ¼Î±ÏÎ¿Ï"
 
-msgid "Conserver l'organisation en dossiers"
-msgstr "အဖွဲ့အစည်းကို ဖိုင်တွင်ထားရှိပါ။"
+#: data/scripts/reorder_groups.py:295
 
-msgid ""
-"Créer une sauvegarde complète de votre collection (avec dossiers et fuseaux "
-"horaires)"
-msgstr "သင့်စုစည်းမှု၏ အပြည့်အဝ အရန်ကူးတစ်ခု ဖန်တီးပါ (ဖိုင်တွဲများနှင့် အချိန်ဇုန်များနှင့်အတူ)"
+msgid "All changes saved"
+msgstr "ÎÎ»ÎµÏ Î¿Î¹ Î±Î»Î»Î±Î³Î­Ï Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎ±Î½"
 
-msgid "Disponibilité"
-msgstr "ရရှိနိုင်မှု"
+#: data/scripts/browse_bouquets.py:784
 
-msgid "Disponibilité en direct"
-msgstr "တိုက်ရိုက်ရရှိနိုင်မှု"
+msgid "All countries (Worldwide)"
+msgstr "နိုင်ငံအားလုံး (ကမ္ဘာတစ်ဝှမ်း)"
 
-msgid "Dossier / Groupe"
-msgstr "ဖိုဒါ/အုပ်စု"
+#: data/scripts/reorder_groups.py:1281
 
-msgid "Dossier des exemples"
-msgstr "နမူနာဖိုင်တွဲ"
-
-msgid "Dossier des signets"
-msgstr "စာညှပ်များ ဖိုဒါ"
-
-msgid ""
-"Détection automatique selon les paramètres régionaux de votre environnement "
-"Linux."
-msgstr "သင်၏ Linux ပတ်ဝန်းကျင်၏ ဒေသဆိုင်ရာ ဆက်တင်များအတိုင်း အလိုအလျောက် ထောက်လှမ်းခြင်း။"
-
-msgid "ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)"
-msgstr "ပတ်ဝန်းကျင်ကို ထောက်လှမ်းထားသည် (ဖတ်ရန်သာ)"
-
-msgid "Effacer le champ"
-msgstr "ကြည်လင်သောအကွက်"
-
-msgid "Effacer le filtre langue"
-msgstr "ဘာသာစကား စစ်ထုတ်မှုကို ရှင်းလင်းပါ။"
-
-msgid "Effacer le filtre pays"
-msgstr "နိုင်ငံစစ်ထုတ်မှုကို ရှင်းလင်းပါ။"
-
-msgid "Environnement GNOME Shell détecté"
-msgstr "GNOME Shell ပတ်ဝန်းကျင်ကို တွေ့ရှိခဲ့သည်။"
-
-msgid "Erreur lors de la sauvegarde :"
-msgstr "သိမ်းဆည်းနေစဉ် အမှားအယွင်း"
-
-msgid "Ex: /France/Jazz ou / pour racine"
-msgstr "ဥပမာ- /France/Jazz သို့မဟုတ် / root အတွက်"
-
-msgid "Exemples thématiques :"
-msgstr "အကြောင်းအရာဆိုင်ရာ ဥပမာများ-"
-
-msgid "Exporter en tableau (CSV)..."
-msgstr "ဇယား (CSV) သို့ တင်ပို့ပါ..."
-
-msgid "Fichier :"
-msgstr "ဖိုင်-"
-
-msgid "Fichier externe :"
-msgstr "ပြင်ပဖိုင်-"
-
-msgid "Fichiers XML (*.xml)"
-msgstr "XML ဖိုင်များ (*.xml)"
-
-msgid "Filtrer par pays :"
-msgstr "နိုင်ငံအလိုက် စစ်ထုတ်ပါ-"
-
-msgid "Format & Débit"
-msgstr "ဖော်မတ်နှင့် ဘစ်နှုန်း"
-
-msgid "Genre / Tags"
-msgstr "ကျား/မ"
-
-msgid "Genre / Thématique"
-msgstr "အမျိုးအစား/အကြောင်းအရာ"
-
-msgid "Genre :"
-msgstr "လိင်-"
-
-msgid "Gestionnaire de paquets non reconnu."
-msgstr "အသိအမှတ်ပြုမထားသော ပက်ကေ့ဂျ်မန်နေဂျာ။"
-
-msgid "Groupe :"
-msgstr "အဖွဲ့-"
-
-msgid "Générer une liste plate pour tableur Calc ou Excel"
-msgstr "Calc သို့မဟုတ် Excel ဇယားကွက်အတွက် ပြားသောစာရင်းကို ဖန်တီးပါ။"
-
-msgid "Importer"
-msgstr "သွင်းကုန်"
-
-msgid "Importer & Exporter"
-msgstr "သွင်းကုန်၊ ပို့ကုန်"
-
-msgid "Importer dans mes favoris"
-msgstr "ကျွန်ုပ်၏စိတ်ကြိုက်များသို့ တင်သွင်းပါ။"
-
-msgid "Installation en cours (veuillez valider l'invite système)..."
-msgstr "ထည့်သွင်းခြင်း လုပ်ဆောင်နေပါသည် ( system prompt ကို အတည်ပြုပါ )..."
-
-msgid "Installer l'intégration GNOME"
-msgstr "GNOME ပေါင်းစည်းမှုကို ထည့်သွင်းပါ။"
-
-msgid "Intégration GNOME requise"
-msgstr "GNOME ပေါင်းစည်းမှု လိုအပ်သည်။"
-
-msgid "Intégration dans la barre supérieure GNOME"
-msgstr "GNOME အပေါ်ဘားသို့ ပေါင်းစည်းခြင်း။"
-
-msgid ""
-"Intégration native dans la zone de notification via StatusNotifierItem / "
-"XEmbed."
-msgstr "StatusNotifierItem / XEmbed မှတဆင့် အကြောင်းကြားချက် ဧရိယာသို့ ဇာတိပေါင်းစည်းခြင်း။"
-
-msgid "L'exportation CSV est accessible depuis les paramètres."
-msgstr "CSV ထုတ်ယူမှုကို ဆက်တင်များမှ ဝင်ရောက်နိုင်သည်။"
-
-msgid ""
-"L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre "
-"supérieure sous GNOME."
-msgstr "GNOME ရှိ ထိပ်ဘားရှိ အိုင်ကွန်ကို ပြသရန် AppIndicator တိုးချဲ့မှု လိုအပ်သည်။"
-
-msgid "L'installation a été annulée ou a échoué."
-msgstr "တပ်ဆင်မှုကို ပယ်ဖျက်ခဲ့သည် သို့မဟုတ် မအောင်မြင်ပါ။"
-
-msgid "La sauvegarde XML est accessible depuis les paramètres."
-msgstr "XML မိတ္တူကို ဆက်တင်များမှ ဝင်ရောက်နိုင်သည်။"
-
-msgid "Langue du système"
-msgstr "စနစ်ဘာသာစကား"
-
-msgid "Les séparateurs et intertitres ne peuvent pas être écoutés."
-msgstr "ခြားနားချက်များနှင့် စကားစုများကို နားမထောင်နိုင်ပါ။"
-
-msgid "Mes Radios"
-msgstr "ကျွန်ုပ်၏ ရေဒီယိုများ"
-
-msgid "Mot-clé :"
-msgstr "အဓိကစကားလုံး-"
-
-msgid "Nouveaux uniquement"
-msgstr "အသစ်သာ"
-
-msgid "OPTIONS DE SESSION"
-msgstr "Session ရွေးစရာများ"
-
-msgid "Organisation des groupes et sous-groupes (Convention Linux)"
-msgstr "အုပ်စုများနှင့် အုပ်စုခွဲများဖွဲ့စည်းခြင်း (Linux Convention)"
-
-msgid "Ouvrez d'abord un groupe pour écouter ses radios."
-msgstr "၎င်း၏ ရေဒီယိုများကို နားထောင်ရန် အဖွဲ့တစ်ဖွဲ့ကို ဦးစွာဖွင့်ပါ။"
-
-msgid "Ouvrir"
-msgstr "ဖွင့်သည်။"
-
-msgid "Ouvrir ~/.config/timonde"
-msgstr "~/.config/timeonde ကိုဖွင့်ပါ။"
-
-msgid "Ouvrir ~/.config/timonde/examples"
-msgstr "~/.config/timeonde/examples ကိုဖွင့်ပါ။"
-
-msgid "Pays"
-msgstr "တိုင်းပြည်"
-
-msgid "Pays :"
-msgstr "နိုင်ငံ-"
-
-msgid ""
-"Pour afficher discrètement l'icône de lecture dans la barre supérieure de "
-"votre bureau GNOME, l'extension système <b>AppIndicator</b> est nécessaire."
-"<br/><br/>Souhaitez-vous l'installer maintenant ?"
-msgstr ""
-"သင့် GNOME ဒက်စ်တော့၏ ထိပ်ဘားရှိ ကစားသင်္ကေတကို သတိရှိရှိပြသရန် <b>AppIndicator</b> စနစ် တိုးချဲ့မှု "
-"လိုအပ်ပါသည်။<br/><br/>၎င်းကို ယခု ထည့်သွင်းလိုပါသလား။"
-
-msgid "Préférences"
-msgstr "နှစ်သက်ရာ"
-
-msgid ""
-"Préserver les sous-groupes définis dans le fichier au lieu de tout importer "
-"dans un groupe unique."
-msgstr "အရာအားလုံးကို အဖွဲ့တစ်ခုတည်းသို့ တင်သွင်းမည့်အစား ဖိုင်တွင် သတ်မှတ်ထားသော အုပ်စုခွဲများကို ထိန်းသိမ်းပါ။"
-
-msgid "Quitter"
-msgstr "ထွက်ပေါက်"
-
-msgid "Recharger"
-msgstr "ပြန်တင်ပါ။"
-
-msgid "Recharger le fichier actuellement affiché"
-msgstr "လက်ရှိပြသနေသောဖိုင်ကို ပြန်လည်စတင်ပါ။"
-
-msgid ""
-"Recherche mondiale sur l'annuaire libre et collaboratif <b>Radio-Browser</b> "
-"(+45 000 stations)."
-msgstr ""
-"အခမဲ့နှင့် ပူးပေါင်းဆောင်ရွက်သော <b>ရေဒီယို-ဘရောက်ဆာ</b> လမ်းညွှန် (+45,000 ဘူတာများ) တွင် "
-"ကမ္ဘာတစ်ဝှမ်း ရှာဖွေမှု။"
-
-msgid "Recherche sur Radio-Browser en cours..."
-msgstr "Radio-Browser တွင် ရှာဖွေနေဆဲ..."
-
-msgid "Rechercher"
-msgstr "ရှာရန်"
-
-msgid "Rechercher en ligne"
-msgstr "အွန်လိုင်းရှာပါ။"
-
-msgid "Remplacer le lien sélectionné par un flux officiel actif"
-msgstr "ရွေးချယ်ထားသောလင့်ခ်ကို လက်ရှိတရားဝင်အဖိဒ်တစ်ခုဖြင့် အစားထိုးပါ။"
-
-msgid "Restaurer exemples"
-msgstr "ဥပမာများကို ပြန်ယူပါ။"
-
-msgid "Régions & Locales :"
-msgstr "ဒေသများနှင့် ဒေသန္တရ-"
-
-msgid "Réparer le flux..."
-msgstr "စီးဆင်းမှုကိုပြင်ပါ ..."
-
-msgid "Rétablir les 19 exemples d'origine"
-msgstr "မူရင်း နမူနာ ၁၉ ခုကို ပြန်ယူပါ။"
-
-msgid ""
-"Saisissez un mot-clé ou cliquez sur Rechercher pour explorer l'annuaire."
-msgstr "လမ်းညွှန်ကို စူးစမ်းလေ့လာရန် သော့ချက်စကားလုံးကို ထည့်ပါ သို့မဟုတ် Search ကိုနှိပ်ပါ။"
-
-msgid "Sauvegarde réussie !"
-msgstr "အရန်သိမ်းခြင်း အောင်မြင်ပါပြီ။"
-
-msgid "Sauvegarder mes radios (XML)..."
-msgstr "ကျွန်ုပ်၏ ရေဒီယိုများ (XML) ကို သိမ်းဆည်းပါ..."
-
-msgid "Sauvegarder mes signets (XML)"
-msgstr "ကျွန်ုပ်၏ စာညှပ်များကို သိမ်းဆည်းပါ (XML)"
-
-msgid "Signets et radios enregistrés avec succès !"
-msgstr "စာညှပ်များနှင့် ရေဒီယိုများကို အောင်မြင်စွာ သိမ်းဆည်းပြီးပါပြီ။"
-
-msgid "Station"
-msgstr "အပန်းဖြေစခန်း"
-
-msgid "Statut Favoris"
-msgstr "အကြိုက်ဆုံးအခြေအနေ"
-
-msgid ""
-"Sélection officielle et vérifiée parmi 146 pays et régions (bouquets "
-"numériques DAB+ et grandes stations nationales)."
-msgstr ""
-"နိုင်ငံနှင့် ဒေသပေါင်း 146 မှ တရားဝင် စိစစ်ပြီး ရွေးချယ်ခြင်း (DAB+ ဒစ်ဂျစ်တယ် ပန်းစည်းများနှင့် အဓိက "
-"နိုင်ငံတော် ဘူတာများ)။"
-
-msgid "Sélectionnez une radio pour l'écouter."
-msgstr "၎င်းကိုနားဆင်ရန် ရေဒီယိုတစ်ခုကို ရွေးပါ။"
-
-msgid "Sélectionnez une station dans le tableau pour l'écouter."
-msgstr "၎င်းကိုနားဆင်ရန် စားပွဲမှ ဘူတာရုံတစ်ခုကို ရွေးပါ။"
-
-msgid "Tapez un pays (ex: France, Deutschland, Canada...)"
-msgstr "နိုင်ငံတစ်ခုကို ရိုက်ထည့်ပါ (ဥပမာ- ပြင်သစ်၊ Deutschland၊ Canada...)"
-
-msgid "Tester"
-msgstr "စမ်း"
-
-msgid "Tester les flux"
-msgstr "စမ်းသပ်စီးဆင်းမှု"
-
-msgid "TiMonde — Intégration Bureau GNOME"
-msgstr "TiMonde — GNOME ဒက်စ်တော့ ပေါင်းစပ်မှု"
-
-msgid "Tous les fichiers (*.*)"
+msgid "All files (*.*)"
 msgstr "ဖိုင်အားလုံး (*.*)"
 
-msgid "Tous les pays (mondial)"
-msgstr "နိုင်ငံအားလုံး (ကမ္ဘာ့)"
+#: data/scripts/browse_bouquets.py:823
 
-msgid "Tout cocher"
-msgstr "အားလုံးစစ်ဆေးပါ။"
-
-msgid "Tout décocher"
-msgstr "အားလုံးကို အမှန်ခြစ်ဖြုတ်ပါ။"
-
-msgid "Toutes les langues"
+msgid "All languages"
 msgstr "ဘာသာစကားအားလုံး"
 
-msgid "URL du flux"
-msgstr "Feed URL"
-
-msgid "Veuillez sélectionner une radio dans la liste pour l'écouter."
-msgstr "၎င်းကိုနားဆင်ရန် စာရင်းထဲမှ ရေဒီယိုတစ်ခုကို ရွေးပါ။"
-
-msgid "Vos signets complets ont été enregistrés dans :"
-msgstr "သင်၏ စာညှပ်များ အပြည့်အစုံကို တွင် သိမ်းဆည်းထားသည်-"
-
-msgid "Votes"
-msgstr "မဲများ"
-
-msgid "Vérifier en direct la disponibilité des liens"
-msgstr "လင့်ခ်ရရှိနိုင်မှုကို တိုက်ရိုက်ကြည့်ရှုပါ။"
-
-msgid "Vérifier la disponibilité en direct des radios"
-msgstr "တိုက်ရိုက်ရေဒီယိုရရှိနိုင်မှုကို စစ်ဆေးပါ။"
-
-msgid "Vérifier la disponibilité en direct des radios trouvées"
-msgstr "ရေဒီယိုများ၏ တိုက်ရိုက်ရရှိနိုင်မှုကို စစ်ဆေးတွေ့ရှိရပါသည်။"
-
-msgid "Vérifier la validité du lien et écouter un aperçu du flux"
-msgstr "လင့်ခ်တရားဝင်မှုကို စစ်ဆေးပြီး ထုတ်လွှင့်မှုကို အစမ်းကြည့်ရှုပါ။"
-
-msgid "ajoutée avec succès !"
-msgstr "အောင်မြင်စွာ ထည့်သွင်းခဲ့သည်။"
-
-msgid "fichiers exemples restaurés."
-msgstr "နမူနာဖိုင်များကို ပြန်လည်ရယူသည်။"
-
-msgid "nouvelle(s) radio(s) importée(s) !"
-msgstr "ရေဒီယိုအသစ် (များ) တင်သွင်းခဲ့သည်။"
-
-msgid "Écouter"
-msgstr "နားထောင်ပါ။"
-
-msgid "Écouter la radio sélectionnée"
-msgstr "ရွေးချယ်ထားသော ရေဒီယိုကို နားထောင်ပါ။"
-
-msgid "Écouter ou tester la radio sélectionnée"
-msgstr "ရွေးချယ်ထားသော ရေဒီယိုကို နားထောင်ပါ သို့မဟုတ် စမ်းသပ်ပါ။"
-
-msgid "is not responding. Searching for a backup stream..."
-msgstr "တုံ့ပြန်မှုမရှိပါ။ အရန်လိုင်း ရှာဖွေနေသည်..."
-
-msgid "Stream repaired and saved for"
-msgstr "လိုင်းကို ပြင်ဆင်ပြီး သိမ်းဆည်းခဲ့သည် -"
-
-msgid "is currently unavailable"
-msgstr "လောလောဆယ် မရရှိနိုင်ပါ"
-
-msgid "Unable to find a station in the bouquets catalog."
-msgstr "လိုင်းတွဲများ စာရင်းတွင် ရေဒီယိုလိုင်း ရှာမတွေ့ပါ။"
-
-msgid "No radio is currently playing."
-msgstr "လက်ရှိတွင် မည်သည့်ရေဒီယိုမျှ ဖွင့်မထားပါ။"
-
-msgid "Selection"
-msgstr "ရွေးချယ်မှု"
-
-msgid "Save error"
-msgstr "သိမ်းဆည်းမှု အမှား"
-
-msgid "Saved!"
-msgstr "သိမ်းဆည်းပြီးပါပြီ!"
-
-msgid "saved in your favorites!"
-msgstr "သင်အကြိုက်ဆုံးထဲတွင် သိမ်းဆည်းပြီးပါပြီ!"
-
-msgid "Station added but reload error"
-msgstr "လိုင်းထည့်သွင်းပြီးသော်လည်း ပြန်လည်ဖွင့်ရာတွင် အမှားဖြစ်ပွားသည်"
-
-msgid "Sleep timer activated"
-msgstr "အိပ်ချိန်သတ်မှတ်ချက် ဖွင့်ထားသည်"
-
-msgid "stopping in"
-msgstr "ရပ်တန့်မည့်အချိန် -"
-
-msgid "Sleep timer: stopping radio."
-msgstr "အိပ်ချိန်သတ်မှတ်ချက် - ရေဒီယို ပိတ်နေသည်။"
-
-msgid "Sleep timer cancelled."
-msgstr "အိပ်ချိန်သတ်မှတ်ချက်ကို ပယ်ဖျက်လိုက်သည်။"
-
-msgid "Track copied to clipboard:"
-msgstr "သီချင်းအမည်ကို ကလစ်ဘုတ်သို့ ကူးယူပြီးပါပြီ -"
-
-msgid "deleted from your favorites."
-msgstr "သင်အကြိုက်ဆုံးထဲမှ ဖျက်လိုက်ပါပြီ။"
-
-msgid "updated successfully!"
-msgstr "အောင်မြင်စွာ အပ်ဒိတ်လုပ်ပြီးပါပြီ!"
-
-msgid "Settings console not found"
-msgstr "ဆက်တင် ကွန်ဆိုးလ် ရှာမတွေ့ပါ"
-
-msgid "Paused"
-msgstr "ခေတ္တရပ်ထားသည်"
-
-msgid "Searching on Radio-Browser..."
-msgstr "Radio-Browser တွင် ရှာဖွေနေသည်..."
-
-msgid "No stream found for this name. Modify the text above."
-msgstr "ဤအမည်အတွက် လိုင်းရှာမတွေ့ပါ။ အထက်ပါ စာသားကို ပြင်ဆင်ပါ။"
-
-msgid "{count} streams found. Select the desired stream and validate."
-msgstr "{count} လိုင်း တွေ့ရှိသည်။ လိုချင်သောလိုင်းကို ရွေးပြီး အတည်ပြုပါ။"
-
-msgid "No pre-loaded DAB+ bouquet for this country."
-msgstr "ဤနိုင်ငံအတွက် ကြိုတင်ထည့်သွင်းထားသော DAB+ လိုင်းတွဲ မရှိပါ။"
+#: data/scripts/timonde_settings.py:728
 
 msgid ""
-"You can explore and import stations for this territory directly from the "
-"global directory."
-msgstr "ဤဒေသအတွက် လိုင်းများကို ကမ္ဘာလုံးဆိုင်ရာ လမ်းညွှန်မှ တိုက်ရိုက် ရှာဖွေတင်သွင်းနိုင်သည်။"
+"Allows opening the station menu interchangeably with left or right click."
+msgstr "ဘယ် သို့မဟုတ် ညာကလစ်ဖြင့် ဘူတာရုံမီနူးကို အပြန်အလှန်ဖွင့်ခွင့်ပြုသည်။"
+
+#: data/scripts/timonde_common.py:1904
+
+msgid "Already registered"
+msgstr "ÎÎ´Î· ÎºÎ±ÏÎ±ÏÏÏÎ·Î¼Î­Î½Î¿"
+
+#: data/scripts/timonde_common.py:1899
+
+msgid "Already registered:"
+msgstr "ÎÎ´Î· ÎºÎ±ÏÎ±ÏÏÏÎ·Î¼Î­Î½Î¿:"
+
+#: data/scripts/reorder_groups.py:111 data/scripts/reorder_groups.py:1155
+
+msgid "Apply redirects"
+msgstr "ပြန်ညွှန်းချက်များကို အသုံးပြုပါ။"
+
+#: data/scripts/reorder_groups.py:783 data/scripts/reorder_groups.py:785
+
+#: data/scripts/reorder_groups.py:787
+
+msgid "Are you sure you want to delete « {name} » ?"
+msgstr "« {name} » ကို ဖျက်လိုသည်မှာ သေချာပါသလား။"
+
+#: data/scripts/edit_station.py:121
+
+msgid "Audio stream URL:"
+msgstr "အသံလွှင့် URL-"
+
+#: data/scripts/reorder_groups.py:1139
+
+msgid "Audit completed:"
+msgstr "Audit completed:"
+
+#: data/scripts/timonde_settings.py:666
+
+msgid "Automatic detection according to your Linux locale settings."
+msgstr "သင်၏ Linux ဒေသဆိုင်ရာ ဆက်တင်များအတိုင်း အလိုအလျောက် သိရှိခြင်း။"
+
+#: data/scripts/timonde_settings.py:648
+
+msgid "Automatic launch on startup"
+msgstr "စတင်ချိန်တွင် အလိုအလျောက် စတင်ခြင်း"
+
+#: data/scripts/timonde_settings.py:751
+
+msgid "Automatic startup"
+msgstr "အလိုအလျောက်စတင်ခြင်း။"
+
+#: data/scripts/reorder_groups.py:111
+
+msgid "Automatically update redirected streams to direct URL"
+msgstr "၎င်းတို့၏ တိုက်ရိုက် URL သို့ ပြန်ညွှန်းထားသော ဖိဒ်များကို အလိုအလျောက် အပ်ဒိတ်လုပ်ပါ။"
+
+#: data/scripts/browse_bouquets.py:913 data/scripts/browse_bouquets.py:1247
+
+msgid "Availability"
+msgstr "ရရှိနိုင်မှု"
+
+#: data/scripts/reorder_groups.py:1266
+
+msgid "Backup my bookmarks (XML)"
+msgstr "ÎÎ½ÏÎ¯Î³ÏÎ±ÏÎ¿ Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¹ÎºÏÏÎ½ (XML)"
+
+#: data/scripts/browse_bouquets.py:1199
+
+msgid "Backup my radios (XML)..."
+msgstr "ကျွန်ုပ်၏ ရေဒီယိုများ (XML) ကို အရန်သိမ်းပါ..."
+
+#: data/scripts/reorder_groups.py:1302
+
+msgid "Backup successful!"
+msgstr "ÎÏÎ¹ÏÏÏÎ®Ï Î´Î·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î±Î½ÏÎ¹Î³ÏÎ¬ÏÎ¿Ï Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï!"
+
+#: data/scripts/timonde_common.py:1645
+
+msgid "Bitrate"
+msgstr "Bitrate"
+
+#: data/scripts/timonde_settings.py:530
+
+msgid "Bookmarks and stations saved successfully!"
+msgstr "စာညှပ်များနှင့် ဘူတာများကို အောင်မြင်စွာ သိမ်းဆည်းပြီးပါပြီ။"
+
+#: data/scripts/browse_bouquets.py:1203
+
+msgid "Bookmarks folder"
+msgstr "စာညှပ်များ ဖိုဒါ"
+
+#: data/scripts/browse_bouquets.py:2312
+
+msgid "CSV export is available from settings."
+msgstr "CSV ထုတ်ယူမှုကို ဆက်တင်များမှ ရရှိနိုင်ပါသည်။"
+
+#: data/scripts/reorder_groups.py:1252
+
+msgid "CSV export successful:"
+msgstr "ÎÏÎ¹ÏÏÏÎ®Ï ÎµÎ¾Î±Î³ÏÎ³Î® CSV:"
+
+#: data/scripts/browse_bouquets.py:1982 data/scripts/edit_station.py:308
+
+#: data/scripts/edit_station.py:575 data/scripts/reorder_groups.py:260
+
+#: data/scripts/reorder_groups.py:638 data/scripts/reorder_groups.py:948
+
+#: data/scripts/reorder_groups.py:1228 data/scripts/reorder_groups.py:1269
+
+#: data/scripts/timonde_common.py:1596 data/scripts/timonde_common.py:1720
+
+msgid "Cancel"
+msgstr "မလုပ်တော့ပါ"
+
+#: src/tray/menu.rs:589
+
+msgid "Cancel sleep timer"
+msgstr "အိပ်စက်ခြင်းကို ပယ်ဖျက်ပါ။"
+
+#: data/scripts/timonde_common.py:1814
+
+msgid "Check"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï"
+
+#: data/scripts/browse_bouquets.py:938 data/scripts/browse_bouquets.py:1107
+
+#: data/scripts/browse_bouquets.py:1274
+
+msgid "Check all"
+msgstr "အားလုံးစစ်ဆေးပါ။"
+
+#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
+
+msgid "Check and submit selected station to Radio-Browser directory"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï ÎºÎ±Î¹ ÏÏÎ¿Î²Î¿Î»Î® ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1814
+
+msgid "Check entered stream URL again on Radio-Browser"
+msgstr "ÎÏÎ±Î½Î­Î»ÎµÎ³ÏÎ¿Ï Î´Î¹ÎµÏÎ¸ÏÎ½ÏÎ·Ï ÏÎ¿Î®Ï ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/edit_station.py:139
+
+msgid "Check if stream is listed or contribute to directory"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï Î±Î½ Î· ÏÎ¿Î® ÏÏÎ¬ÏÏÎµÎ¹ Î® ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿"
+
+#: data/scripts/edit_station.py:135
+
+msgid "Check link validity and listen to stream preview"
+msgstr "လင့်ခ်၏တရားဝင်မှုကိုစစ်ဆေးပြီး တိုက်ရိုက်ကြည့်ရှုခြင်းအား နားထောင်ပါ။"
+
+#: data/scripts/browse_bouquets.py:1286
+
+msgid "Check links availability live"
+msgstr "လင့်ခ်များရရှိနိုင်မှုကို တိုက်ရိုက်ကြည့်ရှုပါ။"
+
+#: data/scripts/browse_bouquets.py:946
+
+msgid "Check live availability of found stations"
+msgstr "တွေ့ရှိသောဘူတာများ၏ တိုက်ရိုက်ရရှိနိုင်မှုကို စစ်ဆေးပါ။"
+
+#: data/scripts/reorder_groups.py:242
+
+msgid "Check or contribute selected station to Radio-Browser"
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï Î® ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/browse_bouquets.py:1115
+
+msgid "Check stations live availability"
+msgstr "တိုက်ရိုက်ရရှိနိုင်သည့် ဘူတာများကို စစ်ဆေးပါ။"
+
+#: data/scripts/reorder_groups.py:102
+
+msgid "Check streams"
+msgstr "feeds ကိုစစ်ဆေးပါ။"
+
+#: data/scripts/timonde_common.py:1882
+
+msgid "Checking Radio-Browser directory..."
+msgstr "ÎÎ»ÎµÎ³ÏÎ¿Ï ÎºÎ±ÏÎ±Î»ÏÎ³Î¿Ï Radio-Browser..."
+
+#: data/scripts/reorder_groups.py:1077
+
+msgid "Checking your radio stations"
+msgstr "Checking your radio stations"
+
+#: data/scripts/browse_bouquets.py:1656
+
+msgid "Checking..."
+msgstr "ချိတ်ဆက်နေသည်..."
+
+#: data/scripts/browse_bouquets.py:1978
+
+msgid "Choose a radio station file"
+msgstr "ရေဒီယိုအသံလွှင့်ဌာန ဖိုင်ကို ရွေးပါ။"
+
+#: data/scripts/browse_bouquets.py:676
+
+msgid "Choose from existing groups"
+msgstr "ရှိပြီးသားအဖွဲ့များမှ ရွေးချယ်ပါ။"
+
+#: data/scripts/timonde_settings.py:727
+
+msgid "Cinnamon Left-Click Unification"
+msgstr "Cinnamon Linksklick-Vereinheitlichung"
+
+#: data/scripts/timonde_settings.py:721
+
+msgid "Cinnamon left-click unification successfully enabled!"
+msgstr "Cinnamon Linksklick-Vereinheitlichung erfolgreich aktiviert!"
+
+#: data/scripts/edit_station.py:265
+
+msgid "Clear"
+msgstr "Clear"
+
+#: data/scripts/edit_station.py:266
+
+msgid "Clear / Automatic mode"
+msgstr "LÃ¶schen / Automatischer Modus"
+
+#: data/scripts/browse_bouquets.py:789
+
+msgid "Clear country filter"
+msgstr "နိုင်ငံစစ်ထုတ်မှုကို ရှင်းလင်းပါ။"
+
+#: data/scripts/browse_bouquets.py:669
+
+msgid "Clear field"
+msgstr "ကြည်လင်သောအကွက်"
+
+#: data/scripts/edit_station.py:187
+
+msgid "Clear field (click to empty)"
+msgstr "Feld leeren (Klicken zum Leeren)"
+
+#: data/scripts/browse_bouquets.py:828
+
+msgid "Clear language filter"
+msgstr "ဘာသာစကား စစ်ထုတ်မှုကို ရှင်းလင်းပါ။"
+
+#: data/scripts/browse_bouquets.py:1335 data/scripts/timonde_common.py:1858
+
+#: data/scripts/timonde_settings.py:447
+
+msgid "Close"
+msgstr "ပိတ်ပါ"
+
+#: data/scripts/reorder_groups.py:88
+
+msgid "Collapse all"
+msgstr "Î£ÏÎ¼ÏÏÏÎ¾Î· ÏÎ»ÏÎ½"
+
+#: data/scripts/reorder_groups.py:88
+
+msgid "Collapse all groups for an overview"
+msgstr "Î£ÏÎ¼ÏÏÏÎ¾Î· ÏÎ»ÏÎ½ ÏÏÎ½ Î¿Î¼Î¬Î´ÏÎ½ Î³Î¹Î± ÎµÏÎ¹ÏÎºÏÏÎ·ÏÎ·"
+
+#: data/scripts/timonde_settings.py:594
+
+msgid "Collections & Files"
+msgstr "စုစည်းမှုများနှင့် ဖိုင်များ"
+
+#: data/scripts/reorder_groups.py:794
+
+msgid "Confirm deletion"
+msgstr "ÎÏÎ¹Î²ÎµÎ²Î±Î¯ÏÏÎ· Î´Î¹Î±Î³ÏÎ±ÏÎ®Ï"
+
+#: data/scripts/timonde_common.py:1328
+
+msgid "Connecting to"
+msgstr "ချိတ်ဆက်နေသည်။"
+
+#: src/i18n.rs:192 src/tray/menu.rs:159
+
+msgid "Connecting..."
+msgstr "ချိတ်ဆက်နေသည်..."
+
+#: data/scripts/browse_bouquets.py:739
+
+msgid "Contribute a station"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ±Î¸Î¼Î¿Ï"
+
+#: data/scripts/timonde_common.py:1781
+
+msgid "Contribute a station to the community Radio-Browser directory"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ¿Î¹Î½Î¿ÏÎ¹ÎºÏ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
+
+#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
+
+#: data/scripts/timonde_common.py:1761
+
+msgid "Contribute to Radio-Browser"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/reorder_groups.py:242 data/scripts/reorder_groups.py:567
+
+msgid "Contribute to Radio-Browser..."
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser..."
+
+#: data/scripts/browse_bouquets.py:894 data/scripts/browse_bouquets.py:1240
+
+#: data/scripts/timonde_common.py:1648
+
+msgid "Country"
+msgstr "<b>Country:</b>"
+
+#: data/scripts/browse_bouquets.py:1327 data/scripts/timonde_settings.py:593
+
+msgid "Country bouquets"
+msgstr "နိုင်ငံတော်ပန်းစည်းများ"
+
+#: data/scripts/timonde_common.py:1821
+
+msgid "Country code (ISO):"
+msgstr "ÎÏÎ´Î¹ÎºÏÏ ÏÏÏÎ±Ï (ISO):"
+
+#: data/scripts/browse_bouquets.py:981 data/scripts/edit_station.py:228
+
+#: data/scripts/timonde_common.py:1900
+
+msgid "Country:"
+msgstr "Country:"
+
+#: data/scripts/reorder_groups.py:639
+
+msgid "Create"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î±"
+
+#: data/scripts/browse_bouquets.py:1199
+
+msgid "Create a full backup of your collection (with folders and timezones)"
+msgstr "သင့်စုစည်းမှု၏ အပြည့်အဝ အရန်ကူးတစ်ခု ဖန်တီးပါ (ဖိုင်တွဲများနှင့် အချိန်ဇုန်များနှင့်အတူ)"
+
+#: data/scripts/reorder_groups.py:634
+
+msgid "Create a new group"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:193
+
+msgid "Create a new group or subgroup (Ctrl+N)"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï Î® ÏÏÎ¿Î¿Î¼Î¬Î´Î±Ï (Ctrl+N)"
+
+#: data/scripts/reorder_groups.py:658
+
+msgid "Create as a subgroup inside"
+msgstr "ÎÎ·Î¼Î¹Î¿ÏÏÎ³Î¯Î± ÏÏ ÏÏÎ¿Î¿Î¼Î¬Î´Î± ÎµÎ½ÏÏÏ"
+
+#: data/scripts/timonde_settings.py:656
+
+msgid "DETECTED ENVIRONMENT (READ ONLY)"
+msgstr "ရှာဖွေတွေ့ရှိထားသော ပတ်ဝန်းကျင် (ဖတ်ရန်သာ)"
+
+#: src/timezone.rs:521
+
+msgid "Daytime"
+msgstr "နေ့"
+
+#: data/scripts/reorder_groups.py:106 data/scripts/reorder_groups.py:1147
+
+msgid "Dead links only"
+msgstr "Dead links များသာဖြစ်သည်။"
+
+#: data/scripts/edit_station.py:576 data/scripts/reorder_groups.py:246
+
+#: src/i18n.rs:230 src/i18n.rs:236
+
+msgid "Delete"
+msgstr "ဖျက်ပါ"
+
+#: data/scripts/reorder_groups.py:588
+
+msgid "Delete group and stations"
+msgstr "ÎÎ¹Î±Î³ÏÎ±ÏÎ® Î¿Î¼Î¬Î´Î±Ï ÎºÎ±Î¹ ÏÏÎ±Î¸Î¼ÏÎ½"
+
+#: data/scripts/reorder_groups.py:246
+
+msgid "Delete selected item or group (Del)"
+msgstr "Delete selected item or group (Del)"
+
+#: data/scripts/edit_station.py:303 data/scripts/reorder_groups.py:571
+
+msgid "Delete this station"
+msgstr "ဤရေဒီယိုကို ဖျက်ပါ။"
+
+#: data/scripts/edit_station.py:572
+
+msgid "Delete « {} » from favorites?"
+msgstr "“{}” ကို အကြိုက်ဆုံးများမှ ဖယ်ရှားမလား။"
+
+#: data/scripts/reorder_groups.py:803
+
+msgid "Deleted:"
+msgstr "ÎÎ¹Î±Î³ÏÎ¬ÏÎ·ÎºÎµ:"
+
+#: data/scripts/timonde_settings.py:676
+
+msgid "Desktop environment & Tray"
+msgstr "ဒက်စ်တော့ ပတ်ဝန်းကျင်နှင့် ဗန်း"
+
+#: data/scripts/reorder_groups.py:169
+
+msgid "Details / Status"
+msgstr "ÎÎµÏÏÎ¿Î¼Î­ÏÎµÎ¹ÎµÏ / ÎÎ±ÏÎ¬ÏÏÎ±ÏÎ·"
+
+#: data/scripts/browse_bouquets.py:525
+
+msgid "Discover & Import stations (TiMonde)"
+msgstr "ရေဒီယိုစခန်းများ (TiMonde) ကို ရှာဖွေပြီး တင်သွင်းပါ"
+
+#: data/scripts/timonde_settings.py:649
+
+msgid ""
+"Discreetly starts TiMonde in the background as soon as your graphical "
+"session opens."
+msgstr "သင်၏ဂရပ်ဖစ်ကဏ္ဍဖွင့်သည်နှင့်တပြိုင်နက် TiMonde ကို နောက်ခံတွင် မသိမသာစတင်သည်။"
+
+#: data/scripts/reorder_groups.py:107
+
+msgid "Display offline radio streams only"
+msgstr "အော့ဖ်လိုင်းဖြစ်နေသော ရေဒီယိုလိုင်းများကိုသာ ပြသပါ။"
+
+#: data/scripts/reorder_groups.py:234 src/i18n.rs:229 src/i18n.rs:235
+
+#: src/tray/menu.rs:384
+
+msgid "Edit"
+msgstr "ပြင်ဆင်ပါ"
+
+#: data/scripts/reorder_groups.py:234
+
+msgid "Edit selected name, URL or group (F2)"
+msgstr "ÎÏÎµÎ¾ÎµÏÎ³Î±ÏÎ¯Î± ÎµÏÎ¹Î»ÎµÎ³Î¼Î­Î½Î¿Ï Î¿Î½ÏÎ¼Î±ÏÎ¿Ï, URL Î® Î¿Î¼Î¬Î´Î±Ï (F2)"
+
+#: data/scripts/edit_station.py:74
+
+msgid "Edit station (TiMonde)"
+msgstr "ရေဒီယိုကိုတည်းဖြတ်ပါ (TiMonde)"
+
+#: data/scripts/reorder_groups.py:555
+
+msgid "Edit station..."
+msgstr "ရေဒီယိုထည့်ပါ..."
+
+#: data/scripts/timonde_common.py:132
+
+msgid "Empty URL"
+msgstr "Leere URL"
+
+#: data/scripts/timonde_common.py:1301 data/scripts/timonde_common.py:1315
+
+msgid "Empty stream URL"
+msgstr "အချည်းနှီးသော တိုက်ရိုက်လွှင့် URL"
+
+#: data/scripts/timonde_settings.py:709
+
+msgid "Enable Left-Click"
+msgstr "Linksklick aktivieren"
+
+#: data/scripts/timonde_common.py:1277
+
+msgid "End of stream"
+msgstr "စမ်းချောင်းအဆုံး"
+
+#: data/scripts/browse_bouquets.py:950
+
+msgid "Enter a keyword or click Search to browse the directory."
+msgstr "သော့ချက်စကားလုံးကို ထည့်ပါ သို့မဟုတ် လမ်းညွှန်ကိုရှာဖွေရန် Search ကိုနှိပ်ပါ။"
+
+#: src/tray/mod.rs:155
+
+msgid "Ephemeral radio (not saved)."
+msgstr "FlÃ¼chtiges Radio (nicht gespeichert)."
+
+#: data/scripts/reorder_groups.py:1312
+
+msgid "Error during backup:"
+msgstr "မိတ္တူကူးနေစဉ် အမှား-"
+
+#: data/scripts/timonde_settings.py:753
+
+msgid "Error modifying autostart."
+msgstr "အလိုအလျောက်စတင်ခြင်းကို မွမ်းမံရာတွင် အမှားအယွင်းရှိသည်။"
+
+#: data/scripts/timonde_common.py:195
+
+msgid "Error {code}"
+msgstr "Fehler {code}"
+
+#: data/scripts/gnome_tray_helper.py:217
+
+msgid "Error:"
+msgstr "အမှား-"
+
+#: src/timezone.rs:521
+
+msgid "Evening"
+msgstr "ညနေပိုင်း"
+
+#: data/scripts/browse_bouquets.py:652
+
+msgid "Ex: /France/Jazz or / for root"
+msgstr "ဥပမာ- /France/Jazz သို့မဟုတ် / root အတွက်"
+
+#: data/scripts/browse_bouquets.py:1169
+
+msgid "Examples folder"
+msgstr "နမူနာဖိုင်တွဲ"
+
+#: data/scripts/reorder_groups.py:92
+
+msgid "Expand all"
+msgstr "ÎÎ½Î¬ÏÏÏÎ¾Î· ÏÎ»ÏÎ½"
+
+#: data/scripts/reorder_groups.py:92
+
+msgid "Expand all groups and subgroups"
+msgstr "ÎÎ½Î¬ÏÏÏÎ¾Î· ÏÎ»ÏÎ½ ÏÏÎ½ Î¿Î¼Î¬Î´ÏÎ½ ÎºÎ±Î¹ ÏÏÎ¿Î¿Î¼Î¬Î´ÏÎ½"
+
+#: data/scripts/browse_bouquets.py:1087
+
+msgid "Explore stations from this country on Radio-Browser"
+msgstr "Radio-Browser တွင် ဤနိုင်ငံမှ လိုင်းများကို ရှာဖွေပါ"
+
+#: data/scripts/browse_bouquets.py:1628
 
 msgid "Explore stations from {country} on Radio-Browser ➔"
 msgstr "Radio-Browser တွင် {country} မှ လိုင်းများကို ရှာဖွေပါ ➔"
 
-msgid "this country"
-msgstr "ဤနိုင်ငံ"
+#: data/scripts/reorder_groups.py:1228
+
+msgid "Export"
+msgstr "တင်ပို့ခြင်း။"
+
+#: data/scripts/reorder_groups.py:264
+
+msgid "Export all stations to CSV spreadsheet format"
+msgstr "သင့်ရေဒီယိုအားလုံးကို CSV စာရင်းဇယားဖော်မတ်ဖြင့် ထုတ်ယူပါ။"
+
+#: data/scripts/reorder_groups.py:1254
+
+msgid "Export error:"
+msgstr "Î£ÏÎ¬Î»Î¼Î± ÎµÎ¾Î±Î³ÏÎ³Î®Ï:"
+
+#: data/scripts/reorder_groups.py:1225
+
+msgid "Export stations to CSV"
+msgstr "ÎÎ¾Î±Î³ÏÎ³Î® ÏÏÎ±Î¸Î¼ÏÎ½ ÏÎµ CSV"
+
+#: data/scripts/reorder_groups.py:264
+
+msgid "Export to CSV"
+msgstr "CSV သို့ တင်ပို့ပါ။"
+
+#: data/scripts/browse_bouquets.py:1195
+
+msgid "Export to spreadsheet (CSV)..."
+msgstr "စာရင်းဇယား (CSV) သို့ ထုတ်ယူရန်..."
+
+#: data/scripts/browse_bouquets.py:1182
+
+msgid "External file:"
+msgstr "ပြင်ပဖိုင်-"
+
+#: data/scripts/timonde_common.py:1530
+
+msgid "Failed to add station"
+msgstr "ÎÏÎ¿ÏÏÏÎ¯Î± ÏÏÎ¿ÏÎ¸Î®ÎºÎ·Ï ÏÏÎ±Î¸Î¼Î¿Ï"
+
+#: data/scripts/timonde_settings.py:723
+
+msgid "Failed to enable Cinnamon unification."
+msgstr "Aktivierung der Cinnamon-Vereinheitlichung fehlgeschlagen."
+
+#: data/scripts/browse_bouquets.py:918 data/scripts/browse_bouquets.py:1066
+
+#: data/scripts/browse_bouquets.py:1252
+
+msgid "Favorite status"
+msgstr "အကြိုက်ဆုံးအခြေအနေ"
+
+#: data/scripts/browse_bouquets.py:2056
+
+msgid "File:"
+msgstr "ဖိုင်-"
+
+#: data/scripts/browse_bouquets.py:779
+
+msgid "Filter by country:"
+msgstr "နိုင်ငံအလိုက် စစ်ထုတ်ပါ-"
+
+#: data/scripts/browse_bouquets.py:1235
+
+msgid "Folder / Group"
+msgstr "ဖိုဒါ/အုပ်စု"
+
+#: data/scripts/timonde_common.py:1642
+
+msgid "Format"
+msgstr "Format"
+
+#: data/scripts/browse_bouquets.py:906
+
+msgid "Format & Bitrate"
+msgstr "ဖော်မတ်နှင့် ဘစ်နှုန်း"
+
+#: data/scripts/gnome_tray_helper.py:150
+
+msgid "GNOME Shell environment detected"
+msgstr "GNOME Shell ပတ်ဝန်းကျင်ကို တွေ့ရှိခဲ့သည်။"
+
+#: data/scripts/timonde_settings.py:693
+
+msgid "GNOME integration required"
+msgstr "GNOME ပေါင်းစည်းမှု လိုအပ်သည်။"
+
+#: data/scripts/timonde_common.py:1319
+
+msgid "GStreamer not available"
+msgstr "GStreamer မရနိုင်ပါ။"
+
+#: data/scripts/browse_bouquets.py:1195
+
+msgid "Generate a flat list for Calc or Excel spreadsheet"
+msgstr "Calc သို့မဟုတ် Excel ဇယားကွက်အတွက် ပြားသောစာရင်းကို ဖန်တီးပါ။"
+
+#: data/scripts/browse_bouquets.py:901
+
+msgid "Genre / Tags"
+msgstr "ကျား/မ"
+
+#: data/scripts/browse_bouquets.py:1053
+
+msgid "Genre / Topic"
+msgstr "အမျိုးအစား/ခေါင်းစဉ်"
+
+#: data/scripts/browse_bouquets.py:759
+
+msgid "Genre:"
+msgstr "လိင်-"
+
+#: data/scripts/timonde_common.py:193
+
+msgid "Geoblocked (VPN)"
+msgstr "Geoblockiert (VPN)"
+
+#: data/scripts/browse_bouquets.py:735
+
+msgid ""
+"Global search on the free and open <b>Radio-Browser</b> directory (+45,000 "
+"stations)."
+msgstr "<b>ရေဒီယို-ဘရောက်ဆာ</b> လမ်းညွှန် (+45,000 ဘူတာများ) တွင် ကမ္ဘာလုံးဆိုင်ရာ ရှာဖွေမှု။"
+
+#: data/scripts/edit_station.py:168
+
+msgid "Group / Folder:"
+msgstr "အဖွဲ့/ဖိုလ်ဒါ-"
+
+#: data/scripts/reorder_groups.py:677
+
+msgid "Group created:"
+msgstr "Î Î¿Î¼Î¬Î´Î± Î´Î·Î¼Î¹Î¿ÏÏÎ³Î®Î¸Î·ÎºÎµ:"
+
+#: data/scripts/reorder_groups.py:734
+
+msgid "Group renamed:"
+msgstr "Î Î¿Î¼Î¬Î´Î± Î¼ÎµÏÎ¿Î½Î¿Î¼Î¬ÏÏÎ·ÎºÎµ:"
+
+#: data/scripts/browse_bouquets.py:645
+
+msgid "Group:"
+msgstr "အဖွဲ့-"
+
+#: data/scripts/timonde_common.py:189
+
+msgid "HTTP Error {code}"
+msgstr "HTTP-Fehler {code}"
+
+#: data/scripts/browse_bouquets.py:702
+
+msgid "Help on groups and subgroups"
+msgstr "အုပ်စုများနှင့် အုပ်စုခွဲများတွင် ကူညီပါ။"
+
+#: data/scripts/browse_bouquets.py:1039 data/scripts/browse_bouquets.py:1221
+
+msgid "Import"
+msgstr "သွင်းကုန်"
+
+#: data/scripts/browse_bouquets.py:1328
+
+msgid "Import & Export"
+msgstr "သွင်းကုန်၊ ပို့ကုန်"
+
+#: data/scripts/browse_bouquets.py:717
+
+msgid "Import to my favorites"
+msgstr "ကျွန်ုပ်၏စိတ်ကြိုက်များသို့ တင်သွင်းပါ။"
+
+#: src/tray/menu.rs:560
+
+msgid "In 15 minutes"
+msgstr "15 မိနစ်အတွင်း"
+
+#: src/tray/menu.rs:567
+
+msgid "In 30 minutes"
+msgstr "မိနစ် 30 အတွင်း"
+
+#: src/tray/menu.rs:574
+
+msgid "In 45 minutes"
+msgstr "45 မိနစ်အတွင်း"
+
+#: src/tray/menu.rs:581
+
+msgid "In 60 minutes (1h)"
+msgstr "မိနစ် 60 (1 နာရီ)"
+
+#: data/scripts/reorder_groups.py:707
+
+msgid "Insert"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î®"
+
+#: data/scripts/reorder_groups.py:230
+
+msgid "Insert a separator or header"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î® Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï Î® ÎµÏÎ¹ÎºÎµÏÎ±Î»Î¯Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:705
+
+msgid "Insert separator"
+msgstr "ÎÎ¹ÏÎ±Î³ÏÎ³Î® Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï"
+
+#: data/scripts/gnome_tray_helper.py:179 data/scripts/timonde_settings.py:688
+
+msgid "Install GNOME integration"
+msgstr "GNOME ပေါင်းစည်းမှုကို ထည့်သွင်းပါ။"
+
+#: data/scripts/gnome_tray_helper.py:198
+
+msgid "Installation in progress (please confirm system prompt)..."
+msgstr "တပ်ဆင်ခြင်း လုပ်ဆောင်နေပါသည် (ကျေးဇူးပြု၍ system prompt ကို အတည်ပြုပါ)..."
+
+#: data/scripts/gnome_tray_helper.py:213
+
+msgid "Installation was cancelled or failed."
+msgstr "တပ်ဆင်ခြင်းကို ပယ်ဖျက်ခဲ့သည် သို့မဟုတ် မအောင်မြင်ပါ။"
+
+#: data/scripts/gnome_tray_helper.py:145
+
+msgid "Integration in GNOME top bar"
+msgstr "GNOME ထိပ်ဘားတွင် ပေါင်းစည်းခြင်း။"
+
+#: data/scripts/edit_station.py:71
+
+msgid "Keep in favorites"
+msgstr "ကျွန်ုပ်၏အကြိုက်ဆုံးများထဲတွင် သိမ်းဆည်းပါ။"
+
+#: data/scripts/browse_bouquets.py:749
+
+msgid "Keyword:"
+msgstr "အဓိကစကားလုံး-"
+
+#: data/scripts/browse_bouquets.py:819 data/scripts/browse_bouquets.py:1023
+
+msgid "Language:"
+msgstr "ဘာသာစကား-"
+
+#: data/scripts/browse_bouquets.py:706 data/scripts/browse_bouquets.py:1399
+
+#: data/scripts/reorder_groups.py:185 data/scripts/reorder_groups.py:1005
+
+msgid "Listen"
+msgstr "AnhÃ¶ren"
+
+#: data/scripts/browse_bouquets.py:706
+
+msgid "Listen to selected station"
+msgstr "ရွေးချယ်ထားသော ဘူတာရုံကို နားထောင်ပါ။"
+
+#: data/scripts/timonde_common.py:204
+
+msgid "Live (Shoutcast)"
+msgstr "ÎÏÎ½ÏÎ±Î½Î¬ (Shoutcast)"
+
+#: data/scripts/timonde_common.py:187
+
+msgid "Live ({codec})"
+msgstr "တိုက်ရိုက်လွှင့်ခြင်း ({codec})"
+
+#: data/scripts/browse_bouquets.py:1060
+
+msgid "Live availability"
+msgstr "တိုက်ရိုက်ရရှိနိုင်မှု"
+
+#: data/scripts/browse_bouquets.py:1186
+
+msgid "Load a file..."
+msgstr "ဖိုင်တစ်ခု တင်ပါ..."
+
+#: data/scripts/browse_bouquets.py:1186
+
+msgid "Load an XML, CSV, JSON, M3U or PLS file"
+msgstr "XML၊ CSV၊ JSON၊ M3U သို့မဟုတ် PLS ဖိုင်တစ်ခုကို တင်ပါ။"
+
+#: src/timezone.rs:521
+
+msgid "Morning"
+msgstr "မနက်ခင်း"
+
+#: data/scripts/reorder_groups.py:949
+
+msgid "Move"
+msgstr "ÎÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ·"
+
+#: data/scripts/reorder_groups.py:219
+
+msgid "Move down"
+msgstr "⬇ဆင်းပါ။"
+
+#: data/scripts/reorder_groups.py:219
+
+msgid "Move down one rank"
+msgstr "Move down one rank"
+
+#: data/scripts/reorder_groups.py:211
+
+msgid "Move selected item to the top"
+msgstr "Move selected item to the top"
+
+#: data/scripts/reorder_groups.py:197
+
+msgid "Move selection to another group (Ctrl+M)"
+msgstr "Move selection to another group (Ctrl+M)"
+
+#: data/scripts/reorder_groups.py:944
+
+msgid "Move to another group"
+msgstr "ÎÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ· ÏÎµ Î¬Î»Î»Î· Î¿Î¼Î¬Î´Î±"
+
+#: data/scripts/reorder_groups.py:559
+
+msgid "Move to another group..."
+msgstr "Move selection to another group (Ctrl+M)"
+
+#: data/scripts/reorder_groups.py:197
+
+msgid "Move to..."
+msgstr "သို့ရွှေ့ပါ..."
+
+#: data/scripts/reorder_groups.py:215
+
+msgid "Move up"
+msgstr "⬆ အပေါ်တက်ပါ။"
+
+#: data/scripts/reorder_groups.py:215
+
+msgid "Move up one rank"
+msgstr "Move up one rank"
+
+#: src/tray/menu.rs:528
+
+msgid "Mute (0%)"
+msgstr "အသံတိတ် (0%)"
+
+#: data/scripts/reorder_groups.py:98 data/scripts/timonde_settings.py:524
+
+msgid "My Radios"
+msgstr "ကျွန်ုပ်၏ ရေဒီယိုများ"
+
+#: data/scripts/timonde_common.py:1925
+
+msgid "Name and Stream URL are mandatory."
+msgstr "Î¤Î¿ ÏÎ½Î¿Î¼Î± ÎºÎ±Î¹ Î· Î´Î¹ÎµÏÎ¸ÏÎ½ÏÎ· URL ÏÎ·Ï ÏÎ¿Î®Ï ÎµÎ¯Î½Î±Î¹ ÏÏÎ¿ÏÏÎµÏÏÎ¹ÎºÎ¬."
+
+#: data/scripts/reorder_groups.py:646
+
+msgid "Name of the new group:"
+msgstr "ÎÎ½Î¿Î¼Î± Î½Î­Î±Ï Î¿Î¼Î¬Î´Î±Ï:"
+
+#: data/scripts/browse_bouquets.py:1011
+
+msgid "National Bouquet (Major stations)"
+msgstr "အမျိုးသားပန်းစည်း (ဗိုလ်ကြီးဘူတာ)၊"
+
+#: data/scripts/timonde_settings.py:677
+
+msgid ""
+"Native integration in notification tray via StatusNotifierItem / XEmbed."
+msgstr "StatusNotifierItem / XEmbed မှတစ်ဆင့် အကြောင်းကြားချက်ဗန်းတွင် မူရင်းပေါင်းစပ်မှု။"
+
+#: data/scripts/browse_bouquets.py:1655
+
+msgid "New"
+msgstr "[အသစ်]"
+
+#: data/scripts/reorder_groups.py:193
+
+msgid "New group"
+msgstr "အဖွဲ့သစ်"
+
+#: data/scripts/reorder_groups.py:593
+
+msgid "New group..."
+msgstr "အဖွဲ့သစ်"
+
+#: data/scripts/reorder_groups.py:725
+
+msgid "New name for group:"
+msgstr "ÎÎ­Î¿ ÏÎ½Î¿Î¼Î± Î¿Î¼Î¬Î´Î±Ï:"
+
+#: data/scripts/browse_bouquets.py:1282
+
+msgid "New only"
+msgstr "အသစ်သာ"
+
+#: data/scripts/reorder_groups.py:580
+
+msgid "New subgroup here..."
+msgstr "ÎÎ­Î± ÏÏÎ¿Î¿Î¼Î¬Î´Î± ÎµÎ´Ï..."
+
+#: src/timezone.rs:521
+
+msgid "Night"
+msgstr "ည"
+
+#: data/scripts/browse_bouquets.py:1726
 
 msgid "No DAB+ bouquet for {country} — Use 'Search online'."
 msgstr "{country} အတွက် DAB+ လိုင်းတွဲ မရှိပါ — 'အွန်လိုင်းရှာဖွေမှု' ကို အသုံးပြုပါ။"
 
-msgid "{checked} / {total} station(s) selected"
-msgstr "{checked} / {total} လိုင်း ရွေးချယ်ထားသည်"
+#: data/scripts/reorder_groups.py:1262
 
-msgid ""
-"No radio found for this language in {country}. Uncheck 'Filter by country' "
-"or clear the language."
-msgstr ""
-"{country} တွင် ဤဘာသာစကားအတွက် ရေဒီယို ရှာမတွေ့ပါ။ 'နိုင်ငံအလိုက် စစ်ထုတ်ခြင်း' ကို ဖြုတ်ပါ သို့မဟုတ် "
-"ဘာသာစကားကို ရှင်းပါ။"
+msgid "No bookmarks.xml file found to backup."
+msgstr "ÎÎµÎ½ Î²ÏÎ­Î¸Î·ÎºÎµ Î±ÏÏÎµÎ¯Î¿ bookmarks.xml Î³Î¹Î± Î´Î·Î¼Î¹Î¿ÏÏÎ³Î¯Î± Î±Î½ÏÎ¹Î³ÏÎ¬ÏÎ¿Ï."
+
+#: data/scripts/reorder_groups.py:872
+
+msgid "No items to sort in this group."
+msgstr "ÎÎµÎ½ ÏÏÎ¬ÏÏÎ¿ÏÎ½ ÏÏÎ¿Î¹ÏÎµÎ¯Î± ÏÏÎ¿Ï ÏÎ±Î¾Î¹Î½ÏÎ¼Î·ÏÎ· ÏÎµ Î±ÏÏÎ®Î½ ÏÎ·Î½ Î¿Î¼Î¬Î´Î±."
+
+#: data/scripts/timonde_settings.py:618
+
+msgid "No new stations added (already in your bookmarks)."
+msgstr "ÎÎµÎ½ ÏÏÎ¿ÏÏÎ­Î¸Î·ÎºÎ±Î½ Î½Î­Î¿Î¹ ÏÏÎ±Î¸Î¼Î¿Î¯ (ÏÏÎ¬ÏÏÎ¿ÏÎ½ Î®Î´Î· ÏÏÎ¿ÏÏ ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎµÏ ÏÎ±Ï)."
+
+#: data/scripts/browse_bouquets.py:1625
+
+msgid "No pre-loaded DAB+ bouquet for this country."
+msgstr "ဤနိုင်ငံအတွက် ကြိုတင်ထည့်သွင်းထားသော DAB+ လိုင်းတွဲ မရှိပါ။"
+
+#: data/scripts/browse_bouquets.py:1898
 
 msgid ""
 "No radio found for these criteria in {country}. Uncheck 'Filter by country' "
@@ -1226,292 +1109,998 @@ msgstr ""
 "{country} တွင် ဤသတ်မှတ်ချက်များအတွက် ရေဒီယို ရှာမတွေ့ပါ။ ကမ္ဘာအနှံ့ ရှာရန် 'နိုင်ငံအလိုက် စစ်ထုတ်ခြင်း' ကို "
 "ဖြုတ်ပါ။"
 
+#: data/scripts/browse_bouquets.py:1895
+
+msgid ""
+"No radio found for this language in {country}. Uncheck 'Filter by country' "
+"or clear the language."
+msgstr ""
+"{country} တွင် ဤဘာသာစကားအတွက် ရေဒီယို ရှာမတွေ့ပါ။ 'နိုင်ငံအလိုက် စစ်ထုတ်ခြင်း' ကို ဖြုတ်ပါ သို့မဟုတ် "
+"ဘာသာစကားကို ရှင်းပါ။"
+
+#: data/scripts/browse_bouquets.py:1900
+
 msgid "No radio found on Radio-Browser for these criteria."
 msgstr "ဤသတ်မှတ်ချက်များအတွက် Radio-Browser တွင် ရေဒီယို ရှာမတွေ့ပါ။"
 
-msgid "[Present]"
-msgstr "[ရှိပြီး]"
+#: src/tray/mod.rs:459
 
-msgid "[New]"
-msgstr "[အသစ်]"
+msgid "No radio is currently playing."
+msgstr "လက်ရှိတွင် မည်သည့်ရေဒီယိုမျှ ဖွင့်မထားပါ။"
 
-msgid "○ Untested"
-msgstr "○ မစမ်းသပ်ရသေးပါ"
+#: src/tray/menu.rs:297
 
-msgid "{count} stations found."
-msgstr "{count} လိုင်း တွေ့ရှိသည်။"
+msgid "No station loaded"
+msgstr "No stations to check."
 
-msgid "Testing..."
-msgstr "စမ်းသပ်နေသည်..."
+#: data/scripts/reorder_groups.py:1072
 
-msgid "{count} available timezones"
-msgstr "{count} ရရှိနိုင်သော အချိန်ဇုန်များ"
+msgid "No stations to check."
+msgstr "No stations to check."
 
-msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
-msgstr "အုပ်စု <b>{nb_gr}</b> ခုတွင် လိုင်း <b>{nb_st}</b> လိုင်း။"
+#: data/scripts/timonde_common.py:1680
 
-msgid "Explore stations from this country on Radio-Browser"
-msgstr "Radio-Browser တွင် ဤနိုင်ငံမှ လိုင်းများကို ရှာဖွေပါ"
+msgid "No stream found for this name. Modify the text above."
+msgstr "ဤအမည်အတွက် လိုင်းရှာမတွေ့ပါ။ အထက်ပါ စာသားကို ပြင်ဆင်ပါ။"
+
+#: data/scripts/timonde_common.py:1907
+
+msgid "Not listed yet!"
+msgstr "ÎÎµÎ½ Î­ÏÎµÎ¹ ÎºÎ±ÏÎ±ÏÏÏÎ·Î¸ÎµÎ¯ Î±ÎºÏÎ¼Î±!"
+
+#: data/scripts/timonde_common.py:1721
+
+msgid "OK"
+msgstr "OK"
+
+#: data/scripts/browse_bouquets.py:972
+
+msgid ""
+"Official and verified selection across 146 countries and regions (digital "
+"DAB+ bouquets and major national stations)."
+msgstr "နိုင်ငံနှင့် ဒေသပေါင်း 146 တွင် တရားဝင် စိစစ်ပြီး ရွေးချယ်မှု (ဒစ်ဂျစ်တယ် DAB+ ပန်းစည်းများနှင့် အဓိက နိုင်ငံတော် ဘူတာများ)။"
+
+#: data/scripts/timonde_common.py:178
+
+msgid "Offline (HTML error page)"
+msgstr "အော့ဖ်လိုင်း (HTML အမှား စာမျက်နှာ)"
+
+#: data/scripts/edit_station.py:366
+
+msgid "On-air broadcast name:"
+msgstr "ÎÎ½Î¿Î¼Î± Î¼ÎµÏÎ¬Î´Î¿ÏÎ·Ï ÏÏÎ¿Î½ Î±Î­ÏÎ±:"
+
+#: data/scripts/browse_bouquets.py:1983
+
+msgid "Open"
+msgstr "ဖွင့်သည်။"
+
+#: data/scripts/browse_bouquets.py:1203
+
+msgid "Open ~/.config/timonde"
+msgstr "~/.config/timeonde ကိုဖွင့်ပါ။"
+
+#: data/scripts/browse_bouquets.py:1169
+
+msgid "Open ~/.config/timonde/examples"
+msgstr "~/.config/timeonde/examples ကိုဖွင့်ပါ။"
+
+#: data/scripts/reorder_groups.py:706
+
+msgid "Optional title for this separator (leave blank for a simple line):"
+msgstr "Î ÏÎ¿Î±Î¹ÏÎµÏÎ¹ÎºÏÏ ÏÎ¯ÏÎ»Î¿Ï Î´Î¹Î±ÏÏÏÎ¹ÏÏÎ¹ÎºÎ¿Ï (Î±ÏÎ®ÏÏÎµ ÎºÎµÎ½Ï Î³Î¹Î± Î±ÏÎ»Î® Î³ÏÎ±Î¼Î¼Î®):"
+
+#: data/scripts/reorder_groups.py:60
+
+msgid "Organize groups and stations (TiMonde)"
+msgstr "Organize groups and stations (TiMonde)"
+
+#: data/scripts/timonde_common.py:1559
+
+msgid "Organizing groups and subgroups (Linux convention)"
+msgstr "ÎÏÎ³Î¬Î½ÏÏÎ· Î¿Î¼Î¬Î´ÏÎ½ ÎºÎ±Î¹ ÏÏÎ¿Î¿Î¼Î¬Î´ÏÎ½ (ÏÏÎ¼Î²Î±ÏÎ· Linux)"
+
+#: data/scripts/timonde_common.py:1609
+
+msgid "Original stream is unreachable:"
+msgstr "UrsprÃ¼nglicher Stream nicht erreichbar:"
+
+#: src/tray/menu.rs:160
+
+msgid "Paused"
+msgstr "ခေတ္တရပ်ထားသည်"
+
+#: src/i18n.rs:179 src/i18n.rs:228 src/i18n.rs:234 src/i18n.rs:244
+
+#: src/i18n.rs:249 src/i18n.rs:254 src/i18n.rs:257 src/i18n.rs:260
+
+#: src/i18n.rs:263 src/i18n.rs:266 src/i18n.rs:269 src/i18n.rs:272
+
+msgid "Play"
+msgstr "ဖွင့်ပါ"
+
+#: src/tray/menu.rs:413
+
+msgid "Play random radio (Ephemeral discovery)"
+msgstr "ကျပန်းရေဒီယိုဌာနကို နားထောင်ပါ (တဒင်္ဂရှာဖွေတွေ့ရှိမှု)"
+
+#: data/scripts/reorder_groups.py:549
+
+msgid "Play this station"
+msgstr "ဤရေဒီယိုကို ဖျက်ပါ။"
+
+#: data/scripts/timonde_common.py:1283
+
+msgid "Playing:"
+msgstr "ကစားနေသည်"
+
+#: data/scripts/edit_station.py:388
+
+msgid "Please enter a stream URL first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÎ¹ÏÎ±Î³Î¬Î³ÎµÏÎµ ÏÏÏÏÎ± Î­Î½Î± URL ÏÎ¿Î®Ï."
+
+#: data/scripts/timonde_common.py:1877
+
+msgid "Please enter a stream URL."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÎ¹ÏÎ±Î³Î¬Î³ÎµÏÎµ Î­Î½Î± URL ÏÎ¿Î®Ï."
+
+#: data/scripts/browse_bouquets.py:1783
+
+msgid "Please select a radio station in the list first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ ÏÏÏÏÎ± Î­Î½Î±Î½ ÏÎ±Î´Î¹Î¿ÏÏÎ½Î¹ÎºÏ ÏÏÎ±Î¸Î¼Ï Î±ÏÏ ÏÎ· Î»Î¯ÏÏÎ±."
+
+#: data/scripts/reorder_groups.py:926
+
+msgid "Please select a radio station to move."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î­Î½Î±Î½ ÏÏÎ±Î¸Î¼Ï Î³Î¹Î± Î¼ÎµÏÎ±ÎºÎ¯Î½Î·ÏÎ·."
+
+#: data/scripts/reorder_groups.py:1042
+
+msgid "Please select a station to contribute."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î­Î½Î±Î½ ÏÏÎ±Î¸Î¼Ï ÏÏÎ¿Ï ÏÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬."
+
+#: data/scripts/reorder_groups.py:1020
+
+msgid "Please select a station to repair."
+msgstr "Please select a station to repair."
+
+#: data/scripts/browse_bouquets.py:1825
+
+msgid "Please select or check a radio station in the list first."
+msgstr "Î Î±ÏÎ±ÎºÎ±Î»Î¿ÏÎ¼Îµ ÎµÏÎ¹Î»Î­Î¾ÏÎµ Î® ÏÎ·Î¼ÎµÎ¹ÏÏÏÎµ Î­Î½Î±Î½ ÏÎ±Î´Î¹Î¿ÏÏÎ½Î¹ÎºÏ ÏÏÎ±Î¸Î¼Ï ÏÏÏÏÎ±."
+
+#: data/scripts/timonde_common.py:1651
+
+msgid "Popularity"
+msgstr "Beliebtheit"
+
+#: data/scripts/timonde_settings.py:735
+
+msgid "Preferences"
+msgstr "နှစ်သက်ရာ"
+
+#: data/scripts/reorder_groups.py:185
+
+msgid "Preview selected radio stream"
+msgstr "Testing live radio streams..."
+
+#: data/scripts/gnome_tray_helper.py:175
+
+msgid "Quit"
+msgstr "ထွက်လိုက်ပါ။"
+
+#: src/tray/menu.rs:621
+
+msgid "Quit TiMonde"
+msgstr "TiMonde မှ ထွက်ခွာပါ။"
+
+#: data/scripts/timonde_common.py:1283 data/scripts/timonde_common.py:1291
+
+#: data/scripts/timonde_common.py:1298 data/scripts/timonde_common.py:1311
+
+#: data/scripts/timonde_common.py:1326
+
+msgid "Radio"
+msgstr "Radio"
+
+#: data/scripts/reorder_groups.py:147
+
+msgid "Radio / Group"
+msgstr "Î¡Î±Î´Î¹ÏÏÏÎ½Î¿ / ÎÎ¼Î¬Î´Î±"
+
+#: data/scripts/edit_station.py:139
+
+msgid "Radio-Browser"
+msgstr "Radio-Browser"
+
+#: data/scripts/timonde_common.py:1949
+
+msgid "Radio-Browser contribution"
+msgstr "Î£ÏÎ½ÎµÎ¹ÏÏÎ¿ÏÎ¬ ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1782
+
+msgid ""
+"Radio-Browser is an open directory (+45 000 stations). Shared stations "
+"benefit all users."
+msgstr "Radio-Browser သည် ဖွင့်ထားသော လမ်းညွှန်တစ်ခု (+45 000 ဘူတာများ)။ မျှဝေထားသော ဘူတာများသည် အသုံးပြုသူအားလုံးကို အကျိုးပြုသည်။"
+
+#: data/scripts/timonde_common.py:1901
+
+msgid "Radio-Browser prevents duplicate stream URLs. No submission required."
+msgstr "Radio-Browser သည် ထပ်နေသော stream URL များကို တားဆီးသည်။ တင်ပြရန်မလိုအပ်ပါ။"
+
+#: data/scripts/timonde_common.py:1542
+
+msgid "Radio-Browser servers unreachable"
+msgstr "ÎÎ¹ Î´Î¹Î±ÎºÎ¿Î¼Î¹ÏÏÎ­Ï ÏÎ¿Ï Radio-Browser Î´ÎµÎ½ ÎµÎ¯Î½Î±Î¹ ÏÏÎ¿ÏÎ²Î¬ÏÎ¹Î¼Î¿Î¹"
+
+#: data/scripts/reorder_groups.py:1200
+
+msgid "Redirects applied:"
+msgstr "ÎÏÎ±ÏÎ¼ÏÏÏÎ·ÎºÎ±Î½ Î±Î½Î±ÎºÎ±ÏÎµÏÎ¸ÏÎ½ÏÎµÎ¹Ï:"
+
+#: data/scripts/browse_bouquets.py:1165
+
+msgid "Refresh examples list"
+msgstr "နမူနာများစာရင်းကို ပြန်လည်စတင်ပါ။"
+
+#: data/scripts/browse_bouquets.py:1015
+
+msgid "Regions & Local:"
+msgstr "ဒေသများနှင့် ဒေသဆိုင်ရာ-"
+
+#: data/scripts/browse_bouquets.py:1190
+
+msgid "Reload"
+msgstr "ပြန်တင်ပါ။"
+
+#: data/scripts/browse_bouquets.py:1190
+
+msgid "Reload currently displayed file"
+msgstr "လက်ရှိပြသနေသောဖိုင်ကို ပြန်လည်စတင်ပါ။"
+
+#: data/scripts/reorder_groups.py:724
+
+msgid "Rename group"
+msgstr "ÎÎµÏÎ¿Î½Î¿Î¼Î±ÏÎ¯Î± Î¿Î¼Î¬Î´Î±Ï"
+
+#: data/scripts/reorder_groups.py:584
+
+msgid "Rename group..."
+msgstr "Gruppe umbenennen..."
+
+#: data/scripts/browse_bouquets.py:1119 data/scripts/reorder_groups.py:238
+
+#: data/scripts/reorder_groups.py:563
+
+msgid "Repair stream..."
+msgstr "လည်ပတ်စီးဆင်းမှု..."
+
+#: data/scripts/browse_bouquets.py:1119
+
+msgid "Replace selected link with an active official stream"
+msgstr "ရွေးချယ်ထားသောလင့်ခ်ကို လက်ရှိတရားဝင်စီးကြောင်းဖြင့် အစားထိုးပါ။"
+
+#: data/scripts/timonde_common.py:1592
+
+msgid "Replace stream:"
+msgstr "ÎÎ½ÏÎ¹ÎºÎ±ÏÎ¬ÏÏÎ±ÏÎ· ÏÎ¿Î®Ï:"
+
+#: data/scripts/browse_bouquets.py:1173
+
+msgid "Restore samples"
+msgstr "နမူနာများကို ပြန်လည်ရယူပါ။"
+
+#: data/scripts/browse_bouquets.py:1173
+
+msgid "Restore the 19 original samples"
+msgstr "မူရင်းနမူနာ ၁၉ ခုကို ပြန်ယူပါ။"
+
+#: data/scripts/reorder_groups.py:861
+
+msgid "Root"
+msgstr "Î¡Î¯Î¶Î±"
+
+#: data/scripts/reorder_groups.py:903
+
+msgid "Root items sorted alphabetically."
+msgstr "Î¤Î± ÏÏÎ¿Î¹ÏÎµÎ¯Î± ÏÎ·Ï ÏÎ¯Î¶Î±Ï ÏÎ±Î¾Î¹Î½Î¿Î¼Î®Î¸Î·ÎºÎ±Î½ Î±Î»ÏÎ±Î²Î·ÏÎ¹ÎºÎ¬."
+
+#: data/scripts/timonde_settings.py:638
+
+msgid "SESSION OPTIONS"
+msgstr "Session ရွေးစရာများ"
+
+#: src/timezone.rs:657
+
+msgid "Same time"
+msgstr "အတူတူပါပဲ။"
+
+#: data/scripts/edit_station.py:76 data/scripts/reorder_groups.py:727
+
+#: data/scripts/reorder_groups.py:1269
+
+msgid "Save"
+msgstr "သိမ်းပါ"
+
+#: data/scripts/reorder_groups.py:276
+
+msgid "Save and reload"
+msgstr "သိမ်းဆည်းပြီး ပြန်လည်စတင်ပါ။"
+
+#: src/tray/dialogs.rs:328 src/tray/mod.rs:541
+
+msgid "Save error"
+msgstr "သိမ်းဆည်းမှု အမှား"
+
+#: data/scripts/reorder_groups.py:276
+
+msgid "Save now"
+msgstr "သိမ်းဆည်းမှု အမှား"
+
+#: data/scripts/edit_station.py:69 src/i18n.rs:199
+
+msgid "Save station to favorites (TiMonde)"
+msgstr "ရေဒီယိုကို ကျွန်ုပ်အကြိုက်ဆုံးများ (TiMonde) တွင် သိမ်းဆည်းပါ"
+
+#: src/tray/mod.rs:561
+
+msgid "Saved!"
+msgstr "သိမ်းဆည်းပြီးပါပြီ!"
+
+#: data/scripts/browse_bouquets.py:770 data/scripts/timonde_common.py:1630
+
+msgid "Search"
+msgstr "Suchen"
+
+#: data/scripts/reorder_groups.py:238
+
+msgid "Search Radio-Browser for a working replacement stream"
+msgstr "ဤအသေသတ်လင့်ခ်အတွက် Radio-Browser တွင် အစားထိုးအသက်ဝင်သောစီးကြောင်းကို အလိုအလျောက်ရှာဖွေပါ။"
+
+#: data/scripts/browse_bouquets.py:1326 data/scripts/timonde_settings.py:592
+
+msgid "Search online"
+msgstr "အွန်လိုင်းရှာပါ။"
+
+#: data/scripts/browse_bouquets.py:1885
+
+msgid "Searching Radio-Browser..."
+msgstr "ရေဒီယို-ဘရောက်ဆာကို ရှာဖွေနေသည်..."
+
+#: data/scripts/timonde_common.py:1660
+
+msgid "Searching for streams..."
+msgstr "လည်ပတ်စီးဆင်းမှု..."
+
+#: data/scripts/timonde_common.py:1670
+
+msgid "Searching on Radio-Browser..."
+msgstr "Radio-Browser တွင် ရှာဖွေနေသည်..."
+
+#: data/scripts/browse_bouquets.py:1382
+
+msgid "Select a station in table to listen to."
+msgstr "နားထောင်ရန် ဇယားရှိ ဘူတာရုံကို ရွေးပါ။"
+
+#: data/scripts/browse_bouquets.py:1386
+
+msgid "Select a station to listen to."
+msgstr "နားထောင်ရန် ဘူတာရုံကို ရွေးပါ။"
+
+#: data/scripts/timonde_common.py:1610
+
+msgid "Select a verified replacement stream from Radio-Browser:"
+msgstr "GeprÃ¼ften Ersatzstream aus Radio-Browser auswÃ¤hlen:"
+
+#: data/scripts/edit_station.py:185
+
+msgid "Select or type (e.g. /France/Brittany or / for root)"
+msgstr "AuswÃ¤hlen oder eingeben (z.B. /Deutschland/Bayern oder / fÃ¼r Wurzel)"
+
+#: data/scripts/reorder_groups.py:956
+
+msgid "Select the target destination:"
+msgstr "ÎÏÎ¹Î»Î­Î¾ÏÎµ ÏÎ¿Î½ ÏÎ¬ÎºÎµÎ»Î¿ ÏÏÎ¿Î¿ÏÎ¹ÏÎ¼Î¿Ï:"
+
+#: src/tray/mod.rs:478
+
+msgid "Selection"
+msgstr "ရွေးချယ်မှု"
+
+#: data/scripts/reorder_groups.py:230
+
+msgid "Separator"
+msgstr "ခွဲထုတ်ခြင်း။"
+
+#: data/scripts/timonde_common.py:1538
+
+msgid "Server rejected submission: {error}"
+msgstr "Î Î´Î¹Î±ÎºÎ¿Î¼Î¹ÏÏÎ®Ï Î±ÏÎ­ÏÏÎ¹ÏÎµ ÏÎ·Î½ ÏÏÎ¿Î²Î¿Î»Î®: {error}"
+
+#: data/scripts/timonde_common.py:198
+
+msgid "Server unreachable"
+msgstr "Server nicht erreichbar"
+
+#: data/scripts/timonde_settings.py:316
+
+msgid "Settings & Control TiMonde"
+msgstr "ဆက်တင်များနှင့် TiMonde ထိန်းချုပ်မှု"
+
+#: src/tray/dialogs.rs:400
+
+msgid "Settings console not found"
+msgstr "ဆက်တင် ကွန်ဆိုးလ် ရှာမတွေ့ပါ"
+
+#: src/tray/menu.rs:605
+
+msgid "Settings..."
+msgstr "ဆက်တင်များ..."
+
+#: src/i18n.rs:205 src/tray/menu.rs:549 src/tray/menu.rs:552
+
+msgid "Sleep timer"
+msgstr "အိပ်ချိန်ချိန်စက်"
+
+#: src/tray/mod.rs:592
+
+msgid "Sleep timer activated"
+msgstr "အိပ်ချိန်သတ်မှတ်ချက် ဖွင့်ထားသည်"
+
+#: src/tray/mod.rs:626
+
+msgid "Sleep timer cancelled."
+msgstr "အိပ်ချိန်သတ်မှတ်ချက်ကို ပယ်ဖျက်လိုက်သည်။"
+
+#: src/tray/mod.rs:615
+
+msgid "Sleep timer: stopping radio."
+msgstr "အိပ်ချိန်သတ်မှတ်ချက် - ရေဒီယို ပိတ်နေသည်။"
+
+#: data/scripts/reorder_groups.py:223
+
+msgid "Sort sibling items alphabetically"
+msgstr "ÎÎ»ÏÎ±Î²Î·ÏÎ¹ÎºÎ® ÏÎ±Î¾Î¹Î½ÏÎ¼Î·ÏÎ· Î¿Î¼ÏÏÎ¹Î¼ÏÎ½ ÏÏÎ¿Î¹ÏÎµÎ¯ÏÎ½"
+
+#: data/scripts/reorder_groups.py:901
+
+msgid "Sorted alphabetically:"
+msgstr "Î¤Î±Î¾Î¹Î½Î¿Î¼Î®Î¸Î·ÎºÎµ Î±Î»ÏÎ±Î²Î·ÏÎ¹ÎºÎ¬:"
+
+#: data/scripts/browse_bouquets.py:888 data/scripts/browse_bouquets.py:1045
+
+#: data/scripts/browse_bouquets.py:1227 data/scripts/timonde_common.py:1638
+
+msgid "Station"
+msgstr "အပန်းဖြေစခန်း"
+
+#: src/tray/mod.rs:566
+
+msgid "Station added but reload error"
+msgstr "လိုင်းထည့်သွင်းပြီးသော်လည်း ပြန်လည်ဖွင့်ရာတွင် အမှားဖြစ်ပွားသည်"
+
+#: data/scripts/reorder_groups.py:691
+
+msgid "Station added:"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÏÏÎ¿ÏÏÎ­Î¸Î·ÎºÎµ:"
+
+#: data/scripts/reorder_groups.py:683
+
+msgid "Station editor unavailable."
+msgstr "Î ÎµÏÎµÎ¾ÎµÏÎ³Î±ÏÏÎ®Ï ÏÏÎ±Î¸Î¼ÏÎ½ Î´ÎµÎ½ ÎµÎ¯Î½Î±Î¹ Î´Î¹Î±Î¸Î­ÏÎ¹Î¼Î¿Ï."
+
+#: data/scripts/reorder_groups.py:997
+
+msgid "Station moved to"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ Î¼ÎµÏÎ±ÎºÎ¹Î½Î®Î¸Î·ÎºÎµ ÏÏÎ¿"
+
+#: data/scripts/timonde_common.py:1476
+
+msgid "Station name cannot be empty"
+msgstr "Î¤Î¿ ÏÎ½Î¿Î¼Î± ÏÎ¿Ï ÏÏÎ±Î¸Î¼Î¿Ï Î´ÎµÎ½ Î¼ÏÎ¿ÏÎµÎ¯ Î½Î± ÎµÎ¯Î½Î±Î¹ ÎºÎµÎ½Ï"
+
+#: data/scripts/edit_station.py:110 data/scripts/timonde_common.py:1794
+
+msgid "Station name:"
+msgstr "လိုင်းအမည်:"
+
+#: data/scripts/timonde_common.py:1528
+
+msgid "Station successfully submitted to Radio-Browser."
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÏÏÎ¿Î²Î»Î®Î¸Î·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ ÏÏÎ¿ Radio-Browser."
+
+#: data/scripts/reorder_groups.py:745
+
+msgid "Station updated:"
+msgstr "Î ÏÏÎ±Î¸Î¼ÏÏ ÎµÎ½Î·Î¼ÎµÏÏÎ¸Î·ÎºÎµ:"
+
+#: data/scripts/browse_bouquets.py:1397 data/scripts/edit_station.py:405
+
+#: data/scripts/reorder_groups.py:1005 data/scripts/reorder_groups.py:1080
+
+#: src/i18n.rs:185 src/i18n.rs:245 src/i18n.rs:250
+
+msgid "Stop"
+msgstr "ရပ်ပါ"
+
+#: data/scripts/reorder_groups.py:549
+
+msgid "Stop playback"
+msgstr "Wiedergabe stoppen"
+
+#: data/scripts/browse_bouquets.py:1259
+
+msgid "Stream URL"
+msgstr "တိုက်ရိုက်လွှင့် URL"
+
+#: data/scripts/timonde_common.py:1478
+
+msgid "Stream URL cannot be empty"
+msgstr "Î¤Î¿ URL ÏÎ·Ï ÏÎ¿Î®Ï Î´ÎµÎ½ Î¼ÏÎ¿ÏÎµÎ¯ Î½Î± ÎµÎ¯Î½Î±Î¹ ÎºÎµÎ½Ï"
+
+#: data/scripts/timonde_common.py:1804
+
+msgid "Stream URL:"
+msgstr "URL ÏÎ¿Î®Ï:"
+
+#: data/scripts/reorder_groups.py:1029
+
+msgid "Stream successfully repaired for"
+msgstr "Î ÏÎ¿Î® ÎµÏÎ¹ÏÎºÎµÏÎ¬ÏÏÎ·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ Î³Î¹Î±"
+
+#: data/scripts/timonde_common.py:1274
+
+msgid "Stream unreachable"
+msgstr "ထုတ်လွှင့်မှုကို ချိတ်ဆက်၍မရပါ။"
+
+#: data/scripts/browse_bouquets.py:739
+
+msgid "Submit a new station to community Radio-Browser directory"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® Î½Î­Î¿Ï ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿Î½ ÎºÎ±ÏÎ¬Î»Î¿Î³Î¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1859 data/scripts/timonde_common.py:1911
+
+#: data/scripts/timonde_common.py:1958
+
+msgid "Submit to Radio-Browser"
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® ÏÏÎ¿ Radio-Browser"
+
+#: data/scripts/timonde_common.py:1931
+
+msgid "Submitting station to Radio-Browser..."
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î® ÏÏÎ±Î¸Î¼Î¿Ï ÏÏÎ¿ Radio-Browser..."
+
+#: data/scripts/timonde_common.py:1930
+
+msgid "Submitting..."
+msgstr "Î¥ÏÎ¿Î²Î¿Î»Î®..."
+
+#: data/scripts/browse_bouquets.py:1089
 
 msgid "Switch to the global directory with this country pre-selected"
 msgstr "ဤနိုင်ငံကို ရွေးချယ်ပြီး ကမ္ဘာလုံးဆိုင်ရာ လမ်းညွှန်သို့ ပြောင်းပါ"
 
-#, fuzzy
-msgid " [Ephemeral]"
-msgstr "[ပေါ်ပင်]"
+#: data/scripts/timonde_settings.py:665
 
-msgid "%20"
-msgstr ""
+msgid "System language"
+msgstr "စနစ်ဘာသာစကား"
 
-#, fuzzy
-msgid "(Already in favorites)"
-msgstr "ကျွန်ုပ်၏အကြိုက်ဆုံးများထဲတွင် သိမ်းဆည်းပါ။"
+#: data/scripts/timonde_common.py:1831
 
-msgid "/org/mpris/MediaPlayer2/CurrentTrack"
-msgstr ""
+msgid "Tags / Genres:"
+msgstr "ÎÏÎ¹ÎºÎ­ÏÎµÏ / ÎÎ¯Î´Î·:"
 
-#, fuzzy
-msgid "Add station..."
-msgstr "ရေဒီယိုထည့်ပါ..."
+#: src/tray/mod.rs:325
 
-msgid "Bitrate"
-msgstr ""
+msgid "Temporary backup stream found for"
+msgstr "ယာယီအရန်ကူးခြင်းအတွက် ရှာတွေ့သည်။"
 
-#, fuzzy
-msgid "Checking..."
-msgstr "ချိတ်ဆက်နေသည်..."
+#: data/scripts/edit_station.py:135 data/scripts/edit_station.py:407
 
-msgid "Clear"
-msgstr ""
+msgid "Test"
+msgstr "စမ်း"
 
-msgid "Clear / Automatic mode"
-msgstr ""
+#: data/scripts/reorder_groups.py:102
 
-msgid "Clear field (click to empty)"
-msgstr ""
+msgid "Test stream availability and locate broken links"
+msgstr "သင့်ရေဒီယိုဌာနများ၏ တိုက်ရိုက်ရရှိနိုင်မှုကို စမ်းသပ်ပြီး အသေခံလင့်ခ်များကို ရှာဖွေပါ။"
 
-#, fuzzy
-msgid "Country"
-msgstr "<b>Country:</b>"
+#: data/scripts/browse_bouquets.py:946 data/scripts/browse_bouquets.py:1115
 
-#, fuzzy
-msgid "Country:"
-msgstr "<b>Country:</b>"
+#: data/scripts/browse_bouquets.py:1286
 
-msgid "Delete group..."
-msgstr ""
+msgid "Test streams"
+msgstr "စမ်းချောင်းများ"
 
-#, fuzzy
-msgid "Delete this separator"
-msgstr "ဤရေဒီယိုကို ဖျက်ပါ။"
+#: data/scripts/reorder_groups.py:1087
 
-#, fuzzy
-msgid "Delete this station..."
-msgstr "ဤရေဒီယိုကို ဖျက်ပါ။"
-
-msgid "Edit header..."
-msgstr ""
-
-#, fuzzy
-msgid "Edit station..."
-msgstr "ရေဒီယိုထည့်ပါ..."
-
-msgid "Empty URL"
-msgstr ""
-
-msgid "Ephemeral radio (not saved)."
-msgstr ""
-
-msgid "Error {code}"
-msgstr ""
-
-msgid "Format"
-msgstr ""
-
-msgid "Geoblocked (VPN)"
-msgstr ""
-
-msgid "HTTP Error {code}"
-msgstr ""
-
-#, fuzzy
-msgid "Insert separator here..."
-msgstr "Insert a separator or header in this group"
-
-msgid "Listen"
-msgstr ""
-
-msgid "Live (repaired)"
-msgstr ""
-
-msgid "Live ({codec})"
-msgstr ""
-
-#, fuzzy
-msgid "Move to another group..."
-msgstr "Move selection to another group (Ctrl+M)"
-
-#, fuzzy
-msgid "Move to top"
-msgstr "သို့ရွှေ့ပါ..."
-
-#, fuzzy
-msgid "New"
-msgstr "[အသစ်]"
-
-#, fuzzy
-msgid "New group..."
-msgstr "အဖွဲ့သစ်"
-
-#, fuzzy
-msgid "No station loaded"
-msgstr "No stations to check."
-
-#, fuzzy
-msgid "Open stations"
-msgstr "ရွေးချယ်စရာများ"
-
-msgid "Original stream is unreachable:"
-msgstr ""
-
-#, fuzzy
-msgid "Play this station"
-msgstr "ဤရေဒီယိုကို ဖျက်ပါ။"
-
-msgid "Popularity"
-msgstr ""
-
-#, fuzzy
-msgid "Preview selected radio stream"
+msgid "Testing live radio streams..."
 msgstr "Testing live radio streams..."
 
-msgid "Rename group..."
-msgstr ""
+#: data/scripts/browse_bouquets.py:1679 data/scripts/browse_bouquets.py:1931
 
-#, fuzzy
-msgid "Save now"
-msgstr "သိမ်းဆည်းမှု အမှား"
+#: data/scripts/browse_bouquets.py:2119
 
-msgid "Search"
-msgstr ""
+msgid "Testing..."
+msgstr "စမ်းသပ်နေသည်..."
 
-#, fuzzy
-msgid "Searching for streams..."
-msgstr "လည်ပတ်စီးဆင်းမှု..."
+#: data/scripts/timonde_settings.py:694
 
-msgid "Select a verified replacement stream from Radio-Browser:"
-msgstr ""
+msgid ""
+"The AppIndicator extension is required to display the icon in GNOME top bar."
+msgstr "GNOME ထိပ်ဘားရှိ အိုင်ကွန်ကို ပြသရန် AppIndicator တိုးချဲ့မှု လိုအပ်သည်။"
 
-msgid "Select or type (e.g. /France/Brittany or / for root)"
-msgstr ""
+#: data/scripts/browse_bouquets.py:1151
 
-msgid "Server unreachable"
-msgstr ""
+msgid "Thematic samples:"
+msgstr "အကြောင်းအရာနမူနာများ-"
 
-msgid "Stop playback"
-msgstr ""
+#: data/scripts/edit_station.py:574
 
-#, fuzzy
+msgid "This action will permanently remove this station from your collection."
+msgstr "ဤလုပ်ဆောင်ချက်သည် သင့်စုဆောင်းမှုမှ ဤဘူတာရုံကို အပြီးတိုင်ဖယ်ရှားပါမည်။"
+
+#: data/scripts/timonde_common.py:1489
+
+msgid ""
+"This stream URL is already registered on Radio-Browser as '{existing_name}'."
+msgstr "ဤထုတ်လွှင့်မှု URL ကို '{existing_name}' အဖြစ် Radio-Browser တွင် စာရင်းသွင်းထားပြီးဖြစ်သည်။"
+
+#: data/scripts/timonde_common.py:1908
+
+msgid ""
+"This stream URL is unpublished on Radio-Browser and ready to be contributed."
+msgstr "ဤထုတ်လွှင့်မှု URL ကို Radio-Browser တွင် မထုတ်ဝေရသေးဘဲ ပံ့ပိုးကူညီရန် အသင့်ဖြစ်နေပါပြီ။"
+
+#: data/scripts/gnome_tray_helper.py:117
+
+msgid "TiMonde — GNOME Desktop Integration"
+msgstr "TiMonde — GNOME ဒက်စ်တော့ ပေါင်းစပ်မှု"
+
+#: src/tray/mod.rs:150
+
 msgid "TiMonde • Ephemeral discovery"
 msgstr "ကျပန်းရေဒီယိုဌာနကို နားထောင်ပါ (တဒင်္ဂရှာဖွေတွေ့ရှိမှု)"
 
-#, fuzzy
+#: data/scripts/timonde_common.py:206
+
 msgid "Timeout"
 msgstr "အချိန်ဇုန်-"
 
-#, fuzzy
-msgid "Transfer contents to another group..."
-msgstr "Transfer the content of this group to another group (Ctrl+M)"
+#: data/scripts/edit_station.py:273
+
+msgid "Timezone:"
+msgstr "အချိန်ဇုန်-"
+
+#: data/scripts/gnome_tray_helper.py:159
+
+msgid ""
+"To unobtrusively display the playback icon in the top bar of your GNOME "
+"desktop, the <b>AppIndicator</b> system extension is required.\n"
+"\n"
+"Would you like to install it now?"
+msgstr ""
+"သင်၏ GNOME ဒက်စ်တော့၏ ထိပ်ဘားရှိ ပြန်ဖွင့်သည့်သင်္ကေတကို နားမလည်နိုင်အောင် ပြသရန် <b>AppIndicator</b> စနစ်တိုးချဲ့မှု လိုအပ်ပါသည်။\n"
+"\n"
+"ယခုထည့်သွင်းလိုပါသလား။"
+
+#: src/timezone.rs:669
+
+msgid "Tomorrow"
+msgstr "မနက်ဖြန်"
+
+#: data/scripts/reorder_groups.py:211
+
+msgid "Top"
+msgstr "ပထမ"
+
+#: src/tray/mod.rs:679
+
+msgid "Track copied to clipboard:"
+msgstr "သီချင်းအမည်ကို ကလစ်ဘုတ်သို့ ကူးယူပြီးပါပြီ -"
+
+#: data/scripts/browse_bouquets.py:987
+
+msgid "Type a country (e.g. France, Germany, Canada...)"
+msgstr "နိုင်ငံတစ်ခုကို ရိုက်ထည့်ပါ (ဥပမာ ပြင်သစ်၊ ဂျာမနီ၊ ကနေဒါ...)"
+
+#: src/tray/mod.rs:444
+
+msgid "Unable to find a station in the bouquets catalog."
+msgstr "လိုင်းတွဲများ စာရင်းတွင် ရေဒီယိုလိုင်း ရှာမတွေ့ပါ။"
+
+#: src/tray/mod.rs:208
 
 msgid "Unable to initialize audio"
-msgstr ""
+msgstr "Audio konnte nicht initialisiert werden"
+
+#: src/tray/mod.rs:216
 
 msgid "Unable to play"
-msgstr ""
+msgstr "Wiedergabe nicht mÃ¶glich"
+
+#: data/scripts/browse_bouquets.py:942 data/scripts/browse_bouquets.py:1111
+
+#: data/scripts/browse_bouquets.py:1278
+
+msgid "Uncheck all"
+msgstr "အားလုံးကို အမှန်ခြစ်ဖြုတ်ပါ။"
+
+#: data/scripts/timonde_common.py:1486 data/scripts/timonde_common.py:1896
+
+#: data/scripts/timonde_common.py:1897
+
+msgid "Unknown"
+msgstr "ÎÎ³Î½ÏÏÏÎ¿"
+
+#: data/scripts/timonde_common.py:1530
+
+msgid "Unknown error"
+msgstr "ÎÎ³Î½ÏÏÏÎ¿ ÏÏÎ¬Î»Î¼Î±"
+
+#: data/scripts/timonde_common.py:1272
+
+msgid "Unreadable stream"
+msgstr "ဖတ်၍မရသော စီးကြောင်း"
+
+#: data/scripts/gnome_tray_helper.py:193
+
+msgid "Unrecognized package manager."
+msgstr "အသိအမှတ်ပြုမထားသော ပက်ကေ့ဂျ်မန်နေဂျာ။"
+
+#: data/scripts/reorder_groups.py:293
 
 msgid "Unsaved changes"
-msgstr ""
+msgstr "Ungespeicherte Ãnderungen"
 
-#, fuzzy
+#: data/scripts/browse_bouquets.py:1915 data/scripts/browse_bouquets.py:2082
+
+msgid "Untested"
+msgstr "ÎÎ· ÎµÎ»ÎµÎ³Î¼Î­Î½Î¿"
+
+#: data/scripts/edit_station.py:159
+
+msgid "Use this on-air broadcast name for your bookmark"
+msgstr "Î§ÏÎ·ÏÎ¹Î¼Î¿ÏÎ¿Î¹Î®ÏÏÎµ Î±ÏÏÏ ÏÎ¿ ÏÎ½Î¿Î¼Î± Î¼ÎµÏÎ¬Î´Î¿ÏÎ·Ï Î³Î¹Î± ÏÎ¿Î½ ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎ· ÏÎ±Ï"
+
+#: data/scripts/timonde_common.py:1597
+
 msgid "Validate and replace"
 msgstr "သိမ်းဆည်းပြီး ပြန်လည်စတင်ပါ။"
 
-msgid "Active (Left & Right clicks unified)"
-msgstr ""
+#: data/scripts/browse_bouquets.py:923
 
-msgid "Enable Left-Click"
-msgstr ""
+msgid "Votes"
+msgstr "မဲများ"
 
-msgid "Cinnamon left-click unification successfully enabled!"
-msgstr ""
+#: data/scripts/reorder_groups.py:780
 
-msgid "Failed to enable Cinnamon unification."
-msgstr ""
+msgid "Warning: this group contains {count} {unit} that will also be deleted."
+msgstr "သတိပေးချက်- ဤအဖွဲ့တွင် ဖျက်ပစ်မည့် {count} {unit} ပါဝင်သည်။"
 
-msgid "Cinnamon Left-Click Unification"
-msgstr ""
+#: data/scripts/timonde_common.py:1841
+
+msgid "Website / Homepage:"
+msgstr "ÎÏÏÏÏÎ¿ÏÎ¿Ï / ÎÏÏÎ¹ÎºÎ® ÏÎµÎ»Î¯Î´Î±:"
+
+#: data/scripts/browse_bouquets.py:2318
+
+msgid "XML backup is available from settings."
+msgstr "XML အရန်သိမ်းခြင်းကို ဆက်တင်များမှ ရနိုင်ပါသည်။"
+
+#: data/scripts/reorder_groups.py:1296
+
+msgid "XML backup successfully created in"
+msgstr "Î¤Î¿ Î±Î½ÏÎ¯Î³ÏÎ±ÏÎ¿ Î±ÏÏÎ±Î»ÎµÎ¯Î±Ï XML Î´Î·Î¼Î¹Î¿ÏÏÎ³Î®Î¸Î·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ ÏÏÎ¿"
+
+#: data/scripts/reorder_groups.py:1276
+
+msgid "XML files (*.xml)"
+msgstr "XML ဖိုင်များ (*.xml)"
+
+#: src/timezone.rs:670
+
+msgid "Yesterday"
+msgstr "မနေ့က"
+
+#: data/scripts/browse_bouquets.py:1626
 
 msgid ""
-"Allows opening the station menu interchangeably with left or right click."
-msgstr ""
+"You can explore and import stations for this territory directly from the "
+"global directory."
+msgstr "ဤဒေသအတွက် လိုင်းများကို ကမ္ဘာလုံးဆိုင်ရာ လမ်းညွှန်မှ တိုက်ရိုက် ရှာဖွေတင်သွင်းနိုင်သည်။"
 
-#~ msgid ""
-#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
-#~ "groups.\n"
-#~ "• <b>Double-click a group</b> (or Open) to sort its stations and "
-#~ "separators.\n"
-#~ "• Use <b>Transfer...</b> to merge or move content to another group.\n"
-#~ "• Use <b>New group</b> to add a station folder.</small>"
-#~ msgstr ""
-#~ "<small>• အဖွဲ့များကိုမှာယူရန် <b>#</b> ကိုပြောင်းပါ သို့မဟုတ် <b>အပေါ်သို့ရွှေ့ပါ/ အောက်သို့ရွှေ့ပါ</b> "
-#~ "ကိုအသုံးပြုပါ။ \n"
-#~ " • ၎င်း၏ ရေဒီယိုနှင့် ခွဲခြမ်းများကို စီရန် <b>အဖွဲ့ကို နှစ်ချက်နှိပ်ပါ</b> (သို့မဟုတ် ဖွင့်ပါ)။ \n"
-#~ " • အကြောင်းအရာကို အခြားအဖွဲ့သို့ ပေါင်းစည်းရန် သို့မဟုတ် ရွှေ့ရန် <b>လွှဲပြောင်း...</b> ကို "
-#~ "အသုံးပြုပါ။ \n"
-#~ " • ရေဒီယိုဖိုင်တွဲတစ်ခုထည့်ရန် <b>အဖွဲ့အသစ်</b> ကိုသုံးပါ။</small>"
+#: data/scripts/reorder_groups.py:1302
 
-#~ msgid ""
-#~ "<small>• Edit the <b>#</b> or use <b>Move up / Move down</b> to order "
-#~ "stations.\n"
-#~ "• Click <b>Check streams</b> to find broken links (red) and repair them.\n"
-#~ "• Click <b>Repair stream...</b> to search Radio-Browser for a working "
-#~ "replacement stream.\n"
-#~ "• Click <b>Separator</b> to insert a section header.</small>"
-#~ msgstr ""
-#~ "<small>• ရေဒီယိုများကိုစီရန် <b>#</b> ကိုပြောင်းပါ သို့မဟုတ် <b>အပေါ်သို့ရွှေ့ပါ/ အောက်သို့ရွှေ့ပါ</b> "
-#~ "ကိုအသုံးပြုပါ။ \n"
-#~ " • သေနေသောလင့်ခ်များ (အနီရောင်) ကိုတွေ့ပြီး ၎င်းတို့ကို ပြုပြင်ရန် <b>စစ်ဆေးရန်</b> ကိုနှိပ်ပါ။ \n"
-#~ " • Radio-Browser တွင် အစားထိုးအသက်ဝင်သော ထုတ်လွှင့်မှုကို ရှာဖွေရန် <b>ပြန်လည်ပြုပြင်ခြင်း...</b> "
-#~ "ကို နှိပ်ပါ။ \n"
-#~ " • ကဏ္ဍခေါင်းစဉ်တစ်ခုထည့်သွင်းရန် <b>Separator</b> ကိုနှိပ်ပါ။</small>"
+msgid "Your complete bookmarks have been saved to:"
+msgstr "ÎÎ¹ ÏÎ»Î®ÏÎµÎ¹Ï ÏÎµÎ»Î¹Î´Î¿Î´ÎµÎ¯ÎºÏÎµÏ ÏÎ±Ï Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎ±Î½ ÏÏÎ¿:"
 
-#~ msgid ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les groupes.\n"
-#~ "• <b>Double-cliquez sur un groupe</b> (ou Ouvrir) pour trier ses radios "
-#~ "et séparateurs.\n"
-#~ "• Utilisez <b>Déplacer vers...</b> pour fusionner ou déplacer du "
-#~ "contenu.\n"
-#~ "• Utilisez <b>Nouveau groupe</b> pour créer un dossier de radios.</small>"
-#~ msgstr ""
-#~ "<small>• အဖွဲ့များကိုမှာယူရန် <b>#</b> ကိုပြောင်းပါ သို့မဟုတ် <b>အပေါ်သို့ရွှေ့ပါ/ အောက်သို့ရွှေ့ပါ</b> "
-#~ "ကိုအသုံးပြုပါ။ \n"
-#~ " • ၎င်း၏ ရေဒီယိုနှင့် ခြားနားချက်များကို စီရန် <b>အဖွဲ့ကို နှစ်ချက်နှိပ်ပါ</b> (သို့မဟုတ် ဖွင့်ပါ)။ \n"
-#~ " • အကြောင်းအရာကို ပေါင်းစည်းရန် သို့မဟုတ် ရွှေ့ရန် <b>ရွှေ့ရန်...</b> ကို အသုံးပြုပါ။ \n"
-#~ " • ရေဒီယိုဖိုင်တွဲတစ်ခုဖန်တီးရန် <b>အဖွဲ့သစ်</b>ကို အသုံးပြုပါ။</small>"
+#: src/i18n.rs:237 src/tray/menu.rs:372
 
-#~ msgid ""
-#~ "<small>• Modifiez le <b>#</b> ou utilisez <b>Monter / Descendre</b> pour "
-#~ "ordonner les radios.\n"
-#~ "• Cliquez sur <b>Vérifier les flux</b> pour repérer les liens hors-ligne "
-#~ "(en rouge).\n"
-#~ "• Cliquez sur <b>Réparer le flux...</b> pour chercher un flux de "
-#~ "remplacement actif.\n"
-#~ "• Cliquez sur <b>Séparateur</b> pour insérer un intertitre ou trait de "
-#~ "séparation.</small>"
-#~ msgstr ""
-#~ "<small>• ရေဒီယိုများကိုမှာယူရန် <b>#</b> ကိုပြောင်းပါ သို့မဟုတ် <b>အပေါ်သို့ရွှေ့ပါ/ အောက်သို့ရွှေ့ပါ</"
-#~ "b> ကိုသုံးပါ။ \n"
-#~ " • အော့ဖ်လိုင်းလင့်ခ်များ (အနီရောင်ဖြင့်) ရှာဖွေရန် <b>ဖိဒ်များကို စစ်ဆေးပါ</b> ကိုနှိပ်ပါ။ \n"
-#~ " • အသက်ဝင်သော အစားထိုးစီးကြောင်းကို ရှာဖွေရန် <b>ပြန်လည်ပြုပြင်ထုတ်လွှင့်ခြင်း...</b> ကိုနှိပ်ပါ။ \n"
-#~ " • စာတန်းထိုး သို့မဟုတ် စာတန်းခွဲစာကြောင်းကို ထည့်သွင်းရန် <b>Separator</b> ကို နှိပ်ပါ။</small>"
+msgid "Zap to another random station"
+msgstr "အခြားကျပန်းရေဒီယိုသို့ Zap"
+
+#: data/scripts/reorder_groups.py:930
+
+msgid "[ / ] Root (Without group)"
+msgstr "[ / ] Î¡Î¯Î¶Î± (ÏÏÏÎ¯Ï Î¿Î¼Î¬Î´Î±)"
+
+#: data/scripts/reorder_groups.py:405
+
+msgid "[!] Dead link"
+msgstr "[!] Dead link"
+
+#: data/scripts/reorder_groups.py:409
+
+msgid "[?] Geo-restricted"
+msgstr "[?] Geo-restricted"
+
+#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
+
+msgid "[New]"
+msgstr "[အသစ်]"
+
+#: data/scripts/reorder_groups.py:403
+
+msgid "[OK] Live"
+msgstr "[OK] Live"
+
+#: data/scripts/reorder_groups.py:1027
+
+msgid "[OK] Repaired"
+msgstr "[OK] ÎÏÎ¹ÏÎºÎµÏÎ¬ÏÏÎ·ÎºÎµ"
+
+#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
+
+msgid "[Present]"
+msgstr "[ရှိပြီး]"
+
+#: data/scripts/reorder_groups.py:407
+
+msgid "[~] Redirected"
+msgstr "[~] Redirected"
+
+#: data/scripts/reorder_groups.py:1141
+
+msgid "broken"
+msgstr "broken"
+
+#: data/scripts/reorder_groups.py:1127
+
+msgid "checked:"
+msgstr "checked:"
+
+#: src/tray/dialogs.rs:263
+
+msgid "deleted from your favorites."
+msgstr "သင်အကြိုက်ဆုံးထဲမှ ဖျက်လိုက်ပါပြီ။"
+
+#: data/scripts/timonde_settings.py:750
+
+msgid "disabled"
+msgstr "မသန်စွမ်း"
+
+#: data/scripts/timonde_settings.py:750
+
+msgid "enabled"
+msgstr "ဖွင့်ထားသည်။"
+
+#: src/tray/mod.rs:332
+
+msgid "is currently unavailable"
+msgstr "လောလောဆယ် မရရှိနိုင်ပါ"
+
+#: src/tray/mod.rs:302
+
+msgid "is not responding. Searching for a backup stream..."
+msgstr "တုံ့ပြန်မှုမရှိပါ။ အရန်လိုင်း ရှာဖွေနေသည်..."
+
+#: data/scripts/timonde_settings.py:612
+
+msgid "new station(s) imported"
+msgstr "Î½Î­Î¿Î¹ ÏÏÎ±Î¸Î¼Î¿Î¯ ÎµÎ¹ÏÎ®ÏÎ¸Î·ÏÎ±Î½"
+
+#: data/scripts/reorder_groups.py:1140
+
+msgid "online"
+msgstr "online"
+
+#: data/scripts/reorder_groups.py:372
+
+msgid "radio"
+msgstr "radio"
+
+#: data/scripts/reorder_groups.py:372 data/scripts/reorder_groups.py:672
+
+msgid "radios"
+msgstr "radios"
+
+#: data/scripts/reorder_groups.py:1142
+
+msgid "redirected"
+msgstr "redirected"
+
+#: data/scripts/browse_bouquets.py:2306
+
+msgid "sample files restored."
+msgstr "နမူနာဖိုင်များကို ပြန်လည်ရယူခဲ့သည်။"
+
+#: src/tray/mod.rs:562
+
+msgid "saved in your favorites!"
+msgstr "သင်အကြိုက်ဆုံးထဲတွင် သိမ်းဆည်းပြီးပါပြီ!"
+
+#: data/scripts/timonde_settings.py:559
+
+msgid "saved successfully!"
+msgstr "Î±ÏÎ¿Î¸Î·ÎºÎµÏÏÎ·ÎºÎµ ÎµÏÎ¹ÏÏÏÏÏ!"
+
+#: data/scripts/reorder_groups.py:779
+
+msgid "station"
+msgstr "station"
+
+#: data/scripts/timonde_settings.py:614
+
+msgid "station(s) moved to destination"
+msgstr "ÏÏÎ±Î¸Î¼Î¿Î¯ Î¼ÎµÏÎ±ÎºÎ¹Î½Î®Î¸Î·ÎºÎ±Î½ ÏÏÎ¿Î½ ÏÏÎ¿Î¿ÏÎ¹ÏÎ¼Ï"
+
+#: data/scripts/reorder_groups.py:779
+
+msgid "stations"
+msgstr "stations"
+
+#: data/scripts/reorder_groups.py:1095
+
+msgid "stations checked..."
+msgstr "stations checked..."
+
+#: src/tray/mod.rs:592
+
+msgid "stopping in"
+msgstr "ရပ်တန့်မည့်အချိန် -"
+
+#: data/scripts/reorder_groups.py:1200
+
+msgid "stream(s) updated."
+msgstr "ÏÎ¿Î­Ï ÎµÎ½Î·Î¼ÎµÏÏÎ¸Î·ÎºÎ±Î½."
+
+#: data/scripts/browse_bouquets.py:1725
+
+msgid "this country"
+msgstr "ဤနိုင်ငံ"
+
+#: src/tray/dialogs.rs:385
+
+msgid "updated successfully!"
+msgstr "အောင်မြင်စွာ အပ်ဒိတ်လုပ်ပြီးပါပြီ!"
+
+#: data/scripts/browse_bouquets.py:1733 data/scripts/browse_bouquets.py:2145
+
+msgid "{checked} / {total} station(s) selected"
+msgstr "{checked} / {total} လိုင်း ရွေးချယ်ထားသည်"
+
+#: data/scripts/edit_station.py:543
+
+msgid "{count} available timezones"
+msgstr "{count} ရရှိနိုင်သော အချိန်ဇုန်များ"
+
+#: data/scripts/browse_bouquets.py:1918
+
+msgid "{count} stations found."
+msgstr "{count} လိုင်း တွေ့ရှိသည်။"
+
+#: data/scripts/timonde_common.py:1690
+
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "{count} လိုင်း တွေ့ရှိသည်။ လိုချင်သောလိုင်းကို ရွေးပြီး အတည်ပြုပါ။"
+
+#: data/scripts/reorder_groups.py:352 data/scripts/reorder_groups.py:391
+
+#: data/scripts/reorder_groups.py:713
+
+msgid "— Separator —"
+msgstr "— Separator —"
+

@@ -11,7 +11,6 @@ use std::time::Duration;
 use log::{error, info};
 
 use crate::audio::{AudioEngine, PlaybackState};
-use crate::bookmarks::{save_bookmarks, update_station_url};
 use crate::models::{Group, Station};
 use crate::playlist::resolve_stream_url;
 use crate::radio_browser::{find_backup_stream, notify};
@@ -127,11 +126,12 @@ impl TiMondeTray {
         audio_mutex: &Arc<Mutex<Option<AudioEngine>>>,
         current_volume: &Arc<Mutex<f64>>,
         current_title: &Arc<Mutex<Option<String>>>,
+        tray_notifier: Option<Arc<dyn Fn() + Send + Sync>>,
     ) -> Result<(), String> {
         let mut guard = audio_mutex.lock().unwrap();
         if guard.is_none() {
             info!("Chargement à la demande du moteur GStreamer...");
-            match AudioEngine::new(Arc::clone(current_title)) {
+            match AudioEngine::new(Arc::clone(current_title), tray_notifier) {
                 Ok(engine) => {
                     let vol = *current_volume.lock().unwrap();
                     engine.set_volume(vol);
@@ -186,7 +186,8 @@ impl TiMondeTray {
 
     /// Lance la résolution d'URL et le démarrage du pipeline GStreamer en arrière-plan
     #[allow(clippy::too_many_arguments)]
-    pub(crate) fn spawn_engine_play_thread(
+    /// Lance un thread asynchrone pour résoudre la playlist et démarrer la lecture
+    pub fn spawn_engine_play_thread(
         raw_url: String,
         station_name: String,
         gen: u64,
@@ -194,6 +195,7 @@ impl TiMondeTray {
         audio: Arc<Mutex<Option<AudioEngine>>>,
         current_volume: Arc<Mutex<f64>>,
         current_title: Arc<Mutex<Option<String>>>,
+        tray_notifier: Option<Arc<dyn Fn() + Send + Sync>>,
         on_success: impl FnOnce() + Send + 'static,
     ) {
         std::thread::spawn(move || {
@@ -201,7 +203,7 @@ impl TiMondeTray {
             if play_generation.load(Ordering::SeqCst) != gen {
                 return;
             }
-            if let Err(e) = Self::get_or_create_engine(&audio, &current_volume, &current_title) {
+            if let Err(e) = Self::get_or_create_engine(&audio, &current_volume, &current_title, tray_notifier) {
                 error!("{}", e);
                 notify("TiMonde", crate::i18n::tr("Unable to initialize audio"));
                 return;
@@ -230,7 +232,8 @@ impl TiMondeTray {
         current_title: &Arc<Mutex<Option<String>>>,
         play_generation: &Arc<AtomicU64>,
         root_group: &Arc<Mutex<Group>>,
-        bookmarks_path: &Path,
+        _bookmarks_path: &Path,
+        tray_handle: &Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
     ) {
         let station_name = station.name.clone();
         let raw_url = station.url.clone();
@@ -259,9 +262,16 @@ impl TiMondeTray {
         let gen = play_generation.fetch_add(1, Ordering::SeqCst) + 1;
         let gen_clone = Arc::clone(play_generation);
         let audio_clone = Arc::clone(audio);
-        let root_group_clone = Arc::clone(root_group);
-        let bookmarks_path_clone = bookmarks_path.to_path_buf();
         let name_for_watchdog = station_name.clone();
+        let handle_for_init = Arc::clone(tray_handle);
+        let handle_for_watchdog = Arc::clone(tray_handle);
+
+        let tray_notifier: Option<Arc<dyn Fn() + Send + Sync>> = {
+            let handle_cell = Arc::clone(tray_handle);
+            Some(Arc::new(move || {
+                Self::request_tray_refresh(&handle_cell);
+            }))
+        };
 
         Self::spawn_engine_play_thread(
             raw_url,
@@ -271,64 +281,65 @@ impl TiMondeTray {
             Arc::clone(audio),
             Arc::clone(current_volume),
             Arc::clone(current_title),
+            tray_notifier,
             move || {
+                Self::request_tray_refresh(&handle_for_init);
                 std::thread::sleep(Duration::from_secs(5));
 
-            if gen_clone.load(Ordering::SeqCst) != gen {
-                return;
-            }
+                if gen_clone.load(Ordering::SeqCst) != gen {
+                    return;
+                }
 
-            let st = {
-                let guard = audio_clone.lock().unwrap();
-                guard.as_ref().map(|e| e.state()).unwrap_or(PlaybackState::Stopped)
-            };
+                let st = {
+                    let guard = audio_clone.lock().unwrap();
+                    guard.as_ref().map(|e| e.state()).unwrap_or(PlaybackState::Stopped)
+                };
 
-            if st == PlaybackState::Buffering || st == PlaybackState::Error {
-                info!("Watchdog : flux muet pour {}", name_for_watchdog);
-                notify(
-                    "TiMonde",
-                    &format!("{} {}", name_for_watchdog, crate::i18n::tr("is not responding. Searching for a backup stream...")),
-                );
-
-                if let Some((_found_name, backup_url)) = find_backup_stream(&name_for_watchdog) {
-                    if gen_clone.load(Ordering::SeqCst) != gen {
-                        return;
-                    }
-                    let direct_backup = resolve_stream_url(&backup_url);
-                    info!("Watchdog : bascule sur le flux de secours {}", direct_backup);
-                    let played = {
-                        let guard = audio_clone.lock().unwrap();
-                        if let Some(ref engine) = *guard {
-                            engine.play(&direct_backup).is_ok()
-                        } else {
-                            false
-                        }
-                    };
-
-                    if played {
-                        {
-                            let mut group = root_group_clone.lock().unwrap();
-                            if update_station_url(&mut group, &name_for_watchdog, &direct_backup) {
-                                let _ = save_bookmarks(&group, &bookmarks_path_clone);
-                            }
-                        }
-                        notify(
-                            "TiMonde",
-                            &format!("{} « {} » !", crate::i18n::tr("Stream repaired and saved for"), name_for_watchdog),
-                        );
-                    }
-                } else if gen_clone.load(Ordering::SeqCst) == gen {
+                if st == PlaybackState::Buffering || st == PlaybackState::Error {
+                    info!("Watchdog : flux muet pour {}", name_for_watchdog);
                     notify(
                         "TiMonde",
-                        &format!("« {} » {}.", name_for_watchdog, crate::i18n::tr("is currently unavailable")),
+                        &format!("{} {}", name_for_watchdog, crate::i18n::tr("is not responding. Searching for a backup stream...")),
                     );
-                    let guard = audio_clone.lock().unwrap();
-                    if let Some(ref engine) = *guard {
-                        let _ = engine.stop();
+
+                    // Note qualité / éthique : Le watchdog ne modifie JAMAIS bookmarks.xml en douce !
+                    // Il bascule temporairement sur un flux de secours en mémoire sans écraser le fichier de l'utilisateur.
+                    if let Some((found_name, backup_url)) = find_backup_stream(&name_for_watchdog) {
+                        if gen_clone.load(Ordering::SeqCst) != gen {
+                            return;
+                        }
+                        let direct_backup = resolve_stream_url(&backup_url);
+                        info!("Watchdog : bascule temporaire sur flux alternatif : {} ({})", found_name, direct_backup);
+                        let played = {
+                            let guard = audio_clone.lock().unwrap();
+                            if let Some(ref engine) = *guard {
+                                engine.play(&direct_backup).is_ok()
+                            } else {
+                                false
+                            }
+                        };
+
+                        if played {
+                            notify(
+                                "TiMonde",
+                                &format!("{} « {} ».", crate::i18n::tr("Temporary backup stream found for"), name_for_watchdog),
+                            );
+                            Self::request_tray_refresh(&handle_for_watchdog);
+                        }
+                    } else if gen_clone.load(Ordering::SeqCst) == gen {
+                        notify(
+                            "TiMonde",
+                            &format!("« {} » {}.", name_for_watchdog, crate::i18n::tr("is currently unavailable")),
+                        );
+                        let guard = audio_clone.lock().unwrap();
+                        if let Some(ref engine) = *guard {
+                            let _ = engine.stop();
+                        }
+                        Self::request_tray_refresh(&handle_for_watchdog);
                     }
                 }
-            }
-        });
+            },
+        );
     }
 
     pub fn play_station(&mut self, station: Station) {
@@ -343,6 +354,7 @@ impl TiMondeTray {
             &self.play_generation,
             &self.root_group,
             &self.bookmarks_path,
+            &self.tray_handle,
         );
         Self::request_tray_refresh(&self.tray_handle);
     }
@@ -391,6 +403,12 @@ impl TiMondeTray {
 
         let gen = self.play_generation.fetch_add(1, Ordering::SeqCst) + 1;
         let handle_cell = Arc::clone(&self.tray_handle);
+        let tray_notifier: Option<Arc<dyn Fn() + Send + Sync>> = {
+            let h = Arc::clone(&self.tray_handle);
+            Some(Arc::new(move || {
+                Self::request_tray_refresh(&h);
+            }))
+        };
 
         Self::spawn_engine_play_thread(
             raw_url,
@@ -400,6 +418,7 @@ impl TiMondeTray {
             Arc::clone(&self.audio),
             Arc::clone(&self.current_volume),
             Arc::clone(&self.current_title),
+            tray_notifier,
             move || {
                 Self::request_tray_refresh(&handle_cell);
             },

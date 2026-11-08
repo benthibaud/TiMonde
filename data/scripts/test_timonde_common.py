@@ -223,5 +223,77 @@ class TestTiMondeCommon(unittest.TestCase):
         esc_m = status_markup("Rock & Roll <Live>", kind="info")
         self.assertIn("Rock &amp; Roll &lt;Live&gt;", esc_m)
 
+    def test_check_stream_url_meta(self):
+        from timonde_common import check_stream_url
+        # Cas URL vide
+        ok, msg, meta = check_stream_url("", fetch_meta=True)
+        self.assertFalse(ok)
+        self.assertIsInstance(meta, dict)
+        self.assertIn("icy_name", meta)
+
+    def test_lookup_station_by_url_empty(self):
+        from timonde_common import lookup_station_by_url
+        self.assertIsNone(lookup_station_by_url(""))
+        self.assertIsNone(lookup_station_by_url(None))
+
+    def test_contribute_station_validation(self):
+        from timonde_common import contribute_station_to_radio_browser
+        ok, msg, info = contribute_station_to_radio_browser("", "http://example.com")
+        self.assertFalse(ok)
+        ok2, msg2, info2 = contribute_station_to_radio_browser("Radio Test", "")
+        self.assertFalse(ok2)
+
+    def test_edit_station_window_station_data(self):
+        from edit_station import EditStationWindow
+        st_data = {
+            "name": "Europa Radio Jazz",
+            "url": "http://stream.radioreference.com/jazz",
+            "country": "IT",
+            "timezone": "Europe/Rome",
+            "group": "Jazz"
+        }
+        win = EditStationWindow(mode="edit", station_data=st_data, standalone=False)
+        self.assertEqual(win.entry_name.get_text(), "Europa Radio Jazz")
+        self.assertEqual(win.entry_url.get_text(), "http://stream.radioreference.com/jazz")
+        self.assertEqual(win.selected_country_code, "IT")
+        self.assertTrue(hasattr(win, "run"))
+        self.assertTrue(hasattr(win, "set_country"))
+        win.destroy()
+
+    def test_contribute_station_dialog_btn_edit(self):
+        from timonde_common import ContributeStationDialog
+        from gi.repository import Gtk
+        dlg = ContributeStationDialog(parent=None, station_name="Europa Radio Jazz", current_url="http://stream.radioreference.com/jazz")
+        self.assertTrue(hasattr(dlg, "btn_edit"))
+        # Simuler la détection d'une station existante
+        dlg._on_lookup_done("http://stream.radioreference.com/jazz", {"name": "Europa Radio Jazz", "countrycode": "IT"})
+        self.assertIn("IT", dlg.btn_edit.get_label())
+        dlg.destroy()
+
+    def test_edit_station_window_radio_browser_button(self):
+        from unittest.mock import patch, MagicMock
+        from edit_station import EditStationWindow
+        from gi.repository import Gtk
+
+        st_data = {
+            "name": "Jabulani Radio - Eldoret (Kenya)",
+            "url": "https://listen.radioking.com/radio/6262",
+            "country": "",
+            "timezone": "",
+            "group": "Sélection perso"
+        }
+        win = EditStationWindow(station_data=st_data, standalone=False)
+        with patch("edit_station.ContributeStationDialog") as MockDialog:
+            instance = MagicMock()
+            instance.run.return_value = Gtk.ResponseType.APPLY
+            instance.existing_info = {"countrycode": "KE", "name": "Jabulani Radio"}
+            MockDialog.return_value = instance
+
+            win.on_check_radio_browser_clicked(None)
+            self.assertTrue(MockDialog.called)
+            self.assertEqual(win.selected_country_code, "KE")
+        win.destroy()
+
 if __name__ == "__main__":
     unittest.main()
+

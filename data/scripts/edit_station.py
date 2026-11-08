@@ -12,6 +12,7 @@ et d'une synchronisation automatique des fuseaux horaires.
 
 import sys
 import os
+import re
 import json
 import argparse
 import gi
@@ -33,6 +34,10 @@ from timonde_common import (
     StreamPreviewPlayer,
     set_window_icon,
     show_group_naming_help_dialog,
+    check_stream_url,
+    lookup_station_by_url,
+    contribute_station_to_radio_browser,
+    ContributeStationDialog,
 )
 
 from timonde_world_data import (
@@ -49,7 +54,20 @@ from gi.repository import Gtk, Gdk, GLib
 
 
 class EditStationWindow(Gtk.Window):
-    def __init__(self, mode="edit", current_name="", current_url="", current_country="", current_timezone="", current_group="", available_groups=None, standalone=True, on_done_callback=None, groups=None, default_group=None, **kwargs):
+    def __init__(self, mode="edit", current_name="", current_url="", current_country="", current_timezone="", current_group="", available_groups=None, standalone=True, on_done_callback=None, groups=None, default_group=None, station_data=None, on_save=None, parent_window=None, **kwargs):
+        if station_data and isinstance(station_data, dict):
+            if not current_name:
+                current_name = station_data.get("name", "")
+            if not current_url:
+                current_url = station_data.get("url", "")
+            if not current_country:
+                current_country = station_data.get("country", "")
+            if not current_timezone:
+                current_timezone = station_data.get("timezone", "")
+            if not current_group:
+                current_group = station_data.get("group", "")
+        if on_done_callback is None and on_save is not None:
+            on_done_callback = on_save
         if available_groups is None and groups is not None:
             available_groups = groups
         if not current_group and default_group:
@@ -80,6 +98,9 @@ class EditStationWindow(Gtk.Window):
         self.set_border_width(14)
         
         set_window_icon(self)
+        if parent_window:
+            self.set_transient_for(parent_window)
+            self.set_modal(True)
 
         self.saved = False
         self.result_data = None
@@ -129,9 +150,13 @@ class EditStationWindow(Gtk.Window):
         self.entry_url.connect("activate", self.on_save_clicked)
         url_hbox.pack_start(self.entry_url, True, True, 0)
 
-        self.btn_test_url = make_btn(_("Tester"), "media-playback-start", _("Vérifier la validité du lien et écouter un aperçu du flux"))
+        self.btn_test_url = make_btn(_("Test"), "media-playback-start", _("Check link validity and listen to stream preview"))
         self.btn_test_url.connect("clicked", self.on_test_url_clicked)
         url_hbox.pack_start(self.btn_test_url, False, False, 0)
+
+        self.btn_rb = make_btn(_("Radio-Browser"), "network-server", _("Check if stream is listed or contribute to directory"))
+        self.btn_rb.connect("clicked", self.on_check_radio_browser_clicked)
+        url_hbox.pack_start(self.btn_rb, False, False, 0)
 
         url_vbox.pack_start(url_hbox, False, False, 0)
 
@@ -139,6 +164,21 @@ class EditStationWindow(Gtk.Window):
         self.lbl_url_status.set_halign(Gtk.Align.START)
         self.lbl_url_status.set_no_show_all(True)
         url_vbox.pack_start(self.lbl_url_status, False, False, 0)
+
+        # Bandeau discret en cas de divergence de nom d'antenne détecté
+        self.box_air_divergence = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        self.box_air_divergence.set_no_show_all(True)
+
+        self.lbl_air_name = Gtk.Label(label="")
+        self.lbl_air_name.set_halign(Gtk.Align.START)
+        self.lbl_air_name.set_use_markup(True)
+        self.box_air_divergence.pack_start(self.lbl_air_name, False, False, 0)
+
+        self.btn_align_air_name = make_btn(_("Align name"), "edit-copy", _("Use this on-air broadcast name for your bookmark"))
+        self.btn_align_air_name.connect("clicked", self.on_align_air_name_clicked)
+        self.box_air_divergence.pack_start(self.btn_align_air_name, False, False, 0)
+
+        url_vbox.pack_start(self.box_air_divergence, False, False, 0)
 
         grid.attach(url_vbox, 1, 1, 1, 1)
 
@@ -149,13 +189,14 @@ class EditStationWindow(Gtk.Window):
 
         group_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         self.combo_group = Gtk.ComboBoxText.new_with_entry()
-        self.combo_group.append_text("[ / ] (Racine — Sans groupe)")
+        root_label = _("[ / ] Root (Without group)")
+        self.combo_group.append_text(root_label)
         if available_groups:
             for g in available_groups:
-                if g and g not in ("[ / ] (Racine — Sans groupe)", "/"):
+                if g and g not in (root_label, "[ / ] (Racine — Sans groupe)", "/"):
                     self.combo_group.append_text(g)
         if current_group and (not available_groups or current_group not in available_groups):
-            if current_group not in ("[ / ] (Racine — Sans groupe)", "/"):
+            if current_group not in (root_label, "[ / ] (Racine — Sans groupe)", "/"):
                 self.combo_group.append_text(current_group)
 
         entry_group_child = self.combo_group.get_child()
@@ -308,6 +349,7 @@ class EditStationWindow(Gtk.Window):
             Gtk.main_quit()
 
     def on_test_url_clicked(self, _widget):
+        import threading
         url = clean_stream_url(self.entry_url.get_text().strip())
         name = self.entry_name.get_text().strip() or "Aperçu du flux"
         if not url:
@@ -315,12 +357,100 @@ class EditStationWindow(Gtk.Window):
             return
         self.preview_player.toggle(name, url)
 
+        # Inspection asynchrone des métadonnées d'antenne en direct (icy-name)
+        def _check_meta():
+            try:
+                ok, msg, meta = check_stream_url(url, timeout=3.5, fetch_meta=True)
+                if ok and meta and meta.get("icy_name"):
+                    raw_icy = meta["icy_name"].strip()
+                    if raw_icy:
+                        GLib.idle_add(self._on_air_meta_detected, raw_icy)
+            except Exception:
+                pass
+        threading.Thread(target=_check_meta, daemon=True).start()
+
+    def _on_air_meta_detected(self, icy_name):
+        import html
+        current_name = self.entry_name.get_text().strip()
+        # Filtrer les noms techniques génériques ou points de montage Icecast (ex: 'no name', '/stream')
+        clean_icy = icy_name.strip()
+        if clean_icy.startswith("/") or clean_icy.lower() in ("no name", "unnamed", "default", "stream", "live", "untitled"):
+            self.box_air_divergence.hide()
+            return
+
+        # Si le nom d'antenne est distinct du nom saisi par l'utilisateur
+        if clean_icy and clean_icy.lower() != current_name.lower():
+            self.detected_icy_name = clean_icy
+            self.lbl_air_name.set_markup(
+                f"<small><i>[i] {_('On-air broadcast name:')} <b>{html.escape(clean_icy)}</b></i></small>"
+            )
+            self.box_air_divergence.show_all()
+        else:
+            self.box_air_divergence.hide()
+
+    def on_align_air_name_clicked(self, _widget):
+        if getattr(self, "detected_icy_name", ""):
+            self.entry_name.set_text(self.detected_icy_name)
+            self.box_air_divergence.hide()
+
+    def on_check_radio_browser_clicked(self, _widget):
+        url = clean_stream_url(self.entry_url.get_text().strip())
+        name = self.entry_name.get_text().strip()
+        country = self.selected_country_code or ""
+
+        if not url:
+            d = Gtk.MessageDialog(
+                transient_for=self,
+                flags=Gtk.DialogFlags.MODAL,
+                type=Gtk.MessageType.WARNING,
+                buttons=Gtk.ButtonsType.OK,
+                message_format=_("Please enter a stream URL first.")
+            )
+            d.run()
+            d.destroy()
+            return
+
+        dlg = ContributeStationDialog(
+            parent=self,
+            station_name=name,
+            current_url=url,
+            country_code=country,
+        )
+        resp = dlg.run()
+        existing = getattr(dlg, "existing_info", None)
+        dlg.destroy()
+        if resp == Gtk.ResponseType.APPLY and existing:
+            ex_cc = (existing.get("countrycode") or "").strip().upper()
+            if ex_cc:
+                self.set_country(ex_cc)
+
+    def run(self):
+        """Méthode de compatibilité pour les contextes appelant cette fenêtre comme un dialogue synchrone."""
+        self.show_all()
+
+    def set_country(self, code):
+        """Met à jour de manière programmée le pays sélectionné et peuple les fuseaux associés."""
+        code = (code or "").strip().upper()
+        if code and code in COUNTRIES_REGISTRY:
+            cname, _dummy = COUNTRIES_REGISTRY[code]
+            self.selected_country_code = code
+            self._updating_country_text = True
+            self.entry_country_search.set_text(f"[{code}] {cname}")
+            self._updating_country_text = False
+            self.populate_timezones_for_country(code)
+        elif code:
+            self.selected_country_code = code
+            self._updating_country_text = True
+            self.entry_country_search.set_text(code)
+            self._updating_country_text = False
+            self.populate_timezones_for_country(code)
+
     def _on_preview_status(self, is_playing, _url, message, is_error):
         import html
         if is_playing:
-            update_btn_content(self.btn_test_url, _("Arrêter"), "media-playback-stop")
+            update_btn_content(self.btn_test_url, _("Stop"), "media-playback-stop")
         else:
-            update_btn_content(self.btn_test_url, _("Tester"), "media-playback-start")
+            update_btn_content(self.btn_test_url, _("Test"), "media-playback-start")
         if message:
             color = "#e74c3c" if is_error else "#2ecc71"
             self.lbl_url_status.set_markup(f"<small><span foreground='{color}'><b>{html.escape(message)}</b></span></small>")
@@ -387,7 +517,8 @@ class EditStationWindow(Gtk.Window):
         # Si l'utilisateur a tapé une région ou un état spécifique, présélectionner le bon fuseau
         pref_tz = None
         lower_raw = raw.lower()
-        if any(w in lower_raw for w in ["north carolina", "caroline du nord", "nc", "florida", "floride", "new york", "dc", "virginia", "virginie"]):
+        words = set(re.findall(r'\b\w+\b', lower_raw))
+        if any(w in lower_raw for w in ["north carolina", "caroline du nord", "florida", "floride", "new york", "virginia", "virginie"]) or ("nc" in words) or ("dc" in words):
             pref_tz = "America/New_York"
         elif any(w in lower_raw for w in ["california", "californie", "los angeles", "san francisco", "seattle"]):
             pref_tz = "America/Los_Angeles"
@@ -478,7 +609,7 @@ class EditStationWindow(Gtk.Window):
         return False
 
     def on_delete_clicked(self, widget):
-        current_display_name = self.entry_name.get_text().strip() or "cette radio"
+        current_display_name = self.entry_name.get_text().strip() or "..."
         dialog = Gtk.MessageDialog(
             transient_for=self,
             flags=Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
@@ -488,7 +619,7 @@ class EditStationWindow(Gtk.Window):
         )
         dialog.format_secondary_text(_("This action will permanently remove this station from your collection."))
         dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
-        btn_del_confirm = dialog.add_button(_("Supprimer"), Gtk.ResponseType.OK)
+        btn_del_confirm = dialog.add_button(_("Delete"), Gtk.ResponseType.OK)
         btn_del_confirm.get_style_context().add_class("destructive-action")
 
         response = dialog.run()
@@ -552,7 +683,8 @@ class EditStationWindow(Gtk.Window):
 
         # Normalisation selon la convention Linux avec /
         clean_grp = raw_group.strip()
-        if clean_grp in ("[ / ] (Racine — Sans groupe)", "/", "root", "(Racine)"):
+        root_label = _("[ / ] Root (Without group)")
+        if clean_grp in (root_label, "[ / ] (Racine — Sans groupe)", "/", "root", "(Racine)"):
             selected_group = ""
         else:
             # Enlever les slashes surnuméraires au début et à la fin (ex: "/France/Bretagne/" -> "France/Bretagne")

@@ -25,7 +25,7 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import make_btn, safe_parse_xml, clean_stream_url, infer_timezone, find_or_create_group, set_window_icon, find_script, get_user_bookmarks_groups, apply_timonde_app_css, status_markup
+from timonde_common import make_btn, update_btn_content, safe_parse_xml, clean_stream_url, infer_timezone, find_or_create_group, set_window_icon, find_script, get_user_bookmarks_groups, apply_timonde_app_css, status_markup
 from reorder_groups import ReorderWindow
 from browse_bouquets import DiscoverRadiosWindow, parse_bouquets_xml
 from edit_station import EditStationWindow
@@ -313,7 +313,7 @@ def add_stations_to_bookmarks_xml(path, stations_list, default_group="Mes Radios
 
 class SettingsWindow(Gtk.Window):
     def __init__(self, bookmarks_path=None):
-        super().__init__(title=_("Paramètres & Contrôle TiMonde"))
+        super().__init__(title=_("Settings & Control TiMonde"))
         screen = Gdk.Screen.get_default()
         target_w, target_h = 960, 640
         if screen:
@@ -444,7 +444,7 @@ class SettingsWindow(Gtk.Window):
         self.lbl_feedback.set_halign(Gtk.Align.START)
         bottom_box.pack_start(self.lbl_feedback, True, True, 0)
 
-        btn_close = make_btn(_("Fermer"), "window-close")
+        btn_close = make_btn(_("Close"), "window-close")
         btn_close.get_style_context().add_class("suggested-action")
         btn_close.connect("clicked", lambda w: self.on_close_clicked())
         bottom_box.pack_end(btn_close, False, False, 0)
@@ -521,13 +521,13 @@ class SettingsWindow(Gtk.Window):
         self.reorder_view.btn_add_station.disconnect_by_func(self.reorder_view.on_add_station_clicked)
         self.reorder_view.btn_add_station.connect("clicked", self.on_embedded_add_station_clicked)
 
-        self.stack.add_titled(self.reorder_view.vbox, "organization", _("Mes Radios"))
+        self.stack.add_titled(self.reorder_view.vbox, "organization", _("My Radios"))
 
     def on_embedded_reorder_saved(self, new_payload):
         save_bookmarks_tree(self.bookmarks_path, new_payload)
         self.has_modifications = True
         self.refresh_stats()
-        self.show_feedback(_("Signets et radios enregistrés avec succès !"))
+        self.show_feedback(_("Bookmarks and stations saved successfully!"))
 
     def on_embedded_add_station_clicked(self, widget):
         current_grp = self.reorder_view.get_selected_group_name() if hasattr(self.reorder_view, "get_selected_group_name") else ""
@@ -556,7 +556,7 @@ class SettingsWindow(Gtk.Window):
             self.reorder_view.set_dirty(False)
             self.reorder_view.update_view()
             self.refresh_stats()
-            self.show_feedback(f"« {data.get('name', 'Radio')} » {_('enregistrée avec succès !')}")
+            self.show_feedback(f"« {data.get('name', 'Radio')} » {_('saved successfully!')}")
 
     # -------------------------------------------------------------------------
     # 2, 3, 4. Ateliers Recherche, Bouquets, et Fichiers (DiscoverRadiosWindow)
@@ -589,9 +589,9 @@ class SettingsWindow(Gtk.Window):
         )
 
         # 3 Ateliers directs dans le volet principal
-        self.stack.add_titled(self.discover_view.view_search, "search", _("Rechercher en ligne"))
-        self.stack.add_titled(self.discover_view.view_bouquets, "bouquets", _("Bouquets par pays"))
-        self.stack.add_titled(self.discover_view.view_files, "files", _("Collections & Fichiers"))
+        self.stack.add_titled(self.discover_view.view_search, "search", _("Search online"))
+        self.stack.add_titled(self.discover_view.view_bouquets, "bouquets", _("Country bouquets"))
+        self.stack.add_titled(self.discover_view.view_files, "files", _("Collections & Files"))
 
     def on_embedded_discovery_import(self, result):
         if hasattr(self, "reorder_view"):
@@ -609,13 +609,13 @@ class SettingsWindow(Gtk.Window):
             self.refresh_stats()
             msgs = []
             if added > 0:
-                msgs.append(f"{added} {_('nouvelle(s) radio(s) importée(s)')}")
+                msgs.append(f"{added} {_('new station(s) imported')}")
             if moved > 0:
-                msgs.append(f"{moved} {_('radio(s) déplacée(s) vers la cible')}")
+                msgs.append(f"{moved} {_('station(s) moved to destination')}")
             self.show_feedback(" & ".join(msgs) + " !")
             self.stack.set_visible_child_name("organization")
         else:
-            self.show_feedback(_("Aucune nouvelle radio ajoutée (déjà présentes dans vos signets)."))
+            self.show_feedback(_("No new stations added (already in your bookmarks)."))
 
     def on_stack_page_changed(self, stack, gparam):
         """Sauvegarde les modifications en attente et arrête la pré-écoute lors du changement d'onglet."""
@@ -635,7 +635,7 @@ class SettingsWindow(Gtk.Window):
 
         # 1. Section Options Configurables
         lbl_cfg = Gtk.Label()
-        lbl_cfg.set_markup("<b>" + _("OPTIONS DE SESSION") + "</b>")
+        lbl_cfg.set_markup("<b>" + _("SESSION OPTIONS") + "</b>")
         lbl_cfg.set_halign(Gtk.Align.START)
         lbl_cfg.get_style_context().add_class("section-separator-title")
         page.pack_start(lbl_cfg, False, False, 0)
@@ -645,15 +645,15 @@ class SettingsWindow(Gtk.Window):
         self.switch_autostart.set_active(is_autostart_active())
         self.switch_autostart.connect("notify::active", self.on_autostart_toggled)
         card_auto = self.create_card(
-            _("Lancement automatique au démarrage"),
-            _("Démarre discrètement TiMonde en arrière-plan dès l'ouverture de votre session graphique."),
+            _("Automatic launch on startup"),
+            _("Discreetly starts TiMonde in the background as soon as your graphical session opens."),
             self.switch_autostart
         )
         page.pack_start(card_auto, False, False, 0)
 
         # 2. Section Informations Système (Lecture Seule)
         lbl_info = Gtk.Label()
-        lbl_info.set_markup("<b>" + _("ENVIRONNEMENT DÉTECTÉ (LECTURE SEULE)") + "</b>")
+        lbl_info.set_markup("<b>" + _("DETECTED ENVIRONMENT (READ ONLY)") + "</b>")
         lbl_info.set_halign(Gtk.Align.START)
         lbl_info.get_style_context().add_class("section-separator-title")
         page.pack_start(lbl_info, False, False, 4)
@@ -662,8 +662,8 @@ class SettingsWindow(Gtk.Window):
         env_lang = os.environ.get("LC_ALL") or os.environ.get("LC_MESSAGES") or os.environ.get("LANG") or "fr_FR.UTF-8"
         clean_lang = env_lang.split(".")[0]
         card_lang = self.create_info_row(
-            _("Langue du système"),
-            _("Détection automatique selon les paramètres régionaux de votre environnement Linux."),
+            _("System language"),
+            _("Automatic detection according to your Linux locale settings."),
             f"{clean_lang}"
         )
         page.pack_start(card_lang, False, False, 0)
@@ -673,38 +673,37 @@ class SettingsWindow(Gtk.Window):
         session_type = (os.environ.get("XDG_SESSION_TYPE") or "x11").upper()
         env_badge = f"{desktop_raw} ({session_type})"
         card_desktop = self.create_info_row(
-            _("Bureau graphique & Plateau"),
-            _("Intégration native dans la zone de notification via StatusNotifierItem / XEmbed."),
+            _("Desktop environment & Tray"),
+            _("Native integration in notification tray via StatusNotifierItem / XEmbed."),
             env_badge
         )
         page.pack_start(card_desktop, False, False, 0)
 
         # Détection proactive d'intégration GNOME (si AppIndicator est manquant)
-        helper_path = find_script("gnome_tray_helper.py")
-        if helper_path:
-            try:
-                chk = subprocess.run([sys.executable, helper_path, "--check"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                if chk.returncode == 1:
-                    btn_fix = make_btn(_("Installer l'intégration GNOME"), "system-software-install-symbolic", primary=True)
-                    def on_install_gnome_clicked(widget):
-                        subprocess.run([sys.executable, helper_path, "--prompt"])
-                    btn_fix.connect("clicked", on_install_gnome_clicked)
-                    card_gnome_warning = self.create_card(
-                        _("Intégration GNOME requise"),
-                        _("L'extension AppIndicator est nécessaire pour afficher l'icône dans la barre supérieure sous GNOME."),
-                        btn_fix
-                    )
-                    page.pack_start(card_gnome_warning, False, False, 0)
-            except Exception:
-                pass
+        try:
+            import gnome_tray_helper
+            if gnome_tray_helper.is_gnome_shell() and not gnome_tray_helper.is_appindicator_active():
+                helper_path = find_script("gnome_tray_helper.py")
+                btn_fix = make_btn(_("Install GNOME integration"), "system-software-install-symbolic", primary=True)
+                def on_install_gnome_clicked(widget):
+                    if helper_path:
+                        subprocess.Popen([sys.executable, helper_path, "--prompt"])
+                btn_fix.connect("clicked", on_install_gnome_clicked)
+                card_gnome_warning = self.create_card(
+                    _("GNOME integration required"),
+                    _("The AppIndicator extension is required to display the icon in GNOME top bar."),
+                    btn_fix
+                )
+                page.pack_start(card_gnome_warning, False, False, 0)
+        except Exception:
+            pass
 
         # Détection proactive Cinnamon (Harmonisation Clic Gauche / Droit)
-        cinnamon_patch_path = find_script("patch_cinnamon_status_applet.py")
         is_cinnamon = "cinnamon" in desktop_raw.lower() or os.path.isdir(os.path.expanduser("~/.local/share/cinnamon"))
-        if is_cinnamon and cinnamon_patch_path:
+        if is_cinnamon:
             try:
-                chk = subprocess.run([sys.executable, cinnamon_patch_path, "--check"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                is_active = (chk.returncode == 0)
+                import patch_cinnamon_status_applet
+                is_active = (patch_cinnamon_status_applet.check_status() == 0)
                 btn_cin = make_btn(
                     _("Active (Left & Right clicks unified)") if is_active else _("Enable Left-Click"),
                     "emblem-default" if is_active else "system-run-symbolic",
@@ -713,14 +712,16 @@ class SettingsWindow(Gtk.Window):
                 if is_active:
                     btn_cin.set_sensitive(False)
                 else:
+                    cinnamon_patch_path = find_script("patch_cinnamon_status_applet.py")
                     def on_patch_cinnamon_clicked(widget):
-                        res = subprocess.run([sys.executable, cinnamon_patch_path, "--user"])
-                        if res.returncode == 0:
-                            widget.set_label(_("Active (Left & Right clicks unified)"))
-                            widget.set_sensitive(False)
-                            self.show_feedback(_("Cinnamon left-click unification successfully enabled!"))
-                        else:
-                            self.show_feedback(_("Failed to enable Cinnamon unification."), is_error=True)
+                        if cinnamon_patch_path:
+                            res = subprocess.run([sys.executable, cinnamon_patch_path, "--user"])
+                            if res.returncode == 0:
+                                update_btn_content(widget, _("Active (Left & Right clicks unified)"), "emblem-default")
+                                widget.set_sensitive(False)
+                                self.show_feedback(_("Cinnamon left-click unification successfully enabled!"))
+                            else:
+                                self.show_feedback(_("Failed to enable Cinnamon unification."), is_error=True)
                     btn_cin.connect("clicked", on_patch_cinnamon_clicked)
 
                 card_cinnamon = self.create_card(
@@ -732,7 +733,7 @@ class SettingsWindow(Gtk.Window):
             except Exception:
                 pass
 
-        self.stack.add_titled(page, "general", _("Préférences"))
+        self.stack.add_titled(page, "general", _("Preferences"))
 
     def refresh_stats(self):
         nb_st, nb_gr = get_bookmarks_stats(self.bookmarks_path)
@@ -747,10 +748,10 @@ class SettingsWindow(Gtk.Window):
         active = switch.get_active()
         ok = set_autostart_active(active)
         if ok:
-            status = _("activé") if active else _("désactivé")
-            self.show_feedback(f"{_('Démarrage automatique')} {status}.")
+            status = _("enabled") if active else _("disabled")
+            self.show_feedback(f"{_("Automatic startup")} {status}.")
         else:
-            self.show_feedback(_("Erreur lors de la modification de l'autostart."), is_error=True)
+            self.show_feedback(_("Error modifying autostart."), is_error=True)
 
     def show_feedback(self, msg, is_error=False):
         kind = "error" if is_error else "ok"
@@ -771,7 +772,8 @@ class SettingsWindow(Gtk.Window):
         # Transmettre le résultat JSON sur stdout à destination de TiMonde en Rust
         output = {"reload": self.has_modifications}
         print(json.dumps(output), flush=True)
-        Gtk.main_quit()
+        if Gtk.main_level() > 0:
+            Gtk.main_quit()
 
 
 def main():

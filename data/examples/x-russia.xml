@@ -9,7 +9,7 @@
 		<bookmark name="Радио Шансон / Radio Shanson" url="https://chanson.hostingradio.ru:8041/chanson128.mp3" country="RU" timezone="Europe/Moscow"/>
 		<bookmark name="Радио Маяк / Radio Mayak" url="https://icecast-vgtrk.cdnvideo.ru/mayakfm_mp3_128kbps" country="RU" timezone="Europe/Moscow"/>
 		<bookmark name="Radio Pik (Riga-Latvia)" url="http://stream.radiopik.pl:9004/" country="LV" timezone="Europe/Riga"/>
-		<bookmark name="Радио Свобода / Radio Svoboda USA" url="https://n0a.radiojar.com/hcrb063nn3quv?rj-ttl=5&amp;rj-tok=AAABoRvnhg8AP9yL7TDep3SK_g" country="US" timezone="America/New_York"/>
+		<bookmark name="Радио Свобода / Radio Svoboda USA" url="https://n0a.radiojar.com/hcrb063nn3quv" country="US" timezone="America/New_York"/>
 		<bookmark name="Русское Радио / Russkoe Radio (Moscow)" url="https://rusradio.hostingradio.ru/rusradio96.aacp" country="RU" timezone="Europe/Moscow"/>
 		<bookmark name="Русское Радио / Russkoe Radio (Tallinn-Estonia)" url="https://rr-detskijkanal.hostingradio.ru/detskijkanal96.aacp" country="EE" timezone="Europe/Tallinn"/>
 		<bookmark name="Русские Песни / Russian Songs" url="http://listen.rusongs.ru/ru-mp3-128" country="RU" timezone="Europe/Moscow"/>

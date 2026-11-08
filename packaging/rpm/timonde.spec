@@ -1,5 +1,5 @@
 Name:           timonde
-Version:        0.2.3
+Version:        0.2.4
 Release:        1%{?dist}
 Summary:        Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux
 
@@ -102,6 +102,14 @@ if [ "$1" -eq 0 ]; then
 fi
 
 %changelog
+* Sun Nov 08 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.4-1
+- Détection des flux réaffectés et stations saisonnières via extraction ICY en direct
+- Bouton interactif « Aligner le nom » en cas de divergence avec le flux d'antenne
+- Module de vérification d'unicité et contribution guidée vers Radio-Browser
+- Prise en charge des serveurs SHOUTcast v1 (protocole ICY 200 OK)
+- Icônes contrastées adaptatives pour thèmes sombres et sélections claires/vertes
+- Bouquet France d'Outre-mer 100 % opérationnel (116/116 stations, codes ISO GP/MQ/GF/PM/RE/YT/NC/PF/WF)
+
 * Fri Nov 06 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.3-1
 - Navigation arborescente naturelle Gtk.TreeStore dans l'atelier « Mes Radios »
 - Gestion fidèle des radios sans groupe au premier niveau (Option 1 racine directe)

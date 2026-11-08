@@ -77,39 +77,45 @@ fn create_default_bookmarks(path: &Path) -> Group {
 /// Initialise le dossier ~/.config/timonde/examples/ avec les fichiers exemples de référence si vide ou inexistant
 fn ensure_config_examples(config_dir: &Path) {
     let examples_dir = config_dir.join("examples");
-    let needs_population = if !examples_dir.exists() {
+    if !examples_dir.exists() {
         let _ = std::fs::create_dir_all(&examples_dir);
-        true
-    } else {
-        match std::fs::read_dir(&examples_dir) {
-            Ok(mut entries) => entries.next().is_none(),
-            Err(_) => false,
-        }
-    };
+    }
 
-    if needs_population {
-        let candidates = [
-            PathBuf::from("/usr/share/timonde/examples"),
-            #[cfg(debug_assertions)]
-            PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/data/examples")),
-        ];
-        for source_dir in &candidates {
-            if source_dir.is_dir() {
-                if let Ok(entries) = std::fs::read_dir(source_dir) {
-                    for entry in entries.flatten() {
-                        let path = entry.path();
-                        if path.is_file() {
-                            if let Some(name) = path.file_name() {
-                                let dest = examples_dir.join(name);
-                                if !dest.exists() {
-                                    let _ = std::fs::copy(&path, &dest);
+    let candidates = [
+        PathBuf::from("/usr/share/timonde/examples"),
+        #[cfg(debug_assertions)]
+        PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/data/examples")),
+    ];
+    for source_dir in &candidates {
+        if source_dir.is_dir() {
+            if let Ok(entries) = std::fs::read_dir(source_dir) {
+                let mut copied = 0;
+                for entry in entries.flatten() {
+                    let path = entry.path();
+                    if path.is_file() {
+                        if let Some(name) = path.file_name() {
+                            let dest = examples_dir.join(name);
+                            let should_copy = if !dest.exists() {
+                                true
+                            } else {
+                                // Mettre à jour si la version du paquet/système est plus récente que la copie locale
+                                match (path.metadata().and_then(|m| m.modified()), dest.metadata().and_then(|m| m.modified())) {
+                                    (Ok(src_m), Ok(dest_m)) => src_m > dest_m,
+                                    _ => false,
+                                }
+                            };
+                            if should_copy {
+                                if let Ok(_) = std::fs::copy(&path, &dest) {
+                                    copied += 1;
                                 }
                             }
                         }
                     }
-                    info!("Fichiers exemples copiés dans {:?}", examples_dir);
-                    break;
                 }
+                if copied > 0 {
+                    info!("{} fichiers exemples synchronisés dans {:?}", copied, examples_dir);
+                }
+                break;
             }
         }
     }
@@ -628,6 +634,7 @@ fn main() {
         let root_group = Arc::clone(&root_group_clone);
         let play_generation = Arc::clone(&play_generation);
         let bpath = bookmarks_path_clone.clone();
+        let tray_handle = Arc::clone(&tray_handle_cell);
 
         Arc::new(move |station: models::Station| {
             is_ephemeral_play.store(false, std::sync::atomic::Ordering::SeqCst);
@@ -641,6 +648,7 @@ fn main() {
                 &play_generation,
                 &root_group,
                 &bpath,
+                &tray_handle,
             );
             trigger_for_play();
         })
