@@ -293,6 +293,32 @@ class TestTiMondeCommon(unittest.TestCase):
             self.assertEqual(win.selected_country_code, "KE")
         win.destroy()
 
+    def test_find_timonde_binary(self):
+        from timonde_common import find_timonde_binary
+        bin_path = find_timonde_binary()
+        self.assertIsNotNone(bin_path)
+        self.assertTrue(os.path.exists(bin_path))
+        self.assertTrue(os.access(bin_path, os.X_OK))
+
+    def test_check_stream_url_delegation_and_redirect_meta(self):
+        from timonde_common import check_stream_url
+        # Vérification des tuples avec redirection et métadonnées
+        ok, msg, redir, meta = check_stream_url("http://127.0.0.1:59999/dummy", with_redirect=True, fetch_meta=True)
+        self.assertFalse(ok)
+        self.assertIsInstance(msg, str)
+        self.assertIsNone(redir)
+        self.assertIsInstance(meta, dict)
+        self.assertIn("content_type", meta)
+
+    def test_settings_version_card_structure(self):
+        from timonde_settings import SettingsWindow
+        from timonde_common import TIMONDE_VERSION
+        win = SettingsWindow()
+        self.assertTrue(hasattr(win, "create_info_row"))
+        row = win.create_info_row("TiMonde version", "/usr/bin/timonde", f"v{TIMONDE_VERSION}")
+        self.assertIsNotNone(row)
+        win.destroy()
+
 if __name__ == "__main__":
     unittest.main()
 

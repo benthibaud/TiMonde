@@ -6,7 +6,7 @@ ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
 CARGO_TOML="${ROOT_DIR}/Cargo.toml"
 VERSION_FROM_CARGO=$(grep -m1 '^version = ' "${CARGO_TOML}" 2>/dev/null | cut -d '"' -f2)
-VERSION="${1:-${VERSION_FROM_CARGO:-0.2.3}}"
+VERSION="${1:-${VERSION_FROM_CARGO:-0.2.5}}"
 ARCH="x86_64"
 RPM_NAME="timonde-${VERSION}-1.${ARCH}.rpm"
 DIST_DIR="${ROOT_DIR}/packaging/dist"

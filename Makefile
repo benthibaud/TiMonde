@@ -35,6 +35,8 @@ install: build
 	install -m 644 data/icons/timonde_on.svg $(DESTDIR)$(ICONSDIR)/panel/timonde_on.svg
 	install -m 644 data/icons/timonde_error.svg $(DESTDIR)$(ICONSDIR)/panel/timonde_error.svg
 	cp -r data/icons/hicolor/* $(DESTDIR)$(DATADIR)/icons/hicolor/
+	install -d $(DESTDIR)$(DATADIR)/timonde/icons
+	install -m 644 data/icons/pan-end-symbolic*.svg $(DESTDIR)$(DATADIR)/timonde/icons/
 	install -d $(DESTDIR)$(DATADIR)/timonde/scripts
 	install -m 755 data/scripts/reorder_groups.py $(DESTDIR)$(DATADIR)/timonde/scripts/reorder_groups.py
 	install -m 755 data/scripts/edit_station.py $(DESTDIR)$(DATADIR)/timonde/scripts/edit_station.py
@@ -74,6 +76,8 @@ install-user: build
 	install -m 644 data/icons/timonde_on.svg $(HOME)/.local/share/icons/hicolor/scalable/panel/timonde_on.svg
 	install -m 644 data/icons/timonde_error.svg $(HOME)/.local/share/icons/hicolor/scalable/panel/timonde_error.svg
 	cp -r data/icons/hicolor/* $(HOME)/.local/share/icons/hicolor/
+	install -d $(HOME)/.local/share/timonde/icons
+	install -m 644 data/icons/pan-end-symbolic*.svg $(HOME)/.local/share/timonde/icons/
 	install -d $(HOME)/.local/share/timonde/scripts
 	install -m 755 data/scripts/reorder_groups.py $(HOME)/.local/share/timonde/scripts/reorder_groups.py
 	install -m 755 data/scripts/edit_station.py $(HOME)/.local/share/timonde/scripts/edit_station.py
