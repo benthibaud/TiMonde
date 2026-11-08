@@ -9,6 +9,7 @@ use log::info;
 use crate::audio::PlaybackState;
 use crate::models::{Group, Station};
 use crate::tray::TiMondeTray;
+use crate::sync_util::SafeLock;
 
 impl TiMondeTray {
     /// Formate le libellé d'une station dans le menu avec le drapeau national si étiqueté
@@ -130,10 +131,10 @@ impl ksni::Tray for TiMondeTray {
     }
 
     fn title(&self) -> String {
-        let cur_st = self.current_station.lock().unwrap();
+        let cur_st = self.current_station.safe_lock();
         match (cur_st.as_ref(), self.state()) {
             (Some(st), PlaybackState::Playing) => {
-                let cur_title = self.current_title.lock().unwrap();
+                let cur_title = self.current_title.safe_lock();
                 let time_str = crate::timezone::get_local_time_for_station(
                     st.country.as_deref(),
                     &st.name,
@@ -204,11 +205,11 @@ impl ksni::Tray for TiMondeTray {
             self.stop_and_trim();
         } else {
             let station_to_turn_on = {
-                let last = self.last_station.lock().unwrap();
+                let last = self.last_station.safe_lock();
                 if let Some(ref last_st) = *last {
                     Some(last_st.clone())
                 } else {
-                    let root = self.root_group.lock().unwrap();
+                    let root = self.root_group.safe_lock();
                     Self::find_first_station(&root)
                 }
             };
@@ -220,11 +221,11 @@ impl ksni::Tray for TiMondeTray {
 
     fn scroll(&mut self, delta: i32, _orientation: ksni::Orientation) {
         let step = if delta > 0 { -0.01 } else { 0.01 };
-        let mut cur = self.current_volume.lock().unwrap();
+        let mut cur = self.current_volume.safe_lock();
         let new_vol = (*cur + step).clamp(0.0, 1.0);
         *cur = new_vol;
         drop(cur);
-        let guard = self.audio.lock().unwrap();
+        let guard = self.audio.safe_lock();
         if let Some(ref engine) = *guard {
             engine.set_volume(new_vol);
         }
@@ -238,8 +239,8 @@ impl ksni::Tray for TiMondeTray {
 
         // 1. Bouton principal Marche / Arrêt / Connexion en tête du menu
         let is_eph = self.is_ephemeral.load(Ordering::SeqCst);
-        let cur_st = self.current_station.lock().unwrap();
-        let cur_title = self.current_title.lock().unwrap();
+        let cur_st = self.current_station.safe_lock();
+        let cur_title = self.current_title.safe_lock();
 
         match cur_st.as_ref() {
             Some(st) if current_state == PlaybackState::Buffering => {
@@ -270,11 +271,11 @@ impl ksni::Tray for TiMondeTray {
             }
             None => {
                 let station_to_turn_on = {
-                    let last = self.last_station.lock().unwrap();
+                    let last = self.last_station.safe_lock();
                     if let Some(ref last_st) = *last {
                         Some(last_st.clone())
                     } else {
-                        let root = self.root_group.lock().unwrap();
+                        let root = self.root_group.safe_lock();
                         Self::find_first_station(&root)
                     }
                 };
@@ -424,7 +425,7 @@ impl ksni::Tray for TiMondeTray {
         }
 
         // 3. Arborescence des radios (le niveau "root" est déjà épuré au chargement)
-        let root_group = self.root_group.lock().unwrap();
+        let root_group = self.root_group.safe_lock();
 
         for sub in &root_group.subgroups {
             if sub.is_separator() {
@@ -483,7 +484,7 @@ impl ksni::Tray for TiMondeTray {
         menu.push(MenuItem::Separator);
 
         // 4. Contrôle du volume
-        let current_vol = *self.current_volume.lock().unwrap();
+        let current_vol = *self.current_volume.safe_lock();
         let vol_percent = (current_vol * 100.0).round() as i32;
         menu.push(MenuItem::SubMenu(SubMenu {
             label: format!("Volume ({vol_percent}%)"),
@@ -538,7 +539,7 @@ impl ksni::Tray for TiMondeTray {
         }));
 
         // 5. Minuteur de mise en veille (Sleep timer)
-        let sleep_guard = self.sleep_timer.lock().unwrap();
+        let sleep_guard = self.sleep_timer.safe_lock();
         let sleep_label = match *sleep_guard {
             Some(target) => {
                 let now = std::time::Instant::now();

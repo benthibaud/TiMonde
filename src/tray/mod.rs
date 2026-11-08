@@ -14,6 +14,7 @@ use crate::audio::{AudioEngine, PlaybackState};
 use crate::models::{Group, Station};
 use crate::playlist::resolve_stream_url;
 use crate::radio_browser::{find_backup_stream, notify};
+use crate::sync_util::SafeLock;
 
 /// Mémorisation de l'horodatage de la dernière écriture interne pour éviter les doubles rechargements
 pub static LAST_RELOAD_MTIME_MILLIS: AtomicU64 = AtomicU64::new(0);
@@ -24,7 +25,7 @@ pub static LAST_RELOAD_MTIME_MILLIS: AtomicU64 = AtomicU64::new(0);
 /// l'appel `update` bloquant dans un thread détaché.
 pub fn request_tray_refresh(handle_cell: &Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>) {
     let handle_opt = {
-        let guard = handle_cell.lock().unwrap();
+        let guard = handle_cell.safe_lock();
         guard.clone()
     };
     if let Some(h) = handle_opt {
@@ -89,7 +90,7 @@ impl TiMondeTray {
         match crate::bookmarks::load_bookmarks(bookmarks_path) {
             Ok(new_group) => {
                 let total = new_group.total_stations();
-                *root_group.lock().unwrap() = new_group;
+                *root_group.safe_lock() = new_group;
                 info!("{} signets rechargés avec succès depuis {:?}", total, bookmarks_path);
 
                 if let Ok(meta) = std::fs::metadata(bookmarks_path) {
@@ -114,7 +115,7 @@ impl TiMondeTray {
 
     /// Obtient l'état audio actuel de façon non-bloquante sans forcer l'allocation
     pub fn state(&self) -> PlaybackState {
-        let guard = self.audio.lock().unwrap();
+        let guard = self.audio.safe_lock();
         match guard.as_ref() {
             Some(engine) => engine.state(),
             None => PlaybackState::Stopped,
@@ -128,12 +129,12 @@ impl TiMondeTray {
         current_title: &Arc<Mutex<Option<String>>>,
         tray_notifier: Option<Arc<dyn Fn() + Send + Sync>>,
     ) -> Result<(), String> {
-        let mut guard = audio_mutex.lock().unwrap();
+        let mut guard = audio_mutex.safe_lock();
         if guard.is_none() {
             info!("Chargement à la demande du moteur GStreamer...");
             match AudioEngine::new(Arc::clone(current_title), tray_notifier) {
                 Ok(engine) => {
-                    let vol = *current_volume.lock().unwrap();
+                    let vol = *current_volume.safe_lock();
                     engine.set_volume(vol);
                     *guard = Some(engine);
                 }
@@ -209,7 +210,7 @@ impl TiMondeTray {
                 return;
             }
             {
-                let guard = audio.lock().unwrap();
+                let guard = audio.safe_lock();
                 if let Some(ref engine) = *guard {
                     if let Err(e) = engine.play(&resolved_url) {
                         error!("Échec initial de lecture : {}", e);
@@ -239,9 +240,9 @@ impl TiMondeTray {
         let raw_url = station.url.clone();
         info!("Sélection de la station : {} ({})", station_name, raw_url);
 
-        *last_station.lock().unwrap() = Some(station.clone());
-        *current_station.lock().unwrap() = Some(station.clone());
-        *current_title.lock().unwrap() = None;
+        *last_station.safe_lock() = Some(station.clone());
+        *current_station.safe_lock() = Some(station.clone());
+        *current_title.safe_lock() = None;
 
         // Persistance atomique immédiate de la station en écoute dans state.json
         {
@@ -254,7 +255,7 @@ impl TiMondeTray {
         }
 
         let group_name = {
-            let guard = root_group.lock().unwrap();
+            let guard = root_group.safe_lock();
             Self::find_group_name_for_station(&guard, &station.url)
         };
         Self::notify_station_local_time(&station, group_name.as_deref(), false);
@@ -291,7 +292,7 @@ impl TiMondeTray {
                 }
 
                 let st = {
-                    let guard = audio_clone.lock().unwrap();
+                    let guard = audio_clone.safe_lock();
                     guard.as_ref().map(|e| e.state()).unwrap_or(PlaybackState::Stopped)
                 };
 
@@ -311,7 +312,7 @@ impl TiMondeTray {
                         let direct_backup = resolve_stream_url(&backup_url);
                         info!("Watchdog : bascule temporaire sur flux alternatif : {} ({})", found_name, direct_backup);
                         let played = {
-                            let guard = audio_clone.lock().unwrap();
+                            let guard = audio_clone.safe_lock();
                             if let Some(ref engine) = *guard {
                                 engine.play(&direct_backup).is_ok()
                             } else {
@@ -331,7 +332,7 @@ impl TiMondeTray {
                             "TiMonde",
                             &format!("« {} » {}.", name_for_watchdog, crate::i18n::tr("is currently unavailable")),
                         );
-                        let guard = audio_clone.lock().unwrap();
+                        let guard = audio_clone.safe_lock();
                         if let Some(ref engine) = *guard {
                             let _ = engine.stop();
                         }
@@ -365,12 +366,12 @@ impl TiMondeTray {
         current_station: &Arc<Mutex<Option<Station>>>,
         current_title: &Arc<Mutex<Option<String>>>,
     ) {
-        let guard = audio.lock().unwrap();
+        let guard = audio.safe_lock();
         if let Some(ref engine) = *guard {
             let _ = engine.stop();
         }
-        *current_station.lock().unwrap() = None;
-        *current_title.lock().unwrap() = None;
+        *current_station.safe_lock() = None;
+        *current_title.safe_lock() = None;
 
         // Appel trim low-tech glibc / musl
         #[cfg(target_os = "linux")]
@@ -391,12 +392,12 @@ impl TiMondeTray {
         let raw_url = station.url.clone();
         info!("Écoute éphémère (découverte) : {} ({})", station_name, raw_url);
         self.is_ephemeral.store(true, Ordering::SeqCst);
-        *self.current_station.lock().unwrap() = Some(station.clone());
-        *self.current_title.lock().unwrap() = None;
+        *self.current_station.safe_lock() = Some(station.clone());
+        *self.current_title.safe_lock() = None;
 
         // Notification explicite informant l'utilisateur que cette radio est temporaire
         let group_name = {
-            let guard = self.root_group.lock().unwrap();
+            let guard = self.root_group.safe_lock();
             Self::find_group_name_for_station(&guard, &station.url)
         };
         Self::notify_station_local_time(&station, group_name.as_deref(), true);
@@ -430,7 +431,7 @@ impl TiMondeTray {
     /// Choisit une station au hasard dans le catalogue mondial et lance sa lecture éphémère
     pub fn play_random_ephemeral_station(&self) {
         let existing_urls: Vec<String> = {
-            let root = self.root_group.lock().unwrap();
+            let root = self.root_group.safe_lock();
             let mut set = std::collections::HashSet::new();
             crate::import::collect_all_urls(&root, &mut set);
             set.into_iter().collect()
@@ -452,7 +453,7 @@ impl TiMondeTray {
 
     /// Ouvre la boîte de dialogue pour enregistrer la radio éphémère courante dans les favoris
     pub fn trigger_save_current_ephemeral_station(&self) {
-        let station_opt = self.current_station.lock().unwrap().clone();
+        let station_opt = self.current_station.safe_lock().clone();
         let station = match station_opt {
             Some(s) => s,
             None => {
@@ -469,7 +470,7 @@ impl TiMondeTray {
 
         std::thread::spawn(move || {
             let all_groups: Vec<String> = {
-                let guard = root_group.lock().unwrap();
+                let guard = root_group.safe_lock();
                 let mut list = Vec::new();
                 guard.collect_all_group_paths("", &mut list);
                 list
@@ -529,7 +530,7 @@ impl TiMondeTray {
             final_st.country = new_country;
             final_st.timezone = new_timezone;
 
-            let mut root = root_group.lock().unwrap().clone();
+            let mut root = root_group.safe_lock().clone();
             match crate::import::add_station_to_group(
                 &mut root,
                 final_st.clone(),
@@ -544,7 +545,7 @@ impl TiMondeTray {
 
                     // Bascule de l'état : la radio est désormais pérenne dans les signets
                     is_ephemeral.store(false, Ordering::SeqCst);
-                    *last_station.lock().unwrap() = Some(final_st.clone());
+                    *last_station.safe_lock() = Some(final_st.clone());
 
                     // Sauvegarder dans state.json
                     let st_saved = final_st.clone();
@@ -579,7 +580,7 @@ impl TiMondeTray {
     pub fn set_sleep_timer(&mut self, minutes: u64) {
         let dur = Duration::from_secs(minutes * 60);
         let target = std::time::Instant::now() + dur;
-        *self.sleep_timer.lock().unwrap() = Some(target);
+        *self.sleep_timer.safe_lock() = Some(target);
 
         let audio = Arc::clone(&self.audio);
         let current_station = Arc::clone(&self.current_station);
@@ -605,7 +606,7 @@ impl TiMondeTray {
                 return;
             }
 
-            let mut guard = sleep_timer.lock().unwrap();
+            let mut guard = sleep_timer.safe_lock();
             if let Some(t) = *guard {
                 if t <= std::time::Instant::now() {
                     *guard = None;
@@ -622,7 +623,7 @@ impl TiMondeTray {
     /// Annule la minuterie d'arrêt programmée
     pub fn cancel_sleep_timer(&mut self) {
         self.sleep_generation.fetch_add(1, Ordering::SeqCst);
-        *self.sleep_timer.lock().unwrap() = None;
+        *self.sleep_timer.safe_lock() = None;
         notify("TiMonde", crate::i18n::tr("Sleep timer cancelled."));
     }
 
@@ -722,8 +723,8 @@ X-GNOME-Autostart-enabled=true\n";
 
     pub fn set_volume_level(&mut self, vol: f64) {
         let clamped = vol.clamp(0.0, 1.0);
-        *self.current_volume.lock().unwrap() = clamped;
-        if let Some(ref e) = *self.audio.lock().unwrap() {
+        *self.current_volume.safe_lock() = clamped;
+        if let Some(ref e) = *self.audio.safe_lock() {
             e.set_volume(clamped);
         }
         crate::state::schedule_volume_save(clamped);

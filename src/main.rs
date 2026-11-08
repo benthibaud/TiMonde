@@ -11,6 +11,7 @@ pub mod tray;
 pub mod timezone;
 pub mod discovery;
 pub mod cli;
+pub mod sync_util;
 
 use bookmarks::{create_default_bookmarks, ensure_config_examples, find_bookmarks_path, load_bookmarks};
 use ksni::blocking::TrayMethods;
@@ -18,6 +19,7 @@ use log::{error, info};
 use models::Group;
 use std::path::PathBuf;
 use std::sync::Arc;
+use sync_util::SafeLock;
 
 /// Vérifie si un démon StatusNotifierWatcher est actif sur D-Bus (sans aucun sous-processus).
 fn has_status_notifier_watcher() -> bool {
@@ -298,7 +300,7 @@ fn main() {
         }
     };
     if let Some(h) = handle {
-        *tray_handle_cell.lock().unwrap() = Some(h);
+        *tray_handle_cell.safe_lock() = Some(h);
     }
 
     info!("TiMonde est actif et discret dans la barre des tâches.");
@@ -362,8 +364,8 @@ fn main() {
 
                     // Rafraîchir l'heure uniquement si une radio est en cours d'écoute
                     let is_active = {
-                        let has_station = cur_st_clock.lock().unwrap().is_some();
-                        let is_playing = audio_clock.lock().unwrap().as_ref()
+                        let has_station = cur_st_clock.safe_lock().is_some();
+                        let is_playing = audio_clock.safe_lock().as_ref()
                             .map(|e| e.state() == audio::PlaybackState::Playing)
                             .unwrap_or(false);
                         has_station && is_playing

@@ -73,6 +73,13 @@ fn load_mo_file(lang: &str) -> Option<HashMap<String, &'static str>> {
     None
 }
 
+fn read_u32_le(buf: &[u8], offset: usize) -> Option<u32> {
+    buf.get(offset..offset + 4)?
+        .try_into()
+        .ok()
+        .map(u32::from_le_bytes)
+}
+
 /// Analyseur du format binaire standard GNU Gettext (.mo)
 fn parse_mo_file(path: &Path) -> Result<HashMap<String, &'static str>, String> {
     let mut file = File::open(path).map_err(|e| e.to_string())?;
@@ -83,14 +90,26 @@ fn parse_mo_file(path: &Path) -> Result<HashMap<String, &'static str>, String> {
         return Err("Fichier .mo trop court".to_string());
     }
 
-    let magic = u32::from_le_bytes(buffer[0..4].try_into().unwrap());
+    let magic = match read_u32_le(&buffer, 0) {
+        Some(m) => m,
+        None => return Err("Impossible de lire l'en-tête .mo".to_string()),
+    };
     if magic != 0x950412de {
         return Err("Magic number Gettext invalide".to_string());
     }
 
-    let count = u32::from_le_bytes(buffer[8..12].try_into().unwrap()) as usize;
-    let orig_table_offset = u32::from_le_bytes(buffer[12..16].try_into().unwrap()) as usize;
-    let trans_table_offset = u32::from_le_bytes(buffer[16..20].try_into().unwrap()) as usize;
+    let count = match read_u32_le(&buffer, 8) {
+        Some(c) => c as usize,
+        None => return Err("Nombre de traductions manquant".to_string()),
+    };
+    let orig_table_offset = match read_u32_le(&buffer, 12) {
+        Some(off) => off as usize,
+        None => return Err("Offset table originale manquant".to_string()),
+    };
+    let trans_table_offset = match read_u32_le(&buffer, 16) {
+        Some(off) => off as usize,
+        None => return Err("Offset table traduite manquant".to_string()),
+    };
 
     let mut map = HashMap::new();
 
@@ -101,11 +120,23 @@ fn parse_mo_file(path: &Path) -> Result<HashMap<String, &'static str>, String> {
             break;
         }
 
-        let orig_len = u32::from_le_bytes(buffer[orig_pos..orig_pos + 4].try_into().unwrap()) as usize;
-        let orig_off = u32::from_le_bytes(buffer[orig_pos + 4..orig_pos + 8].try_into().unwrap()) as usize;
+        let orig_len = match read_u32_le(&buffer, orig_pos) {
+            Some(l) => l as usize,
+            None => break,
+        };
+        let orig_off = match read_u32_le(&buffer, orig_pos + 4) {
+            Some(off) => off as usize,
+            None => break,
+        };
 
-        let trans_len = u32::from_le_bytes(buffer[trans_pos..trans_pos + 4].try_into().unwrap()) as usize;
-        let trans_off = u32::from_le_bytes(buffer[trans_pos + 4..trans_pos + 8].try_into().unwrap()) as usize;
+        let trans_len = match read_u32_le(&buffer, trans_pos) {
+            Some(l) => l as usize,
+            None => break,
+        };
+        let trans_off = match read_u32_le(&buffer, trans_pos + 4) {
+            Some(off) => off as usize,
+            None => break,
+        };
 
         if orig_off + orig_len <= buffer.len() && trans_off + trans_len <= buffer.len() {
             if let (Ok(orig_str), Ok(trans_str)) = (

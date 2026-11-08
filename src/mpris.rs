@@ -1,3 +1,4 @@
+use crate::sync_util::SafeLock;
 use std::sync::{Arc, Mutex};
 use std::collections::HashMap;
 use zbus::interface;
@@ -46,10 +47,10 @@ pub struct MprisPlayer {
 #[interface(name = "org.mpris.MediaPlayer2.Player")]
 impl MprisPlayer {
     fn next(&self) {
-        let all_stations = get_all_stations(&self.root_group.lock().unwrap());
+        let all_stations = get_all_stations(&self.root_group.safe_lock());
         if all_stations.is_empty() { return; }
 
-        let cur = self.current_station.lock().unwrap().clone();
+        let cur = self.current_station.safe_lock().clone();
         let next_station = if let Some(st) = cur {
             if let Some(pos) = all_stations.iter().position(|s| s.name == st.name) {
                 all_stations[(pos + 1) % all_stations.len()].clone()
@@ -64,10 +65,10 @@ impl MprisPlayer {
     }
 
     fn previous(&self) {
-        let all_stations = get_all_stations(&self.root_group.lock().unwrap());
+        let all_stations = get_all_stations(&self.root_group.safe_lock());
         if all_stations.is_empty() { return; }
 
-        let cur = self.current_station.lock().unwrap().clone();
+        let cur = self.current_station.safe_lock().clone();
         let prev_station = if let Some(st) = cur {
             if let Some(pos) = all_stations.iter().position(|s| s.name == st.name) {
                 let prev_idx = if pos == 0 { all_stations.len() - 1 } else { pos - 1 };
@@ -83,7 +84,7 @@ impl MprisPlayer {
     }
 
     fn pause(&self) {
-        let guard = self.audio.lock().unwrap();
+        let guard = self.audio.safe_lock();
         if let Some(ref e) = *guard {
             let _ = e.pause();
         }
@@ -92,7 +93,7 @@ impl MprisPlayer {
     }
 
     fn play_pause(&self) {
-        let guard = self.audio.lock().unwrap();
+        let guard = self.audio.safe_lock();
         if let Some(ref e) = *guard {
             match e.state() {
                 PlaybackState::Playing => {
@@ -112,7 +113,7 @@ impl MprisPlayer {
         }
         drop(guard);
 
-        if let Some(st) = self.last_station.lock().unwrap().clone() {
+        if let Some(st) = self.last_station.safe_lock().clone() {
             (self.on_play)(st);
         }
     }
@@ -122,7 +123,7 @@ impl MprisPlayer {
     }
 
     fn play(&self) {
-        let guard = self.audio.lock().unwrap();
+        let guard = self.audio.safe_lock();
         if let Some(ref e) = *guard {
             if e.state() == PlaybackState::Paused {
                 let _ = e.resume();
@@ -133,7 +134,7 @@ impl MprisPlayer {
         }
         drop(guard);
 
-        if let Some(st) = self.last_station.lock().unwrap().clone() {
+        if let Some(st) = self.last_station.safe_lock().clone() {
             (self.on_play)(st);
         }
     }
@@ -168,7 +169,7 @@ impl MprisPlayer {
 
     #[zbus(property)]
     fn playback_status(&self) -> String {
-        let guard = self.audio.lock().unwrap();
+        let guard = self.audio.safe_lock();
         match guard.as_ref().map(|e| e.state()) {
             Some(PlaybackState::Playing) => "Playing".to_string(),
             Some(PlaybackState::Paused) => "Paused".to_string(),
@@ -186,13 +187,12 @@ impl MprisPlayer {
     #[zbus(property)]
     fn metadata(&self) -> HashMap<String, Value<'static>> {
         let mut map = HashMap::new();
-        map.insert(
-            "mpris:trackid".to_string(),
-            Value::ObjectPath(ObjectPath::from_static_str("/org/mpris/MediaPlayer2/CurrentTrack").unwrap())
-        );
+        if let Ok(track_id) = ObjectPath::try_from("/org/mpris/MediaPlayer2/CurrentTrack") {
+            map.insert("mpris:trackid".to_string(), Value::ObjectPath(track_id));
+        }
 
-        let st_guard = self.current_station.lock().unwrap();
-        let title_guard = self.current_title.lock().unwrap();
+        let st_guard = self.current_station.safe_lock();
+        let title_guard = self.current_title.safe_lock();
 
         let track_title = if let Some(ref t) = *title_guard {
             t.clone()
@@ -214,18 +214,18 @@ impl MprisPlayer {
 
     #[zbus(property)]
     fn volume(&self) -> f64 {
-        *self.current_volume.lock().unwrap()
+        *self.current_volume.safe_lock()
     }
 
     #[zbus(property)]
     fn set_volume(&self, vol: f64) {
         let clamped = vol.clamp(0.0, 1.0);
         {
-            let mut v_guard = self.current_volume.lock().unwrap();
+            let mut v_guard = self.current_volume.safe_lock();
             *v_guard = clamped;
         }
         {
-            let a_guard = self.audio.lock().unwrap();
+            let a_guard = self.audio.safe_lock();
             if let Some(ref e) = *a_guard {
                 e.set_volume(clamped);
             }

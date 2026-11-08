@@ -2,6 +2,7 @@ use gstreamer::prelude::*;
 use log::{error, info};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
+use crate::sync_util::SafeLock;
 
 /// État de lecture actuel
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -111,7 +112,7 @@ impl AudioEngine {
                                     if is_player {
                                         let mut state_changed = false;
                                         {
-                                            let mut st = state_clone.lock().unwrap();
+                                            let mut st = state_clone.safe_lock();
                                             match sc.current() {
                                                 gstreamer::State::Playing => {
                                                     info!("Flux GStreamer actif et en lecture");
@@ -145,7 +146,7 @@ impl AudioEngine {
                                     let percent = b.percent();
                                     let mut state_changed = false;
                                     {
-                                        let mut st = state_clone.lock().unwrap();
+                                        let mut st = state_clone.safe_lock();
                                         if percent < 100 {
                                             if *st != PlaybackState::Buffering {
                                                 *st = PlaybackState::Buffering;
@@ -164,14 +165,14 @@ impl AudioEngine {
                                 }
                                 MessageView::Error(err) => {
                                     error!("Erreur GStreamer : {} ({:?})", err.error(), err.debug());
-                                    *state_clone.lock().unwrap() = PlaybackState::Error;
+                                    *state_clone.safe_lock() = PlaybackState::Error;
                                     if let Some(ref notify_tray) = notifier_clone {
                                         notify_tray();
                                     }
                                 }
                                 MessageView::Eos(_) => {
                                     info!("Fin de flux atteinte (EOS)");
-                                    *state_clone.lock().unwrap() = PlaybackState::Stopped;
+                                    *state_clone.safe_lock() = PlaybackState::Stopped;
                                     if let Some(ref notify_tray) = notifier_clone {
                                         notify_tray();
                                     }
@@ -182,7 +183,7 @@ impl AudioEngine {
                                         let title_str = title.get().to_string();
                                         info!("Titre en cours : {}", title_str);
                                         let is_new = {
-                                            let mut guard = title_clone.lock().unwrap();
+                                            let mut guard = title_clone.safe_lock();
                                             let changed = guard.as_deref() != Some(&title_str);
                                             if changed {
                                                 *guard = Some(title_str.clone());
@@ -218,9 +219,9 @@ impl AudioEngine {
     pub fn play(&self, url: &str) -> Result<(), AudioError> {
         let clean_url = crate::models::clean_stream_url(url);
         info!("Démarrage du flux : {}", clean_url);
-        *self.state.lock().unwrap() = PlaybackState::Buffering;
-        *self.current_title.lock().unwrap() = None;
-        *self.current_url.lock().unwrap() = Some(clean_url.clone());
+        *self.state.safe_lock() = PlaybackState::Buffering;
+        *self.current_title.safe_lock() = None;
+        *self.current_url.safe_lock() = Some(clean_url.clone());
 
         let _ = self.pipeline.set_state(gstreamer::State::Ready);
         self.pipeline.set_property("uri", &clean_url);
@@ -236,7 +237,7 @@ impl AudioEngine {
         self.pipeline
             .set_state(gstreamer::State::Paused)
             .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
-        *self.state.lock().unwrap() = PlaybackState::Paused;
+        *self.state.safe_lock() = PlaybackState::Paused;
         Ok(())
     }
 
@@ -245,7 +246,7 @@ impl AudioEngine {
         self.pipeline
             .set_state(gstreamer::State::Playing)
             .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
-        *self.state.lock().unwrap() = PlaybackState::Playing;
+        *self.state.safe_lock() = PlaybackState::Playing;
         Ok(())
     }
 
@@ -255,8 +256,8 @@ impl AudioEngine {
             .set_state(gstreamer::State::Null)
             .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
 
-        *self.state.lock().unwrap() = PlaybackState::Stopped;
-        *self.current_title.lock().unwrap() = None;
+        *self.state.safe_lock() = PlaybackState::Stopped;
+        *self.current_title.safe_lock() = None;
         unsafe {
             libc::malloc_trim(0);
         }
@@ -269,7 +270,7 @@ impl AudioEngine {
 
     pub fn state(&self) -> PlaybackState {
         // Si l'état interne a été positionné en Error, le renvoyer en priorité absolue
-        let internal_state = *self.state.lock().unwrap();
+        let internal_state = *self.state.safe_lock();
         if internal_state == PlaybackState::Error {
             return PlaybackState::Error;
         }

@@ -155,9 +155,10 @@ pub fn parse_bookmarks_reader<R: std::io::BufRead>(reader: R) -> Result<Group, B
             Event::End(e) => {
                 let name = e.name();
                 if name.as_ref() == b"group" && group_stack.len() > 1 {
-                    let finished_group = group_stack.pop().unwrap();
-                    if let Some(parent) = group_stack.last_mut() {
-                        parent.subgroups.push(finished_group);
+                    if let Some(finished_group) = group_stack.pop() {
+                        if let Some(parent) = group_stack.last_mut() {
+                            parent.subgroups.push(finished_group);
+                        }
                     }
                 }
             }

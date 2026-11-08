@@ -34,12 +34,13 @@ pub fn parse_asx(content: &str) -> Option<String> {
     if let Some(ref_pos) = lower.find("href") {
         let after_href = &content[ref_pos + 4..];
         if let Some(quote_start) = after_href.find(['"', '\'']) {
-            let quote_char = after_href.chars().nth(quote_start).unwrap();
-            let remainder = &after_href[quote_start + 1..];
-            if let Some(quote_end) = remainder.find(quote_char) {
-                let url = remainder[..quote_end].trim();
-                if url.starts_with("http://") || url.starts_with("https://") {
-                    return Some(url.to_string());
+            if let Some(quote_char) = after_href[quote_start..].chars().next() {
+                let remainder = &after_href[quote_start + quote_char.len_utf8()..];
+                if let Some(quote_end) = remainder.find(quote_char) {
+                    let url = remainder[..quote_end].trim();
+                    if url.starts_with("http://") || url.starts_with("https://") {
+                        return Some(url.to_string());
+                    }
                 }
             }
         }

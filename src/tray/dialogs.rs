@@ -7,6 +7,7 @@ use std::sync::{Arc, Mutex};
 use crate::audio::AudioEngine;
 use crate::models::{Group, Station};
 use crate::tray::TiMondeTray;
+use crate::sync_util::SafeLock;
 
 /// Recherche unifiée d'un script Python compagnon (archive portable, deb/rpm, local ou dev)
 pub fn find_script(script_name: &str) -> Option<PathBuf> {
@@ -137,7 +138,7 @@ pub fn trigger_edit_station_dialog(
     std::thread::spawn(move || {
         // Rapatriement infaillible de la station réelle dans les signets par son URL
         let (real_name, real_country, real_tz) = {
-            let guard = root_group.lock().unwrap();
+            let guard = root_group.safe_lock();
             if let Some(found) = find_station_by_url(&guard, &station.url) {
                 (
                     if station.name.trim().is_empty() {
@@ -158,13 +159,13 @@ pub fn trigger_edit_station_dialog(
         };
 
         let current_group_name = {
-            let guard = root_group.lock().unwrap();
+            let guard = root_group.safe_lock();
             find_group_name_for_station(&guard, &station.url)
         }
         .unwrap_or_else(|| "/".to_string());
 
         let all_groups: Vec<String> = {
-            let guard = root_group.lock().unwrap();
+            let guard = root_group.safe_lock();
             let mut list = Vec::new();
             guard.collect_all_group_paths("", &mut list);
             list
@@ -223,14 +224,14 @@ pub fn trigger_edit_station_dialog(
                 let out_str = String::from_utf8_lossy(&out.stdout).trim().to_string();
                 if let Ok(json_val) = serde_json::from_str::<serde_json::Value>(&out_str) {
                     if json_val["action"].as_str() == Some("delete") {
-                        let mut root = root_group.lock().unwrap().clone();
+                        let mut root = root_group.safe_lock().clone();
                         let target_url = json_val["url"].as_str().unwrap_or(&station.url);
                         if crate::bookmarks::remove_station_by_url(&mut root, target_url) {
                             let _ = crate::bookmarks::save_bookmarks(&root, &bookmarks_path);
-                            *root_group.lock().unwrap() = root;
+                            *root_group.safe_lock() = root;
                         }
                         let is_current = {
-                            let cur = current_station.lock().unwrap();
+                            let cur = current_station.safe_lock();
                             cur.as_ref()
                                 .map(|c| {
                                     crate::import::normalize_url(&c.url)
@@ -242,7 +243,7 @@ pub fn trigger_edit_station_dialog(
                             TiMondeTray::stop_and_trim_flow(&audio, &current_station, &current_title);
                         }
                         {
-                            let mut last = last_station.lock().unwrap();
+                            let mut last = last_station.safe_lock();
                             if last
                                 .as_ref()
                                 .map(|l| {
@@ -290,7 +291,7 @@ pub fn trigger_edit_station_dialog(
             return;
         }
 
-        let mut root = root_group.lock().unwrap().clone();
+        let mut root = root_group.safe_lock().clone();
 
         // Si le groupe a changé, transférer vers le nouveau groupe (ou racine)
         let norm_new = new_target_group.trim().trim_matches('/');
@@ -332,7 +333,7 @@ pub fn trigger_edit_station_dialog(
         // Mettre à jour current_station si elle était en cours et relancer le flux si l'URL a changé
         let mut url_changed_while_playing = false;
         {
-            let mut cur = current_station.lock().unwrap();
+            let mut cur = current_station.safe_lock();
             if let Some(ref mut c) = *cur {
                 if crate::import::normalize_url(&c.url) == crate::import::normalize_url(&station.url)
                     || c.name == station.name
@@ -353,7 +354,7 @@ pub fn trigger_edit_station_dialog(
         }
         if url_changed_while_playing {
             let was_playing = {
-                let guard = audio.lock().unwrap();
+                let guard = audio.safe_lock();
                 if let Some(ref engine) = *guard {
                     engine.state() == crate::audio::PlaybackState::Playing
                         || engine.state() == crate::audio::PlaybackState::Buffering
@@ -364,14 +365,14 @@ pub fn trigger_edit_station_dialog(
             if was_playing {
                 // Résolution réseau hors verrou audio pour ne pas bloquer le thread de contrôle
                 let resolved = crate::playlist::resolve_stream_url(&new_url);
-                let guard = audio.lock().unwrap();
+                let guard = audio.safe_lock();
                 if let Some(ref engine) = *guard {
                     let _ = engine.play(&resolved);
                 }
             }
         }
         {
-            let mut last = last_station.lock().unwrap();
+            let mut last = last_station.safe_lock();
             if let Some(ref mut l) = *last {
                 if crate::import::normalize_url(&l.url) == crate::import::normalize_url(&station.url)
                     || l.name == station.name

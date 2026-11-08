@@ -582,15 +582,13 @@ pub fn resolve_station_meta(
             let prev_ok = if actual_pos == 0 {
                 true
             } else {
-                let prev_char = haystack[..actual_pos].chars().next_back().unwrap();
-                !prev_char.is_alphanumeric()
+                haystack[..actual_pos].chars().next_back().is_none_or(|c| !c.is_alphanumeric())
             };
 
             let next_ok = if end_pos >= haystack.len() {
                 true
             } else {
-                let next_char = haystack[end_pos..].chars().next().unwrap();
-                !next_char.is_alphanumeric()
+                haystack[end_pos..].chars().next().is_none_or(|c| !c.is_alphanumeric())
             };
 
             if prev_ok && next_ok {
