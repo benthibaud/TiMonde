@@ -138,3 +138,9 @@ Pour bannir définitivement la dette technique et les blocages récents, la **Do
 - **Bannissement de `dialog.run()` :** Les boucles d'événements récursives sont proscrites. Toute fenêtre modale ou dialogue doit impérativement utiliser `connect("response", self._on_response)` suivi de `show_all()`, avec destruction explicite (`destroy()`) dans le callback de réponse.
 - **Communication par API claire :** Les flux de données entre l'interface et le cœur Rust sont formalisés (CLI d'administration `--api` ou D-Bus), interdisant les lectures/écritures disques parallèles et asynchrones non coordonnées.
 
+### Règle d'Or 3 : Briques Métier Déléguées à Rust (Zéro Doublon)
+- **Décodage Universel de Fichiers (`timonde --parse-file-json <FICHIER>`) :** Tous les formats audio/playlists (`.json`, `.m3u`, `.pls`, `.csv`, `.xml`) sont décodés exclusivement par le moteur Rust `crate::import`. Les 261 lignes de parseurs manuels Python ont été éradiquées.
+- **Recherche Annuaire Radio-Browser (`timonde --search ... --json`) :** L'interrogation multi-miroirs, le filtrage des flux brisés et le typage des réponses sont pilotés par Rust. Python ne fait plus de requêtes HTTP directes d'exploration.
+- **Référentiel Géographique & Fuseaux Horaires (`timonde --dump-countries-json` et `--infer-timezone`) :** Base exhaustive des 251 pays et territoires ISO mondiaux embarquée en Rust. Python n'embarque plus de tables statiques redondantes et résout les fuseaux via le moteur Rust avec mise en cache mémoire locale.
+
+

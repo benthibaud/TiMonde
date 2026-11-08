@@ -104,10 +104,8 @@ fn ensure_config_examples(config_dir: &Path) {
                                     _ => false,
                                 }
                             };
-                            if should_copy {
-                                if let Ok(_) = std::fs::copy(&path, &dest) {
-                                    copied += 1;
-                                }
+                            if should_copy && std::fs::copy(&path, &dest).is_ok() {
+                                copied += 1;
                             }
                         }
                     }

@@ -230,27 +230,6 @@ def normalize_group_path(raw_path: str, return_root_literal: bool = False) -> st
     return cleaned
 
 
-def find_or_create_group(parent_elem, group_path: str):
-    """
-    Parcourt ou crée récursivement les éléments <group> XML correspondants à un chemin avec slashes (ex: /France/Bretagne).
-    Retourne l'élément parent_elem si le chemin est la racine ou vide.
-    """
-    norm = normalize_group_path(group_path, return_root_literal=False)
-    if not norm:
-        return parent_elem
-    parts = [p.strip() for p in norm.split("/") if p.strip() and p.strip().lower() != "root"]
-    curr = parent_elem
-    for part in parts:
-        found = None
-        for child in curr.findall("group"):
-            if child.attrib.get("name", "").strip().lower() == part.lower():
-                found = child
-                break
-        if found is None:
-            found = ET.SubElement(curr, "group", {"name": part})
-        curr = found
-    return curr
-
 
 def get_user_bookmarks_groups(path=None):
     """Lit les groupes et sous-groupes existants depuis bookmarks.xml (chemin spécifié ou par défaut)."""
@@ -1002,47 +981,6 @@ def style_dbusmenu_gtk(menu, is_root=True):
 # 7. Vérification HTTP & Lecteur de Pré-écoute GStreamer (StreamPreviewPlayer)
 # -----------------------------------------------------------------------------
 
-
-def resolve_playlist_stream_url(url, timeout=3.5):
-    """Résout si nécessaire une playlist .m3u/.pls vers l'URL de flux direct."""
-    import urllib.request
-    clean = clean_stream_url(url)
-    lower = clean.lower().split("?")[0]
-    if not (lower.endswith(".pls") or lower.endswith(".m3u") or lower.endswith(".m3u8")):
-        return clean
-    try:
-        req = urllib.request.Request(clean, headers={"User-Agent": PREVIEW_USER_AGENT})
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            ctype = (resp.headers.get("Content-Type") or "").lower()
-            if any(x in ctype for x in ("audio/mpeg", "audio/aac", "audio/ogg", "audio/flac", "application/ogg")):
-                return resp.geturl() or clean
-            body = resp.read(8192).decode("utf-8", errors="replace")
-            for line in body.splitlines():
-                l = line.strip()
-                if not l or l.startswith("#"):
-                    continue
-                if l.lower().startswith("file") and "=" in l:
-                    candidate = l.split("=", 1)[1].strip()
-                    if candidate.startswith("http://") or candidate.startswith("https://"):
-                        return candidate
-                elif l.startswith("http://") or l.startswith("https://"):
-                    return l
-    except Exception:
-        pass
-    return clean
-
-
-def pause_main_timonde_instance():
-    """Met en pause le flux principal de TiMonde via D-Bus MPRIS2 pour éviter deux flux simultanés."""
-    try:
-        import dbus
-        bus = dbus.SessionBus()
-        if bus.name_has_owner("org.mpris.MediaPlayer2.timonde"):
-            obj = bus.get_object("org.mpris.MediaPlayer2.timonde", "/org/mpris/MediaPlayer2")
-            player = dbus.Interface(obj, "org.mpris.MediaPlayer2.Player")
-            player.Pause()
-    except Exception:
-        pass
 
 
 class StreamPreviewPlayer:

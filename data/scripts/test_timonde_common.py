@@ -23,7 +23,6 @@ from timonde_common import (
     safe_parse_xml,
     normalize_group_path,
     infer_timezone,
-    find_or_create_group,
     set_window_icon,
     COUNTRIES_DB,
     COUNTRIES_REGISTRY,

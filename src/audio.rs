@@ -126,11 +126,10 @@ impl AudioEngine {
                                                         state_changed = true;
                                                     }
                                                 }
-                                                gstreamer::State::Null => {
-                                                    if *st != PlaybackState::Stopped && *st != PlaybackState::Error {
-                                                        *st = PlaybackState::Stopped;
-                                                        state_changed = true;
-                                                    }
+                                                gstreamer::State::Null
+                                                    if *st != PlaybackState::Stopped && *st != PlaybackState::Error => {
+                                                    *st = PlaybackState::Stopped;
+                                                    state_changed = true;
                                                 }
                                                 _ => {}
                                             }
