@@ -17,6 +17,7 @@ import re
 import xml.etree.ElementTree as ET
 import collections
 import html
+import subprocess
 
 # Neutralisation inconditionnelle d'IBus et XMODIFIERS dès le chargement du module
 for _var in ("GTK_IM_MODULE", "XMODIFIERS", "QT_IM_MODULE"):
@@ -1222,38 +1223,15 @@ def pause_main_timonde_instance():
 
 class StreamPreviewPlayer:
     """
-    Lecteur d'aperçu audio léger basé sur GStreamer playbin.
-    Permet de vérifier et d'écouter immédiatement une station avant de l'importer
-    ou pendant l'édition/organisation, sans conflit avec l'instance principale TiMonde.
+    Lecteur d'aperçu audio déporté vers le moteur natif Rust (Option B).
+    Éradication totale de GStreamer côté Python : délègue la lecture et l'arrêt
+    au serveur TiMonde (via D-Bus ou CLI timonde).
     """
     def __init__(self, on_status_changed=None, on_status_change=None):
         self.on_status_changed = on_status_changed or on_status_change
-        self.playbin = None
         self.current_url = None
         self.current_name = None
         self.is_playing = False
-        self._gst_ready = False
-
-    def _ensure_gst(self):
-        if self._gst_ready:
-            return self.playbin is not None
-        self._gst_ready = True
-        try:
-            import gi
-            gi.require_version("Gst", "1.0")
-            from gi.repository import Gst
-            Gst.init(None)
-            self.Gst = Gst
-            self.playbin = Gst.ElementFactory.make("playbin", "timonde-preview")
-            if self.playbin:
-                self.playbin.set_property("volume", 0.85)
-                bus = self.playbin.get_bus()
-                bus.add_signal_watch()
-                bus.connect("message", self._on_bus_message)
-            return self.playbin is not None
-        except Exception:
-            self.playbin = None
-            return False
 
     def _emit_status(self, playing, message, is_error=False):
         if self.on_status_changed:
@@ -1262,35 +1240,6 @@ class StreamPreviewPlayer:
                 GLib.idle_add(self.on_status_changed, playing, self.current_url or "", message, is_error)
             except Exception:
                 pass
-
-    def _on_bus_message(self, _bus, msg):
-        if not hasattr(self, "Gst"):
-            return
-        t = msg.type
-        if t == self.Gst.MessageType.ERROR:
-            err, _dbg = msg.parse_error()
-            err_str = str(err.message) if err else _("Unreadable stream")
-            self.stop(silent=True)
-            self._emit_status(False, f"[!] {_('Stream unreachable')} ({err_str})", is_error=True)
-        elif t == self.Gst.MessageType.EOS:
-            self.stop(silent=True)
-            self._emit_status(False, f"[■] {_('End of stream')}", is_error=False)
-        elif t == self.Gst.MessageType.STATE_CHANGED:
-            if msg.src == self.playbin:
-                _old, new_state, _pending = msg.parse_state_changed()
-                if new_state == self.Gst.State.PLAYING:
-                    self.is_playing = True
-                    self._emit_status(True, f"[►] {_('Playing:')} « {self.current_name or _('Radio')} »", is_error=False)
-        elif t == self.Gst.MessageType.TAG:
-            taglist = msg.parse_tag()
-            ok, title = taglist.get_string("title")
-            if ok and title and title.strip():
-                self.is_playing = True
-                self._emit_status(
-                    True,
-                    f"[►] « {self.current_name or _('Radio')} » — ♪ {title.strip()}",
-                    is_error=False
-                )
 
     def toggle(self, station_name, url=None):
         if url is None:
@@ -1309,49 +1258,67 @@ class StreamPreviewPlayer:
         if url is None:
             url = station_name
             station_name = _("Radio")
-        import threading
         clean = clean_stream_url(url)
         if not clean:
             self._emit_status(False, f"[!] {_('Empty stream URL')}", is_error=True)
             return False
 
-        if not self._ensure_gst():
-            self._emit_status(False, f"[!] {_('GStreamer not available')}", is_error=True)
-            return False
-
         self.stop(silent=True)
-        pause_main_timonde_instance()
-
         self.current_url = clean
         self.current_name = station_name or _("Radio")
         self.is_playing = True
-        self._emit_status(True, f"[...] {_('Connecting to')} « {self.current_name} »...", is_error=False)
+        self._emit_status(True, f"[►] {_('Playing:')} « {self.current_name} »", is_error=False)
 
-        def start_worker(target_url, target_name):
-            resolved = resolve_playlist_stream_url(target_url)
-            from gi.repository import GLib
-            def apply_uri():
-                if self.current_url != target_url or not self.playbin:
-                    return False
-                self.playbin.set_state(self.Gst.State.NULL)
-                self.playbin.set_property("uri", resolved)
-                self.playbin.set_state(self.Gst.State.PLAYING)
-                return False
-            GLib.idle_add(apply_uri)
+        def run_play():
+            sent = False
+            try:
+                import dbus
+                bus = dbus.SessionBus()
+                if bus.name_has_owner("org.mpris.MediaPlayer2.timonde"):
+                    obj = bus.get_object("org.mpris.MediaPlayer2.timonde", "/org/mpris/MediaPlayer2")
+                    player = dbus.Interface(obj, "org.mpris.MediaPlayer2.Player")
+                    player.PlayPreview(clean, self.current_name)
+                    sent = True
+            except Exception:
+                pass
 
-        threading.Thread(target=start_worker, args=(clean, self.current_name), daemon=True).start()
+            if not sent:
+                try:
+                    subprocess.run(["timonde", "--preview-play", clean, self.current_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                except Exception:
+                    pass
+
+        import threading
+        threading.Thread(target=run_play, daemon=True).start()
         return True
 
     def stop(self, silent=False):
-        if self.playbin and hasattr(self, "Gst"):
-            try:
-                self.playbin.set_state(self.Gst.State.NULL)
-            except Exception:
-                pass
         was_playing = self.is_playing
         self.is_playing = False
         self.current_url = None
         self.current_name = None
+
+        def run_stop():
+            sent = False
+            try:
+                import dbus
+                bus = dbus.SessionBus()
+                if bus.name_has_owner("org.mpris.MediaPlayer2.timonde"):
+                    obj = bus.get_object("org.mpris.MediaPlayer2.timonde", "/org/mpris/MediaPlayer2")
+                    player = dbus.Interface(obj, "org.mpris.MediaPlayer2.Player")
+                    player.StopPreview()
+                    sent = True
+            except Exception:
+                pass
+
+            if not sent:
+                try:
+                    subprocess.run(["timonde", "--preview-stop"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                except Exception:
+                    pass
+
+        import threading
+        threading.Thread(target=run_stop, daemon=True).start()
         if was_playing and not silent:
             self._emit_status(False, "", is_error=False)
 

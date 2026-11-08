@@ -227,6 +227,10 @@ fn main() {
                 println!("      --prev         Station précédente");
                 println!("  -s, --stop         Arrêter la lecture");
                 println!("      --status       Afficher l'état et le morceau en cours");
+                println!("      --reload       Recharger les favoris depuis bookmarks.xml");
+                println!("      --preview-play <URL> [NOM]  Pré-écouter un flux via le moteur Rust");
+                println!("      --preview-stop              Arrêter la pré-écoute");
+                println!("      --save-bookmarks-json <FICHIER|->  Enregistrer atomiquement les favoris depuis un JSON");
                 println!("  -q, --quit         Quitter TiMonde");
                 println!("\nOptions de gestion des stations et groupes :");
                 println!("      --search <TERME> [--tag <GENRE>] [--country <PAYS>] [--lang <LANG>] [--limit <N>]");
@@ -536,6 +540,68 @@ fn main() {
                 }
                 return;
             }
+            "--reload" => {
+                if let Err(e) = mpris::send_reload_bookmarks() {
+                    eprintln!("Erreur rechargement : {}", e);
+                    std::process::exit(1);
+                }
+                println!("Signal de rechargement des favoris envoyé.");
+                return;
+            }
+            "--preview-play" => {
+                if args.len() < 3 {
+                    eprintln!("Usage : timonde --preview-play <URL> [NOM]");
+                    std::process::exit(1);
+                }
+                let url = &args[2];
+                let name = if args.len() >= 4 { &args[3] } else { url };
+                if let Err(e) = mpris::send_play_preview(url, name) {
+                    eprintln!("Erreur lancement pré-écoute : {}", e);
+                    std::process::exit(1);
+                }
+                return;
+            }
+            "--preview-stop" => {
+                let _ = mpris::send_command("StopPreview");
+                let _ = mpris::send_command("Stop");
+                return;
+            }
+            "--save-bookmarks-json" => {
+                if args.len() < 3 {
+                    eprintln!("Usage : timonde --save-bookmarks-json <FICHIER_JSON|->");
+                    std::process::exit(1);
+                }
+                let json_content = if args[2] == "-" {
+                    use std::io::Read;
+                    let mut buffer = String::new();
+                    if let Err(e) = std::io::stdin().read_to_string(&mut buffer) {
+                        eprintln!(r#"{{"status":"error","message":"Erreur lecture stdin : {}"}}"#, e);
+                        std::process::exit(1);
+                    }
+                    buffer
+                } else {
+                    match std::fs::read_to_string(&args[2]) {
+                        Ok(c) => c,
+                        Err(e) => {
+                            eprintln!(r#"{{"status":"error","message":"Erreur lecture fichier : {}"}}"#, e);
+                            std::process::exit(1);
+                        }
+                    }
+                };
+
+                let bookmarks_path = find_bookmarks_path();
+                match bookmarks::save_bookmarks_from_json(&json_content, &bookmarks_path) {
+                    Ok(total) => {
+                        let _ = mpris::send_reload_bookmarks();
+                        println!(r#"{{"status":"ok","stations":{}}}"#, total);
+                    }
+                    Err(e) => {
+                        eprintln!(r#"{{"status":"error","message":"{}"}}"#, e);
+                        std::process::exit(1);
+                    }
+                }
+                return;
+            }
             other => {
                 eprintln!("Option inconnue : {}", other);
                 eprintln!("Consultez 'timonde --help' pour afficher les options disponibles.");
@@ -686,6 +752,15 @@ fn main() {
         trigger_for_mpris();
     });
 
+    let on_reload = {
+        let root_group = Arc::clone(&root_group_clone);
+        let bpath = bookmarks_path_clone.clone();
+        let tray_handle = Arc::clone(&tray_handle_cell);
+        Arc::new(move || {
+            let _ = tray::TiMondeTray::reload_bookmarks_and_update_tray(&root_group, &bpath, &tray_handle);
+        })
+    };
+
     // 5. Enregistrement du service D-Bus MPRIS2 (org.mpris.MediaPlayer2.timonde)
     mpris::spawn_mpris_server(
         Arc::clone(&audio),
@@ -697,6 +772,7 @@ fn main() {
         on_play,
         on_stop,
         on_update,
+        on_reload,
     );
 
     // 6. Détection du plateau hôte et pont XEmbed de secours (pour IceWM, Fluxbox, antiX)

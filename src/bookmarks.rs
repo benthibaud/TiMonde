@@ -374,6 +374,93 @@ pub fn remove_station_by_url(group: &mut Group, target_url: &str) -> bool {
     false
 }
 
+/// Structure de désérialisation pour une station issue du JSON UI
+#[derive(serde::Deserialize, Debug, Clone)]
+pub struct JsonStationInput {
+    pub name: String,
+    #[serde(default)]
+    pub url: String,
+    #[serde(default)]
+    pub country: Option<String>,
+    #[serde(default)]
+    pub timezone: Option<String>,
+    #[serde(default)]
+    pub is_separator: bool,
+}
+
+/// Structure de désérialisation pour un groupe issu du JSON UI
+#[derive(serde::Deserialize, Debug, Clone)]
+pub struct JsonGroupInput {
+    pub name: String,
+    #[serde(default)]
+    pub stations: Vec<JsonStationInput>,
+    #[serde(default)]
+    pub is_separator: bool,
+}
+
+/// Reconstruit une arborescence Group "root" complète à partir d'un JSON produit par l'UI Python (Dumb UI)
+pub fn rebuild_root_from_json(json_str: &str) -> Result<Group, String> {
+    let raw_groups: Vec<JsonGroupInput> = serde_json::from_str(json_str)
+        .map_err(|e| format!("JSON invalide : {}", e))?;
+
+    let mut new_root = Group::new("root");
+
+    for g in raw_groups {
+        let norm_name = g.name.trim();
+
+        if g.is_separator || norm_name.starts_with("[separator") || norm_name == "---" {
+            let title = if norm_name.starts_with("[separator") || norm_name == "---" {
+                ""
+            } else {
+                norm_name
+            };
+            new_root.subgroups.push(Group::separator(title));
+            continue;
+        }
+
+        let is_root_literal = norm_name.is_empty()
+            || norm_name == "/"
+            || norm_name.eq_ignore_ascii_case("root")
+            || norm_name.starts_with("[ / ]");
+
+        let mut stations = Vec::new();
+        for s in g.stations {
+            let s_name = s.name.trim();
+            if s.is_separator || s.url.is_empty() || s.url == "---" || s_name.starts_with("[separator") || s_name == "---" {
+                let title = if s_name.starts_with("[separator") || s_name == "---" {
+                    ""
+                } else {
+                    s_name
+                };
+                stations.push(Station::separator(title));
+            } else {
+                let mut st = Station::new(s_name, s.url.trim());
+                st.country = s.country.map(|c| c.trim().to_ascii_uppercase()).filter(|c| !c.is_empty());
+                st.timezone = s.timezone.map(|tz| tz.trim().to_string()).filter(|tz| !tz.is_empty());
+                stations.push(st);
+            }
+        }
+
+        if is_root_literal {
+            new_root.stations.extend(stations);
+        } else {
+            let target_grp = new_root.get_or_create_subgroup_hierarchy(norm_name);
+            target_grp.stations.extend(stations);
+        }
+    }
+
+    Ok(new_root)
+}
+
+/// Reconstruit et sauvegarde atomiquement bookmarks.xml depuis un payload JSON transmis par la GUI
+pub fn save_bookmarks_from_json(json_str: &str, bookmarks_path: impl AsRef<Path>) -> Result<usize, String> {
+    let new_root = rebuild_root_from_json(json_str)?;
+    let total = new_root.total_stations();
+    save_bookmarks(&new_root, bookmarks_path.as_ref())
+        .map_err(|e| format!("Erreur sauvegarde bookmarks : {}", e))?;
+    Ok(total)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -609,5 +696,37 @@ mod tests {
         assert_eq!(afrique.subgroups[0].subgroups.len(), 1);
         assert_eq!(afrique.subgroups[0].subgroups[0].name, "Hit Radio");
         assert_eq!(afrique.subgroups[0].subgroups[0].stations[0].name, "Hit Radio 100%");
+    }
+
+    #[test]
+    fn test_rebuild_root_from_json() {
+        let json_input = r#"[
+            {
+                "name": "[ / ] (Racine)",
+                "stations": [
+                    { "name": "Direct Root Station", "url": "http://root.example.com", "country": "FR" },
+                    { "name": "Direct Separator", "url": "", "is_separator": true }
+                ]
+            },
+            {
+                "name": "Europe/France",
+                "stations": [
+                    { "name": "FIP", "url": "http://fip.fr", "country": "FR", "timezone": "Europe/Paris" }
+                ]
+            }
+        ]"#;
+
+        let root = rebuild_root_from_json(json_input).expect("Reconstruction JSON réussie");
+        assert_eq!(root.stations.len(), 2);
+        assert_eq!(root.stations[0].name, "Direct Root Station");
+        assert!(root.stations[1].is_separator());
+
+        assert_eq!(root.subgroups.len(), 1);
+        assert_eq!(root.subgroups[0].name, "Europe");
+        assert_eq!(root.subgroups[0].subgroups.len(), 1);
+        assert_eq!(root.subgroups[0].subgroups[0].name, "France");
+        assert_eq!(root.subgroups[0].subgroups[0].stations[0].name, "FIP");
+        assert_eq!(root.subgroups[0].subgroups[0].stations[0].timezone, Some("Europe/Paris".to_string()));
+        assert_eq!(root.total_stations(), 2);
     }
 }

@@ -1866,7 +1866,9 @@ class DiscoverRadiosWindow(Gtk.Window):
                     modified = True
 
             if modified:
-                tree.write(target_file, encoding="utf-8", xml_declaration=True)
+                tmp_file = f"{target_file}.tmp"
+                tree.write(tmp_file, encoding="utf-8", xml_declaration=True)
+                os.replace(tmp_file, target_file)
                 sys.stderr.write(f"Flux réparé enregistré dans : {target_file}\n")
         except Exception as e:
             sys.stderr.write(f"Erreur écriture XML : {e}\n")

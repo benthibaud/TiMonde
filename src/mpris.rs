@@ -40,6 +40,7 @@ pub struct MprisPlayer {
     pub on_play: Arc<dyn Fn(Station) + Send + Sync>,
     pub on_stop: Arc<dyn Fn() + Send + Sync>,
     pub on_update: Arc<dyn Fn() + Send + Sync>,
+    pub on_reload: Arc<dyn Fn() + Send + Sync>,
 }
 
 #[interface(name = "org.mpris.MediaPlayer2.Player")]
@@ -141,6 +142,22 @@ impl MprisPlayer {
     fn set_position(&self, _track_id: ObjectPath<'_>, _position: i64) {}
     fn open_uri(&self, uri: String) {
         (self.on_play)(Station::new(uri.clone(), uri));
+    }
+
+    /// Lance une pré-écoute temporaire d'un flux audio
+    fn play_preview(&self, uri: String, name: String) {
+        let display_name = if name.trim().is_empty() { uri.clone() } else { name };
+        (self.on_play)(Station::new(display_name, uri));
+    }
+
+    /// Arrête la pré-écoute
+    fn stop_preview(&self) {
+        (self.on_stop)();
+    }
+
+    /// Déclenche le rechargement immédiat de l'arbre des favoris depuis bookmarks.xml
+    fn reload_bookmarks(&self) {
+        (self.on_reload)();
     }
 
     #[zbus(property)]
@@ -258,6 +275,7 @@ pub fn spawn_mpris_server(
     on_play: Arc<dyn Fn(Station) + Send + Sync>,
     on_stop: Arc<dyn Fn() + Send + Sync>,
     on_update: Arc<dyn Fn() + Send + Sync>,
+    on_reload: Arc<dyn Fn() + Send + Sync>,
 ) {
     std::thread::spawn(move || {
         let res = zbus::blocking::connection::Builder::session()
@@ -276,6 +294,7 @@ pub fn spawn_mpris_server(
                         on_play,
                         on_stop,
                         on_update,
+                        on_reload,
                     },
                 )
             })
@@ -326,6 +345,45 @@ pub fn send_command(method: &str) -> Result<(), String> {
         "/org/mpris/MediaPlayer2",
         Some(iface),
         method,
+        &(),
+    ).map_err(|e| format!("Impossible de joindre TiMonde : {}", e))?;
+    Ok(())
+}
+
+/// Envoie l'ordre de jouer une URI spécifique à l'instance TiMonde active
+pub fn send_open_uri(uri: &str) -> Result<(), String> {
+    let conn = zbus::blocking::Connection::session().map_err(|e| e.to_string())?;
+    conn.call_method(
+        Some("org.mpris.MediaPlayer2.timonde"),
+        "/org/mpris/MediaPlayer2",
+        Some("org.mpris.MediaPlayer2.Player"),
+        "OpenUri",
+        &(uri,),
+    ).map_err(|e| format!("Impossible de joindre TiMonde : {}", e))?;
+    Ok(())
+}
+
+/// Envoie l'ordre de pré-écouter un flux à l'instance TiMonde active
+pub fn send_play_preview(uri: &str, name: &str) -> Result<(), String> {
+    let conn = zbus::blocking::Connection::session().map_err(|e| e.to_string())?;
+    conn.call_method(
+        Some("org.mpris.MediaPlayer2.timonde"),
+        "/org/mpris/MediaPlayer2",
+        Some("org.mpris.MediaPlayer2.Player"),
+        "PlayPreview",
+        &(uri, name),
+    ).map_err(|e| format!("Impossible de joindre TiMonde : {}", e))?;
+    Ok(())
+}
+
+/// Envoie l'ordre de recharger les signets depuis bookmarks.xml
+pub fn send_reload_bookmarks() -> Result<(), String> {
+    let conn = zbus::blocking::Connection::session().map_err(|e| e.to_string())?;
+    conn.call_method(
+        Some("org.mpris.MediaPlayer2.timonde"),
+        "/org/mpris/MediaPlayer2",
+        Some("org.mpris.MediaPlayer2.Player"),
+        "ReloadBookmarks",
         &(),
     ).map_err(|e| format!("Impossible de joindre TiMonde : {}", e))?;
     Ok(())

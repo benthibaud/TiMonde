@@ -36,11 +36,15 @@ Face à la dette technique accumulée (duplication de code entre Rust et Python,
 - [x] Corriger l'appel à `RepairStreamDialog` et dépiler proprement `on_check_streams_clicked` dans `reorder_groups.py`.
 - [x] Ajouter la destruction systématique (`dlg.destroy()`) sur tous les dialogues de `browse_bouquets.py`.
 
-### Jalon 3 : Bascule vers l'Option B Complète (À venir ⏳)
-- [ ] Exposer une interface de commandes / D-Bus propre côté Rust (`timonde --api ...` ou méthodes D-Bus).
-- [ ] Transformer les fenêtres Python en composants `Gtk.Box` purs sans instanciation de `Gtk.Window` fictives.
-- [ ] Bannir tous les `dialog.run()` résiduels au profit du pattern `response`.
-- [ ] Supprimer les parseurs XML et le pipeline GStreamer redondants de `data/scripts/`.
+### Jalon 3 : Bascule vers l'Option B Complète (Terminé ✅)
+- [x] Exposer une interface de commandes CLI et D-Bus propre côté Rust (`timonde --reload`, `--preview-play`, `--preview-stop`, `--save-bookmarks-json` + méthodes D-Bus MPRIS `PlayPreview`, `StopPreview`, `ReloadBookmarks`).
+- [x] Supprimer le pipeline GStreamer `playbin` Python redondant de `data/scripts/` (`StreamPreviewPlayer` s'appuie désormais 100% sur l'instance Rust active).
+- [x] Éradiquer les écritures XML directes de signets côté Python au profit du moteur de persistance natif Rust (`save_bookmarks_tree` -> `timonde --save-bookmarks-json`).
+- [x] Sécuriser de manière atomique la réparation locale de bouquets XML dans `browse_bouquets.py`.
+
+### Jalon 4 : Dumb UI & Asynchronisme Intégral (Prochaine étape ⏳)
+- [ ] Transformer les fenêtres d'ateliers en composants `Gtk.Box` purs sans instanciation de `Gtk.Window` fictives.
+- [ ] Remplacer les derniers `dialog.run()` résiduels au profit du pattern non-bloquant `response`.
 
 ---
 

@@ -25,7 +25,7 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import make_btn, update_btn_content, safe_parse_xml, clean_stream_url, infer_timezone, find_or_create_group, set_window_icon, find_script, get_user_bookmarks_groups, apply_timonde_app_css, status_markup
+from timonde_common import make_btn, update_btn_content, safe_parse_xml, clean_stream_url, infer_timezone, find_or_create_group, set_window_icon, find_script, get_user_bookmarks_groups, apply_timonde_app_css, status_markup, normalize_group_path
 from reorder_groups import ReorderWindow
 from browse_bouquets import DiscoverRadiosWindow, parse_bouquets_xml
 from edit_station import EditStationWindow
@@ -221,8 +221,25 @@ def _write_bookmarks_element_tree_atomic(path, root_el):
 
 
 def save_bookmarks_tree(path, groups_payload):
-    root = ET.Element("bookmarks")
+    """
+    Sauvegarde l'arbre des favoris via le moteur natif Rust (Option B).
+    Délègue l'intégrité, la normalisation des URLs et l'écriture atomique à Rust.
+    """
+    try:
+        json_bytes = json.dumps(groups_payload, ensure_ascii=False).encode("utf-8")
+        res = subprocess.run(
+            ["timonde", "--save-bookmarks-json", "-"],
+            input=json_bytes,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+        if res.returncode == 0:
+            return True
+    except Exception:
+        pass
 
+    # Repli de secours si le binaire timonde n'est pas dans le PATH (ex: tests unitaires isolés)
+    root = ET.Element("bookmarks")
     for grp in groups_payload:
         if grp.get("is_separator", False):
             ET.SubElement(root, "separator", {"title": grp.get("name", "")})
@@ -243,72 +260,64 @@ def save_bookmarks_tree(path, groups_payload):
                     ET.SubElement(target_el, "bookmark", attribs)
 
     _write_bookmarks_element_tree_atomic(path, root)
+    return True
 
 
 def add_stations_to_bookmarks_xml(path, stations_list, default_group="Mes Radios", country_code=None):
-    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
-    root = None
-    if os.path.isfile(path):
-        root = safe_parse_xml(path)
-    if root is None or root.tag not in ("bookmarks", "radios"):
-        root = ET.Element("bookmarks")
+    """
+    Ajoute des stations aux favoris en manipulant le payload en mémoire
+    puis en déléguant la persistance à Rust (Option B).
+    """
+    payload = load_bookmarks_tree(path)
+    grp_name = default_group or "root"
+    norm_target = normalize_group_path(grp_name, return_root_literal=True)
 
-    # Mappage de chaque URL existante vers (parent_elem, child_elem)
-    existing_map = {}
-    for parent in root.iter():
-        for child in list(parent):
-            if child.tag in ("bookmark", "station"):
-                u = child.attrib.get("url", "").strip()
-                if u:
-                    existing_map[u] = (parent, child)
+    target_group = None
+    for g in payload:
+        if g.get("name", "").strip().lower() == norm_target.lower() and not g.get("is_separator"):
+            target_group = g
+            break
+
+    if target_group is None:
+        target_group = {
+            "name": norm_target,
+            "stations": [],
+            "is_separator": False,
+        }
+        payload.append(target_group)
+
+    existing_urls = set()
+    for g in payload:
+        for s in g.get("stations", []):
+            u = s.get("url", "").strip()
+            if u:
+                existing_urls.add(clean_stream_url(u))
 
     added_count = 0
-    moved_count = 0
     for st in stations_list:
-        url = clean_stream_url(st.get("url", "").strip())
-        name = st.get("name", "").strip()
-        if not url or not name:
+        u = clean_stream_url(st.get("url", "").strip())
+        n = st.get("name", "").strip()
+        if not u or not n:
             continue
-
-        grp_name = st.get("group")
-        if not grp_name:
-            grp_name = default_group or "root"
-        target_group = find_or_create_group(root, grp_name)
-
-        if url in existing_map:
-            old_parent, existing_elem = existing_map[url]
-            if old_parent != target_group and existing_elem is not None:
-                # La station existe déjà mais l'utilisateur l'importe dans une nouvelle cible -> déplacement !
-                old_parent.remove(existing_elem)
-                if name:
-                    existing_elem.attrib["name"] = name
-                c = st.get("country") or country_code
-                if c:
-                    existing_elem.attrib["country"] = str(c).strip().upper()
-                tz = st.get("timezone")
-                if tz:
-                    existing_elem.attrib["timezone"] = str(tz).strip()
-                target_group.append(existing_elem)
-                existing_map[url] = (target_group, existing_elem)
-                moved_count += 1
+        if u in existing_urls:
             continue
-
-        attribs = {"name": name, "url": url}
         c = st.get("country") or country_code
-        if c:
-            attribs["country"] = str(c).strip().upper()
-        tz = st.get("timezone") or infer_timezone(attribs.get("country", ""), name, grp_name)
-        if tz:
-            attribs["timezone"] = str(tz).strip()
-
-        new_el = ET.SubElement(target_group, "bookmark", attribs)
-        existing_map[url] = (target_group, new_el)
+        tz = st.get("timezone") or infer_timezone(str(c) if c else "", n, grp_name)
+        new_st = {
+            "name": n,
+            "url": u,
+            "country": str(c).strip().upper() if c else None,
+            "timezone": str(tz).strip() if tz else None,
+            "is_separator": False,
+        }
+        target_group["stations"].append(new_st)
+        existing_urls.add(u)
         added_count += 1
 
-    if added_count > 0 or moved_count > 0:
-        _write_bookmarks_element_tree_atomic(path, root)
+    if added_count > 0:
+        save_bookmarks_tree(path, payload)
 
-    return added_count, moved_count
+    return added_count, 0
 
 
 class SettingsWindow(Gtk.Window):
