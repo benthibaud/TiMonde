@@ -1274,17 +1274,18 @@ class StreamPreviewPlayer:
             try:
                 import dbus
                 bus = dbus.SessionBus()
+                disp_name = self.current_name or ""
                 if bus.name_has_owner("org.mpris.MediaPlayer2.timonde"):
                     obj = bus.get_object("org.mpris.MediaPlayer2.timonde", "/org/mpris/MediaPlayer2")
                     player = dbus.Interface(obj, "org.mpris.MediaPlayer2.Player")
-                    player.PlayPreview(clean, self.current_name)
+                    player.PlayPreview(clean, disp_name)
                     sent = True
             except Exception:
                 pass
 
             if not sent:
                 try:
-                    subprocess.run(["timonde", "--preview-play", clean, self.current_name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                    subprocess.run(["timonde", "--preview-play", clean, self.current_name or ""], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
                 except Exception:
                     pass
 
@@ -1542,8 +1543,8 @@ def show_group_naming_help_dialog(parent):
           "• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n\n"
           "<i>Groups and subgroups are automatically created if they do not exist yet.</i>")
     )
-    dialog.run()
-    dialog.destroy()
+    dialog.connect("response", lambda d, r: d.destroy())
+    dialog.show_all()
 
 
 try:
@@ -1678,10 +1679,11 @@ class RepairStreamDialog(_GtkDialogBase):
         return None
 
 
-def prompt_text_dialog(parent_window, title: str, label_text: str, default_text: str = "", ok_label: str = None) -> str:
+def prompt_text_dialog(parent_window, title: str, label_text: str, default_text: str = "", ok_label: str = None, callback = None) -> str:
     """
     Dialogue modal léger GTK3 de saisie textuelle unifié.
-    Retourne la chaîne saisie ou None si annulé.
+    Si callback est fourni, fonctionne en mode non-bloquant asynchrone (retourne None).
+    Sinon, retourne la chaîne saisie ou None si annulé (mode synchrone hérité).
     """
     import gi
     gi.require_version("Gtk", "3.0")
@@ -1710,6 +1712,19 @@ def prompt_text_dialog(parent_window, title: str, label_text: str, default_text:
     entry.set_width_chars(35)
     entry.set_activates_default(True)
     box.pack_start(entry, False, False, 0)
+
+    if callback is not None:
+        def on_response(d, resp):
+            txt = entry.get_text().strip()
+            d.destroy()
+            if resp == Gtk.ResponseType.OK:
+                callback(txt)
+            else:
+                callback(None)
+
+        dlg.connect("response", on_response)
+        dlg.show_all()
+        return None
 
     dlg.show_all()
     resp = dlg.run()

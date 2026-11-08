@@ -42,9 +42,10 @@ Face à la dette technique accumulée (duplication de code entre Rust et Python,
 - [x] Éradiquer les écritures XML directes de signets côté Python au profit du moteur de persistance natif Rust (`save_bookmarks_tree` -> `timonde --save-bookmarks-json`).
 - [x] Sécuriser de manière atomique la réparation locale de bouquets XML dans `browse_bouquets.py`.
 
-### Jalon 4 : Dumb UI & Asynchronisme Intégral (Prochaine étape ⏳)
-- [ ] Transformer les fenêtres d'ateliers en composants `Gtk.Box` purs sans instanciation de `Gtk.Window` fictives.
-- [ ] Remplacer les derniers `dialog.run()` résiduels au profit du pattern non-bloquant `response`.
+### Jalon 4 : Dumb UI & Asynchronisme Intégral (Terminé ✅)
+- [x] Découpler les vues et fenêtres : `ReorderWidget(Gtk.Box)` pur et `ReorderWindow(Gtk.Window)` conteneur léger, éliminant les doubles parents et les surfaces X11 fantômes.
+- [x] Éradiquer 100% des `.run()` interactifs (`dialog.run()`, `chooser.run()`) dans `reorder_groups.py`, `browse_bouquets.py`, `edit_station.py` et `timonde_common.py` au profit de `connect("response", ...)`.
+- [x] Valider l'intégrité de la boucle GTK et l'asynchronisme complet via `test_gtk_event_loop.py` et la suite `make test`.
 
 ---
 

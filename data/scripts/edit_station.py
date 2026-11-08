@@ -406,8 +406,8 @@ class EditStationWindow(Gtk.Window):
                 buttons=Gtk.ButtonsType.OK,
                 message_format=_("Please enter a stream URL first.")
             )
-            d.run()
-            d.destroy()
+            d.connect("response", lambda dialog, r: dialog.destroy())
+            d.show_all()
             return
 
         dlg = ContributeStationDialog(
@@ -416,13 +416,24 @@ class EditStationWindow(Gtk.Window):
             current_url=url,
             country_code=country,
         )
-        resp = dlg.run()
-        existing = getattr(dlg, "existing_info", None)
-        dlg.destroy()
-        if resp == Gtk.ResponseType.APPLY and existing:
-            ex_cc = (existing.get("countrycode") or "").strip().upper()
-            if ex_cc:
-                self.set_country(ex_cc)
+
+        def on_contribute_resp(dialog, resp):
+            existing = getattr(dialog, "existing_info", None)
+            dialog.destroy()
+            if resp == Gtk.ResponseType.APPLY and existing:
+                ex_cc = (existing.get("countrycode") or "").strip().upper()
+                if ex_cc:
+                    self.set_country(ex_cc)
+
+        dlg.connect("response", on_contribute_resp)
+        dlg.show_all()
+        if not isinstance(dlg, Gtk.Dialog) and hasattr(dlg, "run"):
+            try:
+                resp = dlg.run()
+                if resp:
+                    on_contribute_resp(dlg, resp)
+            except Exception:
+                pass
 
     def run(self):
         """Méthode de compatibilité pour les contextes appelant cette fenêtre comme un dialogue synchrone."""
@@ -622,21 +633,24 @@ class EditStationWindow(Gtk.Window):
         btn_del_confirm = dialog.add_button(_("Delete"), Gtk.ResponseType.OK)
         btn_del_confirm.get_style_context().add_class("destructive-action")
 
-        response = dialog.run()
-        dialog.destroy()
-        if response == Gtk.ResponseType.OK:
-            self.preview_player.stop(silent=True)
-            self.result_data = {
-                "action": "delete",
-                "name": current_display_name,
-                "url": self.entry_url.get_text().strip(),
-            }
-            self.saved = True
-            if self.on_done_callback:
-                self.on_done_callback(self.result_data)
-            elif self.standalone:
-                print(json.dumps(self.result_data, ensure_ascii=False))
-            self.destroy()
+        def on_delete_resp(dlg, response):
+            dlg.destroy()
+            if response == Gtk.ResponseType.OK:
+                self.preview_player.stop(silent=True)
+                self.result_data = {
+                    "action": "delete",
+                    "name": current_display_name,
+                    "url": self.entry_url.get_text().strip(),
+                }
+                self.saved = True
+                if self.on_done_callback:
+                    self.on_done_callback(self.result_data)
+                elif self.standalone:
+                    print(json.dumps(self.result_data, ensure_ascii=False))
+                self.destroy()
+
+        dialog.connect("response", on_delete_resp)
+        dialog.show_all()
 
     def on_cancel_clicked(self, widget):
         self.preview_player.stop(silent=True)

@@ -26,7 +26,7 @@ except ImportError:
     def _(s): return s
 
 from timonde_common import make_btn, update_btn_content, safe_parse_xml, clean_stream_url, infer_timezone, find_or_create_group, set_window_icon, find_script, get_user_bookmarks_groups, apply_timonde_app_css, status_markup, normalize_group_path
-from reorder_groups import ReorderWindow
+from reorder_groups import ReorderWindow, ReorderWidget
 from browse_bouquets import DiscoverRadiosWindow, parse_bouquets_xml
 from edit_station import EditStationWindow
 
@@ -521,7 +521,7 @@ class SettingsWindow(Gtk.Window):
     # -------------------------------------------------------------------------
     def build_section_organization(self):
         payload = load_bookmarks_tree(self.bookmarks_path)
-        self.reorder_view = ReorderWindow(
+        self.reorder_view = ReorderWidget(
             data=payload,
             auto_check=False,
             embedded=True,
@@ -530,7 +530,7 @@ class SettingsWindow(Gtk.Window):
         self.reorder_view.btn_add_station.disconnect_by_func(self.reorder_view.on_add_station_clicked)
         self.reorder_view.btn_add_station.connect("clicked", self.on_embedded_add_station_clicked)
 
-        self.stack.add_titled(self.reorder_view.vbox, "organization", _("My Radios"))
+        self.stack.add_titled(self.reorder_view, "organization", _("My Radios"))
 
     def on_embedded_reorder_saved(self, new_payload):
         save_bookmarks_tree(self.bookmarks_path, new_payload)

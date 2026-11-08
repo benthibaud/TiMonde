@@ -1749,20 +1749,23 @@ class DiscoverRadiosWindow(Gtk.Window):
         current_url = model.get_value(tree_iter, 5)
         country_id = self.get_selected_country_code()
 
-        dlg = RepairStreamDialog(self, station_name, current_url, country_id)
-        res = dlg.run()
-        new_url = dlg.get_chosen_url()
-        dlg.destroy()
+        dlg = RepairStreamDialog(self.get_parent_window(), station_name, current_url, country_id)
 
-        if res == Gtk.ResponseType.OK and new_url:
-            clean_new_url = new_url.strip()
-            model.set_value(tree_iter, 5, clean_new_url)
-            repaired_lbl = _("● Repaired (Live)")
-            model.set_value(tree_iter, 3, f"<span color='#2e7d32'><b>{repaired_lbl}</b></span>")
-            model.set_value(tree_iter, 7, False)
-            model.set_value(tree_iter, 0, True)
-            self.update_bouquet_count()
-            self.save_stream_to_xml(station_name, current_url, clean_new_url)
+        def on_repair_resp(d, res):
+            new_url = d.get_chosen_url()
+            d.destroy()
+            if res == Gtk.ResponseType.OK and new_url:
+                clean_new_url = new_url.strip()
+                model.set_value(tree_iter, 5, clean_new_url)
+                repaired_lbl = _("● Repaired (Live)")
+                model.set_value(tree_iter, 3, f"<span color='#2e7d32'><b>{repaired_lbl}</b></span>")
+                model.set_value(tree_iter, 7, False)
+                model.set_value(tree_iter, 0, True)
+                self.update_bouquet_count()
+                self.save_stream_to_xml(station_name, current_url, clean_new_url)
+
+        dlg.connect("response", on_repair_resp)
+        dlg.show_all()
 
     def on_contribute_new_to_radio_browser(self):
         c_code = self.get_selected_country_code() if hasattr(self, "get_selected_country_code") else ""
@@ -1772,8 +1775,8 @@ class DiscoverRadiosWindow(Gtk.Window):
             current_url="",
             country_code=c_code
         )
-        dlg.run()
-        dlg.destroy()
+        dlg.connect("response", lambda d, r: d.destroy())
+        dlg.show_all()
 
     def on_contribute_bouquet_to_radio_browser(self):
         model, tree_iter = self.bouquet_tree.get_selection().get_selected()
@@ -1785,8 +1788,8 @@ class DiscoverRadiosWindow(Gtk.Window):
                 buttons=Gtk.ButtonsType.OK,
                 message_format=_("Please select a radio station in the list first.")
             )
-            d.run()
-            d.destroy()
+            d.connect("response", lambda dialog, r: dialog.destroy())
+            d.show_all()
             return
         station_name = model.get_value(tree_iter, 1) or ""
         current_url = model.get_value(tree_iter, 5) or ""
@@ -1797,8 +1800,8 @@ class DiscoverRadiosWindow(Gtk.Window):
             current_url=current_url,
             country_code=country_id
         )
-        dlg.run()
-        dlg.destroy()
+        dlg.connect("response", lambda d, r: d.destroy())
+        dlg.show_all()
 
     def on_contribute_files_to_radio_browser(self):
         model, tree_iter = self.files_tree.get_selection().get_selected()
@@ -1828,8 +1831,8 @@ class DiscoverRadiosWindow(Gtk.Window):
                 buttons=Gtk.ButtonsType.OK,
                 message_format=_("Please select or check a radio station in the list first.")
             )
-            d.run()
-            d.destroy()
+            d.connect("response", lambda dialog, r: dialog.destroy())
+            d.show_all()
             return
 
         dlg = ContributeStationDialog(
@@ -1838,8 +1841,8 @@ class DiscoverRadiosWindow(Gtk.Window):
             current_url=current_url,
             country_code=country_id
         )
-        dlg.run()
-        dlg.destroy()
+        dlg.connect("response", lambda d, r: d.destroy())
+        dlg.show_all()
 
     def save_stream_to_xml(self, station_name, old_url, new_url):
         country_id, info, _nat, _regs = self.get_current_data()
@@ -1999,12 +2002,14 @@ class DiscoverRadiosWindow(Gtk.Window):
         filter_all.add_pattern("*.pls")
         chooser.add_filter(filter_all)
 
-        res = chooser.run()
-        filename = chooser.get_filename()
-        chooser.destroy()
+        def on_chooser_resp(dlg, res):
+            filename = dlg.get_filename()
+            dlg.destroy()
+            if res == Gtk.ResponseType.OK and filename:
+                self.load_file_into_store(filename)
 
-        if res == Gtk.ResponseType.OK and filename:
-            self.load_file_into_store(filename)
+        chooser.connect("response", on_chooser_resp)
+        chooser.show_all()
 
     def on_files_example_changed(self, widget):
         path = self.combo_examples.get_active_id()
