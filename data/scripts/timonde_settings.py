@@ -17,6 +17,7 @@ os.environ.pop("QT_IM_MODULE", None)
 import html
 import json
 import subprocess
+import shutil
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,19 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import make_btn, update_btn_content, clean_stream_url, infer_timezone, set_window_icon, find_script, get_user_bookmarks_groups, apply_timonde_app_css, status_markup, normalize_group_path
+from timonde_common import (
+    make_btn,
+    update_btn_content,
+    clean_stream_url,
+    infer_timezone,
+    set_window_icon,
+    find_script,
+    get_user_bookmarks_groups,
+    apply_timonde_app_css,
+    status_markup,
+    normalize_group_path,
+    TIMONDE_VERSION,
+)
 from reorder_groups import ReorderWindow, ReorderWidget
 from browse_bouquets import DiscoverRadiosViews, parse_bouquets_xml
 from edit_station import EditStationWindow
@@ -554,6 +567,15 @@ class SettingsWindow(Gtk.Window):
         lbl_info.set_halign(Gtk.Align.START)
         lbl_info.get_style_context().add_class("section-separator-title")
         page.pack_start(lbl_info, False, False, 4)
+
+        # Version installée et exécutable actif
+        timonde_bin = shutil.which("timonde") or os.path.expanduser("~/.local/bin/timonde")
+        card_version = self.create_info_row(
+            _("TiMonde version"),
+            f"{_('Installed binary:')} {timonde_bin}",
+            f"v{TIMONDE_VERSION}"
+        )
+        page.pack_start(card_version, False, False, 0)
 
         # Langue détectée
         env_lang = os.environ.get("LC_ALL") or os.environ.get("LC_MESSAGES") or os.environ.get("LANG") or "fr_FR.UTF-8"

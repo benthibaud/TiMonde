@@ -1,9 +1,10 @@
 use crate::models::{Group, Station};
+use log::info;
 use quick_xml::events::Event;
 use quick_xml::Reader;
 use std::fs::File;
 use std::io::BufReader;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 /// Erreurs de parsing de bookmarks / Bookmarks parsing errors
 #[derive(Debug)]
@@ -544,6 +545,104 @@ pub fn dump_root_to_json(root: &Group) -> Result<String, String> {
 pub fn load_bookmarks_as_json(path: &Path) -> Result<String, String> {
     let root = load_bookmarks(path).map_err(|e| e.to_string())?;
     dump_root_to_json(&root)
+}
+
+/// Localise le fichier bookmarks.xml de l'utilisateur ou importe un fichier existant (RadioTray-Lite, RadioTray, RadioTray-NG)
+pub fn find_bookmarks_path() -> PathBuf {
+    let home = std::env::var("HOME").unwrap_or_else(|_| ".".to_string());
+
+    // 1. Emplacement officiel TiMonde
+    let timonde_path = PathBuf::from(&home).join(".config/timonde/bookmarks.xml");
+    if timonde_path.exists() {
+        return timonde_path;
+    }
+
+    // 2. Ancien emplacement radiotray-lite
+    let rt_lite_path = PathBuf::from(&home).join(".config/radiotray-lite/bookmarks.xml");
+    if rt_lite_path.exists() {
+        return rt_lite_path;
+    }
+
+    // 3. Ancien emplacement radiotray classique
+    let rt_path = PathBuf::from(&home).join(".config/radiotray/bookmarks.xml");
+    if rt_path.exists() {
+        return rt_path;
+    }
+
+    // 4. Emplacements radiotray-ng (JSON) : importation automatique si présent
+    for rtng_candidate in &[
+        PathBuf::from(&home).join(".local/share/radiotray-ng/bookmarks.json"),
+        PathBuf::from(&home).join(".config/radiotray-ng/bookmarks.json"),
+    ] {
+        if rtng_candidate.exists() {
+            let mut root = Group::new("root");
+            if let Ok(report) = crate::import::import_file(&mut root, rtng_candidate, None) {
+                info!("Importation automatique de radiotray-ng ({} stations) vers {}", report.stations_added, timonde_path.display());
+                if let Some(parent) = timonde_path.parent() {
+                    let _ = std::fs::create_dir_all(parent);
+                }
+                let _ = save_bookmarks(&root, &timonde_path);
+                return timonde_path;
+            }
+        }
+    }
+
+    timonde_path
+}
+
+/// Génère un jeu de signets vide si aucun fichier n'existe (aucune radio imposée)
+pub fn create_default_bookmarks(path: &Path) -> Group {
+    if let Some(parent) = path.parent() {
+        let _ = std::fs::create_dir_all(parent);
+    }
+
+    let default_xml = "<bookmarks>\n</bookmarks>\n";
+    let _ = std::fs::write(path, default_xml);
+    parse_bookmarks_reader(default_xml.as_bytes()).unwrap_or_else(|_| Group::new("root"))
+}
+
+/// Initialise le dossier ~/.config/timonde/examples/ avec les fichiers exemples de référence si vide ou inexistant
+pub fn ensure_config_examples(config_dir: &Path) {
+    let examples_dir = config_dir.join("examples");
+    if !examples_dir.exists() {
+        let _ = std::fs::create_dir_all(&examples_dir);
+    }
+
+    let candidates = [
+        PathBuf::from("/usr/share/timonde/examples"),
+        #[cfg(debug_assertions)]
+        PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/data/examples")),
+    ];
+    for source_dir in &candidates {
+        if source_dir.is_dir() {
+            if let Ok(entries) = std::fs::read_dir(source_dir) {
+                let mut copied = 0;
+                for entry in entries.flatten() {
+                    let path = entry.path();
+                    if path.is_file() {
+                        if let Some(name) = path.file_name() {
+                            let dest = examples_dir.join(name);
+                            let should_copy = if !dest.exists() {
+                                true
+                            } else {
+                                match (path.metadata().and_then(|m| m.modified()), dest.metadata().and_then(|m| m.modified())) {
+                                    (Ok(src_m), Ok(dest_m)) => src_m > dest_m,
+                                    _ => false,
+                                }
+                            };
+                            if should_copy && std::fs::copy(&path, &dest).is_ok() {
+                                copied += 1;
+                            }
+                        }
+                    }
+                }
+                if copied > 0 {
+                    info!("{} fichier(s) d'exemples mis à jour dans {:?}", copied, examples_dir);
+                }
+                break;
+            }
+        }
+    }
 }
 
 #[cfg(test)]
