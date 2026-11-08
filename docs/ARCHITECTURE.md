@@ -143,4 +143,12 @@ Pour bannir définitivement la dette technique et les blocages récents, la **Do
 - **Recherche Annuaire Radio-Browser (`timonde --search ... --json`) :** L'interrogation multi-miroirs, le filtrage des flux brisés et le typage des réponses sont pilotés par Rust. Python ne fait plus de requêtes HTTP directes d'exploration.
 - **Référentiel Géographique & Fuseaux Horaires (`timonde --dump-countries-json` et `--infer-timezone`) :** Base exhaustive des 251 pays et territoires ISO mondiaux embarquée en Rust. Python n'embarque plus de tables statiques redondantes et résout les fuseaux via le moteur Rust avec mise en cache mémoire locale.
 
+### Règle d'Or 4 : Tolérance Zéro aux Paniques & Mutex Anti-Poisoning
+- **Éradication des `.unwrap()` :** Tout le code actif de production Rust est strictement exempt de `.unwrap()`. Les potentielles erreurs d'I/O, de parsing ou de conversion sont gérées défensivement via `match`, `if let`, `?` ou fallbacks explicites.
+- **Trait `SafeLock` (`src/sync_util.rs`) :** L'accès aux `Mutex` partagés s'effectue systématiquement via `.safe_lock()`, qui récupère l'état interne même en cas d'empoisonnement (`poisoned.into_inner()`), interdisant toute cascade de crashs ou blocage de la barre des tâches.
+
+### Règle d'Or 5 : Probing Réseau Déporté en Rust (`timonde --probe-stream`)
+- **Vérification HTTP & Métadonnées ICY :** La vérification de disponibilité des stations, l'analyse des en-têtes ICY/Shoutcast/Icecast et la détection des géo-blocages (403, 451, serveurs tiers) sont exécutées nativement par Rust (`src/probe.rs` via `ureq`).
+- **Économie de GIL et de sockets :** Python ne crée plus de pools de sockets lourds (`urllib`) ni de `ThreadPoolExecutor(8)` bloquants ; il délègue à `timonde --probe-stream <URL> --json` et charge paresseusement ses dictionnaires de données.
+
 

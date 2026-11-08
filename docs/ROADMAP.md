@@ -59,6 +59,14 @@ Face à la dette technique accumulée (duplication de code entre Rust et Python,
 - [x] **Chantier 3 (Géographie & Fuseaux) :** `COUNTRY_REGISTRY` enrichi à 251 pays/territoires en Rust. Commandes CLI `timonde --dump-countries-json` et `timonde --infer-timezone`. Suppression de 230+ lignes de tables statiques et tests ad hoc dans `timonde_common.py`.
 - [x] **Validation intégrale :** 56 tests Rust + 17 tests unitaires Python + 4 tests GTK loop / AST scope = 100% vert.
 
+### Jalon 7 : Standard Industriel, Sécurisation Absolue & Probing Réseau Natif (Terminé ✅)
+- [x] **Chantier 1 (Sécurisation Rust & Éradication des `.unwrap()`) :** Recensement et élimination des 98 `.unwrap()` du code actif de production. Mise en place du trait `SafeLock` (`sync_util.rs`) garantissant la tolérance aux mutex empoisonnés (anti-poisoning) et interdisant les paniques en cascade.
+- [x] **Chantier 2 (Probing Réseau Natif Rust) :** Création du module `src/probe.rs` et de la commande `timonde --probe-stream <URL> [--timeout <SECS>] [--json]`. Déportation de `check_stream_url` vers Rust, éliminant les sockets urllib et le blocage de GIL Python.
+- [x] **Chantier 3 (Dégraissage Géographie & Lazy Loading) :** Initialisation paresseuse (*lazy*) via `_LazyDict` des 520 Ko de dictionnaires multilingues dans `timonde_world_data.py`. Démarrage instantané des outils GTK.
+- [x] **Chantier 4 (Architecture Modulaire Rust) :** Découpage du "God File" `src/main.rs` (réduit de 991 à 404 lignes) avec extraction de `src/cli.rs`.
+- [x] **Chantier 5 (Informations Système dans les Préférences) :** Affichage de la version installée et du chemin physique du binaire détecté en tête des Préférences.
+- [x] **Validation intégrale :** 58 tests Rust + 17 tests unitaires Python + 4 tests GTK loop / AST scope = 100% vert. Clippy `-D warnings` 100% propre.
+
 
 ---
 
