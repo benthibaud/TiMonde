@@ -1,5 +1,5 @@
 use crate::models::{Group, Station};
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::collections::HashSet;
 use std::path::Path;
 
@@ -198,8 +198,15 @@ pub fn parse_m3u_entries(content: &str) -> Vec<Station> {
     stations
 }
 
-/// Découpe une ligne CSV en respectant les guillemets (RFC 4180)
+/// Découpe une ligne CSV/TSV en respectant les guillemets (RFC 4180)
 fn split_csv_line(line: &str) -> Vec<String> {
+    let delim = if !line.contains(',') && line.contains(';') {
+        ';'
+    } else if !line.contains(',') && line.contains('\t') {
+        '\t'
+    } else {
+        ','
+    };
     let mut fields = Vec::new();
     let mut current = String::new();
     let mut in_quotes = false;
@@ -215,7 +222,7 @@ fn split_csv_line(line: &str) -> Vec<String> {
                     in_quotes = !in_quotes;
                 }
             }
-            ',' if !in_quotes => {
+            d if d == delim && !in_quotes => {
                 fields.push(current.trim().to_string());
                 current.clear();
             }
@@ -486,6 +493,211 @@ pub fn export_to_csv(root: &Group, file_path: &Path) -> Result<usize, String> {
     Ok(count)
 }
 
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct ParsedStation {
+    pub name: String,
+    pub url: String,
+    #[serde(default)]
+    pub group: String,
+    #[serde(default)]
+    pub country: Option<String>,
+    #[serde(default)]
+    pub timezone: Option<String>,
+    #[serde(default)]
+    pub genre: Option<String>,
+}
+
+/// Analyse universelle de tout fichier de radios (M3U, PLS, CSV, XML, JSON) et extraction des stations
+pub fn parse_file_to_stations(path: &Path) -> Result<Vec<ParsedStation>, String> {
+    if !path.is_file() {
+        return Err(format!("Fichier introuvable : {:?}", path));
+    }
+
+    let ext = path
+        .extension()
+        .and_then(|e| e.to_str())
+        .unwrap_or("")
+        .to_ascii_lowercase();
+    let base_name = path
+        .file_stem()
+        .and_then(|s| s.to_str())
+        .unwrap_or("Import")
+        .to_string();
+
+    let bytes = std::fs::read(path).map_err(|e| format!("Erreur lecture fichier : {}", e))?;
+    let content = String::from_utf8_lossy(&bytes).to_string();
+
+    let mut stations = Vec::new();
+
+    match ext.as_str() {
+        "json" => {
+            if let Ok(rtng_groups) = serde_json::from_str::<Vec<RtngGroup>>(&content) {
+                for g in rtng_groups {
+                    let grp_name = if g.group.trim().is_empty() {
+                        base_name.clone()
+                    } else {
+                        g.group.trim().to_string()
+                    };
+                    for s in g.stations {
+                        stations.push(ParsedStation {
+                            name: s.name,
+                            url: s.url,
+                            group: grp_name.clone(),
+                            country: s.country,
+                            timezone: None,
+                            genre: None,
+                        });
+                    }
+                }
+            } else if let Ok(parsed) = serde_json::from_str::<Vec<ParsedStation>>(&content) {
+                stations = parsed;
+            } else {
+                return Err("Format JSON non reconnu (attendu : format RadioTray-NG ou tableau de stations)".to_string());
+            }
+        }
+        "m3u" | "m3u8" => {
+            let m3u_list = parse_m3u_entries(&content);
+            for s in m3u_list {
+                stations.push(ParsedStation {
+                    name: s.name,
+                    url: s.url,
+                    group: base_name.clone(),
+                    country: s.country,
+                    timezone: s.timezone,
+                    genre: None,
+                });
+            }
+        }
+        "pls" => {
+            let mut titles = std::collections::HashMap::new();
+            let mut files = std::collections::HashMap::new();
+            for line in content.lines() {
+                let trimmed = line.trim();
+                let lower = trimmed.to_ascii_lowercase();
+                if let Some(pos) = trimmed.find('=') {
+                    let key = lower[..pos].trim();
+                    let val = trimmed[pos + 1..].trim();
+                    if key.starts_with("file") {
+                        let idx = key.trim_start_matches("file").to_string();
+                        files.insert(idx, val.to_string());
+                    } else if key.starts_with("title") {
+                        let idx = key.trim_start_matches("title").to_string();
+                        titles.insert(idx, val.to_string());
+                    }
+                }
+            }
+            if !files.is_empty() {
+                let mut sorted_keys: Vec<_> = files.keys().cloned().collect();
+                sorted_keys.sort();
+                for k in sorted_keys {
+                    let url = files[&k].clone();
+                    let name = titles.get(&k).cloned().unwrap_or_else(|| format!("{} {}", base_name, k));
+                    stations.push(ParsedStation {
+                        name,
+                        url,
+                        group: base_name.clone(),
+                        country: None,
+                        timezone: None,
+                        genre: None,
+                    });
+                }
+            } else if let Some(url) = crate::playlist::parse_pls(&content) {
+                stations.push(ParsedStation {
+                    name: base_name.clone(),
+                    url,
+                    group: base_name.clone(),
+                    country: None,
+                    timezone: None,
+                    genre: None,
+                });
+            }
+        }
+        "csv" | "tsv" => {
+            let csv_entries = parse_csv_entries(&content);
+            for (grp, s) in csv_entries {
+                let g_name = grp.unwrap_or_else(|| base_name.clone());
+                stations.push(ParsedStation {
+                    name: s.name,
+                    url: s.url,
+                    group: g_name,
+                    country: s.country,
+                    timezone: s.timezone,
+                    genre: None,
+                });
+            }
+        }
+        "xml" | "opml" => {
+            let root = crate::bookmarks::parse_bookmarks_reader(content.as_bytes())
+                .map_err(|e| format!("Format XML invalide : {}", e))?;
+
+            fn collect_group(grp: &Group, prefix: &str, fallback_name: &str, out: &mut Vec<ParsedStation>) {
+                let current_group = if prefix.is_empty() {
+                    if grp.name.eq_ignore_ascii_case("root") || grp.name.trim().is_empty() {
+                        fallback_name.to_string()
+                    } else {
+                        grp.name.clone()
+                    }
+                } else if grp.name.eq_ignore_ascii_case("root") || grp.name.trim().is_empty() {
+                    prefix.to_string()
+                } else {
+                    format!("{}/{}", prefix, grp.name)
+                };
+
+                for s in &grp.stations {
+                    if !s.is_separator() && !s.url.trim().is_empty() {
+                        out.push(ParsedStation {
+                            name: s.name.clone(),
+                            url: s.url.clone(),
+                            group: current_group.clone(),
+                            country: s.country.clone(),
+                            timezone: s.timezone.clone(),
+                            genre: None,
+                        });
+                    }
+                }
+                for sub in &grp.subgroups {
+                    if !sub.is_separator() {
+                        collect_group(sub, &current_group, fallback_name, out);
+                    }
+                }
+            }
+
+            collect_group(&root, "", &base_name, &mut stations);
+        }
+        _ => {
+            return Err(format!(
+                "Format non supporté (.{}) : les formats supportés sont .json, .m3u, .pls, .csv, .xml",
+                ext
+            ));
+        }
+    }
+
+    // Inférence automatique de fuseau horaire pour les stations qui ont un pays ou un nom exploitable
+    for st in &mut stations {
+        if st.timezone.is_none() {
+            if let Some((_name, _flag, tz, _off)) = crate::timezone::resolve_station_meta(
+                st.country.as_deref(),
+                &st.name,
+                Some(&st.group),
+                None,
+            ) {
+                if !tz.is_empty() {
+                    st.timezone = Some(tz);
+                }
+            }
+        }
+    }
+
+    Ok(stations)
+}
+
+/// Parse universellement un fichier de radios et retourne le flux JSON prêt à l'emploi
+pub fn parse_file_to_json(path: &Path) -> Result<String, String> {
+    let stations = parse_file_to_stations(path)?;
+    serde_json::to_string_pretty(&stations)
+        .map_err(|e| format!("Erreur sérialisation JSON : {}", e))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -670,5 +882,33 @@ FIP,https://icecast.radiofrance.fr/fip-hifi.aac,FR";
         let belgique = root.subgroups.iter().find(|g| g.name == "Belgique").unwrap();
         let nl = belgique.subgroups.iter().find(|g| g.name == "NL").unwrap();
         assert_eq!(nl.stations[0].name, "VRT Radio 1");
+    }
+
+    #[test]
+    fn test_parse_file_to_json_m3u_and_csv() {
+        let m3u_data = "#EXTM3U\n#EXTINF:-1,Radio Paris\nhttps://stream.paris.fr/live\n";
+        let temp_m3u = std::env::temp_dir().join("test_parse.m3u");
+        std::fs::write(&temp_m3u, m3u_data).unwrap();
+
+        let stations = parse_file_to_stations(&temp_m3u).unwrap();
+        assert_eq!(stations.len(), 1);
+        assert_eq!(stations[0].name, "Radio Paris");
+        assert_eq!(stations[0].url, "https://stream.paris.fr/live");
+
+        let json_str = parse_file_to_json(&temp_m3u).unwrap();
+        assert!(json_str.contains("Radio Paris"));
+        let _ = std::fs::remove_file(temp_m3u);
+
+        // Test CSV avec séparateur point-virgule
+        let csv_data = "Groupe;Nom;URL;Pays\nJazz;Radio Jazz;https://stream.jazz.fr/live;FR\n";
+        let temp_csv = std::env::temp_dir().join("test_parse.csv");
+        std::fs::write(&temp_csv, csv_data).unwrap();
+
+        let csv_stations = parse_file_to_stations(&temp_csv).unwrap();
+        assert_eq!(csv_stations.len(), 1);
+        assert_eq!(csv_stations[0].name, "Radio Jazz");
+        assert_eq!(csv_stations[0].group, "Jazz");
+        assert_eq!(csv_stations[0].country.as_deref(), Some("FR"));
+        let _ = std::fs::remove_file(temp_csv);
     }
 }

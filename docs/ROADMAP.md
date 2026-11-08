@@ -53,6 +53,13 @@ Face à la dette technique accumulée (duplication de code entre Rust et Python,
 - [x] **Éradication des fenêtres fantômes :** Découplage de `browse_bouquets.py` avec `DiscoverRadiosViews` (contrôleur et vues pures sans fenêtre) et `DiscoverRadiosWindow` (conteneur CLI autonome). Fin définitive de `embedded=True` sur une `Gtk.Window`.
 - [x] **Validation intégrale :** 54 tests Rust + 17 tests unitaires Python + 4 tests GTK loop / AST scope = 100% vert.
 
+### Jalon 6 : Éradication des Doublons Rust/Python & Dumb UI Intégral (Terminé ✅)
+- [x] **Chantier 1 (Fichiers) :** Décodage universel de fichiers par Rust via `timonde --parse-file-json <FICHIER>`. Éradication de 261 lignes de vieux parseurs manuels M3U/PLS/CSV/XML/JSON dans `browse_bouquets.py`.
+- [x] **Chantier 2 (Réseau Radio-Browser) :** Recherche multicritères déléguée au moteur Rust via `timonde --search [...] --json` avec bascule automatique de miroir, filtrage et typage strict.
+- [x] **Chantier 3 (Géographie & Fuseaux) :** `COUNTRY_REGISTRY` enrichi à 251 pays/territoires en Rust. Commandes CLI `timonde --dump-countries-json` et `timonde --infer-timezone`. Suppression de 230+ lignes de tables statiques et tests ad hoc dans `timonde_common.py`.
+- [x] **Validation intégrale :** 56 tests Rust + 17 tests unitaires Python + 4 tests GTK loop / AST scope = 100% vert.
+
+
 ---
 
 ## 3. Règles d'Or Intransgressibles

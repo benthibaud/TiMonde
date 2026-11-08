@@ -68,6 +68,7 @@ from timonde_world_data import (
 
 import json
 import html
+import subprocess
 import glob
 import shutil
 import xml.etree.ElementTree as ET
@@ -239,269 +240,23 @@ QUICK_POPULAR_LANGUAGES = [
 
 def parse_user_radio_file(path):
     """
-    Parse universel pour fichiers de radios utilisateurs :
-    - XML : Radio Tray, TiMonde, formats bouquets ou OPML (tolérant aux & non échappés)
-    - JSON : radiotray-ng (groupes) ou listes plates
-    - CSV / TSV : auto-détection du délimiteur (,, ;, tab) et des colonnes (Nom, URL, Pays, Groupe)
-    - M3U / M3U8 : playlists avec ou sans métadonnées group-title
-    - PLS : playlists au format INI standard
+    Parse universel délégué au moteur natif Rust (Option B pure).
+    Prend en charge .m3u, .pls, .csv, .xml, .json avec encodages multiples et inférence de fuseau.
     """
-    if not os.path.isfile(path):
+    if not path or not os.path.isfile(path):
         return []
-
-    ext = os.path.splitext(path)[1].lower()
-    base_name = os.path.splitext(os.path.basename(path))[0]
-    stations = []
-
-    # 1. XML
-    if ext == ".xml":
-        try:
-            with open(path, "r", encoding="utf-8", errors="replace") as f:
-                raw_xml = f.read()
-
-            # Assainissement des esperluettes orphelines
-            sanitized = re.sub(r'&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)', '&amp;', raw_xml)
-            root = ET.fromstring(sanitized)
-            def_country = (root.attrib.get("country") or root.attrib.get("countrycode") or "").strip().upper()
-
-            def walk_group(elem, current_path=""):
-                local_stations = []
-                g_name = elem.attrib.get("name", "").strip()
-                if elem != root and g_name and g_name.lower() != "root":
-                    full_group = f"{current_path}/{g_name}".strip("/") if current_path else g_name
-                else:
-                    full_group = current_path
-
-                elem_country = (elem.attrib.get("country") or elem.attrib.get("countrycode") or def_country).strip().upper()
-
-                for child in elem:
-                    if child.tag in ("group", "region", "national"):
-                        sub_path = full_group
-                        if child.tag == "region" and child.attrib.get("name"):
-                            sub_name = child.attrib.get("name").strip()
-                            sub_path = f"{full_group}/{sub_name}".strip("/") if full_group else sub_name
-                        local_stations.extend(walk_group(child, sub_path))
-                    elif child.tag in ("bookmark", "station"):
-                        name = child.attrib.get("name", "").strip()
-                        url = clean_stream_url(child.attrib.get("url", "").strip())
-                        country = (child.attrib.get("country") or child.attrib.get("countrycode") or elem_country).strip().upper()
-                        tz = (child.attrib.get("timezone") or child.attrib.get("tz") or "").strip()
-                        genre = child.attrib.get("genre", "").strip()
-                        explicit_grp = child.attrib.get("group", "").strip()
-                        if name and url and not name.startswith("[separator"):
-                            grp = explicit_grp if explicit_grp else (full_group if full_group else base_name)
-                            if not tz and country:
-                                tz = infer_timezone(country, name, grp)
-                            local_stations.append({
-                                "name": name,
-                                "url": url,
-                                "group": grp,
-                                "country": country,
-                                "timezone": tz,
-                                "genre": genre
-                            })
-                return local_stations
-
-            stations = walk_group(root, "")
-            if not stations:
-                # Format plat de secours
-                for elem in root.iter():
-                    if elem.tag in ("station", "bookmark"):
-                        name = elem.attrib.get("name", "").strip()
-                        url = elem.attrib.get("url", "").strip()
-                        country = (elem.attrib.get("country") or elem.attrib.get("countrycode") or def_country).strip().upper()
-                        tz = (elem.attrib.get("timezone") or elem.attrib.get("tz") or "").strip()
-                        grp = elem.attrib.get("group") or base_name
-                        genre = elem.attrib.get("genre", "").strip()
-                        if name and url and not name.startswith("[separator"):
-                            if not tz and country:
-                                tz = infer_timezone(country, name, grp)
-                            stations.append({
-                                "name": name,
-                                "url": url,
-                                "group": grp,
-                                "country": country,
-                                "timezone": tz,
-                                "genre": genre
-                            })
-        except Exception as e:
-            sys.stderr.write(f"Erreur lecture XML utilisateur {path}: {e}\n")
-
-    # 2. JSON
-    elif ext == ".json":
-        try:
-            with open(path, "r", encoding="utf-8", errors="replace") as f:
-                data = json.load(f)
-            if isinstance(data, list):
-                for item in data:
-                    if isinstance(item, dict):
-                        if "group" in item and "stations" in item and isinstance(item["stations"], list):
-                            grp_name = item.get("group", "").strip() or base_name
-                            for s in item["stations"]:
-                                if isinstance(s, dict):
-                                    name = s.get("name", "").strip()
-                                    url = s.get("url", "").strip()
-                                    country = (s.get("country") or s.get("country_code") or "").strip().upper()
-                                    tz = (s.get("timezone") or s.get("tz") or "").strip()
-                                    if not tz and country:
-                                        tz = infer_timezone(country, name, grp_name)
-                                    genre = (s.get("genre") or "").strip()
-                                    if name and url:
-                                        stations.append({
-                                            "name": name,
-                                            "url": url,
-                                            "group": grp_name,
-                                            "country": country,
-                                            "timezone": tz,
-                                            "genre": genre
-                                        })
-                        elif "name" in item and "url" in item:
-                            name = item.get("name", "").strip()
-                            url = item.get("url", "").strip()
-                            grp = item.get("group", "").strip() or base_name
-                            country = (item.get("country") or item.get("country_code") or "").strip().upper()
-                            tz = (item.get("timezone") or item.get("tz") or "").strip()
-                            if not tz and country:
-                                tz = infer_timezone(country, name, grp)
-                            genre = (item.get("genre") or "").strip()
-                            if name and url:
-                                stations.append({
-                                    "name": name,
-                                    "url": url,
-                                    "group": grp,
-                                    "country": country,
-                                    "timezone": tz,
-                                    "genre": genre
-                                })
-        except Exception as e:
-            sys.stderr.write(f"Erreur lecture JSON utilisateur {path}: {e}\n")
-
-    # 3. CSV
-    elif ext in (".csv", ".txt", ".tsv"):
-        try:
-            with open(path, "r", encoding="utf-8", errors="replace") as f:
-                sample = f.read(4096)
-                f.seek(0)
-                delimiter = ';' if ';' in sample and sample.count(';') > sample.count(',') else (',' if ',' in sample else '\t')
-                reader = csv.reader(f, delimiter=delimiter)
-                for row in reader:
-                    clean_row = [c.strip() for c in row if c.strip()]
-                    if not clean_row:
-                        continue
-                    first = clean_row[0].lower()
-                    if first.startswith("#") or first in ("nom", "name", "groupe", "group", "station"):
-                        continue
-                    if len(clean_row) == 2 and (clean_row[1].startswith("http://") or clean_row[1].startswith("https://")):
-                        tz = infer_timezone("", clean_row[0], base_name)
-                        stations.append({
-                            "name": clean_row[0],
-                            "url": clean_row[1],
-                            "group": base_name,
-                            "country": "",
-                            "genre": "",
-                            "timezone": tz
-                        })
-                    elif len(clean_row) == 3:
-                        if clean_row[1].startswith("http://") or clean_row[1].startswith("https://"):
-                            c = clean_row[2].upper()
-                            tz = infer_timezone(c, clean_row[0], base_name)
-                            stations.append({
-                                "name": clean_row[0],
-                                "url": clean_row[1],
-                                "group": base_name,
-                                "country": c,
-                                "genre": "",
-                                "timezone": tz
-                            })
-                        elif clean_row[2].startswith("http://") or clean_row[2].startswith("https://"):
-                            stations.append({
-                                "name": clean_row[1],
-                                "url": clean_row[2],
-                                "group": clean_row[0],
-                                "country": "",
-                                "genre": "",
-                                "timezone": ""
-                            })
-                    elif len(clean_row) >= 4 and (clean_row[2].startswith("http://") or clean_row[2].startswith("https://")):
-                        st_c = clean_row[3].upper()
-                        tz_val = clean_row[4].strip() if len(clean_row) >= 5 else ""
-                        if not tz_val and st_c:
-                            tz_val = infer_timezone(st_c, clean_row[1], clean_row[0])
-                        stations.append({
-                            "name": clean_row[1],
-                            "url": clean_row[2],
-                            "group": clean_row[0],
-                            "country": st_c,
-                            "genre": "",
-                            "timezone": tz_val
-                        })
-        except Exception as e:
-            sys.stderr.write(f"Erreur lecture CSV utilisateur {path}: {e}\n")
-
-    # 4. M3U / M3U8
-    elif ext in (".m3u", ".m3u8"):
-        try:
-            with open(path, "r", encoding="utf-8", errors="replace") as f:
-                lines = f.readlines()
-            current_name = None
-            current_group = base_name
-            for line in lines:
-                l = line.strip()
-                if not l:
-                    continue
-                if l.startswith("#EXTINF:"):
-                    grp_match = re.search(r'group-title="([^"]+)"', l, re.IGNORECASE)
-                    if grp_match:
-                        current_group = grp_match.group(1).strip()
-                    else:
-                        current_group = base_name
-                    if "," in l:
-                        current_name = l.split(",", 1)[1].strip()
-                elif not l.startswith("#") and (l.startswith("http://") or l.startswith("https://")):
-                    name = current_name or os.path.basename(l)
-                    stations.append({
-                        "name": name,
-                        "url": l,
-                        "group": current_group,
-                        "country": "",
-                        "genre": ""
-                    })
-                    current_name = None
-        except Exception as e:
-            sys.stderr.write(f"Erreur lecture M3U utilisateur {path}: {e}\n")
-
-    # 5. PLS
-    elif ext == ".pls":
-        try:
-            with open(path, "r", encoding="utf-8", errors="replace") as f:
-                lines = f.readlines()
-            entries = {}
-            for line in lines:
-                l = line.strip()
-                if "=" in l and not l.startswith("#") and not l.startswith("["):
-                    k, v = l.split("=", 1)
-                    entries[k.strip().lower()] = v.strip()
-            idx = 1
-            while f"file{idx}" in entries:
-                url = entries.get(f"file{idx}", "")
-                title = entries.get(f"title{idx}", f"Station {idx}")
-                if url.startswith("http://") or url.startswith("https://"):
-                    stations.append({
-                        "name": title,
-                        "url": url,
-                        "group": base_name,
-                        "country": "",
-                        "genre": ""
-                    })
-                idx += 1
-        except Exception as e:
-            sys.stderr.write(f"Erreur lecture PLS utilisateur {path}: {e}\n")
-
-    return stations
-
-
-
-
+    try:
+        res = subprocess.run(
+            ["timonde", "--parse-file-json", path],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
+        )
+        if res.returncode == 0 and res.stdout.strip():
+            return json.loads(res.stdout)
+    except Exception as e:
+        sys.stderr.write(f"Erreur parsing fichier {path} via Rust : {e}\n")
+    return []
 
 class DiscoverRadiosViews:
     def __init__(

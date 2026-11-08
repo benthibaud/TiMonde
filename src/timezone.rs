@@ -5,6 +5,7 @@
 // ou une sous-région/province (ex: "CA-NB", "US-CA", "America/Moncton") en heure locale exacte
 // avec son fuseau IANA réel et sa période de la journée.
 
+use serde::{Deserialize, Serialize};
 use std::fs::File;
 use std::io::Read;
 use std::path::Path;
@@ -44,29 +45,49 @@ impl CountryTimeInfo {
 const COUNTRY_REGISTRY: &[(&str, &str, &str, &str, i32)] = &[
     ("AD", "Andorre", "", "Europe/Andorra", 3600),
     ("AE", "Émirats Arabes Unis", "", "Asia/Dubai", 14400),
+    ("AF", "Afghanistan", "", "Asia/Kabul", 16200),
+    ("AG", "Antigua-et-Barbuda", "", "America/Antigua", -14400),
+    ("AI", "Anguilla", "", "America/Anguilla", -14400),
     ("AL", "Albanie", "", "Europe/Tirane", 3600),
     ("AM", "Arménie", "", "Asia/Yerevan", 14400),
     ("AO", "Angola", "", "Africa/Luanda", 3600),
+    ("AQ", "Antarctique", "", "Antarctica/McMurdo", 43200),
     ("AR", "Argentine", "", "America/Argentina/Buenos_Aires", -10800),
+    ("AS", "Samoa américaines", "", "Pacific/Pago_Pago", -39600),
     ("AT", "Autriche", "", "Europe/Vienna", 3600),
     ("AU", "Australie", "", "Australia/Sydney", 36000),
+    ("AW", "Aruba", "", "America/Aruba", -14400),
+    ("AX", "Åland, Îles", "", "Europe/Mariehamn", 7200),
     ("AZ", "Azerbaïdjan", "", "Asia/Baku", 14400),
     ("BA", "Bosnie-Herzégovine", "", "Europe/Sarajevo", 3600),
+    ("BB", "Barbade", "", "America/Barbados", -14400),
     ("BD", "Bangladesh", "", "Asia/Dhaka", 21600),
     ("BE", "Belgique", "", "Europe/Brussels", 3600),
     ("BF", "Burkina Faso", "", "Africa/Ouagadougou", 0),
     ("BG", "Bulgarie", "", "Europe/Sofia", 7200),
+    ("BH", "Bahreïn", "", "Asia/Bahrain", 10800),
     ("BI", "Burundi", "", "Africa/Bujumbura", 7200),
     ("BJ", "Bénin", "", "Africa/Porto-Novo", 3600),
     ("BL", "Saint-Barthélemy", "", "America/St_Barthelemy", -14400),
+    ("BM", "Bermudes", "", "Atlantic/Bermuda", -14400),
     ("BN", "Brunei", "", "Asia/Brunei", 28800),
     ("BO", "Bolivie", "", "America/La_Paz", -14400),
+    ("BQ", "Bonaire, Saint-Eustache et Saba", "", "America/Kralendijk", -14400),
     ("BR", "Brésil", "", "America/Sao_Paulo", -10800),
+    ("BS", "Bahamas", "", "America/Nassau", -18000),
+    ("BT", "Bhoutan", "", "Asia/Thimphu", 21600),
+    ("BV", "Île Bouvet", "", "Antarctica/Bouvet", 3600),
+    ("BW", "Botswana", "", "Africa/Gaborone", 7200),
+    ("BY", "Bélarus", "", "Europe/Minsk", 10800),
+    ("BZ", "Belize", "", "America/Belize", -21600),
     ("CA", "Canada", "", "America/Toronto", -18000),
+    ("CC", "Cocos (Keeling), Îles", "", "Indian/Cocos", 23400),
     ("CD", "RD Congo", "", "Africa/Kinshasa", 3600),
+    ("CF", "République centrafricaine", "", "Africa/Bangui", 3600),
     ("CG", "Congo", "", "Africa/Brazzaville", 3600),
     ("CH", "Suisse", "", "Europe/Zurich", 3600),
     ("CI", "Côte d'Ivoire", "", "Africa/Abidjan", 0),
+    ("CK", "Îles Cook", "", "Pacific/Rarotonga", -36000),
     ("CL", "Chili", "", "America/Santiago", -14400),
     ("CM", "Cameroun", "", "Africa/Douala", 3600),
     ("CN", "Chine", "", "Asia/Shanghai", 28800),
@@ -74,31 +95,50 @@ const COUNTRY_REGISTRY: &[(&str, &str, &str, &str, i32)] = &[
     ("CR", "Costa Rica", "", "America/Costa_Rica", -21600),
     ("CU", "Cuba", "", "America/Havana", -18000),
     ("CV", "Cap-Vert", "", "Atlantic/Cape_Verde", -3600),
+    ("CW", "Curaçao", "", "America/Curacao", -14400),
+    ("CX", "Christmas, Île", "", "Indian/Christmas", 25200),
     ("CY", "Chypre", "", "Asia/Nicosia", 7200),
     ("CZ", "Tchéquie", "", "Europe/Prague", 3600),
     ("DE", "Allemagne", "", "Europe/Berlin", 3600),
     ("DJ", "Djibouti", "", "Africa/Djibouti", 10800),
     ("DK", "Danemark", "", "Europe/Copenhagen", 3600),
+    ("DM", "Dominique", "", "America/Dominica", -14400),
     ("DO", "Rép. Dominicaine", "", "America/Santo_Domingo", -14400),
     ("DZ", "Algérie", "", "Africa/Algiers", 3600),
     ("EC", "Équateur", "", "America/Guayaquil", -18000),
     ("EE", "Estonie", "", "Europe/Tallinn", 7200),
     ("EG", "Égypte", "", "Africa/Cairo", 7200),
+    ("EH", "Sahara occidental", "", "Africa/El_Aaiun", 3600),
+    ("ER", "Érythrée", "", "Africa/Asmara", 10800),
     ("ES", "Espagne", "", "Europe/Madrid", 3600),
     ("ET", "Éthiopie", "", "Africa/Addis_Ababa", 10800),
     ("FI", "Finlande", "", "Europe/Helsinki", 7200),
     ("FJ", "Fidji", "", "Pacific/Fiji", 43200),
+    ("FK", "Îles Malouines", "", "Atlantic/Stanley", -10800),
+    ("FM", "Micronésie, États fédérés de", "", "Pacific/Chuuk", 36000),
+    ("FO", "Îles Féroé", "", "Atlantic/Faroe", 0),
     ("FR", "France", "", "Europe/Paris", 3600),
     ("GA", "Gabon", "", "Africa/Libreville", 3600),
     ("GB", "Royaume-Uni", "", "Europe/London", 0),
+    ("GD", "Grenade", "", "UTC", 0),
     ("GE", "Géorgie", "", "Asia/Tbilisi", 14400),
     ("GF", "Guyane", "", "America/Cayenne", -10800),
+    ("GG", "Guernesey", "", "Europe/Guernsey", 0),
     ("GH", "Ghana", "", "Africa/Accra", 0),
+    ("GI", "Gibraltar", "", "Europe/Gibraltar", 3600),
+    ("GL", "Groënland", "", "America/Nuuk", -10800),
+    ("GM", "Gambie", "", "Africa/Banjul", 0),
     ("GN", "Guinée", "", "Africa/Conakry", 0),
     ("GP", "Guadeloupe", "", "America/Guadeloupe", -14400),
+    ("GQ", "Guinée Équatoriale", "", "Africa/Malabo", 3600),
     ("GR", "Grèce", "", "Europe/Athens", 7200),
+    ("GS", "Géorgie du Sud et les îles Sandwich du Sud", "", "Atlantic/South_Georgia", -7200),
     ("GT", "Guatemala", "", "America/Guatemala", -21600),
+    ("GU", "Guam", "", "Pacific/Guam", 36000),
+    ("GW", "Guinée-Bissau", "", "Africa/Bissau", 0),
+    ("GY", "Guyana", "", "America/Guyana", -14400),
     ("HK", "Hong Kong", "", "Asia/Hong_Kong", 28800),
+    ("HM", "Îles Heard-et-MacDonald", "", "Indian/Kerguelen", 18000),
     ("HN", "Honduras", "", "America/Tegucigalpa", -21600),
     ("HR", "Croatie", "", "Europe/Zagreb", 3600),
     ("HT", "Haïti", "", "America/Port-au-Prince", -18000),
@@ -106,50 +146,75 @@ const COUNTRY_REGISTRY: &[(&str, &str, &str, &str, i32)] = &[
     ("ID", "Indonésie", "", "Asia/Jakarta", 25200),
     ("IE", "Irlande", "", "Europe/Dublin", 0),
     ("IL", "Israël", "", "Asia/Jerusalem", 7200),
+    ("IM", "Île de Man", "", "Europe/Isle_of_Man", 0),
     ("IN", "Inde", "", "Asia/Kolkata", 19800),
+    ("IO", "Territoire britannique de l'océan Indien", "", "UTC", 0),
+    ("IQ", "Irak", "", "UTC", 0),
+    ("IR", "Iran, République islamique d'", "", "UTC", 0),
     ("IS", "Islande", "", "Atlantic/Reykjavik", 0),
     ("IT", "Italie", "", "Europe/Rome", 3600),
+    ("JE", "Jersey", "", "Europe/Jersey", 0),
     ("JM", "Jamaïque", "", "America/Jamaica", -18000),
     ("JO", "Jordanie", "", "Asia/Amman", 10800),
     ("JP", "Japon", "", "Asia/Tokyo", 32400),
     ("KE", "Kenya", "", "Africa/Nairobi", 10800),
     ("KG", "Kirghizistan", "", "Asia/Bishkek", 21600),
     ("KH", "Cambodge", "", "Asia/Phnom_Penh", 25200),
+    ("KI", "Kiribati", "", "Pacific/Tarawa", 43200),
+    ("KM", "Comores", "", "Indian/Comoro", 10800),
+    ("KN", "Saint-Christophe-et-Niévès", "", "America/St_Kitts", -14400),
+    ("KP", "Corée du Nord", "", "UTC", 0),
     ("KR", "Corée du Sud", "", "Asia/Seoul", 32400),
+    ("KW", "Koweït", "", "UTC", 0),
+    ("KY", "Îles Caïmans", "", "America/Cayman", -18000),
     ("KZ", "Kazakhstan", "", "Asia/Almaty", 18000),
     ("LA", "Laos", "", "Asia/Vientiane", 25200),
     ("LB", "Liban", "", "Asia/Beirut", 7200),
+    ("LC", "Sainte-Lucie", "", "America/St_Lucia", -14400),
     ("LI", "Liechtenstein", "", "Europe/Vaduz", 3600),
     ("LK", "Sri Lanka", "", "Asia/Colombo", 19800),
+    ("LR", "Libéria", "", "UTC", 0),
+    ("LS", "Lesotho", "", "Africa/Maseru", 7200),
     ("LT", "Lituanie", "", "Europe/Vilnius", 7200),
     ("LU", "Luxembourg", "", "Europe/Luxembourg", 3600),
     ("LV", "Lettonie", "", "Europe/Riga", 7200),
+    ("LY", "Libye", "", "UTC", 0),
     ("MA", "Maroc", "", "Africa/Casablanca", 3600),
     ("MC", "Monaco", "", "Europe/Monaco", 3600),
     ("MD", "Moldavie", "", "Europe/Chisinau", 7200),
     ("ME", "Monténégro", "", "Europe/Podgorica", 3600),
     ("MF", "Saint-Martin", "", "America/Marigot", -14400),
     ("MG", "Madagascar", "", "Indian/Antananarivo", 10800),
+    ("MH", "Îles Marshall", "", "Pacific/Majuro", 43200),
     ("MK", "Macédoine du Nord", "", "Europe/Skopje", 3600),
     ("ML", "Mali", "", "Africa/Bamako", 0),
     ("MM", "Birmanie", "", "Asia/Yangon", 23400),
     ("MN", "Mongolie", "", "Asia/Ulaanbaatar", 28800),
+    ("MO", "Macau", "", "Asia/Macau", 28800),
+    ("MP", "Îles Mariannes du Nord", "", "Pacific/Saipan", 36000),
     ("MQ", "Martinique", "", "America/Martinique", -14400),
     ("MR", "Mauritanie", "", "Africa/Nouakchott", 0),
+    ("MS", "Montserrat", "", "America/Montserrat", -14400),
     ("MT", "Malte", "", "Europe/Malta", 3600),
     ("MU", "Maurice", "", "Indian/Mauritius", 14400),
+    ("MV", "Maldives", "", "Indian/Maldives", 18000),
+    ("MW", "Malawi", "", "Africa/Blantyre", 7200),
     ("MX", "Mexique", "", "America/Mexico_City", -21600),
     ("MY", "Malaisie", "", "Asia/Kuala_Lumpur", 28800),
     ("MZ", "Mozambique", "", "Africa/Maputo", 7200),
     ("NA", "Namibie", "", "Africa/Windhoek", 7200),
     ("NC", "Nouvelle-Calédonie", "", "Pacific/Noumea", 39600),
     ("NE", "Niger", "", "Africa/Niamey", 3600),
+    ("NF", "Île Norfolk", "", "Pacific/Norfolk", 39600),
     ("NG", "Nigéria", "", "Africa/Lagos", 3600),
     ("NI", "Nicaragua", "", "America/Managua", -21600),
     ("NL", "Pays-Bas", "", "Europe/Amsterdam", 3600),
     ("NO", "Norvège", "", "Europe/Oslo", 3600),
     ("NP", "Népal", "", "Asia/Kathmandu", 20700),
+    ("NR", "Nauru", "", "Pacific/Nauru", 43200),
+    ("NU", "Nioue", "", "Pacific/Niue", -39600),
     ("NZ", "Nouvelle-Zélande", "", "Pacific/Auckland", 43200),
+    ("OM", "Oman", "", "Asia/Muscat", 14400),
     ("PA", "Panama", "", "America/Panama", -18000),
     ("PE", "Pérou", "", "America/Lima", -18000),
     ("PF", "Polynésie française", "", "Pacific/Tahiti", -36000),
@@ -158,43 +223,73 @@ const COUNTRY_REGISTRY: &[(&str, &str, &str, &str, i32)] = &[
     ("PK", "Pakistan", "", "Asia/Karachi", 18000),
     ("PL", "Pologne", "", "Europe/Warsaw", 3600),
     ("PM", "Saint-Pierre-et-Miquelon", "", "America/Miquelon", -10800),
+    ("PN", "Îles Pitcairn", "", "Pacific/Pitcairn", -28800),
     ("PR", "Porto Rico", "", "America/Puerto_Rico", -14400),
+    ("PS", "Palestine, État de", "", "Asia/Gaza", 7200),
     ("PT", "Portugal", "", "Europe/Lisbon", 0),
+    ("PW", "Palaos", "", "Pacific/Palau", 32400),
     ("PY", "Paraguay", "", "America/Asuncion", -14400),
+    ("QA", "Qatar", "", "Asia/Qatar", 10800),
     ("RE", "La Réunion", "", "Indian/Reunion", 14400),
     ("RO", "Roumanie", "", "Europe/Bucharest", 7200),
     ("RS", "Serbie", "", "Europe/Belgrade", 3600),
     ("RU", "Russie", "", "Europe/Moscow", 10800),
     ("RW", "Rwanda", "", "Africa/Kigali", 7200),
     ("SA", "Arabie Saoudite", "", "Asia/Riyadh", 10800),
+    ("SB", "Salomon, Îles", "", "Pacific/Guadalcanal", 39600),
     ("SC", "Seychelles", "", "Indian/Mahe", 14400),
+    ("SD", "Soudan", "", "Africa/Khartoum", 7200),
     ("SE", "Suède", "", "Europe/Stockholm", 3600),
     ("SG", "Singapour", "", "Asia/Singapore", 28800),
+    ("SH", "Sainte-Hélène", "", "Atlantic/St_Helena", 0),
     ("SI", "Slovénie", "", "Europe/Ljubljana", 3600),
+    ("SJ", "Svalbard et île Jan Mayen", "", "Arctic/Longyearbyen", 3600),
     ("SK", "Slovaquie", "", "Europe/Bratislava", 3600),
+    ("SL", "Sierra Leone", "", "Africa/Freetown", 0),
     ("SM", "Saint-Marin", "", "Europe/San_Marino", 3600),
     ("SN", "Sénégal", "", "Africa/Dakar", 0),
+    ("SO", "Somalie", "", "Africa/Mogadishu", 10800),
+    ("SR", "Surinam", "", "America/Paramaribo", -10800),
+    ("SS", "Soudan du Sud", "", "Africa/Juba", 7200),
+    ("ST", "Sao Tomé-et-Principe", "", "Africa/Sao_Tome", 0),
     ("SV", "Salvador", "", "America/El_Salvador", -21600),
+    ("SX", "Saint-Martin (partie néerlandaise)", "", "America/Lower_Princes", -14400),
+    ("SY", "Syrie", "", "Asia/Damascus", 10800),
+    ("SZ", "Eswatini", "", "Africa/Mbabane", 7200),
+    ("TC", "Îles Turques-et-Caïques", "", "America/Grand_Turk", -18000),
     ("TD", "Tchad", "", "Africa/Ndjamena", 3600),
+    ("TF", "Terres australes françaises", "", "Indian/Kerguelen", 18000),
     ("TG", "Togo", "", "Africa/Lome", 0),
     ("TH", "Thaïlande", "", "Asia/Bangkok", 25200),
     ("TJ", "Tadjikistan", "", "Asia/Dushanbe", 18000),
+    ("TK", "Tokelau", "", "Pacific/Fakaofo", 46800),
+    ("TL", "Timor oriental", "", "Asia/Dili", 32400),
+    ("TM", "Turkménistan", "", "Asia/Ashgabat", 18000),
     ("TN", "Tunisie", "", "Africa/Tunis", 3600),
+    ("TO", "Tonga", "", "Pacific/Tongatapu", 46800),
     ("TR", "Turquie", "", "Europe/Istanbul", 10800),
     ("TT", "Trinité-et-Tobago", "", "America/Port_of_Spain", -14400),
+    ("TV", "Tuvalu", "", "Pacific/Funafuti", 43200),
     ("TW", "Taïwan", "", "Asia/Taipei", 28800),
     ("TZ", "Tanzanie", "", "Africa/Dar_es_Salaam", 10800),
     ("UA", "Ukraine", "", "Europe/Kyiv", 7200),
     ("UG", "Ouganda", "", "Africa/Kampala", 10800),
     ("UK", "Royaume-Uni", "", "Europe/London", 0),
+    ("UM", "Îles mineures éloignées des États-Unis", "", "Pacific/Wake", 43200),
     ("US", "États-Unis", "", "America/New_York", -18000),
     ("UY", "Uruguay", "", "America/Montevideo", -10800),
     ("UZ", "Ouzbékistan", "", "Asia/Tashkent", 18000),
     ("VA", "Vatican", "", "Europe/Vatican", 3600),
+    ("VC", "Saint-Vincent-et-les-Grenadines", "", "America/St_Vincent", -14400),
     ("VE", "Venezuela", "", "America/Caracas", -14400),
+    ("VG", "Îles Vierges britanniques", "", "America/Tortola", -14400),
+    ("VI", "Îles Vierges des États-Unis", "", "America/St_Thomas", -14400),
     ("VN", "Viêt Nam", "", "Asia/Ho_Chi_Minh", 25200),
+    ("VU", "Vanuatu", "", "Pacific/Efate", 39600),
     ("WF", "Wallis-et-Futuna", "", "Pacific/Wallis", 43200),
+    ("WS", "Samoa", "", "Pacific/Apia", 46800),
     ("XK", "Kosovo", "", "Europe/Belgrade", 3600),
+    ("YE", "Yémen", "", "Asia/Aden", 10800),
     ("YT", "Mayotte", "", "Indian/Mayotte", 10800),
     ("ZA", "Afrique du Sud", "", "Africa/Johannesburg", 7200),
     ("ZM", "Zambie", "", "Africa/Lusaka", 7200),
@@ -431,7 +526,7 @@ pub fn resolve_station_meta(
     if upper == "GF" || lower_context.contains("guyane") || lower_context.contains("cayenne") {
         return Some(("Guyane", "", "America/Cayenne".to_string(), -10800));
     }
-    if upper == "RE" || lower_context.contains("la réunion") || lower_context.contains("la reunion") || lower_context.contains("saint-denis") {
+    if upper == "RE" || lower_context.contains("réunion") || lower_context.contains("reunion") || lower_context.contains("saint-denis") {
         return Some(("La Réunion", "", "Indian/Reunion".to_string(), 14400));
     }
     if upper == "YT" || lower_context.contains("mayotte") || lower_context.contains("mamoudzou") {
@@ -448,6 +543,21 @@ pub fn resolve_station_meta(
     }
     if upper == "MF" || lower_context.contains("saint-martin") || lower_context.contains("marigot") {
         return Some(("Saint-Martin", "", "America/Marigot".to_string(), -14400));
+    }
+
+    if upper == "GB" || upper == "UK" {
+        if lower_context.contains("gibraltar") {
+            return Some(("Gibraltar", "", "Europe/Gibraltar".to_string(), 3600));
+        }
+        if lower_context.contains("bermuda") || lower_context.contains("bermudes") {
+            return Some(("Bermudes", "", "Atlantic/Bermuda".to_string(), -14400));
+        }
+        if lower_context.contains("falkland") || lower_context.contains("malouines") {
+            return Some(("Îles Malouines", "", "Atlantic/Stanley".to_string(), -10800));
+        }
+        if lower_context.contains("cayman") || lower_context.contains("caïmans") {
+            return Some(("Îles Caïmans", "", "America/Cayman".to_string(), -18000));
+        }
     }
 
     // 2. Recherche directe dans le registre mondial
@@ -513,6 +623,59 @@ pub fn lookup_country_meta(country_code: &str) -> Option<(&'static str, &'static
         }
     }
     None
+}
+
+/// Structure JSON pour l'export du référentiel mondial des pays
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct CountryInfoJson {
+    pub code: String,
+    pub name: String,
+    pub flag: String,
+    pub timezone: String,
+    pub offset_sec: i32,
+}
+
+/// Exporte la liste exhaustive des pays du référentiel TiMonde en JSON propre
+pub fn dump_countries_json() -> String {
+    let list: Vec<CountryInfoJson> = COUNTRY_REGISTRY
+        .iter()
+        .map(|(code, name, flag, tz, off)| CountryInfoJson {
+            code: code.to_string(),
+            name: name.to_string(),
+            flag: flag.to_string(),
+            timezone: tz.to_string(),
+            offset_sec: *off,
+        })
+        .collect();
+    serde_json::to_string_pretty(&list).unwrap_or_else(|_| "[]".to_string())
+}
+
+/// Structure JSON de retour pour l'inférence de fuseau horaire
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct InferredTimezoneJson {
+    pub country_name: String,
+    pub flag: String,
+    pub timezone: String,
+    pub offset_sec: i32,
+}
+
+/// Infère le fuseau horaire d'une station à partir de son pays, nom, groupe et retourne le résultat en JSON
+pub fn infer_timezone_json(
+    country: Option<&str>,
+    name: &str,
+    group: Option<&str>,
+    explicit_tz: Option<&str>,
+) -> String {
+    if let Some((c_name, flag, tz, off)) = resolve_station_meta(country, name, group, explicit_tz) {
+        serde_json::to_string(&InferredTimezoneJson {
+            country_name: c_name.to_string(),
+            flag: flag.to_string(),
+            timezone: tz,
+            offset_sec: off,
+        }).unwrap_or_else(|_| "{}".to_string())
+    } else {
+        "{}".to_string()
+    }
 }
 
 /// Détermine l'icône astronomique et la période de la journée selon l'heure locale
@@ -866,5 +1029,19 @@ mod tests {
             assert!(info_nz.day_diff_label == "Demain" || info_nz.day_diff_label == "Tomorrow");
             assert!(info_nz.relative_badge().starts_with("Demain,") || info_nz.relative_badge().starts_with("Tomorrow,"));
         }
+    }
+
+    #[test]
+    fn test_dump_countries_and_infer_timezone_json() {
+        let json = dump_countries_json();
+        assert!(json.contains("\"code\": \"FR\""));
+        assert!(json.contains("\"name\": \"France\""));
+        assert!(json.contains("\"timezone\": \"Europe/Paris\""));
+
+        let inferred = infer_timezone_json(Some("FR"), "France Inter", Some("Généraliste"), None);
+        assert!(inferred.contains("\"timezone\":\"Europe/Paris\""));
+
+        let inferred_gp = infer_timezone_json(Some("FR"), "RCI Guadeloupe", Some("Antilles"), None);
+        assert!(inferred_gp.contains("\"timezone\":\"America/Guadeloupe\""));
     }
 }

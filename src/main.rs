@@ -257,9 +257,13 @@ fn main() {
             }
             "--search" => {
                 let mut filter = radio_browser::SearchFilter::default();
+                let mut as_json = false;
                 let mut i = 2;
                 while i < args.len() {
                     match args[i].as_str() {
+                        "--json" => {
+                            as_json = true;
+                        }
                         "--tag" | "-t" => {
                             if i + 1 < args.len() { filter.tag = Some(args[i + 1].clone()); i += 1; }
                         }
@@ -284,12 +288,23 @@ fn main() {
                 }
 
                 if filter.name.is_none() && filter.tag.is_none() && filter.country.is_none() && filter.language.is_none() {
-                    eprintln!("Usage : timonde --search [NOM] [--tag GENRE] [--country PAYS] [--lang LANGUE] [--limit N]");
+                    if as_json {
+                        println!("[]");
+                        return;
+                    }
+                    eprintln!("Usage : timonde --search [NOM] [--tag GENRE] [--country PAYS] [--lang LANGUE] [--limit N] [--json]");
                     std::process::exit(1);
                 }
 
-                println!("Recherche multicritères sur Radio-Browser...");
+                if !as_json {
+                    println!("Recherche multicritères sur Radio-Browser...");
+                }
                 let results = radio_browser::search_advanced(&filter);
+                if as_json {
+                    let json_str = serde_json::to_string_pretty(&results).unwrap_or_else(|_| "[]".to_string());
+                    println!("{}", json_str);
+                    return;
+                }
                 if results.is_empty() {
                     println!("Aucune station trouvée pour ces critères");
                 } else {
@@ -629,6 +644,62 @@ fn main() {
                         std::process::exit(1);
                     }
                 }
+            }
+            "--parse-file-json" => {
+                if args.len() < 3 {
+                    eprintln!("Usage : timonde --parse-file-json <FICHIER>");
+                    std::process::exit(1);
+                }
+                let file_path = PathBuf::from(&args[2]);
+                match import::parse_file_to_json(&file_path) {
+                    Ok(json_str) => {
+                        println!("{}", json_str);
+                        return;
+                    }
+                    Err(e) => {
+                        eprintln!(r#"{{"error":"{}"}}"#, e);
+                        std::process::exit(1);
+                    }
+                }
+            }
+            "--dump-countries-json" => {
+                println!("{}", timezone::dump_countries_json());
+                return;
+            }
+            "--infer-timezone" => {
+                let mut country: Option<String> = None;
+                let mut name: String = String::new();
+                let mut group: Option<String> = None;
+                let mut explicit_tz: Option<String> = None;
+
+                let mut pos = 0;
+                let mut i = 2;
+                while i < args.len() {
+                    if args[i] == "--tz" && i + 1 < args.len() {
+                        explicit_tz = Some(args[i + 1].clone());
+                        i += 2;
+                        continue;
+                    }
+                    match pos {
+                        0 => country = Some(args[i].clone()),
+                        1 => name = args[i].clone(),
+                        2 => group = Some(args[i].clone()),
+                        _ => {}
+                    }
+                    pos += 1;
+                    i += 1;
+                }
+
+                println!(
+                    "{}",
+                    timezone::infer_timezone_json(
+                        country.as_deref(),
+                        &name,
+                        group.as_deref(),
+                        explicit_tz.as_deref(),
+                    )
+                );
+                return;
             }
             other => {
                 eprintln!("Option inconnue : {}", other);

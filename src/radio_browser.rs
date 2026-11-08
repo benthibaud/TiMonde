@@ -1,5 +1,5 @@
 use log::{info, warn};
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::process::Command;
 use std::time::Duration;
 
@@ -13,12 +13,18 @@ pub struct StationResult {
     pub bitrate: u32,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SearchResult {
     pub name: String,
     pub url_resolved: String,
     #[serde(default)]
+    pub url: String,
+    #[serde(default)]
+    pub stationuuid: String,
+    #[serde(default)]
     pub country: String,
+    #[serde(default)]
+    pub countrycode: String,
     #[serde(default)]
     pub codec: String,
     #[serde(default)]
@@ -162,7 +168,12 @@ pub fn search_advanced(filter: &SearchFilter) -> Vec<SearchResult> {
     if let Some(ref country) = filter.country {
         let clean = country.trim();
         if !clean.is_empty() {
-            query_params.push(format!("country={}", urlencoding(clean)));
+            if clean.len() == 2 {
+                let cc = if clean.eq_ignore_ascii_case("UK") { "GB" } else { clean };
+                query_params.push(format!("countrycode={}", urlencoding(&cc.to_ascii_uppercase())));
+            } else {
+                query_params.push(format!("country={}", urlencoding(clean)));
+            }
         }
     }
     if let Some(ref lang) = filter.language {

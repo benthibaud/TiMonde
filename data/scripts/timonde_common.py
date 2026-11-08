@@ -18,6 +18,8 @@ import xml.etree.ElementTree as ET
 import collections
 import html
 import subprocess
+import shutil
+import json
 
 # Neutralisation inconditionnelle d'IBus et XMODIFIERS dès le chargement du module
 for _var in ("GTK_IM_MODULE", "XMODIFIERS", "QT_IM_MODULE"):
@@ -280,107 +282,27 @@ def get_user_bookmarks_groups(path=None):
 # 4. Registre des Pays SANS EMOJI & Fuseaux Horaires (antiX-safe)
 # -----------------------------------------------------------------------------
 
-COUNTRIES_DB = [
-    ("FR", "France", ""),
-    ("GP", "Guadeloupe", ""),
-    ("MQ", "Martinique", ""),
-    ("GF", "Guyane", ""),
-    ("RE", "La Réunion", ""),
-    ("YT", "Mayotte", ""),
-    ("NC", "Nouvelle-Calédonie", ""),
-    ("PF", "Polynésie française", ""),
-    ("PM", "Saint-Pierre-et-Miquelon", ""),
-    ("BL", "Saint-Barthélemy", ""),
-    ("MF", "Saint-Martin", ""),
-    ("WF", "Wallis-et-Futuna", ""),
-    ("BE", "Belgique", ""),
-    ("CH", "Suisse", ""),
-    ("CA", "Canada", ""),
-    ("US", "États-Unis", ""),
-    ("GB", "Royaume-Uni", ""),
-    ("DE", "Allemagne", ""),
-    ("IT", "Italie", ""),
-    ("ES", "Espagne", ""),
-    ("PT", "Portugal", ""),
-    ("NL", "Pays-Bas", ""),
-    ("SN", "Sénégal", ""),
-    ("CI", "Côte d'Ivoire", ""),
-    ("MA", "Maroc", ""),
-    ("DZ", "Algérie", ""),
-    ("TN", "Tunisie", ""),
-    ("ML", "Mali", ""),
-    ("GN", "Guinée", ""),
-    ("CM", "Cameroun", ""),
-    ("MG", "Madagascar", ""),
-    ("HT", "Haïti", ""),
-    ("LU", "Luxembourg", ""),
-    ("MC", "Monaco", ""),
-    ("AD", "Andorre", ""),
-    ("IE", "Irlande", ""),
-    ("AT", "Autriche", ""),
-    ("SE", "Suède", ""),
-    ("NO", "Norvège", ""),
-    ("DK", "Danemark", ""),
-    ("FI", "Finlande", ""),
-    ("IS", "Islande", ""),
-    ("GR", "Grèce", ""),
-    ("PL", "Pologne", ""),
-    ("CZ", "Tchéquie", ""),
-    ("SK", "Slovaquie", ""),
-    ("HU", "Hongrie", ""),
-    ("RO", "Roumanie", ""),
-    ("BG", "Bulgarie", ""),
-    ("HR", "Croatie", ""),
-    ("RS", "Serbie", ""),
-    ("BA", "Bosnie-Herzégovine", ""),
-    ("SI", "Slovénie", ""),
-    ("JP", "Japon", ""),
-    ("CN", "Chine", ""),
-    ("KR", "Corée du Sud", ""),
-    ("IN", "Inde", ""),
-    ("BR", "Brésil", ""),
-    ("AR", "Argentine", ""),
-    ("MX", "Mexique", ""),
-    ("CO", "Colombie", ""),
-    ("CL", "Chili", ""),
-    ("PE", "Pérou", ""),
-    ("AU", "Australie", ""),
-    ("NZ", "Nouvelle-Zélande", ""),
-    ("ZA", "Afrique du Sud", ""),
-    ("RU", "Russie", ""),
-    ("UA", "Ukraine", ""),
-    ("TR", "Turquie", ""),
-    ("IL", "Israël", ""),
-    ("LB", "Liban", ""),
-]
-
-# Enrichissement avec tous les pays du monde depuis timonde_world_data et zone.tab
-def build_countries_registry():
-    d = {code: (name, flag) for code, name, flag in COUNTRIES_DB}
-    try:
-        from timonde_world_data import WORLD_COUNTRIES
-        for code, fr_name, _en_name in WORLD_COUNTRIES:
-            if code not in d:
-                d[code] = (fr_name, "")
-    except Exception:
-        pass
-    zone_tab = "/usr/share/zoneinfo/zone.tab"
-    if os.path.exists(zone_tab):
+def _load_countries_from_rust():
+    timonde_bin = shutil.which("timonde") or os.path.expanduser("~/.local/bin/timonde")
+    if os.path.exists(timonde_bin):
         try:
-            with open(zone_tab, "r", encoding="utf-8") as f:
-                for line in f:
-                    line = line.strip()
-                    if not line or line.startswith("#"):
-                        continue
-                    parts = line.split("\t")
-                    cc = parts[0].strip().upper()
-                    if cc not in d:
-                        d[cc] = (cc, "")
+            res = subprocess.run([timonde_bin, "--dump-countries-json"], capture_output=True, text=True, timeout=2.0)
+            if res.returncode == 0 and res.stdout.strip():
+                items = json.loads(res.stdout)
+                db = [(it["code"], it["name"], it.get("flag", "")) for it in items]
+                reg = {it["code"]: (it["name"], it.get("flag", "")) for it in items}
+                return db, reg
         except Exception:
             pass
-    return d
+    # Fallback de secours minimal si binaire absent
+    fallback = [
+        ("FR", "France", ""), ("GP", "Guadeloupe", ""), ("MQ", "Martinique", ""), ("GF", "Guyane", ""),
+        ("RE", "La Réunion", ""), ("BE", "Belgique", ""), ("CH", "Suisse", ""), ("CA", "Canada", ""),
+        ("US", "États-Unis", ""), ("GB", "Royaume-Uni", ""), ("DE", "Allemagne", ""), ("ES", "Espagne", ""),
+    ]
+    return fallback, {c[0]: (c[1], c[2]) for c in fallback}
 
-COUNTRIES_REGISTRY = build_countries_registry()
+COUNTRIES_DB, COUNTRIES_REGISTRY = _load_countries_from_rust()
 
 # Fuseaux horaires complets pour la France (Métropole + Outre-mer)
 FRANCE_TIMEZONES = [
@@ -538,132 +460,34 @@ def load_world_timezones() -> dict:
 WORLD_TIMEZONES = load_world_timezones()
 
 
+_INFER_TZ_CACHE = {}
+
+
 def infer_timezone(country_code: str = "", station_name: str = "", group_path: str = "") -> str:
     """
     Infère intelligemment le fuseau horaire exact d'une station à partir de son pays ISO,
-    son nom et son groupe/arborescence.
+    son nom et son groupe/arborescence en déléguant au moteur Rust de TiMonde.
     """
     cc = (country_code or "").strip().upper()
-    corpus = f"{station_name} {group_path}".lower()
+    cache_key = (cc, station_name or "", group_path or "")
+    if cache_key in _INFER_TZ_CACHE:
+        return _INFER_TZ_CACHE[cache_key]
 
-    # 1. France & Outre-mer
-    if cc in ("FR", ""):
-        if any(w in corpus for w in ("guadeloupe", "antilles", "pointe-à-pitre", "basse-terre", "rci guadeloupe")):
-            return "America/Guadeloupe"
-        if any(w in corpus for w in ("martinique", "fort-de-france", "rci martinique")):
-            return "America/Martinique"
-        if any(w in corpus for w in ("guyane", "cayenne", "kourou")):
-            return "America/Cayenne"
-        if any(w in corpus for w in ("reunion", "réunion", "saint-denis de la réunion", "saint-pierre")):
-            return "Indian/Reunion"
-        if any(w in corpus for w in ("mayotte", "mamoudzou", "dzaoudzi")):
-            return "Indian/Mayotte"
-        if any(w in corpus for w in ("nouvelle-caledonie", "nouvelle-calédonie", "noumea", "nouméa", "djiido")):
-            return "Pacific/Noumea"
-        if any(w in corpus for w in ("polynesie", "polynésie", "tahiti", "papeete", "tiare")):
-            return "Pacific/Tahiti"
-        if any(w in corpus for w in ("saint-pierre-et-miquelon", "miquelon")):
-            return "America/Miquelon"
-        if any(w in corpus for w in ("saint-barthelemy", "saint-barthélemy", "st-barth")):
-            return "America/St_Barthelemy"
-        if any(w in corpus for w in ("saint-martin", "st-martin", "marigot")):
-            return "America/Marigot"
-        if any(w in corpus for w in ("wallis", "futuna", "mata-utu")):
-            return "Pacific/Wallis"
-        if cc == "FR":
-            return "Europe/Paris"
+    timonde_bin = shutil.which("timonde") or os.path.expanduser("~/.local/bin/timonde")
+    if os.path.exists(timonde_bin):
+        try:
+            cmd = [timonde_bin, "--infer-timezone", cc, station_name or "", group_path or ""]
+            res = subprocess.run(cmd, capture_output=True, text=True, timeout=2.0)
+            if res.returncode == 0 and res.stdout.strip():
+                data = json.loads(res.stdout.strip())
+                tz = data.get("timezone", "")
+                if tz:
+                    _INFER_TZ_CACHE[cache_key] = tz
+                    return tz
+        except Exception:
+            pass
 
-    # 2. Royaume-Uni & Territoires d'Outre-mer
-    if cc in ("GB", "UK"):
-        if any(w in corpus for w in ("gibraltar", "bFBS gibraltar")):
-            return "Europe/Gibraltar"
-        if any(w in corpus for w in ("bermuda", "bermudes", "hamilton")):
-            return "Atlantic/Bermuda"
-        if any(w in corpus for w in ("cayman", "caïmans", "george town")):
-            return "America/Cayman"
-        if any(w in corpus for w in ("falkland", "malouines", "stanley")):
-            return "Atlantic/Stanley"
-        if any(w in corpus for w in ("virgin islands", "tortola", "road town")):
-            return "America/Tortola"
-        if any(w in corpus for w in ("montserrat", "plymouth", "brades")):
-            return "America/Montserrat"
-        if any(w in corpus for w in ("turks", "caicos", "grand turk")):
-            return "America/Grand_Turk"
-        if any(w in corpus for w in ("anguilla", "the valley")):
-            return "America/Anguilla"
-        if any(w in corpus for w in ("st helena", "sainte-hélène", "jamestown", "ascension")):
-            return "Atlantic/St_Helena"
-        return "Europe/London"
-
-    # 3. Territoires directs
-    direct_map = {
-        "GP": "America/Guadeloupe",
-        "MQ": "America/Martinique",
-        "GF": "America/Cayenne",
-        "RE": "Indian/Reunion",
-        "YT": "Indian/Mayotte",
-        "NC": "Pacific/Noumea",
-        "PF": "Pacific/Tahiti",
-        "PM": "America/Miquelon",
-        "BL": "America/St_Barthelemy",
-        "MF": "America/Marigot",
-        "WF": "Pacific/Wallis",
-        "BM": "Atlantic/Bermuda",
-        "KY": "America/Cayman",
-        "VG": "America/Tortola",
-        "MS": "America/Montserrat",
-        "TC": "America/Grand_Turk",
-        "AI": "America/Anguilla",
-        "FK": "Atlantic/Stanley",
-        "GI": "Europe/Gibraltar",
-        "SH": "Atlantic/St_Helena",
-    }
-    if cc in direct_map:
-        return direct_map[cc]
-
-    # 4. Canada
-    if cc == "CA":
-        if any(w in corpus for w in ("vancouver", "colombie-britannique", "british columbia", "victoria")):
-            return "America/Vancouver"
-        if any(w in corpus for w in ("alberta", "calgary", "edmonton")):
-            return "America/Edmonton"
-        if any(w in corpus for w in ("saskatchewan", "regina", "saskatoon")):
-            return "America/Regina"
-        if any(w in corpus for w in ("manitoba", "winnipeg")):
-            return "America/Winnipeg"
-        if any(w in corpus for w in ("halifax", "nouvelle-ecosse", "nova scotia")):
-            return "America/Halifax"
-        if any(w in corpus for w in ("terre-neuve", "newfoundland", "st. john")):
-            return "America/St_Johns"
-        return "America/Toronto"
-
-    # 5. États-Unis
-    if cc == "US":
-        if any(w in corpus for w in ("california", "los angeles", "san francisco", "seattle", "washington", "oregon")):
-            return "America/Los_Angeles"
-        if any(w in corpus for w in ("chicago", "texas", "houston", "dallas", "louisiana", "new orleans", "illinois")):
-            return "America/Chicago"
-        if any(w in corpus for w in ("denver", "colorado", "utah", "salt lake", "phoenix", "arizona")):
-            return "America/Denver"
-        if any(w in corpus for w in ("alaska", "anchorage")):
-            return "America/Anchorage"
-        if any(w in corpus for w in ("hawaii", "honolulu")):
-            return "Pacific/Honolulu"
-        return "America/New_York"
-
-    # 6. Australie
-    if cc == "AU":
-        if any(w in corpus for w in ("perth", "western australia")):
-            return "Australia/Perth"
-        if any(w in corpus for w in ("adelaide", "south australia")):
-            return "Australia/Adelaide"
-        if any(w in corpus for w in ("darwin", "northern territory")):
-            return "Australia/Darwin"
-        if any(w in corpus for w in ("brisbane", "queensland")):
-            return "Australia/Brisbane"
-        return "Australia/Sydney"
-
-    # 7. Fallback standard par pays
+    # Fallback standard par pays
     tz_list = WORLD_TIMEZONES.get(cc, [])
     if tz_list:
         return tz_list[0][0]
@@ -1378,47 +1202,46 @@ def query_radio_browser(endpoint, path, params):
 
 
 def search_radio_browser_api(name="", country_code="", tag="", language="", limit=30):
-    """Recherche multicritères sur les miroirs Radio-Browser (nom, pays, genre, langue)."""
-    try:
-        from timonde_world_data import NATIVE_LANGUAGE_NAMES
-    except ImportError:
-        NATIVE_LANGUAGE_NAMES = {}
+    """
+    Recherche multicritères sur les miroirs Radio-Browser en déléguant au moteur Rust
+    de TiMonde (bascule de miroir automatique, gestion du cache et typage strict).
+    """
+    timonde_bin = shutil.which("timonde") or os.path.expanduser("~/.local/bin/timonde")
+    if os.path.exists(timonde_bin):
+        cmd = [timonde_bin, "--search"]
+        if name and name.strip():
+            cmd.append(name.strip())
+        if tag and tag.strip():
+            cmd.extend(["--tag", tag.strip()])
+        if country_code and country_code.strip():
+            cmd.extend(["--country", country_code.strip()])
+        if language and language.strip():
+            cmd.extend(["--lang", language.strip()])
+        if limit:
+            cmd.extend(["--limit", str(limit)])
+        cmd.append("--json")
 
-    lang_queries = []
-    if language:
-        lang_clean = language.strip().lower()
-        lang_queries.append(lang_clean)
-        if lang_clean in NATIVE_LANGUAGE_NAMES:
-            for nat_alias in NATIVE_LANGUAGE_NAMES[lang_clean][:3]:
-                if nat_alias not in lang_queries:
-                    lang_queries.append(nat_alias)
-    else:
-        lang_queries.append("")
+        try:
+            res = subprocess.run(cmd, capture_output=True, text=True, timeout=10.0)
+            if res.returncode == 0 and res.stdout.strip():
+                return json.loads(res.stdout)
+        except Exception:
+            pass
 
-    all_stations = []
-    seen_keys = set()
+    # Fallback minimal direct en cas d'absence du binaire
+    params = {"limit": str(limit), "hidebroken": "true", "order": "votes", "reverse": "true"}
+    if name: params["name"] = name
+    if country_code:
+        cc_up = country_code.strip().upper()
+        params["countrycode"] = "GB" if cc_up == "UK" else cc_up
+    if tag: params["tag"] = tag
+    if language: params["language"] = language.strip().lower()
 
-    for l_val in lang_queries:
-        params = {"limit": str(limit), "hidebroken": "true", "order": "votes", "reverse": "true"}
-        if name: params["name"] = name
-        if country_code:
-            cc_up = country_code.strip().upper()
-            params["countrycode"] = "GB" if cc_up == "UK" else cc_up
-        if tag: params["tag"] = tag
-        if l_val: params["language"] = l_val
-
-        for ep in RADIO_BROWSER_ENDPOINTS:
-            res = query_radio_browser(ep, "stations/search", params)
-            if res is not None:
-                for s in res:
-                    uid = s.get("stationuuid") or s.get("url_resolved") or s.get("url", "")
-                    clean_uid = uid.strip()
-                    if clean_uid and clean_uid not in seen_keys:
-                        seen_keys.add(clean_uid)
-                        all_stations.append(s)
-                break
-
-    return all_stations
+    for ep in RADIO_BROWSER_ENDPOINTS:
+        res = query_radio_browser(ep, "stations/search", params)
+        if res is not None:
+            return res
+    return []
 
 
 def lookup_station_by_url(stream_url: str):
