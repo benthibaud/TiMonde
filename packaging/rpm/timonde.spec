@@ -1,5 +1,5 @@
 Name:           timonde
-Version:        0.2.4
+Version:        0.2.5
 Release:        1%{?dist}
 Summary:        Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux
 
@@ -102,6 +102,10 @@ if [ "$1" -eq 0 ]; then
 fi
 
 %changelog
+* Sun Nov 08 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.5-1
+- Démarrage du Jalon 2 de la Roadmap (Option B : zéro plantage, zéro blocage UI)
+- Élimination des boucles récursives dialog.run() et sécurisation des verrous Rust
+
 * Sun Nov 08 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.4-1
 - Détection des flux réaffectés et stations saisonnières via extraction ICY en direct
 - Bouton interactif « Aligner le nom » en cas de divergence avec le flux d'antenne

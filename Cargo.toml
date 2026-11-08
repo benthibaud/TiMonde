@@ -1,6 +1,6 @@
 [package]
 name = "timonde"
-version = "0.2.4"
+version = "0.2.5"
 edition = "2021"
 authors = ["Ben Thibaud <b_thibaud@laposte.net>"]
 description = "Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux"

@@ -23,14 +23,14 @@ Face à la dette technique accumulée (duplication de code entre Rust et Python,
 
 ## 2. État des Jalons
 
-### Jalon 1 : Audit et Identification des Bombes à Retardement (Terminé ✅)
-- [x] Détection du gel sur `RepairStreamDialog` (signature d'appel divergente).
-- [x] Détection de l'appel prématuré à `dialog.destroy()` pendant `dialog.run()` dans `reorder_groups.py`.
-- [x] Identification du verrouillage du `Mutex<AudioEngine>` pendant la résolution réseau de playlist dans `dialogs.rs`.
-- [x] Détection du spawn synchrone de Python au démarrage dans `ensure_desktop_integration()`.
-- [x] Gravure de la doctrine Option B dans `docs/ARCHITECTURE.md` et `docs/ROADMAP.md`.
+### Jalon 1 : Audit, Stabilisation et Publication v0.2.4 (Terminé ✅)
+- [x] Détection et correction du gel sur `ContributeStationDialog` (Radio Tayna Goma).
+- [x] Rafraîchissement direct de la colonne Détails/Pays dans l'arbre « Mes radios ».
+- [x] Intégration du test unitaire de la boucle d'événements GTK (`test_gtk_event_loop.py`).
+- [x] Gravure de la doctrine Option B dans `docs/ARCHITECTURE.md`, `ROADMAP.md` et `MAINTENANCE_FLUX.md`.
+- [x] Release et publication GitHub de la version `v0.2.4`.
 
-### Jalon 2 : Sécurisation Immédiate du Code Existant (En cours 🔄)
+### Jalon 2 : Sécurisation Immédiate du Code Existant — v0.2.5 (En cours 🔄)
 - [ ] Sortir `resolve_stream_url` du verrou `audio.lock()` dans `src/tray/dialogs.rs`.
 - [ ] Remplacer le spawn Python au boot par le test natif `XDG_CURRENT_DESKTOP` dans `src/main.rs`.
 - [ ] Corriger l'appel à `RepairStreamDialog` et dépiler proprement `on_check_streams_clicked` dans `reorder_groups.py`.
