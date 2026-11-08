@@ -923,64 +923,127 @@ _MINOR_TERRITORIES = {
     "MF", "SX", "SJ", "AX",
 }
 
-COUNTRY_LOOKUP_MAP = {}
-for code, fr_name, en_name in WORLD_COUNTRIES:
-    if code not in _MINOR_TERRITORIES:
-        COUNTRY_LOOKUP_MAP[normalize_lookup(en_name)] = code
-        COUNTRY_LOOKUP_MAP[normalize_lookup(fr_name)] = code
-    COUNTRY_LOOKUP_MAP[normalize_lookup(code)] = code
-COUNTRY_LOOKUP_MAP["uk"] = "GB"
+class _LazyDict(dict):
+    """Dictionnaire à chargement différé (lazy) pour éviter de bloquer l'importation de l'UI."""
+    def __init__(self, loader):
+        super().__init__()
+        self._loader = loader
+        self._loaded = False
 
-# 1. Pays souverains en priorité
-for code, natives in NATIVE_COUNTRY_NAMES.items():
-    if code == "UK" or code in _MINOR_TERRITORIES:
-        continue
-    for nat in natives:
-        norm_n = normalize_lookup(nat)
-        if norm_n and norm_n not in COUNTRY_LOOKUP_MAP:
-            COUNTRY_LOOKUP_MAP[norm_n] = code
+    def _ensure(self):
+        if not self._loaded:
+            self._loaded = True
+            self._loader(self)
 
-# 2. Territoires secondaires ensuite
-for code, natives in NATIVE_COUNTRY_NAMES.items():
-    if code not in _MINOR_TERRITORIES:
-        continue
-    for nat in natives:
-        norm_n = normalize_lookup(nat)
-        if norm_n and norm_n not in COUNTRY_LOOKUP_MAP:
-            COUNTRY_LOOKUP_MAP[norm_n] = code
+    def __getitem__(self, k):
+        self._ensure()
+        return super().__getitem__(k)
 
-# Liste triée par longueur croissante pour privilégier les noms courts lors des recherches par préfixe
-_SORTED_COUNTRY_LOOKUP = sorted(
-    [(k, v) for k, v in COUNTRY_LOOKUP_MAP.items() if len(k) >= 2],
-    key=lambda x: (x[1] in _MINOR_TERRITORIES, len(x[0]))
-)
+    def __contains__(self, k):
+        self._ensure()
+        return super().__contains__(k)
 
-_VALID_RB_API_KEYS = {api_k.lower() for api_k, _fr, _cnt in RADIO_BROWSER_LANGUAGES}
+    def get(self, k, d=None):
+        self._ensure()
+        return super().get(k, d)
 
-LANG_MAP_BY_NAME = {}
-for api_key, natives in NATIVE_LANGUAGE_NAMES.items():
-    LANG_MAP_BY_NAME[normalize_lookup(api_key)] = api_key
-    for nat in natives:
-        LANG_MAP_BY_NAME[normalize_lookup(nat)] = api_key
+    def items(self):
+        self._ensure()
+        return super().items()
 
-for api_key, fr_name, _cnt in RADIO_BROWSER_LANGUAGES:
-    norm_fr = normalize_lookup(fr_name)
-    norm_api = normalize_lookup(api_key)
-    if norm_fr not in LANG_MAP_BY_NAME:
-        LANG_MAP_BY_NAME[norm_fr] = api_key
-    if norm_api not in LANG_MAP_BY_NAME:
-        LANG_MAP_BY_NAME[norm_api] = api_key
+    def keys(self):
+        self._ensure()
+        return super().keys()
+
+    def values(self):
+        self._ensure()
+        return super().values()
+
+
+_SORTED_COUNTRY_LOOKUP = None
+
+
+def _get_sorted_country_lookup():
+    global _SORTED_COUNTRY_LOOKUP
+    if _SORTED_COUNTRY_LOOKUP is None:
+        COUNTRY_LOOKUP_MAP._ensure()
+        _SORTED_COUNTRY_LOOKUP = sorted(
+            [(k, v) for k, v in COUNTRY_LOOKUP_MAP.items() if len(k) >= 2],
+            key=lambda x: (x[1] in _MINOR_TERRITORIES, len(x[0]))
+        )
+    return _SORTED_COUNTRY_LOOKUP
+
+
+def _build_country_lookup(m):
+    for code, fr_name, en_name in WORLD_COUNTRIES:
+        if code not in _MINOR_TERRITORIES:
+            m[normalize_lookup(en_name)] = code
+            m[normalize_lookup(fr_name)] = code
+        m[normalize_lookup(code)] = code
+    m["uk"] = "GB"
+
+    # 1. Pays souverains en priorité
+    for code, natives in NATIVE_COUNTRY_NAMES.items():
+        if code == "UK" or code in _MINOR_TERRITORIES:
+            continue
+        for nat in natives:
+            norm_n = normalize_lookup(nat)
+            if norm_n and norm_n not in m:
+                m[norm_n] = code
+
+    # 2. Territoires secondaires ensuite
+    for code, natives in NATIVE_COUNTRY_NAMES.items():
+        if code not in _MINOR_TERRITORIES:
+            continue
+        for nat in natives:
+            norm_n = normalize_lookup(nat)
+            if norm_n and norm_n not in m:
+                m[norm_n] = code
+
+
+COUNTRY_LOOKUP_MAP = _LazyDict(_build_country_lookup)
+
+
+_VALID_RB_API_KEYS = None
+
+
+def _get_valid_rb_api_keys():
+    global _VALID_RB_API_KEYS
+    if _VALID_RB_API_KEYS is None:
+        _VALID_RB_API_KEYS = {api_k.lower() for api_k, _fr, _cnt in RADIO_BROWSER_LANGUAGES}
+    return _VALID_RB_API_KEYS
+
+
+def _build_lang_map(m):
+    for api_key, natives in NATIVE_LANGUAGE_NAMES.items():
+        m[normalize_lookup(api_key)] = api_key
+        for nat in natives:
+            m[normalize_lookup(nat)] = api_key
+
+    for api_key, fr_name, _cnt in RADIO_BROWSER_LANGUAGES:
+        norm_fr = normalize_lookup(fr_name)
+        norm_api = normalize_lookup(api_key)
+        if norm_fr not in m:
+            m[norm_fr] = api_key
+        if norm_api not in m:
+            m[norm_api] = api_key
+
+
+LANG_MAP_BY_NAME = _LazyDict(_build_lang_map)
+
 
 def resolve_language_api_key(query: str) -> str:
     if not query:
         return ""
     q_str = query.strip()
 
+    valid_keys = _get_valid_rb_api_keys()
+
     # 0. Si le format contient des parenthèses avec la clé API (ex: "Hindi — हिन्दी (hindi)" ou "American english (american english)")
     m = re.search(r'\(([^)]+)\)$', q_str)
     if m:
         cand = m.group(1).strip().lower()
-        if cand in _VALID_RB_API_KEYS or cand in LANG_MAP_BY_NAME.values():
+        if cand in valid_keys or cand in LANG_MAP_BY_NAME.values():
             return cand
         clean_cand = normalize_lookup(cand)
         if clean_cand in LANG_MAP_BY_NAME:
@@ -1031,15 +1094,17 @@ def resolve_country_code(query: str) -> str:
     if clean in COUNTRY_LOOKUP_MAP:
         return COUNTRY_LOOKUP_MAP[clean]
 
+    sorted_lookup = _get_sorted_country_lookup()
+
     # 2. Préfixe sur nom de pays (uniquement à partir de 2 caractères, du nom le plus court au plus long)
     if len(clean) >= 2:
-        for k, v in _SORTED_COUNTRY_LOOKUP:
+        for k, v in sorted_lookup:
             if len(k) > 2 and k.startswith(clean):
                 return v
 
     # 3. Sous-chaîne dans le nom complet (uniquement à partir de 3 caractères)
     if len(clean) >= 3:
-        for k, v in _SORTED_COUNTRY_LOOKUP:
+        for k, v in sorted_lookup:
             if len(k) > 2 and clean in k:
                 return v
 
