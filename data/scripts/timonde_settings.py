@@ -14,10 +14,10 @@ os.environ.pop("GTK_IM_MODULE", None)
 os.environ.pop("XMODIFIERS", None)
 os.environ.pop("QT_IM_MODULE", None)
 
+import html
 import json
 import subprocess
-import html
-import xml.etree.ElementTree as ET
+import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 try:
@@ -25,9 +25,9 @@ try:
 except ImportError:
     def _(s): return s
 
-from timonde_common import make_btn, update_btn_content, safe_parse_xml, clean_stream_url, infer_timezone, find_or_create_group, set_window_icon, find_script, get_user_bookmarks_groups, apply_timonde_app_css, status_markup, normalize_group_path
+from timonde_common import make_btn, update_btn_content, clean_stream_url, infer_timezone, set_window_icon, find_script, get_user_bookmarks_groups, apply_timonde_app_css, status_markup, normalize_group_path
 from reorder_groups import ReorderWindow, ReorderWidget
-from browse_bouquets import DiscoverRadiosWindow, parse_bouquets_xml
+from browse_bouquets import DiscoverRadiosViews, parse_bouquets_xml
 from edit_station import EditStationWindow
 
 import gi
@@ -76,15 +76,14 @@ def get_bookmarks_stats(path):
     if not os.path.isfile(path):
         return 0, 0
     try:
-        root = safe_parse_xml(path)
-        if root is None:
-            return 0, 0
+        payload = load_bookmarks_tree(path)
         stations = 0
         groups = 0
-        for elem in root.iter():
-            if elem.tag in ("bookmark", "station"):
-                stations += 1
-            elif elem.tag == "group" and elem.attrib.get("name", "").strip() != "root":
+        for grp in payload:
+            st_count = len(grp.get("stations", []))
+            stations += st_count
+            name = grp.get("name", "").strip()
+            if name and name != "[ / ] (Racine — Sans groupe)":
                 groups += 1
         return stations, groups
     except Exception:
@@ -94,130 +93,42 @@ def get_bookmarks_stats(path):
 
 
 def load_bookmarks_tree(path):
+    """
+    Charge l'arbre des favoris au format JSON via le moteur natif Rust (Option B).
+    Délègue 100% du parsing XML, des conventions de slash et de la tolérance d'entités à Rust.
+    """
     if not os.path.isfile(path):
         return []
-    root = safe_parse_xml(path)
-    if root is None:
-        return []
 
-    payload = []
-    root_stations = []
+    # 1. Tentative D-Bus si l'instance active tourne (accès instantané en mémoire)
+    # Strictement réservé au fichier de favoris actif par défaut
+    try:
+        if os.path.abspath(path) == os.path.abspath(DEFAULT_BOOKMARKS_PATH):
+            import dbus
+            bus = dbus.SessionBus()
+            if bus.name_has_owner("org.mpris.MediaPlayer2.timonde"):
+                obj = bus.get_object("org.mpris.MediaPlayer2.timonde", "/org/mpris/MediaPlayer2")
+                player = dbus.Interface(obj, "org.mpris.MediaPlayer2.Player")
+                raw_json = str(player.GetBookmarksJson())
+                if raw_json and raw_json.strip():
+                    return json.loads(raw_json)
+    except Exception:
+        pass
 
-    def parse_station_elem(st):
-        if st.tag == "separator":
-            st_title = st.attrib.get("title", "").strip()
-            return {
-                "name": st_title,
-                "url": "",
-                "is_separator": True,
-            }
-        elif st.tag in ("bookmark", "station"):
-            st_name = st.attrib.get("name", "").strip()
-            st_url = clean_stream_url(st.attrib.get("url", "").strip())
-            st_country = st.attrib.get("country", "").strip() or None
-            st_tz = st.attrib.get("timezone", "").strip() or None
-            if st_name:
-                return {
-                    "name": st_name,
-                    "url": st_url,
-                    "country": st_country,
-                    "timezone": st_tz,
-                    "is_separator": False,
-                }
-        return None
+    # 2. Appel CLI timonde --dump-bookmarks-json
+    try:
+        res = subprocess.run(
+            ["timonde", "--dump-bookmarks-json", path],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
+        )
+        if res.returncode == 0 and res.stdout.strip():
+            return json.loads(res.stdout)
+    except Exception:
+        pass
 
-    def walk(el, prefix):
-        for child in el:
-            if child.tag in ("bookmark", "station") and not prefix:
-                st_obj = parse_station_elem(child)
-                if st_obj:
-                    root_stations.append(st_obj)
-            elif child.tag == "separator" and not prefix:
-                title = child.attrib.get("title", "").strip()
-                payload.append({
-                    "name": title,
-                    "stations": [],
-                    "is_separator": True,
-                })
-            elif child.tag == "group":
-                name = child.attrib.get("name", "").strip() or child.attrib.get("title", "").strip()
-                if not name:
-                    continue
-                if name.lower() == "root" and not prefix:
-                    walk(child, "")
-                    continue
-                full_path = f"{prefix}/{name}" if prefix else name
-                stations = []
-                for st in child:
-                    if st.tag in ("separator", "bookmark", "station"):
-                        st_obj = parse_station_elem(st)
-                        if st_obj:
-                            stations.append(st_obj)
-                if stations or not child.findall("group"):
-                    payload.append({
-                        "name": full_path,
-                        "stations": stations,
-                        "is_separator": False,
-                    })
-                walk(child, full_path)
-
-    walk(root, "")
-    if root_stations:
-        payload.insert(0, {
-            "name": "[ / ] (Racine — Sans groupe)",
-            "stations": root_stations,
-            "is_separator": False,
-        })
-    return payload
-
-
-def _write_bookmarks_element_tree_atomic(path, root_el):
-    lines = ['<?xml version="1.0" encoding="utf-8"?>', '<!DOCTYPE bookmarks>', '<bookmarks>']
-
-    def esc(val):
-        return (val or "").replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;").replace("'", "&apos;")
-
-    def dump_station(st_el, indent):
-        prefix = "\t" * indent
-        s_name = esc(st_el.attrib.get("name", ""))
-        s_url = esc(st_el.attrib.get("url", ""))
-        attrs = f'name="{s_name}" url="{s_url}"'
-        if st_el.attrib.get("country"):
-            attrs += f' country="{esc(st_el.attrib["country"])}"'
-        if st_el.attrib.get("timezone"):
-            attrs += f' timezone="{esc(st_el.attrib["timezone"])}"'
-        lines.append(f'{prefix}<bookmark {attrs}/>')
-
-    def dump_group(grp_el, indent):
-        prefix = "\t" * indent
-        name = esc(grp_el.attrib.get("name", ""))
-        lines.append(f'{prefix}<group name="{name}">')
-        for child in grp_el:
-            if child.tag == "group":
-                dump_group(child, indent + 1)
-            elif child.tag == "separator":
-                lines.append(f'{prefix}\t<separator title="{esc(child.attrib.get("title", ""))}"/>')
-            elif child.tag in ("bookmark", "station"):
-                dump_station(child, indent + 1)
-        lines.append(f'{prefix}</group>')
-
-    for child in root_el:
-        if child.tag == "group":
-            dump_group(child, 1)
-        elif child.tag == "separator":
-            lines.append(f'\t<separator title="{esc(child.attrib.get("title", ""))}"/>')
-        elif child.tag in ("bookmark", "station"):
-            dump_station(child, 1)
-    lines.append('</bookmarks>\n')
-
-    abs_path = os.path.abspath(path)
-    os.makedirs(os.path.dirname(abs_path), exist_ok=True)
-    tmp_path = f"{abs_path}.tmp"
-    with open(tmp_path, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines))
-        f.flush()
-        os.fsync(f.fileno())
-    os.replace(tmp_path, abs_path)
+    return []
 
 
 def save_bookmarks_tree(path, groups_payload):
@@ -227,40 +138,20 @@ def save_bookmarks_tree(path, groups_payload):
     """
     try:
         json_bytes = json.dumps(groups_payload, ensure_ascii=False).encode("utf-8")
+        cmd = ["timonde", "--save-bookmarks-json", "-"]
+        if path:
+            cmd.append(path)
         res = subprocess.run(
-            ["timonde", "--save-bookmarks-json", "-"],
+            cmd,
             input=json_bytes,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE
         )
         if res.returncode == 0:
             return True
-    except Exception:
-        pass
-
-    # Repli de secours si le binaire timonde n'est pas dans le PATH (ex: tests unitaires isolés)
-    root = ET.Element("bookmarks")
-    for grp in groups_payload:
-        if grp.get("is_separator", False):
-            ET.SubElement(root, "separator", {"title": grp.get("name", "")})
-        else:
-            target_el = find_or_create_group(root, grp.get("name", ""))
-            for st in grp.get("stations", []):
-                if st.get("is_separator", False):
-                    ET.SubElement(target_el, "separator", {"title": st.get("name", "")})
-                else:
-                    attribs = {
-                        "name": st.get("name", ""),
-                        "url": st.get("url", ""),
-                    }
-                    if st.get("country"):
-                        attribs["country"] = str(st["country"])
-                    if st.get("timezone"):
-                        attribs["timezone"] = str(st["timezone"])
-                    ET.SubElement(target_el, "bookmark", attribs)
-
-    _write_bookmarks_element_tree_atomic(path, root)
-    return True
+    except Exception as e:
+        sys.stderr.write(f"Erreur sauvegarde signets Rust : {e}\n")
+    return False
 
 
 def add_stations_to_bookmarks_xml(path, stations_list, default_group="Mes Radios", country_code=None):
@@ -573,23 +464,20 @@ class SettingsWindow(Gtk.Window):
     def build_section_discovery(self):
         bouquets_db = parse_bouquets_xml()
         existing_stations = []
-        if os.path.isfile(self.bookmarks_path):
-            root = safe_parse_xml(self.bookmarks_path)
-            if root is not None:
-                for el in root.iter():
-                    if el.tag in ("bookmark", "station"):
-                        existing_stations.append({
-                            "name": el.attrib.get("name", ""),
-                            "url": el.attrib.get("url", ""),
-                            "country": el.attrib.get("country", ""),
-                            "timezone": el.attrib.get("timezone", "")
-                        })
+        payload = load_bookmarks_tree(self.bookmarks_path)
+        for grp in payload:
+            for s in grp.get("stations", []):
+                existing_stations.append({
+                    "name": s.get("name", ""),
+                    "url": s.get("url", ""),
+                    "country": s.get("country", ""),
+                    "timezone": s.get("timezone", "")
+                })
 
         available_groups = get_user_bookmarks_groups(self.bookmarks_path)
-        self.discover_view = DiscoverRadiosWindow(
+        self.discover_view = DiscoverRadiosViews(
             existing_stations=existing_stations,
             bouquets_db=bouquets_db,
-            initial_tab=0,
             available_groups=available_groups,
             embedded=True,
             on_import_callback=self.on_embedded_discovery_import,
@@ -776,8 +664,8 @@ class SettingsWindow(Gtk.Window):
                 self.has_modifications = True
             if hasattr(self.reorder_view, "preview_player") and self.reorder_view.preview_player:
                 self.reorder_view.preview_player.stop(silent=True)
-        if hasattr(self, "discover_view") and hasattr(self.discover_view, "preview_player") and self.discover_view.preview_player:
-            self.discover_view.preview_player.stop(silent=True)
+        if hasattr(self, "discover_view") and self.discover_view:
+            self.discover_view.shutdown()
         # Transmettre le résultat JSON sur stdout à destination de TiMonde en Rust
         output = {"reload": self.has_modifications}
         print(json.dumps(output), flush=True)

@@ -503,15 +503,14 @@ def parse_user_radio_file(path):
 
 
 
-class DiscoverRadiosWindow(Gtk.Window):
+class DiscoverRadiosViews:
     def __init__(
         self,
         existing_stations,
         bouquets_db,
-        initial_tab=0,
         initial_file=None,
         available_groups=None,
-        embedded=False,
+        embedded=True,
         on_import_callback=None,
         on_export_csv_callback=None,
         on_backup_xml_callback=None,
@@ -521,26 +520,6 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.on_export_csv_callback = on_export_csv_callback
         self.on_backup_xml_callback = on_backup_xml_callback
         apply_timonde_app_css()
-        if not embedded:
-            super().__init__(title=_("Discover & Import stations (TiMonde)"))
-            screen = Gdk.Screen.get_default()
-            target_w, target_h = 960, 640
-            if screen:
-                geom = screen.get_monitor_geometry(screen.get_primary_monitor() or 0)
-                max_w = int(geom.width * 0.90)
-                max_h = int(geom.height * 0.85)
-                target_w = min(target_w, max_w)
-                target_h = min(target_h, max_h)
-            self.set_default_size(max(target_w, 750), max(target_h, 480))
-            self.set_position(Gtk.WindowPosition.CENTER)
-            self.set_border_width(10)
-
-            set_window_icon(self)
-
-            self.connect("destroy", self.on_destroy)
-            self.set_focus_on_map(True)
-        else:
-            super().__init__()
 
         self.existing_stations = existing_stations
         self.existing_urls = {s.get("url", "").strip() for s in existing_stations}
@@ -589,17 +568,13 @@ class DiscoverRadiosWindow(Gtk.Window):
         elif getattr(self, "available_examples", None):
             self.load_file_into_store(self.available_examples[0][0])
 
-        if not self.embedded:
-            self.build_standalone_window(initial_tab)
-
     def get_parent_window(self):
-        if getattr(self, "embedded", False):
-            for v in (getattr(self, "view_search", None), getattr(self, "view_bouquets", None), getattr(self, "view_files", None)):
-                if v is not None:
-                    toplevel = v.get_toplevel()
-                    if isinstance(toplevel, Gtk.Window):
-                        return toplevel
-        return self
+        for v in (getattr(self, "view_search", None), getattr(self, "view_bouquets", None), getattr(self, "view_files", None)):
+            if v is not None:
+                toplevel = v.get_toplevel()
+                if isinstance(toplevel, Gtk.Window):
+                    return toplevel
+        return None
 
     def setup_country_completion(self, entry, on_selected_cb=None):
         country_completion = Gtk.EntryCompletion()
@@ -2277,7 +2252,11 @@ class DiscoverRadiosWindow(Gtk.Window):
 
         if not self.embedded:
             print(json.dumps(result, ensure_ascii=False), flush=True)
-            self.destroy()
+            parent = self.get_parent_window()
+            if parent:
+                parent.destroy()
+            else:
+                self.shutdown()
 
     def on_show_group_naming_help(self, widget):
         show_group_naming_help_dialog(self.get_parent_window())
@@ -2329,15 +2308,117 @@ class DiscoverRadiosWindow(Gtk.Window):
         else:
             self.show_preview_message(_("XML backup is available from settings."))
 
-    def on_destroy(self, widget):
+    def shutdown(self):
         if hasattr(self, "preview_player") and self.preview_player:
             self.preview_player.stop()
         try:
             self.executor.shutdown(wait=False)
         except Exception:
             pass
-        if not getattr(self, "embedded", False):
-            Gtk.main_quit()
+
+
+class DiscoverRadiosWindow(Gtk.Window):
+    def __init__(
+        self,
+        existing_stations,
+        bouquets_db,
+        initial_tab=0,
+        initial_file=None,
+        available_groups=None,
+        embedded=False,
+        on_import_callback=None,
+        on_export_csv_callback=None,
+        on_backup_xml_callback=None,
+    ):
+        apply_timonde_app_css()
+        if embedded:
+            super().__init__()
+            self.views = DiscoverRadiosViews(
+                existing_stations=existing_stations,
+                bouquets_db=bouquets_db,
+                initial_file=initial_file,
+                available_groups=available_groups,
+                embedded=True,
+                on_import_callback=on_import_callback,
+                on_export_csv_callback=on_export_csv_callback,
+                on_backup_xml_callback=on_backup_xml_callback,
+            )
+            self.view_search = self.views.view_search
+            self.view_bouquets = self.views.view_bouquets
+            self.view_files = self.views.view_files
+            return
+
+        super().__init__(title=_("Discover & Import stations (TiMonde)"))
+        screen = Gdk.Screen.get_default()
+        target_w, target_h = 960, 640
+        if screen:
+            geom = screen.get_monitor_geometry(screen.get_primary_monitor() or 0)
+            max_w = int(geom.width * 0.90)
+            max_h = int(geom.height * 0.85)
+            target_w = min(target_w, max_w)
+            target_h = min(target_h, max_h)
+        self.set_default_size(max(target_w, 750), max(target_h, 480))
+        self.set_position(Gtk.WindowPosition.CENTER)
+        self.set_border_width(10)
+
+        set_window_icon(self)
+        self.connect("destroy", self.on_destroy)
+        self.set_focus_on_map(True)
+
+        self.views = DiscoverRadiosViews(
+            existing_stations=existing_stations,
+            bouquets_db=bouquets_db,
+            initial_file=initial_file,
+            available_groups=available_groups,
+            embedded=False,
+            on_import_callback=on_import_callback,
+            on_export_csv_callback=on_export_csv_callback,
+            on_backup_xml_callback=on_backup_xml_callback,
+        )
+        self.view_search = self.views.view_search
+        self.view_bouquets = self.views.view_bouquets
+        self.view_files = self.views.view_files
+
+        main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+        self.add(main_vbox)
+
+        hcontent = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        main_vbox.pack_start(hcontent, True, True, 0)
+
+        self.stack = Gtk.Stack()
+        self.stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
+        self.stack.set_transition_duration(150)
+
+        sidebar = Gtk.StackSidebar()
+        sidebar.set_stack(self.stack)
+        sidebar.set_size_request(210, -1)
+        hcontent.pack_start(sidebar, False, False, 0)
+        hcontent.pack_start(self.stack, True, True, 0)
+
+        self.stack.add_titled(self.view_search, "search", _("Search online"))
+        self.stack.add_titled(self.view_bouquets, "bouquets", _("Country bouquets"))
+        self.stack.add_titled(self.view_files, "files", _("Import & Export"))
+
+        self.stack.connect("notify::visible-child-name", lambda s, p: self.views.preview_player.stop() if hasattr(self.views, "preview_player") and self.views.preview_player else None)
+
+        bot_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        main_vbox.pack_start(bot_box, False, False, 0)
+
+        btn_close = make_btn(_("Close"), "window-close")
+        btn_close.connect("clicked", lambda w: self.destroy())
+        bot_box.pack_end(btn_close, False, False, 0)
+
+        pages = ["search", "bouquets", "files"]
+        target = pages[initial_tab] if 0 <= initial_tab < len(pages) else "search"
+        self.stack.set_visible_child_name(target)
+
+    def on_destroy(self, widget):
+        if hasattr(self, "views") and self.views:
+            self.views.shutdown()
+        Gtk.main_quit()
+
+    def __getattr__(self, name):
+        return getattr(self.views, name)
 
 
 

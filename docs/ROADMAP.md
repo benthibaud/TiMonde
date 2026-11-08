@@ -47,6 +47,12 @@ Face à la dette technique accumulée (duplication de code entre Rust et Python,
 - [x] Éradiquer 100% des `.run()` interactifs (`dialog.run()`, `chooser.run()`) dans `reorder_groups.py`, `browse_bouquets.py`, `edit_station.py` et `timonde_common.py` au profit de `connect("response", ...)`.
 - [x] Valider l'intégrité de la boucle GTK et l'asynchronisme complet via `test_gtk_event_loop.py` et la suite `make test`.
 
+### Jalon 5 : Unification Totale Option B & Éradication du Code Mort (Terminé ✅)
+- [x] **Unification totale lecture/écriture :** Rust expose `GetBookmarksJson()` sur D-Bus, `--dump-bookmarks-json` et `--save-bookmarks-json [DEST]`. `load_bookmarks_tree(path)` et `save_bookmarks_tree(path)` délèguent 100% de la désérialisation/sérialisation à Rust.
+- [x] **Éradication totale du code mort en Python :** Suppression de `_write_bookmarks_element_tree_atomic` (-100 lignes), suppression du parsing manuel XML dans `timonde_settings.py` (`get_bookmarks_stats`, `build_section_discovery` passent par `load_bookmarks_tree`).
+- [x] **Éradication des fenêtres fantômes :** Découplage de `browse_bouquets.py` avec `DiscoverRadiosViews` (contrôleur et vues pures sans fenêtre) et `DiscoverRadiosWindow` (conteneur CLI autonome). Fin définitive de `embedded=True` sur une `Gtk.Window`.
+- [x] **Validation intégrale :** 54 tests Rust + 17 tests unitaires Python + 4 tests GTK loop / AST scope = 100% vert.
+
 ---
 
 ## 3. Règles d'Or Intransgressibles

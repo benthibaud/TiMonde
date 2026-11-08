@@ -568,7 +568,7 @@ fn main() {
             }
             "--save-bookmarks-json" => {
                 if args.len() < 3 {
-                    eprintln!("Usage : timonde --save-bookmarks-json <FICHIER_JSON|->");
+                    eprintln!("Usage : timonde --save-bookmarks-json <FICHIER_JSON|-> [DEST_XML]");
                     std::process::exit(1);
                 }
                 let json_content = if args[2] == "-" {
@@ -589,7 +589,12 @@ fn main() {
                     }
                 };
 
-                let bookmarks_path = find_bookmarks_path();
+                let bookmarks_path = if args.len() >= 4 && !args[3].is_empty() {
+                    PathBuf::from(&args[3])
+                } else {
+                    find_bookmarks_path()
+                };
+
                 match bookmarks::save_bookmarks_from_json(&json_content, &bookmarks_path) {
                     Ok(total) => {
                         let _ = mpris::send_reload_bookmarks();
@@ -601,6 +606,29 @@ fn main() {
                     }
                 }
                 return;
+            }
+            "--dump-bookmarks-json" => {
+                let target_path = if args.len() >= 3 && !args[2].starts_with('-') {
+                    PathBuf::from(&args[2])
+                } else {
+                    find_bookmarks_path()
+                };
+
+                if !target_path.exists() {
+                    println!("[]");
+                    return;
+                }
+
+                match bookmarks::load_bookmarks_as_json(&target_path) {
+                    Ok(json) => {
+                        println!("{}", json);
+                        return;
+                    }
+                    Err(e) => {
+                        eprintln!(r#"{{"status":"error","message":"{}"}}"#, e);
+                        std::process::exit(1);
+                    }
+                }
             }
             other => {
                 eprintln!("Option inconnue : {}", other);

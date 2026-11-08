@@ -160,6 +160,12 @@ impl MprisPlayer {
         (self.on_reload)();
     }
 
+    /// Retourne l'arborescence des favoris actuellement chargée au format JSON
+    fn get_bookmarks_json(&self) -> String {
+        let bookmarks_path = crate::find_bookmarks_path();
+        crate::bookmarks::load_bookmarks_as_json(&bookmarks_path).unwrap_or_else(|_| "[]".to_string())
+    }
+
     #[zbus(property)]
     fn playback_status(&self) -> String {
         let guard = self.audio.lock().unwrap();
@@ -451,4 +457,19 @@ pub fn get_status_info() -> Result<String, String> {
     }
 
     Ok(out)
+}
+
+/// Récupère l'arbre des favoris JSON depuis l'instance active via D-Bus
+pub fn send_get_bookmarks_json() -> Result<String, String> {
+    let conn = zbus::blocking::Connection::session().map_err(|e| format!("Connexion D-Bus impossible ({})", e))?;
+    let reply = conn.call_method(
+        Some("org.mpris.MediaPlayer2.timonde"),
+        "/org/mpris/MediaPlayer2",
+        Some("org.mpris.MediaPlayer2.Player"),
+        "GetBookmarksJson",
+        &(),
+    ).map_err(|e| format!("Échec appel D-Bus GetBookmarksJson ({})", e))?;
+
+    let json_str: String = reply.body().deserialize().map_err(|e| e.to_string())?;
+    Ok(json_str)
 }

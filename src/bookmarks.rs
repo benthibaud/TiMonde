@@ -374,8 +374,8 @@ pub fn remove_station_by_url(group: &mut Group, target_url: &str) -> bool {
     false
 }
 
-/// Structure de désérialisation pour une station issue du JSON UI
-#[derive(serde::Deserialize, Debug, Clone)]
+/// Structure de désérialisation et sérialisation pour une station issue du JSON UI
+#[derive(serde::Serialize, serde::Deserialize, Debug, Clone)]
 pub struct JsonStationInput {
     pub name: String,
     #[serde(default)]
@@ -388,8 +388,8 @@ pub struct JsonStationInput {
     pub is_separator: bool,
 }
 
-/// Structure de désérialisation pour un groupe issu du JSON UI
-#[derive(serde::Deserialize, Debug, Clone)]
+/// Structure de désérialisation et sérialisation pour un groupe issu du JSON UI
+#[derive(serde::Serialize, serde::Deserialize, Debug, Clone)]
 pub struct JsonGroupInput {
     pub name: String,
     #[serde(default)]
@@ -459,6 +459,91 @@ pub fn save_bookmarks_from_json(json_str: &str, bookmarks_path: impl AsRef<Path>
     save_bookmarks(&new_root, bookmarks_path.as_ref())
         .map_err(|e| format!("Erreur sauvegarde bookmarks : {}", e))?;
     Ok(total)
+}
+
+/// Convertit l'arborescence native Group en payload structuré pour l'UI Python (Dumb UI)
+pub fn root_to_json_payload(root: &Group) -> Vec<JsonGroupInput> {
+    let mut payload = Vec::new();
+
+    // 1. Stations orphelines à la racine
+    if !root.stations.is_empty() {
+        let mut root_stations = Vec::new();
+        for s in &root.stations {
+            root_stations.push(JsonStationInput {
+                name: s.name.clone(),
+                url: s.url.clone(),
+                country: s.country.clone(),
+                timezone: s.timezone.clone(),
+                is_separator: s.is_separator(),
+            });
+        }
+        payload.push(JsonGroupInput {
+            name: "[ / ] (Racine — Sans groupe)".to_string(),
+            stations: root_stations,
+            is_separator: false,
+        });
+    }
+
+    // 2. Fonction récursive pour aplatir les groupes et sous-groupes avec le séparateur /
+    fn walk_group(grp: &Group, prefix: &str, out: &mut Vec<JsonGroupInput>) {
+        if grp.is_separator() {
+            let title = if grp.name.is_empty() { "---".to_string() } else { grp.name.clone() };
+            out.push(JsonGroupInput {
+                name: title,
+                stations: Vec::new(),
+                is_separator: true,
+            });
+            return;
+        }
+
+        let full_name = if prefix.is_empty() {
+            grp.name.clone()
+        } else {
+            format!("{}/{}", prefix, grp.name)
+        };
+
+        let mut st_list = Vec::new();
+        for s in &grp.stations {
+            st_list.push(JsonStationInput {
+                name: s.name.clone(),
+                url: s.url.clone(),
+                country: s.country.clone(),
+                timezone: s.timezone.clone(),
+                is_separator: s.is_separator(),
+            });
+        }
+
+        if !st_list.is_empty() || grp.subgroups.is_empty() {
+            out.push(JsonGroupInput {
+                name: full_name.clone(),
+                stations: st_list,
+                is_separator: false,
+            });
+        }
+
+        for sub in &grp.subgroups {
+            walk_group(sub, &full_name, out);
+        }
+    }
+
+    for sub in &root.subgroups {
+        walk_group(sub, "", &mut payload);
+    }
+
+    payload
+}
+
+/// Sérialise l'arbre des favoris complet au format JSON pour l'UI
+pub fn dump_root_to_json(root: &Group) -> Result<String, String> {
+    let payload = root_to_json_payload(root);
+    serde_json::to_string_pretty(&payload)
+        .map_err(|e| format!("Erreur sérialisation JSON : {}", e))
+}
+
+/// Charge bookmarks.xml et le convertit directement en chaîne JSON
+pub fn load_bookmarks_as_json(path: &Path) -> Result<String, String> {
+    let root = load_bookmarks(path).map_err(|e| e.to_string())?;
+    dump_root_to_json(&root)
 }
 
 #[cfg(test)]
@@ -728,5 +813,17 @@ mod tests {
         assert_eq!(root.subgroups[0].subgroups[0].stations[0].name, "FIP");
         assert_eq!(root.subgroups[0].subgroups[0].stations[0].timezone, Some("Europe/Paris".to_string()));
         assert_eq!(root.total_stations(), 2);
+
+        // Test du dump inverse JSON
+        let dumped_json = dump_root_to_json(&root).expect("Dump JSON");
+        assert!(dumped_json.contains("Direct Root Station"));
+        assert!(dumped_json.contains("Europe/France"));
+        assert!(dumped_json.contains("Europe/Paris"));
+
+        // Re-reconstruction à partir du dump pour vérifier la fidélité
+        let root2 = rebuild_root_from_json(&dumped_json).expect("Re-reconstruction JSON");
+        assert_eq!(root2.total_stations(), 2);
+        assert_eq!(root2.stations[0].name, "Direct Root Station");
+        assert_eq!(root2.subgroups[0].subgroups[0].stations[0].name, "FIP");
     }
 }
