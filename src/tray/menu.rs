@@ -235,25 +235,21 @@ impl ksni::Tray for TiMondeTray {
 
     fn menu(&self) -> Vec<MenuItem<Self>> {
         let mut menu = Vec::new();
-        let current_state = self.state();
-
-        // Si le moteur audio existe et est arrêté ou en erreur, l'état courant doit être synchronisé
-        {
-            let audio_guard = self.audio.safe_lock();
-            if audio_guard.is_some() && (current_state == PlaybackState::Stopped || current_state == PlaybackState::Error) {
-                drop(audio_guard);
-                *self.current_station.safe_lock() = None;
-                *self.current_title.safe_lock() = None;
-            }
-        }
-
-        // 1. Bouton principal Marche / Arrêt / Connexion en tête du menu
         let is_eph = self.is_ephemeral.load(Ordering::SeqCst);
         let cur_st = self.current_station.safe_lock();
         let cur_title = self.current_title.safe_lock();
+        let current_state = self.state();
 
+        let effective_state = match current_state {
+            PlaybackState::Stopped if cur_st.is_some() && self.audio.safe_lock().is_none() => {
+                PlaybackState::Playing
+            }
+            s => s,
+        };
+
+        // 1. Bouton principal Marche / Arrêt / Connexion en tête du menu
         match cur_st.as_ref() {
-            Some(st) if current_state == PlaybackState::Buffering => {
+            Some(st) if effective_state == PlaybackState::Buffering => {
                 let label = crate::i18n::connecting_station_label(&st.name, is_eph);
                 menu.push(MenuItem::Standard(StandardItem {
                     label,
@@ -266,7 +262,7 @@ impl ksni::Tray for TiMondeTray {
                     ..Default::default()
                 }));
             }
-            Some(st) if current_state == PlaybackState::Playing || self.audio.safe_lock().is_none() => {
+            Some(st) if effective_state == PlaybackState::Playing => {
                 let label = crate::i18n::stop_station_label(&st.name, is_eph);
                 menu.push(MenuItem::Standard(StandardItem {
                     label,
@@ -316,7 +312,8 @@ impl ksni::Tray for TiMondeTray {
         }
 
         // 2. Si une station est sélectionnée/en cours : Métadonnées, Titre, Fuseau horaire et Édition
-        if let Some(ref st) = *cur_st {
+        if (effective_state == PlaybackState::Playing || effective_state == PlaybackState::Buffering) && cur_st.is_some() {
+            let st = cur_st.as_ref().unwrap();
             menu.push(MenuItem::Separator);
 
             // Titre en cours (si stream actif avec tag)
@@ -620,6 +617,11 @@ impl ksni::Tray for TiMondeTray {
                     Arc::clone(&tray.root_group),
                     tray.bookmarks_path.clone(),
                     Arc::clone(&tray.tray_handle),
+                    Arc::clone(&tray.audio),
+                    Arc::clone(&tray.current_station),
+                    Arc::clone(&tray.current_title),
+                    Arc::clone(&tray.is_ephemeral),
+                    Arc::clone(&tray.play_generation),
                 );
             }),
             enabled: true,

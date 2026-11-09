@@ -2,6 +2,7 @@
 
 use std::path::{Path, PathBuf};
 use std::process::Command;
+use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
 use std::sync::{Arc, Mutex};
 
 use crate::audio::AudioEngine;
@@ -396,10 +397,16 @@ pub fn trigger_edit_station_dialog(
 }
 
 /// Ouvre la Console de Paramètres TiMonde unifiée (timonde_settings.py)
+#[allow(clippy::too_many_arguments)]
 pub fn trigger_settings_dialog(
     root_group: Arc<Mutex<Group>>,
     bookmarks_path: PathBuf,
     tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+    audio: Arc<Mutex<Option<AudioEngine>>>,
+    current_station: Arc<Mutex<Option<Station>>>,
+    current_title: Arc<Mutex<Option<String>>>,
+    is_ephemeral: Arc<AtomicBool>,
+    play_generation: Arc<AtomicU64>,
 ) {
     std::thread::spawn(move || {
         let script_path = match find_script("timonde_settings.py") {
@@ -423,6 +430,14 @@ pub fn trigger_settings_dialog(
                 return;
             }
         };
+
+        // 1. Arrêt déterministe immédiat de toute pré-écoute active lors de la fermeture des paramètres
+        if is_ephemeral.load(Ordering::SeqCst) {
+            log::info!("Fermeture des paramètres : arrêt déterministe de la pré-écoute de test");
+            is_ephemeral.store(false, Ordering::SeqCst);
+            play_generation.fetch_add(1, Ordering::SeqCst);
+            TiMondeTray::stop_and_trim_flow(&audio, &current_station, &current_title);
+        }
 
         if output.status.success() {
             let stdout_str = String::from_utf8_lossy(&output.stdout).trim().to_string();

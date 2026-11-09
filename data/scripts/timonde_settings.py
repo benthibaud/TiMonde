@@ -677,10 +677,10 @@ class SettingsWindow(Gtk.Window):
                 except Exception:
                     pass
                 if hasattr(self.reorder_view, "preview_player") and self.reorder_view.preview_player:
-                    self.reorder_view.preview_player.stop(silent=True, sync=False)
+                    self.reorder_view.preview_player.stop(silent=True, sync=True)
             if hasattr(self, "discover_view") and self.discover_view:
                 if hasattr(self.discover_view, "preview_player") and self.discover_view.preview_player:
-                    self.discover_view.preview_player.stop(silent=True, sync=False)
+                    self.discover_view.preview_player.stop(silent=True, sync=True)
                 try:
                     self.discover_view.shutdown()
                 except Exception:

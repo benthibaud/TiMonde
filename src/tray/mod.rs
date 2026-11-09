@@ -20,19 +20,38 @@ use crate::sync_util::SafeLock;
 /// Mémorisation de l'horodatage de la dernière écriture interne pour éviter les doubles rechargements
 pub static LAST_RELOAD_MTIME_MILLIS: AtomicU64 = AtomicU64::new(0);
 
+static REFRESH_RUNNING: AtomicBool = AtomicBool::new(false);
+static REFRESH_REQUESTED: AtomicBool = AtomicBool::new(false);
+
 /// Déclenche un rafraîchissement asynchrone non-bloquant de l'icône du plateau.
-/// Clone le `Handle` de ksni (qui implémente `Clone` dans ksni 0.3.6), relâche immédiatement
-/// le verrou du `Mutex` pour interdire tout interblocage (*deadlock*), et exécute
-/// l'appel `update` bloquant dans un thread détaché.
+/// Intègre un coalescing / debouncing de 40 ms pour agréger les rafales de requêtes
+/// (ex: fermeture de dialogue + arrêt flux + rechargement) en une seule mise à jour ksni/D-Bus,
+/// évitant l'invalidation répétée d'item_id_offset et la désynchronisation du plugin XFCE.
 pub fn request_tray_refresh(handle_cell: &Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>) {
     let handle_opt = {
         let guard = handle_cell.safe_lock();
         guard.clone()
     };
     if let Some(h) = handle_opt {
-        std::thread::spawn(move || {
-            h.update(|_| {});
-        });
+        REFRESH_REQUESTED.store(true, Ordering::SeqCst);
+        if REFRESH_RUNNING.compare_exchange(false, true, Ordering::SeqCst, Ordering::SeqCst).is_ok() {
+            std::thread::spawn(move || {
+                loop {
+                    REFRESH_REQUESTED.store(false, Ordering::SeqCst);
+                    std::thread::sleep(std::time::Duration::from_millis(40));
+                    h.update(|_| {});
+                    if !REFRESH_REQUESTED.load(Ordering::SeqCst) {
+                        REFRESH_RUNNING.store(false, Ordering::SeqCst);
+                        if REFRESH_REQUESTED.load(Ordering::SeqCst)
+                            && REFRESH_RUNNING.compare_exchange(false, true, Ordering::SeqCst, Ordering::SeqCst).is_ok()
+                        {
+                            continue;
+                        }
+                        break;
+                    }
+                }
+            });
+        }
     }
 }
 
@@ -809,12 +828,27 @@ X-GNOME-Autostart-enabled=true\n";
         );
     }
 
+    #[allow(clippy::too_many_arguments)]
     pub fn trigger_settings_dialog(
         root_group: Arc<Mutex<Group>>,
         bookmarks_path: PathBuf,
         tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+        audio: Arc<Mutex<Option<AudioEngine>>>,
+        current_station: Arc<Mutex<Option<Station>>>,
+        current_title: Arc<Mutex<Option<String>>>,
+        is_ephemeral: Arc<AtomicBool>,
+        play_generation: Arc<AtomicU64>,
     ) {
-        dialogs::trigger_settings_dialog(root_group, bookmarks_path, tray_handle);
+        dialogs::trigger_settings_dialog(
+            root_group,
+            bookmarks_path,
+            tray_handle,
+            audio,
+            current_station,
+            current_title,
+            is_ephemeral,
+            play_generation,
+        );
     }
 
     pub fn try_trigger_context_menu_x11() -> bool {
