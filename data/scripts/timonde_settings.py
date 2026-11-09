@@ -668,21 +668,32 @@ class SettingsWindow(Gtk.Window):
         self.destroy()
 
     def on_destroy_window(self, widget):
-        # Sauvegarde étanche de toute modification de réorganisation en attente
-        if hasattr(self, "reorder_view"):
-            if self.reorder_view.flush_pending():
-                self.has_modifications = True
-            if hasattr(self.reorder_view, "preview_player") and self.reorder_view.preview_player:
-                self.reorder_view.preview_player.stop(silent=True, sync=True)
-        if hasattr(self, "discover_view") and self.discover_view:
-            if hasattr(self.discover_view, "preview_player") and self.discover_view.preview_player:
-                self.discover_view.preview_player.stop(silent=True, sync=True)
-            self.discover_view.shutdown()
-        # Transmettre le résultat JSON sur stdout à destination de TiMonde en Rust
-        output = {"reload": self.has_modifications}
-        print(json.dumps(output), flush=True)
-        if Gtk.main_level() > 0:
-            Gtk.main_quit()
+        try:
+            # Sauvegarde étanche de toute modification de réorganisation en attente
+            if hasattr(self, "reorder_view"):
+                try:
+                    if self.reorder_view.flush_pending():
+                        self.has_modifications = True
+                except Exception:
+                    pass
+                if hasattr(self.reorder_view, "preview_player") and self.reorder_view.preview_player:
+                    self.reorder_view.preview_player.stop(silent=True, sync=False)
+            if hasattr(self, "discover_view") and self.discover_view:
+                if hasattr(self.discover_view, "preview_player") and self.discover_view.preview_player:
+                    self.discover_view.preview_player.stop(silent=True, sync=False)
+                try:
+                    self.discover_view.shutdown()
+                except Exception:
+                    pass
+        finally:
+            # Transmettre le résultat JSON sur stdout à destination de TiMonde en Rust
+            output = {"reload": self.has_modifications}
+            try:
+                print(json.dumps(output), flush=True)
+            except Exception:
+                pass
+            if Gtk.main_level() > 0:
+                Gtk.main_quit()
 
 
 def main():

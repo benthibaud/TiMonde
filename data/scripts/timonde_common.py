@@ -1190,7 +1190,7 @@ def style_dbusmenu_gtk(menu, is_root=True):
 
 
 
-def call_timonde_mpris(method_name: str, *args, fallback_cli: list = None, timeout: float = 5.0):
+def call_timonde_mpris(method_name: str, *args, fallback_cli: list = None, timeout: float = 2.0):
     """
     Exécute un appel unifié vers TiMonde via D-Bus MPRIS (priorité 1),
     avec repli automatique et transparent vers la CLI timonde (priorité 2).
@@ -1199,13 +1199,18 @@ def call_timonde_mpris(method_name: str, *args, fallback_cli: list = None, timeo
     # 1. Tentative D-Bus si le bus de session est disponible
     try:
         import dbus
+        try:
+            import dbus.mainloop.glib
+            dbus.mainloop.glib.threads_init()
+        except Exception:
+            pass
         bus = dbus.SessionBus()
         if bus.name_has_owner("org.mpris.MediaPlayer2.timonde"):
             obj = bus.get_object("org.mpris.MediaPlayer2.timonde", "/org/mpris/MediaPlayer2")
             player = dbus.Interface(obj, "org.mpris.MediaPlayer2.Player")
             method = getattr(player, method_name, None)
             if method:
-                res = method(*args)
+                res = method(*args, timeout=timeout)
                 return True, res
     except Exception:
         pass
@@ -1231,6 +1236,9 @@ class StreamPreviewPlayer:
     au serveur TiMonde (via D-Bus ou CLI timonde).
     """
     def __init__(self, on_status_changed=None, on_status_change=None):
+        import threading
+        self._lock = threading.Lock()
+        self._action_id = 0
         self.on_status_changed = on_status_changed or on_status_change
         self.current_url = None
         self.current_name = None
@@ -1252,12 +1260,15 @@ class StreamPreviewPlayer:
         if not clean:
             self._emit_status(False, f"[!] {_('Empty stream URL')}", is_error=True)
             return False
-        if self.is_playing and self.current_url == clean:
+        with self._lock:
+            already_playing_this = (self.is_playing and self.current_url == clean)
+        if already_playing_this:
             self.stop()
             return False
         return self.play(station_name, clean)
 
     def play(self, station_name, url=None):
+        import threading
         if url is None:
             url = station_name
             station_name = _("Radio")
@@ -1266,25 +1277,34 @@ class StreamPreviewPlayer:
             self._emit_status(False, f"[!] {_('Empty stream URL')}", is_error=True)
             return False
 
-        self.stop(silent=True)
-        self.current_url = clean
-        self.current_name = station_name or _("Radio")
-        self.is_playing = True
+        with self._lock:
+            self._action_id += 1
+            action_id = self._action_id
+            self.current_url = clean
+            self.current_name = station_name or _("Radio")
+            self.is_playing = True
+
         self._emit_status(True, f"[►] {_('Playing:')} « {self.current_name} »", is_error=False)
 
         def run_play():
-            disp_name = self.current_name or ""
-            call_timonde_mpris("PlayPreview", clean, disp_name, fallback_cli=["--preview-play", clean, disp_name])
+            with self._lock:
+                if self._action_id != action_id:
+                    return
+                disp_name = self.current_name or ""
+            call_timonde_mpris("PlayPreview", clean, disp_name, fallback_cli=["--preview-play", clean, disp_name], timeout=2.0)
 
-        import threading
         threading.Thread(target=run_play, daemon=True).start()
         return True
 
     def stop(self, silent=False, sync=False):
-        was_playing = self.is_playing
-        self.is_playing = False
-        self.current_url = None
-        self.current_name = None
+        import threading
+        with self._lock:
+            was_playing = self.is_playing
+            self.is_playing = False
+            self.current_url = None
+            self.current_name = None
+            self._action_id += 1
+            action_id = self._action_id
 
         if not was_playing:
             # Règle d'or : ne rien faire si aucune pré-écoute n'était active.
@@ -1292,12 +1312,14 @@ class StreamPreviewPlayer:
             return
 
         def run_stop():
-            call_timonde_mpris("StopPreview", fallback_cli=["--preview-stop"])
+            with self._lock:
+                if self._action_id != action_id:
+                    return
+            call_timonde_mpris("StopPreview", fallback_cli=["--preview-stop"], timeout=1.5)
 
         if sync:
             run_stop()
         else:
-            import threading
             threading.Thread(target=run_stop, daemon=True).start()
 
         if not silent:

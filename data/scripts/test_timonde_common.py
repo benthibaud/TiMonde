@@ -379,6 +379,44 @@ class TestTiMondeCommon(unittest.TestCase):
             player.stop(silent=False, sync=True)
             mock_mpris.assert_not_called()
 
+    def test_stream_preview_player_switch_stations_no_race_condition(self):
+        import time
+        from unittest.mock import patch
+        from timonde_common import StreamPreviewPlayer
+
+        calls = []
+
+        def fake_mpris(method_name, *args, **kwargs):
+            calls.append((method_name, args))
+            return True, None
+
+        player = StreamPreviewPlayer()
+        with patch("timonde_common.call_timonde_mpris", side_effect=fake_mpris):
+            # 1. Écouter la radio 1
+            player.play("Radio 1", "http://stream1.org/live")
+            self.assertTrue(player.is_playing)
+            self.assertEqual(player.current_url, "http://stream1.org/live")
+
+            # 2. Enchaîner directement sur la radio 2 sans appel explicite à stop
+            player.play("Radio 2", "http://stream2.org/live")
+            self.assertTrue(player.is_playing)
+            self.assertEqual(player.current_url, "http://stream2.org/live")
+
+            # Attendre la fin des threads légers
+            time.sleep(0.1)
+
+            # Vérifier qu'aucun StopPreview n'a été intercalé par play()
+            method_names = [c[0] for c in calls]
+            self.assertNotIn("StopPreview", method_names)
+            self.assertEqual(method_names, ["PlayPreview", "PlayPreview"])
+
+            # 3. Arrêter explicitement
+            player.stop()
+            time.sleep(0.1)
+            method_names = [c[0] for c in calls]
+            self.assertEqual(method_names, ["PlayPreview", "PlayPreview", "StopPreview"])
+
+
 if __name__ == "__main__":
     unittest.main()
 
