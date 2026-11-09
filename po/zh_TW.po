@@ -2111,3 +2111,81 @@ msgstr "— Separator —"
 
 # --- Group Reorder Window (reorder_groups.py) ---
 
+
+#: data/scripts/reorder_groups.py:111
+msgid ""
+"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
+"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
+"• Use <b>Move to...</b> to organize stations into another folder.</small>"
+msgstr ""
+"<small>• 展開資料夾 <b>[▶]</b> 以瀏覽分組與電台。\n"
+"• 使用<b>上移 / 下移</b>或拖放操作以調整順序。\n"
+"• 使用<b>移動至...</b>將電台整理至其他分組。</small>"
+
+
+#: data/scripts/timonde_common.py:1825
+msgid "Edit station"
+msgstr "編輯電台"
+
+
+#: data/scripts/timonde_settings.py:563
+msgid "Installed binary:"
+msgstr "已安裝二進位檔案："
+
+
+#: data/scripts/browse_bouquets.py:1337
+msgid "National Radios"
+msgstr "National Radios"
+
+
+#: data/scripts/timonde_common.py:1882
+msgid "Open editor to update this station and its country"
+msgstr "開啟編輯器以更新此電台及其國家/地區"
+
+
+#: data/scripts/reorder_groups.py:792
+msgid "Station deleted:"
+msgstr "電台已刪除："
+
+
+#: data/scripts/timonde_common.py:1927
+msgid "Submitted"
+msgstr "已提交"
+
+
+#: data/scripts/timonde_common.py:1508
+msgid ""
+"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"\n"
+"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
+"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
+"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
+"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
+"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"\n"
+"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
+msgstr ""
+"TiMonde 使用帶有 <b>/</b> 分隔符號的路徑規範：\n"
+"\n"
+"• <b>/</b> 或 <b>(根目錄)</b> ：將電台置於選單根層級（無分組）。\n"
+"• <b>/加彭</b> 或 <b>加彭</b> ：將電台放入分組 « 加彭 »。\n"
+"• <b>/法國/布列塔尼</b> ：將電台放入 « 法國 » 下的子分組 « 布列塔尼 »。\n"
+"• <b>/比利時/NL</b> ：將電台放入 « 比利時 » 下的子分組 « NL »。\n"
+"\n"
+"<i>如果分組和子分組尚不存在，則會自動建立。</i>"
+
+
+#: data/scripts/timonde_settings.py:562
+msgid "TiMonde version"
+msgstr "TiMonde 版本"
+
+
+#: src/i18n.rs:217
+msgid "[Ephemeral]"
+msgstr "[暫時探索]"
+
+
+#: data/scripts/browse_bouquets.py:1488
+msgid "● Repaired (Live)"
+msgstr "● Repaired (Live)"
+

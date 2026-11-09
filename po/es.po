@@ -2118,3 +2118,82 @@ msgstr "— Separator —"
 
 # --- Group Reorder Window (reorder_groups.py) ---
 
+
+#: data/scripts/reorder_groups.py:111
+msgid ""
+"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
+"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
+"• Use <b>Move to...</b> to organize stations into another folder.</small>"
+msgstr ""
+"<small>• Despliegue carpetas <b>[▶]</b> para explorar subgrupos y emisoras.\n"
+"• Use <b>Subir / Bajar</b> o arrastrar y soltar para reordenar.\n"
+"• Use <b>Mover a...</b> para organizar emisoras en otra carpeta.</small>"
+
+
+#: data/scripts/timonde_common.py:1825
+msgid "Edit station"
+msgstr "Modificar emisora"
+
+
+#: data/scripts/timonde_settings.py:563
+msgid "Installed binary:"
+msgstr "Binario instalado:"
+
+
+#: data/scripts/browse_bouquets.py:1337
+msgid "National Radios"
+msgstr "National Radios"
+
+
+#: data/scripts/timonde_common.py:1882
+msgid "Open editor to update this station and its country"
+msgstr "Abrir el editor para actualizar esta emisora y su país"
+
+
+#: data/scripts/reorder_groups.py:792
+msgid "Station deleted:"
+msgstr "Emisora eliminada:"
+
+
+#: data/scripts/timonde_common.py:1927
+msgid "Submitted"
+msgstr "Enviada"
+
+
+#: data/scripts/timonde_common.py:1508
+msgid ""
+"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"\n"
+"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
+"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
+"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
+"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
+"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"\n"
+"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
+msgstr ""
+"TiMonde utiliza convenciones de ruta con el separador <b>/</b>:\n"
+"\n"
+"• <b>/</b> o <b>(Raíz)</b> : Coloca la emisora en la raíz del menú (sin grupo).\n"
+"• <b>/Gabón</b> o <b>Gabón</b> : Coloca la emisora en el grupo « Gabón ».\n"
+"• <b>/Francia/Bretaña</b> : Coloca la emisora en el subgrupo « Bretaña » bajo « Francia ».\n"
+"• <b>/Bélgica/NL</b> : Coloca la emisora en el subgrupo « NL » bajo « Bélgica ».\n"
+"• <b>Francia/Radios locales</b> : Subgrupo con espacios bajo « Francia ».\n"
+"\n"
+"<i>Los grupos y subgrupos se crean automáticamente si aún no existen.</i>"
+
+
+#: data/scripts/timonde_settings.py:562
+msgid "TiMonde version"
+msgstr "Versión de TiMonde"
+
+
+#: src/i18n.rs:217
+msgid "[Ephemeral]"
+msgstr "[Efímero]"
+
+
+#: data/scripts/browse_bouquets.py:1488
+msgid "● Repaired (Live)"
+msgstr "● Repaired (Live)"
+

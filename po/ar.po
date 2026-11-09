@@ -2105,3 +2105,80 @@ msgstr "تم العثور على {count} من البثوث. اختر البث ا
 msgid "— Separator —"
 msgstr "— Separator —"
 
+
+#: data/scripts/reorder_groups.py:111
+msgid ""
+"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
+"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
+"• Use <b>Move to...</b> to organize stations into another folder.</small>"
+msgstr ""
+"<small>• افتح المجلدات <b>[▶]</b> لاستعراض المجموعات الفرعية والمحطات.\n"
+"• استخدم <b>تحريك لأعلى / تحريك لأسفل</b> أو السحب والإفلات لإعادة الترتيب.\n"
+"• استخدم <b>نقل إلى...</b> لتنظيم المحطات في مجلد آخر.</small>"
+
+
+#: data/scripts/timonde_common.py:1825
+msgid "Edit station"
+msgstr "تعديل المحطة"
+
+
+#: data/scripts/timonde_settings.py:563
+msgid "Installed binary:"
+msgstr "الملف التنفيذي المثبت:"
+
+
+#: data/scripts/browse_bouquets.py:1337
+msgid "National Radios"
+msgstr "National Radios"
+
+
+#: data/scripts/timonde_common.py:1882
+msgid "Open editor to update this station and its country"
+msgstr "افتح المحرر لتحديث هذه المحطة وبلدها"
+
+
+#: data/scripts/reorder_groups.py:792
+msgid "Station deleted:"
+msgstr "تم حذف المحطة:"
+
+
+#: data/scripts/timonde_common.py:1927
+msgid "Submitted"
+msgstr "تم الإرسال"
+
+
+#: data/scripts/timonde_common.py:1508
+msgid ""
+"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"\n"
+"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
+"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
+"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
+"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
+"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"\n"
+"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
+msgstr ""
+"يستخدم TiMonde اصطلاحات المسار مع الفاصل <b>/</b>:\n"
+"\n"
+"• <b>/</b> أو <b>(الجذر)</b> : يضع المحطة في جذر القائمة (بدون مجموعة).\n"
+"• <b>/الغابون</b> أو <b>الغابون</b> : يضع المحطة في المجموعة « الغابون ».\n"
+"• <b>/فرنسا/بريتاني</b> : يضع المحطة في المجموعة الفرعية « بريتاني » تحت « فرنسا ».\n"
+"\n"
+"<i>يتم إنشاء المجموعات تلقائيًا إذا لم تكن موجودة بعد.</i>"
+
+
+#: data/scripts/timonde_settings.py:562
+msgid "TiMonde version"
+msgstr "إصدار TiMonde"
+
+
+#: src/i18n.rs:217
+msgid "[Ephemeral]"
+msgstr "[مؤقت]"
+
+
+#: data/scripts/browse_bouquets.py:1488
+msgid "● Repaired (Live)"
+msgstr "● Repaired (Live)"
+
