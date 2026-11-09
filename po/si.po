@@ -2106,47 +2106,40 @@ msgstr "ධාරාවන් {count}ක් හමු විය. අවශ්‍
 msgid "— Separator —"
 msgstr "— Separator —"
 
-
 #: data/scripts/reorder_groups.py:111
 msgid ""
 "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
 "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
 "• Use <b>Move to...</b> to organize stations into another folder.</small>"
 msgstr ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-
+"<small>• උප සමූහ සහ නාලිකා ගවේෂණය කිරීමට ෆෝල්ඩර <b>[▶]</b> පුළුල් කරන්න.\n"
+"• නැවත ඇණවුම් කිරීමට <b>ඉහළට / පහළට ගෙන යන්න</b> හෝ අදින්න.\n"
+"• නාලිකා වෙනත් ෆෝල්ඩරයකට ගෙන යාමට <b>වෙත ගෙන යන්න...</b> භාවිතා කරන්න.</small>"
 
 #: data/scripts/timonde_common.py:1825
 msgid "Edit station"
-msgstr "Edit station"
-
+msgstr "නාලිකාව සංස්කරණය කරන්න"
 
 #: data/scripts/timonde_settings.py:563
 msgid "Installed binary:"
-msgstr "Installed binary:"
+msgstr "ස්ථාපිත ද්විමය ගොනුව:"
 
 
 #: data/scripts/browse_bouquets.py:1337
 msgid "National Radios"
 msgstr "National Radios"
 
-
 #: data/scripts/timonde_common.py:1882
 msgid "Open editor to update this station and its country"
-msgstr "Open editor to update this station and its country"
-
+msgstr "මෙම නාලිකාව සහ එහි රට යාවත්කාලීන කිරීමට සංස්කාරකය විවෘත කරන්න"
 
 #: data/scripts/reorder_groups.py:792
 msgid "Station deleted:"
-msgstr "Station deleted:"
-
+msgstr "නාලිකාව මකා දමන ලදී:"
 
 #: data/scripts/timonde_common.py:1927
 msgid "Submitted"
-msgstr "Submitted"
-
+msgstr "ඉදිරිපත් කරන ලදී"
 
 #: data/scripts/timonde_common.py:1508
 msgid ""
@@ -2160,25 +2153,20 @@ msgid ""
 "\n"
 "<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
 msgstr ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"TiMonde <b>/</b> බෙදුම්කරු සමඟ මාර්ග සම්මුතීන් භාවිතා කරයි:\n"
 "\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"• <b>/</b> හෝ <b>(මූල)</b> : නාලිකාව මෙනු මූලයේ තබයි (කණ්ඩායමක් නොමැතිව).\n"
+"• <b>/ගැබොන්</b> හෝ <b>ගැබොන්</b> : නාලිකාව « ගැබොන් » කණ්ඩායමේ තබයි.\n"
 "\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-
+"<i>කණ්ඩායම් නොමැති නම් ස්වයංක්‍රීයව සෑදේ.</i>"
 
 #: data/scripts/timonde_settings.py:562
 msgid "TiMonde version"
-msgstr "TiMonde version"
-
+msgstr "TiMonde අනුවාදය"
 
 #: src/i18n.rs:217
 msgid "[Ephemeral]"
-msgstr "[Ephemeral]"
+msgstr "[තාවකාලික]"
 
 
 #: data/scripts/browse_bouquets.py:1488

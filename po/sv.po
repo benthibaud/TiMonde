@@ -2110,47 +2110,40 @@ msgstr "{count} strömmar hittades. Välj önskad ström och bekräfta."
 msgid "— Separator —"
 msgstr "— Separator —"
 
-
 #: data/scripts/reorder_groups.py:111
 msgid ""
 "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
 "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
 "• Use <b>Move to...</b> to organize stations into another folder.</small>"
 msgstr ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-
+"<small>• Expandera mappar <b>[▶]</b> för att utforska undergrupper och stationer.\n"
+"• Använd <b>Flytta upp / Flytta ned</b> eller dra och släpp för att ordna om.\n"
+"• Använd <b>Flytta till...</b> för att organisera stationer i en annan mapp.</small>"
 
 #: data/scripts/timonde_common.py:1825
 msgid "Edit station"
-msgstr "Edit station"
-
+msgstr "Redigera station"
 
 #: data/scripts/timonde_settings.py:563
 msgid "Installed binary:"
-msgstr "Installed binary:"
+msgstr "Installerad binärfil:"
 
 
 #: data/scripts/browse_bouquets.py:1337
 msgid "National Radios"
 msgstr "National Radios"
 
-
 #: data/scripts/timonde_common.py:1882
 msgid "Open editor to update this station and its country"
-msgstr "Open editor to update this station and its country"
-
+msgstr "Öppna redigeraren för att uppdatera denna station och dess land"
 
 #: data/scripts/reorder_groups.py:792
 msgid "Station deleted:"
-msgstr "Station deleted:"
-
+msgstr "Station raderad:"
 
 #: data/scripts/timonde_common.py:1927
 msgid "Submitted"
-msgstr "Submitted"
-
+msgstr "Skickad"
 
 #: data/scripts/timonde_common.py:1508
 msgid ""
@@ -2164,25 +2157,20 @@ msgid ""
 "\n"
 "<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
 msgstr ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"TiMonde använder sökvägskonventioner med avgränsaren <b>/</b>:\n"
 "\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"• <b>/</b> eller <b>(Rot)</b> : Placerar stationen i menyns rot (utan grupp).\n"
+"• <b>/Gabon</b> eller <b>Gabon</b> : Placerar stationen i gruppen « Gabon ».\n"
 "\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-
+"<i>Grupper och undergrupper skapas automatiskt om de inte redan finns.</i>"
 
 #: data/scripts/timonde_settings.py:562
 msgid "TiMonde version"
-msgstr "TiMonde version"
-
+msgstr "TiMonde-version"
 
 #: src/i18n.rs:217
 msgid "[Ephemeral]"
-msgstr "[Ephemeral]"
+msgstr "[Tillfällig]"
 
 
 #: data/scripts/browse_bouquets.py:1488

@@ -2113,47 +2113,40 @@ msgstr "{count} strim ditemui. Pilih strim yang dikehendaki dan sahkan."
 msgid "— Separator —"
 msgstr "— Separator —"
 
-
 #: data/scripts/reorder_groups.py:111
 msgid ""
 "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
 "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
 "• Use <b>Move to...</b> to organize stations into another folder.</small>"
 msgstr ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-
+"<small>• Kembangkan folder <b>[▶]</b> untuk meneroka subkumpulan dan stesen.\n"
+"• Gunakan <b>Naik / Turun</b> atau seret dan lepas untuk menyusun semula.\n"
+"• Gunakan <b>Pindah ke...</b> untuk menyusun stesen ke folder lain.</small>"
 
 #: data/scripts/timonde_common.py:1825
 msgid "Edit station"
-msgstr "Edit station"
-
+msgstr "Edit stesen"
 
 #: data/scripts/timonde_settings.py:563
 msgid "Installed binary:"
-msgstr "Installed binary:"
+msgstr "Binari dipasang:"
 
 
 #: data/scripts/browse_bouquets.py:1337
 msgid "National Radios"
 msgstr "National Radios"
 
-
 #: data/scripts/timonde_common.py:1882
 msgid "Open editor to update this station and its country"
-msgstr "Open editor to update this station and its country"
-
+msgstr "Buka editor untuk mengemas kini stesen ini dan negaranya"
 
 #: data/scripts/reorder_groups.py:792
 msgid "Station deleted:"
-msgstr "Station deleted:"
-
+msgstr "Stesen dipadamkan:"
 
 #: data/scripts/timonde_common.py:1927
 msgid "Submitted"
-msgstr "Submitted"
-
+msgstr "Dihantar"
 
 #: data/scripts/timonde_common.py:1508
 msgid ""
@@ -2167,25 +2160,20 @@ msgid ""
 "\n"
 "<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
 msgstr ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"TiMonde menggunakan konvensyen laluan dengan pemisah <b>/</b>:\n"
 "\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"• <b>/</b> atau <b>(Root)</b> : Meletakkan stesen pada menu utama (tanpa kumpulan).\n"
+"• <b>/Gabon</b> atau <b>Gabon</b> : Meletakkan stesen dalam kumpulan « Gabon ».\n"
 "\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-
+"<i>Kumpulan dan subkumpulan dicipta secara automatik jika belum wujud.</i>"
 
 #: data/scripts/timonde_settings.py:562
 msgid "TiMonde version"
-msgstr "TiMonde version"
-
+msgstr "Versi TiMonde"
 
 #: src/i18n.rs:217
 msgid "[Ephemeral]"
-msgstr "[Ephemeral]"
+msgstr "[Sementara]"
 
 
 #: data/scripts/browse_bouquets.py:1488

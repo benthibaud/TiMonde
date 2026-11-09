@@ -2113,47 +2113,40 @@ msgstr ""
 msgid "— Separator —"
 msgstr "— Separator —"
 
-
 #: data/scripts/reorder_groups.py:111
 msgid ""
 "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
 "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
 "• Use <b>Move to...</b> to organize stations into another folder.</small>"
 msgstr ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-
+"<small>• Проширете ги папките <b>[▶]</b> за преглед на подгрупи и станици.\n"
+"• Користете <b>Горе / Долу</b> или влечење за преуредување.\n"
+"• Користете <b>Премести во...</b> за организирање станици во друга папка.</small>"
 
 #: data/scripts/timonde_common.py:1825
 msgid "Edit station"
-msgstr "Edit station"
-
+msgstr "Уреди станица"
 
 #: data/scripts/timonde_settings.py:563
 msgid "Installed binary:"
-msgstr "Installed binary:"
+msgstr "Инсталирана бинарна датотека:"
 
 
 #: data/scripts/browse_bouquets.py:1337
 msgid "National Radios"
 msgstr "National Radios"
 
-
 #: data/scripts/timonde_common.py:1882
 msgid "Open editor to update this station and its country"
-msgstr "Open editor to update this station and its country"
-
+msgstr "Отворете уредувач за ажурирање на оваа станица и нејзината земја"
 
 #: data/scripts/reorder_groups.py:792
 msgid "Station deleted:"
-msgstr "Station deleted:"
-
+msgstr "Станицата е избришана:"
 
 #: data/scripts/timonde_common.py:1927
 msgid "Submitted"
-msgstr "Submitted"
-
+msgstr "Испратено"
 
 #: data/scripts/timonde_common.py:1508
 msgid ""
@@ -2167,25 +2160,20 @@ msgid ""
 "\n"
 "<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
 msgstr ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"TiMonde користи правила за патека со сепаратор <b>/</b>:\n"
 "\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"• <b>/</b> или <b>(Корен)</b> : Ја става станицата во коренот на менито (без група).\n"
+"• <b>/Габон</b> или <b>Габон</b> : Ја става станицата во група « Габон ».\n"
 "\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-
+"<i>Групите и подгрупите се создаваат автоматски ако сè уште не постојат.</i>"
 
 #: data/scripts/timonde_settings.py:562
 msgid "TiMonde version"
-msgstr "TiMonde version"
-
+msgstr "Верзија на TiMonde"
 
 #: src/i18n.rs:217
 msgid "[Ephemeral]"
-msgstr "[Ephemeral]"
+msgstr "[Привремено]"
 
 
 #: data/scripts/browse_bouquets.py:1488

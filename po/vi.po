@@ -2114,47 +2114,40 @@ msgstr "Đã tìm thấy {count} luồng. Chọn luồng mong muốn và xác nh
 msgid "— Separator —"
 msgstr "— Separator —"
 
-
 #: data/scripts/reorder_groups.py:111
 msgid ""
 "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
 "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
 "• Use <b>Move to...</b> to organize stations into another folder.</small>"
 msgstr ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-
+"<small>• Mở rộng thư mục <b>[▶]</b> để khám phá nhóm phụ và đài.\n"
+"• Dùng <b>Di chuyển lên / Di chuyển xuống</b> hoặc Kéo & Thả để sắp xếp lại.\n"
+"• Dùng <b>Di chuyển đến...</b> để sắp xếp các đài vào thư mục khác.</small>"
 
 #: data/scripts/timonde_common.py:1825
 msgid "Edit station"
-msgstr "Edit station"
-
+msgstr "Chỉnh sửa đài"
 
 #: data/scripts/timonde_settings.py:563
 msgid "Installed binary:"
-msgstr "Installed binary:"
+msgstr "Tập tin nhị phân đã cài đặt:"
 
 
 #: data/scripts/browse_bouquets.py:1337
 msgid "National Radios"
 msgstr "National Radios"
 
-
 #: data/scripts/timonde_common.py:1882
 msgid "Open editor to update this station and its country"
-msgstr "Open editor to update this station and its country"
-
+msgstr "Mở trình chỉnh sửa để cập nhật đài này và quốc gia của đài"
 
 #: data/scripts/reorder_groups.py:792
 msgid "Station deleted:"
-msgstr "Station deleted:"
-
+msgstr "Đài đã bị xóa:"
 
 #: data/scripts/timonde_common.py:1927
 msgid "Submitted"
-msgstr "Submitted"
-
+msgstr "Đã gửi"
 
 #: data/scripts/timonde_common.py:1508
 msgid ""
@@ -2168,25 +2161,20 @@ msgid ""
 "\n"
 "<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
 msgstr ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"TiMonde sử dụng quy ước đường dẫn với dấu phân cách <b>/</b>:\n"
 "\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"• <b>/</b> hoặc <b>(Gốc)</b> : Đặt đài ở gốc của menu (không có nhóm).\n"
+"• <b>/Gabon</b> hoặc <b>Gabon</b> : Đặt đài trong nhóm « Gabon ».\n"
 "\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-
+"<i>Các nhóm và nhóm phụ sẽ được tạo tự động nếu chưa tồn tại.</i>"
 
 #: data/scripts/timonde_settings.py:562
 msgid "TiMonde version"
-msgstr "TiMonde version"
-
+msgstr "Phiên bản TiMonde"
 
 #: src/i18n.rs:217
 msgid "[Ephemeral]"
-msgstr "[Ephemeral]"
+msgstr "[Tạm thời]"
 
 
 #: data/scripts/browse_bouquets.py:1488

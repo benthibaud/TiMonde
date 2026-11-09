@@ -2101,47 +2101,40 @@ msgstr "พบ {count} สตรีม เลือกสตรีมที่�
 msgid "— Separator —"
 msgstr "— Separator —"
 
-
 #: data/scripts/reorder_groups.py:111
 msgid ""
 "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
 "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
 "• Use <b>Move to...</b> to organize stations into another folder.</small>"
 msgstr ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-
+"<small>• ขยายโฟลเดอร์ <b>[▶]</b> เพื่อสำรวจกลุ่มย่อยและสถานี\n"
+"• ใช้ <b>เลื่อนขึ้น / เลื่อนลง</b> หรือลากและวางเพื่อจัดลำดับใหม่\n"
+"• ใช้ <b>ย้ายไปที่...</b> เพื่อจัดระเบียบสถานีไปยังโฟลเดอร์อื่น</small>"
 
 #: data/scripts/timonde_common.py:1825
 msgid "Edit station"
-msgstr "Edit station"
-
+msgstr "แก้ไขสถานี"
 
 #: data/scripts/timonde_settings.py:563
 msgid "Installed binary:"
-msgstr "Installed binary:"
+msgstr "ไฟล์ไบนารีที่ติดตั้ง:"
 
 
 #: data/scripts/browse_bouquets.py:1337
 msgid "National Radios"
 msgstr "National Radios"
 
-
 #: data/scripts/timonde_common.py:1882
 msgid "Open editor to update this station and its country"
-msgstr "Open editor to update this station and its country"
-
+msgstr "เปิดตัวแก้ไขเพื่ออัปเดตสถานีนี้และประเทศ"
 
 #: data/scripts/reorder_groups.py:792
 msgid "Station deleted:"
-msgstr "Station deleted:"
-
+msgstr "ลบสถานีแล้ว:"
 
 #: data/scripts/timonde_common.py:1927
 msgid "Submitted"
-msgstr "Submitted"
-
+msgstr "ส่งแล้ว"
 
 #: data/scripts/timonde_common.py:1508
 msgid ""
@@ -2155,25 +2148,20 @@ msgid ""
 "\n"
 "<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
 msgstr ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"TiMonde ใช้รูปแบบเส้นทางที่มีตัวคั่น <b>/</b>:\n"
 "\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"• <b>/</b> หรือ <b>(รูท)</b> : วางสถานีไว้ที่รูทของเมนู (ไม่มีกลุ่ม)\n"
+"• <b>/กาบอง</b> หรือ <b>กาบอง</b> : วางสถานีในกลุ่ม « กาบอง »\n"
 "\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-
+"<i>กลุ่มและกลุ่มย่อยจะถูกสร้างขึ้นโดยอัตโนมัติหากยังไม่มีอยู่</i>"
 
 #: data/scripts/timonde_settings.py:562
 msgid "TiMonde version"
-msgstr "TiMonde version"
-
+msgstr "เวอร์ชัน TiMonde"
 
 #: src/i18n.rs:217
 msgid "[Ephemeral]"
-msgstr "[Ephemeral]"
+msgstr "[ชั่วคราว]"
 
 
 #: data/scripts/browse_bouquets.py:1488

@@ -2104,47 +2104,40 @@ msgstr "{count} လိုင်း တွေ့ရှိသည်။ လို�
 msgid "— Separator —"
 msgstr "— Separator —"
 
-
 #: data/scripts/reorder_groups.py:111
 msgid ""
 "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
 "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
 "• Use <b>Move to...</b> to organize stations into another folder.</small>"
 msgstr ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-
+"<small>• အုပ်စုခွဲများနှင့် လိုင်းများကို စူးစမ်းရန် ဖိုင်တွဲများ <b>[▶]</b> ကို ချဲ့ပါ။\n"
+"• ပြန်လည်စီစဉ်ရန် <b>အပေါ်ရွှေ့ / အောက်ရွှေ့</b> သို့မဟုတ် ဆွဲယူထည့်ပါ။\n"
+"• လိုင်းများကို အခြားဖိုင်တွဲသို့ ရွှေ့ရန် <b>သို့ ရွှေ့ပါ...</b> ကို သုံးပါ။</small>"
 
 #: data/scripts/timonde_common.py:1825
 msgid "Edit station"
-msgstr "Edit station"
-
+msgstr "ရေဒီယိုလိုင်းကို ပြင်ဆင်ရန်"
 
 #: data/scripts/timonde_settings.py:563
 msgid "Installed binary:"
-msgstr "Installed binary:"
+msgstr "ထည့်သွင်းထားသော ဘာsecondary ဖိုင်-"
 
 
 #: data/scripts/browse_bouquets.py:1337
 msgid "National Radios"
 msgstr "National Radios"
 
-
 #: data/scripts/timonde_common.py:1882
 msgid "Open editor to update this station and its country"
-msgstr "Open editor to update this station and its country"
-
+msgstr "ဤရေဒီယိုလိုင်းနှင့် ၎င်း၏နိုင်ငံကို အပ်ဒိတ်လုပ်ရန် တည်းဖြတ်မှုကို ဖွင့်ပါ"
 
 #: data/scripts/reorder_groups.py:792
 msgid "Station deleted:"
-msgstr "Station deleted:"
-
+msgstr "လိုင်းကို ဖျက်ပြီးပါပြီ-"
 
 #: data/scripts/timonde_common.py:1927
 msgid "Submitted"
-msgstr "Submitted"
-
+msgstr "တင်ပြပြီး"
 
 #: data/scripts/timonde_common.py:1508
 msgid ""
@@ -2158,25 +2151,20 @@ msgid ""
 "\n"
 "<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
 msgstr ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"TiMonde သည် <b>/</b> ခြားနားချက်ဖြင့် လမ်းကြောင်းစည်းမျဉ်းများကို သုံးပါသည်-\n"
 "\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"• <b>/</b> သို့မဟုတ် <b>(Root)</b> : လိုင်းကို မီနူးရင်းတွင် ထားရှိပါသည် (အုပ်စုမပါ)။\n"
+"• <b>/ဂါဘွန်</b> သို့မဟုတ် <b>ဂါဘွန်</b> : « ဂါဘွန် » အုပ်စုတွင် ထားရှိပါသည်။\n"
 "\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-
+"<i>အုပ်စုများ မရှိသေးပါက အလိုအလျောက် ဖန်တီးပေးပါသည်။</i>"
 
 #: data/scripts/timonde_settings.py:562
 msgid "TiMonde version"
-msgstr "TiMonde version"
-
+msgstr "TiMonde ဗားရှင်း"
 
 #: src/i18n.rs:217
 msgid "[Ephemeral]"
-msgstr "[Ephemeral]"
+msgstr "[ယာယီ]"
 
 
 #: data/scripts/browse_bouquets.py:1488

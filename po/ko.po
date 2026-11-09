@@ -2108,47 +2108,40 @@ msgstr "{count}개의 스트림을 찾았습니다. 원하는 스트림을 선�
 msgid "— Separator —"
 msgstr "— Separator —"
 
-
 #: data/scripts/reorder_groups.py:111
 msgid ""
 "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
 "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
 "• Use <b>Move to...</b> to organize stations into another folder.</small>"
 msgstr ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-
+"<small>• 폴더 <b>[▶]</b>를 확장하여 하위 그룹과 방송국을 탐색합니다.\n"
+"• <b>위로 / 아래로</b> 또는 드래그 앤 드롭으로 순서를 변경합니다.\n"
+"• <b>이동...</b>을 사용하여 방송국을 다른 폴더로 정리합니다.</small>"
 
 #: data/scripts/timonde_common.py:1825
 msgid "Edit station"
-msgstr "Edit station"
-
+msgstr "방송국 편집"
 
 #: data/scripts/timonde_settings.py:563
 msgid "Installed binary:"
-msgstr "Installed binary:"
+msgstr "설치된 바이너리:"
 
 
 #: data/scripts/browse_bouquets.py:1337
 msgid "National Radios"
 msgstr "National Radios"
 
-
 #: data/scripts/timonde_common.py:1882
 msgid "Open editor to update this station and its country"
-msgstr "Open editor to update this station and its country"
-
+msgstr "이 방송국과 해당 국가를 업데이트하려면 편집기를 여세요"
 
 #: data/scripts/reorder_groups.py:792
 msgid "Station deleted:"
-msgstr "Station deleted:"
-
+msgstr "방송국 삭제됨:"
 
 #: data/scripts/timonde_common.py:1927
 msgid "Submitted"
-msgstr "Submitted"
-
+msgstr "제출됨"
 
 #: data/scripts/timonde_common.py:1508
 msgid ""
@@ -2162,25 +2155,21 @@ msgid ""
 "\n"
 "<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
 msgstr ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"TiMonde는 <b>/</b> 구분 기호가 있는 경로 규칙을 사용합니다:\n"
 "\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"• <b>/</b> 또는 <b>(루트)</b> : 방송국을 메뉴 루트에 배치합니다 (그룹 없음).\n"
+"• <b>/가봉</b> 또는 <b>가봉</b> : 방송국을 « 가봉 » 그룹에 배치합니다.\n"
+"• <b>/프랑스/브르타뉴</b> : « 프랑스 » 아래의 « 브르타뉴 » 하위 그룹에 배치합니다.\n"
 "\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-
+"<i>그룹 및 하위 그룹이 아직 없는 경우 자동으로 생성됩니다.</i>"
 
 #: data/scripts/timonde_settings.py:562
 msgid "TiMonde version"
-msgstr "TiMonde version"
-
+msgstr "TiMonde 버전"
 
 #: src/i18n.rs:217
 msgid "[Ephemeral]"
-msgstr "[Ephemeral]"
+msgstr "[임시 탐색]"
 
 
 #: data/scripts/browse_bouquets.py:1488

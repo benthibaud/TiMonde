@@ -2109,47 +2109,40 @@ msgstr "{count}টি স্ট্রিম পাওয়া গেছে। �
 msgid "— Separator —"
 msgstr "— Separator —"
 
-
 #: data/scripts/reorder_groups.py:111
 msgid ""
 "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
 "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
 "• Use <b>Move to...</b> to organize stations into another folder.</small>"
 msgstr ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-
+"<small>• সাবগ্রুপ এবং স্টেশন দেখতে ফোল্ডার <b>[▶]</b> প্রসারিত করুন।\n"
+"• পুনর্বিন্যাস করতে <b>উপরে / নিচে সরান</b> অথবা টেনে আনুন।\n"
+"• স্টেশন অন্য ফোল্ডারে নিতে <b>এখানে সরান...</b> ব্যবহার করুন।</small>"
 
 #: data/scripts/timonde_common.py:1825
 msgid "Edit station"
-msgstr "Edit station"
-
+msgstr "স্টেশন সম্পাদনা করুন"
 
 #: data/scripts/timonde_settings.py:563
 msgid "Installed binary:"
-msgstr "Installed binary:"
+msgstr "ইনস্টল করা বাইনারি ফাইল:"
 
 
 #: data/scripts/browse_bouquets.py:1337
 msgid "National Radios"
 msgstr "National Radios"
 
-
 #: data/scripts/timonde_common.py:1882
 msgid "Open editor to update this station and its country"
-msgstr "Open editor to update this station and its country"
-
+msgstr "এই স্টেশন এবং এর দেশ আপডেট করতে সম্পাদক খুলুন"
 
 #: data/scripts/reorder_groups.py:792
 msgid "Station deleted:"
-msgstr "Station deleted:"
-
+msgstr "স্টেশন মুছে ফেলা হয়েছে:"
 
 #: data/scripts/timonde_common.py:1927
 msgid "Submitted"
-msgstr "Submitted"
-
+msgstr "জমা দেওয়া হয়েছে"
 
 #: data/scripts/timonde_common.py:1508
 msgid ""
@@ -2163,25 +2156,20 @@ msgid ""
 "\n"
 "<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
 msgstr ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"TiMonde <b>/</b> বিভাজক দিয়ে পাথ নিয়ম ব্যবহার করে:\n"
 "\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"• <b>/</b> বা <b>(রুট)</b> : স্টেশনটিকে মেনুর মূলে রাখে (গ্রুপ ছাড়া)।\n"
+"• <b>/গ্যাবন</b> বা <b>গ্যাবন</b> : স্টেশনটিকে « গ্যাবন » গ্রুপে রাখে।\n"
 "\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-
+"<i>গ্রুপ না থাকলে স্বয়ংক্রিয়ভাবে তৈরি হয়।</i>"
 
 #: data/scripts/timonde_settings.py:562
 msgid "TiMonde version"
-msgstr "TiMonde version"
-
+msgstr "TiMonde সংস্করণ"
 
 #: src/i18n.rs:217
 msgid "[Ephemeral]"
-msgstr "[Ephemeral]"
+msgstr "[সাময়িক]"
 
 
 #: data/scripts/browse_bouquets.py:1488

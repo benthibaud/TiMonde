@@ -2103,47 +2103,40 @@ msgstr "{count} ዥረቶች ተገኝተዋል። የሚፈለገውን ዥረ�
 msgid "— Separator —"
 msgstr "— Separator —"
 
-
 #: data/scripts/reorder_groups.py:111
 msgid ""
 "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
 "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
 "• Use <b>Move to...</b> to organize stations into another folder.</small>"
 msgstr ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-
+"<small>• ንዑስ ቡድኖችን እና ጣቢያዎችን ለማሰስ አቃፊዎችን <b>[▶]</b> ዘርጋ።\n"
+"• እንደገና ለማስተካከል <b>ወደ ላይ / ወደ ታች ውሰድ</b> ወይም ጎትተህ ጣል ተጠቀም።\n"
+"• ጣቢያዎችን ወደ ሌላ አቃፊ ለማደራጀት <b>ወደ... ውሰድ</b> ተጠቀም።</small>"
 
 #: data/scripts/timonde_common.py:1825
 msgid "Edit station"
-msgstr "Edit station"
-
+msgstr "ጣቢያውን ያርትዑ"
 
 #: data/scripts/timonde_settings.py:563
 msgid "Installed binary:"
-msgstr "Installed binary:"
+msgstr "የተጫነ ሁለትዮሽ ፋይል፦"
 
 
 #: data/scripts/browse_bouquets.py:1337
 msgid "National Radios"
 msgstr "National Radios"
 
-
 #: data/scripts/timonde_common.py:1882
 msgid "Open editor to update this station and its country"
-msgstr "Open editor to update this station and its country"
-
+msgstr "ይህን ጣቢያ እና ሀገሩን ለማዘመን አርታዒውን ይክፈቱ"
 
 #: data/scripts/reorder_groups.py:792
 msgid "Station deleted:"
-msgstr "Station deleted:"
-
+msgstr "ጣቢያው ተሰርዟል፦"
 
 #: data/scripts/timonde_common.py:1927
 msgid "Submitted"
-msgstr "Submitted"
-
+msgstr "ገብቷል"
 
 #: data/scripts/timonde_common.py:1508
 msgid ""
@@ -2157,25 +2150,20 @@ msgid ""
 "\n"
 "<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
 msgstr ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"TiMonde የ <b>/</b> መለያያ የመንገድ ደንቦችን ይጠቀማል፦\n"
 "\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"• <b>/</b> ወይም <b>(ስር)</b> ፦ ጣቢያውን በምናሌው ስር ያስቀምጣል (ያለ ቡድን)።\n"
+"• <b>/ጋቦን</b> ወይም <b>ጋቦን</b> ፦ ጣቢያውን በ « ጋቦን » ቡድን ውስጥ ያስቀምጣል።\n"
 "\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-
+"<i>ቡድኖች አስቀድመው ካልነበሩ በራስ-ሰр ይፈጠራሉ።</i>"
 
 #: data/scripts/timonde_settings.py:562
 msgid "TiMonde version"
-msgstr "TiMonde version"
-
+msgstr "የ TiMonde ስሪት"
 
 #: src/i18n.rs:217
 msgid "[Ephemeral]"
-msgstr "[Ephemeral]"
+msgstr "[ጊዜያዊ]"
 
 
 #: data/scripts/browse_bouquets.py:1488

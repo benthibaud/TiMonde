@@ -2114,47 +2114,40 @@ msgstr "Našlo sa {count} streamov. Vyberte požadovaný stream a potvrďte."
 msgid "— Separator —"
 msgstr "— Separator —"
 
-
 #: data/scripts/reorder_groups.py:111
 msgid ""
 "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
 "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
 "• Use <b>Move to...</b> to organize stations into another folder.</small>"
 msgstr ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-
+"<small>• Rozbaľte priečinky <b>[▶]</b> na preskúmanie podskupín a staníc.\n"
+"• Použite <b>Hore / Dole</b> alebo presunutie myšou na zmenu poradia.\n"
+"• Použite <b>Presunúť do...</b> na usporiadanie staníc do iného priečinka.</small>"
 
 #: data/scripts/timonde_common.py:1825
 msgid "Edit station"
-msgstr "Edit station"
-
+msgstr "Upraviť stanicu"
 
 #: data/scripts/timonde_settings.py:563
 msgid "Installed binary:"
-msgstr "Installed binary:"
+msgstr "Nainštalovaný binárny súbor:"
 
 
 #: data/scripts/browse_bouquets.py:1337
 msgid "National Radios"
 msgstr "National Radios"
 
-
 #: data/scripts/timonde_common.py:1882
 msgid "Open editor to update this station and its country"
-msgstr "Open editor to update this station and its country"
-
+msgstr "Otvoriť editor na aktualizáciu tejto stanice a jej krajiny"
 
 #: data/scripts/reorder_groups.py:792
 msgid "Station deleted:"
-msgstr "Station deleted:"
-
+msgstr "Stanica zmazaná:"
 
 #: data/scripts/timonde_common.py:1927
 msgid "Submitted"
-msgstr "Submitted"
-
+msgstr "Odoslané"
 
 #: data/scripts/timonde_common.py:1508
 msgid ""
@@ -2168,25 +2161,21 @@ msgid ""
 "\n"
 "<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
 msgstr ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"TiMonde používa konvencie ciest s oddeľovačom <b>/</b>:\n"
 "\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"• <b>/</b> alebo <b>(Koreň)</b> : Umiestni stanicu do koreňa ponuky (bez skupiny).\n"
+"• <b>/Gabon</b> alebo <b>Gabon</b> : Umiestni stanicu do skupiny « Gabon ».\n"
+"• <b>/Francúzsko/Bretónsko</b> : Umiestni stanicu do podskupiny « Bretónsko » pod « Francúzsko ».\n"
 "\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-
+"<i>Skupiny a podskupiny sa vytvoria automaticky, ak ešte neexistujú.</i>"
 
 #: data/scripts/timonde_settings.py:562
 msgid "TiMonde version"
-msgstr "TiMonde version"
-
+msgstr "Verzia TiMonde"
 
 #: src/i18n.rs:217
 msgid "[Ephemeral]"
-msgstr "[Ephemeral]"
+msgstr "[Dočasný]"
 
 
 #: data/scripts/browse_bouquets.py:1488

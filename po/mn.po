@@ -2112,47 +2112,40 @@ msgstr "{count} урсгал олдлоо. Хүссэн урсгалаа сон�
 msgid "— Separator —"
 msgstr "— Separator —"
 
-
 #: data/scripts/reorder_groups.py:111
 msgid ""
 "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
 "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
 "• Use <b>Move to...</b> to organize stations into another folder.</small>"
 msgstr ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-
+"<small>• Дэд бүлгүүд болон станцуудыг харахын тулд хавтаснуудыг <b>[▶]</b> дэлгэнэ үү.\n"
+"• Дарааллыг өөрчлөхийн тулд <b>Дээш / Доош</b> эсвэл чирж тавина уу.\n"
+"• Өөр хавтас руу зөөхийн тулд <b>Зөөх...</b> сонголтыг ашиглана уу.</small>"
 
 #: data/scripts/timonde_common.py:1825
 msgid "Edit station"
-msgstr "Edit station"
-
+msgstr "Станц засах"
 
 #: data/scripts/timonde_settings.py:563
 msgid "Installed binary:"
-msgstr "Installed binary:"
+msgstr "Суулгасан хоёртын файл:"
 
 
 #: data/scripts/browse_bouquets.py:1337
 msgid "National Radios"
 msgstr "National Radios"
 
-
 #: data/scripts/timonde_common.py:1882
 msgid "Open editor to update this station and its country"
-msgstr "Open editor to update this station and its country"
-
+msgstr "Энэ станц болон улсыг шинэчлэхийн тулд засварлагчийг нээнэ үү"
 
 #: data/scripts/reorder_groups.py:792
 msgid "Station deleted:"
-msgstr "Station deleted:"
-
+msgstr "Станц устгагдсан:"
 
 #: data/scripts/timonde_common.py:1927
 msgid "Submitted"
-msgstr "Submitted"
-
+msgstr "Илгээсэн"
 
 #: data/scripts/timonde_common.py:1508
 msgid ""
@@ -2166,25 +2159,20 @@ msgid ""
 "\n"
 "<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
 msgstr ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"TiMonde нь <b>/</b> тусгаарлагч бүхий замын дүрмийг ашигладаг:\n"
 "\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"• <b>/</b> эсвэл <b>(Үндэс)</b> : Станцыг цэсийн үндсэнд байрлуулна (бүлэггүй).\n"
+"• <b>/Габон</b> эсвэл <b>Габон</b> : Станцыг « Габон » бүлэгт байрлуулна.\n"
 "\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-
+"<i>Бүлэг байхгүй бол автоматаар үүсгэгдэнэ.</i>"
 
 #: data/scripts/timonde_settings.py:562
 msgid "TiMonde version"
-msgstr "TiMonde version"
-
+msgstr "TiMonde хувилбар"
 
 #: src/i18n.rs:217
 msgid "[Ephemeral]"
-msgstr "[Ephemeral]"
+msgstr "[Түр зуурын]"
 
 
 #: data/scripts/browse_bouquets.py:1488

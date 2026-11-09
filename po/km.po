@@ -2102,47 +2102,40 @@ msgstr "រកឃើញ {count} ស្ទ្រីម។ ជ្រើសរើ�
 msgid "— Separator —"
 msgstr "— Separator —"
 
-
 #: data/scripts/reorder_groups.py:111
 msgid ""
 "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
 "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
 "• Use <b>Move to...</b> to organize stations into another folder.</small>"
 msgstr ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-
+"<small>• ពង្រីកថត <b>[▶]</b> ដើម្បីរុករកក្រុមរងនិងស្ថានីយ។\n"
+"• ប្រើ <b>ផ្លាស់ទីឡើង / ចុះ</b> ឬអូសទម្លាក់ដើម្បីរៀបចំឡើងវិញ។\n"
+"• ប្រើ <b>ផ្លាស់ទីទៅ...</b> ដើម្បីរៀបចំស្ថានីយទៅក្នុងថតផ្សេងទៀត។</small>"
 
 #: data/scripts/timonde_common.py:1825
 msgid "Edit station"
-msgstr "Edit station"
-
+msgstr "កែសម្រួលស្ថានីយ"
 
 #: data/scripts/timonde_settings.py:563
 msgid "Installed binary:"
-msgstr "Installed binary:"
+msgstr "ឯកសារគោលពីរដែលបានដំឡើង៖"
 
 
 #: data/scripts/browse_bouquets.py:1337
 msgid "National Radios"
 msgstr "National Radios"
 
-
 #: data/scripts/timonde_common.py:1882
 msgid "Open editor to update this station and its country"
-msgstr "Open editor to update this station and its country"
-
+msgstr "បើកកម្មវិធីកែសម្រួលដើម្បីធ្វើបច្ចុប្បន្នភាពស្ថានីយនេះនិងប្រទេសរបស់វា"
 
 #: data/scripts/reorder_groups.py:792
 msgid "Station deleted:"
-msgstr "Station deleted:"
-
+msgstr "ស្ថានីយត្រូវបានលុប៖"
 
 #: data/scripts/timonde_common.py:1927
 msgid "Submitted"
-msgstr "Submitted"
-
+msgstr "បានដាក់ស្នើ"
 
 #: data/scripts/timonde_common.py:1508
 msgid ""
@@ -2156,25 +2149,20 @@ msgid ""
 "\n"
 "<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
 msgstr ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
+"TiMonde ប្រើអនុសញ្ញាផ្លូវជាមួយសញ្ញាបំបែក <b>/</b>៖\n"
 "\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+"• <b>/</b> ឬ <b>(Root)</b> ៖ ដាក់ស្ថានីយនៅឫសនៃម៉ឺនុយ (ដោយគ្មានក្រុម)។\n"
+"• <b>/ហ្គាបុង</b> ឬ <b>ហ្គាបុង</b> ៖ ដាក់ស្ថានីយនៅក្នុងក្រុម « ហ្គាបុង »។\n"
 "\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-
+"<i>ក្រុមនិងក្រុមរងត្រូវបានបង្កើតដោយស្វ័យប្រវត្តិប្រសិនបើវាមិនទាន់មាន។</i>"
 
 #: data/scripts/timonde_settings.py:562
 msgid "TiMonde version"
-msgstr "TiMonde version"
-
+msgstr "កំណែ TiMonde"
 
 #: src/i18n.rs:217
 msgid "[Ephemeral]"
-msgstr "[Ephemeral]"
+msgstr "[បណ្ដោះអាសន្ន]"
 
 
 #: data/scripts/browse_bouquets.py:1488
