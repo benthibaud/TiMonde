@@ -638,6 +638,64 @@ def set_window_icon(window, icon_name="timonde_on"):
         pass
 
 
+def setup_window_geometry(window, base_width=920, base_height=620, min_width=750, min_height=480, max_ratio_w=0.90, max_ratio_h=0.85):
+    """
+    Calcule et applique une taille de fenêtre adaptative sans dépréciation GTK 3.22+.
+    S'assure que la fenêtre reste contenue dans l'écran visible de l'utilisateur.
+    """
+    import gi
+    gi.require_version("Gtk", "3.0")
+    from gi.repository import Gtk, Gdk
+
+    geom = None
+    try:
+        display = Gdk.Display.get_default()
+        if display:
+            monitor = display.get_primary_monitor() or (display.get_monitor(0) if display.get_n_monitors() > 0 else None)
+            if monitor:
+                geom = monitor.get_geometry()
+    except Exception:
+        pass
+
+    if geom is None:
+        try:
+            screen = Gdk.Screen.get_default()
+            if screen:
+                geom = screen.get_monitor_geometry(0)
+        except Exception:
+            pass
+
+    target_w, target_h = base_width, base_height
+    if geom:
+        max_w = int(geom.width * max_ratio_w)
+        max_h = int(geom.height * max_ratio_h)
+        target_w = min(target_w, max_w)
+        target_h = min(target_h, max_h)
+
+    window.set_default_size(max(target_w, min_width), max(target_h, min_height))
+    window.set_position(Gtk.WindowPosition.CENTER)
+
+
+def atomic_write_file(path, content, encoding="utf-8"):
+    """
+    Écriture atomique et sûre sur disque selon la norme POSIX.
+    Écrit d'abord dans un fichier temporaire adjacent (.tmp), force la synchronisation
+    physique (flush + fsync), puis renomme de façon atomique via os.replace.
+    """
+    abs_path = os.path.abspath(os.path.expanduser(path))
+    parent_dir = os.path.dirname(abs_path)
+    if parent_dir and not os.path.exists(parent_dir):
+        os.makedirs(parent_dir, exist_ok=True)
+
+    tmp_path = abs_path + ".tmp"
+    with open(tmp_path, "w", encoding=encoding) as f:
+        f.write(content)
+        f.flush()
+        os.fsync(f.fileno())
+
+    os.replace(tmp_path, abs_path)
+
+
 def apply_timonde_menu_css():
     """Injecte la feuille de style GTK3 pour hiérarchiser visuellement l'en-tête 'En écoute'."""
     global _MENU_CSS_APPLIED

@@ -351,7 +351,7 @@ fn main() {
         let cur_st_clock = Arc::clone(&current_station);
         let audio_clock = Arc::clone(&audio);
 
-        std::thread::Builder::new()
+        if let Err(e) = std::thread::Builder::new()
             .name("timonde-clock-tick".to_string())
             .spawn(move || {
                 loop {
@@ -377,7 +377,9 @@ fn main() {
                     }
                 }
             })
-            .expect("Impossible de lancer le ticker d'horloge");
+        {
+            log::error!("Impossible de lancer le ticker d'horloge : {}", e);
+        }
     }
 
     // 9. Boucle d'événements GLib (maintient le processus actif et léger)

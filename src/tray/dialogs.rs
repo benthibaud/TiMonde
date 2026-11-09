@@ -406,7 +406,7 @@ pub fn trigger_settings_dialog(
             Some(p) => p,
             None => {
                 log::error!("Script timonde_settings.py introuvable");
-                crate::radio_browser::notify("TiMonde", crate::i18n::tr("Settings console not found"));
+                crate::radio_browser::notify("TiMonde", &crate::i18n::tr("Settings console not found"));
                 return;
             }
         };

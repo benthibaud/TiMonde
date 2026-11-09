@@ -319,6 +319,33 @@ class TestTiMondeCommon(unittest.TestCase):
         self.assertIsNotNone(row)
         win.destroy()
 
+    def test_atomic_write_file(self):
+        from timonde_common import atomic_write_file
+        import tempfile
+        tmp_target = os.path.join(tempfile.gettempdir(), "timonde_test_atomic.txt")
+        test_content = "Atomicity test for TiMonde"
+        try:
+            atomic_write_file(tmp_target, test_content)
+            self.assertTrue(os.path.exists(tmp_target))
+            self.assertFalse(os.path.exists(tmp_target + ".tmp"))
+            with open(tmp_target, "r", encoding="utf-8") as f:
+                self.assertEqual(f.read(), test_content)
+        finally:
+            if os.path.exists(tmp_target):
+                os.remove(tmp_target)
+
+    def test_setup_window_geometry(self):
+        import gi
+        gi.require_version("Gtk", "3.0")
+        from gi.repository import Gtk
+        from timonde_common import setup_window_geometry
+        win = Gtk.Window()
+        setup_window_geometry(win, base_width=900, base_height=600)
+        w, h = win.get_default_size()
+        self.assertGreaterEqual(w, 750)
+        self.assertGreaterEqual(h, 480)
+        win.destroy()
+
 if __name__ == "__main__":
     unittest.main()
 

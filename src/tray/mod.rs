@@ -150,7 +150,7 @@ impl TiMondeTray {
         let prefix = if is_ephemeral {
             crate::i18n::tr("TiMonde • Ephemeral discovery")
         } else {
-            "TiMonde"
+            "TiMonde".to_string()
         };
         let ephemeral_suffix = if is_ephemeral {
             format!("\n{}", crate::i18n::tr("Ephemeral radio (not saved)."))
@@ -166,7 +166,7 @@ impl TiMondeTray {
         ) {
             let offset_sign = if time_info.offset_hours >= 0.0 { "+" } else { "" };
             crate::radio_browser::notify(
-                prefix,
+                &prefix,
                 &format!(
                     "{}\n{} • {} (UTC{}{:.0}h){}",
                     station_name,
@@ -179,7 +179,7 @@ impl TiMondeTray {
             );
         } else if is_ephemeral {
             crate::radio_browser::notify(
-                prefix,
+                &prefix,
                 &format!("{}{}", station_name, ephemeral_suffix),
             );
         }
@@ -206,7 +206,7 @@ impl TiMondeTray {
             }
             if let Err(e) = Self::get_or_create_engine(&audio, &current_volume, &current_title, tray_notifier) {
                 error!("{}", e);
-                notify("TiMonde", crate::i18n::tr("Unable to initialize audio"));
+                notify("TiMonde", &crate::i18n::tr("Unable to initialize audio"));
                 return;
             }
             {
@@ -442,7 +442,7 @@ impl TiMondeTray {
             None => {
                 crate::radio_browser::notify(
                     "TiMonde",
-                    crate::i18n::tr("Unable to find a station in the bouquets catalog."),
+                    &crate::i18n::tr("Unable to find a station in the bouquets catalog."),
                 );
                 return;
             }
@@ -457,7 +457,7 @@ impl TiMondeTray {
         let station = match station_opt {
             Some(s) => s,
             None => {
-                crate::radio_browser::notify("TiMonde", crate::i18n::tr("No radio is currently playing."));
+                crate::radio_browser::notify("TiMonde", &crate::i18n::tr("No radio is currently playing."));
                 return;
             }
         };
@@ -613,7 +613,7 @@ impl TiMondeTray {
                     drop(guard);
 
                     Self::stop_and_trim_flow(&audio, &current_station, &current_title);
-                    notify("TiMonde", crate::i18n::tr("Sleep timer: stopping radio."));
+                    notify("TiMonde", &crate::i18n::tr("Sleep timer: stopping radio."));
                     Self::request_tray_refresh(&tray_handle);
                 }
             }
@@ -624,7 +624,7 @@ impl TiMondeTray {
     pub fn cancel_sleep_timer(&mut self) {
         self.sleep_generation.fetch_add(1, Ordering::SeqCst);
         *self.sleep_timer.safe_lock() = None;
-        notify("TiMonde", crate::i18n::tr("Sleep timer cancelled."));
+        notify("TiMonde", &crate::i18n::tr("Sleep timer cancelled."));
     }
 
     /// Copie discrètement un texte (ex: titre musical en cours) dans le presse-papier du système

@@ -38,6 +38,8 @@ from timonde_common import (
     status_markup,
     normalize_group_path,
     TIMONDE_VERSION,
+    setup_window_geometry,
+    atomic_write_file,
 )
 from reorder_groups import ReorderWindow, ReorderWidget
 from browse_bouquets import DiscoverRadiosViews, parse_bouquets_xml
@@ -74,8 +76,7 @@ def set_autostart_active(active):
                 "StartupNotify=false\n"
                 "X-GNOME-Autostart-enabled=true\n"
             )
-            with open(AUTOSTART_PATH, "w", encoding="utf-8") as f:
-                f.write(content)
+            atomic_write_file(AUTOSTART_PATH, content)
         else:
             if os.path.exists(AUTOSTART_PATH):
                 os.remove(AUTOSTART_PATH)
@@ -227,16 +228,7 @@ def add_stations_to_bookmarks_xml(path, stations_list, default_group="Mes Radios
 class SettingsWindow(Gtk.Window):
     def __init__(self, bookmarks_path=None):
         super().__init__(title=_("Settings & Control TiMonde"))
-        screen = Gdk.Screen.get_default()
-        target_w, target_h = 960, 640
-        if screen:
-            geom = screen.get_monitor_geometry(screen.get_primary_monitor() or 0)
-            max_w = int(geom.width * 0.90)
-            max_h = int(geom.height * 0.85)
-            target_w = min(target_w, max_w)
-            target_h = min(target_h, max_h)
-        self.set_default_size(max(target_w, 750), max(target_h, 480))
-        self.set_position(Gtk.WindowPosition.CENTER)
+        setup_window_geometry(self, base_width=960, base_height=640, min_width=750, min_height=480)
         self.set_border_width(10)
 
         self.bookmarks_path = bookmarks_path or DEFAULT_BOOKMARKS_PATH

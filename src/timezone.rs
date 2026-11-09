@@ -22,12 +22,12 @@ pub struct CountryTimeInfo {
     pub minute: u32,
     pub formatted_time: String,
     pub icon: &'static str,
-    pub period_label: &'static str,
+    pub period_label: String,
     pub offset_hours: f32,
     pub user_diff_hours: i32,
     pub user_diff_label: String,
     pub day_diff: i32,
-    pub day_diff_label: &'static str,
+    pub day_diff_label: String,
 }
 
 impl CountryTimeInfo {
@@ -829,9 +829,9 @@ pub fn get_local_time_for_station(
     let day_diff_label = match day_diff {
         1 => crate::i18n::tr("Tomorrow"),
         -1 => crate::i18n::tr("Yesterday"),
-        d if d > 1 => "+jours",
-        d if d < -1 => "-jours",
-        _ => "",
+        d if d > 1 => "+jours".to_string(),
+        d if d < -1 => "-jours".to_string(),
+        _ => String::new(),
     };
 
     Some(CountryTimeInfo {

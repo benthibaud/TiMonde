@@ -40,6 +40,7 @@ from timonde_common import (
     apply_timonde_app_css,
     status_markup,
     prompt_text_dialog,
+    find_timonde_binary,
 )
 try:
     from edit_station import EditStationWindow
@@ -125,7 +126,6 @@ class ReorderWidget(Gtk.Box):
         # 5: font_weight (int Pango.Weight)
         self.store = Gtk.TreeStore(str, str, str, object, str, int)
         self.treeview = Gtk.TreeView(model=self.store)
-        self.treeview.set_rules_hint(True)
         self.treeview.set_reorderable(True)
         self.treeview.connect("row-activated", self.on_row_activated)
         self.treeview.connect("button-press-event", self.on_treeview_button_press)
@@ -1359,16 +1359,20 @@ class ReorderWidget(Gtk.Box):
                     path += ".csv"
                 try:
                     self.data = self.serialize_tree()
-                    import csv
-                    with open(path, "w", encoding="utf-8", newline="") as f:
-                        writer = csv.writer(f)
-                        writer.writerow(["Group", "Name", "URL", "Country", "Timezone"])
-                        for g in self.data:
-                            grp_name = g.get("name", "")
-                            for s in g.get("stations", []):
-                                if not self.is_item_separator(s):
-                                    writer.writerow([grp_name, s.get("name", ""), s.get("url", ""), s.get("country", ""), s.get("timezone", "")])
-                    self.show_feedback(f"{_('CSV export successful:')} {os.path.basename(path)}")
+                    bin_path = find_timonde_binary() or "timonde"
+                    payload = json.dumps(self.data)
+                    import subprocess
+                    proc = subprocess.run(
+                        [bin_path, "--export-csv", path, "--from-json", "-"],
+                        input=payload,
+                        text=True,
+                        capture_output=True,
+                    )
+                    if proc.returncode == 0:
+                        self.show_feedback(f"{_('CSV export successful:')} {os.path.basename(path)}")
+                    else:
+                        err = proc.stderr.strip() or f"Code {proc.returncode}"
+                        self.show_feedback(f"{_('Export error:')} {err}", is_success=False)
                 except Exception as e:
                     self.show_feedback(f"{_('Export error:')} {e}", is_success=False)
 

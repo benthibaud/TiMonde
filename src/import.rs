@@ -270,13 +270,16 @@ pub fn parse_csv_entries(content: &str) -> Vec<(Option<String>, Station)> {
                 list.push((group_name, Station::new(&cols[1], &cols[2])));
             }
         } else if cols.len() >= 4 && (cols[2].starts_with("http://") || cols[2].starts_with("https://")) {
-            // Groupe, Nom, URL, Pays
+            // Groupe, Nom, URL, Pays [, Fuseau]
             let group_name = if cols[0].is_empty() { None } else { Some(cols[0].clone()) };
-            let st = if !cols[3].is_empty() {
+            let mut st = if !cols[3].is_empty() {
                 Station::with_country(&cols[1], &cols[2], &cols[3])
             } else {
                 Station::new(&cols[1], &cols[2])
             };
+            if cols.len() >= 5 && !cols[4].trim().is_empty() {
+                st.timezone = Some(cols[4].trim().to_string());
+            }
             list.push((group_name, st));
         }
     }
@@ -434,7 +437,7 @@ fn escape_csv(field: &str) -> String {
 pub fn export_to_csv(root: &Group, file_path: &Path) -> Result<usize, String> {
     let mut lines = Vec::new();
     lines.push("# Export des favoris TiMonde".to_string());
-    lines.push("Groupe,Nom,URL,Pays".to_string());
+    lines.push("Group,Name,URL,Country,Timezone".to_string());
 
     let mut count = 0;
 
@@ -445,7 +448,8 @@ pub fn export_to_csv(root: &Group, file_path: &Path) -> Result<usize, String> {
                 let escaped_name = escape_csv(&s.name);
                 let escaped_url = escape_csv(&s.url);
                 let escaped_country = escape_csv(s.country.as_deref().unwrap_or(""));
-                lines.push(format!("{},{},{},{}", escaped_group, escaped_name, escaped_url, escaped_country));
+                let escaped_tz = escape_csv(s.timezone.as_deref().unwrap_or(""));
+                lines.push(format!("{},{},{},{},{}", escaped_group, escaped_name, escaped_url, escaped_country, escaped_tz));
                 *count += 1;
             }
         }
@@ -467,7 +471,8 @@ pub fn export_to_csv(root: &Group, file_path: &Path) -> Result<usize, String> {
             let escaped_name = escape_csv(&s.name);
             let escaped_url = escape_csv(&s.url);
             let escaped_country = escape_csv(s.country.as_deref().unwrap_or(""));
-            lines.push(format!(",{},{},{}", escaped_name, escaped_url, escaped_country));
+            let escaped_tz = escape_csv(s.timezone.as_deref().unwrap_or(""));
+            lines.push(format!(",{},{},{},{}", escaped_name, escaped_url, escaped_country, escaped_tz));
             count += 1;
         }
     }
@@ -479,16 +484,29 @@ pub fn export_to_csv(root: &Group, file_path: &Path) -> Result<usize, String> {
         }
     }
 
-    let content = lines.join("
-") + "
-";
+    let content = lines.join("\n") + "\n";
     if let Some(parent) = file_path.parent() {
         if !parent.as_os_str().is_empty() {
             let _ = std::fs::create_dir_all(parent);
         }
     }
-    std::fs::write(file_path, content)
-        .map_err(|e| format!("Impossible d'écrire le fichier CSV {:?} : {}", file_path, e))?;
+
+    // Écriture atomique POSIX (fichier .tmp adjacent, flush, sync_all, rename)
+    let tmp_path = file_path.with_extension("csv.tmp");
+    {
+        use std::io::Write;
+        let file = std::fs::File::create(&tmp_path)
+            .map_err(|e| format!("Impossible de créer le fichier temporaire {:?} : {}", tmp_path, e))?;
+        let mut writer = std::io::BufWriter::new(file);
+        writer.write_all(content.as_bytes())
+            .map_err(|e| format!("Erreur écriture CSV : {}", e))?;
+        writer.flush()
+            .map_err(|e| format!("Erreur flush CSV : {}", e))?;
+        writer.get_ref().sync_all()
+            .map_err(|e| format!("Erreur sync CSV : {}", e))?;
+    }
+    std::fs::rename(&tmp_path, file_path)
+        .map_err(|e| format!("Impossible de finaliser le fichier CSV {:?} : {}", file_path, e))?;
 
     Ok(count)
 }
@@ -835,7 +853,9 @@ FIP,https://icecast.radiofrance.fr/fip-hifi.aac,FR";
     fn test_export_and_reimport_csv() {
         let mut root = Group::new("root");
         let mut g = Group::new("Rock");
-        g.stations.push(Station::with_country("Led Zep Radio", "https://led.example/stream", "UK"));
+        let mut st = Station::with_country("Led Zep Radio", "https://led.example/stream", "GB");
+        st.timezone = Some("Europe/London".to_string());
+        g.stations.push(st);
         root.subgroups.push(g);
 
         let temp_file = std::env::temp_dir().join("test_export.csv");
@@ -848,7 +868,8 @@ FIP,https://icecast.radiofrance.fr/fip-hifi.aac,FR";
         assert_eq!(imported_root.subgroups.len(), 1);
         assert_eq!(imported_root.subgroups[0].name, "Rock");
         assert_eq!(imported_root.subgroups[0].stations[0].name, "Led Zep Radio");
-        assert_eq!(imported_root.subgroups[0].stations[0].country.as_deref(), Some("UK"));
+        assert_eq!(imported_root.subgroups[0].stations[0].country.as_deref(), Some("GB"));
+        assert_eq!(imported_root.subgroups[0].stations[0].timezone.as_deref(), Some("Europe/London"));
 
         let _ = std::fs::remove_file(temp_file);
     }

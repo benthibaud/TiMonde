@@ -235,24 +235,63 @@ pub fn handle_cli(args: &[String]) -> bool {
                 true
             }
             "-e" | "--export-csv" => {
-                let out_path = if args.len() >= 3 {
-                    PathBuf::from(&args[2])
-                } else {
-                    PathBuf::from("radios_timonde.csv")
-                };
+                let mut out_path = PathBuf::from("radios_timonde.csv");
+                let mut json_source: Option<String> = None;
 
-                let bookmarks_path = find_bookmarks_path();
-                let root = if bookmarks_path.exists() {
-                    match bookmarks::load_bookmarks(&bookmarks_path) {
+                let mut i = 2;
+                while i < args.len() {
+                    match args[i].as_str() {
+                        "--from-json" if i + 1 < args.len() => {
+                            json_source = Some(args[i + 1].clone());
+                            i += 2;
+                        }
+                        other if !other.starts_with('-') && out_path.as_os_str() == "radios_timonde.csv" => {
+                            out_path = PathBuf::from(other);
+                            i += 1;
+                        }
+                        _ => { i += 1; }
+                    }
+                }
+
+                let root = if let Some(src) = json_source {
+                    let json_str = if src == "-" {
+                        use std::io::Read;
+                        let mut buffer = String::new();
+                        if let Err(e) = std::io::stdin().read_to_string(&mut buffer) {
+                            eprintln!("Erreur lecture stdin : {}", e);
+                            std::process::exit(1);
+                        }
+                        buffer
+                    } else {
+                        match std::fs::read_to_string(&src) {
+                            Ok(c) => c,
+                            Err(e) => {
+                                eprintln!("Erreur lecture JSON {:?} : {}", src, e);
+                                std::process::exit(1);
+                            }
+                        }
+                    };
+                    match bookmarks::rebuild_root_from_json(&json_str) {
                         Ok(r) => r,
                         Err(e) => {
-                            eprintln!("Erreur lecture bookmarks ({:?}) : {}", bookmarks_path, e);
+                            eprintln!("Erreur reconstruction de l'arbre depuis le JSON : {}", e);
                             std::process::exit(1);
                         }
                     }
                 } else {
-                    eprintln!("Aucun fichier de favoris trouvé à l'emplacement {:?}", bookmarks_path);
-                    std::process::exit(1);
+                    let bookmarks_path = find_bookmarks_path();
+                    if bookmarks_path.exists() {
+                        match bookmarks::load_bookmarks(&bookmarks_path) {
+                            Ok(r) => r,
+                            Err(e) => {
+                                eprintln!("Erreur lecture bookmarks ({:?}) : {}", bookmarks_path, e);
+                                std::process::exit(1);
+                            }
+                        }
+                    } else {
+                        eprintln!("Aucun fichier de favoris trouvé à l'emplacement {:?}", bookmarks_path);
+                        std::process::exit(1);
+                    }
                 };
 
                 match import::export_to_csv(&root, &out_path) {

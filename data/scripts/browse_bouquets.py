@@ -51,6 +51,7 @@ from timonde_common import (
     ContributeStationDialog,
     status_markup,
     apply_timonde_app_css,
+    setup_window_geometry,
 )
 
 from timonde_world_data import (
@@ -2104,16 +2105,7 @@ class DiscoverRadiosWindow(Gtk.Window):
             return
 
         super().__init__(title=_("Discover & Import stations (TiMonde)"))
-        screen = Gdk.Screen.get_default()
-        target_w, target_h = 960, 640
-        if screen:
-            geom = screen.get_monitor_geometry(screen.get_primary_monitor() or 0)
-            max_w = int(geom.width * 0.90)
-            max_h = int(geom.height * 0.85)
-            target_w = min(target_w, max_w)
-            target_h = min(target_h, max_h)
-        self.set_default_size(max(target_w, 750), max(target_h, 480))
-        self.set_position(Gtk.WindowPosition.CENTER)
+        setup_window_geometry(self, base_width=960, base_height=640, min_width=750, min_height=480)
         self.set_border_width(10)
 
         set_window_icon(self)

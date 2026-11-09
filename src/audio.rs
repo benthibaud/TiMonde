@@ -20,6 +20,7 @@ pub enum AudioError {
     Init(gstreamer::glib::Error),
     Build(String),
     StateChange(String),
+    ThreadSpawn(std::io::Error),
 }
 
 impl std::fmt::Display for AudioError {
@@ -28,6 +29,7 @@ impl std::fmt::Display for AudioError {
             Self::Init(e) => write!(f, "Erreur initialisation GStreamer : {}", e),
             Self::Build(msg) => write!(f, "Erreur création pipeline : {}", msg),
             Self::StateChange(msg) => write!(f, "Erreur changement d'état : {}", msg),
+            Self::ThreadSpawn(e) => write!(f, "Erreur création du thread bus : {}", e),
         }
     }
 }
@@ -203,7 +205,7 @@ impl AudioEngine {
                         }
                     }
                 })
-                .expect("Impossible de lancer le thread bus GStreamer");
+                .map_err(AudioError::ThreadSpawn)?;
         }
 
         Ok(Self {

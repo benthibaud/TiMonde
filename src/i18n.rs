@@ -4,7 +4,7 @@ use std::io::Read;
 use std::path::{Path, PathBuf};
 use std::sync::{OnceLock, RwLock};
 
-static TRANSLATIONS: OnceLock<RwLock<HashMap<String, &'static str>>> = OnceLock::new();
+static TRANSLATIONS: OnceLock<RwLock<HashMap<String, String>>> = OnceLock::new();
 static CURRENT_LANG: OnceLock<RwLock<String>> = OnceLock::new();
 
 /// Normalise le code langue système en identifiant POSIX/Gettext
@@ -42,7 +42,7 @@ fn detect_system_language() -> String {
 }
 
 /// Tente de charger le fichier binaire Gettext .mo correspondant à la langue
-fn load_mo_file(lang: &str) -> Option<HashMap<String, &'static str>> {
+fn load_mo_file(lang: &str) -> Option<HashMap<String, String>> {
     if lang == "en" || lang.is_empty() {
         return None;
     }
@@ -81,7 +81,7 @@ fn read_u32_le(buf: &[u8], offset: usize) -> Option<u32> {
 }
 
 /// Analyseur du format binaire standard GNU Gettext (.mo)
-fn parse_mo_file(path: &Path) -> Result<HashMap<String, &'static str>, String> {
+fn parse_mo_file(path: &Path) -> Result<HashMap<String, String>, String> {
     let mut file = File::open(path).map_err(|e| e.to_string())?;
     let mut buffer = Vec::new();
     file.read_to_end(&mut buffer).map_err(|e| e.to_string())?;
@@ -144,8 +144,7 @@ fn parse_mo_file(path: &Path) -> Result<HashMap<String, &'static str>, String> {
                 std::str::from_utf8(&buffer[trans_off..trans_off + trans_len]),
             ) {
                 if !orig_str.is_empty() && !trans_str.is_empty() {
-                    let leaked: &'static str = Box::leak(trans_str.to_string().into_boxed_str());
-                    map.insert(orig_str.to_string(), leaked);
+                    map.insert(orig_str.to_string(), trans_str.to_string());
                 }
             }
         }
@@ -193,16 +192,16 @@ pub fn set_language(lang_code: &str) {
     }
 }
 
-/// Traduit un texte pivot anglais vers la langue active (zéro allocation à l'appel)
-pub fn tr(msg: &'static str) -> &'static str {
+/// Traduit un texte pivot anglais vers la langue active
+pub fn tr(msg: &str) -> String {
     if let Some(lock) = TRANSLATIONS.get() {
         if let Ok(map) = lock.read() {
-            if let Some(&trans) = map.get(msg) {
-                return trans;
+            if let Some(trans) = map.get(msg) {
+                return trans.clone();
             }
         }
     }
-    msg
+    msg.to_string()
 }
 
 /// Libellé dynamique pour le lancement d'une station
@@ -214,14 +213,22 @@ pub fn play_station_label(station_name: &str) -> String {
 /// Libellé dynamique pour l'arrêt d'une station
 pub fn stop_station_label(station_name: &str, is_ephemeral: bool) -> String {
     let prefix = tr("Stop");
-    let tag = if is_ephemeral { tr(" [Ephemeral]") } else { "" };
+    let tag = if is_ephemeral {
+        format!(" {}", tr("[Ephemeral]"))
+    } else {
+        String::new()
+    };
     format!("{} : « {} »{}", prefix, station_name, tag)
 }
 
 /// Libellé dynamique pour l'état de connexion d'une station
 pub fn connecting_station_label(station_name: &str, is_ephemeral: bool) -> String {
     let prefix = tr("Connecting...");
-    let tag = if is_ephemeral { tr(" [Ephemeral]") } else { "" };
+    let tag = if is_ephemeral {
+        format!(" {}", tr("[Ephemeral]"))
+    } else {
+        String::new()
+    };
     format!("{} : « {} »{}", prefix, station_name, tag)
 }
 
