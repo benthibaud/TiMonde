@@ -22,6 +22,16 @@ try:
 except ImportError:
     def _(s): return s
 
+try:
+    from timonde_common import set_container_margins
+except ImportError:
+    def set_container_margins(w, margin=10):
+        if hasattr(w, "set_margin_top"):
+            w.set_margin_top(margin)
+            w.set_margin_bottom(margin)
+            w.set_margin_start(margin)
+            w.set_margin_end(margin)
+
 
 def is_gnome_shell():
     """Détecte formellement si la session graphique active est GNOME Shell."""
@@ -110,7 +120,7 @@ class GnomeHelperDialog:
     def __init__(self):
         import gi
         gi.require_version("Gtk", "3.0")
-        from gi.repository import Gtk, Gdk
+        from gi.repository import Gtk
 
         self.Gtk = Gtk
         self.success = False
@@ -118,7 +128,6 @@ class GnomeHelperDialog:
         self.win = Gtk.Window(title=_("TiMonde — GNOME Desktop Integration"))
         self.win.set_position(Gtk.WindowPosition.CENTER)
         self.win.set_default_size(480, 220)
-        self.win.set_border_width(16)
         self.win.set_resizable(False)
 
         # Icône de fenêtre
@@ -131,6 +140,7 @@ class GnomeHelperDialog:
                 break
 
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=14)
+        set_container_margins(vbox, margin=16)
         self.win.add(vbox)
 
         # En-tête avec titre et icône

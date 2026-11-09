@@ -175,8 +175,8 @@ pub fn init_locale() {
     }
 }
 
-/// Permet de forcer une langue (pour tests ou sélecteur)
-#[allow(dead_code)]
+/// Permet de forcer une langue (utilisé dans les bancs d'essais i18n)
+#[cfg(test)]
 pub fn set_language(lang_code: &str) {
     let lang = normalize_lang_code(lang_code);
     let map = load_mo_file(&lang).unwrap_or_default();

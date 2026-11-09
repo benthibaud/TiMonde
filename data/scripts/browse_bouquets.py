@@ -56,6 +56,7 @@ from timonde_common import (
     COUNTRIES_REGISTRY,
     normalize_lookup,
     resolve_country_code,
+    set_container_margins,
 )
 
 from timonde_world_data import (
@@ -71,8 +72,6 @@ import subprocess
 import glob
 import shutil
 import xml.etree.ElementTree as ET
-import re
-import csv
 from concurrent.futures import ThreadPoolExecutor
 
 import gi
@@ -459,7 +458,7 @@ class DiscoverRadiosViews:
     # -------------------------------------------------------------------------
     def build_view_search(self):
         tab_rb = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-        tab_rb.set_border_width(8)
+        set_container_margins(tab_rb, margin=8)
 
         # 1. En-tête explicatif Radio-Browser
         info_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
@@ -696,7 +695,7 @@ class DiscoverRadiosViews:
     # -------------------------------------------------------------------------
     def build_view_bouquets(self):
         tab_bouquets = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-        tab_bouquets.set_border_width(8)
+        set_container_margins(tab_bouquets, margin=8)
 
         # 1. En-tête explicatif Bouquets DAB+
         info_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
@@ -802,7 +801,7 @@ class DiscoverRadiosViews:
 
         # Bannière informative pour pays sans bouquet DAB+ pré-embarqué (Pont Radio-Browser)
         self.banner_no_bouquet = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
-        self.banner_no_bouquet.set_border_width(18)
+        set_container_margins(self.banner_no_bouquet, margin=18)
         self.banner_no_bouquet.set_no_show_all(True)
 
         self.lbl_no_bouquet = Gtk.Label()
@@ -873,7 +872,7 @@ class DiscoverRadiosViews:
     # -------------------------------------------------------------------------
     def build_view_files(self):
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-        box.set_border_width(8)
+        set_container_margins(box, margin=8)
 
         # 1. Rangée supérieure : Sélection et gestion des Exemples Thématiques (Mise en valeur)
         ex_bar = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
@@ -2104,7 +2103,6 @@ class DiscoverRadiosWindow(Gtk.Window):
 
         super().__init__(title=_("Discover & Import stations (TiMonde)"))
         setup_window_geometry(self, base_width=960, base_height=640, min_width=750, min_height=480)
-        self.set_border_width(10)
 
         set_window_icon(self)
         self.connect("destroy", self.on_destroy)
@@ -2125,6 +2123,7 @@ class DiscoverRadiosWindow(Gtk.Window):
         self.view_files = self.views.view_files
 
         main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+        set_container_margins(main_vbox, margin=10)
         self.add(main_vbox)
 
         hcontent = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)

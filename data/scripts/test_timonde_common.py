@@ -346,6 +346,25 @@ class TestTiMondeCommon(unittest.TestCase):
         self.assertGreaterEqual(h, 480)
         win.destroy()
 
+    def test_set_container_margins(self):
+        import gi
+        gi.require_version("Gtk", "3.0")
+        from gi.repository import Gtk
+        from timonde_common import set_container_margins
+        box = Gtk.Box()
+        set_container_margins(box, margin=14)
+        self.assertEqual(box.get_margin_top(), 14)
+        self.assertEqual(box.get_margin_bottom(), 14)
+        self.assertEqual(box.get_margin_start(), 14)
+        self.assertEqual(box.get_margin_end(), 14)
+
+        # Marges asymétriques
+        set_container_margins(box, top=5, bottom=10, start=15, end=20)
+        self.assertEqual(box.get_margin_top(), 5)
+        self.assertEqual(box.get_margin_bottom(), 10)
+        self.assertEqual(box.get_margin_start(), 15)
+        self.assertEqual(box.get_margin_end(), 20)
+
 if __name__ == "__main__":
     unittest.main()
 

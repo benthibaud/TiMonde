@@ -43,8 +43,6 @@ pub struct AudioEngine {
     current_url: Arc<Mutex<Option<String>>>,
     state: Arc<Mutex<PlaybackState>>,
     current_title: Arc<Mutex<Option<String>>>,
-    #[allow(dead_code)]
-    tray_notifier: Option<Arc<dyn Fn() + Send + Sync>>,
 }
 
 impl AudioEngine {
@@ -214,7 +212,6 @@ impl AudioEngine {
             current_url,
             state,
             current_title,
-            tray_notifier,
         })
     }
 

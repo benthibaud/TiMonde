@@ -1028,64 +1028,12 @@ mod tests {
             {
                 "name": "Country/Bluegrass",
                 "stations": [
-                    { "name": "Bluegrass Planet Radio", "url": "http://bluegrass.com/live" }
+                    { "name": "Bluegrass Planet Radio", "url": "http://bluegrass.com/live", "country": "US", "timezone": "America/New_York" }
                 ]
             }
         ]"#;
 
-        #[derive(serde::Deserialize)]
-        #[allow(dead_code)]
-        struct TestStation {
-            name: String,
-            #[serde(default)]
-            url: String,
-            #[serde(default)]
-            country: Option<String>,
-            #[serde(default)]
-            timezone: Option<String>,
-            #[serde(default)]
-            is_separator: bool,
-        }
-        #[derive(serde::Deserialize)]
-        #[allow(dead_code)]
-        struct TestGroup {
-            name: String,
-            #[serde(default)]
-            stations: Vec<TestStation>,
-            #[serde(default)]
-            is_separator: bool,
-        }
-
-        let new_data: Vec<TestGroup> = serde_json::from_str(returned_json).unwrap();
-        let mut old_root = root.clone();
-        let mut new_root = Group::new("root");
-
-        for g_data in new_data {
-            let mut new_stations = Vec::new();
-            for s_data in g_data.stations {
-                let st = if let Some(mut existing) = old_root.remove_station_from_tree(&s_data.url, &s_data.name) {
-                    existing.name = s_data.name;
-                    if !s_data.url.is_empty() {
-                        existing.url = s_data.url;
-                    }
-                    if s_data.country.is_some() {
-                        existing.country = s_data.country;
-                    }
-                    if s_data.timezone.is_some() {
-                        existing.timezone = s_data.timezone;
-                    }
-                    existing
-                } else {
-                    let mut s = Station::new(&s_data.name, &s_data.url);
-                    s.country = s_data.country;
-                    s.timezone = s_data.timezone;
-                    s
-                };
-                new_stations.push(st);
-            }
-            let grp = new_root.get_or_create_subgroup_hierarchy(&g_data.name);
-            grp.stations = new_stations;
-        }
+        let new_root = crate::bookmarks::rebuild_root_from_json(returned_json).unwrap();
 
         // Vérifications de structure
         assert_eq!(new_root.subgroups.len(), 2);

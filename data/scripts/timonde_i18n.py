@@ -7,7 +7,6 @@ incluant la distinction entre Chinois Mandarin (zh_CN) et Cantonais/Traditionnel
 """
 
 import os
-import sys
 import gettext
 
 LOCALE_DIRS = [

@@ -5,7 +5,6 @@ Délègue l'intégralité du référentiel pays et l'inférence temporelle au mo
 """
 
 import re
-import unicodedata
 import sys
 import os
 
@@ -14,7 +13,6 @@ from timonde_common import (
     normalize_lookup,
     resolve_country_code,
     COUNTRIES_REGISTRY,
-    COUNTRIES_DB,
     COUNTRY_ALIASES_MAP,
 )
 

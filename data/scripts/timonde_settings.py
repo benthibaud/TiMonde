@@ -42,8 +42,9 @@ from timonde_common import (
     atomic_write_file,
     call_timonde_mpris,
     find_timonde_binary,
+    set_container_margins,
 )
-from reorder_groups import ReorderWindow, ReorderWidget
+from reorder_groups import ReorderWidget
 from browse_bouquets import DiscoverRadiosViews, parse_bouquets_xml
 from edit_station import EditStationWindow
 
@@ -224,7 +225,6 @@ class SettingsWindow(Gtk.Window):
     def __init__(self, bookmarks_path=None):
         super().__init__(title=_("Settings & Control TiMonde"))
         setup_window_geometry(self, base_width=960, base_height=640, min_width=750, min_height=480)
-        self.set_border_width(10)
 
         self.bookmarks_path = bookmarks_path or DEFAULT_BOOKMARKS_PATH
         self.has_modifications = False
@@ -309,6 +309,7 @@ class SettingsWindow(Gtk.Window):
 
     def setup_ui(self):
         main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+        set_container_margins(main_vbox, margin=10)
         self.add(main_vbox)
 
         # Zone centrale : Volet de navigation (StackSidebar) + Pages (Stack)
@@ -528,7 +529,7 @@ class SettingsWindow(Gtk.Window):
     # -------------------------------------------------------------------------
     def build_section_general(self):
         page = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-        page.set_border_width(8)
+        set_container_margins(page, margin=8)
 
         # 1. Section Options Configurables
         lbl_cfg = Gtk.Label()

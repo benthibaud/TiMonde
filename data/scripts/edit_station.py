@@ -35,11 +35,10 @@ from timonde_common import (
     set_window_icon,
     show_group_naming_help_dialog,
     check_stream_url,
-    lookup_station_by_url,
-    contribute_station_to_radio_browser,
     ContributeStationDialog,
     normalize_lookup,
     resolve_country_code,
+    set_container_margins,
 )
 
 # Sauvegarde impérative des arguments CLI avant que GTK ne supprime --name (mot-clé réservé GTK/X11)
@@ -91,8 +90,7 @@ class EditStationWindow(Gtk.Window):
         super().__init__(title=title)
         self.set_default_size(620, 380)
         self.set_position(Gtk.WindowPosition.CENTER)
-        self.set_border_width(14)
-        
+
         set_window_icon(self)
         if parent_window:
             self.set_transient_for(parent_window)
@@ -106,6 +104,7 @@ class EditStationWindow(Gtk.Window):
         self.preview_player = StreamPreviewPlayer(on_status_changed=self._on_preview_status)
 
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
+        set_container_margins(vbox, margin=14)
         self.add(vbox)
 
         # En-tête informatif

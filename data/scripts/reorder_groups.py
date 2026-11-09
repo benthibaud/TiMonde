@@ -41,6 +41,7 @@ from timonde_common import (
     status_markup,
     prompt_text_dialog,
     find_timonde_binary,
+    set_container_margins,
 )
 try:
     from edit_station import EditStationWindow
@@ -673,7 +674,7 @@ class ReorderWidget(Gtk.Box):
 
         box = dialog.get_content_area()
         box.set_spacing(10)
-        box.set_border_width(12)
+        set_container_margins(box, margin=12)
 
         lbl = Gtk.Label(label="<b>" + _("Name of the new group:") + "</b>")
         lbl.set_use_markup(True)
@@ -1019,7 +1020,7 @@ class ReorderWidget(Gtk.Box):
 
         box = dialog.get_content_area()
         box.set_spacing(10)
-        box.set_border_width(12)
+        set_container_margins(box, margin=12)
 
         lbl = Gtk.Label(label="<b>" + _("Select the target destination:") + "</b>")
         lbl.set_use_markup(True)
@@ -1176,7 +1177,7 @@ class ReorderWidget(Gtk.Box):
         dialog.set_default_size(440, 140)
         box = dialog.get_content_area()
         box.set_spacing(10)
-        box.set_border_width(14)
+        set_container_margins(box, margin=14)
 
         lbl = Gtk.Label(label="<b>" + _("Testing live radio streams...") + "</b>")
         lbl.set_use_markup(True)
@@ -1450,7 +1451,6 @@ class ReorderWindow(Gtk.Window):
         super().__init__(title=_("Organize groups and stations (TiMonde)"))
         self.set_default_size(820, 600)
         self.set_position(Gtk.WindowPosition.CENTER)
-        self.set_border_width(12)
         set_window_icon(self)
         apply_timonde_app_css()
 
@@ -1461,6 +1461,7 @@ class ReorderWindow(Gtk.Window):
             on_save_callback=on_save_callback
         )
         self.reorder_box.host_window = self
+        set_container_margins(self.reorder_box, margin=12)
         self.add(self.reorder_box)
 
         self.connect("destroy", self.on_destroy_window)

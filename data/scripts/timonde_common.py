@@ -746,6 +746,32 @@ def setup_window_geometry(window, base_width=920, base_height=620, min_width=750
     window.set_position(Gtk.WindowPosition.CENTER)
 
 
+def set_container_margins(widget, margin=None, top=None, bottom=None, start=None, end=None):
+    """
+    Applique les marges sur un widget ou conteneur GTK3 selon les standards modernes.
+    Remplace gtk_container_set_border_width() déprécié depuis GTK 3.14.
+    Garantit une adaptabilité RTL/LTR native via set_margin_start / set_margin_end.
+    """
+    if margin is not None:
+        if top is None:
+            top = margin
+        if bottom is None:
+            bottom = margin
+        if start is None:
+            start = margin
+        if end is None:
+            end = margin
+
+    if top is not None and hasattr(widget, "set_margin_top"):
+        widget.set_margin_top(int(top))
+    if bottom is not None and hasattr(widget, "set_margin_bottom"):
+        widget.set_margin_bottom(int(bottom))
+    if start is not None and hasattr(widget, "set_margin_start"):
+        widget.set_margin_start(int(start))
+    if end is not None and hasattr(widget, "set_margin_end"):
+        widget.set_margin_end(int(end))
+
+
 def atomic_write_file(path, content, encoding="utf-8"):
     """
     Écriture atomique et sûre sur disque selon la norme POSIX.
@@ -1516,13 +1542,13 @@ class RepairStreamDialog(_GtkDialogBase):
         self.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
         self.add_button(_("Validate and replace"), Gtk.ResponseType.OK)
         self.set_default_size(720, 420)
-        self.set_border_width(10)
         self.station_name = station_name
         self.country_code = country_code
         self.selected_url = None
 
         content = self.get_content_area()
         content.set_spacing(10)
+        set_container_margins(content, margin=10)
 
         # En-tête explicatif
         url_snippet = (current_url[:65] + "...") if len(current_url) > 65 else current_url
@@ -1644,7 +1670,7 @@ def prompt_text_dialog(parent_window, title: str, label_text: str, default_text:
 
     box = dlg.get_content_area()
     box.set_spacing(10)
-    box.set_border_width(12)
+    set_container_margins(box, margin=12)
 
     lbl = Gtk.Label()
     lbl.set_markup(label_text)
@@ -1697,7 +1723,6 @@ class ContributeStationDialog(_GtkDialogBase):
             modal=True,
         )
         self.set_default_size(580, 360)
-        self.set_border_width(12)
 
         self.station_name = (station_name or "").strip()
         self.current_url = (current_url or "").strip()
@@ -1707,6 +1732,7 @@ class ContributeStationDialog(_GtkDialogBase):
         self.existing_info = None
 
         content = self.get_content_area()
+        set_container_margins(content, margin=12)
         content.set_spacing(10)
 
         # En-tête explicatif

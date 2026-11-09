@@ -5,7 +5,6 @@
 # ==============================================================================
 
 import os
-import sys
 import gi
 
 gi.require_version("GdkPixbuf", "2.0")
