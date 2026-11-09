@@ -218,6 +218,7 @@ fn main() {
 
     let is_ephemeral_play = Arc::clone(&is_ephemeral);
     let is_ephemeral_stop = Arc::clone(&is_ephemeral);
+    let is_ephemeral_preview = Arc::clone(&is_ephemeral);
 
     let on_play = {
         let audio = Arc::clone(&audio);
@@ -245,6 +246,34 @@ fn main() {
                 &tray_handle,
             );
             trigger_for_play();
+        })
+    };
+
+    let on_preview_play = {
+        let audio = Arc::clone(&audio);
+        let current_volume = Arc::clone(&current_volume);
+        let current_station = Arc::clone(&current_station);
+        let current_title = Arc::clone(&current_title);
+        let root_group = Arc::clone(&root_group_clone);
+        let play_generation = Arc::clone(&play_generation);
+        let bpath = bookmarks_path_clone.clone();
+        let tray_handle = Arc::clone(&tray_handle_cell);
+        let trigger_for_preview = Arc::clone(&trigger_tray_update);
+
+        Arc::new(move |station: models::Station| {
+            is_ephemeral_preview.store(true, std::sync::atomic::Ordering::SeqCst);
+            tray::TiMondeTray::play_ephemeral_flow(
+                station,
+                &audio,
+                &current_volume,
+                &current_station,
+                &current_title,
+                &play_generation,
+                &root_group,
+                &bpath,
+                &tray_handle,
+            );
+            trigger_for_preview();
         })
     };
 
@@ -282,6 +311,7 @@ fn main() {
         last_station,
         Arc::clone(&root_group_clone),
         on_play,
+        on_preview_play,
         on_stop,
         on_update,
         on_reload,

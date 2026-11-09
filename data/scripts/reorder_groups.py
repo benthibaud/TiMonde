@@ -1337,7 +1337,7 @@ class ReorderWidget(Gtk.Box):
 
     def on_destroy_window(self, widget=None):
         if hasattr(self, "preview_player") and self.preview_player:
-            self.preview_player.stop()
+            self.preview_player.stop(silent=True, sync=True)
 
     def on_export_csv_clicked(self, widget=None):
         chooser = Gtk.FileChooserDialog(

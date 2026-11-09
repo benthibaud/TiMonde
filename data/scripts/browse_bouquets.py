@@ -2063,7 +2063,7 @@ class DiscoverRadiosViews:
 
     def shutdown(self):
         if hasattr(self, "preview_player") and self.preview_player:
-            self.preview_player.stop()
+            self.preview_player.stop(silent=True, sync=True)
         try:
             self.executor.shutdown(wait=False)
         except Exception:

@@ -237,6 +237,16 @@ impl ksni::Tray for TiMondeTray {
         let mut menu = Vec::new();
         let current_state = self.state();
 
+        // Si le moteur audio existe et est arrêté ou en erreur, l'état courant doit être synchronisé
+        {
+            let audio_guard = self.audio.safe_lock();
+            if audio_guard.is_some() && (current_state == PlaybackState::Stopped || current_state == PlaybackState::Error) {
+                drop(audio_guard);
+                *self.current_station.safe_lock() = None;
+                *self.current_title.safe_lock() = None;
+            }
+        }
+
         // 1. Bouton principal Marche / Arrêt / Connexion en tête du menu
         let is_eph = self.is_ephemeral.load(Ordering::SeqCst);
         let cur_st = self.current_station.safe_lock();
@@ -256,7 +266,7 @@ impl ksni::Tray for TiMondeTray {
                     ..Default::default()
                 }));
             }
-            Some(st) => {
+            Some(st) if current_state == PlaybackState::Playing || self.audio.safe_lock().is_none() => {
                 let label = crate::i18n::stop_station_label(&st.name, is_eph);
                 menu.push(MenuItem::Standard(StandardItem {
                     label,
@@ -269,7 +279,7 @@ impl ksni::Tray for TiMondeTray {
                     ..Default::default()
                 }));
             }
-            None => {
+            _ => {
                 let station_to_turn_on = {
                     let last = self.last_station.safe_lock();
                     if let Some(ref last_st) = *last {

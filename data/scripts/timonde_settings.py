@@ -673,8 +673,10 @@ class SettingsWindow(Gtk.Window):
             if self.reorder_view.flush_pending():
                 self.has_modifications = True
             if hasattr(self.reorder_view, "preview_player") and self.reorder_view.preview_player:
-                self.reorder_view.preview_player.stop(silent=True)
+                self.reorder_view.preview_player.stop(silent=True, sync=True)
         if hasattr(self, "discover_view") and self.discover_view:
+            if hasattr(self.discover_view, "preview_player") and self.discover_view.preview_player:
+                self.discover_view.preview_player.stop(silent=True, sync=True)
             self.discover_view.shutdown()
         # Transmettre le résultat JSON sur stdout à destination de TiMonde en Rust
         output = {"reload": self.has_modifications}

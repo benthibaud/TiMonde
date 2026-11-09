@@ -388,27 +388,39 @@ impl TiMondeTray {
         Self::request_tray_refresh(&self.tray_handle);
     }
 
-    pub fn play_ephemeral_station(&self, station: Station) {
+    /// Lance la lecture d'une station éphémère ou d'une pré-écoute sans écraser last_station ni state.json
+    #[allow(clippy::too_many_arguments)]
+    pub fn play_ephemeral_flow(
+        station: Station,
+        audio: &Arc<Mutex<Option<AudioEngine>>>,
+        current_volume: &Arc<Mutex<f64>>,
+        current_station: &Arc<Mutex<Option<Station>>>,
+        current_title: &Arc<Mutex<Option<String>>>,
+        play_generation: &Arc<AtomicU64>,
+        root_group: &Arc<Mutex<Group>>,
+        _bookmarks_path: &Path,
+        tray_handle: &Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
+    ) {
         let station_name = station.name.clone();
         let raw_url = station.url.clone();
-        info!("Écoute éphémère (découverte) : {} ({})", station_name, raw_url);
-        self.is_ephemeral.store(true, Ordering::SeqCst);
-        *self.current_station.safe_lock() = Some(station.clone());
-        *self.current_title.safe_lock() = None;
+        info!("Écoute éphémère / pré-écoute : {} ({})", station_name, raw_url);
 
-        // Notification explicite informant l'utilisateur que cette radio est temporaire
+        *current_station.safe_lock() = Some(station.clone());
+        *current_title.safe_lock() = None;
+
         let group_name = {
-            let guard = self.root_group.safe_lock();
+            let guard = root_group.safe_lock();
             Self::find_group_name_for_station(&guard, &station.url)
         };
         Self::notify_station_local_time(&station, group_name.as_deref(), true);
 
-        let gen = self.play_generation.fetch_add(1, Ordering::SeqCst) + 1;
-        let handle_cell = Arc::clone(&self.tray_handle);
+        let gen = play_generation.fetch_add(1, Ordering::SeqCst) + 1;
+        let handle_for_init = Arc::clone(tray_handle);
+
         let tray_notifier: Option<Arc<dyn Fn() + Send + Sync>> = {
-            let h = Arc::clone(&self.tray_handle);
+            let handle_cell = Arc::clone(tray_handle);
             Some(Arc::new(move || {
-                Self::request_tray_refresh(&h);
+                Self::request_tray_refresh(&handle_cell);
             }))
         };
 
@@ -416,17 +428,32 @@ impl TiMondeTray {
             raw_url,
             station_name,
             gen,
-            Arc::clone(&self.play_generation),
-            Arc::clone(&self.audio),
-            Arc::clone(&self.current_volume),
-            Arc::clone(&self.current_title),
+            Arc::clone(play_generation),
+            Arc::clone(audio),
+            Arc::clone(current_volume),
+            Arc::clone(current_title),
             tray_notifier,
             move || {
-                Self::request_tray_refresh(&handle_cell);
+                Self::request_tray_refresh(&handle_for_init);
             },
         );
 
-        Self::request_tray_refresh(&self.tray_handle);
+        Self::request_tray_refresh(tray_handle);
+    }
+
+    pub fn play_ephemeral_station(&self, station: Station) {
+        self.is_ephemeral.store(true, Ordering::SeqCst);
+        Self::play_ephemeral_flow(
+            station,
+            &self.audio,
+            &self.current_volume,
+            &self.current_station,
+            &self.current_title,
+            &self.play_generation,
+            &self.root_group,
+            &self.bookmarks_path,
+            &self.tray_handle,
+        );
     }
 
     /// Choisit une station au hasard dans le catalogue mondial et lance sa lecture éphémère
@@ -929,6 +956,63 @@ mod tests {
 
         // Rétablir le français
         crate::i18n::set_language("fr");
+    }
+
+    #[test]
+    fn test_menu_layout_ephemeral_preview_and_stop_coherence() {
+        let _lock = crate::i18n::I18N_TEST_MUTEX.lock().unwrap();
+        crate::i18n::set_language("fr");
+
+        let xml = r#"
+        <bookmarks>
+            <group name="Musique">
+                <bookmark name="FIP" url="http://direct.fipradio.fr/live/fip-midfi.mp3"/>
+            </group>
+        </bookmarks>
+        "#;
+        let root = crate::bookmarks::parse_bookmarks_reader(xml.as_bytes()).unwrap();
+        let bpath = std::path::PathBuf::from("/tmp/bookmarks_test_preview.xml");
+        let mut tray = TiMondeTray::new(root, bpath);
+
+        // Radio permanente habituelle de l'utilisateur
+        let fip_station = Station::new("FIP", "http://direct.fipradio.fr/live/fip-midfi.mp3");
+        *tray.last_station.lock().unwrap() = Some(fip_station.clone());
+
+        // 1. Initialement éteint : le menu propose d'écouter FIP
+        let menu_initial = tray.menu();
+        match &menu_initial[0] {
+            MenuItem::Standard(item) => {
+                assert!(item.label.contains("Écouter") && item.label.contains("FIP"));
+            }
+            _ => panic!("Le premier élément doit être le bouton Écouter"),
+        }
+
+        // 2. Simulation d'une pré-écoute éphémère dans les paramètres (Radio Test)
+        let preview_station = Station::new("Radio Test", "http://stream.test/live.mp3");
+        tray.play_ephemeral_station(preview_station);
+
+        assert!(tray.is_ephemeral.load(Ordering::SeqCst), "Le mode éphémère doit être activé");
+        assert_eq!(tray.current_station.lock().unwrap().as_ref().unwrap().name, "Radio Test");
+        // Règle d'or : last_station n'a PAS été écrasé par la pré-écoute
+        assert_eq!(tray.last_station.lock().unwrap().as_ref().unwrap().name, "FIP");
+
+        // 3. Arrêt de la pré-écoute
+        tray.stop_and_trim();
+
+        assert!(!tray.is_ephemeral.load(Ordering::SeqCst), "Le mode éphémère doit être désactivé");
+        assert!(tray.current_station.lock().unwrap().is_none(), "current_station doit être None après arrêt");
+        assert_eq!(tray.last_station.lock().unwrap().as_ref().unwrap().name, "FIP", "last_station reste FIP");
+
+        // 4. Vérification du menu après arrêt : il doit afficher « Écouter : « FIP » » sans nécessiter de clic éteindre préalable
+        let menu_after_stop = tray.menu();
+        match &menu_after_stop[0] {
+            MenuItem::Standard(item) => {
+                assert!(item.label.contains("Écouter") && item.label.contains("FIP"),
+                    "Après arrêt de la pré-écoute, le menu doit immédiatement proposer d'écouter la station permanente : {}", item.label);
+                assert!(!item.label.contains("Éteindre"), "Le menu ne doit en aucun cas afficher Éteindre après arrêt");
+            }
+            _ => panic!("Le premier élément doit être le bouton Écouter"),
+        }
     }
 
     #[test]

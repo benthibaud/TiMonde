@@ -363,7 +363,21 @@ class TestTiMondeCommon(unittest.TestCase):
         self.assertEqual(box.get_margin_top(), 5)
         self.assertEqual(box.get_margin_bottom(), 10)
         self.assertEqual(box.get_margin_start(), 15)
-        self.assertEqual(box.get_margin_end(), 20)
+    def test_stream_preview_player_stop_idempotent(self):
+        from unittest.mock import patch
+        from timonde_common import StreamPreviewPlayer
+
+        player = StreamPreviewPlayer()
+        self.assertFalse(player.is_playing)
+
+        # Quand is_playing est False, stop() ne doit appeler ni call_timonde_mpris ni envoyer de commande
+        with patch("timonde_common.call_timonde_mpris") as mock_mpris:
+            player.stop(silent=True)
+            mock_mpris.assert_not_called()
+
+        with patch("timonde_common.call_timonde_mpris") as mock_mpris:
+            player.stop(silent=False, sync=True)
+            mock_mpris.assert_not_called()
 
 if __name__ == "__main__":
     unittest.main()

@@ -437,5 +437,7 @@ pub fn trigger_settings_dialog(
                 }
             }
         }
+        // Rafraîchissement systématique de l'état du plateau à la fermeture des paramètres
+        TiMondeTray::request_tray_refresh(&tray_handle);
     });
 }

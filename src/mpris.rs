@@ -39,6 +39,7 @@ pub struct MprisPlayer {
     pub last_station: Arc<Mutex<Option<Station>>>,
     pub root_group: Arc<Mutex<Group>>,
     pub on_play: Arc<dyn Fn(Station) + Send + Sync>,
+    pub on_preview_play: Arc<dyn Fn(Station) + Send + Sync>,
     pub on_stop: Arc<dyn Fn() + Send + Sync>,
     pub on_update: Arc<dyn Fn() + Send + Sync>,
     pub on_reload: Arc<dyn Fn() + Send + Sync>,
@@ -148,7 +149,7 @@ impl MprisPlayer {
     /// Lance une pré-écoute temporaire d'un flux audio
     fn play_preview(&self, uri: String, name: String) {
         let display_name = if name.trim().is_empty() { uri.clone() } else { name };
-        (self.on_play)(Station::new(display_name, uri));
+        (self.on_preview_play)(Station::new(display_name, uri));
     }
 
     /// Arrête la pré-écoute
@@ -276,6 +277,7 @@ pub fn spawn_mpris_server(
     last_station: Arc<Mutex<Option<Station>>>,
     root_group: Arc<Mutex<Group>>,
     on_play: Arc<dyn Fn(Station) + Send + Sync>,
+    on_preview_play: Arc<dyn Fn(Station) + Send + Sync>,
     on_stop: Arc<dyn Fn() + Send + Sync>,
     on_update: Arc<dyn Fn() + Send + Sync>,
     on_reload: Arc<dyn Fn() + Send + Sync>,
@@ -295,6 +297,7 @@ pub fn spawn_mpris_server(
                         last_station,
                         root_group,
                         on_play,
+                        on_preview_play,
                         on_stop,
                         on_update,
                         on_reload,

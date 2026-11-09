@@ -1280,18 +1280,27 @@ class StreamPreviewPlayer:
         threading.Thread(target=run_play, daemon=True).start()
         return True
 
-    def stop(self, silent=False):
+    def stop(self, silent=False, sync=False):
         was_playing = self.is_playing
         self.is_playing = False
         self.current_url = None
         self.current_name = None
 
+        if not was_playing:
+            # Règle d'or : ne rien faire si aucune pré-écoute n'était active.
+            # Ne JAMAIS envoyer de StopPreview aveugle qui couperait la radio en cours d'écoute !
+            return
+
         def run_stop():
             call_timonde_mpris("StopPreview", fallback_cli=["--preview-stop"])
 
-        import threading
-        threading.Thread(target=run_stop, daemon=True).start()
-        if was_playing and not silent:
+        if sync:
+            run_stop()
+        else:
+            import threading
+            threading.Thread(target=run_stop, daemon=True).start()
+
+        if not silent:
             self._emit_status(False, "", is_error=False)
 
 
