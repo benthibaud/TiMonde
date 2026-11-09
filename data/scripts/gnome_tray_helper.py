@@ -40,7 +40,7 @@ def is_gnome_shell():
     if shutil.which("gnome-shell"):
         # Vérifier si gnome-shell est en cours d'exécution
         try:
-            res = subprocess.run(["pgrep", "-x", "gnome-shell"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            res = subprocess.run(["pgrep", "-x", "gnome-shell"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=3.0)
             if res.returncode == 0:
                 return True
         except Exception:
@@ -67,7 +67,8 @@ def is_appindicator_active():
                 ["gnome-extensions", "list", "--enabled"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                text=True
+                text=True,
+                timeout=3.0
             )
             if res.returncode == 0:
                 out = res.stdout.lower()
@@ -98,7 +99,7 @@ def enable_gnome_extensions():
         return
     for ext_id in ("appindicatorsupport@rgcjonas.gmail.com", "ubuntu-appindicators@ubuntu.com"):
         try:
-            subprocess.run(["gnome-extensions", "enable", ext_id], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            subprocess.run(["gnome-extensions", "enable", ext_id], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=3.0)
         except Exception:
             pass
 

@@ -29,6 +29,10 @@
     <category>Audio</category>
     <category>Player</category>
   </categories>
+  <developer id="io.github.benthibaud">
+    <name>Benjamin Thibaud</name>
+  </developer>
+  <content_rating type="oars-1.1" />
   <releases>
     <release version="0.2.5" date="2026-11-08">
       <description>

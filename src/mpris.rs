@@ -230,10 +230,7 @@ impl MprisPlayer {
                 e.set_volume(clamped);
             }
         }
-        let state_path = crate::state::AppState::default_path();
-        let mut st_cfg = crate::state::AppState::load(&state_path);
-        st_cfg.volume = clamped;
-        let _ = st_cfg.save(&state_path);
+        crate::state::schedule_volume_save(clamped);
         (self.on_update)();
     }
 

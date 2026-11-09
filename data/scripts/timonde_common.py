@@ -1158,7 +1158,7 @@ class StreamPreviewPlayer:
 
             if not sent:
                 try:
-                    subprocess.run(["timonde", "--preview-play", clean, self.current_name or ""], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                    subprocess.run(["timonde", "--preview-play", clean, self.current_name or ""], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=5.0)
                 except Exception:
                     pass
 
@@ -1187,7 +1187,7 @@ class StreamPreviewPlayer:
 
             if not sent:
                 try:
-                    subprocess.run(["timonde", "--preview-stop"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                    subprocess.run(["timonde", "--preview-stop"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=5.0)
                 except Exception:
                     pass
 

@@ -22,6 +22,18 @@ import os
 import sys
 import shutil
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    from timonde_common import atomic_write_file
+except ImportError:
+    def atomic_write_file(path, content, encoding="utf-8"):
+        tmp = path + ".tmp"
+        with open(tmp, "w", encoding=encoding) as f:
+            f.write(content)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp, path)
+
 SYS_APPLET_DIR = "/usr/share/cinnamon/applets/xapp-status@cinnamon.org"
 SYS_APPLET_PATH = os.path.join(SYS_APPLET_DIR, "applet.js")
 SYS_BACKUP_PATH = f"{SYS_APPLET_PATH}.orig_timonde"
@@ -191,8 +203,7 @@ def install_user_mode():
         print("Avertissement : motif de patch introuvable dans applet.js.")
         return 1
 
-    with open(USER_APPLET_PATH, "w", encoding="utf-8") as f:
-        f.write(new_content)
+    atomic_write_file(USER_APPLET_PATH, new_content)
 
     print(f"[OK] Patch Cinnamon installé dans l'espace utilisateur : {USER_APPLET_PATH}")
     if reload_cinnamon_applet():
@@ -224,8 +235,7 @@ def install_system_mode():
             print("Avertissement : motif de patch introuvable dans applet.js.")
             return 1
 
-        with open(SYS_APPLET_PATH, "w", encoding="utf-8") as f:
-            f.write(new_content)
+        atomic_write_file(SYS_APPLET_PATH, new_content)
         print(f"[OK] Patch Cinnamon appliqué au niveau système : {SYS_APPLET_PATH}")
 
     # Installer le hook APT si possible pour pérenniser lors des mises à jour système
@@ -237,8 +247,7 @@ def install_system_mode():
             'then /usr/share/timonde/scripts/patch_cinnamon_status_applet.py --system >/dev/null 2>&1 || true; fi;"};\n'
         )
         try:
-            with open(APT_HOOK_PATH, "w", encoding="utf-8") as f:
-                f.write(hook_content)
+            atomic_write_file(APT_HOOK_PATH, hook_content)
             print(f"[OK] Hook APT enregistré : {APT_HOOK_PATH}")
         except Exception:
             pass

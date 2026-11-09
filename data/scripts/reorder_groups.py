@@ -1367,6 +1367,7 @@ class ReorderWidget(Gtk.Box):
                         input=payload,
                         text=True,
                         capture_output=True,
+                        timeout=10.0,
                     )
                     if proc.returncode == 0:
                         self.show_feedback(f"{_('CSV export successful:')} {os.path.basename(path)}")

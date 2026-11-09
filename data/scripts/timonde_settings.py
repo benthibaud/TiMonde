@@ -135,7 +135,8 @@ def load_bookmarks_tree(path):
             ["timonde", "--dump-bookmarks-json", path],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            text=True
+            text=True,
+            timeout=5.0
         )
         if res.returncode == 0 and res.stdout.strip():
             return json.loads(res.stdout)
@@ -159,7 +160,8 @@ def save_bookmarks_tree(path, groups_payload):
             cmd,
             input=json_bytes,
             stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
+            stderr=subprocess.PIPE,
+            timeout=5.0
         )
         if res.returncode == 0:
             return True
@@ -625,8 +627,8 @@ class SettingsWindow(Gtk.Window):
                 else:
                     cinnamon_patch_path = find_script("patch_cinnamon_status_applet.py")
                     def on_patch_cinnamon_clicked(widget):
-                        if cinnamon_patch_path:
-                            res = subprocess.run([sys.executable, cinnamon_patch_path, "--user"])
+                         if cinnamon_patch_path:
+                            res = subprocess.run([sys.executable, cinnamon_patch_path, "--user"], timeout=10.0)
                             if res.returncode == 0:
                                 update_btn_content(widget, _("Active (Left & Right clicks unified)"), "emblem-default")
                                 widget.set_sensitive(False)

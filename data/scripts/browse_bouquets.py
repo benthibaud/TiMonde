@@ -251,7 +251,8 @@ def parse_user_radio_file(path):
             ["timonde", "--parse-file-json", path],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            text=True
+            text=True,
+            timeout=10.0
         )
         if res.returncode == 0 and res.stdout.strip():
             return json.loads(res.stdout)
