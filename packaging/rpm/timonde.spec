@@ -1,5 +1,5 @@
 Name:           timonde
-Version:        0.2.5
+Version:        0.2.6
 Release:        1%{?dist}
 Summary:        Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux
 
@@ -103,6 +103,13 @@ if [ "$1" -eq 0 ]; then
 fi
 
 %changelog
+* Mon Nov 09 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.6-1
+- Refonte intégrale de la gestion de session (PlaybackSession) et éradication des deadlocks
+- Règle d'or GStreamer : arrêt et drop déterministe hors de tout verrou applicatif
+- Exclusion du plugin lourd FFmpeg/libav (RAM stabilisée à ~45 Mo)
+- Traitement asynchrone non-bloquant et annulation des connexions obsolètes via play_generation
+- 62 tests unitaires et banc de stress-test validés
+
 * Mon Nov 09 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.5-1
 - Finalisation du Jalon 2 de la Roadmap (Option B : zéro blocage, zéro deadlock)
 - Sécurisation asynchrone des flux et timeouts stricts sur tous les sous-processus

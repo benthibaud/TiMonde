@@ -56,14 +56,10 @@ pub fn request_tray_refresh(handle_cell: &Arc<Mutex<Option<ksni::blocking::Handl
 }
 
 pub struct TiMondeTray {
-    pub(crate) audio: Arc<Mutex<Option<AudioEngine>>>,
-    pub(crate) current_volume: Arc<Mutex<f64>>,
+    pub(crate) session: Arc<Mutex<crate::session::PlaybackSession>>,
     pub(crate) root_group: Arc<Mutex<Group>>,
     pub(crate) bookmarks_path: PathBuf,
     pub(crate) last_station: Arc<Mutex<Option<Station>>>,
-    pub(crate) current_station: Arc<Mutex<Option<Station>>>,
-    pub(crate) current_title: Arc<Mutex<Option<String>>>,
-    pub(crate) is_ephemeral: Arc<AtomicBool>,
     pub(crate) play_generation: Arc<AtomicU64>,
     pub(crate) sleep_generation: Arc<AtomicU64>,
     pub(crate) tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
@@ -83,16 +79,13 @@ impl TiMondeTray {
             None
         };
         let initial_volume = state.volume.clamp(0.0, 1.0);
+        let session = Arc::new(Mutex::new(crate::session::PlaybackSession::new(initial_volume)));
 
         Self {
-            audio: Arc::new(Mutex::new(None)),
-            current_volume: Arc::new(Mutex::new(initial_volume)),
+            session,
             root_group: Arc::new(Mutex::new(root_group)),
             bookmarks_path,
             last_station: Arc::new(Mutex::new(initial_last_station)),
-            current_station: Arc::new(Mutex::new(None)),
-            current_title: Arc::new(Mutex::new(None)),
-            is_ephemeral: Arc::new(AtomicBool::new(false)),
             play_generation: Arc::new(AtomicU64::new(0)),
             sleep_generation: Arc::new(AtomicU64::new(0)),
             tray_handle: Arc::new(Mutex::new(None)),
@@ -135,33 +128,7 @@ impl TiMondeTray {
 
     /// Obtient l'état audio actuel de façon non-bloquante sans forcer l'allocation
     pub fn state(&self) -> PlaybackState {
-        let guard = self.audio.safe_lock();
-        match guard.as_ref() {
-            Some(engine) => engine.state(),
-            None => PlaybackState::Stopped,
-        }
-    }
-
-    /// Assure l'existence du moteur audio à la demande (Lazy Loading)
-    pub fn get_or_create_engine(
-        audio_mutex: &Arc<Mutex<Option<AudioEngine>>>,
-        current_volume: &Arc<Mutex<f64>>,
-        current_title: &Arc<Mutex<Option<String>>>,
-        tray_notifier: Option<Arc<dyn Fn() + Send + Sync>>,
-    ) -> Result<(), String> {
-        let mut guard = audio_mutex.safe_lock();
-        if guard.is_none() {
-            info!("Chargement à la demande du moteur GStreamer...");
-            match AudioEngine::new(Arc::clone(current_title), tray_notifier) {
-                Ok(engine) => {
-                    let vol = *current_volume.safe_lock();
-                    engine.set_volume(vol);
-                    *guard = Some(engine);
-                }
-                Err(e) => return Err(format!("Échec GStreamer : {}", e)),
-            }
-        }
-        Ok(())
+        self.session.safe_lock().state()
     }
 
     /// Notifie l'utilisateur de l'heure locale et du décalage de la station (avec mention éphémère si applicable)
@@ -213,10 +180,8 @@ impl TiMondeTray {
         station_name: String,
         gen: u64,
         play_generation: Arc<AtomicU64>,
-        audio: Arc<Mutex<Option<AudioEngine>>>,
-        current_volume: Arc<Mutex<f64>>,
-        current_title: Arc<Mutex<Option<String>>>,
-        tray_notifier: Option<Arc<dyn Fn() + Send + Sync>>,
+        session: Arc<Mutex<crate::session::PlaybackSession>>,
+        tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
         on_success: impl FnOnce() + Send + 'static,
     ) {
         std::thread::spawn(move || {
@@ -224,21 +189,68 @@ impl TiMondeTray {
             if play_generation.load(Ordering::SeqCst) != gen {
                 return;
             }
-            if let Err(e) = Self::get_or_create_engine(&audio, &current_volume, &current_title, tray_notifier) {
-                error!("{}", e);
-                notify("TiMonde", &crate::i18n::tr("Unable to initialize audio"));
+
+            // 1. Extraire et arrêter l'ancien moteur hors de tout verrou applicatif
+            let old_engine = {
+                let mut s = session.safe_lock();
+                s.take_engine()
+            };
+            if let Some(engine) = old_engine {
+                let _ = engine.stop();
+                drop(engine);
+            }
+
+            // 2. Définir le callback de tag Titre découplé
+            let session_for_title = Arc::clone(&session);
+            let handle_for_title = Arc::clone(&tray_handle);
+            let on_title = Arc::new(move |title: String| {
+                let changed = {
+                    let mut s = session_for_title.safe_lock();
+                    let is_new = s.current_title.as_deref() != Some(&title);
+                    if is_new {
+                        s.current_title = Some(title.clone());
+                    }
+                    is_new
+                };
+                if changed {
+                    crate::notify::notify("TiMonde", &title);
+                    Self::request_tray_refresh(&handle_for_title);
+                }
+            });
+
+            let handle_for_tray = Arc::clone(&tray_handle);
+            let tray_notifier = Some(Arc::new(move || {
+                Self::request_tray_refresh(&handle_for_tray);
+            }) as Arc<dyn Fn() + Send + Sync>);
+
+            let vol = {
+                let s = session.safe_lock();
+                s.volume
+            };
+
+            // 3. Instancier le moteur audio et démarrer le flux (hors verrou)
+            let engine = match AudioEngine::new(Some(on_title), tray_notifier) {
+                Ok(e) => e,
+                Err(e) => {
+                    error!("{}", e);
+                    notify("TiMonde", &crate::i18n::tr("Unable to initialize audio"));
+                    return;
+                }
+            };
+            engine.set_volume(vol);
+
+            if let Err(e) = engine.play(&resolved_url) {
+                error!("Échec initial de lecture : {}", e);
+                notify("TiMonde", &format!("{} {}", crate::i18n::tr("Unable to play"), station_name));
                 return;
             }
+
+            // 4. Stocker le moteur dans la session
             {
-                let guard = audio.safe_lock();
-                if let Some(ref engine) = *guard {
-                    if let Err(e) = engine.play(&resolved_url) {
-                        error!("Échec initial de lecture : {}", e);
-                        notify("TiMonde", &format!("{} {}", crate::i18n::tr("Unable to play"), station_name));
-                        return;
-                    }
-                }
+                let mut s = session.safe_lock();
+                s.engine = Some(engine);
             }
+
             on_success();
         });
     }
@@ -246,11 +258,8 @@ impl TiMondeTray {
     #[allow(clippy::too_many_arguments)]
     pub fn play_station_flow(
         station: Station,
-        audio: &Arc<Mutex<Option<AudioEngine>>>,
-        current_volume: &Arc<Mutex<f64>>,
-        current_station: &Arc<Mutex<Option<Station>>>,
+        session: &Arc<Mutex<crate::session::PlaybackSession>>,
         last_station: &Arc<Mutex<Option<Station>>>,
-        current_title: &Arc<Mutex<Option<String>>>,
         play_generation: &Arc<AtomicU64>,
         root_group: &Arc<Mutex<Group>>,
         _bookmarks_path: &Path,
@@ -261,8 +270,12 @@ impl TiMondeTray {
         info!("Sélection de la station : {} ({})", station_name, raw_url);
 
         *last_station.safe_lock() = Some(station.clone());
-        *current_station.safe_lock() = Some(station.clone());
-        *current_title.safe_lock() = None;
+        {
+            let mut s = session.safe_lock();
+            s.current_station = Some(station.clone());
+            s.current_title = None;
+            s.is_ephemeral = false;
+        }
 
         // Persistance atomique immédiate de la station en écoute dans state.json
         {
@@ -282,27 +295,18 @@ impl TiMondeTray {
 
         let gen = play_generation.fetch_add(1, Ordering::SeqCst) + 1;
         let gen_clone = Arc::clone(play_generation);
-        let audio_clone = Arc::clone(audio);
+        let session_clone = Arc::clone(session);
         let name_for_watchdog = station_name.clone();
         let handle_for_init = Arc::clone(tray_handle);
         let handle_for_watchdog = Arc::clone(tray_handle);
-
-        let tray_notifier: Option<Arc<dyn Fn() + Send + Sync>> = {
-            let handle_cell = Arc::clone(tray_handle);
-            Some(Arc::new(move || {
-                Self::request_tray_refresh(&handle_cell);
-            }))
-        };
 
         Self::spawn_engine_play_thread(
             raw_url,
             station_name,
             gen,
             Arc::clone(play_generation),
-            Arc::clone(audio),
-            Arc::clone(current_volume),
-            Arc::clone(current_title),
-            tray_notifier,
+            Arc::clone(session),
+            Arc::clone(tray_handle),
             move || {
                 Self::request_tray_refresh(&handle_for_init);
                 std::thread::sleep(Duration::from_secs(5));
@@ -311,10 +315,7 @@ impl TiMondeTray {
                     return;
                 }
 
-                let st = {
-                    let guard = audio_clone.safe_lock();
-                    guard.as_ref().map(|e| e.state()).unwrap_or(PlaybackState::Stopped)
-                };
+                let st = session_clone.safe_lock().state();
 
                 if st == PlaybackState::Buffering || st == PlaybackState::Error {
                     info!("Watchdog : flux muet pour {}", name_for_watchdog);
@@ -323,8 +324,6 @@ impl TiMondeTray {
                         &format!("{} {}", name_for_watchdog, crate::i18n::tr("is not responding. Searching for a backup stream...")),
                     );
 
-                    // Note qualité / éthique : Le watchdog ne modifie JAMAIS bookmarks.xml en douce !
-                    // Il bascule temporairement sur un flux de secours en mémoire sans écraser le fichier de l'utilisateur.
                     if let Some((found_name, backup_url)) = find_backup_stream(&name_for_watchdog) {
                         if gen_clone.load(Ordering::SeqCst) != gen {
                             return;
@@ -332,8 +331,8 @@ impl TiMondeTray {
                         let direct_backup = resolve_stream_url(&backup_url);
                         info!("Watchdog : bascule temporaire sur flux alternatif : {} ({})", found_name, direct_backup);
                         let played = {
-                            let guard = audio_clone.safe_lock();
-                            if let Some(ref engine) = *guard {
+                            let s = session_clone.safe_lock();
+                            if let Some(ref engine) = s.engine {
                                 engine.play(&direct_backup).is_ok()
                             } else {
                                 false
@@ -352,10 +351,7 @@ impl TiMondeTray {
                             "TiMonde",
                             &format!("« {} » {}.", name_for_watchdog, crate::i18n::tr("is currently unavailable")),
                         );
-                        let guard = audio_clone.safe_lock();
-                        if let Some(ref engine) = *guard {
-                            let _ = engine.stop();
-                        }
+                        crate::session::stop_session(&session_clone);
                         Self::request_tray_refresh(&handle_for_watchdog);
                     }
                 }
@@ -364,14 +360,10 @@ impl TiMondeTray {
     }
 
     pub fn play_station(&mut self, station: Station) {
-        self.is_ephemeral.store(false, Ordering::SeqCst);
         Self::play_station_flow(
             station,
-            &self.audio,
-            &self.current_volume,
-            &self.current_station,
+            &self.session,
             &self.last_station,
-            &self.current_title,
             &self.play_generation,
             &self.root_group,
             &self.bookmarks_path,
@@ -380,30 +372,14 @@ impl TiMondeTray {
         Self::request_tray_refresh(&self.tray_handle);
     }
 
-    /// Arrête la lecture et restitue la mémoire vers le système d'exploitation
-    pub fn stop_and_trim_flow(
-        audio: &Arc<Mutex<Option<AudioEngine>>>,
-        current_station: &Arc<Mutex<Option<Station>>>,
-        current_title: &Arc<Mutex<Option<String>>>,
-    ) {
-        let guard = audio.safe_lock();
-        if let Some(ref engine) = *guard {
-            let _ = engine.stop();
-        }
-        *current_station.safe_lock() = None;
-        *current_title.safe_lock() = None;
-
-        // Appel trim low-tech glibc / musl
-        #[cfg(target_os = "linux")]
-        unsafe {
-            libc::malloc_trim(0);
-        }
+    /// Arrête la lecture et restitue immédiatement la mémoire vers le système d'exploitation
+    pub fn stop_and_trim_flow(session: &Arc<Mutex<crate::session::PlaybackSession>>) {
+        crate::session::stop_session(session);
     }
 
     pub fn stop_and_trim(&mut self) {
         self.play_generation.fetch_add(1, Ordering::SeqCst);
-        self.is_ephemeral.store(false, Ordering::SeqCst);
-        Self::stop_and_trim_flow(&self.audio, &self.current_station, &self.current_title);
+        Self::stop_and_trim_flow(&self.session);
         Self::request_tray_refresh(&self.tray_handle);
     }
 
@@ -411,10 +387,7 @@ impl TiMondeTray {
     #[allow(clippy::too_many_arguments)]
     pub fn play_ephemeral_flow(
         station: Station,
-        audio: &Arc<Mutex<Option<AudioEngine>>>,
-        current_volume: &Arc<Mutex<f64>>,
-        current_station: &Arc<Mutex<Option<Station>>>,
-        current_title: &Arc<Mutex<Option<String>>>,
+        session: &Arc<Mutex<crate::session::PlaybackSession>>,
         play_generation: &Arc<AtomicU64>,
         root_group: &Arc<Mutex<Group>>,
         _bookmarks_path: &Path,
@@ -424,34 +397,29 @@ impl TiMondeTray {
         let raw_url = station.url.clone();
         info!("Écoute éphémère / pré-écoute : {} ({})", station_name, raw_url);
 
-        *current_station.safe_lock() = Some(station.clone());
-        *current_title.safe_lock() = None;
-
         let group_name = {
             let guard = root_group.safe_lock();
             Self::find_group_name_for_station(&guard, &station.url)
         };
         Self::notify_station_local_time(&station, group_name.as_deref(), true);
 
+        {
+            let mut s = session.safe_lock();
+            s.current_station = Some(station.clone());
+            s.current_title = None;
+            s.is_ephemeral = true;
+        }
+
         let gen = play_generation.fetch_add(1, Ordering::SeqCst) + 1;
         let handle_for_init = Arc::clone(tray_handle);
-
-        let tray_notifier: Option<Arc<dyn Fn() + Send + Sync>> = {
-            let handle_cell = Arc::clone(tray_handle);
-            Some(Arc::new(move || {
-                Self::request_tray_refresh(&handle_cell);
-            }))
-        };
 
         Self::spawn_engine_play_thread(
             raw_url,
             station_name,
             gen,
             Arc::clone(play_generation),
-            Arc::clone(audio),
-            Arc::clone(current_volume),
-            Arc::clone(current_title),
-            tray_notifier,
+            Arc::clone(session),
+            Arc::clone(tray_handle),
             move || {
                 Self::request_tray_refresh(&handle_for_init);
             },
@@ -461,13 +429,9 @@ impl TiMondeTray {
     }
 
     pub fn play_ephemeral_station(&self, station: Station) {
-        self.is_ephemeral.store(true, Ordering::SeqCst);
         Self::play_ephemeral_flow(
             station,
-            &self.audio,
-            &self.current_volume,
-            &self.current_station,
-            &self.current_title,
+            &self.session,
             &self.play_generation,
             &self.root_group,
             &self.bookmarks_path,
@@ -500,7 +464,7 @@ impl TiMondeTray {
 
     /// Ouvre la boîte de dialogue pour enregistrer la radio éphémère courante dans les favoris
     pub fn trigger_save_current_ephemeral_station(&self) {
-        let station_opt = self.current_station.safe_lock().clone();
+        let station_opt = self.session.safe_lock().current_station.clone();
         let station = match station_opt {
             Some(s) => s,
             None => {
@@ -512,7 +476,7 @@ impl TiMondeTray {
         let root_group = Arc::clone(&self.root_group);
         let bookmarks_path = self.bookmarks_path.clone();
         let tray_handle = Arc::clone(&self.tray_handle);
-        let is_ephemeral = Arc::clone(&self.is_ephemeral);
+        let session = Arc::clone(&self.session);
         let last_station = Arc::clone(&self.last_station);
 
         std::thread::spawn(move || {
@@ -591,7 +555,7 @@ impl TiMondeTray {
                     }
 
                     // Bascule de l'état : la radio est désormais pérenne dans les signets
-                    is_ephemeral.store(false, Ordering::SeqCst);
+                    session.safe_lock().is_ephemeral = false;
                     *last_station.safe_lock() = Some(final_st.clone());
 
                     // Sauvegarder dans state.json
@@ -629,9 +593,7 @@ impl TiMondeTray {
         let target = std::time::Instant::now() + dur;
         *self.sleep_timer.safe_lock() = Some(target);
 
-        let audio = Arc::clone(&self.audio);
-        let current_station = Arc::clone(&self.current_station);
-        let current_title = Arc::clone(&self.current_title);
+        let session = Arc::clone(&self.session);
         let sleep_timer = Arc::clone(&self.sleep_timer);
         let tray_handle = Arc::clone(&self.tray_handle);
         let gen = self.sleep_generation.fetch_add(1, Ordering::SeqCst) + 1;
@@ -659,7 +621,7 @@ impl TiMondeTray {
                     *guard = None;
                     drop(guard);
 
-                    Self::stop_and_trim_flow(&audio, &current_station, &current_title);
+                    Self::stop_and_trim_flow(&session);
                     notify("TiMonde", &crate::i18n::tr("Sleep timer: stopping radio."));
                     Self::request_tray_refresh(&tray_handle);
                 }
@@ -770,10 +732,7 @@ X-GNOME-Autostart-enabled=true\n";
 
     pub fn set_volume_level(&mut self, vol: f64) {
         let clamped = vol.clamp(0.0, 1.0);
-        *self.current_volume.safe_lock() = clamped;
-        if let Some(ref e) = *self.audio.safe_lock() {
-            e.set_volume(clamped);
-        }
+        self.session.safe_lock().set_volume(clamped);
         crate::state::schedule_volume_save(clamped);
     }
 
@@ -811,20 +770,18 @@ X-GNOME-Autostart-enabled=true\n";
         root_group: Arc<Mutex<Group>>,
         bookmarks_path: PathBuf,
         tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
-        current_station: Arc<Mutex<Option<Station>>>,
+        session: Arc<Mutex<crate::session::PlaybackSession>>,
         last_station: Arc<Mutex<Option<Station>>>,
-        audio: Arc<Mutex<Option<AudioEngine>>>,
-        current_title: Arc<Mutex<Option<String>>>,
+        play_generation: Arc<AtomicU64>,
     ) {
         dialogs::trigger_edit_station_dialog(
             station,
             root_group,
             bookmarks_path,
             tray_handle,
-            current_station,
+            session,
             last_station,
-            audio,
-            current_title,
+            play_generation,
         );
     }
 
@@ -833,20 +790,14 @@ X-GNOME-Autostart-enabled=true\n";
         root_group: Arc<Mutex<Group>>,
         bookmarks_path: PathBuf,
         tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
-        audio: Arc<Mutex<Option<AudioEngine>>>,
-        current_station: Arc<Mutex<Option<Station>>>,
-        current_title: Arc<Mutex<Option<String>>>,
-        is_ephemeral: Arc<AtomicBool>,
+        session: Arc<Mutex<crate::session::PlaybackSession>>,
         play_generation: Arc<AtomicU64>,
     ) {
         dialogs::trigger_settings_dialog(
             root_group,
             bookmarks_path,
             tray_handle,
-            audio,
-            current_station,
-            current_title,
-            is_ephemeral,
+            session,
             play_generation,
         );
     }
@@ -922,8 +873,11 @@ mod tests {
         }
 
         // 2. En cours de lecture : première entrée "Éteindre    « Bluegrass Planet Radio »" et présence de "Éditer"
-        *tray.current_station.lock().unwrap() = Some(Station::new("Bluegrass Planet Radio", "http://65.108.105.26:7966/stream"));
-        *tray.current_title.lock().unwrap() = Some("Matt Combs - Fifty Years of Clown School".to_string());
+        {
+            let mut s = tray.session.lock().unwrap();
+            s.current_station = Some(Station::new("Bluegrass Planet Radio", "http://65.108.105.26:7966/stream"));
+            s.current_title = Some("Matt Combs - Fifty Years of Clown School".to_string());
+        }
 
         let menu_playing = tray.menu();
         let labels: Vec<String> = menu_playing.iter().filter_map(|m| {
@@ -967,8 +921,11 @@ mod tests {
         }
 
         // 2. En lecture
-        *tray.current_station.lock().unwrap() = Some(Station::new("Bluegrass Planet Radio", "http://65.108.105.26:7966/stream"));
-        *tray.current_title.lock().unwrap() = Some("Country Song".to_string());
+        {
+            let mut s = tray.session.lock().unwrap();
+            s.current_station = Some(Station::new("Bluegrass Planet Radio", "http://65.108.105.26:7966/stream"));
+            s.current_title = Some("Country Song".to_string());
+        }
 
         let menu_playing = tray.menu();
         let labels: Vec<String> = menu_playing.iter().filter_map(|m| {
@@ -1025,16 +982,16 @@ mod tests {
         let preview_station = Station::new("Radio Test", "http://stream.test/live.mp3");
         tray.play_ephemeral_station(preview_station);
 
-        assert!(tray.is_ephemeral.load(Ordering::SeqCst), "Le mode éphémère doit être activé");
-        assert_eq!(tray.current_station.lock().unwrap().as_ref().unwrap().name, "Radio Test");
+        assert!(tray.session.lock().unwrap().is_ephemeral, "Le mode éphémère doit être activé");
+        assert_eq!(tray.session.lock().unwrap().current_station.as_ref().unwrap().name, "Radio Test");
         // Règle d'or : last_station n'a PAS été écrasé par la pré-écoute
         assert_eq!(tray.last_station.lock().unwrap().as_ref().unwrap().name, "FIP");
 
         // 3. Arrêt de la pré-écoute
         tray.stop_and_trim();
 
-        assert!(!tray.is_ephemeral.load(Ordering::SeqCst), "Le mode éphémère doit être désactivé");
-        assert!(tray.current_station.lock().unwrap().is_none(), "current_station doit être None après arrêt");
+        assert!(!tray.session.lock().unwrap().is_ephemeral, "Le mode éphémère doit être désactivé");
+        assert!(tray.session.lock().unwrap().current_station.is_none(), "current_station doit être None après arrêt");
         assert_eq!(tray.last_station.lock().unwrap().as_ref().unwrap().name, "FIP", "last_station reste FIP");
 
         // 4. Vérification du menu après arrêt : il doit afficher « Écouter : « FIP » » sans nécessiter de clic éteindre préalable

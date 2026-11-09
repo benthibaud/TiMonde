@@ -14,6 +14,7 @@ pub mod cli;
 pub mod sync_util;
 pub mod probe;
 pub mod notify;
+pub mod session;
 
 use bookmarks::{create_default_bookmarks, ensure_config_examples, find_bookmarks_path, load_bookmarks};
 use ksni::blocking::TrayMethods;
@@ -192,15 +193,11 @@ fn main() {
     }
 
     // Clones des Arcs partagés avec le serveur MPRIS2
-    let audio = Arc::clone(&tray.audio);
-    let current_volume = Arc::clone(&tray.current_volume);
-    let current_station = Arc::clone(&tray.current_station);
+    let session = Arc::clone(&tray.session);
     let last_station = Arc::clone(&tray.last_station);
-    let current_title = Arc::clone(&tray.current_title);
     let root_group_clone = Arc::clone(&tray.root_group);
     let bookmarks_path_clone = tray.bookmarks_path.clone();
     let play_generation = Arc::clone(&tray.play_generation);
-    let is_ephemeral = Arc::clone(&tray.is_ephemeral);
 
     let tray_handle_cell = Arc::clone(&tray.tray_handle);
 
@@ -216,30 +213,19 @@ fn main() {
     let trigger_for_stop = Arc::clone(&trigger_tray_update);
     let trigger_for_mpris = Arc::clone(&trigger_tray_update);
 
-    let is_ephemeral_play = Arc::clone(&is_ephemeral);
-    let is_ephemeral_stop = Arc::clone(&is_ephemeral);
-    let is_ephemeral_preview = Arc::clone(&is_ephemeral);
-
     let on_play = {
-        let audio = Arc::clone(&audio);
-        let current_volume = Arc::clone(&current_volume);
-        let current_station = Arc::clone(&current_station);
+        let session = Arc::clone(&session);
         let last_station = Arc::clone(&last_station);
-        let current_title = Arc::clone(&current_title);
         let root_group = Arc::clone(&root_group_clone);
         let play_generation = Arc::clone(&play_generation);
         let bpath = bookmarks_path_clone.clone();
         let tray_handle = Arc::clone(&tray_handle_cell);
 
         Arc::new(move |station: models::Station| {
-            is_ephemeral_play.store(false, std::sync::atomic::Ordering::SeqCst);
             tray::TiMondeTray::play_station_flow(
                 station,
-                &audio,
-                &current_volume,
-                &current_station,
+                &session,
                 &last_station,
-                &current_title,
                 &play_generation,
                 &root_group,
                 &bpath,
@@ -250,10 +236,7 @@ fn main() {
     };
 
     let on_preview_play = {
-        let audio = Arc::clone(&audio);
-        let current_volume = Arc::clone(&current_volume);
-        let current_station = Arc::clone(&current_station);
-        let current_title = Arc::clone(&current_title);
+        let session = Arc::clone(&session);
         let root_group = Arc::clone(&root_group_clone);
         let play_generation = Arc::clone(&play_generation);
         let bpath = bookmarks_path_clone.clone();
@@ -261,13 +244,9 @@ fn main() {
         let trigger_for_preview = Arc::clone(&trigger_tray_update);
 
         Arc::new(move |station: models::Station| {
-            is_ephemeral_preview.store(true, std::sync::atomic::Ordering::SeqCst);
             tray::TiMondeTray::play_ephemeral_flow(
                 station,
-                &audio,
-                &current_volume,
-                &current_station,
-                &current_title,
+                &session,
                 &play_generation,
                 &root_group,
                 &bpath,
@@ -278,13 +257,12 @@ fn main() {
     };
 
     let on_stop = {
-        let audio = Arc::clone(&audio);
-        let current_station = Arc::clone(&current_station);
-        let current_title = Arc::clone(&current_title);
+        let session = Arc::clone(&session);
+        let play_generation = Arc::clone(&play_generation);
 
         Arc::new(move || {
-            is_ephemeral_stop.store(false, std::sync::atomic::Ordering::SeqCst);
-            tray::TiMondeTray::stop_and_trim_flow(&audio, &current_station, &current_title);
+            play_generation.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            tray::TiMondeTray::stop_and_trim_flow(&session);
             trigger_for_stop();
         })
     };
@@ -304,10 +282,7 @@ fn main() {
 
     // 5. Enregistrement du service D-Bus MPRIS2 (org.mpris.MediaPlayer2.timonde)
     mpris::spawn_mpris_server(
-        Arc::clone(&audio),
-        current_volume,
-        Arc::clone(&current_station),
-        current_title,
+        Arc::clone(&session),
         last_station,
         Arc::clone(&root_group_clone),
         on_play,
@@ -379,8 +354,7 @@ fn main() {
     // 8. Ticker low-tech d'actualisation de l'heure locale (1 fois par minute, calé sur la seconde 00)
     {
         let handle_clock = Arc::clone(&tray_handle_cell);
-        let cur_st_clock = Arc::clone(&current_station);
-        let audio_clock = Arc::clone(&audio);
+        let session_clock = Arc::clone(&session);
 
         if let Err(e) = std::thread::Builder::new()
             .name("timonde-clock-tick".to_string())
@@ -396,11 +370,8 @@ fn main() {
 
                     // Rafraîchir l'heure uniquement si une radio est en cours d'écoute
                     let is_active = {
-                        let has_station = cur_st_clock.safe_lock().is_some();
-                        let is_playing = audio_clock.safe_lock().as_ref()
-                            .map(|e| e.state() == audio::PlaybackState::Playing)
-                            .unwrap_or(false);
-                        has_station && is_playing
+                        let s = session_clock.safe_lock();
+                        s.current_station.is_some() && s.state() == audio::PlaybackState::Playing
                     };
 
                     if is_active {

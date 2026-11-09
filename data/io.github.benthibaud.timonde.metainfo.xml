@@ -34,6 +34,11 @@
   </developer>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="0.2.6" date="2026-11-09">
+      <description>
+        <p>Refonte de la session de lecture (PlaybackSession) et éradication définitive des deadlocks : modèle transactionnel à verrou unique, respect strict de la Règle d'or GStreamer (aucun appel bloquant sous verrou partagé), drop déterministe hors verrou avec malloc_trim(0) et exclusion de libav plafonnant l'empreinte mémoire active à 45 Mo.</p>
+      </description>
+    </release>
     <release version="0.2.5" date="2026-11-09">
       <description>
         <p>Mise en œuvre du Jalon 2 : fiabilisation de l'architecture Client/Serveur (Option B), élimination des blocages d'interface, sécurisation des flux asynchrones, assainissement radical du code mort et mise à jour intégrale des 56 catalogues linguistiques (méthode i18n-clusters).</p>

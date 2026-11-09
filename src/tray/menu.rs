@@ -1,6 +1,5 @@
 //! Implémentation du trait ksni::Tray et construction du menu D-Bus / StatusNotifierItem.
 
-use std::sync::atomic::Ordering;
 use std::sync::Arc;
 
 use ksni::menu::{MenuItem, StandardItem, SubMenu};
@@ -131,10 +130,12 @@ impl ksni::Tray for TiMondeTray {
     }
 
     fn title(&self) -> String {
-        let cur_st = self.current_station.safe_lock();
-        match (cur_st.as_ref(), self.state()) {
+        let (cur_st, cur_title, state) = {
+            let s = self.session.safe_lock();
+            (s.current_station.clone(), s.current_title.clone(), s.state())
+        };
+        match (cur_st.as_ref(), state) {
             (Some(st), PlaybackState::Playing) => {
-                let cur_title = self.current_title.safe_lock();
                 let time_str = crate::timezone::get_local_time_for_station(
                     st.country.as_deref(),
                     &st.name,
@@ -151,7 +152,7 @@ impl ksni::Tray for TiMondeTray {
                     }
                 })
                 .unwrap_or_default();
-                if let Some(ref t) = *cur_title {
+                if let Some(ref t) = cur_title {
                     format!("{} - {}{}", st.name, t, time_str)
                 } else {
                     format!("{}{}", st.name, time_str)
@@ -221,30 +222,26 @@ impl ksni::Tray for TiMondeTray {
 
     fn scroll(&mut self, delta: i32, _orientation: ksni::Orientation) {
         let step = if delta > 0 { -0.01 } else { 0.01 };
-        let mut cur = self.current_volume.safe_lock();
-        let new_vol = (*cur + step).clamp(0.0, 1.0);
-        *cur = new_vol;
-        drop(cur);
-        let guard = self.audio.safe_lock();
-        if let Some(ref engine) = *guard {
-            engine.set_volume(new_vol);
-        }
-        drop(guard);
+        let new_vol = {
+            let mut s = self.session.safe_lock();
+            let v = (s.volume + step).clamp(0.0, 1.0);
+            s.set_volume(v);
+            v
+        };
         crate::state::schedule_volume_save(new_vol);
     }
 
     fn menu(&self) -> Vec<MenuItem<Self>> {
         let mut menu = Vec::new();
-        let is_eph = self.is_ephemeral.load(Ordering::SeqCst);
-        let cur_st = self.current_station.safe_lock();
-        let cur_title = self.current_title.safe_lock();
-        let current_state = self.state();
-
-        let effective_state = match current_state {
-            PlaybackState::Stopped if cur_st.is_some() && self.audio.safe_lock().is_none() => {
-                PlaybackState::Playing
-            }
-            s => s,
+        let (cur_st, cur_title, is_eph, effective_state) = {
+            let s = self.session.safe_lock();
+            let state = match s.state() {
+                PlaybackState::Stopped if s.current_station.is_some() && s.engine.is_none() => {
+                    PlaybackState::Playing
+                }
+                other => other,
+            };
+            (s.current_station.clone(), s.current_title.clone(), s.is_ephemeral, state)
         };
 
         // 1. Bouton principal Marche / Arrêt / Connexion en tête du menu
@@ -317,7 +314,7 @@ impl ksni::Tray for TiMondeTray {
             menu.push(MenuItem::Separator);
 
             // Titre en cours (si stream actif avec tag)
-            if let Some(ref title) = *cur_title {
+            if let Some(ref title) = cur_title {
                 if !title.trim().is_empty() {
                     let t_clone = title.clone();
                     menu.push(MenuItem::Standard(StandardItem {
@@ -397,10 +394,9 @@ impl ksni::Tray for TiMondeTray {
                             Arc::clone(&tray.root_group),
                             tray.bookmarks_path.clone(),
                             Arc::clone(&tray.tray_handle),
-                            Arc::clone(&tray.current_station),
+                            Arc::clone(&tray.session),
                             Arc::clone(&tray.last_station),
-                            Arc::clone(&tray.audio),
-                            Arc::clone(&tray.current_title),
+                            Arc::clone(&tray.play_generation),
                         );
                     }),
                     enabled: true,
@@ -409,9 +405,6 @@ impl ksni::Tray for TiMondeTray {
                 }));
             }
         }
-
-        drop(cur_st);
-        drop(cur_title);
 
         menu.push(MenuItem::Separator);
 
@@ -491,7 +484,7 @@ impl ksni::Tray for TiMondeTray {
         menu.push(MenuItem::Separator);
 
         // 4. Contrôle du volume
-        let current_vol = *self.current_volume.safe_lock();
+        let current_vol = self.session.safe_lock().volume;
         let vol_percent = (current_vol * 100.0).round() as i32;
         menu.push(MenuItem::SubMenu(SubMenu {
             label: format!("Volume ({vol_percent}%)"),
@@ -617,10 +610,7 @@ impl ksni::Tray for TiMondeTray {
                     Arc::clone(&tray.root_group),
                     tray.bookmarks_path.clone(),
                     Arc::clone(&tray.tray_handle),
-                    Arc::clone(&tray.audio),
-                    Arc::clone(&tray.current_station),
-                    Arc::clone(&tray.current_title),
-                    Arc::clone(&tray.is_ephemeral),
+                    Arc::clone(&tray.session),
                     Arc::clone(&tray.play_generation),
                 );
             }),

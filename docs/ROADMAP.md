@@ -68,6 +68,12 @@ Face à la dette technique accumulée (duplication de code entre Rust et Python,
 - [x] **Validation intégrale :** 58 tests Rust + 17 tests unitaires Python + 4 tests GTK loop / AST scope = 100% vert. Clippy `-D warnings` 100% propre.
 
 
+### Jalon 8 : Unification de la Session Audio & Éradication des Deadlocks — v0.2.6 (Terminé ✅)
+- [x] **Unification transactionnelle (`PlaybackSession`) :** Fusion des 7 mutex dispersés en un modèle transactionnel à verrou unique dans `src/session.rs`. Éradication mathématique de tout interblocage ABBA.
+- [x] **Règle d'or GStreamer :** Démontage (`set_state(Null)`), instanciation et démarrage de flux exécutés hors de tout verrou partagé.
+- [x] **Option A & Maîtrise mémoire :** Drop déterministe hors verrou avec `malloc_trim(0)`. Exclusion de `libav` (FFmpeg) plafonnant la consommation RAM en écoute active à 45 Mo (les 45 Mo historiques de TiMonde) sans aucune fuite lors des zappings.
+- [x] **Validation intégrale :** 62 tests unitaires et banc de stress-test automatisé avec 10 commutations rapides (latence D-Bus moyenne 20.0 ms, zéro gel).
+
 ---
 
 ## 3. Règles d'Or Intransgressibles

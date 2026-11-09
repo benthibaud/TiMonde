@@ -2,10 +2,9 @@
 
 use std::path::{Path, PathBuf};
 use std::process::Command;
-use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
+use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::{Arc, Mutex};
 
-use crate::audio::AudioEngine;
 use crate::models::{Group, Station};
 use crate::tray::TiMondeTray;
 use crate::sync_util::SafeLock;
@@ -131,10 +130,9 @@ pub fn trigger_edit_station_dialog(
     root_group: Arc<Mutex<Group>>,
     bookmarks_path: PathBuf,
     tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
-    current_station: Arc<Mutex<Option<Station>>>,
+    session: Arc<Mutex<crate::session::PlaybackSession>>,
     last_station: Arc<Mutex<Option<Station>>>,
-    audio: Arc<Mutex<Option<AudioEngine>>>,
-    current_title: Arc<Mutex<Option<String>>>,
+    play_generation: Arc<AtomicU64>,
 ) {
     std::thread::spawn(move || {
         // Rapatriement infaillible de la station réelle dans les signets par son URL
@@ -232,8 +230,9 @@ pub fn trigger_edit_station_dialog(
                             *root_group.safe_lock() = root;
                         }
                         let is_current = {
-                            let cur = current_station.safe_lock();
-                            cur.as_ref()
+                            let s = session.safe_lock();
+                            s.current_station
+                                .as_ref()
                                 .map(|c| {
                                     crate::import::normalize_url(&c.url)
                                         == crate::import::normalize_url(&station.url)
@@ -241,7 +240,7 @@ pub fn trigger_edit_station_dialog(
                                 .unwrap_or(false)
                         };
                         if is_current {
-                            TiMondeTray::stop_and_trim_flow(&audio, &current_station, &current_title);
+                            crate::session::stop_session(&session);
                         }
                         {
                             let mut last = last_station.safe_lock();
@@ -331,11 +330,12 @@ pub fn trigger_edit_station_dialog(
             return;
         }
 
-        // Mettre à jour current_station si elle était en cours et relancer le flux si l'URL a changé
+        // Mettre à jour la session si elle était en cours et relancer le flux si l'URL a changé
         let mut url_changed_while_playing = false;
+        let mut was_playing = false;
         {
-            let mut cur = current_station.safe_lock();
-            if let Some(ref mut c) = *cur {
+            let mut s = session.safe_lock();
+            if let Some(ref mut c) = s.current_station {
                 if crate::import::normalize_url(&c.url) == crate::import::normalize_url(&station.url)
                     || c.name == station.name
                 {
@@ -350,27 +350,24 @@ pub fn trigger_edit_station_dialog(
                     if let Some(ntz) = &new_timezone {
                         c.timezone = ntz.clone();
                     }
+                    was_playing = s.state() == crate::audio::PlaybackState::Playing
+                        || s.state() == crate::audio::PlaybackState::Buffering;
                 }
             }
         }
-        if url_changed_while_playing {
-            let was_playing = {
-                let guard = audio.safe_lock();
-                if let Some(ref engine) = *guard {
-                    engine.state() == crate::audio::PlaybackState::Playing
-                        || engine.state() == crate::audio::PlaybackState::Buffering
-                } else {
-                    false
-                }
-            };
-            if was_playing {
-                // Résolution réseau hors verrou audio pour ne pas bloquer le thread de contrôle
-                let resolved = crate::playlist::resolve_stream_url(&new_url);
-                let guard = audio.safe_lock();
-                if let Some(ref engine) = *guard {
-                    let _ = engine.play(&resolved);
-                }
-            }
+        if url_changed_while_playing && was_playing {
+            let mut updated_station = Station::new(&new_name, &new_url);
+            updated_station.country = new_country.clone().flatten();
+            updated_station.timezone = new_timezone.clone().flatten();
+            TiMondeTray::play_station_flow(
+                updated_station,
+                &session,
+                &last_station,
+                &play_generation,
+                &root_group,
+                &bookmarks_path,
+                &tray_handle,
+            );
         }
         {
             let mut last = last_station.safe_lock();
@@ -402,10 +399,7 @@ pub fn trigger_settings_dialog(
     root_group: Arc<Mutex<Group>>,
     bookmarks_path: PathBuf,
     tray_handle: Arc<Mutex<Option<ksni::blocking::Handle<TiMondeTray>>>>,
-    audio: Arc<Mutex<Option<AudioEngine>>>,
-    current_station: Arc<Mutex<Option<Station>>>,
-    current_title: Arc<Mutex<Option<String>>>,
-    is_ephemeral: Arc<AtomicBool>,
+    session: Arc<Mutex<crate::session::PlaybackSession>>,
     play_generation: Arc<AtomicU64>,
 ) {
     std::thread::spawn(move || {
@@ -432,11 +426,14 @@ pub fn trigger_settings_dialog(
         };
 
         // 1. Arrêt déterministe immédiat de toute pré-écoute active lors de la fermeture des paramètres
-        if is_ephemeral.load(Ordering::SeqCst) {
+        let was_ephemeral = {
+            let s = session.safe_lock();
+            s.is_ephemeral
+        };
+        if was_ephemeral {
             log::info!("Fermeture des paramètres : arrêt déterministe de la pré-écoute de test");
-            is_ephemeral.store(false, Ordering::SeqCst);
             play_generation.fetch_add(1, Ordering::SeqCst);
-            TiMondeTray::stop_and_trim_flow(&audio, &current_station, &current_title);
+            crate::session::stop_session(&session);
         }
 
         if output.status.success() {

@@ -21,7 +21,7 @@
     <station name="BFM Business" url="https://audio.bfmtv.com/bfmbusiness_128.mp3" genre="Économie" />
     <station name="Radio Classique" url="https://radioclassique.ice.infomaniak.ch/radioclassique-high.mp3" genre="Classique &amp; Économie" />
     <station name="M Radio" url="http://mfm.ice.infomaniak.ch/mfm-128.mp3" genre="Chanson française" />
-    <station name="Latina" url="https://cast3.my-control-panel.com/proxy/maslatina/stream" genre="Musique latine" />
+    <station name="Latina" url="http://start-latina.ice.infomaniak.ch/start-latina-high.mp3" genre="Musique latine" />
     <station name="Radio Nova" url="http://radionova.ice.infomaniak.ch/radionova-256.aac" genre="Musiques actuelles" />
     <station name="TSF Jazz" url="https://tsfjazz.ice.infomaniak.ch/tsfjazz-high.mp3" genre="Jazz" />
     <station name="Radio FG" url="https://n24-eu.rcs.revma.com/7081n2b6p98uv" genre="Électro &amp; House" />

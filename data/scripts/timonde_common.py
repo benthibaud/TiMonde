@@ -32,7 +32,7 @@ try:
 except ImportError:
     def _(s): return s
 
-TIMONDE_VERSION = "0.2.5"
+TIMONDE_VERSION = "0.2.6"
 TIMONDE_USER_AGENT = f"TiMonde/{TIMONDE_VERSION}"
 USER_AGENT = TIMONDE_USER_AGENT
 USER_AGENT_PROBE = f"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) TiMonde/{TIMONDE_VERSION}"

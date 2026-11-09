@@ -3,7 +3,7 @@ use std::sync::{Arc, Mutex};
 use std::collections::HashMap;
 use zbus::interface;
 use zbus::zvariant::{ObjectPath, Value, OwnedValue};
-use crate::audio::{AudioEngine, PlaybackState};
+use crate::audio::PlaybackState;
 use crate::models::{Group, Station};
 
 pub struct MprisRoot;
@@ -32,10 +32,7 @@ impl MprisRoot {
 }
 
 pub struct MprisPlayer {
-    pub audio: Arc<Mutex<Option<AudioEngine>>>,
-    pub current_volume: Arc<Mutex<f64>>,
-    pub current_station: Arc<Mutex<Option<Station>>>,
-    pub current_title: Arc<Mutex<Option<String>>>,
+    pub session: Arc<Mutex<crate::session::PlaybackSession>>,
     pub last_station: Arc<Mutex<Option<Station>>>,
     pub root_group: Arc<Mutex<Group>>,
     pub on_play: Arc<dyn Fn(Station) + Send + Sync>,
@@ -51,7 +48,7 @@ impl MprisPlayer {
         let all_stations = get_all_stations(&self.root_group.safe_lock());
         if all_stations.is_empty() { return; }
 
-        let cur = self.current_station.safe_lock().clone();
+        let cur = self.session.safe_lock().current_station.clone();
         let next_station = if let Some(st) = cur {
             if let Some(pos) = all_stations.iter().position(|s| s.name == st.name) {
                 all_stations[(pos + 1) % all_stations.len()].clone()
@@ -69,7 +66,7 @@ impl MprisPlayer {
         let all_stations = get_all_stations(&self.root_group.safe_lock());
         if all_stations.is_empty() { return; }
 
-        let cur = self.current_station.safe_lock().clone();
+        let cur = self.session.safe_lock().current_station.clone();
         let prev_station = if let Some(st) = cur {
             if let Some(pos) = all_stations.iter().position(|s| s.name == st.name) {
                 let prev_idx = if pos == 0 { all_stations.len() - 1 } else { pos - 1 };
@@ -85,36 +82,39 @@ impl MprisPlayer {
     }
 
     fn pause(&self) {
-        let guard = self.audio.safe_lock();
-        if let Some(ref e) = *guard {
+        let s = self.session.safe_lock();
+        if let Some(ref e) = s.engine {
             let _ = e.pause();
         }
-        drop(guard);
+        drop(s);
         (self.on_update)();
     }
 
     fn play_pause(&self) {
-        let guard = self.audio.safe_lock();
-        if let Some(ref e) = *guard {
-            match e.state() {
+        let current_st = {
+            let s = self.session.safe_lock();
+            match s.state() {
                 PlaybackState::Playing => {
-                    let _ = e.pause();
-                    drop(guard);
+                    if let Some(ref e) = s.engine {
+                        let _ = e.pause();
+                    }
+                    drop(s);
                     (self.on_update)();
                     return;
                 }
                 PlaybackState::Paused => {
-                    let _ = e.resume();
-                    drop(guard);
+                    if let Some(ref e) = s.engine {
+                        let _ = e.resume();
+                    }
+                    drop(s);
                     (self.on_update)();
                     return;
                 }
-                _ => {}
+                _ => s.current_station.clone(),
             }
-        }
-        drop(guard);
+        };
 
-        if let Some(st) = self.last_station.safe_lock().clone() {
+        if let Some(st) = self.last_station.safe_lock().clone().or(current_st) {
             (self.on_play)(st);
         }
     }
@@ -124,18 +124,20 @@ impl MprisPlayer {
     }
 
     fn play(&self) {
-        let guard = self.audio.safe_lock();
-        if let Some(ref e) = *guard {
-            if e.state() == PlaybackState::Paused {
-                let _ = e.resume();
-                drop(guard);
+        let current_st = {
+            let s = self.session.safe_lock();
+            if s.state() == PlaybackState::Paused {
+                if let Some(ref e) = s.engine {
+                    let _ = e.resume();
+                }
+                drop(s);
                 (self.on_update)();
                 return;
             }
-        }
-        drop(guard);
+            s.current_station.clone()
+        };
 
-        if let Some(st) = self.last_station.safe_lock().clone() {
+        if let Some(st) = self.last_station.safe_lock().clone().or(current_st) {
             (self.on_play)(st);
         }
     }
@@ -170,10 +172,9 @@ impl MprisPlayer {
 
     #[zbus(property)]
     fn playback_status(&self) -> String {
-        let guard = self.audio.safe_lock();
-        match guard.as_ref().map(|e| e.state()) {
-            Some(PlaybackState::Playing) => "Playing".to_string(),
-            Some(PlaybackState::Paused) => "Paused".to_string(),
+        match self.session.safe_lock().state() {
+            PlaybackState::Playing => "Playing".to_string(),
+            PlaybackState::Paused => "Paused".to_string(),
             _ => "Stopped".to_string(),
         }
     }
@@ -192,12 +193,14 @@ impl MprisPlayer {
             map.insert("mpris:trackid".to_string(), Value::ObjectPath(track_id));
         }
 
-        let st_guard = self.current_station.safe_lock();
-        let title_guard = self.current_title.safe_lock();
+        let (st_opt, title_opt) = {
+            let s = self.session.safe_lock();
+            (s.current_station.clone(), s.current_title.clone())
+        };
 
-        let track_title = if let Some(ref t) = *title_guard {
+        let track_title = if let Some(ref t) = title_opt {
             t.clone()
-        } else if let Some(ref s) = *st_guard {
+        } else if let Some(ref s) = st_opt {
             s.name.clone()
         } else {
             "TiMonde".to_string()
@@ -205,7 +208,7 @@ impl MprisPlayer {
 
         map.insert("xesam:title".to_string(), Value::Str(track_title.into()));
 
-        if let Some(ref s) = *st_guard {
+        if let Some(ref s) = st_opt {
             map.insert("xesam:artist".to_string(), Value::Str(s.name.clone().into()));
             map.insert("xesam:url".to_string(), Value::Str(s.url.clone().into()));
         }
@@ -215,21 +218,15 @@ impl MprisPlayer {
 
     #[zbus(property)]
     fn volume(&self) -> f64 {
-        *self.current_volume.safe_lock()
+        self.session.safe_lock().volume
     }
 
     #[zbus(property)]
     fn set_volume(&self, vol: f64) {
         let clamped = vol.clamp(0.0, 1.0);
         {
-            let mut v_guard = self.current_volume.safe_lock();
-            *v_guard = clamped;
-        }
-        {
-            let a_guard = self.audio.safe_lock();
-            if let Some(ref e) = *a_guard {
-                e.set_volume(clamped);
-            }
+            let mut s = self.session.safe_lock();
+            s.set_volume(clamped);
         }
         crate::state::schedule_volume_save(clamped);
         (self.on_update)();
@@ -270,10 +267,7 @@ fn get_all_stations(group: &Group) -> Vec<Station> {
 
 #[allow(clippy::too_many_arguments)]
 pub fn spawn_mpris_server(
-    audio: Arc<Mutex<Option<AudioEngine>>>,
-    current_volume: Arc<Mutex<f64>>,
-    current_station: Arc<Mutex<Option<Station>>>,
-    current_title: Arc<Mutex<Option<String>>>,
+    session: Arc<Mutex<crate::session::PlaybackSession>>,
     last_station: Arc<Mutex<Option<Station>>>,
     root_group: Arc<Mutex<Group>>,
     on_play: Arc<dyn Fn(Station) + Send + Sync>,
@@ -290,10 +284,7 @@ pub fn spawn_mpris_server(
                 b.serve_at(
                     "/org/mpris/MediaPlayer2",
                     MprisPlayer {
-                        audio,
-                        current_volume,
-                        current_station,
-                        current_title,
+                        session,
                         last_station,
                         root_group,
                         on_play,

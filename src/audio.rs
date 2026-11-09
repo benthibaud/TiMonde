@@ -42,12 +42,11 @@ pub struct AudioEngine {
     bus_running: Arc<AtomicBool>,
     current_url: Arc<Mutex<Option<String>>>,
     state: Arc<Mutex<PlaybackState>>,
-    current_title: Arc<Mutex<Option<String>>>,
 }
 
 impl AudioEngine {
     pub fn new(
-        current_title: Arc<Mutex<Option<String>>>,
+        on_title: Option<Arc<dyn Fn(String) + Send + Sync>>,
         tray_notifier: Option<Arc<dyn Fn() + Send + Sync>>,
     ) -> Result<Self, AudioError> {
         gstreamer::init().map_err(AudioError::Init)?;
@@ -100,7 +99,7 @@ impl AudioEngine {
         let bus_running = Arc::new(AtomicBool::new(true));
         if let Some(bus) = pipeline.bus() {
             let state_clone = Arc::clone(&state);
-            let title_clone = Arc::clone(&current_title);
+            let on_title_clone = on_title.clone();
             let running_clone = Arc::clone(&bus_running);
             let notifier_clone = tray_notifier.clone();
 
@@ -186,19 +185,11 @@ impl AudioEngine {
                                     if let Some(title) = tags.get::<gstreamer::tags::Title>() {
                                         let title_str = title.get().to_string();
                                         info!("Titre en cours : {}", title_str);
-                                        let is_new = {
-                                            let mut guard = title_clone.safe_lock();
-                                            let changed = guard.as_deref() != Some(&title_str);
-                                            if changed {
-                                                *guard = Some(title_str.clone());
-                                            }
-                                            changed
-                                        };
-                                        if is_new {
-                                            crate::notify::notify("TiMonde", &title_str);
-                                            if let Some(ref notify_tray) = notifier_clone {
-                                                notify_tray();
-                                            }
+                                        if let Some(ref cb) = on_title_clone {
+                                            cb(title_str.clone());
+                                        }
+                                        if let Some(ref notify_tray) = notifier_clone {
+                                            notify_tray();
                                         }
                                     }
                                 }
@@ -215,7 +206,6 @@ impl AudioEngine {
             bus_running,
             current_url,
             state,
-            current_title,
         })
     }
 
@@ -223,7 +213,6 @@ impl AudioEngine {
         let clean_url = crate::models::clean_stream_url(url);
         info!("Démarrage du flux : {}", clean_url);
         *self.state.safe_lock() = PlaybackState::Buffering;
-        *self.current_title.safe_lock() = None;
         *self.current_url.safe_lock() = Some(clean_url.clone());
 
         let _ = self.pipeline.set_state(gstreamer::State::Ready);
@@ -260,7 +249,6 @@ impl AudioEngine {
             .map_err(|e| AudioError::StateChange(format!("{:?}", e)))?;
 
         *self.state.safe_lock() = PlaybackState::Stopped;
-        *self.current_title.safe_lock() = None;
         unsafe {
             libc::malloc_trim(0);
         }
