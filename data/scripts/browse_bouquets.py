@@ -52,19 +52,17 @@ from timonde_common import (
     status_markup,
     apply_timonde_app_css,
     setup_window_geometry,
+    COUNTRIES_DB,
+    COUNTRIES_REGISTRY,
+    normalize_lookup,
+    resolve_country_code,
 )
 
 from timonde_world_data import (
-    WORLD_COUNTRIES,
     RADIO_BROWSER_LANGUAGES,
-    COUNTRY_BY_CODE,
-    COUNTRY_LOOKUP_MAP,
-    NATIVE_COUNTRY_NAMES,
     NATIVE_LANGUAGE_NAMES,
     DISPLAY_NATIVE_MAP,
     resolve_language_api_key,
-    resolve_country_code,
-    normalize_lookup,
 )
 
 import json
@@ -302,7 +300,9 @@ class DiscoverRadiosViews:
         # Magasin universel de complétion pays (indexé sur les 55 langues)
         self.country_comp_store = Gtk.ListStore(str, str, str, str)
         for c_code, c_info in sorted(self.bouquets_db.items(), key=lambda x: normalize_lookup(x[1].get("country_name", ""))):
-            nat_str = normalize_lookup(f"{c_info['name']} {c_code} {' '.join(NATIVE_COUNTRY_NAMES.get(c_code, []))}")
+            c_entry = COUNTRIES_REGISTRY.get(c_code, ("", "", []))
+            c_aliases = c_entry[2] if len(c_entry) > 2 else []
+            nat_str = normalize_lookup(f"{c_info['name']} {c_code} {' '.join(c_aliases)}")
             self.country_comp_store.append([
                 c_info["name"],
                 c_code,
@@ -1161,11 +1161,8 @@ class DiscoverRadiosViews:
         if active_id is None:
             entry = self.combo_country.get_child()
             text = entry.get_text().strip() if entry else ""
-            norm_text = normalize_lookup(text)
-            if not norm_text or norm_text not in COUNTRY_LOOKUP_MAP:
-                return
-            c_code = COUNTRY_LOOKUP_MAP[norm_text]
-            if c_code not in self.bouquets_db:
+            c_code = resolve_country_code(text)
+            if not c_code or c_code not in self.bouquets_db:
                 return
         else:
             c_code = active_id
@@ -2184,7 +2181,7 @@ def parse_bouquets_xml():
                 if code == "UK":
                     code = "GB"
                 raw_name = strip_unsupported_emojis(root.attrib.get("name", code))
-                name = raw_name if (raw_name and raw_name != code) else COUNTRY_BY_CODE.get(code, code)
+                name = raw_name if (raw_name and raw_name != code) else COUNTRIES_REGISTRY.get(code, (code,))[0]
                 display_name = f"{name}  [{code}]" if code else name
                 multilingual = root.attrib.get("multilingual", "false").lower() == "true"
 
@@ -2242,7 +2239,7 @@ def parse_bouquets_xml():
             except Exception:
                 pass
 
-    for iso_code, fr_name, _en_name in WORLD_COUNTRIES:
+    for iso_code, fr_name, _flag in COUNTRIES_DB:
         if iso_code not in db:
             db[iso_code] = {
                 "name": f"{fr_name}  [{iso_code}]",

@@ -116,6 +116,17 @@ def safe_parse_xml(path: str):
 
 def find_timonde_binary():
     """Localise le binaire officiel ou local de TiMonde."""
+    # 1. Priorité locale en mode développement (présence de Cargo.toml à la racine)
+    root_cargo = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../Cargo.toml"))
+    if os.path.exists(root_cargo):
+        dev_rel = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../target/release/timonde"))
+        if os.path.exists(dev_rel):
+            return dev_rel
+        dev_deb = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../target/debug/timonde"))
+        if os.path.exists(dev_deb):
+            return dev_deb
+
+    # 2. Binaire dans le PATH ou installé localement
     w = shutil.which("timonde")
     if w and os.path.exists(w):
         return w
@@ -124,13 +135,6 @@ def find_timonde_binary():
         return local
     if os.path.exists("/usr/bin/timonde"):
         return "/usr/bin/timonde"
-    # Localisation pour le développement
-    dev_rel = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../target/release/timonde"))
-    if os.path.exists(dev_rel):
-        return dev_rel
-    dev_deb = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../target/debug/timonde"))
-    if os.path.exists(dev_deb):
-        return dev_deb
     return None
 
 
@@ -312,29 +316,95 @@ def get_user_bookmarks_groups(path=None):
 
 # -----------------------------------------------------------------------------
 # 4. Registre des Pays SANS EMOJI & Fuseaux Horaires (antiX-safe)
-# -----------------------------------------------------------------------------
+import unicodedata
+
+def normalize_lookup(text: str) -> str:
+    """Normalise une chaîne pour recherche insensible à la casse et aux accents."""
+    if not text:
+        return ""
+    nfkd = unicodedata.normalize("NFD", text.strip())
+    return "".join(c for c in nfkd if unicodedata.category(c) != "Mn").lower()
+
 
 def _load_countries_from_rust():
     timonde_bin = find_timonde_binary()
+    aliases_map = {}
     if timonde_bin and os.path.exists(timonde_bin):
         try:
             res = subprocess.run([timonde_bin, "--dump-countries-json"], capture_output=True, text=True, timeout=2.0)
             if res.returncode == 0 and res.stdout.strip():
                 items = json.loads(res.stdout)
                 db = [(it["code"], it["name"], it.get("flag", "")) for it in items]
-                reg = {it["code"]: (it["name"], it.get("flag", "")) for it in items}
-                return db, reg
+                reg = {}
+                for it in items:
+                    c_code = it["code"]
+                    c_name = it["name"]
+                    c_flag = it.get("flag", "")
+                    c_aliases = it.get("aliases", [])
+                    reg[c_code] = (c_name, c_flag, c_aliases)
+                    aliases_map[c_code.lower()] = c_code
+                    aliases_map[normalize_lookup(c_name)] = c_code
+                    for al in c_aliases:
+                        aliases_map[normalize_lookup(al)] = c_code
+                return db, reg, aliases_map
         except Exception:
             pass
     # Fallback de secours minimal si binaire absent
     fallback = [
         ("FR", "France", ""), ("GP", "Guadeloupe", ""), ("MQ", "Martinique", ""), ("GF", "Guyane", ""),
         ("RE", "La Réunion", ""), ("BE", "Belgique", ""), ("CH", "Suisse", ""), ("CA", "Canada", ""),
-        ("US", "États-Unis", ""), ("GB", "Royaume-Uni", ""), ("DE", "Allemagne", ""), ("ES", "Espagne", ""),
+        ("US", "États-Unis", ""), ("UK", "Royaume-Uni", ""), ("GB", "Royaume-Uni", ""), ("DE", "Allemagne", ""), ("ES", "Espagne", ""),
     ]
-    return fallback, {c[0]: (c[1], c[2]) for c in fallback}
+    reg = {}
+    for c in fallback:
+        reg[c[0]] = (c[1], c[2], [])
+        aliases_map[c[0].lower()] = c[0]
+        aliases_map[normalize_lookup(c[1])] = c[0]
+    return fallback, reg, aliases_map
 
-COUNTRIES_DB, COUNTRIES_REGISTRY = _load_countries_from_rust()
+COUNTRIES_DB, COUNTRIES_REGISTRY, COUNTRY_ALIASES_MAP = _load_countries_from_rust()
+
+_COUNTRY_RESOLVE_CACHE = {}
+
+def resolve_country_code(query: str) -> str:
+    """Résout une saisie libre en code ISO via le moteur natif Rust (avec cache mémoire)."""
+    if not query:
+        return ""
+    q_str = query.strip()
+    if q_str in _COUNTRY_RESOLVE_CACHE:
+        return _COUNTRY_RESOLVE_CACHE[q_str]
+
+    # 1. Détection code ISO direct entre parenthèses ou crochets (ex: "[FR]" ou "(FR)")
+    m = re.search(r'[\[\(]([A-Za-z]{2})[\]\)]', q_str)
+    if m:
+        cand = m.group(1).upper()
+        if cand in COUNTRIES_REGISTRY:
+            _COUNTRY_RESOLVE_CACHE[q_str] = cand
+            return cand
+
+    # 2. Vérification rapide dans COUNTRY_ALIASES_MAP
+    norm = normalize_lookup(q_str)
+    if norm in COUNTRY_ALIASES_MAP:
+        code = COUNTRY_ALIASES_MAP[norm]
+        _COUNTRY_RESOLVE_CACHE[q_str] = code
+        return code
+
+    # 3. Délégation au binaire Rust
+    timonde_bin = find_timonde_binary()
+    if timonde_bin and os.path.exists(timonde_bin):
+        try:
+            res = subprocess.run([timonde_bin, "--resolve-country", q_str], capture_output=True, text=True, timeout=2.0)
+            if res.returncode == 0 and res.stdout.strip():
+                code = res.stdout.strip().upper()
+                _COUNTRY_RESOLVE_CACHE[q_str] = code
+                return code
+        except Exception:
+            pass
+
+    code = q_str.upper() if len(q_str) == 2 else ""
+    if code:
+        _COUNTRY_RESOLVE_CACHE[q_str] = code
+    return code
 
 # Fuseaux horaires complets pour la France (Métropole + Outre-mer)
 FRANCE_TIMEZONES = [
@@ -1094,6 +1164,40 @@ def style_dbusmenu_gtk(menu, is_root=True):
 
 
 
+def call_timonde_mpris(method_name: str, *args, fallback_cli: list = None, timeout: float = 5.0):
+    """
+    Exécute un appel unifié vers TiMonde via D-Bus MPRIS (priorité 1),
+    avec repli automatique et transparent vers la CLI timonde (priorité 2).
+    Retourne (succès: bool, résultat: any).
+    """
+    # 1. Tentative D-Bus si le bus de session est disponible
+    try:
+        import dbus
+        bus = dbus.SessionBus()
+        if bus.name_has_owner("org.mpris.MediaPlayer2.timonde"):
+            obj = bus.get_object("org.mpris.MediaPlayer2.timonde", "/org/mpris/MediaPlayer2")
+            player = dbus.Interface(obj, "org.mpris.MediaPlayer2.Player")
+            method = getattr(player, method_name, None)
+            if method:
+                res = method(*args)
+                return True, res
+    except Exception:
+        pass
+
+    # 2. Repli transparent via CLI si des arguments CLI sont spécifiés
+    if fallback_cli:
+        timonde_bin = find_timonde_binary() or "timonde"
+        try:
+            cmd = [timonde_bin] + fallback_cli
+            proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=timeout)
+            if proc.returncode == 0:
+                return True, proc.stdout.strip()
+        except Exception:
+            pass
+
+    return False, None
+
+
 class StreamPreviewPlayer:
     """
     Lecteur d'aperçu audio déporté vers le moteur natif Rust (Option B).
@@ -1143,24 +1247,8 @@ class StreamPreviewPlayer:
         self._emit_status(True, f"[►] {_('Playing:')} « {self.current_name} »", is_error=False)
 
         def run_play():
-            sent = False
-            try:
-                import dbus
-                bus = dbus.SessionBus()
-                disp_name = self.current_name or ""
-                if bus.name_has_owner("org.mpris.MediaPlayer2.timonde"):
-                    obj = bus.get_object("org.mpris.MediaPlayer2.timonde", "/org/mpris/MediaPlayer2")
-                    player = dbus.Interface(obj, "org.mpris.MediaPlayer2.Player")
-                    player.PlayPreview(clean, disp_name)
-                    sent = True
-            except Exception:
-                pass
-
-            if not sent:
-                try:
-                    subprocess.run(["timonde", "--preview-play", clean, self.current_name or ""], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=5.0)
-                except Exception:
-                    pass
+            disp_name = self.current_name or ""
+            call_timonde_mpris("PlayPreview", clean, disp_name, fallback_cli=["--preview-play", clean, disp_name])
 
         import threading
         threading.Thread(target=run_play, daemon=True).start()
@@ -1173,23 +1261,7 @@ class StreamPreviewPlayer:
         self.current_name = None
 
         def run_stop():
-            sent = False
-            try:
-                import dbus
-                bus = dbus.SessionBus()
-                if bus.name_has_owner("org.mpris.MediaPlayer2.timonde"):
-                    obj = bus.get_object("org.mpris.MediaPlayer2.timonde", "/org/mpris/MediaPlayer2")
-                    player = dbus.Interface(obj, "org.mpris.MediaPlayer2.Player")
-                    player.StopPreview()
-                    sent = True
-            except Exception:
-                pass
-
-            if not sent:
-                try:
-                    subprocess.run(["timonde", "--preview-stop"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=5.0)
-                except Exception:
-                    pass
+            call_timonde_mpris("StopPreview", fallback_cli=["--preview-stop"])
 
         import threading
         threading.Thread(target=run_stop, daemon=True).start()

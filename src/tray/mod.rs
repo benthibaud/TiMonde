@@ -12,8 +12,9 @@ use log::{error, info};
 
 use crate::audio::{AudioEngine, PlaybackState};
 use crate::models::{Group, Station};
+use crate::notify::notify;
 use crate::playlist::resolve_stream_url;
-use crate::radio_browser::{find_backup_stream, notify};
+use crate::radio_browser::find_backup_stream;
 use crate::sync_util::SafeLock;
 
 /// Mémorisation de l'horodatage de la dernière écriture interne pour éviter les doubles rechargements
@@ -165,7 +166,7 @@ impl TiMondeTray {
             station.timezone.as_deref(),
         ) {
             let offset_sign = if time_info.offset_hours >= 0.0 { "+" } else { "" };
-            crate::radio_browser::notify(
+            crate::notify::notify(
                 &prefix,
                 &format!(
                     "{}\n{} • {} (UTC{}{:.0}h){}",
@@ -178,7 +179,7 @@ impl TiMondeTray {
                 ),
             );
         } else if is_ephemeral {
-            crate::radio_browser::notify(
+            crate::notify::notify(
                 &prefix,
                 &format!("{}{}", station_name, ephemeral_suffix),
             );
@@ -440,7 +441,7 @@ impl TiMondeTray {
         let picked = match crate::discovery::pick_random_station(&existing_urls) {
             Some(st) => st,
             None => {
-                crate::radio_browser::notify(
+                crate::notify::notify(
                     "TiMonde",
                     &crate::i18n::tr("Unable to find a station in the bouquets catalog."),
                 );
@@ -457,7 +458,7 @@ impl TiMondeTray {
         let station = match station_opt {
             Some(s) => s,
             None => {
-                crate::radio_browser::notify("TiMonde", &crate::i18n::tr("No radio is currently playing."));
+                crate::notify::notify("TiMonde", &crate::i18n::tr("No radio is currently playing."));
                 return;
             }
         };
@@ -539,7 +540,7 @@ impl TiMondeTray {
                 Ok(msg) => {
                     if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
                         log::error!("Erreur lors de la sauvegarde : {}", e);
-                        crate::radio_browser::notify("TiMonde", &format!("{} : {}", crate::i18n::tr("Save error"), e));
+                        crate::notify::notify("TiMonde", &format!("{} : {}", crate::i18n::tr("Save error"), e));
                         return;
                     }
 
@@ -558,19 +559,19 @@ impl TiMondeTray {
                     match Self::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle) {
                         Ok(total) => {
                             log::info!("{} (Total : {} stations)", msg, total);
-                            crate::radio_browser::notify(
+                            crate::notify::notify(
                                 &format!("TiMonde • {}", crate::i18n::tr("Saved!")),
                                 &format!("« {} » {} (Total : {}).", final_st.name, crate::i18n::tr("saved in your favorites!"), total),
                             );
                         }
                         Err(e) => {
-                            crate::radio_browser::notify("TiMonde", &format!("{} : {}", crate::i18n::tr("Station added but reload error"), e));
+                            crate::notify::notify("TiMonde", &format!("{} : {}", crate::i18n::tr("Station added but reload error"), e));
                         }
                     }
                 }
                 Err(err) => {
                     log::warn!("Impossible de sauvegarder la station éphémère : {}", err);
-                    crate::radio_browser::notify("TiMonde", &format!("Notice : {}", err));
+                    crate::notify::notify("TiMonde", &format!("Notice : {}", err));
                 }
             }
         });
@@ -677,7 +678,7 @@ impl TiMondeTray {
                 }
             }
             if copied {
-                crate::radio_browser::notify("TiMonde", &format!("{}\n{}", crate::i18n::tr("Track copied to clipboard:"), t));
+                crate::notify::notify("TiMonde", &format!("{}\n{}", crate::i18n::tr("Track copied to clipboard:"), t));
             }
         });
     }

@@ -259,7 +259,7 @@ pub fn trigger_edit_station_dialog(
                                 let _ = state.save(&crate::state::AppState::default_path());
                             }
                         }
-                        crate::radio_browser::notify(
+                        crate::notify::notify(
                             "TiMonde",
                             &format!("« {} » {}", station.name, crate::i18n::tr("deleted from your favorites.")),
                         );
@@ -326,7 +326,7 @@ pub fn trigger_edit_station_dialog(
 
         if let Err(e) = crate::bookmarks::save_bookmarks(&root, &bookmarks_path) {
             log::error!("Erreur sauvegarde : {}", e);
-            crate::radio_browser::notify("TiMonde", &format!("{} : {}", crate::i18n::tr("Save error"), e));
+            crate::notify::notify("TiMonde", &format!("{} : {}", crate::i18n::tr("Save error"), e));
             return;
         }
 
@@ -391,7 +391,7 @@ pub fn trigger_edit_station_dialog(
 
         let _ = TiMondeTray::reload_bookmarks_and_update_tray(&root_group, &bookmarks_path, &tray_handle);
         log::info!("Station modifiée : {} -> {}", station.name, new_name);
-        crate::radio_browser::notify("TiMonde", &format!("« {} » {}", new_name, crate::i18n::tr("updated successfully!")));
+        crate::notify::notify("TiMonde", &format!("« {} » {}", new_name, crate::i18n::tr("updated successfully!")));
     });
 }
 
@@ -406,7 +406,7 @@ pub fn trigger_settings_dialog(
             Some(p) => p,
             None => {
                 log::error!("Script timonde_settings.py introuvable");
-                crate::radio_browser::notify("TiMonde", &crate::i18n::tr("Settings console not found"));
+                crate::notify::notify("TiMonde", &crate::i18n::tr("Settings console not found"));
                 return;
             }
         };

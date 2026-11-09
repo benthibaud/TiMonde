@@ -193,7 +193,7 @@ impl AudioEngine {
                                             changed
                                         };
                                         if is_new {
-                                            crate::radio_browser::notify("TiMonde", &title_str);
+                                            crate::notify::notify("TiMonde", &title_str);
                                             if let Some(ref notify_tray) = notifier_clone {
                                                 notify_tray();
                                             }

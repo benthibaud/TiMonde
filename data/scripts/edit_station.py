@@ -38,10 +38,6 @@ from timonde_common import (
     lookup_station_by_url,
     contribute_station_to_radio_browser,
     ContributeStationDialog,
-)
-
-from timonde_world_data import (
-    NATIVE_COUNTRY_NAMES,
     normalize_lookup,
     resolve_country_code,
 )
@@ -260,10 +256,11 @@ class EditStationWindow(Gtk.Window):
         # 1. Option automatique / non spécifié
         self.country_store.append(["", "(Déduction automatique selon le groupe)", ""])
         
-        # 2. Liste des pays (indexée sur les 55 langues prises en charge)
-        for code, (cname, cflag) in sorted(COUNTRIES_REGISTRY.items(), key=lambda x: (x[1][0] != "France", normalize_lookup(x[1][0]))):
-            natives = " ".join(NATIVE_COUNTRY_NAMES.get(code, []))
-            search_key = normalize_lookup(f"{cname} {code} {natives}")
+        # 2. Liste des pays avec recherche sur les alias et variantes
+        for code, c_entry in sorted(COUNTRIES_REGISTRY.items(), key=lambda x: (x[1][0] != "France", normalize_lookup(x[1][0]))):
+            cname = c_entry[0]
+            aliases = c_entry[2] if len(c_entry) > 2 else []
+            search_key = normalize_lookup(f"{cname} {code} {' '.join(aliases)}")
             display_label = f"[{code}] {cname}"
             self.country_store.append([search_key, display_label, code])
 
@@ -306,7 +303,7 @@ class EditStationWindow(Gtk.Window):
 
         # Initialiser le champ de recherche pays avec le pays de départ
         if self.selected_country_code and self.selected_country_code in COUNTRIES_REGISTRY:
-            cname, _dummy = COUNTRIES_REGISTRY[self.selected_country_code]
+            cname = COUNTRIES_REGISTRY[self.selected_country_code][0]
             self.entry_country_search.set_text(f"[{self.selected_country_code}] {cname}")
         elif self.selected_country_code:
             self.entry_country_search.set_text(self.selected_country_code)
@@ -443,7 +440,7 @@ class EditStationWindow(Gtk.Window):
         """Met à jour de manière programmée le pays sélectionné et peuple les fuseaux associés."""
         code = (code or "").strip().upper()
         if code and code in COUNTRIES_REGISTRY:
-            cname, _dummy = COUNTRIES_REGISTRY[code]
+            cname = COUNTRIES_REGISTRY[code][0]
             self.selected_country_code = code
             self._updating_country_text = True
             self.entry_country_search.set_text(f"[{code}] {cname}")

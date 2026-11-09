@@ -274,7 +274,6 @@ const COUNTRY_REGISTRY: &[(&str, &str, &str, &str, i32)] = &[
     ("TZ", "Tanzanie", "", "Africa/Dar_es_Salaam", 10800),
     ("UA", "Ukraine", "", "Europe/Kyiv", 7200),
     ("UG", "Ouganda", "", "Africa/Kampala", 10800),
-    ("UK", "Royaume-Uni", "", "Europe/London", 0),
     ("UM", "Îles mineures éloignées des États-Unis", "", "Pacific/Wake", 43200),
     ("US", "États-Unis", "", "America/New_York", -18000),
     ("UY", "Uruguay", "", "America/Montevideo", -10800),
@@ -612,6 +611,130 @@ pub fn resolve_station_meta(
     None
 }
 
+/// Alias et appellations alternatives usuelles pour la résolution intelligente de pays
+const COUNTRY_ALIASES: &[(&str, &[&str])] = &[
+    ("US", &["usa", "united states", "etats-unis", "etats unis", "america", "us", "アメリカ合衆国", "美国"]),
+    ("GB", &["uk", "gb", "united kingdom", "royaume-uni", "royaume uni", "great britain", "angleterre", "england", "scotland", "wales"]),
+    ("FR", &["france", "french republic", "republique francaise"]),
+    ("DE", &["deutschland", "germany", "allemagne", "alemania", "germania", "duitsland", "niemcy", "германия", "ألمانيا", "ドイツ", "德国", "德國", "saksa", "tyskland"]),
+    ("ES", &["espana", "spain", "espagne", "spanien"]),
+    ("IT", &["italia", "italy", "italie"]),
+    ("RU", &["russia", "russie", "russian federation", "россия"]),
+    ("JP", &["japan", "japon", "nippon", "nihon", "日本"]),
+    ("CN", &["china", "chine", "zhongguo"]),
+    ("CA", &["canada"]),
+    ("BR", &["brazil", "bresil", "brasil"]),
+    ("BE", &["belgium", "belgique", "belgie"]),
+    ("CH", &["switzerland", "suisse", "schweiz", "svizzera", "suiza"]),
+    ("NL", &["netherlands", "pays-bas", "pays bas", "nederland", "holland", "hollande"]),
+    ("PT", &["portugal"]),
+    ("IN", &["india", "inde", "bharat"]),
+    ("AU", &["australia", "australie"]),
+    ("MX", &["mexico", "mexique"]),
+    ("AR", &["argentina", "argentine"]),
+    ("ZA", &["south africa", "afrique du sud"]),
+    ("KR", &["south korea", "coree du sud", "korea"]),
+    ("SE", &["sweden", "suede", "sverige"]),
+    ("NO", &["norway", "norvege", "norge"]),
+    ("DK", &["denmark", "danemark", "danmark"]),
+    ("FI", &["finland", "finlande", "suomi"]),
+    ("PL", &["poland", "pologne", "polska"]),
+    ("AT", &["austria", "autriche", "osterreich"]),
+    ("IE", &["ireland", "irlande", "eire"]),
+    ("GR", &["greece", "grece", "hellas", "ελλάδα"]),
+    ("TR", &["turkey", "turquie", "turkiye"]),
+    ("MA", &["morocco", "maroc"]),
+    ("DZ", &["algeria", "algerie"]),
+    ("TN", &["tunisia", "tunisie"]),
+    ("SN", &["senegal"]),
+    ("CI", &["cote d'ivoire", "ivory coast"]),
+    ("CM", &["cameroon", "cameroun"]),
+    ("MG", &["madagascar"]),
+    ("HT", &["haiti"]),
+    ("GP", &["guadeloupe"]),
+    ("MQ", &["martinique"]),
+    ("GF", &["guyane", "french guiana"]),
+    ("RE", &["reunion", "la reunion"]),
+    ("NC", &["nouvelle-caledonie", "new caledonia"]),
+    ("PF", &["polynesie", "french polynesia", "tahiti"]),
+];
+
+/// Normalise une chaîne pour une comparaison insensible à la casse, aux accents et aux ponctuations
+fn normalize_str(s: &str) -> String {
+    s.trim()
+        .to_lowercase()
+        .chars()
+        .map(|c| match c {
+            'à' | 'á' | 'â' | 'ä' | 'ã' | 'å' | 'ā' => 'a',
+            'è' | 'é' | 'ê' | 'ë' | 'ē' | 'ė' | 'ę' => 'e',
+            'ì' | 'í' | 'î' | 'ï' | 'ī' => 'i',
+            'ò' | 'ó' | 'ô' | 'ö' | 'õ' | 'ō' | 'ø' => 'o',
+            'ù' | 'ú' | 'û' | 'ü' | 'ū' => 'u',
+            'ç' | 'ć' | 'č' => 'c',
+            'ñ' | 'ń' => 'n',
+            'ý' | 'ÿ' => 'y',
+            'ž' | 'ź' | 'ż' => 'z',
+            'š' | 'ś' => 's',
+            '-' | '_' | '\'' | '’' => ' ',
+            other => other,
+        })
+        .collect::<String>()
+        .split_whitespace()
+        .collect::<Vec<&str>>()
+        .join(" ")
+}
+
+/// Résout un code pays ISO (ex: "FR", "US", "DE") à partir d'un code, d'un nom de pays ou d'un alias
+pub fn resolve_country_code(input: &str) -> Option<&'static str> {
+    let raw = input.trim();
+    if raw.is_empty() {
+        return None;
+    }
+    // 1. Correspondance directe code 2 lettres
+    if raw.len() == 2 {
+        for entry in COUNTRY_REGISTRY {
+            if entry.0.eq_ignore_ascii_case(raw) {
+                return Some(entry.0);
+            }
+        }
+    }
+    let norm = normalize_str(raw);
+    if norm.is_empty() {
+        return None;
+    }
+    // 2. Recherche exacte dans les alias
+    for (code, aliases) in COUNTRY_ALIASES {
+        for alias in *aliases {
+            if norm == *alias {
+                return Some(code);
+            }
+        }
+    }
+    // 3. Recherche exacte sur nom officiel
+    for entry in COUNTRY_REGISTRY {
+        if normalize_str(entry.1) == norm {
+            return Some(entry.0);
+        }
+    }
+    // 4. Recherche par inclusion si au moins 4 caractères
+    if norm.len() >= 4 {
+        for (code, aliases) in COUNTRY_ALIASES {
+            for alias in *aliases {
+                if alias.contains(&norm) || norm.contains(alias) {
+                    return Some(code);
+                }
+            }
+        }
+        for entry in COUNTRY_REGISTRY {
+            let entry_norm = normalize_str(entry.1);
+            if entry_norm.contains(&norm) || norm.contains(&entry_norm) {
+                return Some(entry.0);
+            }
+        }
+    }
+    None
+}
+
 /// Retourne les informations statiques d'un pays à partir de son code ISO (insensible à la casse)
 pub fn lookup_country_meta(country_code: &str) -> Option<(&'static str, &'static str, &'static str, i32)> {
     let clean = country_code.trim();
@@ -631,18 +754,27 @@ pub struct CountryInfoJson {
     pub flag: String,
     pub timezone: String,
     pub offset_sec: i32,
+    #[serde(default)]
+    pub aliases: Vec<String>,
 }
 
 /// Exporte la liste exhaustive des pays du référentiel TiMonde en JSON propre
 pub fn dump_countries_json() -> String {
     let list: Vec<CountryInfoJson> = COUNTRY_REGISTRY
         .iter()
-        .map(|(code, name, flag, tz, off)| CountryInfoJson {
-            code: code.to_string(),
-            name: name.to_string(),
-            flag: flag.to_string(),
-            timezone: tz.to_string(),
-            offset_sec: *off,
+        .map(|(code, name, flag, tz, off)| {
+            let mut aliases = Vec::new();
+            if let Some((_, al_list)) = COUNTRY_ALIASES.iter().find(|(c, _)| *c == *code) {
+                aliases.extend(al_list.iter().map(|s| s.to_string()));
+            }
+            CountryInfoJson {
+                code: code.to_string(),
+                name: name.to_string(),
+                flag: flag.to_string(),
+                timezone: tz.to_string(),
+                offset_sec: *off,
+                aliases,
+            }
         })
         .collect();
     serde_json::to_string_pretty(&list).unwrap_or_else(|_| "[]".to_string())
@@ -1041,5 +1173,27 @@ mod tests {
 
         let inferred_gp = infer_timezone_json(Some("FR"), "RCI Guadeloupe", Some("Antilles"), None);
         assert!(inferred_gp.contains("\"timezone\":\"America/Guadeloupe\""));
+    }
+
+    #[test]
+    fn test_resolve_country_code() {
+        assert_eq!(resolve_country_code("FR"), Some("FR"));
+        assert_eq!(resolve_country_code("fr"), Some("FR"));
+        assert_eq!(resolve_country_code("France"), Some("FR"));
+        assert_eq!(resolve_country_code("USA"), Some("US"));
+        assert_eq!(resolve_country_code("United States"), Some("US"));
+        assert_eq!(resolve_country_code("États-Unis"), Some("US"));
+        assert_eq!(resolve_country_code("Germany"), Some("DE"));
+        assert_eq!(resolve_country_code("Deutschland"), Some("DE"));
+        assert_eq!(resolve_country_code("Allemagne"), Some("DE"));
+        assert_eq!(resolve_country_code("Alemania"), Some("DE"));
+        assert_eq!(resolve_country_code("UK"), Some("GB"));
+        assert_eq!(resolve_country_code("United Kingdom"), Some("GB"));
+        assert_eq!(resolve_country_code("Royaume-Uni"), Some("GB"));
+        assert_eq!(resolve_country_code("Guadeloupe"), Some("GP"));
+        assert_eq!(resolve_country_code("Martinique"), Some("MQ"));
+        assert_eq!(resolve_country_code("Japon"), Some("JP"));
+        assert_eq!(resolve_country_code("Japan"), Some("JP"));
+        assert_eq!(resolve_country_code("InconnuAuBataillonXYZ"), None);
     }
 }

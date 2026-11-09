@@ -40,6 +40,8 @@ from timonde_common import (
     TIMONDE_VERSION,
     setup_window_geometry,
     atomic_write_file,
+    call_timonde_mpris,
+    find_timonde_binary,
 )
 from reorder_groups import ReorderWindow, ReorderWidget
 from browse_bouquets import DiscoverRadiosViews, parse_bouquets_xml
@@ -114,34 +116,25 @@ def load_bookmarks_tree(path):
     if not os.path.isfile(path):
         return []
 
-    # 1. Tentative D-Bus si l'instance active tourne (accès instantané en mémoire)
-    # Strictement réservé au fichier de favoris actif par défaut
-    try:
-        if os.path.abspath(path) == os.path.abspath(DEFAULT_BOOKMARKS_PATH):
-            import dbus
-            bus = dbus.SessionBus()
-            if bus.name_has_owner("org.mpris.MediaPlayer2.timonde"):
-                obj = bus.get_object("org.mpris.MediaPlayer2.timonde", "/org/mpris/MediaPlayer2")
-                player = dbus.Interface(obj, "org.mpris.MediaPlayer2.Player")
-                raw_json = str(player.GetBookmarksJson())
-                if raw_json and raw_json.strip():
-                    return json.loads(raw_json)
-    except Exception:
-        pass
-
-    # 2. Appel CLI timonde --dump-bookmarks-json
-    try:
-        res = subprocess.run(
-            ["timonde", "--dump-bookmarks-json", path],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            timeout=5.0
-        )
-        if res.returncode == 0 and res.stdout.strip():
-            return json.loads(res.stdout)
-    except Exception:
-        pass
+    # 1. Appel unifié via D-Bus (mémoire vive) ou fallback CLI (dump atomique Rust)
+    is_default = os.path.abspath(path) == os.path.abspath(DEFAULT_BOOKMARKS_PATH)
+    fallback_cli = ["--dump-bookmarks-json", path]
+    if is_default:
+        ok, res = call_timonde_mpris("GetBookmarksJson", fallback_cli=fallback_cli)
+        if ok and res:
+            try:
+                return json.loads(str(res))
+            except Exception:
+                pass
+    else:
+        # Fichier personnalisé : lecture directe via le CLI natif
+        try:
+            bin_path = find_timonde_binary() or "timonde"
+            proc = subprocess.run([bin_path, "--dump-bookmarks-json", path], capture_output=True, text=True, timeout=5.0)
+            if proc.returncode == 0 and proc.stdout.strip():
+                return json.loads(proc.stdout)
+        except Exception:
+            pass
 
     return []
 

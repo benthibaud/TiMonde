@@ -502,6 +502,17 @@ pub fn handle_cli(args: &[String]) -> bool {
                 println!("{}", timezone::dump_countries_json());
                 true
             }
+            "--resolve-country" => {
+                if args.len() < 3 {
+                    eprintln!("Usage: timonde --resolve-country <NOM_OU_CODE>");
+                    std::process::exit(1);
+                }
+                let query = args[2..].join(" ");
+                if let Some(code) = timezone::resolve_country_code(&query) {
+                    println!("{}", code);
+                }
+                true
+            }
             "--infer-timezone" => {
                 let mut country: Option<String> = None;
                 let mut name: String = String::new();

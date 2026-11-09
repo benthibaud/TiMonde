@@ -1,6 +1,5 @@
 use log::{info, warn};
 use serde::{Deserialize, Serialize};
-use std::process::Command;
 use std::time::Duration;
 
 #[derive(Debug, Deserialize)]
@@ -44,29 +43,6 @@ pub struct SearchFilter {
     pub country: Option<String>,
     pub language: Option<String>,
     pub limit: usize,
-}
-
-/// Envoie une notification discrète et silencieuse sur le bureau via notify-send (sans interrompre la musique)
-pub fn notify(title: &str, body: &str) {
-    let title_owned = title.to_string();
-    let body_owned = body.to_string();
-    std::thread::spawn(move || {
-        if let Ok(mut child) = Command::new("notify-send")
-            .arg("-a")
-            .arg("TiMonde")
-            .arg("-i")
-            .arg("audio-speakers")
-            .arg("-h")
-            .arg("boolean:suppress-sound:true")
-            .arg(&title_owned)
-            .arg(&body_owned)
-            .stdout(std::process::Stdio::null())
-            .stderr(std::process::Stdio::null())
-            .spawn()
-        {
-            let _ = child.wait();
-        }
-    });
 }
 
 /// Nettoie un nom de station pour optimiser la recherche dans Radio-Browser
