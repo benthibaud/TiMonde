@@ -34,9 +34,9 @@
   </developer>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="0.2.5" date="2026-11-08">
+    <release version="0.2.5" date="2026-11-09">
       <description>
-        <p>Mise en œuvre du Jalon 2 de la Roadmap : fiabilisation de l'architecture Client/Serveur (Option B), élimination des blocages d'interface et sécurisation des flux asynchrones.</p>
+        <p>Mise en œuvre du Jalon 2 : fiabilisation de l'architecture Client/Serveur (Option B), élimination des blocages d'interface, sécurisation des flux asynchrones, assainissement radical du code mort et mise à jour intégrale des 56 catalogues linguistiques (méthode i18n-clusters).</p>
       </description>
     </release>
     <release version="0.2.4" date="2026-11-08">
