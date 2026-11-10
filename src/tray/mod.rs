@@ -193,7 +193,7 @@ impl TiMondeTray {
             // 1. Extraire et arrêter l'ancien moteur hors de tout verrou applicatif
             let old_engine = {
                 let mut s = session.safe_lock();
-                s.take_engine()
+                s.engine.take()
             };
             if let Some(engine) = old_engine {
                 let _ = engine.stop();

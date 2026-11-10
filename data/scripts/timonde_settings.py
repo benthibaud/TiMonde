@@ -41,7 +41,7 @@ from timonde_common import (
     setup_window_geometry,
     atomic_write_file,
     call_timonde_mpris,
-    find_timonde_binary,
+    run_timonde_cli,
     set_container_margins,
 )
 from reorder_groups import ReorderWidget
@@ -107,17 +107,11 @@ def get_bookmarks_stats(path):
         return 0, 0
 
 
-
-
 def load_bookmarks_tree(path):
-    """
-    Charge l'arbre des favoris au format JSON via le moteur natif Rust (Option B).
-    Délègue 100% du parsing XML, des conventions de slash et de la tolérance d'entités à Rust.
-    """
+    """Charge l'arbre des favoris au format JSON via le moteur natif Rust."""
     if not os.path.isfile(path):
         return []
 
-    # 1. Appel unifié via D-Bus (mémoire vive) ou fallback CLI (dump atomique Rust)
     is_default = os.path.abspath(path) == os.path.abspath(DEFAULT_BOOKMARKS_PATH)
     fallback_cli = ["--dump-bookmarks-json", path]
     if is_default:
@@ -128,10 +122,8 @@ def load_bookmarks_tree(path):
             except Exception:
                 pass
     else:
-        # Fichier personnalisé : lecture directe via le CLI natif
         try:
-            bin_path = find_timonde_binary() or "timonde"
-            proc = subprocess.run([bin_path, "--dump-bookmarks-json", path], capture_output=True, text=True, timeout=5.0)
+            proc = run_timonde_cli("--dump-bookmarks-json", path, timeout=5.0)
             if proc.returncode == 0 and proc.stdout.strip():
                 return json.loads(proc.stdout)
         except Exception:
@@ -141,34 +133,19 @@ def load_bookmarks_tree(path):
 
 
 def save_bookmarks_tree(path, groups_payload):
-    """
-    Sauvegarde l'arbre des favoris via le moteur natif Rust (Option B).
-    Délègue l'intégrité, la normalisation des URLs et l'écriture atomique à Rust.
-    """
+    """Sauvegarde l'arbre des favoris via le moteur natif Rust."""
     try:
-        json_bytes = json.dumps(groups_payload, ensure_ascii=False).encode("utf-8")
-        cmd = ["timonde", "--save-bookmarks-json", "-"]
-        if path:
-            cmd.append(path)
-        res = subprocess.run(
-            cmd,
-            input=json_bytes,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            timeout=5.0
-        )
-        if res.returncode == 0:
-            return True
+        json_str = json.dumps(groups_payload, ensure_ascii=False)
+        args = ["--save-bookmarks-json", "-"] + ([path] if path else [])
+        res = run_timonde_cli(*args, input_data=json_str, timeout=5.0)
+        return res.returncode == 0
     except Exception as e:
         sys.stderr.write(f"Erreur sauvegarde signets Rust : {e}\n")
     return False
 
 
 def add_stations_to_bookmarks_xml(path, stations_list, default_group="Mes Radios", country_code=None):
-    """
-    Ajoute des stations aux favoris en manipulant le payload en mémoire
-    puis en déléguant la persistance à Rust (Option B).
-    """
+    """Ajoute des stations aux favoris en manipulant le payload en mémoire puis persistance Rust."""
     payload = load_bookmarks_tree(path)
     grp_name = default_group or "root"
     norm_target = normalize_group_path(grp_name, return_root_literal=True)
@@ -198,9 +175,7 @@ def add_stations_to_bookmarks_xml(path, stations_list, default_group="Mes Radios
     for st in stations_list:
         u = clean_stream_url(st.get("url", "").strip())
         n = st.get("name", "").strip()
-        if not u or not n:
-            continue
-        if u in existing_urls:
+        if not u or not n or u in existing_urls:
             continue
         c = st.get("country") or country_code
         tz = st.get("timezone") or infer_timezone(str(c) if c else "", n, grp_name)
@@ -230,82 +205,8 @@ class SettingsWindow(Gtk.Window):
         self.has_modifications = False
 
         set_window_icon(self)
-
-        self.apply_custom_css()
-        self.setup_ui()
-
-    def apply_custom_css(self):
         apply_timonde_app_css()
-        css_data = b"""
-        .settings-card {
-            background-color: alpha(@theme_base_color, 0.4);
-            border: 1px solid alpha(@theme_fg_color, 0.15);
-            border-radius: 2px;
-            padding: 12px;
-            margin-bottom: 6px;
-        }
-        .info-card {
-            background-color: alpha(@theme_base_color, 0.15);
-            border: 1px dashed alpha(@theme_fg_color, 0.18);
-            border-radius: 2px;
-            padding: 10px 12px;
-            margin-bottom: 6px;
-        }
-        .card-title {
-            font-weight: bold;
-            font-size: 1.05em;
-        }
-        .card-desc {
-            opacity: 0.75;
-            font-size: 0.9em;
-        }
-        .info-title {
-            font-weight: bold;
-            font-size: 0.95em;
-            opacity: 0.85;
-        }
-        .info-desc {
-            opacity: 0.65;
-            font-size: 0.85em;
-        }
-        .status-badge {
-            font-weight: bold;
-            padding: 2px 6px;
-            border-radius: 2px;
-        }
-        .info-badge {
-            font-family: monospace;
-            font-size: 0.9em;
-            padding: 2px 8px;
-            border-radius: 2px;
-            background-color: alpha(@theme_fg_color, 0.08);
-            color: @theme_fg_color;
-            opacity: 0.9;
-        }
-        .section-separator-title {
-            font-weight: bold;
-            font-size: 0.82em;
-            letter-spacing: 0.5px;
-            opacity: 0.55;
-            margin-top: 10px;
-            margin-bottom: 4px;
-        }
-        .highlight-combo {
-            font-weight: bold;
-            border: 1px solid alpha(@theme_selected_bg_color, 0.6);
-            border-radius: 2px;
-        }
-        """
-        provider = Gtk.CssProvider()
-        try:
-            provider.load_from_data(css_data)
-            Gtk.StyleContext.add_provider_for_screen(
-                Gdk.Screen.get_default(),
-                provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-            )
-        except Exception:
-            pass
+        self.setup_ui()
 
     def setup_ui(self):
         main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)

@@ -40,7 +40,7 @@ from timonde_common import (
     apply_timonde_app_css,
     status_markup,
     prompt_text_dialog,
-    find_timonde_binary,
+    run_timonde_cli,
     set_container_margins,
 )
 try:
@@ -78,34 +78,26 @@ class ReorderWidget(Gtk.Box):
 
         self.btn_collapse_all = make_btn(_("Collapse all"), "pan-up-symbolic", _("Collapse all groups for an overview"))
         self.btn_collapse_all.connect("clicked", lambda w: self.treeview.collapse_all())
-        self.nav_box.pack_start(self.btn_collapse_all, False, False, 0)
-
         self.btn_expand_all = make_btn(_("Expand all"), "pan-down-symbolic", _("Expand all groups and subgroups"))
         self.btn_expand_all.connect("clicked", lambda w: self.treeview.expand_all())
-        self.nav_box.pack_start(self.btn_expand_all, False, False, 0)
-
-        self.header_title = Gtk.Label()
-        self.header_title.set_halign(Gtk.Align.START)
-        self.header_title.set_markup(f"<b>{_("My Radios")}</b>")
-        self.nav_box.pack_start(self.header_title, True, True, 6)
-
-        # Outils d'audit et vérification de santé des flux
+        self.header_title = Gtk.Label(halign=Gtk.Align.START)
+        self.header_title.set_markup(f"<b>{_('My Radios')}</b>")
         self.btn_check_streams = make_btn(_("Check streams"), "view-refresh", _("Test stream availability and locate broken links"))
         self.btn_check_streams.connect("clicked", self.on_check_streams_clicked)
-        self.nav_box.pack_start(self.btn_check_streams, False, False, 0)
-
-        self.chk_broken_only = Gtk.CheckButton(label=_("Dead links only"))
-        self.chk_broken_only.set_tooltip_text(_("Display offline radio streams only"))
+        self.chk_broken_only = Gtk.CheckButton(label=_("Dead links only"), tooltip_text=_("Display offline radio streams only"))
         self.chk_broken_only.connect("toggled", self.on_filter_broken_toggled)
-        self.nav_box.pack_start(self.chk_broken_only, False, False, 0)
-
         self.btn_apply_redirects = make_btn(_("Apply redirects"), "system-run", _("Automatically update redirected streams to direct URL"))
         self.btn_apply_redirects.connect("clicked", self.on_apply_redirects_clicked)
         self.btn_apply_redirects.hide()
-        self.nav_box.pack_start(self.btn_apply_redirects, False, False, 0)
 
-        self.help_label = Gtk.Label()
-        self.help_label.set_halign(Gtk.Align.START)
+        for w, exp, pad in [
+            (self.btn_collapse_all, False, 0), (self.btn_expand_all, False, 0),
+            (self.header_title, True, 6), (self.btn_check_streams, False, 0),
+            (self.chk_broken_only, False, 0), (self.btn_apply_redirects, False, 0),
+        ]:
+            self.nav_box.pack_start(w, exp, exp, pad)
+
+        self.help_label = Gtk.Label(halign=Gtk.Align.START)
         self.help_label.set_line_wrap(True)
         self.help_label.set_markup(
             _("<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
@@ -118,53 +110,36 @@ class ReorderWidget(Gtk.Box):
         content_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         self.vbox.pack_start(content_box, True, True, 0)
 
-        # Modèle de données TreeStore :
-        # 0: type_str ("group", "station", "separator")
-        # 1: nom affiché (str)
-        # 2: détails/url (str markup)
-        # 3: data_dict (dict)
-        # 4: icon_name (str)
-        # 5: font_weight (int Pango.Weight)
+        # Modèle TreeStore : 0:type, 1:nom, 2:détails/markup, 3:data_dict, 4:icon, 5:weight
         self.store = Gtk.TreeStore(str, str, str, object, str, int)
-        self.treeview = Gtk.TreeView(model=self.store)
-        self.treeview.set_reorderable(True)
+        self.treeview = Gtk.TreeView(model=self.store, reorderable=True)
         self.treeview.connect("row-activated", self.on_row_activated)
         self.treeview.connect("button-press-event", self.on_treeview_button_press)
         self.treeview.get_selection().set_mode(Gtk.SelectionMode.SINGLE)
         self.treeview.get_selection().connect("changed", self.on_selection_changed)
 
-        # Colonne 1 : Élément (avec icône et chevron d'expansion natif)
         self.col_element = Gtk.TreeViewColumn(_("Radio / Group"))
         self.col_element.set_expand(True)
         self.col_element.set_resizable(True)
         self.col_element.set_min_width(240)
-
         renderer_icon = Gtk.CellRendererPixbuf()
         self.col_element.pack_start(renderer_icon, False)
         self.col_element.add_attribute(renderer_icon, "icon-name", 4)
-
-        self.renderer_name = Gtk.CellRendererText()
-        self.renderer_name.set_property("ellipsize", Pango.EllipsizeMode.END)
+        self.renderer_name = Gtk.CellRendererText(ellipsize=Pango.EllipsizeMode.END)
         self.col_element.pack_start(self.renderer_name, True)
         self.col_element.add_attribute(self.renderer_name, "text", 1)
         self.col_element.add_attribute(self.renderer_name, "weight", 5)
-
         self.treeview.append_column(self.col_element)
         self.treeview.set_expander_column(self.col_element)
 
-        # Colonne 2 : Détails / Statut en ligne
-        renderer_info = Gtk.CellRendererText()
-        renderer_info.set_property("xalign", 1.0)
-        renderer_info.set_property("ellipsize", Pango.EllipsizeMode.MIDDLE)
+        renderer_info = Gtk.CellRendererText(xalign=1.0, ellipsize=Pango.EllipsizeMode.MIDDLE)
         self.col_info = Gtk.TreeViewColumn(_("Details / Status"), renderer_info, markup=2)
         self.col_info.set_resizable(True)
         self.col_info.set_min_width(140)
         self.treeview.append_column(self.col_info)
 
-        # Défilement
-        scrolled = Gtk.ScrolledWindow()
+        scrolled = Gtk.ScrolledWindow(shadow_type=Gtk.ShadowType.IN)
         scrolled.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
-        scrolled.set_shadow_type(Gtk.ShadowType.IN)
         scrolled.add(self.treeview)
         content_box.pack_start(scrolled, True, True, 0)
 
@@ -172,80 +147,43 @@ class ReorderWidget(Gtk.Box):
         side_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         content_box.pack_start(side_box, False, False, 0)
 
-        self.btn_preview = make_btn(_("Listen"), "media-playback-start", _("Preview selected radio stream"))
-        self.btn_preview.connect("clicked", self.on_preview_clicked)
-        side_box.pack_start(self.btn_preview, False, False, 0)
+        def _side_btn(lbl, ico, tip, cb):
+            b = make_btn(lbl, ico, tip)
+            b.connect("clicked", cb)
+            side_box.pack_start(b, False, False, 0)
+            return b
 
-        self.btn_add_station = make_btn(_("Add station"), "list-add", _("Add a new station to this group or to root"))
-        self.btn_add_station.connect("clicked", self.on_add_station_clicked)
-        side_box.pack_start(self.btn_add_station, False, False, 0)
+        self.btn_preview = _side_btn(_("Listen"), "media-playback-start", _("Preview selected radio stream"), self.on_preview_clicked)
+        self.btn_add_station = _side_btn(_("Add station"), "list-add", _("Add a new station to this group or to root"), self.on_add_station_clicked)
+        self.btn_new_group = _side_btn(_("New group"), "folder-new", _("Create a new group or subgroup (Ctrl+N)"), self.on_create_group_clicked)
+        self.btn_move_to = _side_btn(_("Move to..."), "go-jump", _("Move selection to another group (Ctrl+M)"), self.on_move_to_clicked)
+        side_box.pack_start(Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL), False, False, 2)
 
-        self.btn_new_group = make_btn(_("New group"), "folder-new", _("Create a new group or subgroup (Ctrl+N)"))
-        self.btn_new_group.connect("clicked", self.on_create_group_clicked)
-        side_box.pack_start(self.btn_new_group, False, False, 0)
-
-        self.btn_move_to = make_btn(_("Move to..."), "go-jump", _("Move selection to another group (Ctrl+M)"))
-        self.btn_move_to.connect("clicked", self.on_move_to_clicked)
-        side_box.pack_start(self.btn_move_to, False, False, 0)
-
-        sep0 = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
-        side_box.pack_start(sep0, False, False, 2)
-
-        # Grille 2x2 compacte pour l'ordre
-        grid_order = Gtk.Grid()
-        grid_order.set_column_spacing(4)
-        grid_order.set_row_spacing(4)
-        grid_order.set_column_homogeneous(True)
+        grid_order = Gtk.Grid(column_spacing=4, row_spacing=4, column_homogeneous=True)
         side_box.pack_start(grid_order, False, False, 0)
+        for col, row, lbl, ico, tip, cb in [
+            (0, 0, _("Top"), "go-top", _("Move selected item to the top"), self.on_move_top_clicked),
+            (1, 0, _("Move up"), "go-up", _("Move up one rank"), self.on_move_up_clicked),
+            (0, 1, _("Move down"), "go-down", _("Move down one rank"), self.on_move_down_clicked),
+            (1, 1, "A-Z", "view-sort-ascending", _("Sort sibling items alphabetically"), self.on_sort_az_clicked),
+        ]:
+            b = make_btn(lbl, ico, tip)
+            b.connect("clicked", cb)
+            grid_order.attach(b, col, row, 1, 1)
 
-        btn_top = make_btn(_("Top"), "go-top", _("Move selected item to the top"))
-        btn_top.connect("clicked", self.on_move_top_clicked)
-        grid_order.attach(btn_top, 0, 0, 1, 1)
+        side_box.pack_start(Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL), False, False, 2)
+        self.btn_add_sep = _side_btn(_("Separator"), "format-line-spacing", _("Insert a separator or header"), self.on_add_separator_clicked)
+        _side_btn(_("Edit"), "document-edit", _("Edit selected name, URL or group (F2)"), self.on_edit_clicked)
+        self.btn_repair = _side_btn(_("Repair stream..."), "system-search", _("Search Radio-Browser for a working replacement stream"), self.on_repair_stream_clicked)
+        self.btn_contribute = _side_btn(_("Contribute to Radio-Browser..."), "network-server", _("Check or contribute selected station to Radio-Browser"), self.on_contribute_station_clicked)
+        _side_btn(_("Delete"), "edit-delete", _("Delete selected item or group (Del)"), self.on_delete_clicked)
 
-        btn_up = make_btn(_("Move up"), "go-up", _("Move up one rank"))
-        btn_up.connect("clicked", self.on_move_up_clicked)
-        grid_order.attach(btn_up, 1, 0, 1, 1)
-
-        btn_down = make_btn(_("Move down"), "go-down", _("Move down one rank"))
-        btn_down.connect("clicked", self.on_move_down_clicked)
-        grid_order.attach(btn_down, 0, 1, 1, 1)
-
-        btn_sort = make_btn("A-Z", "view-sort-ascending", _("Sort sibling items alphabetically"))
-        btn_sort.connect("clicked", self.on_sort_az_clicked)
-        grid_order.attach(btn_sort, 1, 1, 1, 1)
-
-        sep1 = Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL)
-        side_box.pack_start(sep1, False, False, 2)
-
-        self.btn_add_sep = make_btn(_("Separator"), "format-line-spacing", _("Insert a separator or header"))
-        self.btn_add_sep.connect("clicked", self.on_add_separator_clicked)
-        side_box.pack_start(self.btn_add_sep, False, False, 0)
-
-        btn_edit = make_btn(_("Edit"), "document-edit", _("Edit selected name, URL or group (F2)"))
-        btn_edit.connect("clicked", self.on_edit_clicked)
-        side_box.pack_start(btn_edit, False, False, 0)
-
-        self.btn_repair = make_btn(_("Repair stream..."), "system-search", _("Search Radio-Browser for a working replacement stream"))
-        self.btn_repair.connect("clicked", self.on_repair_stream_clicked)
-        side_box.pack_start(self.btn_repair, False, False, 0)
-
-        self.btn_contribute = make_btn(_("Contribute to Radio-Browser..."), "network-server", _("Check or contribute selected station to Radio-Browser"))
-        self.btn_contribute.connect("clicked", self.on_contribute_station_clicked)
-        side_box.pack_start(self.btn_contribute, False, False, 0)
-
-        btn_del = make_btn(_("Delete"), "edit-delete", _("Delete selected item or group (Del)"))
-        btn_del.connect("clicked", self.on_delete_clicked)
-        side_box.pack_start(btn_del, False, False, 0)
-
-        # 3. Feedback / Notification visuelle
-        self.lbl_feedback = Gtk.Label(label="")
-        self.lbl_feedback.set_halign(Gtk.Align.START)
+        # 3. Feedback & Barre d'actions inférieure
+        self.lbl_feedback = Gtk.Label(label="", halign=Gtk.Align.START)
         self.vbox.pack_start(self.lbl_feedback, False, False, 0)
 
-        # 4. Barre d'actions inférieure
         btn_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         self.vbox.pack_start(btn_box, False, False, 0)
-
         if not self.embedded:
             btn_cancel = make_btn(_("Cancel"), "process-stop")
             btn_cancel.connect("clicked", self.on_cancel_clicked)
@@ -254,22 +192,17 @@ class ReorderWidget(Gtk.Box):
         self.btn_export_csv = make_btn(_("Export to CSV"), "document-save-as", _("Export all stations to CSV spreadsheet format"))
         self.btn_export_csv.connect("clicked", lambda w: self.on_export_csv_clicked())
         btn_box.pack_start(self.btn_export_csv, False, False, 0)
+        btn_box.pack_start(Gtk.Box(), True, True, 0)
 
-        spacer = Gtk.Box()
-        btn_box.pack_start(spacer, True, True, 0)
-
-        self.lbl_dirty_status = Gtk.Label()
-        self.lbl_dirty_status.set_valign(Gtk.Align.CENTER)
+        self.lbl_dirty_status = Gtk.Label(valign=Gtk.Align.CENTER)
         self.set_dirty(False)
         btn_box.pack_start(self.lbl_dirty_status, False, False, 6)
 
-        save_label = _("Save now") if self.embedded else _("Save and reload")
-        self.btn_save = make_btn(save_label, "document-save")
+        self.btn_save = make_btn(_("Save now") if self.embedded else _("Save and reload"), "document-save")
         self.btn_save.get_style_context().add_class("suggested-action")
         self.btn_save.connect("clicked", self.on_save_clicked)
         btn_box.pack_start(self.btn_save, False, False, 0)
 
-        # Peuple initialement le TreeStore (vue repliée par défaut pour vision d'ensemble nette)
         self.populate_tree()
         self.treeview.collapse_all()
 
@@ -575,99 +508,62 @@ class ReorderWidget(Gtk.Box):
         menu = Gtk.Menu()
         node_type, name, data_obj, tree_iter, parent_iter = self.get_selected_node()
 
+        def _add_mi(lbl, cb):
+            item = Gtk.MenuItem(label=lbl)
+            item.connect("activate", cb)
+            menu.append(item)
+
         if node_type == "station":
             if data_obj and data_obj.get("url"):
                 clean_url = data_obj.get("url", "").strip()
                 is_playing_this = (self.preview_player.is_playing and self.preview_player.current_url == clean_url)
-                lbl_audio = _("Stop playback") if is_playing_this else _("Play this station")
-                item_audio = Gtk.MenuItem(label=lbl_audio)
-                item_audio.connect("activate", lambda w: self.on_preview_clicked(None))
-                menu.append(item_audio)
+                _add_mi(_("Stop playback") if is_playing_this else _("Play this station"), lambda w: self.on_preview_clicked(None))
                 menu.append(Gtk.SeparatorMenuItem())
-
-            item_edit = Gtk.MenuItem(label=_("Edit station..."))
-            item_edit.connect("activate", self.on_edit_clicked)
-            menu.append(item_edit)
-
-            item_move = Gtk.MenuItem(label=_("Move to another group..."))
-            item_move.connect("activate", self.on_move_to_clicked)
-            menu.append(item_move)
-
-            item_repair = Gtk.MenuItem(label=_("Repair stream..."))
-            item_repair.connect("activate", self.on_repair_stream_clicked)
-            menu.append(item_repair)
-
-            item_contrib = Gtk.MenuItem(label=_("Contribute to Radio-Browser..."))
-            item_contrib.connect("activate", lambda w: self.on_contribute_station_clicked(None))
-            menu.append(item_contrib)
-
-            item_del = Gtk.MenuItem(label=_("Delete this station"))
-            item_del.connect("activate", self.on_delete_clicked)
-            menu.append(item_del)
-
+            for lbl, cb in [
+                (_("Edit station..."), self.on_edit_clicked),
+                (_("Move to another group..."), self.on_move_to_clicked),
+                (_("Repair stream..."), self.on_repair_stream_clicked),
+                (_("Contribute to Radio-Browser..."), lambda w: self.on_contribute_station_clicked(None)),
+                (_("Delete this station"), self.on_delete_clicked),
+            ]:
+                _add_mi(lbl, cb)
         elif node_type == "group":
-            item_add = Gtk.MenuItem(label=_("Add station here..."))
-            item_add.connect("activate", self.on_add_station_clicked)
-            menu.append(item_add)
-
-            item_sub = Gtk.MenuItem(label=_("New subgroup here..."))
-            item_sub.connect("activate", self.on_create_group_clicked)
-            menu.append(item_sub)
-
-            item_rename = Gtk.MenuItem(label=_("Rename group..."))
-            item_rename.connect("activate", self.on_edit_clicked)
-            menu.append(item_rename)
-
-            item_del = Gtk.MenuItem(label=_("Delete group and stations"))
-            item_del.connect("activate", self.on_delete_clicked)
-            menu.append(item_del)
-
+            for lbl, cb in [
+                (_("Add station here..."), self.on_add_station_clicked),
+                (_("New subgroup here..."), self.on_create_group_clicked),
+                (_("Rename group..."), self.on_edit_clicked),
+                (_("Delete group and stations"), self.on_delete_clicked),
+            ]:
+                _add_mi(lbl, cb)
         else:
-            item_new_g = Gtk.MenuItem(label=_("New group..."))
-            item_new_g.connect("activate", self.on_create_group_clicked)
-            menu.append(item_new_g)
-
-            item_add_st = Gtk.MenuItem(label=_("Add station..."))
-            item_add_st.connect("activate", self.on_add_station_clicked)
-            menu.append(item_add_st)
+            _add_mi(_("New group..."), self.on_create_group_clicked)
+            _add_mi(_("Add station..."), self.on_add_station_clicked)
 
         menu.show_all()
         menu.popup(None, None, None, None, event.button, event.time)
 
-    # -------------------------------------------------------------------------
-    # Raccourcis Clavier
-    # -------------------------------------------------------------------------
     def on_key_press_event(self, widget, event):
         keyname = Gdk.keyval_name(event.keyval)
-        state = event.state
-        ctrl = bool(state & Gdk.ModifierType.CONTROL_MASK)
-
+        ctrl = bool(event.state & Gdk.ModifierType.CONTROL_MASK)
         if keyname == "Delete":
             self.on_delete_clicked(None)
             return True
-        elif keyname == "F2":
+        if keyname == "F2":
             self.on_edit_clicked(None)
             return True
-        elif (ctrl and keyname in ("n", "N")) or (keyname in ("n", "N") and not ctrl and not self.treeview.is_focus()):
+        if (ctrl and keyname in ("n", "N")) or (keyname in ("n", "N") and not ctrl and not self.treeview.is_focus()):
             self.on_create_group_clicked(None)
             return True
-        elif (ctrl and keyname in ("m", "M")) or (keyname in ("m", "M") and not ctrl and not self.treeview.is_focus()):
+        if (ctrl and keyname in ("m", "M")) or (keyname in ("m", "M") and not ctrl and not self.treeview.is_focus()):
             self.on_move_to_clicked(None)
             return True
         return False
 
-    # -------------------------------------------------------------------------
-    # Actions Métier : Ajout, Déplacement, Édition, Suppression
-    # -------------------------------------------------------------------------
     def on_create_group_clicked(self, widget):
         node_type, name, data_obj, tree_iter, parent_iter = self.get_selected_node()
         parent_group = name if node_type == "group" else ""
 
-        dialog = Gtk.Dialog(
-            title=_("Create a new group"),
-            transient_for=self.get_parent_window(),
-            flags=Gtk.DialogFlags.MODAL
-        )
+        dialog = Gtk.Dialog(title=_("Create a new group"), transient_for=self.get_parent_window(), flags=Gtk.DialogFlags.MODAL)
         dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
         dialog.add_button(_("Create"), Gtk.ResponseType.OK)
         dialog.set_default_response(Gtk.ResponseType.OK)
@@ -676,20 +572,14 @@ class ReorderWidget(Gtk.Box):
         box.set_spacing(10)
         set_container_margins(box, margin=12)
 
-        lbl = Gtk.Label(label="<b>" + _("Name of the new group:") + "</b>")
-        lbl.set_use_markup(True)
-        lbl.set_halign(Gtk.Align.START)
+        lbl = Gtk.Label(label="<b>" + _("Name of the new group:") + "</b>", use_markup=True, halign=Gtk.Align.START)
         box.pack_start(lbl, False, False, 0)
-
-        entry = Gtk.Entry()
-        entry.set_width_chars(35)
-        entry.set_activates_default(True)
+        entry = Gtk.Entry(width_chars=35, activates_default=True)
         box.pack_start(entry, False, False, 0)
 
         chk_subgroup = None
         if parent_group:
-            chk_subgroup = Gtk.CheckButton(label=f"{_('Create as a subgroup inside')} « {parent_group} »")
-            chk_subgroup.set_active(True)
+            chk_subgroup = Gtk.CheckButton(label=f"{_('Create as a subgroup inside')} « {parent_group} »", active=True)
             box.pack_start(chk_subgroup, False, False, 0)
 
         def on_create_response(dlg, response):
@@ -703,8 +593,7 @@ class ReorderWidget(Gtk.Box):
                     ["group", new_name, f"0 {_('radios')}", {"name": new_name, "stations": []}, "folder", Pango.Weight.BOLD]
                 )
                 self.set_dirty(True)
-                path = self.store.get_path(new_iter)
-                self.treeview.get_selection().select_path(path)
+                self.treeview.get_selection().select_path(self.store.get_path(new_iter))
                 self.show_feedback(f"{_('Group created:')} « {new_name} »")
 
         dialog.connect("response", on_create_response)
@@ -725,12 +614,8 @@ class ReorderWidget(Gtk.Box):
                 self.show_feedback(f"{_('Station added:')} « {val.get('name', '')} »")
 
         dlg = EditStationWindow(
-            mode="add",
-            current_group=current_grp,
-            available_groups=self.get_all_group_paths(),
-            parent_window=self.get_parent_window(),
-            standalone=False,
-            on_done_callback=on_station_added
+            mode="add", current_group=current_grp, available_groups=self.get_all_group_paths(),
+            parent_window=self.get_parent_window(), standalone=False, on_done_callback=on_station_added
         )
         dlg.set_transient_for(self.get_parent_window())
         dlg.set_modal(True)
@@ -748,11 +633,9 @@ class ReorderWidget(Gtk.Box):
                 self.set_dirty(True)
 
         prompt_text_dialog(
-            parent_window=self.get_parent_window(),
-            title=_("Insert separator"),
+            parent_window=self.get_parent_window(), title=_("Insert separator"),
             label_text=_("Optional title for this separator (leave blank for a simple line):"),
-            ok_label=_("Insert"),
-            callback=on_sep_done
+            ok_label=_("Insert"), callback=on_sep_done
         )
 
     def on_edit_clicked(self, widget):
@@ -770,18 +653,11 @@ class ReorderWidget(Gtk.Box):
                     self.show_feedback(f"{_('Group renamed:')} « {new_n} »")
 
             prompt_text_dialog(
-                parent_window=self.get_parent_window(),
-                title=_("Rename group"),
-                label_text=_("New name for group:"),
-                default_text=name,
-                ok_label=_("Save"),
-                callback=on_rename_done
+                parent_window=self.get_parent_window(), title=_("Rename group"),
+                label_text=_("New name for group:"), default_text=name,
+                ok_label=_("Save"), callback=on_rename_done
             )
-
-        elif node_type == "station":
-            if EditStationWindow is None:
-                return
-
+        elif node_type == "station" and EditStationWindow is not None:
             current_grp = self.get_selected_group_name() or ""
 
             def on_station_edited(val):
@@ -793,19 +669,16 @@ class ReorderWidget(Gtk.Box):
                         return
 
                     disp = strip_unsupported_emojis(val.get("name", "")) or val.get("name", "")
-                    details = self.format_station_details(val)
                     self.store.set_value(tree_iter, 1, disp)
-                    self.store.set_value(tree_iter, 2, details)
+                    self.store.set_value(tree_iter, 2, self.format_station_details(val))
                     self.store.set_value(tree_iter, 3, val)
                     self.set_dirty(True)
                     self.show_feedback(f"{_('Station updated:')} « {val.get('name', '')} »")
 
-                    # Si le groupe de la station a été modifié dans le dialogue d'édition
                     new_grp = (val.get("group") or "").strip().strip("/")
                     if new_grp != current_grp:
                         target_iter = self.find_group_iter(new_grp)
                         if new_grp and not target_iter:
-                            # Reconstruire proprement si le groupe cible n'existe pas encore dans l'arbre
                             self.data = self.serialize_tree()
                             self.populate_tree()
                             self.set_dirty(True)
@@ -818,20 +691,15 @@ class ReorderWidget(Gtk.Box):
                             self.treeview.get_selection().select_iter(new_node)
 
             dlg = EditStationWindow(
-                mode="edit",
-                station_data=data_obj,
-                current_group=current_grp,
-                available_groups=self.get_all_group_paths(),
-                parent_window=self.get_parent_window(),
-                standalone=False,
-                on_done_callback=on_station_edited
+                mode="edit", station_data=data_obj, current_group=current_grp,
+                available_groups=self.get_all_group_paths(), parent_window=self.get_parent_window(),
+                standalone=False, on_done_callback=on_station_edited
             )
             dlg.set_transient_for(self.get_parent_window())
             dlg.set_modal(True)
             dlg.show_all()
 
     def _count_stations_in_node(self, node_iter):
-        """Compte récursivement les stations contenues dans un groupe et ses sous-groupes."""
         count = 0
         c = self.store.iter_children(node_iter)
         while c is not None:
@@ -849,29 +717,22 @@ class ReorderWidget(Gtk.Box):
             return
 
         is_group_with_stations = False
-        nb_stations = 0
+        msg = _("Are you sure you want to delete « {name} » ?").format(name=name)
         if node_type == "group":
             nb_stations = self._count_stations_in_node(tree_iter)
             if nb_stations > 0:
                 is_group_with_stations = True
                 unit = _("stations") if nb_stations > 1 else _("station")
-                warning_text = _("Warning: this group contains {count} {unit} that will also be deleted.").format(
-                    count=nb_stations, unit=unit
-                )
-                msg = f"<b>{warning_text}</b>\n\n" + _("Are you sure you want to delete « {name} » ?").format(name=name)
-            else:
-                msg = _("Are you sure you want to delete « {name} » ?").format(name=name)
-        else:
-            msg = _("Are you sure you want to delete « {name} » ?").format(name=name)
+                warning_text = _("Warning: this group contains {count} {unit} that will also be deleted.").format(count=nb_stations, unit=unit)
+                msg = f"<b>{warning_text}</b>\n\n{msg}"
 
         dialog = Gtk.MessageDialog(
-            transient_for=self.get_parent_window(),
-            flags=Gtk.DialogFlags.MODAL,
+            transient_for=self.get_parent_window(), flags=Gtk.DialogFlags.MODAL,
             message_type=Gtk.MessageType.WARNING if is_group_with_stations else Gtk.MessageType.QUESTION,
-            buttons=Gtk.ButtonsType.YES_NO,
-            text=_("Confirm deletion")
+            buttons=Gtk.ButtonsType.YES_NO, text=_("Confirm deletion")
         )
         dialog.set_markup(msg)
+
         def on_delete_response(dlg, resp):
             dlg.destroy()
             if resp == Gtk.ResponseType.YES:
@@ -882,97 +743,64 @@ class ReorderWidget(Gtk.Box):
         dialog.connect("response", on_delete_response)
         dialog.show_all()
 
-    # -------------------------------------------------------------------------
-    # Réordonnancement : Monter / Descendre / Tri A-Z
-    # -------------------------------------------------------------------------
     def on_move_up_clicked(self, widget):
         node_type, name, data_obj, tree_iter, parent_iter = self.get_selected_node()
         if not tree_iter:
             return
-        path = self.store.get_path(tree_iter)
-        indices = path.get_indices()
+        indices = self.store.get_path(tree_iter).get_indices()
         if indices[-1] > 0:
             indices[-1] -= 1
             prev_path = Gtk.TreePath.new_from_indices(indices)
-            prev_iter = self.store.get_iter(prev_path)
-            self.store.swap(tree_iter, prev_iter)
+            self.store.swap(tree_iter, self.store.get_iter(prev_path))
             self.set_dirty(True)
             self.treeview.get_selection().select_path(prev_path)
 
     def on_move_down_clicked(self, widget):
         node_type, name, data_obj, tree_iter, parent_iter = self.get_selected_node()
-        if not tree_iter:
-            return
-        next_iter = self.store.iter_next(tree_iter)
+        next_iter = self.store.iter_next(tree_iter) if tree_iter else None
         if next_iter:
             self.store.swap(tree_iter, next_iter)
             self.set_dirty(True)
-            path = self.store.get_path(tree_iter)
-            self.treeview.get_selection().select_path(path)
+            self.treeview.get_selection().select_path(self.store.get_path(tree_iter))
 
     def on_move_top_clicked(self, widget):
         node_type, name, data_obj, tree_iter, parent_iter = self.get_selected_node()
         if not tree_iter:
             return
-        path = self.store.get_path(tree_iter)
-        indices = path.get_indices()
+        indices = self.store.get_path(tree_iter).get_indices()
         if indices[-1] > 0:
             first_path = Gtk.TreePath.new_from_indices(indices[:-1] + [0])
-            first_iter = self.store.get_iter(first_path)
-            self.store.move_before(tree_iter, first_iter)
+            self.store.move_before(tree_iter, self.store.get_iter(first_path))
             self.set_dirty(True)
             self.treeview.get_selection().select_path(first_path)
 
     def on_sort_az_clicked(self, widget):
         node_type, name, data_obj, tree_iter, parent_iter = self.get_selected_node()
-        # Si un groupe est sélectionné, on trie le contenu de ce groupe
-        # Si une station/séparateur est sélectionné, on trie le groupe parent contenant cette station
-        # Si rien n'est sélectionné, on trie le niveau racine
         if node_type == "group":
-            target_parent = tree_iter
-            target_name = name
+            target_parent, target_name = tree_iter, name
         elif node_type in ("station", "separator") and parent_iter is not None:
             target_parent = parent_iter
             p_data = self.store.get_value(parent_iter, 3)
             p_name = self.store.get_value(parent_iter, 1)
             target_name = p_data.get("name", p_name) if isinstance(p_data, dict) else p_name
         else:
-            target_parent = None
-            target_name = _("Root")
+            target_parent, target_name = None, _("Root")
 
-        children = []
-        c = self.store.iter_children(target_parent)
-        while c is not None:
-            row_data = [self.store.get_value(c, col) for col in range(6)]
-            sub_children = self._copy_sub_tree(c)
-            children.append((row_data, sub_children))
-            c = self.store.iter_next(c)
-
+        children = self._copy_sub_tree(target_parent)
         if not children:
             self.show_feedback(_("No items to sort in this group."), is_success=False)
             return
 
-        # Tri par type (dossiers en premier, puis radios par ordre alphabétique insensible à la casse)
-        def sort_key(item):
-            row = item[0]
-            is_grp = 0 if row[0] == "group" else (2 if row[0] == "separator" else 1)
-            return (is_grp, row[1].lower())
+        children.sort(key=lambda item: (0 if item[0][0] == "group" else (2 if item[0][0] == "separator" else 1), item[0][1].lower()))
 
-        children.sort(key=sort_key)
-
-        # Reconstruire le niveau ciblé
         c = self.store.iter_children(target_parent)
         while c is not None:
             self.store.remove(c)
             c = self.store.iter_children(target_parent)
 
-        for row_data, sub_children in children:
-            new_c = self.store.append(target_parent, row_data)
-            self._restore_sub_tree(new_c, sub_children)
-
+        self._restore_sub_tree(target_parent, children)
         self.set_dirty(True)
 
-        # Maintenir le groupe trié déployé et sélectionné dans la vue
         if target_parent is not None:
             target_path = self.store.get_path(target_parent)
             self.treeview.expand_row(target_path, False)
@@ -983,37 +811,24 @@ class ReorderWidget(Gtk.Box):
             self.show_feedback(_("Root items sorted alphabetically."))
 
     def _copy_sub_tree(self, parent_iter):
-        res = []
-        c = self.store.iter_children(parent_iter)
+        res, c = [], self.store.iter_children(parent_iter)
         while c is not None:
-            row = [self.store.get_value(c, col) for col in range(6)]
-            sub = self._copy_sub_tree(c)
-            res.append((row, sub))
+            res.append(([self.store.get_value(c, col) for col in range(6)], self._copy_sub_tree(c)))
             c = self.store.iter_next(c)
         return res
 
     def _restore_sub_tree(self, parent_iter, sub_list):
         for row, sub in sub_list:
-            new_iter = self.store.append(parent_iter, row)
-            self._restore_sub_tree(new_iter, sub)
+            self._restore_sub_tree(self.store.append(parent_iter, row), sub)
 
-    # -------------------------------------------------------------------------
-    # Déplacement vers un autre groupe
-    # -------------------------------------------------------------------------
     def on_move_to_clicked(self, widget):
         node_type, name, data_obj, tree_iter, parent_iter = self.get_selected_node()
         if not tree_iter or node_type != "station":
             self.show_feedback(_("Please select a radio station to move."), is_success=False)
             return
 
-        # Lister tous les groupes disponibles + la racine
         groups = [("/", _("[ / ] Root (Without group)"))] + [(g, g) for g in self.get_all_group_paths()]
-
-        dialog = Gtk.Dialog(
-            title=_("Move to another group"),
-            transient_for=self.get_parent_window(),
-            flags=Gtk.DialogFlags.MODAL
-        )
+        dialog = Gtk.Dialog(title=_("Move to another group"), transient_for=self.get_parent_window(), flags=Gtk.DialogFlags.MODAL)
         dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
         dialog.add_button(_("Move"), Gtk.ResponseType.OK)
         dialog.set_default_response(Gtk.ResponseType.OK)
@@ -1021,11 +836,7 @@ class ReorderWidget(Gtk.Box):
         box = dialog.get_content_area()
         box.set_spacing(10)
         set_container_margins(box, margin=12)
-
-        lbl = Gtk.Label(label="<b>" + _("Select the target destination:") + "</b>")
-        lbl.set_use_markup(True)
-        lbl.set_halign(Gtk.Align.START)
-        box.pack_start(lbl, False, False, 0)
+        box.pack_start(Gtk.Label(label="<b>" + _("Select the target destination:") + "</b>", use_markup=True, halign=Gtk.Align.START), False, False, 0)
 
         combo = Gtk.ComboBoxText()
         for path_key, label_str in groups:
@@ -1048,9 +859,6 @@ class ReorderWidget(Gtk.Box):
         dialog.connect("response", on_move_response)
         dialog.show_all()
 
-    # -------------------------------------------------------------------------
-    # Lecture & Vérification des flux
-    # -------------------------------------------------------------------------
     def on_preview_status_update(self, is_playing, url, message, is_error):
         update_btn_content(
             self.btn_preview,
@@ -1061,10 +869,8 @@ class ReorderWidget(Gtk.Box):
 
     def on_preview_clicked(self, widget):
         node_type, name, data_obj, tree_iter, parent_iter = self.get_selected_node()
-        if not data_obj or node_type != "station":
-            return
-        url = data_obj.get("url", "")
-        self.preview_player.toggle(name, url)
+        if data_obj and node_type == "station":
+            self.preview_player.toggle(name, data_obj.get("url", ""))
 
     def on_repair_stream_clicked(self, widget):
         node_type, name, data_obj, tree_iter, parent_iter = self.get_selected_node()
@@ -1073,22 +879,16 @@ class ReorderWidget(Gtk.Box):
             return
 
         station_name = name or data_obj.get("name", "")
-        current_url = data_obj.get("url", "")
-        country_id = data_obj.get("country", "")
-
         dlg = RepairStreamDialog(
-            parent=self.get_parent_window(),
-            station_name=station_name,
-            current_url=current_url,
-            country_code=country_id,
+            parent=self.get_parent_window(), station_name=station_name,
+            current_url=data_obj.get("url", ""), country_code=data_obj.get("country", ""),
         )
 
         def on_repair_response(dialog, res):
             new_url = dialog.get_chosen_url()
             dialog.destroy()
             if res == Gtk.ResponseType.OK and new_url:
-                clean_url = new_url.strip()
-                data_obj["url"] = clean_url
+                data_obj["url"] = new_url.strip()
                 self.store.set_value(tree_iter, 3, data_obj)
                 self.store.set_value(tree_iter, 2, self.format_station_details(data_obj))
                 self.set_dirty(True)
@@ -1103,22 +903,15 @@ class ReorderWidget(Gtk.Box):
             self.show_feedback(_("Please select a station to contribute."))
             return
 
-        station_name = name or data_obj.get("name", "")
-        current_url = data_obj.get("url", "")
-        country_id = data_obj.get("country", "")
-
         dlg = ContributeStationDialog(
-            parent=self.get_parent_window(),
-            station_name=station_name,
-            current_url=current_url,
-            country_code=country_id
+            parent=self.get_parent_window(), station_name=name or data_obj.get("name", ""),
+            current_url=data_obj.get("url", ""), country_code=data_obj.get("country", ""),
         )
 
         def on_contribute_response(dialog, resp):
             existing = getattr(dialog, "existing_info", None)
             dialog.destroy()
             if resp == Gtk.ResponseType.APPLY:
-                # L'utilisateur a cliqué directement sur "Éditer la station" depuis le dialogue de contribution
                 if existing and existing.get("countrycode"):
                     rb_cc = (existing.get("countrycode") or "").strip().upper()
                     if rb_cc and data_obj.get("country") != rb_cc:
@@ -1140,8 +933,7 @@ class ReorderWidget(Gtk.Box):
         def collect(p_iter):
             c = self.store.iter_children(p_iter)
             while c is not None:
-                t = self.store.get_value(c, 0)
-                d = self.store.get_value(c, 3)
+                t, d = self.store.get_value(c, 0), self.store.get_value(c, 3)
                 if t == "station" and d and d.get("url"):
                     stations_to_check.append((c, d))
                 elif t == "group":
@@ -1155,95 +947,59 @@ class ReorderWidget(Gtk.Box):
 
         total = len(stations_to_check)
         dialog = Gtk.Dialog(
-            title=_("Checking your radio stations"),
-            parent=self.get_parent_window(),
-            flags=Gtk.DialogFlags.MODAL,
-            buttons=(_("Stop"), Gtk.ResponseType.CANCEL)
+            title=_("Checking your radio stations"), parent=self.get_parent_window(),
+            flags=Gtk.DialogFlags.MODAL, buttons=(_("Stop"), Gtk.ResponseType.CANCEL)
         )
         dialog.set_default_size(440, 140)
         box = dialog.get_content_area()
         box.set_spacing(10)
         set_container_margins(box, margin=14)
-
-        lbl = Gtk.Label(label="<b>" + _("Testing live radio streams...") + "</b>")
-        lbl.set_use_markup(True)
-        lbl.set_halign(Gtk.Align.START)
-        box.add(lbl)
-
+        box.add(Gtk.Label(label="<b>" + _("Testing live radio streams...") + "</b>", use_markup=True, halign=Gtk.Align.START))
         pbar = Gtk.ProgressBar()
         box.add(pbar)
-
-        lbl_status = Gtk.Label(label=f"0 / {total} " + _("stations checked..."))
-        lbl_status.set_halign(Gtk.Align.START)
+        lbl_status = Gtk.Label(label=f"0 / {total} " + _("stations checked..."), halign=Gtk.Align.START)
         box.add(lbl_status)
         dialog.show_all()
 
         cancel_event = threading.Event()
 
         def run_checks():
-            done = [0]
-            done_lock = threading.Lock()
+            done, done_lock = [0], threading.Lock()
 
             def check_one(c_iter, s):
                 if cancel_event.is_set():
                     return
                 url = s.get("url", "")
                 ok, msg, redir = check_stream_url(url, timeout=3.0, with_redirect=True)
-                # Ignorer les redirections vers des CDN à jetons éphémères expirables (ex: ?rj-tok=..., &userConsent=...)
                 if redir and any(token in redir for token in ["rj-tok=", "rj-ttl=", "userConsent", "token=", "expires="]):
                     redir = None
-
-                if ok is True:
-                    status = "redirect" if redir else "online"
-                elif ok == "GEO":
-                    status = "geo"
-                else:
-                    status = "offline"
-
-                self.audit_results[url] = {
-                    "status": status,
-                    "msg": msg,
-                    "redirect": redir,
-                }
+                status = ("redirect" if redir else "online") if ok is True else ("geo" if ok == "GEO" else "offline")
+                self.audit_results[url] = {"status": status, "msg": msg, "redirect": redir}
                 with done_lock:
                     done[0] += 1
                     cur_done = done[0]
-                fraction = cur_done / float(total)
-                text = f"{cur_done} / {total} " + _("checked:") + f" {s.get('name', '')[:25]}"
-                GLib.idle_add(pbar.set_fraction, fraction)
-                GLib.idle_add(lbl_status.set_text, text)
+                GLib.idle_add(pbar.set_fraction, cur_done / float(total))
+                GLib.idle_add(lbl_status.set_text, f"{cur_done} / {total} {_('checked:')} {s.get('name', '')[:25]}")
 
             with ThreadPoolExecutor(max_workers=8) as executor:
-                futures = [executor.submit(check_one, c_iter, s) for c_iter, s in stations_to_check]
-                for f in futures:
+                for f in [executor.submit(check_one, c_iter, s) for c_iter, s in stations_to_check]:
                     if cancel_event.is_set():
                         break
                     try:
                         f.result()
                     except Exception:
                         pass
-
-            GLib.idle_add(on_finished)
-
-        def on_finished():
-            # Clôture propre du dialogue sans blocage de la boucle principale
-            dialog.response(Gtk.ResponseType.OK)
+            GLib.idle_add(lambda: dialog.response(Gtk.ResponseType.OK))
 
         def on_audit_response(dlg, res):
             if res == Gtk.ResponseType.CANCEL:
                 cancel_event.set()
             dlg.destroy()
 
-            # Dépilement des résultats après la fermeture effective du dialogue
             nb_online = sum(1 for r in self.audit_results.values() if r["status"] == "online")
             nb_dead = sum(1 for r in self.audit_results.values() if r["status"] == "offline")
             nb_redir = sum(1 for r in self.audit_results.values() if r["status"] == "redirect")
-
-            audit_done = _("Audit completed:")
-            lbl_online = _("online")
-            lbl_dead = _("broken")
-            lbl_redir = _("redirected")
-            self.show_feedback(f"{audit_done} {nb_online} {lbl_online} · {nb_dead} {lbl_dead} · {nb_redir} {lbl_redir}")
+            self.show_feedback(f"{_('Audit completed:')} {nb_online} {_('online')} · {nb_dead} {_('broken')} · {nb_redir} {_('redirected')}")
 
             if nb_dead > 0:
                 self.chk_broken_only.show()
@@ -1259,15 +1015,13 @@ class ReorderWidget(Gtk.Box):
             else:
                 self.btn_apply_redirects.hide()
 
-            # Rafraîchit les statuts dans l'arbre
             self.data = self.serialize_tree()
             self.populate_tree()
             self.treeview.expand_all()
 
         dialog.connect("response", on_audit_response)
         dialog.show_all()
-        thread = threading.Thread(target=run_checks, daemon=True)
-        thread.start()
+        threading.Thread(target=run_checks, daemon=True).start()
 
     def on_filter_broken_toggled(self, widget):
         self.filter_broken_only = widget.get_active()
@@ -1281,11 +1035,9 @@ class ReorderWidget(Gtk.Box):
             nonlocal nb_applied
             c = self.store.iter_children(p_iter)
             while c is not None:
-                t = self.store.get_value(c, 0)
-                d = self.store.get_value(c, 3)
+                t, d = self.store.get_value(c, 0), self.store.get_value(c, 3)
                 if t == "station" and d:
-                    u = d.get("url", "")
-                    audit = self.audit_results.get(u)
+                    audit = self.audit_results.get(d.get("url", ""))
                     if audit and audit.get("redirect"):
                         d["url"] = audit["redirect"]
                         self.store.set_value(c, 3, d)
@@ -1302,9 +1054,6 @@ class ReorderWidget(Gtk.Box):
             self.data = self.serialize_tree()
             self.populate_tree()
 
-    # -------------------------------------------------------------------------
-    # Clôture & Sauvegarde
-    # -------------------------------------------------------------------------
     def on_save_clicked(self, widget):
         self.data = self.serialize_tree()
         self.saved = True
@@ -1327,8 +1076,7 @@ class ReorderWidget(Gtk.Box):
 
     def on_export_csv_clicked(self, widget=None):
         chooser = Gtk.FileChooserDialog(
-            title=_("Export stations to CSV"),
-            parent=self.get_parent_window(),
+            title=_("Export stations to CSV"), parent=self.get_parent_window(),
             action=Gtk.FileChooserAction.SAVE,
             buttons=(_("Cancel"), Gtk.ResponseType.CANCEL, _("Export"), Gtk.ResponseType.OK)
         )
@@ -1346,21 +1094,11 @@ class ReorderWidget(Gtk.Box):
                     path += ".csv"
                 try:
                     self.data = self.serialize_tree()
-                    bin_path = find_timonde_binary() or "timonde"
-                    payload = json.dumps(self.data)
-                    import subprocess
-                    proc = subprocess.run(
-                        [bin_path, "--export-csv", path, "--from-json", "-"],
-                        input=payload,
-                        text=True,
-                        capture_output=True,
-                        timeout=10.0,
-                    )
+                    proc = run_timonde_cli("--export-csv", path, "--from-json", "-", input_data=json.dumps(self.data), timeout=10.0)
                     if proc.returncode == 0:
                         self.show_feedback(f"{_('CSV export successful:')} {os.path.basename(path)}")
                     else:
-                        err = proc.stderr.strip() or f"Code {proc.returncode}"
-                        self.show_feedback(f"{_('Export error:')} {err}", is_success=False)
+                        self.show_feedback(f"{_('Export error:')} {proc.stderr.strip() or proc.returncode}", is_success=False)
                 except Exception as e:
                     self.show_feedback(f"{_('Export error:')} {e}", is_success=False)
 
@@ -1375,24 +1113,18 @@ class ReorderWidget(Gtk.Box):
             return
 
         dialog = Gtk.FileChooserDialog(
-            title=_("Backup my bookmarks (XML)"),
-            parent=self.get_parent_window(),
+            title=_("Backup my bookmarks (XML)"), parent=self.get_parent_window(),
             action=Gtk.FileChooserAction.SAVE,
             buttons=(_("Cancel"), Gtk.ResponseType.CANCEL, _("Save"), Gtk.ResponseType.OK),
         )
         dialog.set_default_response(Gtk.ResponseType.OK)
         dialog.set_current_name("bookmarks_timonde_backup.xml")
         dialog.set_do_overwrite_confirmation(True)
-
-        filter_xml = Gtk.FileFilter()
-        filter_xml.set_name(_("XML files (*.xml)"))
-        filter_xml.add_pattern("*.xml")
-        dialog.add_filter(filter_xml)
-
-        filter_all = Gtk.FileFilter()
-        filter_all.set_name(_("All files (*.*)"))
-        filter_all.add_pattern("*")
-        dialog.add_filter(filter_all)
+        for name_f, pat in [(_("XML files (*.xml)"), "*.xml"), (_("All files (*.*)"), "*")]:
+            flt = Gtk.FileFilter()
+            flt.set_name(name_f)
+            flt.add_pattern(pat)
+            dialog.add_filter(flt)
 
         def on_backup_response(dlg, res):
             chosen_path = dlg.get_filename()
@@ -1405,34 +1137,21 @@ class ReorderWidget(Gtk.Box):
                     shutil.copy2(src_path, tmp_target)
                     os.replace(tmp_target, chosen_path)
                     self.show_feedback(f"{_('XML backup successfully created in')} {os.path.basename(chosen_path)}")
-                    msg_diag = Gtk.MessageDialog(
-                        parent=self.get_parent_window(),
-                        flags=Gtk.DialogFlags.MODAL,
-                        type=Gtk.MessageType.INFO,
-                        buttons=Gtk.ButtonsType.OK,
-                        message_format=f"{_('Backup successful!')}\n\n{_('Your complete bookmarks have been saved to:')}\n{chosen_path}",
-                    )
-                    msg_diag.connect("response", lambda d, r: d.destroy())
-                    msg_diag.show_all()
+                    m_type, m_txt = Gtk.MessageType.INFO, f"{_('Backup successful!')}\n\n{_('Your complete bookmarks have been saved to:')}\n{chosen_path}"
                 except Exception as e:
-                    err_diag = Gtk.MessageDialog(
-                        parent=self.get_parent_window(),
-                        flags=Gtk.DialogFlags.MODAL,
-                        type=Gtk.MessageType.ERROR,
-                        buttons=Gtk.ButtonsType.OK,
-                        message_format=f"{_("Error during backup:")}\n{e}",
-                    )
-                    err_diag.connect("response", lambda d, r: d.destroy())
-                    err_diag.show_all()
+                    m_type, m_txt = Gtk.MessageType.ERROR, f"{_('Error during backup:')}\n{e}"
+                msg_diag = Gtk.MessageDialog(
+                    parent=self.get_parent_window(), flags=Gtk.DialogFlags.MODAL,
+                    type=m_type, buttons=Gtk.ButtonsType.OK, message_format=m_txt,
+                )
+                msg_diag.connect("response", lambda d, r: d.destroy())
+                msg_diag.show_all()
 
         dialog.connect("response", on_backup_response)
         dialog.show_all()
 
+
 class ReorderWindow(Gtk.Window):
-    """
-    Conteneur de premier niveau autonome pour ReorderWidget (Gtk.Box).
-    Utilisé en mode CLI indépendant (timonde --organize) ou pour les tests unitaires.
-    """
     def __init__(self, data, auto_check=False, embedded=False, on_save_callback=None):
         super().__init__(title=_("Organize groups and stations (TiMonde)"))
         self.set_default_size(820, 600)
@@ -1440,16 +1159,10 @@ class ReorderWindow(Gtk.Window):
         set_window_icon(self)
         apply_timonde_app_css()
 
-        self.reorder_box = ReorderWidget(
-            data=data,
-            auto_check=auto_check,
-            embedded=embedded,
-            on_save_callback=on_save_callback
-        )
+        self.reorder_box = ReorderWidget(data=data, auto_check=auto_check, embedded=embedded, on_save_callback=on_save_callback)
         self.reorder_box.host_window = self
         set_container_margins(self.reorder_box, margin=12)
         self.add(self.reorder_box)
-
         self.connect("destroy", self.on_destroy_window)
         self.connect("key-press-event", self.on_key_press_event)
 
@@ -1467,35 +1180,4 @@ class ReorderWindow(Gtk.Window):
             self.reorder_box.on_destroy_window(widget)
 
     def on_key_press_event(self, widget, event):
-        if hasattr(self, "reorder_box"):
-            return self.reorder_box.on_key_press_event(widget, event)
-        return False
-
-
-def main():
-    try:
-        raw_input = sys.stdin.read()
-        if not raw_input.strip():
-            sys.exit(1)
-        data = json.loads(raw_input)
-    except Exception as e:
-        sys.stderr.write(f"Erreur lecture stdin : {e}\n")
-        sys.exit(1)
-
-    auto_check = "--check" in sys.argv or "--audit" in sys.argv
-    win = ReorderWindow(data, auto_check=auto_check)
-    win.show_all()
-    if auto_check:
-        GLib.idle_add(win.on_check_streams_clicked, None)
-    Gtk.main()
-
-    if win.saved:
-        json.dump(win.data, sys.stdout, ensure_ascii=False)
-        sys.stdout.flush()
-        sys.exit(0)
-    else:
-        sys.exit(1)
-
-
-if __name__ == "__main__":
-    main()
+        return self.reorder_box.on_key_press_event(widget, event) if hasattr(self, "reorder_box") else False

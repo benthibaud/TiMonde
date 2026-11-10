@@ -39,6 +39,8 @@ from timonde_common import (
     ContributeStationDialog,
     normalize_lookup,
     resolve_country_code,
+    infer_timezone,
+    normalize_group_path,
     set_container_margins,
 )
 
@@ -52,16 +54,11 @@ from gi.repository import Gtk, Gdk, GLib
 class EditStationWindow(Gtk.Window):
     def __init__(self, mode="edit", current_name="", current_url="", current_country="", current_timezone="", current_group="", available_groups=None, standalone=True, on_done_callback=None, groups=None, default_group=None, station_data=None, on_save=None, parent_window=None, **kwargs):
         if station_data and isinstance(station_data, dict):
-            if not current_name:
-                current_name = station_data.get("name", "")
-            if not current_url:
-                current_url = station_data.get("url", "")
-            if not current_country:
-                current_country = station_data.get("country", "")
-            if not current_timezone:
-                current_timezone = station_data.get("timezone", "")
-            if not current_group:
-                current_group = station_data.get("group", "")
+            current_name = current_name or station_data.get("name", "")
+            current_url = current_url or station_data.get("url", "")
+            current_country = current_country or station_data.get("country", "")
+            current_timezone = current_timezone or station_data.get("timezone", "")
+            current_group = current_group or station_data.get("group", "")
         if on_done_callback is None and on_save is not None:
             on_done_callback = on_save
         if available_groups is None and groups is not None:
@@ -200,10 +197,7 @@ class EditStationWindow(Gtk.Window):
             entry_group_child.set_placeholder_text(_("Select or type (e.g. /France/Brittany or / for root)"))
             entry_group_child.set_icon_from_icon_name(Gtk.EntryIconPosition.SECONDARY, "edit-clear")
             entry_group_child.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, _("Clear field (click to empty)"))
-            def on_eg_icon_press(entry, icon_pos, event):
-                if icon_pos == Gtk.EntryIconPosition.SECONDARY:
-                    entry.set_text("")
-            entry_group_child.connect("icon-press", on_eg_icon_press)
+            entry_group_child.connect("icon-press", lambda e, pos, ev: e.set_text("") if pos == Gtk.EntryIconPosition.SECONDARY else None)
             entry_group_child.connect("activate", self.on_save_clicked)
 
         if current_group:
@@ -215,8 +209,7 @@ class EditStationWindow(Gtk.Window):
             else:
                 if entry_group_child:
                     entry_group_child.set_text(clean_cur)
-                model = self.combo_group.get_model()
-                for idx, row in enumerate(model):
+                for idx, row in enumerate(self.combo_group.get_model()):
                     if row[0] == clean_cur:
                         self.combo_group.set_active(idx)
                         break
@@ -245,8 +238,6 @@ class EditStationWindow(Gtk.Window):
         grid.attach(lbl_country, 0, 3, 1, 1)
 
         country_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-        
-        # Champ de saisie / filtre de recherche avec auto-complétion
         self.entry_country_search = Gtk.Entry()
         self.entry_country_search.set_placeholder_text("Tapez pour chercher dans n'importe quelle langue (ex: Deutschland, France, Canada...)")
         self.entry_country_search.set_hexpand(True)
@@ -256,7 +247,6 @@ class EditStationWindow(Gtk.Window):
         self.entry_country_search.connect("activate", self.on_save_clicked)
         country_box.pack_start(self.entry_country_search, True, True, 0)
 
-        # Bouton pour effacer le pays ou réinitialiser
         btn_clear_country = Gtk.Button(label=_("Clear"))
         btn_clear_country.set_tooltip_text(_("Clear / Automatic mode"))
         btn_clear_country.connect("clicked", lambda b: self.entry_country_search.set_text(""))
@@ -280,17 +270,14 @@ class EditStationWindow(Gtk.Window):
 
         grid.attach(tz_box, 1, 4, 1, 1)
 
-        # Initialiser le champ de recherche pays avec le pays de départ
         if self.selected_country_code and self.selected_country_code in COUNTRIES_REGISTRY:
             cname = COUNTRIES_REGISTRY[self.selected_country_code][0]
             self.entry_country_search.set_text(f"[{self.selected_country_code}] {cname}")
         elif self.selected_country_code:
             self.entry_country_search.set_text(self.selected_country_code)
 
-        # Initialiser la liste des fuseaux horaires
         self.populate_timezones_for_country(self.selected_country_code, preserve_tz=self.initial_timezone)
 
-        # Boutons d'action
         btn_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         vbox.pack_start(btn_box, False, False, 0)
 
@@ -314,8 +301,6 @@ class EditStationWindow(Gtk.Window):
 
         self.connect("destroy", self._on_window_destroy)
         self.connect("key-press-event", self.on_key_press)
-
-        # Placer le curseur à la fin du nom sans sélection destructrice
         GLib.idle_add(self.setup_focus)
 
     def _on_window_destroy(self, _widget):
@@ -333,7 +318,6 @@ class EditStationWindow(Gtk.Window):
             return
         self.preview_player.toggle(name, url)
 
-        # Inspection asynchrone des métadonnées d'antenne en direct (icy-name)
         def _check_meta():
             try:
                 ok, msg, meta = check_stream_url(url, timeout=3.5, fetch_meta=True)
@@ -348,13 +332,11 @@ class EditStationWindow(Gtk.Window):
     def _on_air_meta_detected(self, icy_name):
         import html
         current_name = self.entry_name.get_text().strip()
-        # Filtrer les noms techniques génériques ou points de montage Icecast (ex: 'no name', '/stream')
         clean_icy = icy_name.strip()
         if clean_icy.startswith("/") or clean_icy.lower() in ("no name", "unnamed", "default", "stream", "live", "untitled"):
             self.box_air_divergence.hide()
             return
 
-        # Si le nom d'antenne est distinct du nom saisi par l'utilisateur
         if clean_icy and clean_icy.lower() != current_name.lower():
             self.detected_icy_name = clean_icy
             self.lbl_air_name.set_markup(
@@ -405,11 +387,9 @@ class EditStationWindow(Gtk.Window):
         dlg.show_all()
 
     def run(self):
-        """Méthode de compatibilité pour les contextes appelant cette fenêtre comme un dialogue synchrone."""
         self.show_all()
 
     def set_country(self, code):
-        """Met à jour de manière programmée le pays sélectionné et peuple les fuseaux associés."""
         code = (code or "").strip().upper()
         if code and code in COUNTRIES_REGISTRY:
             cname = COUNTRIES_REGISTRY[code][0]
@@ -456,55 +436,15 @@ class EditStationWindow(Gtk.Window):
             self.populate_timezones_for_country("")
             return
 
-        found_code = None
-        norm = normalize_lookup(raw).replace("-", " ")
-        us_state_aliases = {
-            "north carolina": "US",
-            "caroline du nord": "US",
-            "south carolina": "US",
-            "caroline du sud": "US",
-            "california": "US",
-            "californie": "US",
-            "florida": "US",
-            "floride": "US",
-            "texas": "US",
-            "new york": "US",
-            "virginia": "US",
-            "virginie": "US",
-            "tennessee": "US",
-        }
-        if norm in us_state_aliases:
-            found_code = us_state_aliases[norm]
-        else:
-            cand = resolve_country_code(raw)
-            if cand and cand in COUNTRIES_REGISTRY:
-                found_code = cand
-
-        # Si l'utilisateur a tapé une région ou un état spécifique, présélectionner le bon fuseau
-        pref_tz = None
-        lower_raw = raw.lower()
-        words = set(re.findall(r'\b\w+\b', lower_raw))
-        if any(w in lower_raw for w in ["north carolina", "caroline du nord", "florida", "floride", "new york", "virginia", "virginie"]) or ("nc" in words) or ("dc" in words):
-            pref_tz = "America/New_York"
-        elif any(w in lower_raw for w in ["california", "californie", "los angeles", "san francisco", "seattle"]):
-            pref_tz = "America/Los_Angeles"
-        elif any(w in lower_raw for w in ["texas", "chicago", "louisiana", "louisiane", "tennessee"]):
-            pref_tz = "America/Chicago"
-        elif any(w in lower_raw for w in ["denver", "colorado", "utah", "montana"]):
-            pref_tz = "America/Denver"
+        cand = resolve_country_code(raw)
+        found_code = cand if (cand and cand in COUNTRIES_REGISTRY) else None
+        pref_tz = infer_timezone(found_code or "", raw, raw)
 
         if found_code != self.selected_country_code or pref_tz:
             self.selected_country_code = found_code or ""
             self.populate_timezones_for_country(self.selected_country_code, preserve_tz=pref_tz or self.initial_timezone)
 
     def populate_timezones_for_country(self, country_code, preserve_tz=None):
-        """
-        Génère la liste déroulante des fuseaux horaires selon le pays choisi :
-        - Sans pays : sélection libre parmi les principaux fuseaux mondiaux
-        - Mono-fuseau : pré-sélectionné (modifiable)
-        - Multi-fuseaux : liste complète ouverte avec détails clairs (USA, Canada, etc.)
-        - France (FR) : Europe/Paris par défaut avec accès direct aux Outre-mer
-        """
         code_upper = (country_code or "").strip().upper()
         self.combo_tz.remove_all()
 
@@ -559,8 +499,7 @@ class EditStationWindow(Gtk.Window):
         if not code_upper:
             idx = self.combo_tz.get_active()
             if 0 <= idx < len(DEFAULT_WORLD_TIMEZONES):
-                tz_id = DEFAULT_WORLD_TIMEZONES[idx][0]
-                return tz_id if tz_id else None
+                return DEFAULT_WORLD_TIMEZONES[idx][0] or None
             return None
         tz_list = WORLD_TIMEZONES.get(code_upper, [])
         idx = self.combo_tz.get_active()
@@ -618,46 +557,19 @@ class EditStationWindow(Gtk.Window):
         self.preview_player.stop(silent=True)
         name = self.entry_name.get_text().strip()
         url = clean_stream_url(self.entry_url.get_text().strip())
-        country = self.selected_country_code or None
+        country = self.selected_country_code or resolve_country_code(self.entry_country_search.get_text().strip())
         timezone = self.get_selected_timezone_id()
 
-        # Si le code pays n'a pas été fixé via sélection mais est présent dans l'entrée texte
-        if not country:
-            raw_c = self.entry_country_search.get_text().strip()
-            if "[" in raw_c and "]" in raw_c:
-                cand = raw_c.split("[")[-1].split("]")[0].strip().upper()
-                if cand in COUNTRIES_REGISTRY:
-                    country = cand
-            elif "(" in raw_c and ")" in raw_c:
-                cand = raw_c.split("(") [-1].split(")")[0].strip().upper()
-                if cand in COUNTRIES_REGISTRY:
-                    country = cand
-            elif raw_c.upper() in COUNTRIES_REGISTRY:
-                country = raw_c.upper()
-
-        # Inférence automatique du pays si un fuseau bien défini a été choisi
         if not country and timezone:
-            if timezone.startswith("America/New_York") or timezone.startswith("America/Chicago") or timezone.startswith("America/Denver") or timezone.startswith("America/Los_Angeles") or timezone.startswith("America/Phoenix") or timezone.startswith("America/Anchorage") or timezone.startswith("Pacific/Honolulu"):
-                country = "US"
-            elif timezone.startswith("Europe/Paris"):
-                country = "FR"
-            elif timezone.startswith("Europe/London"):
-                country = "GB"
-            elif timezone.startswith("America/Toronto") or timezone.startswith("America/Vancouver") or timezone.startswith("America/Montreal"):
-                country = "CA"
+            for c_code, tzs in WORLD_TIMEZONES.items():
+                if any(tz_id == timezone for tz_id, _ in tzs):
+                    country = c_code
+                    break
 
         child_entry = self.combo_group.get_child()
         custom_grp_txt = child_entry.get_text().strip() if child_entry else ""
         raw_group = custom_grp_txt or self.combo_group.get_active_text() or self.current_group_orig or ""
-
-        # Normalisation selon la convention Linux avec /
-        clean_grp = raw_group.strip()
-        root_label = _("[ / ] Root (Without group)")
-        if clean_grp in (root_label, "[ / ] (Racine — Sans groupe)", "/", "root", "(Racine)"):
-            selected_group = ""
-        else:
-            # Enlever les slashes surnuméraires au début et à la fin (ex: "/France/Bretagne/" -> "France/Bretagne")
-            selected_group = clean_grp.strip("/").strip()
+        selected_group = normalize_group_path(raw_group, return_root_literal=False)
 
         if not name or not url:
             return

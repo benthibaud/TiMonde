@@ -58,18 +58,15 @@ from timonde_common import (
     set_container_margins,
     attach_country_completion,
     GroupSelectorBar,
-)
-
-from timonde_world_data import (
     RADIO_BROWSER_LANGUAGES,
     NATIVE_LANGUAGE_NAMES,
     DISPLAY_NATIVE_MAP,
     resolve_language_api_key,
+    run_timonde_cli,
 )
 
 import json
 import html
-import subprocess
 import glob
 import shutil
 import re
@@ -78,20 +75,6 @@ from concurrent.futures import ThreadPoolExecutor
 import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, GLib, Pango
-
-# -----------------------------------------------------------------------------
-# Configuration & Constantes / Configuration & Constants
-# -----------------------------------------------------------------------------
-
-# Répertoires de recherche des bouquets XML / Bouquets search paths
-BOUQUETS_CANDIDATES = [
-    os.path.join(os.path.dirname(__file__), "..", "bouquets"),
-    os.path.expanduser("~/.local/share/timonde/bouquets"),
-    "/usr/share/timonde/bouquets",
-    "/usr/local/share/timonde/bouquets",
-    "data/bouquets",
-]
-
 
 USER_CONFIG_EXAMPLES_DIR = os.path.expanduser("~/.config/timonde/examples")
 
@@ -103,61 +86,36 @@ EXAMPLES_CANDIDATES = [
     "data/examples",
 ]
 
-def ensure_user_examples_dir():
-    """Initialise le dossier ~/.config/timonde/examples et le peuple avec les exemples par défaut si vide."""
+
+def ensure_user_examples_dir(force_restore=False):
+    """Initialise ou restaure le dossier ~/.config/timonde/examples avec les exemples par défaut."""
+    copied = 0
     try:
         os.makedirs(USER_CONFIG_EXAMPLES_DIR, exist_ok=True)
-        # Vérifie si le dossier contient déjà des fichiers exemples
         patterns = ["*.xml", "*.csv", "*.json", "*.m3u", "*.m3u8", "*.pls"]
-        existing = []
-        for pat in patterns:
-            existing.extend(glob.glob(os.path.join(USER_CONFIG_EXAMPLES_DIR, pat)))
-        if not existing:
-            # Chercher le répertoire source système ou local
-            source_dirs = [
-                "/usr/share/timonde/examples",
-                os.path.join(os.path.dirname(__file__), "..", "examples"),
-                os.path.join(os.path.dirname(__file__), "../../data/examples"),
-                os.path.expanduser("~/.local/share/timonde/examples"),
-                "data/examples"
-            ]
-            import shutil
-            for sdir in source_dirs:
+        existing = [f for pat in patterns for f in glob.glob(os.path.join(USER_CONFIG_EXAMPLES_DIR, pat))]
+        if force_restore or not existing:
+            for sdir in EXAMPLES_CANDIDATES[1:]:
                 if os.path.isdir(sdir):
                     for fname in os.listdir(sdir):
                         if fname.endswith(('.xml', '.csv', '.json', '.m3u', '.m3u8', '.pls', '.md')):
                             src_file = os.path.join(sdir, fname)
                             dst_file = os.path.join(USER_CONFIG_EXAMPLES_DIR, fname)
-                            if os.path.isfile(src_file) and not os.path.exists(dst_file):
+                            if os.path.isfile(src_file) and (force_restore or not os.path.exists(dst_file)):
                                 shutil.copy2(src_file, dst_file)
-                    break
+                                copied += 1
+                    if copied > 0:
+                        break
     except Exception as e:
         sys.stderr.write(f"Avertissement initialisation {USER_CONFIG_EXAMPLES_DIR}: {e}\n")
-    return USER_CONFIG_EXAMPLES_DIR
+    return (USER_CONFIG_EXAMPLES_DIR, copied) if force_restore else USER_CONFIG_EXAMPLES_DIR
 
-def find_examples_dir():
-    """Localise le dossier des exemples XML / Locate examples directory"""
-    ensure_user_examples_dir()
-    for path in EXAMPLES_CANDIDATES:
-        if os.path.isdir(path) and glob.glob(os.path.join(path, "*.xml")):
-            return os.path.abspath(path)
-    return None
 
 def list_available_examples():
     """Liste tous les fichiers exemples disponibles (XML, CSV, JSON, M3U) en priorité depuis ~/.config/timonde/examples"""
-    user_dir = ensure_user_examples_dir()
+    ensure_user_examples_dir()
     patterns = ["*.xml", "*.csv", "*.json", "*.m3u", "*.m3u8", "*.pls"]
     found_files = {}
-
-    # 1. Explorer en priorité le dossier utilisateur ~/.config/timonde/examples
-    if os.path.isdir(user_dir):
-        for pat in patterns:
-            for f in glob.glob(os.path.join(user_dir, pat)):
-                base = os.path.basename(f)
-                if base not in found_files:
-                    found_files[base] = f
-
-    # 2. Explorer les autres dossiers candidats si nécessaire
     for d in EXAMPLES_CANDIDATES:
         if os.path.isdir(d):
             for pat in patterns:
@@ -167,93 +125,40 @@ def list_available_examples():
                         found_files[base] = f
 
     results = []
+    ext_labels = {
+        ".csv": ("[Tableur CSV]", "Import CSV"),
+        ".json": ("[Radiotray-NG JSON]", "Import JSON"),
+        ".m3u": ("[Playlist M3U]", "Playlist M3U"),
+        ".m3u8": ("[Playlist M3U]", "Playlist M3U"),
+        ".pls": ("[Playlist PLS]", "Playlist PLS"),
+    }
     for base in sorted(found_files.keys()):
         f = found_files[base]
-        if f.endswith(".xml"):
-            display_label = base
-            name = base
+        ext = os.path.splitext(f)[1].lower()
+        if ext == ".xml":
+            display_label, name = base, base
             try:
                 with open(f, "r", encoding="utf-8", errors="replace") as xf:
                     head = xf.read(1024)
                 m = re.search(r'<(?:bouquet|bookmarks|group)\b[^>]*\b(?:name|title)=["\']([^"\']+)["\']', head)
-                if m:
-                    extracted = m.group(1).strip()
-                    if extracted and extracted != base:
-                        name = extracted
-                        display_label = f"{base}  —  {name}"
+                if m and m.group(1).strip() and m.group(1).strip() != base:
+                    name = m.group(1).strip()
+                    display_label = f"{base}  —  {name}"
             except Exception:
                 pass
             results.append((f, display_label, name))
-        elif f.endswith(".csv"):
-            results.append((f, f"{base}  —  [Tableur CSV]", "Import CSV"))
-        elif f.endswith(".json"):
-            results.append((f, f"{base}  —  [Radiotray-NG JSON]", "Import JSON"))
-        elif f.endswith((".m3u", ".m3u8")):
-            results.append((f, f"{base}  —  [Playlist M3U]", "Playlist M3U"))
-        elif f.endswith(".pls"):
-            results.append((f, f"{base}  —  [Playlist PLS]", "Playlist PLS"))
+        elif ext in ext_labels:
+            tag, title = ext_labels[ext]
+            results.append((f, f"{base}  —  {tag}", title))
     return results
 
 
-# -----------------------------------------------------------------------------
-# Fonctions Utilitaires / Utility Functions
-# -----------------------------------------------------------------------------
-
-def find_bouquets_dir():
-    """Localise le dossier principal des bouquets XML / Locate main bouquets directory"""
-    for path in BOUQUETS_CANDIDATES:
-        if os.path.isdir(path) and glob.glob(os.path.join(path, "*.xml")):
-            return os.path.abspath(path)
-    return None
-
-
-
-
-# Langues populaires pour raccourcis rapides
-QUICK_POPULAR_LANGUAGES = [
-    ("Toutes les langues", ""),
-    ("Français", "french"),
-    ("Anglais", "english"),
-    ("Espagnol", "spanish"),
-    ("Arabe", "arabic"),
-    ("Allemand", "german"),
-    ("Italien", "italian"),
-    ("Portugais", "portuguese"),
-    ("Russe", "russian"),
-    ("Hindi", "hindi"),
-    ("Thaï", "thai"),
-    ("Chinois", "chinese"),
-    ("Japonais", "japanese"),
-    ("Néerlandais", "dutch"),
-    ("Turc", "turkish"),
-    ("Polonais", "polish"),
-    ("Grec", "greek"),
-]
-
-
-# -----------------------------------------------------------------------------
-# Fenêtre Principale : Découverte & Importation de Radios
-# Main Window: Discovery & Import of Radios
-# -----------------------------------------------------------------------------
-
-
-
-
 def parse_user_radio_file(path):
-    """
-    Parse universel délégué au moteur natif Rust (Option B pure).
-    Prend en charge .m3u, .pls, .csv, .xml, .json avec encodages multiples et inférence de fuseau.
-    """
+    """Parse universel délégué au moteur natif Rust (.m3u, .pls, .csv, .xml, .json)."""
     if not path or not os.path.isfile(path):
         return []
     try:
-        res = subprocess.run(
-            ["timonde", "--parse-file-json", path],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            timeout=10.0
-        )
+        res = run_timonde_cli("--parse-file-json", path, timeout=10.0)
         if res.returncode == 0 and res.stdout.strip():
             return json.loads(res.stdout)
     except Exception as e:
@@ -325,6 +230,25 @@ class DiscoverRadiosViews:
 
     def setup_country_completion(self, entry, on_selected_cb=None):
         return attach_country_completion(entry, on_selected=on_selected_cb)
+
+    def _add_toggle_col(self, tree, title, col_idx, on_toggled):
+        rend = Gtk.CellRendererToggle()
+        rend.connect("toggled", on_toggled)
+        col = Gtk.TreeViewColumn(title, rend, active=col_idx)
+        col.set_resizable(False)
+        tree.append_column(col)
+
+    def _add_text_col(self, tree, title, col_idx, markup=False, ellipsize=False, expand=False, min_w=0):
+        rend = Gtk.CellRendererText()
+        if ellipsize:
+            rend.set_property("ellipsize", Pango.EllipsizeMode.END)
+        col = Gtk.TreeViewColumn(title, rend, **({"markup": col_idx} if markup else {"text": col_idx}))
+        col.set_resizable(True)
+        if expand:
+            col.set_expand(True)
+        if min_w:
+            col.set_min_width(min_w)
+        tree.append_column(col)
 
     # -------------------------------------------------------------------------
     # Helper Partagé : Barre inférieure de groupe de destination & import
@@ -516,53 +440,14 @@ class DiscoverRadiosViews:
         self.rb_tree = Gtk.TreeView(model=self.rb_store)
         self.rb_tree.connect("row-activated", lambda tv, path, col: self.on_tree_row_activated(tv, path, col, "search"))
 
-        renderer_rb_check = Gtk.CellRendererToggle()
-        renderer_rb_check.connect("toggled", self.on_rb_check_toggled)
-        col_rb_check = Gtk.TreeViewColumn(_("Add"), renderer_rb_check, active=0)
-        col_rb_check.set_resizable(False)
-        self.rb_tree.append_column(col_rb_check)
-
-        rend_rb_name = Gtk.CellRendererText()
-        rend_rb_name.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_rb_name = Gtk.TreeViewColumn(_("Station"), rend_rb_name, text=1)
-        col_rb_name.set_expand(True)
-        col_rb_name.set_resizable(True)
-        col_rb_name.set_min_width(120)
-        self.rb_tree.append_column(col_rb_name)
-
-        col_rb_c = Gtk.TreeViewColumn(_("Country"), Gtk.CellRendererText(), text=2)
-        col_rb_c.set_resizable(True)
-        col_rb_c.set_min_width(45)
-        self.rb_tree.append_column(col_rb_c)
-
-        rend_rb_tags = Gtk.CellRendererText()
-        rend_rb_tags.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_rb_tags = Gtk.TreeViewColumn(_("Genre / Tags"), rend_rb_tags, text=3)
-        col_rb_tags.set_resizable(True)
-        col_rb_tags.set_min_width(90)
-        self.rb_tree.append_column(col_rb_tags)
-
-        col_rb_codec = Gtk.TreeViewColumn(_("Format & Bitrate"), Gtk.CellRendererText(), text=4)
-        col_rb_codec.set_resizable(True)
-        col_rb_codec.set_min_width(75)
-        self.rb_tree.append_column(col_rb_codec)
-
-        rend_rb_health = Gtk.CellRendererText()
-        rend_rb_health.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_rb_health = Gtk.TreeViewColumn(_("Availability"), rend_rb_health, markup=8)
-        col_rb_health.set_resizable(True)
-        col_rb_health.set_min_width(105)
-        self.rb_tree.append_column(col_rb_health)
-
-        col_rb_dup = Gtk.TreeViewColumn(_("Favorite status"), Gtk.CellRendererText(), markup=9)
-        col_rb_dup.set_resizable(True)
-        col_rb_dup.set_min_width(85)
-        self.rb_tree.append_column(col_rb_dup)
-
-        col_rb_votes = Gtk.TreeViewColumn(_("Votes"), Gtk.CellRendererText(), text=5)
-        col_rb_votes.set_resizable(True)
-        col_rb_votes.set_min_width(45)
-        self.rb_tree.append_column(col_rb_votes)
+        self._add_toggle_col(self.rb_tree, _("Add"), 0, self.on_rb_check_toggled)
+        self._add_text_col(self.rb_tree, _("Station"), 1, ellipsize=True, expand=True, min_w=120)
+        self._add_text_col(self.rb_tree, _("Country"), 2, min_w=45)
+        self._add_text_col(self.rb_tree, _("Genre / Tags"), 3, ellipsize=True, min_w=90)
+        self._add_text_col(self.rb_tree, _("Format & Bitrate"), 4, min_w=75)
+        self._add_text_col(self.rb_tree, _("Availability"), 8, markup=True, ellipsize=True, min_w=105)
+        self._add_text_col(self.rb_tree, _("Favorite status"), 9, markup=True, min_w=85)
+        self._add_text_col(self.rb_tree, _("Votes"), 5, min_w=45)
 
         scroll_rb = Gtk.ScrolledWindow()
         scroll_rb.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
@@ -673,39 +558,11 @@ class DiscoverRadiosViews:
         self.bouquet_tree = Gtk.TreeView(model=self.bouquet_store)
         self.bouquet_tree.connect("row-activated", lambda tv, path, col: self.on_tree_row_activated(tv, path, col, "bouquets"))
 
-        renderer_check = Gtk.CellRendererToggle()
-        renderer_check.connect("toggled", self.on_bouquet_check_toggled)
-        col_check = Gtk.TreeViewColumn(_("Import"), renderer_check, active=0)
-        col_check.set_resizable(False)
-        self.bouquet_tree.append_column(col_check)
-
-        rend_name = Gtk.CellRendererText()
-        rend_name.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_name = Gtk.TreeViewColumn(_("Station"), rend_name, text=1)
-        col_name.set_expand(True)
-        col_name.set_resizable(True)
-        col_name.set_min_width(130)
-        self.bouquet_tree.append_column(col_name)
-
-        rend_genre = Gtk.CellRendererText()
-        rend_genre.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_genre = Gtk.TreeViewColumn(_("Genre / Topic"), rend_genre, text=2)
-        col_genre.set_resizable(True)
-        col_genre.set_min_width(110)
-        self.bouquet_tree.append_column(col_genre)
-
-        rend_health = Gtk.CellRendererText()
-        rend_health.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_health = Gtk.TreeViewColumn(_("Live availability"), rend_health, markup=3)
-        col_health.set_resizable(True)
-        col_health.set_min_width(115)
-        self.bouquet_tree.append_column(col_health)
-
-        rend_dup = Gtk.CellRendererText()
-        col_dup = Gtk.TreeViewColumn(_("Favorite status"), rend_dup, markup=4)
-        col_dup.set_resizable(True)
-        col_dup.set_min_width(90)
-        self.bouquet_tree.append_column(col_dup)
+        self._add_toggle_col(self.bouquet_tree, _("Import"), 0, self.on_bouquet_check_toggled)
+        self._add_text_col(self.bouquet_tree, _("Station"), 1, ellipsize=True, expand=True, min_w=130)
+        self._add_text_col(self.bouquet_tree, _("Genre / Topic"), 2, ellipsize=True, min_w=110)
+        self._add_text_col(self.bouquet_tree, _("Live availability"), 3, markup=True, ellipsize=True, min_w=115)
+        self._add_text_col(self.bouquet_tree, _("Favorite status"), 4, markup=True, min_w=90)
 
         # Bannière informative pour pays sans bouquet DAB+ pré-embarqué (Pont Radio-Browser)
         self.banner_no_bouquet = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
@@ -855,50 +712,13 @@ class DiscoverRadiosViews:
         self.files_tree = Gtk.TreeView(model=self.files_store)
         self.files_tree.connect("row-activated", lambda tv, path, col: self.on_tree_row_activated(tv, path, col, "files"))
 
-        renderer_f_check = Gtk.CellRendererToggle()
-        renderer_f_check.connect("toggled", self.on_files_check_toggled)
-        col_f_check = Gtk.TreeViewColumn(_("Import"), renderer_f_check, active=0)
-        col_f_check.set_resizable(False)
-        self.files_tree.append_column(col_f_check)
-
-        rend_f_name = Gtk.CellRendererText()
-        rend_f_name.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_f_name = Gtk.TreeViewColumn(_("Station"), rend_f_name, text=1)
-        col_f_name.set_expand(True)
-        col_f_name.set_resizable(True)
-        col_f_name.set_min_width(120)
-        self.files_tree.append_column(col_f_name)
-
-        rend_f_grp = Gtk.CellRendererText()
-        rend_f_grp.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_f_grp = Gtk.TreeViewColumn(_("Folder / Group"), rend_f_grp, text=2)
-        col_f_grp.set_resizable(True)
-        col_f_grp.set_min_width(90)
-        self.files_tree.append_column(col_f_grp)
-
-        col_f_country = Gtk.TreeViewColumn(_("Country"), Gtk.CellRendererText(), text=3)
-        col_f_country.set_resizable(True)
-        col_f_country.set_min_width(45)
-        self.files_tree.append_column(col_f_country)
-
-        rend_f_health = Gtk.CellRendererText()
-        rend_f_health.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_f_health = Gtk.TreeViewColumn(_("Availability"), rend_f_health, markup=4)
-        col_f_health.set_resizable(True)
-        col_f_health.set_min_width(105)
-        self.files_tree.append_column(col_f_health)
-
-        col_f_dup = Gtk.TreeViewColumn(_("Favorite status"), Gtk.CellRendererText(), markup=5)
-        col_f_dup.set_resizable(True)
-        col_f_dup.set_min_width(85)
-        self.files_tree.append_column(col_f_dup)
-
-        rend_f_url = Gtk.CellRendererText()
-        rend_f_url.set_property("ellipsize", Pango.EllipsizeMode.END)
-        col_f_url = Gtk.TreeViewColumn(_("Stream URL"), rend_f_url, text=6)
-        col_f_url.set_resizable(True)
-        col_f_url.set_min_width(110)
-        self.files_tree.append_column(col_f_url)
+        self._add_toggle_col(self.files_tree, _("Import"), 0, self.on_files_check_toggled)
+        self._add_text_col(self.files_tree, _("Station"), 1, ellipsize=True, expand=True, min_w=120)
+        self._add_text_col(self.files_tree, _("Folder / Group"), 2, ellipsize=True, min_w=90)
+        self._add_text_col(self.files_tree, _("Country"), 3, min_w=45)
+        self._add_text_col(self.files_tree, _("Availability"), 4, markup=True, ellipsize=True, min_w=105)
+        self._add_text_col(self.files_tree, _("Favorite status"), 5, markup=True, min_w=85)
+        self._add_text_col(self.files_tree, _("Stream URL"), 6, ellipsize=True, min_w=110)
 
         scroll_files = Gtk.ScrolledWindow()
         scroll_files.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
@@ -941,43 +761,6 @@ class DiscoverRadiosViews:
         box.pack_start(bar_box, False, False, 0)
 
         return box
-
-    # -------------------------------------------------------------------------
-    # Mode Autonome (CLI / Standalone)
-    # -------------------------------------------------------------------------
-    def build_standalone_window(self, initial_tab=0):
-        main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-        self.add(main_vbox)
-
-        hcontent = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-        main_vbox.pack_start(hcontent, True, True, 0)
-
-        self.stack = Gtk.Stack()
-        self.stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
-        self.stack.set_transition_duration(150)
-
-        sidebar = Gtk.StackSidebar()
-        sidebar.set_stack(self.stack)
-        sidebar.set_size_request(210, -1)
-        hcontent.pack_start(sidebar, False, False, 0)
-        hcontent.pack_start(self.stack, True, True, 0)
-
-        self.stack.add_titled(self.view_search, "search", _("Search online"))
-        self.stack.add_titled(self.view_bouquets, "bouquets", _("Country bouquets"))
-        self.stack.add_titled(self.view_files, "files", _("Import & Export"))
-
-        self.stack.connect("notify::visible-child-name", lambda s, p: self.preview_player.stop() if self.preview_player else None)
-
-        bot_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-        main_vbox.pack_start(bot_box, False, False, 0)
-
-        btn_close = make_btn(_("Close"), "window-close")
-        btn_close.connect("clicked", lambda w: self.destroy())
-        bot_box.pack_end(btn_close, False, False, 0)
-
-        pages = ["search", "bouquets", "files"]
-        target = pages[initial_tab] if 0 <= initial_tab < len(pages) else "search"
-        self.stack.set_visible_child_name(target)
 
     # -------------------------------------------------------------------------
     # Écoute en direct (Preview Player) & Double-clic
@@ -1311,45 +1094,57 @@ class DiscoverRadiosViews:
             on_update=self.update_bouquet_count,
         )
 
-    def test_bouquet_streams(self):
+    def _test_store_streams(self, store, url_col, id_col, health_col, broken_col, gen_attr, update_fn):
         items_to_check = []
-        it = self.bouquet_store.get_iter_first()
+        it = store.get_iter_first()
         while it:
-            row_id = self.bouquet_store.get_value(it, 8)
-            url = self.bouquet_store.get_value(it, 5)
-            self.bouquet_store.set_value(it, 3, status_markup(_("Testing..."), kind="muted"))
+            row_id = store.get_value(it, id_col)
+            url = store.get_value(it, url_col)
+            store.set_value(it, health_col, status_markup(_("Testing..."), kind="muted"))
             items_to_check.append((row_id, url))
-            it = self.bouquet_store.iter_next(it)
-
-        self.current_check_generation += 1
+            it = store.iter_next(it)
+        setattr(self, gen_attr, getattr(self, gen_attr, 0) + 1)
         self._run_batch_checks(
-            store=self.bouquet_store,
+            store=store,
             items_to_check=items_to_check,
-            id_col=8,
-            health_col=3,
-            broken_col=7,
+            id_col=id_col,
+            health_col=health_col,
+            broken_col=broken_col,
             checked_col=0,
-            gen_attr="current_check_generation",
-            on_update=self.update_bouquet_count,
+            gen_attr=gen_attr,
+            on_update=update_fn,
         )
 
+    def _toggle_store_row(self, store, path, update_fn):
+        it = store.get_iter(path)
+        if it:
+            store.set_value(it, 0, not store.get_value(it, 0))
+            update_fn()
+
+    def _set_store_checks(self, store, val, update_fn, dup_col=None, dead_col=None, only_new=False):
+        it = store.get_iter_first()
+        while it:
+            if only_new:
+                is_dup = store.get_value(it, dup_col) if dup_col is not None else False
+                is_dead = store.get_value(it, dead_col) if dead_col is not None else False
+                store.set_value(it, 0, (not is_dup) and (not is_dead))
+            elif val and (dup_col is not None or dead_col is not None):
+                is_dup = store.get_value(it, dup_col) if dup_col is not None else False
+                is_dead = store.get_value(it, dead_col) if dead_col is not None else False
+                store.set_value(it, 0, False if (is_dup or is_dead) else True)
+            else:
+                store.set_value(it, 0, val)
+            it = store.iter_next(it)
+        update_fn()
+
+    def test_bouquet_streams(self):
+        self._test_store_streams(self.bouquet_store, 5, 8, 3, 7, "current_check_generation", self.update_bouquet_count)
+
     def on_bouquet_check_toggled(self, widget, path):
-        it = self.bouquet_store.get_iter(path)
-        cur = self.bouquet_store.get_value(it, 0)
-        self.bouquet_store.set_value(it, 0, not cur)
-        self.update_bouquet_count()
+        self._toggle_store_row(self.bouquet_store, path, self.update_bouquet_count)
 
     def set_bouquet_checks(self, val):
-        it = self.bouquet_store.get_iter_first()
-        while it:
-            is_dup = self.bouquet_store.get_value(it, 6)
-            is_dead = self.bouquet_store.get_value(it, 7)
-            if val and (is_dup or is_dead):
-                self.bouquet_store.set_value(it, 0, False)
-            else:
-                self.bouquet_store.set_value(it, 0, val)
-            it = self.bouquet_store.iter_next(it)
-        self.update_bouquet_count()
+        self._set_store_checks(self.bouquet_store, val, self.update_bouquet_count, dup_col=6, dead_col=7)
 
     def update_bouquet_count(self):
         total = 0
@@ -1407,82 +1202,52 @@ class DiscoverRadiosViews:
         dlg.connect("response", on_repair_resp)
         dlg.show_all()
 
-    def on_contribute_new_to_radio_browser(self):
-        c_code = self.get_selected_country_code() if hasattr(self, "get_selected_country_code") else ""
-        dlg = ContributeStationDialog(
-            parent=self.get_parent_window(),
-            station_name=self.entry_rb_name.get_text().strip() if hasattr(self, "entry_rb_name") else "",
-            current_url="",
-            country_code=c_code
-        )
-        dlg.connect("response", lambda d, r: d.destroy())
-        dlg.show_all()
-
-    def on_contribute_bouquet_to_radio_browser(self):
-        model, tree_iter = self.bouquet_tree.get_selection().get_selected()
-        if not tree_iter:
-            d = Gtk.MessageDialog(
-                transient_for=self.get_parent_window(),
-                flags=Gtk.DialogFlags.MODAL,
-                type=Gtk.MessageType.INFO,
-                buttons=Gtk.ButtonsType.OK,
-                message_format=_("Please select a radio station in the list first.")
-            )
-            d.connect("response", lambda dialog, r: dialog.destroy())
-            d.show_all()
-            return
-        station_name = model.get_value(tree_iter, 1) or ""
-        current_url = model.get_value(tree_iter, 5) or ""
-        country_id = self.get_selected_country_code()
+    def _open_contribute_dialog(self, station_name="", current_url="", country_code=""):
         dlg = ContributeStationDialog(
             parent=self.get_parent_window(),
             station_name=station_name,
             current_url=current_url,
-            country_code=country_id
+            country_code=country_code,
         )
         dlg.connect("response", lambda d, r: d.destroy())
         dlg.show_all()
 
-    def on_contribute_files_to_radio_browser(self):
-        model, tree_iter = self.files_tree.get_selection().get_selected()
-        station_name = ""
-        current_url = ""
-        country_id = ""
-        if tree_iter:
-            station_name = model.get_value(tree_iter, 1) or ""
-            country_id = model.get_value(tree_iter, 3) or ""
-            current_url = model.get_value(tree_iter, 6) or ""
-        else:
-            # Si aucune sélection active, prendre la première station cochée
+    def on_contribute_new_to_radio_browser(self):
+        c_code = self.get_selected_country_code() if hasattr(self, "get_selected_country_code") else ""
+        st_name = self.entry_rb_name.get_text().strip() if hasattr(self, "entry_rb_name") else ""
+        self._open_contribute_dialog(st_name, "", c_code)
+
+    def _contribute_from_tree(self, tree, name_col, url_col, country_col=None, fallback_checked=False):
+        model, tree_iter = tree.get_selection().get_selected()
+        if not tree_iter and fallback_checked:
             it = model.get_iter_first()
             while it:
                 if model.get_value(it, 0):
-                    station_name = model.get_value(it, 1) or ""
-                    country_id = model.get_value(it, 3) or ""
-                    current_url = model.get_value(it, 6) or ""
+                    tree_iter = it
                     break
                 it = model.iter_next(it)
-
-        if not current_url:
+        if not tree_iter:
+            msg = _("Please select or check a radio station in the list first.") if fallback_checked else _("Please select a radio station in the list first.")
             d = Gtk.MessageDialog(
                 transient_for=self.get_parent_window(),
                 flags=Gtk.DialogFlags.MODAL,
                 type=Gtk.MessageType.INFO,
                 buttons=Gtk.ButtonsType.OK,
-                message_format=_("Please select or check a radio station in the list first.")
+                message_format=msg,
             )
             d.connect("response", lambda dialog, r: dialog.destroy())
             d.show_all()
             return
+        st_name = model.get_value(tree_iter, name_col) or ""
+        cur_url = model.get_value(tree_iter, url_col) or ""
+        c_code = (model.get_value(tree_iter, country_col) or "") if country_col is not None else self.get_selected_country_code()
+        self._open_contribute_dialog(st_name, cur_url, c_code)
 
-        dlg = ContributeStationDialog(
-            parent=self.get_parent_window(),
-            station_name=station_name,
-            current_url=current_url,
-            country_code=country_id
-        )
-        dlg.connect("response", lambda d, r: d.destroy())
-        dlg.show_all()
+    def on_contribute_bouquet_to_radio_browser(self):
+        self._contribute_from_tree(self.bouquet_tree, 1, 5)
+
+    def on_contribute_files_to_radio_browser(self):
+        self._contribute_from_tree(self.files_tree, 1, 6, country_col=3, fallback_checked=True)
 
     def save_stream_to_xml(self, station_name, old_url, new_url):
         country_id, info, _nat, _regs = self.get_current_data()
@@ -1496,7 +1261,6 @@ class DiscoverRadiosViews:
             os.makedirs(user_b_dir, exist_ok=True)
             target_file = os.path.join(user_b_dir, os.path.basename(xml_path))
             if not os.path.exists(target_file):
-                import shutil
                 shutil.copyfile(xml_path, target_file)
 
         try:
@@ -1577,47 +1341,18 @@ class DiscoverRadiosViews:
         self.executor.submit(worker)
 
     def test_rb_streams(self):
-        items_to_check = []
-        it = self.rb_store.get_iter_first()
-        while it:
-            row_id = self.rb_store.get_value(it, 10)
-            url = self.rb_store.get_value(it, 6)
-            self.rb_store.set_value(it, 8, status_markup(_("Testing..."), kind="muted"))
-            items_to_check.append((row_id, url))
-            it = self.rb_store.iter_next(it)
-
-        self.current_rb_check_generation += 1
-        self._run_batch_checks(
-            store=self.rb_store,
-            items_to_check=items_to_check,
-            id_col=10,
-            health_col=8,
-            broken_col=None,
-            checked_col=0,
-            gen_attr="current_rb_check_generation",
-            on_update=self.update_rb_count,
-        )
+        self._test_store_streams(self.rb_store, 6, 10, 8, None, "current_rb_check_generation", self.update_rb_count)
 
     def on_rb_check_toggled(self, widget, path):
-        it = self.rb_store.get_iter(path)
-        if it:
-            cur = self.rb_store.get_value(it, 0)
-            self.rb_store.set_value(it, 0, not cur)
-            self.update_rb_count()
+        self._toggle_store_row(self.rb_store, path, self.update_rb_count)
 
     def set_rb_checks(self, val):
-        it = self.rb_store.get_iter_first()
-        while it:
-            self.rb_store.set_value(it, 0, val)
-            it = self.rb_store.iter_next(it)
-        self.update_rb_count()
+        self._set_store_checks(self.rb_store, val, self.update_rb_count)
 
     def update_rb_count(self):
         checked = 0
-        total = 0
         it = self.rb_store.get_iter_first()
         while it:
-            total += 1
             if self.rb_store.get_value(it, 0):
                 checked += 1
             it = self.rb_store.iter_next(it)
@@ -1638,12 +1373,8 @@ class DiscoverRadiosViews:
 
         filter_all = Gtk.FileFilter()
         filter_all.set_name("Tous fichiers supportés (*.xml, *.csv, *.json, *.m3u, *.pls)")
-        filter_all.add_pattern("*.xml")
-        filter_all.add_pattern("*.csv")
-        filter_all.add_pattern("*.json")
-        filter_all.add_pattern("*.m3u")
-        filter_all.add_pattern("*.m3u8")
-        filter_all.add_pattern("*.pls")
+        for pat in ("*.xml", "*.csv", "*.json", "*.m3u", "*.m3u8", "*.pls"):
+            filter_all.add_pattern(pat)
         chooser.add_filter(filter_all)
 
         def on_chooser_resp(dlg, res):
@@ -1709,7 +1440,7 @@ class DiscoverRadiosViews:
         self.current_file_stations = stations
         groups = set(s.get("group", "") for s in stations if s.get("group"))
 
-        info_text = f"<b>{_("File:")}</b> {os.path.basename(path)} — <b>{len(stations)}</b> station(s)"
+        info_text = f"<b>{_('File:')}</b> {os.path.basename(path)} — <b>{len(stations)}</b> station(s)"
         if groups:
             info_text += f", <b>{len(groups)}</b> groupe(s)"
         self.lbl_files_info.set_markup(info_text)
@@ -1732,61 +1463,26 @@ class DiscoverRadiosViews:
             country = st.get("country", "").strip().upper()
 
             is_dup = (url in self.existing_urls) or (name.strip().lower() in self.existing_names)
-            checked = False
             dup_tag = _("[Present]") if is_dup else _("[New]")
             dup_markup = status_markup(dup_tag, kind="warn" if is_dup else "new")
             health_markup = status_markup(f"○ {_('Untested')}", kind="untested")
 
-            # Store: [checked, name, group_display, country, health_markup, dup_markup, url, is_dup, is_dead, row_id, raw_group]
-            self.files_store.append([checked, name, grp, country, health_markup, dup_markup, url, is_dup, False, i, grp])
+            self.files_store.append([False, name, grp, country, health_markup, dup_markup, url, is_dup, False, i, grp])
 
         self.update_files_group_column()
         self.update_files_count()
 
     def on_files_check_toggled(self, widget, path):
-        it = self.files_store.get_iter(path)
-        if it:
-            val = self.files_store.get_value(it, 0)
-            self.files_store.set_value(it, 0, not val)
-            self.update_files_count()
+        self._toggle_store_row(self.files_store, path, self.update_files_count)
 
     def set_files_checks(self, val):
-        it = self.files_store.get_iter_first()
-        while it:
-            self.files_store.set_value(it, 0, val)
-            it = self.files_store.iter_next(it)
-        self.update_files_count()
+        self._set_store_checks(self.files_store, val, self.update_files_count)
 
     def set_files_checks_new_only(self):
-        it = self.files_store.get_iter_first()
-        while it:
-            is_dup = self.files_store.get_value(it, 7)
-            is_dead = self.files_store.get_value(it, 8)
-            self.files_store.set_value(it, 0, (not is_dup) and (not is_dead))
-            it = self.files_store.iter_next(it)
-        self.update_files_count()
+        self._set_store_checks(self.files_store, True, self.update_files_count, dup_col=7, dead_col=8, only_new=True)
 
     def test_files_streams(self):
-        items_to_check = []
-        it = self.files_store.get_iter_first()
-        while it:
-            row_id = self.files_store.get_value(it, 9)
-            url = self.files_store.get_value(it, 6)
-            self.files_store.set_value(it, 4, status_markup(_("Testing..."), kind="muted"))
-            items_to_check.append((row_id, url))
-            it = self.files_store.iter_next(it)
-
-        self.current_files_check_generation += 1
-        self._run_batch_checks(
-            store=self.files_store,
-            items_to_check=items_to_check,
-            id_col=9,
-            health_col=4,
-            broken_col=8,
-            checked_col=0,
-            gen_attr="current_files_check_generation",
-            on_update=self.update_files_count,
-        )
+        self._test_store_streams(self.files_store, 6, 9, 4, 8, "current_files_check_generation", self.update_files_count)
 
     def update_files_count(self):
         checked = 0
@@ -1944,26 +1640,9 @@ class DiscoverRadiosViews:
         self.open_directory(user_dir)
 
     def on_restore_examples_action(self, widget):
-        source_dirs = [
-            "/usr/share/timonde/examples",
-            os.path.join(os.path.dirname(__file__), "..", "examples"),
-            os.path.join(os.path.dirname(__file__), "../../data/examples"),
-            "data/examples"
-        ]
-        restored = 0
-        os.makedirs(USER_CONFIG_EXAMPLES_DIR, exist_ok=True)
-        for sdir in source_dirs:
-            if os.path.isdir(sdir):
-                for fname in os.listdir(sdir):
-                    src_file = os.path.join(sdir, fname)
-                    dst_file = os.path.join(USER_CONFIG_EXAMPLES_DIR, fname)
-                    if os.path.isfile(src_file):
-                        shutil.copy2(src_file, dst_file)
-                        restored += 1
-                if restored > 0:
-                    break
+        _, restored = ensure_user_examples_dir(force_restore=True)
         self.on_refresh_examples_clicked(None)
-        self.show_preview_message(f"{restored} {_("sample files restored.")}")
+        self.show_preview_message(f"{restored} {_('sample files restored.')}")
 
     def on_export_csv_action(self, widget):
         if self.on_export_csv_callback:
@@ -1984,102 +1663,6 @@ class DiscoverRadiosViews:
             self.executor.shutdown(wait=False)
         except Exception:
             pass
-
-
-class DiscoverRadiosWindow(Gtk.Window):
-    def __init__(
-        self,
-        existing_stations,
-        bouquets_db,
-        initial_tab=0,
-        initial_file=None,
-        available_groups=None,
-        embedded=False,
-        on_import_callback=None,
-        on_export_csv_callback=None,
-        on_backup_xml_callback=None,
-    ):
-        apply_timonde_app_css()
-        if embedded:
-            super().__init__()
-            self.views = DiscoverRadiosViews(
-                existing_stations=existing_stations,
-                bouquets_db=bouquets_db,
-                initial_file=initial_file,
-                available_groups=available_groups,
-                embedded=True,
-                on_import_callback=on_import_callback,
-                on_export_csv_callback=on_export_csv_callback,
-                on_backup_xml_callback=on_backup_xml_callback,
-            )
-            self.view_search = self.views.view_search
-            self.view_bouquets = self.views.view_bouquets
-            self.view_files = self.views.view_files
-            return
-
-        super().__init__(title=_("Discover & Import stations (TiMonde)"))
-        setup_window_geometry(self, base_width=960, base_height=640, min_width=750, min_height=480)
-
-        set_window_icon(self)
-        self.connect("destroy", self.on_destroy)
-        self.set_focus_on_map(True)
-
-        self.views = DiscoverRadiosViews(
-            existing_stations=existing_stations,
-            bouquets_db=bouquets_db,
-            initial_file=initial_file,
-            available_groups=available_groups,
-            embedded=False,
-            on_import_callback=on_import_callback,
-            on_export_csv_callback=on_export_csv_callback,
-            on_backup_xml_callback=on_backup_xml_callback,
-        )
-        self.view_search = self.views.view_search
-        self.view_bouquets = self.views.view_bouquets
-        self.view_files = self.views.view_files
-
-        main_vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-        set_container_margins(main_vbox, margin=10)
-        self.add(main_vbox)
-
-        hcontent = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-        main_vbox.pack_start(hcontent, True, True, 0)
-
-        self.stack = Gtk.Stack()
-        self.stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
-        self.stack.set_transition_duration(150)
-
-        sidebar = Gtk.StackSidebar()
-        sidebar.set_stack(self.stack)
-        sidebar.set_size_request(210, -1)
-        hcontent.pack_start(sidebar, False, False, 0)
-        hcontent.pack_start(self.stack, True, True, 0)
-
-        self.stack.add_titled(self.view_search, "search", _("Search online"))
-        self.stack.add_titled(self.view_bouquets, "bouquets", _("Country bouquets"))
-        self.stack.add_titled(self.view_files, "files", _("Import & Export"))
-
-        self.stack.connect("notify::visible-child-name", lambda s, p: self.views.preview_player.stop() if hasattr(self.views, "preview_player") and self.views.preview_player else None)
-
-        bot_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-        main_vbox.pack_start(bot_box, False, False, 0)
-
-        btn_close = make_btn(_("Close"), "window-close")
-        btn_close.connect("clicked", lambda w: self.destroy())
-        bot_box.pack_end(btn_close, False, False, 0)
-
-        pages = ["search", "bouquets", "files"]
-        target = pages[initial_tab] if 0 <= initial_tab < len(pages) else "search"
-        self.stack.set_visible_child_name(target)
-
-    def on_destroy(self, widget):
-        if hasattr(self, "views") and self.views:
-            self.views.shutdown()
-        Gtk.main_quit()
-
-    def __getattr__(self, name):
-        return getattr(self.views, name)
-
 
 
 def load_bouquet_details_on_demand(country_code, country_data):
@@ -2138,97 +1721,3 @@ def parse_bouquets_xml():
         }
 
     return db
-
-    return db
-
-
-def main():
-    existing_stations = []
-    initial_tab = 0
-    initial_file = None
-
-    for arg in sys.argv[1:]:
-        if arg.startswith("--tab="):
-            tab_val = arg.split("=", 1)[1].strip()
-            if tab_val.isdigit():
-                initial_tab = int(tab_val)
-            elif tab_val in ("import", "user", "file", "mes_fichiers", "files"):
-                initial_tab = 2
-            elif tab_val in ("examples", "exemples"):
-                initial_tab = 2
-            elif tab_val in ("dab", "bouquets"):
-                initial_tab = 1
-            elif tab_val in ("rb", "search", "radio-browser"):
-                initial_tab = 0
-        elif arg.startswith("--file="):
-            initial_file = arg.split("=", 1)[1].strip()
-        elif os.path.isfile(arg) and not arg.endswith(".py"):
-            if arg.endswith(".json"):
-                try:
-                    with open(arg, "r", encoding="utf-8") as f:
-                        data = json.load(f)
-                        if isinstance(data, list): existing_stations = data
-                except Exception:
-                    initial_file = arg
-            else:
-                initial_file = arg
-
-    available_groups = []
-
-    if not existing_stations and not sys.stdin.isatty():
-        try:
-            raw = sys.stdin.read().strip()
-            if raw:
-                data = json.loads(raw)
-                if isinstance(data, list):
-                    existing_stations = data
-                elif isinstance(data, dict):
-                    existing_stations = data.get("stations", [])
-                    available_groups = data.get("groups", [])
-        except Exception: pass
-
-    if not available_groups:
-        available_groups = get_user_bookmarks_groups()
-
-    bouquets_db = parse_bouquets_xml()
-    if not bouquets_db:
-        sys.stderr.write("Aucun bouquet disponible.\n")
-        sys.exit(1)
-
-    try:
-        settings = Gtk.Settings.get_default()
-        if settings:
-            settings.set_property("gtk-entry-select-on-focus", False)
-    except Exception:
-        pass
-
-    pages = ["search", "bouquets", "files"]
-    target_page = "search"
-    if 0 <= initial_tab < len(pages):
-        target_page = pages[initial_tab]
-    elif initial_tab == 3:
-        target_page = "files"
-
-    win = DiscoverRadiosWindow(
-        existing_stations,
-        bouquets_db,
-        initial_tab=initial_tab,
-        initial_file=initial_file,
-        available_groups=available_groups,
-    )
-    win.show_all()
-    win.present()
-    if hasattr(win, "stack"):
-        win.stack.set_visible_child_name(target_page)
-    if target_page == "search" and hasattr(win, "entry_rb_name"):
-        GLib.idle_add(win.entry_rb_name.grab_focus)
-    Gtk.main()
-
-    if win.saved:
-        sys.exit(0)
-    else:
-        sys.exit(1)
-
-
-if __name__ == "__main__":
-    main()

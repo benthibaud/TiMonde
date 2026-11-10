@@ -113,7 +113,7 @@ class TestTiMondeCommon(unittest.TestCase):
         self.assertEqual(infer_timezone("CO", "Caracol Radio", ""), "America/Bogota")
 
     def test_multilingual_55_countries_and_language_aliases(self):
-        from timonde_world_data import resolve_country_code, resolve_language_api_key
+        from timonde_common import resolve_country_code, resolve_language_api_key
         country_cases = [
             ("Deutschland", "DE"), ("Germany", "DE"), ("Allemagne", "DE"), ("Alemania", "DE"),
             ("Germania", "DE"), ("Duitsland", "DE"), ("Niemcy", "DE"), ("Германия", "DE"),
