@@ -26,6 +26,7 @@ except ImportError:
 
 from timonde_common import (
     clean_stream_url,
+    attach_country_completion,
     COUNTRIES_REGISTRY,
     DEFAULT_WORLD_TIMEZONES,
     WORLD_TIMEZONES,
@@ -250,28 +251,7 @@ class EditStationWindow(Gtk.Window):
         self.entry_country_search.set_placeholder_text("Tapez pour chercher dans n'importe quelle langue (ex: Deutschland, France, Canada...)")
         self.entry_country_search.set_hexpand(True)
 
-        # Modèle de complétion : [Recherche 55 langues normalisée, Libellé affiché, Code ISO]
-        self.country_store = Gtk.ListStore(str, str, str)
-        # 1. Option automatique / non spécifié
-        self.country_store.append(["", "(Déduction automatique selon le groupe)", ""])
-        
-        # 2. Liste des pays avec recherche sur les alias et variantes
-        for code, c_entry in sorted(COUNTRIES_REGISTRY.items(), key=lambda x: (x[1][0] != "France", normalize_lookup(x[1][0]))):
-            cname = c_entry[0]
-            aliases = c_entry[2] if len(c_entry) > 2 else []
-            search_key = normalize_lookup(f"{cname} {code} {' '.join(aliases)}")
-            display_label = f"[{code}] {cname}"
-            self.country_store.append([search_key, display_label, code])
-
-        completion = Gtk.EntryCompletion()
-        completion.set_model(self.country_store)
-        completion.set_text_column(1)
-        completion.set_minimum_key_length(1)
-        completion.set_inline_completion(False)
-        completion.set_popup_completion(True)
-        completion.set_match_func(self.match_country_completion)
-        completion.connect("match-selected", self.on_country_match_selected)
-        self.entry_country_search.set_completion(completion)
+        attach_country_completion(self.entry_country_search, on_selected=self.on_country_match_selected)
         self.entry_country_search.connect("changed", self.on_country_search_changed)
         self.entry_country_search.connect("activate", self.on_save_clicked)
         country_box.pack_start(self.entry_country_search, True, True, 0)
@@ -423,13 +403,6 @@ class EditStationWindow(Gtk.Window):
 
         dlg.connect("response", on_contribute_resp)
         dlg.show_all()
-        if not isinstance(dlg, Gtk.Dialog) and hasattr(dlg, "run"):
-            try:
-                resp = dlg.run()
-                if resp:
-                    on_contribute_resp(dlg, resp)
-            except Exception:
-                pass
 
     def run(self):
         """Méthode de compatibilité pour les contextes appelant cette fenêtre comme un dialogue synchrone."""
@@ -470,23 +443,9 @@ class EditStationWindow(Gtk.Window):
         self.entry_name.set_position(len(text))
         return False
 
-    def match_country_completion(self, completion, key, tree_iter, *_args):
-        model = completion.get_model()
-        search_key = model[tree_iter][0]
-        query = normalize_lookup(key)
-        if not query:
-            return True
-        return query in search_key
-
-    def on_country_match_selected(self, completion, model, tree_iter):
-        code = model[tree_iter][2]
-        display_label = model[tree_iter][1]
+    def on_country_match_selected(self, code, display_label):
         self.selected_country_code = code
-        self._updating_country_text = True
-        self.entry_country_search.set_text(display_label)
-        self._updating_country_text = False
         self.populate_timezones_for_country(code)
-        return True
 
     def on_country_search_changed(self, entry):
         if getattr(self, "_updating_country_text", False):

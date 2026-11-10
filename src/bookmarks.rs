@@ -95,6 +95,16 @@ pub fn parse_bookmarks_reader<R: std::io::BufRead>(reader: R) -> Result<Group, B
                     } else if let Some(current_group) = group_stack.last_mut() {
                         current_group.stations.push(Station::separator(title));
                     }
+                } else if name.as_ref() == b"group" {
+                    let mut group_name = String::from("Sans nom");
+                    for attr in e.attributes().flatten() {
+                        if attr.key.as_ref() == b"name" {
+                            group_name = attr.unescape_value().unwrap_or_default().into_owned();
+                        }
+                    }
+                    if let Some(current_group) = group_stack.last_mut() {
+                        current_group.subgroups.push(Group::new(group_name));
+                    }
                 } else if name.as_ref() == b"bookmark" {
                     let mut station_name = String::new();
                     let mut station_url = String::new();

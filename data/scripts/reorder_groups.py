@@ -1096,13 +1096,6 @@ class ReorderWidget(Gtk.Box):
 
         dlg.connect("response", on_repair_response)
         dlg.show_all()
-        if not isinstance(dlg, Gtk.Dialog) and hasattr(dlg, "run"):
-            try:
-                res = dlg.run()
-                if res:
-                    on_repair_response(dlg, res)
-            except Exception:
-                pass
 
     def on_contribute_station_clicked(self, widget):
         node_type, name, data_obj, tree_iter, parent_iter = self.get_selected_node()
@@ -1139,13 +1132,6 @@ class ReorderWidget(Gtk.Box):
 
         dlg.connect("response", on_contribute_response)
         dlg.show_all()
-        if not isinstance(dlg, Gtk.Dialog) and hasattr(dlg, "run"):
-            try:
-                resp = dlg.run()
-                if resp:
-                    on_contribute_response(dlg, resp)
-            except Exception:
-                pass
 
     def on_check_streams_clicked(self, widget):
         from concurrent.futures import ThreadPoolExecutor

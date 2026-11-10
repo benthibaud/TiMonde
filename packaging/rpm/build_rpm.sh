@@ -6,7 +6,7 @@ ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
 CARGO_TOML="${ROOT_DIR}/Cargo.toml"
 VERSION_FROM_CARGO=$(grep -m1 '^version = ' "${CARGO_TOML}" 2>/dev/null | cut -d '"' -f2)
-VERSION="${1:-${VERSION_FROM_CARGO:-0.2.6}}"
+VERSION="${1:-${VERSION_FROM_CARGO:-0.2.7}}"
 ARCH="x86_64"
 RPM_NAME="timonde-${VERSION}-1.${ARCH}.rpm"
 DIST_DIR="${ROOT_DIR}/packaging/dist"
@@ -25,9 +25,10 @@ elif [ ! -f "${ROOT_DIR}/target/release/timonde" ]; then
 fi
 
 # 2. Génération des icônes matricielles PNG (16x16 à 256x256)
-if [ -f "${ROOT_DIR}/data/scripts/generate_png_icons.py" ]; then
-    python3 "${ROOT_DIR}/data/scripts/generate_png_icons.py"
+if [ -f "${ROOT_DIR}/scripts/generate_png_icons.py" ]; then
+    python3 "${ROOT_DIR}/scripts/generate_png_icons.py"
 fi
+
 
 # 3. Compilation des catalogues de traduction Gettext
 if [ -f "${ROOT_DIR}/Makefile" ]; then

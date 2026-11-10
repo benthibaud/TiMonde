@@ -21,7 +21,7 @@ import glob
 import subprocess
 from collections import Counter
 
-ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 PO_DIR = os.path.join(ROOT_DIR, "po")
 POT_FILE = os.path.join(PO_DIR, "timonde.pot")
 

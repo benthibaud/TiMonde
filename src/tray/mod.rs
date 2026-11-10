@@ -239,16 +239,30 @@ impl TiMondeTray {
             };
             engine.set_volume(vol);
 
+            if play_generation.load(Ordering::SeqCst) != gen {
+                return;
+            }
+
             if let Err(e) = engine.play(&resolved_url) {
                 error!("Échec initial de lecture : {}", e);
                 notify("TiMonde", &format!("{} {}", crate::i18n::tr("Unable to play"), station_name));
                 return;
             }
 
-            // 4. Stocker le moteur dans la session
-            {
+            // 4. Stocker le moteur dans la session SI ET SEULEMENT SI la génération est toujours valide
+            let still_valid = {
                 let mut s = session.safe_lock();
-                s.engine = Some(engine);
+                if play_generation.load(Ordering::SeqCst) != gen {
+                    false
+                } else {
+                    s.engine = Some(Arc::new(engine));
+                    true
+                }
+            };
+
+            if !still_valid {
+                info!("Abandon du démarrage : génération expirée pendant l'init pour '{}'", station_name);
+                return;
             }
 
             on_success();
@@ -330,13 +344,14 @@ impl TiMondeTray {
                         }
                         let direct_backup = resolve_stream_url(&backup_url);
                         info!("Watchdog : bascule temporaire sur flux alternatif : {} ({})", found_name, direct_backup);
-                        let played = {
+                        let engine_opt = {
                             let s = session_clone.safe_lock();
-                            if let Some(ref engine) = s.engine {
-                                engine.play(&direct_backup).is_ok()
-                            } else {
-                                false
-                            }
+                            s.engine.clone()
+                        };
+                        let played = if let Some(ref engine) = engine_opt {
+                            engine.play(&direct_backup).is_ok()
+                        } else {
+                            false
                         };
 
                         if played {

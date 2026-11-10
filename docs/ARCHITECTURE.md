@@ -151,4 +151,27 @@ Pour bannir définitivement la dette technique et les blocages récents, la **Do
 - **Vérification HTTP & Métadonnées ICY :** La vérification de disponibilité des stations, l'analyse des en-têtes ICY/Shoutcast/Icecast et la détection des géo-blocages (403, 451, serveurs tiers) sont exécutées nativement par Rust (`src/probe.rs` via `ureq`).
 - **Économie de GIL et de sockets :** Python ne crée plus de pools de sockets lourds (`urllib`) ni de `ThreadPoolExecutor(8)` bloquants ; il délègue à `timonde --probe-stream <URL> --json` et charge paresseusement ses dictionnaires de données.
 
+---
+
+## 7. Règle d'Or Desktop Linux : Rust-First Absolu & Dumb UI Python (Anti-Dérive)
+
+Afin d'éradiquer la propension naturelle des agents et assistants à injecter du code métier en Python, la séparation architecturale suivante est contractuelle et irréversible :
+
+1. **Rust est le Cerveau Unique du Système :**
+   - 100 % du réseau (streaming audio, interrogation HTTP Radio-Browser, probing de flux, soumission de radios, DNS).
+   - 100 % du parsing (XML bookmarks, OPML, M3U, PLS, CSV, JSON d'état).
+   - 100 % de la persistance (`bookmarks.xml`, `state.json` atomique avec fichier temporaire unique par PID/nanoseconde).
+   - 100 % de la gestion audio (GStreamer 1.0 `playbin`, horodatages solaires, notifications D-Bus MPRIS2).
+
+2. **Python est un Simple Terminal Graphique (« Dumb UI ») :**
+   - STRICTEMENT confiné à la construction de fenêtres GTK3, aux TreeViews, formulaires et gestionnaires d'événements utilisateur.
+   - Interdiction absolue d'importer `urllib`, `requests` ou `http.client` dans les scripts de production.
+   - Interdiction absolue d'exécuter des requêtes réseau directes ou du parsing XML métier. Tout besoin de données transite par les sous-commandes CLI du binaire Rust (`timonde --json ...`) ou par D-Bus.
+   - Interdiction absolue d'ouvrir des dialogues modaux bloquants (`dlg.run()`) : tout dialogue doit utiliser le modèle asynchrone non-bloquant (`connect("response")` + `show_all()`).
+
+3. **Garde-Fou Automatisé de Non-Régression (`make check-arch`) :**
+   - Un script de contrôle statique (`scripts/check_architecture.py`) est intégré dans la suite de tests (`make test`).
+   - Tout import réseau interdit ou tout appel synchrone `dlg.run()` dans `data/scripts/` fait échouer immédiatement la chaîne de build et les tests.
+
+
 

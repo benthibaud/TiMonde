@@ -15,12 +15,17 @@ import os
 import sys
 import tempfile
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+TESTS_DIR = os.path.dirname(os.path.abspath(__file__))
+SCRIPTS_DIR = os.path.abspath(os.path.join(TESTS_DIR, "..", "data", "scripts"))
+if SCRIPTS_DIR not in sys.path:
+    sys.path.insert(0, SCRIPTS_DIR)
+
 
 from timonde_common import (
     clean_stream_url,
     strip_unsupported_emojis,
-    safe_parse_xml,
+    run_timonde_cli,
+    load_timezones_for_country,
     normalize_group_path,
     infer_timezone,
     set_window_icon,
@@ -58,21 +63,16 @@ class TestTiMondeCommon(unittest.TestCase):
         self.assertEqual(normalize_group_path("///Belgique/Bruxelles///"), "Belgique/Bruxelles")
         self.assertEqual(normalize_group_path("  Jazz & Blues  "), "Jazz & Blues")
 
-    def test_safe_parse_xml(self):
-        # XML avec & non échappé (cas classique des titres radio comme "Rock & Roll")
-        xml_content = """<?xml version="1.0" encoding="utf-8"?>
-        <station name="Rock & Roll Radio" url="http://test.com/stream" />"""
-        with tempfile.NamedTemporaryFile("w", suffix=".xml", delete=False) as f:
-            f.write(xml_content)
-            temp_path = f.name
+    def test_run_timonde_cli(self):
+        res = run_timonde_cli("--version")
+        self.assertEqual(res.returncode, 0)
+        self.assertIn("TiMonde", res.stdout)
 
-        try:
-            root = safe_parse_xml(temp_path)
-            self.assertIsNotNone(root)
-            self.assertEqual(root.attrib.get("name"), "Rock & Roll Radio")
-        finally:
-            if os.path.exists(temp_path):
-                os.remove(temp_path)
+    def test_load_timezones_for_country(self):
+        tzs_fr = load_timezones_for_country("FR")
+        self.assertTrue(len(tzs_fr) >= 10)
+        self.assertTrue(any(t[0] == "Europe/Paris" for t in tzs_fr))
+        self.assertTrue(any(t[0] == "America/Guadeloupe" for t in tzs_fr))
 
     def test_countries_and_timezones(self):
         self.assertTrue(len(COUNTRIES_DB) >= 70)
@@ -200,10 +200,10 @@ class TestTiMondeCommon(unittest.TestCase):
                 os.remove(temp_path)
 
     def test_radio_browser_components(self):
-        from timonde_common import RADIO_BROWSER_ENDPOINTS, TIMONDE_USER_AGENT, RepairStreamDialog
-        self.assertTrue(len(RADIO_BROWSER_ENDPOINTS) >= 3)
+        from timonde_common import TIMONDE_USER_AGENT, RepairStreamDialog, get_timonde_bin
         self.assertTrue(TIMONDE_USER_AGENT.startswith("TiMonde/"))
         self.assertIsNotNone(RepairStreamDialog)
+        self.assertTrue(os.path.exists(get_timonde_bin()))
 
     def test_status_markup(self):
         from timonde_common import status_markup
@@ -284,8 +284,11 @@ class TestTiMondeCommon(unittest.TestCase):
         win = EditStationWindow(station_data=st_data, standalone=False)
         with patch("edit_station.ContributeStationDialog") as MockDialog:
             instance = MagicMock()
-            instance.run.return_value = Gtk.ResponseType.APPLY
             instance.existing_info = {"countrycode": "KE", "name": "Jabulani Radio"}
+            def fake_connect(signal, cb):
+                if signal == "response":
+                    cb(instance, Gtk.ResponseType.APPLY)
+            instance.connect.side_effect = fake_connect
             MockDialog.return_value = instance
 
             win.on_check_radio_browser_clicked(None)

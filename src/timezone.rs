@@ -808,6 +808,147 @@ pub fn infer_timezone_json(
     }
 }
 
+/// Entrée de fuseau horaire avec son identifiant IANA et son libellé descriptif
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+pub struct TimezoneEntry {
+    pub timezone: String,
+    pub label: String,
+}
+
+/// Liste les fuseaux horaires pertinents pour un pays donné (ou la liste mondiale par défaut)
+pub fn list_timezones_for_country(country_code: Option<&str>) -> Vec<TimezoneEntry> {
+    let clean_code = country_code.map(|s| s.trim().to_ascii_uppercase()).unwrap_or_default();
+
+    match clean_code.as_str() {
+        "FR" => vec![
+            TimezoneEntry { timezone: "Europe/Paris".into(), label: "Europe/Paris (France Métropolitaine)".into() },
+            TimezoneEntry { timezone: "America/Guadeloupe".into(), label: "America/Guadeloupe (Guadeloupe)".into() },
+            TimezoneEntry { timezone: "America/Martinique".into(), label: "America/Martinique (Martinique)".into() },
+            TimezoneEntry { timezone: "America/Cayenne".into(), label: "America/Cayenne (Guyane)".into() },
+            TimezoneEntry { timezone: "Indian/Reunion".into(), label: "Indian/Reunion (La Réunion)".into() },
+            TimezoneEntry { timezone: "Indian/Mayotte".into(), label: "Indian/Mayotte (Mayotte)".into() },
+            TimezoneEntry { timezone: "Pacific/Noumea".into(), label: "Pacific/Noumea (Nouvelle-Calédonie)".into() },
+            TimezoneEntry { timezone: "Pacific/Tahiti".into(), label: "Pacific/Tahiti (Polynésie française)".into() },
+            TimezoneEntry { timezone: "Pacific/Marquesas".into(), label: "Pacific/Marquesas (Polynésie - Marquises)".into() },
+            TimezoneEntry { timezone: "Pacific/Gambier".into(), label: "Pacific/Gambier (Polynésie - Gambier)".into() },
+            TimezoneEntry { timezone: "America/Miquelon".into(), label: "America/Miquelon (Saint-Pierre-et-Miquelon)".into() },
+            TimezoneEntry { timezone: "America/St_Barthelemy".into(), label: "America/St_Barthelemy (Saint-Barthélemy)".into() },
+            TimezoneEntry { timezone: "America/Marigot".into(), label: "America/Marigot (Saint-Martin)".into() },
+            TimezoneEntry { timezone: "Pacific/Wallis".into(), label: "Pacific/Wallis (Wallis-et-Futuna)".into() },
+        ],
+        "CA" => vec![
+            TimezoneEntry { timezone: "America/St_Johns".into(), label: "America/St_Johns (Terre-Neuve)".into() },
+            TimezoneEntry { timezone: "America/Halifax".into(), label: "America/Halifax (Atlantique - Nouvelle-Écosse)".into() },
+            TimezoneEntry { timezone: "America/Moncton".into(), label: "America/Moncton (Atlantique - Nouveau-Brunswick / Acadie)".into() },
+            TimezoneEntry { timezone: "America/Toronto".into(), label: "America/Toronto (Est - Québec, Ontario)".into() },
+            TimezoneEntry { timezone: "America/Winnipeg".into(), label: "America/Winnipeg (Centre - Manitoba)".into() },
+            TimezoneEntry { timezone: "America/Regina".into(), label: "America/Regina (Centre - Saskatchewan)".into() },
+            TimezoneEntry { timezone: "America/Edmonton".into(), label: "America/Edmonton (Rocheuses - Alberta)".into() },
+            TimezoneEntry { timezone: "America/Vancouver".into(), label: "America/Vancouver (Pacifique - Colombie-Britannique)".into() },
+            TimezoneEntry { timezone: "America/Whitehorse".into(), label: "America/Whitehorse (Yukon)".into() },
+        ],
+        "US" => vec![
+            TimezoneEntry { timezone: "America/New_York".into(), label: "America/New_York (Est : NY, DC, FL, NC, GA...)".into() },
+            TimezoneEntry { timezone: "America/Chicago".into(), label: "America/Chicago (Centre : Chicago, Texas, Louisiane...)".into() },
+            TimezoneEntry { timezone: "America/Denver".into(), label: "America/Denver (Montagnes : Denver, Colorado, Utah...)".into() },
+            TimezoneEntry { timezone: "America/Phoenix".into(), label: "America/Phoenix (Montagnes sans heure d'été : Arizona)".into() },
+            TimezoneEntry { timezone: "America/Los_Angeles".into(), label: "America/Los_Angeles (Pacifique : Californie, Washington...)".into() },
+            TimezoneEntry { timezone: "America/Anchorage".into(), label: "America/Anchorage (Alaska)".into() },
+            TimezoneEntry { timezone: "Pacific/Honolulu".into(), label: "Pacific/Honolulu (Hawaï)".into() },
+        ],
+        "AU" => vec![
+            TimezoneEntry { timezone: "Australia/Sydney".into(), label: "Australia/Sydney (Est - Sydney, Melbourne)".into() },
+            TimezoneEntry { timezone: "Australia/Brisbane".into(), label: "Australia/Brisbane (Est - Queensland sans heure d'été)".into() },
+            TimezoneEntry { timezone: "Australia/Adelaide".into(), label: "Australia/Adelaide (Centre - Adélaïde)".into() },
+            TimezoneEntry { timezone: "Australia/Darwin".into(), label: "Australia/Darwin (Centre - Territoire du Nord)".into() },
+            TimezoneEntry { timezone: "Australia/Perth".into(), label: "Australia/Perth (Ouest - Perth)".into() },
+        ],
+        "BR" => vec![
+            TimezoneEntry { timezone: "America/Sao_Paulo".into(), label: "America/Sao_Paulo (Brasília, São Paulo, Rio)".into() },
+            TimezoneEntry { timezone: "America/Manaus".into(), label: "America/Manaus (Amazonie)".into() },
+            TimezoneEntry { timezone: "America/Cuiaba".into(), label: "America/Cuiaba (Centre-Ouest)".into() },
+            TimezoneEntry { timezone: "America/Rio_Branco".into(), label: "America/Rio_Branco (Acre)".into() },
+            TimezoneEntry { timezone: "America/Noronha".into(), label: "America/Noronha (Fernando de Noronha)".into() },
+        ],
+        "RU" => vec![
+            TimezoneEntry { timezone: "Europe/Moscow".into(), label: "Europe/Moscow (Moscou, Saint-Pétersbourg - UTC+3)".into() },
+            TimezoneEntry { timezone: "Europe/Kaliningrad".into(), label: "Europe/Kaliningrad (Kaliningrad - UTC+2)".into() },
+            TimezoneEntry { timezone: "Europe/Samara".into(), label: "Europe/Samara (Samara - UTC+4)".into() },
+            TimezoneEntry { timezone: "Asia/Yekaterinburg".into(), label: "Asia/Yekaterinburg (Oural - UTC+5)".into() },
+            TimezoneEntry { timezone: "Asia/Omsk".into(), label: "Asia/Omsk (Omsk - UTC+6)".into() },
+            TimezoneEntry { timezone: "Asia/Novosibirsk".into(), label: "Asia/Novosibirsk (Novossibirsk - UTC+7)".into() },
+            TimezoneEntry { timezone: "Asia/Krasnoyarsk".into(), label: "Asia/Krasnoyarsk (Krasnoïarsk - UTC+7)".into() },
+            TimezoneEntry { timezone: "Asia/Irkutsk".into(), label: "Asia/Irkutsk (Irkoutsk - UTC+8)".into() },
+            TimezoneEntry { timezone: "Asia/Yakutsk".into(), label: "Asia/Yakutsk (Iakoutsk - UTC+9)".into() },
+            TimezoneEntry { timezone: "Asia/Vladivostok".into(), label: "Asia/Vladivostok (Vladivostok - UTC+10)".into() },
+            TimezoneEntry { timezone: "Asia/Magadan".into(), label: "Asia/Magadan (Magadan - UTC+11)".into() },
+            TimezoneEntry { timezone: "Asia/Kamchatka".into(), label: "Asia/Kamchatka (Kamtchatka - UTC+12)".into() },
+        ],
+        "ES" => vec![
+            TimezoneEntry { timezone: "Europe/Madrid".into(), label: "Europe/Madrid (Péninsule ibérique et Baléares)".into() },
+            TimezoneEntry { timezone: "Atlantic/Canary".into(), label: "Atlantic/Canary (Îles Canaries)".into() },
+            TimezoneEntry { timezone: "Africa/Ceuta".into(), label: "Africa/Ceuta (Ceuta et Melilla)".into() },
+        ],
+        "PT" => vec![
+            TimezoneEntry { timezone: "Europe/Lisbon".into(), label: "Europe/Lisbon (Portugal continental et Madère)".into() },
+            TimezoneEntry { timezone: "Atlantic/Azores".into(), label: "Atlantic/Azores (Açores)".into() },
+        ],
+        "GB" | "UK" => vec![
+            TimezoneEntry { timezone: "Europe/London".into(), label: "Europe/London (Royaume-Uni métropolitain)".into() },
+            TimezoneEntry { timezone: "Europe/Gibraltar".into(), label: "Europe/Gibraltar (Gibraltar)".into() },
+            TimezoneEntry { timezone: "Atlantic/Bermuda".into(), label: "Atlantic/Bermuda (Bermudes)".into() },
+            TimezoneEntry { timezone: "America/Cayman".into(), label: "America/Cayman (Îles Caïmans)".into() },
+            TimezoneEntry { timezone: "America/Tortola".into(), label: "America/Tortola (Îles Vierges britanniques)".into() },
+            TimezoneEntry { timezone: "America/Montserrat".into(), label: "America/Montserrat (Montserrat)".into() },
+            TimezoneEntry { timezone: "America/Grand_Turk".into(), label: "America/Grand_Turk (Îles Turques-et-Caïques)".into() },
+            TimezoneEntry { timezone: "America/Anguilla".into(), label: "America/Anguilla (Anguilla)".into() },
+            TimezoneEntry { timezone: "Atlantic/Stanley".into(), label: "Atlantic/Stanley (Îles Malouines / Falkland)".into() },
+            TimezoneEntry { timezone: "Atlantic/South_Georgia".into(), label: "Atlantic/South_Georgia (Géorgie du Sud)".into() },
+            TimezoneEntry { timezone: "Atlantic/St_Helena".into(), label: "Atlantic/St_Helena (Sainte-Hélène)".into() },
+            TimezoneEntry { timezone: "Indian/Chagos".into(), label: "Indian/Chagos (Territoire britannique de l'océan Indien)".into() },
+            TimezoneEntry { timezone: "Pacific/Pitcairn".into(), label: "Pacific/Pitcairn (Îles Pitcairn)".into() },
+        ],
+        "" | "ALL" => vec![
+            TimezoneEntry { timezone: "Europe/Paris".into(), label: "Europe/Paris (France / Europe de l'Ouest)".into() },
+            TimezoneEntry { timezone: "America/Toronto".into(), label: "America/Toronto (Canada Est / Québec)".into() },
+            TimezoneEntry { timezone: "America/New_York".into(), label: "America/New_York (États-Unis Est)".into() },
+            TimezoneEntry { timezone: "America/Chicago".into(), label: "America/Chicago (États-Unis Centre)".into() },
+            TimezoneEntry { timezone: "America/Denver".into(), label: "America/Denver (États-Unis Rocheuses)".into() },
+            TimezoneEntry { timezone: "America/Los_Angeles".into(), label: "America/Los_Angeles (États-Unis Pacifique)".into() },
+            TimezoneEntry { timezone: "America/Sao_Paulo".into(), label: "America/Sao_Paulo (Brésil - Brasília)".into() },
+            TimezoneEntry { timezone: "America/Cayenne".into(), label: "America/Cayenne (Guyane française)".into() },
+            TimezoneEntry { timezone: "America/Guadeloupe".into(), label: "America/Guadeloupe (Antilles - Guadeloupe)".into() },
+            TimezoneEntry { timezone: "America/Martinique".into(), label: "America/Martinique (Antilles - Martinique)".into() },
+            TimezoneEntry { timezone: "Indian/Reunion".into(), label: "Indian/Reunion (Océan Indien - La Réunion)".into() },
+            TimezoneEntry { timezone: "Pacific/Noumea".into(), label: "Pacific/Noumea (Pacifique - Nouvelle-Calédonie)".into() },
+            TimezoneEntry { timezone: "Pacific/Tahiti".into(), label: "Pacific/Tahiti (Polynésie française)".into() },
+            TimezoneEntry { timezone: "Africa/Dakar".into(), label: "Africa/Dakar (Sénégal / Afrique de l'Ouest)".into() },
+            TimezoneEntry { timezone: "Africa/Casablanca".into(), label: "Africa/Casablanca (Maroc)".into() },
+            TimezoneEntry { timezone: "Europe/London".into(), label: "Europe/London (Royaume-Uni / UTC)".into() },
+            TimezoneEntry { timezone: "Europe/Brussels".into(), label: "Europe/Brussels (Belgique)".into() },
+            TimezoneEntry { timezone: "Europe/Zurich".into(), label: "Europe/Zurich (Suisse)".into() },
+            TimezoneEntry { timezone: "Asia/Tokyo".into(), label: "Asia/Tokyo (Japon)".into() },
+            TimezoneEntry { timezone: "Australia/Sydney".into(), label: "Australia/Sydney (Australie Est)".into() },
+        ],
+        other => {
+            if let Some(entry) = lookup_country_meta(other) {
+                vec![TimezoneEntry {
+                    timezone: entry.2.to_string(),
+                    label: format!("{} ({})", entry.2, entry.0),
+                }]
+            } else {
+                Vec::new()
+            }
+        }
+    }
+}
+
+/// Exporte la liste des fuseaux horaires d'un pays au format JSON
+pub fn list_timezones_json(country_code: Option<&str>) -> String {
+    let list = list_timezones_for_country(country_code);
+    serde_json::to_string_pretty(&list).unwrap_or_else(|_| "[]".to_string())
+}
+
 /// Détermine l'icône astronomique et la période de la journée selon l'heure locale
 pub fn get_astronomical_period(hour: u32) -> (&'static str, &'static str) {
     match hour {
@@ -1196,4 +1337,26 @@ mod tests {
         assert_eq!(resolve_country_code("Japan"), Some("JP"));
         assert_eq!(resolve_country_code("InconnuAuBataillonXYZ"), None);
     }
+
+    #[test]
+    fn test_list_timezones() {
+        let fr_tzs = list_timezones_for_country(Some("FR"));
+        assert!(fr_tzs.len() >= 10);
+        assert!(fr_tzs.iter().any(|t| t.timezone == "Europe/Paris"));
+        assert!(fr_tzs.iter().any(|t| t.timezone == "America/Guadeloupe"));
+
+        let ca_tzs = list_timezones_for_country(Some("ca"));
+        assert!(ca_tzs.iter().any(|t| t.timezone == "America/Toronto"));
+        assert!(ca_tzs.iter().any(|t| t.timezone == "America/Moncton"));
+
+        let all_tzs = list_timezones_for_country(None);
+        assert!(all_tzs.len() >= 15);
+        assert!(all_tzs.iter().any(|t| t.timezone == "Europe/Paris"));
+        assert!(all_tzs.iter().any(|t| t.timezone == "Asia/Tokyo"));
+
+        let json = list_timezones_json(Some("FR"));
+        assert!(json.contains("Europe/Paris"));
+        assert!(json.contains("America/Guadeloupe"));
+    }
 }
+

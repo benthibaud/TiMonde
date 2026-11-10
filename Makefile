@@ -8,7 +8,7 @@ ICONSDIR ?= $(DATADIR)/icons/hicolor/scalable
 all: build
 
 icons:
-	python3 data/scripts/generate_png_icons.py
+	python3 scripts/generate_png_icons.py
 
 mo:
 	@mkdir -p po/locale
@@ -133,10 +133,13 @@ uninstall-user:
 		python3 data/scripts/patch_cinnamon_status_applet.py --restore || true; \
 	fi
 
-test:
+check-arch:
+	python3 scripts/check_architecture.py
+
+test: check-arch
 	cargo test
-	python3 data/scripts/test_timonde_common.py
-	python3 data/scripts/test_gtk_event_loop.py
+	python3 tests/test_timonde_common.py
+	python3 tests/test_gtk_event_loop.py
 
 clean:
 	cargo clean

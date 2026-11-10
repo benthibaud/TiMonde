@@ -6,7 +6,7 @@ ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
 CARGO_TOML="${ROOT_DIR}/Cargo.toml"
 VERSION_FROM_CARGO=$(grep -m1 '^version = ' "${CARGO_TOML}" 2>/dev/null | cut -d '"' -f2)
-VERSION="${1:-${VERSION_FROM_CARGO:-0.2.6}}"
+VERSION="${1:-${VERSION_FROM_CARGO:-0.2.7}}"
 ARCH=$(dpkg --print-architecture 2>/dev/null || echo "amd64")
 PACKAGE_NAME="timonde_${VERSION}_${ARCH}.deb"
 DIST_DIR="${ROOT_DIR}/packaging/dist"
@@ -31,7 +31,7 @@ else
 fi
 
 # 2. Génération des icônes matricielles PNG (16x16 à 256x256)
-python3 "${ROOT_DIR}/data/scripts/generate_png_icons.py"
+python3 "${ROOT_DIR}/scripts/generate_png_icons.py"
 
 # 3. Nettoyage et création de l'arborescence
 rm -rf "${STAGING_DIR}"
@@ -53,7 +53,8 @@ Version: ${VERSION}
 Section: sound
 Priority: optional
 Architecture: ${ARCH}
-Depends: libc6, libgstreamer1.0-0, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, gstreamer1.0-plugins-bad, gstreamer1.0-libav, glib-networking, python3, python3-gi, python3-dbus, gir1.2-gtk-3.0, gir1.2-dbusmenu-gtk3-0.4
+Depends: libc6, libgstreamer1.0-0, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good, gstreamer1.0-plugins-bad, glib-networking, python3, python3-gi, python3-dbus, gir1.2-gtk-3.0, gir1.2-dbusmenu-gtk3-0.4
+Recommends: gstreamer1.0-libav
 Suggests: gnome-shell-extension-appindicator
 Maintainer: Ben Thibaud <b_thibaud@laposte.net>
 Description: Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux

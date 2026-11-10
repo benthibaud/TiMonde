@@ -1,4 +1,5 @@
 use crate::bookmarks::{self, create_default_bookmarks, find_bookmarks_path};
+use crate::discovery;
 use crate::import;
 use crate::models::{self, Group};
 use crate::mpris;
@@ -32,6 +33,9 @@ pub fn handle_cli(args: &[String]) -> bool {
                 println!("\nOptions de gestion des stations et groupes :");
                 println!("      --search <TERME> [--tag <GENRE>] [--country <PAYS>] [--lang <LANG>] [--limit <N>]");
                 println!("                         Rechercher des radios sur l'annuaire mondial Radio-Browser");
+                println!("      --lookup-url <URL> Vérifier si une URL de flux est déjà référencée sur Radio-Browser");
+                println!("      --contribute-station <JSON|->");
+                println!("                         Contribuer une nouvelle station vers Radio-Browser via POST");
                 println!("      --add <NOM> <URL> [--group <GROUPE>] [--country <PAYS>] [--timezone <FUSEAU>]");
                 println!("                         Ajouter une radio manuellement (avec pays et fuseau horaire optionnels)");
                 println!("      --sort-groups      Trier tous les groupes de radios de A à Z");
@@ -43,6 +47,11 @@ pub fn handle_cli(args: &[String]) -> bool {
                 println!("                     Importer des radios (.json radiotray-ng, .m3u, .csv, .xml)");
                 println!("                     Si --group n'est pas spécifié, les radios vont à la racine.");
                 println!("                     Gestion automatique des doublons (URL et nom).");
+                println!("      --dump-bouquet-json <CODE|CHEMIN>");
+                println!("                         Exporter l'arborescence complète d'un bouquet DAB+ en JSON");
+                println!("      --list-bouquets    Lister les codes pays ayant un bouquet pré-installé");
+                println!("      --list-timezones [PAYS]");
+                println!("                         Lister les fuseaux horaires d'un pays ou du monde en JSON");
                 println!("\nOptions générales :");
                 println!("  -h, --help         Afficher cette aide");
                 println!("  -v, --version      Afficher la version");
@@ -414,7 +423,6 @@ pub fn handle_cli(args: &[String]) -> bool {
             }
             "--preview-stop" => {
                 let _ = mpris::send_command("StopPreview");
-                let _ = mpris::send_command("Stop");
                 true
             }
             "--save-bookmarks-json" => {
@@ -497,6 +505,24 @@ pub fn handle_cli(args: &[String]) -> bool {
                         std::process::exit(1);
                     }
                 }
+            }
+            "--dump-bouquet-json" => {
+                if args.len() < 3 {
+                    eprintln!("Usage : timonde --dump-bouquet-json <CODE|CHEMIN>");
+                    std::process::exit(1);
+                }
+                println!("{}", discovery::dump_bouquet_json(&args[2]));
+                true
+            }
+            "--list-bouquets" => {
+                let codes = discovery::list_available_bouquet_codes();
+                println!("{}", serde_json::to_string_pretty(&codes).unwrap_or_else(|_| "[]".to_string()));
+                true
+            }
+            "--list-timezones" => {
+                let country = if args.len() >= 3 { Some(args[2].as_str()) } else { None };
+                println!("{}", timezone::list_timezones_json(country));
+                true
             }
             "--dump-countries-json" => {
                 println!("{}", timezone::dump_countries_json());
@@ -595,6 +621,38 @@ pub fn handle_cli(args: &[String]) -> bool {
                     } else {
                         println!("Statut : ERREUR ({})", res.message);
                     }
+                }
+                true
+            }
+            "--lookup-url" => {
+                if args.len() < 3 {
+                    eprintln!("Usage : timonde --lookup-url <URL>");
+                    std::process::exit(1);
+                }
+                let station = radio_browser::lookup_by_url(&args[2]);
+                println!("{}", serde_json::json!({ "exists": station.is_some(), "station": station }));
+                true
+            }
+            "--contribute-station" => {
+                if args.len() < 3 {
+                    eprintln!("Usage : timonde --contribute-station <PAYLOAD_JSON|->");
+                    std::process::exit(1);
+                }
+                let mut json_str = String::new();
+                if args[2] == "-" {
+                    use std::io::Read;
+                    let _ = std::io::stdin().read_to_string(&mut json_str);
+                } else {
+                    json_str = args[2].clone();
+                }
+
+                match serde_json::from_str::<radio_browser::ContributeRequest>(&json_str) {
+                    Ok(req) => {
+                        let res = radio_browser::contribute_station(&req)
+                            .unwrap_or_else(|e| radio_browser::ContributeResponse { ok: false, message: e, uuid: None });
+                        println!("{}", serde_json::to_string(&res).unwrap_or_default());
+                    }
+                    Err(e) => println!(r#"{{"ok":false,"message":"JSON invalide : {}"}}"#, e),
                 }
                 true
             }

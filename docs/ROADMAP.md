@@ -74,6 +74,16 @@ Face à la dette technique accumulée (duplication de code entre Rust et Python,
 - [x] **Option A & Maîtrise mémoire :** Drop déterministe hors verrou avec `malloc_trim(0)`. Exclusion de `libav` (FFmpeg) plafonnant la consommation RAM en écoute active à 45 Mo (les 45 Mo historiques de TiMonde) sans aucune fuite lors des zappings.
 - [x] **Validation intégrale :** 62 tests unitaires et banc de stress-test automatisé avec 10 commutations rapides (latence D-Bus moyenne 20.0 ms, zéro gel).
 
+### Jalon 9 : Règle d'Or « Rust-First Absolu », Optimisation & Dumb UI Python — v0.2.7 (Terminé ✅)
+- [x] **Éradication des failles de concurrence résiduelles :** Résolution de la course « radio fantôme » via génération atomique sous verrou, GStreamer hors lock session, isolation de `StopPreview` et écriture atomique immunisée aux collisions.
+- [x] **Rapatriement réseau et parsing intégral dans Rust :** Implémentation native de `--lookup-url` et `--contribute-station` vers Radio-Browser, parsing haute vitesse des bouquets DAB+ (`--dump-bouquet-json`, `--list-bouquets`) et calcul des fuseaux horaires (`--list-timezones`).
+- [x] **Dumb UI Python stricte & Zéro `xml.etree` :** Éradication totale de `xml.etree` dans l'interface et des reliquats `dialog.run()` au profit du modèle asynchrone connecté au signal `response`.
+- [x] **Briques UI mutualisées :** Factorisation de `attach_country_completion` et `GroupSelectorBar` partagés entre tous les dialogues.
+- [x] **Allègement packaging :** Rétrogradation de `gstreamer1.0-libav` en `Recommends` (-80 Mo sur le système cible).
+- [x] **Garde-fou CI :** Script `scripts/check_architecture.py` audité automatiquement à chaque `make test`.
+- [x] **Validation intégrale :** 65 tests Rust + 30 tests Python + 11 scripts audités = 100 % vert.
+
+
 ---
 
 ## 3. Règles d'Or Intransgressibles

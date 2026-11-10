@@ -15,6 +15,11 @@ from timonde_common import (
     COUNTRIES_REGISTRY,
     COUNTRY_ALIASES_MAP,
 )
+try:
+    from timonde_i18n import _
+except ImportError:
+    def _(s): return s
+
 
 class _LazyDict(dict):
     """Dictionnaire à initialisation paresseuse pour éviter toute latence au démarrage."""
@@ -514,3 +519,18 @@ def resolve_language_api_key(query: str) -> str:
         if len(k) > 2 and clean in k:
             return v
     return q_str.lower()
+
+
+# =============================================================================
+# Référentiel des Fuseaux Horaires délégué au Moteur Rust (Option B pure)
+# =============================================================================
+
+from timonde_common import load_timezones_for_country, WORLD_TIMEZONES
+
+FRANCE_TIMEZONES = load_timezones_for_country("FR")
+UK_TIMEZONES = load_timezones_for_country("GB")
+DEFAULT_WORLD_TIMEZONES = load_timezones_for_country(None)
+
+def load_world_timezones() -> dict:
+    return WORLD_TIMEZONES
+

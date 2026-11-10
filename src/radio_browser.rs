@@ -190,6 +190,122 @@ pub fn search_advanced(filter: &SearchFilter) -> Vec<SearchResult> {
     Vec::new()
 }
 
+/// Recherche si une URL de flux (ou son URL nettoyée de paramètres) est déjà répertoriée sur Radio-Browser
+pub fn lookup_by_url(stream_url: &str) -> Option<SearchResult> {
+    let clean = stream_url.trim();
+    if clean.is_empty() {
+        return None;
+    }
+    let clean_no_query = clean.split('?').next().unwrap_or(clean).trim();
+    let mut urls_to_test = vec![clean];
+    if clean_no_query != clean && !clean_no_query.is_empty() {
+        urls_to_test.push(clean_no_query);
+    }
+
+    for endpoint in ENDPOINTS {
+        for u in &urls_to_test {
+            let url = format!("{}/json/stations/byurl?url={}", endpoint, urlencoding(u));
+            if let Ok(response) = ureq::get(&url)
+                .set("User-Agent", concat!("TiMonde/", env!("CARGO_PKG_VERSION")))
+                .timeout(Duration::from_secs(5))
+                .call()
+            {
+                if let Ok(stations) = response.into_json::<Vec<SearchResult>>() {
+                    if let Some(s) = stations.into_iter().find(|s| !s.name.is_empty()) {
+                        return Some(s);
+                    }
+                }
+            }
+        }
+    }
+    None
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContributeRequest {
+    pub name: String,
+    pub url: String,
+    #[serde(default)]
+    pub countrycode: String,
+    #[serde(default)]
+    pub language: String,
+    #[serde(default)]
+    pub tags: String,
+    #[serde(default)]
+    pub homepage: String,
+    #[serde(default)]
+    pub favicon: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ContributeResponse {
+    pub ok: bool,
+    pub message: String,
+    #[serde(default)]
+    pub uuid: Option<String>,
+}
+
+/// Soumet une nouvelle radio à Radio-Browser via POST /json/add
+pub fn contribute_station(req: &ContributeRequest) -> Result<ContributeResponse, String> {
+    if req.name.trim().is_empty() {
+        return Err("Le nom de la station ne peut pas être vide".to_string());
+    }
+    if req.url.trim().is_empty() {
+        return Err("L'URL du flux ne peut pas être vide".to_string());
+    }
+
+    let cc = req.countrycode.trim().to_ascii_uppercase();
+    let countrycode = if cc == "UK" { "GB" } else { &cc };
+    let mut payload = serde_json::Map::new();
+    payload.insert("name".into(), req.name.trim().into());
+    payload.insert("url".into(), req.url.trim().into());
+    for (k, v) in [
+        ("countrycode", countrycode),
+        ("language", &req.language.trim().to_lowercase()),
+        ("tags", req.tags.trim()),
+        ("homepage", req.homepage.trim()),
+        ("favicon", req.favicon.trim()),
+    ] {
+        if !v.is_empty() {
+            payload.insert(k.into(), (*v).into());
+        }
+    }
+
+
+    for endpoint in ENDPOINTS {
+        let url = format!("{}/json/add", endpoint);
+        match ureq::post(&url)
+            .set("User-Agent", concat!("TiMonde/", env!("CARGO_PKG_VERSION")))
+            .set("Content-Type", "application/json")
+            .timeout(Duration::from_secs(6))
+            .send_json(&payload)
+        {
+            Ok(resp) => {
+                if let Ok(res_json) = resp.into_json::<serde_json::Value>() {
+                    let ok = res_json.get("ok").and_then(|v| v.as_bool()).unwrap_or(false);
+                    let message = res_json.get("message").and_then(|v| v.as_str()).unwrap_or("Succès").to_string();
+                    let uuid = res_json.get("uuid").and_then(|v| v.as_str()).map(|s| s.to_string());
+                    return Ok(ContributeResponse { ok, message, uuid });
+                }
+            }
+            Err(ureq::Error::Status(code, resp)) => {
+                let err_msg = if let Ok(err_body) = resp.into_json::<serde_json::Value>() {
+                    err_body.get("message").and_then(|v| v.as_str()).unwrap_or("Rejet serveur").to_string()
+                } else {
+                    format!("Erreur HTTP {}", code)
+                };
+                return Err(format!("Rejet par le serveur Radio-Browser ({}) : {}", code, err_msg));
+            }
+            Err(e) => {
+                warn!("Échec soumission Radio-Browser sur {} : {}", endpoint, e);
+                continue;
+            }
+        }
+    }
+
+    Err("Serveurs Radio-Browser injoignables".to_string())
+}
+
 /// Encodage URL minimal
 pub fn urlencoding(s: &str) -> String {
     let mut encoded = String::new();
@@ -245,5 +361,11 @@ mod tests {
             return;
         }
         println!("Trouvé {} stations Jazz en France : première = {}", results.len(), results[0].name);
+    }
+
+    #[test]
+    fn test_lookup_by_url_empty() {
+        assert!(lookup_by_url("").is_none());
+        assert!(lookup_by_url("   ").is_none());
     }
 }

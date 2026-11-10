@@ -34,6 +34,11 @@
   </developer>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="0.2.7" date="2026-11-10">
+      <description>
+        <p>Application stricte de la règle d'or « Desktop Linux : Rust-First Absolu &amp; Dumb UI Python » : rapatriement complet des opérations réseau (Radio-Browser, probing) en Rust natif, éradication des 4 failles de concurrence (radio fantôme, locks GStreamer, atomic state), purge de 100 % de urllib et des dialogues modaux bloquants, dégraissage massif et chargement paresseux (_LazyDict) des référentiels de fuseaux horaires.</p>
+      </description>
+    </release>
     <release version="0.2.6" date="2026-11-09">
       <description>
         <p>Refonte de la session de lecture (PlaybackSession) et éradication définitive des deadlocks : modèle transactionnel à verrou unique, respect strict de la Règle d'or GStreamer (aucun appel bloquant sous verrou partagé), drop déterministe hors verrou avec malloc_trim(0) et exclusion de libav plafonnant l'empreinte mémoire active à 45 Mo.</p>

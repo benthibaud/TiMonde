@@ -14,7 +14,6 @@ Fournit :
 import sys
 import os
 import re
-import xml.etree.ElementTree as ET
 import collections
 import html
 import subprocess
@@ -32,7 +31,7 @@ try:
 except ImportError:
     def _(s): return s
 
-TIMONDE_VERSION = "0.2.6"
+TIMONDE_VERSION = "0.2.7"
 TIMONDE_USER_AGENT = f"TiMonde/{TIMONDE_VERSION}"
 USER_AGENT = TIMONDE_USER_AGENT
 USER_AGENT_PROBE = f"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) TiMonde/{TIMONDE_VERSION}"
@@ -95,53 +94,73 @@ def strip_unsupported_emojis(text: str) -> str:
 
 
 # -----------------------------------------------------------------------------
-# 2. Parsing XML Tolérant & Sécurisé
+# 2. Exécution Sécurisée du Moteur Natif Rust (Anti-Boîte Noire & Dumb UI)
 # -----------------------------------------------------------------------------
 
-def safe_parse_xml(path: str):
-    """Parse un fichier XML avec tolérance absolue aux entités ampersand non échappées."""
-    try:
-        return ET.parse(path).getroot()
-    except Exception:
-        pass
-    try:
-        with open(path, "r", encoding="utf-8", errors="replace") as f:
-            raw = f.read()
-        cleaned = re.sub(r"&(?!(?:amp|lt|gt|apos|quot|#\d+|#x[0-9a-fA-F]+);)", "&amp;", raw)
-        return ET.fromstring(cleaned)
-    except Exception as e:
-        sys.stderr.write(f"Échec de lecture XML ({path}) : {e}\n")
-        return None
+def run_timonde_cli(*args, input_text=None, timeout=5.0):
+    """
+    Exécute de manière standardisée et sécurisée une commande du binaire Rust 'timonde'.
+    Retourne subprocess.CompletedProcess(stdout, stderr, returncode).
+    """
+    bin_path = find_timonde_binary() or "timonde"
+    cmd = [bin_path] + [str(a) for a in args]
+    return subprocess.run(
+        cmd,
+        input=input_text,
+        capture_output=True,
+        text=True,
+        timeout=timeout
+    )
 
 
 def find_timonde_binary():
     """Localise le binaire officiel ou local de TiMonde."""
+    # 0. Variable d'environnement explicite
+    env_bin = os.environ.get("TIMONDE_BIN")
+    if env_bin and os.path.isfile(env_bin) and os.access(env_bin, os.X_OK):
+        return env_bin
+
     # 1. Priorité locale en mode développement (présence de Cargo.toml à la racine)
     root_cargo = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../Cargo.toml"))
     if os.path.exists(root_cargo):
         dev_rel = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../target/release/timonde"))
-        if os.path.exists(dev_rel):
-            return dev_rel
         dev_deb = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../target/debug/timonde"))
-        if os.path.exists(dev_deb):
+        rel_ok = os.path.isfile(dev_rel) and os.access(dev_rel, os.X_OK)
+        deb_ok = os.path.isfile(dev_deb) and os.access(dev_deb, os.X_OK)
+        if rel_ok and deb_ok:
+            return dev_rel if os.path.getmtime(dev_rel) >= os.path.getmtime(dev_deb) else dev_deb
+        if rel_ok:
+            return dev_rel
+        if deb_ok:
             return dev_deb
 
     # 2. Binaire dans le PATH ou installé localement
     w = shutil.which("timonde")
-    if w and os.path.exists(w):
+    if w and os.path.isfile(w) and os.access(w, os.X_OK):
         return w
     local = os.path.expanduser("~/.local/bin/timonde")
-    if os.path.exists(local):
+    if os.path.isfile(local) and os.access(local, os.X_OK):
         return local
-    if os.path.exists("/usr/bin/timonde"):
+    if os.path.isfile("/usr/bin/timonde") and os.access("/usr/bin/timonde", os.X_OK):
         return "/usr/bin/timonde"
     return None
+
+
+def get_timonde_bin() -> str:
+    """Retourne le chemin du binaire Rust ou lève RuntimeError si introuvable."""
+    b = find_timonde_binary()
+    if not b:
+        raise RuntimeError(
+            "Binaire TiMonde (Rust) introuvable. Veuillez compiler le projet ('cargo build --release') "
+            "ou installer TiMonde dans votre PATH."
+        )
+    return b
 
 
 def check_stream_url(url, timeout=3.0, with_redirect=False, fetch_meta=False):
     """
     Test universel, frugal et rapide de disponibilité d'un flux audio.
-    Délègue en priorité absolue au moteur natif Rust (timonde --probe-stream).
+    Délègue exclusivement au moteur natif Rust (timonde --probe-stream).
     Retourne (status, msg) par défaut, ou (status, msg, redirected_url) si with_redirect=True.
     Si fetch_meta=True, retourne (status, msg, meta) ou (status, msg, redirected_url, meta)
     où meta est un dictionnaire {'icy_name': ..., 'icy_genre': ..., 'icy_br': ..., 'content_type': ...}.
@@ -160,111 +179,46 @@ def check_stream_url(url, timeout=3.0, with_redirect=False, fetch_meta=False):
 
     clean = url.strip()
 
-    # 1. Délégation native vers le moteur Rust (sans GIL, sans socket urllib lourd)
+    # Délégation native vers le moteur Rust (sans GIL, sans socket urllib en Python)
     timonde_bin = find_timonde_binary()
-    if timonde_bin:
-        try:
-            to_sec = str(max(1, int(round(timeout))))
-            cmd = [timonde_bin, "--probe-stream", clean, "--timeout", to_sec, "--json"]
-            res = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout + 1.5)
-            if res.returncode == 0 and res.stdout.strip():
-                data = json.loads(res.stdout)
-                ok = data.get("ok", False)
-                is_geo = data.get("is_geo", False)
-                msg_raw = data.get("message", "")
-                redir = data.get("redirected_url")
-                raw_meta = data.get("meta", {})
-                meta["icy_name"] = raw_meta.get("icy_name", "")
-                meta["icy_genre"] = raw_meta.get("icy_genre", "")
-                meta["icy_br"] = raw_meta.get("icy_br", "")
-                meta["content_type"] = raw_meta.get("content_type", "")
+    if not timonde_bin:
+        return _format_ret(False, _("TiMonde binary not found"))
 
-                if is_geo:
-                    return _format_ret("GEO", _("Geoblocked (VPN)"), redir)
-                elif ok:
-                    codec = data.get("codec") or "Audio"
-                    return _format_ret(True, _("Live ({codec})").format(codec=codec), redir)
-                else:
-                    if "HTML" in msg_raw:
-                        msg = _("Offline (HTML error page)")
-                    elif "inaccessible" in msg_raw:
-                        msg = _("Server unreachable")
-                    elif "dépassé" in msg_raw:
-                        msg = _("Timeout")
-                    else:
-                        msg = msg_raw
-                    return _format_ret(False, msg, redir)
-        except Exception:
-            pass
-
-    # 2. Fallback de secours minimal en pur Python
-    import urllib.request
-    import urllib.error
     try:
-        req = urllib.request.Request(
-            clean,
-            headers={
-                "User-Agent": USER_AGENT,
-                "Accept": "*/*",
-                "Icy-MetaData": "1",
-            }
-        )
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            code = resp.getcode()
-            final_url = resp.geturl()
-            redir = final_url if final_url != clean else None
+        to_sec = str(max(1, int(round(timeout))))
+        cmd = [timonde_bin, "--probe-stream", clean, "--timeout", to_sec, "--json"]
+        res = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout + 2.0)
+        if res.returncode == 0 and res.stdout.strip():
+            data = json.loads(res.stdout)
+            ok = data.get("ok", False)
+            is_geo = data.get("is_geo", False)
+            msg_raw = data.get("message", "")
+            redir = data.get("redirected_url")
+            raw_meta = data.get("meta", {})
+            meta["icy_name"] = raw_meta.get("icy_name", "")
+            meta["icy_genre"] = raw_meta.get("icy_genre", "")
+            meta["icy_br"] = raw_meta.get("icy_br", "")
+            meta["content_type"] = raw_meta.get("content_type", "")
 
-            raw_name = resp.headers.get("icy-name") or resp.headers.get("x-audiocast-name") or ""
-            raw_genre = resp.headers.get("icy-genre") or ""
-            raw_br = resp.headers.get("icy-br") or ""
-            ct = resp.headers.get("Content-Type", "")
-
-            def _safe_header_str(val):
-                if not val:
-                    return ""
-                try:
-                    return val.encode("latin-1").decode("utf-8", errors="strict").strip()
-                except Exception:
-                    return str(val).strip()
-
-            meta["icy_name"] = _safe_header_str(raw_name)
-            meta["icy_genre"] = _safe_header_str(raw_genre)
-            meta["icy_br"] = str(raw_br).strip()
-            meta["content_type"] = ct.strip()
-
-            if 200 <= code < 400:
-                ct_low = ct.lower()
-                if "text/html" in ct_low or "text/plain" in ct_low:
-                    if not any(ext in clean.lower() for ext in [".m3u", ".m3u8", ".pls", ".asx"]):
-                        msg_html = _("Offline (HTML error page)")
-                        return _format_ret(False, msg_html, redir)
-
-                codec = "Audio"
-                if "aac" in ct_low: codec = "AAC"
-                elif "mpeg" in ct_low or "mp3" in ct_low: codec = "MP3"
-                elif "ogg" in ct_low: codec = "OGG"
-                elif "flac" in ct_low: codec = "FLAC"
-                elif "vnd.apple.mpegurl" in ct_low: codec = "HLS"
-                msg = _("Live ({codec})").format(codec=codec)
-                return _format_ret(True, msg, redir)
-            err_http = _("HTTP Error {code}").format(code=code)
-            return _format_ret(False, err_http, redir)
-    except urllib.error.HTTPError as e:
-        if e.code in (403, 451) or (e.code == 503 and any(k in clean.lower() for k in ["amperwave", "audacy", "streamtheworld", "akamai", "geoblock", "leanstream"])):
-            msg_geo = _("Geoblocked (VPN)")
-            return _format_ret("GEO", msg_geo)
-        err_code = _("Error {code}").format(code=e.code)
-        return _format_ret(False, err_code)
-    except urllib.error.URLError:
-        msg_unreach = _("Server unreachable")
-        return _format_ret(False, msg_unreach)
+            if is_geo:
+                return _format_ret("GEO", _("Geoblocked (VPN)"), redir)
+            elif ok:
+                codec = data.get("codec") or "Audio"
+                return _format_ret(True, _("Live ({codec})").format(codec=codec), redir)
+            else:
+                if "HTML" in msg_raw:
+                    msg = _("Offline (HTML error page)")
+                elif "inaccessible" in msg_raw:
+                    msg = _("Server unreachable")
+                elif "dépassé" in msg_raw:
+                    msg = _("Timeout")
+                else:
+                    msg = msg_raw
+                return _format_ret(False, msg, redir)
     except Exception as e:
-        line = getattr(e, "line", "") or str(e)
-        if "ICY 200" in line or "200 OK" in line:
-            msg_icy = _("Live (Shoutcast)")
-            return _format_ret(True, msg_icy)
-        msg_timeout = _("Timeout")
-        return _format_ret(False, msg_timeout)
+        return _format_ret(False, str(e))
+
+    return _format_ret(False, _("Check failed"))
 
 
 
@@ -289,29 +243,30 @@ def normalize_group_path(raw_path: str, return_root_literal: bool = False) -> st
 
 
 def get_user_bookmarks_groups(path=None):
-    """Lit les groupes et sous-groupes existants depuis bookmarks.xml (chemin spécifié ou par défaut)."""
-    candidates = [path] if path else [
-        os.path.expanduser("~/.config/timonde/bookmarks.xml"),
-        os.path.expanduser("~/.local/share/timonde/bookmarks.xml"),
-        os.path.expanduser("~/.config/radiotray-ng/bookmarks.xml"),
-        "bookmarks.xml",
-    ]
-    groups = []
-    for cand in candidates:
-        if cand and os.path.exists(cand):
-            root = safe_parse_xml(cand)
-            if root is not None:
-                def walk_groups(el, prefix):
-                    for g in el.findall("group"):
-                        g_title = g.attrib.get("title", "").strip() or g.attrib.get("name", "").strip()
-                        if g_title and g_title.lower() != "root":
-                            full = f"{prefix}/{g_title}" if prefix else g_title
-                            if full not in groups:
-                                groups.append(full)
-                            walk_groups(g, full)
-                walk_groups(root, "")
-                break
-    return groups
+    """Lit les groupes existants depuis bookmarks en déléguant au moteur natif Rust (Option B pure)."""
+    args = ["--dump-bookmarks-json"]
+    if path:
+        args.append(path)
+    try:
+        res = run_timonde_cli(*args, timeout=3.0)
+        if res.returncode == 0 and res.stdout.strip():
+            data = json.loads(res.stdout)
+            groups = []
+            for item in data:
+                g_name = item.get("name", "").strip()
+                if g_name and g_name.lower() != "root" and not item.get("is_separator"):
+                    if g_name.startswith("[ / ]"):
+                        continue
+                    parts = [p.strip() for p in g_name.split("/") if p.strip()]
+                    cur = ""
+                    for p in parts:
+                        cur = f"{cur}/{p}" if cur else p
+                        if cur not in groups:
+                            groups.append(cur)
+            return groups
+    except Exception as e:
+        sys.stderr.write(f"Erreur lecture groupes via Rust : {e}\n")
+    return []
 
 
 # -----------------------------------------------------------------------------
@@ -406,163 +361,51 @@ def resolve_country_code(query: str) -> str:
         _COUNTRY_RESOLVE_CACHE[q_str] = code
     return code
 
-# Fuseaux horaires complets pour la France (Métropole + Outre-mer)
-FRANCE_TIMEZONES = [
-    ("Europe/Paris", "Europe/Paris (France métropolitaine)"),
-    ("America/Guadeloupe", "America/Guadeloupe (Guadeloupe - Antilles)"),
-    ("America/Martinique", "America/Martinique (Martinique - Antilles)"),
-    ("America/Cayenne", "America/Cayenne (Guyane française)"),
-    ("Indian/Reunion", "Indian/Reunion (La Réunion - Océan Indien)"),
-    ("Indian/Mayotte", "Indian/Mayotte (Mayotte - Océan Indien)"),
-    ("America/Miquelon", "America/Miquelon (Saint-Pierre-et-Miquelon)"),
-    ("America/St_Barthelemy", "America/St_Barthelemy (Saint-Barthélemy)"),
-    ("America/Marigot", "America/Marigot (Saint-Martin)"),
-    ("Pacific/Noumea", "Pacific/Noumea (Nouvelle-Calédonie)"),
-    ("Pacific/Tahiti", "Pacific/Tahiti (Polynésie française - Tahiti)"),
-    ("Pacific/Marquesas", "Pacific/Marquesas (Polynésie - Îles Marquises)"),
-    ("Pacific/Gambier", "Pacific/Gambier (Polynésie - Îles Gambier)"),
-    ("Pacific/Wallis", "Pacific/Wallis (Wallis-et-Futuna)"),
-]
+# Les référentiels de fuseaux horaires (FRANCE_TIMEZONES, CUSTOM_MULTI_TZ, WORLD_TIMEZONES)
+# sont déportés dans timonde_world_data.py et accessibles paresseusement via __getattr__.
 
-# Libellés clairs pour les pays multi-fuseaux majeurs
-CUSTOM_MULTI_TZ = {
-    "CA": [
-        ("America/Toronto", "America/Toronto (Est - Québec, Ontario)"),
-        ("America/Moncton", "America/Moncton (Atlantique - Nouveau-Brunswick, Acadie)"),
-        ("America/Halifax", "America/Halifax (Atlantique - Nouvelle-Écosse)"),
-        ("America/St_Johns", "America/St_Johns (Terre-Neuve)"),
-        ("America/Winnipeg", "America/Winnipeg (Centre - Manitoba)"),
-        ("America/Regina", "America/Regina (Centre - Saskatchewan)"),
-        ("America/Edmonton", "America/Edmonton (Rocheuses - Alberta)"),
-        ("America/Vancouver", "America/Vancouver (Pacifique - Colombie-Britannique)"),
-        ("America/Whitehorse", "America/Whitehorse (Yukon)"),
-    ],
-    "US": [
-        ("America/New_York", "America/New_York (Heure de l'Est : Caroline du Nord [NC], NY, FL, DC, GA, VA, PA...)"),
-        ("America/Chicago", "America/Chicago (Heure du Centre : Chicago, Texas, Louisiane, Tennessee, MO...)"),
-        ("America/Denver", "America/Denver (Heure des Montagnes : Denver, Colorado, Utah, NM...)"),
-        ("America/Phoenix", "America/Phoenix (Montagnes sans heure d'été : Arizona)"),
-        ("America/Los_Angeles", "America/Los_Angeles (Heure du Pacifique : Californie, Washington, Oregon...)"),
-        ("America/Anchorage", "America/Anchorage (Alaska)"),
-        ("Pacific/Honolulu", "Pacific/Honolulu (Hawaï)"),
-    ],
-    "BR": [
-        ("America/Sao_Paulo", "America/Sao_Paulo (Brasília, São Paulo, Rio)"),
-        ("America/Manaus", "America/Manaus (Amazonie)"),
-        ("America/Cuiaba", "America/Cuiaba (Centre-Ouest)"),
-        ("America/Rio_Branco", "America/Rio_Branco (Acre)"),
-        ("America/Noronha", "America/Noronha (Fernando de Noronha)"),
-    ],
-    "AU": [
-        ("Australia/Sydney", "Australia/Sydney (Est - Sydney, Melbourne)"),
-        ("Australia/Brisbane", "Australia/Brisbane (Est - Queensland sans heure d'été)"),
-        ("Australia/Adelaide", "Australia/Adelaide (Centre - Adélaïde)"),
-        ("Australia/Darwin", "Australia/Darwin (Centre - Territoire du Nord)"),
-        ("Australia/Perth", "Australia/Perth (Ouest - Perth)"),
-    ],
-    "RU": [
-        ("Europe/Moscow", "Europe/Moscow (Moscou, Saint-Pétersbourg - UTC+3)"),
-        ("Europe/Kaliningrad", "Europe/Kaliningrad (Kaliningrad - UTC+2)"),
-        ("Europe/Samara", "Europe/Samara (Samara - UTC+4)"),
-        ("Asia/Yekaterinburg", "Asia/Yekaterinburg (Oural - UTC+5)"),
-        ("Asia/Omsk", "Asia/Omsk (Omsk - UTC+6)"),
-        ("Asia/Novosibirsk", "Asia/Novosibirsk (Novossibirsk - UTC+7)"),
-        ("Asia/Krasnoyarsk", "Asia/Krasnoyarsk (Krasnoïarsk - UTC+7)"),
-        ("Asia/Irkutsk", "Asia/Irkutsk (Irkoutsk - UTC+8)"),
-        ("Asia/Yakutsk", "Asia/Yakutsk (Iakoutsk - UTC+9)"),
-        ("Asia/Vladivostok", "Asia/Vladivostok (Vladivostok - UTC+10)"),
-        ("Asia/Magadan", "Asia/Magadan (Magadan - UTC+11)"),
-        ("Asia/Kamchatka", "Asia/Kamchatka (Kamtchatka - UTC+12)"),
-    ],
-    "ES": [
-        ("Europe/Madrid", "Europe/Madrid (Péninsule ibérique et Baléares)"),
-        ("Atlantic/Canary", "Atlantic/Canary (Îles Canaries)"),
-        ("Africa/Ceuta", "Africa/Ceuta (Ceuta et Melilla)"),
-    ],
-    "PT": [
-        ("Europe/Lisbon", "Europe/Lisbon (Portugal continental et Madère)"),
-        ("Atlantic/Azores", "Atlantic/Azores (Açores)"),
-    ],
-    "GB": [
-        ("Europe/London", "Europe/London (Royaume-Uni métropolitain - Londres, Écosse, Pays de Galles, Irlande du Nord)"),
-        ("Europe/Gibraltar", "Europe/Gibraltar (Gibraltar - Méditerranée)"),
-        ("Atlantic/Bermuda", "Atlantic/Bermuda (Bermudes - Atlantique Nord)"),
-        ("America/Cayman", "America/Cayman (Îles Caïmans - Caraïbes)"),
-        ("America/Tortola", "America/Tortola (Îles Vierges britanniques)"),
-        ("America/Montserrat", "America/Montserrat (Montserrat - Caraïbes)"),
-        ("America/Grand_Turk", "America/Grand_Turk (Îles Turques-et-Caïques)"),
-        ("America/Anguilla", "America/Anguilla (Anguilla - Caraïbes)"),
-        ("Atlantic/Stanley", "Atlantic/Stanley (Îles Malouines / Falkland)"),
-        ("Atlantic/South_Georgia", "Atlantic/South_Georgia (Géorgie du Sud)"),
-        ("Atlantic/St_Helena", "Atlantic/St_Helena (Sainte-Hélène, Ascension, Tristan da Cunha)"),
-        ("Indian/Chagos", "Indian/Chagos (Territoire britannique de l'océan Indien)"),
-        ("Pacific/Pitcairn", "Pacific/Pitcairn (Îles Pitcairn)"),
-    ],
-}
-
-UK_TIMEZONES = CUSTOM_MULTI_TZ["GB"]
-
-
-def load_world_timezones() -> dict:
-    catalogue = collections.defaultdict(list)
-    zone_tab_path = "/usr/share/zoneinfo/zone.tab"
-    if os.path.exists(zone_tab_path):
-        try:
-            with open(zone_tab_path, "r", encoding="utf-8") as f:
-                for line in f:
-                    line = line.strip()
-                    if not line or line.startswith("#"):
-                        continue
-                    parts = line.split("\t")
-                    if len(parts) >= 3:
-                        cc = parts[0].strip().upper()
-                        tz = parts[2].strip()
-                        comment = parts[3].strip() if len(parts) > 3 else ""
-                        desc = f"{tz} ({comment})" if comment else tz
-                        catalogue[cc].append((tz, desc))
-        except Exception:
-            pass
-
-    catalogue["FR"] = list(FRANCE_TIMEZONES)
-    for cc, tz_list in CUSTOM_MULTI_TZ.items():
-        catalogue[cc] = list(tz_list)
-
-    overseas_direct = {
-        "GP": [("America/Guadeloupe", "America/Guadeloupe (Guadeloupe)")],
-        "MQ": [("America/Martinique", "America/Martinique (Martinique)")],
-        "GF": [("America/Cayenne", "America/Cayenne (Guyane)")],
-        "RE": [("Indian/Reunion", "Indian/Reunion (La Réunion)")],
-        "YT": [("Indian/Mayotte", "Indian/Mayotte (Mayotte)")],
-        "NC": [("Pacific/Noumea", "Pacific/Noumea (Nouvelle-Calédonie)")],
-        "PF": [("Pacific/Tahiti", "Pacific/Tahiti (Polynésie française)")],
-        "PM": [("America/Miquelon", "America/Miquelon (Saint-Pierre-et-Miquelon)")],
-        "BL": [("America/St_Barthelemy", "America/St_Barthelemy (Saint-Barthélemy)")],
-        "MF": [("America/Marigot", "America/Marigot (Saint-Martin)")],
-        "WF": [("Pacific/Wallis", "Pacific/Wallis (Wallis-et-Futuna)")],
-        # Territoires britanniques d'outre-mer directs
-        "BM": [("Atlantic/Bermuda", "Atlantic/Bermuda (Bermudes)")],
-        "KY": [("America/Cayman", "America/Cayman (Îles Caïmans)")],
-        "VG": [("America/Tortola", "America/Tortola (Îles Vierges britanniques)")],
-        "MS": [("America/Montserrat", "America/Montserrat (Montserrat)")],
-        "TC": [("America/Grand_Turk", "America/Grand_Turk (Îles Turques-et-Caïques)")],
-        "AI": [("America/Anguilla", "America/Anguilla (Anguilla)")],
-        "FK": [("Atlantic/Stanley", "Atlantic/Stanley (Îles Malouines / Falkland)")],
-        "GI": [("Europe/Gibraltar", "Europe/Gibraltar (Gibraltar)")],
-        "GS": [("Atlantic/South_Georgia", "Atlantic/South_Georgia (Géorgie du Sud)")],
-        "SH": [("Atlantic/St_Helena", "Atlantic/St_Helena (Sainte-Hélène)")],
-        "IO": [("Indian/Chagos", "Indian/Chagos (Territoire britannique de l'océan Indien)")],
-        "PN": [("Pacific/Pitcairn", "Pacific/Pitcairn (Îles Pitcairn)")],
-    }
-    for cc, tzs in overseas_direct.items():
-        catalogue[cc] = tzs
-
-    return catalogue
-
-
-WORLD_TIMEZONES = load_world_timezones()
 
 
 _INFER_TZ_CACHE = {}
+
+
+def load_timezones_for_country(country_code=None):
+    """Interroge le moteur Rust 'timonde --list-timezones' pour obtenir les fuseaux horaires d'un pays ou du monde."""
+    args = ["--list-timezones"]
+    if country_code:
+        args.append(str(country_code).strip())
+    try:
+        res = run_timonde_cli(*args, timeout=2.0)
+        if res.returncode == 0 and res.stdout.strip():
+            items = json.loads(res.stdout)
+            return [(it.get("timezone", ""), it.get("label", "")) for it in items]
+    except Exception as e:
+        sys.stderr.write(f"Erreur chargement fuseaux via Rust : {e}\n")
+    return []
+
+
+class _RustTimezonesDict(dict):
+    """Accès dynamique aux fuseaux horaires délégué à Rust avec cache en mémoire."""
+    def __init__(self):
+        super().__init__()
+        self._cache = {}
+
+    def __getitem__(self, key):
+        return self.get(key, [])
+
+    def __contains__(self, key):
+        return bool(self.get(key, []))
+
+    def get(self, key, default=None):
+        clean_key = (key or "").strip().upper()
+        if clean_key not in self._cache:
+            res = load_timezones_for_country(clean_key if clean_key else None)
+            self._cache[clean_key] = res
+        res = self._cache[clean_key]
+        return res if res else (default if default is not None else [])
+
+
+WORLD_TIMEZONES = _RustTimezonesDict()
 
 
 def infer_timezone(country_code: str = "", station_name: str = "", group_path: str = "") -> str:
@@ -575,48 +418,170 @@ def infer_timezone(country_code: str = "", station_name: str = "", group_path: s
     if cache_key in _INFER_TZ_CACHE:
         return _INFER_TZ_CACHE[cache_key]
 
-    timonde_bin = shutil.which("timonde") or os.path.expanduser("~/.local/bin/timonde")
-    if os.path.exists(timonde_bin):
-        try:
-            cmd = [timonde_bin, "--infer-timezone", cc, station_name or "", group_path or ""]
-            res = subprocess.run(cmd, capture_output=True, text=True, timeout=2.0)
-            if res.returncode == 0 and res.stdout.strip():
-                data = json.loads(res.stdout.strip())
-                tz = data.get("timezone", "")
-                if tz:
-                    _INFER_TZ_CACHE[cache_key] = tz
-                    return tz
-        except Exception:
-            pass
+    try:
+        res = run_timonde_cli("--infer-timezone", cc, station_name or "", group_path or "", timeout=2.0)
+        if res.returncode == 0 and res.stdout.strip():
+            data = json.loads(res.stdout.strip())
+            tz = data.get("timezone", "")
+            if tz:
+                _INFER_TZ_CACHE[cache_key] = tz
+                return tz
+    except Exception:
+        pass
 
-    # Fallback standard par pays
-    tz_list = WORLD_TIMEZONES.get(cc, [])
+    # Fallback standard par pays via Rust
+    tz_list = load_timezones_for_country(cc)
     if tz_list:
         return tz_list[0][0]
 
     return ""
 
 
-DEFAULT_WORLD_TIMEZONES = [
-    ("", "(Déduction automatique selon le nom / groupe)"),
-    ("America/New_York", "America/New_York (Heure de l'Est : Caroline du Nord [NC], NY, FL, DC, GA, VA, PA...)"),
-    ("America/Chicago", "America/Chicago (Heure du Centre : Chicago, Texas, Louisiane, Tennessee, MO...)"),
-    ("America/Denver", "America/Denver (Heure des Montagnes : Denver, Colorado, Utah, NM...)"),
-    ("America/Phoenix", "America/Phoenix (Montagnes sans heure d'été : Arizona)"),
-    ("America/Los_Angeles", "America/Los_Angeles (Heure du Pacifique : Californie, Washington, Oregon...)"),
-    ("America/Anchorage", "America/Anchorage (Alaska)"),
-    ("Pacific/Honolulu", "Pacific/Honolulu (Hawaï)"),
-    ("Europe/Paris", "Europe/Paris (France métropolitaine, Belgique, Suisse, Europe centrale)"),
-    ("Europe/London", "Europe/London (Royaume-Uni, Portugal, UTC)"),
-    ("America/Toronto", "America/Toronto (Canada Est - Québec, Ontario)"),
-    ("America/Vancouver", "America/Vancouver (Canada Pacifique)"),
-    ("America/Guadeloupe", "America/Guadeloupe (Antilles - Guadeloupe, Martinique)"),
-    ("Indian/Reunion", "Indian/Reunion (La Réunion)"),
-    ("Pacific/Noumea", "Pacific/Noumea (Nouvelle-Calédonie)"),
-    ("Pacific/Tahiti", "Pacific/Tahiti (Polynésie française)"),
-    ("Asia/Tokyo", "Asia/Tokyo (Japon)"),
-    ("Australia/Sydney", "Australia/Sydney (Australie Est)"),
-]
+def __getattr__(name):
+    """Accès aux tables de fuseaux horaires délégué au moteur Rust."""
+    if name == "DEFAULT_WORLD_TIMEZONES":
+        return load_timezones_for_country(None)
+    if name == "load_world_timezones":
+        return lambda: WORLD_TIMEZONES
+    if name in ("FRANCE_TIMEZONES", "CUSTOM_MULTI_TZ", "UK_TIMEZONES"):
+        # Rétrocompatibilité déléguée à Rust
+        code = "FR" if name == "FRANCE_TIMEZONES" else ("GB" if name == "UK_TIMEZONES" else None)
+        return load_timezones_for_country(code)
+    raise AttributeError(f"module '{__name__}' has no attribute '{name}'")
+
+
+def attach_country_completion(entry, on_selected=None):
+    """
+    Attache un compléteur de pays universel (recherche par nom français, code ISO, ou alias sans accent)
+    sur n'importe quel Gtk.Entry.
+    """
+    import gi
+    gi.require_version("Gtk", "3.0")
+    from gi.repository import Gtk
+
+    comp_store = Gtk.ListStore(str, str, str, str)  # 0: display, 1: code, 2: norm_name, 3: norm_aliases
+    for code, (cname, _flag, aliases) in sorted(COUNTRIES_REGISTRY.items(), key=lambda x: normalize_lookup(x[1][0])):
+        norm_name = normalize_lookup(cname)
+        norm_al = normalize_lookup(" ".join(aliases)) if aliases else ""
+        disp = f"[{code}] {cname}"
+        comp_store.append([disp, code, norm_name, norm_al])
+
+    comp = Gtk.EntryCompletion()
+    comp.set_model(comp_store)
+    comp.set_text_column(0)
+    comp.set_minimum_key_length(1)
+    comp.set_inline_completion(False)
+    comp.set_popup_completion(True)
+
+    def match_func(completion, key, tree_iter, data):
+        norm_key = normalize_lookup(key)
+        if not norm_key:
+            return False
+        code = comp_store.get_value(tree_iter, 1)
+        norm_name = comp_store.get_value(tree_iter, 2) or ""
+        norm_al = comp_store.get_value(tree_iter, 3) or ""
+        norm_code = code.lower()
+        return (norm_key in norm_name) or (norm_key == norm_code) or norm_code.startswith(norm_key) or (norm_key in norm_al)
+
+    comp.set_match_func(match_func, None)
+
+    def match_selected(completion, model, tree_iter):
+        c_code = model.get_value(tree_iter, 1)
+        disp_name = model.get_value(tree_iter, 0)
+        entry.set_text(disp_name)
+        if on_selected:
+            on_selected(c_code, disp_name)
+        return True
+
+    comp.connect("match-selected", match_selected)
+    entry.set_completion(comp)
+    return comp
+
+
+class GroupSelectorBar:
+    """
+    Fabrique de barre unifiée de sélection de groupe cible avec autocomplétion, menu déroulant,
+    et bouton d'aide syntaxique /.
+    """
+    @staticmethod
+    def create(available_groups=None, default_group="", allow_original_structure=False, on_help_clicked=None, on_changed=None):
+        import gi
+        gi.require_version("Gtk", "3.0")
+        from gi.repository import Gtk, Gdk
+
+        groups_list = list(available_groups or [])
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+
+        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        vbox.pack_start(hbox, False, False, 0)
+
+        lbl = Gtk.Label(label="<b>" + _("Group:") + "</b>")
+        lbl.set_use_markup(True)
+        hbox.pack_start(lbl, False, False, 0)
+
+        entry = Gtk.Entry()
+        entry.set_text(default_group)
+        entry.set_width_chars(26)
+        entry.set_placeholder_text(_("Ex: /France/Jazz or / for root"))
+        entry.set_can_focus(True)
+        entry.set_editable(True)
+
+        comp = Gtk.EntryCompletion()
+        store = Gtk.ListStore(str)
+        store.append(["[ / ] (Racine — Sans groupe)"])
+        for g in sorted(groups_list):
+            if g and g not in ("[ / ] (Racine — Sans groupe)", "/"):
+                store.append([g])
+        comp.set_model(store)
+        comp.set_text_column(0)
+        comp.set_inline_completion(True)
+        comp.set_popup_completion(True)
+        entry.set_completion(comp)
+
+        entry.set_icon_from_icon_name(Gtk.EntryIconPosition.SECONDARY, "edit-clear")
+        entry.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, _("Clear field"))
+        entry.connect("icon-press", lambda e, pos, ev: e.set_text("") if pos == Gtk.EntryIconPosition.SECONDARY else None)
+        if on_changed:
+            entry.connect("changed", on_changed)
+        hbox.pack_start(entry, True, True, 0)
+
+        btn_choose = make_btn("", "pan-down", _("Choose from existing groups"))
+        def on_choose(b):
+            menu = Gtk.Menu()
+            if allow_original_structure:
+                it_orig = Gtk.MenuItem(label=_("(Original folder structure)"))
+                it_orig.connect("activate", lambda mi: entry.set_text(_("(Original folder structure)")))
+                menu.append(it_orig)
+                menu.append(Gtk.SeparatorMenuItem())
+            it_root = Gtk.MenuItem(label="[ / ] (Racine — Sans groupe)")
+            it_root.connect("activate", lambda mi: entry.set_text("/"))
+            menu.append(it_root)
+            if groups_list:
+                menu.append(Gtk.SeparatorMenuItem())
+                for g in sorted(groups_list):
+                    if g and g not in ("[ / ] (Racine — Sans groupe)", "/"):
+                        item = Gtk.MenuItem(label=g)
+                        item.connect("activate", lambda mi, grp=g: entry.set_text(grp))
+                        menu.append(item)
+            menu.show_all()
+            menu.popup_at_widget(b, Gdk.Gravity.SOUTH_WEST, Gdk.Gravity.NORTH_WEST, None)
+        btn_choose.connect("clicked", on_choose)
+        hbox.pack_start(btn_choose, False, False, 0)
+
+        btn_help = make_btn("", "help-browser", _("Help on groups and subgroups"))
+        if on_help_clicked:
+            btn_help.connect("clicked", lambda b: on_help_clicked())
+        else:
+            btn_help.connect("clicked", lambda b: show_group_naming_help_dialog(vbox.get_toplevel()))
+        hbox.pack_start(btn_help, False, False, 0)
+
+        vbox.entry = entry
+        vbox.btn_choose = btn_choose
+        vbox.btn_help = btn_help
+        vbox.get_group_text = lambda: entry.get_text().strip()
+        vbox.set_group_text = lambda txt: entry.set_text(txt)
+        return vbox
+
 
 
 # -----------------------------------------------------------------------------
@@ -1342,111 +1307,67 @@ def find_script(script_name: str):
 
 
 # -----------------------------------------------------------------------------
-# 8. API Radio-Browser & Boîte de Dialogue de Réparation de Flux
+# 8. API Radio-Browser & Boîte de Dialogue de Réparation de Flux (Délégation Rust)
 # -----------------------------------------------------------------------------
 
-import urllib.request
-import urllib.parse
 import json
 from concurrent.futures import ThreadPoolExecutor
-
-RADIO_BROWSER_ENDPOINTS = [
-    "https://de1.api.radio-browser.info",
-    "https://nl1.api.radio-browser.info",
-    "https://at1.api.radio-browser.info",
-]
-
-
-def query_radio_browser(endpoint, path, params):
-    """Interroge l'annuaire Radio-Browser API de façon sécurisée avec TIMONDE_USER_AGENT."""
-    query_str = urllib.parse.urlencode(params)
-    url = f"{endpoint}/json/{path}?{query_str}"
-    req = urllib.request.Request(url, headers={"User-Agent": TIMONDE_USER_AGENT})
-    try:
-        with urllib.request.urlopen(req, timeout=2.0) as resp:
-            if resp.getcode() == 200:
-                data = json.loads(resp.read().decode("utf-8"))
-                # Promotion du miroir actif en tête de liste pour accélérer les requêtes suivantes
-                if endpoint in RADIO_BROWSER_ENDPOINTS and RADIO_BROWSER_ENDPOINTS[0] != endpoint:
-                    try:
-                        RADIO_BROWSER_ENDPOINTS.remove(endpoint)
-                        RADIO_BROWSER_ENDPOINTS.insert(0, endpoint)
-                    except Exception:
-                        pass
-                return data
-    except Exception:
-        pass
-    return None
 
 
 def search_radio_browser_api(name="", country_code="", tag="", language="", limit=30):
     """
-    Recherche multicritères sur les miroirs Radio-Browser en déléguant au moteur Rust
-    de TiMonde (bascule de miroir automatique, gestion du cache et typage strict).
+    Recherche multicritères sur les miroirs Radio-Browser en déléguant exclusivement
+    au moteur natif Rust de TiMonde (bascule de miroir automatique, gestion du cache et typage strict).
     """
-    timonde_bin = shutil.which("timonde") or os.path.expanduser("~/.local/bin/timonde")
-    if os.path.exists(timonde_bin):
-        cmd = [timonde_bin, "--search"]
-        if name and name.strip():
-            cmd.append(name.strip())
-        if tag and tag.strip():
-            cmd.extend(["--tag", tag.strip()])
-        if country_code and country_code.strip():
-            cmd.extend(["--country", country_code.strip()])
-        if language and language.strip():
-            cmd.extend(["--lang", language.strip()])
-        if limit:
-            cmd.extend(["--limit", str(limit)])
-        cmd.append("--json")
+    timonde_bin = get_timonde_bin()
+    cmd = [timonde_bin, "--search"]
+    if name and name.strip():
+        cmd.append(name.strip())
+    if tag and tag.strip():
+        cmd.extend(["--tag", tag.strip()])
+    if country_code and country_code.strip():
+        cmd.extend(["--country", country_code.strip()])
+    if language and language.strip():
+        cmd.extend(["--lang", language.strip()])
+    if limit:
+        cmd.extend(["--limit", str(limit)])
+    cmd.append("--json")
 
-        try:
-            res = subprocess.run(cmd, capture_output=True, text=True, timeout=10.0)
-            if res.returncode == 0 and res.stdout.strip():
-                return json.loads(res.stdout)
-        except Exception:
-            pass
-
-    # Fallback minimal direct en cas d'absence du binaire
-    params = {"limit": str(limit), "hidebroken": "true", "order": "votes", "reverse": "true"}
-    if name: params["name"] = name
-    if country_code:
-        cc_up = country_code.strip().upper()
-        params["countrycode"] = "GB" if cc_up == "UK" else cc_up
-    if tag: params["tag"] = tag
-    if language: params["language"] = language.strip().lower()
-
-    for ep in RADIO_BROWSER_ENDPOINTS:
-        res = query_radio_browser(ep, "stations/search", params)
-        if res is not None:
-            return res
+    try:
+        res = subprocess.run(cmd, capture_output=True, text=True, timeout=12.0)
+        if res.returncode == 0 and res.stdout.strip():
+            return json.loads(res.stdout)
+    except Exception as e:
+        sys.stderr.write(f"Échec recherche Radio-Browser via Rust : {e}\n")
     return []
 
 
 def lookup_station_by_url(stream_url: str):
     """
-    Vérifie si une URL de flux (ou sa version nettoyée sans paramètres '?') est déjà répertoriée sur Radio-Browser.
+    Vérifie si une URL de flux est déjà répertoriée sur Radio-Browser en déléguant
+    exclusivement à la commande native Rust 'timonde --lookup-url'.
     Retourne la station distante (dict) si trouvée, ou None.
     """
     if not stream_url or not stream_url.strip():
         return None
-    clean = stream_url.strip()
-    clean_no_query = clean.split("?")[0].strip()
 
-    urls_to_test = [clean]
-    if clean_no_query != clean:
-        urls_to_test.append(clean_no_query)
-
-    for ep in RADIO_BROWSER_ENDPOINTS:
-        for u in urls_to_test:
-            res = query_radio_browser(ep, "stations/byurl", {"url": u})
-            if res and isinstance(res, list) and len(res) > 0:
-                return res[0]
+    try:
+        timonde_bin = get_timonde_bin()
+        cmd = [timonde_bin, "--lookup-url", stream_url.strip()]
+        res = subprocess.run(cmd, capture_output=True, text=True, timeout=10.0)
+        if res.returncode == 0 and res.stdout.strip():
+            data = json.loads(res.stdout.strip())
+            if data.get("exists"):
+                return data.get("station")
+    except Exception as e:
+        sys.stderr.write(f"Échec lookup Radio-Browser via Rust : {e}\n")
     return None
 
 
 def contribute_station_to_radio_browser(name, url, country_code="", language="", tags="", homepage="", favicon=""):
     """
-    Soumet une nouvelle radio à Radio-Browser via POST /json/add après vérification d'unicité.
+    Soumet une nouvelle radio à Radio-Browser en déléguant exclusivement à la commande
+    native Rust 'timonde --contribute-station'.
     Retourne un tuple (success: bool, message: str, station_info: dict ou None).
     """
     if not name or not name.strip():
@@ -1457,7 +1378,7 @@ def contribute_station_to_radio_browser(name, url, country_code="", language="",
     clean_name = name.strip()
     clean_url = url.strip()
 
-    # 1. Vérification préalable d'existence pour éviter les rejets serveur
+    # 1. Vérification préalable d'unicité via Rust
     existing = lookup_station_by_url(clean_url)
     if existing:
         ex_name = existing.get("name", _("Unknown"))
@@ -1469,54 +1390,29 @@ def contribute_station_to_radio_browser(name, url, country_code="", language="",
             existing
         )
 
-    # 2. Préparation du payload
+    # 2. Soumission POST via le binaire Rust
     payload = {
         "name": clean_name,
         "url": clean_url,
+        "countrycode": (country_code or "").strip(),
+        "language": (language or "").strip(),
+        "tags": (tags or "").strip(),
+        "homepage": (homepage or "").strip(),
+        "favicon": (favicon or "").strip(),
     }
-    if country_code:
-        cc_up = country_code.strip().upper()
-        payload["countrycode"] = "GB" if cc_up == "UK" else cc_up
-    if language:
-        payload["language"] = language.strip().lower()
-    if tags:
-        payload["tags"] = tags.strip()
-    if homepage:
-        payload["homepage"] = homepage.strip()
-    if favicon:
-        payload["favicon"] = favicon.strip()
 
-    # 3. Envoi POST aux miroirs
-    post_data = json.dumps(payload).encode("utf-8")
-    for ep in RADIO_BROWSER_ENDPOINTS:
-        req = urllib.request.Request(
-            f"{ep}/json/add",
-            data=post_data,
-            headers={
-                "User-Agent": TIMONDE_USER_AGENT,
-                "Content-Type": "application/json",
-            }
-        )
-        try:
-            with urllib.request.urlopen(req, timeout=5.0) as resp:
-                if resp.getcode() in (200, 201):
-                    res_json = json.loads(resp.read().decode("utf-8"))
-                    if isinstance(res_json, dict) and res_json.get("ok"):
-                        msg_ok = _("Station successfully submitted to Radio-Browser.")
-                        return (True, msg_ok, res_json)
-                    msg_srv = res_json.get("message", _("Failed to add station")) if isinstance(res_json, dict) else _("Unknown error")
-                    return (False, msg_srv, None)
-        except urllib.error.HTTPError as e:
-            try:
-                err_body = json.loads(e.read().decode("utf-8"))
-                err_msg = err_body.get("message", str(e))
-            except Exception:
-                err_msg = str(e)
-            return (False, _("Server rejected submission: {error}").format(error=err_msg), None)
-        except Exception:
-            continue
-
-    return (False, _("Radio-Browser servers unreachable"), None)
+    try:
+        timonde_bin = get_timonde_bin()
+        cmd = [timonde_bin, "--contribute-station", "-"]
+        res = subprocess.run(cmd, input=json.dumps(payload), capture_output=True, text=True, timeout=12.0)
+        if res.returncode == 0 and res.stdout.strip():
+            data = json.loads(res.stdout.strip())
+            ok = data.get("ok", False)
+            msg = data.get("message", _("Unknown status"))
+            return (ok, msg, data if ok else None)
+        return (False, res.stderr.strip() or _("Error communicating with TiMonde binary"), None)
+    except Exception as e:
+        return (False, str(e), None)
 
 
 def show_group_naming_help_dialog(parent):
@@ -1714,26 +1610,17 @@ def prompt_text_dialog(parent_window, title: str, label_text: str, default_text:
     entry.set_activates_default(True)
     box.pack_start(entry, False, False, 0)
 
-    if callback is not None:
-        def on_response(d, resp):
-            txt = entry.get_text().strip()
-            d.destroy()
+    def on_response(d, resp):
+        txt = entry.get_text().strip()
+        d.destroy()
+        if callback is not None:
             if resp == Gtk.ResponseType.OK:
                 callback(txt)
             else:
                 callback(None)
 
-        dlg.connect("response", on_response)
-        dlg.show_all()
-        return None
-
+    dlg.connect("response", on_response)
     dlg.show_all()
-    resp = dlg.run()
-    txt = entry.get_text().strip()
-    dlg.destroy()
-
-    if resp == Gtk.ResponseType.OK:
-        return txt
     return None
 
 

@@ -11,7 +11,7 @@ gi.require_version("GdkPixbuf", "2.0")
 from gi.repository import GdkPixbuf
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-ROOT_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, "../.."))
+ROOT_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
 ICONS_DIR = os.path.join(ROOT_DIR, "data/icons")
 
 SIZES = [16, 22, 24, 32, 48, 64, 128, 256]

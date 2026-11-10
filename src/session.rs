@@ -11,7 +11,7 @@ use crate::sync_util::SafeLock;
 
 /// État unifié de la session de lecture
 pub struct PlaybackSession {
-    pub engine: Option<AudioEngine>,
+    pub engine: Option<Arc<AudioEngine>>,
     pub current_station: Option<Station>,
     pub current_title: Option<String>,
     pub is_ephemeral: bool,
@@ -39,7 +39,7 @@ impl PlaybackSession {
 
     /// Réinitialise les métadonnées de lecture et extrait le moteur audio
     /// afin de permettre son arrêt et son drop hors du verrou de session.
-    pub fn take_engine(&mut self) -> Option<AudioEngine> {
+    pub fn take_engine(&mut self) -> Option<Arc<AudioEngine>> {
         self.current_station = None;
         self.current_title = None;
         self.is_ephemeral = false;

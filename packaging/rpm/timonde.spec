@@ -1,5 +1,5 @@
 Name:           timonde
-Version:        0.2.6
+Version:        0.2.7
 Release:        1%{?dist}
 Summary:        Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux
 
@@ -14,13 +14,13 @@ Requires:       gstreamer1
 Requires:       gstreamer1-plugins-base
 Requires:       gstreamer1-plugins-good
 Requires:       gstreamer1-plugins-bad-free
-Requires:       gstreamer1-plugin-libav
 Requires:       glib-networking
 Requires:       python3
 Requires:       python3-gobject
 Requires:       gtk3
 Requires:       libdbusmenu-gtk3
 Requires:       python3-dbus
+Recommends:     gstreamer1-plugin-libav
 Suggests:       gnome-shell-extension-appindicator
 
 %description
@@ -103,6 +103,14 @@ if [ "$1" -eq 0 ]; then
 fi
 
 %changelog
+* Tue Nov 10 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.7-1
+- Application stricte de la règle d'or « Desktop Linux : Rust-First Absolu & Dumb UI Python »
+- Rapatriement de 100 % du réseau Radio-Browser en Rust natif (--lookup-url, --contribute-station)
+- Purge intégrale de urllib et élimination des boucles bloquantes GTK3 (dialog.run)
+- Éradication des 4 failles de concurrence (radio fantôme, locks GStreamer, atomic state)
+- Dégraissage massif et chargement paresseux (_LazyDict) des référentiels de fuseaux horaires
+- Intégration du garde-fou d'architecture dans la chaîne CI (scripts/check_architecture.py)
+
 * Mon Nov 09 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.6-1
 - Refonte intégrale de la gestion de session (PlaybackSession) et éradication des deadlocks
 - Règle d'or GStreamer : arrêt et drop déterministe hors de tout verrou applicatif

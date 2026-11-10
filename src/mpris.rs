@@ -82,37 +82,41 @@ impl MprisPlayer {
     }
 
     fn pause(&self) {
-        let s = self.session.safe_lock();
-        if let Some(ref e) = s.engine {
+        let engine = {
+            let s = self.session.safe_lock();
+            s.engine.clone()
+        };
+        if let Some(ref e) = engine {
             let _ = e.pause();
         }
-        drop(s);
         (self.on_update)();
     }
 
     fn play_pause(&self) {
-        let current_st = {
+        let (action, current_st) = {
             let s = self.session.safe_lock();
             match s.state() {
-                PlaybackState::Playing => {
-                    if let Some(ref e) = s.engine {
-                        let _ = e.pause();
-                    }
-                    drop(s);
-                    (self.on_update)();
-                    return;
-                }
-                PlaybackState::Paused => {
-                    if let Some(ref e) = s.engine {
-                        let _ = e.resume();
-                    }
-                    drop(s);
-                    (self.on_update)();
-                    return;
-                }
-                _ => s.current_station.clone(),
+                PlaybackState::Playing => (Some(false), None),
+                PlaybackState::Paused => (Some(true), None),
+                _ => (None, s.current_station.clone()),
             }
         };
+
+        if let Some(resume) = action {
+            let engine = {
+                let s = self.session.safe_lock();
+                s.engine.clone()
+            };
+            if let Some(ref e) = engine {
+                if resume {
+                    let _ = e.resume();
+                } else {
+                    let _ = e.pause();
+                }
+            }
+            (self.on_update)();
+            return;
+        }
 
         if let Some(st) = self.last_station.safe_lock().clone().or(current_st) {
             (self.on_play)(st);
@@ -124,18 +128,22 @@ impl MprisPlayer {
     }
 
     fn play(&self) {
-        let current_st = {
+        let (is_paused, current_st) = {
             let s = self.session.safe_lock();
-            if s.state() == PlaybackState::Paused {
-                if let Some(ref e) = s.engine {
-                    let _ = e.resume();
-                }
-                drop(s);
-                (self.on_update)();
-                return;
-            }
-            s.current_station.clone()
+            (s.state() == PlaybackState::Paused, s.current_station.clone())
         };
+
+        if is_paused {
+            let engine = {
+                let s = self.session.safe_lock();
+                s.engine.clone()
+            };
+            if let Some(ref e) = engine {
+                let _ = e.resume();
+            }
+            (self.on_update)();
+            return;
+        }
 
         if let Some(st) = self.last_station.safe_lock().clone().or(current_st) {
             (self.on_play)(st);
@@ -154,9 +162,17 @@ impl MprisPlayer {
         (self.on_preview_play)(Station::new(display_name, uri));
     }
 
-    /// Arrête la pré-écoute
+    /// Arrête la pré-écoute uniquement si la session active est éphémère
     fn stop_preview(&self) {
-        (self.on_stop)();
+        let is_ephemeral = {
+            let s = self.session.safe_lock();
+            s.is_ephemeral
+        };
+        if is_ephemeral {
+            (self.on_stop)();
+        } else {
+            log::info!("StopPreview ignoré : la session active n'est pas une pré-écoute.");
+        }
     }
 
     /// Déclenche le rechargement immédiat de l'arbre des favoris depuis bookmarks.xml

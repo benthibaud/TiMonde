@@ -21,9 +21,11 @@ os.environ.pop("GTK_IM_MODULE", None)
 os.environ.pop("XMODIFIERS", None)
 os.environ.pop("QT_IM_MODULE", None)
 
-SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.abspath(os.path.join(SCRIPTS_DIR, "../.."))
+TESTS_DIR = os.path.dirname(os.path.abspath(__file__))
+SCRIPTS_DIR = os.path.abspath(os.path.join(TESTS_DIR, "..", "data", "scripts"))
+REPO = os.path.abspath(os.path.join(TESTS_DIR, ".."))
 sys.path.insert(0, SCRIPTS_DIR)
+
 
 import gi
 gi.require_version("Gtk", "3.0")
@@ -281,8 +283,11 @@ class TestGtkEventLoopAndScope(unittest.TestCase):
             # 1. Tester la contribution avec clic Radio-Browser
             with patch("reorder_groups.ContributeStationDialog") as MockContribute:
                 inst = MagicMock()
-                inst.run.return_value = Gtk.ResponseType.APPLY
                 inst.existing_info = {"name": "Europa Radio Jazz", "countrycode": "IT"}
+                def fake_connect(signal, cb):
+                    if signal == "response":
+                        cb(inst, Gtk.ResponseType.APPLY)
+                inst.connect.side_effect = fake_connect
                 MockContribute.return_value = inst
 
                 with patch.object(win, "on_edit_clicked") as mock_edit:
@@ -318,8 +323,11 @@ class TestGtkEventLoopAndScope(unittest.TestCase):
             # 3. Tester la réparation de flux avec RepairStreamDialog (signature et mise à jour)
             with patch("reorder_groups.RepairStreamDialog") as MockRepair:
                 inst_rep = MagicMock()
-                inst_rep.run.return_value = Gtk.ResponseType.OK
                 inst_rep.get_chosen_url.return_value = "http://repaired-stream.example.com/live"
+                def fake_rep_connect(signal, cb):
+                    if signal == "response":
+                        cb(inst_rep, Gtk.ResponseType.OK)
+                inst_rep.connect.side_effect = fake_rep_connect
                 MockRepair.return_value = inst_rep
 
                 win.on_repair_stream_clicked(None)

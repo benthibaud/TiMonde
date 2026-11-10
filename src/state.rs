@@ -62,10 +62,15 @@ impl AppState {
 
     /// Sauvegarde atomique de l'état pour résister à une extinction brutale du PC
     pub fn save(&self, path: &Path) -> std::io::Result<()> {
-        if let Some(parent) = path.parent() {
-            fs::create_dir_all(parent)?;
-        }
-        let temp_path = path.with_extension("tmp");
+        let parent = path.parent().unwrap_or_else(|| Path::new("."));
+        fs::create_dir_all(parent)?;
+
+        use std::time::{SystemTime, UNIX_EPOCH};
+        let now = SystemTime::now().duration_since(UNIX_EPOCH).map(|d| d.as_nanos()).unwrap_or(0);
+        let pid = std::process::id();
+        let file_name = path.file_name().and_then(|n| n.to_str()).unwrap_or("state.json");
+        let temp_path = parent.join(format!(".{}.tmp.{}.{}", file_name, pid, now));
+
         {
             use std::io::Write;
             let file = File::create(&temp_path)?;
@@ -74,7 +79,11 @@ impl AppState {
             writer.flush()?;
             writer.get_ref().sync_all()?;
         }
-        fs::rename(temp_path, path)?;
+
+        if let Err(e) = fs::rename(&temp_path, path) {
+            let _ = fs::remove_file(&temp_path);
+            return Err(e);
+        }
         Ok(())
     }
 }

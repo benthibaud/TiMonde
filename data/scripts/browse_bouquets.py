@@ -35,7 +35,6 @@ except ImportError:
 
 from timonde_common import (
     clean_stream_url,
-    safe_parse_xml,
     strip_unsupported_emojis,
     get_user_bookmarks_groups,
     normalize_group_path,
@@ -57,6 +56,8 @@ from timonde_common import (
     normalize_lookup,
     resolve_country_code,
     set_container_margins,
+    attach_country_completion,
+    GroupSelectorBar,
 )
 
 from timonde_world_data import (
@@ -71,7 +72,7 @@ import html
 import subprocess
 import glob
 import shutil
-import xml.etree.ElementTree as ET
+import re
 from concurrent.futures import ThreadPoolExecutor
 
 import gi
@@ -169,18 +170,20 @@ def list_available_examples():
     for base in sorted(found_files.keys()):
         f = found_files[base]
         if f.endswith(".xml"):
+            display_label = base
+            name = base
             try:
-                tree = ET.parse(f)
-                root = tree.getroot()
-                name = root.attrib.get("name", "")
-                country = root.attrib.get("country", "")
-                if name and name != base:
-                    display_label = f"{base}  —  {name}"
-                else:
-                    display_label = base
-                results.append((f, display_label, name or base))
+                with open(f, "r", encoding="utf-8", errors="replace") as xf:
+                    head = xf.read(1024)
+                m = re.search(r'<(?:bouquet|bookmarks|group)\b[^>]*\b(?:name|title)=["\']([^"\']+)["\']', head)
+                if m:
+                    extracted = m.group(1).strip()
+                    if extracted and extracted != base:
+                        name = extracted
+                        display_label = f"{base}  —  {name}"
             except Exception:
-                results.append((f, base, base))
+                pass
+            results.append((f, display_label, name))
         elif f.endswith(".csv"):
             results.append((f, f"{base}  —  [Tableur CSV]", "Import CSV"))
         elif f.endswith(".json"):
@@ -296,18 +299,6 @@ class DiscoverRadiosViews:
         self.preview_labels = []
         self.preview_player = StreamPreviewPlayer(on_status_change=self.on_preview_status_update)
 
-        # Magasin universel de complétion pays (indexé sur les 55 langues)
-        self.country_comp_store = Gtk.ListStore(str, str, str, str)
-        for c_code, c_info in sorted(self.bouquets_db.items(), key=lambda x: normalize_lookup(x[1].get("country_name", ""))):
-            c_entry = COUNTRIES_REGISTRY.get(c_code, ("", "", []))
-            c_aliases = c_entry[2] if len(c_entry) > 2 else []
-            nat_str = normalize_lookup(f"{c_info['name']} {c_code} {' '.join(c_aliases)}")
-            self.country_comp_store.append([
-                c_info["name"],
-                c_code,
-                normalize_lookup(c_info.get("country_name", c_code)),
-                nat_str,
-            ])
 
         # Construction des 3 vues autonomes de 1er niveau
         self.view_search = self.build_view_search()
@@ -333,106 +324,23 @@ class DiscoverRadiosViews:
         return None
 
     def setup_country_completion(self, entry, on_selected_cb=None):
-        country_completion = Gtk.EntryCompletion()
-        country_completion.set_model(self.country_comp_store)
-        country_completion.set_text_column(0)
-        country_completion.set_minimum_key_length(1)
-        country_completion.set_inline_completion(False)
-        country_completion.set_popup_completion(True)
-
-        def country_match_func(comp, key, tree_iter, data):
-            norm_key = normalize_lookup(key)
-            if not norm_key:
-                return False
-            code = self.country_comp_store.get_value(tree_iter, 1)
-            norm_name = self.country_comp_store.get_value(tree_iter, 2) or ""
-            norm_nat = self.country_comp_store.get_value(tree_iter, 3) or ""
-            norm_code = code.lower()
-            return (norm_key in norm_name) or (norm_key == norm_code) or (norm_code.startswith(norm_key)) or (norm_key in norm_nat)
-
-        country_completion.set_match_func(country_match_func, None)
-
-        def on_country_match_selected(comp, model, tree_iter):
-            c_code = model.get_value(tree_iter, 1)
-            disp_name = model.get_value(tree_iter, 0)
-            entry.set_text(disp_name)
-            if on_selected_cb:
-                on_selected_cb(c_code, disp_name)
-            return True
-
-        country_completion.connect("match-selected", on_country_match_selected)
-        entry.set_completion(country_completion)
-        return country_completion
+        return attach_country_completion(entry, on_selected=on_selected_cb)
 
     # -------------------------------------------------------------------------
     # Helper Partagé : Barre inférieure de groupe de destination & import
     # -------------------------------------------------------------------------
     def create_target_group_bar(self, view_key, default_group_name, on_import_func):
-        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
-
-        hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-        vbox.pack_start(hbox, False, False, 0)
-
-        lbl = Gtk.Label(label="<b>" + _("Group:") + "</b>")
-        lbl.set_use_markup(True)
-        hbox.pack_start(lbl, False, False, 0)
-
-        entry = Gtk.Entry()
-        entry.set_text(default_group_name)
-        entry.set_width_chars(26)
-        entry.set_placeholder_text(_("Ex: /France/Jazz or / for root"))
-        entry.set_can_focus(True)
-        entry.set_editable(True)
-
-        comp = Gtk.EntryCompletion()
-        store = Gtk.ListStore(str)
-        store.append(["[ / ] (Racine — Sans groupe)"])
-        for g in sorted(self.available_groups):
-            if g and g not in ("[ / ] (Racine — Sans groupe)", "/"):
-                store.append([g])
-        comp.set_model(store)
-        comp.set_text_column(0)
-        comp.set_inline_completion(True)
-        comp.set_popup_completion(True)
-        entry.set_completion(comp)
-
-        entry.set_icon_from_icon_name(Gtk.EntryIconPosition.SECONDARY, "edit-clear")
-        entry.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, _("Clear field"))
-        def on_clear(e, icon_pos, event):
-            if icon_pos == Gtk.EntryIconPosition.SECONDARY:
-                e.set_text("")
-        entry.connect("icon-press", on_clear)
-        hbox.pack_start(entry, True, True, 0)
-
-        btn_choose = make_btn("", "pan-down", _("Choose from existing groups"))
-        def on_choose(b):
-            menu = Gtk.Menu()
-            if view_key == "files":
-                it_orig = Gtk.MenuItem(label=_("(Original folder structure)"))
-                it_orig.connect("activate", lambda mi: entry.set_text(_("(Original folder structure)")))
-                menu.append(it_orig)
-                menu.append(Gtk.SeparatorMenuItem())
-            it_root = Gtk.MenuItem(label="[ / ] (Racine — Sans groupe)")
-            it_root.connect("activate", lambda mi: entry.set_text("/"))
-            menu.append(it_root)
-            if self.available_groups:
-                menu.append(Gtk.SeparatorMenuItem())
-                for g in sorted(self.available_groups):
-                    if g and g not in ("[ / ] (Racine — Sans groupe)", "/"):
-                        item = Gtk.MenuItem(label=g)
-                        item.connect("activate", lambda mi, grp=g: entry.set_text(grp))
-                        menu.append(item)
-            menu.show_all()
-            menu.popup_at_widget(b, Gdk.Gravity.SOUTH_WEST, Gdk.Gravity.NORTH_WEST, None)
-        btn_choose.connect("clicked", on_choose)
-        hbox.pack_start(btn_choose, False, False, 0)
-
-        if view_key == "files":
-            entry.connect("changed", lambda e: self.update_files_group_column())
-
-        btn_help = make_btn("", "help-browser", _("Help on groups and subgroups"))
-        btn_help.connect("clicked", self.on_show_group_naming_help)
-        hbox.pack_start(btn_help, False, False, 0)
+        allow_orig = (view_key == "files")
+        on_ch = (lambda e: self.update_files_group_column()) if allow_orig else None
+        vbox = GroupSelectorBar.create(
+            available_groups=self.available_groups,
+            default_group=default_group_name,
+            allow_original_structure=allow_orig,
+            on_help_clicked=self.on_show_group_naming_help,
+            on_changed=on_ch,
+        )
+        entry = vbox.entry
+        hbox = vbox.get_children()[0]
 
         btn_preview = make_btn(_("Listen"), "media-playback-start", _("Listen to selected station"))
         btn_preview.connect("clicked", lambda w: self.on_preview_clicked(view_key))
@@ -1208,6 +1116,8 @@ class DiscoverRadiosViews:
     def update_languages(self):
         country_id = self.get_selected_country_code()
         info = self.bouquets_db.get(country_id, {})
+        if info and not info.get("_loaded"):
+            load_bouquet_details_on_demand(country_id, info)
         is_multi = info.get("multilingual", False)
 
         self.lbl_lang.set_visible(is_multi)
@@ -1269,6 +1179,8 @@ class DiscoverRadiosViews:
     def get_current_data(self):
         country_id = self.get_selected_country_code()
         info = self.bouquets_db.get(country_id, {})
+        if info and not info.get("_loaded"):
+            load_bouquet_details_on_demand(country_id, info)
 
         if info.get("multilingual", False):
             lang_id = self.combo_lang.get_active_id() or (info["languages"][0][0] if info.get("languages") else "GEN")
@@ -1588,19 +1500,23 @@ class DiscoverRadiosViews:
                 shutil.copyfile(xml_path, target_file)
 
         try:
-            tree = ET.parse(target_file)
-            root = tree.getroot()
-            modified = False
-            for st in root.iter("station"):
-                if st.attrib.get("name", "").strip().lower() == station_name.strip().lower() or st.attrib.get("url") == old_url:
-                    st.attrib["url"] = new_url
-                    modified = True
-
-            if modified:
-                tmp_file = f"{target_file}.tmp"
-                tree.write(tmp_file, encoding="utf-8", xml_declaration=True)
-                os.replace(tmp_file, target_file)
-                sys.stderr.write(f"Flux réparé enregistré dans : {target_file}\n")
+            with open(target_file, "r", encoding="utf-8", errors="replace") as f:
+                content = f.read()
+            if old_url in content:
+                content = content.replace(old_url, html.escape(new_url))
+            else:
+                esc_st = re.escape(station_name)
+                content = re.sub(
+                    rf'(<station\b[^>]*\bname=["\']{esc_st}["\'][^>]*\burl=["\'])[^"\']*(["\'])',
+                    rf'\g<1>{html.escape(new_url)}\g<2>',
+                    content,
+                    flags=re.IGNORECASE
+                )
+            tmp_file = f"{target_file}.tmp"
+            with open(tmp_file, "w", encoding="utf-8") as f:
+                f.write(content)
+            os.replace(tmp_file, target_file)
+            sys.stderr.write(f"Flux réparé enregistré dans : {target_file}\n")
         except Exception as e:
             sys.stderr.write(f"Erreur écriture XML : {e}\n")
 
@@ -2166,92 +2082,62 @@ class DiscoverRadiosWindow(Gtk.Window):
 
 
 
-def parse_bouquets_xml():
-    b_dir = find_bouquets_dir()
-    db = {}
-
-    if b_dir:
-        for xml_file in sorted(glob.glob(os.path.join(b_dir, "*.xml"))):
-            try:
-                root = safe_parse_xml(xml_file)
-                if root is None:
-                    continue
-                code = root.attrib.get("country", os.path.splitext(os.path.basename(xml_file))[0].upper()).upper()
-                if code == "UK":
-                    code = "GB"
-                raw_name = strip_unsupported_emojis(root.attrib.get("name", code))
-                name = raw_name if (raw_name and raw_name != code) else COUNTRIES_REGISTRY.get(code, (code,))[0]
-                display_name = f"{name}  [{code}]" if code else name
-                multilingual = root.attrib.get("multilingual", "false").lower() == "true"
-
-                country_data = {
-                    "name": display_name,
-                    "country_name": name,
-                    "code": code,
-                    "has_bouquet": True,
-                    "multilingual": multilingual,
-                    "languages": [],
-                    "sub_bouquets": {},
-                    "national": [],
-                    "regions": {},
-                    "xml_path": xml_file,
+def load_bouquet_details_on_demand(country_code, country_data):
+    """Charge paresseusement les stations d'un bouquet via le binaire Rust 'timonde --dump-bouquet-json'."""
+    if not country_data or country_data.get("_loaded"):
+        return
+    country_data["_loaded"] = True
+    if not country_data.get("has_bouquet"):
+        return
+    try:
+        from timonde_common import run_timonde_cli
+        res = run_timonde_cli("--dump-bouquet-json", country_code, timeout=2.0)
+        if res.returncode == 0 and res.stdout.strip():
+            details = json.loads(res.stdout)
+            country_data["multilingual"] = details.get("multilingual", False)
+            country_data["languages"] = [(l["id"], l["name"]) for l in details.get("languages", [])]
+            country_data["national"] = [(s["name"], s["url"], s.get("genre", "")) for s in details.get("national", [])]
+            country_data["regions"] = {reg: [(s["name"], s["url"], s.get("genre", "")) for s in st_list] for reg, st_list in details.get("regions", {}).items()}
+            country_data["sub_bouquets"] = {}
+            for l_id, sub in details.get("sub_bouquets", {}).items():
+                country_data["sub_bouquets"][l_id] = {
+                    "national": [(s["name"], s["url"], s.get("genre", "")) for s in sub.get("national", [])],
+                    "regions": {reg: [(s["name"], s["url"], s.get("genre", "")) for s in st_list] for reg, st_list in sub.get("regions", {}).items()},
                 }
+            country_data["xml_path"] = details.get("xml_path")
+    except Exception as e:
+        sys.stderr.write(f"Erreur chargement bouquet {country_code} via Rust : {e}\n")
 
-                if multilingual:
-                    for comm in root.findall("community"):
-                        c_id = comm.attrib.get("id", "GEN")
-                        c_name = comm.attrib.get("name", c_id)
-                        country_data["languages"].append((c_id, c_name))
-                        sub_data = {"national": [], "regions": {}}
 
-                        nat = comm.find("national")
-                        if nat is not None:
-                            for st in nat.findall("station"):
-                                sub_data["national"].append((st.attrib.get("name", ""), st.attrib.get("url", ""), st.attrib.get("genre", "")))
-
-                        regs = comm.find("regions")
-                        if regs is not None:
-                            for reg in regs.findall("region"):
-                                r_name = reg.attrib.get("name", "Région")
-                                st_list = []
-                                for st in reg.findall("station"):
-                                    st_list.append((st.attrib.get("name", ""), st.attrib.get("url", ""), st.attrib.get("genre", "")))
-                                sub_data["regions"][r_name] = st_list
-
-                        country_data["sub_bouquets"][c_id] = sub_data
-                else:
-                    nat = root.find("national")
-                    if nat is not None:
-                        for st in nat.findall("station"):
-                            country_data["national"].append((st.attrib.get("name", ""), st.attrib.get("url", ""), st.attrib.get("genre", "")))
-
-                    regs = root.find("regions")
-                    if regs is not None:
-                        for reg in regs.findall("region"):
-                            r_name = reg.attrib.get("name", "Région")
-                            st_list = []
-                            for st in reg.findall("station"):
-                                st_list.append((st.attrib.get("name", ""), st.attrib.get("url", ""), st.attrib.get("genre", "")))
-                            country_data["regions"][r_name] = st_list
-
-                db[code] = country_data
-            except Exception:
-                pass
+def parse_bouquets_xml():
+    """Initialise le référentiel des bouquets instantanément via le binaire Rust (sans parsing XML lourd en Python)."""
+    db = {}
+    from timonde_common import run_timonde_cli
+    available_codes = set()
+    try:
+        res = run_timonde_cli("--list-bouquets", timeout=2.0)
+        if res.returncode == 0 and res.stdout.strip():
+            available_codes = set(json.loads(res.stdout))
+    except Exception:
+        pass
 
     for iso_code, fr_name, _flag in COUNTRIES_DB:
-        if iso_code not in db:
-            db[iso_code] = {
-                "name": f"{fr_name}  [{iso_code}]",
-                "country_name": fr_name,
-                "code": iso_code,
-                "has_bouquet": False,
-                "multilingual": False,
-                "languages": [],
-                "sub_bouquets": {},
-                "national": [],
-                "regions": {},
-                "xml_path": None,
-            }
+        has_b = iso_code in available_codes
+        db[iso_code] = {
+            "name": f"{fr_name}  [{iso_code}]" if iso_code else fr_name,
+            "country_name": fr_name,
+            "code": iso_code,
+            "has_bouquet": has_b,
+            "multilingual": False,
+            "languages": [],
+            "sub_bouquets": {},
+            "national": [],
+            "regions": {},
+            "xml_path": None,
+            "_loaded": False,
+        }
+
+    return db
 
     return db
 
