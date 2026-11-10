@@ -349,8 +349,21 @@ class ReorderWidget(Gtk.Box):
             details = self.format_station_details(st)
             self.store.append(parent_iter, ["station", disp, details, st, "audio-x-generic", Pango.Weight.NORMAL])
 
+    def _remove_from_data(self, target_obj):
+        """Retire un objet station ou groupe de self.data (utilisé lors d'une suppression en mode filtré)."""
+        if not target_obj or not isinstance(self.data, list):
+            return
+        self.data = [g for g in self.data if g is not target_obj]
+        for grp in self.data:
+            stations = grp.get("stations")
+            if isinstance(stations, list):
+                grp["stations"] = [s for s in stations if s is not target_obj]
+
     def serialize_tree(self):
         """Parcourt récursivement le TreeStore et reconstruit la liste self.data conforme XML."""
+        if getattr(self, "filter_broken_only", False):
+            return self.data
+
         payload = []
         root_stations = []
 
@@ -663,10 +676,15 @@ class ReorderWidget(Gtk.Box):
             def on_station_edited(val):
                 if val and isinstance(val, dict):
                     if val.get("action") == "delete":
+                        self._remove_from_data(data_obj)
                         self.store.remove(tree_iter)
                         self.set_dirty(True)
                         self.show_feedback(f"{_('Station deleted:')} « {name} »")
                         return
+
+                    if isinstance(data_obj, dict):
+                        data_obj.update(val)
+                        val = data_obj
 
                     disp = strip_unsupported_emojis(val.get("name", "")) or val.get("name", "")
                     self.store.set_value(tree_iter, 1, disp)
@@ -736,6 +754,7 @@ class ReorderWidget(Gtk.Box):
         def on_delete_response(dlg, resp):
             dlg.destroy()
             if resp == Gtk.ResponseType.YES:
+                self._remove_from_data(data_obj)
                 self.store.remove(tree_iter)
                 self.set_dirty(True)
                 self.show_feedback(f"{_('Deleted:')} « {name} »")
@@ -996,6 +1015,9 @@ class ReorderWidget(Gtk.Box):
                 cancel_event.set()
             dlg.destroy()
 
+            if not self.filter_broken_only:
+                self.data = self.serialize_tree()
+
             nb_online = sum(1 for r in self.audit_results.values() if r["status"] == "online")
             nb_dead = sum(1 for r in self.audit_results.values() if r["status"] == "offline")
             nb_redir = sum(1 for r in self.audit_results.values() if r["status"] == "redirect")
@@ -1015,7 +1037,6 @@ class ReorderWidget(Gtk.Box):
             else:
                 self.btn_apply_redirects.hide()
 
-            self.data = self.serialize_tree()
             self.populate_tree()
             self.treeview.expand_all()
 
@@ -1024,8 +1045,10 @@ class ReorderWidget(Gtk.Box):
         threading.Thread(target=run_checks, daemon=True).start()
 
     def on_filter_broken_toggled(self, widget):
-        self.filter_broken_only = widget.get_active()
-        self.data = self.serialize_tree()
+        new_state = widget.get_active()
+        if not self.filter_broken_only and new_state:
+            self.data = self.serialize_tree()
+        self.filter_broken_only = new_state
         self.populate_tree()
         self.treeview.expand_all()
 
@@ -1164,7 +1187,23 @@ class ReorderWindow(Gtk.Window):
         set_container_margins(self.reorder_box, margin=12)
         self.add(self.reorder_box)
         self.connect("destroy", self.on_destroy_window)
+        self.connect("delete-event", self.on_delete_event)
         self.connect("key-press-event", self.on_key_press_event)
+
+    def on_delete_event(self, widget, event):
+        if getattr(self.reorder_box, "dirty", False):
+            dialog = Gtk.MessageDialog(
+                transient_for=self, flags=Gtk.DialogFlags.MODAL,
+                message_type=Gtk.MessageType.QUESTION,
+                buttons=Gtk.ButtonsType.YES_NO,
+                text=_("Unsaved changes")
+            )
+            dialog.set_markup(f"<b>{_('You have unsaved changes.')}</b>\n\n{_('Do you want to discard them and exit?')}")
+            resp = dialog.run()
+            dialog.destroy()
+            if resp != Gtk.ResponseType.YES:
+                return True
+        return False
 
     def on_edit_clicked(self, widget=None):
         return self.reorder_box.on_edit_clicked(widget)

@@ -420,6 +420,58 @@ class TestTiMondeCommon(unittest.TestCase):
             self.assertEqual(method_names, ["PlayPreview", "PlayPreview", "StopPreview"])
 
 
+class TestReorderFilterNonRegression(unittest.TestCase):
+    """Vérifie que l'activation du filtre des liens morts dans reorder_groups ne détruit pas les stations saines."""
+
+    def test_filter_broken_only_does_not_wipe_healthy_stations(self):
+        from reorder_groups import ReorderWidget
+
+        initial_data = [
+            {
+                "name": "Musique",
+                "stations": [
+                    {"name": "Radio Bon", "url": "https://ok.com/live"},
+                    {"name": "Radio Mort", "url": "https://dead.com/live"},
+                ],
+                "is_separator": False,
+            }
+        ]
+
+        # Création du widget en mode embarqué
+        widget = ReorderWidget(data=initial_data, embedded=True)
+        self.assertEqual(len(widget.data[0]["stations"]), 2)
+
+        # Simulation du résultat de l'audit
+        widget.audit_results = {
+            "https://ok.com/live": {"status": "online", "msg": "200 OK", "redirect": None},
+            "https://dead.com/live": {"status": "offline", "msg": "404 Not Found", "redirect": None},
+        }
+
+        # 1. Activation du filtre 'broken only'
+        widget.filter_broken_only = True
+        widget.populate_tree()
+
+        # Le TreeStore affiché ne doit contenir que la station offline
+        # Mais serialize_tree() doit retourner TOUTES les stations sans perte de données
+        serialized = widget.serialize_tree()
+        self.assertEqual(len(serialized[0]["stations"]), 2, "serialize_tree() en mode filtré ne doit pas détruire les stations saines !")
+
+        # 2. Réparation de l'URL de la station morte
+        dead_station = widget.data[0]["stations"][1]
+        dead_station["url"] = "https://repaired.com/live"
+        widget.set_dirty(True)
+
+        # 3. Désactivation du filtre
+        widget.filter_broken_only = False
+        widget.populate_tree()
+
+        final_serialized = widget.serialize_tree()
+        self.assertEqual(len(final_serialized[0]["stations"]), 2)
+        urls = [s["url"] for s in final_serialized[0]["stations"]]
+        self.assertIn("https://ok.com/live", urls)
+        self.assertIn("https://repaired.com/live", urls)
+
+
 if __name__ == "__main__":
     unittest.main()
 

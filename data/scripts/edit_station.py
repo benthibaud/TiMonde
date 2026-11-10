@@ -42,6 +42,7 @@ from timonde_common import (
     infer_timezone,
     normalize_group_path,
     set_container_margins,
+    apply_timonde_app_css,
 )
 
 # Sauvegarde impérative des arguments CLI avant que GTK ne supprime --name (mot-clé réservé GTK/X11)
@@ -90,6 +91,7 @@ class EditStationWindow(Gtk.Window):
         self.set_position(Gtk.WindowPosition.CENTER)
 
         set_window_icon(self)
+        apply_timonde_app_css()
         if parent_window:
             self.set_transient_for(parent_window)
             self.set_modal(True)

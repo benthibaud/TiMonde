@@ -468,7 +468,22 @@ pub fn rebuild_root_from_json(json_str: &str) -> Result<Group, String> {
 pub fn save_bookmarks_from_json(json_str: &str, bookmarks_path: impl AsRef<Path>) -> Result<usize, String> {
     let new_root = rebuild_root_from_json(json_str)?;
     let total = new_root.total_stations();
-    save_bookmarks(&new_root, bookmarks_path.as_ref())
+    let path = bookmarks_path.as_ref();
+
+    // Garde-fou de sécurité : refuser d'écraser un fichier existant contenant des stations avec 0 station
+    if total == 0 && path.exists() {
+        if let Ok(existing_root) = load_bookmarks(path) {
+            let existing_total = existing_root.total_stations();
+            if existing_total > 0 {
+                return Err(format!(
+                    "Sauvegarde refusée : tentative d'écraser {} station(s) existante(s) par une liste vide.",
+                    existing_total
+                ));
+            }
+        }
+    }
+
+    save_bookmarks(&new_root, path)
         .map_err(|e| format!("Erreur sauvegarde bookmarks : {}", e))?;
     Ok(total)
 }
@@ -935,5 +950,27 @@ mod tests {
         assert_eq!(root2.total_stations(), 2);
         assert_eq!(root2.stations[0].name, "Direct Root Station");
         assert_eq!(root2.subgroups[0].subgroups[0].stations[0].name, "FIP");
+    }
+
+    #[test]
+    fn test_save_bookmarks_from_json_safeguard() {
+        let temp_dir = std::env::temp_dir();
+        let test_xml = temp_dir.join("timonde_test_safeguard.xml");
+
+        // 1. Écrire un fichier contenant 1 station
+        let initial_json = r#"[{"name": "Pop", "stations": [{"name": "Radio1", "url": "https://stream.com"}]}]"#;
+        let res = save_bookmarks_from_json(initial_json, &test_xml);
+        assert!(res.is_ok());
+        assert_eq!(res.unwrap(), 1);
+
+        // 2. Tenter d'écraser avec une liste vide -> doit être rejeté par le garde-fou
+        let empty_json = r#"[{"name": "Pop", "stations": []}]"#;
+        let res_err = save_bookmarks_from_json(empty_json, &test_xml);
+        assert!(res_err.is_err());
+        assert!(res_err.unwrap_err().contains("Sauvegarde refusée"));
+
+        // Nettoyage
+        let _ = std::fs::remove_file(&test_xml);
+        let _ = std::fs::remove_file(test_xml.with_extension("xml.bak"));
     }
 }

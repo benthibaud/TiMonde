@@ -28,19 +28,19 @@ Les paquets précompilés officiels sont disponibles au téléchargement sur la 
 
 ### 1. Sur Debian, Ubuntu et Linux Mint (paquet `.deb`)
 
-1. Téléchargez le paquet [**timonde_0.2.7_amd64.deb**](https://github.com/benthibaud/TiMonde/releases/download/v0.2.7/timonde_0.2.7_amd64.deb) depuis la page des [Releases GitHub](https://github.com/benthibaud/TiMonde/releases/latest).
+1. Téléchargez le paquet [**timonde_0.2.8_amd64.deb**](https://github.com/benthibaud/TiMonde/releases/download/v0.2.8/timonde_0.2.8_amd64.deb) depuis la page des [Releases GitHub](https://github.com/benthibaud/TiMonde/releases/latest).
 2. Installez-le avec vos outils habituels ou en ligne de commande :
 
 ```bash
-sudo apt install ./timonde_0.2.7_amd64.deb
-# ou : sudo dpkg -i timonde_0.2.7_amd64.deb
+sudo apt install ./timonde_0.2.8_amd64.deb
+# ou : sudo dpkg -i timonde_0.2.8_amd64.deb
 ```
 
 *Dépendances système (automatiquement gérées par apt) :* `libgstreamer1.0-0`, `gstreamer1.0-plugins-base`, `gstreamer1.0-plugins-good`, `python3-gi`, `gir1.2-gtk-3.0`.
 
 ### 2. Sur Fedora, RHEL et openSUSE (paquet `.rpm`)
 
-1. Téléchargez le paquet [**timonde-0.2.7-1.x86_64.rpm**](https://github.com/benthibaud/TiMonde/releases/download/v0.2.7/timonde-0.2.7-1.x86_64.rpm) depuis la page des [Releases GitHub](https://github.com/benthibaud/TiMonde/releases/latest).
+1. Téléchargez le paquet [**timonde-0.2.8-1.x86_64.rpm**](https://github.com/benthibaud/TiMonde/releases/download/v0.2.8/timonde-0.2.8-1.x86_64.rpm) depuis la page des [Releases GitHub](https://github.com/benthibaud/TiMonde/releases/latest).
 2. Installez-le avec `dnf` :
 
 ```bash
