@@ -243,7 +243,13 @@ def normalize_lookup(text: str) -> str:
     return "".join(c for c in nfkd if unicodedata.category(c) != "Mn").lower()
 
 
-def _load_countries_from_rust():
+_COUNTRIES_CACHE = None
+
+def _get_countries_data():
+    """Charge et met en cache les tables de pays depuis le moteur Rust uniquement au premier besoin."""
+    global _COUNTRIES_CACHE
+    if _COUNTRIES_CACHE is not None:
+        return _COUNTRIES_CACHE
     aliases_map = {}
     try:
         res = run_timonde_cli("--dump-countries-json", timeout=2.0)
@@ -258,7 +264,8 @@ def _load_countries_from_rust():
                 aliases_map[normalize_lookup(c_name)] = c_code
                 for al in c_aliases:
                     aliases_map[normalize_lookup(al)] = c_code
-            return db, reg, aliases_map
+            _COUNTRIES_CACHE = (db, reg, aliases_map)
+            return _COUNTRIES_CACHE
     except Exception:
         pass
     fallback = [
@@ -271,9 +278,9 @@ def _load_countries_from_rust():
         reg[c[0]] = (c[1], c[2], [])
         aliases_map[c[0].lower()] = c[0]
         aliases_map[normalize_lookup(c[1])] = c[0]
-    return fallback, reg, aliases_map
+    _COUNTRIES_CACHE = (fallback, reg, aliases_map)
+    return _COUNTRIES_CACHE
 
-COUNTRIES_DB, COUNTRIES_REGISTRY, COUNTRY_ALIASES_MAP = _load_countries_from_rust()
 
 _COUNTRY_RESOLVE_CACHE = {}
 
@@ -285,16 +292,17 @@ def resolve_country_code(query: str) -> str:
     if q_str in _COUNTRY_RESOLVE_CACHE:
         return _COUNTRY_RESOLVE_CACHE[q_str]
 
+    _db, reg, aliases_map = _get_countries_data()
     m = re.search(r'[\[\(]([A-Za-z]{2})[\]\)]', q_str)
     if m:
         cand = m.group(1).upper()
-        if cand in COUNTRIES_REGISTRY:
+        if cand in reg:
             _COUNTRY_RESOLVE_CACHE[q_str] = cand
             return cand
 
     norm = normalize_lookup(q_str)
-    if norm in COUNTRY_ALIASES_MAP:
-        code = COUNTRY_ALIASES_MAP[norm]
+    if norm in aliases_map:
+        code = aliases_map[norm]
         _COUNTRY_RESOLVE_CACHE[q_str] = code
         return code
 
@@ -313,20 +321,16 @@ def resolve_country_code(query: str) -> str:
     return code
 
 
-
 _INFER_TZ_CACHE = {}
 
 
 def load_timezones_for_country(country_code=None):
     """Interroge le moteur Rust 'timonde --list-timezones' pour obtenir les fuseaux horaires d'un pays ou du monde."""
-    args = ["--list-timezones"]
-    if country_code:
-        args.append(str(country_code).strip())
+    args = ["--list-timezones"] + ([str(country_code).strip()] if country_code else [])
     try:
         res = run_timonde_cli(*args, timeout=2.0)
         if res.returncode == 0 and res.stdout.strip():
-            items = json.loads(res.stdout)
-            return [(it.get("timezone", ""), it.get("label", "")) for it in items]
+            return [(it.get("timezone", ""), it.get("label", "")) for it in json.loads(res.stdout)]
     except Exception as e:
         sys.stderr.write(f"Erreur chargement fuseaux via Rust : {e}\n")
     return []
@@ -347,8 +351,7 @@ class _RustTimezonesDict(dict):
     def get(self, key, default=None):
         clean_key = (key or "").strip().upper()
         if clean_key not in self._cache:
-            res = load_timezones_for_country(clean_key if clean_key else None)
-            self._cache[clean_key] = res
+            self._cache[clean_key] = load_timezones_for_country(clean_key if clean_key else None)
         res = self._cache[clean_key]
         return res if res else (default if default is not None else [])
 
@@ -357,10 +360,7 @@ WORLD_TIMEZONES = _RustTimezonesDict()
 
 
 def infer_timezone(country_code: str = "", station_name: str = "", group_path: str = "") -> str:
-    """
-    Infère intelligemment le fuseau horaire exact d'une station à partir de son pays ISO,
-    son nom et son groupe/arborescence en déléguant au moteur Rust de TiMonde.
-    """
+    """Infère le fuseau horaire exact d'une station via le moteur Rust de TiMonde."""
     cc = (country_code or "").strip().upper()
     cache_key = (cc, station_name or "", group_path or "")
     if cache_key in _INFER_TZ_CACHE:
@@ -369,24 +369,22 @@ def infer_timezone(country_code: str = "", station_name: str = "", group_path: s
     try:
         res = run_timonde_cli("--infer-timezone", cc, station_name or "", group_path or "", timeout=2.0)
         if res.returncode == 0 and res.stdout.strip():
-            data = json.loads(res.stdout.strip())
-            tz = data.get("timezone", "")
+            tz = json.loads(res.stdout.strip()).get("timezone", "")
             if tz:
                 _INFER_TZ_CACHE[cache_key] = tz
                 return tz
     except Exception:
         pass
 
-    # Fallback standard par pays via Rust
     tz_list = load_timezones_for_country(cc)
-    if tz_list:
-        return tz_list[0][0]
-
-    return ""
+    return tz_list[0][0] if tz_list else ""
 
 
 def __getattr__(name):
-    """Accès aux tables de fuseaux horaires délégué au moteur Rust."""
+    """Accès paresseux (PEP 562) aux tables de pays et de fuseaux horaires délégué à Rust."""
+    if name in ("COUNTRIES_DB", "COUNTRIES_REGISTRY", "COUNTRY_ALIASES_MAP"):
+        db, reg, aliases_map = _get_countries_data()
+        return db if name == "COUNTRIES_DB" else (reg if name == "COUNTRIES_REGISTRY" else aliases_map)
     if name == "DEFAULT_WORLD_TIMEZONES":
         return load_timezones_for_country(None)
     if name == "load_world_timezones":
@@ -497,7 +495,7 @@ def attach_country_completion(entry, on_selected=None):
     from gi.repository import Gtk
 
     comp_store = Gtk.ListStore(str, str, str, str)  # 0: display, 1: code, 2: norm_name, 3: norm_aliases
-    for code, (cname, _flag, aliases) in sorted(COUNTRIES_REGISTRY.items(), key=lambda x: normalize_lookup(x[1][0])):
+    for code, (cname, _flag, aliases) in sorted(_get_countries_data()[1].items(), key=lambda x: normalize_lookup(x[1][0])):
         norm_name = normalize_lookup(cname)
         norm_al = normalize_lookup(" ".join(aliases)) if aliases else ""
         disp = f"[{code}] {cname}"

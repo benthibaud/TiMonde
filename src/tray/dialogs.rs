@@ -123,6 +123,54 @@ pub fn find_group_name_for_station(root: &Group, station_url: &str) -> Option<St
     find_rec(root, "", station_url, &norm)
 }
 
+/// Exécute edit_station.py de manière unifiée et retourne sa sortie JSON décodée
+pub fn invoke_edit_station_script(
+    mode: &str,
+    name: &str,
+    url: &str,
+    country: &str,
+    timezone: &str,
+    group: &str,
+    groups_json: &str,
+) -> Option<serde_json::Value> {
+    let script_path = find_script("edit_station.py")?;
+    let out = prepare_python_command(&script_path)
+        .args([
+            "--mode", mode,
+            "--station-name", name,
+            "--url", url,
+            "--country", country,
+            "--timezone", timezone,
+            "--group", group,
+            "--groups-json", groups_json,
+        ])
+        .output()
+        .ok()?;
+    if !out.status.success() {
+        return None;
+    }
+    let out_str = String::from_utf8_lossy(&out.stdout);
+    serde_json::from_str::<serde_json::Value>(out_str.trim()).ok()
+}
+
+/// Extrait les champs normalisés (name, url, country, timezone, group) de la réponse JSON d'edit_station.py
+pub fn extract_station_fields(
+    json_val: &serde_json::Value,
+) -> (String, String, Option<String>, Option<String>, String) {
+    let n = json_val["name"].as_str().unwrap_or("").trim().to_string();
+    let u = json_val["url"].as_str().unwrap_or("").trim().to_string();
+    let c = json_val["country"]
+        .as_str()
+        .map(|s| s.trim().to_ascii_uppercase())
+        .filter(|s| !s.is_empty());
+    let tz = json_val["timezone"]
+        .as_str()
+        .map(|s| s.trim().to_string())
+        .filter(|s| !s.is_empty());
+    let g = json_val["group"].as_str().unwrap_or("").trim().to_string();
+    (n, u, c, tz, g)
+}
+
 /// Ouvre la boîte de dialogue pour modifier le nom, l'URL, le groupe et le code pays de la station
 #[allow(clippy::too_many_arguments)]
 pub fn trigger_edit_station_dialog(
@@ -197,95 +245,59 @@ pub fn trigger_edit_station_dialog(
             .unwrap_or_default()
         };
 
-        let (new_name, new_url, new_country, new_timezone, new_target_group) =
-            if let Some(script_path) = find_script("edit_station.py") {
-                let out = match prepare_python_command(&script_path)
-                    .arg("--mode")
-                    .arg("edit")
-                    .arg("--station-name")
-                    .arg(&real_name)
-                    .arg("--url")
-                    .arg(&station.url)
-                    .arg("--country")
-                    .arg(&deduced_country)
-                    .arg("--timezone")
-                    .arg(&deduced_tz)
-                    .arg("--group")
-                    .arg(&current_group_name)
-                    .arg("--groups-json")
-                    .arg(&groups_json)
-                    .output()
-                {
-                    Ok(o) if o.status.success() => o,
-                    _ => return, // Annulé
-                };
+        let json_val = match invoke_edit_station_script(
+            "edit",
+            &real_name,
+            &station.url,
+            &deduced_country,
+            &deduced_tz,
+            &current_group_name,
+            &groups_json,
+        ) {
+            Some(v) => v,
+            None => return,
+        };
 
-                let out_str = String::from_utf8_lossy(&out.stdout).trim().to_string();
-                if let Ok(json_val) = serde_json::from_str::<serde_json::Value>(&out_str) {
-                    if json_val["action"].as_str() == Some("delete") {
-                        let mut root = root_group.safe_lock().clone();
-                        let target_url = json_val["url"].as_str().unwrap_or(&station.url);
-                        if crate::bookmarks::remove_station_by_url(&mut root, target_url) {
-                            let _ = crate::bookmarks::save_bookmarks(&root, &bookmarks_path);
-                            *root_group.safe_lock() = root;
-                        }
-                        let is_current = {
-                            let s = session.safe_lock();
-                            s.current_station
-                                .as_ref()
-                                .map(|c| {
-                                    crate::import::normalize_url(&c.url)
-                                        == crate::import::normalize_url(&station.url)
-                                })
-                                .unwrap_or(false)
-                        };
-                        if is_current {
-                            crate::session::stop_session(&session);
-                        }
-                        {
-                            let mut last = last_station.safe_lock();
-                            if last
-                                .as_ref()
-                                .map(|l| {
-                                    crate::import::normalize_url(&l.url)
-                                        == crate::import::normalize_url(&station.url)
-                                })
-                                .unwrap_or(false)
-                            {
-                                *last = None;
-                                let mut state =
-                                    crate::state::AppState::load(&crate::state::AppState::default_path());
-                                state.last_station = None;
-                                let _ = state.save(&crate::state::AppState::default_path());
-                            }
-                        }
-                        crate::notify::notify(
-                            "TiMonde",
-                            &format!("« {} » {}", station.name, crate::i18n::tr("deleted from your favorites.")),
-                        );
-                        crate::tray::request_tray_refresh(&tray_handle);
-                        return;
-                    }
-
-                    let n = json_val["name"].as_str().unwrap_or("").trim().to_string();
-                    let u = json_val["url"].as_str().unwrap_or("").trim().to_string();
-                    let c = json_val["country"]
-                        .as_str()
-                        .map(|s| s.trim().to_ascii_uppercase())
-                        .filter(|s| !s.is_empty());
-                    let tz = json_val["timezone"]
-                        .as_str()
-                        .map(|s| s.trim().to_string())
-                        .filter(|s| !s.is_empty());
-                    let g = json_val["group"].as_str().unwrap_or("").trim().to_string();
-                    (n, u, Some(c), Some(tz), g)
-                } else {
-                    return;
-                }
-            } else {
-                log::warn!("Script edit_station.py introuvable pour modifier la radio");
-                return;
+        if json_val["action"].as_str() == Some("delete") {
+            let mut root = root_group.safe_lock().clone();
+            let target_url = json_val["url"].as_str().unwrap_or(&station.url);
+            if crate::bookmarks::remove_station_by_url(&mut root, target_url) {
+                let _ = crate::bookmarks::save_bookmarks(&root, &bookmarks_path);
+                *root_group.safe_lock() = root;
+            }
+            let is_current = {
+                let s = session.safe_lock();
+                s.current_station
+                    .as_ref()
+                    .map(|c| crate::import::normalize_url(&c.url) == crate::import::normalize_url(&station.url))
+                    .unwrap_or(false)
             };
+            if is_current {
+                crate::session::stop_session(&session);
+            }
+            {
+                let mut last = last_station.safe_lock();
+                if last
+                    .as_ref()
+                    .map(|l| crate::import::normalize_url(&l.url) == crate::import::normalize_url(&station.url))
+                    .unwrap_or(false)
+                {
+                    *last = None;
+                    let mut state = crate::state::AppState::load(&crate::state::AppState::default_path());
+                    state.last_station = None;
+                    let _ = state.save(&crate::state::AppState::default_path());
+                }
+            }
+            crate::notify::notify(
+                "TiMonde",
+                &format!("« {} » {}", station.name, crate::i18n::tr("deleted from your favorites.")),
+            );
+            crate::tray::request_tray_refresh(&tray_handle);
+            return;
+        }
+
+        let (new_name, new_url, c_opt, tz_opt, new_target_group) = extract_station_fields(&json_val);
+        let (new_country, new_timezone) = (Some(c_opt), Some(tz_opt));
 
         if new_name.is_empty() || new_url.is_empty() {
             return;

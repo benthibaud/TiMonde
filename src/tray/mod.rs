@@ -504,49 +504,20 @@ impl TiMondeTray {
             let groups_json = serde_json::to_string(&all_groups).unwrap_or_else(|_| "[]".to_string());
             let default_grp = all_groups.first().cloned().unwrap_or_else(|| crate::i18n::tr("Selection").to_string());
 
+            let json_val = match dialogs::invoke_edit_station_script(
+                "save-ephemeral",
+                &station.name,
+                &station.url,
+                station.country.as_deref().unwrap_or(""),
+                station.timezone.as_deref().unwrap_or(""),
+                &default_grp,
+                &groups_json,
+            ) {
+                Some(v) => v,
+                None => return,
+            };
             let (new_name, new_url, new_country, new_timezone, new_target_group) =
-                if let Some(script_path) = dialogs::find_script("edit_station.py") {
-                    let out = match dialogs::prepare_python_command(&script_path)
-                        .arg("--mode")
-                        .arg("save-ephemeral")
-                        .arg("--station-name")
-                        .arg(&station.name)
-                        .arg("--url")
-                        .arg(&station.url)
-                        .arg("--country")
-                        .arg(station.country.as_deref().unwrap_or(""))
-                        .arg("--timezone")
-                        .arg(station.timezone.as_deref().unwrap_or(""))
-                        .arg("--group")
-                        .arg(&default_grp)
-                        .arg("--groups-json")
-                        .arg(&groups_json)
-                        .output()
-                    {
-                        Ok(o) if o.status.success() => o,
-                        _ => return, // Annulé
-                    };
-
-                    let out_str = String::from_utf8_lossy(&out.stdout).trim().to_string();
-                    if let Ok(json_val) = serde_json::from_str::<serde_json::Value>(&out_str) {
-                        let n = json_val["name"].as_str().unwrap_or("").trim().to_string();
-                        let u = json_val["url"].as_str().unwrap_or("").trim().to_string();
-                        let c = json_val["country"]
-                            .as_str()
-                            .map(|s| s.trim().to_ascii_uppercase())
-                            .filter(|s| !s.is_empty());
-                        let tz = json_val["timezone"]
-                            .as_str()
-                            .map(|s| s.trim().to_string())
-                            .filter(|s| !s.is_empty());
-                        let g = json_val["group"].as_str().unwrap_or("").trim().to_string();
-                        (n, u, c, tz, g)
-                    } else {
-                        return;
-                    }
-                } else {
-                    return;
-                };
+                dialogs::extract_station_fields(&json_val);
 
             if new_name.is_empty() || new_url.is_empty() {
                 return;
@@ -655,53 +626,24 @@ impl TiMondeTray {
     pub fn copy_to_clipboard(text: &str) {
         let t = text.to_string();
         std::thread::spawn(move || {
-            let mut copied = false;
-            // Essai 1 : xclip (standard sous X11/XFCE/antiX)
-            if let Ok(mut child) = std::process::Command::new("xclip")
-                .arg("-selection")
-                .arg("clipboard")
-                .stdin(std::process::Stdio::piped())
-                .spawn()
-            {
-                if let Some(mut stdin) = child.stdin.take() {
-                    use std::io::Write;
-                    let _ = stdin.write_all(t.as_bytes());
-                }
-                let _ = child.wait();
-                copied = true;
-            }
-            // Essai 2 : wl-copy (Wayland)
-            if !copied {
-                if let Ok(mut child) = std::process::Command::new("wl-copy")
+            use std::io::Write;
+            for (cmd, args) in [
+                ("xclip", &["-selection", "clipboard"][..]),
+                ("wl-copy", &[][..]),
+                ("xsel", &["-b", "-i"][..]),
+            ] {
+                if let Ok(mut child) = std::process::Command::new(cmd)
+                    .args(args)
                     .stdin(std::process::Stdio::piped())
                     .spawn()
                 {
                     if let Some(mut stdin) = child.stdin.take() {
-                        use std::io::Write;
                         let _ = stdin.write_all(t.as_bytes());
                     }
                     let _ = child.wait();
-                    copied = true;
+                    crate::notify::notify("TiMonde", &format!("{}\n{}", crate::i18n::tr("Track copied to clipboard:"), t));
+                    return;
                 }
-            }
-            // Essai 3 : xsel
-            if !copied {
-                if let Ok(mut child) = std::process::Command::new("xsel")
-                    .arg("-b")
-                    .arg("-i")
-                    .stdin(std::process::Stdio::piped())
-                    .spawn()
-                {
-                    if let Some(mut stdin) = child.stdin.take() {
-                        use std::io::Write;
-                        let _ = stdin.write_all(t.as_bytes());
-                    }
-                    let _ = child.wait();
-                    copied = true;
-                }
-            }
-            if copied {
-                crate::notify::notify("TiMonde", &format!("{}\n{}", crate::i18n::tr("Track copied to clipboard:"), t));
             }
         });
     }
