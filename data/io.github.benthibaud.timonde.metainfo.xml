@@ -34,6 +34,16 @@
   </developer>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="0.2.9" date="2026-11-14">
+      <description>
+        <p>Audit qualité et durcissement de l'architecture : éradication du dernier dialogue modal bloquant, suppression des avertissements Clippy, ajout des tests d'intégration CLI Rust, contrôles post-build des paquets .deb/.rpm et nettoyage du code mort.</p>
+      </description>
+    </release>
+    <release version="0.2.8" date="2026-11-10">
+      <description>
+        <p>Correction du lanceur système dans le paquet Debian (/usr/bin/timonde), nettoyage de l'architecture Dumb UI et alignement des métadonnées.</p>
+      </description>
+    </release>
     <release version="0.2.7" date="2026-11-10">
       <description>
         <p>Application stricte de la règle d'or « Desktop Linux : Rust-First Absolu &amp; Dumb UI Python » : rapatriement complet des opérations réseau (Radio-Browser, probing) en Rust natif, éradication des 4 failles de concurrence (radio fantôme, locks GStreamer, atomic state), purge de 100 % de urllib et des dialogues modaux bloquants, dégraissage massif et chargement paresseux (_LazyDict) des référentiels de fuseaux horaires.</p>

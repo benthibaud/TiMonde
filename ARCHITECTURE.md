@@ -1,6 +1,6 @@
 # Architecture Technique — TiMonde
 
-Ce document détaille les principes architecturaux directeurs de TiMonde.
+Ce document résume les principes architecturaux directeurs de TiMonde (voir aussi la référence détaillée dans [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)).
 
 ---
 

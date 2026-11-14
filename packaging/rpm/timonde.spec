@@ -1,5 +1,5 @@
 Name:           timonde
-Version:        0.2.7
+Version:        0.2.9
 Release:        1%{?dist}
 Summary:        Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux
 
@@ -102,6 +102,16 @@ if [ "$1" -eq 0 ]; then
 fi
 
 %changelog
+* Sat Nov 14 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.9-1
+- Durcissement check_architecture.py (détection générique des appels .run() bloquants)
+- Ajout des tests d'intégration CLI Rust et du contrôle post-build .deb/.rpm
+- Suppression de tools/update_world_data.py et alignement des métadonnées v0.2.9
+
+* Tue Nov 10 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.8-1
+- Correction du lanceur système dans le paquet Debian (/usr/bin/timonde)
+- Suppression du dernier dialogue bloquant (dialog.run) dans reorder_groups.py
+- Alignement des versions et nettoyage du code mort
+
 * Tue Nov 10 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.7-1
 - Application stricte de la règle d'or « Desktop Linux : Rust-First Absolu & Dumb UI Python »
 - Rapatriement de 100 % du réseau Radio-Browser en Rust natif (--lookup-url, --contribute-station)

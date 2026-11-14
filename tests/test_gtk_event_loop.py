@@ -343,6 +343,13 @@ class TestGtkEventLoopAndScope(unittest.TestCase):
             groups = win.get_all_group_paths()
             self.assertIn("Sélection perso", groups)
 
+            # 5. Vérifier que on_delete_event avec dirty=True reste non-bloquant (retourne True sans dialog.run)
+            win.reorder_box.dirty = True
+            should_block = win.on_delete_event(win, None)
+            self.assertTrue(should_block, "on_delete_event doit retourner True et ouvrir un dialogue asynchrone")
+            drain_gtk_events()
+            win.reorder_box.dirty = False
+
             win.destroy_window() if hasattr(win, "destroy_window") else win.destroy()
             drain_gtk_events()
 

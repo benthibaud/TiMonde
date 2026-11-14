@@ -1452,7 +1452,7 @@ dependencies = [
 
 [[package]]
 name = "timonde"
-version = "0.2.8"
+version = "0.2.9"
 dependencies = [
  "env_logger",
  "gstreamer",

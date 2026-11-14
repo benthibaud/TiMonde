@@ -1199,10 +1199,16 @@ class ReorderWindow(Gtk.Window):
                 text=_("Unsaved changes")
             )
             dialog.set_markup(f"<b>{_('You have unsaved changes.')}</b>\n\n{_('Do you want to discard them and exit?')}")
-            resp = dialog.run()
-            dialog.destroy()
-            if resp != Gtk.ResponseType.YES:
-                return True
+
+            def on_confirm_close(dlg, resp):
+                dlg.destroy()
+                if resp == Gtk.ResponseType.YES:
+                    self.reorder_box.dirty = False
+                    self.destroy()
+
+            dialog.connect("response", on_confirm_close)
+            dialog.show_all()
+            return True
         return False
 
     def on_edit_clicked(self, widget=None):

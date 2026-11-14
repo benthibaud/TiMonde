@@ -28,8 +28,7 @@ FORBIDDEN_IMPORTS = [
 ]
 
 FORBIDDEN_PATTERNS = [
-    (re.compile(r"\b[a-zA-Z0-9_]*dlg\.run\(\)"), "dlg.run() (Dialogue modal bloquant interdit - utiliser dlg.connect('response', ...))"),
-    (re.compile(r"\b[a-zA-Z0-9_]*dialog\.run\(\)"), "dialog.run() (Dialogue modal bloquant interdit - utiliser dialog.connect('response', ...))"),
+    (re.compile(r"\b(?!subprocess\b)[a-zA-Z0-9_]+\.run\(\)"), "Appel bloquant .run() interdit sur dialogue/objet GTK (utiliser connect('response', ...) + show_all())"),
 ]
 
 # Scripts exemptés de l'interdiction de dialogues (ex: scripts utilitaires d'installation standalone)

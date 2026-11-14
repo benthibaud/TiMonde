@@ -309,8 +309,9 @@ impl ksni::Tray for TiMondeTray {
         }
 
         // 2. Si une station est sélectionnée/en cours : Métadonnées, Titre, Fuseau horaire et Édition
-        if (effective_state == PlaybackState::Playing || effective_state == PlaybackState::Buffering) && cur_st.is_some() {
-            let st = cur_st.as_ref().unwrap();
+        if let Some(st) = cur_st.as_ref().filter(|_| {
+            matches!(effective_state, PlaybackState::Playing | PlaybackState::Buffering)
+        }) {
             menu.push(MenuItem::Separator);
 
             // Titre en cours (si stream actif avec tag)

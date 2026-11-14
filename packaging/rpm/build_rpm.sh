@@ -87,9 +87,15 @@ fi
 
 # 5. Déploiement du paquet RPM généré
 if [ -n "${BUILT_RPM}" ] && [ -f "${BUILT_RPM}" ]; then
+    if command -v rpm >/dev/null 2>&1; then
+        if ! rpm -qlp "${BUILT_RPM}" 2>/dev/null | grep -q '^/usr/bin/timonde$'; then
+            echo "ERREUR CRITIQUE : /usr/bin/timonde absent du paquet ${RPM_NAME} !"
+            exit 1
+        fi
+    fi
     cp -f "${BUILT_RPM}" "${DIST_DIR}/${RPM_NAME}"
     cp -f "${BUILT_RPM}" "${SCRIPT_DIR}/${RPM_NAME}"
-    echo "Paquet RPM généré avec succès :"
+    echo "Paquet RPM généré et vérifié avec succès :"
     echo "   - ${DIST_DIR}/${RPM_NAME}"
     echo "   - ${SCRIPT_DIR}/${RPM_NAME}"
 else

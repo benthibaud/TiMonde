@@ -6,7 +6,7 @@ ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
 CARGO_TOML="${ROOT_DIR}/Cargo.toml"
 VERSION_FROM_CARGO=$(grep -m1 '^version = ' "${CARGO_TOML}" 2>/dev/null | cut -d '"' -f2)
-VERSION="${1:-${VERSION_FROM_CARGO:-0.2.7}}"
+VERSION="${1:-${VERSION_FROM_CARGO:-0.2.9}}"
 ARCH=$(dpkg --print-architecture 2>/dev/null || echo "amd64")
 PACKAGE_NAME="timonde_${VERSION}_${ARCH}.deb"
 DIST_DIR="${ROOT_DIR}/packaging/dist"
@@ -165,10 +165,14 @@ done
 
 # 7. Construction du paquet .deb unique universel
 dpkg-deb --build --root-owner-group "${STAGING_DIR}" "${DIST_DIR}/${PACKAGE_NAME}"
+if ! dpkg -c "${DIST_DIR}/${PACKAGE_NAME}" | grep -q '\./usr/bin/timonde$'; then
+    echo "ERREUR CRITIQUE : /usr/bin/timonde absent du paquet ${PACKAGE_NAME} !"
+    exit 1
+fi
 cp "${DIST_DIR}/${PACKAGE_NAME}" "${SCRIPT_DIR}/${PACKAGE_NAME}"
 rm -rf "${STAGING_DIR}"
 
-echo "Paquet Debian généré avec succès :"
+echo "Paquet Debian généré et vérifié avec succès :"
 echo "   - ${DIST_DIR}/${PACKAGE_NAME}"
 echo "   - ${SCRIPT_DIR}/${PACKAGE_NAME}"
 
