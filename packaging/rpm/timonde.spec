@@ -1,5 +1,5 @@
 Name:           timonde
-Version:        0.2.9
+Version:        0.3.0
 Release:        1%{?dist}
 Summary:        Lecteur de webradios ultra-léger et discret pour la barre des tâches Linux
 
@@ -102,6 +102,11 @@ if [ "$1" -eq 0 ]; then
 fi
 
 %changelog
+* Sat Nov 14 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.3.0-1
+- Correction de l'insertion et de la persistance des séparateurs (vides et nommés) dans Mes Radios
+- Mise à jour complète des 56 catalogues de traduction (i18n-clusters)
+- Consolidation Rust-First et suite de tests étendue
+
 * Sat Nov 14 2026 Ben Thibaud <b_thibaud@laposte.net> - 0.2.9-1
 - Durcissement check_architecture.py (détection générique des appels .run() bloquants)
 - Ajout des tests d'intégration CLI Rust et du contrôle post-build .deb/.rpm

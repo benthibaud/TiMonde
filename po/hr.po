@@ -1,1108 +1,868 @@
 # TiMonde — Traduction HR
-
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
-
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 20:23+0100\n"
+"POT-Creation-Date: 2026-11-14 12:37+0100\n"
 "PO-Revision-Date: 2026-10-17 17:00+0200\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/i18n.rs:186 src/i18n.rs:193
-
-msgid " [Ephemeral]"
-msgstr "[Efemerno]"
-
-#: data/scripts/browse_bouquets.py:1655
-
+#: data/scripts/browse_bouquets.py:1079
 msgid "(Already in favorites)"
 msgstr "Spremi u moje favorite"
 
 # --- Mises à jour TiMonde ---
-
-#: data/scripts/edit_station.py:541
-
+#: data/scripts/edit_station.py:495
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
-#: data/scripts/browse_bouquets.py:680 data/scripts/browse_bouquets.py:681
-
-#: data/scripts/browse_bouquets.py:2020 data/scripts/browse_bouquets.py:2063
-
-#: data/scripts/browse_bouquets.py:2197
-
+#: data/scripts/browse_bouquets.py:1407 data/scripts/browse_bouquets.py:1450
+#: data/scripts/browse_bouquets.py:1549 data/scripts/timonde_common.py:587
+#: data/scripts/timonde_common.py:588
 msgid "(Original folder structure)"
 msgstr "(Izvorna struktura mape)"
 
-#: data/scripts/edit_station.py:539
-
+#: data/scripts/edit_station.py:493
 msgid "(Single inferred timezone)"
 msgstr "(Single inferred timezone)"
 
-#: data/scripts/edit_station.py:518
-
+#: data/scripts/edit_station.py:472
 msgid "(Timezone not defined)"
 msgstr "(Timezone not defined)"
 
-#: data/scripts/edit_station.py:521
-
+#: data/scripts/edit_station.py:475
 msgid "(Unknown)"
 msgstr "(Unknown)"
 
-#: data/scripts/edit_station.py:75
-
+#: data/scripts/edit_station.py:84
 msgid "<b>Edit station settings:</b>"
 msgstr "<b>Promijenite postavke postaje:</b>"
 
-#: data/scripts/edit_station.py:65
-
+#: data/scripts/edit_station.py:74
 msgid "<b>Enter new station details:</b>"
 msgstr "<b>Unesite podatke za novi radio:</b>"
 
-#: data/scripts/edit_station.py:70
-
+#: data/scripts/edit_station.py:79
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
 msgstr ""
 "<b>Ovu nasumično pronađenu radio stanicu zadržite u svojim favoritima:</b>"
 
-#: data/scripts/timonde_settings.py:740
-
+#: data/scripts/timonde_settings.py:549
 msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
 msgstr "<b>{nb_st}</b> postaja u <b>{nb_gr}</b> grupa."
 
-#: data/scripts/browse_bouquets.py:1208
-
+#: data/scripts/browse_bouquets.py:704
 msgid "<i>Select a file or sample above.</i>"
 msgstr "<i>Odaberite datoteku ili uzorak iznad.</i>"
 
-#: data/scripts/timonde_settings.py:709 data/scripts/timonde_settings.py:719
-
+#: data/scripts/timonde_settings.py:516 data/scripts/timonde_settings.py:528
 msgid "Active (Left & Right clicks unified)"
 msgstr "Activo (Clic izquierdo y derecho unificados)"
 
-#: data/scripts/browse_bouquets.py:882
-
+#: data/scripts/browse_bouquets.py:443
 msgid "Add"
 msgstr "Dodati"
 
-#: data/scripts/reorder_groups.py:189
-
+#: data/scripts/reorder_groups.py:157
 msgid "Add a new station to this group or to root"
 msgstr "AÃ±adir una nueva emisora a este grupo o a la raÃ­z"
 
-#: data/scripts/edit_station.py:64
-
+#: data/scripts/edit_station.py:73
 msgid "Add a station (TiMonde)"
 msgstr "Dodaj stanicu (TiMonde)"
 
-#: data/scripts/reorder_groups.py:189
-
+#: data/scripts/reorder_groups.py:157
 msgid "Add station"
 msgstr "Dodaj radio"
 
-#: data/scripts/reorder_groups.py:576
-
+#: data/scripts/reorder_groups.py:553
 msgid "Add station here..."
 msgstr "AÃ±adir emisora aquÃ­..."
 
-#: data/scripts/reorder_groups.py:597
-
+#: data/scripts/reorder_groups.py:561
 msgid "Add station..."
 msgstr "Dodaj postaju..."
 
-#: data/scripts/edit_station.py:66
-
+#: data/scripts/edit_station.py:75
 msgid "Add to my stations"
 msgstr "Dodaj mojim radijima"
 
-#: data/scripts/edit_station.py:159
-
+#: data/scripts/edit_station.py:172
 msgid "Align name"
 msgstr "Alinear nombre"
 
-#: data/scripts/reorder_groups.py:295
-
+#: data/scripts/reorder_groups.py:218
 msgid "All changes saved"
 msgstr "Todos los cambios guardados"
 
-#: data/scripts/browse_bouquets.py:784
-
+#: data/scripts/browse_bouquets.py:347
 msgid "All countries (Worldwide)"
 msgstr "Sve zemlje (širom svijeta)"
 
-#: data/scripts/reorder_groups.py:1281
-
+#: data/scripts/reorder_groups.py:1170
 msgid "All files (*.*)"
 msgstr "Sve datoteke (*.*)"
 
-#: data/scripts/browse_bouquets.py:823
-
+#: data/scripts/browse_bouquets.py:386
 msgid "All languages"
 msgstr "Svi jezici"
 
-#: data/scripts/timonde_settings.py:728
-
+#: data/scripts/timonde_settings.py:537
 msgid ""
 "Allows opening the station menu interchangeably with left or right click."
-msgstr "Omogućuje otvaranje izbornika stanice naizmjenično lijevim ili desnim klikom."
+msgstr ""
+"Omogućuje otvaranje izbornika stanice naizmjenično lijevim ili desnim klikom."
 
-#: data/scripts/timonde_common.py:1904
-
+#: data/scripts/timonde_common.py:1480
 msgid "Already registered"
 msgstr "Ya registrada"
 
-#: data/scripts/timonde_common.py:1899
-
+#: data/scripts/timonde_common.py:1475
 msgid "Already registered:"
 msgstr "Ya registrada:"
 
-#: data/scripts/reorder_groups.py:111 data/scripts/reorder_groups.py:1155
-
+#: data/scripts/reorder_groups.py:89 data/scripts/reorder_groups.py:1060
 msgid "Apply redirects"
 msgstr "Primijeni preusmjeravanja"
 
-#: data/scripts/reorder_groups.py:783 data/scripts/reorder_groups.py:785
-
-#: data/scripts/reorder_groups.py:787
-
+#: data/scripts/reorder_groups.py:762
 msgid "Are you sure you want to delete « {name} » ?"
 msgstr "Jeste li sigurni da želite izbrisati « {name} »?"
 
-#: data/scripts/edit_station.py:121
-
+#: data/scripts/edit_station.py:134
 msgid "Audio stream URL:"
 msgstr "URL audio streama:"
 
-#: data/scripts/reorder_groups.py:1139
-
+#: data/scripts/reorder_groups.py:1048
 msgid "Audit completed:"
 msgstr "Audit completed:"
 
-#: data/scripts/timonde_settings.py:666
-
+#: data/scripts/timonde_settings.py:474
 msgid "Automatic detection according to your Linux locale settings."
 msgstr "Automatsko otkrivanje prema vašim postavkama jezika Linuxa."
 
-#: data/scripts/timonde_settings.py:648
-
+#: data/scripts/timonde_settings.py:447
 msgid "Automatic launch on startup"
 msgstr "Automatsko pokretanje pri pokretanju"
 
-#: data/scripts/timonde_settings.py:751
-
+#: data/scripts/timonde_settings.py:560
 msgid "Automatic startup"
 msgstr "Automatsko pokretanje"
 
-#: data/scripts/reorder_groups.py:111
-
+#: data/scripts/reorder_groups.py:89
 msgid "Automatically update redirected streams to direct URL"
 msgstr "Automatsko ažuriranje feedova preusmjerenih na njihov izravni URL"
 
-#: data/scripts/browse_bouquets.py:913 data/scripts/browse_bouquets.py:1247
-
+#: data/scripts/browse_bouquets.py:448 data/scripts/browse_bouquets.py:719
 msgid "Availability"
 msgstr "Dostupnost"
 
-#: data/scripts/reorder_groups.py:1266
-
+#: data/scripts/reorder_groups.py:1163
 msgid "Backup my bookmarks (XML)"
 msgstr "Guardar mis marcadores (XML)"
 
-#: data/scripts/browse_bouquets.py:1199
-
+#: data/scripts/browse_bouquets.py:695
 msgid "Backup my radios (XML)..."
 msgstr "Sigurnosna kopija mojih radija (XML)..."
 
-#: data/scripts/reorder_groups.py:1302
-
+#: data/scripts/reorder_groups.py:1187
 msgid "Backup successful!"
 msgstr "Â¡Copia de seguridad realizada con Ã©xito!"
 
-#: data/scripts/timonde_common.py:1645
-
+#: data/scripts/timonde_common.py:1297
 msgid "Bitrate"
 msgstr "Bitrate"
 
-#: data/scripts/timonde_settings.py:530
-
+#: data/scripts/timonde_settings.py:332
 msgid "Bookmarks and stations saved successfully!"
 msgstr "Oznake i postaje uspješno su spremljene!"
 
-#: data/scripts/browse_bouquets.py:1203
-
+#: data/scripts/browse_bouquets.py:699
 msgid "Bookmarks folder"
 msgstr "Mapa s oznakama"
 
-#: data/scripts/browse_bouquets.py:2312
-
+#: data/scripts/browse_bouquets.py:1651
 msgid "CSV export is available from settings."
 msgstr "CSV izvoz dostupan je u postavkama."
 
-#: data/scripts/reorder_groups.py:1252
-
+#: data/scripts/reorder_groups.py:1146
 msgid "CSV export successful:"
 msgstr "ExportaciÃ³n CSV correcta:"
 
-#: data/scripts/browse_bouquets.py:1982 data/scripts/edit_station.py:308
-
-#: data/scripts/edit_station.py:575 data/scripts/reorder_groups.py:260
-
-#: data/scripts/reorder_groups.py:638 data/scripts/reorder_groups.py:948
-
-#: data/scripts/reorder_groups.py:1228 data/scripts/reorder_groups.py:1269
-
-#: data/scripts/timonde_common.py:1596 data/scripts/timonde_common.py:1720
-
+#: data/scripts/browse_bouquets.py:1371 data/scripts/edit_station.py:292
+#: data/scripts/edit_station.py:528 data/scripts/reorder_groups.py:188
+#: data/scripts/reorder_groups.py:588 data/scripts/reorder_groups.py:875
+#: data/scripts/reorder_groups.py:1128 data/scripts/reorder_groups.py:1165
+#: data/scripts/timonde_common.py:1270 data/scripts/timonde_common.py:1354
 msgid "Cancel"
 msgstr "Odustani"
 
-#: src/tray/menu.rs:589
-
+#: src/tray/menu.rs:591
 msgid "Cancel sleep timer"
 msgstr "Otkaži spavanje"
 
-#: data/scripts/timonde_common.py:1814
-
+#: data/scripts/timonde_common.py:1412
 msgid "Check"
 msgstr "Comprobar"
 
-#: data/scripts/browse_bouquets.py:938 data/scripts/browse_bouquets.py:1107
-
-#: data/scripts/browse_bouquets.py:1274
-
+#: data/scripts/browse_bouquets.py:462 data/scripts/browse_bouquets.py:603
+#: data/scripts/browse_bouquets.py:733
 msgid "Check all"
 msgstr "Provjerite sve"
 
-#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
-
+#: data/scripts/browse_bouquets.py:619 data/scripts/browse_bouquets.py:749
 msgid "Check and submit selected station to Radio-Browser directory"
 msgstr "Comprobar y enviar la emisora seleccionada al directorio Radio-Browser"
 
-#: data/scripts/timonde_common.py:1814
-
+#: data/scripts/timonde_common.py:1412
 msgid "Check entered stream URL again on Radio-Browser"
 msgstr "Comprobar de nuevo la URL del flujo en Radio-Browser"
 
-#: data/scripts/edit_station.py:139
+#: data/scripts/timonde_common.py:195
+msgid "Check failed"
+msgstr "Provjera nije uspjela"
 
+#: data/scripts/edit_station.py:152
 msgid "Check if stream is listed or contribute to directory"
 msgstr "Comprobar si el flujo estÃ¡ listado o contribuir al directorio"
 
-#: data/scripts/edit_station.py:135
-
+#: data/scripts/edit_station.py:148
 msgid "Check link validity and listen to stream preview"
 msgstr "Provjerite valjanost veze i poslušajte pretpregled streama"
 
-#: data/scripts/browse_bouquets.py:1286
-
+#: data/scripts/browse_bouquets.py:745
 msgid "Check links availability live"
 msgstr "Provjerite dostupnost linkova uživo"
 
-#: data/scripts/browse_bouquets.py:946
-
+#: data/scripts/browse_bouquets.py:470
 msgid "Check live availability of found stations"
 msgstr "Provjerite dostupnost pronađenih stanica uživo"
 
-#: data/scripts/reorder_groups.py:242
-
+#: data/scripts/reorder_groups.py:178
 msgid "Check or contribute selected station to Radio-Browser"
 msgstr "Comprobar o contribuir la emisora seleccionada en Radio-Browser"
 
-#: data/scripts/browse_bouquets.py:1115
-
+#: data/scripts/browse_bouquets.py:611
 msgid "Check stations live availability"
 msgstr "Provjerite dostupnost stanica uživo"
 
-#: data/scripts/reorder_groups.py:102
-
+#: data/scripts/reorder_groups.py:85
 msgid "Check streams"
 msgstr "Provjerite feedove"
 
-#: data/scripts/timonde_common.py:1882
-
+#: data/scripts/timonde_common.py:1465
 msgid "Checking Radio-Browser directory..."
 msgstr "Consultando el directorio Radio-Browser..."
 
-#: data/scripts/reorder_groups.py:1077
-
+#: data/scripts/reorder_groups.py:993
 msgid "Checking your radio stations"
 msgstr "Checking your radio stations"
 
-#: data/scripts/browse_bouquets.py:1656
-
+#: data/scripts/browse_bouquets.py:1080
 msgid "Checking..."
 msgstr "Povezivanje..."
 
-#: data/scripts/browse_bouquets.py:1978
-
+#: data/scripts/browse_bouquets.py:1367
 msgid "Choose a radio station file"
 msgstr "Odaberite datoteku radijske postaje"
 
-#: data/scripts/browse_bouquets.py:676
-
+#: data/scripts/timonde_common.py:583
 msgid "Choose from existing groups"
 msgstr "Odaberite iz postojećih grupa"
 
-#: data/scripts/timonde_settings.py:727
-
+#: data/scripts/timonde_settings.py:536
 msgid "Cinnamon Left-Click Unification"
 msgstr "UnificaciÃ³n de clic izquierdo en Cinnamon"
 
-#: data/scripts/timonde_settings.py:721
-
+#: data/scripts/timonde_settings.py:530
 msgid "Cinnamon left-click unification successfully enabled!"
 msgstr "Â¡UnificaciÃ³n de clic izquierdo en Cinnamon activada con Ã©xito!"
 
-#: data/scripts/edit_station.py:265
-
+#: data/scripts/edit_station.py:252
 msgid "Clear"
 msgstr "Clear"
 
-#: data/scripts/edit_station.py:266
-
+#: data/scripts/edit_station.py:253
 msgid "Clear / Automatic mode"
 msgstr "Borrar / Modo automÃ¡tico"
 
-#: data/scripts/browse_bouquets.py:789
-
+#: data/scripts/browse_bouquets.py:352
 msgid "Clear country filter"
 msgstr "Očisti filtar zemlje"
 
-#: data/scripts/browse_bouquets.py:669
-
+#: data/scripts/timonde_common.py:577
 msgid "Clear field"
 msgstr "Čisto polje"
 
-#: data/scripts/edit_station.py:187
-
+#: data/scripts/edit_station.py:201
 msgid "Clear field (click to empty)"
 msgstr "Limpiar campo (clic para vaciar)"
 
-#: data/scripts/browse_bouquets.py:828
-
+#: data/scripts/browse_bouquets.py:391
 msgid "Clear language filter"
 msgstr "Očisti jezični filtar"
 
-#: data/scripts/browse_bouquets.py:1335 data/scripts/timonde_common.py:1858
-
-#: data/scripts/timonde_settings.py:447
-
+#: data/scripts/timonde_common.py:1436 data/scripts/timonde_common.py:1524
+#: data/scripts/timonde_settings.py:249
 msgid "Close"
 msgstr "Zatvori"
 
-#: data/scripts/reorder_groups.py:88
-
+#: data/scripts/reorder_groups.py:79
 msgid "Collapse all"
 msgstr "Plegar todo"
 
-#: data/scripts/reorder_groups.py:88
-
+#: data/scripts/reorder_groups.py:79
 msgid "Collapse all groups for an overview"
 msgstr "Plegar todos los grupos para una vista general"
 
-#: data/scripts/timonde_settings.py:594
-
+#: data/scripts/timonde_settings.py:393
 msgid "Collections & Files"
 msgstr "Zbirke i datoteke"
 
-#: data/scripts/reorder_groups.py:794
-
+#: data/scripts/reorder_groups.py:774
 msgid "Confirm deletion"
 msgstr "Confirmar eliminaciÃ³n"
 
-#: data/scripts/timonde_common.py:1328
-
-msgid "Connecting to"
-msgstr "Povezivanje s"
-
-#: src/i18n.rs:192 src/tray/menu.rs:159
-
+#: src/i18n.rs:226 src/tray/menu.rs:161
 msgid "Connecting..."
 msgstr "Povezivanje..."
 
-#: data/scripts/browse_bouquets.py:739
-
+#: data/scripts/browse_bouquets.py:302
 msgid "Contribute a station"
 msgstr "Contribuir una emisora"
 
-#: data/scripts/timonde_common.py:1781
-
+#: data/scripts/timonde_common.py:1400
 msgid "Contribute a station to the community Radio-Browser directory"
 msgstr "Enviar una nueva emisora al directorio comunitario Radio-Browser"
 
-#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
-
-#: data/scripts/timonde_common.py:1761
-
+#: data/scripts/browse_bouquets.py:619 data/scripts/browse_bouquets.py:749
+#: data/scripts/timonde_common.py:1385
 msgid "Contribute to Radio-Browser"
 msgstr "Contribuir a Radio-Browser"
 
-#: data/scripts/reorder_groups.py:242 data/scripts/reorder_groups.py:567
-
+#: data/scripts/reorder_groups.py:178 data/scripts/reorder_groups.py:547
 msgid "Contribute to Radio-Browser..."
 msgstr "Contribuir a Radio-Browser..."
 
-#: data/scripts/browse_bouquets.py:894 data/scripts/browse_bouquets.py:1240
-
-#: data/scripts/timonde_common.py:1648
-
+#: data/scripts/browse_bouquets.py:445 data/scripts/browse_bouquets.py:718
+#: data/scripts/timonde_common.py:1297
 msgid "Country"
 msgstr "<b>Country:</b>"
 
-#: data/scripts/browse_bouquets.py:1327 data/scripts/timonde_settings.py:593
-
+#: data/scripts/timonde_settings.py:392
 msgid "Country bouquets"
 msgstr "Seoski buketi"
 
-#: data/scripts/timonde_common.py:1821
-
+#: data/scripts/timonde_common.py:1423
 msgid "Country code (ISO):"
 msgstr "CÃ³digo de paÃ­s (ISO):"
 
-#: data/scripts/browse_bouquets.py:981 data/scripts/edit_station.py:228
-
-#: data/scripts/timonde_common.py:1900
-
+#: data/scripts/browse_bouquets.py:505 data/scripts/edit_station.py:238
+#: data/scripts/timonde_common.py:1476
 msgid "Country:"
 msgstr "Country:"
 
-#: data/scripts/reorder_groups.py:639
-
+#: data/scripts/reorder_groups.py:589
 msgid "Create"
 msgstr "Crear"
 
-#: data/scripts/browse_bouquets.py:1199
-
+#: data/scripts/browse_bouquets.py:695
 msgid "Create a full backup of your collection (with folders and timezones)"
-msgstr "Napravite punu sigurnosnu kopiju svoje kolekcije (s mapama i vremenskim zonama)"
+msgstr ""
+"Napravite punu sigurnosnu kopiju svoje kolekcije (s mapama i vremenskim "
+"zonama)"
 
-#: data/scripts/reorder_groups.py:634
-
+#: data/scripts/reorder_groups.py:587
 msgid "Create a new group"
 msgstr "Crear un nuevo grupo"
 
-#: data/scripts/reorder_groups.py:193
-
+#: data/scripts/reorder_groups.py:158
 msgid "Create a new group or subgroup (Ctrl+N)"
 msgstr "Crear un nuevo grupo o subgrupo (Ctrl+N)"
 
-#: data/scripts/reorder_groups.py:658
-
+#: data/scripts/reorder_groups.py:603
 msgid "Create as a subgroup inside"
 msgstr "Crear como subgrupo dentro de"
 
-#: data/scripts/timonde_settings.py:656
-
+#: data/scripts/timonde_settings.py:455
 msgid "DETECTED ENVIRONMENT (READ ONLY)"
 msgstr "OTKRIVENO OKRUŽENJE (SAMO ZA ČITANJE)"
 
 #: src/timezone.rs:521
-
 msgid "Daytime"
 msgstr "dan"
 
-#: data/scripts/reorder_groups.py:106 data/scripts/reorder_groups.py:1147
-
+#: data/scripts/reorder_groups.py:87 data/scripts/reorder_groups.py:1052
 msgid "Dead links only"
 msgstr "Samo mrtvi linkovi"
 
-#: data/scripts/edit_station.py:576 data/scripts/reorder_groups.py:246
-
-#: src/i18n.rs:230 src/i18n.rs:236
-
+#: data/scripts/edit_station.py:529 data/scripts/reorder_groups.py:179
+#: src/i18n.rs:268 src/i18n.rs:274
 msgid "Delete"
 msgstr "Izbriši"
 
-#: data/scripts/reorder_groups.py:588
-
+#: data/scripts/reorder_groups.py:556
 msgid "Delete group and stations"
 msgstr "Eliminar grupo y emisoras"
 
-#: data/scripts/reorder_groups.py:246
-
+#: data/scripts/reorder_groups.py:179
 msgid "Delete selected item or group (Del)"
 msgstr "Delete selected item or group (Del)"
 
-#: data/scripts/edit_station.py:303 data/scripts/reorder_groups.py:571
-
+#: data/scripts/edit_station.py:287 data/scripts/reorder_groups.py:548
 msgid "Delete this station"
 msgstr "Izbriši ovaj radio"
 
-#: data/scripts/edit_station.py:572
-
+#: data/scripts/edit_station.py:525
 msgid "Delete « {} » from favorites?"
 msgstr "Ukloniti “{}” iz favorita?"
 
-#: data/scripts/reorder_groups.py:803
-
+#: data/scripts/reorder_groups.py:784
 msgid "Deleted:"
 msgstr "Eliminado:"
 
-#: data/scripts/timonde_settings.py:676
-
+#: data/scripts/timonde_settings.py:484
 msgid "Desktop environment & Tray"
 msgstr "Desktop okruženje i Tray"
 
-#: data/scripts/reorder_groups.py:169
-
+#: data/scripts/reorder_groups.py:136
 msgid "Details / Status"
 msgstr "Detalles / Estado"
 
-#: data/scripts/browse_bouquets.py:525
-
-msgid "Discover & Import stations (TiMonde)"
-msgstr "Otkrijte i uvezite radio postaje (TiMonde)"
-
-#: data/scripts/timonde_settings.py:649
-
+#: data/scripts/timonde_settings.py:448
 msgid ""
 "Discreetly starts TiMonde in the background as soon as your graphical "
 "session opens."
-msgstr "Diskretno pokreće TiMonde u pozadini čim se otvori vaša grafička sesija."
+msgstr ""
+"Diskretno pokreće TiMonde u pozadini čim se otvori vaša grafička sesija."
 
-#: data/scripts/reorder_groups.py:107
-
+#: data/scripts/reorder_groups.py:87
 msgid "Display offline radio streams only"
 msgstr "Prikaži samo radio postaje čiji je stream izvan mreže"
 
-#: data/scripts/reorder_groups.py:234 src/i18n.rs:229 src/i18n.rs:235
+#: data/scripts/reorder_groups.py:1225
+msgid "Do you want to discard them and exit?"
+msgstr "Želite li ih odbaciti i izaći?"
 
-#: src/tray/menu.rs:384
-
+#: data/scripts/reorder_groups.py:176 src/i18n.rs:267 src/i18n.rs:273
+#: src/tray/menu.rs:390
 msgid "Edit"
 msgstr "Uredi"
 
-#: data/scripts/reorder_groups.py:234
-
+#: data/scripts/reorder_groups.py:176
 msgid "Edit selected name, URL or group (F2)"
 msgstr "Editar nombre, URL o grupo seleccionado (F2)"
 
-#: data/scripts/edit_station.py:74
+#: data/scripts/timonde_common.py:1438 data/scripts/timonde_common.py:1481
+msgid "Edit station"
+msgstr "Uredi postaju"
 
+#: data/scripts/edit_station.py:83
 msgid "Edit station (TiMonde)"
 msgstr "Uredi radio (TiMonde)"
 
-#: data/scripts/reorder_groups.py:555
-
+#: data/scripts/reorder_groups.py:544
 msgid "Edit station..."
 msgstr "Dodaj postaju..."
 
-#: data/scripts/timonde_common.py:132
-
+#: data/scripts/timonde_common.py:166
 msgid "Empty URL"
 msgstr "URL vacÃ­a"
 
-#: data/scripts/timonde_common.py:1301 data/scripts/timonde_common.py:1315
-
+#: data/scripts/timonde_common.py:1081 data/scripts/timonde_common.py:1096
 msgid "Empty stream URL"
 msgstr "Prazan URL streama"
 
-#: data/scripts/timonde_settings.py:709
-
+#: data/scripts/timonde_settings.py:516
 msgid "Enable Left-Click"
 msgstr "Activar clic izquierdo"
 
-#: data/scripts/timonde_common.py:1277
-
-msgid "End of stream"
-msgstr "Kraj streama"
-
-#: data/scripts/browse_bouquets.py:950
-
+#: data/scripts/browse_bouquets.py:474
 msgid "Enter a keyword or click Search to browse the directory."
 msgstr "Unesite ključnu riječ ili kliknite Traži za pregledavanje imenika."
 
-#: src/tray/mod.rs:155
-
+#: src/tray/mod.rs:143
 msgid "Ephemeral radio (not saved)."
 msgstr "Radio efÃ­mera (no guardada)."
 
-#: data/scripts/reorder_groups.py:1312
+#: data/scripts/timonde_common.py:1222
+msgid "Error communicating with TiMonde binary"
+msgstr "Pogreška u komunikaciji s izvršnom datotekom TiMonde"
 
+#: data/scripts/reorder_groups.py:1189
 msgid "Error during backup:"
 msgstr "Greška tijekom izrade sigurnosne kopije:"
 
-#: data/scripts/timonde_settings.py:753
-
+#: data/scripts/timonde_settings.py:562
 msgid "Error modifying autostart."
 msgstr "Pogreška pri modificiranju automatskog pokretanja."
 
-#: data/scripts/timonde_common.py:195
-
-msgid "Error {code}"
-msgstr "Greška {code}"
-
-#: data/scripts/gnome_tray_helper.py:217
-
+#: data/scripts/gnome_tray_helper.py:228
 msgid "Error:"
 msgstr "Greška:"
 
 #: src/timezone.rs:521
-
 msgid "Evening"
 msgstr "Večer"
 
-#: data/scripts/browse_bouquets.py:652
-
+#: data/scripts/timonde_common.py:560
 msgid "Ex: /France/Jazz or / for root"
 msgstr "Primjer: /Francuska/Jazz ili / za root"
 
-#: data/scripts/browse_bouquets.py:1169
-
+#: data/scripts/browse_bouquets.py:665
 msgid "Examples folder"
 msgstr "Mapa primjera"
 
-#: data/scripts/reorder_groups.py:92
-
+#: data/scripts/reorder_groups.py:81
 msgid "Expand all"
 msgstr "Desplegar todo"
 
-#: data/scripts/reorder_groups.py:92
-
+#: data/scripts/reorder_groups.py:81
 msgid "Expand all groups and subgroups"
 msgstr "Desplegar todos los grupos y subgrupos"
 
-#: data/scripts/browse_bouquets.py:1087
-
+#: data/scripts/browse_bouquets.py:583
 msgid "Explore stations from this country on Radio-Browser"
 msgstr "Istražite postaje iz ove zemlje na Radio-Browser"
 
-#: data/scripts/browse_bouquets.py:1628
-
+#: data/scripts/browse_bouquets.py:1052
 msgid "Explore stations from {country} on Radio-Browser ➔"
 msgstr "Istražite postaje iz {country} na Radio-Browser ➔"
 
-#: data/scripts/reorder_groups.py:1228
-
+#: data/scripts/reorder_groups.py:1128
 msgid "Export"
 msgstr "Izvoz"
 
-#: data/scripts/reorder_groups.py:264
-
+#: data/scripts/reorder_groups.py:192
 msgid "Export all stations to CSV spreadsheet format"
 msgstr "Izvezite sve svoje radio uređaje u CSV format proračunske tablice"
 
-#: data/scripts/reorder_groups.py:1254
-
+#: data/scripts/reorder_groups.py:1148 data/scripts/reorder_groups.py:1150
 msgid "Export error:"
 msgstr "Error de exportaciÃ³n:"
 
-#: data/scripts/reorder_groups.py:1225
-
+#: data/scripts/reorder_groups.py:1126
 msgid "Export stations to CSV"
 msgstr "Exportar emisoras a CSV"
 
-#: data/scripts/reorder_groups.py:264
-
+#: data/scripts/reorder_groups.py:192
 msgid "Export to CSV"
 msgstr "Izvoz u CSV"
 
-#: data/scripts/browse_bouquets.py:1195
-
+#: data/scripts/browse_bouquets.py:691
 msgid "Export to spreadsheet (CSV)..."
 msgstr "Izvezi u proračunsku tablicu (CSV)..."
 
-#: data/scripts/browse_bouquets.py:1182
-
+#: data/scripts/browse_bouquets.py:678
 msgid "External file:"
 msgstr "Vanjska datoteka:"
 
-#: data/scripts/timonde_common.py:1530
-
-msgid "Failed to add station"
-msgstr "Error al aÃ±adir la emisora"
-
-#: data/scripts/timonde_settings.py:723
-
+#: data/scripts/timonde_settings.py:532
 msgid "Failed to enable Cinnamon unification."
 msgstr "Error al activar la unificaciÃ³n en Cinnamon."
 
-#: data/scripts/browse_bouquets.py:918 data/scripts/browse_bouquets.py:1066
-
-#: data/scripts/browse_bouquets.py:1252
-
+#: data/scripts/browse_bouquets.py:449 data/scripts/browse_bouquets.py:565
+#: data/scripts/browse_bouquets.py:720
 msgid "Favorite status"
 msgstr "Omiljeni status"
 
-#: data/scripts/browse_bouquets.py:2056
-
+#: data/scripts/browse_bouquets.py:1443
 msgid "File:"
 msgstr "datoteka:"
 
-#: data/scripts/browse_bouquets.py:779
-
+#: data/scripts/browse_bouquets.py:342
 msgid "Filter by country:"
 msgstr "Filtriraj po zemlji:"
 
-#: data/scripts/browse_bouquets.py:1235
-
+#: data/scripts/browse_bouquets.py:717
 msgid "Folder / Group"
 msgstr "Mapa / Grupa"
 
-#: data/scripts/timonde_common.py:1642
-
+#: data/scripts/timonde_common.py:1297
 msgid "Format"
 msgstr "Format"
 
-#: data/scripts/browse_bouquets.py:906
-
+#: data/scripts/browse_bouquets.py:447
 msgid "Format & Bitrate"
 msgstr "Format i brzina prijenosa"
 
-#: data/scripts/gnome_tray_helper.py:150
-
+#: data/scripts/gnome_tray_helper.py:161
 msgid "GNOME Shell environment detected"
 msgstr "Otkriveno okruženje GNOME Shell"
 
-#: data/scripts/timonde_settings.py:693
-
+#: data/scripts/timonde_settings.py:501
 msgid "GNOME integration required"
 msgstr "Potrebna je integracija GNOME-a"
 
-#: data/scripts/timonde_common.py:1319
-
-msgid "GStreamer not available"
-msgstr "GStreamer nije dostupan"
-
-#: data/scripts/browse_bouquets.py:1195
-
+#: data/scripts/browse_bouquets.py:691
 msgid "Generate a flat list for Calc or Excel spreadsheet"
 msgstr "Generirajte ravni popis za Calc ili Excel proračunsku tablicu"
 
-#: data/scripts/browse_bouquets.py:901
-
+#: data/scripts/browse_bouquets.py:446
 msgid "Genre / Tags"
 msgstr "Spol / oznake"
 
-#: data/scripts/browse_bouquets.py:1053
-
+#: data/scripts/browse_bouquets.py:563
 msgid "Genre / Topic"
 msgstr "Žanr / tema"
 
-#: data/scripts/browse_bouquets.py:759
-
+#: data/scripts/browse_bouquets.py:322
 msgid "Genre:"
 msgstr "Spol:"
 
-#: data/scripts/timonde_common.py:193
-
+#: data/scripts/timonde_common.py:182
 msgid "Geoblocked (VPN)"
 msgstr "Geobloqueado (VPN)"
 
-#: data/scripts/browse_bouquets.py:735
-
+#: data/scripts/browse_bouquets.py:298
 msgid ""
 "Global search on the free and open <b>Radio-Browser</b> directory (+45,000 "
 "stations)."
-msgstr "Globalno pretraživanje besplatnog i otvorenog <b>Radio-Browser</b> imenika (+45 000 postaja)."
+msgstr ""
+"Globalno pretraživanje besplatnog i otvorenog <b>Radio-Browser</b> imenika "
+"(+45 000 postaja)."
 
-#: data/scripts/edit_station.py:168
-
+#: data/scripts/edit_station.py:181
 msgid "Group / Folder:"
 msgstr "Grupa/Mapa:"
 
-#: data/scripts/reorder_groups.py:677
-
+#: data/scripts/reorder_groups.py:618
 msgid "Group created:"
 msgstr "Grupo creado:"
 
-#: data/scripts/reorder_groups.py:734
-
+#: data/scripts/reorder_groups.py:690
 msgid "Group renamed:"
 msgstr "Grupo renombrado:"
 
-#: data/scripts/browse_bouquets.py:645
-
+#: data/scripts/timonde_common.py:553
 msgid "Group:"
 msgstr "Skupina:"
 
-#: data/scripts/timonde_common.py:189
-
-msgid "HTTP Error {code}"
-msgstr "Error HTTP {code}"
-
-#: data/scripts/browse_bouquets.py:702
-
+#: data/scripts/timonde_common.py:606
 msgid "Help on groups and subgroups"
 msgstr "Pomoć u grupama i podgrupama"
 
-#: data/scripts/browse_bouquets.py:1039 data/scripts/browse_bouquets.py:1221
-
+#: data/scripts/browse_bouquets.py:561 data/scripts/browse_bouquets.py:715
 msgid "Import"
 msgstr "Uvoz"
 
-#: data/scripts/browse_bouquets.py:1328
-
-msgid "Import & Export"
-msgstr "Uvoz i izvoz"
-
-#: data/scripts/browse_bouquets.py:717
-
+#: data/scripts/browse_bouquets.py:280
 msgid "Import to my favorites"
 msgstr "Uvezi u moje favorite"
 
-#: src/tray/menu.rs:560
-
+#: src/tray/menu.rs:562
 msgid "In 15 minutes"
 msgstr "Za 15 minuta"
 
-#: src/tray/menu.rs:567
-
+#: src/tray/menu.rs:569
 msgid "In 30 minutes"
 msgstr "Za 30 minuta"
 
-#: src/tray/menu.rs:574
-
+#: src/tray/menu.rs:576
 msgid "In 45 minutes"
 msgstr "Za 45 minuta"
 
-#: src/tray/menu.rs:581
-
+#: src/tray/menu.rs:583
 msgid "In 60 minutes (1h)"
 msgstr "Za 60 minuta (1 sat)"
 
-#: data/scripts/reorder_groups.py:707
-
+#: data/scripts/reorder_groups.py:675
 msgid "Insert"
 msgstr "Insertar"
 
-#: data/scripts/reorder_groups.py:230
-
+#: data/scripts/reorder_groups.py:175
 msgid "Insert a separator or header"
 msgstr "Insertar separador o encabezado"
 
-#: data/scripts/reorder_groups.py:705
-
+#: data/scripts/reorder_groups.py:673
 msgid "Insert separator"
 msgstr "Insertar separador"
 
-#: data/scripts/gnome_tray_helper.py:179 data/scripts/timonde_settings.py:688
-
+#: data/scripts/gnome_tray_helper.py:190 data/scripts/timonde_settings.py:495
 msgid "Install GNOME integration"
 msgstr "Instalirajte GNOME integraciju"
 
-#: data/scripts/gnome_tray_helper.py:198
-
+#: data/scripts/gnome_tray_helper.py:209
 msgid "Installation in progress (please confirm system prompt)..."
 msgstr "Instalacija u tijeku (potvrdite upit sustava)..."
 
-#: data/scripts/gnome_tray_helper.py:213
-
+#: data/scripts/gnome_tray_helper.py:224
 msgid "Installation was cancelled or failed."
 msgstr "Instalacija je otkazana ili nije uspjela."
 
-#: data/scripts/gnome_tray_helper.py:145
+#: data/scripts/timonde_settings.py:464
+msgid "Installed binary:"
+msgstr "Instalirana binarna datoteka:"
 
+#: data/scripts/gnome_tray_helper.py:156
 msgid "Integration in GNOME top bar"
 msgstr "Integracija u GNOME gornju traku"
 
-#: data/scripts/edit_station.py:71
-
+#: data/scripts/edit_station.py:80
 msgid "Keep in favorites"
 msgstr "Spremi u moje favorite"
 
-#: data/scripts/browse_bouquets.py:749
-
+#: data/scripts/browse_bouquets.py:312
 msgid "Keyword:"
 msgstr "ključna riječ:"
 
-#: data/scripts/browse_bouquets.py:819 data/scripts/browse_bouquets.py:1023
-
+#: data/scripts/browse_bouquets.py:382 data/scripts/browse_bouquets.py:547
 msgid "Language:"
 msgstr "Jezik:"
 
-#: data/scripts/browse_bouquets.py:706 data/scripts/browse_bouquets.py:1399
-
-#: data/scripts/reorder_groups.py:185 data/scripts/reorder_groups.py:1005
-
+#: data/scripts/browse_bouquets.py:269 data/scripts/browse_bouquets.py:821
+#: data/scripts/reorder_groups.py:156 data/scripts/reorder_groups.py:908
 msgid "Listen"
 msgstr "Escuchar"
 
-#: data/scripts/browse_bouquets.py:706
-
+#: data/scripts/browse_bouquets.py:269
 msgid "Listen to selected station"
 msgstr "Slušajte odabranu stanicu"
 
-#: data/scripts/timonde_common.py:204
-
-msgid "Live (Shoutcast)"
-msgstr "En directo (Shoutcast)"
-
-#: data/scripts/timonde_common.py:187
-
+#: data/scripts/timonde_common.py:185
 msgid "Live ({codec})"
 msgstr "En directo ({codec})"
 
-#: data/scripts/browse_bouquets.py:1060
-
+#: data/scripts/browse_bouquets.py:564
 msgid "Live availability"
 msgstr "Dostupnost uživo"
 
-#: data/scripts/browse_bouquets.py:1186
-
+#: data/scripts/browse_bouquets.py:682
 msgid "Load a file..."
 msgstr "Učitaj datoteku..."
 
-#: data/scripts/browse_bouquets.py:1186
-
+#: data/scripts/browse_bouquets.py:682
 msgid "Load an XML, CSV, JSON, M3U or PLS file"
 msgstr "Učitajte XML, CSV, JSON, M3U ili PLS datoteku"
 
 #: src/timezone.rs:521
-
 msgid "Morning"
 msgstr "jutro"
 
-#: data/scripts/reorder_groups.py:949
-
+#: data/scripts/reorder_groups.py:876
 msgid "Move"
 msgstr "Mover"
 
-#: data/scripts/reorder_groups.py:219
-
+#: data/scripts/reorder_groups.py:167
 msgid "Move down"
 msgstr "⬇ Idi dolje"
 
-#: data/scripts/reorder_groups.py:219
-
+#: data/scripts/reorder_groups.py:167
 msgid "Move down one rank"
 msgstr "Move down one rank"
 
-#: data/scripts/reorder_groups.py:211
-
+#: data/scripts/reorder_groups.py:165
 msgid "Move selected item to the top"
 msgstr "Move selected item to the top"
 
-#: data/scripts/reorder_groups.py:197
-
+#: data/scripts/reorder_groups.py:159
 msgid "Move selection to another group (Ctrl+M)"
 msgstr "Move selection to another group (Ctrl+M)"
 
-#: data/scripts/reorder_groups.py:944
-
+#: data/scripts/reorder_groups.py:874
 msgid "Move to another group"
 msgstr "Mover a otro grupo"
 
-#: data/scripts/reorder_groups.py:559
-
+#: data/scripts/reorder_groups.py:545
 msgid "Move to another group..."
 msgstr "Move selection to another group (Ctrl+M)"
 
-#: data/scripts/reorder_groups.py:197
-
+#: data/scripts/reorder_groups.py:159
 msgid "Move to..."
 msgstr "Premjesti u..."
 
-#: data/scripts/reorder_groups.py:215
-
+#: data/scripts/reorder_groups.py:166
 msgid "Move up"
 msgstr "⬆ Idi gore"
 
-#: data/scripts/reorder_groups.py:215
-
+#: data/scripts/reorder_groups.py:166
 msgid "Move up one rank"
 msgstr "Move up one rank"
 
-#: src/tray/menu.rs:528
-
+#: src/tray/menu.rs:530
 msgid "Mute (0%)"
 msgstr "Isključi zvuk (0%)"
 
-#: data/scripts/reorder_groups.py:98 data/scripts/timonde_settings.py:524
-
+#: data/scripts/reorder_groups.py:84 data/scripts/timonde_settings.py:326
 msgid "My Radios"
 msgstr "Moji radiji"
 
-#: data/scripts/timonde_common.py:1925
-
+#: data/scripts/timonde_common.py:1505
 msgid "Name and Stream URL are mandatory."
 msgstr "El nombre y la URL del flujo son obligatorios."
 
-#: data/scripts/reorder_groups.py:646
-
+#: data/scripts/reorder_groups.py:596
 msgid "Name of the new group:"
 msgstr "Nombre del nuevo grupo:"
 
-#: data/scripts/browse_bouquets.py:1011
-
+#: data/scripts/browse_bouquets.py:535
 msgid "National Bouquet (Major stations)"
 msgstr "Nacionalni buket (glavne postaje)"
 
-#: data/scripts/timonde_settings.py:677
+#: data/scripts/browse_bouquets.py:1032
+msgid "National Radios"
+msgstr "National Radios"
 
+#: data/scripts/timonde_settings.py:485
 msgid ""
 "Native integration in notification tray via StatusNotifierItem / XEmbed."
-msgstr "Izvorna integracija u paletu obavijesti putem StatusNotifierItem / XEmbed."
+msgstr ""
+"Izvorna integracija u paletu obavijesti putem StatusNotifierItem / XEmbed."
 
-#: data/scripts/browse_bouquets.py:1655
-
+#: data/scripts/browse_bouquets.py:1079
 msgid "New"
 msgstr "[Nova]"
 
-#: data/scripts/reorder_groups.py:193
-
+#: data/scripts/reorder_groups.py:158
 msgid "New group"
 msgstr "Nova grupa"
 
-#: data/scripts/reorder_groups.py:593
-
+#: data/scripts/reorder_groups.py:560
 msgid "New group..."
 msgstr "Nova grupa"
 
-#: data/scripts/reorder_groups.py:725
-
+#: data/scripts/reorder_groups.py:694
 msgid "New name for group:"
 msgstr "Nuevo nombre del grupo:"
 
-#: data/scripts/browse_bouquets.py:1282
-
+#: data/scripts/browse_bouquets.py:741
 msgid "New only"
 msgstr "Samo novo"
 
-#: data/scripts/reorder_groups.py:580
-
+#: data/scripts/reorder_groups.py:554
 msgid "New subgroup here..."
 msgstr "Nuevo subgrupo aquÃ­..."
 
 #: src/timezone.rs:521
-
 msgid "Night"
 msgstr "Noć"
 
-#: data/scripts/browse_bouquets.py:1726
-
+#: data/scripts/browse_bouquets.py:1162
 msgid "No DAB+ bouquet for {country} — Use 'Search online'."
 msgstr "Nema DAB+ paketa za {country} — Koristite 'Pretraži na mreži'."
 
-#: data/scripts/reorder_groups.py:1262
-
+#: data/scripts/reorder_groups.py:1159
 msgid "No bookmarks.xml file found to backup."
 msgstr "No se encontrÃ³ ningÃºn archivo bookmarks.xml para respaldar."
 
-#: data/scripts/reorder_groups.py:872
-
+#: data/scripts/reorder_groups.py:834
 msgid "No items to sort in this group."
 msgstr "No hay elementos para ordenar en este grupo."
 
-#: data/scripts/timonde_settings.py:618
-
+#: data/scripts/timonde_settings.py:417
 msgid "No new stations added (already in your bookmarks)."
 msgstr "No se aÃ±adieron nuevas emisoras (ya estÃ¡n en sus marcadores)."
 
-#: data/scripts/browse_bouquets.py:1625
-
+#: data/scripts/browse_bouquets.py:1049
 msgid "No pre-loaded DAB+ bouquet for this country."
 msgstr "Nema unaprijed učitanog DAB+ paketa za ovu zemlju."
 
-#: data/scripts/browse_bouquets.py:1898
-
+#: data/scripts/browse_bouquets.py:1316
 msgid ""
 "No radio found for these criteria in {country}. Uncheck 'Filter by country' "
 "to search globally."
@@ -1110,8 +870,7 @@ msgstr ""
 "Nije pronađen radio za ove kriterije u {country}. Odznačite 'Filtriraj po "
 "zemlji' za globalno pretraživanje."
 
-#: data/scripts/browse_bouquets.py:1895
-
+#: data/scripts/browse_bouquets.py:1313
 msgid ""
 "No radio found for this language in {country}. Uncheck 'Filter by country' "
 "or clear the language."
@@ -1119,797 +878,632 @@ msgstr ""
 "Nije pronađen radio za ovaj jezik u {country}. Odznačite 'Filtriraj po "
 "zemlji' ili očistite jezik."
 
-#: data/scripts/browse_bouquets.py:1900
-
+#: data/scripts/browse_bouquets.py:1318
 msgid "No radio found on Radio-Browser for these criteria."
 msgstr "Nije pronađen radio na Radio-Browser za ove kriterije."
 
-#: src/tray/mod.rs:459
-
+#: src/tray/mod.rs:486
 msgid "No radio is currently playing."
 msgstr "Trenutačno se ne reproducira nijedan radio."
 
-#: src/tray/menu.rs:297
-
+#: src/tray/menu.rs:301
 msgid "No station loaded"
 msgstr "No stations to check."
 
-#: data/scripts/reorder_groups.py:1072
-
+#: data/scripts/reorder_groups.py:988
 msgid "No stations to check."
 msgstr "No stations to check."
 
-#: data/scripts/timonde_common.py:1680
-
+#: data/scripts/timonde_common.py:1325
 msgid "No stream found for this name. Modify the text above."
 msgstr "Nije pronađen stream za ovaj naziv. Izmijenite gornji tekst."
 
-#: data/scripts/timonde_common.py:1907
-
+#: data/scripts/timonde_common.py:1486
 msgid "Not listed yet!"
 msgstr "Â¡AÃºn no listada!"
 
-#: data/scripts/timonde_common.py:1721
-
+#: data/scripts/timonde_common.py:1355
 msgid "OK"
 msgstr "OK"
 
-#: data/scripts/browse_bouquets.py:972
-
+#: data/scripts/browse_bouquets.py:496
 msgid ""
 "Official and verified selection across 146 countries and regions (digital "
 "DAB+ bouquets and major national stations)."
-msgstr "Službeni i provjereni izbor u 146 zemalja i regija (digitalni DAB+ buketi i glavne nacionalne postaje)."
+msgstr ""
+"Službeni i provjereni izbor u 146 zemalja i regija (digitalni DAB+ buketi i "
+"glavne nacionalne postaje)."
 
-#: data/scripts/timonde_common.py:178
-
+#: data/scripts/timonde_common.py:187
 msgid "Offline (HTML error page)"
 msgstr "Izvan mreže (HTML stranica s pogreškom)"
 
-#: data/scripts/edit_station.py:366
-
+#: data/scripts/edit_station.py:345
 msgid "On-air broadcast name:"
 msgstr "Nombre emitido en antena:"
 
-#: data/scripts/browse_bouquets.py:1983
-
+#: data/scripts/browse_bouquets.py:1372
 msgid "Open"
 msgstr "Otvoreno"
 
-#: data/scripts/browse_bouquets.py:1203
+#: data/scripts/timonde_common.py:1482
+msgid "Open editor to update this station and its country"
+msgstr "Otvori uređivač za ažuriranje ove postaje i njezine zemlje"
 
+#: data/scripts/browse_bouquets.py:699
 msgid "Open ~/.config/timonde"
 msgstr "Otvorite ~/.config/timonde"
 
-#: data/scripts/browse_bouquets.py:1169
-
+#: data/scripts/browse_bouquets.py:665
 msgid "Open ~/.config/timonde/examples"
 msgstr "Otvorite ~/.config/timonde/examples"
 
-#: data/scripts/reorder_groups.py:706
-
+#: data/scripts/reorder_groups.py:674
 msgid "Optional title for this separator (leave blank for a simple line):"
-msgstr "Neobavezni naslov za ovaj razdjelnik (ostavite prazno za jednostavan red):"
+msgstr ""
+"Neobavezni naslov za ovaj razdjelnik (ostavite prazno za jednostavan red):"
 
-#: data/scripts/reorder_groups.py:60
-
+#: data/scripts/reorder_groups.py:1203
 msgid "Organize groups and stations (TiMonde)"
 msgstr "Organize groups and stations (TiMonde)"
 
-#: data/scripts/timonde_common.py:1559
-
+#: data/scripts/timonde_common.py:1239
 msgid "Organizing groups and subgroups (Linux convention)"
 msgstr "OrganizaciÃ³n de grupos y subgrupos (convenciÃ³n Linux)"
 
-#: data/scripts/timonde_common.py:1609
-
+#: data/scripts/timonde_common.py:1281
 msgid "Original stream is unreachable:"
 msgstr "El flujo original no es accesible:"
 
-#: src/tray/menu.rs:160
-
+#: src/tray/menu.rs:162
 msgid "Paused"
 msgstr "Pauzirano"
 
-#: src/i18n.rs:179 src/i18n.rs:228 src/i18n.rs:234 src/i18n.rs:244
-
-#: src/i18n.rs:249 src/i18n.rs:254 src/i18n.rs:257 src/i18n.rs:260
-
-#: src/i18n.rs:263 src/i18n.rs:266 src/i18n.rs:269 src/i18n.rs:272
-
+#: src/i18n.rs:209 src/i18n.rs:266 src/i18n.rs:272 src/i18n.rs:282
+#: src/i18n.rs:287 src/i18n.rs:292 src/i18n.rs:295 src/i18n.rs:298
+#: src/i18n.rs:301 src/i18n.rs:304 src/i18n.rs:307 src/i18n.rs:310
 msgid "Play"
 msgstr "Pokreni"
 
-#: src/tray/menu.rs:413
-
+#: src/tray/menu.rs:415
 msgid "Play random radio (Ephemeral discovery)"
 msgstr "Slušajte nasumično odabranu radio stanicu (Efemerno otkriće)"
 
-#: data/scripts/reorder_groups.py:549
-
+#: data/scripts/reorder_groups.py:541
 msgid "Play this station"
 msgstr "Izbriši ovaj radio"
 
-#: data/scripts/timonde_common.py:1283
-
+#: data/scripts/timonde_common.py:1106
 msgid "Playing:"
 msgstr "Igranje:"
 
-#: data/scripts/edit_station.py:388
-
+#: data/scripts/edit_station.py:367
 msgid "Please enter a stream URL first."
 msgstr "Por favor, introduzca primero una URL de flujo."
 
-#: data/scripts/timonde_common.py:1877
-
+#: data/scripts/timonde_common.py:1460
 msgid "Please enter a stream URL."
 msgstr "Por favor, introduzca una URL de flujo."
 
-#: data/scripts/browse_bouquets.py:1783
-
+#: data/scripts/browse_bouquets.py:1230
 msgid "Please select a radio station in the list first."
 msgstr "Por favor, seleccione primero una emisora de la lista."
 
-#: data/scripts/reorder_groups.py:926
-
+#: data/scripts/reorder_groups.py:870
 msgid "Please select a radio station to move."
 msgstr "Por favor, seleccione una emisora para mover."
 
-#: data/scripts/reorder_groups.py:1042
-
+#: data/scripts/reorder_groups.py:946
 msgid "Please select a station to contribute."
 msgstr "Por favor, seleccione una emisora para contribuir."
 
-#: data/scripts/reorder_groups.py:1020
-
+#: data/scripts/reorder_groups.py:921
 msgid "Please select a station to repair."
 msgstr "Please select a station to repair."
 
-#: data/scripts/browse_bouquets.py:1825
-
+#: data/scripts/browse_bouquets.py:1230
 msgid "Please select or check a radio station in the list first."
 msgstr "Por favor, seleccione o marque primero una emisora en la lista."
 
-#: data/scripts/timonde_common.py:1651
-
+#: data/scripts/timonde_common.py:1297
 msgid "Popularity"
 msgstr "Popularidad"
 
-#: data/scripts/timonde_settings.py:735
-
+#: data/scripts/timonde_settings.py:544
 msgid "Preferences"
 msgstr "Postavke"
 
-#: data/scripts/reorder_groups.py:185
-
+#: data/scripts/reorder_groups.py:156
 msgid "Preview selected radio stream"
 msgstr "Testing live radio streams..."
 
-#: data/scripts/gnome_tray_helper.py:175
-
+#: data/scripts/gnome_tray_helper.py:186
 msgid "Quit"
 msgstr "Prestati"
 
-#: src/tray/menu.rs:621
-
+#: src/tray/menu.rs:625
 msgid "Quit TiMonde"
 msgstr "Zatvori TiMonde"
 
-#: data/scripts/timonde_common.py:1283 data/scripts/timonde_common.py:1291
-
-#: data/scripts/timonde_common.py:1298 data/scripts/timonde_common.py:1311
-
-#: data/scripts/timonde_common.py:1326
-
+#: data/scripts/timonde_common.py:1078 data/scripts/timonde_common.py:1093
+#: data/scripts/timonde_common.py:1103
 msgid "Radio"
 msgstr "Radio"
 
-#: data/scripts/reorder_groups.py:147
-
+#: data/scripts/reorder_groups.py:121
 msgid "Radio / Group"
 msgstr "Radio / Grupo"
 
-#: data/scripts/edit_station.py:139
-
+#: data/scripts/edit_station.py:152
 msgid "Radio-Browser"
 msgstr "Radio-Browser"
 
-#: data/scripts/timonde_common.py:1949
-
-msgid "Radio-Browser contribution"
-msgstr "ContribuciÃ³n a Radio-Browser"
-
-#: data/scripts/timonde_common.py:1782
-
+#: data/scripts/timonde_common.py:1401
 msgid ""
 "Radio-Browser is an open directory (+45 000 stations). Shared stations "
 "benefit all users."
-msgstr "Radio-Browser je otvoreni imenik (+45 000 postaja). Zajedničke stanice koriste svim korisnicima."
+msgstr ""
+"Radio-Browser je otvoreni imenik (+45 000 postaja). Zajedničke stanice "
+"koriste svim korisnicima."
 
-#: data/scripts/timonde_common.py:1901
-
+#: data/scripts/timonde_common.py:1477
 msgid "Radio-Browser prevents duplicate stream URLs. No submission required."
 msgstr "Radio-Browser evita URLs duplicadas. No se requiere nuevo envÃ­o."
 
-#: data/scripts/timonde_common.py:1542
-
-msgid "Radio-Browser servers unreachable"
-msgstr "Servidores de Radio-Browser inaccesibles"
-
-#: data/scripts/reorder_groups.py:1200
-
+#: data/scripts/reorder_groups.py:1100
 msgid "Redirects applied:"
 msgstr "Redirecciones aplicadas:"
 
-#: data/scripts/browse_bouquets.py:1165
-
+#: data/scripts/browse_bouquets.py:661
 msgid "Refresh examples list"
 msgstr "Osvježi popis primjera"
 
-#: data/scripts/browse_bouquets.py:1015
-
+#: data/scripts/browse_bouquets.py:539
 msgid "Regions & Local:"
 msgstr "Regije i lokalno:"
 
-#: data/scripts/browse_bouquets.py:1190
-
+#: data/scripts/browse_bouquets.py:686
 msgid "Reload"
 msgstr "Ponovno učitaj"
 
-#: data/scripts/browse_bouquets.py:1190
-
+#: data/scripts/browse_bouquets.py:686
 msgid "Reload currently displayed file"
 msgstr "Ponovno učitaj trenutno prikazanu datoteku"
 
-#: data/scripts/reorder_groups.py:724
-
+#: data/scripts/reorder_groups.py:693
 msgid "Rename group"
 msgstr "Renombrar grupo"
 
-#: data/scripts/reorder_groups.py:584
-
+#: data/scripts/reorder_groups.py:555
 msgid "Rename group..."
 msgstr "Renombrar grupo..."
 
-#: data/scripts/browse_bouquets.py:1119 data/scripts/reorder_groups.py:238
-
-#: data/scripts/reorder_groups.py:563
-
+#: data/scripts/browse_bouquets.py:615 data/scripts/reorder_groups.py:177
+#: data/scripts/reorder_groups.py:546
 msgid "Repair stream..."
 msgstr "Tijek popravka..."
 
-#: data/scripts/browse_bouquets.py:1119
-
+#: data/scripts/browse_bouquets.py:615
 msgid "Replace selected link with an active official stream"
 msgstr "Zamijenite odabranu vezu aktivnim službenim streamom"
 
-#: data/scripts/timonde_common.py:1592
-
+#: data/scripts/timonde_common.py:1269
 msgid "Replace stream:"
 msgstr "Reemplazar flujo:"
 
-#: data/scripts/browse_bouquets.py:1173
-
+#: data/scripts/browse_bouquets.py:669
 msgid "Restore samples"
 msgstr "Vratite uzorke"
 
-#: data/scripts/browse_bouquets.py:1173
-
+#: data/scripts/browse_bouquets.py:669
 msgid "Restore the 19 original samples"
 msgstr "Obnovite 19 originalnih uzoraka"
 
-#: data/scripts/reorder_groups.py:861
-
+#: data/scripts/reorder_groups.py:830
 msgid "Root"
 msgstr "RaÃ­z"
 
-#: data/scripts/reorder_groups.py:903
-
+#: data/scripts/reorder_groups.py:854
 msgid "Root items sorted alphabetically."
 msgstr "Elementos raÃ­z ordenados alfabÃ©ticamente."
 
-#: data/scripts/timonde_settings.py:638
-
+#: data/scripts/timonde_settings.py:437
 msgid "SESSION OPTIONS"
 msgstr "OPCIJE SESIJE"
 
-#: src/timezone.rs:657
-
+#: src/timezone.rs:1091
 msgid "Same time"
 msgstr "Isto vrijeme"
 
-#: data/scripts/edit_station.py:76 data/scripts/reorder_groups.py:727
-
-#: data/scripts/reorder_groups.py:1269
-
+#: data/scripts/edit_station.py:85 data/scripts/reorder_groups.py:695
+#: data/scripts/reorder_groups.py:1165
 msgid "Save"
 msgstr "Spremi"
 
-#: data/scripts/reorder_groups.py:276
-
+#: data/scripts/reorder_groups.py:201
 msgid "Save and reload"
 msgstr "Spremite i ponovno učitajte"
 
-#: src/tray/dialogs.rs:328 src/tray/mod.rs:541
-
+#: src/tray/dialogs.rs:341 src/tray/mod.rs:539
 msgid "Save error"
 msgstr "Pogreška pri spremanju"
 
-#: data/scripts/reorder_groups.py:276
-
+#: data/scripts/reorder_groups.py:201
 msgid "Save now"
 msgstr "Pogreška pri spremanju"
 
-#: data/scripts/edit_station.py:69 src/i18n.rs:199
-
+#: data/scripts/edit_station.py:78 src/i18n.rs:237
 msgid "Save station to favorites (TiMonde)"
 msgstr "Spremi radio u moje favorite (TiMonde)"
 
-#: src/tray/mod.rs:561
-
+#: src/tray/mod.rs:559
 msgid "Saved!"
 msgstr "Spremljeno!"
 
-#: data/scripts/browse_bouquets.py:770 data/scripts/timonde_common.py:1630
-
+#: data/scripts/browse_bouquets.py:333 data/scripts/timonde_common.py:1291
 msgid "Search"
 msgstr "Buscar"
 
-#: data/scripts/reorder_groups.py:238
-
+#: data/scripts/reorder_groups.py:177
 msgid "Search Radio-Browser for a working replacement stream"
 msgstr ""
 "Automatski traži zamjenski aktivni stream na Radio-pregledniku za ovu mrtvu "
 "vezu"
 
-#: data/scripts/browse_bouquets.py:1326 data/scripts/timonde_settings.py:592
-
+#: data/scripts/timonde_settings.py:391
 msgid "Search online"
 msgstr "Tražite online"
 
-#: data/scripts/browse_bouquets.py:1885
-
+#: data/scripts/browse_bouquets.py:1303
 msgid "Searching Radio-Browser..."
 msgstr "Pretraživanje radio preglednika..."
 
-#: data/scripts/timonde_common.py:1660
-
+#: data/scripts/timonde_common.py:1307
 msgid "Searching for streams..."
 msgstr "Tijek popravka..."
 
-#: data/scripts/timonde_common.py:1670
-
+#: data/scripts/timonde_common.py:1315
 msgid "Searching on Radio-Browser..."
 msgstr "Pretraživanje na Radio-Browser..."
 
-#: data/scripts/browse_bouquets.py:1382
-
+#: data/scripts/browse_bouquets.py:804
 msgid "Select a station in table to listen to."
 msgstr "Odaberite stanicu u tablici za slušanje."
 
-#: data/scripts/browse_bouquets.py:1386
-
+#: data/scripts/browse_bouquets.py:808
 msgid "Select a station to listen to."
 msgstr "Odaberite stanicu za slušanje."
 
-#: data/scripts/timonde_common.py:1610
-
+#: data/scripts/timonde_common.py:1281
 msgid "Select a verified replacement stream from Radio-Browser:"
 msgstr "Seleccione un flujo verificado de reemplazo desde Radio-Browser:"
 
-#: data/scripts/edit_station.py:185
-
+#: data/scripts/edit_station.py:199
 msgid "Select or type (e.g. /France/Brittany or / for root)"
 msgstr "Seleccionar o escribir (ej: /EspaÃ±a/Madrid o / para raÃ­z)"
 
-#: data/scripts/reorder_groups.py:956
-
+#: data/scripts/reorder_groups.py:882
 msgid "Select the target destination:"
 msgstr "Seleccione la carpeta de destino:"
 
-#: src/tray/mod.rs:478
-
+#: src/tray/mod.rs:505
 msgid "Selection"
 msgstr "Odabir"
 
-#: data/scripts/reorder_groups.py:230
-
+#: data/scripts/reorder_groups.py:175
 msgid "Separator"
 msgstr "Razdjelnik"
 
-#: data/scripts/timonde_common.py:1538
-
-msgid "Server rejected submission: {error}"
-msgstr "El servidor rechazÃ³ el envÃ­o: {error}"
-
-#: data/scripts/timonde_common.py:198
-
+#: data/scripts/timonde_common.py:188
 msgid "Server unreachable"
 msgstr "Servidor inaccesible"
 
-#: data/scripts/timonde_settings.py:316
-
+#: data/scripts/timonde_settings.py:201
 msgid "Settings & Control TiMonde"
 msgstr "Postavke i kontrola TiMonde"
 
-#: src/tray/dialogs.rs:400
-
+#: src/tray/dialogs.rs:422
 msgid "Settings console not found"
 msgstr "Konzola s postavkama nije pronađena"
 
-#: src/tray/menu.rs:605
-
+#: src/tray/menu.rs:607
 msgid "Settings..."
 msgstr "Postavke..."
 
-#: src/i18n.rs:205 src/tray/menu.rs:549 src/tray/menu.rs:552
-
+#: src/i18n.rs:243 src/tray/menu.rs:551 src/tray/menu.rs:554
 msgid "Sleep timer"
 msgstr "Mjerač vremena za spavanje"
 
-#: src/tray/mod.rs:592
-
+#: src/tray/mod.rs:588
 msgid "Sleep timer activated"
 msgstr "Mjerač vremena za spavanje aktiviran"
 
-#: src/tray/mod.rs:626
-
+#: src/tray/mod.rs:622
 msgid "Sleep timer cancelled."
 msgstr "Mjerač vremena za spavanje otkazan."
 
-#: src/tray/mod.rs:615
-
+#: src/tray/mod.rs:611
 msgid "Sleep timer: stopping radio."
 msgstr "Mjerač vremena za spavanje: zaustavljanje radija."
 
-#: data/scripts/reorder_groups.py:223
-
+#: data/scripts/reorder_groups.py:168
 msgid "Sort sibling items alphabetically"
 msgstr "Ordenar elementos alfabÃ©ticamente"
 
-#: data/scripts/reorder_groups.py:901
-
+#: data/scripts/reorder_groups.py:852
 msgid "Sorted alphabetically:"
 msgstr "Ordenado alfabÃ©ticamente:"
 
-#: data/scripts/browse_bouquets.py:888 data/scripts/browse_bouquets.py:1045
-
-#: data/scripts/browse_bouquets.py:1227 data/scripts/timonde_common.py:1638
-
+#: data/scripts/browse_bouquets.py:444 data/scripts/browse_bouquets.py:562
+#: data/scripts/browse_bouquets.py:716 data/scripts/timonde_common.py:1297
 msgid "Station"
 msgstr "Odmaralište"
 
-#: src/tray/mod.rs:566
-
+#: src/tray/mod.rs:564
 msgid "Station added but reload error"
 msgstr "Postaja dodana, ali došlo je do pogreške pri ponovnom učitavanju"
 
-#: data/scripts/reorder_groups.py:691
-
+#: data/scripts/reorder_groups.py:635
 msgid "Station added:"
 msgstr "Emisora aÃ±adida:"
 
-#: data/scripts/reorder_groups.py:683
+#: data/scripts/reorder_groups.py:706
+msgid "Station deleted:"
+msgstr "Postaja izbrisana:"
 
+#: data/scripts/reorder_groups.py:627
 msgid "Station editor unavailable."
 msgstr "Editor de emisoras no disponible."
 
-#: data/scripts/reorder_groups.py:997
-
+#: data/scripts/reorder_groups.py:900
 msgid "Station moved to"
 msgstr "Emisora movida a"
 
-#: data/scripts/timonde_common.py:1476
-
+#: data/scripts/timonde_common.py:1201
 msgid "Station name cannot be empty"
 msgstr "El nombre de la emisora no puede estar vacÃ­o"
 
-#: data/scripts/edit_station.py:110 data/scripts/timonde_common.py:1794
-
+#: data/scripts/edit_station.py:123 data/scripts/timonde_common.py:1421
 msgid "Station name:"
 msgstr "Naziv postaje:"
 
-#: data/scripts/timonde_common.py:1528
-
-msgid "Station successfully submitted to Radio-Browser."
-msgstr "Emisora enviada con Ã©xito a Radio-Browser."
-
-#: data/scripts/reorder_groups.py:745
-
+#: data/scripts/reorder_groups.py:718
 msgid "Station updated:"
 msgstr "Emisora actualizada:"
 
-#: data/scripts/browse_bouquets.py:1397 data/scripts/edit_station.py:405
-
-#: data/scripts/reorder_groups.py:1005 data/scripts/reorder_groups.py:1080
-
-#: src/i18n.rs:185 src/i18n.rs:245 src/i18n.rs:250
-
+#: data/scripts/browse_bouquets.py:819 data/scripts/edit_station.py:413
+#: data/scripts/reorder_groups.py:908 data/scripts/reorder_groups.py:994
+#: src/i18n.rs:215 src/i18n.rs:283 src/i18n.rs:288
 msgid "Stop"
 msgstr "Zaustavi"
 
-#: data/scripts/reorder_groups.py:549
-
+#: data/scripts/reorder_groups.py:541
 msgid "Stop playback"
 msgstr "Detener reproducciÃ³n"
 
-#: data/scripts/browse_bouquets.py:1259
-
+#: data/scripts/browse_bouquets.py:721
 msgid "Stream URL"
 msgstr "URL streama"
 
-#: data/scripts/timonde_common.py:1478
-
+#: data/scripts/timonde_common.py:1203
 msgid "Stream URL cannot be empty"
 msgstr "La URL del flujo no puede estar vacÃ­a"
 
-#: data/scripts/timonde_common.py:1804
-
+#: data/scripts/timonde_common.py:1422
 msgid "Stream URL:"
 msgstr "URL del flujo:"
 
-#: data/scripts/reorder_groups.py:1029
-
+#: data/scripts/reorder_groups.py:938
 msgid "Stream successfully repaired for"
 msgstr "Flujo reparado con Ã©xito para"
 
-#: data/scripts/timonde_common.py:1274
-
-msgid "Stream unreachable"
-msgstr "Stream nedostupan"
-
-#: data/scripts/browse_bouquets.py:739
-
+#: data/scripts/browse_bouquets.py:302
 msgid "Submit a new station to community Radio-Browser directory"
 msgstr "Enviar una nueva emisora al directorio Radio-Browser"
 
-#: data/scripts/timonde_common.py:1859 data/scripts/timonde_common.py:1911
-
-#: data/scripts/timonde_common.py:1958
-
+#: data/scripts/timonde_common.py:1441 data/scripts/timonde_common.py:1490
+#: data/scripts/timonde_common.py:1521
 msgid "Submit to Radio-Browser"
 msgstr "Enviar a Radio-Browser"
 
-#: data/scripts/timonde_common.py:1931
+#: data/scripts/timonde_common.py:1521
+msgid "Submitted"
+msgstr "Poslano"
 
+#: data/scripts/timonde_common.py:1511
 msgid "Submitting station to Radio-Browser..."
 msgstr "Enviando emisora a Radio-Browser..."
 
-#: data/scripts/timonde_common.py:1930
-
+#: data/scripts/timonde_common.py:1510
 msgid "Submitting..."
 msgstr "Enviando..."
 
-#: data/scripts/browse_bouquets.py:1089
-
+#: data/scripts/browse_bouquets.py:585
 msgid "Switch to the global directory with this country pre-selected"
 msgstr "Prijeđite na globalni direktorij s prethodno odabranom ovom zemljom"
 
-#: data/scripts/timonde_settings.py:665
-
+#: data/scripts/timonde_settings.py:473
 msgid "System language"
 msgstr "Jezik sustava"
 
-#: data/scripts/timonde_common.py:1831
-
+#: data/scripts/timonde_common.py:1424
 msgid "Tags / Genres:"
 msgstr "Etiquetas / GÃ©neros:"
 
-#: src/tray/mod.rs:325
-
+#: src/tray/mod.rs:360
 msgid "Temporary backup stream found for"
 msgstr "Pronađen privremeni pričuvni tok za"
 
-#: data/scripts/edit_station.py:135 data/scripts/edit_station.py:407
-
+#: data/scripts/edit_station.py:148 data/scripts/edit_station.py:415
 msgid "Test"
 msgstr "Test"
 
-#: data/scripts/reorder_groups.py:102
-
+#: data/scripts/reorder_groups.py:85
 msgid "Test stream availability and locate broken links"
 msgstr "Testirajte dostupnost uživo svojih radio postaja i uočite mrtve veze"
 
-#: data/scripts/browse_bouquets.py:946 data/scripts/browse_bouquets.py:1115
-
-#: data/scripts/browse_bouquets.py:1286
-
+#: data/scripts/browse_bouquets.py:470 data/scripts/browse_bouquets.py:611
+#: data/scripts/browse_bouquets.py:745
 msgid "Test streams"
 msgstr "Testni tokovi"
 
-#: data/scripts/reorder_groups.py:1087
-
+#: data/scripts/reorder_groups.py:1000
 msgid "Testing live radio streams..."
 msgstr "Testing live radio streams..."
 
-#: data/scripts/browse_bouquets.py:1679 data/scripts/browse_bouquets.py:1931
-
-#: data/scripts/browse_bouquets.py:2119
-
+#: data/scripts/browse_bouquets.py:1103
 msgid "Testing..."
 msgstr "Testiranje..."
 
-#: data/scripts/timonde_settings.py:694
-
+#: data/scripts/timonde_settings.py:502
 msgid ""
 "The AppIndicator extension is required to display the icon in GNOME top bar."
-msgstr "Proširenje AppIndicator potrebno je za prikaz ikone na gornjoj traci GNOME-a."
+msgstr ""
+"Proširenje AppIndicator potrebno je za prikaz ikone na gornjoj traci GNOME-a."
 
-#: data/scripts/browse_bouquets.py:1151
-
+#: data/scripts/browse_bouquets.py:647
 msgid "Thematic samples:"
 msgstr "Tematski uzorci:"
 
-#: data/scripts/edit_station.py:574
-
+#: data/scripts/edit_station.py:527
 msgid "This action will permanently remove this station from your collection."
 msgstr "Ova će radnja trajno ukloniti ovu postaju iz vaše zbirke."
 
-#: data/scripts/timonde_common.py:1489
-
+#: data/scripts/timonde_common.py:1209
 msgid ""
 "This stream URL is already registered on Radio-Browser as '{existing_name}'."
-msgstr "Ovaj URL streama već je registriran na Radio-Browseru kao '{existing_name}'."
+msgstr ""
+"Ovaj URL streama već je registriran na Radio-Browseru kao '{existing_name}'."
 
-#: data/scripts/timonde_common.py:1908
-
+#: data/scripts/timonde_common.py:1487
 msgid ""
 "This stream URL is unpublished on Radio-Browser and ready to be contributed."
-msgstr "Ovaj URL streama nije objavljen na Radio-Browseru i spreman je za doprinos."
+msgstr ""
+"Ovaj URL streama nije objavljen na Radio-Browseru i spreman je za doprinos."
 
-#: data/scripts/gnome_tray_helper.py:117
+#: data/scripts/timonde_settings.py:463
+msgid "TiMonde version"
+msgstr "Verzija TiMonde"
 
+#: data/scripts/gnome_tray_helper.py:128
 msgid "TiMonde — GNOME Desktop Integration"
 msgstr "TiMonde — integracija GNOME radne površine"
 
-#: src/tray/mod.rs:150
-
+#: src/tray/mod.rs:138
 msgid "TiMonde • Ephemeral discovery"
 msgstr "Slušajte nasumično odabranu radio stanicu (Efemerno otkriće)"
 
-#: data/scripts/timonde_common.py:206
-
+#: data/scripts/timonde_common.py:189
 msgid "Timeout"
 msgstr "vremenska zona:"
 
-#: data/scripts/edit_station.py:273
-
+#: data/scripts/edit_station.py:260
 msgid "Timezone:"
 msgstr "vremenska zona:"
 
-#: data/scripts/gnome_tray_helper.py:159
-
+#: data/scripts/gnome_tray_helper.py:170
 msgid ""
 "To unobtrusively display the playback icon in the top bar of your GNOME "
 "desktop, the <b>AppIndicator</b> system extension is required.\n"
 "\n"
 "Would you like to install it now?"
 msgstr ""
-"Za nenametljiv prikaz ikone reprodukcije na gornjoj traci vaše radne površine GNOME potrebno je <b>AppIndicator</b> sistemsko proširenje.\n"
+"Za nenametljiv prikaz ikone reprodukcije na gornjoj traci vaše radne "
+"površine GNOME potrebno je <b>AppIndicator</b> sistemsko proširenje.\n"
 "\n"
 "Želite li ga sada instalirati?"
 
-#: src/timezone.rs:669
-
+#: src/timezone.rs:1103
 msgid "Tomorrow"
 msgstr "Sutra"
 
-#: data/scripts/reorder_groups.py:211
-
+#: data/scripts/reorder_groups.py:165
 msgid "Top"
 msgstr "Prvo"
 
-#: src/tray/mod.rs:679
-
+#: src/tray/mod.rs:644
 msgid "Track copied to clipboard:"
 msgstr "Naziv pjesme kopiran u međuspremnik:"
 
-#: data/scripts/browse_bouquets.py:987
-
+#: data/scripts/browse_bouquets.py:511
 msgid "Type a country (e.g. France, Germany, Canada...)"
 msgstr "Upišite državu (npr. Francuska, Njemačka, Kanada...)"
 
-#: src/tray/mod.rs:444
-
+#: src/tray/mod.rs:471
 msgid "Unable to find a station in the bouquets catalog."
 msgstr "Nije moguće pronaći postaju u katalogu paketa."
 
-#: src/tray/mod.rs:208
-
+#: src/tray/mod.rs:236
 msgid "Unable to initialize audio"
 msgstr "No se pudo inicializar el audio"
 
-#: src/tray/mod.rs:216
-
+#: src/tray/mod.rs:248
 msgid "Unable to play"
 msgstr "No se puede reproducir"
 
-#: data/scripts/browse_bouquets.py:942 data/scripts/browse_bouquets.py:1111
-
-#: data/scripts/browse_bouquets.py:1278
-
+#: data/scripts/browse_bouquets.py:466 data/scripts/browse_bouquets.py:607
+#: data/scripts/browse_bouquets.py:737
 msgid "Uncheck all"
 msgstr "Odznačite sve"
 
-#: data/scripts/timonde_common.py:1486 data/scripts/timonde_common.py:1896
-
-#: data/scripts/timonde_common.py:1897
-
+#: data/scripts/timonde_common.py:1208 data/scripts/timonde_common.py:1473
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: data/scripts/timonde_common.py:1530
+#: data/scripts/timonde_common.py:1221
+msgid "Unknown status"
+msgstr "Nepoznat status"
 
-msgid "Unknown error"
-msgstr "Error desconocido"
-
-#: data/scripts/timonde_common.py:1272
-
-msgid "Unreadable stream"
-msgstr "Nečitljiv tok"
-
-#: data/scripts/gnome_tray_helper.py:193
-
+#: data/scripts/gnome_tray_helper.py:204
 msgid "Unrecognized package manager."
 msgstr "Neprepoznati upravitelj paketa."
 
-#: data/scripts/reorder_groups.py:293
-
+#: data/scripts/reorder_groups.py:216 data/scripts/reorder_groups.py:1223
 msgid "Unsaved changes"
 msgstr "Cambios sin guardar"
 
-#: data/scripts/browse_bouquets.py:1915 data/scripts/browse_bouquets.py:2082
-
+#: data/scripts/browse_bouquets.py:1333 data/scripts/browse_bouquets.py:1468
 msgid "Untested"
 msgstr "No comprobado"
 
-#: data/scripts/edit_station.py:159
-
+#: data/scripts/edit_station.py:172
 msgid "Use this on-air broadcast name for your bookmark"
 msgstr "Utilizar este nombre de emisiÃ³n para su marcador"
 
-#: data/scripts/timonde_common.py:1597
-
+#: data/scripts/timonde_common.py:1271
 msgid "Validate and replace"
 msgstr "Spremite i ponovno učitajte"
 
-#: data/scripts/browse_bouquets.py:923
-
+#: data/scripts/browse_bouquets.py:450
 msgid "Votes"
 msgstr "Glasovi"
 
-#: data/scripts/reorder_groups.py:780
-
+#: data/scripts/reorder_groups.py:768
 msgid "Warning: this group contains {count} {unit} that will also be deleted."
-msgstr "Upozorenje: ova grupa sadrži {count} {unit} koji će također biti izbrisani."
+msgstr ""
+"Upozorenje: ova grupa sadrži {count} {unit} koji će također biti izbrisani."
 
-#: data/scripts/timonde_common.py:1841
-
+#: data/scripts/timonde_common.py:1425
 msgid "Website / Homepage:"
 msgstr "Sitio web / PÃ¡gina principal:"
 
-#: data/scripts/browse_bouquets.py:2318
-
+#: data/scripts/browse_bouquets.py:1657
 msgid "XML backup is available from settings."
 msgstr "Sigurnosna kopija XML-a dostupna je u postavkama."
 
-#: data/scripts/reorder_groups.py:1296
-
+#: data/scripts/reorder_groups.py:1186
 msgid "XML backup successfully created in"
 msgstr "Copia de seguridad XML creada con Ã©xito en"
 
-#: data/scripts/reorder_groups.py:1276
-
+#: data/scripts/reorder_groups.py:1170
 msgid "XML files (*.xml)"
 msgstr "XML datoteke (*.xml)"
 
-#: src/timezone.rs:670
-
+#: src/timezone.rs:1104
 msgid "Yesterday"
 msgstr "Jučer"
 
-#: data/scripts/browse_bouquets.py:1626
-
+#: data/scripts/browse_bouquets.py:1050
 msgid ""
 "You can explore and import stations for this territory directly from the "
 "global directory."
@@ -1917,262 +1511,250 @@ msgstr ""
 "Možete istražiti i uvesti postaje za ovo područje izravno iz globalnog "
 "direktorija."
 
-#: data/scripts/reorder_groups.py:1302
+#: data/scripts/reorder_groups.py:1225
+msgid "You have unsaved changes."
+msgstr "Imate nespremljene promjene."
 
+#: data/scripts/reorder_groups.py:1187
 msgid "Your complete bookmarks have been saved to:"
 msgstr "Sus marcadores completos se han guardado en:"
 
-#: src/i18n.rs:237 src/tray/menu.rs:372
-
+#: src/i18n.rs:275 src/tray/menu.rs:378
 msgid "Zap to another random station"
 msgstr "Druga nasumična postaja"
 
-#: data/scripts/reorder_groups.py:930
-
+#: data/scripts/edit_station.py:187 data/scripts/reorder_groups.py:873
 msgid "[ / ] Root (Without group)"
 msgstr "[ / ] RaÃ­z (Sin grupo)"
 
-#: data/scripts/reorder_groups.py:405
-
+#: data/scripts/reorder_groups.py:319
 msgid "[!] Dead link"
 msgstr "[!] Dead link"
 
-#: data/scripts/reorder_groups.py:409
-
+#: data/scripts/reorder_groups.py:323
 msgid "[?] Geo-restricted"
 msgstr "[?] Geo-restricted"
 
-#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
-
-msgid "[New]"
-msgstr "[Nova]"
-
-#: data/scripts/reorder_groups.py:403
-
-msgid "[OK] Live"
-msgstr "[OK] Live"
-
-#: data/scripts/reorder_groups.py:1027
-
-msgid "[OK] Repaired"
-msgstr "[OK] Reparado"
-
-#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
-
-msgid "[Present]"
-msgstr "[Prisutna]"
-
-#: data/scripts/reorder_groups.py:407
-
-msgid "[~] Redirected"
-msgstr "[~] Redirected"
-
-#: data/scripts/reorder_groups.py:1141
-
-msgid "broken"
-msgstr "broken"
-
-#: data/scripts/reorder_groups.py:1127
-
-msgid "checked:"
-msgstr "checked:"
-
-#: src/tray/dialogs.rs:263
-
-msgid "deleted from your favorites."
-msgstr "izbrisano iz vaših favorita."
-
-#: data/scripts/timonde_settings.py:750
-
-msgid "disabled"
-msgstr "onemogućeno"
-
-#: data/scripts/timonde_settings.py:750
-
-msgid "enabled"
-msgstr "omogućeno"
-
-#: src/tray/mod.rs:332
-
-msgid "is currently unavailable"
-msgstr "trenutačno nije dostupna"
-
-#: src/tray/mod.rs:302
-
-msgid "is not responding. Searching for a backup stream..."
-msgstr "ne odgovara. Traženje rezervnog streama..."
-
-#: data/scripts/timonde_settings.py:612
-
-msgid "new station(s) imported"
-msgstr "nueva(s) emisora(s) importada(s)"
-
-#: data/scripts/reorder_groups.py:1140
-
-msgid "online"
-msgstr "online"
-
-#: data/scripts/reorder_groups.py:372
-
-msgid "radio"
-msgstr "radio"
-
-#: data/scripts/reorder_groups.py:372 data/scripts/reorder_groups.py:672
-
-msgid "radios"
-msgstr "radios"
-
-#: data/scripts/reorder_groups.py:1142
-
-msgid "redirected"
-msgstr "redirected"
-
-#: data/scripts/browse_bouquets.py:2306
-
-msgid "sample files restored."
-msgstr "uzorci datoteka vraćeni."
-
-#: src/tray/mod.rs:562
-
-msgid "saved in your favorites!"
-msgstr "spremljeno u vaše favorite!"
-
-#: data/scripts/timonde_settings.py:559
-
-msgid "saved successfully!"
-msgstr "Â¡guardado con Ã©xito!"
-
-#: data/scripts/reorder_groups.py:779
-
-msgid "station"
-msgstr "station"
-
-#: data/scripts/timonde_settings.py:614
-
-msgid "station(s) moved to destination"
-msgstr "emisora(s) movida(s) al destino"
-
-#: data/scripts/reorder_groups.py:779
-
-msgid "stations"
-msgstr "stations"
-
-#: data/scripts/reorder_groups.py:1095
-
-msgid "stations checked..."
-msgstr "stations checked..."
-
-#: src/tray/mod.rs:592
-
-msgid "stopping in"
-msgstr "isključivanje za"
-
-#: data/scripts/reorder_groups.py:1200
-
-msgid "stream(s) updated."
-msgstr "flujo(s) actualizado(s)."
-
-#: data/scripts/browse_bouquets.py:1725
-
-msgid "this country"
-msgstr "ova zemlja"
-
-#: src/tray/dialogs.rs:385
-
-msgid "updated successfully!"
-msgstr "uspješno ažurirano!"
-
-#: data/scripts/browse_bouquets.py:1733 data/scripts/browse_bouquets.py:2145
-
-msgid "{checked} / {total} station(s) selected"
-msgstr "Odabrano {checked} / {total} postaja"
-
-#: data/scripts/edit_station.py:543
-
-msgid "{count} available timezones"
-msgstr "{count} dostupnih vremenskih zona"
-
-#: data/scripts/browse_bouquets.py:1918
-
-msgid "{count} stations found."
-msgstr "Pronađeno {count} postaja."
-
-#: data/scripts/timonde_common.py:1690
-
-msgid "{count} streams found. Select the desired stream and validate."
-msgstr "Pronađeno {count} streamova. Odaberite željeni stream i potvrdite."
-
-#: data/scripts/reorder_groups.py:352 data/scripts/reorder_groups.py:391
-
-#: data/scripts/reorder_groups.py:713
-
-msgid "— Separator —"
-msgstr "— Separator —"
-
-#: data/scripts/reorder_groups.py:111
-msgid ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-msgstr ""
-"<small>• Proširite mape <b>[▶]</b> za pregled podgrupa i postaja.\n"
-"• Koristite <b>Gore / Dolje</b> ili povlačenje za promjenu redoslijeda.\n"
-"• Koristite <b>Premjesti u...</b> za premještanje postaja u drugu mapu.</small>"
-
-#: data/scripts/timonde_common.py:1825
-msgid "Edit station"
-msgstr "Uredi postaju"
-
-#: data/scripts/timonde_settings.py:563
-msgid "Installed binary:"
-msgstr "Instalirana binarna datoteka:"
-
-
-#: data/scripts/browse_bouquets.py:1337
-msgid "National Radios"
-msgstr "National Radios"
-
-#: data/scripts/timonde_common.py:1882
-msgid "Open editor to update this station and its country"
-msgstr "Otvori uređivač za ažuriranje ove postaje i njezine zemlje"
-
-#: data/scripts/reorder_groups.py:792
-msgid "Station deleted:"
-msgstr "Postaja izbrisana:"
-
-#: data/scripts/timonde_common.py:1927
-msgid "Submitted"
-msgstr "Poslano"
-
-#: data/scripts/timonde_common.py:1508
-msgid ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
-"\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
-"\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-msgstr ""
-"TiMonde koristi konvencije staza s razdjelnikom <b>/</b>:\n"
-"\n"
-"• <b>/</b> ili <b>(Korijen)</b> : Postavlja postaju u korijen izbornika (bez grupe).\n"
-"• <b>/Gabon</b> ili <b>Gabon</b> : Postavlja postaju u grupu « Gabon ».\n"
-"\n"
-"<i>Grupe i podgrupe stvaraju se automatski ako još ne postoje.</i>"
-
-#: data/scripts/timonde_settings.py:562
-msgid "TiMonde version"
-msgstr "Verzija TiMonde"
-
-#: src/i18n.rs:217
+#: src/i18n.rs:217 src/i18n.rs:228
 msgid "[Ephemeral]"
 msgstr "[Privremeno]"
 
+#: data/scripts/browse_bouquets.py:1331 data/scripts/browse_bouquets.py:1466
+msgid "[New]"
+msgstr "[Nova]"
 
-#: data/scripts/browse_bouquets.py:1488
+#: data/scripts/reorder_groups.py:317
+msgid "[OK] Live"
+msgstr "[OK] Live"
+
+#: data/scripts/browse_bouquets.py:1331 data/scripts/browse_bouquets.py:1466
+msgid "[Present]"
+msgstr "[Prisutna]"
+
+#: data/scripts/reorder_groups.py:321
+msgid "[~] Redirected"
+msgstr "[~] Redirected"
+
+#: data/scripts/reorder_groups.py:1048
+msgid "broken"
+msgstr "broken"
+
+#: data/scripts/reorder_groups.py:1025
+msgid "checked:"
+msgstr "checked:"
+
+#: src/tray/dialogs.rs:293
+msgid "deleted from your favorites."
+msgstr "izbrisano iz vaših favorita."
+
+#: data/scripts/timonde_settings.py:559
+msgid "disabled"
+msgstr "onemogućeno"
+
+#: data/scripts/timonde_settings.py:559
+msgid "enabled"
+msgstr "omogućeno"
+
+#: src/tray/mod.rs:367
+msgid "is currently unavailable"
+msgstr "trenutačno nije dostupna"
+
+#: src/tray/mod.rs:338
+msgid "is not responding. Searching for a backup stream..."
+msgstr "ne odgovara. Traženje rezervnog streama..."
+
+#: data/scripts/timonde_settings.py:411
+msgid "new station(s) imported"
+msgstr "nueva(s) emisora(s) importada(s)"
+
+#: data/scripts/reorder_groups.py:1048
+msgid "online"
+msgstr "online"
+
+#: data/scripts/reorder_groups.py:294
+msgid "radio"
+msgstr "radio"
+
+#: data/scripts/reorder_groups.py:294 data/scripts/reorder_groups.py:614
+msgid "radios"
+msgstr "radios"
+
+#: data/scripts/reorder_groups.py:1048
+msgid "redirected"
+msgstr "redirected"
+
+#: data/scripts/browse_bouquets.py:1645
+msgid "sample files restored."
+msgstr "uzorci datoteka vraćeni."
+
+#: src/tray/mod.rs:560
+msgid "saved in your favorites!"
+msgstr "spremljeno u vaše favorite!"
+
+#: data/scripts/timonde_settings.py:361
+msgid "saved successfully!"
+msgstr "Â¡guardado con Ã©xito!"
+
+#: data/scripts/reorder_groups.py:767
+msgid "station"
+msgstr "station"
+
+#: data/scripts/timonde_settings.py:413
+msgid "station(s) moved to destination"
+msgstr "emisora(s) movida(s) al destino"
+
+#: data/scripts/reorder_groups.py:767
+msgid "stations"
+msgstr "stations"
+
+#: data/scripts/reorder_groups.py:1003
+msgid "stations checked..."
+msgstr "stations checked..."
+
+#: src/tray/mod.rs:588
+msgid "stopping in"
+msgstr "isključivanje za"
+
+#: data/scripts/reorder_groups.py:1100
+msgid "stream(s) updated."
+msgstr "flujo(s) actualizado(s)."
+
+#: data/scripts/browse_bouquets.py:1161
+msgid "this country"
+msgstr "ova zemlja"
+
+#: src/tray/dialogs.rs:404
+msgid "updated successfully!"
+msgstr "uspješno ažurirano!"
+
+#: data/scripts/browse_bouquets.py:1169 data/scripts/browse_bouquets.py:1497
+msgid "{checked} / {total} station(s) selected"
+msgstr "Odabrano {checked} / {total} postaja"
+
+#: data/scripts/edit_station.py:497
+msgid "{count} available timezones"
+msgstr "{count} dostupnih vremenskih zona"
+
+#: data/scripts/browse_bouquets.py:1336
+msgid "{count} stations found."
+msgstr "Pronađeno {count} postaja."
+
+#: data/scripts/timonde_common.py:1333
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Pronađeno {count} streamova. Odaberite željeni stream i potvrdite."
+
+#: data/scripts/reorder_groups.py:274 data/scripts/reorder_groups.py:341
+#: data/scripts/reorder_groups.py:653
+msgid "— Separator —"
+msgstr "— Separator —"
+
+#: data/scripts/browse_bouquets.py:1195
 msgid "● Repaired (Live)"
 msgstr "● Repaired (Live)"
 
+#~ msgid " [Ephemeral]"
+#~ msgstr "[Efemerno]"
+
+#~ msgid "Connecting to"
+#~ msgstr "Povezivanje s"
+
+#~ msgid "Discover & Import stations (TiMonde)"
+#~ msgstr "Otkrijte i uvezite radio postaje (TiMonde)"
+
+#~ msgid "End of stream"
+#~ msgstr "Kraj streama"
+
+#~ msgid "Error {code}"
+#~ msgstr "Greška {code}"
+
+#~ msgid "Failed to add station"
+#~ msgstr "Error al aÃ±adir la emisora"
+
+#~ msgid "GStreamer not available"
+#~ msgstr "GStreamer nije dostupan"
+
+#~ msgid "HTTP Error {code}"
+#~ msgstr "Error HTTP {code}"
+
+#~ msgid "Import & Export"
+#~ msgstr "Uvoz i izvoz"
+
+#~ msgid "Live (Shoutcast)"
+#~ msgstr "En directo (Shoutcast)"
+
+#~ msgid "Radio-Browser contribution"
+#~ msgstr "ContribuciÃ³n a Radio-Browser"
+
+#~ msgid "Radio-Browser servers unreachable"
+#~ msgstr "Servidores de Radio-Browser inaccesibles"
+
+#~ msgid "Server rejected submission: {error}"
+#~ msgstr "El servidor rechazÃ³ el envÃ­o: {error}"
+
+#~ msgid "Station successfully submitted to Radio-Browser."
+#~ msgstr "Emisora enviada con Ã©xito a Radio-Browser."
+
+#~ msgid "Stream unreachable"
+#~ msgstr "Stream nedostupan"
+
+#~ msgid "Unknown error"
+#~ msgstr "Error desconocido"
+
+#~ msgid "Unreadable stream"
+#~ msgstr "Nečitljiv tok"
+
+#~ msgid "[OK] Repaired"
+#~ msgstr "[OK] Reparado"
+
+#~ msgid ""
+#~ "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
+#~ "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
+#~ "• Use <b>Move to...</b> to organize stations into another folder.</small>"
+#~ msgstr ""
+#~ "<small>• Proširite mape <b>[▶]</b> za pregled podgrupa i postaja.\n"
+#~ "• Koristite <b>Gore / Dolje</b> ili povlačenje za promjenu redoslijeda.\n"
+#~ "• Koristite <b>Premjesti u...</b> za premještanje postaja u drugu mapu.</"
+#~ "small>"
+
+#~ msgid ""
+#~ "TiMonde uses path conventions with the <b>/</b> separator:\n"
+#~ "\n"
+#~ "• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu "
+#~ "(without group).\n"
+#~ "• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
+#~ "• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » "
+#~ "under « France ».\n"
+#~ "• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « "
+#~ "Belgium ».\n"
+#~ "• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+#~ "\n"
+#~ "<i>Groups and subgroups are automatically created if they do not exist "
+#~ "yet.</i>"
+#~ msgstr ""
+#~ "TiMonde koristi konvencije staza s razdjelnikom <b>/</b>:\n"
+#~ "\n"
+#~ "• <b>/</b> ili <b>(Korijen)</b> : Postavlja postaju u korijen izbornika "
+#~ "(bez grupe).\n"
+#~ "• <b>/Gabon</b> ili <b>Gabon</b> : Postavlja postaju u grupu « Gabon ».\n"
+#~ "\n"
+#~ "<i>Grupe i podgrupe stvaraju se automatski ako još ne postoje.</i>"

@@ -471,6 +471,42 @@ class TestReorderFilterNonRegression(unittest.TestCase):
         self.assertIn("https://ok.com/live", urls)
         self.assertIn("https://repaired.com/live", urls)
 
+    def test_insert_empty_and_titled_separators_preserve_order(self):
+        from unittest.mock import patch
+        from reorder_groups import ReorderWidget
+
+        initial_data = [
+            {"name": "Groupe A", "stations": [{"name": "R1", "url": "https://r1.org/live"}], "is_separator": False},
+            {"name": "Groupe B", "stations": [{"name": "R2", "url": "https://r2.org/live"}], "is_separator": False},
+        ]
+        widget = ReorderWidget(data=initial_data, embedded=True)
+
+        # Sélectionner Groupe A et insérer un séparateur juste après un groupe (à l'intérieur) + à la racine entre A et B
+        first_iter = widget.store.get_iter_first()
+        widget.treeview.get_selection().select_iter(first_iter)
+
+        with patch("reorder_groups.prompt_text_dialog") as mock_ptd:
+            widget.on_add_separator_clicked(None)
+            cb = mock_ptd.call_args.kwargs["callback"]
+            cb("")  # séparateur vide dans Groupe A
+
+        # Insérer un séparateur nommé à la racine (sans sélection)
+        widget.treeview.get_selection().unselect_all()
+        with patch("reorder_groups.prompt_text_dialog") as mock_ptd:
+            widget.on_add_separator_clicked(None)
+            cb = mock_ptd.call_args.kwargs["callback"]
+            cb("Section Monde")
+
+        serialized = widget.serialize_tree()
+        self.assertEqual(len(serialized), 3)
+        # Groupe A contient R1 puis le séparateur vide
+        self.assertEqual(len(serialized[0]["stations"]), 2)
+        self.assertTrue(serialized[0]["stations"][1]["is_separator"])
+        self.assertEqual(serialized[0]["stations"][1]["name"], "")
+        # Le séparateur racine est sérialisé comme élément racine is_separator=True (pas dans root_stations)
+        self.assertTrue(serialized[2]["is_separator"])
+        self.assertEqual(serialized[2]["name"], "Section Monde")
+
 
 if __name__ == "__main__":
     unittest.main()

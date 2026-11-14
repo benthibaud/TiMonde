@@ -1,1108 +1,883 @@
 # TiMonde — Traduction UK
-
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
-
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 20:23+0100\n"
+"POT-Creation-Date: 2026-11-14 12:37+0100\n"
 "PO-Revision-Date: 2026-10-17 17:00+0200\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/i18n.rs:186 src/i18n.rs:193
-
-msgid " [Ephemeral]"
-msgstr "[Ефемерний]"
-
-#: data/scripts/browse_bouquets.py:1655
-
+#: data/scripts/browse_bouquets.py:1079
 msgid "(Already in favorites)"
 msgstr "Зберегти в обране"
 
 # --- Mises à jour TiMonde ---
-
-#: data/scripts/edit_station.py:541
-
+#: data/scripts/edit_station.py:495
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
-#: data/scripts/browse_bouquets.py:680 data/scripts/browse_bouquets.py:681
-
-#: data/scripts/browse_bouquets.py:2020 data/scripts/browse_bouquets.py:2063
-
-#: data/scripts/browse_bouquets.py:2197
-
+#: data/scripts/browse_bouquets.py:1407 data/scripts/browse_bouquets.py:1450
+#: data/scripts/browse_bouquets.py:1549 data/scripts/timonde_common.py:587
+#: data/scripts/timonde_common.py:588
 msgid "(Original folder structure)"
 msgstr "(Оригінальна структура папок)"
 
-#: data/scripts/edit_station.py:539
-
+#: data/scripts/edit_station.py:493
 msgid "(Single inferred timezone)"
 msgstr "(Single inferred timezone)"
 
-#: data/scripts/edit_station.py:518
-
+#: data/scripts/edit_station.py:472
 msgid "(Timezone not defined)"
 msgstr "(Timezone not defined)"
 
-#: data/scripts/edit_station.py:521
-
+#: data/scripts/edit_station.py:475
 msgid "(Unknown)"
 msgstr "(Unknown)"
 
-#: data/scripts/edit_station.py:75
-
+#: data/scripts/edit_station.py:84
 msgid "<b>Edit station settings:</b>"
 msgstr "<b>Змінити налаштування станції:</b>"
 
-#: data/scripts/edit_station.py:65
-
+#: data/scripts/edit_station.py:74
 msgid "<b>Enter new station details:</b>"
 msgstr "<b>Введіть інформацію про нове радіо:</b>"
 
-#: data/scripts/edit_station.py:70
-
+#: data/scripts/edit_station.py:79
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
 msgstr "<b>Зберігайте цю випадково знайдену радіостанцію у своїх вибраних:</b>"
 
-#: data/scripts/timonde_settings.py:740
-
+#: data/scripts/timonde_settings.py:549
 msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
 msgstr "<b>{nb_st}</b> станцій у <b>{nb_gr}</b> групах."
 
-#: data/scripts/browse_bouquets.py:1208
-
+#: data/scripts/browse_bouquets.py:704
 msgid "<i>Select a file or sample above.</i>"
 msgstr "<i>Виберіть файл або зразок вище.</i>"
 
-#: data/scripts/timonde_settings.py:709 data/scripts/timonde_settings.py:719
-
+#: data/scripts/timonde_settings.py:516 data/scripts/timonde_settings.py:528
 msgid "Active (Left & Right clicks unified)"
 msgstr "ÐÐºÑÐ¸Ð²Ð½Ð¾ (Ð»ÑÐ²Ð¸Ð¹ Ñ Ð¿ÑÐ°Ð²Ð¸Ð¹ ÐºÐ»ÑÐºÐ¸ Ð¾Ð±'ÑÐ´Ð½Ð°Ð½Ð¾)"
 
-#: data/scripts/browse_bouquets.py:882
-
+#: data/scripts/browse_bouquets.py:443
 msgid "Add"
 msgstr "додати"
 
-#: data/scripts/reorder_groups.py:189
-
+#: data/scripts/reorder_groups.py:157
 msgid "Add a new station to this group or to root"
 msgstr "ÐÐ¾Ð´Ð°ÑÐ¸ Ð½Ð¾Ð²Ñ ÑÑÐ°Ð½ÑÑÑ Ð´Ð¾ ÑÑÑÑ Ð³ÑÑÐ¿Ð¸ Ð°Ð±Ð¾ Ð´Ð¾ ÐºÐ¾ÑÐµÐ½Ñ"
 
-#: data/scripts/edit_station.py:64
-
+#: data/scripts/edit_station.py:73
 msgid "Add a station (TiMonde)"
 msgstr "Додати станцію (TiMonde)"
 
-#: data/scripts/reorder_groups.py:189
-
+#: data/scripts/reorder_groups.py:157
 msgid "Add station"
 msgstr "Додати радіо"
 
-#: data/scripts/reorder_groups.py:576
-
+#: data/scripts/reorder_groups.py:553
 msgid "Add station here..."
 msgstr "ÐÐ¾Ð´Ð°ÑÐ¸ ÑÑÐ°Ð½ÑÑÑ ÑÑÐ´Ð¸..."
 
-#: data/scripts/reorder_groups.py:597
-
+#: data/scripts/reorder_groups.py:561
 msgid "Add station..."
 msgstr "Додати станцію..."
 
-#: data/scripts/edit_station.py:66
-
+#: data/scripts/edit_station.py:75
 msgid "Add to my stations"
 msgstr "Додати до моїх радіо"
 
-#: data/scripts/edit_station.py:159
-
+#: data/scripts/edit_station.py:172
 msgid "Align name"
 msgstr "Ð£Ð·Ð³Ð¾Ð´Ð¸ÑÐ¸ Ð½Ð°Ð·Ð²Ñ"
 
-#: data/scripts/reorder_groups.py:295
-
+#: data/scripts/reorder_groups.py:218
 msgid "All changes saved"
 msgstr "Ð£ÑÑ Ð·Ð¼ÑÐ½Ð¸ Ð·Ð±ÐµÑÐµÐ¶ÐµÐ½Ð¾"
 
-#: data/scripts/browse_bouquets.py:784
-
+#: data/scripts/browse_bouquets.py:347
 msgid "All countries (Worldwide)"
 msgstr "Усі країни (у всьому світі)"
 
-#: data/scripts/reorder_groups.py:1281
-
+#: data/scripts/reorder_groups.py:1170
 msgid "All files (*.*)"
 msgstr "Усі файли (*.*)"
 
-#: data/scripts/browse_bouquets.py:823
-
+#: data/scripts/browse_bouquets.py:386
 msgid "All languages"
 msgstr "Всі мови"
 
-#: data/scripts/timonde_settings.py:728
-
+#: data/scripts/timonde_settings.py:537
 msgid ""
 "Allows opening the station menu interchangeably with left or right click."
-msgstr "Дозволяє поперемінно відкривати меню станції лівою або правою кнопкою миші."
+msgstr ""
+"Дозволяє поперемінно відкривати меню станції лівою або правою кнопкою миші."
 
-#: data/scripts/timonde_common.py:1904
-
+#: data/scripts/timonde_common.py:1480
 msgid "Already registered"
 msgstr "ÐÐ¶Ðµ Ð·Ð°ÑÐµÑÑÑÑÐ¾Ð²Ð°Ð½Ð¾"
 
-#: data/scripts/timonde_common.py:1899
-
+#: data/scripts/timonde_common.py:1475
 msgid "Already registered:"
 msgstr "ÐÐ¶Ðµ Ð·Ð°ÑÐµÑÑÑÑÐ¾Ð²Ð°Ð½Ð¾:"
 
-#: data/scripts/reorder_groups.py:111 data/scripts/reorder_groups.py:1155
-
+#: data/scripts/reorder_groups.py:89 data/scripts/reorder_groups.py:1060
 msgid "Apply redirects"
 msgstr "Застосувати перенаправлення"
 
-#: data/scripts/reorder_groups.py:783 data/scripts/reorder_groups.py:785
-
-#: data/scripts/reorder_groups.py:787
-
+#: data/scripts/reorder_groups.py:762
 msgid "Are you sure you want to delete « {name} » ?"
 msgstr "Ви впевнені, що хочете видалити « {name} »?"
 
-#: data/scripts/edit_station.py:121
-
+#: data/scripts/edit_station.py:134
 msgid "Audio stream URL:"
 msgstr "URL-адреса аудіопотоку:"
 
-#: data/scripts/reorder_groups.py:1139
-
+#: data/scripts/reorder_groups.py:1048
 msgid "Audit completed:"
 msgstr "Audit completed:"
 
-#: data/scripts/timonde_settings.py:666
-
+#: data/scripts/timonde_settings.py:474
 msgid "Automatic detection according to your Linux locale settings."
 msgstr "Автоматичне виявлення відповідно до налаштувань мови Linux."
 
-#: data/scripts/timonde_settings.py:648
-
+#: data/scripts/timonde_settings.py:447
 msgid "Automatic launch on startup"
 msgstr "Автоматичний запуск при запуску"
 
-#: data/scripts/timonde_settings.py:751
-
+#: data/scripts/timonde_settings.py:560
 msgid "Automatic startup"
 msgstr "Автоматичний запуск"
 
-#: data/scripts/reorder_groups.py:111
-
+#: data/scripts/reorder_groups.py:89
 msgid "Automatically update redirected streams to direct URL"
 msgstr ""
 "Автоматичне оновлення каналів, переспрямованих на їхню пряму URL-адресу"
 
-#: data/scripts/browse_bouquets.py:913 data/scripts/browse_bouquets.py:1247
-
+#: data/scripts/browse_bouquets.py:448 data/scripts/browse_bouquets.py:719
 msgid "Availability"
 msgstr "Доступність"
 
-#: data/scripts/reorder_groups.py:1266
-
+#: data/scripts/reorder_groups.py:1163
 msgid "Backup my bookmarks (XML)"
 msgstr "Ð ÐµÐ·ÐµÑÐ²Ð½Ð° ÐºÐ¾Ð¿ÑÑ Ð·Ð°ÐºÐ»Ð°Ð´Ð¾Ðº (XML)"
 
-#: data/scripts/browse_bouquets.py:1199
-
+#: data/scripts/browse_bouquets.py:695
 msgid "Backup my radios (XML)..."
 msgstr "Резервне копіювання моїх радіо (XML)..."
 
-#: data/scripts/reorder_groups.py:1302
-
+#: data/scripts/reorder_groups.py:1187
 msgid "Backup successful!"
 msgstr "Ð ÐµÐ·ÐµÑÐ²Ð½Ðµ ÐºÐ¾Ð¿ÑÑÐ²Ð°Ð½Ð½Ñ ÑÑÐ¿ÑÑÐ½Ðµ!"
 
-#: data/scripts/timonde_common.py:1645
-
+#: data/scripts/timonde_common.py:1297
 msgid "Bitrate"
 msgstr "Bitrate"
 
-#: data/scripts/timonde_settings.py:530
-
+#: data/scripts/timonde_settings.py:332
 msgid "Bookmarks and stations saved successfully!"
 msgstr "Закладки та станції успішно збережено!"
 
-#: data/scripts/browse_bouquets.py:1203
-
+#: data/scripts/browse_bouquets.py:699
 msgid "Bookmarks folder"
 msgstr "Папка закладок"
 
-#: data/scripts/browse_bouquets.py:2312
-
+#: data/scripts/browse_bouquets.py:1651
 msgid "CSV export is available from settings."
 msgstr "Експорт CSV доступний у налаштуваннях."
 
-#: data/scripts/reorder_groups.py:1252
-
+#: data/scripts/reorder_groups.py:1146
 msgid "CSV export successful:"
 msgstr "ÐÐºÑÐ¿Ð¾ÑÑ CSV ÑÑÐ¿ÑÑÐ½Ð¸Ð¹:"
 
-#: data/scripts/browse_bouquets.py:1982 data/scripts/edit_station.py:308
-
-#: data/scripts/edit_station.py:575 data/scripts/reorder_groups.py:260
-
-#: data/scripts/reorder_groups.py:638 data/scripts/reorder_groups.py:948
-
-#: data/scripts/reorder_groups.py:1228 data/scripts/reorder_groups.py:1269
-
-#: data/scripts/timonde_common.py:1596 data/scripts/timonde_common.py:1720
-
+#: data/scripts/browse_bouquets.py:1371 data/scripts/edit_station.py:292
+#: data/scripts/edit_station.py:528 data/scripts/reorder_groups.py:188
+#: data/scripts/reorder_groups.py:588 data/scripts/reorder_groups.py:875
+#: data/scripts/reorder_groups.py:1128 data/scripts/reorder_groups.py:1165
+#: data/scripts/timonde_common.py:1270 data/scripts/timonde_common.py:1354
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/tray/menu.rs:589
-
+#: src/tray/menu.rs:591
 msgid "Cancel sleep timer"
 msgstr "Скасувати сон"
 
-#: data/scripts/timonde_common.py:1814
-
+#: data/scripts/timonde_common.py:1412
 msgid "Check"
 msgstr "ÐÐµÑÐµÐ²ÑÑÐ¸ÑÐ¸"
 
-#: data/scripts/browse_bouquets.py:938 data/scripts/browse_bouquets.py:1107
-
-#: data/scripts/browse_bouquets.py:1274
-
+#: data/scripts/browse_bouquets.py:462 data/scripts/browse_bouquets.py:603
+#: data/scripts/browse_bouquets.py:733
 msgid "Check all"
 msgstr "Перевірте всі"
 
-#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
-
+#: data/scripts/browse_bouquets.py:619 data/scripts/browse_bouquets.py:749
 msgid "Check and submit selected station to Radio-Browser directory"
-msgstr "ÐÐµÑÐµÐ²ÑÑÐ¸ÑÐ¸ ÑÐ° Ð½Ð°Ð´ÑÑÐ»Ð°ÑÐ¸ Ð²Ð¸Ð±ÑÐ°Ð½Ñ ÑÑÐ°Ð½ÑÑÑ Ð´Ð¾ ÐºÐ°ÑÐ°Ð»Ð¾Ð³Ñ Radio-Browser"
+msgstr ""
+"ÐÐµÑÐµÐ²ÑÑÐ¸ÑÐ¸ ÑÐ° Ð½Ð°Ð´ÑÑÐ»Ð°ÑÐ¸ Ð²Ð¸Ð±ÑÐ°Ð½Ñ ÑÑÐ°Ð½ÑÑÑ Ð´Ð¾ "
+"ÐºÐ°ÑÐ°Ð»Ð¾Ð³Ñ Radio-Browser"
 
-#: data/scripts/timonde_common.py:1814
-
+#: data/scripts/timonde_common.py:1412
 msgid "Check entered stream URL again on Radio-Browser"
-msgstr "ÐÐµÑÐµÐ²ÑÑÐ¸ÑÐ¸ Ð²Ð²ÐµÐ´ÐµÐ½Ñ Ð°Ð´ÑÐµÑÑ Ð¿Ð¾ÑÐ¾ÐºÑ Ð½Ð° Radio-Browser ÑÐµ ÑÐ°Ð·"
+msgstr ""
+"ÐÐµÑÐµÐ²ÑÑÐ¸ÑÐ¸ Ð²Ð²ÐµÐ´ÐµÐ½Ñ Ð°Ð´ÑÐµÑÑ Ð¿Ð¾ÑÐ¾ÐºÑ Ð½Ð° Radio-Browser ÑÐµ "
+"ÑÐ°Ð·"
 
-#: data/scripts/edit_station.py:139
+#: data/scripts/timonde_common.py:195
+msgid "Check failed"
+msgstr "Перевірка не вдалася"
 
+#: data/scripts/edit_station.py:152
 msgid "Check if stream is listed or contribute to directory"
-msgstr "ÐÐµÑÐµÐ²ÑÑÐ¸ÑÐ¸ Ð½Ð°ÑÐ²Ð½ÑÑÑÑ Ð¿Ð¾ÑÐ¾ÐºÑ Ð² ÐºÐ°ÑÐ°Ð»Ð¾Ð·Ñ Ð°Ð±Ð¾ Ð´Ð¾Ð´Ð°ÑÐ¸ Ð¹Ð¾Ð³Ð¾"
+msgstr ""
+"ÐÐµÑÐµÐ²ÑÑÐ¸ÑÐ¸ Ð½Ð°ÑÐ²Ð½ÑÑÑÑ Ð¿Ð¾ÑÐ¾ÐºÑ Ð² ÐºÐ°ÑÐ°Ð»Ð¾Ð·Ñ Ð°Ð±Ð¾ Ð´Ð¾Ð"
+"´Ð°ÑÐ¸ Ð¹Ð¾Ð³Ð¾"
 
-#: data/scripts/edit_station.py:135
-
+#: data/scripts/edit_station.py:148
 msgid "Check link validity and listen to stream preview"
-msgstr "Перевірте дійсність посилання та прослухайте попередній перегляд потоку"
+msgstr ""
+"Перевірте дійсність посилання та прослухайте попередній перегляд потоку"
 
-#: data/scripts/browse_bouquets.py:1286
-
+#: data/scripts/browse_bouquets.py:745
 msgid "Check links availability live"
 msgstr "Перевірте доступність посилань у реальному часі"
 
-#: data/scripts/browse_bouquets.py:946
-
+#: data/scripts/browse_bouquets.py:470
 msgid "Check live availability of found stations"
 msgstr "Перевірте доступність знайдених станцій у реальному часі"
 
-#: data/scripts/reorder_groups.py:242
-
+#: data/scripts/reorder_groups.py:178
 msgid "Check or contribute selected station to Radio-Browser"
-msgstr "ÐÐµÑÐµÐ²ÑÑÐ¸ÑÐ¸ Ð°Ð±Ð¾ Ð´Ð¾Ð´Ð°ÑÐ¸ Ð²Ð¸Ð±ÑÐ°Ð½Ñ ÑÑÐ°Ð½ÑÑÑ Ð´Ð¾ Radio-Browser"
+msgstr ""
+"ÐÐµÑÐµÐ²ÑÑÐ¸ÑÐ¸ Ð°Ð±Ð¾ Ð´Ð¾Ð´Ð°ÑÐ¸ Ð²Ð¸Ð±ÑÐ°Ð½Ñ ÑÑÐ°Ð½ÑÑÑ Ð´Ð¾ Radio-Browser"
 
-#: data/scripts/browse_bouquets.py:1115
-
+#: data/scripts/browse_bouquets.py:611
 msgid "Check stations live availability"
 msgstr "Перевірте наявність станцій у прямому ефірі"
 
-#: data/scripts/reorder_groups.py:102
-
+#: data/scripts/reorder_groups.py:85
 msgid "Check streams"
 msgstr "Перевірити канали"
 
-#: data/scripts/timonde_common.py:1882
-
+#: data/scripts/timonde_common.py:1465
 msgid "Checking Radio-Browser directory..."
 msgstr "ÐÐµÑÐµÐ²ÑÑÐºÐ° ÐºÐ°ÑÐ°Ð»Ð¾Ð³Ñ Radio-Browser..."
 
-#: data/scripts/reorder_groups.py:1077
-
+#: data/scripts/reorder_groups.py:993
 msgid "Checking your radio stations"
 msgstr "Checking your radio stations"
 
-#: data/scripts/browse_bouquets.py:1656
-
+#: data/scripts/browse_bouquets.py:1080
 msgid "Checking..."
 msgstr "З'єднання..."
 
-#: data/scripts/browse_bouquets.py:1978
-
+#: data/scripts/browse_bouquets.py:1367
 msgid "Choose a radio station file"
 msgstr "Виберіть файл радіостанції"
 
-#: data/scripts/browse_bouquets.py:676
-
+#: data/scripts/timonde_common.py:583
 msgid "Choose from existing groups"
 msgstr "Виберіть із існуючих груп"
 
-#: data/scripts/timonde_settings.py:727
-
+#: data/scripts/timonde_settings.py:536
 msgid "Cinnamon Left-Click Unification"
 msgstr "ÐÐ±'ÑÐ´Ð½Ð°Ð½Ð½Ñ Ð»ÑÐ²Ð¾Ð³Ð¾ ÐºÐ»ÑÐºÑ Cinnamon"
 
-#: data/scripts/timonde_settings.py:721
-
+#: data/scripts/timonde_settings.py:530
 msgid "Cinnamon left-click unification successfully enabled!"
-msgstr "ÐÐ±'ÑÐ´Ð½Ð°Ð½Ð½Ñ Ð»ÑÐ²Ð¾Ð³Ð¾ ÐºÐ»ÑÐºÑ Cinnamon ÑÑÐ¿ÑÑÐ½Ð¾ Ð²Ð²ÑÐ¼ÐºÐ½ÐµÐ½Ð¾!"
+msgstr ""
+"ÐÐ±'ÑÐ´Ð½Ð°Ð½Ð½Ñ Ð»ÑÐ²Ð¾Ð³Ð¾ ÐºÐ»ÑÐºÑ Cinnamon ÑÑÐ¿ÑÑÐ½Ð¾ Ð²Ð²ÑÐ¼ÐºÐ½ÐµÐ½Ð¾!"
 
-#: data/scripts/edit_station.py:265
-
+#: data/scripts/edit_station.py:252
 msgid "Clear"
 msgstr "Clear"
 
-#: data/scripts/edit_station.py:266
-
+#: data/scripts/edit_station.py:253
 msgid "Clear / Automatic mode"
 msgstr "ÐÑÐ¸ÑÑÐ¸ÑÐ¸ / ÐÐ²ÑÐ¾Ð¼Ð°ÑÐ¸ÑÐ½Ð¸Ð¹ ÑÐµÐ¶Ð¸Ð¼"
 
-#: data/scripts/browse_bouquets.py:789
-
+#: data/scripts/browse_bouquets.py:352
 msgid "Clear country filter"
 msgstr "Очистити фільтр країни"
 
-#: data/scripts/browse_bouquets.py:669
-
+#: data/scripts/timonde_common.py:577
 msgid "Clear field"
 msgstr "Чисте поле"
 
-#: data/scripts/edit_station.py:187
-
+#: data/scripts/edit_station.py:201
 msgid "Clear field (click to empty)"
 msgstr "ÐÑÐ¸ÑÑÐ¸ÑÐ¸ Ð¿Ð¾Ð»Ðµ (Ð½Ð°ÑÐ¸ÑÐ½ÑÑÑ, ÑÐ¾Ð± ÑÐ¿Ð¾ÑÐ¾Ð¶Ð½Ð¸ÑÐ¸)"
 
-#: data/scripts/browse_bouquets.py:828
-
+#: data/scripts/browse_bouquets.py:391
 msgid "Clear language filter"
 msgstr "Очистити мовний фільтр"
 
-#: data/scripts/browse_bouquets.py:1335 data/scripts/timonde_common.py:1858
-
-#: data/scripts/timonde_settings.py:447
-
+#: data/scripts/timonde_common.py:1436 data/scripts/timonde_common.py:1524
+#: data/scripts/timonde_settings.py:249
 msgid "Close"
 msgstr "Закрити"
 
-#: data/scripts/reorder_groups.py:88
-
+#: data/scripts/reorder_groups.py:79
 msgid "Collapse all"
 msgstr "ÐÐ³Ð¾ÑÐ½ÑÑÐ¸ Ð²ÑÐµ"
 
-#: data/scripts/reorder_groups.py:88
-
+#: data/scripts/reorder_groups.py:79
 msgid "Collapse all groups for an overview"
 msgstr "ÐÐ³Ð¾ÑÐ½ÑÑÐ¸ Ð²ÑÑ Ð³ÑÑÐ¿Ð¸ Ð´Ð»Ñ Ð¾Ð³Ð»ÑÐ´Ñ"
 
-#: data/scripts/timonde_settings.py:594
-
+#: data/scripts/timonde_settings.py:393
 msgid "Collections & Files"
 msgstr "Колекції та файли"
 
-#: data/scripts/reorder_groups.py:794
-
+#: data/scripts/reorder_groups.py:774
 msgid "Confirm deletion"
 msgstr "ÐÑÐ´ÑÐ²ÐµÑÐ´Ð¸ÑÐ¸ Ð²Ð¸Ð»ÑÑÐµÐ½Ð½Ñ"
 
-#: data/scripts/timonde_common.py:1328
-
-msgid "Connecting to"
-msgstr "Підключення до"
-
-#: src/i18n.rs:192 src/tray/menu.rs:159
-
+#: src/i18n.rs:226 src/tray/menu.rs:161
 msgid "Connecting..."
 msgstr "З'єднання..."
 
-#: data/scripts/browse_bouquets.py:739
-
+#: data/scripts/browse_bouquets.py:302
 msgid "Contribute a station"
 msgstr "ÐÐ¾Ð´Ð°ÑÐ¸ ÑÑÐ°Ð½ÑÑÑ"
 
-#: data/scripts/timonde_common.py:1781
-
+#: data/scripts/timonde_common.py:1400
 msgid "Contribute a station to the community Radio-Browser directory"
-msgstr "ÐÐ°Ð´ÑÑÐ»Ð°ÑÐ¸ Ð½Ð¾Ð²Ñ ÑÑÐ°Ð½ÑÑÑ Ð´Ð¾ ÑÐ¿ÑÐ»ÑÐ½Ð¾ÑÐ½Ð¾Ð³Ð¾ ÐºÐ°ÑÐ°Ð»Ð¾Ð³Ñ Radio-Browser"
+msgstr ""
+"ÐÐ°Ð´ÑÑÐ»Ð°ÑÐ¸ Ð½Ð¾Ð²Ñ ÑÑÐ°Ð½ÑÑÑ Ð´Ð¾ ÑÐ¿ÑÐ»ÑÐ½Ð¾ÑÐ½Ð¾Ð³Ð¾ ÐºÐ°ÑÐ°Ð»Ð¾Ð³Ñ "
+"Radio-Browser"
 
-#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
-
-#: data/scripts/timonde_common.py:1761
-
+#: data/scripts/browse_bouquets.py:619 data/scripts/browse_bouquets.py:749
+#: data/scripts/timonde_common.py:1385
 msgid "Contribute to Radio-Browser"
 msgstr "ÐÐ¾Ð´Ð°ÑÐ¸ Ð´Ð¾ Radio-Browser"
 
-#: data/scripts/reorder_groups.py:242 data/scripts/reorder_groups.py:567
-
+#: data/scripts/reorder_groups.py:178 data/scripts/reorder_groups.py:547
 msgid "Contribute to Radio-Browser..."
 msgstr "ÐÐ¾Ð´Ð°ÑÐ¸ Ð´Ð¾ Radio-Browser..."
 
-#: data/scripts/browse_bouquets.py:894 data/scripts/browse_bouquets.py:1240
-
-#: data/scripts/timonde_common.py:1648
-
+#: data/scripts/browse_bouquets.py:445 data/scripts/browse_bouquets.py:718
+#: data/scripts/timonde_common.py:1297
 msgid "Country"
 msgstr "<b>Country:</b>"
 
-#: data/scripts/browse_bouquets.py:1327 data/scripts/timonde_settings.py:593
-
+#: data/scripts/timonde_settings.py:392
 msgid "Country bouquets"
 msgstr "Сільські букети"
 
-#: data/scripts/timonde_common.py:1821
-
+#: data/scripts/timonde_common.py:1423
 msgid "Country code (ISO):"
 msgstr "ÐÐ¾Ð´ ÐºÑÐ°ÑÐ½Ð¸ (ISO):"
 
-#: data/scripts/browse_bouquets.py:981 data/scripts/edit_station.py:228
-
-#: data/scripts/timonde_common.py:1900
-
+#: data/scripts/browse_bouquets.py:505 data/scripts/edit_station.py:238
+#: data/scripts/timonde_common.py:1476
 msgid "Country:"
 msgstr "Country:"
 
-#: data/scripts/reorder_groups.py:639
-
+#: data/scripts/reorder_groups.py:589
 msgid "Create"
 msgstr "Ð¡ÑÐ²Ð¾ÑÐ¸ÑÐ¸"
 
-#: data/scripts/browse_bouquets.py:1199
-
+#: data/scripts/browse_bouquets.py:695
 msgid "Create a full backup of your collection (with folders and timezones)"
-msgstr "Створіть повну резервну копію своєї колекції (з папками та часовими поясами)"
+msgstr ""
+"Створіть повну резервну копію своєї колекції (з папками та часовими поясами)"
 
-#: data/scripts/reorder_groups.py:634
-
+#: data/scripts/reorder_groups.py:587
 msgid "Create a new group"
 msgstr "Ð¡ÑÐ²Ð¾ÑÐ¸ÑÐ¸ Ð½Ð¾Ð²Ñ Ð³ÑÑÐ¿Ñ"
 
-#: data/scripts/reorder_groups.py:193
-
+#: data/scripts/reorder_groups.py:158
 msgid "Create a new group or subgroup (Ctrl+N)"
 msgstr "Ð¡ÑÐ²Ð¾ÑÐ¸ÑÐ¸ Ð½Ð¾Ð²Ñ Ð³ÑÑÐ¿Ñ ÑÐ¸ Ð¿ÑÐ´Ð³ÑÑÐ¿Ñ (Ctrl+N)"
 
-#: data/scripts/reorder_groups.py:658
-
+#: data/scripts/reorder_groups.py:603
 msgid "Create as a subgroup inside"
 msgstr "Ð¡ÑÐ²Ð¾ÑÐ¸ÑÐ¸ ÑÐº Ð¿ÑÐ´Ð³ÑÑÐ¿Ñ Ð²ÑÐµÑÐµÐ´Ð¸Ð½Ñ"
 
-#: data/scripts/timonde_settings.py:656
-
+#: data/scripts/timonde_settings.py:455
 msgid "DETECTED ENVIRONMENT (READ ONLY)"
 msgstr "ВИЯВЛЕНЕ СЕРЕДОВИЩЕ (ЛИШЕ ЧИТАННЯ)"
 
 #: src/timezone.rs:521
-
 msgid "Daytime"
 msgstr "День"
 
-#: data/scripts/reorder_groups.py:106 data/scripts/reorder_groups.py:1147
-
+#: data/scripts/reorder_groups.py:87 data/scripts/reorder_groups.py:1052
 msgid "Dead links only"
 msgstr "Тільки мертві посилання"
 
-#: data/scripts/edit_station.py:576 data/scripts/reorder_groups.py:246
-
-#: src/i18n.rs:230 src/i18n.rs:236
-
+#: data/scripts/edit_station.py:529 data/scripts/reorder_groups.py:179
+#: src/i18n.rs:268 src/i18n.rs:274
 msgid "Delete"
 msgstr "Видалити"
 
-#: data/scripts/reorder_groups.py:588
-
+#: data/scripts/reorder_groups.py:556
 msgid "Delete group and stations"
 msgstr "ÐÐ¸Ð»ÑÑÐ¸ÑÐ¸ Ð³ÑÑÐ¿Ñ ÑÐ° ÑÑÐ°Ð½ÑÑÑ"
 
-#: data/scripts/reorder_groups.py:246
-
+#: data/scripts/reorder_groups.py:179
 msgid "Delete selected item or group (Del)"
 msgstr "Delete selected item or group (Del)"
 
-#: data/scripts/edit_station.py:303 data/scripts/reorder_groups.py:571
-
+#: data/scripts/edit_station.py:287 data/scripts/reorder_groups.py:548
 msgid "Delete this station"
 msgstr "Видалити це радіо"
 
-#: data/scripts/edit_station.py:572
-
+#: data/scripts/edit_station.py:525
 msgid "Delete « {} » from favorites?"
 msgstr "Видалити «{}» з вибраного?"
 
-#: data/scripts/reorder_groups.py:803
-
+#: data/scripts/reorder_groups.py:784
 msgid "Deleted:"
 msgstr "ÐÐ¸Ð»ÑÑÐµÐ½Ð¾:"
 
-#: data/scripts/timonde_settings.py:676
-
+#: data/scripts/timonde_settings.py:484
 msgid "Desktop environment & Tray"
 msgstr "Середовище робочого столу та трей"
 
-#: data/scripts/reorder_groups.py:169
-
+#: data/scripts/reorder_groups.py:136
 msgid "Details / Status"
 msgstr "ÐÐ¾Ð´ÑÐ¾Ð±Ð¸ÑÑ / Ð¡ÑÐ°Ð½"
 
-#: data/scripts/browse_bouquets.py:525
-
-msgid "Discover & Import stations (TiMonde)"
-msgstr "Знайти та імпортувати радіостанції (TiMonde)"
-
-#: data/scripts/timonde_settings.py:649
-
+#: data/scripts/timonde_settings.py:448
 msgid ""
 "Discreetly starts TiMonde in the background as soon as your graphical "
 "session opens."
-msgstr "Непомітно запускає TiMonde у фоновому режимі, щойно відкривається ваш графічний сеанс."
+msgstr ""
+"Непомітно запускає TiMonde у фоновому режимі, щойно відкривається ваш "
+"графічний сеанс."
 
-#: data/scripts/reorder_groups.py:107
-
+#: data/scripts/reorder_groups.py:87
 msgid "Display offline radio streams only"
 msgstr "Показувати лише радіостанції, трансляція яких офлайн"
 
-#: data/scripts/reorder_groups.py:234 src/i18n.rs:229 src/i18n.rs:235
+#: data/scripts/reorder_groups.py:1225
+msgid "Do you want to discard them and exit?"
+msgstr "Відхилити їх і вийти?"
 
-#: src/tray/menu.rs:384
-
+#: data/scripts/reorder_groups.py:176 src/i18n.rs:267 src/i18n.rs:273
+#: src/tray/menu.rs:390
 msgid "Edit"
 msgstr "Редагувати"
 
-#: data/scripts/reorder_groups.py:234
-
+#: data/scripts/reorder_groups.py:176
 msgid "Edit selected name, URL or group (F2)"
-msgstr "Ð ÐµÐ´Ð°Ð³ÑÐ²Ð°ÑÐ¸ Ð²Ð¸Ð±ÑÐ°Ð½Ñ Ð½Ð°Ð·Ð²Ñ, Ð°Ð´ÑÐµÑÑ Ð°Ð±Ð¾ Ð³ÑÑÐ¿Ñ (F2)"
+msgstr ""
+"Ð ÐµÐ´Ð°Ð³ÑÐ²Ð°ÑÐ¸ Ð²Ð¸Ð±ÑÐ°Ð½Ñ Ð½Ð°Ð·Ð²Ñ, Ð°Ð´ÑÐµÑÑ Ð°Ð±Ð¾ Ð³ÑÑÐ¿Ñ (F2)"
 
-#: data/scripts/edit_station.py:74
+#: data/scripts/timonde_common.py:1438 data/scripts/timonde_common.py:1481
+msgid "Edit station"
+msgstr "Редагувати станцію"
 
+#: data/scripts/edit_station.py:83
 msgid "Edit station (TiMonde)"
 msgstr "Редагувати радіо (TiMonde)"
 
-#: data/scripts/reorder_groups.py:555
-
+#: data/scripts/reorder_groups.py:544
 msgid "Edit station..."
 msgstr "Додати станцію..."
 
-#: data/scripts/timonde_common.py:132
-
+#: data/scripts/timonde_common.py:166
 msgid "Empty URL"
 msgstr "ÐÐ¾ÑÐ¾Ð¶Ð½Ñ Ð°Ð´ÑÐµÑÐ°"
 
-#: data/scripts/timonde_common.py:1301 data/scripts/timonde_common.py:1315
-
+#: data/scripts/timonde_common.py:1081 data/scripts/timonde_common.py:1096
 msgid "Empty stream URL"
 msgstr "Порожня URL-адреса потоку"
 
-#: data/scripts/timonde_settings.py:709
-
+#: data/scripts/timonde_settings.py:516
 msgid "Enable Left-Click"
 msgstr "Ð£Ð²ÑÐ¼ÐºÐ½ÑÑÐ¸ Ð»ÑÐ²Ð¸Ð¹ ÐºÐ»ÑÐº"
 
-#: data/scripts/timonde_common.py:1277
-
-msgid "End of stream"
-msgstr "Кінець потоку"
-
-#: data/scripts/browse_bouquets.py:950
-
+#: data/scripts/browse_bouquets.py:474
 msgid "Enter a keyword or click Search to browse the directory."
 msgstr "Введіть ключове слово або натисніть «Пошук», щоб переглянути каталог."
 
-#: src/tray/mod.rs:155
-
+#: src/tray/mod.rs:143
 msgid "Ephemeral radio (not saved)."
 msgstr "Ð¢Ð¸Ð¼ÑÐ°ÑÐ¾Ð²Ðµ ÑÐ°Ð´ÑÐ¾ (Ð½Ðµ Ð·Ð±ÐµÑÐµÐ¶ÐµÐ½Ð¾)."
 
-#: data/scripts/reorder_groups.py:1312
+#: data/scripts/timonde_common.py:1222
+msgid "Error communicating with TiMonde binary"
+msgstr "Помилка зв'язку з виконуваним файлом TiMonde"
 
+#: data/scripts/reorder_groups.py:1189
 msgid "Error during backup:"
 msgstr "Помилка під час резервного копіювання:"
 
-#: data/scripts/timonde_settings.py:753
-
+#: data/scripts/timonde_settings.py:562
 msgid "Error modifying autostart."
 msgstr "Помилка зміни автозапуску."
 
-#: data/scripts/timonde_common.py:195
-
-msgid "Error {code}"
-msgstr "ÐÐ¾Ð¼Ð¸Ð»ÐºÐ° {code}"
-
-#: data/scripts/gnome_tray_helper.py:217
-
+#: data/scripts/gnome_tray_helper.py:228
 msgid "Error:"
 msgstr "Помилка:"
 
 #: src/timezone.rs:521
-
 msgid "Evening"
 msgstr "вечір"
 
-#: data/scripts/browse_bouquets.py:652
-
+#: data/scripts/timonde_common.py:560
 msgid "Ex: /France/Jazz or / for root"
 msgstr "Наприклад: /Франція/Джаз або / для root"
 
-#: data/scripts/browse_bouquets.py:1169
-
+#: data/scripts/browse_bouquets.py:665
 msgid "Examples folder"
 msgstr "Папка з прикладами"
 
-#: data/scripts/reorder_groups.py:92
-
+#: data/scripts/reorder_groups.py:81
 msgid "Expand all"
 msgstr "Ð Ð¾Ð·Ð³Ð¾ÑÐ½ÑÑÐ¸ Ð²ÑÐµ"
 
-#: data/scripts/reorder_groups.py:92
-
+#: data/scripts/reorder_groups.py:81
 msgid "Expand all groups and subgroups"
 msgstr "Ð Ð¾Ð·Ð³Ð¾ÑÐ½ÑÑÐ¸ Ð²ÑÑ Ð³ÑÑÐ¿Ð¸ ÑÐ° Ð¿ÑÐ´Ð³ÑÑÐ¿Ð¸"
 
-#: data/scripts/browse_bouquets.py:1087
-
+#: data/scripts/browse_bouquets.py:583
 msgid "Explore stations from this country on Radio-Browser"
 msgstr "Дослідити станції цієї країни на Radio-Browser"
 
-#: data/scripts/browse_bouquets.py:1628
-
+#: data/scripts/browse_bouquets.py:1052
 msgid "Explore stations from {country} on Radio-Browser ➔"
 msgstr "Дослідити станції з {country} на Radio-Browser ➔"
 
-#: data/scripts/reorder_groups.py:1228
-
+#: data/scripts/reorder_groups.py:1128
 msgid "Export"
 msgstr "Експорт"
 
-#: data/scripts/reorder_groups.py:264
-
+#: data/scripts/reorder_groups.py:192
 msgid "Export all stations to CSV spreadsheet format"
 msgstr "Експортуйте всі свої радіостанції у формат електронної таблиці CSV"
 
-#: data/scripts/reorder_groups.py:1254
-
+#: data/scripts/reorder_groups.py:1148 data/scripts/reorder_groups.py:1150
 msgid "Export error:"
 msgstr "ÐÐ¾Ð¼Ð¸Ð»ÐºÐ° ÐµÐºÑÐ¿Ð¾ÑÑÑ:"
 
-#: data/scripts/reorder_groups.py:1225
-
+#: data/scripts/reorder_groups.py:1126
 msgid "Export stations to CSV"
 msgstr "ÐÐºÑÐ¿Ð¾ÑÑÑÐ²Ð°ÑÐ¸ ÑÑÐ°Ð½ÑÑÑ Ð´Ð¾ CSV"
 
-#: data/scripts/reorder_groups.py:264
-
+#: data/scripts/reorder_groups.py:192
 msgid "Export to CSV"
 msgstr "Експорт у CSV"
 
-#: data/scripts/browse_bouquets.py:1195
-
+#: data/scripts/browse_bouquets.py:691
 msgid "Export to spreadsheet (CSV)..."
 msgstr "Експортувати в електронну таблицю (CSV)..."
 
-#: data/scripts/browse_bouquets.py:1182
-
+#: data/scripts/browse_bouquets.py:678
 msgid "External file:"
 msgstr "Зовнішній файл:"
 
-#: data/scripts/timonde_common.py:1530
-
-msgid "Failed to add station"
-msgstr "ÐÐµ Ð²Ð´Ð°Ð»Ð¾ÑÑ Ð´Ð¾Ð´Ð°ÑÐ¸ ÑÑÐ°Ð½ÑÑÑ"
-
-#: data/scripts/timonde_settings.py:723
-
+#: data/scripts/timonde_settings.py:532
 msgid "Failed to enable Cinnamon unification."
 msgstr "ÐÐµ Ð²Ð´Ð°Ð»Ð¾ÑÑ Ð²Ð²ÑÐ¼ÐºÐ½ÑÑÐ¸ ÑÐ½ÑÑÑÐºÐ°ÑÑÑ Cinnamon."
 
-#: data/scripts/browse_bouquets.py:918 data/scripts/browse_bouquets.py:1066
-
-#: data/scripts/browse_bouquets.py:1252
-
+#: data/scripts/browse_bouquets.py:449 data/scripts/browse_bouquets.py:565
+#: data/scripts/browse_bouquets.py:720
 msgid "Favorite status"
 msgstr "Улюблений статус"
 
-#: data/scripts/browse_bouquets.py:2056
-
+#: data/scripts/browse_bouquets.py:1443
 msgid "File:"
 msgstr "Файл:"
 
-#: data/scripts/browse_bouquets.py:779
-
+#: data/scripts/browse_bouquets.py:342
 msgid "Filter by country:"
 msgstr "Фільтрувати за країною:"
 
-#: data/scripts/browse_bouquets.py:1235
-
+#: data/scripts/browse_bouquets.py:717
 msgid "Folder / Group"
 msgstr "Папка / Група"
 
-#: data/scripts/timonde_common.py:1642
-
+#: data/scripts/timonde_common.py:1297
 msgid "Format"
 msgstr "Format"
 
-#: data/scripts/browse_bouquets.py:906
-
+#: data/scripts/browse_bouquets.py:447
 msgid "Format & Bitrate"
 msgstr "Формат і бітрейт"
 
-#: data/scripts/gnome_tray_helper.py:150
-
+#: data/scripts/gnome_tray_helper.py:161
 msgid "GNOME Shell environment detected"
 msgstr "Виявлено середовище GNOME Shell"
 
-#: data/scripts/timonde_settings.py:693
-
+#: data/scripts/timonde_settings.py:501
 msgid "GNOME integration required"
 msgstr "Потрібна інтеграція з GNOME"
 
-#: data/scripts/timonde_common.py:1319
-
-msgid "GStreamer not available"
-msgstr "GStreamer недоступний"
-
-#: data/scripts/browse_bouquets.py:1195
-
+#: data/scripts/browse_bouquets.py:691
 msgid "Generate a flat list for Calc or Excel spreadsheet"
 msgstr "Створіть плоский список для електронної таблиці Calc або Excel"
 
-#: data/scripts/browse_bouquets.py:901
-
+#: data/scripts/browse_bouquets.py:446
 msgid "Genre / Tags"
 msgstr "Стать / Теги"
 
-#: data/scripts/browse_bouquets.py:1053
-
+#: data/scripts/browse_bouquets.py:563
 msgid "Genre / Topic"
 msgstr "Жанр / Тема"
 
-#: data/scripts/browse_bouquets.py:759
-
+#: data/scripts/browse_bouquets.py:322
 msgid "Genre:"
 msgstr "стать:"
 
-#: data/scripts/timonde_common.py:193
-
+#: data/scripts/timonde_common.py:182
 msgid "Geoblocked (VPN)"
 msgstr "ÐÐµÐ¾Ð±Ð»Ð¾ÐºÑÐ²Ð°Ð½Ð½Ñ (VPN)"
 
-#: data/scripts/browse_bouquets.py:735
-
+#: data/scripts/browse_bouquets.py:298
 msgid ""
 "Global search on the free and open <b>Radio-Browser</b> directory (+45,000 "
 "stations)."
-msgstr "Глобальний пошук у безкоштовному відкритому каталозі <b>Radio-Browser</b> (+45 000 станцій)."
+msgstr ""
+"Глобальний пошук у безкоштовному відкритому каталозі <b>Radio-Browser</b> "
+"(+45 000 станцій)."
 
-#: data/scripts/edit_station.py:168
-
+#: data/scripts/edit_station.py:181
 msgid "Group / Folder:"
 msgstr "Група / Папка:"
 
-#: data/scripts/reorder_groups.py:677
-
+#: data/scripts/reorder_groups.py:618
 msgid "Group created:"
 msgstr "ÐÑÑÐ¿Ñ ÑÑÐ²Ð¾ÑÐµÐ½Ð¾:"
 
-#: data/scripts/reorder_groups.py:734
-
+#: data/scripts/reorder_groups.py:690
 msgid "Group renamed:"
 msgstr "ÐÑÑÐ¿Ñ Ð¿ÐµÑÐµÐ¹Ð¼ÐµÐ½Ð¾Ð²Ð°Ð½Ð¾:"
 
-#: data/scripts/browse_bouquets.py:645
-
+#: data/scripts/timonde_common.py:553
 msgid "Group:"
 msgstr "Група:"
 
-#: data/scripts/timonde_common.py:189
-
-msgid "HTTP Error {code}"
-msgstr "ÐÐ¾Ð¼Ð¸Ð»ÐºÐ° HTTP {code}"
-
-#: data/scripts/browse_bouquets.py:702
-
+#: data/scripts/timonde_common.py:606
 msgid "Help on groups and subgroups"
 msgstr "Довідка по групах і підгрупах"
 
-#: data/scripts/browse_bouquets.py:1039 data/scripts/browse_bouquets.py:1221
-
+#: data/scripts/browse_bouquets.py:561 data/scripts/browse_bouquets.py:715
 msgid "Import"
 msgstr "Імпорт"
 
-#: data/scripts/browse_bouquets.py:1328
-
-msgid "Import & Export"
-msgstr "Імпорт та експорт"
-
-#: data/scripts/browse_bouquets.py:717
-
+#: data/scripts/browse_bouquets.py:280
 msgid "Import to my favorites"
 msgstr "Імпортувати в мої вибрані"
 
-#: src/tray/menu.rs:560
-
+#: src/tray/menu.rs:562
 msgid "In 15 minutes"
 msgstr "Через 15 хвилин"
 
-#: src/tray/menu.rs:567
-
+#: src/tray/menu.rs:569
 msgid "In 30 minutes"
 msgstr "Через 30 хв"
 
-#: src/tray/menu.rs:574
-
+#: src/tray/menu.rs:576
 msgid "In 45 minutes"
 msgstr "Через 45 хвилин"
 
-#: src/tray/menu.rs:581
-
+#: src/tray/menu.rs:583
 msgid "In 60 minutes (1h)"
 msgstr "Через 60 хвилин (1 година)"
 
-#: data/scripts/reorder_groups.py:707
-
+#: data/scripts/reorder_groups.py:675
 msgid "Insert"
 msgstr "ÐÑÑÐ°Ð²Ð¸ÑÐ¸"
 
-#: data/scripts/reorder_groups.py:230
-
+#: data/scripts/reorder_groups.py:175
 msgid "Insert a separator or header"
 msgstr "ÐÑÑÐ°Ð²Ð¸ÑÐ¸ ÑÐ¾Ð·Ð´ÑÐ»ÑÐ²Ð°Ñ Ð°Ð±Ð¾ Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº"
 
-#: data/scripts/reorder_groups.py:705
-
+#: data/scripts/reorder_groups.py:673
 msgid "Insert separator"
 msgstr "ÐÑÑÐ°Ð²Ð¸ÑÐ¸ ÑÐ¾Ð·Ð´ÑÐ»ÑÐ²Ð°Ñ"
 
-#: data/scripts/gnome_tray_helper.py:179 data/scripts/timonde_settings.py:688
-
+#: data/scripts/gnome_tray_helper.py:190 data/scripts/timonde_settings.py:495
 msgid "Install GNOME integration"
 msgstr "Встановити інтеграцію GNOME"
 
-#: data/scripts/gnome_tray_helper.py:198
-
+#: data/scripts/gnome_tray_helper.py:209
 msgid "Installation in progress (please confirm system prompt)..."
 msgstr "Триває встановлення (будь ласка, підтвердьте запит системи)..."
 
-#: data/scripts/gnome_tray_helper.py:213
-
+#: data/scripts/gnome_tray_helper.py:224
 msgid "Installation was cancelled or failed."
 msgstr "Встановлення скасовано або не вдалося."
 
-#: data/scripts/gnome_tray_helper.py:145
+#: data/scripts/timonde_settings.py:464
+msgid "Installed binary:"
+msgstr "Встановлений бінарний файл:"
 
+#: data/scripts/gnome_tray_helper.py:156
 msgid "Integration in GNOME top bar"
 msgstr "Інтеграція у верхню панель GNOME"
 
-#: data/scripts/edit_station.py:71
-
+#: data/scripts/edit_station.py:80
 msgid "Keep in favorites"
 msgstr "Зберегти в обране"
 
-#: data/scripts/browse_bouquets.py:749
-
+#: data/scripts/browse_bouquets.py:312
 msgid "Keyword:"
 msgstr "Ключове слово:"
 
-#: data/scripts/browse_bouquets.py:819 data/scripts/browse_bouquets.py:1023
-
+#: data/scripts/browse_bouquets.py:382 data/scripts/browse_bouquets.py:547
 msgid "Language:"
 msgstr "мова:"
 
-#: data/scripts/browse_bouquets.py:706 data/scripts/browse_bouquets.py:1399
-
-#: data/scripts/reorder_groups.py:185 data/scripts/reorder_groups.py:1005
-
+#: data/scripts/browse_bouquets.py:269 data/scripts/browse_bouquets.py:821
+#: data/scripts/reorder_groups.py:156 data/scripts/reorder_groups.py:908
 msgid "Listen"
 msgstr "Ð¡Ð»ÑÑÐ°ÑÐ¸"
 
-#: data/scripts/browse_bouquets.py:706
-
+#: data/scripts/browse_bouquets.py:269
 msgid "Listen to selected station"
 msgstr "Слухайте вибрану станцію"
 
-#: data/scripts/timonde_common.py:204
-
-msgid "Live (Shoutcast)"
-msgstr "ÐÑÑÐ¼Ð¸Ð¹ ÐµÑÑÑ (Shoutcast)"
-
-#: data/scripts/timonde_common.py:187
-
+#: data/scripts/timonde_common.py:185
 msgid "Live ({codec})"
 msgstr "ÐÐ°Ð¶Ð¸Ð²Ð¾ ({codec})"
 
-#: data/scripts/browse_bouquets.py:1060
-
+#: data/scripts/browse_bouquets.py:564
 msgid "Live availability"
 msgstr "Жива доступність"
 
-#: data/scripts/browse_bouquets.py:1186
-
+#: data/scripts/browse_bouquets.py:682
 msgid "Load a file..."
 msgstr "Завантажити файл..."
 
-#: data/scripts/browse_bouquets.py:1186
-
+#: data/scripts/browse_bouquets.py:682
 msgid "Load an XML, CSV, JSON, M3U or PLS file"
 msgstr "Завантажте файл XML, CSV, JSON, M3U або PLS"
 
 #: src/timezone.rs:521
-
 msgid "Morning"
 msgstr "Ранок"
 
-#: data/scripts/reorder_groups.py:949
-
+#: data/scripts/reorder_groups.py:876
 msgid "Move"
 msgstr "ÐÐµÑÐµÐ¼ÑÑÑÐ¸ÑÐ¸"
 
-#: data/scripts/reorder_groups.py:219
-
+#: data/scripts/reorder_groups.py:167
 msgid "Move down"
 msgstr "⬇ Ідіть вниз"
 
-#: data/scripts/reorder_groups.py:219
-
+#: data/scripts/reorder_groups.py:167
 msgid "Move down one rank"
 msgstr "Move down one rank"
 
-#: data/scripts/reorder_groups.py:211
-
+#: data/scripts/reorder_groups.py:165
 msgid "Move selected item to the top"
 msgstr "Move selected item to the top"
 
-#: data/scripts/reorder_groups.py:197
-
+#: data/scripts/reorder_groups.py:159
 msgid "Move selection to another group (Ctrl+M)"
 msgstr "Move selection to another group (Ctrl+M)"
 
-#: data/scripts/reorder_groups.py:944
-
+#: data/scripts/reorder_groups.py:874
 msgid "Move to another group"
 msgstr "ÐÐµÑÐµÐ¼ÑÑÑÐ¸ÑÐ¸ Ð´Ð¾ ÑÐ½ÑÐ¾Ñ Ð³ÑÑÐ¿Ð¸"
 
-#: data/scripts/reorder_groups.py:559
-
+#: data/scripts/reorder_groups.py:545
 msgid "Move to another group..."
 msgstr "Move selection to another group (Ctrl+M)"
 
-#: data/scripts/reorder_groups.py:197
-
+#: data/scripts/reorder_groups.py:159
 msgid "Move to..."
 msgstr "Перейти до..."
 
-#: data/scripts/reorder_groups.py:215
-
+#: data/scripts/reorder_groups.py:166
 msgid "Move up"
 msgstr "⬆ Підніміться"
 
-#: data/scripts/reorder_groups.py:215
-
+#: data/scripts/reorder_groups.py:166
 msgid "Move up one rank"
 msgstr "Move up one rank"
 
-#: src/tray/menu.rs:528
-
+#: src/tray/menu.rs:530
 msgid "Mute (0%)"
 msgstr "Вимкнути звук (0%)"
 
-#: data/scripts/reorder_groups.py:98 data/scripts/timonde_settings.py:524
-
+#: data/scripts/reorder_groups.py:84 data/scripts/timonde_settings.py:326
 msgid "My Radios"
 msgstr "Мої радіостанції"
 
-#: data/scripts/timonde_common.py:1925
-
+#: data/scripts/timonde_common.py:1505
 msgid "Name and Stream URL are mandatory."
 msgstr "ÐÐ°Ð·Ð²Ð° ÑÐ° Ð°Ð´ÑÐµÑÐ° Ð¿Ð¾ÑÐ¾ÐºÑ Ñ Ð¾Ð±Ð¾Ð²'ÑÐ·ÐºÐ¾Ð²Ð¸Ð¼Ð¸."
 
-#: data/scripts/reorder_groups.py:646
-
+#: data/scripts/reorder_groups.py:596
 msgid "Name of the new group:"
 msgstr "ÐÐ°Ð·Ð²Ð° Ð½Ð¾Ð²Ð¾Ñ Ð³ÑÑÐ¿Ð¸:"
 
-#: data/scripts/browse_bouquets.py:1011
-
+#: data/scripts/browse_bouquets.py:535
 msgid "National Bouquet (Major stations)"
 msgstr "Національний букет (Основні станції)"
 
-#: data/scripts/timonde_settings.py:677
+#: data/scripts/browse_bouquets.py:1032
+msgid "National Radios"
+msgstr "National Radios"
 
+#: data/scripts/timonde_settings.py:485
 msgid ""
 "Native integration in notification tray via StatusNotifierItem / XEmbed."
-msgstr "Вбудована інтеграція в панель сповіщень через StatusNotifierItem / XEmbed."
+msgstr ""
+"Вбудована інтеграція в панель сповіщень через StatusNotifierItem / XEmbed."
 
-#: data/scripts/browse_bouquets.py:1655
-
+#: data/scripts/browse_bouquets.py:1079
 msgid "New"
 msgstr "[Нова]"
 
-#: data/scripts/reorder_groups.py:193
-
+#: data/scripts/reorder_groups.py:158
 msgid "New group"
 msgstr "Нова група"
 
-#: data/scripts/reorder_groups.py:593
-
+#: data/scripts/reorder_groups.py:560
 msgid "New group..."
 msgstr "Нова група"
 
-#: data/scripts/reorder_groups.py:725
-
+#: data/scripts/reorder_groups.py:694
 msgid "New name for group:"
 msgstr "ÐÐ¾Ð²Ð° Ð½Ð°Ð·Ð²Ð° Ð³ÑÑÐ¿Ð¸:"
 
-#: data/scripts/browse_bouquets.py:1282
-
+#: data/scripts/browse_bouquets.py:741
 msgid "New only"
 msgstr "Тільки нові"
 
-#: data/scripts/reorder_groups.py:580
-
+#: data/scripts/reorder_groups.py:554
 msgid "New subgroup here..."
 msgstr "ÐÐ¾Ð²Ð° Ð¿ÑÐ´Ð³ÑÑÐ¿Ð° ÑÑÑ..."
 
 #: src/timezone.rs:521
-
 msgid "Night"
 msgstr "ніч"
 
-#: data/scripts/browse_bouquets.py:1726
-
+#: data/scripts/browse_bouquets.py:1162
 msgid "No DAB+ bouquet for {country} — Use 'Search online'."
 msgstr "Немає букета DAB+ для {country} — використовуйте «Пошук онлайн»."
 
-#: data/scripts/reorder_groups.py:1262
-
+#: data/scripts/reorder_groups.py:1159
 msgid "No bookmarks.xml file found to backup."
-msgstr "Ð¤Ð°Ð¹Ð» bookmarks.xml Ð´Ð»Ñ ÑÐµÐ·ÐµÑÐ²Ð½Ð¾Ð³Ð¾ ÐºÐ¾Ð¿ÑÑÐ²Ð°Ð½Ð½Ñ Ð½Ðµ Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾."
+msgstr ""
+"Ð¤Ð°Ð¹Ð» bookmarks.xml Ð´Ð»Ñ ÑÐµÐ·ÐµÑÐ²Ð½Ð¾Ð³Ð¾ ÐºÐ¾Ð¿ÑÑÐ²Ð°Ð½Ð½Ñ Ð½Ðµ "
+"Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾."
 
-#: data/scripts/reorder_groups.py:872
-
+#: data/scripts/reorder_groups.py:834
 msgid "No items to sort in this group."
-msgstr "Ð£ ÑÑÐ¹ Ð³ÑÑÐ¿Ñ Ð½ÐµÐ¼Ð°Ñ ÐµÐ»ÐµÐ¼ÐµÐ½ÑÑÐ² Ð´Ð»Ñ Ð²Ð¿Ð¾ÑÑÐ´ÐºÑÐ²Ð°Ð½Ð½Ñ."
+msgstr ""
+"Ð£ ÑÑÐ¹ Ð³ÑÑÐ¿Ñ Ð½ÐµÐ¼Ð°Ñ ÐµÐ»ÐµÐ¼ÐµÐ½ÑÑÐ² Ð´Ð»Ñ Ð²Ð¿Ð¾ÑÑÐ´ÐºÑÐ²Ð°Ð½Ð½Ñ."
 
-#: data/scripts/timonde_settings.py:618
-
+#: data/scripts/timonde_settings.py:417
 msgid "No new stations added (already in your bookmarks)."
 msgstr "ÐÐ¾Ð²Ð¸Ñ ÑÑÐ°Ð½ÑÑÐ¹ Ð½Ðµ Ð´Ð¾Ð´Ð°Ð½Ð¾ (Ð²Ð¶Ðµ Ñ Ñ Ð²Ð°ÑÐ¸Ñ Ð·Ð°ÐºÐ»Ð°Ð´ÐºÐ°Ñ)."
 
-#: data/scripts/browse_bouquets.py:1625
-
+#: data/scripts/browse_bouquets.py:1049
 msgid "No pre-loaded DAB+ bouquet for this country."
 msgstr "Немає попередньо завантаженого букета DAB+ для цієї країни."
 
-#: data/scripts/browse_bouquets.py:1898
-
+#: data/scripts/browse_bouquets.py:1316
 msgid ""
 "No radio found for these criteria in {country}. Uncheck 'Filter by country' "
 "to search globally."
@@ -1110,8 +885,7 @@ msgstr ""
 "Радіо за цими критеріями в {country} не знайдено. Зніміть «Фільтр за "
 "країною» для глобального пошуку."
 
-#: data/scripts/browse_bouquets.py:1895
-
+#: data/scripts/browse_bouquets.py:1313
 msgid ""
 "No radio found for this language in {country}. Uncheck 'Filter by country' "
 "or clear the language."
@@ -1119,799 +893,644 @@ msgstr ""
 "Радіо для цієї мови в {country} не знайдено. Зніміть «Фільтр за країною» або "
 "очистіть мову."
 
-#: data/scripts/browse_bouquets.py:1900
-
+#: data/scripts/browse_bouquets.py:1318
 msgid "No radio found on Radio-Browser for these criteria."
 msgstr "На Radio-Browser не знайдено радіо за цими критеріями."
 
-#: src/tray/mod.rs:459
-
+#: src/tray/mod.rs:486
 msgid "No radio is currently playing."
 msgstr "Зараз жодна радіостанція не відтворюється."
 
-#: src/tray/menu.rs:297
-
+#: src/tray/menu.rs:301
 msgid "No station loaded"
 msgstr "No stations to check."
 
-#: data/scripts/reorder_groups.py:1072
-
+#: data/scripts/reorder_groups.py:988
 msgid "No stations to check."
 msgstr "No stations to check."
 
-#: data/scripts/timonde_common.py:1680
-
+#: data/scripts/timonde_common.py:1325
 msgid "No stream found for this name. Modify the text above."
 msgstr "Потік для цієї назви не знайдено. Змініть текст вище."
 
-#: data/scripts/timonde_common.py:1907
-
+#: data/scripts/timonde_common.py:1486
 msgid "Not listed yet!"
 msgstr "Ð©Ðµ Ð½Ðµ Ð·Ð°ÑÐµÑÑÑÑÐ¾Ð²Ð°Ð½Ð¾!"
 
-#: data/scripts/timonde_common.py:1721
-
+#: data/scripts/timonde_common.py:1355
 msgid "OK"
 msgstr "OK"
 
-#: data/scripts/browse_bouquets.py:972
-
+#: data/scripts/browse_bouquets.py:496
 msgid ""
 "Official and verified selection across 146 countries and regions (digital "
 "DAB+ bouquets and major national stations)."
-msgstr "Офіційний і перевірений вибір у 146 країнах і регіонах (цифрові DAB+ букети та основні національні станції)."
+msgstr ""
+"Офіційний і перевірений вибір у 146 країнах і регіонах (цифрові DAB+ букети "
+"та основні національні станції)."
 
-#: data/scripts/timonde_common.py:178
-
+#: data/scripts/timonde_common.py:187
 msgid "Offline (HTML error page)"
 msgstr "Офлайн (сторінка помилки HTML)"
 
-#: data/scripts/edit_station.py:366
-
+#: data/scripts/edit_station.py:345
 msgid "On-air broadcast name:"
 msgstr "ÐÐ°Ð·Ð²Ð° ÐµÑÑÑÐ½Ð¾Ð³Ð¾ Ð¼Ð¾Ð²Ð»ÐµÐ½Ð½Ñ:"
 
-#: data/scripts/browse_bouquets.py:1983
-
+#: data/scripts/browse_bouquets.py:1372
 msgid "Open"
 msgstr "відкритий"
 
-#: data/scripts/browse_bouquets.py:1203
+#: data/scripts/timonde_common.py:1482
+msgid "Open editor to update this station and its country"
+msgstr "Відкрити редактор для оновлення цієї станції та її країни"
 
+#: data/scripts/browse_bouquets.py:699
 msgid "Open ~/.config/timonde"
 msgstr "Відкрийте ~/.config/timonde"
 
-#: data/scripts/browse_bouquets.py:1169
-
+#: data/scripts/browse_bouquets.py:665
 msgid "Open ~/.config/timonde/examples"
 msgstr "Відкрийте ~/.config/timonde/examples"
 
-#: data/scripts/reorder_groups.py:706
-
+#: data/scripts/reorder_groups.py:674
 msgid "Optional title for this separator (leave blank for a simple line):"
-msgstr "Додаткова назва для цього розділювача (залиште порожнім для простого рядка):"
+msgstr ""
+"Додаткова назва для цього розділювача (залиште порожнім для простого рядка):"
 
-#: data/scripts/reorder_groups.py:60
-
+#: data/scripts/reorder_groups.py:1203
 msgid "Organize groups and stations (TiMonde)"
 msgstr "Organize groups and stations (TiMonde)"
 
-#: data/scripts/timonde_common.py:1559
-
+#: data/scripts/timonde_common.py:1239
 msgid "Organizing groups and subgroups (Linux convention)"
 msgstr "ÐÑÐ³Ð°Ð½ÑÐ·Ð°ÑÑÑ Ð³ÑÑÐ¿ Ñ Ð¿ÑÐ´Ð³ÑÑÐ¿ (ÑÐ³Ð¾Ð´Ð° Linux)"
 
-#: data/scripts/timonde_common.py:1609
-
+#: data/scripts/timonde_common.py:1281
 msgid "Original stream is unreachable:"
 msgstr "ÐÑÐ¸Ð³ÑÐ½Ð°Ð»ÑÐ½Ð¸Ð¹ Ð¿Ð¾ÑÑÐº Ð½ÐµÐ´Ð¾ÑÑÑÐ¿Ð½Ð¸Ð¹:"
 
-#: src/tray/menu.rs:160
-
+#: src/tray/menu.rs:162
 msgid "Paused"
 msgstr "Пауза"
 
-#: src/i18n.rs:179 src/i18n.rs:228 src/i18n.rs:234 src/i18n.rs:244
-
-#: src/i18n.rs:249 src/i18n.rs:254 src/i18n.rs:257 src/i18n.rs:260
-
-#: src/i18n.rs:263 src/i18n.rs:266 src/i18n.rs:269 src/i18n.rs:272
-
+#: src/i18n.rs:209 src/i18n.rs:266 src/i18n.rs:272 src/i18n.rs:282
+#: src/i18n.rs:287 src/i18n.rs:292 src/i18n.rs:295 src/i18n.rs:298
+#: src/i18n.rs:301 src/i18n.rs:304 src/i18n.rs:307 src/i18n.rs:310
 msgid "Play"
 msgstr "Відтворити"
 
-#: src/tray/menu.rs:413
-
+#: src/tray/menu.rs:415
 msgid "Play random radio (Ephemeral discovery)"
 msgstr "Слухайте випадкову радіостанцію (Ephemeral discovery)"
 
-#: data/scripts/reorder_groups.py:549
-
+#: data/scripts/reorder_groups.py:541
 msgid "Play this station"
 msgstr "Видалити це радіо"
 
-#: data/scripts/timonde_common.py:1283
-
+#: data/scripts/timonde_common.py:1106
 msgid "Playing:"
 msgstr "грає:"
 
-#: data/scripts/edit_station.py:388
-
+#: data/scripts/edit_station.py:367
 msgid "Please enter a stream URL first."
 msgstr "ÐÑÐ´Ñ Ð»Ð°ÑÐºÐ°, ÑÐ¿Ð¾ÑÐ°ÑÐºÑ Ð²Ð²ÐµÐ´ÑÑÑ Ð°Ð´ÑÐµÑÑ Ð¿Ð¾ÑÐ¾ÐºÑ."
 
-#: data/scripts/timonde_common.py:1877
-
+#: data/scripts/timonde_common.py:1460
 msgid "Please enter a stream URL."
 msgstr "ÐÑÐ´Ñ Ð»Ð°ÑÐºÐ°, Ð²Ð²ÐµÐ´ÑÑÑ Ð°Ð´ÑÐµÑÑ Ð¿Ð¾ÑÐ¾ÐºÑ."
 
-#: data/scripts/browse_bouquets.py:1783
-
+#: data/scripts/browse_bouquets.py:1230
 msgid "Please select a radio station in the list first."
-msgstr "ÐÑÐ´Ñ Ð»Ð°ÑÐºÐ°, ÑÐ¿Ð¾ÑÐ°ÑÐºÑ Ð²Ð¸Ð±ÐµÑÑÑÑ ÑÐ°Ð´ÑÐ¾ÑÑÐ°Ð½ÑÑÑ Ð·Ñ ÑÐ¿Ð¸ÑÐºÑ."
+msgstr ""
+"ÐÑÐ´Ñ Ð»Ð°ÑÐºÐ°, ÑÐ¿Ð¾ÑÐ°ÑÐºÑ Ð²Ð¸Ð±ÐµÑÑÑÑ ÑÐ°Ð´ÑÐ¾ÑÑÐ°Ð½ÑÑÑ Ð·Ñ ÑÐ¿Ð¸ÑÐºÑ."
 
-#: data/scripts/reorder_groups.py:926
-
+#: data/scripts/reorder_groups.py:870
 msgid "Please select a radio station to move."
 msgstr "ÐÑÐ´Ñ Ð»Ð°ÑÐºÐ°, Ð²Ð¸Ð±ÐµÑÑÑÑ ÑÑÐ°Ð½ÑÑÑ Ð´Ð»Ñ Ð¿ÐµÑÐµÐ¼ÑÑÐµÐ½Ð½Ñ."
 
-#: data/scripts/reorder_groups.py:1042
-
+#: data/scripts/reorder_groups.py:946
 msgid "Please select a station to contribute."
 msgstr "ÐÑÐ´Ñ Ð»Ð°ÑÐºÐ°, Ð²Ð¸Ð±ÐµÑÑÑÑ ÑÑÐ°Ð½ÑÑÑ Ð´Ð»Ñ Ð¿Ð¾Ð´Ð°Ð½Ð½Ñ."
 
-#: data/scripts/reorder_groups.py:1020
-
+#: data/scripts/reorder_groups.py:921
 msgid "Please select a station to repair."
 msgstr "Please select a station to repair."
 
-#: data/scripts/browse_bouquets.py:1825
-
+#: data/scripts/browse_bouquets.py:1230
 msgid "Please select or check a radio station in the list first."
-msgstr "ÐÑÐ´Ñ Ð»Ð°ÑÐºÐ°, ÑÐ¿Ð¾ÑÐ°ÑÐºÑ Ð²Ð¸Ð±ÐµÑÑÑÑ Ð°Ð±Ð¾ Ð¿Ð¾Ð·Ð½Ð°ÑÑÐµ ÑÑÐ°Ð½ÑÑÑ Ñ ÑÐ¿Ð¸ÑÐºÑ."
+msgstr ""
+"ÐÑÐ´Ñ Ð»Ð°ÑÐºÐ°, ÑÐ¿Ð¾ÑÐ°ÑÐºÑ Ð²Ð¸Ð±ÐµÑÑÑÑ Ð°Ð±Ð¾ Ð¿Ð¾Ð·Ð½Ð°ÑÑÐµ ÑÑÐ°Ð½ÑÑÑ Ñ "
+"ÑÐ¿Ð¸ÑÐºÑ."
 
-#: data/scripts/timonde_common.py:1651
-
+#: data/scripts/timonde_common.py:1297
 msgid "Popularity"
 msgstr "ÐÐ¾Ð¿ÑÐ»ÑÑÐ½ÑÑÑÑ"
 
-#: data/scripts/timonde_settings.py:735
-
+#: data/scripts/timonde_settings.py:544
 msgid "Preferences"
 msgstr "Уподобання"
 
-#: data/scripts/reorder_groups.py:185
-
+#: data/scripts/reorder_groups.py:156
 msgid "Preview selected radio stream"
 msgstr "Testing live radio streams..."
 
-#: data/scripts/gnome_tray_helper.py:175
-
+#: data/scripts/gnome_tray_helper.py:186
 msgid "Quit"
 msgstr "Вийти"
 
-#: src/tray/menu.rs:621
-
+#: src/tray/menu.rs:625
 msgid "Quit TiMonde"
 msgstr "Вийти з TiMonde"
 
-#: data/scripts/timonde_common.py:1283 data/scripts/timonde_common.py:1291
-
-#: data/scripts/timonde_common.py:1298 data/scripts/timonde_common.py:1311
-
-#: data/scripts/timonde_common.py:1326
-
+#: data/scripts/timonde_common.py:1078 data/scripts/timonde_common.py:1093
+#: data/scripts/timonde_common.py:1103
 msgid "Radio"
 msgstr "Radio"
 
-#: data/scripts/reorder_groups.py:147
-
+#: data/scripts/reorder_groups.py:121
 msgid "Radio / Group"
 msgstr "Ð Ð°Ð´ÑÐ¾ / ÐÑÑÐ¿Ð°"
 
-#: data/scripts/edit_station.py:139
-
+#: data/scripts/edit_station.py:152
 msgid "Radio-Browser"
 msgstr "Radio-Browser"
 
-#: data/scripts/timonde_common.py:1949
-
-msgid "Radio-Browser contribution"
-msgstr "ÐÐ½ÐµÑÐ¾Ðº Ð´Ð¾ Radio-Browser"
-
-#: data/scripts/timonde_common.py:1782
-
+#: data/scripts/timonde_common.py:1401
 msgid ""
 "Radio-Browser is an open directory (+45 000 stations). Shared stations "
 "benefit all users."
-msgstr "Radio-Browser – відкритий каталог (+45 000 станцій). Спільні станції приносять користь усім користувачам."
+msgstr ""
+"Radio-Browser – відкритий каталог (+45 000 станцій). Спільні станції "
+"приносять користь усім користувачам."
 
-#: data/scripts/timonde_common.py:1901
-
+#: data/scripts/timonde_common.py:1477
 msgid "Radio-Browser prevents duplicate stream URLs. No submission required."
-msgstr "Radio-Browser запобігає дублюванню URL-адрес потоку. Подання не вимагається."
+msgstr ""
+"Radio-Browser запобігає дублюванню URL-адрес потоку. Подання не вимагається."
 
-#: data/scripts/timonde_common.py:1542
-
-msgid "Radio-Browser servers unreachable"
-msgstr "Ð¡ÐµÑÐ²ÐµÑÐ¸ Radio-Browser Ð½ÐµÐ´Ð¾ÑÑÑÐ¿Ð½Ñ"
-
-#: data/scripts/reorder_groups.py:1200
-
+#: data/scripts/reorder_groups.py:1100
 msgid "Redirects applied:"
 msgstr "ÐÐ°ÑÑÐ¾ÑÐ¾Ð²Ð°Ð½Ð¾ Ð¿ÐµÑÐµÐ½Ð°Ð¿ÑÐ°Ð²Ð»ÐµÐ½Ð½Ñ:"
 
-#: data/scripts/browse_bouquets.py:1165
-
+#: data/scripts/browse_bouquets.py:661
 msgid "Refresh examples list"
 msgstr "Оновити список прикладів"
 
-#: data/scripts/browse_bouquets.py:1015
-
+#: data/scripts/browse_bouquets.py:539
 msgid "Regions & Local:"
 msgstr "Регіони та місцевість:"
 
-#: data/scripts/browse_bouquets.py:1190
-
+#: data/scripts/browse_bouquets.py:686
 msgid "Reload"
 msgstr "Перезавантажити"
 
-#: data/scripts/browse_bouquets.py:1190
-
+#: data/scripts/browse_bouquets.py:686
 msgid "Reload currently displayed file"
 msgstr "Перезавантажити поточний файл"
 
-#: data/scripts/reorder_groups.py:724
-
+#: data/scripts/reorder_groups.py:693
 msgid "Rename group"
 msgstr "ÐÐµÑÐµÐ¹Ð¼ÐµÐ½ÑÐ²Ð°ÑÐ¸ Ð³ÑÑÐ¿Ñ"
 
-#: data/scripts/reorder_groups.py:584
-
+#: data/scripts/reorder_groups.py:555
 msgid "Rename group..."
 msgstr "ÐÐµÑÐµÐ¹Ð¼ÐµÐ½ÑÐ²Ð°ÑÐ¸ Ð³ÑÑÐ¿Ñ..."
 
-#: data/scripts/browse_bouquets.py:1119 data/scripts/reorder_groups.py:238
-
-#: data/scripts/reorder_groups.py:563
-
+#: data/scripts/browse_bouquets.py:615 data/scripts/reorder_groups.py:177
+#: data/scripts/reorder_groups.py:546
 msgid "Repair stream..."
 msgstr "Потік ремонту..."
 
-#: data/scripts/browse_bouquets.py:1119
-
+#: data/scripts/browse_bouquets.py:615
 msgid "Replace selected link with an active official stream"
 msgstr "Замінити вибране посилання на активний офіційний потік"
 
-#: data/scripts/timonde_common.py:1592
-
+#: data/scripts/timonde_common.py:1269
 msgid "Replace stream:"
 msgstr "ÐÐ°Ð¼ÑÐ½Ð¸ÑÐ¸ Ð¿Ð¾ÑÑÐº:"
 
-#: data/scripts/browse_bouquets.py:1173
-
+#: data/scripts/browse_bouquets.py:669
 msgid "Restore samples"
 msgstr "Відновити зразки"
 
-#: data/scripts/browse_bouquets.py:1173
-
+#: data/scripts/browse_bouquets.py:669
 msgid "Restore the 19 original samples"
 msgstr "Відновити 19 вихідних зразків"
 
-#: data/scripts/reorder_groups.py:861
-
+#: data/scripts/reorder_groups.py:830
 msgid "Root"
 msgstr "ÐÐ¾ÑÑÐ½Ñ"
 
-#: data/scripts/reorder_groups.py:903
-
+#: data/scripts/reorder_groups.py:854
 msgid "Root items sorted alphabetically."
-msgstr "ÐÐ¾ÑÐµÐ½ÐµÐ²Ñ ÐµÐ»ÐµÐ¼ÐµÐ½ÑÐ¸ Ð²Ð¿Ð¾ÑÑÐ´ÐºÐ¾Ð²Ð°Ð½Ð¾ Ð·Ð° Ð°Ð»ÑÐ°Ð²ÑÑÐ¾Ð¼."
+msgstr ""
+"ÐÐ¾ÑÐµÐ½ÐµÐ²Ñ ÐµÐ»ÐµÐ¼ÐµÐ½ÑÐ¸ Ð²Ð¿Ð¾ÑÑÐ´ÐºÐ¾Ð²Ð°Ð½Ð¾ Ð·Ð° Ð°Ð»ÑÐ°Ð²ÑÑÐ¾Ð¼."
 
-#: data/scripts/timonde_settings.py:638
-
+#: data/scripts/timonde_settings.py:437
 msgid "SESSION OPTIONS"
 msgstr "ВАРІАНТИ СЕСІЇ"
 
-#: src/timezone.rs:657
-
+#: src/timezone.rs:1091
 msgid "Same time"
 msgstr "Той самий час"
 
-#: data/scripts/edit_station.py:76 data/scripts/reorder_groups.py:727
-
-#: data/scripts/reorder_groups.py:1269
-
+#: data/scripts/edit_station.py:85 data/scripts/reorder_groups.py:695
+#: data/scripts/reorder_groups.py:1165
 msgid "Save"
 msgstr "Зберегти"
 
-#: data/scripts/reorder_groups.py:276
-
+#: data/scripts/reorder_groups.py:201
 msgid "Save and reload"
 msgstr "Зберегти та перезавантажити"
 
-#: src/tray/dialogs.rs:328 src/tray/mod.rs:541
-
+#: src/tray/dialogs.rs:341 src/tray/mod.rs:539
 msgid "Save error"
 msgstr "Помилка збереження"
 
-#: data/scripts/reorder_groups.py:276
-
+#: data/scripts/reorder_groups.py:201
 msgid "Save now"
 msgstr "Помилка збереження"
 
-#: data/scripts/edit_station.py:69 src/i18n.rs:199
-
+#: data/scripts/edit_station.py:78 src/i18n.rs:237
 msgid "Save station to favorites (TiMonde)"
 msgstr "Зберегти радіо в обране (TiMonde)"
 
-#: src/tray/mod.rs:561
-
+#: src/tray/mod.rs:559
 msgid "Saved!"
 msgstr "Збережено!"
 
-#: data/scripts/browse_bouquets.py:770 data/scripts/timonde_common.py:1630
-
+#: data/scripts/browse_bouquets.py:333 data/scripts/timonde_common.py:1291
 msgid "Search"
 msgstr "ÐÐ¾ÑÑÐº"
 
-#: data/scripts/reorder_groups.py:238
-
+#: data/scripts/reorder_groups.py:177
 msgid "Search Radio-Browser for a working replacement stream"
 msgstr ""
 "Автоматично шукати заміну активного потоку в Radio-Browser для цього "
 "мертвого посилання"
 
-#: data/scripts/browse_bouquets.py:1326 data/scripts/timonde_settings.py:592
-
+#: data/scripts/timonde_settings.py:391
 msgid "Search online"
 msgstr "Пошук в Інтернеті"
 
-#: data/scripts/browse_bouquets.py:1885
-
+#: data/scripts/browse_bouquets.py:1303
 msgid "Searching Radio-Browser..."
 msgstr "Пошук Radio-Browser..."
 
-#: data/scripts/timonde_common.py:1660
-
+#: data/scripts/timonde_common.py:1307
 msgid "Searching for streams..."
 msgstr "Потік ремонту..."
 
-#: data/scripts/timonde_common.py:1670
-
+#: data/scripts/timonde_common.py:1315
 msgid "Searching on Radio-Browser..."
 msgstr "Пошук на Radio-Browser..."
 
-#: data/scripts/browse_bouquets.py:1382
-
+#: data/scripts/browse_bouquets.py:804
 msgid "Select a station in table to listen to."
 msgstr "Виберіть станцію в таблиці для прослуховування."
 
-#: data/scripts/browse_bouquets.py:1386
-
+#: data/scripts/browse_bouquets.py:808
 msgid "Select a station to listen to."
 msgstr "Виберіть станцію для прослуховування."
 
-#: data/scripts/timonde_common.py:1610
-
+#: data/scripts/timonde_common.py:1281
 msgid "Select a verified replacement stream from Radio-Browser:"
-msgstr "ÐÐ¸Ð±ÐµÑÑÑÑ Ð¿ÐµÑÐµÐ²ÑÑÐµÐ½Ð¸Ð¹ Ð¿Ð¾ÑÑÐº Ð½Ð° Ð·Ð°Ð¼ÑÐ½Ñ Ð· Radio-Browser:"
+msgstr ""
+"ÐÐ¸Ð±ÐµÑÑÑÑ Ð¿ÐµÑÐµÐ²ÑÑÐµÐ½Ð¸Ð¹ Ð¿Ð¾ÑÑÐº Ð½Ð° Ð·Ð°Ð¼ÑÐ½Ñ Ð· Radio-Browser:"
 
-#: data/scripts/edit_station.py:185
-
+#: data/scripts/edit_station.py:199
 msgid "Select or type (e.g. /France/Brittany or / for root)"
-msgstr "ÐÐ¸Ð±ÐµÑÑÑÑ Ð°Ð±Ð¾ Ð²Ð²ÐµÐ´ÑÑÑ (Ð½Ð°Ð¿Ñ., /France/Brittany ÑÐ¸ / Ð´Ð»Ñ ÐºÐ¾ÑÐµÐ½Ñ)"
+msgstr ""
+"ÐÐ¸Ð±ÐµÑÑÑÑ Ð°Ð±Ð¾ Ð²Ð²ÐµÐ´ÑÑÑ (Ð½Ð°Ð¿Ñ., /France/Brittany ÑÐ¸ / Ð´Ð»Ñ "
+"ÐºÐ¾ÑÐµÐ½Ñ)"
 
-#: data/scripts/reorder_groups.py:956
-
+#: data/scripts/reorder_groups.py:882
 msgid "Select the target destination:"
 msgstr "ÐÐ¸Ð±ÐµÑÑÑÑ ÑÑÐ»ÑÐ¾Ð²Ñ ÑÐµÐºÑ:"
 
-#: src/tray/mod.rs:478
-
+#: src/tray/mod.rs:505
 msgid "Selection"
 msgstr "Вибірка"
 
-#: data/scripts/reorder_groups.py:230
-
+#: data/scripts/reorder_groups.py:175
 msgid "Separator"
 msgstr "Роздільник"
 
-#: data/scripts/timonde_common.py:1538
-
-msgid "Server rejected submission: {error}"
-msgstr "Ð¡ÐµÑÐ²ÐµÑ Ð²ÑÐ´ÑÐ¸Ð»Ð¸Ð² Ð½Ð°Ð´ÑÐ¸Ð»Ð°Ð½Ð½Ñ: {error}"
-
-#: data/scripts/timonde_common.py:198
-
+#: data/scripts/timonde_common.py:188
 msgid "Server unreachable"
 msgstr "Ð¡ÐµÑÐ²ÐµÑ Ð½ÐµÐ´Ð¾ÑÑÑÐ¿Ð½Ð¸Ð¹"
 
-#: data/scripts/timonde_settings.py:316
-
+#: data/scripts/timonde_settings.py:201
 msgid "Settings & Control TiMonde"
 msgstr "Налаштування та керування TiMonde"
 
-#: src/tray/dialogs.rs:400
-
+#: src/tray/dialogs.rs:422
 msgid "Settings console not found"
 msgstr "Консоль налаштувань не знайдено"
 
-#: src/tray/menu.rs:605
-
+#: src/tray/menu.rs:607
 msgid "Settings..."
 msgstr "Налаштування..."
 
-#: src/i18n.rs:205 src/tray/menu.rs:549 src/tray/menu.rs:552
-
+#: src/i18n.rs:243 src/tray/menu.rs:551 src/tray/menu.rs:554
 msgid "Sleep timer"
 msgstr "Таймер сну"
 
-#: src/tray/mod.rs:592
-
+#: src/tray/mod.rs:588
 msgid "Sleep timer activated"
 msgstr "Таймер сну активовано"
 
-#: src/tray/mod.rs:626
-
+#: src/tray/mod.rs:622
 msgid "Sleep timer cancelled."
 msgstr "Таймер сну скасовано."
 
-#: src/tray/mod.rs:615
-
+#: src/tray/mod.rs:611
 msgid "Sleep timer: stopping radio."
 msgstr "Таймер сну: зупинка радіо."
 
-#: data/scripts/reorder_groups.py:223
-
+#: data/scripts/reorder_groups.py:168
 msgid "Sort sibling items alphabetically"
 msgstr "ÐÐ¿Ð¾ÑÑÐ´ÐºÑÐ²Ð°ÑÐ¸ ÐµÐ»ÐµÐ¼ÐµÐ½ÑÐ¸ Ð·Ð° Ð°Ð»ÑÐ°Ð²ÑÑÐ¾Ð¼"
 
-#: data/scripts/reorder_groups.py:901
-
+#: data/scripts/reorder_groups.py:852
 msgid "Sorted alphabetically:"
 msgstr "ÐÐ¿Ð¾ÑÑÐ´ÐºÐ¾Ð²Ð°Ð½Ð¾ Ð·Ð° Ð°Ð»ÑÐ°Ð²ÑÑÐ¾Ð¼:"
 
-#: data/scripts/browse_bouquets.py:888 data/scripts/browse_bouquets.py:1045
-
-#: data/scripts/browse_bouquets.py:1227 data/scripts/timonde_common.py:1638
-
+#: data/scripts/browse_bouquets.py:444 data/scripts/browse_bouquets.py:562
+#: data/scripts/browse_bouquets.py:716 data/scripts/timonde_common.py:1297
 msgid "Station"
 msgstr "курорт"
 
-#: src/tray/mod.rs:566
-
+#: src/tray/mod.rs:564
 msgid "Station added but reload error"
 msgstr "Станцію додано, але виникла помилка перезавантаження"
 
-#: data/scripts/reorder_groups.py:691
-
+#: data/scripts/reorder_groups.py:635
 msgid "Station added:"
 msgstr "Ð¡ÑÐ°Ð½ÑÑÑ Ð´Ð¾Ð´Ð°Ð½Ð¾:"
 
-#: data/scripts/reorder_groups.py:683
+#: data/scripts/reorder_groups.py:706
+msgid "Station deleted:"
+msgstr "Станцію видалено:"
 
+#: data/scripts/reorder_groups.py:627
 msgid "Station editor unavailable."
 msgstr "Ð ÐµÐ´Ð°ÐºÑÐ¾Ñ ÑÑÐ°Ð½ÑÑÑ Ð½ÐµÐ´Ð¾ÑÑÑÐ¿Ð½Ð¸Ð¹."
 
-#: data/scripts/reorder_groups.py:997
-
+#: data/scripts/reorder_groups.py:900
 msgid "Station moved to"
 msgstr "Ð¡ÑÐ°Ð½ÑÑÑ Ð¿ÐµÑÐµÐ¼ÑÑÐµÐ½Ð¾ Ð´Ð¾"
 
-#: data/scripts/timonde_common.py:1476
-
+#: data/scripts/timonde_common.py:1201
 msgid "Station name cannot be empty"
 msgstr "ÐÐ°Ð·Ð²Ð° ÑÑÐ°Ð½ÑÑÑ Ð½Ðµ Ð¼Ð¾Ð¶Ðµ Ð±ÑÑÐ¸ Ð¿Ð¾ÑÐ¾Ð¶Ð½ÑÐ¾Ñ"
 
-#: data/scripts/edit_station.py:110 data/scripts/timonde_common.py:1794
-
+#: data/scripts/edit_station.py:123 data/scripts/timonde_common.py:1421
 msgid "Station name:"
 msgstr "Назва станції:"
 
-#: data/scripts/timonde_common.py:1528
-
-msgid "Station successfully submitted to Radio-Browser."
-msgstr "Ð¡ÑÐ°Ð½ÑÑÑ ÑÑÐ¿ÑÑÐ½Ð¾ Ð½Ð°Ð´ÑÑÐ»Ð°Ð½Ð¾ Ð´Ð¾ Radio-Browser."
-
-#: data/scripts/reorder_groups.py:745
-
+#: data/scripts/reorder_groups.py:718
 msgid "Station updated:"
 msgstr "Ð¡ÑÐ°Ð½ÑÑÑ Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾:"
 
-#: data/scripts/browse_bouquets.py:1397 data/scripts/edit_station.py:405
-
-#: data/scripts/reorder_groups.py:1005 data/scripts/reorder_groups.py:1080
-
-#: src/i18n.rs:185 src/i18n.rs:245 src/i18n.rs:250
-
+#: data/scripts/browse_bouquets.py:819 data/scripts/edit_station.py:413
+#: data/scripts/reorder_groups.py:908 data/scripts/reorder_groups.py:994
+#: src/i18n.rs:215 src/i18n.rs:283 src/i18n.rs:288
 msgid "Stop"
 msgstr "Зупинити"
 
-#: data/scripts/reorder_groups.py:549
-
+#: data/scripts/reorder_groups.py:541
 msgid "Stop playback"
 msgstr "ÐÑÐ¿Ð¸Ð½Ð¸ÑÐ¸ Ð²ÑÐ´ÑÐ²Ð¾ÑÐµÐ½Ð½Ñ"
 
-#: data/scripts/browse_bouquets.py:1259
-
+#: data/scripts/browse_bouquets.py:721
 msgid "Stream URL"
 msgstr "URL-адреса потоку"
 
-#: data/scripts/timonde_common.py:1478
-
+#: data/scripts/timonde_common.py:1203
 msgid "Stream URL cannot be empty"
 msgstr "ÐÐ´ÑÐµÑÐ° Ð¿Ð¾ÑÐ¾ÐºÑ Ð½Ðµ Ð¼Ð¾Ð¶Ðµ Ð±ÑÑÐ¸ Ð¿Ð¾ÑÐ¾Ð¶Ð½ÑÐ¾Ñ"
 
-#: data/scripts/timonde_common.py:1804
-
+#: data/scripts/timonde_common.py:1422
 msgid "Stream URL:"
 msgstr "ÐÐ´ÑÐµÑÐ° Ð¿Ð¾ÑÐ¾ÐºÑ:"
 
-#: data/scripts/reorder_groups.py:1029
-
+#: data/scripts/reorder_groups.py:938
 msgid "Stream successfully repaired for"
 msgstr "ÐÐ¾ÑÑÐº ÑÑÐ¿ÑÑÐ½Ð¾ Ð²ÑÐ´Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾ Ð´Ð»Ñ"
 
-#: data/scripts/timonde_common.py:1274
-
-msgid "Stream unreachable"
-msgstr "Потік недоступний"
-
-#: data/scripts/browse_bouquets.py:739
-
+#: data/scripts/browse_bouquets.py:302
 msgid "Submit a new station to community Radio-Browser directory"
 msgstr "ÐÐ°Ð´ÑÑÐ»Ð°ÑÐ¸ Ð½Ð¾Ð²Ñ ÑÑÐ°Ð½ÑÑÑ Ð´Ð¾ ÐºÐ°ÑÐ°Ð»Ð¾Ð³Ñ Radio-Browser"
 
-#: data/scripts/timonde_common.py:1859 data/scripts/timonde_common.py:1911
-
-#: data/scripts/timonde_common.py:1958
-
+#: data/scripts/timonde_common.py:1441 data/scripts/timonde_common.py:1490
+#: data/scripts/timonde_common.py:1521
 msgid "Submit to Radio-Browser"
 msgstr "ÐÐ°Ð´ÑÑÐ»Ð°ÑÐ¸ Ð´Ð¾ Radio-Browser"
 
-#: data/scripts/timonde_common.py:1931
+#: data/scripts/timonde_common.py:1521
+msgid "Submitted"
+msgstr "Надіслано"
 
+#: data/scripts/timonde_common.py:1511
 msgid "Submitting station to Radio-Browser..."
 msgstr "ÐÐ°Ð´ÑÐ¸Ð»Ð°Ð½Ð½Ñ ÑÑÐ°Ð½ÑÑÑ Ð´Ð¾ Radio-Browser..."
 
-#: data/scripts/timonde_common.py:1930
-
+#: data/scripts/timonde_common.py:1510
 msgid "Submitting..."
 msgstr "ÐÐ°Ð´ÑÐ¸Ð»Ð°Ð½Ð½Ñ..."
 
-#: data/scripts/browse_bouquets.py:1089
-
+#: data/scripts/browse_bouquets.py:585
 msgid "Switch to the global directory with this country pre-selected"
 msgstr "Перейти до глобального каталогу з попередньо обраною країною"
 
-#: data/scripts/timonde_settings.py:665
-
+#: data/scripts/timonde_settings.py:473
 msgid "System language"
 msgstr "Системна мова"
 
-#: data/scripts/timonde_common.py:1831
-
+#: data/scripts/timonde_common.py:1424
 msgid "Tags / Genres:"
 msgstr "ÐÑÑÐºÐ¸ / ÐÐ°Ð½ÑÐ¸:"
 
-#: src/tray/mod.rs:325
-
+#: src/tray/mod.rs:360
 msgid "Temporary backup stream found for"
 msgstr "Знайдено тимчасовий резервний потік"
 
-#: data/scripts/edit_station.py:135 data/scripts/edit_station.py:407
-
+#: data/scripts/edit_station.py:148 data/scripts/edit_station.py:415
 msgid "Test"
 msgstr "Тест"
 
-#: data/scripts/reorder_groups.py:102
-
+#: data/scripts/reorder_groups.py:85
 msgid "Test stream availability and locate broken links"
 msgstr ""
 "Перевірте доступність ваших радіостанцій у прямому ефірі та знайдіть мертві "
 "посилання"
 
-#: data/scripts/browse_bouquets.py:946 data/scripts/browse_bouquets.py:1115
-
-#: data/scripts/browse_bouquets.py:1286
-
+#: data/scripts/browse_bouquets.py:470 data/scripts/browse_bouquets.py:611
+#: data/scripts/browse_bouquets.py:745
 msgid "Test streams"
 msgstr "Тестові потоки"
 
-#: data/scripts/reorder_groups.py:1087
-
+#: data/scripts/reorder_groups.py:1000
 msgid "Testing live radio streams..."
 msgstr "Testing live radio streams..."
 
-#: data/scripts/browse_bouquets.py:1679 data/scripts/browse_bouquets.py:1931
-
-#: data/scripts/browse_bouquets.py:2119
-
+#: data/scripts/browse_bouquets.py:1103
 msgid "Testing..."
 msgstr "Тестування..."
 
-#: data/scripts/timonde_settings.py:694
-
+#: data/scripts/timonde_settings.py:502
 msgid ""
 "The AppIndicator extension is required to display the icon in GNOME top bar."
-msgstr "Для відображення піктограми на верхній панелі GNOME потрібне розширення AppIndicator."
+msgstr ""
+"Для відображення піктограми на верхній панелі GNOME потрібне розширення "
+"AppIndicator."
 
-#: data/scripts/browse_bouquets.py:1151
-
+#: data/scripts/browse_bouquets.py:647
 msgid "Thematic samples:"
 msgstr "Тематичні зразки:"
 
-#: data/scripts/edit_station.py:574
-
+#: data/scripts/edit_station.py:527
 msgid "This action will permanently remove this station from your collection."
 msgstr "Ця дія назавжди видалить цю станцію з вашої колекції."
 
-#: data/scripts/timonde_common.py:1489
-
+#: data/scripts/timonde_common.py:1209
 msgid ""
 "This stream URL is already registered on Radio-Browser as '{existing_name}'."
-msgstr "Ця URL-адреса потоку вже зареєстрована в Radio-Browser як '{existing_name}'."
+msgstr ""
+"Ця URL-адреса потоку вже зареєстрована в Radio-Browser як '{existing_name}'."
 
-#: data/scripts/timonde_common.py:1908
-
+#: data/scripts/timonde_common.py:1487
 msgid ""
 "This stream URL is unpublished on Radio-Browser and ready to be contributed."
-msgstr "Цю URL-адресу потоку не опубліковано в Radio-Browser, і її можна додати."
+msgstr ""
+"Цю URL-адресу потоку не опубліковано в Radio-Browser, і її можна додати."
 
-#: data/scripts/gnome_tray_helper.py:117
+#: data/scripts/timonde_settings.py:463
+msgid "TiMonde version"
+msgstr "Версія TiMonde"
 
+#: data/scripts/gnome_tray_helper.py:128
 msgid "TiMonde — GNOME Desktop Integration"
 msgstr "TiMonde — інтеграція робочого столу GNOME"
 
-#: src/tray/mod.rs:150
-
+#: src/tray/mod.rs:138
 msgid "TiMonde • Ephemeral discovery"
 msgstr "Слухайте випадкову радіостанцію (Ephemeral discovery)"
 
-#: data/scripts/timonde_common.py:206
-
+#: data/scripts/timonde_common.py:189
 msgid "Timeout"
 msgstr "часовий пояс:"
 
-#: data/scripts/edit_station.py:273
-
+#: data/scripts/edit_station.py:260
 msgid "Timezone:"
 msgstr "часовий пояс:"
 
-#: data/scripts/gnome_tray_helper.py:159
-
+#: data/scripts/gnome_tray_helper.py:170
 msgid ""
 "To unobtrusively display the playback icon in the top bar of your GNOME "
 "desktop, the <b>AppIndicator</b> system extension is required.\n"
 "\n"
 "Would you like to install it now?"
 msgstr ""
-"Щоб ненав’язливо відображати піктограму відтворення на верхній панелі робочого столу GNOME, потрібне системне розширення <b>AppIndicator</b>.\n"
+"Щоб ненав’язливо відображати піктограму відтворення на верхній панелі "
+"робочого столу GNOME, потрібне системне розширення <b>AppIndicator</b>.\n"
 "\n"
 "Бажаєте встановити його зараз?"
 
-#: src/timezone.rs:669
-
+#: src/timezone.rs:1103
 msgid "Tomorrow"
 msgstr "Завтра"
 
-#: data/scripts/reorder_groups.py:211
-
+#: data/scripts/reorder_groups.py:165
 msgid "Top"
 msgstr "перше"
 
-#: src/tray/mod.rs:679
-
+#: src/tray/mod.rs:644
 msgid "Track copied to clipboard:"
 msgstr "Назву треку скопійовано в буфер обміну:"
 
-#: data/scripts/browse_bouquets.py:987
-
+#: data/scripts/browse_bouquets.py:511
 msgid "Type a country (e.g. France, Germany, Canada...)"
 msgstr "Введіть країну (наприклад, Франція, Німеччина, Канада...)"
 
-#: src/tray/mod.rs:444
-
+#: src/tray/mod.rs:471
 msgid "Unable to find a station in the bouquets catalog."
 msgstr "Не вдалося знайти станцію в каталозі букетів."
 
-#: src/tray/mod.rs:208
-
+#: src/tray/mod.rs:236
 msgid "Unable to initialize audio"
 msgstr "ÐÐµ Ð²Ð´Ð°Ð»Ð¾ÑÑ ÑÐ½ÑÑÑÐ°Ð»ÑÐ·ÑÐ²Ð°ÑÐ¸ Ð°ÑÐ´ÑÐ¾"
 
-#: src/tray/mod.rs:216
-
+#: src/tray/mod.rs:248
 msgid "Unable to play"
 msgstr "ÐÐµÐ¼Ð¾Ð¶Ð»Ð¸Ð²Ð¾ Ð²ÑÐ´ÑÐ²Ð¾ÑÐ¸ÑÐ¸"
 
-#: data/scripts/browse_bouquets.py:942 data/scripts/browse_bouquets.py:1111
-
-#: data/scripts/browse_bouquets.py:1278
-
+#: data/scripts/browse_bouquets.py:466 data/scripts/browse_bouquets.py:607
+#: data/scripts/browse_bouquets.py:737
 msgid "Uncheck all"
 msgstr "Зніміть усі позначки"
 
-#: data/scripts/timonde_common.py:1486 data/scripts/timonde_common.py:1896
-
-#: data/scripts/timonde_common.py:1897
-
+#: data/scripts/timonde_common.py:1208 data/scripts/timonde_common.py:1473
 msgid "Unknown"
 msgstr "ÐÐµÐ²ÑÐ´Ð¾Ð¼Ð¾"
 
-#: data/scripts/timonde_common.py:1530
+#: data/scripts/timonde_common.py:1221
+msgid "Unknown status"
+msgstr "Невідомий статус"
 
-msgid "Unknown error"
-msgstr "ÐÐµÐ²ÑÐ´Ð¾Ð¼Ð° Ð¿Ð¾Ð¼Ð¸Ð»ÐºÐ°"
-
-#: data/scripts/timonde_common.py:1272
-
-msgid "Unreadable stream"
-msgstr "Нечитабельний потік"
-
-#: data/scripts/gnome_tray_helper.py:193
-
+#: data/scripts/gnome_tray_helper.py:204
 msgid "Unrecognized package manager."
 msgstr "Нерозпізнаний менеджер пакетів."
 
-#: data/scripts/reorder_groups.py:293
-
+#: data/scripts/reorder_groups.py:216 data/scripts/reorder_groups.py:1223
 msgid "Unsaved changes"
 msgstr "ÐÐµÐ·Ð±ÐµÑÐµÐ¶ÐµÐ½Ñ Ð·Ð¼ÑÐ½Ð¸"
 
-#: data/scripts/browse_bouquets.py:1915 data/scripts/browse_bouquets.py:2082
-
+#: data/scripts/browse_bouquets.py:1333 data/scripts/browse_bouquets.py:1468
 msgid "Untested"
 msgstr "ÐÐµ Ð¿ÐµÑÐµÐ²ÑÑÐµÐ½Ð¾"
 
-#: data/scripts/edit_station.py:159
-
+#: data/scripts/edit_station.py:172
 msgid "Use this on-air broadcast name for your bookmark"
 msgstr "ÐÐ¸ÐºÐ¾ÑÐ¸ÑÑÐ¾Ð²ÑÐ²Ð°ÑÐ¸ ÑÑ ÐµÑÑÑÐ½Ñ Ð½Ð°Ð·Ð²Ñ Ð´Ð»Ñ Ð·Ð°ÐºÐ»Ð°Ð´ÐºÐ¸"
 
-#: data/scripts/timonde_common.py:1597
-
+#: data/scripts/timonde_common.py:1271
 msgid "Validate and replace"
 msgstr "Зберегти та перезавантажити"
 
-#: data/scripts/browse_bouquets.py:923
-
+#: data/scripts/browse_bouquets.py:450
 msgid "Votes"
 msgstr "голосів"
 
-#: data/scripts/reorder_groups.py:780
-
+#: data/scripts/reorder_groups.py:768
 msgid "Warning: this group contains {count} {unit} that will also be deleted."
-msgstr "Ð£Ð²Ð°Ð³Ð°: ÑÑ Ð³ÑÑÐ¿Ð° Ð¼ÑÑÑÐ¸ÑÑ {count} {unit}, ÑÐºÑ ÑÐ°ÐºÐ¾Ð¶ Ð±ÑÐ´ÑÑÑ Ð²Ð¸Ð»ÑÑÐµÐ½Ñ."
+msgstr ""
+"Ð£Ð²Ð°Ð³Ð°: ÑÑ Ð³ÑÑÐ¿Ð° Ð¼ÑÑÑÐ¸ÑÑ {count} {unit}, ÑÐºÑ ÑÐ°ÐºÐ¾Ð¶ Ð±ÑÐ´ÑÑÑ "
+"Ð²Ð¸Ð»ÑÑÐµÐ½Ñ."
 
-#: data/scripts/timonde_common.py:1841
-
+#: data/scripts/timonde_common.py:1425
 msgid "Website / Homepage:"
 msgstr "ÐÐµÐ±ÑÐ°Ð¹Ñ / ÐÐ¾Ð»Ð¾Ð²Ð½Ð° ÑÑÐ¾ÑÑÐ½ÐºÐ°:"
 
-#: data/scripts/browse_bouquets.py:2318
-
+#: data/scripts/browse_bouquets.py:1657
 msgid "XML backup is available from settings."
 msgstr "Резервне копіювання XML доступне в налаштуваннях."
 
-#: data/scripts/reorder_groups.py:1296
-
+#: data/scripts/reorder_groups.py:1186
 msgid "XML backup successfully created in"
 msgstr "Ð ÐµÐ·ÐµÑÐ²Ð½Ñ ÐºÐ¾Ð¿ÑÑ XML ÑÑÐ²Ð¾ÑÐµÐ½Ð¾ Ð²"
 
-#: data/scripts/reorder_groups.py:1276
-
+#: data/scripts/reorder_groups.py:1170
 msgid "XML files (*.xml)"
 msgstr "Файли XML (*.xml)"
 
-#: src/timezone.rs:670
-
+#: src/timezone.rs:1104
 msgid "Yesterday"
 msgstr "Учора"
 
-#: data/scripts/browse_bouquets.py:1626
-
+#: data/scripts/browse_bouquets.py:1050
 msgid ""
 "You can explore and import stations for this territory directly from the "
 "global directory."
@@ -1919,272 +1538,253 @@ msgstr ""
 "Ви можете досліджувати та імпортувати станції цієї території безпосередньо з "
 "глобального каталогу."
 
-#: data/scripts/reorder_groups.py:1302
+#: data/scripts/reorder_groups.py:1225
+msgid "You have unsaved changes."
+msgstr "У вас є незбережені зміни."
 
+#: data/scripts/reorder_groups.py:1187
 msgid "Your complete bookmarks have been saved to:"
 msgstr "ÐÐ¾Ð²Ð½Ð¸Ð¹ ÑÐ¿Ð¸ÑÐ¾Ðº Ð·Ð°ÐºÐ»Ð°Ð´Ð¾Ðº Ð·Ð±ÐµÑÐµÐ¶ÐµÐ½Ð¾ Ð´Ð¾:"
 
-#: src/i18n.rs:237 src/tray/menu.rs:372
-
+#: src/i18n.rs:275 src/tray/menu.rs:378
 msgid "Zap to another random station"
 msgstr "Перемкнути на іншу станцію"
 
-#: data/scripts/reorder_groups.py:930
-
+#: data/scripts/edit_station.py:187 data/scripts/reorder_groups.py:873
 msgid "[ / ] Root (Without group)"
 msgstr "[ / ] ÐÐ¾ÑÑÐ½Ñ (Ð±ÐµÐ· Ð³ÑÑÐ¿Ð¸)"
 
-#: data/scripts/reorder_groups.py:405
-
+#: data/scripts/reorder_groups.py:319
 msgid "[!] Dead link"
 msgstr "[!] Dead link"
 
-#: data/scripts/reorder_groups.py:409
-
+#: data/scripts/reorder_groups.py:323
 msgid "[?] Geo-restricted"
 msgstr "[?] Geo-restricted"
 
-#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
-
-msgid "[New]"
-msgstr "[Нова]"
-
-#: data/scripts/reorder_groups.py:403
-
-msgid "[OK] Live"
-msgstr "[OK] Live"
-
-#: data/scripts/reorder_groups.py:1027
-
-msgid "[OK] Repaired"
-msgstr "[OK] ÐÑÐ´Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾"
-
-#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
-
-msgid "[Present]"
-msgstr "[Присутня]"
-
-#: data/scripts/reorder_groups.py:407
-
-msgid "[~] Redirected"
-msgstr "[~] Redirected"
-
-#: data/scripts/reorder_groups.py:1141
-
-msgid "broken"
-msgstr "broken"
-
-#: data/scripts/reorder_groups.py:1127
-
-msgid "checked:"
-msgstr "checked:"
-
-#: src/tray/dialogs.rs:263
-
-msgid "deleted from your favorites."
-msgstr "вилучено з ваших улюблених."
-
-#: data/scripts/timonde_settings.py:750
-
-msgid "disabled"
-msgstr "вимкнено"
-
-#: data/scripts/timonde_settings.py:750
-
-msgid "enabled"
-msgstr "включено"
-
-#: src/tray/mod.rs:332
-
-msgid "is currently unavailable"
-msgstr "наразі недоступна"
-
-#: src/tray/mod.rs:302
-
-msgid "is not responding. Searching for a backup stream..."
-msgstr "не відповідає. Пошук резервного потоку..."
-
-#: data/scripts/timonde_settings.py:612
-
-msgid "new station(s) imported"
-msgstr "Ð½Ð¾Ð²Ð¸Ñ ÑÑÐ°Ð½ÑÑÐ¹ ÑÐ¼Ð¿Ð¾ÑÑÐ¾Ð²Ð°Ð½Ð¾"
-
-#: data/scripts/reorder_groups.py:1140
-
-msgid "online"
-msgstr "online"
-
-#: data/scripts/reorder_groups.py:372
-
-msgid "radio"
-msgstr "radio"
-
-#: data/scripts/reorder_groups.py:372 data/scripts/reorder_groups.py:672
-
-msgid "radios"
-msgstr "radios"
-
-#: data/scripts/reorder_groups.py:1142
-
-msgid "redirected"
-msgstr "redirected"
-
-#: data/scripts/browse_bouquets.py:2306
-
-msgid "sample files restored."
-msgstr "зразки файлів відновлено."
-
-#: src/tray/mod.rs:562
-
-msgid "saved in your favorites!"
-msgstr "збережено у ваших улюблених!"
-
-#: data/scripts/timonde_settings.py:559
-
-msgid "saved successfully!"
-msgstr "ÑÑÐ¿ÑÑÐ½Ð¾ Ð·Ð±ÐµÑÐµÐ¶ÐµÐ½Ð¾!"
-
-#: data/scripts/reorder_groups.py:779
-
-msgid "station"
-msgstr "station"
-
-#: data/scripts/timonde_settings.py:614
-
-msgid "station(s) moved to destination"
-msgstr "ÑÑÐ°Ð½ÑÑÐ¹ Ð¿ÐµÑÐµÐ¼ÑÑÐµÐ½Ð¾ Ð´Ð¾ ÑÑÐ»Ñ"
-
-#: data/scripts/reorder_groups.py:779
-
-msgid "stations"
-msgstr "stations"
-
-#: data/scripts/reorder_groups.py:1095
-
-msgid "stations checked..."
-msgstr "stations checked..."
-
-#: src/tray/mod.rs:592
-
-msgid "stopping in"
-msgstr "вимкнення через"
-
-#: data/scripts/reorder_groups.py:1200
-
-msgid "stream(s) updated."
-msgstr "Ð¿Ð¾ÑÐ¾ÐºÑÐ² Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾."
-
-#: data/scripts/browse_bouquets.py:1725
-
-msgid "this country"
-msgstr "ця країна"
-
-#: src/tray/dialogs.rs:385
-
-msgid "updated successfully!"
-msgstr "успішно оновлено!"
-
-#: data/scripts/browse_bouquets.py:1733 data/scripts/browse_bouquets.py:2145
-
-msgid "{checked} / {total} station(s) selected"
-msgstr "Вибрано {checked} / {total} станцій"
-
-#: data/scripts/edit_station.py:543
-
-msgid "{count} available timezones"
-msgstr "{count} доступних часових поясів"
-
-#: data/scripts/browse_bouquets.py:1918
-
-msgid "{count} stations found."
-msgstr "Знайдено {count} станцій."
-
-#: data/scripts/timonde_common.py:1690
-
-msgid "{count} streams found. Select the desired stream and validate."
-msgstr "Знайдено {count} потоків. Виберіть потрібний потік та підтвердіть."
-
-#: data/scripts/reorder_groups.py:352 data/scripts/reorder_groups.py:391
-
-#: data/scripts/reorder_groups.py:713
-
-msgid "— Separator —"
-msgstr "— Separator —"
-
-
-#: data/scripts/reorder_groups.py:111
-msgid ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-msgstr ""
-"<small>• Розгорніть папки <b>[▶]</b> для перегляду підгруп і станцій.\n"
-"• Використовуйте <b>Вгору / Вниз</b> або перетягування для впорядкування.\n"
-"• Використовуйте <b>Перемістити до...</b> для переміщення станцій в іншу папку.</small>"
-
-
-#: data/scripts/timonde_common.py:1825
-msgid "Edit station"
-msgstr "Редагувати станцію"
-
-
-#: data/scripts/timonde_settings.py:563
-msgid "Installed binary:"
-msgstr "Встановлений бінарний файл:"
-
-
-#: data/scripts/browse_bouquets.py:1337
-msgid "National Radios"
-msgstr "National Radios"
-
-
-#: data/scripts/timonde_common.py:1882
-msgid "Open editor to update this station and its country"
-msgstr "Відкрити редактор для оновлення цієї станції та її країни"
-
-
-#: data/scripts/reorder_groups.py:792
-msgid "Station deleted:"
-msgstr "Станцію видалено:"
-
-
-#: data/scripts/timonde_common.py:1927
-msgid "Submitted"
-msgstr "Надіслано"
-
-
-#: data/scripts/timonde_common.py:1508
-msgid ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
-"\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
-"\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-msgstr ""
-"TiMonde використовує правила шляху з роздільником <b>/</b>:\n"
-"\n"
-"• <b>/</b> або <b>(Корінь)</b> : Розміщує станцію в корені меню (без групи).\n"
-"• <b>/Габон</b> або <b>Габон</b> : Розміщує станцію в групі « Габон ».\n"
-"• <b>/Франція/Бретань</b> : Розміщує станцію в підгрупі « Бретань » під « Франція ».\n"
-"\n"
-"<i>Групи та підгрупи створюються автоматично, якщо вони ще не існують.</i>"
-
-
-#: data/scripts/timonde_settings.py:562
-msgid "TiMonde version"
-msgstr "Версія TiMonde"
-
-
-#: src/i18n.rs:217
+#: src/i18n.rs:217 src/i18n.rs:228
 msgid "[Ephemeral]"
 msgstr "[Тимчасово]"
 
+#: data/scripts/browse_bouquets.py:1331 data/scripts/browse_bouquets.py:1466
+msgid "[New]"
+msgstr "[Нова]"
 
-#: data/scripts/browse_bouquets.py:1488
+#: data/scripts/reorder_groups.py:317
+msgid "[OK] Live"
+msgstr "[OK] Live"
+
+#: data/scripts/browse_bouquets.py:1331 data/scripts/browse_bouquets.py:1466
+msgid "[Present]"
+msgstr "[Присутня]"
+
+#: data/scripts/reorder_groups.py:321
+msgid "[~] Redirected"
+msgstr "[~] Redirected"
+
+#: data/scripts/reorder_groups.py:1048
+msgid "broken"
+msgstr "broken"
+
+#: data/scripts/reorder_groups.py:1025
+msgid "checked:"
+msgstr "checked:"
+
+#: src/tray/dialogs.rs:293
+msgid "deleted from your favorites."
+msgstr "вилучено з ваших улюблених."
+
+#: data/scripts/timonde_settings.py:559
+msgid "disabled"
+msgstr "вимкнено"
+
+#: data/scripts/timonde_settings.py:559
+msgid "enabled"
+msgstr "включено"
+
+#: src/tray/mod.rs:367
+msgid "is currently unavailable"
+msgstr "наразі недоступна"
+
+#: src/tray/mod.rs:338
+msgid "is not responding. Searching for a backup stream..."
+msgstr "не відповідає. Пошук резервного потоку..."
+
+#: data/scripts/timonde_settings.py:411
+msgid "new station(s) imported"
+msgstr "Ð½Ð¾Ð²Ð¸Ñ ÑÑÐ°Ð½ÑÑÐ¹ ÑÐ¼Ð¿Ð¾ÑÑÐ¾Ð²Ð°Ð½Ð¾"
+
+#: data/scripts/reorder_groups.py:1048
+msgid "online"
+msgstr "online"
+
+#: data/scripts/reorder_groups.py:294
+msgid "radio"
+msgstr "radio"
+
+#: data/scripts/reorder_groups.py:294 data/scripts/reorder_groups.py:614
+msgid "radios"
+msgstr "radios"
+
+#: data/scripts/reorder_groups.py:1048
+msgid "redirected"
+msgstr "redirected"
+
+#: data/scripts/browse_bouquets.py:1645
+msgid "sample files restored."
+msgstr "зразки файлів відновлено."
+
+#: src/tray/mod.rs:560
+msgid "saved in your favorites!"
+msgstr "збережено у ваших улюблених!"
+
+#: data/scripts/timonde_settings.py:361
+msgid "saved successfully!"
+msgstr "ÑÑÐ¿ÑÑÐ½Ð¾ Ð·Ð±ÐµÑÐµÐ¶ÐµÐ½Ð¾!"
+
+#: data/scripts/reorder_groups.py:767
+msgid "station"
+msgstr "station"
+
+#: data/scripts/timonde_settings.py:413
+msgid "station(s) moved to destination"
+msgstr "ÑÑÐ°Ð½ÑÑÐ¹ Ð¿ÐµÑÐµÐ¼ÑÑÐµÐ½Ð¾ Ð´Ð¾ ÑÑÐ»Ñ"
+
+#: data/scripts/reorder_groups.py:767
+msgid "stations"
+msgstr "stations"
+
+#: data/scripts/reorder_groups.py:1003
+msgid "stations checked..."
+msgstr "stations checked..."
+
+#: src/tray/mod.rs:588
+msgid "stopping in"
+msgstr "вимкнення через"
+
+#: data/scripts/reorder_groups.py:1100
+msgid "stream(s) updated."
+msgstr "Ð¿Ð¾ÑÐ¾ÐºÑÐ² Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾."
+
+#: data/scripts/browse_bouquets.py:1161
+msgid "this country"
+msgstr "ця країна"
+
+#: src/tray/dialogs.rs:404
+msgid "updated successfully!"
+msgstr "успішно оновлено!"
+
+#: data/scripts/browse_bouquets.py:1169 data/scripts/browse_bouquets.py:1497
+msgid "{checked} / {total} station(s) selected"
+msgstr "Вибрано {checked} / {total} станцій"
+
+#: data/scripts/edit_station.py:497
+msgid "{count} available timezones"
+msgstr "{count} доступних часових поясів"
+
+#: data/scripts/browse_bouquets.py:1336
+msgid "{count} stations found."
+msgstr "Знайдено {count} станцій."
+
+#: data/scripts/timonde_common.py:1333
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Знайдено {count} потоків. Виберіть потрібний потік та підтвердіть."
+
+#: data/scripts/reorder_groups.py:274 data/scripts/reorder_groups.py:341
+#: data/scripts/reorder_groups.py:653
+msgid "— Separator —"
+msgstr "— Separator —"
+
+#: data/scripts/browse_bouquets.py:1195
 msgid "● Repaired (Live)"
 msgstr "● Repaired (Live)"
 
+#~ msgid " [Ephemeral]"
+#~ msgstr "[Ефемерний]"
+
+#~ msgid "Connecting to"
+#~ msgstr "Підключення до"
+
+#~ msgid "Discover & Import stations (TiMonde)"
+#~ msgstr "Знайти та імпортувати радіостанції (TiMonde)"
+
+#~ msgid "End of stream"
+#~ msgstr "Кінець потоку"
+
+#~ msgid "Error {code}"
+#~ msgstr "ÐÐ¾Ð¼Ð¸Ð»ÐºÐ° {code}"
+
+#~ msgid "Failed to add station"
+#~ msgstr "ÐÐµ Ð²Ð´Ð°Ð»Ð¾ÑÑ Ð´Ð¾Ð´Ð°ÑÐ¸ ÑÑÐ°Ð½ÑÑÑ"
+
+#~ msgid "GStreamer not available"
+#~ msgstr "GStreamer недоступний"
+
+#~ msgid "HTTP Error {code}"
+#~ msgstr "ÐÐ¾Ð¼Ð¸Ð»ÐºÐ° HTTP {code}"
+
+#~ msgid "Import & Export"
+#~ msgstr "Імпорт та експорт"
+
+#~ msgid "Live (Shoutcast)"
+#~ msgstr "ÐÑÑÐ¼Ð¸Ð¹ ÐµÑÑÑ (Shoutcast)"
+
+#~ msgid "Radio-Browser contribution"
+#~ msgstr "ÐÐ½ÐµÑÐ¾Ðº Ð´Ð¾ Radio-Browser"
+
+#~ msgid "Radio-Browser servers unreachable"
+#~ msgstr "Ð¡ÐµÑÐ²ÐµÑÐ¸ Radio-Browser Ð½ÐµÐ´Ð¾ÑÑÑÐ¿Ð½Ñ"
+
+#~ msgid "Server rejected submission: {error}"
+#~ msgstr "Ð¡ÐµÑÐ²ÐµÑ Ð²ÑÐ´ÑÐ¸Ð»Ð¸Ð² Ð½Ð°Ð´ÑÐ¸Ð»Ð°Ð½Ð½Ñ: {error}"
+
+#~ msgid "Station successfully submitted to Radio-Browser."
+#~ msgstr "Ð¡ÑÐ°Ð½ÑÑÑ ÑÑÐ¿ÑÑÐ½Ð¾ Ð½Ð°Ð´ÑÑÐ»Ð°Ð½Ð¾ Ð´Ð¾ Radio-Browser."
+
+#~ msgid "Stream unreachable"
+#~ msgstr "Потік недоступний"
+
+#~ msgid "Unknown error"
+#~ msgstr "ÐÐµÐ²ÑÐ´Ð¾Ð¼Ð° Ð¿Ð¾Ð¼Ð¸Ð»ÐºÐ°"
+
+#~ msgid "Unreadable stream"
+#~ msgstr "Нечитабельний потік"
+
+#~ msgid "[OK] Repaired"
+#~ msgstr "[OK] ÐÑÐ´Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾"
+
+#~ msgid ""
+#~ "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
+#~ "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
+#~ "• Use <b>Move to...</b> to organize stations into another folder.</small>"
+#~ msgstr ""
+#~ "<small>• Розгорніть папки <b>[▶]</b> для перегляду підгруп і станцій.\n"
+#~ "• Використовуйте <b>Вгору / Вниз</b> або перетягування для "
+#~ "впорядкування.\n"
+#~ "• Використовуйте <b>Перемістити до...</b> для переміщення станцій в іншу "
+#~ "папку.</small>"
+
+#~ msgid ""
+#~ "TiMonde uses path conventions with the <b>/</b> separator:\n"
+#~ "\n"
+#~ "• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu "
+#~ "(without group).\n"
+#~ "• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
+#~ "• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » "
+#~ "under « France ».\n"
+#~ "• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « "
+#~ "Belgium ».\n"
+#~ "• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+#~ "\n"
+#~ "<i>Groups and subgroups are automatically created if they do not exist "
+#~ "yet.</i>"
+#~ msgstr ""
+#~ "TiMonde використовує правила шляху з роздільником <b>/</b>:\n"
+#~ "\n"
+#~ "• <b>/</b> або <b>(Корінь)</b> : Розміщує станцію в корені меню (без "
+#~ "групи).\n"
+#~ "• <b>/Габон</b> або <b>Габон</b> : Розміщує станцію в групі « Габон ».\n"
+#~ "• <b>/Франція/Бретань</b> : Розміщує станцію в підгрупі « Бретань » під « "
+#~ "Франція ».\n"
+#~ "\n"
+#~ "<i>Групи та підгрупи створюються автоматично, якщо вони ще не існують.</i>"

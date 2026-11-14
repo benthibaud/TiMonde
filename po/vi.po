@@ -1,1111 +1,871 @@
 # TiMonde — Traduction VI
-
 # Copyright (C) 2026 Ben Thibaud & TiMonde Contributors
-
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: TiMonde 0.1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 20:23+0100\n"
+"POT-Creation-Date: 2026-11-14 12:37+0100\n"
 "PO-Revision-Date: 2026-10-17 17:00+0200\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/i18n.rs:186 src/i18n.rs:193
-
-msgid " [Ephemeral]"
-msgstr "[phù du]"
-
-#: data/scripts/browse_bouquets.py:1655
-
+#: data/scripts/browse_bouquets.py:1079
 msgid "(Already in favorites)"
 msgstr "Lưu vào mục yêu thích của tôi"
 
 # --- Mises à jour TiMonde ---
-
-#: data/scripts/edit_station.py:541
-
+#: data/scripts/edit_station.py:495
 msgid "(Metropolitan or Overseas)"
 msgstr "(Metropolitan or Overseas)"
 
-#: data/scripts/browse_bouquets.py:680 data/scripts/browse_bouquets.py:681
-
-#: data/scripts/browse_bouquets.py:2020 data/scripts/browse_bouquets.py:2063
-
-#: data/scripts/browse_bouquets.py:2197
-
+#: data/scripts/browse_bouquets.py:1407 data/scripts/browse_bouquets.py:1450
+#: data/scripts/browse_bouquets.py:1549 data/scripts/timonde_common.py:587
+#: data/scripts/timonde_common.py:588
 msgid "(Original folder structure)"
 msgstr "(Cấu trúc thư mục gốc)"
 
-#: data/scripts/edit_station.py:539
-
+#: data/scripts/edit_station.py:493
 msgid "(Single inferred timezone)"
 msgstr "(Single inferred timezone)"
 
-#: data/scripts/edit_station.py:518
-
+#: data/scripts/edit_station.py:472
 msgid "(Timezone not defined)"
 msgstr "(Timezone not defined)"
 
-#: data/scripts/edit_station.py:521
-
+#: data/scripts/edit_station.py:475
 msgid "(Unknown)"
 msgstr "(Unknown)"
 
-#: data/scripts/edit_station.py:75
-
+#: data/scripts/edit_station.py:84
 msgid "<b>Edit station settings:</b>"
 msgstr "<b>Thay đổi cài đặt đài:</b>"
 
-#: data/scripts/edit_station.py:65
-
+#: data/scripts/edit_station.py:74
 msgid "<b>Enter new station details:</b>"
 msgstr "<b>Nhập thông tin cho đài mới:</b>"
 
-#: data/scripts/edit_station.py:70
-
+#: data/scripts/edit_station.py:79
 msgid "<b>Keep this randomly discovered station in your favorites:</b>"
 msgstr ""
 "<b>Giữ đài phát thanh được phát hiện ngẫu nhiên này trong mục yêu thích của "
 "bạn:</b>"
 
-#: data/scripts/timonde_settings.py:740
-
+#: data/scripts/timonde_settings.py:549
 msgid "<b>{nb_st}</b> station(s) in <b>{nb_gr}</b> group(s)."
 msgstr "<b>{nb_st}</b> đài trong <b>{nb_gr}</b> nhóm."
 
-#: data/scripts/browse_bouquets.py:1208
-
+#: data/scripts/browse_bouquets.py:704
 msgid "<i>Select a file or sample above.</i>"
 msgstr "<i>Chọn tệp hoặc mẫu ở trên.</i>"
 
-#: data/scripts/timonde_settings.py:709 data/scripts/timonde_settings.py:719
-
+#: data/scripts/timonde_settings.py:516 data/scripts/timonde_settings.py:528
 msgid "Active (Left & Right clicks unified)"
 msgstr "Activo (Clic izquierdo y derecho unificados)"
 
-#: data/scripts/browse_bouquets.py:882
-
+#: data/scripts/browse_bouquets.py:443
 msgid "Add"
 msgstr "Thêm vào"
 
-#: data/scripts/reorder_groups.py:189
-
+#: data/scripts/reorder_groups.py:157
 msgid "Add a new station to this group or to root"
 msgstr "AÃ±adir una nueva emisora a este grupo o a la raÃ­z"
 
-#: data/scripts/edit_station.py:64
-
+#: data/scripts/edit_station.py:73
 msgid "Add a station (TiMonde)"
 msgstr "Thêm trạm (TiMonde)"
 
-#: data/scripts/reorder_groups.py:189
-
+#: data/scripts/reorder_groups.py:157
 msgid "Add station"
 msgstr "Thêm đài phát thanh"
 
-#: data/scripts/reorder_groups.py:576
-
+#: data/scripts/reorder_groups.py:553
 msgid "Add station here..."
 msgstr "AÃ±adir emisora aquÃ­..."
 
-#: data/scripts/reorder_groups.py:597
-
+#: data/scripts/reorder_groups.py:561
 msgid "Add station..."
 msgstr "Thêm đài..."
 
-#: data/scripts/edit_station.py:66
-
+#: data/scripts/edit_station.py:75
 msgid "Add to my stations"
 msgstr "Thêm vào đài của tôi"
 
-#: data/scripts/edit_station.py:159
-
+#: data/scripts/edit_station.py:172
 msgid "Align name"
 msgstr "Alinear nombre"
 
-#: data/scripts/reorder_groups.py:295
-
+#: data/scripts/reorder_groups.py:218
 msgid "All changes saved"
 msgstr "Todos los cambios guardados"
 
-#: data/scripts/browse_bouquets.py:784
-
+#: data/scripts/browse_bouquets.py:347
 msgid "All countries (Worldwide)"
 msgstr "Tất cả các nước (Toàn cầu)"
 
-#: data/scripts/reorder_groups.py:1281
-
+#: data/scripts/reorder_groups.py:1170
 msgid "All files (*.*)"
 msgstr "Tất cả các tệp (*.*)"
 
-#: data/scripts/browse_bouquets.py:823
-
+#: data/scripts/browse_bouquets.py:386
 msgid "All languages"
 msgstr "Tất cả ngôn ngữ"
 
-#: data/scripts/timonde_settings.py:728
-
+#: data/scripts/timonde_settings.py:537
 msgid ""
 "Allows opening the station menu interchangeably with left or right click."
-msgstr "Cho phép mở menu trạm hoán đổi cho nhau bằng cách nhấp chuột trái hoặc phải."
+msgstr ""
+"Cho phép mở menu trạm hoán đổi cho nhau bằng cách nhấp chuột trái hoặc phải."
 
-#: data/scripts/timonde_common.py:1904
-
+#: data/scripts/timonde_common.py:1480
 msgid "Already registered"
 msgstr "Ya registrada"
 
-#: data/scripts/timonde_common.py:1899
-
+#: data/scripts/timonde_common.py:1475
 msgid "Already registered:"
 msgstr "Ya registrada:"
 
-#: data/scripts/reorder_groups.py:111 data/scripts/reorder_groups.py:1155
-
+#: data/scripts/reorder_groups.py:89 data/scripts/reorder_groups.py:1060
 msgid "Apply redirects"
 msgstr "Áp dụng chuyển hướng"
 
-#: data/scripts/reorder_groups.py:783 data/scripts/reorder_groups.py:785
-
-#: data/scripts/reorder_groups.py:787
-
+#: data/scripts/reorder_groups.py:762
 msgid "Are you sure you want to delete « {name} » ?"
 msgstr "Bạn có chắc chắn muốn xóa « {name} » không?"
 
-#: data/scripts/edit_station.py:121
-
+#: data/scripts/edit_station.py:134
 msgid "Audio stream URL:"
 msgstr "URL luồng âm thanh:"
 
-#: data/scripts/reorder_groups.py:1139
-
+#: data/scripts/reorder_groups.py:1048
 msgid "Audit completed:"
 msgstr "Audit completed:"
 
-#: data/scripts/timonde_settings.py:666
-
+#: data/scripts/timonde_settings.py:474
 msgid "Automatic detection according to your Linux locale settings."
 msgstr "Tự động phát hiện theo cài đặt ngôn ngữ Linux của bạn."
 
-#: data/scripts/timonde_settings.py:648
-
+#: data/scripts/timonde_settings.py:447
 msgid "Automatic launch on startup"
 msgstr "Tự động khởi chạy khi khởi động"
 
-#: data/scripts/timonde_settings.py:751
-
+#: data/scripts/timonde_settings.py:560
 msgid "Automatic startup"
 msgstr "Tự động khởi động"
 
-#: data/scripts/reorder_groups.py:111
-
+#: data/scripts/reorder_groups.py:89
 msgid "Automatically update redirected streams to direct URL"
 msgstr ""
 "Tự động cập nhật nguồn cấp dữ liệu được chuyển hướng đến URL trực tiếp của "
 "chúng"
 
-#: data/scripts/browse_bouquets.py:913 data/scripts/browse_bouquets.py:1247
-
+#: data/scripts/browse_bouquets.py:448 data/scripts/browse_bouquets.py:719
 msgid "Availability"
 msgstr "sẵn có"
 
-#: data/scripts/reorder_groups.py:1266
-
+#: data/scripts/reorder_groups.py:1163
 msgid "Backup my bookmarks (XML)"
 msgstr "Guardar mis marcadores (XML)"
 
-#: data/scripts/browse_bouquets.py:1199
-
+#: data/scripts/browse_bouquets.py:695
 msgid "Backup my radios (XML)..."
 msgstr "Sao lưu radio của tôi (XML)..."
 
-#: data/scripts/reorder_groups.py:1302
-
+#: data/scripts/reorder_groups.py:1187
 msgid "Backup successful!"
 msgstr "Â¡Copia de seguridad realizada con Ã©xito!"
 
-#: data/scripts/timonde_common.py:1645
-
+#: data/scripts/timonde_common.py:1297
 msgid "Bitrate"
 msgstr "Bitrate"
 
-#: data/scripts/timonde_settings.py:530
-
+#: data/scripts/timonde_settings.py:332
 msgid "Bookmarks and stations saved successfully!"
 msgstr "Dấu trang và đài đã được lưu thành công!"
 
-#: data/scripts/browse_bouquets.py:1203
-
+#: data/scripts/browse_bouquets.py:699
 msgid "Bookmarks folder"
 msgstr "Thư mục dấu trang"
 
-#: data/scripts/browse_bouquets.py:2312
-
+#: data/scripts/browse_bouquets.py:1651
 msgid "CSV export is available from settings."
 msgstr "Xuất CSV có sẵn từ cài đặt."
 
-#: data/scripts/reorder_groups.py:1252
-
+#: data/scripts/reorder_groups.py:1146
 msgid "CSV export successful:"
 msgstr "ExportaciÃ³n CSV correcta:"
 
-#: data/scripts/browse_bouquets.py:1982 data/scripts/edit_station.py:308
-
-#: data/scripts/edit_station.py:575 data/scripts/reorder_groups.py:260
-
-#: data/scripts/reorder_groups.py:638 data/scripts/reorder_groups.py:948
-
-#: data/scripts/reorder_groups.py:1228 data/scripts/reorder_groups.py:1269
-
-#: data/scripts/timonde_common.py:1596 data/scripts/timonde_common.py:1720
-
+#: data/scripts/browse_bouquets.py:1371 data/scripts/edit_station.py:292
+#: data/scripts/edit_station.py:528 data/scripts/reorder_groups.py:188
+#: data/scripts/reorder_groups.py:588 data/scripts/reorder_groups.py:875
+#: data/scripts/reorder_groups.py:1128 data/scripts/reorder_groups.py:1165
+#: data/scripts/timonde_common.py:1270 data/scripts/timonde_common.py:1354
 msgid "Cancel"
 msgstr "Hủy"
 
-#: src/tray/menu.rs:589
-
+#: src/tray/menu.rs:591
 msgid "Cancel sleep timer"
 msgstr "Hủy giấc ngủ"
 
-#: data/scripts/timonde_common.py:1814
-
+#: data/scripts/timonde_common.py:1412
 msgid "Check"
 msgstr "Comprobar"
 
-#: data/scripts/browse_bouquets.py:938 data/scripts/browse_bouquets.py:1107
-
-#: data/scripts/browse_bouquets.py:1274
-
+#: data/scripts/browse_bouquets.py:462 data/scripts/browse_bouquets.py:603
+#: data/scripts/browse_bouquets.py:733
 msgid "Check all"
 msgstr "Kiểm tra tất cả"
 
-#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
-
+#: data/scripts/browse_bouquets.py:619 data/scripts/browse_bouquets.py:749
 msgid "Check and submit selected station to Radio-Browser directory"
 msgstr "Comprobar y enviar la emisora seleccionada al directorio Radio-Browser"
 
-#: data/scripts/timonde_common.py:1814
-
+#: data/scripts/timonde_common.py:1412
 msgid "Check entered stream URL again on Radio-Browser"
 msgstr "Comprobar de nuevo la URL del flujo en Radio-Browser"
 
-#: data/scripts/edit_station.py:139
+#: data/scripts/timonde_common.py:195
+msgid "Check failed"
+msgstr "Kiểm tra thất bại"
 
+#: data/scripts/edit_station.py:152
 msgid "Check if stream is listed or contribute to directory"
 msgstr "Comprobar si el flujo estÃ¡ listado o contribuir al directorio"
 
-#: data/scripts/edit_station.py:135
-
+#: data/scripts/edit_station.py:148
 msgid "Check link validity and listen to stream preview"
 msgstr "Kiểm tra tính hợp lệ của liên kết và nghe bản xem trước luồng"
 
-#: data/scripts/browse_bouquets.py:1286
-
+#: data/scripts/browse_bouquets.py:745
 msgid "Check links availability live"
 msgstr "Kiểm tra tính khả dụng của liên kết trực tiếp"
 
-#: data/scripts/browse_bouquets.py:946
-
+#: data/scripts/browse_bouquets.py:470
 msgid "Check live availability of found stations"
 msgstr "Kiểm tra tính khả dụng trực tiếp của các trạm được tìm thấy"
 
-#: data/scripts/reorder_groups.py:242
-
+#: data/scripts/reorder_groups.py:178
 msgid "Check or contribute selected station to Radio-Browser"
 msgstr "Comprobar o contribuir la emisora seleccionada en Radio-Browser"
 
-#: data/scripts/browse_bouquets.py:1115
-
+#: data/scripts/browse_bouquets.py:611
 msgid "Check stations live availability"
 msgstr "Kiểm tra tính khả dụng trực tiếp của trạm"
 
-#: data/scripts/reorder_groups.py:102
-
+#: data/scripts/reorder_groups.py:85
 msgid "Check streams"
 msgstr "Kiểm tra nguồn cấp dữ liệu"
 
-#: data/scripts/timonde_common.py:1882
-
+#: data/scripts/timonde_common.py:1465
 msgid "Checking Radio-Browser directory..."
 msgstr "Consultando el directorio Radio-Browser..."
 
-#: data/scripts/reorder_groups.py:1077
-
+#: data/scripts/reorder_groups.py:993
 msgid "Checking your radio stations"
 msgstr "Checking your radio stations"
 
-#: data/scripts/browse_bouquets.py:1656
-
+#: data/scripts/browse_bouquets.py:1080
 msgid "Checking..."
 msgstr "Đang kết nối..."
 
-#: data/scripts/browse_bouquets.py:1978
-
+#: data/scripts/browse_bouquets.py:1367
 msgid "Choose a radio station file"
 msgstr "Chọn một tập tin đài phát thanh"
 
-#: data/scripts/browse_bouquets.py:676
-
+#: data/scripts/timonde_common.py:583
 msgid "Choose from existing groups"
 msgstr "Chọn từ các nhóm hiện có"
 
-#: data/scripts/timonde_settings.py:727
-
+#: data/scripts/timonde_settings.py:536
 msgid "Cinnamon Left-Click Unification"
 msgstr "UnificaciÃ³n de clic izquierdo en Cinnamon"
 
-#: data/scripts/timonde_settings.py:721
-
+#: data/scripts/timonde_settings.py:530
 msgid "Cinnamon left-click unification successfully enabled!"
 msgstr "Â¡UnificaciÃ³n de clic izquierdo en Cinnamon activada con Ã©xito!"
 
-#: data/scripts/edit_station.py:265
-
+#: data/scripts/edit_station.py:252
 msgid "Clear"
 msgstr "Clear"
 
-#: data/scripts/edit_station.py:266
-
+#: data/scripts/edit_station.py:253
 msgid "Clear / Automatic mode"
 msgstr "Borrar / Modo automÃ¡tico"
 
-#: data/scripts/browse_bouquets.py:789
-
+#: data/scripts/browse_bouquets.py:352
 msgid "Clear country filter"
 msgstr "Xóa bộ lọc quốc gia"
 
-#: data/scripts/browse_bouquets.py:669
-
+#: data/scripts/timonde_common.py:577
 msgid "Clear field"
 msgstr "Xóa trường"
 
-#: data/scripts/edit_station.py:187
-
+#: data/scripts/edit_station.py:201
 msgid "Clear field (click to empty)"
 msgstr "Limpiar campo (clic para vaciar)"
 
-#: data/scripts/browse_bouquets.py:828
-
+#: data/scripts/browse_bouquets.py:391
 msgid "Clear language filter"
 msgstr "Xóa bộ lọc ngôn ngữ"
 
-#: data/scripts/browse_bouquets.py:1335 data/scripts/timonde_common.py:1858
-
-#: data/scripts/timonde_settings.py:447
-
+#: data/scripts/timonde_common.py:1436 data/scripts/timonde_common.py:1524
+#: data/scripts/timonde_settings.py:249
 msgid "Close"
 msgstr "Đóng"
 
-#: data/scripts/reorder_groups.py:88
-
+#: data/scripts/reorder_groups.py:79
 msgid "Collapse all"
 msgstr "Plegar todo"
 
-#: data/scripts/reorder_groups.py:88
-
+#: data/scripts/reorder_groups.py:79
 msgid "Collapse all groups for an overview"
 msgstr "Plegar todos los grupos para una vista general"
 
-#: data/scripts/timonde_settings.py:594
-
+#: data/scripts/timonde_settings.py:393
 msgid "Collections & Files"
 msgstr "Bộ sưu tập & Tệp"
 
-#: data/scripts/reorder_groups.py:794
-
+#: data/scripts/reorder_groups.py:774
 msgid "Confirm deletion"
 msgstr "Confirmar eliminaciÃ³n"
 
-#: data/scripts/timonde_common.py:1328
-
-msgid "Connecting to"
-msgstr "Đang kết nối với"
-
-#: src/i18n.rs:192 src/tray/menu.rs:159
-
+#: src/i18n.rs:226 src/tray/menu.rs:161
 msgid "Connecting..."
 msgstr "Đang kết nối..."
 
-#: data/scripts/browse_bouquets.py:739
-
+#: data/scripts/browse_bouquets.py:302
 msgid "Contribute a station"
 msgstr "Contribuir una emisora"
 
-#: data/scripts/timonde_common.py:1781
-
+#: data/scripts/timonde_common.py:1400
 msgid "Contribute a station to the community Radio-Browser directory"
 msgstr "Enviar una nueva emisora al directorio comunitario Radio-Browser"
 
-#: data/scripts/browse_bouquets.py:1123 data/scripts/browse_bouquets.py:1290
-
-#: data/scripts/timonde_common.py:1761
-
+#: data/scripts/browse_bouquets.py:619 data/scripts/browse_bouquets.py:749
+#: data/scripts/timonde_common.py:1385
 msgid "Contribute to Radio-Browser"
 msgstr "Contribuir a Radio-Browser"
 
-#: data/scripts/reorder_groups.py:242 data/scripts/reorder_groups.py:567
-
+#: data/scripts/reorder_groups.py:178 data/scripts/reorder_groups.py:547
 msgid "Contribute to Radio-Browser..."
 msgstr "Contribuir a Radio-Browser..."
 
-#: data/scripts/browse_bouquets.py:894 data/scripts/browse_bouquets.py:1240
-
-#: data/scripts/timonde_common.py:1648
-
+#: data/scripts/browse_bouquets.py:445 data/scripts/browse_bouquets.py:718
+#: data/scripts/timonde_common.py:1297
 msgid "Country"
 msgstr "<b>Country:</b>"
 
-#: data/scripts/browse_bouquets.py:1327 data/scripts/timonde_settings.py:593
-
+#: data/scripts/timonde_settings.py:392
 msgid "Country bouquets"
 msgstr "Bó hoa đồng quê"
 
-#: data/scripts/timonde_common.py:1821
-
+#: data/scripts/timonde_common.py:1423
 msgid "Country code (ISO):"
 msgstr "CÃ³digo de paÃ­s (ISO):"
 
-#: data/scripts/browse_bouquets.py:981 data/scripts/edit_station.py:228
-
-#: data/scripts/timonde_common.py:1900
-
+#: data/scripts/browse_bouquets.py:505 data/scripts/edit_station.py:238
+#: data/scripts/timonde_common.py:1476
 msgid "Country:"
 msgstr "Country:"
 
-#: data/scripts/reorder_groups.py:639
-
+#: data/scripts/reorder_groups.py:589
 msgid "Create"
 msgstr "Crear"
 
-#: data/scripts/browse_bouquets.py:1199
-
+#: data/scripts/browse_bouquets.py:695
 msgid "Create a full backup of your collection (with folders and timezones)"
-msgstr "Tạo bản sao lưu đầy đủ cho bộ sưu tập của bạn (với các thư mục và múi giờ)"
+msgstr ""
+"Tạo bản sao lưu đầy đủ cho bộ sưu tập của bạn (với các thư mục và múi giờ)"
 
-#: data/scripts/reorder_groups.py:634
-
+#: data/scripts/reorder_groups.py:587
 msgid "Create a new group"
 msgstr "Crear un nuevo grupo"
 
-#: data/scripts/reorder_groups.py:193
-
+#: data/scripts/reorder_groups.py:158
 msgid "Create a new group or subgroup (Ctrl+N)"
 msgstr "Crear un nuevo grupo o subgrupo (Ctrl+N)"
 
-#: data/scripts/reorder_groups.py:658
-
+#: data/scripts/reorder_groups.py:603
 msgid "Create as a subgroup inside"
 msgstr "Crear como subgrupo dentro de"
 
-#: data/scripts/timonde_settings.py:656
-
+#: data/scripts/timonde_settings.py:455
 msgid "DETECTED ENVIRONMENT (READ ONLY)"
 msgstr "MÔI TRƯỜNG ĐƯỢC PHÁT HIỆN (CHỈ ĐỌC)"
 
 #: src/timezone.rs:521
-
 msgid "Daytime"
 msgstr "ngày"
 
-#: data/scripts/reorder_groups.py:106 data/scripts/reorder_groups.py:1147
-
+#: data/scripts/reorder_groups.py:87 data/scripts/reorder_groups.py:1052
 msgid "Dead links only"
 msgstr "Chỉ liên kết chết"
 
-#: data/scripts/edit_station.py:576 data/scripts/reorder_groups.py:246
-
-#: src/i18n.rs:230 src/i18n.rs:236
-
+#: data/scripts/edit_station.py:529 data/scripts/reorder_groups.py:179
+#: src/i18n.rs:268 src/i18n.rs:274
 msgid "Delete"
 msgstr "Xóa"
 
-#: data/scripts/reorder_groups.py:588
-
+#: data/scripts/reorder_groups.py:556
 msgid "Delete group and stations"
 msgstr "Eliminar grupo y emisoras"
 
-#: data/scripts/reorder_groups.py:246
-
+#: data/scripts/reorder_groups.py:179
 msgid "Delete selected item or group (Del)"
 msgstr "Delete selected item or group (Del)"
 
-#: data/scripts/edit_station.py:303 data/scripts/reorder_groups.py:571
-
+#: data/scripts/edit_station.py:287 data/scripts/reorder_groups.py:548
 msgid "Delete this station"
 msgstr "Xóa đài này"
 
-#: data/scripts/edit_station.py:572
-
+#: data/scripts/edit_station.py:525
 msgid "Delete « {} » from favorites?"
 msgstr "Xóa “{}” khỏi mục yêu thích?"
 
-#: data/scripts/reorder_groups.py:803
-
+#: data/scripts/reorder_groups.py:784
 msgid "Deleted:"
 msgstr "Eliminado:"
 
-#: data/scripts/timonde_settings.py:676
-
+#: data/scripts/timonde_settings.py:484
 msgid "Desktop environment & Tray"
 msgstr "Môi trường máy tính để bàn & Khay"
 
-#: data/scripts/reorder_groups.py:169
-
+#: data/scripts/reorder_groups.py:136
 msgid "Details / Status"
 msgstr "Detalles / Estado"
 
-#: data/scripts/browse_bouquets.py:525
-
-msgid "Discover & Import stations (TiMonde)"
-msgstr "Khám phá và nhập đài phát thanh (TiMonde)"
-
-#: data/scripts/timonde_settings.py:649
-
+#: data/scripts/timonde_settings.py:448
 msgid ""
 "Discreetly starts TiMonde in the background as soon as your graphical "
 "session opens."
-msgstr "Khởi động TiMonde ở chế độ nền một cách kín đáo ngay khi phiên đồ họa của bạn mở ra."
+msgstr ""
+"Khởi động TiMonde ở chế độ nền một cách kín đáo ngay khi phiên đồ họa của "
+"bạn mở ra."
 
-#: data/scripts/reorder_groups.py:107
-
+#: data/scripts/reorder_groups.py:87
 msgid "Display offline radio streams only"
 msgstr "Chỉ hiển thị các đài phát thanh có luồng ngoại tuyến"
 
-#: data/scripts/reorder_groups.py:234 src/i18n.rs:229 src/i18n.rs:235
+#: data/scripts/reorder_groups.py:1225
+msgid "Do you want to discard them and exit?"
+msgstr "Bạn có muốn hủy bỏ chúng và thoát không?"
 
-#: src/tray/menu.rs:384
-
+#: data/scripts/reorder_groups.py:176 src/i18n.rs:267 src/i18n.rs:273
+#: src/tray/menu.rs:390
 msgid "Edit"
 msgstr "Sửa"
 
-#: data/scripts/reorder_groups.py:234
-
+#: data/scripts/reorder_groups.py:176
 msgid "Edit selected name, URL or group (F2)"
 msgstr "Editar nombre, URL o grupo seleccionado (F2)"
 
-#: data/scripts/edit_station.py:74
+#: data/scripts/timonde_common.py:1438 data/scripts/timonde_common.py:1481
+msgid "Edit station"
+msgstr "Chỉnh sửa đài"
 
+#: data/scripts/edit_station.py:83
 msgid "Edit station (TiMonde)"
 msgstr "Chỉnh sửa đài phát thanh (TiMonde)"
 
-#: data/scripts/reorder_groups.py:555
-
+#: data/scripts/reorder_groups.py:544
 msgid "Edit station..."
 msgstr "Thêm đài..."
 
-#: data/scripts/timonde_common.py:132
-
+#: data/scripts/timonde_common.py:166
 msgid "Empty URL"
 msgstr "URL vacÃ­a"
 
-#: data/scripts/timonde_common.py:1301 data/scripts/timonde_common.py:1315
-
+#: data/scripts/timonde_common.py:1081 data/scripts/timonde_common.py:1096
 msgid "Empty stream URL"
 msgstr "URL luồng trống"
 
-#: data/scripts/timonde_settings.py:709
-
+#: data/scripts/timonde_settings.py:516
 msgid "Enable Left-Click"
 msgstr "Activar clic izquierdo"
 
-#: data/scripts/timonde_common.py:1277
-
-msgid "End of stream"
-msgstr "Kết thúc luồng"
-
-#: data/scripts/browse_bouquets.py:950
-
+#: data/scripts/browse_bouquets.py:474
 msgid "Enter a keyword or click Search to browse the directory."
 msgstr "Nhập từ khóa hoặc nhấp vào Tìm kiếm để duyệt thư mục."
 
-#: src/tray/mod.rs:155
-
+#: src/tray/mod.rs:143
 msgid "Ephemeral radio (not saved)."
 msgstr "Radio efÃ­mera (no guardada)."
 
-#: data/scripts/reorder_groups.py:1312
+#: data/scripts/timonde_common.py:1222
+msgid "Error communicating with TiMonde binary"
+msgstr "Lỗi giao tiếp với tệp nhị phân TiMonde"
 
+#: data/scripts/reorder_groups.py:1189
 msgid "Error during backup:"
 msgstr "Lỗi trong quá trình sao lưu:"
 
-#: data/scripts/timonde_settings.py:753
-
+#: data/scripts/timonde_settings.py:562
 msgid "Error modifying autostart."
 msgstr "Lỗi sửa đổi autostart."
 
-#: data/scripts/timonde_common.py:195
-
-msgid "Error {code}"
-msgstr "Lỗi {code}"
-
-#: data/scripts/gnome_tray_helper.py:217
-
+#: data/scripts/gnome_tray_helper.py:228
 msgid "Error:"
 msgstr "Lỗi:"
 
 #: src/timezone.rs:521
-
 msgid "Evening"
 msgstr "Buổi tối"
 
-#: data/scripts/browse_bouquets.py:652
-
+#: data/scripts/timonde_common.py:560
 msgid "Ex: /France/Jazz or / for root"
 msgstr "Ví dụ: /France/Jazz hoặc / cho root"
 
-#: data/scripts/browse_bouquets.py:1169
-
+#: data/scripts/browse_bouquets.py:665
 msgid "Examples folder"
 msgstr "Thư mục ví dụ"
 
-#: data/scripts/reorder_groups.py:92
-
+#: data/scripts/reorder_groups.py:81
 msgid "Expand all"
 msgstr "Desplegar todo"
 
-#: data/scripts/reorder_groups.py:92
-
+#: data/scripts/reorder_groups.py:81
 msgid "Expand all groups and subgroups"
 msgstr "Desplegar todos los grupos y subgrupos"
 
-#: data/scripts/browse_bouquets.py:1087
-
+#: data/scripts/browse_bouquets.py:583
 msgid "Explore stations from this country on Radio-Browser"
 msgstr "Khám phá các đài của quốc gia này trên Radio-Browser"
 
-#: data/scripts/browse_bouquets.py:1628
-
+#: data/scripts/browse_bouquets.py:1052
 msgid "Explore stations from {country} on Radio-Browser ➔"
 msgstr "Khám phá các đài từ {country} trên Radio-Browser ➔"
 
-#: data/scripts/reorder_groups.py:1228
-
+#: data/scripts/reorder_groups.py:1128
 msgid "Export"
 msgstr "Xuất khẩu"
 
-#: data/scripts/reorder_groups.py:264
-
+#: data/scripts/reorder_groups.py:192
 msgid "Export all stations to CSV spreadsheet format"
 msgstr "Xuất tất cả radio của bạn ở định dạng bảng tính CSV"
 
-#: data/scripts/reorder_groups.py:1254
-
+#: data/scripts/reorder_groups.py:1148 data/scripts/reorder_groups.py:1150
 msgid "Export error:"
 msgstr "Error de exportaciÃ³n:"
 
-#: data/scripts/reorder_groups.py:1225
-
+#: data/scripts/reorder_groups.py:1126
 msgid "Export stations to CSV"
 msgstr "Exportar emisoras a CSV"
 
-#: data/scripts/reorder_groups.py:264
-
+#: data/scripts/reorder_groups.py:192
 msgid "Export to CSV"
 msgstr "Xuất sang CSV"
 
-#: data/scripts/browse_bouquets.py:1195
-
+#: data/scripts/browse_bouquets.py:691
 msgid "Export to spreadsheet (CSV)..."
 msgstr "Xuất sang bảng tính (CSV)..."
 
-#: data/scripts/browse_bouquets.py:1182
-
+#: data/scripts/browse_bouquets.py:678
 msgid "External file:"
 msgstr "Tập tin bên ngoài:"
 
-#: data/scripts/timonde_common.py:1530
-
-msgid "Failed to add station"
-msgstr "Error al aÃ±adir la emisora"
-
-#: data/scripts/timonde_settings.py:723
-
+#: data/scripts/timonde_settings.py:532
 msgid "Failed to enable Cinnamon unification."
 msgstr "Error al activar la unificaciÃ³n en Cinnamon."
 
-#: data/scripts/browse_bouquets.py:918 data/scripts/browse_bouquets.py:1066
-
-#: data/scripts/browse_bouquets.py:1252
-
+#: data/scripts/browse_bouquets.py:449 data/scripts/browse_bouquets.py:565
+#: data/scripts/browse_bouquets.py:720
 msgid "Favorite status"
 msgstr "Trạng thái yêu thích"
 
-#: data/scripts/browse_bouquets.py:2056
-
+#: data/scripts/browse_bouquets.py:1443
 msgid "File:"
 msgstr "Tài liệu:"
 
-#: data/scripts/browse_bouquets.py:779
-
+#: data/scripts/browse_bouquets.py:342
 msgid "Filter by country:"
 msgstr "Lọc theo quốc gia:"
 
-#: data/scripts/browse_bouquets.py:1235
-
+#: data/scripts/browse_bouquets.py:717
 msgid "Folder / Group"
 msgstr "Thư mục/Nhóm"
 
-#: data/scripts/timonde_common.py:1642
-
+#: data/scripts/timonde_common.py:1297
 msgid "Format"
 msgstr "Format"
 
-#: data/scripts/browse_bouquets.py:906
-
+#: data/scripts/browse_bouquets.py:447
 msgid "Format & Bitrate"
 msgstr "Định dạng & Tốc độ bit"
 
-#: data/scripts/gnome_tray_helper.py:150
-
+#: data/scripts/gnome_tray_helper.py:161
 msgid "GNOME Shell environment detected"
 msgstr "Đã phát hiện thấy môi trường Gnome Shell"
 
-#: data/scripts/timonde_settings.py:693
-
+#: data/scripts/timonde_settings.py:501
 msgid "GNOME integration required"
 msgstr "Yêu cầu tích hợp Gnome"
 
-#: data/scripts/timonde_common.py:1319
-
-msgid "GStreamer not available"
-msgstr "GStreamer không có sẵn"
-
-#: data/scripts/browse_bouquets.py:1195
-
+#: data/scripts/browse_bouquets.py:691
 msgid "Generate a flat list for Calc or Excel spreadsheet"
 msgstr "Tạo danh sách phẳng cho bảng tính Calc hoặc Excel"
 
-#: data/scripts/browse_bouquets.py:901
-
+#: data/scripts/browse_bouquets.py:446
 msgid "Genre / Tags"
 msgstr "Giới tính / Thẻ"
 
-#: data/scripts/browse_bouquets.py:1053
-
+#: data/scripts/browse_bouquets.py:563
 msgid "Genre / Topic"
 msgstr "Thể loại / Chủ đề"
 
-#: data/scripts/browse_bouquets.py:759
-
+#: data/scripts/browse_bouquets.py:322
 msgid "Genre:"
 msgstr "Giới tính:"
 
-#: data/scripts/timonde_common.py:193
-
+#: data/scripts/timonde_common.py:182
 msgid "Geoblocked (VPN)"
 msgstr "Geobloqueado (VPN)"
 
-#: data/scripts/browse_bouquets.py:735
-
+#: data/scripts/browse_bouquets.py:298
 msgid ""
 "Global search on the free and open <b>Radio-Browser</b> directory (+45,000 "
 "stations)."
-msgstr "Tìm kiếm toàn cầu trên thư mục <b>Radio-Browser</b> miễn phí và mở (+45.000 đài)."
+msgstr ""
+"Tìm kiếm toàn cầu trên thư mục <b>Radio-Browser</b> miễn phí và mở (+45.000 "
+"đài)."
 
-#: data/scripts/edit_station.py:168
-
+#: data/scripts/edit_station.py:181
 msgid "Group / Folder:"
 msgstr "Nhóm/Thư mục:"
 
-#: data/scripts/reorder_groups.py:677
-
+#: data/scripts/reorder_groups.py:618
 msgid "Group created:"
 msgstr "Grupo creado:"
 
-#: data/scripts/reorder_groups.py:734
-
+#: data/scripts/reorder_groups.py:690
 msgid "Group renamed:"
 msgstr "Grupo renombrado:"
 
-#: data/scripts/browse_bouquets.py:645
-
+#: data/scripts/timonde_common.py:553
 msgid "Group:"
 msgstr "Nhóm:"
 
-#: data/scripts/timonde_common.py:189
-
-msgid "HTTP Error {code}"
-msgstr "Error HTTP {code}"
-
-#: data/scripts/browse_bouquets.py:702
-
+#: data/scripts/timonde_common.py:606
 msgid "Help on groups and subgroups"
 msgstr "Trợ giúp về nhóm và nhóm con"
 
-#: data/scripts/browse_bouquets.py:1039 data/scripts/browse_bouquets.py:1221
-
+#: data/scripts/browse_bouquets.py:561 data/scripts/browse_bouquets.py:715
 msgid "Import"
 msgstr "Nhập khẩu"
 
-#: data/scripts/browse_bouquets.py:1328
-
-msgid "Import & Export"
-msgstr "Xuất nhập khẩu"
-
-#: data/scripts/browse_bouquets.py:717
-
+#: data/scripts/browse_bouquets.py:280
 msgid "Import to my favorites"
 msgstr "Nhập vào mục yêu thích của tôi"
 
-#: src/tray/menu.rs:560
-
+#: src/tray/menu.rs:562
 msgid "In 15 minutes"
 msgstr "Trong 15 phút nữa"
 
-#: src/tray/menu.rs:567
-
+#: src/tray/menu.rs:569
 msgid "In 30 minutes"
 msgstr "trong 30 phút nữa"
 
-#: src/tray/menu.rs:574
-
+#: src/tray/menu.rs:576
 msgid "In 45 minutes"
 msgstr "Trong 45 phút nữa"
 
-#: src/tray/menu.rs:581
-
+#: src/tray/menu.rs:583
 msgid "In 60 minutes (1h)"
 msgstr "Trong 60 phút (1 giờ)"
 
-#: data/scripts/reorder_groups.py:707
-
+#: data/scripts/reorder_groups.py:675
 msgid "Insert"
 msgstr "Insertar"
 
-#: data/scripts/reorder_groups.py:230
-
+#: data/scripts/reorder_groups.py:175
 msgid "Insert a separator or header"
 msgstr "Insertar separador o encabezado"
 
-#: data/scripts/reorder_groups.py:705
-
+#: data/scripts/reorder_groups.py:673
 msgid "Insert separator"
 msgstr "Insertar separador"
 
-#: data/scripts/gnome_tray_helper.py:179 data/scripts/timonde_settings.py:688
-
+#: data/scripts/gnome_tray_helper.py:190 data/scripts/timonde_settings.py:495
 msgid "Install GNOME integration"
 msgstr "Cài đặt tích hợp Gnome"
 
-#: data/scripts/gnome_tray_helper.py:198
-
+#: data/scripts/gnome_tray_helper.py:209
 msgid "Installation in progress (please confirm system prompt)..."
-msgstr "Đang trong quá trình cài đặt (vui lòng xác nhận lời nhắc của hệ thống)..."
+msgstr ""
+"Đang trong quá trình cài đặt (vui lòng xác nhận lời nhắc của hệ thống)..."
 
-#: data/scripts/gnome_tray_helper.py:213
-
+#: data/scripts/gnome_tray_helper.py:224
 msgid "Installation was cancelled or failed."
 msgstr "Quá trình cài đặt đã bị hủy hoặc không thành công."
 
-#: data/scripts/gnome_tray_helper.py:145
+#: data/scripts/timonde_settings.py:464
+msgid "Installed binary:"
+msgstr "Tập tin nhị phân đã cài đặt:"
 
+#: data/scripts/gnome_tray_helper.py:156
 msgid "Integration in GNOME top bar"
 msgstr "Tích hợp trong thanh trên cùng của Gnome"
 
-#: data/scripts/edit_station.py:71
-
+#: data/scripts/edit_station.py:80
 msgid "Keep in favorites"
 msgstr "Lưu vào mục yêu thích của tôi"
 
-#: data/scripts/browse_bouquets.py:749
-
+#: data/scripts/browse_bouquets.py:312
 msgid "Keyword:"
 msgstr "từ khóa:"
 
-#: data/scripts/browse_bouquets.py:819 data/scripts/browse_bouquets.py:1023
-
+#: data/scripts/browse_bouquets.py:382 data/scripts/browse_bouquets.py:547
 msgid "Language:"
 msgstr "Ngôn ngữ:"
 
-#: data/scripts/browse_bouquets.py:706 data/scripts/browse_bouquets.py:1399
-
-#: data/scripts/reorder_groups.py:185 data/scripts/reorder_groups.py:1005
-
+#: data/scripts/browse_bouquets.py:269 data/scripts/browse_bouquets.py:821
+#: data/scripts/reorder_groups.py:156 data/scripts/reorder_groups.py:908
 msgid "Listen"
 msgstr "Escuchar"
 
-#: data/scripts/browse_bouquets.py:706
-
+#: data/scripts/browse_bouquets.py:269
 msgid "Listen to selected station"
 msgstr "Nghe đài đã chọn"
 
-#: data/scripts/timonde_common.py:204
-
-msgid "Live (Shoutcast)"
-msgstr "En directo (Shoutcast)"
-
-#: data/scripts/timonde_common.py:187
-
+#: data/scripts/timonde_common.py:185
 msgid "Live ({codec})"
 msgstr "En directo ({codec})"
 
-#: data/scripts/browse_bouquets.py:1060
-
+#: data/scripts/browse_bouquets.py:564
 msgid "Live availability"
 msgstr "Tính khả dụng trực tiếp"
 
-#: data/scripts/browse_bouquets.py:1186
-
+#: data/scripts/browse_bouquets.py:682
 msgid "Load a file..."
 msgstr "Tải một tập tin..."
 
-#: data/scripts/browse_bouquets.py:1186
-
+#: data/scripts/browse_bouquets.py:682
 msgid "Load an XML, CSV, JSON, M3U or PLS file"
 msgstr "Tải tệp XML, CSV, JSON, M3U hoặc PLS"
 
 #: src/timezone.rs:521
-
 msgid "Morning"
 msgstr "buổi sáng"
 
-#: data/scripts/reorder_groups.py:949
-
+#: data/scripts/reorder_groups.py:876
 msgid "Move"
 msgstr "Mover"
 
-#: data/scripts/reorder_groups.py:219
-
+#: data/scripts/reorder_groups.py:167
 msgid "Move down"
 msgstr "⬇ Đi xuống"
 
-#: data/scripts/reorder_groups.py:219
-
+#: data/scripts/reorder_groups.py:167
 msgid "Move down one rank"
 msgstr "Move down one rank"
 
-#: data/scripts/reorder_groups.py:211
-
+#: data/scripts/reorder_groups.py:165
 msgid "Move selected item to the top"
 msgstr "Move selected item to the top"
 
-#: data/scripts/reorder_groups.py:197
-
+#: data/scripts/reorder_groups.py:159
 msgid "Move selection to another group (Ctrl+M)"
 msgstr "Move selection to another group (Ctrl+M)"
 
-#: data/scripts/reorder_groups.py:944
-
+#: data/scripts/reorder_groups.py:874
 msgid "Move to another group"
 msgstr "Mover a otro grupo"
 
-#: data/scripts/reorder_groups.py:559
-
+#: data/scripts/reorder_groups.py:545
 msgid "Move to another group..."
 msgstr "Move selection to another group (Ctrl+M)"
 
-#: data/scripts/reorder_groups.py:197
-
+#: data/scripts/reorder_groups.py:159
 msgid "Move to..."
 msgstr "Di chuyển đến..."
 
-#: data/scripts/reorder_groups.py:215
-
+#: data/scripts/reorder_groups.py:166
 msgid "Move up"
 msgstr "⬆ Đi lên"
 
-#: data/scripts/reorder_groups.py:215
-
+#: data/scripts/reorder_groups.py:166
 msgid "Move up one rank"
 msgstr "Move up one rank"
 
-#: src/tray/menu.rs:528
-
+#: src/tray/menu.rs:530
 msgid "Mute (0%)"
 msgstr "Tắt tiếng (0%)"
 
-#: data/scripts/reorder_groups.py:98 data/scripts/timonde_settings.py:524
-
+#: data/scripts/reorder_groups.py:84 data/scripts/timonde_settings.py:326
 msgid "My Radios"
 msgstr "Radio của tôi"
 
-#: data/scripts/timonde_common.py:1925
-
+#: data/scripts/timonde_common.py:1505
 msgid "Name and Stream URL are mandatory."
 msgstr "El nombre y la URL del flujo son obligatorios."
 
-#: data/scripts/reorder_groups.py:646
-
+#: data/scripts/reorder_groups.py:596
 msgid "Name of the new group:"
 msgstr "Nombre del nuevo grupo:"
 
-#: data/scripts/browse_bouquets.py:1011
-
+#: data/scripts/browse_bouquets.py:535
 msgid "National Bouquet (Major stations)"
 msgstr "Bó Hoa Quốc Gia (Trạm lớn)"
 
-#: data/scripts/timonde_settings.py:677
+#: data/scripts/browse_bouquets.py:1032
+msgid "National Radios"
+msgstr "National Radios"
 
+#: data/scripts/timonde_settings.py:485
 msgid ""
 "Native integration in notification tray via StatusNotifierItem / XEmbed."
 msgstr "Tích hợp gốc trong khay thông báo thông qua StatusNotifierItem/Xembed."
 
-#: data/scripts/browse_bouquets.py:1655
-
+#: data/scripts/browse_bouquets.py:1079
 msgid "New"
 msgstr "[Mới]"
 
-#: data/scripts/reorder_groups.py:193
-
+#: data/scripts/reorder_groups.py:158
 msgid "New group"
 msgstr "Nhóm mới"
 
-#: data/scripts/reorder_groups.py:593
-
+#: data/scripts/reorder_groups.py:560
 msgid "New group..."
 msgstr "Nhóm mới"
 
-#: data/scripts/reorder_groups.py:725
-
+#: data/scripts/reorder_groups.py:694
 msgid "New name for group:"
 msgstr "Nuevo nombre del grupo:"
 
-#: data/scripts/browse_bouquets.py:1282
-
+#: data/scripts/browse_bouquets.py:741
 msgid "New only"
 msgstr "Chỉ mới"
 
-#: data/scripts/reorder_groups.py:580
-
+#: data/scripts/reorder_groups.py:554
 msgid "New subgroup here..."
 msgstr "Nuevo subgrupo aquÃ­..."
 
 #: src/timezone.rs:521
-
 msgid "Night"
 msgstr "Đêm"
 
-#: data/scripts/browse_bouquets.py:1726
-
+#: data/scripts/browse_bouquets.py:1162
 msgid "No DAB+ bouquet for {country} — Use 'Search online'."
 msgstr "Không có nhóm đài DAB+ cho {country} — Sử dụng 'Tìm kiếm trực tuyến'."
 
-#: data/scripts/reorder_groups.py:1262
-
+#: data/scripts/reorder_groups.py:1159
 msgid "No bookmarks.xml file found to backup."
 msgstr "No se encontrÃ³ ningÃºn archivo bookmarks.xml para respaldar."
 
-#: data/scripts/reorder_groups.py:872
-
+#: data/scripts/reorder_groups.py:834
 msgid "No items to sort in this group."
 msgstr "No hay elementos para ordenar en este grupo."
 
-#: data/scripts/timonde_settings.py:618
-
+#: data/scripts/timonde_settings.py:417
 msgid "No new stations added (already in your bookmarks)."
 msgstr "No se aÃ±adieron nuevas emisoras (ya estÃ¡n en sus marcadores)."
 
-#: data/scripts/browse_bouquets.py:1625
-
+#: data/scripts/browse_bouquets.py:1049
 msgid "No pre-loaded DAB+ bouquet for this country."
 msgstr "Không có nhóm đài DAB+ tải sẵn cho quốc gia này."
 
-#: data/scripts/browse_bouquets.py:1898
-
+#: data/scripts/browse_bouquets.py:1316
 msgid ""
 "No radio found for these criteria in {country}. Uncheck 'Filter by country' "
 "to search globally."
@@ -1113,8 +873,7 @@ msgstr ""
 "Không tìm thấy đài cho các tiêu chí này ở {country}. Bỏ chọn 'Lọc theo quốc "
 "gia' để tìm kiếm toàn cầu."
 
-#: data/scripts/browse_bouquets.py:1895
-
+#: data/scripts/browse_bouquets.py:1313
 msgid ""
 "No radio found for this language in {country}. Uncheck 'Filter by country' "
 "or clear the language."
@@ -1122,799 +881,635 @@ msgstr ""
 "Không tìm thấy đài cho ngôn ngữ này ở {country}. Bỏ chọn 'Lọc theo quốc gia' "
 "hoặc xóa ngôn ngữ."
 
-#: data/scripts/browse_bouquets.py:1900
-
+#: data/scripts/browse_bouquets.py:1318
 msgid "No radio found on Radio-Browser for these criteria."
 msgstr "Không tìm thấy đài trên Radio-Browser cho các tiêu chí này."
 
-#: src/tray/mod.rs:459
-
+#: src/tray/mod.rs:486
 msgid "No radio is currently playing."
 msgstr "Hiện không có đài nào đang phát."
 
-#: src/tray/menu.rs:297
-
+#: src/tray/menu.rs:301
 msgid "No station loaded"
 msgstr "No stations to check."
 
-#: data/scripts/reorder_groups.py:1072
-
+#: data/scripts/reorder_groups.py:988
 msgid "No stations to check."
 msgstr "No stations to check."
 
-#: data/scripts/timonde_common.py:1680
-
+#: data/scripts/timonde_common.py:1325
 msgid "No stream found for this name. Modify the text above."
 msgstr "Không tìm thấy luồng cho tên này. Vui lòng sửa đổi văn bản trên."
 
-#: data/scripts/timonde_common.py:1907
-
+#: data/scripts/timonde_common.py:1486
 msgid "Not listed yet!"
 msgstr "Â¡AÃºn no listada!"
 
-#: data/scripts/timonde_common.py:1721
-
+#: data/scripts/timonde_common.py:1355
 msgid "OK"
 msgstr "OK"
 
-#: data/scripts/browse_bouquets.py:972
-
+#: data/scripts/browse_bouquets.py:496
 msgid ""
 "Official and verified selection across 146 countries and regions (digital "
 "DAB+ bouquets and major national stations)."
-msgstr "Lựa chọn chính thức và đã được xác minh trên 146 quốc gia và khu vực (bó hoa DAB+ kỹ thuật số và các đài quốc gia lớn)."
+msgstr ""
+"Lựa chọn chính thức và đã được xác minh trên 146 quốc gia và khu vực (bó hoa "
+"DAB+ kỹ thuật số và các đài quốc gia lớn)."
 
-#: data/scripts/timonde_common.py:178
-
+#: data/scripts/timonde_common.py:187
 msgid "Offline (HTML error page)"
 msgstr "Ngoại tuyến (trang lỗi HTML)"
 
-#: data/scripts/edit_station.py:366
-
+#: data/scripts/edit_station.py:345
 msgid "On-air broadcast name:"
 msgstr "Nombre emitido en antena:"
 
-#: data/scripts/browse_bouquets.py:1983
-
+#: data/scripts/browse_bouquets.py:1372
 msgid "Open"
 msgstr "Mở"
 
-#: data/scripts/browse_bouquets.py:1203
+#: data/scripts/timonde_common.py:1482
+msgid "Open editor to update this station and its country"
+msgstr "Mở trình chỉnh sửa để cập nhật đài này và quốc gia của đài"
 
+#: data/scripts/browse_bouquets.py:699
 msgid "Open ~/.config/timonde"
 msgstr "Mở ~/.config/timonde"
 
-#: data/scripts/browse_bouquets.py:1169
-
+#: data/scripts/browse_bouquets.py:665
 msgid "Open ~/.config/timonde/examples"
 msgstr "Mở ~/.config/timonde/examples"
 
-#: data/scripts/reorder_groups.py:706
-
+#: data/scripts/reorder_groups.py:674
 msgid "Optional title for this separator (leave blank for a simple line):"
-msgstr "Tiêu đề tùy chọn cho dấu phân cách này (để trống cho một dòng đơn giản):"
+msgstr ""
+"Tiêu đề tùy chọn cho dấu phân cách này (để trống cho một dòng đơn giản):"
 
-#: data/scripts/reorder_groups.py:60
-
+#: data/scripts/reorder_groups.py:1203
 msgid "Organize groups and stations (TiMonde)"
 msgstr "Organize groups and stations (TiMonde)"
 
-#: data/scripts/timonde_common.py:1559
-
+#: data/scripts/timonde_common.py:1239
 msgid "Organizing groups and subgroups (Linux convention)"
 msgstr "OrganizaciÃ³n de grupos y subgrupos (convenciÃ³n Linux)"
 
-#: data/scripts/timonde_common.py:1609
-
+#: data/scripts/timonde_common.py:1281
 msgid "Original stream is unreachable:"
 msgstr "El flujo original no es accesible:"
 
-#: src/tray/menu.rs:160
-
+#: src/tray/menu.rs:162
 msgid "Paused"
 msgstr "Tạm dừng"
 
-#: src/i18n.rs:179 src/i18n.rs:228 src/i18n.rs:234 src/i18n.rs:244
-
-#: src/i18n.rs:249 src/i18n.rs:254 src/i18n.rs:257 src/i18n.rs:260
-
-#: src/i18n.rs:263 src/i18n.rs:266 src/i18n.rs:269 src/i18n.rs:272
-
+#: src/i18n.rs:209 src/i18n.rs:266 src/i18n.rs:272 src/i18n.rs:282
+#: src/i18n.rs:287 src/i18n.rs:292 src/i18n.rs:295 src/i18n.rs:298
+#: src/i18n.rs:301 src/i18n.rs:304 src/i18n.rs:307 src/i18n.rs:310
 msgid "Play"
 msgstr "Phát"
 
-#: src/tray/menu.rs:413
-
+#: src/tray/menu.rs:415
 msgid "Play random radio (Ephemeral discovery)"
 msgstr "Nghe một đài phát thanh ngẫu nhiên (Khám phá phù du)"
 
-#: data/scripts/reorder_groups.py:549
-
+#: data/scripts/reorder_groups.py:541
 msgid "Play this station"
 msgstr "Xóa đài này"
 
-#: data/scripts/timonde_common.py:1283
-
+#: data/scripts/timonde_common.py:1106
 msgid "Playing:"
 msgstr "Đang chơi:"
 
-#: data/scripts/edit_station.py:388
-
+#: data/scripts/edit_station.py:367
 msgid "Please enter a stream URL first."
 msgstr "Por favor, introduzca primero una URL de flujo."
 
-#: data/scripts/timonde_common.py:1877
-
+#: data/scripts/timonde_common.py:1460
 msgid "Please enter a stream URL."
 msgstr "Por favor, introduzca una URL de flujo."
 
-#: data/scripts/browse_bouquets.py:1783
-
+#: data/scripts/browse_bouquets.py:1230
 msgid "Please select a radio station in the list first."
 msgstr "Por favor, seleccione primero una emisora de la lista."
 
-#: data/scripts/reorder_groups.py:926
-
+#: data/scripts/reorder_groups.py:870
 msgid "Please select a radio station to move."
 msgstr "Por favor, seleccione una emisora para mover."
 
-#: data/scripts/reorder_groups.py:1042
-
+#: data/scripts/reorder_groups.py:946
 msgid "Please select a station to contribute."
 msgstr "Por favor, seleccione una emisora para contribuir."
 
-#: data/scripts/reorder_groups.py:1020
-
+#: data/scripts/reorder_groups.py:921
 msgid "Please select a station to repair."
 msgstr "Please select a station to repair."
 
-#: data/scripts/browse_bouquets.py:1825
-
+#: data/scripts/browse_bouquets.py:1230
 msgid "Please select or check a radio station in the list first."
 msgstr "Por favor, seleccione o marque primero una emisora en la lista."
 
-#: data/scripts/timonde_common.py:1651
-
+#: data/scripts/timonde_common.py:1297
 msgid "Popularity"
 msgstr "Popularidad"
 
-#: data/scripts/timonde_settings.py:735
-
+#: data/scripts/timonde_settings.py:544
 msgid "Preferences"
 msgstr "Tùy chọn"
 
-#: data/scripts/reorder_groups.py:185
-
+#: data/scripts/reorder_groups.py:156
 msgid "Preview selected radio stream"
 msgstr "Testing live radio streams..."
 
-#: data/scripts/gnome_tray_helper.py:175
-
+#: data/scripts/gnome_tray_helper.py:186
 msgid "Quit"
 msgstr "Từ bỏ"
 
-#: src/tray/menu.rs:621
-
+#: src/tray/menu.rs:625
 msgid "Quit TiMonde"
 msgstr "Rời khỏi TiMonde"
 
-#: data/scripts/timonde_common.py:1283 data/scripts/timonde_common.py:1291
-
-#: data/scripts/timonde_common.py:1298 data/scripts/timonde_common.py:1311
-
-#: data/scripts/timonde_common.py:1326
-
+#: data/scripts/timonde_common.py:1078 data/scripts/timonde_common.py:1093
+#: data/scripts/timonde_common.py:1103
 msgid "Radio"
 msgstr "Radio"
 
-#: data/scripts/reorder_groups.py:147
-
+#: data/scripts/reorder_groups.py:121
 msgid "Radio / Group"
 msgstr "Radio / Grupo"
 
-#: data/scripts/edit_station.py:139
-
+#: data/scripts/edit_station.py:152
 msgid "Radio-Browser"
 msgstr "Radio-Browser"
 
-#: data/scripts/timonde_common.py:1949
-
-msgid "Radio-Browser contribution"
-msgstr "ContribuciÃ³n a Radio-Browser"
-
-#: data/scripts/timonde_common.py:1782
-
+#: data/scripts/timonde_common.py:1401
 msgid ""
 "Radio-Browser is an open directory (+45 000 stations). Shared stations "
 "benefit all users."
-msgstr "Radio-Browser là một thư mục mở (+45 000 đài). Các trạm chia sẻ mang lại lợi ích cho tất cả người dùng."
+msgstr ""
+"Radio-Browser là một thư mục mở (+45 000 đài). Các trạm chia sẻ mang lại lợi "
+"ích cho tất cả người dùng."
 
-#: data/scripts/timonde_common.py:1901
-
+#: data/scripts/timonde_common.py:1477
 msgid "Radio-Browser prevents duplicate stream URLs. No submission required."
 msgstr "Radio-Browser evita URLs duplicadas. No se requiere nuevo envÃ­o."
 
-#: data/scripts/timonde_common.py:1542
-
-msgid "Radio-Browser servers unreachable"
-msgstr "Servidores de Radio-Browser inaccesibles"
-
-#: data/scripts/reorder_groups.py:1200
-
+#: data/scripts/reorder_groups.py:1100
 msgid "Redirects applied:"
 msgstr "Redirecciones aplicadas:"
 
-#: data/scripts/browse_bouquets.py:1165
-
+#: data/scripts/browse_bouquets.py:661
 msgid "Refresh examples list"
 msgstr "Làm mới danh sách ví dụ"
 
-#: data/scripts/browse_bouquets.py:1015
-
+#: data/scripts/browse_bouquets.py:539
 msgid "Regions & Local:"
 msgstr "Khu vực & Địa phương:"
 
-#: data/scripts/browse_bouquets.py:1190
-
+#: data/scripts/browse_bouquets.py:686
 msgid "Reload"
 msgstr "Tải lại"
 
-#: data/scripts/browse_bouquets.py:1190
-
+#: data/scripts/browse_bouquets.py:686
 msgid "Reload currently displayed file"
 msgstr "Tải lại tập tin hiện đang hiển thị"
 
-#: data/scripts/reorder_groups.py:724
-
+#: data/scripts/reorder_groups.py:693
 msgid "Rename group"
 msgstr "Renombrar grupo"
 
-#: data/scripts/reorder_groups.py:584
-
+#: data/scripts/reorder_groups.py:555
 msgid "Rename group..."
 msgstr "Renombrar grupo..."
 
-#: data/scripts/browse_bouquets.py:1119 data/scripts/reorder_groups.py:238
-
-#: data/scripts/reorder_groups.py:563
-
+#: data/scripts/browse_bouquets.py:615 data/scripts/reorder_groups.py:177
+#: data/scripts/reorder_groups.py:546
 msgid "Repair stream..."
 msgstr "Dòng chảy sửa chữa..."
 
-#: data/scripts/browse_bouquets.py:1119
-
+#: data/scripts/browse_bouquets.py:615
 msgid "Replace selected link with an active official stream"
 msgstr "Thay thế liên kết đã chọn bằng luồng chính thức đang hoạt động"
 
-#: data/scripts/timonde_common.py:1592
-
+#: data/scripts/timonde_common.py:1269
 msgid "Replace stream:"
 msgstr "Reemplazar flujo:"
 
-#: data/scripts/browse_bouquets.py:1173
-
+#: data/scripts/browse_bouquets.py:669
 msgid "Restore samples"
 msgstr "Khôi phục mẫu"
 
-#: data/scripts/browse_bouquets.py:1173
-
+#: data/scripts/browse_bouquets.py:669
 msgid "Restore the 19 original samples"
 msgstr "Khôi phục 19 mẫu gốc"
 
-#: data/scripts/reorder_groups.py:861
-
+#: data/scripts/reorder_groups.py:830
 msgid "Root"
 msgstr "RaÃ­z"
 
-#: data/scripts/reorder_groups.py:903
-
+#: data/scripts/reorder_groups.py:854
 msgid "Root items sorted alphabetically."
 msgstr "Elementos raÃ­z ordenados alfabÃ©ticamente."
 
-#: data/scripts/timonde_settings.py:638
-
+#: data/scripts/timonde_settings.py:437
 msgid "SESSION OPTIONS"
 msgstr "TÙY CHỌN PHIÊN"
 
-#: src/timezone.rs:657
-
+#: src/timezone.rs:1091
 msgid "Same time"
 msgstr "Cùng giờ"
 
-#: data/scripts/edit_station.py:76 data/scripts/reorder_groups.py:727
-
-#: data/scripts/reorder_groups.py:1269
-
+#: data/scripts/edit_station.py:85 data/scripts/reorder_groups.py:695
+#: data/scripts/reorder_groups.py:1165
 msgid "Save"
 msgstr "Lưu"
 
-#: data/scripts/reorder_groups.py:276
-
+#: data/scripts/reorder_groups.py:201
 msgid "Save and reload"
 msgstr "Lưu và tải lại"
 
-#: src/tray/dialogs.rs:328 src/tray/mod.rs:541
-
+#: src/tray/dialogs.rs:341 src/tray/mod.rs:539
 msgid "Save error"
 msgstr "Lỗi lưu"
 
-#: data/scripts/reorder_groups.py:276
-
+#: data/scripts/reorder_groups.py:201
 msgid "Save now"
 msgstr "Lỗi lưu"
 
-#: data/scripts/edit_station.py:69 src/i18n.rs:199
-
+#: data/scripts/edit_station.py:78 src/i18n.rs:237
 msgid "Save station to favorites (TiMonde)"
 msgstr "Lưu đài vào mục yêu thích của tôi (TiMonde)"
 
-#: src/tray/mod.rs:561
-
+#: src/tray/mod.rs:559
 msgid "Saved!"
 msgstr "Đã lưu!"
 
-#: data/scripts/browse_bouquets.py:770 data/scripts/timonde_common.py:1630
-
+#: data/scripts/browse_bouquets.py:333 data/scripts/timonde_common.py:1291
 msgid "Search"
 msgstr "Buscar"
 
-#: data/scripts/reorder_groups.py:238
-
+#: data/scripts/reorder_groups.py:177
 msgid "Search Radio-Browser for a working replacement stream"
 msgstr ""
 "Tự động tìm kiếm luồng hoạt động thay thế trên Radio-Browser cho liên kết "
 "chết này"
 
-#: data/scripts/browse_bouquets.py:1326 data/scripts/timonde_settings.py:592
-
+#: data/scripts/timonde_settings.py:391
 msgid "Search online"
 msgstr "Tìm kiếm trực tuyến"
 
-#: data/scripts/browse_bouquets.py:1885
-
+#: data/scripts/browse_bouquets.py:1303
 msgid "Searching Radio-Browser..."
 msgstr "Đang tìm kiếm Trình duyệt Radio..."
 
-#: data/scripts/timonde_common.py:1660
-
+#: data/scripts/timonde_common.py:1307
 msgid "Searching for streams..."
 msgstr "Dòng chảy sửa chữa..."
 
-#: data/scripts/timonde_common.py:1670
-
+#: data/scripts/timonde_common.py:1315
 msgid "Searching on Radio-Browser..."
 msgstr "Đang tìm kiếm trên Radio-Browser..."
 
-#: data/scripts/browse_bouquets.py:1382
-
+#: data/scripts/browse_bouquets.py:804
 msgid "Select a station in table to listen to."
 msgstr "Chọn một đài trong bảng để nghe."
 
-#: data/scripts/browse_bouquets.py:1386
-
+#: data/scripts/browse_bouquets.py:808
 msgid "Select a station to listen to."
 msgstr "Chọn một đài để nghe."
 
-#: data/scripts/timonde_common.py:1610
-
+#: data/scripts/timonde_common.py:1281
 msgid "Select a verified replacement stream from Radio-Browser:"
 msgstr "Seleccione un flujo verificado de reemplazo desde Radio-Browser:"
 
-#: data/scripts/edit_station.py:185
-
+#: data/scripts/edit_station.py:199
 msgid "Select or type (e.g. /France/Brittany or / for root)"
 msgstr "Seleccionar o escribir (ej: /EspaÃ±a/Madrid o / para raÃ­z)"
 
-#: data/scripts/reorder_groups.py:956
-
+#: data/scripts/reorder_groups.py:882
 msgid "Select the target destination:"
 msgstr "Seleccione la carpeta de destino:"
 
-#: src/tray/mod.rs:478
-
+#: src/tray/mod.rs:505
 msgid "Selection"
 msgstr "Tuyển chọn"
 
-#: data/scripts/reorder_groups.py:230
-
+#: data/scripts/reorder_groups.py:175
 msgid "Separator"
 msgstr "Dấu phân cách"
 
-#: data/scripts/timonde_common.py:1538
-
-msgid "Server rejected submission: {error}"
-msgstr "El servidor rechazÃ³ el envÃ­o: {error}"
-
-#: data/scripts/timonde_common.py:198
-
+#: data/scripts/timonde_common.py:188
 msgid "Server unreachable"
 msgstr "Servidor inaccesible"
 
-#: data/scripts/timonde_settings.py:316
-
+#: data/scripts/timonde_settings.py:201
 msgid "Settings & Control TiMonde"
 msgstr "Cài đặt & Điều khiển TiMonde"
 
-#: src/tray/dialogs.rs:400
-
+#: src/tray/dialogs.rs:422
 msgid "Settings console not found"
 msgstr "Không tìm thấy bảng điều khiển cài đặt"
 
-#: src/tray/menu.rs:605
-
+#: src/tray/menu.rs:607
 msgid "Settings..."
 msgstr "Cài đặt..."
 
-#: src/i18n.rs:205 src/tray/menu.rs:549 src/tray/menu.rs:552
-
+#: src/i18n.rs:243 src/tray/menu.rs:551 src/tray/menu.rs:554
 msgid "Sleep timer"
 msgstr "Hẹn giờ ngủ"
 
-#: src/tray/mod.rs:592
-
+#: src/tray/mod.rs:588
 msgid "Sleep timer activated"
 msgstr "Hẹn giờ ngủ đã được kích hoạt"
 
-#: src/tray/mod.rs:626
-
+#: src/tray/mod.rs:622
 msgid "Sleep timer cancelled."
 msgstr "Đã hủy hẹn giờ ngủ."
 
-#: src/tray/mod.rs:615
-
+#: src/tray/mod.rs:611
 msgid "Sleep timer: stopping radio."
 msgstr "Hẹn giờ ngủ: đang dừng đài."
 
-#: data/scripts/reorder_groups.py:223
-
+#: data/scripts/reorder_groups.py:168
 msgid "Sort sibling items alphabetically"
 msgstr "Ordenar elementos alfabÃ©ticamente"
 
-#: data/scripts/reorder_groups.py:901
-
+#: data/scripts/reorder_groups.py:852
 msgid "Sorted alphabetically:"
 msgstr "Ordenado alfabÃ©ticamente:"
 
-#: data/scripts/browse_bouquets.py:888 data/scripts/browse_bouquets.py:1045
-
-#: data/scripts/browse_bouquets.py:1227 data/scripts/timonde_common.py:1638
-
+#: data/scripts/browse_bouquets.py:444 data/scripts/browse_bouquets.py:562
+#: data/scripts/browse_bouquets.py:716 data/scripts/timonde_common.py:1297
 msgid "Station"
 msgstr "Khu nghỉ dưỡng"
 
-#: src/tray/mod.rs:566
-
+#: src/tray/mod.rs:564
 msgid "Station added but reload error"
 msgstr "Đã thêm đài nhưng xảy ra lỗi khi tải lại"
 
-#: data/scripts/reorder_groups.py:691
-
+#: data/scripts/reorder_groups.py:635
 msgid "Station added:"
 msgstr "Emisora aÃ±adida:"
 
-#: data/scripts/reorder_groups.py:683
+#: data/scripts/reorder_groups.py:706
+msgid "Station deleted:"
+msgstr "Đài đã bị xóa:"
 
+#: data/scripts/reorder_groups.py:627
 msgid "Station editor unavailable."
 msgstr "Editor de emisoras no disponible."
 
-#: data/scripts/reorder_groups.py:997
-
+#: data/scripts/reorder_groups.py:900
 msgid "Station moved to"
 msgstr "Emisora movida a"
 
-#: data/scripts/timonde_common.py:1476
-
+#: data/scripts/timonde_common.py:1201
 msgid "Station name cannot be empty"
 msgstr "El nombre de la emisora no puede estar vacÃ­o"
 
-#: data/scripts/edit_station.py:110 data/scripts/timonde_common.py:1794
-
+#: data/scripts/edit_station.py:123 data/scripts/timonde_common.py:1421
 msgid "Station name:"
 msgstr "Tên đài:"
 
-#: data/scripts/timonde_common.py:1528
-
-msgid "Station successfully submitted to Radio-Browser."
-msgstr "Emisora enviada con Ã©xito a Radio-Browser."
-
-#: data/scripts/reorder_groups.py:745
-
+#: data/scripts/reorder_groups.py:718
 msgid "Station updated:"
 msgstr "Emisora actualizada:"
 
-#: data/scripts/browse_bouquets.py:1397 data/scripts/edit_station.py:405
-
-#: data/scripts/reorder_groups.py:1005 data/scripts/reorder_groups.py:1080
-
-#: src/i18n.rs:185 src/i18n.rs:245 src/i18n.rs:250
-
+#: data/scripts/browse_bouquets.py:819 data/scripts/edit_station.py:413
+#: data/scripts/reorder_groups.py:908 data/scripts/reorder_groups.py:994
+#: src/i18n.rs:215 src/i18n.rs:283 src/i18n.rs:288
 msgid "Stop"
 msgstr "Dừng"
 
-#: data/scripts/reorder_groups.py:549
-
+#: data/scripts/reorder_groups.py:541
 msgid "Stop playback"
 msgstr "Detener reproducciÃ³n"
 
-#: data/scripts/browse_bouquets.py:1259
-
+#: data/scripts/browse_bouquets.py:721
 msgid "Stream URL"
 msgstr "URL luồng"
 
-#: data/scripts/timonde_common.py:1478
-
+#: data/scripts/timonde_common.py:1203
 msgid "Stream URL cannot be empty"
 msgstr "La URL del flujo no puede estar vacÃ­a"
 
-#: data/scripts/timonde_common.py:1804
-
+#: data/scripts/timonde_common.py:1422
 msgid "Stream URL:"
 msgstr "URL del flujo:"
 
-#: data/scripts/reorder_groups.py:1029
-
+#: data/scripts/reorder_groups.py:938
 msgid "Stream successfully repaired for"
 msgstr "Flujo reparado con Ã©xito para"
 
-#: data/scripts/timonde_common.py:1274
-
-msgid "Stream unreachable"
-msgstr "Luồng không thể truy cập được"
-
-#: data/scripts/browse_bouquets.py:739
-
+#: data/scripts/browse_bouquets.py:302
 msgid "Submit a new station to community Radio-Browser directory"
 msgstr "Enviar una nueva emisora al directorio Radio-Browser"
 
-#: data/scripts/timonde_common.py:1859 data/scripts/timonde_common.py:1911
-
-#: data/scripts/timonde_common.py:1958
-
+#: data/scripts/timonde_common.py:1441 data/scripts/timonde_common.py:1490
+#: data/scripts/timonde_common.py:1521
 msgid "Submit to Radio-Browser"
 msgstr "Enviar a Radio-Browser"
 
-#: data/scripts/timonde_common.py:1931
+#: data/scripts/timonde_common.py:1521
+msgid "Submitted"
+msgstr "Đã gửi"
 
+#: data/scripts/timonde_common.py:1511
 msgid "Submitting station to Radio-Browser..."
 msgstr "Enviando emisora a Radio-Browser..."
 
-#: data/scripts/timonde_common.py:1930
-
+#: data/scripts/timonde_common.py:1510
 msgid "Submitting..."
 msgstr "Enviando..."
 
-#: data/scripts/browse_bouquets.py:1089
-
+#: data/scripts/browse_bouquets.py:585
 msgid "Switch to the global directory with this country pre-selected"
 msgstr "Chuyển sang thư mục toàn cầu với quốc gia này được chọn sẵn"
 
-#: data/scripts/timonde_settings.py:665
-
+#: data/scripts/timonde_settings.py:473
 msgid "System language"
 msgstr "Ngôn ngữ hệ thống"
 
-#: data/scripts/timonde_common.py:1831
-
+#: data/scripts/timonde_common.py:1424
 msgid "Tags / Genres:"
 msgstr "Etiquetas / GÃ©neros:"
 
-#: src/tray/mod.rs:325
-
+#: src/tray/mod.rs:360
 msgid "Temporary backup stream found for"
 msgstr "Đã tìm thấy luồng sao lưu tạm thời cho"
 
-#: data/scripts/edit_station.py:135 data/scripts/edit_station.py:407
-
+#: data/scripts/edit_station.py:148 data/scripts/edit_station.py:415
 msgid "Test"
 msgstr "Bài kiểm tra"
 
-#: data/scripts/reorder_groups.py:102
-
+#: data/scripts/reorder_groups.py:85
 msgid "Test stream availability and locate broken links"
 msgstr ""
 "Kiểm tra tính khả dụng trực tiếp của các đài phát thanh của bạn và phát hiện "
 "các liên kết chết"
 
-#: data/scripts/browse_bouquets.py:946 data/scripts/browse_bouquets.py:1115
-
-#: data/scripts/browse_bouquets.py:1286
-
+#: data/scripts/browse_bouquets.py:470 data/scripts/browse_bouquets.py:611
+#: data/scripts/browse_bouquets.py:745
 msgid "Test streams"
 msgstr "Luồng thử nghiệm"
 
-#: data/scripts/reorder_groups.py:1087
-
+#: data/scripts/reorder_groups.py:1000
 msgid "Testing live radio streams..."
 msgstr "Testing live radio streams..."
 
-#: data/scripts/browse_bouquets.py:1679 data/scripts/browse_bouquets.py:1931
-
-#: data/scripts/browse_bouquets.py:2119
-
+#: data/scripts/browse_bouquets.py:1103
 msgid "Testing..."
 msgstr "Đang kiểm tra..."
 
-#: data/scripts/timonde_settings.py:694
-
+#: data/scripts/timonde_settings.py:502
 msgid ""
 "The AppIndicator extension is required to display the icon in GNOME top bar."
-msgstr "Cần có tiện ích mở rộng AppIndicator để hiển thị biểu tượng trong thanh trên cùng của Gnome."
+msgstr ""
+"Cần có tiện ích mở rộng AppIndicator để hiển thị biểu tượng trong thanh trên "
+"cùng của Gnome."
 
-#: data/scripts/browse_bouquets.py:1151
-
+#: data/scripts/browse_bouquets.py:647
 msgid "Thematic samples:"
 msgstr "Các mẫu chuyên đề:"
 
-#: data/scripts/edit_station.py:574
-
+#: data/scripts/edit_station.py:527
 msgid "This action will permanently remove this station from your collection."
 msgstr "Hành động này sẽ xóa vĩnh viễn đài này khỏi bộ sưu tập của bạn."
 
-#: data/scripts/timonde_common.py:1489
-
+#: data/scripts/timonde_common.py:1209
 msgid ""
 "This stream URL is already registered on Radio-Browser as '{existing_name}'."
-msgstr "URL luồng này đã được đăng ký trên Radio-Browser dưới dạng '{existing_name}'."
+msgstr ""
+"URL luồng này đã được đăng ký trên Radio-Browser dưới dạng '{existing_name}'."
 
-#: data/scripts/timonde_common.py:1908
-
+#: data/scripts/timonde_common.py:1487
 msgid ""
 "This stream URL is unpublished on Radio-Browser and ready to be contributed."
-msgstr "URL luồng này chưa được xuất bản trên Radio-Browser và sẵn sàng được đóng góp."
+msgstr ""
+"URL luồng này chưa được xuất bản trên Radio-Browser và sẵn sàng được đóng "
+"góp."
 
-#: data/scripts/gnome_tray_helper.py:117
+#: data/scripts/timonde_settings.py:463
+msgid "TiMonde version"
+msgstr "Phiên bản TiMonde"
 
+#: data/scripts/gnome_tray_helper.py:128
 msgid "TiMonde — GNOME Desktop Integration"
 msgstr "TiMonde — Tích hợp máy tính để bàn Gnome"
 
-#: src/tray/mod.rs:150
-
+#: src/tray/mod.rs:138
 msgid "TiMonde • Ephemeral discovery"
 msgstr "Nghe một đài phát thanh ngẫu nhiên (Khám phá phù du)"
 
-#: data/scripts/timonde_common.py:206
-
+#: data/scripts/timonde_common.py:189
 msgid "Timeout"
 msgstr "Múi giờ:"
 
-#: data/scripts/edit_station.py:273
-
+#: data/scripts/edit_station.py:260
 msgid "Timezone:"
 msgstr "Múi giờ:"
 
-#: data/scripts/gnome_tray_helper.py:159
-
+#: data/scripts/gnome_tray_helper.py:170
 msgid ""
 "To unobtrusively display the playback icon in the top bar of your GNOME "
 "desktop, the <b>AppIndicator</b> system extension is required.\n"
 "\n"
 "Would you like to install it now?"
 msgstr ""
-"Để hiển thị kín đáo biểu tượng phát lại ở thanh trên cùng của màn hình Gnome của bạn, cần có tiện ích mở rộng hệ thống <b>AppIndicator</b>.\n"
+"Để hiển thị kín đáo biểu tượng phát lại ở thanh trên cùng của màn hình Gnome "
+"của bạn, cần có tiện ích mở rộng hệ thống <b>AppIndicator</b>.\n"
 "\n"
 "Bạn có muốn cài đặt nó ngay bây giờ không?"
 
-#: src/timezone.rs:669
-
+#: src/timezone.rs:1103
 msgid "Tomorrow"
 msgstr "Ngày mai"
 
-#: data/scripts/reorder_groups.py:211
-
+#: data/scripts/reorder_groups.py:165
 msgid "Top"
 msgstr "Đầu tiên"
 
-#: src/tray/mod.rs:679
-
+#: src/tray/mod.rs:644
 msgid "Track copied to clipboard:"
 msgstr "Tên bài hát đã được sao chép vào khay nhớ tạm:"
 
-#: data/scripts/browse_bouquets.py:987
-
+#: data/scripts/browse_bouquets.py:511
 msgid "Type a country (e.g. France, Germany, Canada...)"
 msgstr "Nhập một quốc gia (ví dụ: Pháp, Đức, Canada ...)"
 
-#: src/tray/mod.rs:444
-
+#: src/tray/mod.rs:471
 msgid "Unable to find a station in the bouquets catalog."
 msgstr "Không thể tìm thấy đài trong danh mục nhóm đài."
 
-#: src/tray/mod.rs:208
-
+#: src/tray/mod.rs:236
 msgid "Unable to initialize audio"
 msgstr "No se pudo inicializar el audio"
 
-#: src/tray/mod.rs:216
-
+#: src/tray/mod.rs:248
 msgid "Unable to play"
 msgstr "No se puede reproducir"
 
-#: data/scripts/browse_bouquets.py:942 data/scripts/browse_bouquets.py:1111
-
-#: data/scripts/browse_bouquets.py:1278
-
+#: data/scripts/browse_bouquets.py:466 data/scripts/browse_bouquets.py:607
+#: data/scripts/browse_bouquets.py:737
 msgid "Uncheck all"
 msgstr "Bỏ chọn tất cả"
 
-#: data/scripts/timonde_common.py:1486 data/scripts/timonde_common.py:1896
-
-#: data/scripts/timonde_common.py:1897
-
+#: data/scripts/timonde_common.py:1208 data/scripts/timonde_common.py:1473
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: data/scripts/timonde_common.py:1530
+#: data/scripts/timonde_common.py:1221
+msgid "Unknown status"
+msgstr "Trạng thái không xác định"
 
-msgid "Unknown error"
-msgstr "Error desconocido"
-
-#: data/scripts/timonde_common.py:1272
-
-msgid "Unreadable stream"
-msgstr "Luồng không thể đọc được"
-
-#: data/scripts/gnome_tray_helper.py:193
-
+#: data/scripts/gnome_tray_helper.py:204
 msgid "Unrecognized package manager."
 msgstr "Trình quản lý gói không được công nhận."
 
-#: data/scripts/reorder_groups.py:293
-
+#: data/scripts/reorder_groups.py:216 data/scripts/reorder_groups.py:1223
 msgid "Unsaved changes"
 msgstr "Cambios sin guardar"
 
-#: data/scripts/browse_bouquets.py:1915 data/scripts/browse_bouquets.py:2082
-
+#: data/scripts/browse_bouquets.py:1333 data/scripts/browse_bouquets.py:1468
 msgid "Untested"
 msgstr "No comprobado"
 
-#: data/scripts/edit_station.py:159
-
+#: data/scripts/edit_station.py:172
 msgid "Use this on-air broadcast name for your bookmark"
 msgstr "Utilizar este nombre de emisiÃ³n para su marcador"
 
-#: data/scripts/timonde_common.py:1597
-
+#: data/scripts/timonde_common.py:1271
 msgid "Validate and replace"
 msgstr "Lưu và tải lại"
 
-#: data/scripts/browse_bouquets.py:923
-
+#: data/scripts/browse_bouquets.py:450
 msgid "Votes"
 msgstr "Phiếu bầu"
 
-#: data/scripts/reorder_groups.py:780
-
+#: data/scripts/reorder_groups.py:768
 msgid "Warning: this group contains {count} {unit} that will also be deleted."
 msgstr "Cảnh báo: nhóm này chứa {count} {unit} cũng sẽ bị xóa."
 
-#: data/scripts/timonde_common.py:1841
-
+#: data/scripts/timonde_common.py:1425
 msgid "Website / Homepage:"
 msgstr "Sitio web / PÃ¡gina principal:"
 
-#: data/scripts/browse_bouquets.py:2318
-
+#: data/scripts/browse_bouquets.py:1657
 msgid "XML backup is available from settings."
 msgstr "Sao lưu XML có sẵn từ cài đặt."
 
-#: data/scripts/reorder_groups.py:1296
-
+#: data/scripts/reorder_groups.py:1186
 msgid "XML backup successfully created in"
 msgstr "Copia de seguridad XML creada con Ã©xito en"
 
-#: data/scripts/reorder_groups.py:1276
-
+#: data/scripts/reorder_groups.py:1170
 msgid "XML files (*.xml)"
 msgstr "Các tệp XML (*.xml)"
 
-#: src/timezone.rs:670
-
+#: src/timezone.rs:1104
 msgid "Yesterday"
 msgstr "Hôm qua"
 
-#: data/scripts/browse_bouquets.py:1626
-
+#: data/scripts/browse_bouquets.py:1050
 msgid ""
 "You can explore and import stations for this territory directly from the "
 "global directory."
@@ -1922,262 +1517,250 @@ msgstr ""
 "Bạn có thể khám phá và nhập các đài cho vùng lãnh thổ này trực tiếp từ thư "
 "mục toàn cầu."
 
-#: data/scripts/reorder_groups.py:1302
+#: data/scripts/reorder_groups.py:1225
+msgid "You have unsaved changes."
+msgstr "Bạn có các thay đổi chưa được lưu."
 
+#: data/scripts/reorder_groups.py:1187
 msgid "Your complete bookmarks have been saved to:"
 msgstr "Sus marcadores completos se han guardado en:"
 
-#: src/i18n.rs:237 src/tray/menu.rs:372
-
+#: src/i18n.rs:275 src/tray/menu.rs:378
 msgid "Zap to another random station"
 msgstr "Chuyển sang một đài phát thanh ngẫu nhiên khác"
 
-#: data/scripts/reorder_groups.py:930
-
+#: data/scripts/edit_station.py:187 data/scripts/reorder_groups.py:873
 msgid "[ / ] Root (Without group)"
 msgstr "[ / ] RaÃ­z (Sin grupo)"
 
-#: data/scripts/reorder_groups.py:405
-
+#: data/scripts/reorder_groups.py:319
 msgid "[!] Dead link"
 msgstr "[!] Dead link"
 
-#: data/scripts/reorder_groups.py:409
-
+#: data/scripts/reorder_groups.py:323
 msgid "[?] Geo-restricted"
 msgstr "[?] Geo-restricted"
 
-#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
-
-msgid "[New]"
-msgstr "[Mới]"
-
-#: data/scripts/reorder_groups.py:403
-
-msgid "[OK] Live"
-msgstr "[OK] Live"
-
-#: data/scripts/reorder_groups.py:1027
-
-msgid "[OK] Repaired"
-msgstr "[OK] Reparado"
-
-#: data/scripts/browse_bouquets.py:1913 data/scripts/browse_bouquets.py:2080
-
-msgid "[Present]"
-msgstr "[Đã có]"
-
-#: data/scripts/reorder_groups.py:407
-
-msgid "[~] Redirected"
-msgstr "[~] Redirected"
-
-#: data/scripts/reorder_groups.py:1141
-
-msgid "broken"
-msgstr "broken"
-
-#: data/scripts/reorder_groups.py:1127
-
-msgid "checked:"
-msgstr "checked:"
-
-#: src/tray/dialogs.rs:263
-
-msgid "deleted from your favorites."
-msgstr "đã xóa khỏi mục yêu thích của bạn."
-
-#: data/scripts/timonde_settings.py:750
-
-msgid "disabled"
-msgstr "tàn tật"
-
-#: data/scripts/timonde_settings.py:750
-
-msgid "enabled"
-msgstr "đã bật"
-
-#: src/tray/mod.rs:332
-
-msgid "is currently unavailable"
-msgstr "hiện không khả dụng"
-
-#: src/tray/mod.rs:302
-
-msgid "is not responding. Searching for a backup stream..."
-msgstr "không phản hồi. Đang tìm kiếm luồng dự phòng..."
-
-#: data/scripts/timonde_settings.py:612
-
-msgid "new station(s) imported"
-msgstr "nueva(s) emisora(s) importada(s)"
-
-#: data/scripts/reorder_groups.py:1140
-
-msgid "online"
-msgstr "online"
-
-#: data/scripts/reorder_groups.py:372
-
-msgid "radio"
-msgstr "radio"
-
-#: data/scripts/reorder_groups.py:372 data/scripts/reorder_groups.py:672
-
-msgid "radios"
-msgstr "radios"
-
-#: data/scripts/reorder_groups.py:1142
-
-msgid "redirected"
-msgstr "redirected"
-
-#: data/scripts/browse_bouquets.py:2306
-
-msgid "sample files restored."
-msgstr "tập tin mẫu được khôi phục."
-
-#: src/tray/mod.rs:562
-
-msgid "saved in your favorites!"
-msgstr "đã lưu vào mục yêu thích của bạn!"
-
-#: data/scripts/timonde_settings.py:559
-
-msgid "saved successfully!"
-msgstr "Â¡guardado con Ã©xito!"
-
-#: data/scripts/reorder_groups.py:779
-
-msgid "station"
-msgstr "station"
-
-#: data/scripts/timonde_settings.py:614
-
-msgid "station(s) moved to destination"
-msgstr "emisora(s) movida(s) al destino"
-
-#: data/scripts/reorder_groups.py:779
-
-msgid "stations"
-msgstr "stations"
-
-#: data/scripts/reorder_groups.py:1095
-
-msgid "stations checked..."
-msgstr "stations checked..."
-
-#: src/tray/mod.rs:592
-
-msgid "stopping in"
-msgstr "tắt sau"
-
-#: data/scripts/reorder_groups.py:1200
-
-msgid "stream(s) updated."
-msgstr "flujo(s) actualizado(s)."
-
-#: data/scripts/browse_bouquets.py:1725
-
-msgid "this country"
-msgstr "quốc gia này"
-
-#: src/tray/dialogs.rs:385
-
-msgid "updated successfully!"
-msgstr "cập nhật thành công!"
-
-#: data/scripts/browse_bouquets.py:1733 data/scripts/browse_bouquets.py:2145
-
-msgid "{checked} / {total} station(s) selected"
-msgstr "Đã chọn {checked} / {total} đài"
-
-#: data/scripts/edit_station.py:543
-
-msgid "{count} available timezones"
-msgstr "{count} múi giờ khả dụng"
-
-#: data/scripts/browse_bouquets.py:1918
-
-msgid "{count} stations found."
-msgstr "Đã tìm thấy {count} đài."
-
-#: data/scripts/timonde_common.py:1690
-
-msgid "{count} streams found. Select the desired stream and validate."
-msgstr "Đã tìm thấy {count} luồng. Chọn luồng mong muốn và xác nhận."
-
-#: data/scripts/reorder_groups.py:352 data/scripts/reorder_groups.py:391
-
-#: data/scripts/reorder_groups.py:713
-
-msgid "— Separator —"
-msgstr "— Separator —"
-
-#: data/scripts/reorder_groups.py:111
-msgid ""
-"<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
-"• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
-"• Use <b>Move to...</b> to organize stations into another folder.</small>"
-msgstr ""
-"<small>• Mở rộng thư mục <b>[▶]</b> để khám phá nhóm phụ và đài.\n"
-"• Dùng <b>Di chuyển lên / Di chuyển xuống</b> hoặc Kéo & Thả để sắp xếp lại.\n"
-"• Dùng <b>Di chuyển đến...</b> để sắp xếp các đài vào thư mục khác.</small>"
-
-#: data/scripts/timonde_common.py:1825
-msgid "Edit station"
-msgstr "Chỉnh sửa đài"
-
-#: data/scripts/timonde_settings.py:563
-msgid "Installed binary:"
-msgstr "Tập tin nhị phân đã cài đặt:"
-
-
-#: data/scripts/browse_bouquets.py:1337
-msgid "National Radios"
-msgstr "National Radios"
-
-#: data/scripts/timonde_common.py:1882
-msgid "Open editor to update this station and its country"
-msgstr "Mở trình chỉnh sửa để cập nhật đài này và quốc gia của đài"
-
-#: data/scripts/reorder_groups.py:792
-msgid "Station deleted:"
-msgstr "Đài đã bị xóa:"
-
-#: data/scripts/timonde_common.py:1927
-msgid "Submitted"
-msgstr "Đã gửi"
-
-#: data/scripts/timonde_common.py:1508
-msgid ""
-"TiMonde uses path conventions with the <b>/</b> separator:\n"
-"\n"
-"• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu (without group).\n"
-"• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
-"• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » under « France ».\n"
-"• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « Belgium ».\n"
-"• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
-"\n"
-"<i>Groups and subgroups are automatically created if they do not exist yet.</i>"
-msgstr ""
-"TiMonde sử dụng quy ước đường dẫn với dấu phân cách <b>/</b>:\n"
-"\n"
-"• <b>/</b> hoặc <b>(Gốc)</b> : Đặt đài ở gốc của menu (không có nhóm).\n"
-"• <b>/Gabon</b> hoặc <b>Gabon</b> : Đặt đài trong nhóm « Gabon ».\n"
-"\n"
-"<i>Các nhóm và nhóm phụ sẽ được tạo tự động nếu chưa tồn tại.</i>"
-
-#: data/scripts/timonde_settings.py:562
-msgid "TiMonde version"
-msgstr "Phiên bản TiMonde"
-
-#: src/i18n.rs:217
+#: src/i18n.rs:217 src/i18n.rs:228
 msgid "[Ephemeral]"
 msgstr "[Tạm thời]"
 
+#: data/scripts/browse_bouquets.py:1331 data/scripts/browse_bouquets.py:1466
+msgid "[New]"
+msgstr "[Mới]"
 
-#: data/scripts/browse_bouquets.py:1488
+#: data/scripts/reorder_groups.py:317
+msgid "[OK] Live"
+msgstr "[OK] Live"
+
+#: data/scripts/browse_bouquets.py:1331 data/scripts/browse_bouquets.py:1466
+msgid "[Present]"
+msgstr "[Đã có]"
+
+#: data/scripts/reorder_groups.py:321
+msgid "[~] Redirected"
+msgstr "[~] Redirected"
+
+#: data/scripts/reorder_groups.py:1048
+msgid "broken"
+msgstr "broken"
+
+#: data/scripts/reorder_groups.py:1025
+msgid "checked:"
+msgstr "checked:"
+
+#: src/tray/dialogs.rs:293
+msgid "deleted from your favorites."
+msgstr "đã xóa khỏi mục yêu thích của bạn."
+
+#: data/scripts/timonde_settings.py:559
+msgid "disabled"
+msgstr "tàn tật"
+
+#: data/scripts/timonde_settings.py:559
+msgid "enabled"
+msgstr "đã bật"
+
+#: src/tray/mod.rs:367
+msgid "is currently unavailable"
+msgstr "hiện không khả dụng"
+
+#: src/tray/mod.rs:338
+msgid "is not responding. Searching for a backup stream..."
+msgstr "không phản hồi. Đang tìm kiếm luồng dự phòng..."
+
+#: data/scripts/timonde_settings.py:411
+msgid "new station(s) imported"
+msgstr "nueva(s) emisora(s) importada(s)"
+
+#: data/scripts/reorder_groups.py:1048
+msgid "online"
+msgstr "online"
+
+#: data/scripts/reorder_groups.py:294
+msgid "radio"
+msgstr "radio"
+
+#: data/scripts/reorder_groups.py:294 data/scripts/reorder_groups.py:614
+msgid "radios"
+msgstr "radios"
+
+#: data/scripts/reorder_groups.py:1048
+msgid "redirected"
+msgstr "redirected"
+
+#: data/scripts/browse_bouquets.py:1645
+msgid "sample files restored."
+msgstr "tập tin mẫu được khôi phục."
+
+#: src/tray/mod.rs:560
+msgid "saved in your favorites!"
+msgstr "đã lưu vào mục yêu thích của bạn!"
+
+#: data/scripts/timonde_settings.py:361
+msgid "saved successfully!"
+msgstr "Â¡guardado con Ã©xito!"
+
+#: data/scripts/reorder_groups.py:767
+msgid "station"
+msgstr "station"
+
+#: data/scripts/timonde_settings.py:413
+msgid "station(s) moved to destination"
+msgstr "emisora(s) movida(s) al destino"
+
+#: data/scripts/reorder_groups.py:767
+msgid "stations"
+msgstr "stations"
+
+#: data/scripts/reorder_groups.py:1003
+msgid "stations checked..."
+msgstr "stations checked..."
+
+#: src/tray/mod.rs:588
+msgid "stopping in"
+msgstr "tắt sau"
+
+#: data/scripts/reorder_groups.py:1100
+msgid "stream(s) updated."
+msgstr "flujo(s) actualizado(s)."
+
+#: data/scripts/browse_bouquets.py:1161
+msgid "this country"
+msgstr "quốc gia này"
+
+#: src/tray/dialogs.rs:404
+msgid "updated successfully!"
+msgstr "cập nhật thành công!"
+
+#: data/scripts/browse_bouquets.py:1169 data/scripts/browse_bouquets.py:1497
+msgid "{checked} / {total} station(s) selected"
+msgstr "Đã chọn {checked} / {total} đài"
+
+#: data/scripts/edit_station.py:497
+msgid "{count} available timezones"
+msgstr "{count} múi giờ khả dụng"
+
+#: data/scripts/browse_bouquets.py:1336
+msgid "{count} stations found."
+msgstr "Đã tìm thấy {count} đài."
+
+#: data/scripts/timonde_common.py:1333
+msgid "{count} streams found. Select the desired stream and validate."
+msgstr "Đã tìm thấy {count} luồng. Chọn luồng mong muốn và xác nhận."
+
+#: data/scripts/reorder_groups.py:274 data/scripts/reorder_groups.py:341
+#: data/scripts/reorder_groups.py:653
+msgid "— Separator —"
+msgstr "— Separator —"
+
+#: data/scripts/browse_bouquets.py:1195
 msgid "● Repaired (Live)"
 msgstr "● Repaired (Live)"
 
+#~ msgid " [Ephemeral]"
+#~ msgstr "[phù du]"
+
+#~ msgid "Connecting to"
+#~ msgstr "Đang kết nối với"
+
+#~ msgid "Discover & Import stations (TiMonde)"
+#~ msgstr "Khám phá và nhập đài phát thanh (TiMonde)"
+
+#~ msgid "End of stream"
+#~ msgstr "Kết thúc luồng"
+
+#~ msgid "Error {code}"
+#~ msgstr "Lỗi {code}"
+
+#~ msgid "Failed to add station"
+#~ msgstr "Error al aÃ±adir la emisora"
+
+#~ msgid "GStreamer not available"
+#~ msgstr "GStreamer không có sẵn"
+
+#~ msgid "HTTP Error {code}"
+#~ msgstr "Error HTTP {code}"
+
+#~ msgid "Import & Export"
+#~ msgstr "Xuất nhập khẩu"
+
+#~ msgid "Live (Shoutcast)"
+#~ msgstr "En directo (Shoutcast)"
+
+#~ msgid "Radio-Browser contribution"
+#~ msgstr "ContribuciÃ³n a Radio-Browser"
+
+#~ msgid "Radio-Browser servers unreachable"
+#~ msgstr "Servidores de Radio-Browser inaccesibles"
+
+#~ msgid "Server rejected submission: {error}"
+#~ msgstr "El servidor rechazÃ³ el envÃ­o: {error}"
+
+#~ msgid "Station successfully submitted to Radio-Browser."
+#~ msgstr "Emisora enviada con Ã©xito a Radio-Browser."
+
+#~ msgid "Stream unreachable"
+#~ msgstr "Luồng không thể truy cập được"
+
+#~ msgid "Unknown error"
+#~ msgstr "Error desconocido"
+
+#~ msgid "Unreadable stream"
+#~ msgstr "Luồng không thể đọc được"
+
+#~ msgid "[OK] Repaired"
+#~ msgstr "[OK] Reparado"
+
+#~ msgid ""
+#~ "<small>• Expand folders <b>[▶]</b> to explore subgroups and stations.\n"
+#~ "• Use <b>Move Up / Move Down</b> or Drag &amp; Drop to reorder.\n"
+#~ "• Use <b>Move to...</b> to organize stations into another folder.</small>"
+#~ msgstr ""
+#~ "<small>• Mở rộng thư mục <b>[▶]</b> để khám phá nhóm phụ và đài.\n"
+#~ "• Dùng <b>Di chuyển lên / Di chuyển xuống</b> hoặc Kéo & Thả để sắp xếp "
+#~ "lại.\n"
+#~ "• Dùng <b>Di chuyển đến...</b> để sắp xếp các đài vào thư mục khác.</"
+#~ "small>"
+
+#~ msgid ""
+#~ "TiMonde uses path conventions with the <b>/</b> separator:\n"
+#~ "\n"
+#~ "• <b>/</b> or <b>(Root)</b> : Places the station at the root of the menu "
+#~ "(without group).\n"
+#~ "• <b>/Gabon</b> or <b>Gabon</b> : Places the station in group « Gabon ».\n"
+#~ "• <b>/France/Brittany</b> : Places the station in subgroup « Brittany » "
+#~ "under « France ».\n"
+#~ "• <b>/Belgium/NL</b> : Places the station in subgroup « NL » under « "
+#~ "Belgium ».\n"
+#~ "• <b>France/Local Radios</b> : Subgroup with spaces under « France ».\n"
+#~ "\n"
+#~ "<i>Groups and subgroups are automatically created if they do not exist "
+#~ "yet.</i>"
+#~ msgstr ""
+#~ "TiMonde sử dụng quy ước đường dẫn với dấu phân cách <b>/</b>:\n"
+#~ "\n"
+#~ "• <b>/</b> hoặc <b>(Gốc)</b> : Đặt đài ở gốc của menu (không có nhóm).\n"
+#~ "• <b>/Gabon</b> hoặc <b>Gabon</b> : Đặt đài trong nhóm « Gabon ».\n"
+#~ "\n"
+#~ "<i>Các nhóm và nhóm phụ sẽ được tạo tự động nếu chưa tồn tại.</i>"

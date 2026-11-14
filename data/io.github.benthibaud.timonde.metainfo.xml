@@ -34,6 +34,11 @@
   </developer>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="0.3.0" date="2026-11-14">
+      <description>
+        <p>Version 0.3.0 : correction de l'insertion et de la persistance des séparateurs (vides et nommés) dans Mes Radios, mise à jour complète des 56 catalogues de traduction (i18n-clusters) et consolidation Rust-First.</p>
+      </description>
+    </release>
     <release version="0.2.9" date="2026-11-14">
       <description>
         <p>Audit qualité et durcissement de l'architecture : éradication du dernier dialogue modal bloquant, suppression des avertissements Clippy, ajout des tests d'intégration CLI Rust, contrôles post-build des paquets .deb/.rpm et nettoyage du code mort.</p>

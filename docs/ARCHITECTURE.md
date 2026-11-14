@@ -1,6 +1,6 @@
 # Architecture Technique de TiMonde
 
-Ce document consigne l'architecture globale, les choix de conception et les briques logicielles partagées de TiMonde (v0.2.9).
+Ce document consigne l'architecture globale, les choix de conception et les briques logicielles partagées de TiMonde (v0.3.0).
 
 ---
 

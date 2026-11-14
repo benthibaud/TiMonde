@@ -394,8 +394,16 @@ class ReorderWidget(Gtk.Box):
                     # Récursion pour explorer d'éventuels sous-groupes
                     walk_level(tree_iter, grp_name)
 
-                elif t in ("station", "separator") and parent_iter is None:
-                    # Station ou séparateur à la racine
+                elif t == "separator" and parent_iter is None:
+                    sep_name = data_obj.get("name", "") if isinstance(data_obj, dict) else ""
+                    payload.append({
+                        "name": sep_name.strip(),
+                        "stations": [],
+                        "is_separator": True,
+                    })
+
+                elif t == "station" and parent_iter is None:
+                    # Station à la racine
                     root_stations.append(data_obj)
 
                 tree_iter = self.store.iter_next(tree_iter)
@@ -639,10 +647,26 @@ class ReorderWidget(Gtk.Box):
 
         def on_sep_done(txt):
             if txt is not None:
-                disp = f"─── {txt} ───" if txt else "────────────────────────"
-                sep_obj = {"name": txt, "is_separator": True, "url": ""}
-                target_parent = tree_iter if node_type == "group" else parent_iter
-                self.store.append(target_parent, ["separator", disp, _("— Separator —"), sep_obj, "format-line-spacing", Pango.Weight.NORMAL])
+                clean_txt = txt.strip()
+                disp = f"─── {clean_txt} ───" if clean_txt else "────────────────────────"
+                sep_obj = {"name": clean_txt, "is_separator": True, "url": ""}
+                row_data = ["separator", disp, _("— Separator —"), sep_obj, "format-line-spacing", Pango.Weight.NORMAL]
+
+                if node_type == "group" and tree_iter is not None:
+                    new_iter = self.store.append(tree_iter, row_data)
+                    grp_path = self.store.get_path(tree_iter)
+                    if grp_path:
+                        self.treeview.expand_row(grp_path, False)
+                elif tree_iter is not None:
+                    new_iter = self.store.insert_after(parent_iter, tree_iter, row_data)
+                else:
+                    new_iter = self.store.append(None, row_data)
+
+                if new_iter:
+                    new_path = self.store.get_path(new_iter)
+                    if new_path:
+                        self.treeview.get_selection().select_path(new_path)
+                        self.treeview.scroll_to_cell(new_path, None, False, 0.0, 0.0)
                 self.set_dirty(True)
 
         prompt_text_dialog(
